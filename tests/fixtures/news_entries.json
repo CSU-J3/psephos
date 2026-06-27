@@ -1,0 +1,57 @@
+{
+  "_comment": "Synthetic feed entries for the news matcher suite. Deterministic, offline. The 'acceptance' entry is the Feb 11 2026 S.1383 218-213 maneuver.",
+  "acceptance": {
+    "title": "House adopts proof-of-citizenship amendment to unrelated Senate bill, 218-213",
+    "link": "https://example.org/save-vote?utm_source=twitter&utm_medium=social#top",
+    "summary": "The provision was added as an amendment to S. 1383 and passed 218-213.",
+    "published": "2026-02-11T19:00:00Z"
+  },
+  "dup_url": {
+    "title": "House adopts proof-of-citizenship amendment to unrelated Senate bill, 218-213",
+    "link": "https://example.org/save-vote?utm_campaign=x",
+    "summary": "The provision was added as an amendment to S. 1383 and passed 218-213.",
+    "published": "2026-02-11T19:05:00Z"
+  },
+  "dup_fuzzy": {
+    "title": "House adopts proof-of-citizenship amendment to unrelated Senate bill - 218 to 213",
+    "link": "https://other.example.net/story-xyz",
+    "summary": "A near-identical retelling of the same vote.",
+    "published": "2026-02-11T20:00:00Z"
+  },
+  "overtag": {
+    "title": "Opinion: election integrity and voter fraud worries grow before midterms",
+    "link": "https://example.org/oped-1",
+    "summary": "A column about election integrity.",
+    "published": "2026-06-01T00:00:00Z"
+  },
+  "subject_only": {
+    "title": "Senate to consider the SAVE America Act next week",
+    "link": "https://example.org/preview-1",
+    "summary": "Lawmakers will look at the SAVE America Act soon.",
+    "published": "2026-06-02T00:00:00Z"
+  },
+  "disambiguation": {
+    "title": "S. 3752 faces a cloture vote in the Senate this week",
+    "link": "https://example.org/s3752-cloture",
+    "summary": "Backers of S. 3752 push for cloture.",
+    "published": "2026-06-03T00:00:00Z"
+  },
+  "inference": {
+    "title": "Discharge petition filed over documentary proof requirement",
+    "link": "https://example.org/discharge-1",
+    "summary": "A discharge petition targets the documentary proof rule.",
+    "published": "2026-06-04T00:00:00Z"
+  },
+  "news_register": {
+    "title": "House passed sweeping proof-of-citizenship rule in surprise move",
+    "link": "https://example.org/passed-1",
+    "summary": "The House passed the proof of citizenship measure on Tuesday.",
+    "published": "2026-06-05T00:00:00Z"
+  },
+  "negative_nonmovement": {
+    "title": "Lawmakers debate the SAVE America Act at length",
+    "link": "https://example.org/debate-1",
+    "summary": "A long debate over the SAVE America Act continued.",
+    "published": "2026-06-06T00:00:00Z"
+  }
+}
