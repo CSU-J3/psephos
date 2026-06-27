@@ -1,0 +1,163 @@
+# psephos source registry and watchlist
+# Collectors load this. Admiralty grades follow the cyber-osint-research skill:
+# source reliability A-F, information credibility 1-6.
+# Verify feed/endpoint URLs on first run; the structure matters more than any single URL.
+
+meta:
+  project: psephos
+  timezone: America/Denver
+  cron: "0 */6 * * *"   # every 6 hours, matches existing tracker cadence
+
+# ===========================================================================
+# CHANNEL 1: LEGISLATION  (Congress.gov API)
+# ===========================================================================
+legislation:
+  api:
+    base: https://api.congress.gov/v3
+    key_env: CONGRESS_API_KEY        # free key: https://api.congress.gov
+    rate_limit_per_hour: 5000
+  # Per bill, pull:
+  #   /bill/{congress}/{type}/{number}
+  #   /bill/{congress}/{type}/{number}/actions
+  #   /bill/{congress}/{type}/{number}/amendments
+  #   /bill/{congress}/{type}/{number}/relatedbills
+  #   /bill/{congress}/{type}/{number}/cosponsors
+  default_grade: { source: A, info: "1" }   # primary government record
+  watchlist:
+    - bill_id: hr22-119
+      congress: 119
+      type: hr
+      number: 22
+      short_title: SAVE Act
+      watch_reason: Original proof-of-citizenship registration bill; House-passed 220-208 (Apr 2025).
+    - bill_id: s128-119
+      congress: 119
+      type: s
+      number: 128
+      short_title: SAVE Act (Senate companion)
+      watch_reason: Lee companion to H.R. 22; stalled.
+    - bill_id: hr7296-119
+      congress: 119
+      type: hr
+      number: 7296
+      short_title: SAVE America Act
+      watch_reason: Roy refile (Jan 2026).
+    - bill_id: s3752-119
+      congress: 119
+      type: s
+      number: 3752
+      short_title: SAVE America Act
+      watch_reason: Lee Senate refile (Jan 2026); the bill Trump is pressuring the Senate to pass.
+    - bill_id: hr7300-119
+      congress: 119
+      type: hr
+      number: 7300
+      short_title: MEGA Act
+      watch_reason: Make Elections Great Again; near-identical, CHA hearing Feb 2026.
+    - bill_id: s1383-119
+      congress: 119
+      type: s
+      number: 1383
+      is_vehicle: true
+      watch_reason: Unrelated bill used as the vehicle; voting provisions passed House 218-213 as an amendment (Feb 11 2026).
+  # Procedural-signal phrases the news collector cross-references against bill movement.
+  procedural_terms:
+    - "amendment to"
+    - "held until"
+    - "floor calendar"
+    - "discharge petition"
+    - "rule vote"
+    - "unanimous consent"
+    - "motion to proceed"
+    - "cloture"
+
+# ===========================================================================
+# CHANNEL 2: EXECUTIVE ACTION  (Federal Register API)
+# ===========================================================================
+executive:
+  api:
+    base: https://www.federalregister.gov/api/v1
+    key_env: null                    # no key required
+  # /documents.json?conditions[agencies][]=...&conditions[term]=...
+  # Confirm agency slugs against /api/v1/agencies on first run.
+  agencies:
+    - election-assistance-commission
+    - justice-department
+    - homeland-security-department
+  terms:
+    - election
+    - voter registration
+    - voter roll
+    - proof of citizenship
+    - mail ballot
+  default_grade: { source: A, info: "1" }
+
+# ===========================================================================
+# CHANNEL 3: LITIGATION  (CourtListener / RECAP, Free Law Project)
+# ===========================================================================
+litigation:
+  api:
+    base: https://www.courtlistener.com/api/rest/v4
+    key_env: COURTLISTENER_TOKEN     # free token from a CourtListener account
+  default_grade: { source: A, info: "1" }   # primary court record
+  # Seed the case list from maintained trackers, then poll dockets for movement.
+  seed_trackers:
+    - name: UW State Democracy Research Initiative, DOJ voter-data suit tracker
+      url: https://statedemocracy.law.wisc.edu/our-work/tracker-doj-lawsuits-seeking-states-sensitive-voter-data
+      grade: { source: B, info: "2" }
+    - name: States United, Roll Calls
+      url: https://statesunited.org/roll-calls/
+      grade: { source: B, info: "2" }
+    - name: Democracy Docket, cases
+      url: https://www.democracydocket.com/cases/
+      grade: { source: B, info: "2" }
+  # Confirmed captions to seed before the tracker scrape lands; extend from the trackers above.
+  seed_cases:
+    - caption: United States v. Weber
+      category: voter-data
+      court: C.D. Cal.
+      notes: DOJ suit for California voter rolls; dismissed.
+    - caption: Common Cause v. U.S. Department of Justice
+      docket_number: 1:26-cv-01352
+      court: D.D.C.
+      category: voter-data
+      notes: Challenges the DOJ master voter database under the Privacy Act and APA.
+    - caption: League of Women Voters v. U.S. Department of Homeland Security
+      docket_number: 1:25-cv-03501
+      court: D.D.C.
+      category: voter-data
+      notes: Alleges DHS turned SAVE into a national citizenship database.
+
+# ===========================================================================
+# CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)
+# ===========================================================================
+# The demand letters and funding threats are not in any structured feed.
+# They surface here first, then become dockets in Channel 3 once a state resists.
+news:
+  feeds:
+    - id: votebeat
+      url: https://www.votebeat.org/rss            # verify
+      grade: { source: B, info: "2" }
+    - id: democracy-docket
+      url: https://www.democracydocket.com/feed/   # verify
+      grade: { source: B, info: "2" }
+    - id: bolts
+      url: https://boltsmag.org/feed/              # verify
+      grade: { source: B, info: "2" }
+    - id: states-united
+      url: https://statesunited.org/feed/          # verify
+      grade: { source: B, info: "2" }
+  google_news:
+    base: https://news.google.com/rss/search
+    queries:
+      - "SAVE America Act"
+      - "proof of citizenship voting"
+      - "DOJ voter rolls"
+      - "voter data lawsuit"
+      - "election executive order"
+      - "voter roll federal funding"
+    grade: { source: C, info: "3" }    # aggregated; corroborate before promoting an item
+  dedup:
+    stage1: canonical_url              # strip utm_*, fragments, trailing slash, then exact-match
+    stage2: title_norm                 # sha256 over normalized title + lede; fuzzy match near-dupes
+    near_dupe_threshold: 0.90          # rapidfuzz token_sort_ratio over normalized titles

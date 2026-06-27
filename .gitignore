@@ -1,0 +1,15 @@
+# secrets
+.env
+
+# python
+.venv/
+__pycache__/
+*.pyc
+
+# sqlite working files (the committed db is data/psephos.db; ignore WAL sidecars)
+data/psephos.db-wal
+data/psephos.db-shm
+
+# os
+.DS_Store
+Thumbs.db
