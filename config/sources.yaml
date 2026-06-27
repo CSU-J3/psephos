@@ -181,7 +181,7 @@ news:
       url: https://www.votebeat.org/arc/outboundfeeds/rss/?outputType=xml   # Arc XP feed path
       grade: { source: B, info: "2" }
     - id: democracy-docket
-      url: https://democracydocket.substack.com/feed   # Substack mirror (DD isn't WordPress)
+      url: https://www.democracydocket.com/news-alerts/feed/   # canonical, full content, 10 entries (Substack mirror returned only 2)
       grade: { source: B, info: "2" }
     - id: bolts
       url: https://boltsmag.org/feed/
