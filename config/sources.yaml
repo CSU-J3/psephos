@@ -54,13 +54,21 @@ legislation:
       number: 7300
       short_title: MEGA Act
       watch_reason: Make Elections Great Again; near-identical, CHA hearing Feb 2026.
+    # ASSERTED, HUMAN-MAINTAINED FACT (not auto-detected): S. 1383 is the unrelated
+    # bill the SAVE/proof-of-citizenship payload currently rides. The news collector
+    # routes "procedural term + subject term" hits to this is_vehicle bill at C3.
+    # WARNING: if the provisions move to a NEW vehicle, you must edit BOTH this
+    # watchlist entry (move is_vehicle) AND keep subject_terms current by hand.
+    # Nothing detects the switch -- if you don't, the news channel silently goes
+    # quiet (it stops attaching the maneuver to any bill).
     - bill_id: s1383-119
       congress: 119
       type: s
       number: 1383
       is_vehicle: true
       watch_reason: Unrelated bill used as the vehicle; voting provisions passed House 218-213 as an amendment (Feb 11 2026).
-  # Procedural-signal phrases the news collector cross-references against bill movement.
+  # Formal parliamentary phrases. These match bill_actions text precisely but almost
+  # never appear in news headlines/summaries (verified: 0 of 539 live items).
   procedural_terms:
     - "amendment to"
     - "held until"
@@ -70,6 +78,40 @@ legislation:
     - "unanimous consent"
     - "motion to proceed"
     - "cloture"
+  # News-register movement vocabulary. The news collector's second signal is the UNION
+  # of procedural_terms + these. Curated to mean MOVEMENT (a bill acting/being acted on),
+  # not mere topic mention -- bare "vote"/"voting" are deliberately excluded as too loose.
+  # An item attaches to a bill only with a movement term AND a subject term (or a bill
+  # number), so over-tagging unrelated reporting stays blocked.
+  news_movement_terms:
+    - "passed"
+    - "passes"
+    - "approved"
+    - "adopted"
+    - "adopts"
+    - "blocked"
+    - "stalled"
+    - "filibuster"
+    - "veto"
+    - "signed into law"
+    - "tucked into"
+    - "attached to"
+    - "added to"
+    - "fast-track"
+    - "tabled"
+    - "advances"
+    - "advanced"
+  # Subject vocabulary for the news cross-reference (Session 2). DELIBERATELY NARROW
+  # and concrete to avoid over-tagging unrelated reporting -- do NOT add loose terms
+  # like "election integrity" or "voter fraud". The watchlist short_titles above are
+  # merged into this list by the collector, so SAVE Act / SAVE America Act / MEGA Act
+  # are covered without repeating them here.
+  subject_terms:
+    - "proof of citizenship"
+    - "documentary proof"
+    - "SAVE Act"
+    - "SAVE America Act"
+    - "noncitizen voting"
 
 # ===========================================================================
 # CHANNEL 2: EXECUTIVE ACTION  (Federal Register API)
@@ -134,18 +176,18 @@ litigation:
 # The demand letters and funding threats are not in any structured feed.
 # They surface here first, then become dockets in Channel 3 once a state resists.
 news:
-  feeds:
+  feeds:                                            # URLs fetched live, entry counts > 0
     - id: votebeat
-      url: https://www.votebeat.org/rss            # verify
+      url: https://www.votebeat.org/arc/outboundfeeds/rss/?outputType=xml   # Arc XP feed path
       grade: { source: B, info: "2" }
     - id: democracy-docket
-      url: https://www.democracydocket.com/feed/   # verify
+      url: https://democracydocket.substack.com/feed   # Substack mirror (DD isn't WordPress)
       grade: { source: B, info: "2" }
     - id: bolts
-      url: https://boltsmag.org/feed/              # verify
+      url: https://boltsmag.org/feed/
       grade: { source: B, info: "2" }
     - id: states-united
-      url: https://statesunited.org/feed/          # verify
+      url: https://statesunited.org/feed/
       grade: { source: B, info: "2" }
   google_news:
     base: https://news.google.com/rss/search
@@ -161,3 +203,5 @@ news:
     stage1: canonical_url              # strip utm_*, fragments, trailing slash, then exact-match
     stage2: title_norm                 # sha256 over normalized title + lede; fuzzy match near-dupes
     near_dupe_threshold: 0.90          # rapidfuzz token_sort_ratio over normalized titles
+    # Do NOT lower this: many outlets covering one event is corroboration, not duplication;
+    # collapsing them destroys the multi-source signal. Event-grouping is a timeline-layer job.
