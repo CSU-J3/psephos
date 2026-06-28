@@ -23,18 +23,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Initialize database if missing
-        run: |
-          mkdir -p data
-          if [ ! -f data/psephos.db ]; then
-            sudo apt-get update && sudo apt-get install -y sqlite3
-            sqlite3 data/psephos.db < schema.sql
-          fi
+      - name: Bootstrap remote schema (idempotent)
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+        # Routes through db.py's dual-backend to the libSQL remote. schema.sql is
+        # CREATE ... IF NOT EXISTS, so this is a no-op on the seeded DB and a clean
+        # self-bootstrap on a fresh one. No local psephos.db is created on the runner.
+        run: python -m db
 
       - name: Run collectors
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           COURTLISTENER_TOKEN: ${{ secrets.COURTLISTENER_TOKEN }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
           # LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}   # phase 3
         run: |
           python -m collectors.legislation
@@ -44,13 +47,18 @@ jobs:
           # python -m collectors.state        # enable in phase 3
 
       - name: Export JSON snapshots
-        run: python -m export.snapshots       # writes data/*.json for the view and for diffs
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+        run: python -m export.snapshots       # reads Turso; writes data/*.json for the view and for diffs
 
       - name: Commit data changes
         run: |
           git config user.name "psephos-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/
+          # Stage only the text snapshots explicitly. NOT `git add data/`: data/psephos.db
+          # is not in .gitignore, so a glob add could start committing the binary.
+          git add data/bills.json data/cases.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
