@@ -3,3 +3,10 @@ feedparser>=6.0
 PyYAML>=6.0
 python-dateutil>=2.9
 rapidfuzz>=3.9
+# Pinned EXACTLY, not a floating range: the persistence layer in db.py depends on
+# this client's row/cursor API surface (tuple rows wrapped for name access,
+# lastrowid, rowcount, executescript). The API can move between releases, and this
+# is the one dependency whose drift would silently break the cron. Bump only with
+# a re-run of the db spike. (Note: the package is `libsql`, not `libsql-experimental`,
+# which has no prebuilt wheel for this platform.)
+libsql==0.1.11
