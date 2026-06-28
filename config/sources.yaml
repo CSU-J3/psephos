@@ -142,6 +142,30 @@ litigation:
     base: https://www.courtlistener.com/api/rest/v4
     key_env: COURTLISTENER_TOKEN     # free token from a CourtListener account
   default_grade: { source: A, info: "1" }   # primary court record
+  # Which docket entries become A1 items (the timeline). case_entries keeps EVERY entry;
+  # only these substantive types are promoted to items. The exclude list is required: a
+  # "MOTION for Leave to Appear Pro Hac Vice" matches "motion" and routine pro-hac/appearance
+  # orders match "order" -- without it the timeline fills with docket noise (this docket is
+  # ~half notices of appearance / pro hac vice).
+  substantive_entry_types:
+    - complaint
+    - motion
+    - opposition
+    - reply
+    - order
+    - opinion
+    - memorandum
+    - judgment
+    - notice of appeal
+    - stipulation
+  excluded_entry_phrases:
+    - pro hac vice
+    - notice of appearance
+    - certificate of disclosure
+    - corporate affiliations
+    - return of service
+    - waiver of service
+    - summons
   # Seed the case list from maintained trackers, then poll dockets for movement.
   seed_trackers:
     - name: UW State Democracy Research Initiative, DOJ voter-data suit tracker
@@ -162,11 +186,13 @@ litigation:
     - caption: Common Cause v. U.S. Department of Justice
       docket_number: 1:26-cv-01352
       court: D.D.C.
+      court_id: dcd                   # CourtListener court id, for exact docket_number+court resolution
       category: voter-data
       notes: Challenges the DOJ master voter database under the Privacy Act and APA.
     - caption: League of Women Voters v. U.S. Department of Homeland Security
       docket_number: 1:25-cv-03501
       court: D.D.C.
+      court_id: dcd
       category: voter-data
       notes: Alleges DHS turned SAVE into a national citizenship database.
 
