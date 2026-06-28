@@ -114,6 +114,30 @@ legislation:
     - "noncitizen voting"
 
 # ===========================================================================
+# CORRELATION LAYER: curated event anchors  (export/snapshots.py)
+# ===========================================================================
+# The export layer groups same-event news into one per-bill timeline node.
+# Grouping is HAND-MAINTAINED here, like the s1383 vehicle alias above -- there
+# is no similarity threshold and no fuzzy/shared-token matching (the dedup note
+# under `news.dedup` explains why: many outlets on one event is corroboration,
+# not duplication, so the survivors are deliberately distinct and fuzzy title
+# matching cannot regroup them). An anchor groups news items that are scoped to
+# `bill`, fall inside `window` (inclusive, date-only), AND contain `phrase`.
+# The window does the heavy lifting; the phrase disambiguates within it.
+#
+# Grouping is ADDITIVE and lossless: every item still appears exactly once, as a
+# standalone entry or as a member of one cluster node. An un-anchored event stays
+# a set of individual items -- an acceptable miss, never a wrong merge. Keep
+# anchors narrow and non-overlapping (same discipline as subject_terms). When the
+# vehicle changes, add the new anchor by hand; nothing detects the event for you.
+event_anchors:
+  - id: s1383-housing-hostage
+    label: "Trump withholds housing-bill signing to pressure the SAVE America Act"
+    bill: s1383-119
+    phrase: housing            # str or list of str; any single match qualifies
+    window: { start: "2026-06-24", end: "2026-06-25" }   # inclusive, date-only
+
+# ===========================================================================
 # CHANNEL 2: EXECUTIVE ACTION  (Federal Register API)
 # ===========================================================================
 executive:

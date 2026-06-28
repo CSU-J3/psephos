@@ -1,0 +1,220 @@
+"""Acceptance + invariant suite for the export layer (export/snapshots.py).
+
+Deterministic and offline: builds a temp DB, seeds synthetic items, and drives
+the real build_bills / build_cases / write_json. No network, and it never touches
+data/psephos.db. Anchors are passed in directly so the suite is independent of
+config/sources.yaml.
+
+Run:  pytest tests/test_export.py
+"""
+from __future__ import annotations
+
+import os
+import sys
+import tempfile
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO))
+os.chdir(REPO)  # db.init_db uses a repo-relative schema path
+
+import db  # noqa: E402
+from export import snapshots  # noqa: E402
+
+# Grades by source slug, so seeded items get a coherent Admiralty grade.
+SOURCES = {
+    "congress-gov": ("legislation", "A", "1"),
+    "courtlistener": ("litigation", "A", "1"),
+    "seed-cases": ("litigation", "B", "2"),
+    "google-news": ("news", "C", "3"),
+    "democracy-docket": ("news", "B", "2"),
+}
+
+ANCHOR = {
+    "id": "hh",
+    "label": "housing hostage",
+    "bill": "billA-119",
+    "phrase": "housing",
+    "window": {"start": "2026-06-24", "end": "2026-06-25"},
+}
+
+
+def _conn():
+    """Fresh temp DB with sources registered (items.source_id has an FK)."""
+    path = os.path.join(tempfile.mkdtemp(), "t.db")
+    db.init_db(path)
+    conn = db.connect(path)
+    for sid, (channel, src, _info) in SOURCES.items():
+        conn.execute(
+            "INSERT INTO sources (id, name, channel, kind, admiralty_source) "
+            "VALUES (?,?,?,?,?)", (sid, sid, channel, "api", src),
+        )
+    conn.commit()
+    return conn
+
+
+def _bill(conn, bill_id, is_vehicle=0):
+    db.upsert(conn, "bills", {
+        "bill_id": bill_id, "congress": 119, "bill_type": "s", "number": 1,
+        "is_vehicle": is_vehicle,
+    }, pk="bill_id")
+    conn.commit()
+
+
+def _case(conn, case_id):
+    db.upsert(conn, "cases", {"case_id": case_id, "caption": case_id}, pk="case_id")
+    conn.commit()
+
+
+_HASH = [0]
+
+
+def _item(conn, *, source_id, title, occurred_at, bill_id=None, case_id=None):
+    """Seed one item; returns its rowid. content_hash is unique per call."""
+    channel, src, info = SOURCES[source_id]
+    _HASH[0] += 1
+    cur = conn.execute(
+        "INSERT INTO items (channel, source_id, source_url, title, occurred_at, "
+        "fetched_at, admiralty_source, admiralty_info, bill_id, case_id, content_hash) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+        (channel, source_id, f"https://ex/{_HASH[0]}", title, occurred_at,
+         "2026-01-01T00:00:00+00:00", src, info, bill_id, case_id, f"h{_HASH[0]}"),
+    )
+    conn.commit()
+    return cur.lastrowid
+
+
+def _all_ids(timeline):
+    """Every item id referenced by a timeline, standalone entries and cluster
+    members alike. Returns a flat list so duplicates are detectable."""
+    ids = []
+    for e in timeline:
+        if e["kind"] == "cluster":
+            ids.extend(m["id"] for m in e["members"])
+        else:
+            ids.append(e["id"])
+    return ids
+
+
+def _timeline_for(bills, bill_id):
+    return next(b["timeline"] for b in bills if b["bill_id"] == bill_id)
+
+
+# --- core acceptance ---------------------------------------------------------
+
+def test_cluster_collapses_lossless_and_grade_is_strongest():
+    conn = _conn()
+    _bill(conn, "billA-119", is_vehicle=1)
+    seeded = set()
+    # 2 legislation actions (A1)
+    seeded.add(_item(conn, source_id="congress-gov", title="Passed Senate by UC", occurred_at="2025-12-18"))
+    seeded.add(_item(conn, source_id="congress-gov", title="On passage 218-213", occurred_at="2026-02-11", bill_id="billA-119"))
+    conn.execute("UPDATE items SET bill_id='billA-119' WHERE bill_id IS NULL AND channel='legislation'")
+    conn.commit()
+    # 4 signing-cancellation news, DISTINCT titles, all contain "housing", in window
+    for t, d in [
+        ("Trump won't sign bipartisan housing bill until SAVE Act", "2026-06-24"),
+        ("Trump halts housing bill signing until Congress acts", "2026-06-24"),
+        ("Trump cancels signing of housing bill over SAVE America", "2026-06-24"),
+        ("Trump delays major housing bill signing", "2026-06-25"),
+    ]:
+        seeded.add(_item(conn, source_id="google-news", title=t, occurred_at=d, bill_id="billA-119"))
+    # 3 that must NOT join: out-of-window-before, in-range-without-phrase, far date
+    seeded.add(_item(conn, source_id="google-news", title="Thune: votes aren't there on filibuster", occurred_at="2026-06-17", bill_id="billA-119"))
+    seeded.add(_item(conn, source_id="google-news", title="What to know about the SAVE Act stall", occurred_at="2026-06-24", bill_id="billA-119"))
+    seeded.add(_item(conn, source_id="google-news", title="SD Republicans reject censuring Thune", occurred_at="2026-06-27", bill_id="billA-119"))
+
+    bills = snapshots.build_bills(conn, [ANCHOR])
+    tl = _timeline_for(bills, "billA-119")
+    clusters = [e for e in tl if e["kind"] == "cluster"]
+
+    assert len(clusters) == 1
+    node = clusters[0]
+    assert node["source_count"] == 4
+    assert len(node["members"]) == 4
+    assert node["grade"] == "C3"            # 4x C3 stays C3 -- count never inflates grade
+    assert node["anchor"] == "hh"
+    # lossless: every seeded id appears exactly once across the whole timeline
+    ids = _all_ids(tl)
+    assert sorted(ids) == sorted(seeded)
+    assert len(ids) == len(set(ids))
+    # members sorted by id; entries sorted by (date, id)
+    assert node["members"] == sorted(node["members"], key=lambda m: m["id"])
+    keys = [snapshots._sort_key(e) for e in tl]
+    assert keys == sorted(keys)
+
+
+def test_b2_member_flips_node_grade():
+    conn = _conn()
+    _bill(conn, "billA-119")
+    _item(conn, source_id="google-news", title="Trump halts housing bill signing", occurred_at="2026-06-24", bill_id="billA-119")
+    _item(conn, source_id="democracy-docket", title="Housing bill held hostage to SAVE Act", occurred_at="2026-06-25", bill_id="billA-119")
+    bills = snapshots.build_bills(conn, [ANCHOR])
+    node = next(e for e in _timeline_for(bills, "billA-119") if e["kind"] == "cluster")
+    assert node["source_count"] == 2
+    assert node["grade"] == "B2"            # strongest member wins; B2 < C3
+
+
+# --- added invariants --------------------------------------------------------
+
+def test_window_boundary_day_after_stays_standalone():
+    """An item dated exactly one day AFTER the inclusive window end must not join
+    the cluster -- pins the boundary so a future widening can't silently absorb it."""
+    conn = _conn()
+    _bill(conn, "billA-119")
+    inwin = [
+        _item(conn, source_id="google-news", title="Trump halts housing bill signing", occurred_at="2026-06-24", bill_id="billA-119"),
+        _item(conn, source_id="google-news", title="Trump cancels housing bill signing", occurred_at="2026-06-25", bill_id="billA-119"),
+    ]
+    # 2026-06-26 = window end (06-25) + 1 day, same bill, DOES contain "housing"
+    after = _item(conn, source_id="google-news", title="Housing bill still unsigned a day later", occurred_at="2026-06-26", bill_id="billA-119")
+
+    tl = _timeline_for(snapshots.build_bills(conn, [ANCHOR]), "billA-119")
+    node = next(e for e in tl if e["kind"] == "cluster")
+    assert sorted(m["id"] for m in node["members"]) == sorted(inwin)
+    after_entry = next(e for e in tl if e["kind"] == "item" and e["id"] == after)
+    assert after_entry["kind"] == "item"    # standalone, not absorbed
+    assert after not in {m["id"] for m in node["members"]}
+
+
+def test_single_match_stays_standalone_not_a_node():
+    """An anchor matching exactly ONE in-window item yields a standalone item,
+    never a 1-member cluster and never a drop -- guards the lossless no-node branch."""
+    conn = _conn()
+    _bill(conn, "billA-119")
+    only = _item(conn, source_id="google-news", title="Trump halts housing bill signing", occurred_at="2026-06-24", bill_id="billA-119")
+    other = _item(conn, source_id="google-news", title="Unrelated election news", occurred_at="2026-06-24", bill_id="billA-119")
+
+    tl = _timeline_for(snapshots.build_bills(conn, [ANCHOR]), "billA-119")
+    assert all(e["kind"] == "item" for e in tl)     # no cluster formed
+    assert sorted(_all_ids(tl)) == sorted([only, other])
+    match_entry = next(e for e in tl if e["id"] == only)
+    assert match_entry["kind"] == "item"
+
+
+# --- determinism + cases -----------------------------------------------------
+
+def test_output_is_byte_identical_and_timestamp_free():
+    conn = _conn()
+    _bill(conn, "billA-119")
+    _item(conn, source_id="google-news", title="Trump halts housing bill signing", occurred_at="2026-06-24", bill_id="billA-119")
+    _item(conn, source_id="google-news", title="Trump cancels housing bill signing", occurred_at="2026-06-25", bill_id="billA-119")
+    bills = snapshots.build_bills(conn, [ANCHOR])
+
+    out = Path(tempfile.mkdtemp())
+    b1 = snapshots.write_json(str(out / "a.json"), bills)
+    b2 = snapshots.write_json(str(out / "b.json"), bills)
+    assert b1 == b2                                  # byte-identical
+    assert b1.endswith(b"\n")                        # trailing newline
+    assert b"2026-01-01T00:00:00" not in b1          # no fetched_at / wall-clock leaked
+
+
+def test_case_timeline_is_items_only_no_clustering():
+    conn = _conn()
+    _case(conn, "1:26-cv-01352")
+    _item(conn, source_id="seed-cases", title="Common Cause v. DOJ (framing)", occurred_at="2026-04-21", case_id="1:26-cv-01352")
+    _item(conn, source_id="courtlistener", title="MOTION to Dismiss", occurred_at="2026-06-02", case_id="1:26-cv-01352")
+    cases = snapshots.build_cases(conn)
+    tl = cases[0]["timeline"]
+    assert [e["kind"] for e in tl] == ["item", "item"]
+    assert [e["grade"] for e in tl] == ["B2", "A1"]   # date order: framing then docket
