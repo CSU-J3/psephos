@@ -144,8 +144,10 @@ executive:
   api:
     base: https://www.federalregister.gov/api/v1
     key_env: null                    # no key required
-  # /documents.json?conditions[agencies][]=...&conditions[term]=...
+  # /documents.json?conditions[agencies][]=...&conditions[term]=...&conditions[publication_date][gte]=...
   # Confirm agency slugs against /api/v1/agencies on first run.
+  since: "2025-01-01"                 # publication_date[gte] floor; bounds first-run backfill
+                                      # to the election-EO / DOJ-voter-data era (FR archive spans decades).
   agencies:
     - election-assistance-commission
     - justice-department
