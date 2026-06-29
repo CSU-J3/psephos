@@ -11,10 +11,12 @@ Backend selection (both connect() and init_db()):
   - no path + no env -> local SQLite at DB_PATH (offline dev fallback).
 
 The libSQL client returns plain tuples and ignores `row_factory`, so the remote
-backend is wrapped (_Conn/_Cur) to preserve the `row["col"]` name access and the
-`cur.lastrowid` / `cur.rowcount` contract the collectors and export rely on. The
-wrapper is the ONLY remote-specific code; collectors, export, and tests are
-unchanged. See requirements.txt for why the libsql version is pinned exactly.
+backend is wrapped (_Conn/_Cur/_Row) to preserve sqlite3.Row semantics -- name
+access (`row["col"]`), positional/iteration access by value, direct cursor
+iteration -- and the `cur.lastrowid` / `cur.rowcount` contract the collectors and
+export rely on. The wrapper is the ONLY remote-specific code; collectors, export,
+and tests are unchanged. See requirements.txt for why the libsql version is
+pinned exactly.
 """
 
 from __future__ import annotations
@@ -33,8 +35,37 @@ SCHEMA_PATH = "schema.sql"
 
 # --- remote (libSQL) row wrapper --------------------------------------------
 # libsql 0.1.x rows are tuples and Connection has no row_factory; these thin
-# wrappers map each tuple to a dict via cursor.description so every existing
+# wrappers map each tuple to a _Row via cursor.description so every existing
 # `row["col"]` site keeps working, and proxy lastrowid / rowcount unchanged.
+
+
+class _Row:
+    """Mirrors sqlite3.Row: name access (row["col"]) AND positional / iteration
+    by value (row[0], `(x,) = row`). A plain dict is NOT a faithful stand-in --
+    unpacking a dict yields its KEYS, which would silently turn news.py:165's
+    `for (seen,) in ...` fuzzy-dedup loop into a compare against column names on
+    the remote backend. sqlite3.Row unpacks by value, so this matches it."""
+
+    __slots__ = ("_cols", "_vals")
+
+    def __init__(self, cols, vals):
+        self._cols = cols
+        self._vals = tuple(vals)
+
+    def __getitem__(self, key):
+        if isinstance(key, str):
+            return self._vals[self._cols.index(key)]
+        return self._vals[key]  # int / slice -> positional, like sqlite3.Row
+
+    def __iter__(self):
+        return iter(self._vals)  # by value, so `(seen,) = row` yields the value
+
+    def __len__(self):
+        return len(self._vals)
+
+    def keys(self):
+        return list(self._cols)
+
 
 class _Cur:
     def __init__(self, cur):
@@ -52,7 +83,7 @@ class _Cur:
         if tup is None:
             return None
         cols = [d[0] for d in self._cur.description]
-        return dict(zip(cols, tup))
+        return _Row(cols, tup)
 
     def fetchone(self):
         return self._wrap(self._cur.fetchone())
@@ -61,7 +92,14 @@ class _Cur:
         return [self._wrap(t) for t in self._cur.fetchall()]
 
     def __iter__(self):
-        return (self._wrap(t) for t in self._cur)
+        # libsql 0.1.x Cursor is NOT iterable (unlike sqlite3.Cursor), so we
+        # cannot delegate to `for t in self._cur`. Drain via fetchone() -- which
+        # both backends support -- and _wrap each row exactly as fetchall does.
+        while True:
+            tup = self._cur.fetchone()
+            if tup is None:
+                return
+            yield self._wrap(tup)
 
 
 class _Conn:
