@@ -1,8 +1,8 @@
 name: collect
 
 on:
-  # schedule:
-  #   - cron: "0 */6 * * *"   # every 6 hours (UTC); re-enable once news/litigation/export land
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours (UTC)
   workflow_dispatch: {}
 
 permissions:
