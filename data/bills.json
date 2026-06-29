@@ -1,0 +1,976 @@
+[
+  {
+    "bill_id": "hr22-119",
+    "bill_type": "hr",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Received in the Senate.",
+    "latest_action_at": "2025-04-10T00:00:00",
+    "number": 22,
+    "short_title": "SAVE Act",
+    "sponsor": "Rep. Roy, Chip [R-TX-21]",
+    "status": "Received in the Senate.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 43,
+        "kind": "item",
+        "occurred_at": "2025-01-03T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Referred to the House Committee on House Administration."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 44,
+        "kind": "item",
+        "occurred_at": "2025-01-03T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Introduced in House"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 42,
+        "kind": "item",
+        "occurred_at": "2025-04-01T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Rules Committee Resolution H. Res. 282 Reported to House. Rule provides for consideration of H.R. 22, H.R. 1526, S.J. Res. 18 and S.J. Res. 28. The resolution provides for consideration of H.R. 22, H.R. 1526, S.J. Res. 18, and S.J. Res. 28 under a closed rule. The resolution provides for o"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 41,
+        "kind": "item",
+        "occurred_at": "2025-04-07T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Rules Committee Resolution H. Res. 294 Reported to House. Rule provides for consideration of S.J. Res. 18, S.J. Res. 28, H.R. 1526 and H.R. 22. The resolution provides for consideration of H.R. 22, H.R. 1526, S.J. Res. 18, and S.J. Res. 28 under a closed rule. The resolution provides for o"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 40,
+        "kind": "item",
+        "occurred_at": "2025-04-08T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Rule H. Res. 294 passed House."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 27,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Received in the Senate."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 28,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Motion to reconsider laid on the table Agreed to without objection."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 29,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: On passage Passed by the Yeas and Nays: 220 - 208 (Roll no. 102). (text: CR H1569-1571)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 30,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Passed/agreed to in House: On passage Passed by the Yeas and Nays: 220 - 208 (Roll no. 102)."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 31,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: On motion to recommit Failed by the Yeas and Nays: 211 - 215 (Roll no. 101)."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 32,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Considered as unfinished business. (consideration: CR H1580-1581)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 33,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: POSTPONED PROCEEDINGS - At the conclusion of debate on H.R. 22, the Chair put the question on motion to recommit and by voice vote, announced the noes had prevailed. Ms. Johnson (TX) demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 34,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: The previous question on the motion to recommit was ordered pursuant to clause 2(b) of rule XIX."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 35,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Ms. Johnson (TX) moved to recommit to the Committee on House Administration. (text: CR H1569)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 36,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: The previous question was ordered pursuant to the rule."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 37,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: DEBATE - The House proceeded with one hour of debate on H.R. 22."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 38,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Rule provides for consideration of S.J. Res. 18, S.J. Res. 28, H.R. 1526 and H.R. 22. The resolution provides for consideration of H.R. 22, H.R. 1526, S.J. Res. 18, and S.J. Res. 28 under a closed rule. The resolution provides for one hour of debate on each measure and one motion to recomm"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 39,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/22",
+        "title": "hr22-119: Considered under the provisions of rule H. Res. 294. (consideration: CR H1569-1579)"
+      }
+    ]
+  },
+  {
+    "bill_id": "hr7296-119",
+    "bill_type": "hr",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Referred to the House Committee on House Administration.",
+    "latest_action_at": "2026-01-30T00:00:00",
+    "number": 7296,
+    "short_title": "SAVE America Act",
+    "sponsor": "Rep. Roy, Chip [R-TX-21]",
+    "status": "Referred to the House Committee on House Administration.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 47,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7296",
+        "title": "hr7296-119: Referred to the House Committee on House Administration."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 48,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7296",
+        "title": "hr7296-119: Introduced in House"
+      }
+    ]
+  },
+  {
+    "bill_id": "hr7300-119",
+    "bill_type": "hr",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Referred to the Subcommittee on Border Security and Enforcement.",
+    "latest_action_at": "2026-02-02T00:00:00",
+    "number": 7300,
+    "short_title": "MEGA Act",
+    "sponsor": "Rep. Steil, Bryan [R-WI-1]",
+    "status": "Referred to the Subcommittee on Border Security and Enforcement.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 54,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7300",
+        "title": "hr7300-119: Referred to the Committee on House Administration, and in addition to the Committees on Oversight and Government Reform, the Judiciary, Homeland Security, and Intelligence (Permanent Select), for a period to be subsequently determined by the Speaker, in each case for consideration of suc"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 55,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7300",
+        "title": "hr7300-119: Introduced in House"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 51,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7300",
+        "title": "hr7300-119: Referred to the Subcommittee on Border Security and Enforcement."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 52,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7300",
+        "title": "hr7300-119: Referred to the Subcommittee on Cybersecurity and Infrastructure Protection."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 53,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/7300",
+        "title": "hr7300-119: Referred to the Subcommittee on Oversight, Investigations, and Accountability."
+      }
+    ]
+  },
+  {
+    "bill_id": "s128-119",
+    "bill_type": "s",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Read twice and referred to the Committee on Rules and Administration.",
+    "latest_action_at": "2025-01-16T00:00:00",
+    "number": 128,
+    "short_title": "SAVE Act (Senate companion)",
+    "sponsor": "Sen. Lee, Mike [R-UT]",
+    "status": "Read twice and referred to the Committee on Rules and Administration.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 45,
+        "kind": "item",
+        "occurred_at": "2025-01-16T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/128",
+        "title": "s128-119: Read twice and referred to the Committee on Rules and Administration."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 46,
+        "kind": "item",
+        "occurred_at": "2025-01-16T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/128",
+        "title": "s128-119: Introduced in Senate"
+      }
+    ]
+  },
+  {
+    "bill_id": "s1383-119",
+    "bill_type": "s",
+    "congress": 119,
+    "is_vehicle": true,
+    "latest_action": "Considered by Senate (Message from the House considered). (consideration: CR S1647)",
+    "latest_action_at": "2026-03-26T00:00:00",
+    "number": 1383,
+    "short_title": null,
+    "sponsor": "Sen. Scott, Rick [R-FL]",
+    "status": "Considered by Senate (Message from the House considered). (consideration: CR S1647)",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 98,
+        "kind": "item",
+        "occurred_at": "2025-04-09T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Read twice and referred to the Committee on Veterans' Affairs."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 99,
+        "kind": "item",
+        "occurred_at": "2025-04-09T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Introduced in Senate"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 97,
+        "kind": "item",
+        "occurred_at": "2025-05-21T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Committee on Veterans' Affairs. Hearings held. Hearings printed: S.Hrg. 119-86."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 96,
+        "kind": "item",
+        "occurred_at": "2025-07-30T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Committee on Veterans' Affairs. Ordered to be reported with an amendment in the nature of a substitute favorably."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 94,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Placed on Senate Legislative Calendar under General Orders. Calendar No. 276."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 95,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Committee on Veterans' Affairs. Reported by Senator Moran with an amendment in the nature of a substitute. Without written report."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 92,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Passed Senate with an amendment by Unanimous Consent. (consideration: CR S8894-8895; text: CR S8894-8895)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 93,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Passed/agreed to in Senate: Passed Senate with an amendment by Unanimous Consent."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 89,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Held at the desk."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 90,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Received in the House."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 91,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Message on Senate action sent to the House."
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 537,
+        "kind": "item",
+        "occurred_at": "2026-01-27T08:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQZndBSWQyU1E3RXliNDNkTEFicUJaWlBTV1RISC1KZVNrajBBRWZnZEJuWXAzdDVsUEpROEdRTHdoREZIc093MHRnVWRkR1I1WVNaMmllXzExMlVMRkJ1Wkx4WjJCTVV2czB0T0NXRjliZEhtbHY0cHc4ME4tVndOQ2dkay0wQVVxQWZ4TjJnbmdjdnF3aFo4ckxB?oc=5",
+        "title": "Utah bill requiring proof of citizenship to vote advances - Utah News Dispatch"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 76,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion to reconsider laid on the table Agreed to without objection."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 77,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: On passage Passed by the Yeas and Nays: 218 - 213 (Roll no. 69). (text of amendment in the nature of a substitute: CR H2138-2141)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 78,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Passed/agreed to in House: On passage Passed by the Yeas and Nays: 218 - 213 (Roll no. 69)."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 79,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: On motion to commit Failed by the Yeas and Nays: 214 - 217 (Roll no. 68)."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 80,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered as unfinished business. (consideration: CR H2171-2172)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 81,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: POSTPONED PROCEEDINGS - At the conclusion of debate on S. 1383, the Chair put the question on the motion to commit and by voice vote, announced the noes had prevailed. Mr. Morelle demanded the yeas and nays and the Chair postponed further proceedings until a time to be announced."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 82,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: The previous question on the motion to commit was ordered pursuant to clause 2(b) of rule XIX."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 83,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Mr. Morelle moved to commit to the Committee on House Administration. (text: CR H2149)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 84,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: The previous question was ordered pursuant to the rule."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 85,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: DEBATE - The House proceeded with one hour of debate on S. 1383."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 86,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Rule provides for consideration of S. 1383, H.R. 2189, H.R. 261 and H.R. 3617. The resolution provides for consideration of S. 1383, H.R. 2189, H.R. 261, and H.R. 3617 under a closed rule and provides for one motion to recommit H.R. 2189, H.R. 261, and H.R. 3617, and one motion to commit "
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 87,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered under the provisions of rule H. Res. 1057. (consideration: CR H2138-2149)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 88,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Rules Committee Resolution H. Res. 1057 Reported to House. Rule provides for consideration of S. 1383, H.R. 2189, H.R. 261 and H.R. 3617. The resolution provides for consideration of S. 1383, H.R. 2189, H.R. 261, and H.R. 3617 under a closed rule and provides for one motion to recommit H."
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 534,
+        "kind": "item",
+        "occurred_at": "2026-02-11T08:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPR1NnSWxLNjVYaG95NGhJNDFnRS0tMG4wR0dyeWNMeS1jNFhSdGx0ZmpSTXFVUGtNdlp4WVVwNG5VWnNJbU80czJxZ3FsM0ZqRzVjZWhDUkhOR3NQVi1uVzFxRHEtQmp4YzFjaGZFUTIwejZhcEx4ZnVRY2xQV1dyYWtlTlhSUTVyU2dIeXpMaV9KbVRMRWVrVHEwSWdPMy1IQ0FJQmlHRnh2UW9KbmYw?oc=5",
+        "title": "House passes SAVE Act, requiring citizenship proof for voter registration - localnewslive.com"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 75,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Message on House action received in Senate and at desk: House amendment to Senate bill."
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 520,
+        "kind": "item",
+        "occurred_at": "2026-02-17T08:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQcldISE5XdjNCckFMakFMd2lmeV9WUHJIMjQ0WjBfcWswZGlxZm45ZkVSdUZaeHUtYVJxZ2xJYi1odGxUalB3YnJmNHNzWkFCaG5WbVBocFplZ2g4Und0MmtNZUdrSWVlandWdmhBY2kwLTNBbEJMd2VkU1MzRFZSYVJvUldLY0MtcDNqUmRvdHppcDBMYm9rOEd0cllLWG9xcV9Seg?oc=5",
+        "title": "The Markup: U.S. House passes proof of citizenship, voter ID bill - Voting Rights Lab"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 1229,
+        "kind": "item",
+        "occurred_at": "2026-03-16T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNWEdJQkxzMnE1dzZzR282RUZ5Z0NnMVpqVmoyNkllX1Z3cGVVZFFFZG1WUk02REdwRVVvemI3SVk1REV4cFJzZFV3cjRPcVdZa1JkeFgzZGwwdVZIQWpZczA1elRpYXJBMmN3Qk1ENDktTFFqS0RaWU9NdFpWcG9vRVREYlllMGZuSnNFc1BpR1lCbHZKWWRuLTlucUtqdVR0dUppTVZ3?oc=5",
+        "title": "The Markup: Florida legislature passes proof of citizenship bill - Voting Rights Lab"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 70,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion by Senator Thune to refer to Senate Committee on Rules and Administration the House message to accompany S. 1383 with instructions to report back forthwith with the following amendment (SA 4422) made in Senate. (CR S1067)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 71,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion by Senator Thune to concur in the House amendment to S. 1383 with an amendment (SA 4420) made in Senate. (CR S1067)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 72,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion by Senator Thune to concur in the House amendment to S. 1383 made in Senate. (CR S1067)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 73,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Measure laid before Senate by motion. (consideration: CR S1066-1088)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 74,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion to proceed to consideration of the House message to accompany S. 1383 agreed to in Senate by Yea-Nay Vote. 51 - 48. Record Vote Number: 57."
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 530,
+        "kind": "item",
+        "occurred_at": "2026-03-17T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNjZNYWROZVRqSVlnc2tSdEt0NTZFQ2VUVHUtYkhGU05aQmcza1F0UEhfMHM2cGF2dG5wRVlVV0lvVGo3NVN0bTV6S18zTlQxWEE5OHdTQzIxeElOT3ltdWRYV0FJUTZjUTRvUlptUDBFMXZObFZzbTRCdEZZeXRhOFJqdlk1aEVhcTZEbmltUTJGUjRNNVpzWDZBTWlCMEkwTnV4clFTMzVhdlM5SjFVMXczdi1lWnhqLU1rUjZPMVBWbVpwRTZFOQ?oc=5",
+        "title": "GOP-led proof of citizenship voting bill advances despite concerns from Democratic colleagues - Michigan Advance"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 69,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1159)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 66,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Cloture motion on the motion to suspend the operation of Rule XXV, paragraph (n)(1) to permit the committee on Rules and Administration to consider the pending motion with respect to the House message to accompany S. 1383 presented in Senate. (CR S1348)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 67,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion by Senator Schumer to suspend the operation of Rule XXV paragraph (n)(1) to permit the committee on Rules and Administration to consider the pending motion with respect to the House message to accompany S. 1383 made in Senate."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 68,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1314)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 65,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1419)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 63,
+        "kind": "item",
+        "occurred_at": "2026-03-21T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Cloture on the motion to suspend the operation of Rule XXV, paragraph (n)(1) to permit the committee on Rules and Administration to consider the pending motion with respect to the House message to accompany S. 1383 not invoked in Senate by Yea-Nay Vote. 41 - 49. Record Vote Number: 61. (C"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 64,
+        "kind": "item",
+        "occurred_at": "2026-03-21T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1461)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 62,
+        "kind": "item",
+        "occurred_at": "2026-03-22T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1495)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 58,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion by Senator Thune to refer to Senate Committee on Rules and Administration the House message to accompany S. 1383 with instructions to report back forthwith with the following amendment (SA 4772) made in Senate. (CR S1569-1570)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 59,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion to table motion to refer to Senate Committee on Rules and Administration the House message to accompany S. 1383 with instructions to report back forthwith with the following amendment (SA 4422) agreed to in Senate by Yea-Nay Vote. 53 - 47. Record Vote Number: 68."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 60,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Motion to table the motion to suspend the operation of Rule XXV paragraph (n)(1) to permit the committee on Rules and Administration to consider the pending motion with respect to the House message to accompany S. 1383 agreed to in Senate by Yea-Nay Vote. 53 - 47. Record Vote Number: 67."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 61,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1561)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 57,
+        "kind": "item",
+        "occurred_at": "2026-03-25T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1589)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 56,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
+        "title": "s1383-119: Considered by Senate (Message from the House considered). (consideration: CR S1647)"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 548,
+        "kind": "item",
+        "occurred_at": "2026-04-15T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQdlJpaWhEdk1pOUFhalhzaFF6NkZEMkxzMy05NWxfazZjRGZ6QUlxeExKdVZVME1PRU43WmRTUloyQTRaeXJXYThrQ1F6TTAyRlUzdjVhVlhPc0lmemRCOVc0bkdxWVRWNUZNNGdUZWVhWjBsaWI1MmQ1WFlHRE8wR0xtNlo1WkVDZHd1aGR1S3dGNW9pbC1JOENnRTNIQUswTGlsblY5NjlVSHJJRkpaWENfRkNGWHdYaGoxeGRUTHdFU3psYi1yOHBsc1FNT1lqbENNRFkwWk1DOGFxZmlNZm45bXpjQQ?oc=5",
+        "title": "Michigan House passes bill to require proof of citizenship to vote - WWMT"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 401,
+        "kind": "item",
+        "occurred_at": "2026-06-17T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBvVU5MUFhPUEVDNjNWdDlTbDJ4QjRja0UydkdWdHBMbGdBMlRTS2dUaFFoVnRXc0NnTjNWelFmM2h2QzJ3eFcxa3B1Z1NGUXYtdDRZeFlmdTdHR3dFUDBQalFXMW0yelhJLV84MURKM05IYWlhNEFqc012eEdQVFXSAYQBQVVfeXFMTkFhRVBmQVlNa29KNEEyRWZGak5BUXVQYUx3MFE3M0FhZDhPdkxmcTZqUnl4d0oycmkyOFdObWxLTGNNOEwxcjBlOGF0YlZDWndYSjE4ZjBVSjFOUUg3U2t4MzFySmEzcVhDXzRnZVo4QU1tOVZQUUh3aXFrZTd0QTd5TU5W?oc=5",
+        "title": "Thune: ‘The votes currently aren’t there’ to get rid of filibuster, pass SAVE America Act - The Hill"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 1200,
+        "kind": "item",
+        "occurred_at": "2026-06-22T04:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPV2lGNlVuRHBTWEZfSFhOSFFkRXNGZjhSSmdkMXRROTFvakloSkR2MllLRlhXVzhXa0VmcTJKSUR0MXl6SXpnYUYwN3NiQ3F1UUM1eHl5N1FlUWJDQWl2VDFYTWhOSUhwNFVoS0dsaWtlMkpLNnptcFljV3VQY2dWTnZrVWhteVhnaFRuaWlWOUhTMFJkNVZkakxjWk9BRTFLcHFiSU5NS01ONURMN1ZubEtLajhqOFB4b0o1ZEpYdTQ3bGZ0Nmc?oc=5",
+        "title": "Senator Lee on FOX News: Debate SAVE America Act Until it Passes, Trust President Trump on Iran - Mike Lee US Senator for Utah (.gov)"
+      },
+      {
+        "anchor": "s1383-housing-hostage",
+        "date": "2026-06-24T15:15:00+00:00",
+        "grade": "C3",
+        "kind": "cluster",
+        "label": "Trump withholds housing-bill signing to pressure the SAVE America Act",
+        "members": [
+          {
+            "grade": "C3",
+            "id": 378,
+            "occurred_at": "2026-06-24T22:13:29+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZ05DS3BxSjRwaEhnWFlueEd1MjhnZWgwRk1hRnoyNlRndi1uMTJaclVWbTJ3M1JTVEEzTHpTVXpDQjZDcG5tVDdvM1UyRld6ZWp4YUFPZzNmNERsM2xSdG5lbzVnWktPSXoxTTB6eVM4bEEzbjVHY3Jla2FDUk5fZkpJbXZubXNwN2RoY3poSTZwMDI0OHZDbW1yVWFPRG9aVmtnRnNVVFlFQdIBrwFBVV95cUxNU0RTa0hHSzdfcGJHNXgyRTVYMmI5NjBEaXRjTl9OZ2lNcnJHMGdDSlIzMUkzZHQzNUViZWxfMDhXYklkSi1wR3EyZ2h6eDlUOEs2OTBYa1VFbmlFQWpMRjNNaHlhN0EwamhLREt6WW84RF95Vndxdk04anNETEhfN3BjTzZaOFp0UVNDeGlHcHQtTVpUbl9mUzJ1RDFNVFZhejQ4dmJEUjhjZlFPNDk0?oc=5",
+            "title": "Trump cancels signing of bipartisan housing bill until his SAVE America Act is passed - ABC News - Breaking News, Latest News and Videos"
+          },
+          {
+            "grade": "C3",
+            "id": 411,
+            "occurred_at": "2026-06-25T03:25:12+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPZXpDNVZHZkJ0Y3ZxVjdJdUV1S3ZzWHdCMHhZaDJmWWZMRE9JTzRfczdSemIyOFVYYjdic05uVkRReFNxMHZCNmZqQkROQWNob29VZ0pwS3JxV1ROOHN4Mkw0ZkQ4czVGZnFmdHQzZmFaS3Z0Tm9FZ1duQWlBOFl3SWFZX0U1aDdaNFVTcklFamJhWk1DVVh2QVppLXNkN3FfdDI0LWc1NXFOSU4zMlNKcGFONDl2MXdFSWRJbW04dEtqTHQwQWFyRmVhTkxyUUNPNlFRdDJPRmF2bC10Q1pHaXNHUdIB6wFBVV95cUxOal9fMGRFWlFtOU00eW1TYjI3bzBrNFNYY1I5VUhjSXRTRjBDVzVUQkk5WmRFa1JtVkhiNm00MENlSXJ2Y09oUHVWYzNMT24xT3BRMWg5TWhyODlDRU96MkVkTmJDekw5czMtMmdDQ0lkcmh2UnVnWEt6c0h0LWVLY28xS3ZjdkJKTVYtZDJEcmZwVVVXUjYxYk1IalgtNmxXQm1WcWxLaFBwa2JMVXZub3hyRjQ3clQ1TGVmeWpaN1BFT29BQk1vNE9HUS0waHJfakFEcXFwQ0x2T3ctb1QyT0QtbVdnQjNIRmtR?oc=5",
+            "title": "Trump delays signing major housing bill until Congress passes Save America Act - NBC 5 Dallas-Fort Worth"
+          },
+          {
+            "grade": "C3",
+            "id": 415,
+            "occurred_at": "2026-06-24T16:25:13+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNLTd2RFNjb29rTllsZ1Y2QndDa0t6eWVRZGw0bk5rNWlGbmpZb1lSTmJ3TkJFeDNfVThBWlAzXzNYbUdFR2RicWQ2YWUzai1ZM0MwcTBoWFhodlJyWUN4RDdna1FnZFlCWFpWclQwQURBaVpOSGVyMU1rZnVQQXM2UVJfbjR4YXh6?oc=5",
+            "title": "Trump says he won’t sign bipartisan housing bill until Mike Lee’s SAVE America Act is passed - The Salt Lake Tribune"
+          },
+          {
+            "grade": "C3",
+            "id": 427,
+            "occurred_at": "2026-06-24T20:34:52+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMivgJBVV95cUxPS192WWJ3MEthblBIaDdFLUI3ZnB5aWpOVkEyb3Qwck94RzJyWUdaN2w0aDJ1ZnVLTF9UYzBncElFa3ZPcWN1Rm1DeHRubmc0b040aEdMRmZhTkJyajdzbDJ5RXZDQVFtcFdGMW5mRzZBZjQ2RUhvY0hQbVpxc3pCMXBWeFpHNmQzdjRCblV0ZDQ2NGg5OEJoY2V0WnRraGpscFFiTkRHVFdyMFF3YzdTX1h1R1B3dVBfbTRWZnZ3M0paWTZ3V0FJdGgwQ3NMdFhCWVY2Njd0cHJ4U2U0SFJpeFZMQXlaUG5mTmpYN1hkUVpmZVJUQ1J5WUNLM2pneXRlZUdJM25lbU5ROVdXMnI0c0JZMzAyZ2NnZ3lxVk8ya3FzVUxabTJkTDBuTXo1MEpneTNwdEJNN09oWkxMZGc?oc=5",
+            "title": "Trump halts housing bill signing until Congress passes SAVE America Act - WPDE"
+          },
+          {
+            "grade": "C3",
+            "id": 1190,
+            "occurred_at": "2026-06-24T15:15:00+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPVUVhTmRhR01RVnNvbFlmSTM2M0IwMzNjb1pDMjlIaFRVNl9VVWl3d0FfVWpycXQ2MXcyQXFaMGNhTzlTNFZtQ1p1YzlPdEhDeVUtUk1VRFgzU3NyV0hreHJ0dXl6LWlPbnlqLXZVSFduZXA4TG9KbDdibEtWLVZma0Y0enlBS2JLbzJXN0ROdWhFb25IRFFUQmRyOWlFaVoyeXY4NC1IZDBGZHNsMEt4QkEyb1ZGYmVNSkFrZ3hFNnI?oc=5",
+            "title": "Trump spikes housing bill at last minute, refusing to sign until SAVE America Act passes - News From The States"
+          }
+        ],
+        "source_count": 5
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 420,
+        "kind": "item",
+        "occurred_at": "2026-06-26T19:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQSUpmc3lnM1NqZExXcjZrVW0yTlRhcGVrdFllcVRDQnFaSlA0VEtpd0NmanQyODRmNU1sc2JTX0IwdFNHaVlRVjlTTVBPbm1YZ3MzOTNhdEh1dVVHQ0VKMlExOHFsSGRXSk0xeU1NNy1ZV2NZR01ZY0xla3hRSTQ3VWIxWDRMWXE1Y0J1Wk1FZ2xwVGJFU3pkMkZzUTEzNDdXZVdBYXNkVmxrZ1N0Tk1GUGdQWXFnYTBxMWNqSQ?oc=5",
+        "title": "What to know about the SAVE Act and why it's stalled in the Senate - WUSA9"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 340,
+        "kind": "item",
+        "occurred_at": "2026-06-27T00:21:52+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/south-dakota-republicans-reject-censuring-john-thune-over-stalled-save-america-act",
+        "title": "South Dakota Republicans reject censuring John Thune over stalled SAVE America Act"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 1175,
+        "kind": "item",
+        "occurred_at": "2026-06-29T09:31:34+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQU1J5eDRBa1FZd1NrcGJGLWRQWTVDWkhlWnNobjVLZWVGSEM0YlF1MVVTTmFjZHpoalZET2tyX3R3ZFkzblJhaUFCNzNTTnljbXhzM1RVNmtvbHE0VUZfZmU2NGNRbVpKMkUzYnkwa3plMWtlY0hORGs2TTlVLWk4SEFWZjUxbVFUODE0UHg4bEI5STVqRjJYa1dqeWFUQVRwRWE2cXlmSHh6Zkh4QkszcGMzMGIxbHF1alVGTDNQRmRONVhZS2t0VnhDLU91aE5FVmNZVzNTc21QUQ?oc=5",
+        "title": "The SAVE Act May Be Stalled in Congress, But State Versions Are Being Advanced All Across the Country - Center for American Progress"
+      }
+    ]
+  },
+  {
+    "bill_id": "s3752-119",
+    "bill_type": "s",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Read twice and referred to the Committee on Rules and Administration.",
+    "latest_action_at": "2026-01-29T00:00:00",
+    "number": 3752,
+    "short_title": "SAVE America Act",
+    "sponsor": "Sen. Lee, Mike [R-UT]",
+    "status": "Read twice and referred to the Committee on Rules and Administration.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 49,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/3752",
+        "title": "s3752-119: Read twice and referred to the Committee on Rules and Administration."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 50,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/3752",
+        "title": "s3752-119: Introduced in Senate"
+      }
+    ]
+  }
+]

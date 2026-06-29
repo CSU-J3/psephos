@@ -1,0 +1,1401 @@
+[
+  {
+    "caption": "League of Women Voters v. U.S. Department of Homeland Security",
+    "case_id": "71499795",
+    "category": "voter-data",
+    "court": "D.D.C.",
+    "defendant": "U.S. Department of Homeland Security",
+    "docket_number": "1:25-cv-03501",
+    "filed_at": "2025-09-30T00:00:00",
+    "plaintiff": "League of Women Voters",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 126,
+        "kind": "item",
+        "occurred_at": "2025-09-30T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 127,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/14/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: SEALED MOTION to Proceed Under Pseudonym filed by J. DOE 1, J. DOE 2, J. DOE 3, J. DOE 4, J. DOE 5 (Attachments: # 1 Memorandum in Support, # 2 Text of Proposed Order, # 3 Declarat"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 192,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE OF NEW CASE ERROR regarding 1 Complaint. The following error(s) need correction: Please promptly file a motion to proceed under pseudonym using the event Sealed Motion to Pr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 128,
+        "kind": "item",
+        "occurred_at": "2025-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/16/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Stay, MOTION for Preliminary Injunction by J. DOE 1, J. DOE 4, J. DOE 5, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIANA "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 129,
+        "kind": "item",
+        "occurred_at": "2025-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/17/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: WITHDRAWN PURSUANT TO NOTICE FILED 10/29/2025..... MOTION to Certify Class by J. DOE 1, J. DOE 4, J. DOE 5. (Attachments: # 1 Memorandum in Support, # 2 Exhibit 1 (Connolly Declara"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 130,
+        "kind": "item",
+        "occurred_at": "2025-10-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/19/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Stay all Proceedings due to Lapse in Appropriations by FRANK BISIGNANO, PAMELA J. BONDI, KRISTI NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 131,
+        "kind": "item",
+        "occurred_at": "2025-10-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/21/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 19 MOTION to Stay all Proceedings due to Lapse in Appropriations filed by J. DOE 1, ELECTRONIC PRIVACY INFORMATION CENTER, J. DOE 2, J. DOE 3, J. DOE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132,
+        "kind": "item",
+        "occurred_at": "2025-10-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/22/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 19 Motion to Stay, filed by FRANK BISIGNANO, PAMELA J. BONDI, KRISTI NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY, U."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 133,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/23/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MEMORANDUM OPINION AND ORDER: The Court ORDERS that: 1) Plaintiffs' 14 Motion to Proceed Under Pseudonym is GRANTED, subject to any further consideration by the United States Distr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 134,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/24/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Consent MOTION for Leave to File Amicus Brief by ALEX PADILLA, GARY PETERS. (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Text of Proposed Order)(LeGrand, Rebecca) (Entered:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 183,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 188,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Stay AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 219,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER denying the Defendants' 19 Motion to stay all proceedings. The Defendants are ORDERED to file a response to the 16 Motion for Preliminary Injunction, the 16 Motion to "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 190,
+        "kind": "item",
+        "occurred_at": "2025-10-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 220,
+        "kind": "item",
+        "occurred_at": "2025-10-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 24 Motion for Leave to File Amicus Brief. The Court will treat the motion's attachment, ECF No. 24-1, as the amicus brief. Signed by Judge Sparkle L. Sook"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 218,
+        "kind": "item",
+        "occurred_at": "2025-10-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order Setting Hearing on Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 222,
+        "kind": "item",
+        "occurred_at": "2025-10-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: A hearing on the Plaintiffs' 16 Motion for Preliminary Injunction and 16 Motion for Stay is set for October 28, 2025, at 2:30 PM in Courtroom 14 before Judge Sparkle "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 135,
+        "kind": "item",
+        "occurred_at": "2025-10-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/35/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REDACTED DOCUMENT- Motion to Proceed Under Pseudonym See ECF 14 by J. DOE 1, J. DOE 2, J. DOE 3, J. DOE 4, J. DOE 5. (Attachments: # 1 Memorandum in Support, # 2 Text of Proposed O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 136,
+        "kind": "item",
+        "occurred_at": "2025-10-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/37/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 16 MOTION to Stay MOTION for Preliminary Injunction filed by FRANK BISIGNANO, PAMELA J. BONDI, KRISTI NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 137,
+        "kind": "item",
+        "occurred_at": "2025-10-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/38/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 17 MOTION to Certify Class filed by FRANK BISIGNANO, PAMELA J. BONDI, KRISTI NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 138,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/40/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Consent MOTION for Leave to File Amicus Brief by CAMPAIGN LEGAL CENTER. (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Text of Proposed Order)(Ferguson, Robert) (Entered: 10/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 139,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/41/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 16 Motion to Stay,,, Motion for Preliminary Injunction,, filed by J. DOE 1, J. DOE 4, J. DOE 5, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF L"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 140,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/42/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 17 Motion to Certify Class filed by J. DOE 1, J. DOE 4, J. DOE 5. (Attachments: # 1 Exhibit 1)(Hickman, Johanna) (Entered: 10/24/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 196,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 40 Motion for Leave to File Amicus Brief. The Court will treat the motion's attachment, ECF No. 40-1, as the amicus brief. Signed by Judge Sparkle L. Sook"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 217,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 141,
+        "kind": "item",
+        "occurred_at": "2025-10-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/43/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Emergency MOTION to Intervene as Defendant by STATE OF TEXAS. (Attachments: # 1 Exhibit State of Texas's Motion to Dismiss and Response to Preliminary Injunction, # 2 Exhibit Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 186,
+        "kind": "item",
+        "occurred_at": "2025-10-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 216,
+        "kind": "item",
+        "occurred_at": "2025-10-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 223,
+        "kind": "item",
+        "occurred_at": "2025-10-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: Any response to the 43 Emergency Motion to Intervene shall be filed by October 31, 2025. Any reply shall be filed by November 3, 2025. These deadlines will not be sta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 187,
+        "kind": "item",
+        "occurred_at": "2025-10-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Motion Hearing AND ~Util - Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 215,
+        "kind": "item",
+        "occurred_at": "2025-10-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 224,
+        "kind": "item",
+        "occurred_at": "2025-10-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Minute Entry for Motion Hearing held before Judge Sparkle L. Sooknanan on 10/28/2025. Oral arguments submitted on the Plaintiffs' Motion 17 to Certify Class and Plaintiffs' Motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142,
+        "kind": "item",
+        "occurred_at": "2025-10-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/46/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE OF WITHDRAWAL OF MOTION by J. DOE 1, J. DOE 4, J. DOE 5 re 17 MOTION to Certify Class (Sus, Nikhel) (Entered: 10/29/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 143,
+        "kind": "item",
+        "occurred_at": "2025-10-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/47/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: SUPPLEMENTAL MEMORANDUM to re 16 MOTION to Stay MOTION for Preliminary Injunction filed by J. DOE 1, J. DOE 4, J. DOE 5, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 144,
+        "kind": "item",
+        "occurred_at": "2025-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/48/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: TRANSCRIPT OF PROCEEDINGS before Judge Sparkle L. Sooknanan held on 10-28-2025; Page Numbers: 1 - 97. Date of Issuance: 10-30-2025. Court Reporter, Elizabeth Davila, Telephone numb"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 145,
+        "kind": "item",
+        "occurred_at": "2025-10-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/49/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 43 Emergency MOTION to Intervene as Defendant MOTION for Hearing filed by J. DOE 1, ELECTRONIC PRIVACY INFORMATION CENTER, J. DOE 2, J. DOE 3, J. DOE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 146,
+        "kind": "item",
+        "occurred_at": "2025-10-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/50/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: RESPONSE re 43 Emergency MOTION to Intervene as Defendant MOTION for Hearing filed by FRANK BISIGNANO, PAMELA BONDI, KRISTI NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 147,
+        "kind": "item",
+        "occurred_at": "2025-11-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/51/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: RESPONSE re 47 Supplemental Memorandum, filed by FRANK BISIGNANO, PAMELA J. BONDI, KRISTI NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY, U.S. DEPARTMEN"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148,
+        "kind": "item",
+        "occurred_at": "2025-11-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/52/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 43 Motion to Intervene,, Motion for Hearing, filed by STATE OF TEXAS. (Thorburn, Ali) (Entered: 11/03/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 149,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/55/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MEMORANDUM OPINION re the 16 Motion to Stay. See the attached document for details. Signed by Judge Sparkle L. Sooknanan on 11/17/2025. (lcak) Modified on 11/17/2025 (zlsj). (Enter"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 150,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/56/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: ORDER denying the 16 Motion to Stay. See the 55 Memorandum Opinion for details. Signed by Judge Sparkle L. Sooknanan on 11/17/2025. (lcak) (Entered: 11/17/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 151,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/57/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: PROPOSED BRIEFING SCHEDULE Joint Scheduling Proposal by J. DOE 1, ELECTRONIC PRIVACY INFORMATION CENTER, J. DOE 2, J. DOE 3, J. DOE 4, J. DOE 5, LEAGUE OF WOMEN VOTERS, LEAGUE OF W"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 152,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/58/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Leave to File Supplemental Complaint by J. DOE 1, ELECTRONIC PRIVACY INFORMATION CENTER, J. DOE 2, J. DOE 3, J. DOE 4, J. DOE 5, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 197,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 58 Motion for Leave to File a Supplemental Complaint. Leave for filing a supplemental pleading should be \"freely granted . . . where such supplementation "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 198,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 199,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 214,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 225,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 58 Motion for Leave to File a Supplemental Complaint. Leave for filing a supplemental pleading should be \"freely granted...where such supplementation will"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 226,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In light of the 57 Proposed Briefing Schedule, the Parties are ORDERED to file a further Joint Scheduling Proposal by January 9, 2026. The Plaintiffs shall file any a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 153,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/60/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION to Modify Scheduling Order by J. DOE 1, J. DOE 2, J. DOE 3, J. DOE 4, J. DOE 5, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 191,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Modify AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 213,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Modify"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 227,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 60 Unopposed Motion to Modify Scheduling Order. The Plaintiffs shall file any amended or supplemental pleadings by January 21, 2026. The Parties shall fil"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 154,
+        "kind": "item",
+        "occurred_at": "2026-01-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/61/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: AMENDED COMPLAINT against FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY filed by LEAGUE OF WOMEN VOTERS OF VIRGINIA, LEAGUE "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 194,
+        "kind": "item",
+        "occurred_at": "2026-02-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Scheduling Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 228,
+        "kind": "item",
+        "occurred_at": "2026-02-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In light of the 62 Joint Status Report, the Parties are ORDERED to comply with the following schedule. The Defendants shall produce the administrative record and file"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/66/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Summary Judgment by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIANA EDUCATION FUN"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/67/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION for Leave to File Amicus Brief by CELIA ISRAEL, DYANA LIMON-MERCADO, TRAVIS COUNTY, TEXAS. (Attachments: # 1 Exhibit 1 - Amicus Brief, # 2 Exhibit 2 - Declaration "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 182,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 229,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 67 Motion for Leave to File Amicus Brief. The Court will treat the motion's attachments, ECF Nos. 67-1 & 67-2, as the amicus brief. Signed by Judge Sparkl"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 157,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/69/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION for Leave to File Amicus Brief by TEXAS CIVIL RIGHTS PROJECT. (Attachments: # 1 Exhibit 1 - Amicus Brief, # 2 Exhibit A - Exhibit to Amicus Brief, # 3 Exhibit B - "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 212,
+        "kind": "item",
+        "occurred_at": "2026-03-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 221,
+        "kind": "item",
+        "occurred_at": "2026-03-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 69 Motion for Leave to File Amicus Brief. The Court treats the 69 Motion's attachments, ECF No. 69-1 through ECF No. 69-10, as the amicus brief. Signed by"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 158,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/73/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Leave to File Amicus Brief in Support of Plaintiffs' Motion for Summary Judgment by LAWYERS DEFENDING AMERICAN DEMOCRACY, INC. (Attachments: # 1 Memorandum in Support, #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 184,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 73 Motion for Leave to File Amicus Brief. The Court treats the 73 Motion's attachment, ECF No. 73 -1, as the amicus brief. Signed by Judge Sparkle L. Sook"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 185,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 159,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/74/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Leave to File Amicus Brief by SERVICE EMPLOYEES INTERNATIONAL UNION. (Attachments: # 1 amicus brief, # 2 proposed order)(Ury, Steven) (Entered: 04/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 204,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 74 Motion for Leave to File Amicus Brief. The Court treats the 74 Motion's attachment, ECF No. 74-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 211,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 160,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/77/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Dismiss (or, in the Alternative, MOTION for Summary Judgment ) and Opposition to Plaintiffs' Motion for Summary Judgment (Combined) by FRANK BISIGNANO, KRISTI L. NOEM, SO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 161,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/78/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 66 MOTION for Summary Judgment filed by FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY. (Attac"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 162,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/79/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION for Leave to File Amicus Brief by CAMPAIGN LEGAL CENTER, CENTER FOR MEDIA AND DEMOCRACY, COMMON CAUSE, PROTECT DEMOCRACY PROJECT. (Attachments: # 1 Exhibit 1 - Ami"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 163,
+        "kind": "item",
+        "occurred_at": "2026-04-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/85/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE of Executive Order 14399 by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIANA EDUCATION"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 164,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/86/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: ORDER granting the 43 Motion to Intervene. The Court ORDERS the Parties to comply with the following schedule. The State of Texas shall file an answer or otherwise respond to the 6"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 189,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 200,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 79 Motion for Leave to File Amicus Brief. The Court treats the 79 Motion's attachment, ECF No. 79-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 165,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/93/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Leave to File Amicus Brief In Support of Plaintiffs Motion for Summary Judgment by AMERICAN CIVIL LIBERTIES UNION. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of P"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 193,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 210,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 230,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 93 Motion for Leave to File Amicus Brief. The Amicus American Civil Liberties Union is directed to file its amicus brief by April 20, 2026. Signed by Judg"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 166,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/94/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: AMICUS BRIEF In Support of Plaintiffs Motion for Summary Judgment by AMERICAN CIVIL LIBERTIES UNION. (Hauss, Brian) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 167,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/97/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Dismiss Plaintiffs' Amended Complaint by STATE OF TEXAS. (Wassdorf, William) (Entered: 04/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 168,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/99/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 66 Motion for Summary Judgment,, and Opposition to Defendants' Motion to Dismiss or, in the Alternative, for Summary Judgment (Combined) filed by E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 169,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/100/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 77 MOTION to Dismiss (or, in the Alternative MOTION for Summary Judgment ) and Opposition to Plaintiffs' Motion for Summary Judgment (Combined) and R"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 170,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/101/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION for Extension of Time to File Moton to Dismiss by STATE OF TEXAS. (Attachments: # 1 Text of Proposed Order)(Wassdorf, William) (Entered: 04/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 201,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 207,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Extension of Time to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 208,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 209,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 101 Motion for Extension of time nunc pro tunc. The State of Texas' deadline to answer or otherwise respond to the 61 Amended Complaint is extended to Apr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 231,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: The Court directs the Plaintiffs to deliver two (2) printed courtesy copies of the briefing for the 66 Motion for Summary Judgment, the 77 Motion to Dismiss, and the "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 171,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/102/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION to Withdraw as Attorney Ali M. Thorburn by STATE OF TEXAS. (Attachments: # 1 Text of Proposed Order)(Thorburn, Ali) (Entered: 05/06/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 202,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Withdraw as Attorney"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 232,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 102 Motion to Withdraw. The Court ORDERS that Ali M. Thorburn is no longer the counsel of record for the State of Texas. Signed by Judge Sparkle L. Sookna"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 172,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/103/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Unopposed MOTION for Extension of Time to File Response/Reply as to 77 MOTION to Dismiss (or, in the Alternative MOTION for Summary Judgment ) and Opposition to Plaintiffs' Motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 173,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/104/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 97 MOTION to Dismiss Plaintiffs' Amended Complaint filed by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 203,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Extension of Time to File Response/Reply AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 206,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Extension of Time to File Response/Reply"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 233,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 103 Motion for Extension of Time. The Federal Defendants' deadline to file a reply in support of their 77 Motion to Dismiss is extended to May 29, 2026. T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 174,
+        "kind": "item",
+        "occurred_at": "2026-05-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/105/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 97 Motion to Dismiss filed by STATE OF TEXAS. (Wassdorf, William) (Entered: 05/16/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 175,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/106/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 77 Motion to Dismiss,, Motion for Summary Judgment, filed by FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 195,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 205,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 234,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: The Court ORDERS the Federal Defendants to transmit to Chambers a digital copy of the administrative record in a flash drive by overnight mail. The digital copy shoul"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 176,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/107/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE regarding implementation of Executive Order 14399, Ensuring Citizenship Verification and Integrity in Federal Elections by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF W"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 177,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/109/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: JOINT APPENDIX to Cross-Dispositive Motions by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 178,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/111/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MEMORANDUM OPINION re the 66 Motion for Summary Judgment, the 77 Motion to Dismiss (or, in the Alternative, for Summary Judgment), and the 97 Motion to Dismiss. See the attached do"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 179,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/112/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: ORDER granting the 66 Motion for Summary Judgment and denying the 77 and 97 Motions to Dismiss. The Court directs the Clerk of the Court to terminate this case from the active dock"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 180,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/113/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE OF APPEAL TO DC CIRCUIT COURT as to 112 Order on Motion for Summary Judgment,, Order on Motion to Dismiss,,,,, 111 Memorandum & Opinion, by U.S. DEPARTMENT OF HOMELAND SECUR"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 181,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/114/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals docketing fee was not paid because the appe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 1022,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: USCA Case Number 26-5243 for 113 Notice of Appeal to DC Circuit Court, filed by SOCIAL SECURITY ADMINISTRATION, FRANK BISIGNANO, KRISTI L. NOEM, U.S. DEPARTMENT OF HOMELAND SECURIT"
+      }
+    ]
+  },
+  {
+    "caption": "Common Cause v. U.S. Department of Justice",
+    "case_id": "73218916",
+    "category": "voter-data",
+    "court": "D.D.C.",
+    "defendant": "U.S. Department of Justice",
+    "docket_number": "1:26-cv-01352",
+    "filed_at": "2026-04-21T00:00:00",
+    "plaintiff": "Common Cause",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 1,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 2,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/12/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Joint MOTION for Order for Expedited Dispositive Motion Briefing Schedule by COMMON CAUSE, COMMON CAUSE EDUCATION FUND, LINDA DUCKWORTH, RUTH NASRULLAH, ANTHONY NEL, HALEY SMITH. ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER: The Court directs the Parties to file a joint status report by May 4, 2026, addressing whether this case should be consolidated with the action in League of Women Vot"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 25,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Status Report Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 3,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/16/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Joint STATUS REPORT IN RESPONSE TO APRIL 30 ORDER by COMMON CAUSE. (Hill, John) (Entered: 05/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 16,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Briefing Schedule AND Order on Motion to Expedite AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 17,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER: In light of the 16 Joint Status Report, the Court grants the 12 Motion for Expedited Briefing Schedule. The Court directs the Parties to comply with the following dea"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 4,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/29/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Partial MOTION for Summary Judgment by COMMON CAUSE, COMMON CAUSE EDUCATION FUND, LINDA DUCKWORTH, RUTH NASRULLAH, ANTHONY NEL, HALEY SMITH. (Attachments: # 1 Memorandum in Support"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 5,
+        "kind": "item",
+        "occurred_at": "2026-05-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/31/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Consent MOTION for Leave to File Excess Pages by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Attachments: # 1 Text of Proposed Order)(Dibblee, Christian) (Entered: 05/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 18,
+        "kind": "item",
+        "occurred_at": "2026-05-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Leave to File Excess Pages"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 22,
+        "kind": "item",
+        "occurred_at": "2026-05-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 31 Motion for Leave to File Excess Pages. The Defendants' memorandum in support of their dispositive motion shall not exceed 55 pages. The Plaintiffs' com"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 6,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/32/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MOTION to Dismiss, MOTION for Summary Judgment by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Attachments: # 1 Memorandum in Support, # 2 Text of Proposed Order)(Dibblee, Christian)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/33/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Memorandum in opposition to re 29 Partial MOTION for Summary Judgment filed by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Dibblee, Christian) (Entered: 06/02/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 8,
+        "kind": "item",
+        "occurred_at": "2026-06-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/34/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Unopposed MOTION for Extension of Time to File Response/Reply by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Attachments: # 1 Text of Proposed Order)(Dibblee, Christian) (Entered: 0"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 15,
+        "kind": "item",
+        "occurred_at": "2026-06-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Extension of Time to File Response/Reply AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23,
+        "kind": "item",
+        "occurred_at": "2026-06-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 34 Motion for Extension of Time. The Defendants' reply in support of their cross-dispositive motion shall be due by June 22, 2026. The Court notes that it"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/35/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: REPLY to opposition to motion re 29 Motion for Summary Judgment,,, filed by COMMON CAUSE, COMMON CAUSE EDUCATION FUND, LINDA DUCKWORTH, RUTH NASRULLAH, ANTHONY NEL, HALEY SMITH. (C"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/36/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Memorandum in opposition to re 32 MOTION to Dismiss MOTION for Summary Judgment filed by COMMON CAUSE, COMMON CAUSE EDUCATION FUND, LINDA DUCKWORTH, RUTH NASRULLAH, ANTHONY NEL, HA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/37/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MOTION for Extension of Time to File Response/Reply until June 29, 2026 by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Attachments: # 1 Text of Proposed Order)(Dibblee, Christian) ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 21,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 37 Motion for Extension of Time. The Court finds that the Motion is filed in good faith, not for purposes of gaining any unfair advantage through delay, a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 24,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Extension of Time to File Response/Reply"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 12,
+        "kind": "item",
+        "occurred_at": "2026-06-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/38/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Unopposed MOTION for Leave to File Amicus Brief by NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE, LAWYERS COMMITTEE FOR CIVIL RIGHTS UNDER LAW. (Attachments: # 1 Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/40/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Unopposed MOTION for Leave to File Amicus Brief by FORMER EMPLOYEES OF THE U.S. DEPARTMENT OF JUSTICE. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of Proposed Order)(Bokat-Li"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 19,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 20,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 38 Motion for Leave to File Amicus Brief. The Court treats the 38 Motion's attachment, ECF No. 38-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Weber",
+    "case_id": "united-states-v-weber",
+    "category": "voter-data",
+    "court": "C.D. Cal.",
+    "defendant": "Weber",
+    "docket_number": null,
+    "filed_at": null,
+    "plaintiff": "United States",
+    "status": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 100,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com",
+        "title": "United States v. Weber — voter-data"
+      }
+    ]
+  }
+]
