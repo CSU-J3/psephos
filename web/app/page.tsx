@@ -2,12 +2,13 @@ import {
   getChannelCounts,
   getBills,
   getCases,
-  getExecutiveLatest,
+  getExecutiveAll,
 } from "@/lib/db";
+import { relevanceScore } from "@/lib/relevance";
 import { ChannelStrip } from "@/components/ChannelStrip";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
-import { ExecutiveList } from "@/components/ExecutiveList";
+import { ExecutiveSection } from "@/components/ExecutiveSection";
 
 // Render per request against live Turso. No ISR: a single-user read-only
 // dashboard saves nothing by caching, and force-dynamic removes the build-time
@@ -24,12 +25,14 @@ function SectionHeading({ title, count }: { title: string; count: number }) {
 }
 
 export default async function Home() {
-  const [counts, bills, cases, executive] = await Promise.all([
+  const [counts, bills, cases, executiveAll] = await Promise.all([
     getChannelCounts(),
     getBills(),
     getCases(),
-    getExecutiveLatest(20),
+    getExecutiveAll(),
   ]);
+  // Score the broad channel server-side; the section toggles relevant vs all.
+  const relevant = executiveAll.filter((it) => relevanceScore(it.title) > 0);
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
@@ -71,8 +74,7 @@ export default async function Home() {
       </section>
 
       <section className="mt-10">
-        <SectionHeading title="Latest executive documents" count={executive.length} />
-        <ExecutiveList items={executive} />
+        <ExecutiveSection relevant={relevant} all={executiveAll} />
       </section>
     </main>
   );

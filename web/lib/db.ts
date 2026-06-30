@@ -146,15 +146,15 @@ export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
   return rs.rows as unknown as TimelineItem[];
 }
 
-// Latest executive-channel documents as a flat, date-ordered list. Intentionally
-// unfiltered: the channel is broad (~16 EOs, ~2 on-topic); relevance ranking is a
-// later concern. The skeleton just proves the read.
-export async function getExecutiveLatest(limit = 20): Promise<ExecItem[]> {
-  const rs = await db.execute({
-    sql: `SELECT id, title, source_url, occurred_at, admiralty_source, admiralty_info
-          FROM items WHERE channel = 'executive'
-          ORDER BY occurred_at DESC, id DESC LIMIT ?`,
-    args: [limit],
-  });
+// The whole executive channel, date-ordered (newest first). Relevance scoring
+// runs over this in the page -- ~112 rows scored in TS per request, trivial. No
+// limit: the on-topic EOs sit deep (EO 14248 is ~rank 88), so the relevance lens,
+// not a recency window, is what surfaces them.
+export async function getExecutiveAll(): Promise<ExecItem[]> {
+  const rs = await db.execute(
+    `SELECT id, title, source_url, occurred_at, admiralty_source, admiralty_info
+     FROM items WHERE channel = 'executive'
+     ORDER BY occurred_at DESC, id DESC`,
+  );
   return rs.rows as unknown as ExecItem[];
 }
