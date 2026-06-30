@@ -114,6 +114,26 @@ def test_build_params():
     assert "conditions[publication_date][gte]" not in executive.build_params(AGENCIES, "x", None)
 
 
+def test_build_presidential_params():
+    p = executive.build_presidential_params("election", SINCE)
+    # Presidential shape filters by document type, sets no agencies filter.
+    assert p["conditions[type][]"] == "PRESDOCU"
+    assert p["conditions[presidential_document_type][]"] == "executive_order"
+    assert "conditions[agencies][]" not in p
+    assert p["conditions[term]"] == "election"
+    assert p["conditions[publication_date][gte]"] == SINCE
+    assert p["per_page"] == executive.PER_PAGE
+    assert p["order"] == "newest"
+    assert p["fields[]"] == executive.FIELDS
+    # No floor -> no publication_date condition.
+    assert "conditions[publication_date][gte]" not in executive.build_presidential_params("x", None)
+    # The agency shape is the inverse: agencies set, no presidential_document_type.
+    a = executive.build_params(AGENCIES, "election", SINCE)
+    assert a["conditions[agencies][]"] == AGENCIES
+    assert "conditions[presidential_document_type][]" not in a
+    assert "conditions[type][]" not in a
+
+
 def test_document_item_row():
     row = executive.document_item_row(_doc("2026-12345"), "A", "1")
     assert row["channel"] == "executive"
@@ -128,6 +148,19 @@ def test_document_item_row():
     # Title fallback fires when the FR title is missing/empty (items.title is NOT NULL).
     fb = executive.document_item_row(_doc("2026-99999", title=""), "A", "1")
     assert fb["title"].startswith("(untitled Federal Register document 2026-99999")
+
+    # Executive orders: title gets an "EO {n}:" prefix and the row dates by
+    # signing_date (which precedes publication), not publication_date.
+    eo_doc = _doc("2025-06011",
+                  title="Preserving and Protecting the Integrity of American Elections",
+                  pubdate="2025-03-28", type_="Presidential Document")
+    eo_doc["executive_order_number"] = 14248
+    eo_doc["signing_date"] = "2025-03-25"
+    eo_doc["presidential_document_type"] = "executive_order"
+    eo_row = executive.document_item_row(eo_doc, "A", "1")
+    assert eo_row["title"] == ("EO 14248: Preserving and Protecting the "
+                               "Integrity of American Elections")
+    assert eo_row["occurred_at"].startswith("2025-03-25")  # signing_date wins over publication_date
 
 
 # --- pipeline (temp DB + faked FR) ------------------------------------------
@@ -209,6 +242,7 @@ def test_per_term_error_isolation():
 
 if __name__ == "__main__":
     test_build_params()
+    test_build_presidential_params()
     test_document_item_row()
     test_pagination()
     test_cross_term_dedup()
