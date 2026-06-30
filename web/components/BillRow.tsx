@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Bill } from "@/lib/db";
 import { formatDate } from "@/lib/format";
 import { billLabel } from "@/lib/bill";
@@ -7,7 +8,11 @@ import { billLabel } from "@/lib/bill";
 // point of the project, the maneuver a plain bill tracker misses.
 export function BillRow({ bill }: { bill: Bill }) {
   return (
-    <li className="rounded-lg border border-neutral-800 bg-neutral-900 p-4">
+    <li>
+      <Link
+        href={`/bill/${bill.bill_id}`}
+        className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 transition-colors hover:border-neutral-700"
+      >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <span className="font-mono text-sm text-neutral-400">{billLabel(bill)}</span>
@@ -31,6 +36,7 @@ export function BillRow({ bill }: { bill: Bill }) {
           {bill.latest_action}
         </p>
       )}
+      </Link>
     </li>
   );
 }
