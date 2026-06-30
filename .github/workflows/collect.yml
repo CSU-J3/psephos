@@ -58,7 +58,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           # Stage only the text snapshots explicitly. NOT `git add data/`: data/psephos.db
           # is not in .gitignore, so a glob add could start committing the binary.
-          git add data/bills.json data/cases.json
+          git add data/bills.json data/cases.json data/executive.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
