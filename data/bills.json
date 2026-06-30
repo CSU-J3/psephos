@@ -338,6 +338,16 @@
     "status": "Considered by Senate (Message from the House considered). (consideration: CR S1647)",
     "timeline": [
       {
+        "channel": "news",
+        "grade": "C3",
+        "id": 2087,
+        "kind": "item",
+        "occurred_at": "2024-07-10T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPRm9BQ1pPUTlKdDlkbEhwOGQ4NjI5dm5OSENUdjN2c0l6N0N1Z0dIbXJaSXh5Rm5XSFNoYm40LWVYRkk5WHl1V3VUTWZMOE1Tc1dYZkgxT1NGcHJrN1VpUG42dDM5MGV5QnloTXJVZ29lZ2w0VTJrS1BoMDFjcUpnVHROVDFWbEhSYXAxYktnc3FSX1JlUnVxdWo0bzFaT1ZGeUhxdFVmMXpHM2hhUHVCeXRWMkQzVVNfVXVlaDhXWVpaUWJtMDlyVjl3b3h4NHBtSEHSAdcBQVVfeXFMUFQtbnQ3VW5BNVhyNnlVTnl2R252UDVVQndYZUpRZ1NnaHkwQUJXX1FrRnY4aS0tUzNlV3ZLaDIzUXhlWjY3d0tpMl85S3J4b0VfX3k2a0RfNlFacm0zT3VVUzlpOHdPa295ak8zTTFxU29Qa1hxWm1fRlBjTWllRTFYTlpJT1htVUg3NXJoRDJLMzlPTUVLbE5fY0dLYzVkakpEd1JxMDJXOVdZYjFvOXlSVE1YOC0yLW1rLXVNUXkxVi0tTzBhWnhmbVJCemFPT05hbE00bFk?oc=5",
+        "title": "House passes bill requiring proof of citizenship to vote, fanning a GOP election-year talking point - PBS"
+      },
+      {
         "channel": "legislation",
         "grade": "A1",
         "id": 98,
@@ -356,6 +366,16 @@
         "source_id": "congress-gov",
         "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/1383",
         "title": "s1383-119: Introduced in Senate"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 2079,
+        "kind": "item",
+        "occurred_at": "2025-04-10T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPR18weVQ3SjNoQi1GTFlEVE0wVDlqa3NCYWh3bksxMGRwbVh0SU5SUDNaMldRVDFlRENObmFOOGJOYnRMWWEzR045aFA0SGdwOGZfWlFFTW5JU3lUTVluTEF5UjNTUmtnTmxzOFI0TmtMRWFDaVBJNlpJZkMzUWZtRHl1XzI5cjN1U19vUzVoNWNYbG9Na2M3c1NNNWllaC1kYzdBeXY1NDJCaHJpZlhSMlFKNHN0dmFWTVFCcS1R?oc=5",
+        "title": "House passes bill to require proof of citizenship to vote in federal elections - NBC News"
       },
       {
         "channel": "legislation",
