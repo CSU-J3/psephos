@@ -1372,6 +1372,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 38 Motion for Leave to File Amicus Brief. The Court treats the 38 Motion's attachment, ECF No. 38-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 1436,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/43/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Reply to opposition to motion"
       }
     ]
   },

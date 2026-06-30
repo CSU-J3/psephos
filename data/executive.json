@@ -1,0 +1,962 @@
+[
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1611,
+    "kind": "item",
+    "occurred_at": "2025-01-02T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/02/2024-30871/amending-and-clarifying-foreign-agents-registration-act-regulations",
+    "title": "Amending and Clarifying Foreign Agents Registration Act Regulations"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1674,
+    "kind": "item",
+    "occurred_at": "2025-01-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/06/2024-31358/immigration-bond-notifications",
+    "title": "Immigration Bond Notifications"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1610,
+    "kind": "item",
+    "occurred_at": "2025-01-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/08/2024-31486/preventing-access-to-us-sensitive-personal-data-and-government-related-data-by-countries-of-concern",
+    "title": "Preventing Access to U.S. Sensitive Personal Data and Government-Related Data by Countries of Concern or Covered Persons"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1608,
+    "kind": "item",
+    "occurred_at": "2025-01-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/15/2025-00511/national-flood-insurance-program-nfip-assistance-to-private-sector-property-insurers-notice-of-fy",
+    "title": "National Flood Insurance Program (NFIP); Assistance to Private Sector Property Insurers, Notice of FY 2026 Arrangement"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1609,
+    "kind": "item",
+    "occurred_at": "2025-01-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/15/2024-31206/protection-of-federal-property",
+    "title": "Protection of Federal Property"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1606,
+    "kind": "item",
+    "occurred_at": "2025-01-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-00769/extension-of-the-2023-designation-of-venezuela-for-temporary-protected-status",
+    "title": "Extension of the 2023 Designation of Venezuela for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1607,
+    "kind": "item",
+    "occurred_at": "2025-01-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-00550/agreement-between-the-united-states-of-america-the-united-mexican-states-and-canada-usmca",
+    "title": "Agreement Between the United States of America, the United Mexican States, and Canada (USMCA) Implementing Regulations Related to Textile and Apparel Goods, Automotive Goods, and Other USMCA Provisions"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1626,
+    "kind": "item",
+    "occurred_at": "2025-01-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-01049/expansion-of-buprenorphine-treatment-via-telemedicine-encounter",
+    "title": "Expansion of Buprenorphine Treatment via Telemedicine Encounter"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1669,
+    "kind": "item",
+    "occurred_at": "2025-01-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-00771/extension-of-the-designation-of-ukraine-for-temporary-protected-status",
+    "title": "Extension of the Designation of Ukraine for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1670,
+    "kind": "item",
+    "occurred_at": "2025-01-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-00770/extension-of-the-designation-of-sudan-for-temporary-protected-status",
+    "title": "Extension of the Designation of Sudan for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1672,
+    "kind": "item",
+    "occurred_at": "2025-01-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-00626/extension-of-the-designation-of-el-salvador-for-temporary-protected-status",
+    "title": "Extension of the Designation of El Salvador for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1605,
+    "kind": "item",
+    "occurred_at": "2025-01-22T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/22/2025-01455/notice-request-for-comment-correction",
+    "title": "Notice; Request for Comment; Correction"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1604,
+    "kind": "item",
+    "occurred_at": "2025-02-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/02/03/2025-02202/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1603,
+    "kind": "item",
+    "occurred_at": "2025-03-04T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/04/2025-03460/agency-information-collection-activities-national-mail-voter-registration-form",
+    "title": "Agency Information Collection Activities: National Mail Voter Registration Form"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1668,
+    "kind": "item",
+    "occurred_at": "2025-03-12T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/12/2025-03944/alien-registration-form-and-evidence-of-registration",
+    "title": "Alien Registration Form and Evidence of Registration"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1667,
+    "kind": "item",
+    "occurred_at": "2025-03-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/14/2025-04127/agency-information-collection-activities-proposed-collection-comments-requested-extension-of-a",
+    "title": "Agency Information Collection Activities; Proposed Collection; Comments Requested; Extension of a Previously Approved Collection; Request for New Recognition, Renewal of Recognition, Extension of Recognition of a Non-Profit Religious, Charitable, Social Service, or Similar Organization (Form EOIR-31"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1600,
+    "kind": "item",
+    "occurred_at": "2025-04-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/03/2025-05830/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1601,
+    "kind": "item",
+    "occurred_at": "2025-04-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/03/2025-05827/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1602,
+    "kind": "item",
+    "occurred_at": "2025-04-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/03/2025-05822/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1666,
+    "kind": "item",
+    "occurred_at": "2025-04-04T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/04/2025-05903/implementation-of-employment-authorization-for-individuals-covered-by-deferred-enforced-departure",
+    "title": "Implementation of Employment Authorization for Individuals Covered by Deferred Enforced Departure for Hong Kong"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1599,
+    "kind": "item",
+    "occurred_at": "2025-04-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/15/2025-06341/notice-of-federal-advisory-committee-charter-renewals",
+    "title": "Notice of Federal Advisory Committee Charter Renewals"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1665,
+    "kind": "item",
+    "occurred_at": "2025-05-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/05/06/2025-07976/extension-of-south-sudan-designation-for-temporary-protected-status",
+    "title": "Extension of South Sudan Designation for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1664,
+    "kind": "item",
+    "occurred_at": "2025-05-13T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/05/13/2025-08201/termination-of-the-designation-of-afghanistan-for-temporary-protected-status",
+    "title": "Termination of the Designation of Afghanistan for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1598,
+    "kind": "item",
+    "occurred_at": "2025-05-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/05/15/2025-08618/voting-system-manufacturer-registration-application-for-testing-anomaly-reporting-and-root-cause",
+    "title": "Voting System Manufacturer Registration, Application for Testing, Anomaly Reporting and Root Cause Analysis, Survey and Submission to OMB of Proposed Collection of Information"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1596,
+    "kind": "item",
+    "occurred_at": "2025-05-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/05/16/2025-08791/agency-information-collection-activities-eac-budget-expenditures-worksheet",
+    "title": "Agency Information Collection Activities: EAC Budget Expenditures Worksheet"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1597,
+    "kind": "item",
+    "occurred_at": "2025-05-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/05/16/2025-08787/agency-information-collection-activities-eac-federal-financial-report",
+    "title": "Agency Information Collection Activities: EAC Federal Financial Report"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1595,
+    "kind": "item",
+    "occurred_at": "2025-05-23T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/05/23/2025-09336/technical-guidelines-development-committee-tgdc-notice-of-vacancy",
+    "title": "Technical Guidelines Development Committee (TGDC) Notice of Vacancy"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1663,
+    "kind": "item",
+    "occurred_at": "2025-06-04T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/04/2025-10236/termination-of-the-designation-of-cameroon-for-temporary-protected-status",
+    "title": "Termination of the Designation of Cameroon for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1662,
+    "kind": "item",
+    "occurred_at": "2025-06-05T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/05/2025-10237/lee-s-altman-md-decision-and-order",
+    "title": "Lee S. Altman, M.D.; Decision and Order"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1661,
+    "kind": "item",
+    "occurred_at": "2025-06-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/06/2025-10363/termination-of-the-designation-of-nepal-for-temporary-protected-status",
+    "title": "Termination of the Designation of Nepal for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1594,
+    "kind": "item",
+    "occurred_at": "2025-06-11T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/11/2025-10679/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1592,
+    "kind": "item",
+    "occurred_at": "2025-06-13T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/13/2025-10980/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1593,
+    "kind": "item",
+    "occurred_at": "2025-06-13T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/13/2025-10845/agency-information-collection-activities-extension-nafta-regulations-and-certificate-of-origin",
+    "title": "Agency Information Collection Activities; Extension; NAFTA Regulations and Certificate of Origin"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1591,
+    "kind": "item",
+    "occurred_at": "2025-06-17T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/17/2025-11087/request-for-comment-us-elections-survey-election-office-staffing",
+    "title": "Request for Comment: U.S. Elections Survey-Election Office Staffing"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1590,
+    "kind": "item",
+    "occurred_at": "2025-06-27T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/27/2025-11965/imposition-and-collection-of-civil-penalties-for-certain-immigration-related-violations",
+    "title": "Imposition and Collection of Civil Penalties for Certain Immigration-Related Violations"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1589,
+    "kind": "item",
+    "occurred_at": "2025-06-30T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/06/30/2025-12058/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1588,
+    "kind": "item",
+    "occurred_at": "2025-07-01T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/01/2025-12224/termination-of-the-designation-of-haiti-for-temporary-protected-status",
+    "title": "Termination of the Designation of Haiti for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1657,
+    "kind": "item",
+    "occurred_at": "2025-07-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/08/2025-12688/termination-of-the-designation-of-nicaragua-for-temporary-protected-status",
+    "title": "Termination of the Designation of Nicaragua for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1658,
+    "kind": "item",
+    "occurred_at": "2025-07-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/08/2025-12621/termination-of-the-designation-of-honduras-for-temporary-protected-status",
+    "title": "Termination of the Designation of Honduras for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1587,
+    "kind": "item",
+    "occurred_at": "2025-07-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/14/2025-13167/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1656,
+    "kind": "item",
+    "occurred_at": "2025-07-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/16/2025-13318/revised-specification-pursuant-to-the-personal-responsibility-and-work-opportunity-reconciliation",
+    "title": "Revised Specification Pursuant to the Personal Responsibility and Work Opportunity Reconciliation Act of 1996"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1585,
+    "kind": "item",
+    "occurred_at": "2025-07-18T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/18/2025-13491/agency-information-collection-activities-eac-budget-expenditures-worksheet",
+    "title": "Agency Information Collection Activities: EAC Budget Expenditures Worksheet"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1586,
+    "kind": "item",
+    "occurred_at": "2025-07-18T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/18/2025-13482/agency-information-collection-activities-eac-federal-financial-report",
+    "title": "Agency Information Collection Activities: EAC Federal Financial Report"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1584,
+    "kind": "item",
+    "occurred_at": "2025-07-21T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/21/2025-13588/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1583,
+    "kind": "item",
+    "occurred_at": "2025-07-24T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/24/2025-13959/voting-system-manufacturer-registration-application-for-testing-anomaly-reporting-and-root-cause",
+    "title": "Voting System Manufacturer Registration, Application for Testing, Anomaly Reporting and Root Cause Analysis, Survey and Submission to OMB of Proposed Collection of Information"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1582,
+    "kind": "item",
+    "occurred_at": "2025-07-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/29/2025-14299/notice-request-for-comment-correction",
+    "title": "Notice; Request for Comment; Correction"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1655,
+    "kind": "item",
+    "occurred_at": "2025-08-07T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/08/07/2025-14992/normalizing-unmanned-aircraft-systems-beyond-visual-line-of-sight-operations",
+    "title": "Normalizing Unmanned Aircraft Systems Beyond Visual Line of Sight Operations"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1581,
+    "kind": "item",
+    "occurred_at": "2025-08-21T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/08/21/2025-15930/petition-of-america-first-legal-foundation-for-rulemaking-before-the-election-assistance-commission",
+    "title": "Petition of America First Legal Foundation for Rulemaking Before the Election Assistance Commission"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1580,
+    "kind": "item",
+    "occurred_at": "2025-08-27T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/08/27/2025-16432/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1579,
+    "kind": "item",
+    "occurred_at": "2025-08-28T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/08/28/2025-16554/establishing-a-fixed-time-period-of-admission-and-an-extension-of-stay-procedure-for-nonimmigrant",
+    "title": "Establishing a Fixed Time Period of Admission and an Extension of Stay Procedure for Nonimmigrant Academic Students, Exchange Visitors, and Representatives of Foreign Information Media"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1652,
+    "kind": "item",
+    "occurred_at": "2025-09-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/09/08/2025-17087/termination-of-the-2021-designation-of-venezuela-for-temporary-protected-status",
+    "title": "Termination of the 2021 Designation of Venezuela for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1578,
+    "kind": "item",
+    "occurred_at": "2025-09-18T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/09/18/2025-18050/notice-of-implementation-of-2025-naturalization-civics-test",
+    "title": "Notice of Implementation of 2025 Naturalization Civics Test"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1651,
+    "kind": "item",
+    "occurred_at": "2025-09-22T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/09/22/2025-18322/termination-of-the-designation-of-syria-for-temporary-protected-status",
+    "title": "Termination of the Designation of Syria for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1650,
+    "kind": "item",
+    "occurred_at": "2025-10-30T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/10/30/2025-19702/removal-of-the-automatic-extension-of-employment-authorization-documents",
+    "title": "Removal of the Automatic Extension of Employment Authorization Documents"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1577,
+    "kind": "item",
+    "occurred_at": "2025-10-31T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/10/31/2025-19735/privacy-act-of-1974-system-of-records",
+    "title": "Privacy Act of 1974; System of Records"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1649,
+    "kind": "item",
+    "occurred_at": "2025-11-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/11/03/2025-19747/collection-and-use-of-biometrics-by-us-citizenship-and-immigration-services",
+    "title": "Collection and Use of Biometrics by U.S. Citizenship and Immigration Services"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1648,
+    "kind": "item",
+    "occurred_at": "2025-11-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/11/06/2025-19800/termination-of-the-designation-of-south-sudan-for-temporary-protected-status",
+    "title": "Termination of the Designation of South Sudan for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1647,
+    "kind": "item",
+    "occurred_at": "2025-11-19T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/11/19/2025-20278/public-charge-ground-of-inadmissibility",
+    "title": "Public Charge Ground of Inadmissibility"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1576,
+    "kind": "item",
+    "occurred_at": "2025-11-25T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/11/25/2025-21069/termination-of-the-designation-of-burma-myanmar-for-temporary-protected-status",
+    "title": "Termination of the Designation of Burma (Myanmar) for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1575,
+    "kind": "item",
+    "occurred_at": "2025-11-28T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/11/28/2025-21379/termination-of-the-designation-of-haiti-for-temporary-protected-status",
+    "title": "Termination of the Designation of Haiti for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1644,
+    "kind": "item",
+    "occurred_at": "2025-12-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/12/15/2025-22746/termination-of-the-designation-of-ethiopia-for-temporary-protected-status",
+    "title": "Termination of the Designation of Ethiopia for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1643,
+    "kind": "item",
+    "occurred_at": "2025-12-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/12/29/2025-23853/weighted-selection-process-for-registrants-and-petitioners-seeking-to-file-cap-subject-h-1b",
+    "title": "Weighted Selection Process for Registrants and Petitioners Seeking To File Cap-Subject H-1B Petitions"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1642,
+    "kind": "item",
+    "occurred_at": "2025-12-30T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/12/30/2025-23970/security-bars-and-processing-confirmation-of-effective-date-partial-withdrawal",
+    "title": "Security Bars and Processing; Confirmation of Effective Date; Partial Withdrawal"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1574,
+    "kind": "item",
+    "occurred_at": "2026-01-12T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/01/12/2026-00303/agency-information-collection-activities-proposals-submissions-and-approvals-2026-election",
+    "title": "Agency Information Collection Activities; Proposals, Submissions, and Approvals; 2026 Election Administration and Voting Survey"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1641,
+    "kind": "item",
+    "occurred_at": "2026-01-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/01/14/2026-00596/termination-of-the-designation-of-somalia-for-temporary-protected-status",
+    "title": "Termination of the Designation of Somalia for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1640,
+    "kind": "item",
+    "occurred_at": "2026-01-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/01/15/2026-00724/intent-to-request-revision-from-omb-of-one-current-public-collection-of-information-tsa-precheck",
+    "title": "Intent To Request Revision From OMB of One Current Public Collection of Information: TSA PreCheck® Application Program"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1639,
+    "kind": "item",
+    "occurred_at": "2026-01-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/01/16/2026-00830/improving-continuity-for-religious-organizations-and-their-employees",
+    "title": "Improving Continuity for Religious Organizations and Their Employees"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1573,
+    "kind": "item",
+    "occurred_at": "2026-02-02T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/02/02/2026-01967/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1638,
+    "kind": "item",
+    "occurred_at": "2026-02-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/02/03/2026-02131/exercise-of-time-limited-authority-to-increase-the-fiscal-year-2026-numerical-limitation-for-the",
+    "title": "Exercise of Time-Limited Authority To Increase the Fiscal Year 2026 Numerical Limitation for the H-2B Temporary Nonagricultural Worker Program"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1617,
+    "kind": "item",
+    "occurred_at": "2026-02-05T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/02/05/2026-02288/registering-emergency-medical-services-agencies-under-the-protecting-patient-access-to-emergency",
+    "title": "Registering Emergency Medical Services Agencies Under the Protecting Patient Access to Emergency Medications Act of 2017"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1572,
+    "kind": "item",
+    "occurred_at": "2026-02-10T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/02/10/2026-02662/electronic-export-manifest-for-vessel-cargo",
+    "title": "Electronic Export Manifest for Vessel Cargo"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1571,
+    "kind": "item",
+    "occurred_at": "2026-02-23T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/02/23/2026-03583/request-for-comment-election-audit-standards",
+    "title": "Request for Comment: Election Audit Standards"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1570,
+    "kind": "item",
+    "occurred_at": "2026-02-25T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/02/25/2026-03765/request-for-comment-election-audit-standards-correction",
+    "title": "Request for Comment: Election Audit Standards; Correction"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1637,
+    "kind": "item",
+    "occurred_at": "2026-03-02T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/03/02/2026-04136/office-of-the-chief-administrative-hearing-officer-electronic-filing",
+    "title": "Office of the Chief Administrative Hearing Officer Electronic Filing"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1636,
+    "kind": "item",
+    "occurred_at": "2026-03-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/03/03/2026-04179/termination-of-the-designation-of-yemen-for-temporary-protected-status",
+    "title": "Termination of the Designation of Yemen for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1569,
+    "kind": "item",
+    "occurred_at": "2026-03-09T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/03/09/2026-04539/technical-guidelines-development-committee-tgdc-notice-of-vacancy",
+    "title": "Technical Guidelines Development Committee (TGDC) Notice of Vacancy"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1567,
+    "kind": "item",
+    "occurred_at": "2026-03-31T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/03/31/2026-06181/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1568,
+    "kind": "item",
+    "occurred_at": "2026-03-31T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/03/31/2026-06180/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1566,
+    "kind": "item",
+    "occurred_at": "2026-04-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/04/08/2026-06772/notice-system-end-of-life-status",
+    "title": "Notice: System End-of-Life Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1565,
+    "kind": "item",
+    "occurred_at": "2026-04-13T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/04/13/2026-07092/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1564,
+    "kind": "item",
+    "occurred_at": "2026-04-23T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/04/23/2026-07930/agency-information-collection-activities-2026-election-administration-and-voting-survey",
+    "title": "Agency Information Collection Activities: 2026 Election Administration and Voting Survey"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1615,
+    "kind": "item",
+    "occurred_at": "2026-04-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/04/29/2026-08317/privacy-act-of-1974-systems-of-records",
+    "title": "Privacy Act of 1974; Systems of Records"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1635,
+    "kind": "item",
+    "occurred_at": "2026-04-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/04/29/2026-08333/uscis-immigration-fees-and-related-procedures-required-by-hr1-reconciliation-bill",
+    "title": "USCIS Immigration Fees and Related Procedures Required by H.R.1 Reconciliation Bill"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1563,
+    "kind": "item",
+    "occurred_at": "2026-05-05T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/05/2026-08728/national-flood-insurance-program-nfip-assistance-to-private-sector-property-insurers-notice-of-fy",
+    "title": "National Flood Insurance Program (NFIP); Assistance to Private Sector Property Insurers, Notice of FY 2027 Arrangement"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1562,
+    "kind": "item",
+    "occurred_at": "2026-05-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/08/2026-09156/revising-definitions-of-adjudicated-as-a-mental-defective-and-committed-to-a-mental-institution",
+    "title": "Revising Definitions of “Adjudicated as a Mental Defective” and “Committed to a Mental Institution”"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1614,
+    "kind": "item",
+    "occurred_at": "2026-05-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/08/2026-09182/revising-firearms-transaction-record-form-4473",
+    "title": "Revising Firearms Transaction Record, “Form 4473”"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1634,
+    "kind": "item",
+    "occurred_at": "2026-05-08T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/08/2026-09157/revising-non-over-the-counter-firearms-transaction-requirements",
+    "title": "Revising Non-Over-the-Counter Firearms Transaction Requirements"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1561,
+    "kind": "item",
+    "occurred_at": "2026-05-12T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/12/2026-09423/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1632,
+    "kind": "item",
+    "occurred_at": "2026-05-18T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/18/2026-09879/fee-for-fingerprints-collected-by-cbp",
+    "title": "Fee for Fingerprints Collected by CBP"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1631,
+    "kind": "item",
+    "occurred_at": "2026-05-20T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/20/2026-10082/increasing-the-fee-for-certain-aliens-ordered-removed-in-absentia-as-established-by-the-hr-1",
+    "title": "Increasing the Fee for Certain Aliens Ordered Removed in Absentia as Established by the HR-1 Reconciliation Bill"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1560,
+    "kind": "item",
+    "occurred_at": "2026-05-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/29/2026-10817/regulation-for-federal-financial-assistance",
+    "title": "Regulation for Federal Financial Assistance"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1630,
+    "kind": "item",
+    "occurred_at": "2026-05-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/05/29/2026-10704/extension-of-lebanon-designation-for-temporary-protected-status",
+    "title": "Extension of Lebanon Designation for Temporary Protected Status"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1629,
+    "kind": "item",
+    "occurred_at": "2026-06-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/06/03/2026-11136/revision-of-agency-information-collection-activity-under-omb-review-tsa-precheck-application-program",
+    "title": "Revision of Agency Information Collection Activity Under OMB Review: TSA PreCheck® Application Program"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1628,
+    "kind": "item",
+    "occurred_at": "2026-06-05T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/06/05/2026-11285/clarification-of-discretionary-employment-authorization-for-certain-aliens",
+    "title": "Clarification of Discretionary Employment Authorization for Certain Aliens"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1559,
+    "kind": "item",
+    "occurred_at": "2026-06-23T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/06/23/2026-12542/naturalization-application-fee-adjustments",
+    "title": "Naturalization Application Fee Adjustments"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 1627,
+    "kind": "item",
+    "occurred_at": "2026-06-29T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/06/29/2026-13057/alien-registration-form-and-evidence-of-registration",
+    "title": "Alien Registration Form and Evidence of Registration"
+  }
+]
