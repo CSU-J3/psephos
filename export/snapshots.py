@@ -8,6 +8,8 @@ Two products, one file each under data/:
                  additively -- every item still appears exactly once.
   cases.json  -- per-case timelines: CourtListener docket entries (A1) plus the
                  tracker framing (B2). No news, no litigation<->news join.
+  executive.json -- the executive channel as a flat, date-ordered list: Federal
+                 Register documents (A1). No bill/case scope, no clustering.
 
 The output is byte-identical for an unchanged DB: entries sort by (date, id),
 cluster members by id, object keys are sorted, and NO wall-clock timestamp is
@@ -26,6 +28,7 @@ import db
 
 BILLS_PATH = "data/bills.json"
 CASES_PATH = "data/cases.json"
+EXECUTIVE_PATH = "data/executive.json"
 
 # A cluster node needs at least this many members; a lone anchor match stays a
 # standalone item (a 1-member "cluster" would add nothing and only obscure it).
@@ -213,6 +216,15 @@ def build_cases(conn) -> list[dict]:
     return out
 
 
+def build_executive(conn) -> list[dict]:
+    """The executive channel as a flat, date-ordered list. No bill/case scope and
+    no clustering (anchors are bill-scoped); reuses _item_entry / _sort_key."""
+    rows = conn.execute(
+        "SELECT * FROM items WHERE channel = 'executive' ORDER BY occurred_at, id"
+    ).fetchall()
+    return sorted((_item_entry(r) for r in rows), key=_sort_key)
+
+
 def write_json(path: str, obj) -> bytes:
     """Write `obj` deterministically: sorted keys, UTF-8, LF, no BOM, trailing
     newline, no wall-clock timestamp. Returns the bytes written (handy for tests)."""
@@ -231,15 +243,18 @@ def main() -> int:
     try:
         bills = build_bills(conn, anchors)
         cases = build_cases(conn)
+        executive = build_executive(conn)
     finally:
         conn.close()
 
     write_json(BILLS_PATH, bills)
     write_json(CASES_PATH, cases)
+    write_json(EXECUTIVE_PATH, executive)
 
     nodes = sum(1 for b in bills for e in b["timeline"] if e["kind"] == "cluster")
-    print(f"  wrote {BILLS_PATH} ({len(bills)} bills) and {CASES_PATH} "
-          f"({len(cases)} cases); {nodes} cluster node(s)")
+    print(f"  wrote {BILLS_PATH} ({len(bills)} bills), {CASES_PATH} "
+          f"({len(cases)} cases), and {EXECUTIVE_PATH} ({len(executive)} executive); "
+          f"{nodes} cluster node(s)")
     return 0
 
 
