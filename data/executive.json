@@ -52,6 +52,16 @@
   {
     "channel": "executive",
     "grade": "A1",
+    "id": 3145,
+    "kind": "item",
+    "occurred_at": "2025-01-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/17/2025-01470/strengthening-and-promoting-innovation-in-the-nations-cybersecurity",
+    "title": "EO 14144: Strengthening and Promoting Innovation in the Nation's Cybersecurity"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
     "id": 1606,
     "kind": "item",
     "occurred_at": "2025-01-17T00:00:00",
@@ -112,6 +122,16 @@
   {
     "channel": "executive",
     "grade": "A1",
+    "id": 3144,
+    "kind": "item",
+    "occurred_at": "2025-01-20T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/01/29/2025-01954/holding-former-government-officials-accountable-for-election-interference-and-improper-disclosure-of",
+    "title": "EO 14152: Holding Former Government Officials Accountable for Election Interference and Improper Disclosure of Sensitive Governmental Information"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
     "id": 1605,
     "kind": "item",
     "occurred_at": "2025-01-22T00:00:00",
@@ -132,12 +152,52 @@
   {
     "channel": "executive",
     "grade": "A1",
+    "id": 3143,
+    "kind": "item",
+    "occurred_at": "2025-02-04T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/02/10/2025-02504/withdrawing-the-united-states-from-and-ending-funding-to-certain-united-nations-organizations-and",
+    "title": "EO 14199: Withdrawing the United States From and Ending Funding to Certain United Nations Organizations and Reviewing United States Support to All International Organizations"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3142,
+    "kind": "item",
+    "occurred_at": "2025-02-12T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/02/18/2025-02841/one-voice-for-americas-foreign-relations",
+    "title": "EO 14211: One Voice for America's Foreign Relations"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3141,
+    "kind": "item",
+    "occurred_at": "2025-02-18T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/02/24/2025-03063/ensuring-accountability-for-all-agencies",
+    "title": "EO 14215: Ensuring Accountability for All Agencies"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
     "id": 1603,
     "kind": "item",
     "occurred_at": "2025-03-04T00:00:00",
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2025/03/04/2025-03460/agency-information-collection-activities-national-mail-voter-registration-form",
     "title": "Agency Information Collection Activities: National Mail Voter Registration Form"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3140,
+    "kind": "item",
+    "occurred_at": "2025-03-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/11/2025-03989/addressing-risks-from-perkins-coie-llp",
+    "title": "EO 14230: Addressing Risks From Perkins Coie LLP"
   },
   {
     "channel": "executive",
@@ -158,6 +218,56 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2025/03/14/2025-04127/agency-information-collection-activities-proposed-collection-comments-requested-extension-of-a",
     "title": "Agency Information Collection Activities; Proposed Collection; Comments Requested; Extension of a Previously Approved Collection; Request for New Recognition, Renewal of Recognition, Extension of Recognition of a Non-Profit Religious, Charitable, Social Service, or Similar Organization (Form EOIR-31"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3139,
+    "kind": "item",
+    "occurred_at": "2025-03-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/20/2025-04867/addressing-risks-from-paul-weiss",
+    "title": "EO 14237: Addressing Risks From Paul Weiss"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3138,
+    "kind": "item",
+    "occurred_at": "2025-03-24T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/27/2025-05440/imposing-tariffs-on-countries-importing-venezuelan-oil",
+    "title": "EO 14245: Imposing Tariffs on Countries Importing Venezuelan Oil"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3136,
+    "kind": "item",
+    "occurred_at": "2025-03-25T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/28/2025-05523/preserving-and-protecting-the-integrity-of-american-elections",
+    "title": "EO 14248: Preserving and Protecting the Integrity of American Elections"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3137,
+    "kind": "item",
+    "occurred_at": "2025-03-25T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/03/28/2025-05519/addressing-risks-from-jenner-and-block",
+    "title": "EO 14246: Addressing Risks From Jenner & Block"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3135,
+    "kind": "item",
+    "occurred_at": "2025-03-27T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/03/2025-05845/addressing-risks-from-wilmerhale",
+    "title": "EO 14250: Addressing Risks From WilmerHale"
   },
   {
     "channel": "executive",
@@ -198,6 +308,16 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2025/04/04/2025-05903/implementation-of-employment-authorization-for-individuals-covered-by-deferred-enforced-departure",
     "title": "Implementation of Employment Authorization for Individuals Covered by Deferred Enforced Departure for Hong Kong"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3134,
+    "kind": "item",
+    "occurred_at": "2025-04-09T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/04/15/2025-06458/addressing-risks-from-susman-godfrey",
+    "title": "EO 14263: Addressing Risks From Susman Godfrey"
   },
   {
     "channel": "executive",
@@ -362,6 +482,16 @@
   {
     "channel": "executive",
     "grade": "A1",
+    "id": 3133,
+    "kind": "item",
+    "occurred_at": "2025-06-30T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/07/03/2025-12506/providing-for-the-revocation-of-syria-sanctions",
+    "title": "EO 14312: Providing for the Revocation of Syria Sanctions"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
     "id": 1588,
     "kind": "item",
     "occurred_at": "2025-07-01T00:00:00",
@@ -458,6 +588,16 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2025/07/29/2025-14299/notice-request-for-comment-correction",
     "title": "Notice; Request for Comment; Correction"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3132,
+    "kind": "item",
+    "occurred_at": "2025-07-30T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2025/08/05/2025-14896/addressing-threats-to-the-united-states-by-the-government-of-brazil",
+    "title": "EO 14323: Addressing Threats to the United States by the Government of Brazil"
   },
   {
     "channel": "executive",
@@ -762,6 +902,16 @@
   {
     "channel": "executive",
     "grade": "A1",
+    "id": 3131,
+    "kind": "item",
+    "occurred_at": "2026-03-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/03/19/2026-05497/establishing-the-task-force-to-eliminate-fraud",
+    "title": "EO 14395: Establishing the Task Force To Eliminate Fraud"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
     "id": 1567,
     "kind": "item",
     "occurred_at": "2026-03-31T00:00:00",
@@ -778,6 +928,16 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/03/31/2026-06180/sunshine-act-meetings",
     "title": "Sunshine Act Meetings"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 3130,
+    "kind": "item",
+    "occurred_at": "2026-03-31T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/04/03/2026-06601/ensuring-citizenship-verification-and-integrity-in-federal-elections",
+    "title": "EO 14399: Ensuring Citizenship Verification and Integrity in Federal Elections"
   },
   {
     "channel": "executive",

@@ -923,9 +923,17 @@
             "source_id": "google-news",
             "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPVUVhTmRhR01RVnNvbFlmSTM2M0IwMzNjb1pDMjlIaFRVNl9VVWl3d0FfVWpycXQ2MXcyQXFaMGNhTzlTNFZtQ1p1YzlPdEhDeVUtUk1VRFgzU3NyV0hreHJ0dXl6LWlPbnlqLXZVSFduZXA4TG9KbDdibEtWLVZma0Y0enlBS2JLbzJXN0ROdWhFb25IRFFUQmRyOWlFaVoyeXY4NC1IZDBGZHNsMEt4QkEyb1ZGYmVNSkFrZ3hFNnI?oc=5",
             "title": "Trump spikes housing bill at last minute, refusing to sign until SAVE America Act passes - News From The States"
+          },
+          {
+            "grade": "C3",
+            "id": 3524,
+            "occurred_at": "2026-06-24T16:22:58+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPT3ZIRlBmYnh2MDdLQnk3VUlBdi01UmRmem56OGgtV3RoYnZOdHQweExEdlFDXzdhNkdlMWhWbWlnVUpOcGF2SDloV2VURzNWT2tQMjIyNVVsSVJZTUI1d0pyc0pNRFVFUVNydzJKMVVvYkRLNzVCUXk2MU1Ic0tPNnZBQzItd3hnTlZIZzFqVkRfTmhLS3l2Um0tQzlocVpHTXV5dE1qZXRqWnJnZ3hsQtIBtgFBVV95cUxPX3JJZm9PMVhTTDFTQjdkSG1JbWpHNjhQV09XR3ZseFJ3cjJud3g2Ul8wRXA2YWpib2wyN3ZfWnFnOVUzd1JkeUhaNWREYTNOUkpuVjlrVzlFLWk0LUNTT2FCUWNDc1JHUXVZVkxETVVBbVVlak4zY3pOR1k5VktqZU9WZ3RyLWNXYVFfdXB1RlhhWC1fS0NmOXViSm1MY3oxanhkWjVQQ2NLbkRrd215N1Z0eVRhdw?oc=5",
+            "title": "Trump says he won't sign major housing bill until Congress passes SAVE Act - PBS"
           }
         ],
-        "source_count": 5
+        "source_count": 6
       },
       {
         "channel": "news",
