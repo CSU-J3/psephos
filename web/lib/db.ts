@@ -66,7 +66,7 @@ export async function getBills(): Promise<Bill[]> {
     `SELECT bill_id, bill_type, number, congress, short_title, title, sponsor,
             status, is_vehicle, latest_action, latest_action_at, introduced_at
      FROM bills
-     ORDER BY COALESCE(latest_action_at, introduced_at) DESC`,
+     ORDER BY COALESCE(latest_action_at, introduced_at) DESC, bill_id`,
   );
   return rs.rows as unknown as Bill[];
 }
@@ -77,7 +77,7 @@ export async function getCases(): Promise<Case[]> {
     `SELECT case_id, caption, court, docket_number, status, category,
             filed_at, latest_entry_at, source_url
      FROM cases
-     ORDER BY COALESCE(latest_entry_at, filed_at) DESC`,
+     ORDER BY COALESCE(latest_entry_at, filed_at) DESC, case_id`,
   );
   return rs.rows as unknown as Case[];
 }
@@ -89,7 +89,7 @@ export async function getExecutiveLatest(limit = 20): Promise<ExecItem[]> {
   const rs = await db.execute({
     sql: `SELECT id, title, source_url, occurred_at, admiralty_source, admiralty_info
           FROM items WHERE channel = 'executive'
-          ORDER BY occurred_at DESC LIMIT ?`,
+          ORDER BY occurred_at DESC, id DESC LIMIT ?`,
     args: [limit],
   });
   return rs.rows as unknown as ExecItem[];
