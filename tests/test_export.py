@@ -28,6 +28,7 @@ SOURCES = {
     "seed-cases": ("litigation", "B", "2"),
     "google-news": ("news", "C", "3"),
     "democracy-docket": ("news", "B", "2"),
+    "federal-register": ("executive", "A", "1"),
 }
 
 ANCHOR = {
@@ -218,3 +219,44 @@ def test_case_timeline_is_items_only_no_clustering():
     tl = cases[0]["timeline"]
     assert [e["kind"] for e in tl] == ["item", "item"]
     assert [e["grade"] for e in tl] == ["B2", "A1"]   # date order: framing then docket
+
+
+# --- executive channel -------------------------------------------------------
+
+def test_executive_channel_isolated_and_in_snapshot():
+    """Executive items (no bill_id/case_id) belong to build_executive only -- they
+    must never leak into a bill or case timeline, and both must surface here."""
+    conn = _conn()
+    # Two executive items, distinct dates so ordering is observable.
+    e2 = _item(conn, source_id="federal-register", title="EO 14399 on mail ballots", occurred_at="2026-03-15")
+    e1 = _item(conn, source_id="federal-register", title="EO 14248 on proof of citizenship", occurred_at="2025-03-25")
+    # A bill-scoped and a case-scoped item that MUST NOT appear in the executive list.
+    _bill(conn, "billA-119")
+    _case(conn, "1:26-cv-01352")
+    b_item = _item(conn, source_id="congress-gov", title="On passage 218-213", occurred_at="2026-02-11", bill_id="billA-119")
+    c_item = _item(conn, source_id="courtlistener", title="MOTION to Dismiss", occurred_at="2026-06-02", case_id="1:26-cv-01352")
+
+    ex = snapshots.build_executive(conn)
+    ex_ids = [e["id"] for e in ex]
+    assert ex_ids == [e1, e2]                          # date-ordered (2025 before 2026), lossless
+    assert b_item not in ex_ids and c_item not in ex_ids
+    assert all(e["channel"] == "executive" and e["grade"] == "A1" for e in ex)
+
+    # The reverse isolation: executive ids appear in no bill or case timeline.
+    bill_ids = {i for b in snapshots.build_bills(conn, []) for i in _all_ids(b["timeline"])}
+    case_ids = {i for c in snapshots.build_cases(conn) for i in _all_ids(c["timeline"])}
+    assert {e1, e2}.isdisjoint(bill_ids)
+    assert {e1, e2}.isdisjoint(case_ids)
+
+
+def test_executive_json_is_byte_identical_and_timestamp_free():
+    conn = _conn()
+    _item(conn, source_id="federal-register", title="EO 14248 on proof of citizenship", occurred_at="2025-03-25")
+    _item(conn, source_id="federal-register", title="EAC voter-registration guidance", occurred_at="2026-05-01")
+
+    out = Path(tempfile.mkdtemp())
+    b1 = snapshots.write_json(str(out / "e1.json"), snapshots.build_executive(conn))
+    b2 = snapshots.write_json(str(out / "e2.json"), snapshots.build_executive(conn))
+    assert b1 == b2                                    # unchanged DB -> empty diff
+    assert b1.endswith(b"\n")
+    assert b"2026-01-01T00:00:00" not in b1            # no fetched_at / wall-clock leaked
