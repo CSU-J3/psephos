@@ -1,17 +1,6 @@
 import type { Bill } from "@/lib/db";
 import { formatDate } from "@/lib/format";
-
-const TYPE_LABEL: Record<string, string> = {
-  hr: "H.R.",
-  s: "S.",
-  hjres: "H.J.Res.",
-  sjres: "S.J.Res.",
-};
-
-function billLabel(b: Bill): string {
-  const t = TYPE_LABEL[b.bill_type] ?? b.bill_type.toUpperCase();
-  return `${t} ${b.number}`;
-}
+import { billLabel } from "@/lib/bill";
 
 // One watched bill with its latest action. The `is_vehicle` flag is surfaced
 // loudly: an unrelated bill carrying voting provisions (S. 1383) is the whole
