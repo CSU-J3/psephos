@@ -1,0 +1,6 @@
+# pnpm 11 reads build-approval here, not from package.json's "pnpm" field. sharp
+# is Next's optional image-optimization native dep; approving its build script
+# makes `pnpm install` exit 0 (otherwise ERR_PNPM_IGNORED_BUILDS breaks both
+# `pnpm dev`/`pnpm build` locally and the Vercel install step).
+allowBuilds:
+  sharp: true

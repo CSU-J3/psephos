@@ -6,6 +6,12 @@
 __pycache__/
 *.pyc
 
+# node (web/ is the Next.js read layer; root tooling stays Python-only)
+web/node_modules/
+web/.next/
+web/.env*.local
+web/next-env.d.ts
+
 # sqlite working files (the committed db is data/psephos.db; ignore WAL sidecars)
 data/psephos.db-wal
 data/psephos.db-shm
