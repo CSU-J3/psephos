@@ -39,6 +39,21 @@ export type Case = {
   filed_at: string | null;
   latest_entry_at: string | null;
   source_url: string | null;
+  plaintiff: string | null;
+  defendant: string | null;
+};
+
+// One row of a per-bill or per-case timeline: an action/docket entry (A1) or the
+// reporting that explains it (B2/C3), carrying enough to render and grade it.
+export type TimelineItem = {
+  id: number;
+  channel: string; // legislation | news | litigation
+  title: string;
+  summary: string | null;
+  source_url: string;
+  occurred_at: string | null;
+  admiralty_source: string;
+  admiralty_info: string;
 };
 
 export type ExecItem = {
@@ -71,15 +86,64 @@ export async function getBills(): Promise<Bill[]> {
   return rs.rows as unknown as Bill[];
 }
 
+// One watched bill by id, or null if not found (the detail page 404s on null).
+export async function getBill(billId: string): Promise<Bill | null> {
+  const rs = await db.execute({
+    sql: `SELECT bill_id, bill_type, number, congress, short_title, title, sponsor,
+                 status, is_vehicle, latest_action, latest_action_at, introduced_at
+          FROM bills WHERE bill_id = ?`,
+    args: [billId],
+  });
+  return (rs.rows[0] as unknown as Bill) ?? null;
+}
+
+// The interleave: one bill's items in date order. Legislation actions (A1) and
+// the news that explains them (C3/B2) land in the same list -- the correlation a
+// plain bill tracker can't produce. Ascending so the maneuver reads top to bottom.
+export async function getBillTimeline(billId: string): Promise<TimelineItem[]> {
+  const rs = await db.execute({
+    sql: `SELECT id, channel, title, summary, source_url, occurred_at,
+                 admiralty_source, admiralty_info
+          FROM items WHERE bill_id = ?
+          ORDER BY occurred_at, id`,
+    args: [billId],
+  });
+  return rs.rows as unknown as TimelineItem[];
+}
+
 // Cases. `cases` already stores the latest entry; most-recently-moved first.
 export async function getCases(): Promise<Case[]> {
   const rs = await db.execute(
     `SELECT case_id, caption, court, docket_number, status, category,
-            filed_at, latest_entry_at, source_url
+            filed_at, latest_entry_at, source_url, plaintiff, defendant
      FROM cases
      ORDER BY COALESCE(latest_entry_at, filed_at) DESC, case_id`,
   );
   return rs.rows as unknown as Case[];
+}
+
+// One case by id (CourtListener numeric id or a hand-seeded slug), or null.
+export async function getCase(caseId: string): Promise<Case | null> {
+  const rs = await db.execute({
+    sql: `SELECT case_id, caption, court, docket_number, status, category,
+                 filed_at, latest_entry_at, source_url, plaintiff, defendant
+          FROM cases WHERE case_id = ?`,
+    args: [caseId],
+  });
+  return (rs.rows[0] as unknown as Case) ?? null;
+}
+
+// One case's items in date order: docket entries (A1) interleaved with the
+// tracker framing (B2). No news join on the litigation side.
+export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
+  const rs = await db.execute({
+    sql: `SELECT id, channel, title, summary, source_url, occurred_at,
+                 admiralty_source, admiralty_info
+          FROM items WHERE case_id = ?
+          ORDER BY occurred_at, id`,
+    args: [caseId],
+  });
+  return rs.rows as unknown as TimelineItem[];
 }
 
 // Latest executive-channel documents as a flat, date-ordered list. Intentionally
