@@ -104,6 +104,14 @@ CREATE TABLE IF NOT EXISTS case_entries (
     UNIQUE(case_id, entry_at, description)
 );
 
+-- LegiScan change-hash bookkeeping: last-seen hash per state bill, so the poll
+-- only getBill's bills whose hash moved. Bookkeeping like dedup_seen, not a dimension.
+CREATE TABLE IF NOT EXISTS state_seen (
+    bill_id     INTEGER PRIMARY KEY,   -- LegiScan bill_id
+    change_hash TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+
 -- Two-stage dedup bookkeeping for the news layer.
 -- Stage 1: canonical URL. Stage 2: content-hash plus normalized-title similarity.
 CREATE TABLE IF NOT EXISTS dedup_seen (
