@@ -257,3 +257,34 @@ news:
     near_dupe_threshold: 0.90          # rapidfuzz token_sort_ratio over normalized titles
     # Do NOT lower this: many outlets covering one event is corroboration, not duplication;
     # collapsing them destroys the multi-source signal. Event-grouping is a timeline-layer job.
+
+# ===========================================================================
+# CHANNEL 5: STATE LEGISLATION  (LegiScan API)
+# ===========================================================================
+# Items-only, mirrors the executive channel: state bills are leaf items with no
+# bill/case reference and their own data/state.json. The change-hash pattern is
+# the whole game -- one getMasterList per state per run, then getBill ONLY on
+# election bills whose change_hash moved, so the free-tier 30k queries/month cap
+# is never at risk. See collectors/state.py and the state_seen table.
+state:
+  api:
+    base: https://api.legiscan.com/
+    key_env: LEGISCAN_API_KEY          # free key: https://legiscan.com/legiscan
+  states: [TX, GA, FL, AZ, WI, PA, MI, NC, OH]   # start focused; the change-hash
+                                                 # pattern scales to all 50 if wanted
+  terms:                                         # election filter, phrase-aware (match title)
+    - election
+    - voter
+    - voting
+    - ballot
+    - voter registration
+    - voter roll
+    - proof of citizenship
+    - mail ballot
+    - absentee
+    - provisional ballot
+    - same-day registration
+    - voter id
+    - redistricting
+  max_getbill_per_run: 500        # budget guard; change-hash resumes next run if hit
+  default_grade: { source: B, info: "2" }   # LegiScan is a maintained aggregator (spec's B2 tier)
