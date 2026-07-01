@@ -41,7 +41,8 @@ jobs:
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
         run: |
           python -m collectors.legislation
-          python -m collectors.litigation
+          python -m collectors.tracker_uw      # discover the full DOJ-suit list -> data/doj_cases.json
+          python -m collectors.litigation      # then resolve + poll (reads that artifact)
           python -m collectors.executive
           python -m collectors.news
           python -m collectors.state
@@ -58,7 +59,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           # Stage only the text snapshots explicitly. NOT `git add data/`: data/psephos.db
           # is not in .gitignore, so a glob add could start committing the binary.
-          git add data/bills.json data/cases.json data/executive.json data/state.json
+          git add data/bills.json data/cases.json data/executive.json data/state.json data/doj_cases.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
