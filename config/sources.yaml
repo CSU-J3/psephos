@@ -203,12 +203,13 @@ litigation:
     - name: Democracy Docket, cases
       url: https://www.democracydocket.com/cases/
       grade: { source: B, info: "2" }
-  # Confirmed captions to seed before the tracker scrape lands; extend from the trackers above.
+  # Hand-seeds for the suits the UW tracker footnotes as RELATED but does NOT track
+  # (footnote 1: Common Cause and LWV). The tracker's own main table -- the ~31 DOJ
+  # voter-data suits, incl. the California/Weber row (ca9 / 26-1232) -- is supplied by
+  # collectors.tracker_uw as data/doj_cases.json and loaded by litigation.main(). Clean
+  # split, no overlap: config seed_cases = the footnoted related suits, artifact = the
+  # tracker table. (Weber was dropped here; it is the tracker's California row now.)
   seed_cases:
-    - caption: United States v. Weber
-      category: voter-data
-      court: C.D. Cal.
-      notes: DOJ suit for California voter rolls; dismissed.
     - caption: Common Cause v. U.S. Department of Justice
       docket_number: 1:26-cv-01352
       court: D.D.C.
