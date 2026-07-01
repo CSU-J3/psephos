@@ -38,13 +38,13 @@ jobs:
           COURTLISTENER_TOKEN: ${{ secrets.COURTLISTENER_TOKEN }}
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
-          # LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}   # phase 3
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
         run: |
           python -m collectors.legislation
           python -m collectors.litigation
           python -m collectors.executive
           python -m collectors.news
-          # python -m collectors.state        # enable in phase 3
+          python -m collectors.state
 
       - name: Export JSON snapshots
         env:
@@ -58,7 +58,7 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           # Stage only the text snapshots explicitly. NOT `git add data/`: data/psephos.db
           # is not in .gitignore, so a glob add could start committing the binary.
-          git add data/bills.json data/cases.json data/executive.json
+          git add data/bills.json data/cases.json data/executive.json data/state.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
