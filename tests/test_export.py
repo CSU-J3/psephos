@@ -29,6 +29,7 @@ SOURCES = {
     "google-news": ("news", "C", "3"),
     "democracy-docket": ("news", "B", "2"),
     "federal-register": ("executive", "A", "1"),
+    "legiscan": ("state", "B", "2"),
 }
 
 ANCHOR = {
@@ -257,6 +258,50 @@ def test_executive_json_is_byte_identical_and_timestamp_free():
     out = Path(tempfile.mkdtemp())
     b1 = snapshots.write_json(str(out / "e1.json"), snapshots.build_executive(conn))
     b2 = snapshots.write_json(str(out / "e2.json"), snapshots.build_executive(conn))
+    assert b1 == b2                                    # unchanged DB -> empty diff
+    assert b1.endswith(b"\n")
+    assert b"2026-01-01T00:00:00" not in b1            # no fetched_at / wall-clock leaked
+
+
+# --- state channel -----------------------------------------------------------
+
+def test_state_channel_isolated_and_in_snapshot():
+    """State items (no bill_id/case_id) belong to build_state only -- they must
+    never leak into a bill, case, or executive product, and both must surface here."""
+    conn = _conn()
+    s2 = _item(conn, source_id="legiscan", title="TX SB100: Committee report favorable", occurred_at="2026-02-15")
+    s1 = _item(conn, source_id="legiscan", title="GA HB50: Introduced", occurred_at="2026-01-10")
+    # bill-, case-, and executive-scoped items that MUST NOT appear in the state list
+    _bill(conn, "billA-119")
+    _case(conn, "1:26-cv-01352")
+    b_item = _item(conn, source_id="congress-gov", title="On passage 218-213", occurred_at="2026-02-11", bill_id="billA-119")
+    c_item = _item(conn, source_id="courtlistener", title="MOTION to Dismiss", occurred_at="2026-06-02", case_id="1:26-cv-01352")
+    e_item = _item(conn, source_id="federal-register", title="EO 14248 on proof of citizenship", occurred_at="2025-03-25")
+
+    st = snapshots.build_state(conn)
+    st_ids = [e["id"] for e in st]
+    assert st_ids == [s1, s2]                          # date-ordered (Jan before Feb), lossless
+    assert all(e["channel"] == "state" and e["grade"] == "B2" for e in st)
+    for other in (b_item, c_item, e_item):
+        assert other not in st_ids
+
+    # The reverse isolation: state ids appear in no bill, case, or executive product.
+    bill_ids = {i for b in snapshots.build_bills(conn, []) for i in _all_ids(b["timeline"])}
+    case_ids = {i for c in snapshots.build_cases(conn) for i in _all_ids(c["timeline"])}
+    exec_ids = {e["id"] for e in snapshots.build_executive(conn)}
+    assert {s1, s2}.isdisjoint(bill_ids)
+    assert {s1, s2}.isdisjoint(case_ids)
+    assert {s1, s2}.isdisjoint(exec_ids)
+
+
+def test_state_json_is_byte_identical_and_timestamp_free():
+    conn = _conn()
+    _item(conn, source_id="legiscan", title="TX SB100: Filed", occurred_at="2026-01-20")
+    _item(conn, source_id="legiscan", title="GA HB50: Introduced", occurred_at="2026-01-10")
+
+    out = Path(tempfile.mkdtemp())
+    b1 = snapshots.write_json(str(out / "s1.json"), snapshots.build_state(conn))
+    b2 = snapshots.write_json(str(out / "s2.json"), snapshots.build_state(conn))
     assert b1 == b2                                    # unchanged DB -> empty diff
     assert b1.endswith(b"\n")
     assert b"2026-01-01T00:00:00" not in b1            # no fetched_at / wall-clock leaked

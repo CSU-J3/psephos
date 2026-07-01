@@ -29,6 +29,7 @@ import db
 BILLS_PATH = "data/bills.json"
 CASES_PATH = "data/cases.json"
 EXECUTIVE_PATH = "data/executive.json"
+STATE_PATH = "data/state.json"
 
 # A cluster node needs at least this many members; a lone anchor match stays a
 # standalone item (a 1-member "cluster" would add nothing and only obscure it).
@@ -225,6 +226,17 @@ def build_executive(conn) -> list[dict]:
     return sorted((_item_entry(r) for r in rows), key=_sort_key)
 
 
+def build_state(conn) -> list[dict]:
+    """The state channel as a flat, date-ordered list. Items-only like executive
+    (bill_id/case_id null), no bill/case scope and no clustering; reuses
+    _item_entry / _sort_key so state entries match the item shape and stay
+    byte-stable."""
+    rows = conn.execute(
+        "SELECT * FROM items WHERE channel = 'state' ORDER BY occurred_at, id"
+    ).fetchall()
+    return sorted((_item_entry(r) for r in rows), key=_sort_key)
+
+
 def write_json(path: str, obj) -> bytes:
     """Write `obj` deterministically: sorted keys, UTF-8, LF, no BOM, trailing
     newline, no wall-clock timestamp. Returns the bytes written (handy for tests)."""
@@ -244,17 +256,19 @@ def main() -> int:
         bills = build_bills(conn, anchors)
         cases = build_cases(conn)
         executive = build_executive(conn)
+        state = build_state(conn)
     finally:
         conn.close()
 
     write_json(BILLS_PATH, bills)
     write_json(CASES_PATH, cases)
     write_json(EXECUTIVE_PATH, executive)
+    write_json(STATE_PATH, state)
 
     nodes = sum(1 for b in bills for e in b["timeline"] if e["kind"] == "cluster")
     print(f"  wrote {BILLS_PATH} ({len(bills)} bills), {CASES_PATH} "
-          f"({len(cases)} cases), and {EXECUTIVE_PATH} ({len(executive)} executive); "
-          f"{nodes} cluster node(s)")
+          f"({len(cases)} cases), {EXECUTIVE_PATH} ({len(executive)} executive), "
+          f"and {STATE_PATH} ({len(state)} state); {nodes} cluster node(s)")
     return 0
 
 
