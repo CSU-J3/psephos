@@ -31,7 +31,9 @@ Run from the repo root:  python -m collectors.state
 from __future__ import annotations
 
 import json
+import re
 import sys
+from functools import lru_cache
 
 import common
 import config
@@ -84,17 +86,27 @@ def to_item(bill: dict, action: dict, gsource: str, ginfo: str) -> dict:
 
 # --- election filter (phrase-aware) -----------------------------------------
 
+@lru_cache(maxsize=None)
+def _term_pattern(terms: tuple[str, ...]) -> "re.Pattern":
+    """Compile the terms into one word-boundary alternation, cached per unique term
+    tuple. The wrapping \\b...\\b is the whole point: a term matches only as a whole
+    word or phrase, never inside a larger word."""
+    alt = "|".join(re.escape(t.casefold()) for t in terms)
+    return re.compile(r"\b(?:" + alt + r")\b")
+
+
 def election_match(bill: dict, terms: list[str]) -> bool:
-    """Keep a bill iff its title (or description, if present) contains one of the
-    WHOLE-PHRASE terms, casefolded. Whole-phrase, never word-split: "voter
-    registration" is matched as a phrase, so a bill titled only "alien
-    registration" does NOT match (bare "registration" is not a term). Same
-    over-widening trap the executive relevance lens hit -- match on the title,
-    don't loosen the phrases into their component words."""
-    haystack = " ".join(
-        str(bill.get(k) or "") for k in ("title", "description")
-    ).casefold()
-    return any(term.casefold() in haystack for term in terms)
+    """Keep a bill iff its title (or description) contains one of the terms as a
+    WHOLE WORD/PHRASE, casefolded. Word-boundary, NOT substring: "election" does
+    not match "selection", "absentee" does not match "absenteeism", and "voter
+    registration" matches only the phrase. Paired with a deliberately narrow term
+    list -- bare "election"/"voter"/"voting"/"ballot" are excluded in config
+    because they flood with bond / ad-valorem-tax / appraiser elections that are
+    not the voting-rights fight (the executive relevance lens hit the same trap)."""
+    if not terms:
+        return False
+    hay = (str(bill.get("title") or "") + " " + str(bill.get("description") or "")).casefold()
+    return bool(_term_pattern(tuple(terms)).search(hay))
 
 
 # --- change-hash bookkeeping ------------------------------------------------

@@ -272,11 +272,11 @@ state:
     key_env: LEGISCAN_API_KEY          # free key: https://legiscan.com/legiscan
   states: [TX, GA, FL, AZ, WI, PA, MI, NC, OH]   # start focused; the change-hash
                                                  # pattern scales to all 50 if wanted
-  terms:                                         # election filter, phrase-aware (match title)
-    - election
-    - voter
-    - voting
-    - ballot
+  terms:                              # word-boundary phrase filter (see election_match).
+                                      # Bare election/voter/voting/ballot are DELIBERATELY
+                                      # excluded: they flood with bond / ad-valorem-tax /
+                                      # appraiser elections. These phrases name the actual
+                                      # voting-rights fight; the bare single words are the flood.
     - voter registration
     - voter roll
     - proof of citizenship

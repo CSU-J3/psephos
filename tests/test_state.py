@@ -27,9 +27,9 @@ from collectors import state  # noqa: E402
 FIXTURES = Path(REPO) / "tests" / "fixtures"
 BASE = "https://api.legiscan.com/"
 KEY = "test-key"
-# A representative slice of config terms -- enough to exercise the phrase-aware filter.
-TERMS = ["election", "voter", "voting", "ballot", "voter registration",
-         "voter roll", "mail ballot", "absentee", "redistricting"]
+# Mirrors config/sources.yaml state.terms: narrow phrases only, no bare loose words.
+TERMS = ["voter registration", "voter roll", "proof of citizenship", "mail ballot",
+         "absentee", "provisional ballot", "same-day registration", "voter id", "redistricting"]
 GRADE = ("B", "2")
 
 
@@ -109,16 +109,37 @@ def test_title_truncation():
     assert len(state.to_item(bill, action, "B", "2")["title"]) == 300
 
 
-def test_election_filter_phrase_aware():
-    keep_reg = {"title": "Relating to voter registration procedures"}
-    keep_ballot = {"title": "Relating to mail ballot return deadlines"}
-    # Bare "registration" is NOT a term; "voter registration" as a phrase must not
-    # match "alien registration" -- guards against word-splitting the phrases.
-    drop_alien = {"title": "Relating to alien registration of nonresident business agents",
-                  "description": "An act relating to registration of nonresident business agents."}
-    assert state.election_match(keep_reg, TERMS)
-    assert state.election_match(keep_ballot, TERMS)
-    assert not state.election_match(drop_alien, TERMS)
+def test_election_filter_matches_real_voting_bills():
+    # The actual voting-rights fight matches on its phrase term.
+    assert state.election_match({"title": "Relating to voter registration list maintenance"}, TERMS)
+    assert state.election_match({"title": "Relating to proof of citizenship for voter eligibility"}, TERMS)
+    assert state.election_match({"title": "Relating to mail ballot return deadlines"}, TERMS)
+    assert state.election_match({"title": "Relating to redistricting of legislative districts"}, TERMS)
+    # A phrase can match via the description too.
+    assert state.election_match(
+        {"title": "An omnibus elections bill", "description": "Provides for same-day registration."}, TERMS)
+
+
+def test_election_filter_word_boundary():
+    # Word-boundary, NOT substring: a term must not match inside a larger word.
+    # "election" (were it a term) must not fire on "selection"; "absentee" must not
+    # fire on "absenteeism". These pin the regression the substring filter caused.
+    assert not state.election_match(
+        {"title": "Relating to the selection of the chief appraiser of an appraisal district"}, TERMS)
+    assert not state.election_match(
+        {"title": "Relating to workplace absenteeism reporting requirements"}, TERMS)
+
+
+def test_election_filter_drops_loose_and_offtopic():
+    # Loose-term guard: a bare ad-valorem tax-rate "election" must NOT match now
+    # that bare "election" is out of the term list (it was the flood).
+    assert not state.election_match(
+        {"title": "Relating to the vote required in an election to approve an ad valorem tax rate",
+         "description": "Concerns a local ad valorem tax rate election."}, TERMS)
+    # Phrase-aware: bare "registration" is not a term; "alien registration" must not match.
+    assert not state.election_match(
+        {"title": "Relating to alien registration of nonresident business agents",
+         "description": "An act relating to registration of nonresident business agents."}, TERMS)
 
 
 # --- change-hash pipeline (temp DB + faked LegiScan) ------------------------
@@ -222,7 +243,9 @@ def test_bad_state_isolated():
 if __name__ == "__main__":
     test_to_item()
     test_title_truncation()
-    test_election_filter_phrase_aware()
+    test_election_filter_matches_real_voting_bills()
+    test_election_filter_word_boundary()
+    test_election_filter_drops_loose_and_offtopic()
     test_collect_filters_changes_and_writes()
     test_change_hash_gate_skips_unchanged()
     test_idempotent_across_runs()
