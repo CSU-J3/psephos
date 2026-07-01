@@ -25,6 +25,7 @@ import json
 import re
 import sys
 import time
+from pathlib import Path
 
 import common
 import config
@@ -35,6 +36,7 @@ API_SOURCE_ID = "courtlistener"   # A1 docket records
 SEED_SOURCE_ID = "seed-cases"     # B2 hand/tracker case metadata
 CL_BASE_WEB = "https://www.courtlistener.com"
 USER_AGENT = "psephos/0.1 (+https://github.com/CSU-J3/psephos)"
+TRACKER_ARTIFACT = "data/doj_cases.json"   # the full DOJ-suit list (collectors.tracker_uw)
 
 PAGE_THROTTLE = 2.0   # seconds between CourtListener requests (rate limit is real)
 EMPTY_RETRIES = 5     # retries for an unexpectedly empty page before giving up
@@ -129,14 +131,29 @@ def register_sources(conn) -> None:
     }, pk="id")
 
 
+def _existing_caption(conn, case_id: str) -> str | None:
+    r = conn.execute("SELECT caption FROM cases WHERE case_id = ?", (case_id,)).fetchone()
+    return r["caption"] if r else None
+
+
 def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | None:
     """Upsert the case row. API-derived fields are written only when we have the
     docket JSON (a fresh resolve), so a reuse run never clobbers them with None.
-    Returns the API date_filed when available."""
-    plaintiff, defendant = split_caption(seed["caption"])
+    Returns the API date_filed when available.
+
+    The caption is authoritative only from the fresh docket's CourtListener
+    `case_name` (e.g. "United States v. Wisconsin Elections Commission"), which
+    replaces the provisional seed caption ("United States v. Wisconsin"). On a
+    reuse run (docket is None) we keep the stored caption rather than reverting it
+    to the seed; the seed caption is used only when nothing better exists yet."""
+    if docket is not None:
+        caption = docket.get("case_name") or seed["caption"]
+    else:
+        caption = _existing_caption(conn, case_id) or seed["caption"]
+    plaintiff, defendant = split_caption(caption)
     row = {
         "case_id": case_id,
-        "caption": seed["caption"],
+        "caption": caption,
         "court": seed.get("court"),
         "docket_number": seed.get("docket_number"),
         "category": seed.get("category"),
@@ -269,6 +286,17 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
             "total_entries": len(entries), **counts}
 
 
+def load_tracker_seeds(path: str = TRACKER_ARTIFACT) -> list[dict]:
+    """The DOJ-suit seeds discovered by collectors.tracker_uw, if the artifact
+    exists. Each entry already matches the collect_case seed contract (caption,
+    docket_number, court, court_id, category, notes). A missing artifact is not an
+    error -- the config seed_cases still run."""
+    p = Path(path)
+    if not p.exists():
+        return []
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
 def main() -> int:
     config.load_env()
     db.init_db()
@@ -284,7 +312,11 @@ def main() -> int:
     try:
         register_sources(conn)
         conn.commit()
-        for seed in lit.get("seed_cases", []):
+        config_seeds = lit.get("seed_cases", [])
+        tracker_seeds = load_tracker_seeds()
+        print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
+              f"tracker case(s) from {TRACKER_ARTIFACT}")
+        for seed in config_seeds + tracker_seeds:
             r = collect_case(conn, base, headers, seed, types, excludes)
             tag = (f"docket {r.get('docket_id')}  {r.get('total_entries', 0)} entries  "
                    f"+{r['new_entries']} entries  +{r['new_items']} A1 items") if r.get("resolved") \
