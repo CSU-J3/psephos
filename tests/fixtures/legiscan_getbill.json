@@ -1,0 +1,22 @@
+{
+  "status": "OK",
+  "bill": {
+    "bill_id": 1700001,
+    "state": "TX",
+    "bill_number": "SB100",
+    "change_hash": "aaa111",
+    "url": "https://legiscan.com/TX/bill/SB100/2026",
+    "state_link": "https://capitol.texas.gov/BillLookup/History.aspx?LegSess=2026&Bill=SB100",
+    "title": "Relating to voter registration procedures",
+    "description": "An act relating to voter registration list maintenance.",
+    "subjects": [
+      {"subject_id": 101, "subject_name": "Elections"},
+      {"subject_id": 102, "subject_name": "Voter Registration"}
+    ],
+    "history": [
+      {"date": "2026-01-20", "action": "Filed", "chamber": "S", "chamber_id": 1, "importance": 1},
+      {"date": "2026-02-01", "action": "Referred to Committee on State Affairs", "chamber": "S", "chamber_id": 1, "importance": 1},
+      {"date": "2026-02-15", "action": "Committee report favorable", "chamber": "S", "chamber_id": 1, "importance": 1}
+    ]
+  }
+}

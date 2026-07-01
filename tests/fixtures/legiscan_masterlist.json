@@ -1,0 +1,48 @@
+{
+  "status": "OK",
+  "masterlist": {
+    "session": {
+      "session_id": 2043,
+      "state_id": 43,
+      "year_start": 2026,
+      "year_end": 2026,
+      "session_name": "2026 Regular Session"
+    },
+    "0": {
+      "bill_id": 1700001,
+      "number": "SB100",
+      "change_hash": "aaa111",
+      "url": "https://legiscan.com/TX/bill/SB100/2026",
+      "status_date": "2026-02-01",
+      "status": 1,
+      "last_action_date": "2026-02-01",
+      "last_action": "Referred to Committee on State Affairs",
+      "title": "Relating to voter registration procedures",
+      "description": "An act relating to voter registration list maintenance."
+    },
+    "1": {
+      "bill_id": 1700002,
+      "number": "HB250",
+      "change_hash": "bbb222",
+      "url": "https://legiscan.com/TX/bill/HB250/2026",
+      "status_date": "2026-02-03",
+      "status": 1,
+      "last_action_date": "2026-02-03",
+      "last_action": "Introduced",
+      "title": "Relating to mail ballot return deadlines",
+      "description": "An act relating to absentee and mail ballot procedures."
+    },
+    "2": {
+      "bill_id": 1700003,
+      "number": "HB999",
+      "change_hash": "ccc333",
+      "url": "https://legiscan.com/TX/bill/HB999/2026",
+      "status_date": "2026-01-15",
+      "status": 1,
+      "last_action_date": "2026-01-15",
+      "last_action": "Introduced",
+      "title": "Relating to alien registration of nonresident business agents",
+      "description": "An act relating to registration of nonresident business agents."
+    }
+  }
+}

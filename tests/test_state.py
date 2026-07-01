@@ -1,0 +1,232 @@
+"""Suite for the state collector (collectors/state.py).
+
+Deterministic and offline: builds a temp SQLite DB and monkeypatches
+common.http_get with canned LegiScan-shaped payloads (getMasterList / getBill
+from tests/fixtures), then drives the real election_match / to_item / collect
+pipeline on the change-hash pattern. No network; never touches data/psephos.db.
+
+Run:  pytest tests/test_state.py
+"""
+from __future__ import annotations
+
+import json
+import os
+import sys
+import tempfile
+from contextlib import contextmanager
+from pathlib import Path
+
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, REPO)
+os.chdir(REPO)  # config / db use repo-relative paths
+
+import common  # noqa: E402
+import db  # noqa: E402
+from collectors import state  # noqa: E402
+
+FIXTURES = Path(REPO) / "tests" / "fixtures"
+BASE = "https://api.legiscan.com/"
+KEY = "test-key"
+# A representative slice of config terms -- enough to exercise the phrase-aware filter.
+TERMS = ["election", "voter", "voting", "ballot", "voter registration",
+         "voter roll", "mail ballot", "absentee", "redistricting"]
+GRADE = ("B", "2")
+
+
+def _load(name):
+    return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
+
+
+MASTERLIST = _load("legiscan_masterlist.json")
+GETBILL = _load("legiscan_getbill.json")
+
+
+@contextmanager
+def _patched(masterlist=None, getbill=None, calls=None):
+    """Patch common.http_get to dispatch on the LegiScan `op` param. `calls`, if
+    given, records (op, id-or-state) tuples so a test can assert getBill was
+    skipped for an unchanged bill."""
+    masterlist = MASTERLIST if masterlist is None else masterlist
+    getbill = GETBILL if getbill is None else getbill
+
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+        op = params["op"]
+        if calls is not None:
+            calls.append((op, params.get("id") or params.get("state")))
+        if op == "getMasterList":
+            return masterlist
+        if op == "getBill":
+            return getbill
+        raise AssertionError(f"unexpected op {op}")
+
+    orig = common.http_get
+    common.http_get = fake
+    try:
+        yield
+    finally:
+        common.http_get = orig
+
+
+def _env():
+    path = os.path.join(tempfile.mkdtemp(), "t.db")
+    db.init_db(path)
+    conn = db.connect(path)
+    state.register_source(conn, BASE, "B", "2")
+    conn.commit()
+    return conn
+
+
+def _count(conn, where="1=1", params=()):
+    return conn.execute(f"SELECT COUNT(*) AS n FROM items WHERE {where}", params).fetchone()["n"]
+
+
+def _getbill_ids(calls):
+    return [cid for (op, cid) in calls if op == "getBill"]
+
+
+# --- pure helpers (no DB, no network) ---------------------------------------
+
+def test_to_item():
+    bill = {"bill_id": 1700001, "state": "TX", "bill_number": "SB100",
+            "url": "https://legiscan.com/TX/bill/SB100/2026"}
+    action = {"date": "2026-02-01", "action": "Referred to Committee on State Affairs"}
+    row = state.to_item(bill, action, "B", "2")
+    assert row["channel"] == "state"
+    assert row["source_id"] == "legiscan"
+    assert (row["admiralty_source"], row["admiralty_info"]) == ("B", "2")
+    assert row["bill_id"] is None and row["case_id"] is None
+    assert row["title"] == "TX SB100: Referred to Committee on State Affairs"  # state + number prefix
+    assert row["summary"] == "Referred to Committee on State Affairs"
+    assert row["occurred_at"].startswith("2026-02-01")  # dated by the action, not fetch time
+    assert row["source_url"] == "https://legiscan.com/TX/bill/SB100/2026"
+    assert row["content_hash"] == common.content_hash(
+        "state", 1700001, "2026-02-01", "Referred to Committee on State Affairs")
+
+
+def test_title_truncation():
+    bill = {"bill_id": 1, "state": "TX", "bill_number": "SB1", "url": ""}
+    action = {"date": "2026-01-01", "action": "x" * 400}
+    assert len(state.to_item(bill, action, "B", "2")["title"]) == 300
+
+
+def test_election_filter_phrase_aware():
+    keep_reg = {"title": "Relating to voter registration procedures"}
+    keep_ballot = {"title": "Relating to mail ballot return deadlines"}
+    # Bare "registration" is NOT a term; "voter registration" as a phrase must not
+    # match "alien registration" -- guards against word-splitting the phrases.
+    drop_alien = {"title": "Relating to alien registration of nonresident business agents",
+                  "description": "An act relating to registration of nonresident business agents."}
+    assert state.election_match(keep_reg, TERMS)
+    assert state.election_match(keep_ballot, TERMS)
+    assert not state.election_match(drop_alien, TERMS)
+
+
+# --- change-hash pipeline (temp DB + faked LegiScan) ------------------------
+
+def test_collect_filters_changes_and_writes():
+    conn = _env()
+    calls = []
+    with _patched(calls=calls):
+        results = state.collect(conn, BASE, KEY, ["TX"], TERMS, GRADE, budget=500, throttle=0.0)
+    tx = results["TX"]
+    assert tx["election_bills"] == 2          # 2 of 3 pass the filter (alien-registration dropped)
+    assert tx["changed"] == 2                 # both new (no stored hash)
+    assert tx["getbills"] == 2
+    # the off-topic bill is never getBill'd; only the two election bills are
+    assert sorted(_getbill_ids(calls)) == [1700001, 1700002]
+    assert 1700003 not in _getbill_ids(calls)
+    # 2 bills x 3 history actions = 6 items
+    assert _count(conn, "channel='state'") == 6
+    assert tx["new_items"] == 6
+    conn.close()
+
+
+def test_change_hash_gate_skips_unchanged():
+    conn = _env()
+    # Pre-store bill 1700001's hash so it matches the masterlist -> must NOT getBill.
+    state.remember_hash(conn, 1700001, "aaa111")
+    conn.commit()
+    calls = []
+    with _patched(calls=calls):
+        results = state.collect(conn, BASE, KEY, ["TX"], TERMS, GRADE, budget=500, throttle=0.0)
+    tx = results["TX"]
+    assert _getbill_ids(calls) == [1700002]   # only the changed/new bill is fetched
+    assert 1700001 not in _getbill_ids(calls)
+    assert tx["changed"] == 1
+    assert tx["getbills"] == 1
+    assert tx["new_items"] == 3               # one bill's history only
+    conn.close()
+
+
+def test_idempotent_across_runs():
+    conn = _env()
+    with _patched():
+        first = state.collect(conn, BASE, KEY, ["TX"], TERMS, GRADE, budget=500, throttle=0.0)
+    calls = []
+    with _patched(calls=calls):
+        second = state.collect(conn, BASE, KEY, ["TX"], TERMS, GRADE, budget=500, throttle=0.0)
+    assert first["TX"]["new_items"] == 6
+    assert second["TX"]["new_items"] == 0     # nothing moved -> nothing new
+    assert _getbill_ids(calls) == []          # change-hash gate blocks every getBill
+    assert _count(conn, "channel='state'") == 6
+    conn.close()
+
+
+def test_insert_ignore_same_action_once():
+    conn = _env()
+    bill = {"bill_id": 1700001, "state": "TX", "bill_number": "SB100", "url": ""}
+    action = {"date": "2026-02-01", "action": "Referred to committee"}
+    row = state.to_item(bill, action, "B", "2")
+    assert db.insert_ignore(conn, "items", row) is True
+    assert db.insert_ignore(conn, "items", dict(row)) is False   # same content_hash -> dropped
+    assert _count(conn, "channel='state'") == 1
+    conn.close()
+
+
+def test_getbill_budget_caps_and_resumes():
+    conn = _env()
+    calls = []
+    with _patched(calls=calls):
+        results = state.collect(conn, BASE, KEY, ["TX"], TERMS, GRADE, budget=1, throttle=0.0)
+    tx = results["TX"]
+    assert len(_getbill_ids(calls)) == 1      # budget=1 -> only one getBill this run
+    assert tx["changed"] == 2                 # both seen as changed...
+    assert tx["getbills"] == 1                # ...but only one fetched
+    # the unfetched bill left NO stored hash, so a follow-up run resumes it
+    assert conn.execute("SELECT COUNT(*) AS n FROM state_seen").fetchone()["n"] == 1
+    conn.close()
+
+
+def test_bad_state_isolated():
+    conn = _env()
+
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+        if params["op"] == "getMasterList" and params["state"] == "ZZ":
+            return {"status": "ERROR", "alert": {"message": "Unknown state abbreviation"}}
+        if params["op"] == "getMasterList":
+            return MASTERLIST
+        return GETBILL
+
+    orig = common.http_get
+    common.http_get = fake
+    try:
+        results = state.collect(conn, BASE, KEY, ["ZZ", "TX"], TERMS, GRADE, budget=500, throttle=0.0)
+    finally:
+        common.http_get = orig
+    assert results["ZZ"]["error_msg"] is not None   # bad state recorded, not raised
+    assert results["ZZ"]["new_items"] == 0
+    assert results["TX"]["new_items"] == 6          # the good state is unaffected
+    conn.close()
+
+
+if __name__ == "__main__":
+    test_to_item()
+    test_title_truncation()
+    test_election_filter_phrase_aware()
+    test_collect_filters_changes_and_writes()
+    test_change_hash_gate_skips_unchanged()
+    test_idempotent_across_runs()
+    test_insert_ignore_same_action_once()
+    test_getbill_budget_caps_and_resumes()
+    test_bad_state_isolated()
+    print("ok")
