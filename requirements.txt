@@ -3,6 +3,7 @@ feedparser>=6.0
 PyYAML>=6.0
 python-dateutil>=2.9
 rapidfuzz>=3.9
+beautifulsoup4>=4.12    # UW tracker HTML parse (collectors/tracker_uw.py); stdlib html.parser backend, no lxml/binary dep
 # Pinned EXACTLY, not a floating range: the persistence layer in db.py depends on
 # this client's row/cursor API surface (tuple rows wrapped for name access,
 # lastrowid, rowcount, executescript). The API can move between releases, and this
