@@ -257,7 +257,19 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
         case_id = str(existing["case_id"])
         source_url = existing["source_url"]
     else:
-        docket = resolve_docket(base, headers, dn, court_id)
+        # Resolution hits the API, so it can hit the rate limit too. http_get raises
+        # RuntimeError only after exhausting its retries (a rate-limit/network give-up);
+        # catch that ONE failure per case -- log, skip, let the loop continue -- exactly
+        # as the poll guard below does. Nothing is written before this point, so a skip
+        # leaves nothing half-seeded and the case re-resolves next run. A genuine bug is
+        # NOT swallowed: an unresolved lookup returns None (handled next), and a malformed
+        # seed raises KeyError, which is not a RuntimeError and still surfaces.
+        try:
+            docket = resolve_docket(base, headers, dn, court_id)
+        except RuntimeError as exc:
+            print(f"  {caption} ({dn}/{court_id}): resolve failed, skipped -- {exc}", file=sys.stderr)
+            return {"caption": caption, "resolved": False, "new_entries": 0,
+                    "new_items": 0, "resolve_failed": True}
         if not docket:
             return {"caption": caption, "resolved": False, "new_entries": 0, "new_items": 0}
         case_id = str(docket["id"])
@@ -318,9 +330,13 @@ def main() -> int:
               f"tracker case(s) from {TRACKER_ARTIFACT}")
         for seed in config_seeds + tracker_seeds:
             r = collect_case(conn, base, headers, seed, types, excludes)
-            tag = (f"docket {r.get('docket_id')}  {r.get('total_entries', 0)} entries  "
-                   f"+{r['new_entries']} entries  +{r['new_items']} A1 items") if r.get("resolved") \
-                else ("B2-only (no docket_number)" if not r.get("poll_failed") else "poll failed")
+            if r.get("resolved"):
+                tag = (f"docket {r.get('docket_id')}  {r.get('total_entries', 0)} entries  "
+                       f"+{r['new_entries']} entries  +{r['new_items']} A1 items")
+            elif r.get("resolve_failed"):
+                tag = "resolve failed, skipped (retries next run)"
+            else:
+                tag = "B2-only (no docket_number)"
             print(f"  {r['caption'][:46]:<46} {tag}")
     finally:
         conn.close()
