@@ -1118,5 +1118,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/06/29/2026-13057/alien-registration-form-and-evidence-of-registration",
     "title": "Alien Registration Form and Evidence of Registration"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 7035,
+    "kind": "item",
+    "occurred_at": "2026-07-02T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/07/02/2026-13392/eb-5-reform-and-integrity-act-of-2022-ensuring-the-integrity-of-the-eb-5-program-automatic",
+    "title": "EB-5 Reform and Integrity Act of 2022; Ensuring the Integrity of the EB-5 Program; Automatic Revocation of Petitions for Immigrant Classification"
   }
 ]
