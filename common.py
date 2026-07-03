@@ -15,6 +15,8 @@ from dateutil import parser as dateparser
 
 DEFAULT_TIMEOUT = 30
 MAX_RETRIES = 4
+MAX_RETRY_AFTER = 30  # seconds; honor Retry-After only up to this, so one
+                      # throttled request can't stall the shared cron step
 RETRY_STATUS = {429, 500, 502, 503, 504}
 UNIT_SEP = "\x1f"  # field separator for content hashing
 
@@ -81,11 +83,12 @@ def http_get_text(
 
 
 def _retry_after(resp: requests.Response, attempt: int) -> float:
-    """Seconds to wait before a retry: Retry-After header, else exponential."""
+    """Seconds to wait before a retry: Retry-After header (honored up to
+    MAX_RETRY_AFTER), else exponential."""
     header = resp.headers.get("Retry-After")
     if header:
         try:
-            return float(header)
+            return min(float(header), MAX_RETRY_AFTER)
         except ValueError:
             pass
     return float(2 ** attempt)
