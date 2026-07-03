@@ -103,21 +103,53 @@ class _Cur:
 
 
 class _Conn:
-    def __init__(self, raw):
+    def __init__(self, raw, reopen=None):
         self._raw = raw
+        # `reopen` rebuilds the underlying libSQL connection (same url/token, with
+        # PRAGMA foreign_keys re-applied); None on local SQLite and in tests that
+        # wrap a connection directly, which disables the reopen-and-retry path.
+        self._reopen = reopen
+        # Has an uncommitted statement run since the last commit/rollback? A reopen
+        # abandons the open transaction, so retry is only safe when nothing is
+        # pending -- otherwise the failing statement's siblings would be dropped.
+        self._pending = False
+
+    def _run(self, sql, params):
+        return self._raw.execute(sql, params) if params is not None else self._raw.execute(sql)
 
     def execute(self, sql, params=None):
-        cur = self._raw.execute(sql, params) if params is not None else self._raw.execute(sql)
+        try:
+            cur = self._run(sql, params)
+        except ValueError as exc:
+            # Turso drops a server-side Hrana stream when a connection outlives it
+            # (a long run: litigation's throttled CourtListener retries hold one
+            # connection ~70min). The next statement then raises
+            #   ValueError: Hrana: ... "stream not found: ..."
+            # which stdlib sqlite3 never exposes. Reopen and retry ONCE, but only
+            # when nothing is uncommitted -- reopening loses the open transaction,
+            # so retrying a statement with uncommitted siblings would silently drop
+            # them. When _pending, re-raise; the next cron run redoes the batch
+            # idempotently (INSERT OR IGNORE / content_hash). commit() is never
+            # retried: it would commit an empty transaction on the fresh connection.
+            if self._reopen is None or self._pending or "stream not found" not in str(exc).lower():
+                raise
+            self._raw = self._reopen()
+            cur = self._run(sql, params)
+        self._pending = True
         return _Cur(cur)
 
     def executescript(self, script):
         return self._raw.executescript(script)
 
     def commit(self):
-        return self._raw.commit()
+        result = self._raw.commit()
+        self._pending = False
+        return result
 
     def rollback(self):
-        return self._raw.rollback()
+        result = self._raw.rollback()
+        self._pending = False
+        return result
 
     def close(self):
         return self._raw.close()
@@ -154,9 +186,14 @@ def connect(path: str | None = None):
     and foreign keys are enforced per-connection."""
     url = _remote_url(path)
     if url:
-        raw = libsql.connect(database=url, auth_token=_remote_token())
-        raw.execute("PRAGMA foreign_keys = ON")
-        return _Conn(raw)
+        token = _remote_token()
+
+        def _open():
+            raw = libsql.connect(database=url, auth_token=token)
+            raw.execute("PRAGMA foreign_keys = ON")
+            return raw
+
+        return _Conn(_open(), reopen=_open)
     conn = sqlite3.connect(path if path is not None else DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")

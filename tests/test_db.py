@@ -120,3 +120,102 @@ def test_conn_wrapper_commit_and_rollback_over_real_libsql():
     conn.commit()
     assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 1
     conn.close()
+
+
+# --- stale-Hrana-stream recovery -------------------------------------------
+# Turso drops a server-side Hrana stream when a connection outlives it; the next
+# statement raises ValueError: Hrana: ... "stream not found: ...". A real expiry
+# can't be forced offline, so a fake raw wraps a real in-memory libsql connection
+# and raises that ValueError on demand -- keeping the post-reopen path on the real
+# client, as the rollback test does.
+
+_STALE = (
+    'Hrana: `api error: `status=404 Not Found, '
+    'body={"error":"stream not found: eba5e539:3d21f92"}``'
+)
+
+
+class _FakeRaw:
+    """Delegates to a real in-memory libsql connection, but raises the stale-stream
+    ValueError on the next execute when `fail_next` is set (once, then clears)."""
+
+    def __init__(self, real):
+        self._real = real
+        self.fail_next = False
+
+    def execute(self, sql, params=None):
+        if self.fail_next:
+            self.fail_next = False
+            raise ValueError(_STALE)
+        return self._real.execute(sql, params) if params is not None else self._real.execute(sql)
+
+    def commit(self):
+        return self._real.commit()
+
+    def rollback(self):
+        return self._real.rollback()
+
+
+def test_execute_recovers_from_stale_hrana_stream():
+    """A stale stream on the first statement (nothing uncommitted) reopens once and
+    the retried statement returns the real result -- the news.py:156 crash case."""
+    seeded = libsql.connect(":memory:")
+    seeded.execute("CREATE TABLE t (x INTEGER)")
+    seeded.execute("INSERT INTO t VALUES (7)")
+    seeded.commit()
+
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        return seeded  # the "fresh" connection after the stream was dropped
+
+    fake = _FakeRaw(libsql.connect(":memory:"))
+    fake.fail_next = True
+    conn = db._Conn(fake, reopen=reopen)
+
+    # nothing pending -> the stale error triggers exactly one reopen + retry
+    assert conn.execute("SELECT x FROM t").fetchone()["x"] == 7
+    assert calls["reopen"] == 1
+
+
+def test_execute_does_not_retry_when_transaction_pending():
+    """With an uncommitted write pending, a stale stream must NOT reopen -- doing so
+    would drop the pending write. The error re-raises and reopen is never called."""
+    real = libsql.connect(":memory:")
+    real.execute("CREATE TABLE t (x INTEGER)")
+    real.commit()
+    fake = _FakeRaw(real)
+
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        return real
+
+    conn = db._Conn(fake, reopen=reopen)
+    conn.execute("INSERT INTO t VALUES (1)")  # _pending = True, not yet committed
+
+    fake.fail_next = True
+    with pytest.raises(ValueError, match="stream not found"):
+        conn.execute("INSERT INTO t VALUES (2)")
+    assert calls["reopen"] == 0  # safety gate held
+
+
+def test_execute_propagates_unrelated_valueerror():
+    """A ValueError that is not a stale-stream error is never swallowed, and never
+    triggers a reconnect -- only the specific Hrana signal does."""
+    calls = {"reopen": 0}
+
+    class _Boom:
+        def execute(self, sql, params=None):
+            raise ValueError("near \"SELCT\": syntax error")
+
+    def reopen():
+        calls["reopen"] += 1
+        return _Boom()
+
+    conn = db._Conn(_Boom(), reopen=reopen)
+    with pytest.raises(ValueError, match="syntax error"):
+        conn.execute("SELCT 1")
+    assert calls["reopen"] == 0
