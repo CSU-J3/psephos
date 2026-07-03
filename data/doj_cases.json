@@ -1,0 +1,290 @@
+[
+  {
+    "caption": "United States v. Arizona",
+    "category": "voter-data",
+    "court": "Ninth Circuit",
+    "court_id": "ca9",
+    "docket_number": "26-3609",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 6/22/26, the 9th Circuit stayed DOJ's appeal pending resolution of the appeals in DOJ's cases against CA and OR. | Key decisions: District Court's 4/28/26 dismissal.",
+    "state": "Arizona"
+  },
+  {
+    "caption": "United States v. California",
+    "category": "voter-data",
+    "court": "Ninth Circuit",
+    "court_id": "ca9",
+    "docket_number": "26-1232",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Oral argument for appeal held on 5/19/26; awaiting decision. | Key decisions: District Court's 1/15/26 dismissal.",
+    "state": "California"
+  },
+  {
+    "caption": "United States v. Colorado",
+    "category": "voter-data",
+    "court": "District of Colorado",
+    "court_id": "cod",
+    "docket_number": "1:25-cv-03967",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "Colorado"
+  },
+  {
+    "caption": "United States v. Connecticut",
+    "category": "voter-data",
+    "court": "District of Connecticut",
+    "court_id": "ctd",
+    "docket_number": "3:26-cv-00021",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "Connecticut"
+  },
+  {
+    "caption": "United States v. DC",
+    "category": "voter-data",
+    "court": "District of D.C.",
+    "court_id": "dcd",
+    "docket_number": "1:25-cv-04403",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "DC"
+  },
+  {
+    "caption": "United States v. Delaware",
+    "category": "voter-data",
+    "court": "District of Delaware",
+    "court_id": "ded",
+    "docket_number": "1:25-cv-01453",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion for production and state's motion to dismiss completed.",
+    "state": "Delaware"
+  },
+  {
+    "caption": "United States v. Georgia",
+    "category": "voter-data",
+    "court": "Middle District of Georgia",
+    "court_id": "gamd",
+    "docket_number": "5:25-cv-00548",
+    "notes": "Claims: Civil Rights Act 1960 | Status: 1/23/26 : The district court dismissed DOJ's lawsuit for filing in the wrong court. DOJ can refile in proper venue.",
+    "state": "Georgia (1)"
+  },
+  {
+    "caption": "United States v. Georgia",
+    "category": "voter-data",
+    "court": "Northern District of Georgia",
+    "court_id": "gand",
+    "docket_number": "1:26-cv-00485",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed. Judge Ross recused from the case on 6/15/26, and the matter was submitted to a new judge.",
+    "state": "Georgia (2)"
+  },
+  {
+    "caption": "United States v. Hawaii",
+    "category": "voter-data",
+    "court": "District of Hawaii",
+    "court_id": "hid",
+    "docket_number": "1:25-cv-00522",
+    "notes": "Claims: Civil Rights Act 1960 | Status: The case is stayed pending the 9th Circuit's resolution of the appeals in DOJ's suits against CA and OR.",
+    "state": "Hawaii"
+  },
+  {
+    "caption": "United States v. Idaho",
+    "category": "voter-data",
+    "court": "District of Idaho",
+    "court_id": "idd",
+    "docket_number": "1:26-cv-00197",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: The case is stayed pending the 9th Circuit's resolution of the appeals in DOJ's suits against CA and OR.",
+    "state": "Idaho"
+  },
+  {
+    "caption": "United States v. Illinois",
+    "category": "voter-data",
+    "court": "Central District of Illinois",
+    "court_id": "ilcd",
+    "docket_number": "3:25-cv-03398",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "Illinois"
+  },
+  {
+    "caption": "United States v. Kentucky",
+    "category": "voter-data",
+    "court": "Eastern District of Kentucky",
+    "court_id": "kyed",
+    "docket_number": "3:26-cv-00019",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: DOJ has asked to hold the case in abeyance while it considers petitioning the Sixth Circuit for en banc review of the decision affirming dismissal of DOJ's suit against MI.",
+    "state": "Kentucky"
+  },
+  {
+    "caption": "United States v. Maine",
+    "category": "voter-data",
+    "court": "First Circuit",
+    "court_id": "ca1",
+    "docket_number": "26-1676",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: DOJ has moved to expedite the appeal and to consolidate it with the appeals in DOJ's cases against MA and RI. | Key decisions: District Court's 5/21/26 dismissal.",
+    "state": "Maine"
+  },
+  {
+    "caption": "United States v. Maryland",
+    "category": "voter-data",
+    "court": "District of Maryland",
+    "court_id": "mdd",
+    "docket_number": "1:25-cv-03934",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 6/18/2026, the district court dismissed DOJ's suit on the merits. | Key decisions: District Court's 6/18/26 dismissal.",
+    "state": "Maryland"
+  },
+  {
+    "caption": "United States v. Massachusetts",
+    "category": "voter-data",
+    "court": "First Circuit",
+    "court_id": "ca1",
+    "docket_number": "26-1657",
+    "notes": "Claims: Civil Rights Act 1960 | Status: DOJ has moved to expedite the appeal and to consolidate it with the appeals in DOJ's cases against ME and RI. | Key decisions: District Court's 4/9/26 dismissal.",
+    "state": "Massachusetts"
+  },
+  {
+    "caption": "United States v. Michigan",
+    "category": "voter-data",
+    "court": "Sixth Circuit",
+    "court_id": "ca6",
+    "docket_number": "26-1225",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 6/24/2026, the 6th Circuit affirmed the district court's dismissal of DOJ's suit. DOJ indicated it may seek en banc review. | Key decisions: District Court's 2/10/26 dismissal . Sixth Circuit's 6/24/26 decision affirming the District Court's dismissal.",
+    "state": "Michigan"
+  },
+  {
+    "caption": "United States v. Minnesota",
+    "category": "voter-data",
+    "court": "District of Minnesota",
+    "court_id": "mnd",
+    "docket_number": "0:25-cv-03761",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Supplemental briefing on motions complete, and second hearing held on 4/6/2026. Awaiting decision.",
+    "state": "Minnesota"
+  },
+  {
+    "caption": "United States v. Nevada",
+    "category": "voter-data",
+    "court": "District of Nevada",
+    "court_id": "nvd",
+    "docket_number": "3:25-cv-00728",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on motions to compel and dismiss completed.",
+    "state": "Nevada"
+  },
+  {
+    "caption": "United States v. New Hampshire",
+    "category": "voter-data",
+    "court": "District of New Hampshire",
+    "court_id": "nhd",
+    "docket_number": "1:25-cv-00371",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 6/29/26, the district court dismissed DOJ's suit on the merits. | Key decisions: District Court's 6/29/26 dismissal.",
+    "state": "New Hampshire"
+  },
+  {
+    "caption": "United States v. New Jersey",
+    "category": "voter-data",
+    "court": "District of New Jersey",
+    "court_id": "njd",
+    "docket_number": "3:26-cv-02025",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: Briefing on motions to compel and dismiss complete.",
+    "state": "New Jersey"
+  },
+  {
+    "caption": "United States v. New Mexico",
+    "category": "voter-data",
+    "court": "District of New Mexico",
+    "court_id": "nmd",
+    "docket_number": "1:25-cv-01193",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on motions to compel and dismiss complete.",
+    "state": "New Mexico"
+  },
+  {
+    "caption": "United States v. New York",
+    "category": "voter-data",
+    "court": "Northern District of New York",
+    "court_id": "nynd",
+    "docket_number": "1:25-cv-01338",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Briefing on DOJ's motion to show cause and state's motion to dismiss completed.",
+    "state": "New York"
+  },
+  {
+    "caption": "United States v. Oklahoma",
+    "category": "voter-data",
+    "court": "Western District of Oklahoma",
+    "court_id": "okwd",
+    "docket_number": "5:26-cv-00361",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: The parties settled on 3/24/2026, with the state agreeing to provide its voter data in exchange for DOJ's dismissal of the suit.",
+    "state": "Oklahoma"
+  },
+  {
+    "caption": "United States v. Oregon",
+    "category": "voter-data",
+    "court": "Ninth Circuit",
+    "court_id": "ca9",
+    "docket_number": "26-1231",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Oral argument for appeal held on 5/19/26; awaiting decision. | Key decisions: District Court's 2/5/26 dismissal.",
+    "state": "Oregon"
+  },
+  {
+    "caption": "United States v. Pennsylvania",
+    "category": "voter-data",
+    "court": "Western District of Pennsylvania",
+    "court_id": "pawd",
+    "docket_number": "2:25-cv-01481",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 6/27/26, the district court dismissed DOJ's suit on the merits. | Key decisions: District Court's 6/27/26 dismissal.",
+    "state": "Pennsylvania"
+  },
+  {
+    "caption": "United States v. Rhode Island",
+    "category": "voter-data",
+    "court": "First Circuit",
+    "court_id": "ca1",
+    "docket_number": "26-1665",
+    "notes": "Claims: Civil Rights Act 1960 | Status: DOJ has moved to expedite the appeal and to consolidate it with the appeals in DOJ's cases against ME and MA. | Key decisions: District Court's 4/17/2026 dismissal.",
+    "state": "Rhode Island"
+  },
+  {
+    "caption": "United States v. Utah",
+    "category": "voter-data",
+    "court": "District of Utah",
+    "court_id": "utd",
+    "docket_number": "2:26-cv-00166",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "Utah"
+  },
+  {
+    "caption": "United States v. Vermont",
+    "category": "voter-data",
+    "court": "District of Vermont",
+    "court_id": "vtd",
+    "docket_number": "2:25-cv-00903",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Hearing on motions to compel and dismiss held on 4/14/2026; awaiting decision.",
+    "state": "Vermont"
+  },
+  {
+    "caption": "United States v. Virginia",
+    "category": "voter-data",
+    "court": "Eastern District of Virginia",
+    "court_id": "vaed",
+    "docket_number": "3:26-cv-00042",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "Virginia"
+  },
+  {
+    "caption": "United States v. Washington",
+    "category": "voter-data",
+    "court": "Western District of Washington",
+    "court_id": "wawd",
+    "docket_number": "3:25-cv-06078",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on motions to compel and dismiss completed.",
+    "state": "Washington"
+  },
+  {
+    "caption": "United States v. West Virginia",
+    "category": "voter-data",
+    "court": "Southern District of West Virginia",
+    "court_id": "wvsd",
+    "docket_number": "2:26-cv-00156",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: Briefing on DOJ's motion to compel and state's motion to dismiss completed.",
+    "state": "West Virginia"
+  },
+  {
+    "caption": "United States v. Wisconsin",
+    "category": "voter-data",
+    "court": "Seventh Circuit",
+    "court_id": "ca7",
+    "docket_number": "26-2217",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 6/23/26, the 7th Circuit denied DOJ's request to expedite the appeal. | Key decisions: District Court's 5/21/26 dismissal.",
+    "state": "Wisconsin"
+  }
+]
