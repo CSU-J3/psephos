@@ -1,5 +1,1101 @@
 [
   {
+    "caption": "United States v. Simon",
+    "case_id": "71453336",
+    "category": "voter-data",
+    "court": "District of Minnesota",
+    "defendant": "Simon",
+    "docket_number": "0:25-cv-03761",
+    "filed_at": "2025-09-25T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 7441,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
+        "title": "United States v. Minnesota — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. NH Secretary of State",
+    "case_id": "71453646",
+    "category": "voter-data",
+    "court": "District of New Hampshire",
+    "defendant": "NH Secretary of State",
+    "docket_number": "1:25-cv-00371",
+    "filed_at": "2025-09-25T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 7603,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7604,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/1/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NEW CASE/ COMPLAINT (No fee paid, USA or IFP) filed by United States. (Attachments: # 1 Civil Cover Sheet, # 2 Civil Cover Sheet Addendum)(Tucker, James) (Entered: 09/25/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7605,
+        "kind": "item",
+        "occurred_at": "2025-09-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/6/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Intervene as Other filed by Neal Kurk, Robert Perry, Louise Spencer, Christopher Cole. Attorney Steven J. Dutton added to party Neal Kurk(pty:intv), Attorney Steven J. Du"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7606,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/12/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Assented to MOTION to Stay filed by USA. Attorney Brittany Bennett added to party USA(pty:pla). (Attachments: # 1 Proposed Order)(Bennett, Brittany) (Entered: 10/01/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7651,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7678,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting: 12 Assented to MOTION to Stay. Text of Order: Granted. This matter is stayed until counsel for the government is permitted to resume usual civil litigation"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7648,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7679,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER. Text of Order: The lapse in appropriations prompting the stay in this matter has resolved. Accordingly, the stay is lifted and the government shall respond to the p"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7709,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7607,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/19/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MEMORANDUM in Opposition re 6 MOTION to Intervene as Other filed by USA. Follow up on Reply on 12/12/2025. The court only follow up date DOES NOT include 3 additional days that may"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7608,
+        "kind": "item",
+        "occurred_at": "2025-12-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/20/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION for Leave to File Reply in Support of Motion to Intervene filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer.Follow up on Objection on 12/26/2025. The court "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7609,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/21/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of No Position on Motion to Intervene by USA.(Bennett, Brittany) (Entered: 12/15/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7680,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ACTION REQUIRED - NOTICE Nonconforming Document re 20 MOTION for Leave to File Reply in Support of Motion to Intervene filed by Robert Perry, Christopher Cole, Neal Kurk, Louise Sp"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7610,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/22/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: REPLY to Objection to Motion re 6 MOTION to Intervene as Other filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. Surreply due by 12/22/2025. (Attachments: # 1 Exh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7660,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7677,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting 20 MOTION for Leave to File Reply in Support of Motion to Intervene. Text of Order: Granted. Within 48 hours counsel shall electronically refile the pleadin"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7611,
+        "kind": "item",
+        "occurred_at": "2026-01-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/23/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ORDER granting: 6 Motion to Intervene. So Ordered by US Magistrate Judge Andrea K Johnstone. (bd) (Entered: 01/05/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7612,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/28/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Assented to MOTION to Extend Time to Answer to February 9, 2026 and for Additional Pages filed by NH Secretary of State, NH, State of.(Holl, James) (Entered: 01/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7613,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/30/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Assented to MOTION to Extend Time to Answer to 02/09/2026 filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer.(Dutton, Steven) (Entered: 01/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7650,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of ECF Filing Error - NO ACTION REQUIRED - re: 28 Assented to MOTION to Extend Time to Answer to February 9, 2026 and for Additional Pages filed by NH, State of, NH Secretar"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7681,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting 28 Assented to MOTION to Extend Time to Answer to February 9, 2026 and for Additional Pages. Text of Order: Motion to Extend Time to Answer and to Exceed th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7690,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Extend Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7696,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion for Extension of Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7652,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting 30 Assented to MOTION to Extend Time to Answer to 02/09/2026. Text of Order: Motion to Extend Time to Answer is granted. For the reasons stated in the motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7676,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion for Extension of Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7686,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Extend Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7614,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/31/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Compel Production of Records Pursuant to 52 USC 20701, et.seq. filed by USA.Follow up on Objection on 2/12/2026. The court only follow up date DOES NOT include 3 addition"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7615,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/32/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Dismiss for Failure to State a Claim filed by NH Secretary of State, NH, State of. If no consent form has yet been filed, the plaintiff is required to file a consent on o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7616,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/34/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to File Amicus Brief filed by Democratic National Committee.Follow up on Objection on 2/23/2026. The court only follow up date DOES NOT include 3 additional days that may ap"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7617,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/35/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: BRIEF/MEMORANDUM Amicus Curiae by Democratic National Committee(Melone, Robin) (Entered: 02/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7618,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/37/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Dismiss for Failure to State a Claim filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. If no consent form has yet been filed, the plaintiff is required "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7682,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of ECF Filing Error - NO ACTION REQUIRED - re: 34 MOTION to File Amicus Brief filed by Democratic National Committee. Filer used the wrong event. Filer should have used Moti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7619,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/38/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Extend Time to Object to Plaintiff's Motion to Compel Production of Records ECF No. 31 filed by NH Secretary of State, NH, State of.Follow up on Objection on 2/25/2026. T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7620,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/39/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Extend Time to Object/Respond to 03/05/26 re: Plaintiff's Motion to Compel filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer.Follow up on Objection on 2/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7688,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting 38 MOTION to Extend Time to Object to Plaintiff's Motion to Compel Production of Records. Text of Order: Granted. So Ordered by US Magistrate Judge Andrea K"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7705,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Extend Time"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7653,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Extend Time to Object/Respond"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7673,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting 39 Motion to Extend Time to Object/Respond re 31 Motion to Compel. Text of Order: Granted. So Ordered by US Magistrate Judge Andrea K Johnstone.(kad)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7683,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of ECF Filing Error - NO ACTION REQUIRED - re: 39 MOTION to Extend Time to Object/Respond to 03/05/26 re: Plaintiff's Motion to Compel filed by Robert Perry, Christopher Col"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7621,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/40/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Pro Se MOTION to Intervene for the Limited Purpose of Seeking an Order Limiting Intervenors' Participation (Fed. R. Civ. P. 24(b) filed by Daniel E. Hall. Follow up on Objection on"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7622,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/41/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to File Amicus Brief (Unopposed) filed by AMERICAN CIVIL LIBERTIES UNION OF NEW HAMPSHIRE, League of Women Voters of New Hampshire. Attorney Gilles R. Bissonnette added to p"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7623,
+        "kind": "item",
+        "occurred_at": "2026-02-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/43/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION for Leave to File Amicus Brief on behalf of Amici Curiae Former Employees of U.S. Department of Justice filed by Former Employees of U.S. Department of Justice. Attorney Jam"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7624,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/49/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to File Amicus Brief (Unopposed) filed by State of Maryland.Follow up on Objection on 3/4/2026. The court only follow up date DOES NOT include 3 additional days that may app"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7625,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/50/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ORDER OF RECUSAL. US Magistrate Judge Andrea K Johnstone recused. So Ordered by US Magistrate Judge Andrea K Johnstone.(kad) (Entered: 02/18/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7626,
+        "kind": "item",
+        "occurred_at": "2026-02-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/51/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MEMORANDUM in Opposition re 32 MOTION to Dismiss for Failure to State a Claim, 37 MOTION to Dismiss for Failure to State a Claim filed by USA. Follow up on Reply on 2/27/2026. The "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7627,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/53/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: REPLY to Objection to Motion re 37 MOTION to Dismiss for Failure to State a Claim filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. Surreply due by 3/4/2026. (Dut"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7628,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/54/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MEMORANDUM in Opposition re 40 MOTION to Intervene as other filed by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. Follow up on Reply on 3/6/2026. The court only follo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7629,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/55/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Extend Time to Object/Respond to 51 Memorandum in Opposition to Motion,,, to March 13, 2026 filed by NH Secretary of State, NH, State of.Follow up on Objection on 3/13/20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7630,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/60/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: OBJECTION to 31 MOTION to Compel Production of Records Pursuant to 52 USC 20701, et.seq. filed by NH Secretary of State, NH, State of. Follow up on Reply on 3/12/2026. The court on"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7631,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/61/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MEMORANDUM in Opposition re 31 MOTION to Compel Production of Records Pursuant to 52 USC 20701, et.seq. filed by Christopher Cole, Daniel E. Hall, Neal Kurk, Robert Perry, Louise S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7691,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Extend Time to Object/Respond"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7699,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting re 55 Motion to Extend Time to Object/Respond re 37 Motion to Dismiss for Failure to State a Claim, 32 Motion to Dismiss for Failure to State a Claim. Text "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7632,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/62/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: REPLY to Objection to Motion re 31 MOTION to Compel Production of Records Pursuant to 52 USC 20701, et.seq. filed by USA. Surreply due by 3/17/2026. (Tucker, James) (Entered: 03/12"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7656,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7671,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion for Leave to File AND Order on Motion to File Amicus Brief AND Order on Motion to File Amicus Brief AND Order on Motion to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7692,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting re 34 Motion to File Amicus Brief; granting re 41 Motion to File Amicus Brief; granting 43 Motion for Leave to File; granting 49 Motion to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7633,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/63/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: REPLY to Objection to Motion re 32 MOTION to Dismiss for Failure to State a Claim filed by NH Secretary of State, NH, State of. Surreply due by 3/18/2026. (Holl, James) (Entered: 0"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7634,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/64/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: REPLY to Objection to Motion re 40 MOTION to Intervene as other filed by Daniel E. Hall. Surreply due by 3/18/2026. (ko) (Entered: 03/16/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7635,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/65/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: BRIEF/MEMORANDUM of Amici Curiae by AMERICAN CIVIL LIBERTIES UNION OF NEW HAMPSHIRE, League of Women Voters of New Hampshire(Bissonnette, Gilles) (Entered: 03/16/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7684,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: CLERK'S NOTICE re 41 Motion to File Amicus Brief, 43 Motion to File Amicus Brief, 49 Motion to File Amicus Brief. Within 48 hours counsel shall electronically refile the pleading a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7636,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/66/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: BRIEF/MEMORANDUM Amici Curiae by Former Employees of U.S. Department of Justice(Armillay, James) (Entered: 03/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7657,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE re: 31 MOTION to Compel Production of Records Pursuant to 52 USC 20701, et. seq, 32 MOTION to Dismiss for Failure to State a Claim, 37 MOTION to Dismiss for Failure to State"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7659,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE re: 40 MOTION to Intervene for the Limited Purpose of Seeking an Order Limiting Intervenors' Participation (Fed. R. Civ. P. 24(b). Motion Hearing set for 4/16/2026 at 10:00 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7672,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Notice of Hearing on Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7700,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7637,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/67/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of Supplemental Authority by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. (Attachments: # 1 Exhibit A - Order on Motions to Compel and Dismiss)(Dutton, Steven)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7658,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7662,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7663,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER re 67 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(ko)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7649,
+        "kind": "item",
+        "occurred_at": "2026-04-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7698,
+        "kind": "item",
+        "occurred_at": "2026-04-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER re 70 Response re 67 Notice Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(ko)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7707,
+        "kind": "item",
+        "occurred_at": "2026-04-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7667,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Minute Entry for proceedings held before Judge Joseph N. Laplante. HEARING on 4/16/2026 re 40 MOTION to Intervene for the Limited Purpose of Seeking an Order Limiting Intervenors' "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7704,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7638,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/71/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of Voter Intervenors' Notice of Supplemental Authority by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. (Attachments: # 1 Exhibit A - Memorandum and Order)(Dutt"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7639,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/72/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ORDER denying re 40 Pro Se MOTION to Intervene for the Limited Purpose of Seeking an Order Limiting Intervenors' Participation (Fed. R. Civ. P. 24(b) filed by Daniel E. Hall. So Or"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7661,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Notice of Hearing on Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7668,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: RESHEDULING NOTICE re: 31 MOTION to Compel Production of Records Pursuant to 52 USC 20701, et.seq., 32 MOTION to Dismiss for Failure to State a Claim, 37 MOTION to Dismiss for Fail"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7708,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7706,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7640,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/75/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of Supplemental Authority by Christopher Cole, Neal Kurk, Robert Perry, Louise Spencer. (Attachments: # 1 Exhibit A - Order in USA v. Adrian Fontes)(Dutton, Steven) (Entered"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7655,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7697,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER RE 75 Notice of Supplemental Authority, 76 Response RE: 75 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(jwb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7703,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7641,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/77/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of Supplemental Authority by USA. (Attachments: # 1 Exhibit 1- OLC Opinion)(Bennett, Brittany) (Entered: 05/15/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7643,
+        "kind": "item",
+        "occurred_at": "2026-05-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/79/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: MOTION to Withdraw 77 Notice (Other) filed by USA.Follow up on Objection on 6/1/2026. The court only follow up date DOES NOT include 3 additional days that may apply per FRCP 6(d) "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7669,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER re 78 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante. (ko)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7670,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER re 79 Motion to Withdraw 77 Notice. Text of Order: As this motion seeks relief without indicating whether assent was sought or obtained, the court will not address i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7693,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7695,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7689,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7644,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/82/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Voter Intervenor's Response to Plaintiff's Notice of Supplemental Authority filed by Neal Kurk. (Twomey, Paul) Modified on 5/26/2026 to remove \"Motion\" from docket text (ko). (Ente"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7654,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Minute Entry for proceedings held before Judge Joseph N. Laplante. MOTION HEARING held on 5/26/2026 re 31 MOTION to Compel Production of Records Pursuant to 52 USC 20701, et.seq., "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7664,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: NOTICE of ECF Filing Error re: 82 Supplemental MOTION Notice of Authority filed by Neal Kurk. Filer used the wrong event. Filer should have used Civil Event/Objections, Responses a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7674,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7645,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/83/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: TRANSCRIPT of Proceedings for Motion Hearing held on 5/26/2026. Court Reporter Liza Dubois - Telephone 603-225-1442. Transcript is available for public inspection, but may not be c"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7665,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER RE 84 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(jwb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7666,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7694,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7675,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7685,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7701,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER RE 85 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(jwb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7646,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/86/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ///MEMORANDUM ORDER denying as moot re  31  Motion to Compel; granting re  32   Motion to Dismiss for Failure to State a Claim; granting re  37   Motion to Dismiss for Failure to S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7702,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: ENDORSED ORDER granting re 79 Motion to Withdraw re 77 Notice of Supplemental Authority. Text of Order: Granted. So Ordered by Judge Joseph N. Laplante.(ko)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7647,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/87/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: JUDGMENT is hereby entered in accordance with re 86 Memorandum Order on Motions to Dismiss for Failure to State a Claim. Signed by Tracy A. Uhrin, Clerk of Court. (Case Closed) (ko"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7687,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Order on Motion to Withdraw"
+      }
+    ]
+  },
+  {
     "caption": "League of Women Voters v. U.S. Department of Homeland Security",
     "case_id": "71499795",
     "category": "voter-data",
@@ -1109,6 +2205,292 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: USCA Case Number 26-5243 for 113 Notice of Appeal to DC Circuit Court, filed by SOCIAL SECURITY ADMINISTRATION, FRANK BISIGNANO, KRISTI L. NOEM, U.S. DEPARTMENT OF HOMELAND SECURIT"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. CALDWELL",
+    "case_id": "72333329",
+    "category": "voter-data",
+    "court": "District of New Jersey",
+    "defendant": "CALDWELL",
+    "docket_number": "3:26-cv-02025",
+    "filed_at": "2026-02-26T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 7710,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Jocelyn Benson",
+    "case_id": "72347022",
+    "category": "voter-data",
+    "court": "Sixth Circuit",
+    "defendant": "Jocelyn Benson",
+    "docket_number": "26-1225",
+    "filed_at": "2026-02-27T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 7416,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7417,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/6/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: EMERGENCY MOTION filed by Mr. David N. Goldman for USA to expedite briefing schedule. Certificate of Service: 02/27/2026. [26-1225]--[Edited 03/02/2026 by RGF] (DNG) [Entered: 02/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7418,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/9/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: LETTER SENT to Mr. Andrew Braniff for USA, Mr. David N. Goldman for USA, Ms. Kelsey E. McGee for USA, Mr. Eric Neff for USA, Mr. Erik A. Grill for MI and Jocelyn Benson, Ms. Heathe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7419,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/15/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding a motion, [6]; previously filed by Mr. David N. Goldman for USA. Response from Attorney Mr. Erik A. Grill for Appellees Jocelyn Benson and MI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7420,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/16/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding a motion to expedite briefing schedule, [6]; previously filed by Mr. David N. Goldman for USA. Response from Attorney Ms. Aria Branch for App"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7421,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/19/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: REPLY filed by Mr. Andrew Braniff for USA regarding Response in Opposition to Motion to Expedite Appeal Certificate of Service: 03/10/2026. [26-1225] (AB) [Entered: 03/10/2026 04:5"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7422,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/20/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ORDER filed granting in part and denying in part appellant's motion to expedite briefing schedule [6] filed by Mr. David N. Goldman. Upon review of the parties’ briefing, the motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7423,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/22/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: TRANSCRIPT ORDER filed - no hearings held in District Court. Filed by Mr. Eric Neff for USA. Certificate of Service: 03/11/2026. [26-1225] (EN) [Entered: 03/11/2026 06:38 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7424,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/28/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Zachary C. Larsen for Center For Election Confidence, Inc.; Restoring Integrity and Trust in Elections; Honest Elections Project. Certificate o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7425,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/32/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Jonathan R. Koch for Michigan House of Representatives. Certificate of Service: 03/30/2026. [26-1225] (JBK) [Entered: 03/30/2026 05:02 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7426,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/36/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ORDER filed granting amicus curiae Center for Election Confidence, Inc., Restoring Integrity and Trust in Elections, Inc., and Honest Elections Project motion for leave to file ami"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7427,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/39/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ORDER filed granting amicus curiae (Michigan House of Representatives) motion to file amicus brief [32].. Entered by order of the court.--[Edited 04/09/2026 by PJE] (RGF) [Entered:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7428,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/58/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ***MOTION LOCKED - INCORRECT ATTACHMENT - COUNSEL SHOULD REFILE AMICUS MOTION AND AMICUS BRIEF AS TWO SEPARATE ELECTRONIC ENTRIES*** MOTION to file AMICUS BRIEF filed by Lanny A. B"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7429,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/59/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: LOCKED - PLEASE SEE #65********** MOTION to file AMICUS BRIEF filed by Lanny A. Breuer for Common Cause. Certificate of Service: 04/17/2026. [26-1225]--[Edited 06/22/2026 by RGF] ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7430,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/65/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Lanny A. Breuer for Common Cause. Certificate of Service: 04/17/2026. [26-1225] (LAB) [Entered: 04/17/2026 06:18 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7431,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/70/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Carmine G. Iaccarino for Commonwealth of Kentucky State Board of Elections. Certificate of Service: 04/20/2026. [26-1225] (CGI) [Entered: 04/20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7432,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/79/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: LOCKED - COUNSEL KINDLY ADVISED TO REFILE AS A REPLY BRIEF **********REPLY filed by Mr. Andrew Braniff for USA regarding US v. Benson Certificate of Service: 04/20/2026. [26-1225]-"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7433,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/80/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: REPLY BRIEF filed by Attorney Mr. Andrew Braniff for Appellant USA. Certificate of Service: 04/20/2026. [26-1225] (AB) [Entered: 04/21/2026 11:41 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7434,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/84/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: Amicus MOTION filed by League of Women Voters requesting leave for an Amicus to appear at oral argument. Certificate of Service: 04/23/2026. [26-1225] (MCB) [Entered: 04/23/2026 03"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7435,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/89/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ORDER filed denying motion requesting leave for Amicus Curiae League of Women Voters of Michigan to appear at oral argument [84]. (RGF) [Entered: 04/28/2026 01:02 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7436,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/95/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding an additional citation, [91]. Response from Attorney Mr. Andrew Braniff for Appellant USA. Certificate of Service:05/01/2026. [26-1225] (AB) "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7437,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/96/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding an additional citation, [94]. Response from Attorney Mr. Andrew Braniff for Appellant USA. Certificate of Service:05/01/2026. [26-1225] (AB) "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7438,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/98/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding an, [97]. Response from Attorney Mr. Andrew Braniff for Appellant USA. Certificate of Service:05/04/2026. [26-1225] (AB) [Entered: 05/04/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7439,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/104/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ORDER filed granting Common Cause's motion to file amicus brief [65].. Entered by order of the court. (RGF) [Entered: 06/22/2026 10:36 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 7440,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/105/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: OPINION and JUDGMENT filed : AFFIRMED. Mandate to issue. Decision for publication. R. Guy Cole, Jr., John B. Nalbandian (DISSENTING), and Andre B. Mathis (AUTHORING), Circuit Judge"
       }
     ]
   },
