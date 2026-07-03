@@ -1,10 +1,14 @@
-"""Wrapper suite for db._Cur / _Row (the remote/libSQL row adapter).
+"""Wrapper suite for db._Conn / _Cur / _Row (the remote/libSQL adapters).
 
 CI's pytest runs on local SQLite (no Turso creds), so the remote wrapper would
 otherwise go untested. These tests exercise db._Cur directly over a fake cursor
 that mimics libsql 0.1.x exactly: it supports fetchone/fetchall/description but
 is NOT iterable -- which is precisely why news.py:165's `for (seen,) in ...`
 crashed on Turso. A revert to delegating `for t in self._cur` re-raises here.
+
+The _Conn test uses a REAL in-memory libsql connection (no creds needed), which
+is the only way to catch a missing wrapper delegate like rollback -- its absence
+crashed the collectors' error-path skips on Turso with AttributeError.
 
 Run:  pytest tests/test_db.py
 """
@@ -14,6 +18,7 @@ import sqlite3
 import sys
 from pathlib import Path
 
+import libsql
 import pytest
 
 REPO = Path(__file__).resolve().parent.parent
@@ -93,3 +98,25 @@ def test_fetchall_and_fetchone_share_wrapping():
     rows = db._Cur(_fixture_cur()).fetchall()
     assert [r["a"] for r in rows] == ["p", "x"]
     assert db._Cur(_fixture_cur()).fetchone()["b"] == "q"
+
+
+def test_conn_wrapper_commit_and_rollback_over_real_libsql():
+    """_Conn wraps the actual libsql client. rollback() was the missing delegate:
+    the collectors' error-path skips (litigation poll-fail litigation.py:287,
+    executive.py:203/213, legislation.py:238) call conn.rollback() and crashed on
+    Turso with AttributeError -- invisible on stdlib sqlite3, which has rollback.
+    Exercise both paths against the real client, no Turso creds needed."""
+    conn = db._Conn(libsql.connect(":memory:"))
+    conn.execute("CREATE TABLE t (x INTEGER)")
+    conn.commit()  # DDL committed; table empty
+
+    # rollback path: an uncommitted insert reverts to 0 rows
+    conn.execute("INSERT INTO t VALUES (1)")
+    conn.rollback()
+    assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 0
+
+    # commit path: a committed insert persists
+    conn.execute("INSERT INTO t VALUES (2)")
+    conn.commit()
+    assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 1
+    conn.close()

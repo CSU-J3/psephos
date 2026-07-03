@@ -116,6 +116,9 @@ class _Conn:
     def commit(self):
         return self._raw.commit()
 
+    def rollback(self):
+        return self._raw.rollback()
+
     def close(self):
         return self._raw.close()
 
