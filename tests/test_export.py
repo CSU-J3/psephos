@@ -328,3 +328,24 @@ def test_state_bills_json_is_byte_identical_and_timestamp_free():
     assert b1 == b2                                    # unchanged DB -> empty diff
     assert b1.endswith(b"\n")
     assert b"2026-01-01T00:00:00" not in b1            # no fetched_at / wall-clock leaked
+
+
+def test_state_bills_json_stable_despite_moving_updated_at():
+    """state_bills.updated_at moves on every collector run, but build_state_bills
+    omits it, so the snapshot is byte-identical across runs -- the empty-diff
+    guarantee, the same reason build_bills omits its own updated_at."""
+    conn = _conn()
+    _state_bill(conn, "1700001", state="TX", bill_number="SB100",
+                updated_at="2026-07-01T00:00:00+00:00")
+    _item(conn, source_id="legiscan", title="TX SB100: Filed", occurred_at="2026-01-20", state_bill_id="1700001")
+    out = Path(tempfile.mkdtemp())
+    b1 = snapshots.write_json(str(out / "a.json"), snapshots.build_state_bills(conn))
+
+    # a later run: only updated_at moves
+    _state_bill(conn, "1700001", state="TX", bill_number="SB100",
+                updated_at="2026-07-02T12:34:56+00:00")
+    b2 = snapshots.write_json(str(out / "b.json"), snapshots.build_state_bills(conn))
+
+    assert b1 == b2                                    # updated_at change does not alter output
+    assert b"2026-07-01" not in b1                     # updated_at value never leaks
+    assert b"2026-07-02" not in b2

@@ -95,6 +95,7 @@ def test_to_item():
     assert row["source_id"] == "legiscan"
     assert (row["admiralty_source"], row["admiralty_info"]) == ("B", "2")
     assert row["bill_id"] is None and row["case_id"] is None
+    assert row["state_bill_id"] == "1700001"       # str of the LegiScan bill_id, the dimension PK
     assert row["title"] == "TX SB100: Referred to Committee on State Affairs"  # state + number prefix
     assert row["summary"] == "Referred to Committee on State Affairs"
     assert row["occurred_at"].startswith("2026-02-01")  # dated by the action, not fetch time
@@ -243,6 +244,51 @@ def test_bad_state_isolated():
     conn.close()
 
 
+# --- state_bills dimension --------------------------------------------------
+
+def test_upsert_state_bill_masterlist_only():
+    # Masterlist-only input (bill={}): a row with the right PK, state threaded in
+    # (the masterlist has no `state` key), bill_number from `number`, and the
+    # getBill-only fields (description, session) null until a poll fetches them.
+    conn = _env()
+    raw = {"bill_id": 1700001, "number": "SB100", "status": 1, "change_hash": "aaa111",
+           "title": "Relating to voter registration procedures",
+           "url": "https://legiscan.com/TX/bill/SB100/2026",
+           "last_action": "Introduced", "last_action_date": "2026-01-20"}
+    state.upsert_state_bill(conn, {}, raw, "TX")
+    r = conn.execute("SELECT * FROM state_bills WHERE state_bill_id='1700001'").fetchone()
+    assert r["state_bill_id"] == "1700001"         # str(bill_id) PK
+    assert r["state"] == "TX"                       # threaded in, not from the payload
+    assert r["bill_number"] == "SB100"              # from masterlist `number`
+    assert r["title"] == "Relating to voter registration procedures"
+    assert r["status"] == "1"                       # numeric code as text
+    assert r["description"] is None                 # getBill-only, still unfetched
+    assert r["session"] is None                     # getBill-only
+    assert r["is_vehicle"] == 0                      # default; 5b-b does not set it
+    assert r["last_action_at"].startswith("2026-01-20")
+    conn.close()
+
+
+def test_upsert_state_bill_getbill_enriches():
+    # A later getBill payload fills description/session and keeps the same PK.
+    conn = _env()
+    raw = {"bill_id": 1700001, "number": "SB100", "change_hash": "aaa111"}
+    state.upsert_state_bill(conn, {}, raw, "TX")     # masterlist first: desc/session null
+    bill = {"bill_id": 1700001, "state": "TX", "bill_number": "SB100",
+            "title": "Relating to voter registration procedures",
+            "description": "An act relating to voter registration list maintenance.",
+            "session": {"session_name": "2026 Regular Session"},
+            "status": 1, "url": "https://legiscan.com/x"}
+    state.upsert_state_bill(conn, bill, raw, "TX")   # getBill enriches in place
+    rows = conn.execute("SELECT * FROM state_bills").fetchall()
+    assert len(rows) == 1                            # upsert on the PK, not a second row
+    r = rows[0]
+    assert r["description"] == "An act relating to voter registration list maintenance."
+    assert r["session"] == "2026 Regular Session"
+    assert r["title"] == "Relating to voter registration procedures"
+    conn.close()
+
+
 if __name__ == "__main__":
     test_to_item()
     test_title_truncation()
@@ -255,4 +301,6 @@ if __name__ == "__main__":
     test_insert_ignore_same_action_once()
     test_getbill_budget_caps_and_resumes()
     test_bad_state_isolated()
+    test_upsert_state_bill_masterlist_only()
+    test_upsert_state_bill_getbill_enriches()
     print("ok")
