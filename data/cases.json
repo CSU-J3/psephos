@@ -2466,6 +2466,469 @@
     ]
   },
   {
+    "caption": "United States v. Board Of Elections of the State of New York",
+    "case_id": "71457474",
+    "category": "voter-data",
+    "court": "Northern District of New York",
+    "defendant": "Board Of Elections of the State of New York",
+    "docket_number": "1:25-cv-01338",
+    "filed_at": "2025-09-25T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 9776,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9777,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/1/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: COMPLAINT FOR DECLARATORY AND INJUNCTIVE RELIEF against Essma Bagnuola, Henry Berger, Board Of Elections of the State of New York, Anthony Casale, Peter Kosinski, Raymond Riley, II"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9778,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/2/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: G.O. 25 FILING ORDER ISSUED: Initial Conference set for 12/29/2025 at 9:30 AM in Albany before Magistrate Judge Paul J. Evangelista. Civil Case Management Plan must be filed and Ma"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9810,
+        "kind": "item",
+        "occurred_at": "2025-09-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Clerk emailed the Dkt. No. 3 Notice of Admission Requirement, along with the Dkt. No. 2 G.O. 25 Filing Order to Attorney Riordan and Attorney Mellett on 9/25/2025. Clerk mailed the"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9779,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/7/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MOTION to Intervene filed by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference. Respo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9780,
+        "kind": "item",
+        "occurred_at": "2025-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/11/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER STAYING CASE Pursuant to General Order #48: It is hereby ORDERED that this case is STAYED pursuant to General Order #48. It is further ORDERED that ALL Court deadlines i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9812,
+        "kind": "item",
+        "occurred_at": "2025-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order Staying Case"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9781,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/20/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MOTION to Intervene as Defendant filed by League of Women Voters of New York State. Response to Motion due by 11/14/2025 (Attachments: # (1) Memorandum of Law in support of Motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9782,
+        "kind": "item",
+        "occurred_at": "2025-11-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/46/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: First MOTION to File Amicus Brief by John L. O'Kelly. Response to Motion due by 11/25/2025. Reply to Response to Motion due by 12/2/2025 (Attachments: # (1) Proposed Order/Judgment"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9783,
+        "kind": "item",
+        "occurred_at": "2025-11-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/51/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: First MOTION to File Amicus Brief by John L. O'Kelly. Response to Motion due by 11/26/2025. Reply to Response to Motion due by 12/3/2025 (Attachments: # (1) Exhibit(s) Journal of I"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9784,
+        "kind": "item",
+        "occurred_at": "2025-11-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/55/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER granting [46] Motion to File Amicus Brief: It is hereby ORDERED that the [46] Motion to File Amicus Brief by RealAmerica.vote is GRANTED; The Court accepts for filing [5"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9814,
+        "kind": "item",
+        "occurred_at": "2025-11-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order on Motion to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9785,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/58/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER LIFTING STAY: It is hereby ORDERED that the Stay entered pursuant to General Order No. 48 [Dkt. no. 11] on October 7, 2025 is hereby Lifted. Signed by U.S. District Judg"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9815,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order Lifting Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9786,
+        "kind": "item",
+        "occurred_at": "2025-12-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/64/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [7] MOTION to Interven"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9787,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/68/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER granting [66] Joint LETTER Request filed by United States of America: It is hereby ORDERED that the [66] Letter Request/Briefing Schedule is GRANTED, without the need fo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9819,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order AND ~Util - Set Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9788,
+        "kind": "item",
+        "occurred_at": "2025-12-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/71/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT NOTICE: The Rule 16 Initial Conference scheduled for 12/29/2025 at 9:30am before Magistrate Judge Paul J. Evangelista and the deadline to submit a proposed Civil Case Manageme"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9789,
+        "kind": "item",
+        "occurred_at": "2025-12-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/73/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MOTION for Leave to File Motion to Dismiss filed by League of Women Voters of New York State. Response to Motion due by 1/20/2026 (Attachments: # (1) Proposed Notice of Motion to D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9790,
+        "kind": "item",
+        "occurred_at": "2025-12-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/74/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MOTION to Dismiss for Failure to State a Claim filed by State of New York. Motion returnable before Judge D'Agostino Response to Motion due by 1/20/2026. Reply to Response to Motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9791,
+        "kind": "item",
+        "occurred_at": "2025-12-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/75/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: ANSWER to [1] Complaint, by Anthony Casale, Peter Kosinski, Raymond Riley, III.(Faso, Nicholas)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9792,
+        "kind": "item",
+        "occurred_at": "2025-12-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/76/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MOTION to Dismiss for Failure to State a Claim filed by Essma Bagnuola, Henry Berger, Kristen Zebrowski Stavisky. Motion returnable before Judge Mae A. D'Agostino Response to Motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9793,
+        "kind": "item",
+        "occurred_at": "2025-12-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/77/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MOTION TO DISMISS by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference of Proposed Mo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9794,
+        "kind": "item",
+        "occurred_at": "2025-12-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/78/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Amicus Brief by Daniel J. Freeman. Response to Motion due by 1/21/2026. Reply to Response to Motion due by 1/28/2026 (Attachments: # (1) Memorandum of Law, # (2) Proposed Amicus Br"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9795,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/79/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Amicus Brief by Seventeen States by DANIEL KOBRIN. Response to Motion due by 1/27/2026. Reply to Response to Motion due by 2/3/2026 (Attachments: # (1) Exhibit(s) Amicus Brief, # ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9796,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/80/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Letter Request Motion by United States of America Motion to Exceed Page Limit (Attachments: # (1) Memorandum of Law Memo in Support)(Neff, Eric) Modified on 1/9/2026 (ban, )."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9797,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/81/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: CROSS-MOTION to Compel and Response in Opposition to [73],[74],[76],[77] Motions to Dismiss filed by United States of America. Reply to Response/Response to Cross-Motion due by 1/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9813,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Set/Reset Deadlines as to 73 MOTION for Leave to File Motion to Dismiss filed by League of Women Voters of New York State, 74 MOTION to Dismiss filed by State of New York. 76 MOTIO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9811,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: CLERK'S CORRECTION OF DOCKET ENTRY re 81 Motion to Compel. Modified docket text for clarity and updated deadlines in accordance with the Court's Text Order at dkt. no. 68. (dpk)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9798,
+        "kind": "item",
+        "occurred_at": "2026-01-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/82/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER granting [78] and [79] Motions to file Amicus Briefs: It is hereby ORDERED that the [78] Motion to File Amicus Brief by the Democratic National Committee In Support of D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9799,
+        "kind": "item",
+        "occurred_at": "2026-01-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/83/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER granting [80] Letter Request for leave to file an oversized brief: It is hereby ORDERED that the plaintiffs request for leave to file an oversized brief, not to exceed 3"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9816,
+        "kind": "item",
+        "occurred_at": "2026-01-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9817,
+        "kind": "item",
+        "occurred_at": "2026-01-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order on Letter Request"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9800,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/86/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: REPLY to Response to Motion re [74] Motion to Dismiss for Failure to State a Claim, and in Opposition to Plaintiff's Cross-Motion to Compel filed by State of New York. (Rubinstein,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9801,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/87/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: RESPONSE in Opposition re [81] Motion to Compel, filed by Essma Bagnuola, Henry Berger, Kristen Zebrowski Stavisky. (Attachments: # (1) Declaration, # (2) Exhibit(s) 1, # (3) Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9802,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/88/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Reply in Support of [73] Motion to Dismiss and Response to [81] Plaintiff's Motion to Compel filed by League of Women Voters of New York State. Response to Motion due by 2/10/2026 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9803,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/89/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: RESPONSE in Opposition re [81] Motion to Compel, and Reply to Response to [77] Proposed Motion to Dismiss filed by National Association for the Advancement of Colored People, Natio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9804,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/90/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER granting [88] Motion for Leave to File the reply at 88-1 and 88-2:It is hereby ORDERED that the Court grants the Intervenor's request for leave to file a reply. It is fu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9820,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9805,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/91/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [77] MOTION to Dismiss"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9806,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/95/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [77] MOTION to Dismiss"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9807,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/96/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [77] MOTION to Dismiss"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9808,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/97/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: NOTICE by United States of America re [81] MOTION to Compel and Opposition to Motion to Dismiss filed by United States of America. Notice of Supplemental Authority (OLC Opinion) (A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9809,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/99/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: TEXT ORDER regarding [97] Notice of Supplemental Authority by United States of America re [81] Motion to Compel and Opposition to Motion to Dismiss and [98] Response to Letter Brie"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9818,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: Order"
+      }
+    ]
+  },
+  {
     "caption": "League of Women Voters v. U.S. Department of Homeland Security",
     "case_id": "71499795",
     "category": "voter-data",
@@ -4128,6 +4591,609 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/83/united-states-v-hanzas/",
         "title": "United States v. Vermont: NOTICE of Supplemental Authority by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim (Abbuhl, "
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Oliver",
+    "case_id": "71982149",
+    "category": "voter-data",
+    "court": "District of New Mexico",
+    "defendant": "Oliver",
+    "docket_number": "1:25-cv-01193",
+    "filed_at": "2025-12-02T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 9717,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9718,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/2/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION to Compel Production by United States Of America. (Attachments: # 1 Declaration of Maureen S. Riordan, # 2 Memorandum in Support of Motion to Compel Production, # 3 Exhibit "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9719,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/4/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ERRATA re 1 Complaint Civil Cover Sheet by United States Of America (Vandenberg, David) (Entered: 12/02/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9720,
+        "kind": "item",
+        "occurred_at": "2025-12-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/7/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION to Intervene by New Mexico Alliance for Retired Americans. (Attachments: # 1 Exhibit Exhibit A, # 2 Exhibit Exhibit B, # 3 Exhibit Exhibit C, # 4 Exhibit Exhibit D, # 5 Exhi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9721,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/9/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting unopposed 7 Motion to Intervene of the New Mexico Alliance for Retired Americans. [THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOC"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9774,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9722,
+        "kind": "item",
+        "occurred_at": "2025-12-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/17/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Unopposed MOTION for Extension of Time to File Answer by Maggie Toulouse Oliver. (Grayson, James) (Entered: 12/17/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9723,
+        "kind": "item",
+        "occurred_at": "2025-12-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/19/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE by Maggie Toulouse Oliver Joint Notice of Extension of Time to Respond to Motion to Compel (Grayson, James) (Entered: 12/17/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9724,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/20/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Unopposed MOTION for Extension of Time to File Rule 12 Motion by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) (Entered: 12/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9725,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/21/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Unopposed MOTION to Intervene by Common Cause, Claudia Medina, Justin Allen. (Attachments: # 1 Exhibit 1 - Proposed Motion to Dismiss, # 2 Exhibit 2 - Declaration of Molly Swank, #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9726,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/23/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 17 Unopposed Motion for Extension of Time to Respond to Complaint. Defendant Maggie Toulouse Oliver's answer now due 1/13/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9727,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/24/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 20 Unopposed Motion for Extension of Time to File Rule 12 Motion. Any Rule 12 motion by Intervenor-Defendant New Mexico Allian"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9728,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/25/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 21 Motion of Common Cause, Claudia Medina, and Justin Allen to Intervene as Defendants.[THIS IS A TEXT-ONLY ENTRY. THERE ARE N"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9769,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9729,
+        "kind": "item",
+        "occurred_at": "2026-01-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/31/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE by United States Of America re 2 MOTION to Compel Production (Attachments: # 1 Exhibit 1) (Vandenberg, David) (Entered: 01/12/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9730,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/32/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9731,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/33/united-states-v-oliver/",
+        "title": "United States v. New Mexico: RESPONSE in Opposition re 2 MOTION to Compel Production of Records filed by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9732,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/34/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Opposed MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM by Justin Allen, Common Cause, Claudia Medina. (Martinez Sanchez, Maria) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9733,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/35/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION to Dismiss by Maggie Toulouse Oliver. (Grayson, James) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9734,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/36/united-states-v-oliver/",
+        "title": "United States v. New Mexico: RESPONSE in Opposition re 2 MOTION to Compel Production filed by Maggie Toulouse Oliver. (Attachments: # 1 Exhibit, # 2 Exhibit) (Grayson, James) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9735,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/37/united-states-v-oliver/",
+        "title": "United States v. New Mexico: RESPONSE in Opposition re 2 MOTION to Compel Production CORRECTED filed by Maggie Toulouse Oliver. (Attachments: # 1 Exhibit, # 2 Exhibit) (Grayson, James) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9736,
+        "kind": "item",
+        "occurred_at": "2026-01-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/38/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION to File Amicus Brief by Democratic National Committee. (Attachments: # 1 Brief of Amicus Curiae Democratic National Comittee, # 2 Exhibit Exhibits 1-22 to Amicus Curiae Brie"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9737,
+        "kind": "item",
+        "occurred_at": "2026-01-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/39/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER FINDING GOOD CAUSE TO DELAY SCHEDULING ORDER by Magistrate Judge John F. Robbenhaar. (kc) (Entered: 01/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9738,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/44/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 38 Democratic National Committee's Motion for Leave to File An Amicus Brief. THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOCUMENTS"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9739,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/45/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE by Justin Allen, Common Cause, Claudia Medina re 34 Opposed MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM of Supplemental Authority (Attachments: # 1 Exhibit 1) (Martinez S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9775,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order on Motion to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9740,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/47/united-states-v-oliver/",
+        "title": "United States v. New Mexico: CONSENT TO PROCEED Before a U.S. Magistrate Judge. Under 28 U.S.C. 636(c) and Fed.R.Civ.P. 73(b), Maggie Toulouse Oliver voluntarily consent(s) to have United States Magistrate Jud"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9741,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/48/united-states-v-oliver/",
+        "title": "United States v. New Mexico: CONSENT TO PROCEED Before a U.S. Magistrate Judge. Under 28 U.S.C. 636(c) and Fed.R.Civ.P. 73(b), Justin Allen, Common Cause, Claudia Medina voluntarily consent(s) to have United S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9742,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/49/united-states-v-oliver/",
+        "title": "United States v. New Mexico: CONSENT TO PROCEED Before a U.S. Magistrate Judge. Under 28 U.S.C. 636(c) and Fed.R.Civ.P. 73(b), New Mexico Alliance for Retired Americans voluntarily consent(s) to have United St"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9743,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/51/united-states-v-oliver/",
+        "title": "United States v. New Mexico: RESPONSE in Opposition re 34 Opposed MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM, 32 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM, 35 MOTION to Dismiss filed by United States "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9744,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/52/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION for Leave to File, MOTION to File Amicus Brief by Bipartisan Secretaries of State. (Attachments: # 1 Exhibit Proposed Bipartisan Secretaries of State Amicus Brief) (Fayerber"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9745,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/53/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION to Withdraw Megan C. Keenan as Counsel by Justin Allen, Common Cause, Claudia Medina. (Martinez Sanchez, Maria) (Entered: 01/29/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9746,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/61/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Unopposed MOTION to Withdraw as Attorney by United States Of America. (Vandenberg, David) (Entered: 01/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9747,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/62/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 61 Motion to Withdraw as Attorney. Attorney David D. Vandenberg terminated. THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOCUMENTS "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9748,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/63/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 53 Motion to Withdraw as Counsel. Megan C. Keenan terminated. THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOCUMENTS ATTACHED. (kc)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9772,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order on Motion to Withdraw as Attorney"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9773,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order on Motion to Withdraw"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9749,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/68/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE by Maggie Toulouse Oliver Supplemental Authority re Motion 35 (Attachments: # 1 Exhibit Opinion & Order - District of Oregon Court) (Den Dulk, Olivia) Modified on 2/9/2026 t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9750,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/70/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Unopposed MOTION for Leave to File Amicus Brief by Seventeen States and The District of Columbia by Proposed Amicus Curiae State of Maryland. (Baker, Mark) (Entered: 02/06/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9751,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/76/united-states-v-oliver/",
+        "title": "United States v. New Mexico: REPLY to Response to Motion re 34 Opposed MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by Justin Allen, Common Cause, Claudia Medina. (Martinez Sanchez, Maria) (Entered: 02"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9752,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/77/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE of Briefing Complete by Justin Allen, Common Cause, Claudia Medina re 34 Opposed MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by Common Cause, Justin Allen, Claudia "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9753,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/78/united-states-v-oliver/",
+        "title": "United States v. New Mexico: REPLY to Response to Motion re 32 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) (Entered: 02/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9754,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/79/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE of Briefing Complete by New Mexico Alliance for Retired Americans re 32 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by New Mexico Alliance for Retired Americans (Nk"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9755,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/80/united-states-v-oliver/",
+        "title": "United States v. New Mexico: REPLY to Response to Motion re 35 MOTION to Dismiss filed by Maggie Toulouse Oliver. (Samant, Anjana) (Entered: 02/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9756,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/81/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE of Briefing Complete by Maggie Toulouse Oliver re 35 MOTION to Dismiss filed by Maggie Toulouse Oliver (Samant, Anjana) (Entered: 02/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9757,
+        "kind": "item",
+        "occurred_at": "2026-02-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/87/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by District Judge Judith C. Herrera granting Motion for Leave to File Brief of Bipartisan Former State Secretaries of State Nationwide as Amici Curiae in Support of Defendant"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9758,
+        "kind": "item",
+        "occurred_at": "2026-02-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/88/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by District Judge Judith C. Herrera granting Motion for Leave to File Amicus Brief by Seventeen States and the District of Columbia 70 . (baw) (Entered: 02/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9759,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/89/united-states-v-oliver/",
+        "title": "United States v. New Mexico: BRIEF of Amici Curiae Maryland, Minnesota, Arizona, California, Colorado, Delaware, District of Columbia, Hawai'i, Illinois, Maine, Michigan, Nevada, New Jersey, New York, Oregon, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9760,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/90/united-states-v-oliver/",
+        "title": "United States v. New Mexico: BRIEF OF BIPARTISAN FORMER STATE SECRETARIES OF STATE NATIONWIDE AS AMICI CURIAE IN SUPPORT OF DEFENDANT'S MOTION TO DISMISS by Bipartisan Secretaries of State (Fayerberg, Amber) ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9761,
+        "kind": "item",
+        "occurred_at": "2026-02-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/91/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar re 38 MOTION to File Amicus Brief filed by Democratic National Committee. On January 15, 2026, the Court granted the Democratic Nationa"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9770,
+        "kind": "item",
+        "occurred_at": "2026-02-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9762,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/93/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE of Hearing - Status Conference set for 3/10/2026 at 11:00 AM in Albuquerque - 580 Brazos Courtroom before District Judge Judith C. Herrera. The purpose of this status confer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9763,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/95/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE of Motions Hearing on: 32 Motion to Dismiss filed by Intervenor-Defendant New Mexico Alliance for Retired Americans; 34 Motion to Dismiss filed by Intervenor-Defendants Comm"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9764,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/102/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE by Justin Allen, Common Cause, Claudia Medina of Supplemental Authority (Attachments: # 1 Exhibit Ex. 1 (RI Opinion)) (Hughes, William) (Entered: 04/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9765,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/103/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Clerk's Minutes for proceedings held before District Judge Judith C. Herrera: Motion Hearing held on 4/21/2026 re 32 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by New Mex"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9766,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/104/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE by New Mexico Alliance for Retired Americans of Supplemental Authority (Attachments: # 1 Exhibit A- Order, United States v. Fontes) (Nkwonta, Uzoma) (Entered: 04/29/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9767,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/112/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MOTION to Withdraw as Attorney Omeed Alerasool by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) (Entered: 06/29/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9768,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/116/united-states-v-oliver/",
+        "title": "United States v. New Mexico: REPLY Notice of Supplemental Authority re 111 Notice (Other) filed by United States Of America. (Casali, John) (Entered: 06/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9771,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Order on Motion to Withdraw as Attorney"
       }
     ]
   },
@@ -6666,6 +7732,806 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
         "title": "United States v. New Jersey — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9637,
+        "kind": "item",
+        "occurred_at": "2026-03-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/3/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Intervene as Defendants by LEAGUE OF WOMEN VOTERS OF NEW JERSEY, Latino Action Network, Maungsai Somboon. (Attachments: # 1 Memorandum of Law in Support of Motion to Inte"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9700,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 3 MOTION to Intervene as Defendants. Motion set for 4/6/2026 before Judge Zahid N. Quraishi. Unless otherwise directed by the Court, this motion will be decided"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9706,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9638,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/6/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Intervene as Defendants by MAKE THE ROAD NEW JERSEY, JAMIE Y DING, DANIELLE LITWAK. (Attachments: # 1 Brief in Support of Motion to Intervene, # 2 Declaration of Rajiv D."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9697,
+        "kind": "item",
+        "occurred_at": "2026-03-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9699,
+        "kind": "item",
+        "occurred_at": "2026-03-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Deadlines as to 6 MOTION to Intervene as Defendants. Motion set for 4/6/2026 before Judge Zahid N. Quraishi. Unless otherwise directed by the Court, this motion will be d"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9639,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/10/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Intervene by THE NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE (NAACP), NAACP New Jersey State Conference, Salvation and Social Justice, AAPI New Jersey, Ret"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9704,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9714,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 10 MOTION to Intervene . Motion set for 4/6/2026 before Judge Zahid N. Quraishi. Unless otherwise directed by the Court, this motion will be decided on the pape"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9640,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/17/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Application and Proposed Order for Clerk's Order to extend time to answer as to Defendant Dale G. Caldwell. Attorney LIZA FLEMING for DALE G. CALDWELL added. (FLEMING, LIZA) (Enter"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9689,
+        "kind": "item",
+        "occurred_at": "2026-03-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Clerk`s Text Order - The document 17 Application for Clerk's Order to Ext Answer/Proposed Order submitted by DALE G. CALDWELL has been GRANTED. The answer due date has been set for"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9641,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/20/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Compel Federal Election Records by THE UNITED STATES OF AMERICA. (Attachments: # 1 Memorandum Memo in SUpport, # 2 Declaration Dec. of E. Neff, # 3 Exhibit July Letter, #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9642,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/21/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Proposed Order by THE UNITED STATES OF AMERICA re 20 MOTION to Compel Federal Election Records. (GARDNER, CHRISTOPHER) (Entered: 04/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9693,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 20 MOTION to Compel Federal Election Records. Motion set for 5/4/2026 before Magistrate Judge Justin T. Quinn. Unless otherwise directed by the Court, this moti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9695,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9643,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/24/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Rajiv D. Parikh, Esq. seeking leave to file a Rule 12 motion. (PARIKH, RAJIV) (Entered: 04/08/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9644,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/25/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Application for Pro Bono Counsel by JAMIE Y DING, DANIELLE LITWAK, MAKE THE ROAD NEW JERSEY. (Attachments: # 1 Certification of Abha Khanna, Esq., # 2 Certification of Rajiv D. Par"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9708,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9645,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/27/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Defendant regarding pre-motion conference. (FLEMING, LIZA) (Entered: 04/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9646,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/29/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from proposed intervenor-defendants the League of Women Voters of New Jersey, Latino Action Network, and Maungsai Somboon regarding pre-motion process. (WEISBERG, LIZA) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9647,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/30/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: TEXT ORDER that the Court has reviewed Defendant Caldwell's pre-motion letter 27 . Given the issues raised in this case, the Court hereby WAIVES a pre-motion conference. Defendant "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9688,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Text Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9707,
+        "kind": "item",
+        "occurred_at": "2026-04-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9648,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/33/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Robert A. Wiygul regarding Briefing Schedule for the motion to compel re 30 Text Order,,. (WIYGUL, ROBERT) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9649,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/34/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: TEXT ORDER: Oral argument by telephone has been scheduled before Magistrate Judge Quinn re: 3 MOTION to Intervene as Defendants; 6 MOTION to Intervene as Defendants; and 10 MOTION "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9691,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Text Order AND ~Util - Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9650,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/37/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Rule 7.1(d)(5) Letter for an automatic extension of the return date of a dispositive motion filed by DALE G. CALDWELL re 20 MOTION to Compel Federal Election Records (WIYGUL, ROBER"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9651,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/39/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: TEXT ORDER that in response to Defendant's letters 33, 37 the deadlines for the parties' briefing with respect to the pending Motion to Compel 20 and the anticipated Motion to Dism"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9692,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Text Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9696,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: CLERK'S QUALITY CONTROL MESSAGE - Please be advised that the 37 Letter Rule 7.1 can not be granted as it is not a dispositive motion. This request has been forwarded to chambers. ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9652,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/44/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: ORDER granting 3 Motion to Intervene. Signed by Magistrate Judge Justin T. Quinn on 4/23/2026. (kht) (Entered: 04/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9653,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/45/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: ORDER granting 6 Motion to Intervene. Signed by Magistrate Judge Justin T. Quinn on 4/23/2026. (dnw) (Entered: 04/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9654,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/46/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: ORDER granting 10 Motion to Intervene. Signed by Magistrate Judge Justin T. Quinn on 4/23/2026. (mlh) (Entered: 04/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9655,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/47/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: SCHEDULING ORDER: Defendant's opposition to Plaintiff's motion to compel shall be filed by 5/4/2026. Defendant Caldwell shall file his motion to dismiss by 5/4/2026. The Intervenor"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9656,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/48/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Jason A. Levine - Request to File Overlength Brief re 47 Scheduling Order,. (LEVINE, JASON) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9657,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/49/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: LETTER ORDER granting Request to File Overlength Consolidated Brief. Signed by Judge Zahid N. Quraishi on 5/1/2026. (ld) (Entered: 05/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9658,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/50/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Dismiss by DALE G. CALDWELL. (Attachments: # 1 Brief in Support of Defendant's Motion to Dismiss and Opposition to Plaintiff's Motion to Compel, # 2 Exhibit A, # 3 Exhibi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9709,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9711,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 50 MOTION to Dismiss . Motion set for 6/1/2026 before Judge Zahid N. Quraishi. Unless otherwise directed by the Court, this motion will be decided on the papers"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9659,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/53/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION for Leave to Appear Amicus Curiae by DEMOCRATIC NATIONAL COMMITTEE. (Attachments: # 1 Memorandum Supporting DNC Application to Proceed PHV, # 2 Brief Amicus Brief, # 3 Text "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9686,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 53 MOTION for Leave to Appear Amicus Curiae . Motion set for 6/1/2026 before Magistrate Judge Justin T. Quinn. Unless otherwise directed by the Court, this moti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9712,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: CLERK'S QUALITY CONTROL MESSAGE - The 53 MOTION AND 54 LETTER submitted by WILLIAM NORTHGRAVE on 5/8/2026 did not contain a proper electronic signature (s/). PLEASE RESUBMIT THE DO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9713,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9660,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/56/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Dismiss Plaintiff's Complaint by AAPI New Jersey, Association of Black Women Lawyers of New Jersey, Garden State Bar Association, NAACP New Jersey State Conference, New J"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9661,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/57/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Dismiss Plaintiff's Complaint by LEAGUE OF WOMEN VOTERS OF NEW JERSEY, Latino Action Network, Maungsai Somboon. (Attachments: # 1 Brief in Support of Motion to Dismiss, #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9662,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/58/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION for Leave to Appear Amicus Curiae by DEMOCRATIC NATIONAL COMMITTEE. (Attachments: # 1 Memorandum Resubmittal of Memorandum in Support of Motion for Amicus Curiae, # 2 Brief "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9663,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/59/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION to Dismiss by JAMIE Y DING, DANIELLE LITWAK, MAKE THE ROAD NEW JERSEY. (Attachments: # 1 Brief in Support of Motion to Dismiss, # 2 Proposed Order)(ALERASOOL, OMEED) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9664,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/60/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Intervenor-Defendants Make the Road New Jersey, Jamie Y. Ding, and Danielle Litwak re 20 MOTION to Compel Federal Election Records. (ALERASOOL, OMEED) (Entered: 05/11/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9665,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/61/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION for Leave to Appear Amicus Curiae by UNITED BLACK AGENDA. (Attachments: # 1 Memorandum in Support of Motion for Leave to Appear as Amicus Curiae, # 2 Brief (Proposed) Brief "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9701,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9710,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 57 MOTION to Dismiss Plaintiff's Complaint, 56 MOTION to Dismiss Plaintiff's Complaint. Motion set for 6/15/2026 before Judge Zahid N. Quraishi. Unless otherwis"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9702,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9715,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 61 MOTION for Leave to Appear Amicus Curiae, 59 MOTION to Dismiss, 58 MOTION for Leave to Appear Amicus Curiae . Motion set for 6/15/2026 before Judge Zahid N. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9666,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/71/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: MOTION for Leave to Appear Amicus Curiae by Brennan Center for Justice and Campaign Legal Center. (Attachments: # 1 Memorandum in Support of Motion for Leave to File a Brief as Ami"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9667,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/73/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: LETTER ORDER GRANTING LEAVE TO FILE OPPOSITION: Intervenors shall file their opposition brief by May 22, 2026. Signed by Judge Zahid N. Quraishi on 5/19/2026. (ld) (Entered: 05/19/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9694,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set Deadlines as to 71 MOTION for Leave to Appear Amicus Curiae . Motion set for 6/15/2026 before Judge Zahid N. Quraishi. Unless otherwise directed by the Court, this motion will "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9703,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9668,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/74/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: TEXT ORDER that the following Motions to Appear Amicus Curiae are hereby GRANTED: 53, 58, 61, and 71 . Amici shall file their proposed briefs on the docket within 7 days. So Ordere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9698,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Order on Motion to Appear Amicus Curiae AND Order on Motion to Appear Amicus Curiae AND Order on Motion to Appear Amicus Curiae AND Order on Motion to Appear Amicus Curiae"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9669,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/75/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: BRIEF in Opposition to Government's Motion to Compel and in Support of Lt. Gov. Caldwell's Motion to Dismiss (MCGUIRE, GRANT) (Entered: 05/21/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9670,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/77/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: BRIEF in Opposition filed by JAMIE Y DING, DANIELLE LITWAK, MAKE THE ROAD NEW JERSEY re 20 MOTION to Compel Federal Election Records (ALERASOOL, OMEED) (Entered: 05/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9671,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/78/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: BRIEF of Amicus Curiae in Support of Lt. Gov. Caldwell's Motion to Dismiss (MARSELLA, MARK) (Entered: 05/26/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9672,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/79/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: RESPONSE in Opposition filed by THE UNITED STATES OF AMERICA re 56 MOTION to Dismiss Plaintiff's Complaint, 50 MOTION to Dismiss, 57 MOTION to Dismiss Plaintiff's Complaint, 59 MOT"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9687,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Motions No Longer Referred"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9690,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: 20 MOTION to Compel Federal Election Records no longer referred to the Magistrate Judge. Motion to be decided by the District Judge. (eh, )"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9673,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/80/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Jason A. Levine - Request to File Overlength Reply Brief. (LEVINE, JASON) (Entered: 06/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9674,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/81/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: LETTER ORDER granting Defendant's request to file an over-length brief, of no more than twenty (20) pages. Signed by Judge Zahid N. Quraishi on 6/12/2026. (adc, ) (Entered: 06/12/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9675,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/82/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: REPLY BRIEF to Opposition to Motion filed by DALE G. CALDWELL re 50 MOTION to Dismiss (WIYGUL, ROBERT) (Entered: 06/15/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9676,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/83/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Intervenor-Defendants LWVNJ, LAN, and Maungsai Somboon re Request to File Reply. (WEISBERG, LIZA) (Entered: 06/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9677,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/84/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Intervenor-Defendants Make the Road New Jersey, Jamie Y. Ding, and Danielle Litwak Requesting to File Reply re 59 MOTION to Dismiss . (ALERASOOL, OMEED) (Entered: 06/22"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9678,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/85/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from NAACP, NAACP New Jersey State Conference, SandSJ, AAPI NJ, RCSG, ABWL NJ, GSBA, NJ MLA, POP, and Edwin Ortiz re Request to File Reply. (VARGAS, MICAURI) (Entered: 06/22"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9679,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/86/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Robert A. Wiygul re Notice of Supplemental Authority re 50 MOTION to Dismiss . (WIYGUL, ROBERT) (Entered: 06/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9680,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/87/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: TEXT ORDER that the following requests to file a reply are hereby GRANTED: ECF Nos. 83, 84, and 85. The Intervenor Defendants shall file their replies, limited to 5 pages each, wit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9705,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Text Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9681,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/88/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Letter from Robert A. Wiygul re Notice of Supplemental Authority re 50 MOTION to Dismiss . (WIYGUL, ROBERT) (Entered: 06/25/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9682,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/89/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: REPLY BRIEF to Opposition to Motion filed by JAMIE Y DING, DANIELLE LITWAK, MAKE THE ROAD NEW JERSEY re 59 MOTION to Dismiss (ALERASOOL, OMEED) (Entered: 06/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9683,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/90/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: REPLY BRIEF to Opposition to Motion filed by AAPI New Jersey, Association of Black Women Lawyers of New Jersey, Garden State Bar Association, NAACP New Jersey State Conference, New"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9684,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/91/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: REPLY BRIEF to Opposition to Motion filed by LEAGUE OF WOMEN VOTERS OF NEW JERSEY, Latino Action Network, Maungsai Somboon re 57 MOTION to Dismiss Plaintiff's Complaint (Attachment"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9685,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/94/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Motion to Withdraw as Attorney"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9716,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
       }
     ]
   },
@@ -7392,6 +9258,59 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72335259/54/united-states-v-warner/",
         "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans for Leave to File Third Notice of Supplemental Authority (Attachment: # 1 Exhibit 1)(Platz, Graham)"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Ziriax",
+    "case_id": "72336804",
+    "category": "voter-data",
+    "court": "Western District of Oklahoma",
+    "defendant": "Ziriax",
+    "docket_number": "5:26-cv-00361",
+    "filed_at": "2026-02-26T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 9821,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72336804/united-states-v-ziriax/",
+        "title": "United States v. Oklahoma — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9822,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72336804/1/united-states-v-ziriax/",
+        "title": "United States v. Oklahoma: COMPLAINT against Paul Ziriax filed by United States of America. (Attachments: # 1 Civil Cover Sheet)(naa) (Entered: 02/26/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9823,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72336804/3/united-states-v-ziriax/",
+        "title": "United States v. Oklahoma: MOTION to Intervene by Oklahoma Alliance for Retired Americans. (Attachments: # 1 Exhibit, # 2 Exhibit, # 3 Exhibit)(Frasier, Frank) (Entered: 03/05/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9824,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72336804/23/united-states-v-ziriax/",
+        "title": "United States v. Oklahoma: MOTION to Intervene as Defendants by Laiba Fatima, League of United Latin American Citizens, League of Women Voters of Oklahoma. (Attachments: # 1 Exhibit 1 - Proposed Motion to Di"
       }
     ]
   },
