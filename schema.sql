@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS items (
     confidence       TEXT,                   -- high | moderate | low (analyst judgment, optional)
     bill_id          TEXT REFERENCES bills(bill_id),
     case_id          TEXT REFERENCES cases(case_id),
+    state_bill_id    TEXT REFERENCES state_bills(state_bill_id),
     content_hash     TEXT NOT NULL,          -- sha256 of canonical content, for dedup
     raw_json         TEXT,                   -- original payload, kept for traceability
     UNIQUE(content_hash)
@@ -41,6 +42,7 @@ CREATE INDEX IF NOT EXISTS idx_items_channel  ON items(channel);
 CREATE INDEX IF NOT EXISTS idx_items_occurred ON items(occurred_at);
 CREATE INDEX IF NOT EXISTS idx_items_bill     ON items(bill_id);
 CREATE INDEX IF NOT EXISTS idx_items_case     ON items(case_id);
+CREATE INDEX IF NOT EXISTS idx_items_state_bill ON items(state_bill_id);
 
 -- Watched federal bills and their vehicles.
 CREATE TABLE IF NOT EXISTS bills (
@@ -102,6 +104,26 @@ CREATE TABLE IF NOT EXISTS case_entries (
     description  TEXT,
     document_url TEXT,
     UNIQUE(case_id, entry_at, description)
+);
+
+-- State bills promoted to first-class, parallel to `bills`. PK is the LegiScan
+-- numeric bill_id as text: globally unique and stable, the way `cases` key on the
+-- CourtListener docket id. items.state_bill_id references it; the /state-bill/[id]
+-- route (5b-c) keys on it. is_vehicle is reserved for 5b-b and stays 0 here.
+CREATE TABLE IF NOT EXISTS state_bills (
+    state_bill_id  TEXT PRIMARY KEY,       -- str(LegiScan bill_id)
+    state          TEXT NOT NULL,
+    bill_number    TEXT NOT NULL,
+    session        TEXT,
+    title          TEXT,
+    description    TEXT,
+    status         TEXT,                    -- LegiScan numeric status code as text; display-mapped in 5b-c
+    url            TEXT,
+    is_vehicle     INTEGER NOT NULL DEFAULT 0,
+    last_action    TEXT,
+    last_action_at TEXT,
+    change_hash    TEXT,
+    updated_at     TEXT
 );
 
 -- LegiScan change-hash bookkeeping: last-seen hash per state bill, so the poll
