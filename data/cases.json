@@ -4132,6 +4132,549 @@
     ]
   },
   {
+    "caption": "United States v. Hobbs",
+    "case_id": "71982380",
+    "category": "voter-data",
+    "court": "Western District of Washington",
+    "defendant": "Hobbs",
+    "docket_number": "3:25-cv-06078",
+    "filed_at": "2025-12-02T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 9122,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9123,
+        "kind": "item",
+        "occurred_at": "2025-12-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/4/united-states-v-hobbs/",
+        "title": "United States v. Washington: Notice of Filing Deficiency re 1 Complaint,. ***Action Required*** Improper Signature, Attorney Admission.See attached letter for more information and instructions. cc Attorney Rio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9124,
+        "kind": "item",
+        "occurred_at": "2025-12-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/5/united-states-v-hobbs/",
+        "title": "United States v. Washington: Notice of Filing Deficiency re Proposed Motion attached at 1 Complaint. ***Action Required***See attached letter for more information and instructions. (BKP) (Entered: 12/09/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9125,
+        "kind": "item",
+        "occurred_at": "2025-12-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/6/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Intervene Common Power's Motion to Intervene as Defendant Attorney Abha Khanna added to party Common Power(pty:mov), filed by Movant Common Power. (Attachments: # 1 Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9126,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/7/united-states-v-hobbs/",
+        "title": "United States v. Washington: MINUTE ORDER (text only) made at the direction of the Hon. S. Kate Vaughan. The 6 Motion to Intervene is TERMINATED without prejudice to refile upon proof of service of this action"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9171,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington: 2 - Minute Order AND ~Util - Terminate Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9127,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/8/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER TO SHOW CAUSE by Hon. S. Kate Vaughan. Plaintiff shall file proof of timely service upon Defendant or show cause as to why this matter should not be dismissed by March 17, 20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9128,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/14/united-states-v-hobbs/",
+        "title": "United States v. Washington: NOTICE Defendant Sec.of State Hobbs Notice Related to Court's Order to Show Cause re 8 Order to Show Cause ; filed by Defendant Steve Hobbs. (Heintz, Tera) (Entered: 03/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9129,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/16/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER TO SHOW CAUSE by Hon. S. Kate Vaughan. Show Cause Response due by 3/23/2026. (SNP) (Entered: 03/18/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9130,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/18/united-states-v-hobbs/",
+        "title": "United States v. Washington: RESPONSE TO ORDER TO SHOW CAUSE by Plaintiff United States of America re: 16 Order to Show Cause (Johnson, Kristin) (Entered: 03/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9131,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/19/united-states-v-hobbs/",
+        "title": "United States v. Washington: DECLARATION of Eric Neff in Support of the United States Response to the Order to Show Cause re 18 Response to Order to Show Cause by Plaintiff United States of America (Johnson, K"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9132,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/21/united-states-v-hobbs/",
+        "title": "United States v. Washington: MINUTE ORDER REASSIGNING CASE by Clerk Joshua C. Lewis. Case reassigned to District Judge Kymberly K. Evanson for all further proceedings. Hon. S. Kate Vaughan no longer assigned t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9133,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/22/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER LIFTING ORDERS TO SHOW CAUSE. The Court LIFTS the orders to show cause (Dkt. Nos. 8, 16 ). And because Plaintiff has now filed proof of service on Defendant, the motion to in"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9134,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/23/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Intervene Attorney Abha Khanna added to party Washington Alliance for Retired Americans(pty:mov), filed by Movants Common Power, Washington Alliance for Retired Americans"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9135,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/24/united-states-v-hobbs/",
+        "title": "United States v. Washington: STANDING ORDER REGARDING 28 U.S.C. § 455(b)(2) AND CANON 3(C)(1)(B) OF THE CODE OF CONDUCT FOR UNITED STATES JUDGES Signed by District Judge Kymberly K. Evanson. (DS) (Entered: 03/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9136,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/25/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER REGARDING CHAMBERS PROCEDURES IN CIVIL CASES Signed by District Judge Kymberly K. Evanson. (DS) (Entered: 03/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9137,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/28/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Intervene Attorney Amanda J Beane added to party Common Cause(pty:dft), Attorney Amanda J Beane added to party Washington Conservation Action Education Fund(pty:dft), fil"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9138,
+        "kind": "item",
+        "occurred_at": "2026-04-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/29/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Compel Production of Records, filed by Plaintiff United States of America. (Attachments: # 1 Proposed Order to Compel Production of Records) Noting Date 8/4/2026 6/8/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9139,
+        "kind": "item",
+        "occurred_at": "2026-04-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/30/united-states-v-hobbs/",
+        "title": "United States v. Washington: DECLARATION of Eric Neff filed by Plaintiff United States of America re 29 MOTION to Compel Production of Records (Attachments: # 1 Exhibit September 8 Letter, # 2 Exhibit Septembe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9140,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/41/united-states-v-hobbs/",
+        "title": "United States v. Washington: Stipulated MOTION and [Proposed] Order to Set Briefing Schedule and Word Limits, filed by Defendant Steve Hobbs. Noting Date 4/9/2026, (Smith, Karl) (Entered: 04/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9141,
+        "kind": "item",
+        "occurred_at": "2026-04-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/45/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting the Parties' 41 Stipulated MOTION and [Proposed] Order to Set Briefing Schedule and Word Limits. Any combined Motion to Dismiss and opposition to Plaintiff's Motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9142,
+        "kind": "item",
+        "occurred_at": "2026-04-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/46/united-states-v-hobbs/",
+        "title": "United States v. Washington: RESPONSE, by Defendant Steve Hobbs, to 28 MOTION to Intervene Attorney Amanda J Beane added to party Common Cause(pty:dft), Attorney Amanda J Beane added to party Washington Conser"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9143,
+        "kind": "item",
+        "occurred_at": "2026-04-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/47/united-states-v-hobbs/",
+        "title": "United States v. Washington: RESPONSE, by Plaintiff United States of America, to 28 MOTION to Intervene Attorney Amanda J Beane added to party Common Cause(pty:dft), Attorney Amanda J Beane added to party Wash"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9144,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/48/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER REGARDING INITIAL DISCLOSURES AND JOINT STATUS REPORT Signed by District Judge Kymberly K. Evanson. FRCP 26(f) Conference Deadline is 5/8/2026, Initial Disclosure Deadline is"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9145,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/49/united-states-v-hobbs/",
+        "title": "United States v. Washington: REPLY, filed by Defendants Common Cause, Washington Conservation Action Education Fund, TO RESPONSE to 28 MOTION to Intervene Attorney Amanda J Beane added to party Common Cause(pt"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9146,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/50/united-states-v-hobbs/",
+        "title": "United States v. Washington: REPLY, filed by Movants Common Power, Washington Alliance for Retired Americans, TO RESPONSE to 23 MOTION to Intervene Attorney Abha Khanna added to party Washington Alliance for R"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9147,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/51/united-states-v-hobbs/",
+        "title": "United States v. Washington: NOTICE TO THE PARTIES: The Court acknowledges the requirements of FRCP 16(b)(2), but finds good cause to defer entry of a case schedule pending its ruling on the 29 Motion to Compe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9148,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/52/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION for Leave to File Motion to Dismiss and Response in Opp to Plaintiff's Motion to Compel, filed by Defendants Common Cause, Washington Conservation Action Education Fund. (At"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9149,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/53/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Dismiss for Failure to State a Claim and Opposition to Plaintiff's Motion to Compel, filed by Defendant Steve Hobbs. (Attachments: # 1 Proposed Order) Noting Date 8/4/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9150,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/54/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION for Leave to File Motion to Dismiss and Response in Opposition to Plaintiff's Motion to Compel, filed by Movants Common Power, Washington Alliance for Retired Americans. (At"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9151,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/55/united-states-v-hobbs/",
+        "title": "United States v. Washington: Unopposed MOTION for Leave to File Brief as Amicus Curiae, filed by Amicus Democratic National Committee. (Attachments: # 1 Proposed Order, # 2 Brief as Amicus Curiae) Noting Date "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9152,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/58/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO INTERVENE. The Court GRANTS the motions to intervene filed by Common Power, WARA, Common Cause, and WCAEF. Dkt. Nos. 23, 28 . Their motions for leave to f"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9153,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/60/united-states-v-hobbs/",
+        "title": "United States v. Washington: Stipulated MOTION to Continue Deadlines, filed by Plaintiff United States of America. Noting Date 5/19/2026, (Casali, John) (Entered: 05/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9154,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/61/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting the Parties' 60 Stipulated MOTION to Continue Deadlines. The early case deadlines previously set (Dkt. No. 48 ) are VACATED and will be re-set as necessary after the"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9155,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/62/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Dismiss AND RESPONSE IN OPPOSITION TO MOTION TO COMPEL, filed by Defendants Common Cause, Washington Conservation Action Education Fund. Noting Date 8/4/2026 6/22/2026, ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9156,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/63/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION to Dismiss and Response in Opposition to Plaintiff's Motion to Compel, filed by Intervenor Parties Common Power, Washington Alliance for Retired Americans. (Attachments: # 1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9157,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/64/united-states-v-hobbs/",
+        "title": "United States v. Washington: NOTICE of Hearing on 63 MOTION to Dismiss and Response in Opposition to Plaintiff's Motion to Compel, 62 MOTION to Dismiss AND RESPONSE IN OPPOSITION TO MOTION TO COMPEL, 29 MOTION"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9170,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington: Notice of Hearing on Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9158,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/66/united-states-v-hobbs/",
+        "title": "United States v. Washington: MOTION for Leave to File Brief of Amici Curiae Former Employees of the U.S. Department of Justice, filed by Amicus Amici Former Employees of the U.S. Department of Justice. (Attach"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9159,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/68/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting 55 Unopposed MOTION for Leave to File Brief as Amicus Curiae, filed by Amicus Democratic National Committee. Signed by District Judge Kymberly K. Evanson. (APH) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9160,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/69/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting 66 MOTION for Leave to File Brief of Amici Curiae Former Employees of the U.S. Department of Justice. Signed by District Judge Kymberly K. Evanson. (APH) (Entered: 0"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9161,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/70/united-states-v-hobbs/",
+        "title": "United States v. Washington: AMICUS BRIEF re 68 Order on Motion for Leave to File Amicus Brief by Amicus Democratic National Committee (Hamilton, Kevin) (Entered: 05/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9162,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/75/united-states-v-hobbs/",
+        "title": "United States v. Washington: Unopposed MOTION for Leave to File Amicus Brief, filed by Amicus State of Maryland. (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Proposed Order) Noting Date 6/8/2026, (Kobr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9163,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/76/united-states-v-hobbs/",
+        "title": "United States v. Washington: RESPONSE, by Plaintiff United States of America, to 53 MOTION to Dismiss for Failure to State a Claim and Opposition to Plaintiff's Motion to Compel, 62 MOTION to Dismiss AND RESPO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9164,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/77/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting 75 Unopposed MOTION for Leave to File Amicus Brief. The Amici States shall file their brief on the docket. Signed by District Judge Kymberly K. Evanson. (APH) (Enter"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9165,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/78/united-states-v-hobbs/",
+        "title": "United States v. Washington: AMICUS BRIEF re 77 Order on Motion for Leave to File by Amicus State of Maryland (Kobrin, Daniel) (Entered: 06/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9166,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/79/united-states-v-hobbs/",
+        "title": "United States v. Washington: AMICUS BRIEF re 69 Order on Motion for Leave to File a Brief as Amici Curiae by Amicus Amici Former Employees of the U.S. Department of Justice (Harris, Emily) (Entered: 06/12/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9167,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/80/united-states-v-hobbs/",
+        "title": "United States v. Washington: RESPONSE, by Defendants Common Cause, Washington Conservation Action Education Fund, to 62 MOTION to Dismiss AND RESPONSE IN OPPOSITION TO MOTION TO COMPEL. (Beane, Amanda) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9168,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/81/united-states-v-hobbs/",
+        "title": "United States v. Washington: REPLY, filed by Defendant Steve Hobbs, TO RESPONSE to 53 MOTION to Dismiss for Failure to State a Claim and Opposition to Plaintiff's Motion to Compel (Heintz, Tera) (Entered: 06/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9169,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/82/united-states-v-hobbs/",
+        "title": "United States v. Washington: REPLY, filed by Intervenor Parties Common Power, Washington Alliance for Retired Americans, TO RESPONSE to 63 MOTION to Dismiss and Response in Opposition to Plaintiff's Motion to "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9172,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington: Noting Date Reset re 63 MOTION to Dismiss and Response in Opposition to Plaintiff's Motion to Compel, 62 MOTION to Dismiss AND RESPONSE IN OPPOSITION TO MOTION TO COMPEL, 29 MOTION"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9173,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington: Set/Reset Motion Noting Date"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9174,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington: Set/Reset Motion Noting Date (Public)"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Griswold",
     "case_id": "72021508",
     "category": "voter-data",
@@ -6480,6 +7023,379 @@
     ]
   },
   {
+    "caption": "United States v. Warner",
+    "case_id": "72335259",
+    "category": "voter-data",
+    "court": "Southern District of West Virginia",
+    "defendant": "Warner",
+    "docket_number": "2:26-cv-00156",
+    "filed_at": "2026-02-26T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 9175,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
+        "title": "United States v. West Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9176,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/3/united-states-v-warner/",
+        "title": "United States v. West Virginia: STANDING ORDER IN RE: ASSIGNMENT AND REFERRAL OF CIVIL ACTIONS AND MATTERS TO MAGISTRATE JUDGES ENTERED SEPTEMBER 1, 2024. Discovery referred to Magistrate Judge Dwane L. Tinsley. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9177,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/4/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans to Intervene as Defendant (Attachments: # 1 Exhibit A - Proposed Answer, # 2 Exhibit B - Case Declaration, # 3 Exhibit C - US"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9178,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/5/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM OF LAW by West Virginia Alliance for Retired Americans in support of 4 MOTION by West Virginia Alliance for Retired Americans to Intervene as Defendant (Smith, Christina"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9179,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/11/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Citizen Action Group to Intervene as a Defendant. (Attachments: # 2 Index, # 3 Exhibit A, # 4 Exhibit B, # 5 Exhibit C, # 6 Exhibit D, # 7 Exhibit E, # 8 Ex"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9180,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/13/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM OF LAW by West Virginia Citizen Action Group in support of 11 MOTION by West Virginia Citizen Action Group to Intervene as a Defendant. (kew)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9210,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
+        "title": "United States v. West Virginia: NOTICE OF DOCKET CORRECTION re: 11 MOTION by West Virginia Citizen Action Group to Intervene as a Defendant. ERROR: Memorandum in support attached to motion. CORRECTION: Memorandum"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9181,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/14/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960 (Attachments: # 1 Declaration of E. Neff, # 2 Letter to WV, # 3 Refusal Let"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9182,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/15/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM by United States of America supporting 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960 (Gardner, Christopher)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9183,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/21/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Citizen Action Group for Leave to File Memorandum in Opposition to the 14 MOTION by United States of America to Compel Federal Election Records Under the Ci"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9184,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/22/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM by West Virginia Citizen Action Group in opposition to 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960 (Spark"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9185,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/23/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans for Leave to File Response to 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9186,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/24/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by Kris Warner to Dismiss 1 Complaint. (Attachment: # 1 Exhibit A)(Williams, Michael) (Modified on 4/30/2026 to add link to #1 complaint) (kew)."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9187,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/25/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM OF LAW by Kris Warner in support of 24 MOTION by Kris Warner to Dismiss 1 Complaint. (Williams, Michael)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9188,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/26/united-states-v-warner/",
+        "title": "United States v. West Virginia: RESPONSE by Kris Warner in opposition to 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960. (Attachment: # 1 Exhibit A)(Wi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9189,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/30/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by Democratic National Committee for Leave to File a Brief as Amicus Curiae (Attachment: # 1 Proposed Order)(Bastress, Robert)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9190,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/31/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM by Democratic National Committee in support of 30 MOTION by Democratic National Committee for Leave to File a Brief as Amicus Curiae (Bastress, Robert)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9191,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/32/united-states-v-warner/",
+        "title": "United States v. West Virginia: AMICUS BRIEF by Democratic National Committee in opposition to 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960 (Bastress"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9192,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/35/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by United States of America for Leave to File Response in Opposition to 4 and 11 Motions to Intervene. (Gardner, Christopher) (Modified on 5/11/2026 to add links to #4 and #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9193,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/36/united-states-v-warner/",
+        "title": "United States v. West Virginia: RESPONSE by United States of America in opposition to 4 MOTION by West Virginia Alliance for Retired Americans to Intervene and 11 MOTION by West Virginia Citizen Action Group to I"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9194,
+        "kind": "item",
+        "occurred_at": "2026-05-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/38/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by United States of America to Exceed Page Limits for Memorandum in Response. (Gardner, Christopher)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9195,
+        "kind": "item",
+        "occurred_at": "2026-05-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/39/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM by United States of America in response to 24 MOTION by Kris Warner to Dismiss 1 Complaint and REPLY to 26 Response In Opposition. (Attachments: # 1 Second Declaration o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9196,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/40/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Citizen Action Group for Leave to File Motion to Dismiss. (Sparks, Aubrey)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9197,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/41/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Citizen Action Group to Dismiss 1 Complaint. (Attachments: # 1 Exhibit A, # 2 Exhibit B, # 3 Exhibit C, # 4 Exhibit D, # 5 Exhibit E, # 6 Exhibit F)(Sparks,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9198,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/42/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM OF LAW by West Virginia Citizen Action Group in support of 41 MOTION by West Virginia Citizen Action Group to Dismiss 1 Complaint. (Sparks, Aubrey)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9199,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/43/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans for Leave to File Motion to Dismiss the Complaint. (Platz, Graham)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9200,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/44/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans to Dismiss 1 Complaint. (Platz, Graham) (Modified on 5/15/2026 to add link to #1 complaint) (kew)."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9201,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/45/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM OF LAW by West Virginia Alliance for Retired Americans in support of 44 MOTION by West Virginia Alliance for Retired Americans to Dismiss 1 Complaint. (Platz, Graham)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9202,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/46/united-states-v-warner/",
+        "title": "United States v. West Virginia: RESPONSE by West Virginia Citizen Action Group in opposition to 35 MOTION by United States of America for Leave to File Response in Opposition to 4 and 11 Motions to Intervene and "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9203,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/47/united-states-v-warner/",
+        "title": "United States v. West Virginia: COMBINED RESPONSE by West Virginia Alliance for Retired Americans in opposition to 35 MOTION by United States of America for Leave to File Response in Opposition to 4 and 11 Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9204,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/48/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans for Leave to File Notice of Supplemental Authority in Support of Motion to Intervene (Attachments: # 1 Exhibit 1, # 2 Exhibit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9205,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/49/united-states-v-warner/",
+        "title": "United States v. West Virginia: REPLY MEMORANDUM by Kris Warner to 39 Memorandum In Opposition. (Williams, Michael)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9206,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/50/united-states-v-warner/",
+        "title": "United States v. West Virginia: NOTICE of Supplemental Authority by Kris Warner re: 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960 and 24 MOTION by Kri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9207,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/52/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans for Leave to File Second Notice of Supplemental Authority (Attachment: # 1 Exhibit 1 - Notice of Supplemental Authority)(Smit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9208,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/53/united-states-v-warner/",
+        "title": "United States v. West Virginia: NOTICE of Supplemental Authority by Kris Warner re: 14 MOTION by United States of America to Compel Federal Election Records Under the Civil Rights Act of 1960 and 24 MOTION by Kri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9209,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/54/united-states-v-warner/",
+        "title": "United States v. West Virginia: MOTION by West Virginia Alliance for Retired Americans for Leave to File Third Notice of Supplemental Authority (Attachment: # 1 Exhibit 1)(Platz, Graham)"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Jocelyn Benson",
     "case_id": "72347022",
     "category": "voter-data",
@@ -7288,6 +8204,89 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73443024/10/united-states-of-america-v-fontes/",
         "title": "United States v. Arizona: ORDER FILED. The motion (Docket Entry Nos. 8 & 9) to stay appellate proceedings is granted. The briefing schedule is vacated.\nAppellate proceedings are stayed until resolution of U"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Wisconsin Elections Commission",
+    "case_id": "73453198",
+    "category": "voter-data",
+    "court": "Seventh Circuit",
+    "defendant": "Wisconsin Elections Commission",
+    "docket_number": "26-2217",
+    "filed_at": "2026-06-05T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 9211,
+        "kind": "item",
+        "occurred_at": "2026-06-05T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9212,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/9/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Emergency motion filed by Appellant USA to expedite appeal. [9] [7532678] [26-2217] (Voiland, Joseph) [Entered: 06/12/2026 08:26 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9213,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/10/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: ORDER re: United States’ opposed motion to expedite briefing emergency motion under Seventh Circuit Rule 27 this motion requests relief by July 7, 2026. The appellees shall file a "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9214,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/17/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Filed Response in Opposition by Appellees Marge Bostelmann, Ann S. Jacobs, Don M. Millis, Carrie Riepl, Robert Spindell, Jr., Mark L. Thomsen, Wisconsin Elections Commission and Me"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9215,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/18/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Filed Response in Opposition by Appellees Wisconsin Alliance for Retired Americans and Forward Latino to Appellant's Motion to Expedite Appeal. [18][7534033] [26-2217] (Fox, David)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9216,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/19/1/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Filed Response in Opposition by Appellees Common Cause, Melissa Adams, Amanda Makulec and Jaime Riefer Attorney Jonathan Topaz to United States' Emergency Motion to Expedite Briefi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 9217,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/20/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: ORDER re: 1. United States’ opposed motion to expedite briefing. 2. Response to appellant’s motion for emergency schedule. 3. Wisconsin Alliance for Retired Americans and Forward L"
       }
     ]
   },
