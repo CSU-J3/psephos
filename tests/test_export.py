@@ -68,19 +68,31 @@ def _case(conn, case_id):
     conn.commit()
 
 
+def _state_bill(conn, state_bill_id, *, state="TX", bill_number="SB100",
+                is_vehicle=0, updated_at=None):
+    db.upsert(conn, "state_bills", {
+        "state_bill_id": state_bill_id, "state": state, "bill_number": bill_number,
+        "is_vehicle": is_vehicle, "updated_at": updated_at,
+    }, pk="state_bill_id")
+    conn.commit()
+
+
 _HASH = [0]
 
 
-def _item(conn, *, source_id, title, occurred_at, bill_id=None, case_id=None):
+def _item(conn, *, source_id, title, occurred_at, bill_id=None, case_id=None,
+          state_bill_id=None):
     """Seed one item; returns its rowid. content_hash is unique per call."""
     channel, src, info = SOURCES[source_id]
     _HASH[0] += 1
     cur = conn.execute(
         "INSERT INTO items (channel, source_id, source_url, title, occurred_at, "
-        "fetched_at, admiralty_source, admiralty_info, bill_id, case_id, content_hash) "
-        "VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+        "fetched_at, admiralty_source, admiralty_info, bill_id, case_id, "
+        "state_bill_id, content_hash) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
         (channel, source_id, f"https://ex/{_HASH[0]}", title, occurred_at,
-         "2026-01-01T00:00:00+00:00", src, info, bill_id, case_id, f"h{_HASH[0]}"),
+         "2026-01-01T00:00:00+00:00", src, info, bill_id, case_id,
+         state_bill_id, f"h{_HASH[0]}"),
     )
     conn.commit()
     return cur.lastrowid
@@ -263,45 +275,56 @@ def test_executive_json_is_byte_identical_and_timestamp_free():
     assert b"2026-01-01T00:00:00" not in b1            # no fetched_at / wall-clock leaked
 
 
-# --- state channel -----------------------------------------------------------
+# --- state bills (first-class dimension) -------------------------------------
 
-def test_state_channel_isolated_and_in_snapshot():
-    """State items (no bill_id/case_id) belong to build_state only -- they must
-    never leak into a bill, case, or executive product, and both must surface here."""
+def test_state_bills_isolated_and_in_snapshot():
+    """State items belong to build_state_bills only, keyed by state_bill_id -- they
+    must never leak into a bill, case, or executive product, and each surfaces in
+    its own bill's timeline, date-ordered. Bills sort by state_bill_id."""
     conn = _conn()
-    s2 = _item(conn, source_id="legiscan", title="TX SB100: Committee report favorable", occurred_at="2026-02-15")
-    s1 = _item(conn, source_id="legiscan", title="GA HB50: Introduced", occurred_at="2026-01-10")
-    # bill-, case-, and executive-scoped items that MUST NOT appear in the state list
+    _state_bill(conn, "1700001", state="TX", bill_number="SB100")
+    _state_bill(conn, "1700050", state="GA", bill_number="HB50")
+    tx2 = _item(conn, source_id="legiscan", title="TX SB100: Committee report favorable", occurred_at="2026-02-15", state_bill_id="1700001")
+    tx1 = _item(conn, source_id="legiscan", title="TX SB100: Introduced", occurred_at="2026-01-10", state_bill_id="1700001")
+    ga1 = _item(conn, source_id="legiscan", title="GA HB50: Introduced", occurred_at="2026-01-20", state_bill_id="1700050")
+    # bill-, case-, and executive-scoped items that MUST NOT appear in a state bill
     _bill(conn, "billA-119")
     _case(conn, "1:26-cv-01352")
     b_item = _item(conn, source_id="congress-gov", title="On passage 218-213", occurred_at="2026-02-11", bill_id="billA-119")
     c_item = _item(conn, source_id="courtlistener", title="MOTION to Dismiss", occurred_at="2026-06-02", case_id="1:26-cv-01352")
     e_item = _item(conn, source_id="federal-register", title="EO 14248 on proof of citizenship", occurred_at="2025-03-25")
 
-    st = snapshots.build_state(conn)
-    st_ids = [e["id"] for e in st]
-    assert st_ids == [s1, s2]                          # date-ordered (Jan before Feb), lossless
-    assert all(e["channel"] == "state" and e["grade"] == "B2" for e in st)
-    for other in (b_item, c_item, e_item):
-        assert other not in st_ids
+    sb = snapshots.build_state_bills(conn)
+    assert [b["state_bill_id"] for b in sb] == ["1700001", "1700050"]  # sorted by PK
+    tx = next(b for b in sb if b["state_bill_id"] == "1700001")
+    assert [e["id"] for e in tx["timeline"]] == [tx1, tx2]   # date-ordered within the bill
+    assert tx["is_vehicle"] is False                          # 5b-b does not set it yet
+    ga = next(b for b in sb if b["state_bill_id"] == "1700050")
+    assert [e["id"] for e in ga["timeline"]] == [ga1]
+    assert all(e["channel"] == "state" and e["grade"] == "B2"
+               for b in sb for e in b["timeline"])
 
     # The reverse isolation: state ids appear in no bill, case, or executive product.
+    state_ids = {tx1, tx2, ga1}
     bill_ids = {i for b in snapshots.build_bills(conn, []) for i in _all_ids(b["timeline"])}
     case_ids = {i for c in snapshots.build_cases(conn) for i in _all_ids(c["timeline"])}
     exec_ids = {e["id"] for e in snapshots.build_executive(conn)}
-    assert {s1, s2}.isdisjoint(bill_ids)
-    assert {s1, s2}.isdisjoint(case_ids)
-    assert {s1, s2}.isdisjoint(exec_ids)
+    assert state_ids.isdisjoint(bill_ids)
+    assert state_ids.isdisjoint(case_ids)
+    assert state_ids.isdisjoint(exec_ids)
+    assert {b_item, c_item, e_item}.isdisjoint(state_ids)   # sanity: distinct ids
 
 
-def test_state_json_is_byte_identical_and_timestamp_free():
+def test_state_bills_json_is_byte_identical_and_timestamp_free():
     conn = _conn()
-    _item(conn, source_id="legiscan", title="TX SB100: Filed", occurred_at="2026-01-20")
-    _item(conn, source_id="legiscan", title="GA HB50: Introduced", occurred_at="2026-01-10")
+    _state_bill(conn, "1700001", state="TX", bill_number="SB100")
+    _state_bill(conn, "1700050", state="GA", bill_number="HB50")
+    _item(conn, source_id="legiscan", title="TX SB100: Filed", occurred_at="2026-01-20", state_bill_id="1700001")
+    _item(conn, source_id="legiscan", title="GA HB50: Introduced", occurred_at="2026-01-10", state_bill_id="1700050")
 
     out = Path(tempfile.mkdtemp())
-    b1 = snapshots.write_json(str(out / "s1.json"), snapshots.build_state(conn))
-    b2 = snapshots.write_json(str(out / "s2.json"), snapshots.build_state(conn))
+    b1 = snapshots.write_json(str(out / "s1.json"), snapshots.build_state_bills(conn))
+    b2 = snapshots.write_json(str(out / "s2.json"), snapshots.build_state_bills(conn))
     assert b1 == b2                                    # unchanged DB -> empty diff
     assert b1.endswith(b"\n")
     assert b"2026-01-01T00:00:00" not in b1            # no fetched_at / wall-clock leaked

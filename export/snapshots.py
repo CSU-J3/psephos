@@ -29,7 +29,7 @@ import db
 BILLS_PATH = "data/bills.json"
 CASES_PATH = "data/cases.json"
 EXECUTIVE_PATH = "data/executive.json"
-STATE_PATH = "data/state.json"
+STATE_BILLS_PATH = "data/state_bills.json"
 
 # A cluster node needs at least this many members; a lone anchor match stays a
 # standalone item (a 1-member "cluster" would add nothing and only obscure it).
@@ -226,15 +226,35 @@ def build_executive(conn) -> list[dict]:
     return sorted((_item_entry(r) for r in rows), key=_sort_key)
 
 
-def build_state(conn) -> list[dict]:
-    """The state channel as a flat, date-ordered list. Items-only like executive
-    (bill_id/case_id null), no bill/case scope and no clustering; reuses
-    _item_entry / _sort_key so state entries match the item shape and stay
-    byte-stable."""
-    rows = conn.execute(
-        "SELECT * FROM items WHERE channel = 'state' ORDER BY occurred_at, id"
-    ).fetchall()
-    return sorted((_item_entry(r) for r in rows), key=_sort_key)
+def build_state_bills(conn) -> list[dict]:
+    """Per-state-bill objects sorted by state_bill_id. Timeline = the state items
+    keyed by state_bill_id, flat and date-ordered like build_cases (state bills
+    have no event anchors -- those are federal-bill-scoped). is_vehicle is exported
+    but always 0 until 5b-b. No updated_at / change_hash in the output, so the
+    snapshot stays byte-stable even though the row's updated_at moves every run
+    (the same reason build_bills omits it)."""
+    out = []
+    bills = conn.execute("SELECT * FROM state_bills ORDER BY state_bill_id").fetchall()
+    for b in bills:
+        rows = conn.execute(
+            "SELECT * FROM items WHERE state_bill_id = ? ORDER BY occurred_at, id",
+            (b["state_bill_id"],),
+        ).fetchall()
+        entries = sorted((_item_entry(r) for r in rows), key=_sort_key)
+        out.append({
+            "state_bill_id": b["state_bill_id"],
+            "state": b["state"],
+            "bill_number": b["bill_number"],
+            "session": b["session"],
+            "title": b["title"],
+            "status": b["status"],
+            "is_vehicle": bool(b["is_vehicle"]),
+            "last_action": b["last_action"],
+            "last_action_at": b["last_action_at"],
+            "url": b["url"],
+            "timeline": entries,
+        })
+    return out
 
 
 def write_json(path: str, obj) -> bytes:
@@ -256,19 +276,19 @@ def main() -> int:
         bills = build_bills(conn, anchors)
         cases = build_cases(conn)
         executive = build_executive(conn)
-        state = build_state(conn)
+        state_bills = build_state_bills(conn)
     finally:
         conn.close()
 
     write_json(BILLS_PATH, bills)
     write_json(CASES_PATH, cases)
     write_json(EXECUTIVE_PATH, executive)
-    write_json(STATE_PATH, state)
+    write_json(STATE_BILLS_PATH, state_bills)
 
     nodes = sum(1 for b in bills for e in b["timeline"] if e["kind"] == "cluster")
     print(f"  wrote {BILLS_PATH} ({len(bills)} bills), {CASES_PATH} "
           f"({len(cases)} cases), {EXECUTIVE_PATH} ({len(executive)} executive), "
-          f"and {STATE_PATH} ({len(state)} state); {nodes} cluster node(s)")
+          f"and {STATE_BILLS_PATH} ({len(state_bills)} state bills); {nodes} cluster node(s)")
     return 0
 
 
