@@ -173,6 +173,38 @@ def _remote_token() -> str:
     return token
 
 
+# Guarded column-adds for tables that predate a column. SQLite has no
+# `ADD COLUMN IF NOT EXISTS`, and init_db's executescript only CREATEs (never
+# ALTERs), so a live table that already exists -- the remote Turso `items`, or a
+# seeded local db -- never gains a new column from the schema text alone. Each
+# entry is (table, column, decl). The column must be nullable with an implicit
+# NULL default for SQLite to accept ADD COLUMN carrying a REFERENCES clause.
+_MIGRATIONS = [
+    ("items", "state_bill_id", "TEXT REFERENCES state_bills(state_bill_id)"),
+]
+
+
+def _apply_migrations(conn) -> None:
+    """Bridge a live table to a newly-added column, and run BEFORE the schema's
+    executescript. The schema indexes items(state_bill_id); that CREATE INDEX
+    would fail on a legacy `items` whose column isn't there yet, so the ALTER has
+    to land first. On a FRESH db the table doesn't exist here -- we skip, and the
+    CREATE (run next by executescript) adds the column and its index directly. On
+    re-run the column is already present, so this no-ops. foreign_keys is off
+    during init, so ALTER ... REFERENCES a not-yet-created parent is accepted.
+    PRAGMA table_info yields the column name at index 1 on both backends (raw
+    libSQL remote, stdlib sqlite3 local), so positional access works for both."""
+    for table, column, decl in _MIGRATIONS:
+        exists = conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)
+        ).fetchone()
+        if not exists:
+            continue  # fresh db: executescript's CREATE adds the column + index
+        cols = [r[1] for r in conn.execute(f"PRAGMA table_info({table})").fetchall()]
+        if column not in cols:
+            conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {decl}")
+
+
 def _schema_for_remote(schema: str) -> str:
     """Schema text minus PRAGMA lines: journal_mode=WAL is a local-file concept
     (server-managed on Turso) and foreign_keys is set per-connection at connect."""
@@ -207,6 +239,7 @@ def init_db(path: str | None = None, schema: str = SCHEMA_PATH) -> None:
     if url:
         raw = libsql.connect(database=url, auth_token=_remote_token())
         try:
+            _apply_migrations(raw)
             raw.executescript(_schema_for_remote(schema))
             raw.commit()
         finally:
@@ -217,6 +250,7 @@ def init_db(path: str | None = None, schema: str = SCHEMA_PATH) -> None:
     sql = Path(schema).read_text(encoding="utf-8")
     conn = sqlite3.connect(target)
     try:
+        _apply_migrations(conn)
         conn.executescript(sql)
         conn.commit()
     finally:
