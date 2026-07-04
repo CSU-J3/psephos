@@ -1,9 +1,10 @@
 """State-legislation collector -- LegiScan API (channel 5).
 
-Items-only, mirroring the executive channel: state bills are leaf items with no
-bill/case reference (bill_id/case_id null) and their own data/state.json. There is
-no bills/cases linkage in this unit -- a state_bills dimension with per-bill
-timelines is the noted 5b follow-on.
+State bills are first-class (5b-a): each getBill upserts a `state_bills` dimension
+row and stamps `items.state_bill_id`, so the export renders per-bill timelines in
+data/state_bills.json (parallel to bills/cases). bill_id/case_id stay null -- the
+state channel keys on state_bill_id. State-level vehicle detection (is_vehicle,
+via the getBill `sasts` array) is the deferred 5b-b follow-on; is_vehicle stays 0.
 
 The change-hash pattern is the whole game (the free public tier is 30k
 queries/month, and this stays in the tens per run):
@@ -79,6 +80,7 @@ def to_item(bill: dict, action: dict, gsource: str, ginfo: str) -> dict:
         "confidence": None,
         "bill_id": None,
         "case_id": None,
+        "state_bill_id": str(bill["bill_id"]),
         "content_hash": common.content_hash(CHANNEL, bill["bill_id"], action.get("date"), action_text),
         "raw_json": json.dumps(action, separators=(",", ":")),
     }
@@ -124,6 +126,35 @@ def remember_hash(conn, bill_id, change_hash: str) -> None:
         "change_hash": change_hash,
         "updated_at": common.now_iso(),
     }, pk="bill_id")
+
+
+# --- state_bills dimension --------------------------------------------------
+
+def upsert_state_bill(conn, bill: dict, raw: dict, state: str) -> None:
+    """Write or refresh the state_bills row. `raw` is the masterlist entry (always
+    present); `bill` is the getBill payload when we fetched it, else {}. Prefer the
+    richer getBill fields, fall back to masterlist. `state` is the polled state
+    abbreviation, threaded in because the masterlist entry carries NO `state` key
+    (only getBill does) -- without it the backfill (bill={}) would write state=''
+    and its `state || ' ' || bill_number` title-prefix link would match nothing.
+    `session` and `description` only exist on getBill, so they fill in on the poll
+    that first fetches the bill; null before that is fine."""
+    lid = raw.get("bill_id") or bill.get("bill_id")
+    sess = bill.get("session")
+    db.upsert(conn, "state_bills", {
+        "state_bill_id": str(lid),
+        "state": bill.get("state") or state or "",
+        "bill_number": bill.get("bill_number") or raw.get("number") or "",
+        "session": sess.get("session_name") if isinstance(sess, dict) else None,
+        "title": bill.get("title") or raw.get("title"),
+        "description": bill.get("description") or raw.get("description"),
+        "status": str(bill.get("status") or raw.get("status") or "") or None,
+        "url": bill.get("url") or bill.get("state_link") or raw.get("url") or "",
+        "last_action": raw.get("last_action"),
+        "last_action_at": common.to_iso(raw.get("last_action_date")),
+        "change_hash": raw.get("change_hash") or bill.get("change_hash"),
+        "updated_at": common.now_iso(),
+    }, pk="state_bill_id")
 
 
 # --- LegiScan HTTP ----------------------------------------------------------
@@ -206,6 +237,9 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
                 "bill_number": bill.get("bill_number") or raw.get("number"),
                 "url": bill.get("url") or bill.get("state_link") or raw.get("url") or "",
             }
+            # Fill/refresh the state_bills dimension from the fetched record before
+            # writing its action items (items.state_bill_id references it).
+            upsert_state_bill(conn, bill, raw, state)
             for action in bill.get("history") or []:
                 if db.insert_ignore(conn, "items", to_item(norm, action, gsource, ginfo)):
                     counts["new_items"] += 1

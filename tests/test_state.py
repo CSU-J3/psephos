@@ -197,6 +197,9 @@ def test_insert_ignore_same_action_once():
     conn = _env()
     bill = {"bill_id": 1700001, "state": "TX", "bill_number": "SB100", "url": ""}
     action = {"date": "2026-02-01", "action": "Referred to committee"}
+    # items.state_bill_id has an FK, and to_item stamps it; seed the dimension row
+    # the collect-path tests get for free from upsert_state_bill.
+    state.upsert_state_bill(conn, {}, {"bill_id": 1700001, "number": "SB100"}, "TX")
     row = state.to_item(bill, action, "B", "2")
     assert db.insert_ignore(conn, "items", row) is True
     assert db.insert_ignore(conn, "items", dict(row)) is False   # same content_hash -> dropped

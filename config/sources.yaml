@@ -262,8 +262,9 @@ news:
 # ===========================================================================
 # CHANNEL 5: STATE LEGISLATION  (LegiScan API)
 # ===========================================================================
-# Items-only, mirrors the executive channel: state bills are leaf items with no
-# bill/case reference and their own data/state.json. The change-hash pattern is
+# State bills are first-class (5b-a): each getBill fills a state_bills dimension
+# row and stamps items.state_bill_id, exported as per-bill timelines in
+# data/state_bills.json. bill_id/case_id stay null. The change-hash pattern is
 # the whole game -- one getMasterList per state per run, then getBill ONLY on
 # election bills whose change_hash moved, so the free-tier 30k queries/month cap
 # is never at risk. See collectors/state.py and the state_seen table.
