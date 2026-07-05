@@ -7303,6 +7303,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 11309,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/58/united-states-v-aguilar/",
+        "title": "United States v. Nevada: ORDER Granting  52   Motion to Admit Government Attorney  Christopher J. Gardner for United States of America.         Signed by District Judge Anne R. Traum on 3/2/2026.   (Copies"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 8345,
         "kind": "item",
         "occurred_at": "2026-03-16T00:00:00",
@@ -7329,6 +7339,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/62/united-states-v-aguilar/",
         "title": "United States v. Nevada: ORDER DENYING PROPOSED DISCOVERY PLANS AND SCHEDULING ORDERS : ORDERED that discovery in this case is hereby STAYED until the United States' motion to compel, (ECF No. 2 ), and Sec"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11312,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/62/united-states-v-aguilar/",
+        "title": "United States v. Nevada: ORDER DENYING PROPOSED DISCOVERY PLANS AND SCHEDULING ORDERS  :  ORDERED that discovery in this case is hereby STAYED until the United States' motion to compel, (ECF No.  2 ), and "
       },
       {
         "channel": "litigation",
@@ -7369,6 +7389,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/66/united-states-v-aguilar/",
         "title": "United States v. Nevada: MOTION to Dismiss. Responses are due by 4/6/2026. (ECF No. 38 re-filed here per 63 Order.)(DRM) (Entered: 03/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11313,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/63/united-states-v-aguilar/",
+        "title": "United States v. Nevada: ORDER -  The two unopposed motions to intervene are therefore GRANTED pursuant to Fed. R. Civ. P. 24(b). (ECF Nos.  5 ;  7 .)  The intervenors' motions for leave to file supplement"
       },
       {
         "channel": "litigation",
