@@ -4595,6 +4595,499 @@
     ]
   },
   {
+    "caption": "United States v. DeMarinis",
+    "case_id": "71980724",
+    "category": "voter-data",
+    "court": "District of Maryland",
+    "defendant": "DeMarinis",
+    "docket_number": "1:25-cv-03934",
+    "filed_at": "2025-12-01T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 10376,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71980724/united-states-v-demarinis/",
+        "title": "United States v. Maryland — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10377,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/2/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Compel Production of Documents by UNITED STATES OF AMERICA (Attachments: # 1 Memorandum in Support of Motion to Compel Production of Documents, # 2 Exhibit, # 3 Attachmen"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10378,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/4/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Intervene by Maryland/DC Alliance for Retired Americans (Attachments: # 1 Memorandum in Support, # 2 Exhibit A, # 3 Exhibit B, # 4 Exhibit C, # 5 Exhibit D, # 6 Exhibit E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10379,
+        "kind": "item",
+        "occurred_at": "2025-12-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/6/united-states-v-demarinis/",
+        "title": "United States v. Maryland: Correspondence Correcting Earlier Submission: 4 Motion to Intervene, Corrected Memorandum in Support (Meng Morrison, Tina) Modified on 12/12/2025 (bw5s). (Entered: 12/12/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10380,
+        "kind": "item",
+        "occurred_at": "2025-12-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/7/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by The United States of America re 4 MOTION to Intervene, 6 Correcting earlier submission (Bennett, Brittany) (Entered: 12/12/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10381,
+        "kind": "item",
+        "occurred_at": "2025-12-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/8/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Intervene by Common Cause, Out for Justice, Inc., Carl Snowden, Myriam Paul, Luis Sims (Attachments: # 1 Exhibit A - Proposed Motion to Dismiss, # 2 Exhibit B - Antoine D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10382,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/13/united-states-v-demarinis/",
+        "title": "United States v. Maryland: Consent MOTION for Extension of Time to File Response/Reply to Complaint and Pending Motion by Jared DeMarinis. (Attachments: # 1 Text of Proposed Order)(Kobrin, Daniel) (Entered: "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10383,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/16/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 13 Consent MOTION for Extension of Time to File Response/Reply to Complaint and Pending Motion. Signed by Judge Stephanie A. Gallagher on 12/19/2025. (bw5s, Deputy C"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10384,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/29/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by Maryland/DC Alliance for Retired Americans re 4 MOTION to Intervene (Attachments: # 1 Exhibit 1 - Scanlan Order, # 2 Exhibit 2 - Nago Order, # 3 Exhibit 3 - Simon Order)("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10385,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/30/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by Common Cause, Out for Justice, Inc., Myriam Paul, Luis Sims, Carl Snowden re 8 MOTION to Intervene Supplemental Authority (Attachments: # 1 Exhibit Simon Order (Minnesota"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10386,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/31/united-states-v-demarinis/",
+        "title": "United States v. Maryland: CERTIFICATE OF SERVICE by The United States of America re 2 MOTION to Compel Production of Documents, 1 Complaint (Vandenberg, David) (Entered: 01/20/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10387,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/34/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Dismiss for Failure to State a Claim by Jared DeMarinis (Attachments: # 1 Memorandum in Support, # 2 Exhibit, # 3 Exhibit, # 4 Exhibit, # 5 Exhibit, # 6 Text of Proposed "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10388,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/35/united-states-v-demarinis/",
+        "title": "United States v. Maryland: RESPONSE in Opposition re 2 MOTION to Compel Production of Documents filed by Jared DeMarinis.(Kobrin, Daniel) (Entered: 01/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10389,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/36/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION for Leave to File Responses to the Complaint and the Motion for Order to Compel Records by Maryland/DC Alliance for Retired Americans (Attachments: # 1 Exhibit 1 - Proposed "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10390,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/37/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 4 Motion to Intervene. Signed by Judge Stephanie A. Gallagher on 2/2/2026. (bw5s, Deputy Clerk) (Entered: 02/02/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10391,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/38/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 8 Motion to Intervene. Signed by Judge Stephanie A. Gallagher on 2/2/2026. (bw5s, Deputy Clerk) (Entered: 02/02/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10392,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/39/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION for Leave to File an Amicus Brief by Democratic National Committee (Attachments: # 1 Memorandum in Support of Democratic National Committee's Motion for Leave to File an Ami"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10393,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/43/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel by Common Cause, Out for Justice, Inc., Myriam Paul, Luis Sims, Carl Snowden (Attachments: # 1 Exhibit 1 -"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10394,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/44/united-states-v-demarinis/",
+        "title": "United States v. Maryland: QC NOTICE: 43 Motion to Dismiss filed by Luis Sims, Carl Snowden, Myriam Paul, Out for Justice, Inc., Common Cause was filed incompletely. **The following attachments or exhibits a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10395,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/45/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by Common Cause, Out for Justice, Inc., Myriam Paul, Luis Sims, Carl Snowden re 43 MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel - Text of Propos"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10396,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/46/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION for Leave to File Brief of Amici Curiae Former Employees of the U.S. Department of Justice (Unopposed) by Former Employees of the U.S. Department of Justice (Attachments: # "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10397,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/47/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 46 Former Employees of the U.S. Department of Justice's Motion for Leave to File Brief Amici Curiae. Signed by Judge Stephanie A. Gallagher on 2/9/2026. (ols, Deputy"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10398,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/48/united-states-v-demarinis/",
+        "title": "United States v. Maryland: BRIEF of Amici Curiae re 43 MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel, 34 MOTION to Dismiss for Failure to State a Claim filed by Former Employees o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10399,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/49/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 36 Maryland/DC Alliance for Retired Americans' Motion for Leave to File Responses to the Complaint and the Motion for Order to Compel Records. Signed by Judge Stepha"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10400,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/50/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Dismiss by Maryland/DC Alliance for Retired Americans (Attachments: # 1 Text of Proposed Order) (ols, Deputy Clerk) (Entered: 02/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10401,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/51/united-states-v-demarinis/",
+        "title": "United States v. Maryland: RESPONSE in Opposition re 2 MOTION to Compel Production of Documents filed by Maryland/DC Alliance for Retired Americans. (ols, Deputy Clerk) (Entered: 02/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10402,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/52/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Withdraw as Attorney David D. Vandenberg (UNOPPOSED) by The United States of America(Vandenberg, David) (Entered: 02/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10403,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/53/united-states-v-demarinis/",
+        "title": "United States v. Maryland: PAPERLESS ORDER granting 52 Motion to Withdraw as Attorney. Attorney David D. Vandenberg terminated. Signed by Judge Stephanie A. Gallagher on 2/9/2026. (jmhs, Chambers) (Entered: "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10404,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/54/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 39 MOTION for Leave to File an Amicus Brief; directing the Clerk to docket the proposed amicus brief. Signed by Judge Stephanie A. Gallagher on 2/11/2026. (bw5s, Dep"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10405,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/56/united-states-v-demarinis/",
+        "title": "United States v. Maryland: RESPONSE in Opposition to 43 MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel, 34 MOTION to Dismiss for Failure to State a Claim, 50 MOTION to Dismiss in O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10406,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/58/united-states-v-demarinis/",
+        "title": "United States v. Maryland: REPLY to Response to Motion re 50 MOTION to Dismiss filed by Maryland/DC Alliance for Retired Americans.(Nkwonta, Uzoma) (Entered: 02/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10407,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/59/united-states-v-demarinis/",
+        "title": "United States v. Maryland: REPLY to Response to Motion re 34 MOTION to Dismiss for Failure to State a Claim filed by Jared DeMarinis.(Kobrin, Daniel) (Entered: 02/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10408,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/60/united-states-v-demarinis/",
+        "title": "United States v. Maryland: REPLY to Response to Motion re 43 MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel filed by Common Cause, Out for Justice, Inc., Myriam Paul, Luis Sims, Ca"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10409,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/63/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION to Withdraw as Attorney by The United States of America (Attachments: # 1 Proposed Order for Megan Frederick to Withdraw as Counsel for the United States)(Frederick, Megan) "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10410,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/64/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 63 Motion to Withdraw as Attorney. Attorney Megan Frederick terminated. Signed by Judge Stephanie A. Gallagher on 3/19/2026. (bw5s, Deputy Clerk) (Entered: 03/19/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10411,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/65/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by Maryland/DC Alliance for Retired Americans re 50 MOTION to Dismiss (Attachments: # 1 Exhibit A)(Nkwonta, Uzoma) (Entered: 04/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10412,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/71/united-states-v-demarinis/",
+        "title": "United States v. Maryland: Supplement to 34 MOTION to Dismiss for Failure to State a Claim, 35 Response in Opposition to Motion filed by Jared DeMarinis (Attachments: # 1 Exhibit Opinion and Order in U.S. v."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10413,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/72/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by Common Cause, Out for Justice, Inc., Myriam Paul, Luis Sims, Carl Snowden re 43 MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel, 60 Reply to Res"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10414,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/73/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION for Leave to File Combined Response to Supplemental Authorities (Dkts. 70 - 72) by The United States of America (Attachments: # 1 Proposed Combined Response to Supplemental "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10415,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/74/united-states-v-demarinis/",
+        "title": "United States v. Maryland: QC NOTICE: 73 Motion for Leave to File filed by The United States of America was filed incorrectly. **The following attachments or exhibits are missing - Text of Proposed Order. To"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10416,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/75/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by The United States of America re 73 MOTION for Leave to File Combined Response to Supplemental Authorities (Dkts. 70 - 72) attaching Text of Proposed Order (Voiland, Josep"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10417,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/76/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MOTION for Leave to File an Amicus Brief by Maryland Election Integrity LLC (Attachments: # 1 Exhibit A, # 2 Text of Proposed Order, # 3 Attachment Maryland Election Integrity, LLC"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10418,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/77/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER granting 76 MOTION for Leave to File an Amicus Brief. Signed by Judge Stephanie A. Gallagher on 5/11/2026. (bw5s, Deputy Clerk) (Entered: 05/11/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10419,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/82/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE by The United States of America re 2 MOTION to Compel Production of Documents to include Supplemental Authority (Attachments: # 1 Ex. 1 OLC Opinion 05.12.2026)(Voiland, Jose"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10420,
+        "kind": "item",
+        "occurred_at": "2026-06-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/88/united-states-v-demarinis/",
+        "title": "United States v. Maryland: Motion Hearing held on 6/10/2026 re 43 MOTION to Dismiss and Brief in Opposition to Plaintiff's Motion to Compel filed by Luis Sims, Carl Snowden, Myriam Paul, Out for Justice, Inc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10421,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/89/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE OF FILING OF OFFICIAL TRANSCRIPT of Proceedings, Motions Hearing held on 6/10/2026, before Judge Stephanie A. Gallagher. Court Reporter Patricia G. Mitchell, trish_mitchell@"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10422,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/91/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MEMORANDUM OPINION.  Signed by Judge Stephanie A. Gallagher on 6/18/2026. (bw5s, Deputy Clerk)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10423,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/92/united-states-v-demarinis/",
+        "title": "United States v. Maryland: ORDER denying 2 MOTION to Compel Production of Documents; granting 34 Motion to Dismiss for Failure to State a Claim; granting 43 Motion to Dismiss; granting 50 Motion to Dismiss; "
+      }
+    ]
+  },
+  {
     "caption": "United States v. Oliver",
     "case_id": "71982149",
     "category": "voter-data",
@@ -7713,6 +8206,409 @@
     ]
   },
   {
+    "caption": "United States v. Koski",
+    "case_id": "72156765",
+    "category": "voter-data",
+    "court": "Eastern District of Virginia",
+    "defendant": "Koski",
+    "docket_number": "3:26-cv-00042",
+    "filed_at": "2026-01-16T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 10435,
+        "kind": "item",
+        "occurred_at": "2026-01-16T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
+        "title": "United States v. Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10436,
+        "kind": "item",
+        "occurred_at": "2026-01-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/1/united-states-v-koski/",
+        "title": "United States v. Virginia: Complaint under Civil Rights Act of 1960, filed by UNITED STATES. (Attachments: # 1 Civil Cover Sheet Civil Cover Sheet)(Neff, Eric) (Entered: 01/16/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10437,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/4/united-states-v-koski/",
+        "title": "United States v. Virginia: LOCAL CIVIL RULE 7(E) STANDING ORDER. Signed by District Judge Roderick C. Young on 7/16/2024. (adun, ) (Entered: 01/20/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10438,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/5/united-states-v-koski/",
+        "title": "United States v. Virginia: STANDING ORDER IN RE COURTROOM ELECTRONICS. Signed by District Judge Roderick C. Young on 1/15/2025. (adun, ) (Entered: 01/20/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10439,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/6/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Intervene by NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE, NAACP Virginia State Conference. (Branch, Aria) (Entered: 01/26/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10440,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/7/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Support re 6 MOTION to Intervene filed by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Attachments: # 1 Exhibit A - P"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10441,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/15/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Intervene (Unopposed) by Common Cause, Katherine Ellena. (Attachments: # 1 Exhibit A - Almeida Declaration, # 2 Exhibit B - Ellena Declaration, # 3 Proposed Order)(Rosbor"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10442,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/16/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Support re 15 MOTION to Intervene (Unopposed) filed by Common Cause, Katherine Ellena. (Attachments: # 1 Exhibit 1 - Motion to Dismiss, # 2 Exhibit 2 - Memorandum In "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10443,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/27/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Withdraw as Attorney by United States Of America. (Casali, John) (Entered: 03/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10444,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/28/united-states-v-koski/",
+        "title": "United States v. Virginia: AMENDED COMPLAINT against All Parties, filed by United States Of America.(Casali, John) (Entered: 03/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10445,
+        "kind": "item",
+        "occurred_at": "2026-04-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/34/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER - The Court DIRECTS Defendant to enter an appearance and file a notice of its position on the pending Motions to Intervene on or before April 22, 2026. The Clerk is DIRECTED "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10446,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/35/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER- For good cause shown, it is hereby ORDERED that (1) the Motion to Withdraw (ECF No. 27 ) is GRANTED; and (2) Harmeet Dhillon and Lindsay Halligan shall be REMOVED as counsel"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10447,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/38/united-states-v-koski/",
+        "title": "United States v. Virginia: NOTICE by Steven Koski re 34 Order,, (O'Savio, Triston) (Entered: 04/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10448,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/39/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Compel Production of Records by United States Of America. (Attachments: # 1 Supplement Memorandum of Law in Support of Motion to Compel, # 2 Exhibit Declaration of Eric N"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10449,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/40/united-states-v-koski/",
+        "title": "United States v. Virginia: First MOTION for Extension of Time to File Answer by Steven Koski. (Attachments: # 1 Proposed Order)(O'Savio, Triston) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10450,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/41/united-states-v-koski/",
+        "title": "United States v. Virginia: RESPONSE to Motion re 40 First MOTION for Extension of Time to File Answer filed by United States Of America. (Casali, John) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10451,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/42/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION for Leave to File Motion to Dismiss by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Attachments: # 1 Exhibit 1 - Proposed Mo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10452,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/43/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER- The Court is committed to the prompt and efficient litigation of the above-styled dispute but finds that Plaintiff will not suffer undue prejudice if subject to modest exten"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10453,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/44/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER- Accordingly, and for the reasons stated herein, the Motions to Intervene (ECF Nos. 6, 15 ) are hereby GRANTED pursuant to Federal Rule of Civil Procedure 24(b). The interven"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10454,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/46/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Dismiss for Failure to State a Claim by Steven Koski. (Attachments: # 1 Proposed Order Defendant's Proposed Order)(Breckenridge, Tillman) (Entered: 05/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10455,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/47/united-states-v-koski/",
+        "title": "United States v. Virginia: Brief in Support to 46 MOTION to Dismiss for Failure to State a Claim filed by Steven Koski. (Breckenridge, Tillman) (Entered: 05/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10456,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/48/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Dismiss for Failure to State a Claim by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Attachments: # 1 Proposed Order)(Bra"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10457,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/49/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Support re 48 MOTION to Dismiss for Failure to State a Claim filed by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Br"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10458,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/50/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION to Dismiss for Failure to State a Claim by Common Cause, Katherine Ellena. (Attachments: # 1 Proposed Order)(Rosborough, Davin) (Entered: 05/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10459,
+        "kind": "item",
+        "occurred_at": "2026-05-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/51/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Support re 50 MOTION to Dismiss for Failure to State a Claim filed by Common Cause, Katherine Ellena. (Attachments: # 1 Exhibit A - MOU, # 2 Exhibit B - U.S. v. Amore"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10460,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/53/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Support re 52 MOTION for Leave to File filed by Democratic National Committee. (Kski, ) (Entered: 05/20/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10461,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/56/united-states-v-koski/",
+        "title": "United States v. Virginia: RESPONSE in Opposition re 39 MOTION to Compel Production of Records filed by Steven Koski. (Breckenridge, Tillman) (Entered: 05/26/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10462,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/57/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Opposition re 39 MOTION to Compel Production of Records filed by Common Cause, Katherine Ellena. (Rosborough, Davin) (Entered: 06/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10463,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/58/united-states-v-koski/",
+        "title": "United States v. Virginia: Memorandum in Opposition re 48 MOTION to Dismiss for Failure to State a Claim, 46 MOTION to Dismiss for Failure to State a Claim, 50 MOTION to Dismiss for Failure to State a Claim "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10464,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/59/united-states-v-koski/",
+        "title": "United States v. Virginia: REPLY to Response to Motion re 39 MOTION to Compel Production of Records filed by United States Of America. (Catania, James) (Entered: 06/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10465,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/60/united-states-v-koski/",
+        "title": "United States v. Virginia: RESPONSE in Opposition re 39 MOTION to Compel Production of Records filed by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Branch, A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10466,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/62/united-states-v-koski/",
+        "title": "United States v. Virginia: Reply to Motion re 46 MOTION to Dismiss for Failure to State a Claim Reply in Support filed by Steven Koski. (Breckenridge, Tillman) (Entered: 06/08/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10467,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/64/united-states-v-koski/",
+        "title": "United States v. Virginia: RESPONSE in Support re 50 MOTION to Dismiss for Failure to State a Claim filed by Common Cause, Katherine Ellena. (Attachments: # 1 Exhibit A - Scanlan Protective Order, # 2 Exhibi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10468,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/65/united-states-v-koski/",
+        "title": "United States v. Virginia: REPLY to Response to Motion re 48 MOTION to Dismiss for Failure to State a Claim filed by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPL"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10469,
+        "kind": "item",
+        "occurred_at": "2026-06-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/67/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER- The Court finds it appropriate to exercise its discretion to GRANT the motion (ECF No. 52 ). Accordingly, the DNC's proposed amicus curiae brief (ECF No. 52 -1) is hereby de"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10470,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/69/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION for Leave to File Notice of Supplemental Authority by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Attachments: # 1 Exhibit "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10471,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/70/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER- Upon review, the Court finds it appropriate to exercise its discretion to GRANT the Motion (ECF No. 69 ). Accordingly, the supplemental authority in support of the NAACP Int"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10472,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/71/united-states-v-koski/",
+        "title": "United States v. Virginia: MOTION for Leave to File Second Notice of Supplemental Authority by NAACP Virginia State Conference, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE. (Attachments: # 1 E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10473,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/72/united-states-v-koski/",
+        "title": "United States v. Virginia: ORDER - The Court finds it appropriate to exercise its discretion to GRANT the Motion (ECF No. 71 ). Accordingly, the supplemental authority in support of the NAACP Intervenors' pe"
+      }
+    ]
+  },
+  {
     "caption": "United States v. CALDWELL",
     "case_id": "72333329",
     "category": "voter-data",
@@ -10323,25 +11219,105 @@
     ]
   },
   {
-    "caption": "United States v. Weber",
-    "case_id": "united-states-v-weber",
+    "caption": "United States v. Bellows",
+    "case_id": "73488435",
     "category": "voter-data",
-    "court": "C.D. Cal.",
-    "defendant": "Weber",
-    "docket_number": null,
-    "filed_at": null,
+    "court": "First Circuit",
+    "defendant": "Bellows",
+    "docket_number": "26-1676",
+    "filed_at": "2026-06-15T00:00:00",
     "plaintiff": "United States",
-    "status": null,
+    "status": "pending",
     "timeline": [
       {
         "channel": "litigation",
         "grade": "B2",
-        "id": 100,
+        "id": 10367,
         "kind": "item",
-        "occurred_at": null,
+        "occurred_at": "2026-06-15T00:00:00",
         "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com",
-        "title": "United States v. Weber — voter-data"
+        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
+        "title": "United States v. Maine — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10368,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108462312/1/united-states-v-bellows/",
+        "title": "United States v. Maine: CIVIL CASE docketed. Notice of appeal (doc. #116) filed by Appellant US. Appearance form, Docketing Statement, and Transcript Report/Order form due 06/29/2026. [26-1676] (JW) [Ente"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10369,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108463487/united-states-v-bellows/",
+        "title": "United States v. Maine: MOTION to consolidate cases filed by Appellant US. Served on 06/17/2026. [26-1676] (JTT) [Entered: 06/17/2026 01:40 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10370,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108463490/united-states-v-bellows/",
+        "title": "United States v. Maine: MOTION to expeditefiled by Appellant US. Served on 06/17/2026. [26-1676] (JTT) [Entered: 06/17/2026 01:42 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10371,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108466701/united-states-v-bellows/",
+        "title": "United States v. Maine: TRANSCRIPT report/order form filed by Appellant US indicating all necessary transcripts have already been filed in district court. Served on 06/24/2026. [26-1676] (JTT) [Entered: 0"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10372,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108467959/united-states-v-bellows/",
+        "title": "United States v. Maine: RESPONSE filed by Appellee League of Women Voters of Maine to motion to expedite [6819020-2], motion to consolidate cases [6819019-2]. Served on 06/26/2026. [26-1676] (SSJ) [Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10373,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108468208/united-states-v-bellows/",
+        "title": "United States v. Maine: RESPONSE filed by Appellees John Schneck and Marpheen Chann to motion [6819020-2]. Served on 06/26/2026. [26-1676] (DRF) [Entered: 06/26/2026 05:30 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10374,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108468922/united-states-v-bellows/",
+        "title": "United States v. Maine: RESPONSE filed by Appellees Shenna Bellows and State of Maine to motion to expedite [6819020-2], motion to consolidate cases [6819019-2]. Served on 06/29/2026. [26-1676] (JRB) [Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10375,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108469697/united-states-v-bellows/",
+        "title": "United States v. Maine: REPLY filed by Appellant US to response [6821911-2], response [6821559-2], response [6821430-2]. Served on 06/30/2026. [26-1676] (AB) [Entered: 06/30/2026 10:27 PM]"
       }
     ]
   }

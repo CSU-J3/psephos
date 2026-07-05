@@ -879,7 +879,7 @@
       },
       {
         "anchor": "s1383-housing-hostage",
-        "date": "2026-06-24T15:15:00+00:00",
+        "date": "2026-06-24T07:00:00+00:00",
         "grade": "C3",
         "kind": "cluster",
         "label": "Trump withholds housing-bill signing to pressure the SAVE America Act",
@@ -931,9 +931,17 @@
             "source_id": "google-news",
             "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPT3ZIRlBmYnh2MDdLQnk3VUlBdi01UmRmem56OGgtV3RoYnZOdHQweExEdlFDXzdhNkdlMWhWbWlnVUpOcGF2SDloV2VURzNWT2tQMjIyNVVsSVJZTUI1d0pyc0pNRFVFUVNydzJKMVVvYkRLNzVCUXk2MU1Ic0tPNnZBQzItd3hnTlZIZzFqVkRfTmhLS3l2Um0tQzlocVpHTXV5dE1qZXRqWnJnZ3hsQtIBtgFBVV95cUxPX3JJZm9PMVhTTDFTQjdkSG1JbWpHNjhQV09XR3ZseFJ3cjJud3g2Ul8wRXA2YWpib2wyN3ZfWnFnOVUzd1JkeUhaNWREYTNOUkpuVjlrVzlFLWk0LUNTT2FCUWNDc1JHUXVZVkxETVVBbVVlak4zY3pOR1k5VktqZU9WZ3RyLWNXYVFfdXB1RlhhWC1fS0NmOXViSm1MY3oxanhkWjVQQ2NLbkRrd215N1Z0eVRhdw?oc=5",
             "title": "Trump says he won't sign major housing bill until Congress passes SAVE Act - PBS"
+          },
+          {
+            "grade": "C3",
+            "id": 10621,
+            "occurred_at": "2026-06-24T07:00:00+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMi0wJBVV95cUxOQktLQzZoM1ZPcUc0ODZBUFJRSUk0enhoRVFnMkNldTUxNDY4R0E3eHJNZllFVjlLWWNHc2ZCb1dhVTN5Skk1NlpMbVZHZEZsWXJ0ZmswVFN0QkxydmZpUDhIQkx4eWNteEFQSk1OWUFJblpkcFBuLVZnQUh2UUdGN1FxZDZWa01xWjBxS2tTWktpTk51ZDlWVVVnRjRmeHVpc1JlaFNWbjZiY00tdWVzZm5GcE9NNnh4S0w1NHdvTWF5blRRT1NxeXFfUGR6V0NfcjZPOVBidEw5Wlg2SlVyVmJScGZFc1ZZSkJsaXVva2FXRUZUdy1tQUw5MlQzU1EwLW8wd3E4djhlS0hiR1BqN1paNUcyWUphV1V5b19wODZUMDB6UGl2bklQeDlIMW9oMlNkNmEtSk1zNjZMWXJjZDNjTEZTUzl4Vld5clJ4QWg0QlU?oc=5",
+            "title": "Trump halts housing bill signing until Congress passes SAVE America Act - National Desk"
           }
         ],
-        "source_count": 6
+        "source_count": 7
       },
       {
         "channel": "news",
