@@ -1,5 +1,28 @@
 [
   {
+    "caption": "United States v. COMMONWEALTH OF PENNSYLVANIA",
+    "case_id": "71453026",
+    "category": "voter-data",
+    "court": "Western District of Pennsylvania",
+    "defendant": "COMMONWEALTH OF PENNSYLVANIA",
+    "docket_number": "2:25-cv-01481",
+    "filed_at": "2025-09-25T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 10665,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania — voter-data"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Simon",
     "case_id": "71453336",
     "category": "voter-data",
@@ -10663,6 +10686,179 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72356732/105/united-states-of-america-v-weber-et-al/",
         "title": "United States v. California: TEXT CLERK ORDER. The motion for judicial notice (DE 98) is granted. [Entered: 05/13/2026 11:51 AM]"
+      }
+    ]
+  },
+  {
+    "caption": "United States of America v. State of Oregon, et al.",
+    "case_id": "72356772",
+    "category": "voter-data",
+    "court": "Ninth Circuit",
+    "defendant": "State of Oregon, et al.",
+    "docket_number": "26-1231",
+    "filed_at": "2026-03-03T00:00:00",
+    "plaintiff": "United States of America",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 10649,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10650,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/1/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: CASE OPENED. A copy of your notice of appeal / petition filed in 6:25-cv-01666-MTK has been received in the Clerk's office of the United States Court of Appeals for the Ninth Circu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10651,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/2/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: SCHEDULE NOTICE. Mediation Questionnaire due (Appellant) 3/9/2026,  Appeal Transcript Order Due (Appellant) 3/11/2026, Appeal Transcript Due (Appellant) 4/10/2026, Appeal Opening B"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10652,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/11/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: Emergency MOTION Circuit Rule 27-3 Certificate filed by Appellant United States of America. [Entered: 03/03/2026 07:46 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10653,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/12/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: MOTION  to Expedite filed by Appellant United States of America. [Entered: 03/03/2026 07:50 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10654,
+        "kind": "item",
+        "occurred_at": "2026-03-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/13/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: MOTION to Consolidate filed by Appellant United States of America. [Entered: 03/04/2026 01:49 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10655,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/19/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: ORDER FILED. The responses to the motions to expedite and to consolidate are due at 12:00 p.m. Pacific Time on March 12, 2026. The optional reply in support of those motions is due"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10656,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/21/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: RESPONSE to Motion to Expedite (DE 12) filed by Appellee Our Oregon, Appellee Dan DiIulio, Appellee Emma Craddock, Appellee Stephen Gomez. [Entered: 03/12/2026 09:31 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10657,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/23/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: RESPONSE to Motion to Expedite (DE 12) filed by Appellee State of Oregon, Appellee Tobias Read. [Entered: 03/12/2026 11:57 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10658,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/24/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: REPLY to Response to Motion to Expedite (DE 21) filed by Appellant United States of America. [Entered: 03/16/2026 11:37 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10659,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/25/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: ORDER FILED. John B. OWENS, Eric D. MILLER, Patrick J. BUMATAY\nThe motions to expedite (Docket Entry No. 12 in 26-1231; Docket Entry No. 12 in 26-1232) are granted in part. The ope"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10660,
+        "kind": "item",
+        "occurred_at": "2026-03-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/31/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: NOTICE OF ORAL ARGUMENT on Tuesday, May 19, 2026 - 09:00 A.M. - Courtroom 1 - Scheduled Location: Pasadena CA\n\nView the Oral Argument Calendar for your case here.\n\nNOTE: Although y"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10661,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/62/1/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: REPLY BRIEF submitted for filing by Appellant United States of America.--[COURT UPDATE: Corrected PDFs attached as of 4/28/2026, REPLACING original attachments] [Entered: 04/24/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10662,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/66/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: MOTION  for Judicial Notice filed by Appellant United States of America. [Entered: 04/28/2026 02:07 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10663,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/67/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: CLERK ACTION: Reply Brief submitted at DE 62 by Appellant United States of America is filed. No paper copies are required. [Entered: 04/28/2026 03:20 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 10664,
+        "kind": "item",
+        "occurred_at": "2026-05-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72356772/71/united-states-of-america-v-state-of-oregon-et-al/",
+        "title": "United States v. Oregon: TEXT CLERK ORDER. The motion for judicial notice (DE 66) is granted. [Entered: 05/13/2026 11:53 AM]"
       }
     ]
   },
