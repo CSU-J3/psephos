@@ -5957,6 +5957,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 11973,
+        "kind": "item",
+        "occurred_at": "2026-04-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/45/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting the Parties'  41 Stipulated MOTION and [Proposed] Order to Set Briefing Schedule and Word Limits.  Any combined Motion to Dismiss and opposition to Plaintiff's Motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 9144,
         "kind": "item",
         "occurred_at": "2026-04-17T00:00:00",
@@ -6047,6 +6057,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 11984,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/58/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO INTERVENE. The Court GRANTS the motions to intervene filed by Common Power, WARA, Common Cause, and WCAEF. Dkt. Nos.  23 ,  28 . Their motions for leave t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 9153,
         "kind": "item",
         "occurred_at": "2026-05-19T00:00:00",
@@ -6083,6 +6103,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/63/united-states-v-hobbs/",
         "title": "United States v. Washington: MOTION to Dismiss and Response in Opposition to Plaintiff's Motion to Compel, filed by Intervenor Parties Common Power, Washington Alliance for Retired Americans. (Attachments: # 1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11986,
+        "kind": "item",
+        "occurred_at": "2026-05-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/61/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting the Parties'  60  Stipulated MOTION to Continue Deadlines. The early case deadlines previously set (Dkt. No.  48 ) are VACATED and will be re-set as necessary after "
       },
       {
         "channel": "litigation",
@@ -6147,6 +6177,26 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 11991,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/68/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting  55   Unopposed MOTION for Leave to File Brief as Amicus Curiae,  filed by Amicus Democratic National Committee.   Signed by District Judge Kymberly K. Evanson. (APH"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11992,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/69/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting  66   MOTION for Leave to File Brief of Amici Curiae Former Employees of the U.S. Department of Justice.  Signed by District Judge Kymberly K. Evanson. (APH)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 9162,
         "kind": "item",
         "occurred_at": "2026-06-08T00:00:00",
@@ -6183,6 +6233,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/78/united-states-v-hobbs/",
         "title": "United States v. Washington: AMICUS BRIEF re 77 Order on Motion for Leave to File by Amicus State of Maryland (Kobrin, Daniel) (Entered: 06/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11996,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/77/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER granting  75   Unopposed MOTION for Leave to File Amicus Brief. The Amici States shall file their brief on the docket.   Signed by District Judge Kymberly K. Evanson.  (APH)"
       },
       {
         "channel": "litigation",
@@ -6253,6 +6313,609 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
         "title": "United States v. Washington: Set/Reset Motion Noting Date (Public)"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Albence",
+    "case_id": "71984384",
+    "category": "voter-data",
+    "court": "District of Delaware",
+    "defendant": "Albence",
+    "docket_number": "1:25-cv-01453",
+    "filed_at": "2025-12-02T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 11878,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11879,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/1/united-states-v-albence/",
+        "title": "United States v. Delaware: COMPLAINT filed against Anthony Albence - filed by United States of America. (Attachments: # 1 Civil Cover Sheet)(mrr) (Entered: 12/02/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11880,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/3/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 - filed by United States of America. (Attachments: # 1 Proposed Order)(mrr) (Entered: 12/02/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11881,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/4/united-states-v-albence/",
+        "title": "United States v. Delaware: OPENING BRIEF in Support of 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960, filed by United States of America. Answering Brief/Response due da"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11882,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/5/united-states-v-albence/",
+        "title": "United States v. Delaware: DECLARATION of Maureen Riordan in support of 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960, by United States of America. (mrr) (Entered: 12/0"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11883,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/8/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION to Intervene - filed by Gemma Lowery, Bethany Jennings. (Attachments: # 1 Proposed Order, # 2 Proposed Answer, # 3 Certificate of Service)(Billion, Mark) Modified on 12/18/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11884,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/9/united-states-v-albence/",
+        "title": "United States v. Delaware: OPENING BRIEF in Support re 8 MOTION to Intervene filed by Bethany Jennings, Gemma Lowery.Answering Brief/Response due date per Local Rules is 1/2/2026. (Attachments: # 1 Certifica"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11885,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/10/united-states-v-albence/",
+        "title": "United States v. Delaware: DECLARATION of Bethany Mills Jennings re 8 MOTION to Intervene by Bethany Jennings. (Attachments: # 1 Certificate of Service)(Billion, Mark) (Entered: 12/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11886,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/11/united-states-v-albence/",
+        "title": "United States v. Delaware: DECLARATION of Gemma Lowery re 8 MOTION to Intervene by Gemma Lowery. (Attachments: # 1 Certificate of Service)(Billion, Mark) (Entered: 12/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11887,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/18/united-states-v-albence/",
+        "title": "United States v. Delaware: UNOPPOSED Motion and Proposed Order to Extend Time - filed by Anthony Albence. (Liston, Ian) Modified on 12/19/2025 (nms). (Entered: 12/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11925,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11888,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/19/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED Granting 18 UNOPPOSED Motion and Proposed Order to Extend Time (*Reset Briefing Schedule: re 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11889,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/20/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of Defendant's Consent by Anthony Albence re 8 MOTION to Intervene (Liston, Ian) (Entered: 12/19/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11890,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/21/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of Supplemental Authorities Regarding Motion to Intervene as Defendants (D.I. 8 ), by Bethany Jennings, Gemma Lowery. (Attachments: # 1 Exhibit 1, # 2 Exhibit 2, # 3 Exhibit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11891,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/22/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED Granting 8 Motion to Intervene. Proposed Intervenors may file a Rule 12(b) motion on or before 2/9/2026. Signed by Judge Richard G. Andrews on 1/15/2026. (aas) (Entered:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11892,
+        "kind": "item",
+        "occurred_at": "2026-02-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/24/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION to Intervene - filed by Latin American Community Center, La Esperanza, Delaware Coalition Against Domestic Violence, Jose Matthews. (Attachments: # 1 Exhibit A, # 2 Exhibit "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11893,
+        "kind": "item",
+        "occurred_at": "2026-02-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/25/united-states-v-albence/",
+        "title": "United States v. Delaware: OPENING BRIEF in Support re 24 MOTION to Intervene filed by Delaware Coalition Against Domestic Violence, La Esperanza, Latin American Community Center, Jose Matthews.Answering Bri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11894,
+        "kind": "item",
+        "occurred_at": "2026-02-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/27/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED Granting 24 MOTION to Intervene. Signed by Judge Richard G. Andrews on 2/4/2025. (nms) (Entered: 02/04/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11926,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11895,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/33/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION to Dismiss - filed by Anthony Albence. (Liston, Ian) Modified on 2/9/2026 (nms). (Entered: 02/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11896,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/34/united-states-v-albence/",
+        "title": "United States v. Delaware: OPENING BRIEF in Support re 33 MOTION to Dismiss, filed by Anthony Albence. Answering Brief/Response due date per Local Rules is 2/23/2026. (Attachments: # 1 Appendix Cases filed b"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11897,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/35/united-states-v-albence/",
+        "title": "United States v. Delaware: ANSWERING BRIEF in Opposition re 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960, filed by Anthony Albence. Reply Brief due date per Local Rule"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11898,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/36/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION to Dismiss - filed by Bethany Jennings and Gemma Lowery. (Billion, Mark) Modified on 2/9/2026 (nms). (Entered: 02/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11899,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/37/united-states-v-albence/",
+        "title": "United States v. Delaware: MEMORANDUM in Support re 36 MOTION to Dismiss, filed by filed by Bethany Jennings and Gemma Lowery. Answering Brief/Response due date per Local Rules is 2/23/2026. (Billion, Mark) "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11900,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/38/united-states-v-albence/",
+        "title": "United States v. Delaware: RESPONSE to 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960, filed by filed by Bethany Jennings and Gemma Lowery. (Billion, Mark) Modified on 2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11901,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/39/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION to Dismiss - filed by Delaware Coalition Against Domestic Violence, La Esperanza, Latin American Community Center, Jose Matthews. (Attachments: # 1 Proposed Order)(Bernstein"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11902,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/41/united-states-v-albence/",
+        "title": "United States v. Delaware: MEMORANDUM in Support re 39 MOTION to Dismiss, filed by Delaware Coalition Against Domestic Violence, La Esperanza, Latin American Community Center, Jose Matthews. Answering Brief/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11928,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: CORRECTING ENTRY: The motion to dismiss filed at D.I. 40 has been removed from the docket. This motion is already on file at D.I. 39 . Further, the brief filed at D.I. 41 has been "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11935,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: CORRECTING ENTRY: The Memorandum and its exhibit filed as attachments to the motion at D.I. 39 have been removed from that entry. Motions and briefs are to be filed independent of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11903,
+        "kind": "item",
+        "occurred_at": "2026-02-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/43/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Leave to File Amicus Brief - filed by Democratic National Committee. (Attachments: # 2 Proposed Order, # 3 Exhibit, # 4 Certificate of Service)(Turk, Joseph) Modified on"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11905,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/46/united-states-v-albence/",
+        "title": "United States v. Delaware: OPENING BRIEF in Support re 43 MOTION for Leave to File Amicus Brief filed by Democratic National Committee.Answering Brief/Response due date per Local Rules is 2/25/2026. (Turk, J"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11927,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: CORRECTING ENTRY: The supporting brief filed as attachment 1 at D.I. 43 has been removed from that filing. Motions and briefs are to be filed independent of each other. Counsel is "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11936,
+        "kind": "item",
+        "occurred_at": "2026-02-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11904,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/46/united-states-v-albence/",
+        "title": "United States v. Delaware: MEMORANDUM in Support re 43 MOTION for Leave to File Amicus Brief filed by Democratic National Committee.Answering Brief/Response due date per Local Rules is 2/26/2026. (Turk, Jose"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11931,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: CORRECTING ENTRY: The brief filed D.I. 46 as an Opening Brief in Support of the Motion for Leave to File Amicus Brief has been removed from the docket. Upon review it was determine"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11906,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/47/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Leave to File Consolidated Memorandum in Opposition and Reply in Excess of Page Limit - filed by United States of America. (Frederick, Megan) Modified on 2/13/2026 (nms)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11907,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/48/united-states-v-albence/",
+        "title": "United States v. Delaware: DECLARATION of Megan Frederick re 47 MOTION for Leave to File Consolidated Memorandum in Opposition and Reply in Excess of Page Limit, by United States of America. (Attachments: # "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11908,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/49/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Extension of Time to File Reply Brief in Support of Motion to Compel and for Leave to Exceed Page Limits for Response to Motion to Dismiss - filed by United States of Am"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11909,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/50/united-states-v-albence/",
+        "title": "United States v. Delaware: 7.1.1 STATEMENT re 47 Motion for Leave and 49 MOTION for Extension of Time to File, by United States of America. (Frederick, Megan) Modified on 2/17/2026 (nms). (Entered: 02/13/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11929,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: Deficiency re Certificate for Nondispositive Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11930,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: LOCAL RULE 7.1.1 NOTICE: In accordance with Local Rule 7.1.1, except for civil cases involving pro se parties or motions brought by nonparties, every nondispositive motion shall be"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11910,
+        "kind": "item",
+        "occurred_at": "2026-02-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/51/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED Granting 47 Motion for Leave to File Consolidated Memorandum in Opposition and Reply in Excess of Page Limit. Signed by Judge Richard G. Andrews on 2/17/2026. (aas) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11911,
+        "kind": "item",
+        "occurred_at": "2026-02-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/52/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED Granting 49 Motion for Extension of Time to File Reply Brief in Support of Motion to Compel and for Leave to Exceed Page Limits for Response to Motion to Dismiss (*Reset"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11912,
+        "kind": "item",
+        "occurred_at": "2026-02-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/53/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Leave to File Amicus Brief - filed by Attorney General of Maryland, Attorney General of Michigan, Attorney General of Minnesota, Attorney General of Rhode Island, Attorn"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11913,
+        "kind": "item",
+        "occurred_at": "2026-02-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/56/united-states-v-albence/",
+        "title": "United States v. Delaware: REPLY BRIEF re 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 filed by United States of America. (Neff, Eric) (Entered: 02/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11914,
+        "kind": "item",
+        "occurred_at": "2026-02-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/57/united-states-v-albence/",
+        "title": "United States v. Delaware: ANSWERING BRIEF in Opposition re 33 MOTION to Dismiss, 39 MOTION to Dismiss, 36 MOTION to Dismiss, filed by United States of America.Reply Brief due date per Local Rules is 3/2/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11934,
+        "kind": "item",
+        "occurred_at": "2026-02-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11915,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/58/united-states-v-albence/",
+        "title": "United States v. Delaware: DECLARATION of Eric Neff re 56 Reply Brief, and 57 Answering Brief in Opposition, by United States of America. (Attachments: # 1 Exhibit 8, # 2 Exhibit 9, # 3 Exhibit 10, # 4 Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11932,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: CORRECTING ENTRY: The declaration and its exhibits filed as attachments to the brief at D.I. 57 have been removed from that filing. Motions and declarations are to be file independ"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11916,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/61/united-states-v-albence/",
+        "title": "United States v. Delaware: REPLY BRIEF re 36 MOTION to Dismiss, filed by Bethany Jennings, Gemma Lowery. (Attachments: # 1 Certificate of Service)(Billion, Mark) Modified on 3/2/2026 (nms). (Entered: 03/02/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11917,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/62/united-states-v-albence/",
+        "title": "United States v. Delaware: REPLY BRIEF re 39 MOTION to Dismiss, filed by Delaware Coalition Against Domestic Violence, La Esperanza, Latin American Community Center, Jose Matthews. (Attachments: # 1 Exhibit "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11918,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/63/united-states-v-albence/",
+        "title": "United States v. Delaware: REPLY BRIEF re 33 MOTION to Dismiss, filed by Anthony Albence. (Attachments: # 1 Appendix)(Liston, Ian) Modified on 3/3/2026 (nms). (Entered: 03/02/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11919,
+        "kind": "item",
+        "occurred_at": "2026-03-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/65/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Limited Admission or Admission Pursuant to Local Rule 83.5 - filed by Anthony Albence. (Attachments: # 1 Proposed Order, # 2 Certification)(Liston, Ian) Modified on 3/5/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11920,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/66/united-states-v-albence/",
+        "title": "United States v. Delaware: ORAL ORDER: The Motion for Limited Admission or Admission Pursuant to Local Rule 83.5 (D.I. 65 ) is DENIED. Ms. Gibson is not admitted to practice before the Supreme Court of the S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11933,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: Oral Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11921,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/68/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of Supplemental Authority regarding Motion to Dismiss (D.I. 36 ), by Bethany Jennings, Gemma Lowery. (Attachments: # 1 Exhibit A)(Billion, Mark) Modified on 4/10/2026 (nms)."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11922,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/70/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of Supplemental Authority regarding MOTION to Dismiss (D.I. 39 ), by Latin American Community Center (Attachments: # 1 Exhibit)(Bernstein, Andrew) Modified on 4/17/2026 (nms"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11923,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/72/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of Supplemental Authority regarding MOTION to Dismiss (D.I. 36 ), by Bethany Jennings and Gemma Lowery. (Attachments: # 1 Exhibit A)(Billion, Mark) Modified on 4/29/2026 (nm"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11924,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/74/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of Supplemental Authority regarding Motion for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 (D.I. 3 ), by United States of America (Attachments: #"
       }
     ]
   },
@@ -7643,6 +8306,29 @@
     ]
   },
   {
+    "caption": "United States v. RAFFENSPERGER",
+    "case_id": "72053306",
+    "category": "voter-data",
+    "court": "Middle District of Georgia",
+    "defendant": "RAFFENSPERGER",
+    "docket_number": "5:25-cv-00548",
+    "filed_at": "2025-12-18T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 11937,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72053306/united-states-v-raffensperger/",
+        "title": "United States v. Georgia — voter-data"
+      }
+    ]
+  },
+  {
     "caption": "United States v. EVANS",
     "case_id": "72055344",
     "category": "voter-data",
@@ -7662,6 +8348,626 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
         "title": "United States v. DC — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11816,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/2/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Compel To Compel Records by UNITED STATES. (Attachments: # 1 Memorandum in Support Memo In Support, # 2 Declaration Decl. of Eric Neff, # 3 Exhibit Exh. 1 - July 11 Lette"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11817,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/3/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE OF ERRATA RE: COMPLAINT, MOTION, AND MEMORANDUM OF SUPPORT by UNITED STATES re 1 Complaint, 2 Motion for Order, (Attachments: # 1 Errata Corrected Complaint, # 2 Errata Corr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11818,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/4/united-states-v-evans/",
+        "title": "United States v. DC: ERRATA RE: SIGNATURE CHANGE TO COMPLAINT, MOTION, AND MEMORANDUM IN SUPPORT by UNITED STATES OF AMERICA re 1 Complaint,. (Attachments: # 1 Signature Change Complaint, # 2 Signature"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11819,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/5/united-states-v-evans/",
+        "title": "United States v. DC: ERRATA RE: COMPLAINT AND CIVIL COVER SHEET AMENDMENTS by UNITED STATES OF AMERICA re 1 Complaint,. (Attachments: # 1 Complaint - Address add to Caption, # 2 Cover Sheet - Sig. Chan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11820,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/8/united-states-v-evans/",
+        "title": "United States v. DC: STANDING ORDER: The parties are hereby ORDERED to comply with the directives set forth in the attached Standing Order. See document for details. Signed by Judge Randolph D. Moss on"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11859,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE OF ERROR regarding 2 MOTION for Order To Compel Records. The following error(s) need correction: Invalid attorney signature- signature on document must match PACER login. Pl"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11868,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE OF NEW CASE ERROR regarding 1 Complaint, Civil Cover Sheet. The following error(s) need correction: Noncompliance with LCvR 5.1(c). Please file a Notice of Errata stating th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11821,
+        "kind": "item",
+        "occurred_at": "2025-12-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/9/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Intervene by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS. (Attachments: # 1 Memorandum in Support of Motion to Intervene, # 2 Exhibit A - Declaration of Carol Rosenblatt, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11822,
+        "kind": "item",
+        "occurred_at": "2025-12-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/11/united-states-v-evans/",
+        "title": "United States v. DC: RESPONSE re 9 MOTION to Intervene NO POSITION TO INTERVENOR filed by UNITED STATES OF AMERICA. (Frederick, Megan) (Entered: 12/22/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11823,
+        "kind": "item",
+        "occurred_at": "2025-12-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/12/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Intervene as Defendants by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (Attachments: # 1 Memorandum in Support, # 2 Exhibit 1 - Proposed Mot. to Dismiss, # 3 Exhibit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11824,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/13/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE of Supplemental Authorities by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS re 9 Motion to Intervene, (Attachments: # 1 Exhibit 1 - Galvin Order, # 2 Exhibit 2 - Amore Order, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11825,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/17/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE OF SUPPLEMENTAL AUTHORITY by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS (Attachments: # 1 Exhibit 1 - U.S. v. Simon Order, # 2 Exhibit 2 - U.S. v. Amore Entry, # 3 Exhi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11826,
+        "kind": "item",
+        "occurred_at": "2026-01-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/19/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE of No Position by UNITED STATES OF AMERICA re 12 Motion to Intervene, (Frederick, Megan) (Entered: 01/08/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11860,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: .Order AND ~Util - Set/Reset Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11863,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11873,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the pending motions to intervene, Dkt. 9, and Dkt. 12, it is hereby ORDERED that the parties and proposed intervenors shall appear for a status "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11827,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/29/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Withdraw as Attorney by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (Keenan, Megan) (Entered: 01/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11852,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of Proposed Intervenor-Defendants Common Cause, Ruth Goldman, and Chris Melody Fields' Motion to Withdraw as Attorney, Dkt. 29, it is hereby ORDERE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11858,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion to Withdraw as Attorney"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11869,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11874,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Minute Entry for Motions Hearing held on 2/5/2026 before Judge Randolph D. Moss. Parties discussed the pending Motion 9 to Intervene and Motion 12 to to Intervene as Defendants. Th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11856,
+        "kind": "item",
+        "occurred_at": "2026-02-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Motion Hearing AND ~Util - Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11828,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/38/united-states-v-evans/",
+        "title": "United States v. DC: SUPPLEMENTAL MEMORANDUM to re 12 MOTION to Intervene as Defendants filed by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (Attachments: # 1 Exhibit Decl. of Isabella Bronstein)("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11829,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/39/united-states-v-evans/",
+        "title": "United States v. DC: SUPPLEMENTAL MEMORANDUM re 9 MOTION to Intervene by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS. (Attachments: # 1 Exhibit A)(Madduri, Lalitha) Modified event title on 2/25/2026 (zn"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11830,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/40/united-states-v-evans/",
+        "title": "United States v. DC: MOTION for Leave to File Joint Motion to Dismiss and Opposition to Motion to Compel by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (Attachments: # 1 Exhibit Proposed Motion to"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11831,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/41/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Dismiss by MONICA H. EVANS, KARYN GREENFIELD, GARY THOMPSON. (Attachments: # 1 Memorandum in Support, # 2 Text of Proposed Order)(Pescovitz, Amanda) (Entered: 03/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11832,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/42/united-states-v-evans/",
+        "title": "United States v. DC: Memorandum in opposition to re 2 MOTION for Order To Compel Records filed by MONICA H. EVANS, KARYN GREENFIELD, GARY THOMPSON. (Attachments: # 1 Memorandum in Support, # 2 Text of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11833,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/43/united-states-v-evans/",
+        "title": "United States v. DC: MOTION for Leave to File Proposed Motion to Dismiss and Proposed Response in Opposition by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS. (Attachments: # 1 Text of Proposed Order, # 2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11834,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/44/united-states-v-evans/",
+        "title": "United States v. DC: MOTION for Leave to File Amicus Brief by DEMOCRATIC NATIONAL COMMITTEE. (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Text of Proposed Order)(Freeman, Daniel) (Entered: 03/1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11843,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/58/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Dismiss by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (znmw) (Entered: 04/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11844,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/59/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Dismiss by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS. (Attachments: # 1 Memorandum in Support, # 2 Text of Proposed Order)(znmw) (Entered: 04/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11845,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/60/united-states-v-evans/",
+        "title": "United States v. DC: Memorandum in opposition to re 2 MOTION to Compel filed by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS. (znmw) (Entered: 04/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11846,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/61/united-states-v-evans/",
+        "title": "United States v. DC: Memorandum in opposition to re 2 MOTION to Compel filed by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (See Docket Entry 58 to view document). (znmw) (Entered: 04/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11854,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11861,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11871,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion to Intervene AND Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11872,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion for Leave to File AND Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11875,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the Proposed Intervenors' Motions to Intervene, Dkt. 9, Dkt. 12, it is hereby ORDERED that the motions are GRANTED. Although none of the parties"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11877,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: In light of the Court's order granting intervention, Min. Ord. (Mar. 16, 2026), it is hereby ORDERED that Intervenors' motions for leave to file motions to dismiss th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11835,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/45/united-states-v-evans/",
+        "title": "United States v. DC: MOTION to Withdraw as Attorney MEGAN FREDERICK by UNITED STATES OF AMERICA. (Attachments: # 1 Text of Proposed Order Proposed Order to Withdraw)(Frederick, Megan) (Entered: 03/17/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11857,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11862,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion to Withdraw as Attorney"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11865,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the Democratic National Committee's Motion for Leave to File Amicus Brief, Dkt. 44, it is hereby ORDERED that the motion is GRANTED. Signed by J"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11866,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of Plaintiff's Motion to Withdraw as Attorney, Dkt. 45, it is hereby ORDERED that the motion is GRANTED and Megan Frederick is DEEMED WITHDRAWN as "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11836,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/47/united-states-v-evans/",
+        "title": "United States v. DC: Unopposed MOTION for Leave to File Amicus Brief by FORMER EMPLOYEES OF THE U.S. DEPARTMENT OF JUSTICE. (Attachments: # 1 Exhibit - Proposed Amicus Curiae Brief, # 2 Text of Propose"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11837,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/48/united-states-v-evans/",
+        "title": "United States v. DC: MOTION for Leave to File Amicus Brief by BRENNAN CENTER FOR JUSTICE, CAMPAIGN LEGAL CENTER. (Attachments: # 1 Exhibit 1 - Proposed Amici Curiae Brief, # 2 Text of Proposed Order)(G"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11855,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11867,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the Former Employees of the U.S. Department of Justice's Motion for Leave to File Amicus Brief, Dkt. 47, it is hereby ORDERED that the motion is"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11870,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the Brennan Center for Justice and Campaign Legal Center's Motion for Leave to File Amicus Brief, Dkt. 48, it is hereby ORDERED that the motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11838,
+        "kind": "item",
+        "occurred_at": "2026-03-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/49/united-states-v-evans/",
+        "title": "United States v. DC: MOTION for Leave to File Amicus Brief by BIPARTISAN FORMER STATE SECRETARIES OF STATE. (Attachments: # 1 Exhibit Proposed Amicus Brief of Bipartisan Former State Secretaries State,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11850,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11851,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the Bipartisan Former State Secretaries of State's Motion for Leave to File Amicus Brief, Dkt. 49, it is hereby ORDERED that the motion is GRANT"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11839,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/54/united-states-v-evans/",
+        "title": "United States v. DC: Memorandum in opposition to re 40 MOTION to Dismiss, 41 MOTION to Dismiss, 43 MOTION to Dismiss and reply in support of Motion to Compel [4-2] filed by UNITED STATES OF AMERICA. (A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11840,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/55/united-states-v-evans/",
+        "title": "United States v. DC: REPLY to opposition to motion re 58 Motion to Dismiss filed by COMMON CAUSE, RUTH GOLDMAN, CHRIS MELODY FIELDS. (Attachments: # 1 Exhibit US v. Amore)(Herenstein, Ethan) Modified l"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11841,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/56/united-states-v-evans/",
+        "title": "United States v. DC: REPLY to opposition to motion re 41 Motion to Dismiss filed by MONICA H. EVANS, KARYN GREENFIELD, GARY THOMPSON. (Attachments: # 1 Hearing Transcript, United States v. Amore, 1:25-"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11842,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/57/united-states-v-evans/",
+        "title": "United States v. DC: REPLY to opposition to motion re 59 Motion to Dismiss, Motion to Dismiss filed by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS. (Madduri, Lalitha) Modified link on 4/27/2026 (znmw). "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11864,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Memorandum in opposition to motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11847,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/62/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE of Supplemental Authority by MARYLAND/DC ALLIANCE FOR RETIRED AMERICANS re 59 Motion to Dismiss (Madduri, Lalitha) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11848,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/63/united-states-v-evans/",
+        "title": "United States v. DC: MOTION for Leave to File Combined Response to Supplemental Authorities (Dkt. 62 and, partially, Dkt. 56) by UNITED STATES OF AMERICA. (Attachments: # 1 Proposed Response to Supplem"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11853,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11876,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC: MINUTE ORDER: Upon consideration of the government's Motion for Leave to File Combined Response to Supplemental Authorities, Dkt. 63, it is hereby ORDERED that the motion is GRANTE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 11849,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/65/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE OF SUPPLEMENTAL AUTHORITY by UNITED STATES OF AMERICA (Attachments: # 1 Exhibit 1-OLC Opinion)(Bachand, Jake) (Entered: 05/15/2026)"
       }
     ]
   },
