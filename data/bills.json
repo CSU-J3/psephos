@@ -1032,6 +1032,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE0zM1hfNlRzbFdYZE10MFZrYm5JbWRucFNwdTVvSThjOFIyTXhPc2REUURTS2JIaURaSHYxYTYwODh6dzNDQmVsUGg4Tk0xM0N4N3FxZmYwajQydFk?oc=5",
         "title": "GOP rep urges Senate to 'nuke the filibuster' to secure SAVE America Act - Fox Business"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 12934,
+        "kind": "item",
+        "occurred_at": "2026-07-06T16:51:28+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/mike-johnson-house-pass-donald-trump-voter-supression-save-america-act",
+        "title": "Johnson says House will pass stalled SAVE America Act ‘one more time’ after latest Trump demands"
       }
     ]
   },

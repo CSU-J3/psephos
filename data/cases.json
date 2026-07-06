@@ -4101,6 +4101,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 12497,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/118/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Leave to File Amicus Briefin Support of Defendants' Motion for Stay Pending Appeal by Arizona Senate President Warren Petersen and Arizona Speaker of the House of Repres"
       }
     ]
   },
@@ -9964,6 +9974,29 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72156765/72/united-states-v-koski/",
         "title": "United States v. Virginia: ORDER - The Court finds it appropriate to exercise its discretion to GRANT the Motion (ECF No. 71 ). Accordingly, the supplemental authority in support of the NAACP Intervenors' pe"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Raffensperger",
+    "case_id": "72193752",
+    "category": "voter-data",
+    "court": "Northern District of Georgia",
+    "defendant": "Raffensperger",
+    "docket_number": "1:26-cv-00485",
+    "filed_at": "2026-01-23T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 12771,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia — voter-data"
       }
     ]
   },
