@@ -13,6 +13,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 13830,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 10665,
         "kind": "item",
         "occurred_at": "2025-09-25T00:00:00",
@@ -1426,6 +1436,16 @@
     "plaintiff": "United States",
     "status": "terminated",
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 14765,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -4121,6 +4141,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/118/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION for Leave to File Amicus Briefin Support of Defendants' Motion for Stay Pending Appeal by Arizona Senate President Warren Petersen and Arizona Speaker of the House of Repres"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14156,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/119/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: RESPONSE re 116 MOTION to Stay Pending Appeal filed by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14198,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14203,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 118 Motion for Leave to File Amicus Brief. The Court treats the Motion's Attachment, ECF No. 118-1, as the amicus brief. Signed by Judge Sparkle L. Sookna"
       }
     ]
   },
@@ -4651,6 +4701,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 13819,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71980724/united-states-v-demarinis/",
+        "title": "United States v. Maryland — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 10376,
         "kind": "item",
         "occurred_at": "2025-12-01T00:00:00",
@@ -5127,6 +5187,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980724/92/united-states-v-demarinis/",
         "title": "United States v. Maryland: ORDER denying 2 MOTION to Compel Production of Documents; granting 34 Motion to Dismiss for Failure to State a Claim; granting 43 Motion to Dismiss; granting 50 Motion to Dismiss; "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14749,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/91/united-states-v-demarinis/",
+        "title": "United States v. Maryland: MEMORANDUM OPINION. Signed by Judge Stephanie A. Gallagher on 6/18/2026. (bw5s, Deputy Clerk) (Entered: 06/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14751,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980724/94/united-states-v-demarinis/",
+        "title": "United States v. Maryland: NOTICE OF APPEAL as to 91 Memorandum Opinion, 92 Order on Motion to Dismiss for Failure to State a Claim,,,,,, Order on Motion for Leave to File,, Order on Motion to Compel, by The"
       }
     ]
   },
@@ -7663,6 +7743,459 @@
     ]
   },
   {
+    "caption": "United States v. Nago",
+    "case_id": "72023578",
+    "category": "voter-data",
+    "court": "District of Hawaii",
+    "defendant": "Nago",
+    "docket_number": "1:25-cv-00522",
+    "filed_at": "2025-12-11T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 14585,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
+        "title": "United States v. Hawaii — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14586,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/1/united-states-v-nago/",
+        "title": "United States v. Hawaii: COMPLAINT against Scott Nago, filed by United States of America. (Attachments: # 1 Civil Cover Sheet, # 2 Supplement)(Neff, Eric) Modified on 12/12/2025 Document is signed by co-co"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14587,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/3/united-states-v-nago/",
+        "title": "United States v. Hawaii: Order Setting Telephonic Rule 16 Scheduling Conference is set for 09:00AM on 2/9/2026 before MAGISTRATE JUDGE ROM TRADER - Signed by CHIEF JUDGE DERRICK K. WATSON on 12/11/2025. AT"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14588,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/5/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION to Compel Production of Documents Pursuant to the Civil Rights Act of 1960 Eric Neff appearing for Plaintiff United States of America (Attachments: # 1 Memorandum, # 2 Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14589,
+        "kind": "item",
+        "occurred_at": "2025-12-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/6/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER REGARDING PLAINTIFF'S MOTION FOR ORDER TO COMPEL THE PRODUCTION OF RECORDS PURSUANT TO 52 U.S.C. § 20701, ET SEQ.On December 11, 2025, Plaintiff United States of America "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14628,
+        "kind": "item",
+        "occurred_at": "2025-12-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
+        "title": "United States v. Hawaii: ADVISORY ENTRY. Incorrect Attorney Filer- Please be advised that ECF Nos. 1 Complaint and 5 MOTION to Compel Production of Documents Pursuant to the Civil Rights Act of 1960, were "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14590,
+        "kind": "item",
+        "occurred_at": "2025-12-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/7/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION to Intervene NAACP CALIFORNIA-HAWAII STATE CONFERENCES MOTION TO INTERVENE AS DEFENDANT William Meheula appearing for Intervenor Defendant NAACP California-Hawaii State Conf"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14591,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/8/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER SETTING BRIEFING SCHEDULE. On 12/17/2025 proposed Intervenor Defendant, NAACP California-Hawaii State Conference filed 7 Motion to Intervene.Court sets the following hear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14592,
+        "kind": "item",
+        "occurred_at": "2025-12-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/14/united-states-v-nago/",
+        "title": "United States v. Hawaii: NOTICE of No Position by United States of America re 7 MOTION to Intervene NAACP CALIFORNIA-HAWAII STATE CONFERENCES MOTION TO INTERVENE AS DEFENDANT United States of America. (Ben"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14593,
+        "kind": "item",
+        "occurred_at": "2026-01-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/20/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER GRANTING MOTION TO INTERVENE AS DEFENDANT On December 17, 2025, Proposed Intervenor-Defendant NAACP California-Hawaii State Conference (\"NAACP CA-HI\") filed a Motion to I"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14594,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/21/united-states-v-nago/",
+        "title": "United States v. Hawaii: ANSWER to 1 Complaint by NAACP California-Hawaii State Conference.(Meheula, William) (Entered: 01/06/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14595,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/23/united-states-v-nago/",
+        "title": "United States v. Hawaii: NOTICE by United States of America re 5 MOTION to Compel Production of Documents Pursuant to the Civil Rights Act of 1960 United States of America. (Attachments: # 1 Exhibit Order "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14596,
+        "kind": "item",
+        "occurred_at": "2026-01-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/24/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION to Intervene as Defendants of Common Cause, Neil Abercrombie, and Katherine Hammes Emily M. Hills appearing for Intervenor Defendants Common Cause, Neil Abercrombie, Katheri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14597,
+        "kind": "item",
+        "occurred_at": "2026-01-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/31/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER REGARDING MOTION OF COMMON CAUSE, NEIL ABERCROMBIE, AND KATHERINE HAMMES TO INTERVENE AS DEFENDANTS On January 14, 2026, Common Cause, Neil Abercrombie, and Katherine Ham"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14598,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/41/united-states-v-nago/",
+        "title": "United States v. Hawaii: Consent Unopposed MOTION re 3 to Extend Rule 16 Scheduling Conference Set Rule 16 Scheduling Conference Brittany E. Bennett appearing for Plaintiff United States of America (Bennet"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14599,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/43/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: [ECF 41 ] Unopposed Motion to Extend Rule 16 Scheduling Conference is GRANTED.The Rule 16 Scheduling Conference scheduled for 2/9/2026 is CONTINUED to 5/7/2026 at 9:00 a.m. bef"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14600,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/44/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION to Stay Thomas J. Hughes appearing for Defendant Scott Nago (Attachments: # 1 Memorandum in Support of Motion, # 2 Certificate of Service)(Hughes, Thomas) (Entered: 02/02/20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14627,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
+        "title": "United States v. Hawaii: Order on Motion for Miscellaneous Relief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14601,
+        "kind": "item",
+        "occurred_at": "2026-02-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/49/united-states-v-nago/",
+        "title": "United States v. Hawaii: STIPULATION re 24 MOTION to Intervene as Defendants of Common Cause, Neil Abercrombie, and Katherine Hammes by Neil Abercrombie, Common Cause, Katherine Hammes. (Hills, Emily) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14602,
+        "kind": "item",
+        "occurred_at": "2026-02-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/50/united-states-v-nago/",
+        "title": "United States v. Hawaii: ORDER DENYING DEFENDANT'S MOTION TO STAY re 44 - Signed by SENIOR JUDGE LESLIE E. KOBAYASHI on 2/4/2026. For the foregoing reasons, Defendant's Motion to Stay, filed February 2, 20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14625,
+        "kind": "item",
+        "occurred_at": "2026-02-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
+        "title": "United States v. Hawaii: ADVISORY ENTRY. Submission of Proposed Orders - Please be advised that ECF No. 49 Stipulation Regarding Motion to Intervene of Common Cause, Neil Abercrombie and Katherine Hammes, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14603,
+        "kind": "item",
+        "occurred_at": "2026-02-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/51/united-states-v-nago/",
+        "title": "United States v. Hawaii: ORDER REJECTING THE PARTIES' STIPULATION AND DENYING THE MOTION OF COMMON CAUSE, NEIL ABERCROMBIE, AND KATHERINE HAMMES TO INTERVENE AS DEFENDANTS re 24 - Signed by SENIOR JUDGE LE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14604,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/52/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION to Dismiss NAACP CALIFORNIA-HAWAII STATE CONFERENCES RULE 12 MOTION William Meheula appearing for Intervenor Defendant NAACP California-Hawaii State Conference (Attachments:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14605,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/53/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION to Dismiss Thomas J. Hughes appearing for Defendant Scott Nago (Attachments: # 1 Memorandum in Support of Motion, # 2 Certificate of Service)(Hughes, Thomas) (Entered: 02/18"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14606,
+        "kind": "item",
+        "occurred_at": "2026-02-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/54/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION for Leave to File an Amicus Brief Aimee Lum appearing for Amicus Democratic National Committee (Attachments: # 1 Exhibit 1, # 2 Proposed Order, # 3 Certificate of Service)(L"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14607,
+        "kind": "item",
+        "occurred_at": "2026-02-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/56/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER SETTING BRIEFING SCHEDULE On February 18, 2026, Intervenor Defendant NAACP California-Hawaii State and Defendant Scott Nago (\"Defendants\") filed Motions to Dismiss [Dkt N"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14608,
+        "kind": "item",
+        "occurred_at": "2026-02-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/59/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION for Leave to File Amicus Brief by Seventeen States and the District of Columbia Donna H. Kalama appearing for Amicus State of New Mexico (Attachments: # 1 Exhibit 1, # 2 Pro"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14609,
+        "kind": "item",
+        "occurred_at": "2026-02-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/61/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION for Leave to File Brief of Amici Curiae Former Employees of the U.S. Department of Justice Randall C. Whattoff appearing for Amicus Parties Anna Baldwin, David Becker, Grego"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14610,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/63/united-states-v-nago/",
+        "title": "United States v. Hawaii: ORDER GRANTING DEMOCRATIC NATIONAL COMMITTEE'S MOTION FOR LEAVE TO FILE AN AMICUS BRIEF re 54 - Signed by MAGISTRATE JUDGE ROM TRADER on 2/26/2026. (eta) (Entered: 02/26/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14611,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/64/united-states-v-nago/",
+        "title": "United States v. Hawaii: ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS BRIEF BY SEVENTEEN STATES AND THE DISTRICT OF COLUMBIA re 59 - Signed by MAGISTRATE JUDGE ROM TRADER on 2/26/2026. (eta) (Entered: 02"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14612,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/65/united-states-v-nago/",
+        "title": "United States v. Hawaii: ORDER GRANTING UNOPPOSED MOTION FOR LEAVE TO FILE BRIEF OF AMICI CURIAE FORMER EMPLOYEES OF THE U.S. DEPARTMENT OF JUSTICE re 61 - Signed by MAGISTRATE JUDGE ROM TRADER on 2/26/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14613,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/70/united-states-v-nago/",
+        "title": "United States v. Hawaii: MOTION for Leave to File Brief of Amicus Curiae Emily M. Hills appearing for Intervenor Defendants Neil Abercrombie, Common Cause, Katherine Hammes (Attachments: # 1 Exhibit 1 - Pr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14614,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/72/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: On 2/27/2026, non-parties Common Cause, Neil Abercrombie, and Katherine Hammes (\"Movants\") filed [ECF 70 ] Motion of Common Cause, Neil Abercrombie, and Katherine Hammes for Le"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14615,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/73/united-states-v-nago/",
+        "title": "United States v. Hawaii: NOTICE of No Opposition re 70 by United States of America re 72 Link United States of America. (Gardner, Christopher) Modified on 3/9/2026 (eta). (Entered: 03/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14616,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/74/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: In light of [ECF 73 ] Plaintiff United States of America's Notice of No Opposition, the [ECF 70 ] Motion of Common Cause, Neil Abercrombie, and Katherine Hammes for Leave to Fi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14617,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/75/united-states-v-nago/",
+        "title": "United States v. Hawaii: Second MOTION to Stay and First Motion to Continue Date of Motions Hearing Thomas J. Hughes appearing for Defendant Scott Nago (Attachments: # 1 Memorandum in Support of Motion, # "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14626,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
+        "title": "United States v. Hawaii: Order on Motion for Leave to File"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14618,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/77/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER REGARDING DEFENDANT'S RENEWED MOTION TO STAY AND FIRST MOTION TO CONTINUE DATE OF MOTIONS HEARING On March 5, 2026, Defendant Scott Nago, in his official capacity as Chie"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14619,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/78/united-states-v-nago/",
+        "title": "United States v. Hawaii: MEMORANDUM in Opposition re 52 MOTION to Dismiss NAACP CALIFORNIA-HAWAII STATE CONFERENCES RULE 12 MOTION, 53 MOTION to Dismiss filed by United States of America. (Attachments: # 1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14620,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/79/united-states-v-nago/",
+        "title": "United States v. Hawaii: RESPONSE in Opposition re 75 Second MOTION to Stay and First Motion to Continue Date of Motions Hearing filed by United States of America. (Gardner, Christopher) (Entered: 03/19/20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14621,
+        "kind": "item",
+        "occurred_at": "2026-03-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/80/united-states-v-nago/",
+        "title": "United States v. Hawaii: REPLY re 79 Response in Opposition to Motion, 75 Second MOTION to Stay and First Motion to Continue Date of Motions Hearing filed by Scott Nago. (Attachments: # 1 Certificate of Se"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14622,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/81/united-states-v-nago/",
+        "title": "United States v. Hawaii: ORDER GRANTING DEFENDANT'S RENEWED MOTION TO STAY re 75 - Signed by SENIOR JUDGE LESLIE E. KOBAYASHI on 4/6/2026. For the foregoing reasons, Defendant's Renewed Motion to Stay, fil"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14623,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/82/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: ORDER DEEMING WITHDRAWN PLAINTIFFS MOTION FOR ORDER TO COMPEL THE PRODUCTION OF RECORDS PURSUANT TO 52 U.S.C. § 20701, ET SEQ. ...In light of the stay, the United States' Motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14624,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72023578/83/united-states-v-nago/",
+        "title": "United States v. Hawaii: EO: In light of [ECF 81 ] Order Granting Defendant's Renewed Motion to Stay, the Rule 16 Scheduling Conference scheduled for 5/7/2026 before Magistrate Judge Trader is VACATED. (MA"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Aguilar",
     "case_id": "72026664",
     "category": "voter-data",
@@ -8345,6 +8878,209 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/72053306/united-states-v-raffensperger/",
         "title": "United States v. Georgia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14490,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/1/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: COMPLAINT (IFP) against BRAD RAFFENSPERGER filed by UNITED STATES OF AMERICA (Attachments: # 1 Civil Cover Sheet, # 2 Appendix Attachment to Civil Cover Sheet)(BENNETT, BRITTANY) ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14491,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/2/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION to Compel Production of Records Pursuant to 52 U.S.C. § 20701, et seq. by UNITED STATES OF AMERICA filed by BRITTANY BENNETT. (Attachments: # 1 Memorandum in Support, # 2 Ex"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14492,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/3/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION to Intervene by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council filed by ADAM MART"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14493,
+        "kind": "item",
+        "occurred_at": "2025-12-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/7/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE Notice of No Position on Motion to Intervene by UNITED STATES OF AMERICA re 3 MOTION to Intervene (GARDNER, CHRISTOPHER) (Entered: 12/19/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14494,
+        "kind": "item",
+        "occurred_at": "2025-12-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/9/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER TO SHOW CAUSE Ordered by US DISTRICT JUDGE C ASHLEY ROYAL on 12/22/2025. (rka) (Entered: 12/22/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14495,
+        "kind": "item",
+        "occurred_at": "2025-12-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/10/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: UNOPPOSED MOTION to Intervene by COMMON CAUSE, ROSARIO PALACIOS filed by CORY ISAACSON. (Attachments: # 1 Exhibit Proposed Motion to Dismiss, # 2 Exhibit Memorandum of Understandin"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14496,
+        "kind": "item",
+        "occurred_at": "2025-12-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/11/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE Notice of No Position by UNITED STATES OF AMERICA re 10 MOTION to Intervene (GARDNER, CHRISTOPHER) (Entered: 12/29/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14507,
+        "kind": "item",
+        "occurred_at": "2025-12-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Notice of Deficiency (related document(s): 11 Notice (Other) filed by UNITED STATES OF AMERICA ); Document must be re-filed using correct event which is Civil Events > Motions and "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14497,
+        "kind": "item",
+        "occurred_at": "2025-12-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/15/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE filed by UNITED STATES OF AMERICA re 10 MOTION to Intervene (GARDNER, CHRISTOPHER) (Entered: 12/31/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14498,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/24/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE Notice of Supplemental Authority by COMMON CAUSE, ROSARIO PALACIOS (Attachments: # 1 Exhibit Simon Order, # 2 Exhibit Amore Minute Order, # 3 Exhibit Galvin Order)(HUGHES, W"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14499,
+        "kind": "item",
+        "occurred_at": "2026-01-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/28/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE of Supplemental Authority by BLACK VOTERS MATTER FUND, COMMUNICATION WORKERS OF AMERICA LOCAL 3204, COMMUNICATION WORKERS OF AMERICA LOCAL 3204 RETIRED MEMBERS COUNCIL re 3 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14500,
+        "kind": "item",
+        "occurred_at": "2026-01-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/31/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION to Intervene by NAACP et, al filed by GERALD R WEBER. (Attachments: # 1 Memorandum in Support, # 2 Affidavit Ashton, # 3 Affidavit Butler, # 4 Affidavit Westbooks, # 5 Memor"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14506,
+        "kind": "item",
+        "occurred_at": "2026-01-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Notice of Deficiency (related document(s): 31 Motion to Intervene, filed by NAACP et, al ); All nongovernmental corporate parties must file a Corporate Disclosure Statement. Please"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14501,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/40/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE Notice of Supplemental Authority by UNITED STATES OF AMERICA re 2 MOTION to Compel Production of Records Pursuant to 52 U.S.C. § 20701, et seq. (Attachments: # 1 Exhibit Ord"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14502,
+        "kind": "item",
+        "occurred_at": "2026-01-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/41/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE TO ORDER TO SHOW CAUSE re: 9 Order to Show Cause by UNITED STATES OF AMERICA (GARDNER, CHRISTOPHER) (Entered: 01/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14503,
+        "kind": "item",
+        "occurred_at": "2026-01-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/46/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION to Dismiss Complaint re 1 Complaint (IFP) :, MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM Defendant Raffensperger's Motion to Dismiss Plaintiff's Complaint, MOTION to Dism"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14504,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/49/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER DISMISSING CASE WITHOUT PREJUDICE. This Court finds it lacks subject matter jurisdiction over this action and DISMISSES this action without prejudice. re 1 Complaint (IFP) Or"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14505,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72053306/50/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: JUDGMENT of Dismissal. (ksl) (Entered: 01/23/2026)"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Matthews",
+    "case_id": "72054244",
+    "category": "voter-data",
+    "court": "Central District of Illinois",
+    "defendant": "Matthews",
+    "docket_number": "3:25-cv-03398",
+    "filed_at": "2025-12-18T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 14642,
+        "kind": "item",
+        "occurred_at": "2025-12-18T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
+        "title": "United States v. Illinois — voter-data"
       }
     ]
   },
@@ -10007,6 +10743,766 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
         "title": "United States v. Georgia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14509,
+        "kind": "item",
+        "occurred_at": "2026-01-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/1/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: COMPLAINT filed by The United States of America. (Attachments: # 1 Civil Cover Sheet)(dgr) Please visit our website at http://www.gand.uscourts.gov/commonly-used-forms to obtain Pr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14510,
+        "kind": "item",
+        "occurred_at": "2026-01-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/3/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION to Intervene with Brief In Support by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Coun"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14511,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/6/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Unopposed MOTION to Intervene with Brief In Support by Common Cause, Rosario Palacios. (Attachments: # 1 Brief Mem. of L. in Support, # 2 Exhibit Ex. 1 (Proposed MTD), # 3 Exhibit "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14580,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14512,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/13/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER. It is ORDERED that the motion of Intervenors Black Voters Matter Fund, Communications Workers of America Local 3204, and Communications Workers of America Local 3204 Retired"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14513,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/14/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER. It is ORDERED that the motion of Common Cause and Rosario Palacios to intervene as Defendants is hereby GRANTED 3 . Signed by Judge Eleanor L. Ross on 01/30/2026. (mrg) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14578,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14579,
+        "kind": "item",
+        "occurred_at": "2026-01-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing (via email) to Attorney Max Accardi as to Black Voters Matter Fund re Order on Application for Admission PHV. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14514,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/16/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing with Brief In Support by Brad Raffensperger. (Attachments: # 1 Brief in Support of Motion to Dismiss Plaintif"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14515,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/20/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE of Filing Supplemental Authority by Brad Raffensperger re 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing (Attachments: # 1 Exhibit A - Opinion and"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14516,
+        "kind": "item",
+        "occurred_at": "2026-02-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/22/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM with Brief In Support by Common Cause, Rosario Palacios. (Attachments: # 1 Brief in support of MTD, # 2 Exhibit)(Isaacson, Cory) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14517,
+        "kind": "item",
+        "occurred_at": "2026-02-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/23/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM with Brief In Support by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Loca"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14518,
+        "kind": "item",
+        "occurred_at": "2026-02-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/31/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) with Brief In Support by The United States of America"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14519,
+        "kind": "item",
+        "occurred_at": "2026-02-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/32/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION for Leave to File Amicus Brief with Brief In Support by Democratic National Committee. (Attachments: # 1 Brief Memo in Support, # 2 Exhibit Proposed Amicus, # 3 Text of Prop"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14569,
+        "kind": "item",
+        "occurred_at": "2026-02-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14520,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/42/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: First MOTION to Add Party Defendant-Intervenors with Brief In Support by National Association For The Advancement of Colored People, National Association for the Advancement of Col"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14576,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14583,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing (via email) to Attorneys re Order on Application for Admission PHV. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14561,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing (via email) to Attorney Reema Shah as to National Association For The Advancement of Colored People, National Association For The Advancement of Colo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14564,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: APPROVAL by Clerks Office re: 54 55 56 57 58 59 60 61 62 63 APPLICATIONS for Admission. Attorney Robert Neil Weiner, Gillian Cassell-Stiga, Samantha Heyward, Andrew J. Frackman, Gr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14584,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14562,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing to various attorneys as to National Association For The Advancement of Colored People, National Association For The Advancement of Colored People, Na"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14575,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14521,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/68/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: REPLY to Response to Motion re 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing filed by Brad Raffensperger. (Tyson, Bryan) (Entered: 03/05/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14522,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/69/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) filed by Brad Raffensper"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14523,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/70/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) and Reply in Support of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14524,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/71/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION for Leave to File Unopposed Motion for Leave to File Brief of Amici Curiae with Brief In Support by Former Employees of the U.S. Department of Justice. (Attachments: # 1 Bri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14525,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/73/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION for Leave to File Response in Opposition to Cross Motion to Compel by National Association For The Advancement of Colored People, National Association for the Advancement of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14526,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/74/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) and Reply in Support of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14566,
+        "kind": "item",
+        "occurred_at": "2026-03-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Submission of 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing to District Judge Eleanor L. Ross. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14570,
+        "kind": "item",
+        "occurred_at": "2026-03-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing to Attorney Kelsey Miller as to Former Employees of the U.S. Department of Justice re Order on Application for Admission PHV. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14574,
+        "kind": "item",
+        "occurred_at": "2026-03-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14527,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/76/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER granting 71 Motion for Leave to File. It is further ORDERED that the Former Employees of the U.S. Department of Justice be designated as Amici Curiae and their proposed amicu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14567,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Submission of 22 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM, and 23 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM to District Judge Eleanor L. Ross. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14528,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/77/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: CORRECTED DOCUMENT ATTACHED AS ATTACHMENT [77-1] ORDER. For good cause shown, the Court GRANTS both motions, 42, 73, and DIRECTS the NAACP Intervenor-Defendants to file any respons"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14529,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/78/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER. Motion for Leave to File an Amicus Brief is GRANTED 32 . The DNC shall file the proposed amicus brief as a separate docket entry as soon as practicable. Signed by Judge Elea"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14530,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/79/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: AMICUS BRIEF re 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing filed by Democratic National Committee. (Kastorf, Kurt) Modified on 3/13/2026 to remove ex"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14531,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/80/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM BY INTERVENOR-DEFENDANTS with Brief In Support by National Association For The Advancement of Colored People, National Associat"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14532,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/81/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) filed by Georgia Coaliti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14577,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing (via email) to Attorney Andrew Pappas as to The Bipartisan American Election Project re Order on Application for Admission PHV. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14582,
+        "kind": "item",
+        "occurred_at": "2026-03-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14568,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing (via email) to Attorneys John Bullock and Mary O'Grady as to The Bipartisan American Election Project re Order on Application for Admission PHV. (mlb"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14573,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14533,
+        "kind": "item",
+        "occurred_at": "2026-03-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/89/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE re 80 First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM BY INTERVENOR-DEFENDANTS filed by The United States of America. (Attachments: # 1 Exhibit 1- Maine Consent Decre"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14581,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Submission of 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) to District Judge Eleanor L. Ross. ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14534,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/90/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER: Given the multiplicity of the issues presented, the Court GRANTS the Secretary's request for an in-person hearing. Doc. 16 . Accordingly, the Court SETS a hearing on JUNE 3,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14535,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/91/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14536,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/92/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: REPLY to Response to Motion re 80 First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM BY INTERVENOR-DEFENDANTS filed by Georgia Coalition for the Peoples Agenda, National Associat"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14537,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/93/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Reply to Supplemental Authority by The United States of America re 91 Notice (Attachments: # 1 Exhibit Ex 1 Transcript)(Neff, Eric) Modified docket text on 4/16/2026 (ajw). (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14538,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/94/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Common Cause, Rosario Palacios of Supplemental Authority (Attachments: # 1 Exhibit Ex. 1 - RI Opinion, # 2 Exhibit Ex. 2 - EO)(Hughes, William) (Entered: 04/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14563,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Submission of 80 First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM BY INTERVENOR-DEFENDANTS and 91 Notice (Other) to District Judge Eleanor L. Ross. (mlb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14539,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/96/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Reply to Supplemental Authority by The United States of America re 94 Notice (Other) (Gardner, Christopher) Modified docket text on 4/29/2026 (ajw). (Entered: 04/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14540,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/101/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by The United States of America re 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposition to Motions to Dismiss (Docs. 16, 22, 23) Suppleme"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14541,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/104/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Common Cause, Rosario Palacios re 22 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM (Attachments: # 1 Exhibit Maine Decision, # 2 Exhibit Wisconsin Decision)(Hughes, Will"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14542,
+        "kind": "item",
+        "occurred_at": "2026-05-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/105/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE of Filing Joint Proposed Schedule by Brad Raffensperger re 90 Order on Motion for Hearing, (Tyson, Bryan) (Entered: 05/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14543,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/108/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Motion to Bring Audio/Visual/Electronic Equipment in the Courtroom During Hearing of June 3, 2026 by Black Voters Matter Fund. (Attachments: # 1 Text of Proposed Order (Proposed Or"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14544,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/112/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION for Recusal of Judge Eleanor Ross with Brief In Support by The United States of America. (Attachments: # 1 Brief in Support of Motion to Recuse Judge Eleanor Ross)(Mohrman, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14545,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/113/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: MOTION to Continue Motions Scheduled for Hearing June 3 2026 by The United States of America. (Mohrman, William) (Entered: 05/29/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14546,
+        "kind": "item",
+        "occurred_at": "2026-05-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/114/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Motion to Bring Audio/Visual/Electronic Equipment in the Courtroom by Common Cause, Rosario Palacios. (Attachments: # 1 Text of Proposed Order Proposed Order)(Hughes, William) (Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14547,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/115/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER: The Court GRANTS the Motion to Continue, Doc. 113, and CONTINUES the June 3 Hearing pending its ruling on the Motion to Disqualify. Accordingly, the Court DENIES AS MOOT the"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14548,
+        "kind": "item",
+        "occurred_at": "2026-06-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/117/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Emergency MOTION for Expedited Procedure Pursuant to Local Rule 7.2(B) regarding 112 MOTION for Recusal of Judge Eleanor Ross by The United States of America. (Casali, John) (Enter"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14549,
+        "kind": "item",
+        "occurred_at": "2026-06-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/119/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 117 Emergency MOTION for Expedited Procedure Pursuant to Local Rule 7.2(B) regarding 112 MOTION for Recusal of Judge Eleanor Ross filed by Black Voters Ma"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14550,
+        "kind": "item",
+        "occurred_at": "2026-06-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/121/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: REPLY to Response to Motion re 117 Emergency MOTION for Expedited Procedure Pursuant to Local Rule 7.2(B) regarding 112 MOTION for Recusal of Judge Eleanor Ross filed by The United"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14551,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/122/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 117 Emergency MOTION for Expedited Procedure Pursuant to Local Rule 7.2(B) regarding 112 MOTION for Recusal of Judge Eleanor Ross filed by Common Cause, R"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14552,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/123/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: REPLY to Response to Motion re 117 Emergency MOTION for Expedited Procedure Pursuant to Local Rule 7.2(B) regarding 112 MOTION for Recusal of Judge Eleanor Ross filed by The United"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14565,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Order on Application for Admission PHV"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14571,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Clerk's Certificate of Mailing (via email) Attorney Daniel Meteer as to National Association For The Advancement of Colored People, National Association for the Advancement of Colo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14553,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/124/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: RESPONSE in Opposition re 112 MOTION for Recusal of Judge Eleanor Ross filed by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of Amer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14554,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/125/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: REPLY BRIEF re 112 MOTION for Recusal of Judge Eleanor Ross filed by United States of America. (Mohrman, William) (Entered: 06/12/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14555,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/127/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER: The undersigned GRANTS the United States's Motion to Disqualify, Doc. 112, and RECUSES from this case. Furthermore, the Court DENIES AS MOOT the United States's Motion for E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14572,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Submission of 80 First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM BY INTERVENOR-DEFENDANTS, 31 Cross MOTION to Compel Production of Federal Election Records and Brief in Opposi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14556,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/128/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE of Supplemental Authority re 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing MOTION for Hearing by Brad Raffensperger(Attachments: # 1 Exhibit A - "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14557,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/129/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Brad Raffensperger re 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing MOTION for Hearing Secretary's Third Notice of Supplemental Authority (Att"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14558,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/130/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE of Supplemental Authority re 23 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Worker"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14559,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/133/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Georgia Coalition for the Peoples Agenda, National Association For The Advancement of Colored People, National Association for the Advancement of Colored People Georgia S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14560,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/134/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
   },
@@ -10830,6 +12326,519 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
         "title": "United States v. New Jersey: Set/Reset Motion and R&R Deadlines/Hearings"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Adams",
+    "case_id": "72334676",
+    "category": "voter-data",
+    "court": "Eastern District of Kentucky",
+    "defendant": "Adams",
+    "docket_number": "3:26-cv-00019",
+    "filed_at": "2026-02-26T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 14643,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14644,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/3/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Intervene by Kentucky Alliance for Retired Americans (Attachments: # 1 Memorandum in Support Memo, # 2 Exhibit Exhibit A, # 3 Exhibit Exhibit B, # 4 Exhibit Exhibit C, # "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14660,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/35/united-states-v-adams/",
+        "title": "United States v. Kentucky: ANSWER to 1 Complaint by Kentucky Alliance for Retired Americans. Filed per Order 34 (CBD) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14686,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE FOR ATTORNEY TO UPDATE ADDRESS to Elizabeth C. Frost: It appears the address listed on your filing 3 MOTION to Intervene by Kentucky Alliance for Retired Americans is differ"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14687,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE OF DOCKET MODIFICATION TO J. True re 3 MOTION to Intervene. Error: attachments were insufficiently described as Exhibit A, Exhibit B. Entry by attorney; Correction: the Cler"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14645,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/8/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Intervene by The New Americans Alliance, League of Women Voters of Kentucky, Zitsi Mirakhur, Joern Soltau (Attachments: # 1 Memorandum in Support Mem In Support of Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14661,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/36/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Dismiss by League of Women Voters of Kentucky, Zitsi Mirakhur, Joern Soltau (Attachments: # 1 Decl of J Jackson, # 2 Decl of N Kulkarni, # 3 Decl of Z Mirakhur, # 4 Decl "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14666,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/41/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE OF CLERICAL ERROR Re: PDF DOCUMENT: Error: INCORRECT document attached to docket entry by docket clerk; Incorrect motion attached re 36 MOTION to Dismiss by League of Women "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14646,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/9/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Dismiss for failure to state a claim by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwight Sears, Cory Skolnick (Attachmen"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14692,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: Motion Submitted"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14647,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/15/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION for Leave to File Amicus Brief by William R. Adams, II on behalf of Democratic National Committee. (Attachments: # 1 Exhibit Amicus Brief, # 2 Proposed Order)(Adams, William"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14648,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/17/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Intervene by David Yates (Attachments: # 1 Memorandum in Support of Motion to Intervene, # 2 Exhibit Answer of Intervening Defendant, # 3 Proposed Order)(Martin, Sarah) ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14662,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/37/united-states-v-adams/",
+        "title": "United States v. Kentucky: ANSWER to 1 Complaint with Jury Demand by David Yates. Filed per Order 34 (CBD) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14685,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: Motion Submitted"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14649,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/20/united-states-v-adams/",
+        "title": "United States v. Kentucky: UNOPPOSED MOTION for Leave to File by Brennan Center for Justice, Campaign Legal Center (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Proposed Order)(Abate, Michael) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14650,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/21/united-states-v-adams/",
+        "title": "United States v. Kentucky: ORDER: 1. Motion for Leave to file an amici curiae brief 20 is GRANTED; 2. The amicus brief tendered by Brennan Center for Justice and Campaign legal Center [R. 20 -1] is deemed fi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14651,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/22/united-states-v-adams/",
+        "title": "United States v. Kentucky: AMICUS CURIAE BRIEF of 9 filed by Brennan Center for Justice. Filed per Order 21 (CBD) (Entered: 03/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14690,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: Motion Submitted"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14691,
+        "kind": "item",
+        "occurred_at": "2026-03-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: ***MOTION SUBMITTED TO CHAMBERS of Judge Gregory F. Van Tatenhove for review: re 20 UNOPPOSED MOTION for Leave to File Amicus Brief by Brennan Center for Justice, Campaign Legal Ce"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14652,
+        "kind": "item",
+        "occurred_at": "2026-03-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/25/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION for Leave to File by Kentucky Alliance for Retired Americans Responses to the Complaint (Attachments: # 1 Proposed Order Proposed Order, # 2 Memorandum in Support Memo in su"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14663,
+        "kind": "item",
+        "occurred_at": "2026-03-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/38/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Dismiss by Kentucky Alliance for Retired Americans Filed per Order 34 (CBD) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14653,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/26/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Compel by USA and supporting memorandum (Attachments: # 1 Declaration of Eric Neff, # 2 Exhibit 1 July 17, 2025 letter, # 3 Exhibit 2 July 23, 2025 letter, # 4 Exhibit 3 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14654,
+        "kind": "item",
+        "occurred_at": "2026-03-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/27/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Amend/Correct 26 MOTION to Compel by USA and supporting memorandum by USA to add Proposed Order (Voiland, Joseph) (Entered: 03/26/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14655,
+        "kind": "item",
+        "occurred_at": "2026-03-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/29/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Dismiss by David Yates (Attachments: # 1 Proposed Order)(Martin, Sarah) Modified on 3/31/2026 (MJY). (Entered: 03/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14656,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/31/united-states-v-adams/",
+        "title": "United States v. Kentucky: JOINT MOTION for Order by USA for Consolidated Briefing Schedule (Attachments: # 1 Proposed Order)(McCaffrey, Paul) (Entered: 03/31/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14657,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/32/united-states-v-adams/",
+        "title": "United States v. Kentucky: ORDER: 1.Motion for Consolidated Briefing Schedule R. 31 is GRANTED; 2. All Motions to Dismiss the Complaint shall be filed no later than March 31, 2026; 3. US shall file a consoli"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14658,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/33/united-states-v-adams/",
+        "title": "United States v. Kentucky: MOTION to Dismiss by Michael Adams (Attachments: # 1 Proposed Order)(Phillips, Jay) (Entered: 03/31/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14684,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: Motion Submitted"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14689,
+        "kind": "item",
+        "occurred_at": "2026-03-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: ***MOTION SUBMITTED TO CHAMBERS of Judge Gregory F. Van Tatenhove for review: re 31 JOINT MOTION for Order by USA for Consolidated Briefing Schedule (JJ)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14659,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/34/united-states-v-adams/",
+        "title": "United States v. Kentucky: MEMORANDUM OPINION & ORDER: 1. The Motion to Intervene filed by Kentucky Alliance for Retired Americans 3 is GRANTED; 2. The Clerk is Directed to File the Proposed Answer [R. 3 -2]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14664,
+        "kind": "item",
+        "occurred_at": "2026-04-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/39/united-states-v-adams/",
+        "title": "United States v. Kentucky: RESPONSE to 36, 9, 33, 38, 29 Motions to Dismiss, Consolidated filed by USA. (Attachments: # 1 2d Declaration of Eric Neff, # 2 Grimes Consent Judgment, # 3 Judicial Watch v. Adams"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14665,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/40/united-states-v-adams/",
+        "title": "United States v. Kentucky: ORDER: It is hereby ORDERED that a MOTION HEARING re Defendants' Motions to Dismiss and the Plaintiff's Motion to Compel. [R. 9 ; R. 26 ; R. 29 ; R. 33 ; R. 36 ; R. 38 .] set for 6"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14667,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/42/united-states-v-adams/",
+        "title": "United States v. Kentucky: REPLY to Response to Motion and supporting memorandum re 29 MOTION to Dismiss by David Yates, filed by David Yates. (Martin, Sarah) Modified text on 5/1/2026 (JJ). (Entered: 04/30/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14668,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/43/united-states-v-adams/",
+        "title": "United States v. Kentucky: REPLY to Response to Motion re 33 MOTION to Dismiss by Michael Adams filed by Michael Adams. (Phillips, Jay) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14669,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/44/united-states-v-adams/",
+        "title": "United States v. Kentucky: RESPONSE to 26 USAs' Motion to Compel filed by Michael Adams. (Phillips, Jay) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14670,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/45/united-states-v-adams/",
+        "title": "United States v. Kentucky: REPLY to Response to Motion re 9 MOTION to Dismiss for failure to state a claim by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwigh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14671,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/46/united-states-v-adams/",
+        "title": "United States v. Kentucky: REPLY to 38 in support of its motion to dismiss filed by Kentucky Alliance for Retired Americans. (True, J.) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14672,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/47/united-states-v-adams/",
+        "title": "United States v. Kentucky: REPLY BRIEF to 36, and Opposition to Motion to Compel filed by League of Women Voters of Kentucky, Zitsi Mirakhur, Joern Soltau, The New Americans Alliance. (Attachments: # 1 Exhib"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14673,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/48/united-states-v-adams/",
+        "title": "United States v. Kentucky: RESPONSE to Motion re 26 MOTION to Compel by USA and supporting memorandum filed by David Yates. Filed pursuant to QC re DE 42 . (JJ) (Entered: 05/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14674,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/49/united-states-v-adams/",
+        "title": "United States v. Kentucky: RESPONSE to Motion re 26 MOTION to Compel by USA and supporting memorandum filed by League of Women Voters of Kentucky. File pursuant to QC re DE 47 (Attachments: # 1 Same Exhibits"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14675,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/50/united-states-v-adams/",
+        "title": "United States v. Kentucky: RESPONSE to Motion re 26 MOTION to Compel by USA and supporting memorandum filed by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwig"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14688,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE OF DOCKET MODIFICATION TO Sarah Martin, Carmine Iaccarino, and Corey Shapiro re 47 REPLY BRIEF, 42 Reply to Response to Motion, 45 Reply to Response to Motion: Error: These "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14676,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/51/united-states-v-adams/",
+        "title": "United States v. Kentucky: ORDER: It is hereby ORDERED that this matter be reassigned pursuant to the guidelines set forth in the General Order and as stated above. Additionally, the motion hearing in this m"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14677,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/52/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwight Sears, Cory Skolnick re 9 MOTION to Dismiss for failure to state a clai"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14678,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/53/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE by Kentucky Alliance for Retired Americans re 38 MOTION to Dismiss by Kentucky Alliance for Retired Americans Supplemental Authority (Attachments: # 1 Exhibit Exhibit A)(Tru"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14679,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/54/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwight Sears, Cory Skolnick re 9 MOTION to Dismiss for failure to state a clai"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14680,
+        "kind": "item",
+        "occurred_at": "2026-06-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/56/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE Second Supplemental Authority by Kentucky Alliance for Retired Americans re 38 MOTION to Dismiss by Kentucky Alliance for Retired Americans (True, J.) Modified text on 6/24/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14681,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/57/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE of filing of supplemental authority by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwight Sears, Cory Skolnick re 9 MOTION to"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14682,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/59/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE by Deanna Brangers, John Y. Brown, III, Eric Farris, Julie Griggs, Ross Owens, III, Sue Perry, Dwight Sears, Cory Skolnick re 9 MOTION to Dismiss for failure to state a clai"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14683,
+        "kind": "item",
+        "occurred_at": "2026-06-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/60/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE by Kentucky Alliance for Retired Americans re 38 MOTION to Dismiss by Kentucky Alliance for Retired Americans Third Supplemental Authority (True, J.) (Entered: 06/30/2026)"
       }
     ]
   },
@@ -12242,6 +14251,149 @@
     ]
   },
   {
+    "caption": "United States v. McGrane",
+    "case_id": "73126970",
+    "category": "voter-data",
+    "court": "District of Idaho",
+    "defendant": "McGrane",
+    "docket_number": "1:26-cv-00197",
+    "filed_at": "2026-04-01T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 14629,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
+        "title": "United States v. Idaho — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14630,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/2/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: MOTION to Compel Production of Records Pursuant to 52 U.S.C. § 20701, et seq. John Casali appearing for Plaintiff UNITED STATES OF AMERICA. Responses due by 4/22/2026 (Attachments:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14631,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/4/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: MOTION to Intervene as Defendants Terri R Pickens appearing for Defendants National Association for the Advancement of Colored People, NAACP Tri-State Conference, Idaho Alliance fo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14632,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/8/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: MEMORANDUM/BRIEF re 4 MOTION to Intervene as Defendants filed by Idaho Alliance for Retired Americans, NAACP Tri-State Conference, National Association for the Advancement of Color"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14633,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/13/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: MOTION to Stay Proceedings or in the Alternative, MOTION for Extension of Time to File Response/Reply ( Responses due by 5/12/2026)Aaron Michael Green appearing for Defendant Phil "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14634,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/15/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: ORDER: Plaintiffs Response to the Motion to Stay (Dkt. 13 ) is due by April 28, 2026. Defendants Reply to the Motion to Stay (Dkt. 13 ) is due by April 30, 3036. Defendants Respons"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14640,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: Set/Reset Deadlines as to 13 MOTION to Stay Proceedings or in the Alternative MOTION for Extension of Time to File Response/Reply, 4 MOTION to Intervene as Defendants, 2 MOTION to "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14635,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/18/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: RESPONSE to Motion re 13 MOTION to Stay Proceedings or in the Alternative MOTION for Extension of Time to File Response/Reply filed by The United States of America. Replies due by "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14636,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/19/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: REPLY to Response to Motion re 13 MOTION to Stay Proceedings or in the Alternative MOTION for Extension of Time to File Response/Reply filed by Phil McGrane.Motion Ripe Deadline se"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14637,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/20/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: ORDER - Defendants Response to the Motion for Order to Compel Production of Records is due by June 30, 2026. Responses tot he Motion to Intervene as Defendants are due by June 30, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14638,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/21/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: DOCKET ENTRY ORDER: For the reasons stated in the Order at Dkt. 20, the deadline for Defendant's response to the Complaint is hereby extended to June 30, 2026. Signed by Senior Jud"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14641,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: NOTICE OF CONSENT DEADLINE: Pursuant to General Order 457, this is a reminder that the Court has not received your completed form in response to the 14 Notice of Availability Setti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14639,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73126970/23/united-states-v-mcgrane/",
+        "title": "United States v. Idaho: MEMORANDUM DECISION AND ORDER RE: DKT. 13 - Signed by Senior Judge B. Lynn Winmill. (caused to be mailed to non Registered Participants at the addresses listed on the Notice of Ele"
+      }
+    ]
+  },
+  {
     "caption": "Common Cause v. U.S. Department of Justice",
     "case_id": "73218916",
     "category": "voter-data",
@@ -12531,6 +14683,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14088,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 40 Motion for Leave to File Amicus Brief. The Court treats the 40 Motion's attachment, ECF No. 40-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
       }
     ]
   },
@@ -12694,6 +14856,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 13831,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8378,
         "kind": "item",
         "occurred_at": "2026-06-09T00:00:00",
@@ -12804,6 +14976,16 @@
     "plaintiff": "United States",
     "status": "pending",
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 13820,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -12920,6 +15102,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 13818,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
+        "title": "United States v. Maine — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 10367,
         "kind": "item",
         "occurred_at": "2026-06-15T00:00:00",
@@ -13006,6 +15198,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108469697/united-states-v-bellows/",
         "title": "United States v. Maine: REPLY filed by Appellant US to response [6821911-2], response [6821559-2], response [6821430-2]. Served on 06/30/2026. [26-1676] (AB) [Entered: 06/30/2026 10:27 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 14702,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108471579/united-states-v-bellows/",
+        "title": "United States v. Maine: ORDER entered by Gustavo A. Gelpí, Jr., Appellate Judge: In each of the above-captioned appeals, plaintiff-appellant has filed a motion to consolidate and a motion to expedite. The"
       }
     ]
   }

@@ -1042,6 +1042,16 @@
         "source_id": "democracy-docket",
         "source_url": "https://www.democracydocket.com/news-alerts/mike-johnson-house-pass-donald-trump-voter-supression-save-america-act",
         "title": "Johnson says House will pass stalled SAVE America Act ‘one more time’ after latest Trump demands"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 14934,
+        "kind": "item",
+        "occurred_at": "2026-07-07T20:10:41+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNLXVqMDh0Smh2emkzTzN3SjV0ZHpIZHM1ZS1iZ1dBV213Sm5TT0M1VHB0aThySkx5YTBBbm01VWJHVDJKUUZ4YWFJajdrU2lmbFl2SDZXcHk0LVdQTHZEWUxGbzVhQTZQYTM0WHBKM2lra2Y5SlBxTmMzVW00R2FpTFpOX1ItZHlveGY0dHB4LXVnY1ZOXzdiTlNUek5MNzRFak1Ba19USG1WZE5pUlVnMlMwMUMxQQ?oc=5",
+        "title": "Trump warms to using filibuster-proof budget process to pass pieces of SAVE America Act - Washington Times"
       }
     ]
   },
