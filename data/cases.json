@@ -2485,6 +2485,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
         "title": "United States v. New Hampshire: Order on Motion to Withdraw"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13483,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453646/88/united-states-v-nh-secretary-of-state/",
+        "title": "United States v. New Hampshire: Notice of Appeal"
       }
     ]
   },
@@ -12780,6 +12790,119 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73470017/00108469609/united-states-v-amore/",
         "title": "United States v. Rhode Island: REPLY filed by Appellant US to response [6820580-2], response [6820583-2], response [6821797-2], response [6820803-2]. Served on 06/30/2026. [26-1665] (AB) [Entered: 06/30/2026 06:"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Galvin",
+    "case_id": "73479340",
+    "category": "voter-data",
+    "court": "First Circuit",
+    "defendant": "Galvin",
+    "docket_number": "26-1657",
+    "filed_at": "2026-06-09T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 13203,
+        "kind": "item",
+        "occurred_at": "2026-06-09T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13204,
+        "kind": "item",
+        "occurred_at": "2026-06-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108460061/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: CIVIL CASE docketed. Notice of appeal (doc. #95) filed by Appellant US. Appearance form due 06/24/2026. Docketing Statement due 06/24/2026. [26-1657] (GRC) [Entered: 06/10/2026 03:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13205,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108461492/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION to expeditefiled by Appellant US. Served on 06/12/2026. [26-1657] (AB) [Entered: 06/12/2026 05:33 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13206,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108461496/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION to consolidate cases filed by Appellant US. Served on 06/12/2026. [26-1657] (AB) [Entered: 06/12/2026 05:36 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13207,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108465305/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: RESPONSE filed by Appellees New England State Area Conference of the National Association for the Advancement of Colored People and Massachusetts Alliance for Retired Americans to "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13208,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108465403/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: RESPONSE filed by Appellee William F. Galvin to motion [6817947-2], motion [6817949-2]. Served on 06/22/2026. [26-1657] (PF) [Entered: 06/22/2026 04:30 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13209,
+        "kind": "item",
+        "occurred_at": "2026-06-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108465499/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: RESPONSE filed by Appellees Common Cause, Jane Doe, Inc. and Juan Pablo Jaramillo to motion to expedite [6817947-2], motion to consolidate cases [6817949-2]. Served on 06/22/2026. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13210,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108466941/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: REPLY filed by Appellant US to response [6820027-2], response [6819938-2], response [6819987-2]. Served on 06/24/2026. [26-1657] (JRZ) [Entered: 06/24/2026 07:01 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13211,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108466958/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: TRANSCRIPT report/order form filed by Appellant US indicating transcripts are not necessary for this appeal. Served on 06/24/2026. [26-1657] (CJG) [Entered: 06/24/2026 07:19 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 13212,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108471579/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER entered by Gustavo A. Gelpí, Jr., Appellate Judge: In each of the above-captioned appeals, plaintiff-appellant has filed a motion to consolidate and a motion to expedite. The"
       }
     ]
   },
