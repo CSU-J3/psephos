@@ -939,9 +939,17 @@
             "source_id": "google-news",
             "source_url": "https://news.google.com/rss/articles/CBMi0wJBVV95cUxOQktLQzZoM1ZPcUc0ODZBUFJRSUk0enhoRVFnMkNldTUxNDY4R0E3eHJNZllFVjlLWWNHc2ZCb1dhVTN5Skk1NlpMbVZHZEZsWXJ0ZmswVFN0QkxydmZpUDhIQkx4eWNteEFQSk1OWUFJblpkcFBuLVZnQUh2UUdGN1FxZDZWa01xWjBxS2tTWktpTk51ZDlWVVVnRjRmeHVpc1JlaFNWbjZiY00tdWVzZm5GcE9NNnh4S0w1NHdvTWF5blRRT1NxeXFfUGR6V0NfcjZPOVBidEw5Wlg2SlVyVmJScGZFc1ZZSkJsaXVva2FXRUZUdy1tQUw5MlQzU1EwLW8wd3E4djhlS0hiR1BqN1paNUcyWUphV1V5b19wODZUMDB6UGl2bklQeDlIMW9oMlNkNmEtSk1zNjZMWXJjZDNjTEZTUzl4Vld5clJ4QWg0QlU?oc=5",
             "title": "Trump halts housing bill signing until Congress passes SAVE America Act - National Desk"
+          },
+          {
+            "grade": "C3",
+            "id": 17684,
+            "occurred_at": "2026-06-24T07:00:00+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPby1ISHFJUmJxc01pcjRrS3h5eGM0c0hBbGRGbndWZ01NcG5jOXlsQTNkZjQ2OFhzT0lYNHc5YVhrWjBDWmtZWEtkazlnUVRFNVl1U1h0dXo4cnhEblVNWTJyVXZ1dWlBQjJVNWNaOFV4ZS1mQU1HcWFGdFNucDFtX0prRTlvNDV6elJGM2lsSExNU3ZJTDBZ?oc=5",
+            "title": "Trump Says He Won’t Sign Housing Bill Until SAVE Act Is Passed - Time Magazine"
           }
         ],
-        "source_count": 7
+        "source_count": 8
       },
       {
         "channel": "news",
@@ -1052,6 +1060,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNLXVqMDh0Smh2emkzTzN3SjV0ZHpIZHM1ZS1iZ1dBV213Sm5TT0M1VHB0aThySkx5YTBBbm01VWJHVDJKUUZ4YWFJajdrU2lmbFl2SDZXcHk0LVdQTHZEWUxGbzVhQTZQYTM0WHBKM2lra2Y5SlBxTmMzVW00R2FpTFpOX1ItZHlveGY0dHB4LXVnY1ZOXzdiTlNUek5MNzRFak1Ba19USG1WZE5pUlVnMlMwMUMxQQ?oc=5",
         "title": "Trump warms to using filibuster-proof budget process to pass pieces of SAVE America Act - Washington Times"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 18671,
+        "kind": "item",
+        "occurred_at": "2026-07-09T09:11:15+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOcFFiUXNubWcxeVFwMmJ5UmVBdU9wVkhESGw2aElEQW5FSFBOTHJrREY0Z2puSF9jbW1ZeWpoeDIyNFdDMl91X3NtZzZZVHRNZERhUElnWjJXWFNKNTc2OG9MNE1FZkdqSGZOeFo4UlhRclcyWV9vQXhhdWdlS205WUhjZ1ZNX09ialZiZg?oc=5",
+        "title": "What is the SAVE America Act, and why does Trump want it passed before midterms? - The New Arab"
       }
     ]
   },
