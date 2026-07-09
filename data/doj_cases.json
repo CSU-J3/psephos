@@ -140,7 +140,7 @@
     "court": "Sixth Circuit",
     "court_id": "ca6",
     "docket_number": "26-1225",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 6/24/2026, the 6th Circuit affirmed the district court's dismissal of DOJ's suit. DOJ indicated it may seek en banc review. | Key decisions: District Court's 2/10/26 dismissal . Sixth Circuit's 6/24/26 decision affirming the District Court's dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/8/2026, DOJ asked the full 6th Circuit to rehear its appeal of the district court's dismissal. | Key decisions: District Court's 2/10/26 dismissal . Sixth Circuit's 6/24/26 decision affirming the District Court's dismissal.",
     "state": "Michigan"
   },
   {
@@ -164,9 +164,9 @@
   {
     "caption": "United States v. New Hampshire",
     "category": "voter-data",
-    "court": "District of New Hampshire",
-    "court_id": "nhd",
-    "docket_number": "1:25-cv-00371",
+    "court": "First Circuit",
+    "court_id": "ca1",
+    "docket_number": "26-1783",
     "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/29/26 dismissal.",
     "state": "New Hampshire"
   },
@@ -218,9 +218,9 @@
   {
     "caption": "United States v. Pennsylvania",
     "category": "voter-data",
-    "court": "Western District of Pennsylvania",
-    "court_id": "pawd",
-    "docket_number": "2:25-cv-01481",
+    "court": "Third Circuit",
+    "court_id": "ca3",
+    "docket_number": "26-2684",
     "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/27/26 dismissal.",
     "state": "Pennsylvania"
   },
