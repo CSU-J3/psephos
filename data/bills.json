@@ -618,6 +618,16 @@
         "title": "House passes SAVE Act, requiring citizenship proof for voter registration - localnewslive.com"
       },
       {
+        "channel": "news",
+        "grade": "C3",
+        "id": 21455,
+        "kind": "item",
+        "occurred_at": "2026-02-11T08:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNaGR5MFRmeVdXaHRCTUhiN3Y2eER4NnF2ZEw2T0hQSW1OQkl3OXllV08zcy1IOWY4bkJCVG9aTjBYWUVlLWUwcWVNQUxyNnl3VHVfYm8wN29YUWpZUmhtdlZzWHhQcFYxN2h4ZEVjSU1nM3lRX2hzTnFiTms3NU9vMG5Gc2xZMk9sSEk0LXAzcWI1VjI0QW9ndVZmbm9GVzVLQzZuRWU5X1VmRGhyeWc?oc=5",
+        "title": "House passes SAVE America Act, sending Trump-backed election bill to the Senate - NBC News"
+      },
+      {
         "channel": "legislation",
         "grade": "A1",
         "id": 75,
