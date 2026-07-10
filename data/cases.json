@@ -8613,6 +8613,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 20244,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
+        "title": "United States v. Colorado — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8777,
         "kind": "item",
         "occurred_at": "2025-12-11T00:00:00",
@@ -17658,6 +17668,39 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108471612/united-states-v-bellows/",
         "title": "United States v. Maine: BRIEFING schedule set. Brief and Appendix due 08/17/2026 for appellant United States. Pursuant to F.R.A.P. 31(a), appellee's brief will be due 30 days following service of appellan"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Secretary Commonwealth of Pennsylvania",
+    "case_id": "73582123",
+    "category": "voter-data",
+    "court": "Third Circuit",
+    "defendant": "Secretary Commonwealth of Pennsylvania",
+    "docket_number": "26-2684",
+    "filed_at": "2026-07-07T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 19985,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 19986,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/4/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ORDER (Clerk) The District Court granted Pennsylvania Alliance for Retired Americans, Mike Crossey, National Association for the Advancement of Colored People, NAACP Pennsylvania S"
       }
     ]
   }
