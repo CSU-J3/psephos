@@ -5701,6 +5701,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/123/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MEMORANDUM OPINION re the  116  Motion to Stay. See the attached document for details. Signed by Judge Sparkle L. Sooknanan on 7/8/2026. (lcak)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23542,
+        "kind": "item",
+        "occurred_at": "2026-07-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In light of the 125 Notice, the Court directs the Parties to meet and confer and to submit a joint status report by 5:00 PM on July 10, 2026. This joint status report"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23546,
+        "kind": "item",
+        "occurred_at": "2026-07-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Status Report Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23525,
+        "kind": "item",
+        "occurred_at": "2026-07-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
       }
     ]
   },
@@ -9348,6 +9378,56 @@
         "occurred_at": "2026-07-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/84/united-states-v-griswold/",
+        "title": "United States v. Colorado: Order on Motion for Leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23663,
+        "kind": "item",
+        "occurred_at": "2026-07-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/84/united-states-v-griswold/",
+        "title": "United States v. Colorado: ORDER. Accordingly, it is hereby ordered that: 1. The Unopposed Motion of Colorado Alliance for Retired Americans and Britton Deford to Intervene as Intervenor-Defendants [ECF 10 ]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23664,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/85/united-states-v-griswold/",
+        "title": "United States v. Colorado: MOTION to Dismiss by Intervenor Defendants Common Cause, Kyle Giddings, Anne Keke. (Macdonald, Timothy) (Entered: 07/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23665,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/86/united-states-v-griswold/",
+        "title": "United States v. Colorado: Motion to Dismiss"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23666,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/87/united-states-v-griswold/",
+        "title": "United States v. Colorado: Brief in Opposition to Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 23674,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
         "title": "United States v. Colorado: Order on Motion for Leave"
       }
     ]

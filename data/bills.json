@@ -1084,6 +1084,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 24399,
+        "kind": "item",
+        "occurred_at": "2026-07-10T12:18:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPUEt4MmgtVWpGQ2pyMDUtMWhhUmRYclB2X0c0UElCVjd5VDlCd0VwUkFVX3NYRVF1UEVCM3JoZHBzeVVuaHE5SHN4Y0pQTU13czdOUTNXb2IyRUF2aGhIUDJrcFNlOEN6MlBjSlNaaUhUSGw0LXBUMkZqRldZQUpMU3ZtekhybWPSAYwBQVVfeXFMT1V1empUWVNkakVsdHRWSERXMWFmNHRFcWNtZ2hfcHRqSnplTjJ0VkFMTlBLN0lISEpHUlRiTW9SUmNsVjlQOEpvdXpiSnpUNjZTU2tkMXEtbXpia0pTNkNBd0hfYTNuT3NCWU5RVXRjVDhxYTBvb3IzejlVRXUtTlJ3WnRYWDJ5ZC1HWVg?oc=5",
+        "title": "Trump: I will not sign the Housing Bill unless the Senate passes the SAVE America Act - Forex Factory"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 22059,
         "kind": "item",
         "occurred_at": "2026-07-10T14:15:40+00:00",
