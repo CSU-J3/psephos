@@ -1120,6 +1120,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPeVF3bGthSTA4MHN1VGx4TFMybHB5d3hUamRTaXExV2JpRE9nY3RWV24wSHJOeU5wcnU3aEpEaFZzM3M5SWkwYWZRR1NRNFh6LTBZc3JIaU90dF91dDlBNHFTNlZMQ3lMOTFkVFlvbUMtODRLUEdsTFJPdEh0WEpSTGVQNU1DRV9RREtRemN0eDMxZlBWOFhtb1g4cHh4bXJhWFBtSDYtOTRwR1JhbjNuclduVUxTZ0hmMFIwdW1PQVfSAcgBQVVfeXFMTXhrRjFSYVlqVmlEUXl1MUFNYVpYN09PVFFmbFQxVXY3aFVqVE9OMmQtTVA5WWllV1o5c19yVllQSFlLUGlGVTBFMnhTZlNZX3VkX0JaUEVzWXVtWmJHd1BRYkJObml0VmdSdzl0RFNjeVk1MC1oTnBnbmw2cmVyNnRMZ1huUllJRjZBY2lNcHg2SExmZWJQOThVSFZ6TW1YMTB4N1Njb2Z4WnBHd1dLR1RfczFLM1BYQ2hxclU5U1cxTXFQYzEwVXc?oc=5",
         "title": "Trump Refuses To Sign Bipartisan Housing Bill, Links 'Save America Act' To Veto Move - NDTV Profit"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 27751,
+        "kind": "item",
+        "occurred_at": "2026-07-12T16:23:37+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/this-is-a-big-blow-to-the-save-america-act-trump-uses-lindsey-grahams-death-to-push-stalled-anti-voter-bill",
+        "title": "‘This is a big blow to the SAVE America Act’: Trump uses Lindsey Graham’s death to push stalled anti-voter bill"
       }
     ]
   },
