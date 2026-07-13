@@ -3692,6 +3692,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 30181,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9776,
         "kind": "item",
         "occurred_at": "2025-09-25T00:00:00",
@@ -9439,6 +9449,56 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
         "title": "United States v. Colorado: Order on Motion for Leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 28918,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/88/united-states-v-griswold/",
+        "title": "United States v. Colorado: Motion for Leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29887,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/86/united-states-v-griswold/",
+        "title": "United States v. Colorado: MOTION to Dismiss by Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord. (Attachments: # 1 Exhibit A)(Frost, Elisabeth) (Entered: 07/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29888,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/87/united-states-v-griswold/",
+        "title": "United States v. Colorado: BRIEF in Opposition to 2 MOTION to Compel Production of Documents Demanded Pursuant to the Civil Rights Act of 1960 filed by Intervenor Defendants Colorado Alliance for Retired Ame"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29889,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/88/united-states-v-griswold/",
+        "title": "United States v. Colorado: MOTION for Leave to File Supplemental Brief Supporting 86 MOTION to Dismiss by Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord. (Attachments: # 1 Prop"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29890,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/89/united-states-v-griswold/",
+        "title": "United States v. Colorado: ORDER by Judge Philip A. Brimmer on 7/10/2026 re: 88 Colorado Alliance for Retired Americans and Britton DeFord's Motion for Leave to File Supplemental Brief Supporting Their Motio"
       }
     ]
   },
@@ -16421,6 +16481,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72347022/107/united-states-v-jocelyn-benson/",
         "title": "United States v. Michigan: MOTION filed by Mr. David N. Goldman for USA to expedite submission on briefs. Certificate of Service: 07/08/2026. [26-1225] (DNG) [Entered: 07/08/2026 01:48 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29495,
+        "kind": "item",
+        "occurred_at": "2026-07-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/108/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: LETTER SENT to Ms. Heather S. Meingast for MI and Jocelyn Benson, notifying that she is directed to respond to the motion to expedite submisstion on briefs. Response due 07/10/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29496,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/109/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding a motion to expedite submisstion on briefs, [107]; previously filed by Mr. David N. Goldman for USA. Response from Attorney Ms. Aria Branch f"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 29497,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/110/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: RESPONSE in opposition filed regarding a petition for en banc rehearing, [106]; previously filed by Mr. David N. Goldman for USA, regarding a motion to expedite submisstion on brie"
       }
     ]
   },
