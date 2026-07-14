@@ -11611,6 +11611,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/92/united-states-v-matthews/",
         "title": "United States v. Illinois: NOTICE of Supplemental Authority re 56 MOTION to Dismiss (Frost, Elisabeth) (Entered: 06/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 30763,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/94/united-states-v-matthews/",
+        "title": "United States v. Illinois: NOTICE of Supplemental Authority re 64 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM (Berlin, Holly) (Entered: 07/13/2026)"
       }
     ]
   },
@@ -14053,6 +14063,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/134/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE of Supplemental Authority by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 30622,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/135/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
   },
@@ -15786,6 +15806,16 @@
     "plaintiff": "United States",
     "status": "pending",
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 31083,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
+        "title": "United States v. West Virginia — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
