@@ -5751,6 +5751,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In light of the 126 Joint Status Report and the Federal Defendants' representations about the exigency of this matter, the Court directs the Social Security Administr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 31938,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/127/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE in Response to the Court's Minute Order of July 11, 2026 by FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY (Pezzi, Ste"
       }
     ]
   },
@@ -9073,6 +9083,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 32054,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/49/united-states-v-griswold/",
+        "title": "United States v. Colorado: BRIEF in Opposition to 86 MOTION to Dismiss filed by Plaintiff USA. (Attachments: # 1 Declaration in Support of Opposition to Motion to Dismiss, # 2 Exhibit 5 - Texas MOU, # 3 Exhi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 8808,
         "kind": "item",
         "occurred_at": "2026-02-26T00:00:00",
@@ -9219,6 +9239,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
         "title": "United States v. Colorado: Order on Motion for Leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 32065,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/62/united-states-v-griswold/",
+        "title": "United States v. Colorado: REPLY to Response to 86 MOTION to Dismiss, filed by Intervenor Parties Colorado Alliance for Retired Americans, Britton DeFord. (Frost, Elisabeth) Modified on 7/13/2026 to update l"
       },
       {
         "channel": "litigation",
@@ -9499,6 +9529,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/89/united-states-v-griswold/",
         "title": "United States v. Colorado: ORDER by Judge Philip A. Brimmer on 7/10/2026 re: 88 Colorado Alliance for Retired Americans and Britton DeFord's Motion for Leave to File Supplemental Brief Supporting Their Motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 32085,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/90/united-states-v-griswold/",
+        "title": "United States v. Colorado: NOTICE of Supplemental Authorities re: 40 MOTION to Dismiss by Defendant Jena Griswold (Attachments: # 1 Exhibit A)(Baumann, Peter) (Entered: 07/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 32086,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/91/united-states-v-griswold/",
+        "title": "United States v. Colorado: NOTICE re: [ECF 86 ] Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord's Motion to Dismiss. Document linkage for the previously submitted briefs has bee"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 32093,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
+        "title": "United States v. Colorado: Order"
       }
     ]
   },
@@ -16256,6 +16316,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 19114,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 32589,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",

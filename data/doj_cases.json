@@ -119,8 +119,8 @@
   {
     "caption": "United States v. Maryland",
     "category": "voter-data",
-    "court": "District of Maryland",
-    "court_id": "mdd",
+    "court": "Fourth Circuit",
+    "court_id": "ca4",
     "docket_number": "1:25-cv-03934",
     "notes": "Claims: Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/18/26 dismissal.",
     "state": "Maryland"
@@ -140,7 +140,7 @@
     "court": "Sixth Circuit",
     "court_id": "ca6",
     "docket_number": "26-1225",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/8/2026, DOJ asked the full 6th Circuit to rehear its appeal of the district court's dismissal. | Key decisions: District Court's 2/10/26 dismissal . Sixth Circuit's 6/24/26 decision affirming the District Court's dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/8/2026, DOJ asked the full 6th Circuit to rehear its appeal of the district court's dismissal; the state and intervenors were directed to respond by 7/22/2026. | Key decisions: District Court's 2/10/26 dismissal . Sixth Circuit's 6/24/26 decision affirming the District Court's dismissal.",
     "state": "Michigan"
   },
   {
