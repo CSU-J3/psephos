@@ -4478,6 +4478,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/99/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: TEXT ORDER regarding 97 Notice of Supplemental Authority by United States of America re 81 Motion to Compel and Opposition to Motion to Dismiss and 98 Response to Letter Brief file"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33526,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/101/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MEMORANDUM-DECISION AND ORDER: The Court hereby ORDERS that Intervenor Defendants' motions to intervene (Dkt. Nos. [7], [20]) are GRANTED; and the Court further ORDERS that Defenda"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33527,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/102/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: JUDGMENT in favor of Board Of Elections of the State of New York, League of Women Voters of New York State, National Association for the Advancement of Colored People, National Ass"
       }
     ]
   },
@@ -5761,6 +5781,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/127/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE in Response to the Court's Minute Order of July 11, 2026 by FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY (Pezzi, Ste"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33867,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/128/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Enforce Judgment"
       }
     ]
   },
@@ -6844,6 +6874,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 33431,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9717,
         "kind": "item",
         "occurred_at": "2025-12-02T00:00:00",
@@ -7450,6 +7490,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/117/united-states-v-oliver/",
         "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 112 Motion to Withdraw as Attorney. Attorney Omeed Alerasool terminated. THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOCUMENTS ATT"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33483,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/119/united-states-v-oliver/",
+        "title": "United States v. New Mexico: MEMORANDUM OPINION AND ORDER by District Judge Judith C. Herrera Granting Defendant Maggie Toulouse Oliver's Motion to Dismiss Pursuant to Federal Rule 12(b)(6) and Memorandum of L"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33484,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/120/united-states-v-oliver/",
+        "title": "United States v. New Mexico: JUDGMENT by District Judge Judith C. Herrera. (baw) (Entered: 07/14/2026)"
       }
     ]
   },
@@ -12934,6 +12994,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 33609,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
+        "title": "United States v. Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 10435,
         "kind": "item",
         "occurred_at": "2026-01-16T00:00:00",
@@ -18051,6 +18121,49 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/14/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ECF FILER: LETTER from Attorney Benjamin D. Geffen, Esq. for Appellees Common Cause, Joel Dickson, Trisha Kent, League of Women Voters of Pennsylvania, Nicholas Maston, Gregory Per"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Scanlan",
+    "case_id": "73607684",
+    "category": "voter-data",
+    "court": "First Circuit",
+    "defendant": "Scanlan",
+    "docket_number": "26-1783",
+    "filed_at": "2026-07-07T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 33345,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33346,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108472797/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: CIVIL CASE docketed. Notice of appeal (doc. #88) filed by Appellant US. Appearance form, Docketing Statement, and Transcript Report/Order form due 07/21/2026. [26-1783] (JW) [Enter"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 33347,
+        "kind": "item",
+        "occurred_at": "2026-07-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108473039/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: TRANSCRIPT report/order form filed by Appellant US indicating transcripts are not necessary for this appeal. Served on 07/08/2026. [26-1783] (JTT) [Entered: 07/08/2026 10:59 AM]"
       }
     ]
   }
