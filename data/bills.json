@@ -1140,6 +1140,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9yR0JoMXUzWmtueHNVTGtDMEpEWTg5Nm5CcVRaTkMxT0hzU19sVkRKR0J1UHhSRjVVSEd2RVBZZkhXWEdmeFRRdHpsZmV4OHAxWlhOR0FrZ2R2akE?oc=5",
         "title": "Sen Rick Scott calls for no August recess until SAVE America Act is passed - Fox Business"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 34475,
+        "kind": "item",
+        "occurred_at": "2026-07-15T14:00:19+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQX1J3dFhuZF9ZTnlCbUdGMFhrbUl2TDBPVmU2N0JVZW1wbzlrcXNEZHJIR1pOX0FFdFJ5b2tncElISnJyMEh1YWJ0a2pSZk5UV0hJY05IQy0yTUx4SkRHbmd3bW4zMjduVm5mSDRZZWYtLUFCYnYweHJKYTFTY2hreEZiYmdWbjZEdHNJbjZYQjRUclFzZGRtR1pkOTFyYzFWUnJLZEJDOFNicWdsMEY2VWQwYk1jNFo4aGJz?oc=5",
+        "title": "Republicans release budget instructions for filibuster-proof defense, SAVE America Act package - Washington Times"
       }
     ]
   },
