@@ -957,9 +957,17 @@
             "source_id": "google-news",
             "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPby1ISHFJUmJxc01pcjRrS3h5eGM0c0hBbGRGbndWZ01NcG5jOXlsQTNkZjQ2OFhzT0lYNHc5YVhrWjBDWmtZWEtkazlnUVRFNVl1U1h0dXo4cnhEblVNWTJyVXZ1dWlBQjJVNWNaOFV4ZS1mQU1HcWFGdFNucDFtX0prRTlvNDV6elJGM2lsSExNU3ZJTDBZ?oc=5",
             "title": "Trump Says He Won’t Sign Housing Bill Until SAVE Act Is Passed - Time Magazine"
+          },
+          {
+            "grade": "C3",
+            "id": 35477,
+            "occurred_at": "2026-06-24T07:00:00+00:00",
+            "source_id": "google-news",
+            "source_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1iV1VreEhlWWNXYVBhbHhnQVR5UHNWUHBFYWNTTC1tRTcybnZtNnFvX2RkSzI4dTNRRXB0UjAwRl9vVzVKZGZtcUVmMjlESlZvSlBSWElIRlRaRjFoZDI4bVVHSkxmSDNCT2R0WmZCRHp0UWtXNnc?oc=5",
+            "title": "Trump cancels housing affordability bill signing until SAVE Act is passed - Axios"
           }
         ],
-        "source_count": 8
+        "source_count": 9
       },
       {
         "channel": "news",
