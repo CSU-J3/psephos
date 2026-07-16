@@ -4518,6 +4518,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/102/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: JUDGMENT in favor of Board Of Elections of the State of New York, League of Women Voters of New York State, National Association for the Advancement of Colored People, National Ass"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 36932,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/101/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: MEMORANDUM-DECISION AND ORDER: The Court hereby ORDERS that Intervenor Defendants' motions to intervene (Dkt. Nos. 7, 20 ) are GRANTED; and the Court further ORDERS that Defendants"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 36933,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/102/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: JUDGMENT in favor of Board Of Elections of the State of New York, League of Women Voters of New York State, National Association for the Advancement of Colored People, National Ass"
       }
     ]
   },
@@ -18256,6 +18276,16 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 22648,
+        "kind": "item",
+        "occurred_at": "2026-07-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/14/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: LETTER from Attorney Benjamin D. Geffen, Esq. for Appellees Common Cause, Joel Dickson, Trisha Kent, League of Women Voters of Pennsylvania, Nicholas Maston, Gregory Per"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 36967,
         "kind": "item",
         "occurred_at": "2026-07-09T00:00:00",
         "source_id": "courtlistener",
