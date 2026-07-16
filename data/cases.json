@@ -5811,6 +5811,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/128/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: Enforce Judgment"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 35583,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/128/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Enforce Judgment by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIANA EDUCATION FUND"
       }
     ]
   },
@@ -8736,6 +8746,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/74/united-states-v-albence/",
         "title": "United States v. Delaware: NOTICE of Supplemental Authority regarding Motion for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 (D.I. 3 ), by United States of America (Attachments: #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 35921,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/87/united-states-v-albence/",
+        "title": "United States v. Delaware: Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 35922,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/88/united-states-v-albence/",
+        "title": "United States v. Delaware: Brief - Reply"
       }
     ]
   },
@@ -11771,6 +11801,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/94/united-states-v-matthews/",
         "title": "United States v. Illinois: NOTICE of Supplemental Authority re 64 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM (Berlin, Holly) (Entered: 07/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 36150,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/96/united-states-v-matthews/",
+        "title": "United States v. Illinois: Response (NOT to a motion/petition)"
       }
     ]
   },
