@@ -972,6 +972,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 36814,
+        "kind": "item",
+        "occurred_at": "2026-06-26T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQaUxkMndOSkJpOVk5Z21qdnBsUVVNWWtfNEpOWUNEM1p1c3pTQ1F0ZC1fSGdDRlQ0MS1tUUtrc1dqSXZiOUxRV3hCN19DNlJEX04yZjRPOEVGaU02RE1iT2xZOEpnQ1pzM2xOdU5EUnY5S2dPdHZhbVd2WWtETlRJajhDVWtRSV9vd1ZRRDlPdUNZSmRFX2VUY1BiWmJKQ09UMzRSZXVxTjRHbERIbXQxbXFLNHRaVndHVDh3?oc=5",
+        "title": "What to know about the SAVE Act and why it's stalled in the Senate - cbs8.com"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 420,
         "kind": "item",
         "occurred_at": "2026-06-26T19:00:00+00:00",
@@ -1178,6 +1188,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxObmw5cXRhcV9fM3pVTDdXTjVZaTBVWU5CZVVMbUI2TUpkMzZ0aFRfRVVFMV95RFdZRXZjQ2JvLWh6Q3ZkY0s5dDhWR2phWDVvODQteXE3eGJNUGt3V0tvM240T01RanZTTDg0aS1iMXlhU3JtOFoxR3lvMnZFVnpTa2ZGMnE3c0pZSjVKRDlHUkk5SGhpS250VEVWamtwbW9oMjJZUTlpWHN0OGJuM3RNNTFVbm0yZG9MalNBanpXMFp6bjlfbDIxNg?oc=5",
         "title": "VP Vance says Republicans will accept midterm results even if SAVE America Act isn’t passed - Deseret News"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 36810,
+        "kind": "item",
+        "occurred_at": "2026-07-15T23:46:31+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPeE9hQVkwTE9IWXpIa1ZpS0JqVTlERXFId2NiQXl4NmRBVUMyNzctMExfSHJxamM0dUZLWVlEYmExY3pFcUVnWGduUDZGVnV6NkI2MlRWLWtQN0JyTEs2QkNvQkswRllndk9hVDFta2FxLXVqR1h2clA1a1RVTUZZVS11M2dCRjdwYXlQTU0yYnV3a2V2Q0o0U1pEVk5YN29hOUZnZGI1NEc5MHpWSDR6bEd3?oc=5",
+        "title": "House GOP fast-tracks reconciliation 3.0 with farm aid, Save America Act - Agri-Pulse"
       }
     ]
   },
