@@ -6944,6 +6944,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 40730,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9717,
         "kind": "item",
         "occurred_at": "2025-12-02T00:00:00",
@@ -10199,6 +10209,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 40581,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
+        "title": "United States v. Nevada — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8314,
         "kind": "item",
         "occurred_at": "2025-12-11T00:00:00",
@@ -13145,6 +13165,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 33609,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
+        "title": "United States v. Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 40738,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -17813,6 +17843,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 40741,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9211,
         "kind": "item",
         "occurred_at": "2026-06-05T00:00:00",
@@ -17927,6 +17967,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 13831,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 40735,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -18079,6 +18129,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 40401,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 13203,
         "kind": "item",
         "occurred_at": "2026-06-09T00:00:00",
@@ -18203,6 +18263,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 13818,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
+        "title": "United States v. Maine — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 40388,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -18414,6 +18484,39 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108473039/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: TRANSCRIPT report/order form filed by Appellant US indicating transcripts are not necessary for this appeal. Served on 07/08/2026. [26-1783] (JTT) [Entered: 07/08/2026 10:59 AM]"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Jared DeMarinis",
+    "case_id": "73608654",
+    "category": "voter-data",
+    "court": "Fourth Circuit",
+    "defendant": "Jared DeMarinis",
+    "docket_number": "26-1878",
+    "filed_at": "2026-07-13T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 40399,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 40400,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/6/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: MOTION by US Andrew G. Braniff, Counsel for Appellant United States to accelerate case processing., to expedite decision. Date and method of service: 07/14/2026 ecf. [1002014071] ["
       }
     ]
   }

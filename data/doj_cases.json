@@ -113,7 +113,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1676",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/6/26, the 1st Circuit denied DOJ's motion to expedite the appeal, instead setting a standard briefing schedule; DOJ's opening brief is due 8/17/26. | Key decisions: District Court's 5/21/26 dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Briefing of appeal is underway: DOJ's opening brief due 8/17/26, state's response due 30 days later, DOJ's reply due 21 days after that. | Key decisions: District Court's 5/21/26 dismissal.",
     "state": "Maine"
   },
   {
@@ -121,8 +121,8 @@
     "category": "voter-data",
     "court": "Fourth Circuit",
     "court_id": "ca4",
-    "docket_number": "1:25-cv-03934",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/18/26 dismissal.",
+    "docket_number": "26-1878",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/14/26, DOJ moved to expedite the appeal. | Key decisions: District Court's 6/18/26 dismissal.",
     "state": "Maryland"
   },
   {
@@ -131,7 +131,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1657",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/6/26, the 1st Circuit denied DOJ's motion to expedite the appeal, instead setting a standard briefing schedule; DOJ's opening brief is due 8/17/26. | Key decisions: District Court's 4/9/26 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal is underway: DOJ's opening brief due 8/17/26, state's response due 30 days later, DOJ's reply due 21 days after that. | Key decisions: District Court's 4/9/26 dismissal.",
     "state": "Massachusetts"
   },
   {
@@ -158,7 +158,7 @@
     "court": "District of Nevada",
     "court_id": "nvd",
     "docket_number": "3:25-cv-00728",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on motions to compel and dismiss completed.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of the state's motion to dismiss concluded. Intervenors' filed a motion to dismiss on 7/16/26; DOJ's response is due 7/30/26.",
     "state": "Nevada"
   },
   {
@@ -185,7 +185,7 @@
     "court": "District of New Mexico",
     "court_id": "nmd",
     "docket_number": "1:25-cv-01193",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/14/2026, the District Court dismissed DOJ's suit. | Key decisions: District Court's 7/14/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/14/2026, the District Court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/14/2026 dismissal.",
     "state": "New Mexico"
   },
   {
@@ -230,7 +230,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1665",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/6/26, the 1st Circuit denied DOJ's motion to expedite the appeal, instead setting a standard briefing schedule; DOJ's opening brief is due 8/17/26. | Key decisions: District Court's 4/17/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal is underway: DOJ's opening brief due 8/17/26, state's response due 30 days later, DOJ's reply due 21 days after that. | Key decisions: District Court's 4/17/2026 dismissal.",
     "state": "Rhode Island"
   },
   {
@@ -257,7 +257,7 @@
     "court": "Eastern District of Virginia",
     "court_id": "vaed",
     "docket_number": "3:26-cv-00042",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/14/2026, the District Court dismissed DOJ's suit. | Key decisions: District Court's 7/14/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/14/2026, the District Court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/14/2026 dismissal.",
     "state": "Virginia"
   },
   {
@@ -284,7 +284,7 @@
     "court": "Seventh Circuit",
     "court_id": "ca7",
     "docket_number": "26-2217",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 6/23/26, the 7th Circuit denied DOJ's request to expedite the appeal. | Key decisions: District Court's 5/21/26 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal is underway: DOJ filed its opening brief on 7/9/26, and the state's response is due 8/3/26. | Key decisions: District Court's 5/21/26 dismissal.",
     "state": "Wisconsin"
   }
 ]
