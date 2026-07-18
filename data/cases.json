@@ -5841,6 +5841,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/128/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Enforce Judgment by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIANA EDUCATION FUND"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 41019,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/129/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Memorandum in opposition to re 128 MOTION to Enforce Judgment filed by FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY. (Attac"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 41020,
+        "kind": "item",
+        "occurred_at": "2026-07-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/130/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Reply to opposition to motion"
       }
     ]
   },
@@ -12561,6 +12581,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 41188,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
+        "title": "United States v. Connecticut — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8848,
         "kind": "item",
         "occurred_at": "2026-01-06T00:00:00",
@@ -13147,6 +13177,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/107/united-states-v-thomas/",
         "title": "United States v. Connecticut: Notice of Additional Authority re 56 MOTION to Dismiss filed by Connecticut Alliance for Retired Americans, Connecticut Citizen Action Group, Bette Marafino, Seiu District 1199NE. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 41236,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110170/108/united-states-v-thomas/",
+        "title": "United States v. Connecticut: Notice of Additional Authority re 56 MOTION to Dismiss filed by Connecticut Alliance for Retired Americans, Connecticut Citizen Action Group, Bette Marafino, Seiu District 1199NE. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 41237,
+        "kind": "item",
+        "occurred_at": "2026-07-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110170/109/united-states-v-thomas/",
+        "title": "United States v. Connecticut: ORDER denying 9 Motion to Compel; granting 60 Motion to Dismiss; finding as moot 56 and 58 Motions to Dismiss. For the reasons set forth in the attached Memorandum of Decision, the"
       }
     ]
   },
