@@ -5891,6 +5891,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In the 126 Joint Status Report, the Plaintiffs represented to the Court that they are seeking intervention in the Northern District of Florida to appeal that court's "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 47937,
+        "kind": "item",
+        "occurred_at": "2026-07-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/131/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Supplemental Memorandum"
       }
     ]
   },
@@ -17031,6 +17041,86 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72347022/110/united-states-v-jocelyn-benson/",
         "title": "United States v. Michigan: RESPONSE in opposition filed regarding a petition for en banc rehearing, [106]; previously filed by Mr. David N. Goldman for USA, regarding a motion to expedite submisstion on brie"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48634,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/112/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Jason B. Torchinsky for The Honest Elections Project. Certificate of Service: 07/15/2026. [26-1225] (LOCKED: the motion and proposed brief shou"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48635,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/114/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Jason B. Torchinsky for the Honest Elections Project. Certificate of Service: 07/15/2026. [26-1225] (JBT) [Entered: 07/15/2026 04:04 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48636,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/115/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: AMICUS BRIEF filed by Honest Elections Project, without parties' consent. Certificate of Service:07/15/2026. [26-1225] (LOCKED; motion for leave to file pending).--[Edited 07/15/20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48637,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/118/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Abhishek Kambli for The American Constitutional Rights Union. Certificate of Service: 07/15/2026. [26-1225] (ASK) [Entered: 07/15/2026 05:10 PM"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48638,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/119/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: AMICUS BRIEF filed by The American Constitutional Rights Union, with parties' consent. Certificate of Service:07/15/2026. [26-1225] (LOCKED; motion for leave to file pending).--[Ed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48639,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/120/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: AMICUS BRIEF filed by Liberty Legal Foundation, with parties' consent. Certificate of Service:07/15/2026. [26-1225] NOTE; you must submit a motion for leave to file the brief, and "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48640,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/121/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: MOTION to file AMICUS BRIEF filed by Ronald D. Coleman for Liberty Legal Foundation. Certificate of Service: 07/16/2026. [26-1225] (RDC) [Entered: 07/16/2026 11:56 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 48641,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/123/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: AMICUS BRIEF filed by Ronald D. Coleman on behalf of Liberty Legal Foundation, without parties' consent. Certificate of Service:07/16/2026. [26-1225] (LOCKED; motion for leave to f"
       }
     ]
   },
@@ -18066,6 +18156,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 48651,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8378,
         "kind": "item",
         "occurred_at": "2026-06-09T00:00:00",
@@ -18219,6 +18319,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 48594,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 13203,
         "kind": "item",
         "occurred_at": "2026-06-09T00:00:00",
@@ -18353,6 +18463,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 40388,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
+        "title": "United States v. Maine — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 48581,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
