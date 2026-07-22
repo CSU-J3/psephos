@@ -168,9 +168,11 @@ litigation:
     base: https://www.courtlistener.com/api/rest/v4
     key_env: COURTLISTENER_TOKEN     # free token from a CourtListener account
   default_grade: { source: A, info: "1" }   # primary court record
-  max_bootstrap_per_run: 6    # full-history walks per run for dockets with no
-                              # entries_synced_at; the mark resumes the rest next run
-                              # (same resume pattern as state.max_getbill_per_run)
+  max_bootstrap_requests_per_run: 30   # request budget for full-history walks -- the rare
+                                       # fallback for a docket whose entries we don't already
+                                       # hold. The common no-mark case is a 1-request descending
+                                       # probe (ungated); only full walks draw this down, and a
+                                       # deferred walk resumes next run.
   # Which docket entries become A1 items (the timeline). case_entries keeps EVERY entry;
   # only these substantive types are promoted to items. The exclude list is required: a
   # "MOTION for Leave to Appear Pro Hac Vice" matches "motion" and routine pro-hac/appearance
