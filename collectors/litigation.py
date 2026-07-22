@@ -120,7 +120,8 @@ def _fetch_page(url: str, params: dict | None, headers: dict,
 
 
 def poll_entries(base: str, headers: dict, docket_id: str,
-                 since: str | None = None) -> tuple[list[dict], str | None]:
+                 since: str | None = None, page_counter: list[int] | None = None
+                 ) -> tuple[list[dict], str | None]:
     """Poll a docket for entries; return (entries, new_high_water_mark) or raise.
 
     `since` is the case's stored `entries_synced_at` (max CourtListener date_modified
@@ -128,6 +129,10 @@ def poll_entries(base: str, headers: dict, docket_id: str,
 
       * since is None  -> full walk, ordered by entry_number. Every page retries an
         empty result (a real docket has no empty middle pages). This seeds the mark.
+        A full walk is now the EXCEPTION -- only for a docket whose history we don't
+        already hold (see collect_case: probe_mark handles the common case). When set,
+        `page_counter[0]` accumulates the pages fetched (~= requests, retries aside),
+        so the caller can draw the full-walk cost down from a per-run request budget.
       * since is set   -> incremental window: date_modified__gt=<since>, ordered
         date_modified,id (the id tie-breaks a non-unique date_modified; both are on
         CourtListener's short list of cursor-deep-pagination orderings). The FIRST
@@ -163,6 +168,8 @@ def poll_entries(base: str, headers: dict, docket_id: str,
     while url:
         # Skip the empty-retry ONLY on the first page of an incremental window.
         data = _fetch_page(url, params, headers, retry_empty=(since is None or not first))
+        if page_counter is not None:
+            page_counter[0] += 1
         first = False
         params = None  # the `next` URL carries its own query string
         results = data.get("results") or []
@@ -173,6 +180,34 @@ def poll_entries(base: str, headers: dict, docket_id: str,
                 latest_mod = dm
         url = data.get("next")
     return out, latest_mod
+
+
+def probe_mark(base: str, headers: dict, docket_id: str) -> tuple[list[dict], str | None]:
+    """Seed the high-water mark from ONE descending page -- for a docket whose full
+    history we ALREADY hold in case_entries (walked 4x/day for weeks), so only the
+    starting timestamp is missing. GET ...?order_by=-date_modified,-id, page 1 only:
+    exactly one request, no pagination follow. This replaces the full bootstrap walk,
+    which at ~11 pages/docket blew the 250/day cap during the multi-day drain to reach
+    a state a single request reaches in one run.
+
+    Returns (page entries, MIN date_modified on the page). The minimum is load-bearing:
+    the first incremental window (date_modified__gt=<min>) then re-covers this ENTIRE
+    page, so the only entries that could slip are ones modified longer ago than the
+    ~20th-most-recent modification on the docket -- and prior full walks captured those.
+    The maximum would open a gap between the last walk and the newest modification.
+
+    retry_empty=False: the caller only probes dockets known to hold entries, so an empty
+    page is a transient blip -- return (_, None), don't retry; the mark stays NULL and
+    the docket re-probes next run at one request. Entries are written through the normal
+    idempotent write_entries by the caller, so re-covering the page costs nothing."""
+    data = _fetch_page(
+        f"{base}/docket-entries/",
+        {"docket": docket_id, "order_by": "-date_modified,-id", "omit": ENTRY_OMIT},
+        headers, retry_empty=False,
+    )
+    entries = data.get("results") or []
+    mods = [e.get("date_modified") for e in entries if e.get("date_modified")]
+    return entries, (min(mods) if mods else None)
 
 
 # --------------------------------------------------------------------------- #
@@ -297,7 +332,7 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
 # --------------------------------------------------------------------------- #
 def collect_case(conn, base: str, headers: dict, seed: dict,
                  types: list[str], excludes: list[str],
-                 bootstrap_budget: int = 0) -> dict:
+                 bootstrap_requests: int = 0) -> dict:
     caption = seed["caption"]
     dn, court_id = seed.get("docket_number"), seed.get("court_id")
 
@@ -342,36 +377,59 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
     write_b2_item(conn, case_id, seed, filed_at, source_url)
     conn.commit()
 
-    # The high-water mark. NULL -> never bootstrapped; the mark is never clobbered by
-    # upsert_case (it isn't in the row), so a fresh resolve reads back NULL here too.
+    # The stored high-water mark and last-seen filing date (both NULL on a fresh row;
+    # upsert_case never writes entries_synced_at, so a fresh resolve reads NULL here).
     r = conn.execute(
-        "SELECT entries_synced_at FROM cases WHERE case_id = ?", (case_id,)
+        "SELECT entries_synced_at, latest_entry_at FROM cases WHERE case_id = ?", (case_id,)
     ).fetchone()
     since = r["entries_synced_at"] if r else None
+    latest_entry_at = r["latest_entry_at"] if r else None
 
-    # Bootstrap (NULL mark) is the expensive full walk; gate it on the per-run budget so
-    # a first post-migration run doesn't blow the daily CourtListener cap. Deferred cases
-    # keep their NULL mark and get walked on a later run (resolution + B2 already committed).
-    if since is None and bootstrap_budget <= 0:
-        print(f"  {caption} (docket {case_id}): bootstrap deferred (budget spent)", file=sys.stderr)
-        return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0,
-                "deferred": True}
+    # Pick the poll shape. Three paths:
+    #   * mark set         -> incremental window (steady state, one request/quiet docket).
+    #   * no mark, history  -> single descending PROBE to seed the mark from the page min:
+    #     we already hold this docket's entries, so we need the timestamp, not a re-walk.
+    #   * no mark, no history -> genuine full walk (a never-cleanly-polled or brand-new
+    #     docket), gated by the per-run REQUEST budget since its cost is what varies. A
+    #     deferred full walk keeps its NULL mark and runs on a later run.
+    walk_requests = 0
+    if since is not None:
+        mode = "incremental"
+        poll = lambda: poll_entries(base, headers, case_id, since=since)
+    else:
+        have_history = bool(latest_entry_at) and conn.execute(
+            "SELECT COUNT(*) FROM case_entries WHERE case_id = ?", (case_id,)
+        ).fetchone()[0] > 0
+        if have_history:
+            mode = "probe"
+            poll = lambda: probe_mark(base, headers, case_id)
+        elif bootstrap_requests <= 0:
+            print(f"  {caption} (docket {case_id}): full-walk deferred (request budget spent)",
+                  file=sys.stderr)
+            return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0,
+                    "deferred": True}
+        else:
+            mode = "full-walk"
+            _pages = [0]
+            poll = lambda: poll_entries(base, headers, case_id, since=None, page_counter=_pages)
 
-    # Poll the docket (incremental if we have a mark, else a bootstrap walk); on failure
-    # skip the case with nothing half-written and the mark unmoved.
+    # On failure skip the case with nothing half-written and the mark unmoved.
     try:
-        entries, new_mark = poll_entries(base, headers, case_id, since=since)
+        entries, new_mark = poll()
     except Exception as exc:
         conn.rollback()
         print(f"  {caption} (docket {case_id}): poll failed, skipped -- {exc}", file=sys.stderr)
         return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0, "poll_failed": True}
+    if mode == "full-walk":
+        walk_requests = _pages[0]
 
     try:
         counts = write_entries(conn, case_id, caption, source_url, entries, types, excludes)
         # Advance the mark in the SAME transaction as the writes: if write_entries raised
         # we never reach here (mark unmoved), and if the commit fails the UPDATE rolls back
         # with the entries -- so the next run re-fetches exactly this window. This ordering
-        # is the one invariant that makes unattended incremental polling safe.
+        # is the invariant that makes unattended polling safe. (probe returns the page MIN
+        # so the next window re-covers the page; walk/incremental return the max.)
         if new_mark:
             conn.execute("UPDATE cases SET entries_synced_at = ? WHERE case_id = ?",
                          (new_mark, case_id))
@@ -380,8 +438,8 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
         conn.rollback()
         raise
     return {"caption": caption, "resolved": True, "docket_id": case_id,
-            "total_entries": len(entries), "bootstrapped": since is None,
-            "since": since, **counts}
+            "total_entries": len(entries), "mode": mode, "since": since,
+            "walk_requests": walk_requests, **counts}
 
 
 def load_tracker_seeds(path: str = TRACKER_ARTIFACT) -> list[dict]:
@@ -405,7 +463,7 @@ def main() -> int:
     headers = {"Authorization": f"Token {token}", "User-Agent": USER_AGENT}
     types = lit.get("substantive_entry_types", [])
     excludes = lit.get("excluded_entry_phrases", [])
-    bootstrap_budget = lit.get("max_bootstrap_per_run", 6)
+    bootstrap_requests = lit.get("max_bootstrap_requests_per_run", 30)
 
     conn = db.connect()
     try:
@@ -414,17 +472,18 @@ def main() -> int:
         config_seeds = lit.get("seed_cases", [])
         tracker_seeds = load_tracker_seeds()
         print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
-              f"tracker case(s) from {TRACKER_ARTIFACT}  (bootstrap budget {bootstrap_budget})")
+              f"tracker case(s) from {TRACKER_ARTIFACT}  (full-walk req budget {bootstrap_requests})")
         for seed in config_seeds + tracker_seeds:
-            r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_budget)
-            if r.get("bootstrapped"):
-                bootstrap_budget -= 1   # a full walk was spent; the rest resume next run
+            r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_requests)
+            bootstrap_requests -= r.get("walk_requests", 0)   # only full walks draw the budget
             if r.get("deferred"):
-                tag = "bootstrap deferred (budget spent; walks next run)"
+                tag = "full-walk deferred (request budget spent; walks next run)"
             elif r.get("resolved"):
-                window = "bootstrap" if r.get("since") is None else f"since={r.get('since')}"
-                tag = (f"docket {r.get('docket_id')}  {window}  {r.get('total_entries', 0)} entries  "
-                       f"+{r['new_entries']} entries  +{r['new_items']} A1 items")
+                win = "bootstrap" if r.get("since") is None else f"since={r.get('since')}"
+                cost = f" [{r['walk_requests']}req]" if r.get("walk_requests") else ""
+                tag = (f"docket {r.get('docket_id')}  {r.get('mode', '?')}  {win}{cost}  "
+                       f"{r.get('total_entries', 0)} entries  +{r['new_entries']} entries  "
+                       f"+{r['new_items']} A1 items")
             elif r.get("resolve_failed"):
                 tag = "resolve failed, skipped (retries next run)"
             else:

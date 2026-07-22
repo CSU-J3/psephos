@@ -100,7 +100,7 @@ def test_loop_continues_past_a_resolve_failure(tmp_path, monkeypatch):
         {"caption": "United States v. Second", "docket_number": "1:25-cv-00002",
          "court": "District of Colorado", "court_id": "cod", "category": "voter-data", "notes": "n"},
     ]
-    results = [lit.collect_case(conn, "base", {}, s, [], [], bootstrap_budget=5) for s in seeds]  # no crash
+    results = [lit.collect_case(conn, "base", {}, s, [], [], bootstrap_requests=5) for s in seeds]  # no crash
     assert results[0].get("resolve_failed") is True and results[0]["resolved"] is False
     assert results[1]["resolved"] is True
     rows = [row["caption"] for row in conn.execute("SELECT caption FROM cases").fetchall()]
@@ -224,15 +224,16 @@ def test_mark_unchanged_when_write_entries_raises(tmp_path, monkeypatch):
 
     monkeypatch.setattr(lit, "write_entries", boom)
     with pytest.raises(RuntimeError):
-        lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_budget=5)
+        lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=5)
     mark = conn.execute("SELECT entries_synced_at FROM cases WHERE case_id='555'").fetchone()[0]
     assert mark == "2026-05-05T00:00:00Z"      # unmoved
     conn.close()
 
 
-def test_bootstrap_budget_walks_two_defers_third(tmp_path, monkeypatch):
-    """max_bootstrap_per_run=2 with three NULL-mark cases: exactly two get walked (a
-    mark lands) and the third is deferred (mark stays NULL, resumes next run)."""
+def test_full_walk_request_budget_defers_when_spent(tmp_path, monkeypatch):
+    """The budget is a REQUEST count drawn down only by full walks. Three fresh-resolve
+    dockets (no local history -> full-walk path), budget=3, each walk costs 2 requests:
+    two get walked (budget 3 -> 1 -> -1) and the third is deferred (mark stays NULL)."""
     monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
     monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
     monkeypatch.setattr(db, "DB_PATH", str(tmp_path / "m.db"))
@@ -245,7 +246,7 @@ def test_bootstrap_budget_walks_two_defers_third(tmp_path, monkeypatch):
     fake_sources = {"litigation": {
         "api": {"base": "https://x/api", "key_env": "COURTLISTENER_TOKEN"},
         "substantive_entry_types": [], "excluded_entry_phrases": [],
-        "max_bootstrap_per_run": 2, "seed_cases": seeds,
+        "max_bootstrap_requests_per_run": 3, "seed_cases": seeds,
     }}
     monkeypatch.setattr(config, "load_sources", lambda *a, **k: fake_sources)
     monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
@@ -254,8 +255,13 @@ def test_bootstrap_budget_walks_two_defers_third(tmp_path, monkeypatch):
         return {"id": 100 + int(dn[-1]), "absolute_url": f"/docket/{dn}/",
                 "date_filed": "2026-01-01", "date_terminated": None, "case_name": f"US v {dn}"}
 
+    def fake_poll(base, headers, cid, since=None, page_counter=None):
+        if page_counter is not None:        # a full walk: charge 2 requests to the budget
+            page_counter[0] += 2
+        return ([], "2026-10-10T00:00:00Z")
+
     monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
-    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], "2026-10-10T00:00:00Z"))
+    monkeypatch.setattr(lit, "poll_entries", fake_poll)
 
     assert lit.main() == 0
     conn = db.connect(str(tmp_path / "m.db"))
@@ -263,8 +269,6 @@ def test_bootstrap_budget_walks_two_defers_third(tmp_path, monkeypatch):
     nullmark = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL").fetchone()[0]
     assert (marked, nullmark) == (2, 1)
     conn.close()
-
-
 if __name__ == "__main__":
     test_substantive_promoted()
     test_noise_excluded()
