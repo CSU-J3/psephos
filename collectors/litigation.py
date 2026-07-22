@@ -79,14 +79,24 @@ def resolve_docket(base: str, headers: dict, docket_number: str, court_id: str) 
     return results[0]
 
 
-def _fetch_page(url: str, params: dict | None, headers: dict) -> dict:
+def _fetch_page(url: str, params: dict | None, headers: dict,
+                retry_empty: bool = True) -> dict:
     """Fetch one page, retrying defensively on an empty result set.
 
     A rate limit can return an empty 200; a real docket has no empty middle pages.
     So: retry empties with backoff; if still empty AND a `next` cursor exists, that's
     a rate-limit failure -> raise (the caller skips the case, leaving nothing
     half-written). Empty with no `next` is accepted as a genuinely empty page.
+
+    `retry_empty=False` is for the FIRST page of an incremental window (date_modified
+    high-water mark): there, an empty first page is the normal steady state -- nothing
+    changed on this docket since the last run -- so retrying it 5x would cost 5 requests
+    and ~45s per quiet docket, worse than the full walk this fix replaces. Pages reached
+    by following a `next` cursor keep the retry (an empty middle page mid-pagination is
+    still anomalous), and full bootstrap walks keep it too.
     """
+    if not retry_empty:
+        return common.http_get(url, params=params, headers=headers, throttle=PAGE_THROTTLE)
     data = {}
     for attempt in range(EMPTY_RETRIES):
         data = common.http_get(url, params=params, headers=headers, throttle=PAGE_THROTTLE)
