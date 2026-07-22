@@ -181,6 +181,7 @@ def _remote_token() -> str:
 # NULL default for SQLite to accept ADD COLUMN carrying a REFERENCES clause.
 _MIGRATIONS = [
     ("items", "state_bill_id", "TEXT REFERENCES state_bills(state_bill_id)"),
+    ("cases", "entries_synced_at", "TEXT"),
 ]
 
 

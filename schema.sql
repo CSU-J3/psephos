@@ -92,6 +92,8 @@ CREATE TABLE IF NOT EXISTS cases (
     plaintiff       TEXT,
     defendant       TEXT,
     latest_entry_at TEXT,
+    entries_synced_at TEXT,                  -- max CourtListener date_modified ingested for this
+                                             -- docket; NULL means never bootstrapped (full walk next poll)
     source_url      TEXT,
     seeded_from     TEXT,                    -- which tracker the case came from
     updated_at      TEXT
