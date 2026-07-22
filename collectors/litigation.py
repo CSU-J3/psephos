@@ -41,6 +41,17 @@ TRACKER_ARTIFACT = "data/doj_cases.json"   # the full DOJ-suit list (collectors.
 PAGE_THROTTLE = 2.0   # seconds between CourtListener requests (rate limit is real)
 EMPTY_RETRIES = 5     # retries for an unexpectedly empty page before giving up
 
+# The one heavy field write_entries never reads: recap_documents' full `plain_text`.
+# Dropped via `omit=` on every poll -- the difference between a walk that takes minutes
+# and one that takes an hour on a 2s-throttled connection. `omit` (not an enumerated
+# `fields=`) fails safe: if the server ignores it we get MORE data than asked and
+# correctness holds, whereas a `fields=` list that missed recap_documents__short_description
+# would silently stop write_entries finding descriptions on document-only entries and lose
+# A1 items with no error. Target the bloat, don't enumerate the keeps. Does NOT reduce the
+# request count. (`omit=recap_documents__plain_text` is CourtListener's own changelog
+# example for nested omission.)
+ENTRY_OMIT = "recap_documents__plain_text"
+
 
 def slugify(text: str) -> str:
     return re.sub(r"-+", "-", re.sub(r"[^a-z0-9]+", "-", text.lower())).strip("-")
@@ -142,10 +153,11 @@ def poll_entries(base: str, headers: dict, docket_id: str,
     out: list[dict] = []
     url = f"{base}/docket-entries/"
     if since is None:
-        params: dict | None = {"docket": docket_id, "order_by": "entry_number"}
+        params: dict | None = {"docket": docket_id, "order_by": "entry_number",
+                               "omit": ENTRY_OMIT}
     else:
         params = {"docket": docket_id, "date_modified__gt": since,
-                  "order_by": "date_modified,id"}
+                  "order_by": "date_modified,id", "omit": ENTRY_OMIT}
     first = True
     latest_mod: str | None = None
     while url:
