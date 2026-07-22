@@ -15416,6 +15416,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/95/united-states-v-caldwell/",
         "title": "United States v. New Jersey: ORDER GRANTING 94 MOTION FOR WITHDRAWAL OF COUNSEL. Attorney OMEED ALERASOOL terminated. Signed by Magistrate Judge Justin T. Quinn on 7/7/2026. (adc, ) (Entered: 07/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 53664,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/100/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: NOTICE by THE UNITED STATES OF AMERICA re 79 Response in Opposition to Motion,, Additional Basis (Attachments: # 1 Exhibit Exhibit 1 - Letter)(NEFF, ERIC) (Entered: 07/21/2026)"
       }
     ]
   },
@@ -18827,6 +18837,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/6/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: MOTION by US Andrew G. Braniff, Counsel for Appellant United States to accelerate case processing., to expedite decision. Date and method of service: 07/14/2026 ecf. [1002014071] ["
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 53358,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/13/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Briefing order filed"
       }
     ]
   }
