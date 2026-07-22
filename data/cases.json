@@ -18083,6 +18083,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 51471,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9211,
         "kind": "item",
         "occurred_at": "2026-06-05T00:00:00",
