@@ -9,12 +9,15 @@ import os
 import sys
 from pathlib import Path
 
+import pytest
+
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 os.chdir(REPO)
 
 import config  # noqa: E402
 import db  # noqa: E402
+import common  # noqa: E402
 from collectors import litigation as lit  # noqa: E402
 
 
@@ -90,14 +93,14 @@ def test_loop_continues_past_a_resolve_failure(tmp_path, monkeypatch):
                 "case_name": "United States v. RealName"}
 
     monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
-    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: [])
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], None))
     seeds = [
         {"caption": "United States v. First", "docket_number": "1:25-cv-00001",
          "court": "District of Delaware", "court_id": "ded", "category": "voter-data", "notes": "n"},
         {"caption": "United States v. Second", "docket_number": "1:25-cv-00002",
          "court": "District of Colorado", "court_id": "cod", "category": "voter-data", "notes": "n"},
     ]
-    results = [lit.collect_case(conn, "base", {}, s, [], []) for s in seeds]   # no crash
+    results = [lit.collect_case(conn, "base", {}, s, [], [], bootstrap_budget=5) for s in seeds]  # no crash
     assert results[0].get("resolve_failed") is True and results[0]["resolved"] is False
     assert results[1]["resolved"] is True
     rows = [row["caption"] for row in conn.execute("SELECT caption FROM cases").fetchall()]
@@ -114,6 +117,152 @@ def test_main_exits_zero_when_every_resolve_rate_limits(tmp_path, monkeypatch):
     monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
     monkeypatch.setattr(lit, "resolve_docket", _raise_rate_limit)
     assert lit.main() == 0
+
+
+# --------------------------------------------------------------------------- #
+# Incremental polling (handoff 7): the date_modified high-water mark
+# --------------------------------------------------------------------------- #
+def test_poll_params_bootstrap_vs_incremental(monkeypatch):
+    """since=None builds the bootstrap query (no date_modified__gt, order by
+    entry_number, retry kept); since=<mark> builds the incremental window
+    (date_modified__gt, order by date_modified,id, empty-retry skipped)."""
+    calls = []
+
+    def fake_fetch(url, params, headers, retry_empty=True):
+        calls.append((dict(params) if params else params, retry_empty))
+        return {"results": [], "next": None}
+
+    monkeypatch.setattr(lit, "_fetch_page", fake_fetch)
+
+    lit.poll_entries("https://x/api", {}, "555", since=None)
+    p, retry = calls[-1]
+    assert "date_modified__gt" not in p
+    assert p["order_by"] == "entry_number"
+    assert p["omit"] == lit.ENTRY_OMIT
+    assert retry is True                       # bootstrap first page keeps the empty-retry
+
+    calls.clear()
+    lit.poll_entries("https://x/api", {}, "555", since="2026-06-01T00:00:00Z")
+    p, retry = calls[-1]
+    assert p["date_modified__gt"] == "2026-06-01T00:00:00Z"
+    assert p["order_by"] == "date_modified,id"
+    assert p["omit"] == lit.ENTRY_OMIT
+    assert retry is False                      # incremental first page skips the empty-retry
+
+
+def test_incremental_empty_window_is_one_request(monkeypatch):
+    """THE regression: an empty incremental first page returns ([], None) in exactly
+    ONE request -- not the 5 retries the empty-page guard would otherwise spend on
+    every quiet docket."""
+    n = {"c": 0}
+
+    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0):
+        n["c"] += 1
+        return {"results": [], "next": None}
+
+    monkeypatch.setattr(common, "http_get", fake_http_get)
+    assert lit.poll_entries("https://x/api", {}, "555", since="2026-06-01T00:00:00Z") == ([], None)
+    assert n["c"] == 1
+
+
+def test_bootstrap_empty_middle_page_still_retries(monkeypatch):
+    """A bootstrap walk keeps the defensive empty-retry: an empty MIDDLE page (one
+    with a `next`) is retried, not accepted, so a transient blank recovers."""
+    monkeypatch.setattr(lit.time, "sleep", lambda *a, **k: None)   # no real backoff
+    seq = [
+        {"results": [{"date_modified": "2026-01-01T00:00:00Z"}], "next": "URL2"},  # page 1
+        {"results": [], "next": "URL2"},                                          # page 2 empty -> retry
+        {"results": [{"date_modified": "2026-02-02T00:00:00Z"}], "next": None},    # retry recovers
+    ]
+    n = {"c": 0}
+
+    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0):
+        d = seq[n["c"]]
+        n["c"] += 1
+        return d
+
+    monkeypatch.setattr(common, "http_get", fake_http_get)
+    entries, mark = lit.poll_entries("https://x/api", {}, "555", since=None)
+    assert n["c"] == 3                         # the empty middle page WAS retried
+    assert len(entries) == 2
+    assert mark == "2026-02-02T00:00:00Z"
+
+
+def test_mark_is_max_date_modified_not_last(monkeypatch):
+    """The new mark is the MAX date_modified across the window, not the last entry in
+    list order (order_by=date_modified,id is not guaranteed to put the max last)."""
+    page = {"results": [
+        {"date_modified": "2026-03-03T00:00:00Z"},
+        {"date_modified": "2026-09-09T00:00:00Z"},   # max, but not last
+        {"date_modified": "2026-05-05T00:00:00Z"},
+    ], "next": None}
+    monkeypatch.setattr(lit, "_fetch_page", lambda *a, **k: page)
+    _, mark = lit.poll_entries("https://x/api", {}, "555", since="2026-01-01T00:00:00Z")
+    assert mark == "2026-09-09T00:00:00Z"
+
+
+def test_mark_unchanged_when_write_entries_raises(tmp_path, monkeypatch):
+    """The safety invariant: if write_entries raises, the transaction rolls back and
+    entries_synced_at does NOT advance, so the next run re-fetches the same window."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    conn.execute(
+        "INSERT INTO cases (case_id, caption, court, docket_number, entries_synced_at) "
+        "VALUES ('555', 'United States v. Existing', 'District of X', '1:25-cv-09999', "
+        "'2026-05-05T00:00:00Z')")
+    conn.commit()
+    seed = {"caption": "United States v. Existing", "docket_number": "1:25-cv-09999",
+            "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: (
+        [{"date_filed": "2026-09-09", "description": "ORDER", "date_modified": "2026-12-31T00:00:00Z"}],
+        "2026-12-31T00:00:00Z"))
+
+    def boom(*a, **k):
+        raise RuntimeError("disk full mid-write")
+
+    monkeypatch.setattr(lit, "write_entries", boom)
+    with pytest.raises(RuntimeError):
+        lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_budget=5)
+    mark = conn.execute("SELECT entries_synced_at FROM cases WHERE case_id='555'").fetchone()[0]
+    assert mark == "2026-05-05T00:00:00Z"      # unmoved
+    conn.close()
+
+
+def test_bootstrap_budget_walks_two_defers_third(tmp_path, monkeypatch):
+    """max_bootstrap_per_run=2 with three NULL-mark cases: exactly two get walked (a
+    mark lands) and the third is deferred (mark stays NULL, resumes next run)."""
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.setattr(db, "DB_PATH", str(tmp_path / "m.db"))
+    monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
+    seeds = [
+        {"caption": f"United States v. S{i}", "docket_number": f"1:25-cv-0000{i}",
+         "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+        for i in range(3)
+    ]
+    fake_sources = {"litigation": {
+        "api": {"base": "https://x/api", "key_env": "COURTLISTENER_TOKEN"},
+        "substantive_entry_types": [], "excluded_entry_phrases": [],
+        "max_bootstrap_per_run": 2, "seed_cases": seeds,
+    }}
+    monkeypatch.setattr(config, "load_sources", lambda *a, **k: fake_sources)
+    monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+
+    def fake_resolve(base, headers, dn, court_id):
+        return {"id": 100 + int(dn[-1]), "absolute_url": f"/docket/{dn}/",
+                "date_filed": "2026-01-01", "date_terminated": None, "case_name": f"US v {dn}"}
+
+    monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], "2026-10-10T00:00:00Z"))
+
+    assert lit.main() == 0
+    conn = db.connect(str(tmp_path / "m.db"))
+    marked = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NOT NULL").fetchone()[0]
+    nullmark = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL").fetchone()[0]
+    assert (marked, nullmark) == (2, 1)
+    conn.close()
 
 
 if __name__ == "__main__":
