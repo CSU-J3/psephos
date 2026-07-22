@@ -269,6 +269,110 @@ def test_full_walk_request_budget_defers_when_spent(tmp_path, monkeypatch):
     nullmark = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL").fetchone()[0]
     assert (marked, nullmark) == (2, 1)
     conn.close()
+
+
+# --------------------------------------------------------------------------- #
+# Single-page probe seeding (handoff 7 redesign)
+# --------------------------------------------------------------------------- #
+def _seed_case(conn, case_id, docket_number, court, *, latest_entry_at=None,
+               entries_synced_at=None, with_entry=False):
+    """Insert a bound case row (numeric case_id) the way production seeding does."""
+    conn.execute(
+        "INSERT INTO cases (case_id, caption, court, docket_number, latest_entry_at, "
+        "entries_synced_at) VALUES (?,?,?,?,?,?)",
+        (case_id, f"United States v. {case_id}", court, docket_number,
+         latest_entry_at, entries_synced_at))
+    if with_entry:
+        conn.execute(
+            "INSERT INTO case_entries (case_id, entry_at, description) VALUES (?,?,?)",
+            (case_id, "2026-01-01T00:00:00Z", "COMPLAINT"))
+    conn.commit()
+
+
+def test_probe_one_request_sets_mark_to_page_minimum(tmp_path, monkeypatch):
+    """A no-mark docket whose history we already hold is probed: exactly one request,
+    and entries_synced_at is set to the MINIMUM date_modified on the descending page."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    _seed_case(conn, "555", "1:25-cv-09999", "District of X",
+               latest_entry_at="2026-05-01T00:00:00Z", with_entry=True)
+    seed = {"caption": "United States v. Existing", "docket_number": "1:25-cv-09999",
+            "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+    n = {"c": 0}
+
+    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0):
+        n["c"] += 1
+        assert params.get("order_by") == "-date_modified,-id"   # descending probe
+        return {"results": [
+            {"date_modified": "2026-09-09T00:00:00Z", "date_filed": "2026-09-01", "description": "ORDER A"},
+            {"date_modified": "2026-07-07T00:00:00Z", "date_filed": "2026-07-01", "description": "ORDER B"},
+            {"date_modified": "2026-08-08T00:00:00Z", "date_filed": "2026-08-01", "description": "ORDER C"},
+        ], "next": "PAGE2_SHOULD_NOT_BE_FETCHED"}
+
+    monkeypatch.setattr(common, "http_get", fake_http_get)
+    r = lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
+    assert n["c"] == 1                       # page 1 only, no pagination follow
+    assert r["mode"] == "probe" and r.get("walk_requests", 0) == 0
+    mark = conn.execute("SELECT entries_synced_at FROM cases WHERE case_id='555'").fetchone()[0]
+    assert mark == "2026-07-07T00:00:00Z"    # the MIN, not the max
+    conn.close()
+
+
+def test_no_history_takes_full_walk_not_probe(tmp_path, monkeypatch):
+    """A no-mark docket with null latest_entry_at (never cleanly polled) takes the full
+    walk, not the probe."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    _seed_case(conn, "556", "1:25-cv-08888", "District of X")   # latest_entry_at NULL, no entries
+    seed = {"caption": "United States v. Fresh", "docket_number": "1:25-cv-08888",
+            "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+    called = {"probe": 0, "walk": 0}
+    monkeypatch.setattr(lit, "probe_mark",
+                        lambda *a, **k: (called.__setitem__("probe", called["probe"] + 1), ([], None))[1])
+
+    def fake_poll(base, headers, cid, since=None, page_counter=None):
+        called["walk"] += 1
+        assert since is None                 # a full walk
+        return ([], None)
+
+    monkeypatch.setattr(lit, "poll_entries", fake_poll)
+    r = lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
+    assert called == {"probe": 0, "walk": 1} and r["mode"] == "full-walk"
+    conn.close()
+
+
+def test_marked_docket_skips_probe_goes_incremental(tmp_path, monkeypatch):
+    """A docket already carrying a mark skips the probe entirely and polls incrementally
+    from that mark."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    _seed_case(conn, "557", "1:25-cv-07777", "District of X",
+               latest_entry_at="2026-05-01T00:00:00Z", entries_synced_at="2026-06-06T00:00:00Z",
+               with_entry=True)
+    seed = {"caption": "United States v. Marked", "docket_number": "1:25-cv-07777",
+            "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+    called = {"probe": 0}
+    monkeypatch.setattr(lit, "probe_mark",
+                        lambda *a, **k: (called.__setitem__("probe", called["probe"] + 1), ([], None))[1])
+    seen = {}
+
+    def fake_poll(base, headers, cid, since=None, page_counter=None):
+        seen["since"] = since
+        return ([], None)
+
+    monkeypatch.setattr(lit, "poll_entries", fake_poll)
+    r = lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
+    assert called["probe"] == 0 and r["mode"] == "incremental"
+    assert seen["since"] == "2026-06-06T00:00:00Z"
+    conn.close()
+
+
 if __name__ == "__main__":
     test_substantive_promoted()
     test_noise_excluded()
