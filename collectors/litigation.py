@@ -108,20 +108,59 @@ def _fetch_page(url: str, params: dict | None, headers: dict,
     return data
 
 
-def poll_entries(base: str, headers: dict, docket_id: str) -> list[dict]:
-    """Return ALL docket entries (paginated via the `next` cursor) or raise.
+def poll_entries(base: str, headers: dict, docket_id: str,
+                 since: str | None = None) -> tuple[list[dict], str | None]:
+    """Poll a docket for entries; return (entries, new_high_water_mark) or raise.
 
-    Returns the full list only on success; on a rate-limit failure mid-pagination
-    it raises, so the caller writes nothing for the case (no half-seeded table)."""
+    `since` is the case's stored `entries_synced_at` (max CourtListener date_modified
+    ingested so far), or None to bootstrap:
+
+      * since is None  -> full walk, ordered by entry_number. Every page retries an
+        empty result (a real docket has no empty middle pages). This seeds the mark.
+      * since is set   -> incremental window: date_modified__gt=<since>, ordered
+        date_modified,id (the id tie-breaks a non-unique date_modified; both are on
+        CourtListener's short list of cursor-deep-pagination orderings). The FIRST
+        page passes retry_empty=False -- an empty incremental window is the normal
+        steady state and must cost one request, not five. Pages past a `next` cursor
+        keep the retry.
+
+    Why date_modified and not date_filed/entry_number: RECAP backfills old filings
+    late (an entry filed in Oct can land in the DB in Jul), so a date_filed/entry_number
+    mark would step past a late arrival permanently; entry_number also goes null on
+    minute entries, which a `__gt` filter drops. date_modified is "new to me since I
+    last looked" and also catches edits to entries we already hold.
+
+    Caveat (latent, NOT fixed here): content_hash(case_id, entry_at, desc) keys an A1
+    item on its description, so a *modified* description now surfaces as a SECOND item
+    rather than updating the first. Incremental polling makes that live; note it, don't
+    fix it in this change.
+
+    On a rate-limit failure mid-pagination it raises, so the caller writes nothing for
+    the case (no half-seeded table) and the mark does not move. Returns the max
+    date_modified across the returned entries as the new mark, or None on an empty
+    window (mark unchanged)."""
     out: list[dict] = []
     url = f"{base}/docket-entries/"
-    params: dict | None = {"docket": docket_id, "order_by": "entry_number"}
+    if since is None:
+        params: dict | None = {"docket": docket_id, "order_by": "entry_number"}
+    else:
+        params = {"docket": docket_id, "date_modified__gt": since,
+                  "order_by": "date_modified,id"}
+    first = True
+    latest_mod: str | None = None
     while url:
-        data = _fetch_page(url, params, headers)
+        # Skip the empty-retry ONLY on the first page of an incremental window.
+        data = _fetch_page(url, params, headers, retry_empty=(since is None or not first))
+        first = False
         params = None  # the `next` URL carries its own query string
-        out.extend(data.get("results") or [])
+        results = data.get("results") or []
+        out.extend(results)
+        for e in results:
+            dm = e.get("date_modified")
+            if dm and (latest_mod is None or dm > latest_mod):
+                latest_mod = dm
         url = data.get("next")
-    return out
+    return out, latest_mod
 
 
 # --------------------------------------------------------------------------- #
@@ -245,7 +284,8 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
 # Per-case orchestration
 # --------------------------------------------------------------------------- #
 def collect_case(conn, base: str, headers: dict, seed: dict,
-                 types: list[str], excludes: list[str]) -> dict:
+                 types: list[str], excludes: list[str],
+                 bootstrap_budget: int = 0) -> dict:
     caption = seed["caption"]
     dn, court_id = seed.get("docket_number"), seed.get("court_id")
 
@@ -290,9 +330,25 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
     write_b2_item(conn, case_id, seed, filed_at, source_url)
     conn.commit()
 
-    # Poll the full docket; on failure skip the case with nothing half-written.
+    # The high-water mark. NULL -> never bootstrapped; the mark is never clobbered by
+    # upsert_case (it isn't in the row), so a fresh resolve reads back NULL here too.
+    r = conn.execute(
+        "SELECT entries_synced_at FROM cases WHERE case_id = ?", (case_id,)
+    ).fetchone()
+    since = r["entries_synced_at"] if r else None
+
+    # Bootstrap (NULL mark) is the expensive full walk; gate it on the per-run budget so
+    # a first post-migration run doesn't blow the daily CourtListener cap. Deferred cases
+    # keep their NULL mark and get walked on a later run (resolution + B2 already committed).
+    if since is None and bootstrap_budget <= 0:
+        print(f"  {caption} (docket {case_id}): bootstrap deferred (budget spent)", file=sys.stderr)
+        return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0,
+                "deferred": True}
+
+    # Poll the docket (incremental if we have a mark, else a bootstrap walk); on failure
+    # skip the case with nothing half-written and the mark unmoved.
     try:
-        entries = poll_entries(base, headers, case_id)
+        entries, new_mark = poll_entries(base, headers, case_id, since=since)
     except Exception as exc:
         conn.rollback()
         print(f"  {caption} (docket {case_id}): poll failed, skipped -- {exc}", file=sys.stderr)
@@ -300,12 +356,20 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
 
     try:
         counts = write_entries(conn, case_id, caption, source_url, entries, types, excludes)
+        # Advance the mark in the SAME transaction as the writes: if write_entries raised
+        # we never reach here (mark unmoved), and if the commit fails the UPDATE rolls back
+        # with the entries -- so the next run re-fetches exactly this window. This ordering
+        # is the one invariant that makes unattended incremental polling safe.
+        if new_mark:
+            conn.execute("UPDATE cases SET entries_synced_at = ? WHERE case_id = ?",
+                         (new_mark, case_id))
         conn.commit()
     except Exception:
         conn.rollback()
         raise
     return {"caption": caption, "resolved": True, "docket_id": case_id,
-            "total_entries": len(entries), **counts}
+            "total_entries": len(entries), "bootstrapped": since is None,
+            "since": since, **counts}
 
 
 def load_tracker_seeds(path: str = TRACKER_ARTIFACT) -> list[dict]:
@@ -329,6 +393,7 @@ def main() -> int:
     headers = {"Authorization": f"Token {token}", "User-Agent": USER_AGENT}
     types = lit.get("substantive_entry_types", [])
     excludes = lit.get("excluded_entry_phrases", [])
+    bootstrap_budget = lit.get("max_bootstrap_per_run", 6)
 
     conn = db.connect()
     try:
@@ -337,11 +402,16 @@ def main() -> int:
         config_seeds = lit.get("seed_cases", [])
         tracker_seeds = load_tracker_seeds()
         print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
-              f"tracker case(s) from {TRACKER_ARTIFACT}")
+              f"tracker case(s) from {TRACKER_ARTIFACT}  (bootstrap budget {bootstrap_budget})")
         for seed in config_seeds + tracker_seeds:
-            r = collect_case(conn, base, headers, seed, types, excludes)
-            if r.get("resolved"):
-                tag = (f"docket {r.get('docket_id')}  {r.get('total_entries', 0)} entries  "
+            r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_budget)
+            if r.get("bootstrapped"):
+                bootstrap_budget -= 1   # a full walk was spent; the rest resume next run
+            if r.get("deferred"):
+                tag = "bootstrap deferred (budget spent; walks next run)"
+            elif r.get("resolved"):
+                window = "bootstrap" if r.get("since") is None else f"since={r.get('since')}"
+                tag = (f"docket {r.get('docket_id')}  {window}  {r.get('total_entries', 0)} entries  "
                        f"+{r['new_entries']} entries  +{r['new_items']} A1 items")
             elif r.get("resolve_failed"):
                 tag = "resolve failed, skipped (retries next run)"
