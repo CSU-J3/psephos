@@ -1218,6 +1218,26 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPLUdtUDI4aXd1NHphTHo1WG9jekpyZVJzaVI0cjgyZHZ6ZFNQalVMOEtlanZhUVdZNzZNb0hRaEtYWEhLUndoNlF6Y3lpaEN5QmRTRVNOai1vdU9jWnQ3UXNIckxFVjFianpqX0VNSER1ajZVQmREZzNKT3Q1ZWowYzNIZVc1LVZscWgwOGRocEVwb1hCRHNteUpNMDluX0E0YWhlNXNnV045d2xEWjNLWXdjVE8xdw?oc=5",
         "title": "U.S. House Passes State Dept Spending Bill with Language from SAVE America Act - The Maine Wire"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 54427,
+        "kind": "item",
+        "occurred_at": "2026-07-22T21:03:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQ0o4Vk1HSzdsWVRKQnhCR3NqbFRCY2hOanZVT0haTktGa05qekYtV1B4SzZEajk3TlRWamNCdDl1aHFmZnM0MnN0MXBrMjZ0RFo3RTlJdkktVzFaRHlQc0xNQXEzVzZ6SEFMWW42bTg5T05vbk4zb0E1LUlCVXdqVkJqRktGVG1IdTJMd0w5ZHNQLUdvZG1z?oc=5",
+        "title": "House GOP advances $95 billion plan to fund Iran war and SAVE America Act - CBS News"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 54425,
+        "kind": "item",
+        "occurred_at": "2026-07-22T21:19:55+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/house-passes-save-america-act-anti-voting-measures-in-budget-reconciliation-stock-trading-bills",
+        "title": "House passes SAVE America Act anti-voting measures in budget reconciliation, stock trading bills"
       }
     ]
   },
