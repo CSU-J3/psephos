@@ -2542,6 +2542,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/202/united-states-v-simon/",
         "title": "United States v. Minnesota: NOTICE by Minnesota, State of, Steve Simon re 63 MOTION to Dismiss/General Notice of Supplemental Authority - New York and West Virginia (Behrens, Angela) (Entered: 07/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57368,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/203/united-states-v-simon/",
+        "title": "United States v. Minnesota: NOTICE by Misael Hernandez, Minnesota Alliance for Retired Americans Educational Fund re 78 MOTION to Dismiss/General (Rule 12(B)(6) Motion to Dismiss) providing supplemental autho"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57367,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/204/united-states-v-simon/",
+        "title": "United States v. Minnesota: NOTICE by Misael Hernandez, Minnesota Alliance for Retired Americans Educational Fund re 78 MOTION to Dismiss/General (Rule 12(B)(6) Motion to Dismiss) providing supplemental autho"
       }
     ]
   },
@@ -5951,6 +5971,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Enforce Judgment AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57183,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/133/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Joint STATUS REPORT by FRANK BISIGNANO, KRISTI L. NOEM, SOCIAL SECURITY ADMINISTRATION, U.S. DEPARTMENT OF HOMELAND SECURITY. (Attachments: # 1 Ex. 1 - Order re MTD in Texas v. Mul"
       }
     ]
   },
@@ -6484,6 +6514,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/85/united-states-v-hanzas/",
         "title": "United States v. Vermont: NOTICE of Supplemental Authority by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim (Attachme"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57465,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/86/united-states-v-hanzas/",
+        "title": "United States v. Vermont: NOTICE of Supplemental Authority by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim (Abbuhl, "
       }
     ]
   },
@@ -8930,12 +8970,52 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 57247,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/89/united-states-v-albence/",
+        "title": "United States v. Delaware: ORDER: The Seventeen States and the District of Columbia's Motion for Leave to File Amicus Brief (D.I. 53 ) is GRANTED. The Amici States shall file their brief on the docket within"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57248,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/88/united-states-v-albence/",
+        "title": "United States v. Delaware: AMICUS BRIEF OF THE DEMOCRATIC NATIONAL COMMITTEE re 33 MOTION to Dismiss; 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 - filed by Democrati"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57249,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/87/united-states-v-albence/",
+        "title": "United States v. Delaware: ORDER GRANTING DEMOCRATIC NATIONAL COMMITTEE'S MOTION FOR LEAVE TO FILE AN AMICUS BRIEF: The Motion for Leave to file an Amicus Brief (D.I. 43 ) is GRANTED. The Clerk of the Court "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 37418,
         "kind": "item",
         "occurred_at": "2026-07-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/90/united-states-v-albence/",
         "title": "United States v. Delaware: Brief - Reply"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57246,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/90/united-states-v-albence/",
+        "title": "United States v. Delaware: AMICI Curiae Brief re 33 MOTION to Dismiss, filed by Attorney General of Arizona, Attorney General of California, Attorney General of Colorado, Attorney General of Hawai'i, Attorne"
       }
     ]
   },
@@ -9849,6 +9929,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/92/united-states-v-griswold/",
         "title": "United States v. Colorado: NOTICE of Supplemental Authorities re: 40 MOTION to Dismiss by Defendant Jena Griswold (Attachments: # 1 Exhibit A)(Towery, Lane) (Entered: 07/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57210,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/93/united-states-v-griswold/",
+        "title": "United States v. Colorado: NOTICE of Supplemental Authorities re: 40 MOTION to Dismiss by Defendant Jena Griswold (Attachments: # 1 Exhibit A, # 2 Exhibit B)(Baumann, Peter) (Entered: 07/15/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57209,
+        "kind": "item",
+        "occurred_at": "2026-07-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/94/united-states-v-griswold/",
+        "title": "United States v. Colorado: BRIEF in Support of 86 MOTION to Dismiss filed by Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord. (Frost, Elisabeth) (Entered: 07/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57208,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/95/united-states-v-griswold/",
+        "title": "United States v. Colorado: NOTICE of Supplemental Authorities re: 40 MOTION to Dismiss by Defendant Jena Griswold (Attachments: # 1 Exhibit A)(Baumann, Peter) (Entered: 07/21/2026)"
       }
     ]
   },
@@ -10985,6 +11095,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/91/united-states-v-aguilar/",
         "title": "United States v. Nevada: Motion for Leave to File Document/Excess Pages"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57380,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/91/united-states-v-aguilar/",
+        "title": "United States v. Nevada: MOTION for Leave to File Document re 66 Motion to Dismiss by Intervenor Defendants Jacqueline Sue Bird, Institute for a Progressive Nevada, NAACP Conference of Idaho, Nevada, and U"
       }
     ]
   },
@@ -12001,6 +12121,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/96/united-states-v-matthews/",
         "title": "United States v. Illinois: Response (NOT to a motion/petition)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57300,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/95/united-states-v-matthews/",
+        "title": "United States v. Illinois: NOTICE of Supplemental Authority re 56 MOTION to Dismiss (Frost, Elisabeth) (Entered: 07/15/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57299,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/97/united-states-v-matthews/",
+        "title": "United States v. Illinois: NOTICE of Supplemental Authority re 56 MOTION to Dismiss (Frost, Elisabeth) (Entered: 07/22/2026)"
       }
     ]
   },
@@ -14562,6 +14702,16 @@
         "occurred_at": "2026-07-13T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/135/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57259,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/136/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
@@ -17191,6 +17341,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72347022/123/united-states-v-jocelyn-benson/",
         "title": "United States v. Michigan: AMICUS BRIEF filed by Ronald D. Coleman on behalf of Liberty Legal Foundation, without parties' consent. Certificate of Service:07/16/2026. [26-1225] (LOCKED; motion for leave to f"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57355,
+        "kind": "item",
+        "occurred_at": "2026-07-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/128/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: judge order filed"
       }
     ]
   },
@@ -18535,6 +18695,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108471641/united-states-v-galvin/",
         "title": "United States v. Massachusetts: BRIEFING schedule set. Brief and Appendix due 08/17/2026 for appellant United States. Pursuant to F.R.A.P. 31(a), appellee's brief will be due 30 days following service of appellan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57344,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108479891/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION for leave to file amicus curiae brief in support of Appellant filed by Movant(s) Movant Liberty Legal Foundation. Served on 07/22/2026. [26-1657] (SB) [Entered: 07/22/2026 1"
       }
     ]
   },
@@ -18761,6 +18931,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/26/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ECF FILER: Transcript Purchase Order Form (Part 1) filed by Appellant USA advising this court that no transcripts are available. [26-2684] (AB)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57444,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/26/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: Transcript Purchase Order Form (Part 1) filed by Appellant USA advising this court that no transcripts are available. [26-2684] (AB) [Entered: 07/21/2026 03:43 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57445,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/23/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: Motion filed by America First Policy Institute - PA to proceed as intervenor in support of Appellant/Petitioner. Certificate of Service dated 07/21/2026. [26-2684] (WSZ)"
       }
     ]
   },
@@ -18847,6 +19037,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/13/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: Briefing order filed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57340,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/13/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: BRIEFING ORDER filed. Mailed to: Raymond Yang, Joseph W. Voiland, William Francis Mohrman, Marcos Mocine-McQueen, Brittany E. Bennett, Jake T. Bachand. No paper copies required unl"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 57341,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/12/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: NOTICE ISSUED to Common Cause, Jared DeMarinis, Maryland/DC Alliance for Retired Americans, Out for Justice, Inc., Myriam Paul, Luis Sims and Carl Snowden requesting response to Mo"
       }
     ]
   }
