@@ -135,12 +135,29 @@ def classify(text: str, ctx: MatchCtx, source_grade: tuple[str, str]):
 # --------------------------------------------------------------------------- #
 # Dedup + persist
 # --------------------------------------------------------------------------- #
+def load_seen_titles(conn) -> list[str]:
+    """Snapshot every non-empty `title_norm` ONCE per run, so stage-2b fuzzy dedup
+    compares against this in-memory list instead of re-scanning `dedup_seen` per
+    entry. That per-entry scan was O(entries x dedup_seen) Hrana round trips -- the
+    long pending window behind the failed run, and a cost that grew every run as
+    dedup_seen accumulated. process_entry appends each newly-inserted title, so
+    within-run dedup is identical to the old in-transaction scan."""
+    return [
+        r[0] for r in conn.execute(
+            "SELECT title_norm FROM dedup_seen "
+            "WHERE title_norm IS NOT NULL AND title_norm != ''"
+        ).fetchall()
+    ]
+
+
 def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str],
-                  ctx: MatchCtx) -> str:
+                  ctx: MatchCtx, seen_titles: list[str]) -> str:
     """Two-stage dedup a single raw entry, then persist survivors.
 
     `raw` is a plain dict {title, link, summary, published} so this is testable
-    without a live feed. Returns a short status string.
+    without a live feed. `seen_titles` is the run's in-memory fuzzy-dedup cache
+    (see load_seen_titles); a survivor's title_norm is appended to it on insert.
+    Returns a short status string.
     """
     title = (raw.get("title") or "").strip()
     if not title:
@@ -160,11 +177,11 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
     # Stage 2a: exact content hash.
     if conn.execute("SELECT 1 FROM dedup_seen WHERE content_hash = ?", (chash,)).fetchone():
         return "dup_hash"
-    # Stage 2b: fuzzy title similarity against everything seen.
+    # Stage 2b: fuzzy title similarity against the run's in-memory cache (loaded once
+    # by load_seen_titles, appended on each insert below -- so this sees earlier
+    # entries of the same source exactly as the old in-transaction scan did).
     cutoff = ctx.threshold * 100
-    for (seen,) in conn.execute(
-        "SELECT title_norm FROM dedup_seen WHERE title_norm IS NOT NULL AND title_norm != ''"
-    ):
+    for seen in seen_titles:
         if fuzz.token_sort_ratio(title_norm, seen) >= cutoff:
             return "dup_fuzzy"
 
@@ -189,6 +206,7 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
         "VALUES (?,?,?,?,?)",
         (canon, chash, title_norm, common.now_iso(), cur.lastrowid),
     )
+    seen_titles.append(title_norm)  # mirror the insert in the in-memory fuzzy cache
     return f"attached:{bill_id}" if bill_id else "new"
 
 
@@ -268,13 +286,13 @@ def build_ctx(sources: dict) -> MatchCtx:
 
 
 def run_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchCtx,
-               tally: dict[str, int]) -> None:
+               seen_titles: list[str], tally: dict[str, int]) -> None:
     """Process one source's entries and commit once at the end. The single trailing
     commit is what makes the per-source retry safe: a source that raises mid-batch
     committed nothing, so re-running it re-derives the same entries cleanly."""
     gs, gi = config.grade(grade)
     for raw in entries:
-        status = process_entry(conn, raw, source_id, (gs, gi), ctx)
+        status = process_entry(conn, raw, source_id, (gs, gi), ctx, seen_titles)
         key = "attached" if status.startswith("attached") else status
         tally[key] = tally.get(key, 0) + 1
     conn.commit()
@@ -292,25 +310,27 @@ def _recover(conn) -> None:
 
 
 def process_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchCtx,
-                   tally: dict[str, int]) -> str | None:
+                   seen_titles: list[str], tally: dict[str, int]) -> str | None:
     """Run one source with per-entity isolation and a single retry -- the guard every
     other collector already has (state.py per state, litigation.py per case). On
     failure: recover the connection, retry the SAME already-fetched entries once (no
     re-fetch -- worth it because a dropped Google News query is items gone for good),
     and on a second failure record it and skip so main() still reaches export.
 
-    The trailing-commit contract makes the retry safe: a failed attempt committed
-    nothing, so re-running it re-derives the same entries against a clean
-    transaction (restore the tally so its phantom counts don't linger). Returns
-    None on success, or the error string when skipped."""
+    A failed attempt committed nothing, but process_entry already appended its
+    survivors to seen_titles; truncate the cache back to its pre-attempt length (and
+    restore the tally) so the retry doesn't fuzzy-dedup those entries against
+    themselves. Returns None on success, or the error string when skipped."""
     for attempt in (1, 2):
+        title_mark = len(seen_titles)
         tally_snapshot = dict(tally)
         try:
-            run_source(conn, source_id, grade, entries, ctx, tally)
+            run_source(conn, source_id, grade, entries, ctx, seen_titles, tally)
             return None
         except Exception as exc:
+            del seen_titles[title_mark:]            # drop the failed attempt's cached titles
             tally.clear()
-            tally.update(tally_snapshot)            # drop the failed attempt's phantom counts
+            tally.update(tally_snapshot)            # and its phantom counts
             _recover(conn)
             if attempt == 2:
                 tally["source_errors"] = tally.get("source_errors", 0) + 1
@@ -332,18 +352,19 @@ def main() -> int:
         conn.commit()
 
         tally: dict[str, int] = {}
+        seen_titles = load_seen_titles(conn)
 
         # Config access (feed["url"], gn["base"]) stays OUT of the per-source catch:
         # a malformed-config KeyError is a programming error and must surface, not be
         # swallowed as a per-source skip. Only the fetch+process is isolated.
         for feed in news.get("feeds", []):
             process_source(conn, feed["id"], feed.get("grade"),
-                           fetch_feed(feed["url"]), ctx, tally)
+                           fetch_feed(feed["url"]), ctx, seen_titles, tally)
 
         gn = news.get("google_news", {})
         for query in gn.get("queries", []):
             process_source(conn, GNEWS_SOURCE_ID, gn.get("grade"),
-                           fetch_feed(gnews_url(gn["base"], query)), ctx, tally)
+                           fetch_feed(gnews_url(gn["base"], query)), ctx, seen_titles, tally)
 
         attached = conn.execute(
             "SELECT bill_id, COUNT(*) n FROM items WHERE channel='news' AND bill_id IS NOT NULL "
