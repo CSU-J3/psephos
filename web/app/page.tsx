@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   getChannelCounts,
   getBills,
@@ -39,7 +40,7 @@ export default async function Home() {
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">psephos</h1>
         <p className="mt-1 text-sm text-neutral-400">
-          The erosion of voting rights across four channels of federal pressure.
+          The erosion of voting rights across five channels of pressure, federal and state.
         </p>
       </header>
 
@@ -71,6 +72,16 @@ export default async function Home() {
             ))}
           </ul>
         )}
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold tracking-tight">State legislation</h2>
+        <Link
+          href="/state-bills"
+          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
+        >
+          Election bills across the watched states, subject-filtered via LegiScan →
+        </Link>
       </section>
 
       <section className="mt-10">
