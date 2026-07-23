@@ -373,6 +373,76 @@ def test_marked_docket_skips_probe_goes_incremental(tmp_path, monkeypatch):
     conn.close()
 
 
+# --------------------------------------------------------------------------- #
+# Daily-cap abort (handoff 8): don't retry-storm a spent cap
+# --------------------------------------------------------------------------- #
+def test_collect_case_reraises_daily_cap_mark_unmoved(tmp_path, monkeypatch):
+    """A daily-cap 429 during the poll propagates (for main to abort on) rather than
+    being swallowed as a skip, and the mark stays put / the txn rolls back."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    conn.execute(
+        "INSERT INTO cases (case_id, caption, court, docket_number, entries_synced_at) "
+        "VALUES ('555','United States v. Marked','District of X','1:25-cv-09999','2026-05-05T00:00:00Z')")
+    conn.commit()
+    seed = {"caption": "United States v. Marked", "docket_number": "1:25-cv-09999",
+            "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+
+    def raise_cap(*a, **k):
+        raise common.RateBudgetExhausted(41134)
+
+    monkeypatch.setattr(lit, "poll_entries", raise_cap)   # mark set -> incremental path polls
+    with pytest.raises(common.RateBudgetExhausted):
+        lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
+    mark = conn.execute("SELECT entries_synced_at FROM cases WHERE case_id='555'").fetchone()[0]
+    assert mark == "2026-05-05T00:00:00Z"             # unmoved
+    conn.close()
+
+
+def test_main_aborts_on_daily_cap_and_exits_zero(tmp_path, monkeypatch):
+    """main() breaks the seed loop on the cap and still returns 0 (the exit-0 invariant
+    that keeps executive/news/state running), leaving later seeds untouched."""
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.setattr(db, "DB_PATH", str(tmp_path / "m.db"))
+    monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
+    seeds = [
+        {"caption": f"United States v. S{i}", "docket_number": f"1:25-cv-0000{i}",
+         "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+        for i in range(3)
+    ]
+    fake_sources = {"litigation": {
+        "api": {"base": "https://x/api", "key_env": "COURTLISTENER_TOKEN"},
+        "substantive_entry_types": [], "excluded_entry_phrases": [],
+        "max_bootstrap_requests_per_run": 30, "seed_cases": seeds,
+    }}
+    monkeypatch.setattr(config, "load_sources", lambda *a, **k: fake_sources)
+    monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+
+    def fake_resolve(base, headers, dn, court_id):
+        return {"id": 100 + int(dn[-1]), "absolute_url": f"/docket/{dn}/",
+                "date_filed": "2026-01-01", "date_terminated": None, "case_name": f"US v {dn}"}
+
+    calls = {"n": 0}
+
+    def fake_poll(base, headers, cid, since=None, page_counter=None):
+        calls["n"] += 1
+        if calls["n"] == 2:                            # the SECOND docket hits the cap
+            raise common.RateBudgetExhausted(41134)
+        return ([], "2026-10-10T00:00:00Z")
+
+    monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
+    monkeypatch.setattr(lit, "poll_entries", fake_poll)
+
+    assert lit.main() == 0                             # aborted, but exit 0
+    assert calls["n"] == 2                             # broke at seed 2; seed 3 never polled
+    conn = db.connect(str(tmp_path / "m.db"))
+    assert conn.execute("SELECT COUNT(*) FROM cases WHERE case_id='102'").fetchone()[0] == 0  # seed 3 untouched
+    conn.close()
+
+
 if __name__ == "__main__":
     test_substantive_promoted()
     test_noise_excluded()
