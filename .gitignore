@@ -11,6 +11,7 @@ web/node_modules/
 web/.next/
 web/.env*.local
 web/next-env.d.ts
+web/*.tsbuildinfo
 
 # sqlite working files (the committed db is data/psephos.db; ignore WAL sidecars)
 data/psephos.db-wal
