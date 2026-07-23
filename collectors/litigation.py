@@ -416,6 +416,9 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
     # On failure skip the case with nothing half-written and the mark unmoved.
     try:
         entries, new_mark = poll()
+    except common.RateBudgetExhausted:
+        conn.rollback()            # nothing half-written; docket keeps its NULL mark
+        raise                      # daily cap -> let main() abort the whole run, don't storm
     except Exception as exc:
         conn.rollback()
         print(f"  {caption} (docket {case_id}): poll failed, skipped -- {exc}", file=sys.stderr)
@@ -474,7 +477,15 @@ def main() -> int:
         print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
               f"tracker case(s) from {TRACKER_ARTIFACT}  (full-walk req budget {bootstrap_requests})")
         for seed in config_seeds + tracker_seeds:
-            r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_requests)
+            try:
+                r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_requests)
+            except common.RateBudgetExhausted as exc:
+                # Expected budget condition, not an error: abort THIS collector at one
+                # request, exit 0 (below) so executive/news/state still run. Un-probed
+                # dockets keep their NULL mark and retry next run.
+                print(f"litigation: daily cap hit ({exc}); aborting run. Un-probed dockets "
+                      f"keep their NULL mark and retry next run.", file=sys.stderr)
+                break
             bootstrap_requests -= r.get("walk_requests", 0)   # only full walks draw the budget
             if r.get("deferred"):
                 tag = "full-walk deferred (request budget spent; walks next run)"
