@@ -280,10 +280,23 @@ state:
   states: [TX, GA, FL, AZ, WI, PA, MI, NC, OH]   # start focused; the change-hash
                                                  # pattern scales to all 50 if wanted
   terms:                              # word-boundary phrase filter (see election_match).
-                                      # Bare election/voter/voting/ballot are DELIBERATELY
-                                      # excluded: they flood with bond / ad-valorem-tax /
-                                      # appraiser elections. These phrases name the actual
-                                      # voting-rights fight; the bare single words are the flood.
+                                      # Recall MEASURED against a nine-state masterlist corpus
+                                      # (handoff 9, tools/masterlist_corpus.py), not assumed.
+                                      # Bare `election` stays OUT: +569 bills at ~55% precision,
+                                      # the actual flood -- ad-valorem-tax/bond-referendum
+                                      # elections, legislative-officer elections (e.g. "election
+                                      # of the assistant minority leader"), pension/corporate-tax
+                                      # "elections". Bare `ballot` stays OUT too: +106 at ~65% --
+                                      # tax propositions and corporate ballot-issue spending.
+                                      # Bare `voter`/`voting` ARE kept (~80-85% real: voter
+                                      # fraud/eligibility/registration, restoration of voting
+                                      # rights, voting machines, ranked-choice); their residual
+                                      # noise is redacted by exclude_terms below rather than
+                                      # thrown away with the signal. Some phrases (voter
+                                      # registration, early voting) are subsumed by the bares;
+                                      # kept for explicit coverage if a bare is ever pruned.
+    - voter
+    - voting
     - voter registration
     - voter roll
     - proof of citizenship
@@ -293,5 +306,25 @@ state:
     - same-day registration
     - voter id
     - redistricting
+    - voted by mail
+    - early voting
+    - primary election
+    - election audit
+    - poll watcher
+    - ballot drop
+    - election official
+    - canvass
+    - signature verification
+  exclude_terms:                      # REDACTED from title+description before matching (see
+                                      # election_match), so a bill matching ONLY via one of these
+                                      # drops, while one also carrying a real term survives:
+                                      # "voter approval of early voting" keeps on "early voting",
+                                      # a bare "voter-approval tax rate" does not. Hyphen-aware:
+                                      # "voter-approval" and "voter approval" both redact. Each is
+                                      # named from the corpus noise it removes (34 bills at the
+                                      # measured list; every one tax/bond/HOA/proxy, zero real).
+    - voter approval                  # TX tax term of art: ad-valorem/bond tax-rate elections
+    - proxy voting                    # precinct-committee / corporate proxy voting
+    - cumulative voting               # HOA / corporate cumulative voting
   max_getbill_per_run: 500        # budget guard; change-hash resumes next run if hit
   default_grade: { source: B, info: "2" }   # LegiScan is a maintained aggregator (spec's B2 tier)
