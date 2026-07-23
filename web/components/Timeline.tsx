@@ -8,6 +8,7 @@ const CHANNEL_ACCENT: Record<string, string> = {
   legislation: "border-l-sky-500/60",
   news: "border-l-neutral-500/60",
   litigation: "border-l-violet-500/60",
+  state: "border-l-teal-500/60",
 };
 
 // The interleave, rendered: one bill's or case's items in date order. Each entry
