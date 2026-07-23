@@ -13,14 +13,13 @@ CourtListener probes. (This is the "live truth" alternative the handoff noted --
 one, not both.) It is a single read-only SELECT, not a collect run, so it does not
 re-throttle CourtListener.
 
-Budget: CourtListener's token is capped at 125 requests/day, shared with the
+Budget: CourtListener's token is capped at 250 requests/day, shared with the
 litigation collector (which spends most of it polling docket entries every 6h). This
 audit spends up to 2 probes per unbound seed, so run it sparingly and ideally when the
 collector has spare budget. If the daily cap is already hit, the first probe aborts the
-run with the reset time rather than grinding every seed through pointless retries -- so
-the probe issues a direct request to read the 429 status, instead of reusing
-common.http_get (whose 4x backoff would both mask the status and waste the wait on a
-daily cap that no retry can refill).
+run with the reset time rather than grinding every seed through pointless retries --
+common.http_get now surfaces a daily-cap 429 as common.RateBudgetExhausted (while still
+retrying a transient burst 429), so this tool just lets that propagate.
 
 Run:  python -m tools.lit_resolve_audit
 """
@@ -28,11 +27,8 @@ from __future__ import annotations
 
 import json
 import os
-import re
 import sys
 import time
-
-import requests
 
 import common
 import config
@@ -40,25 +36,6 @@ import db
 from collectors import litigation
 
 DOJ_CASES_PATH = "data/doj_cases.json"
-
-
-class RateBudgetExhausted(Exception):
-    """CourtListener's daily request cap is spent; carries seconds until reset."""
-
-    def __init__(self, reset_seconds: int | None):
-        self.reset_seconds = reset_seconds
-        super().__init__(f"CourtListener daily rate budget exhausted "
-                         f"(reset in ~{reset_seconds}s)")
-
-
-def _reset_seconds(resp: requests.Response) -> int | None:
-    """Seconds until the throttle frees: the Retry-After header, else the count in
-    CourtListener's `Expected available in N seconds` throttle body."""
-    ra = resp.headers.get("Retry-After")
-    if ra and ra.isdigit():
-        return int(ra)
-    m = re.search(r"(\d+)\s*seconds", resp.text)
-    return int(m.group(1)) if m else None
 
 
 def resolved_docket_numbers() -> set[str]:
@@ -83,20 +60,16 @@ def probe(base: str, headers: dict, docket_number: str, court_id: str | None = N
     """The collector's docket probe (see litigation.resolve_docket): strict when
     court_id is given, loose when it is dropped. Returns the raw results list.
 
-    Throttles like the collector (PAGE_THROTTLE), then issues one direct request so a
-    daily-cap 429 surfaces as RateBudgetExhausted (the caller aborts) rather than being
-    retried 4x and flattened into an opaque error. Any other bad status raises for the
-    caller to flag as a per-seed transient."""
+    Via common.http_get, which throttles (PAGE_THROTTLE), surfaces a daily-cap 429 as
+    common.RateBudgetExhausted for the caller to abort on, and retries a transient burst
+    429. Any other persistent bad status raises for the caller to flag as a per-seed
+    transient."""
     params = {"docket_number": docket_number}
     if court_id is not None:
         params["court"] = court_id
-    time.sleep(litigation.PAGE_THROTTLE)
-    resp = requests.get(f"{base}/dockets/", params=params, headers=headers,
-                        timeout=common.DEFAULT_TIMEOUT)
-    if resp.status_code == 429:
-        raise RateBudgetExhausted(_reset_seconds(resp))
-    resp.raise_for_status()
-    return resp.json().get("results") or []
+    data = common.http_get(f"{base}/dockets/", params=params, headers=headers,
+                           throttle=litigation.PAGE_THROTTLE)
+    return data.get("results") or []
 
 
 def court_of(result: dict) -> str:
@@ -144,11 +117,11 @@ def main() -> int:
                 loose_results = probe(base, headers, dn)  # drop the court filter
                 loose = len(loose_results)
                 courts = {court_of(r) for r in loose_results}
-        except RateBudgetExhausted as exc:
+        except common.RateBudgetExhausted as exc:
             secs = exc.reset_seconds
-            when = f"~{secs}s (~{secs / 3600:.1f}h)" if secs else "unknown"
+            when = f"~{secs:.0f}s (~{secs / 3600:.1f}h)" if secs else "unknown"
             classified = sum(tally.values())
-            print(f"\nCourtListener daily budget (125/day) exhausted at {s.get('state','')} "
+            print(f"\nCourtListener daily budget (250/day) exhausted at {s.get('state','')} "
                   f"-- aborting. Resets in {when}; re-run then. "
                   f"{classified} seed(s) classified before the wall.")
             tally["budget-exhausted"] = tally.get("budget-exhausted", 0) + 1
