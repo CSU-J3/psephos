@@ -97,17 +97,38 @@ def _term_pattern(terms: tuple[str, ...]) -> "re.Pattern":
     return re.compile(r"\b(?:" + alt + r")\b")
 
 
-def election_match(bill: dict, terms: list[str]) -> bool:
+@lru_cache(maxsize=None)
+def _exclude_pattern(excludes: tuple[str, ...]) -> "re.Pattern":
+    """Compile exclusion phrases into one alternation, cached. Internal whitespace
+    matches a space OR hyphen so "voter approval" and "voter-approval" (a TX tax
+    term of art that appears both ways) both redact from the haystack."""
+    parts = [
+        r"\b" + r"[\s\-]+".join(re.escape(t) for t in re.split(r"\s+", e.casefold())) + r"\b"
+        for e in excludes
+    ]
+    return re.compile("|".join(parts))
+
+
+def election_match(bill: dict, terms: list[str],
+                   excludes: "tuple[str, ...] | list[str]" = ()) -> bool:
     """Keep a bill iff its title (or description) contains one of the terms as a
-    WHOLE WORD/PHRASE, casefolded. Word-boundary, NOT substring: "election" does
-    not match "selection", "absentee" does not match "absenteeism", and "voter
-    registration" matches only the phrase. Paired with a deliberately narrow term
-    list -- bare "election"/"voter"/"voting"/"ballot" are excluded in config
-    because they flood with bond / ad-valorem-tax / appraiser elections that are
-    not the voting-rights fight (the executive relevance lens hit the same trap)."""
+    WHOLE WORD/PHRASE, casefolded. Word-boundary, NOT substring: "absentee" does not
+    match "absenteeism", "voter registration" matches only the phrase.
+
+    Recall was measured against a nine-state masterlist corpus (handoff 9). Bare
+    "election"/"ballot" stay OUT of `terms` -- their floods (ad-valorem-tax/bond
+    elections, legislative-officer elections; tax propositions, corporate ballot-issue
+    spending) are too large to redact around. Bare "voter"/"voting" ARE in `terms`
+    (~80-85% real), so their residual noise is handled by REDACTION: each phrase in
+    `excludes` is blanked from the haystack BEFORE the term match, so a bill matching
+    ONLY via a noise phrase drops while one also carrying a real term survives. "voter
+    approval of early voting" keeps on "early voting"; a bare "voter-approval tax rate"
+    has nothing left to match."""
     if not terms:
         return False
     hay = (str(bill.get("title") or "") + " " + str(bill.get("description") or "")).casefold()
+    if excludes:
+        hay = _exclude_pattern(tuple(excludes)).sub(" ", hay)
     return bool(_term_pattern(tuple(terms)).search(hay))
 
 
@@ -191,7 +212,8 @@ def get_bill(base: str, key: str, bill_id, throttle: float) -> dict:
 # --- collect ----------------------------------------------------------------
 
 def collect(conn, base: str, key: str, states: list[str], terms: list[str],
-            grade: tuple[str, str], budget: int, throttle: float) -> dict:
+            grade: tuple[str, str], budget: int, throttle: float,
+            excludes: "tuple[str, ...] | list[str]" = ()) -> dict:
     """Poll each state on the change-hash pattern, write action items, return
     per-state counts. Per-state try/except so one bad state doesn't sink the run;
     per-bill try/except on getBill so one bad bill doesn't skip the rest of its
@@ -211,7 +233,7 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
             continue
 
         for raw in master:
-            if not election_match(raw, terms):
+            if not election_match(raw, terms, excludes):
                 continue
             counts["election_bills"] += 1
             bill_id = raw.get("bill_id")
@@ -262,6 +284,7 @@ def main() -> int:
     base = st["api"]["base"].rstrip("/") + "/"
     states = st.get("states", [])
     terms = st.get("terms", [])
+    excludes = st.get("exclude_terms", [])
     budget = st.get("max_getbill_per_run", 500)
     grade = config.grade(st.get("default_grade"))
     key = config.require_env(st["api"]["key_env"])
@@ -270,7 +293,7 @@ def main() -> int:
     try:
         register_source(conn, base, grade[0], grade[1])
         conn.commit()
-        results = collect(conn, base, key, states, terms, grade, budget, THROTTLE)
+        results = collect(conn, base, key, states, terms, grade, budget, THROTTLE, excludes)
         conn.commit()
         total = 0
         for state, c in results.items():

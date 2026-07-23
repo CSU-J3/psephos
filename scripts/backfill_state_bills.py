@@ -47,7 +47,7 @@ COUNT_WOULD_LINK = (f"SELECT COUNT(*) FROM items "
                     f"WHERE channel='state' AND state_bill_id IS NULL AND {_MATCH}")
 
 
-def populate_dimension(conn, base, key, states, terms, throttle=THROTTLE) -> int:
+def populate_dimension(conn, base, key, states, terms, throttle=THROTTLE, excludes=()) -> int:
     """One getMasterList per state; upsert a state_bills row for each election
     bill. No getBill -- the masterlist carries everything the LINK needs (state
     threaded in, bill_number from `number`). description/session stay null until a
@@ -61,7 +61,7 @@ def populate_dimension(conn, base, key, states, terms, throttle=THROTTLE) -> int
             print(f"  {state:<3} ERROR: {exc}", file=sys.stderr)
             continue
         for raw in master:
-            if not election_match(raw, terms):
+            if not election_match(raw, terms, excludes):
                 continue
             if raw.get("bill_id") is None:
                 continue
@@ -81,12 +81,13 @@ def main(argv=None) -> int:
     base = st["api"]["base"].rstrip("/") + "/"
     states = st.get("states", [])
     terms = st.get("terms", [])
+    excludes = st.get("exclude_terms", [])
     key = config.require_env(st["api"]["key_env"])
 
     conn = db.connect()
     try:
         before_null = conn.execute(COUNT_NULL).fetchone()[0]
-        dim = populate_dimension(conn, base, key, states, terms)
+        dim = populate_dimension(conn, base, key, states, terms, excludes=excludes)
         would_link = conn.execute(COUNT_WOULD_LINK).fetchone()[0]
         print(f"  state_bills upserted this run:        {dim}")
         print(f"  state items with null state_bill_id:  {before_null}")
