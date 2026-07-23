@@ -13,7 +13,7 @@ Spec-driven and review-gated. Use /plan to propose a plan and wait for approval 
 - Conventional commit messages. Git identity and repo under CSU-J3.
 - Secrets live in GitHub Actions secrets and a local .env, never in the repo: CONGRESS_API_KEY, COURTLISTENER_TOKEN, and LEGISCAN_API_KEY (all three active), plus TURSO_DATABASE_URL and TURSO_AUTH_TOKEN for the remote database.
 - POSIX paths in anything the workflow touches; the cron runs on Linux.
-- As-built: all five collectors — legislation, news, litigation, executive (Federal Register), and state (LegiScan) — run every 6 hours via GitHub Actions, persisting to a remote Turso database and committing JSON snapshots. A read-only Next.js view on Vercel renders per-bill and per-case timelines. Remaining depth, not built: a state_bills dimension with state-level vehicle detection (5b) and a dedicated state view.
+- As-built: all five collectors — legislation, news, litigation, executive (Federal Register), and state (LegiScan) — run every 6 hours via GitHub Actions, persisting to a remote Turso database and committing JSON snapshots. State bills are first-class: the `state_bills` dimension (179 bills), `items.state_bill_id`, and the 1,248-item backfill, rendered by the read-only Next.js view on Vercel — `/state-bills` and `/state-bill/[id]` alongside the per-bill and per-case timelines. Litigation polls incrementally on a `date_modified` high-water mark (`cases.entries_synced_at`) against a 250/day CourtListener cap; a daily-cap 429 aborts the run rather than retrying. The only unbuilt piece of 5b is state-level vehicle detection (5b-b).
 
 ## Process cleanup
 Never kill processes by image name (`taskkill /IM node.exe`) or by matching
