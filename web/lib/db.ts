@@ -43,6 +43,20 @@ export type Case = {
   defendant: string | null;
 };
 
+export type StateBill = {
+  state_bill_id: string;
+  state: string;
+  bill_number: string;
+  session: string | null;
+  title: string | null;
+  description: string | null;
+  status: string | null; // LegiScan numeric progress code as text; mapped for display
+  url: string | null;
+  is_vehicle: number; // 0 | 1
+  last_action: string | null;
+  last_action_at: string | null;
+};
+
 // One row of a per-bill or per-case timeline: an action/docket entry (A1) or the
 // reporting that explains it (B2/C3), carrying enough to render and grade it.
 export type TimelineItem = {
@@ -142,6 +156,41 @@ export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
           FROM items WHERE case_id = ?
           ORDER BY occurred_at, id`,
     args: [caseId],
+  });
+  return rs.rows as unknown as TimelineItem[];
+}
+
+// All state bills, grouped-render order: by state, then most-recently-acted first.
+export async function getStateBills(): Promise<StateBill[]> {
+  const rs = await db.execute(
+    `SELECT state_bill_id, state, bill_number, session, title, description,
+            status, url, is_vehicle, last_action, last_action_at
+     FROM state_bills
+     ORDER BY state, COALESCE(last_action_at, updated_at) DESC, state_bill_id`,
+  );
+  return rs.rows as unknown as StateBill[];
+}
+
+// One state bill by id (str LegiScan bill_id), or null -> the detail page 404s.
+export async function getStateBill(id: string): Promise<StateBill | null> {
+  const rs = await db.execute({
+    sql: `SELECT state_bill_id, state, bill_number, session, title, description,
+                 status, url, is_vehicle, last_action, last_action_at
+          FROM state_bills WHERE state_bill_id = ?`,
+    args: [id],
+  });
+  return (rs.rows[0] as unknown as StateBill) ?? null;
+}
+
+// One state bill's items in date order (all channel="state" / B2 today; the news
+// collector doesn't tag state bills yet, so no interleave -- a clean action list).
+export async function getStateBillTimeline(id: string): Promise<TimelineItem[]> {
+  const rs = await db.execute({
+    sql: `SELECT id, channel, title, summary, source_url, occurred_at,
+                 admiralty_source, admiralty_info
+          FROM items WHERE state_bill_id = ?
+          ORDER BY occurred_at, id`,
+    args: [id],
   });
   return rs.rows as unknown as TimelineItem[];
 }
