@@ -267,6 +267,58 @@ def build_ctx(sources: dict) -> MatchCtx:
     )
 
 
+def run_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchCtx,
+               tally: dict[str, int]) -> None:
+    """Process one source's entries and commit once at the end. The single trailing
+    commit is what makes the per-source retry safe: a source that raises mid-batch
+    committed nothing, so re-running it re-derives the same entries cleanly."""
+    gs, gi = config.grade(grade)
+    for raw in entries:
+        status = process_entry(conn, raw, source_id, (gs, gi), ctx)
+        key = "attached" if status.startswith("attached") else status
+        tally[key] = tally.get(key, 0) + 1
+    conn.commit()
+
+
+def _recover(conn) -> None:
+    """Discard a source's aborted transaction. On the remote _Conn the Hrana stream
+    may be dead, so reset() rebuilds the connection; local SQLite has no reset() and
+    a plain rollback() is enough."""
+    reset = getattr(conn, "reset", None)
+    if reset is not None:
+        reset()
+    else:
+        conn.rollback()
+
+
+def process_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchCtx,
+                   tally: dict[str, int]) -> str | None:
+    """Run one source with per-entity isolation and a single retry -- the guard every
+    other collector already has (state.py per state, litigation.py per case). On
+    failure: recover the connection, retry the SAME already-fetched entries once (no
+    re-fetch -- worth it because a dropped Google News query is items gone for good),
+    and on a second failure record it and skip so main() still reaches export.
+
+    The trailing-commit contract makes the retry safe: a failed attempt committed
+    nothing, so re-running it re-derives the same entries against a clean
+    transaction (restore the tally so its phantom counts don't linger). Returns
+    None on success, or the error string when skipped."""
+    for attempt in (1, 2):
+        tally_snapshot = dict(tally)
+        try:
+            run_source(conn, source_id, grade, entries, ctx, tally)
+            return None
+        except Exception as exc:
+            tally.clear()
+            tally.update(tally_snapshot)            # drop the failed attempt's phantom counts
+            _recover(conn)
+            if attempt == 2:
+                tally["source_errors"] = tally.get("source_errors", 0) + 1
+                print(f"  source {source_id} failed twice, skipping: {exc}", file=sys.stderr)
+                return str(exc)
+            print(f"  source {source_id} failed, retrying once: {exc}", file=sys.stderr)
+
+
 def main() -> int:
     config.load_env()
     db.init_db()
@@ -281,20 +333,17 @@ def main() -> int:
 
         tally: dict[str, int] = {}
 
-        def run_source(source_id, grade, entries):
-            gs, gi = config.grade(grade)
-            for raw in entries:
-                status = process_entry(conn, raw, source_id, (gs, gi), ctx)
-                key = "attached" if status.startswith("attached") else status
-                tally[key] = tally.get(key, 0) + 1
-            conn.commit()
-
+        # Config access (feed["url"], gn["base"]) stays OUT of the per-source catch:
+        # a malformed-config KeyError is a programming error and must surface, not be
+        # swallowed as a per-source skip. Only the fetch+process is isolated.
         for feed in news.get("feeds", []):
-            run_source(feed["id"], feed.get("grade"), fetch_feed(feed["url"]))
+            process_source(conn, feed["id"], feed.get("grade"),
+                           fetch_feed(feed["url"]), ctx, tally)
 
         gn = news.get("google_news", {})
         for query in gn.get("queries", []):
-            run_source(GNEWS_SOURCE_ID, gn.get("grade"), fetch_feed(gnews_url(gn["base"], query)))
+            process_source(conn, GNEWS_SOURCE_ID, gn.get("grade"),
+                           fetch_feed(gnews_url(gn["base"], query)), ctx, tally)
 
         attached = conn.execute(
             "SELECT bill_id, COUNT(*) n FROM items WHERE channel='news' AND bill_id IS NOT NULL "
