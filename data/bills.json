@@ -1238,6 +1238,26 @@
         "source_id": "democracy-docket",
         "source_url": "https://www.democracydocket.com/news-alerts/house-passes-save-america-act-anti-voting-measures-in-budget-reconciliation-stock-trading-bills",
         "title": "House passes SAVE America Act anti-voting measures in budget reconciliation, stock trading bills"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 54760,
+        "kind": "item",
+        "occurred_at": "2026-07-22T23:24:46+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOWndTczZIZkNSdFBZQ2R4dElsQTg2S1lfSjNQZUJPel9zZXM5c3JPQTBzcFc4QnNjMEFmYWxlZzdUOWZpb0Exa3BleGVIVjJtWHYwclBvV1BpUlZkQllVNVJ6a2JUS2w2VDBPcVhHejY4TWJOUzFmd3g1MW1HUzhHN1l5aUZJR3ZFMjhGX0hDWVJwY3dzZUdvTE91Wk9NM1o4aHl6Z0Y2MW4wZ1lGejB3QVpsNG1NNDR1QnhUeDcxZGJ1R0k4eTB5VDdB0gGsAUFVX3lxTFBPSGpyb1lXekFjV0d4bWxqMFg3cTRvUVhxZkdRSElQYWRmWFJ0cTdpU0RuNlpjRXBUS3ZOcXlfeUpONllBWHdqNE10cGlzWkNjOTdldzUyMVN1Q2x5bzdrNHl2THRRbDFWV3BNYXdiZC1yeWViWW13c1VZX2RralpLaHM0c3JRb21CTmJoZ3czeFp6SmM1RnJZbGMxQV9PQjFMTm5lakVMN244Tng?oc=5",
+        "title": "House GOP Advances 'SAVE America Act' As Part Of Budget Bill - NewsRadio 740 KTRH"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 54763,
+        "kind": "item",
+        "occurred_at": "2026-07-22T23:57:17+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPQi1NUWlJQ0JLc0NwQ1I3b1Zxc0RkdUdFUm9PbHZNSlgyUS1wM3RXV2o5WGpQWDY5QlJnRVJQZHk4U2dWdlJZei1qV0hsNVpjVV9xcTZHa0RPNWgydWZiUjBoODFnWU92OWRmMjhJM0pvMHZJbnhXZ295YzRhOTNSYkkxLUR3bExaMkVJLQ?oc=5",
+        "title": "House advances SAVE Act voter ID measures in budget bill and stock trading legislation - eciks.org"
       }
     ]
   },
