@@ -27,9 +27,14 @@ from collectors import state  # noqa: E402
 FIXTURES = Path(REPO) / "tests" / "fixtures"
 BASE = "https://api.legiscan.com/"
 KEY = "test-key"
-# Mirrors config/sources.yaml state.terms: narrow phrases only, no bare loose words.
-TERMS = ["voter registration", "voter roll", "proof of citizenship", "mail ballot",
-         "absentee", "provisional ballot", "same-day registration", "voter id", "redistricting"]
+# Mirrors config/sources.yaml state.terms / state.exclude_terms (handoff 9: the bare
+# voter/voting terms are kept on measured recall; their residual noise is redacted).
+TERMS = ["voter", "voting", "voter registration", "voter roll", "proof of citizenship",
+         "mail ballot", "absentee", "provisional ballot", "same-day registration",
+         "voter id", "redistricting", "voted by mail", "early voting", "primary election",
+         "election audit", "poll watcher", "ballot drop", "election official", "canvass",
+         "signature verification"]
+EXCLUDES = ["voter approval", "proxy voting", "cumulative voting"]
 GRADE = ("B", "2")
 
 
@@ -132,8 +137,8 @@ def test_election_filter_word_boundary():
 
 
 def test_election_filter_drops_loose_and_offtopic():
-    # Loose-term guard: a bare ad-valorem tax-rate "election" must NOT match now
-    # that bare "election" is out of the term list (it was the flood).
+    # Loose-term guard: a bare ad-valorem tax-rate "election" must NOT match --
+    # bare "election" is out of the term list (it was the flood).
     assert not state.election_match(
         {"title": "Relating to the vote required in an election to approve an ad valorem tax rate",
          "description": "Concerns a local ad valorem tax rate election."}, TERMS)
@@ -141,6 +146,44 @@ def test_election_filter_drops_loose_and_offtopic():
     assert not state.election_match(
         {"title": "Relating to alien registration of nonresident business agents",
          "description": "An act relating to registration of nonresident business agents."}, TERMS)
+
+
+def test_election_filter_recall_broadened_phrasings():
+    # Handoff 9 recall fix: phrasings the narrow list missed now match, mostly via
+    # the bare voter/voting terms and the added election-admin phrases.
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS)
+    assert M("Relating to documentation of proof of identification for voting")   # 'voting'
+    assert M("Relating to an application for a ballot to be voted by mail")        # 'voted by mail'
+    assert M("Relating to early voting ballots voted by mail")                     # 'early voting'
+    assert M("Relating to the date of the primary election runoff")               # 'primary election'
+    assert M("Relating to the operation of a signature verification committee")   # 'signature verification'
+    assert M("Relating to state oversight following a county election audit")     # 'election audit'
+    assert M("Voter Fraud Prevention Act")                                         # bare 'voter'
+    assert M("Restoration of Voting Rights")                                       # bare 'voting'
+
+
+def test_election_filter_exclusion_redacts_noise_keeps_real():
+    # exclude_terms are blanked from the haystack before matching: a bill matching
+    # ONLY via a noise phrase drops; one also carrying a real term survives.
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS, EXCLUDES)
+    # drops -- the excluded phrase was the sole match (all drawn from the live corpus)
+    assert not M("Photo enforcement systems; voter approval")
+    assert not M("Relating to the calculation of the voter-approval tax rate for certain cities")  # hyphen
+    assert not M("Homeowners' associations; cumulative voting; prohibition")
+    assert not M("Precinct committeemen; proxy voting")
+    assert not M("Relating to the vote required to approve an ad valorem tax rate",
+                 "Requires voter approval for the issuance of a school district bond.")
+    # keeps -- a real term survives the redaction
+    assert M("Voter approval of early voting changes")                    # 'voter approval' out, 'early voting' left
+    assert M("Relating to voter approval; and to voter registration deadlines")  # 'voter registration' left
+
+
+def test_election_filter_flood_shapes_still_dropped():
+    # The incidental shapes the 5b-b spike surfaced stay out (excludes applied).
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS, EXCLUDES)
+    assert not M("Relating to authorizing an optional county fee on vehicle registration")  # token 'registration'
+    assert not M("County sheriff assistance with certain federal immigration functions")    # 'citizenship' context
+    assert not M("Relating to the creation of the Montgomery County Municipal Utility District No. 258")  # MUD
 
 
 # --- change-hash pipeline (temp DB + faked LegiScan) ------------------------
@@ -295,6 +338,9 @@ if __name__ == "__main__":
     test_election_filter_matches_real_voting_bills()
     test_election_filter_word_boundary()
     test_election_filter_drops_loose_and_offtopic()
+    test_election_filter_recall_broadened_phrasings()
+    test_election_filter_exclusion_redacts_noise_keeps_real()
+    test_election_filter_flood_shapes_still_dropped()
     test_collect_filters_changes_and_writes()
     test_change_hash_gate_skips_unchanged()
     test_idempotent_across_runs()
