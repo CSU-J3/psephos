@@ -14,3 +14,15 @@ Spec-driven and review-gated. Use /plan to propose a plan and wait for approval 
 - Secrets live in GitHub Actions secrets and a local .env, never in the repo: CONGRESS_API_KEY, COURTLISTENER_TOKEN, and LEGISCAN_API_KEY (all three active), plus TURSO_DATABASE_URL and TURSO_AUTH_TOKEN for the remote database.
 - POSIX paths in anything the workflow touches; the cron runs on Linux.
 - As-built: all five collectors — legislation, news, litigation, executive (Federal Register), and state (LegiScan) — run every 6 hours via GitHub Actions, persisting to a remote Turso database and committing JSON snapshots. A read-only Next.js view on Vercel renders per-bill and per-case timelines. Remaining depth, not built: a state_bills dimension with state-level vehicle detection (5b) and a dedicated state view.
+
+## Process cleanup
+Never kill processes by image name (`taskkill /IM node.exe`) or by matching
+on "next dev". Other Next apps run on this Windows box and will be killed
+too. Scope to this project's port only:
+
+    netstat -ano | findstr :3001
+    taskkill /PID <pid> /T /F
+
+The dev script is pinned to `-p 3001` in web/package.json. Keep it
+pinned, and pin any new script that spawns a dev server — CBT holds
+3000 on this machine.
