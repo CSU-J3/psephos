@@ -151,6 +151,23 @@ class _Conn:
         self._pending = False
         return result
 
+    def reset(self):
+        """Discard the open transaction and rebuild the connection. The caller is
+        stating that losing the pending batch is acceptable -- news.py's per-source
+        handler, where the batch is one source's uncommitted entries and re-running
+        the source re-derives them. Never call this to paper over a mid-batch failure
+        whose writes matter; that's what the _pending re-raise in execute() is for.
+
+        This is NOT rollback(): the stream is often already dead when we recover, so
+        self._raw.rollback() may itself raise. reset() skips the dead connection and
+        builds a fresh one instead. On local SQLite (_reopen is None) there is no
+        connection to rebuild, so it just clears _pending and no-ops."""
+        if self._reopen is None:
+            self._pending = False
+            return
+        self._raw = self._reopen()
+        self._pending = False
+
     def close(self):
         return self._raw.close()
 
