@@ -17,6 +17,10 @@ web/*.tsbuildinfo
 data/psephos.db-wal
 data/psephos.db-shm
 
+# offline election-filter-tuning corpus: ~14.5MB, too big to commit; rebuild with
+# `python -m tools.masterlist_corpus` (nine queries). The script is the reproducible path.
+data/masterlist_corpus.json
+
 # os
 .DS_Store
 Thumbs.db
