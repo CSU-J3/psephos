@@ -1268,6 +1268,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOOUVtUGt5aUpSUnJmWDVNUWR6RmZGdmE4N2UwQl84WUdxQTlsaUsxVVlJeDVLVDFLdzE5WVFKNzRxejZ4ay1WRkp3SFpwX2RyTGdZUktHUTlqYTQ2ZmZrc3ZmLTdJYXZFakJoVzVKZF9GajFsUXhPck1lVFlJNmROaFh1VEdUZ1RhV2VWYTFEcGc1NFp6X2Q0RVlxdkxqUUkx?oc=5",
         "title": "House narrowly passes $1.15 trillion defense bill, attaches SAVE America Act - Florida’s Voice"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 58877,
+        "kind": "item",
+        "occurred_at": "2026-07-23T22:34:07+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBGeEJhbGtSdDZtQ3QyRVBoME51UE5hMUl2eWRULUttb1hTdDhiT3haWFFFR1dQaFRLMjdLcWtBXzBqUHJSWkw4M3c2ZjI2elZ1UWx1cU1lRkxaWVk?oc=5",
+        "title": "House passes budget with voter ID measure as Trump urges Senate to pass SAVE America Act - Fox Business"
       }
     ]
   },
