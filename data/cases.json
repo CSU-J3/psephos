@@ -3742,6 +3742,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 59840,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9776,
         "kind": "item",
         "occurred_at": "2025-09-25T00:00:00",
@@ -7114,6 +7124,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 59831,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9717,
         "kind": "item",
         "occurred_at": "2025-12-02T00:00:00",
@@ -7750,6 +7770,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/121/united-states-v-oliver/",
         "title": "United States v. New Mexico: Notice of Appeal"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 59838,
+        "kind": "item",
+        "occurred_at": "2026-07-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/121/united-states-v-oliver/",
+        "title": "United States v. New Mexico: NOTICE OF APPEAL as to 120 Judgment, 119 Memorandum Opinion and Order,,, Terminate Motions,, by United States Of America. (Filing Fee - Waived) (Tucker, James) (Entered: 07/23/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 59839,
+        "kind": "item",
+        "occurred_at": "2026-07-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/122/united-states-v-oliver/",
+        "title": "United States v. New Mexico: ERRATA re 121 Notice of Appeal by United States Of America (Tucker, James) (Entered: 07/23/2026)"
       }
     ]
   },
@@ -12851,6 +12891,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 59745,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
+        "title": "United States v. Connecticut — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8848,
         "kind": "item",
         "occurred_at": "2026-01-06T00:00:00",
@@ -13477,6 +13527,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/111/united-states-v-thomas/",
         "title": "United States v. Connecticut: NOTICE OF APPEAL as to 110 Judgment, 109 Order on Motion to Dismiss,,,,,,,,, Order on Motion to Compel,, by USA. (Tucker, James) (Entered: 07/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 59748,
+        "kind": "item",
+        "occurred_at": "2026-07-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110170/112/united-states-v-thomas/",
+        "title": "United States v. Connecticut: CLERK'S CERTIFICATE RE: INDEX AND RECORD ON APPEAL re: 111 Notice of Appeal. The attached docket sheet is hereby certified as the entire Index/Record on Appeal in this matter and e"
       }
     ]
   },
@@ -16199,6 +16259,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334676/67/united-states-v-adams/",
         "title": "United States v. Kentucky: JUDGMENT: 1. The Complaint, [R. 1 ], is DISMISSED WITH PREJUDICE. 2. This action is STRICKEN from the Court's active docket. 3. This is a FINAL and APPEALABLE judgment, and there i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 59757,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72334676/69/united-states-v-adams/",
+        "title": "United States v. Kentucky: NOTICE OF APPEAL as to 66 Memorandum Opinion & Order,, Terminate Motions, 67 Judgment, by USA. (Tucker, James) (Entered: 07/24/2026)"
       }
     ]
   },
