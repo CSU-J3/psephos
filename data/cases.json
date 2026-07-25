@@ -7790,6 +7790,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/122/united-states-v-oliver/",
         "title": "United States v. New Mexico: ERRATA re 121 Notice of Appeal by United States Of America (Tucker, James) (Entered: 07/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 60130,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982149/123/united-states-v-oliver/",
+        "title": "United States v. New Mexico: Notice of Appeal"
       }
     ]
   },
@@ -9076,6 +9086,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/90/united-states-v-albence/",
         "title": "United States v. Delaware: AMICI Curiae Brief re 33 MOTION to Dismiss, filed by Attorney General of Arizona, Attorney General of California, Attorney General of Colorado, Attorney General of Hawai'i, Attorne"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 60114,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/91/united-states-v-albence/",
+        "title": "United States v. Delaware: NOTICE of OF SUPPLEMENTAL AUTHORITY by Bethany Jennings, Gemma Lowery re 38 Response to Motion, 61 Reply Brief, 36 MOTION to Dismiss (Billion, Mark) (Entered: 07/24/2026)"
       }
     ]
   },
