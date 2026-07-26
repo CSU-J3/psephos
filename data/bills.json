@@ -1278,6 +1278,26 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBGeEJhbGtSdDZtQ3QyRVBoME51UE5hMUl2eWRULUttb1hTdDhiT3haWFFFR1dQaFRLMjdLcWtBXzBqUHJSWkw4M3c2ZjI2elZ1UWx1cU1lRkxaWVk?oc=5",
         "title": "House passes budget with voter ID measure as Trump urges Senate to pass SAVE America Act - Fox Business"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 61029,
+        "kind": "item",
+        "occurred_at": "2026-07-25T09:42:58+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9jOW1mU2hKd25JaG43SzI0aU9SZ3laUnJSa200TzJPRnY3VU1GMmdxenNIcDhhcTM3QTgwVW16bU82Y3dJOTNodWpScklfSHNHOTRpU0tpVnk1NXhQUFJIVzhB?oc=5",
+        "title": "Trump escalates pressure on Thune over stalled SAVE America Act - eciks.org"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 61028,
+        "kind": "item",
+        "occurred_at": "2026-07-25T23:08:59+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNczRselNLNTdIel9UZ25ESVdmdGd4azVhSXlKckZCeDZFdnViWkkzYnVLMndfNjZKSndrU1FRdHg2NTFwZnBOcFE1QktKZHFnaVFhSWhmRkdyWC1Dd2o2ajlVd1ltTzBIRlB0VC1TdWJWY1IwcV9IYS1tejJoeXNTQ2xxNXhERDJaVlRaMGVlT19fNjV6T2puZzdSdk9TenNvQTRULU9oVW1rZHBF?oc=5",
+        "title": "Justin Murphy backs SAVE Act after noncitizens added to N.J. voter rolls - New Jersey Globe"
       }
     ]
   },
