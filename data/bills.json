@@ -1402,6 +1402,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 63455,
+        "kind": "item",
+        "occurred_at": "2026-07-27T18:09:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNbXhqRnhvM094eVJCTDlKNnVqeEVrTDhCREhFZ3NUUGk5ZnRWNG5NWW94RlZ1UDVhNVc5UWFQOENKZERLWHJrMmY0Sjd1T01xdElkNnBtUUVyZm1TMkpNRUV4QVNTOGx3a241VWZNYWpqOURkRGZ2RHVaeWw1Y2p5ZFlyT2lZYTR5QWtqNWVqdjF3TndyejYtbzFKUVFLc3hnbVd3bzJ3V2lNVm5yWlVpc2NONWhFYlZraEdYZWJfMDdIbF9VZFJnUjVRQ0RwRE9Qa3VEdTdLR1pXdw?oc=5",
+        "title": "Trump urges Thune to hold off on recess until SAVE America Act passes - aberdeennews.com"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 62523,
         "kind": "item",
         "occurred_at": "2026-07-27T19:19:19+00:00",
@@ -1468,6 +1478,26 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPNnp6X2JoTTkzQ1FrQ005eEFycFJUNHIxVkN1b3ZMR1JzNWNMRFFJZUxxV0hlOGx4bEtBWlhuRUhTVl9xUkk1X2FNX2c0YWVmREJVVmp1YTNwUm1POWRoMV9IR0VtdzNEdzBwQmVlaGtRQnJMZEhCbGxGTWVkbXFlc0U3S25xTkxHZXhoTVlaUGwwazZSSEpZeU5VbHpoMVdvaG93eTh2bmJTM1JOazlCT0tneUpuRWlPSU5iR0hodGV3eEpOUkV1N1RnUnVHaDR1ZTd0TkhseW9XTTY5ME9ubFBYeC1raEtGdVMxOTlDWnRrbkhRRDV2eA?oc=5",
         "title": "Trump urges Thune to keep Senate in session, possibly end filibuster for SAVE America Act - WPBN"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 63447,
+        "kind": "item",
+        "occurred_at": "2026-07-28T10:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE12NmJ6QzZkVHBpUHhzWnhTRXl5aDBRQjBYZmlBQVh4ZmtRYW16UUIyaHc5Y0dLZWJtWmoxamJqUXNnOG5tdndaX0RSQ0VNbEhWVGFpNmdHdmFGdmEybk1Uemh1czFYcEtsQ3ZxNGJMMVliNG1EYUtTSFpoTjgyU2fSAYQBQVVfeXFMT0l1dGxWZU5rc2FjTzZMcDdzcmJsWHRrNDhCSGJXMVMtSkY1czVfSTJ1VWhCNUNKMWcwZEgwa1B0bFY3Q0tfMGxWbnByT3FrOU9BVHNDTHJ3elBQVUxhRUMtaGZEc2pkZThzdERlVWxsR2w5dDF2b09sSHVVRGJRWFhOSnlv?oc=5",
+        "title": "Trump, Thune clash over canceling August recess to debate SAVE America Act - The Hill"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 63449,
+        "kind": "item",
+        "occurred_at": "2026-07-28T11:18:43+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPLVpXVWF4ZVBvRTIzZE1oNlRtbnhIVTYzUUJNbXRDV2REUlNKTUNvNUwwS0hBR2Q3Q3pQdEZEanoxUE9xNnAwWjB1TlJwZjVGSmdLdENPaFF0UWRQa3hiZS02aGJGVUZEeEVLMkpvMXZ2LWpmU0tTeE15TVJOUV84RzF4M3JoQjZKS1dmaFlINTh2UXg4X3hqU3ozeE1zZw?oc=5",
+        "title": "The SAVE America Act, the Filibuster and Thune’s Huge Dilemma - WSJ"
       }
     ]
   },
