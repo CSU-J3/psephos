@@ -1158,5 +1158,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/07/20/2026-14539/public-charge-ground-of-inadmissibility",
     "title": "Public Charge Ground of Inadmissibility"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 62726,
+    "kind": "item",
+    "occurred_at": "2026-07-28T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/07/28/2026-15190/affirmative-asylum-referrals-without-interview",
+    "title": "Affirmative Asylum Referrals Without Interview"
   }
 ]
