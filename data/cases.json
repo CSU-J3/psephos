@@ -9123,6 +9123,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 62330,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
+        "title": "United States v. Colorado — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8777,
         "kind": "item",
         "occurred_at": "2025-12-11T00:00:00",
@@ -13594,6 +13604,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 62363,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
+        "title": "United States v. Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 10435,
         "kind": "item",
         "occurred_at": "2026-01-16T00:00:00",
@@ -14030,6 +14050,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72156765/80/united-states-v-koski/",
         "title": "United States v. Virginia: Notice of Appeal"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 62365,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72156765/80/united-states-v-koski/",
+        "title": "United States v. Virginia: NOTICE OF APPEAL re: 76 Memorandum Opinion, 77 Order by United States Of America (Tucker, James). Modified on 7/27/2026. (sbea) (Entered: 07/24/2026)"
       }
     ]
   },
@@ -19267,6 +19297,29 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/12/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: NOTICE ISSUED to Common Cause, Jared DeMarinis, Maryland/DC Alliance for Retired Americans, Out for Justice, Inc., Myriam Paul, Luis Sims and Carl Snowden requesting response to Mo"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Michael Adams",
+    "case_id": "73674243",
+    "category": "voter-data",
+    "court": "Sixth Circuit",
+    "defendant": "Michael Adams",
+    "docket_number": "26-5657",
+    "filed_at": "2026-07-24T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 62339,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
+        "title": "United States v. Kentucky — voter-data"
       }
     ]
   }

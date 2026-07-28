@@ -1302,12 +1302,132 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 62527,
+        "kind": "item",
+        "occurred_at": "2026-07-27T04:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQVmlESDlwamZCR2JnRjR0RG90b1p3TnFMVVZnZ0RNc2RvT1F6a1lxZFpzZlJ2Z3BsWnZLSW5zMnlxNWJKUlBnd2ZIUUhyMno4SEs4Mm45YkNJZmFHM0diSGhUX2h3Yl9SQU5ubDdkdnlJcWV0UlVOcnBhTThiU1RSUXFubnlub0FjMFl6bTAtNjVTSExlS2JoNw?oc=5",
+        "title": "House advances SAVE America Act — counties urged to contact Senators now - National Association of Counties"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 62318,
         "kind": "item",
         "occurred_at": "2026-07-27T13:52:00+00:00",
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPbmZEZEo5R09ZRS1KUV9xVDhpWjF1d3d6TnZSOGlaaF96Umd2cmZLQzh1TGtnMUltVXpPcHpVVnhJVHZHdzdEdXJzMEJTR2g2WFE1YXJGMjk5YzY0am5aVHdZOFRzTXNmeUlQcHR4VzY1WGc4ekpJX1Z1b1hNbUZfNUVZT0c2aE9BYUpmREtIWVljZnRMMTdUNTBkakRsRHlfZFNVY3dYRlExVXBIbjUwd3AtQTRPMmtWQzVUZEZtQmhEYzk2NGFPQzU4cVJuWGM?oc=5",
         "title": "Trump urges Thune to keep Senate in session until it passes SAVE America Act or ends filibuster - New York Post"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62530,
+        "kind": "item",
+        "occurred_at": "2026-07-27T13:52:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOYnRxREREYWRCMnQtU1VGbTJ3bURFQzFDQl9wVnNPb0xkcV9sZ3AxSWFOejJyQWVLemQ2WjFWRzlweG9wWlRJSE5IMGdXTDVXdkNmQUNIRi0tcEJKRV9JS1pOV29vZ2l0ZDRaUTZKUEJVcHZ0bzFtU3hxeGx5VzMwaTd3bFpVbHJWSnhPWDJITC1MYVVncjRFWUk1d9IBoAFBVV95cUxNQk9lYXZIdVRqZm1KRU1kakhsaEpjY2tjcm1VWXBVM29zemJyWk95eUVBYW4xdlc4Z1IzdE1Sa3VNNW1NOFJheUp6ekxxRlZSQU03RkwwdFhGbFI5TmZCSXl6T05hS2dlXzh3cVpmVmVuRld0OTZPaDhGSDNxRHZrU291MHZNS0VYU295R2IySTVwMERGZ2Y5OUM0Z2hoa0cw?oc=5",
+        "title": "Trump presses Thune to keep Senate in session until SAVE America Act passes - The Hill"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62525,
+        "kind": "item",
+        "occurred_at": "2026-07-27T15:01:18+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQWktpUHhXeEtwbnpZamFiWVA1bGd0aC1lVmJGUFE4ZGZrWnFORGdzZkdGT21qcVhvTV9Fdm1ENThKS1ZkSVMxS2VXcEFRYzJJRmU5OXEwR0xyVWpYRk5nVVA2Y3d2aXl3LUFOVUhHNkluaV82cmdrRXVrRFVPanJCMzBIWWd2NEVUNHVDUHZuSVpoSUpHVm9lWGRqTnZyNUt5cFktdW13?oc=5",
+        "title": "Trump urges Senate to cancel vacation, kill filibuster and pass Save Act - Courthouse News"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62526,
+        "kind": "item",
+        "occurred_at": "2026-07-27T15:29:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQTDhwTHNlSnRydy10WC1mZUJDZ0pJb05IMlVCOXVKN0p5TVNKMnhJY2oyaHlJbThscHlkeHBycHVlSVNJWUJpMk9JNFpOQjRCQ1dtcERhaFc1Njl4cExNRnFfbTVtbl80UFB3eDltd1l0SW1kSW9qSXlsVk9ybHhGenQxenRaS0VraGFyVU81d3Z4bUVYTG5EM0FSdlpHMXZ1enpCbDlVQW9LTWhpN1ZFOGdR?oc=5",
+        "title": "Trump urges US Senate to hold off on August recess until SAVE America Act passes - News From The States"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62519,
+        "kind": "item",
+        "occurred_at": "2026-07-27T16:05:03+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/trump-demands-an-end-to-the-filibuster-to-pass-the-save-america-act",
+        "title": "Trump demands an end to the filibuster to pass the SAVE America Act"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62524,
+        "kind": "item",
+        "occurred_at": "2026-07-27T16:08:54+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQd2wxc1VlVjBkX2ZwTHA3XzFrX1R4emU0SF9MOW5iMUF2TWhEUUQ5OFR2ZWhSOVZMRzBWQ3FTZ0tucG9lWlVsbzNUaXpJX3kyYjJKdWlZZG1wZGp0b0k1Um1wa1RwN3V2ODdnR0t1UmdyNEk0a2JleHRKVXVubVNHMVozYkN2M0xrSG9mZXc0WGtsRFRCNjRFLUZ3UHR6dEQyQXhkdUp1WmJFTmlqbHhURkJn?oc=5",
+        "title": "Trump demands an end to the filibuster to pass the SAVE America Act - Democracy Docket"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62528,
+        "kind": "item",
+        "occurred_at": "2026-07-27T16:58:08+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQWWIyVDRabzljTU5BVkZpUzNXMWlJck1JTS02MTZOSTJCcmRvUG9RY0xuRWhYajJvdm5Cd2ZhZDZzZlViR3JWSWJibGZ0SF9sR2RyMDNaNTUzZUMzYUZyWTF3Z3RiclJKanAzVGNfNXZnWlI2azRVSGFXVEh5VGZwRGRtSVhpQ3ZKQ1ZXcUwtTnV0T3IzRDRhcUI1Sl9JZV9lYU5BYdIBqgFBVV95cUxOaEtSSEpHOF9JNk5vcWhiUWdvcnpEYXBoV2tRZVoyTlctLTZ6Zm4tTEJiRFcwZFNlZEtFTkt6cmJXTTVyNklrdWRvM1V4c3YxcnRnMGt2MVBoRDYxT2hvTFpudzc3WFB3UEw5bnNRbUR0LXZtRlplQVBoai0tcUNzd3habEM4MDdvd3p5cTZBejQzOURXeVpXMXJmUUloaG1ibFY4N0pWMDdNUQ?oc=5",
+        "title": "Trump demands Thune keep Senate in session until SAVE America Act passes - Fox News"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62540,
+        "kind": "item",
+        "occurred_at": "2026-07-27T17:30:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNLTZpS2JnazJvTWo5U3o0Um1xbVFrRkhfNk9TRHJxZTNWdmlIOE1SSkFGLUVHTnY1UFpuZFk4Z0J1UzlUU1pHWkNEdzF6YThJanoySXBVVTBnRTRxQS1SZHhGX2xaXy1oOFh4UlJSZUxLZDBETTI5ZEhrXzBqWjZEcTNkc2c0ZkJVS3BIeThwdm53RG9mSGMtSlZ2MFVFenBScGVV?oc=5",
+        "title": "Trump wants the SAVE Act passed now. Why can't John Thune deliver the Senate - Bergen Record"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62536,
+        "kind": "item",
+        "occurred_at": "2026-07-27T17:43:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOOU5xTkRwV2ZHQ0VkNExMTjc0YkxtZUdwenJiblRWc21FZThKSFFLUTlsOGhxV1lvd0RHQU45cHJKcHI2cGljdG9Uc0hNRlMwdnVOZ1YwYWVVSXBUXzNtdk5SU3U5VVdmcW9BbzZrdVZWQ2RtYUZ5NXlQdWE4eW5ZanBWQi12NGhmNlFldWlxcUtlczZvRUx6QlZ5MUhOclhZRnYyU1c2dmNkRWNjamZqTmFDMFNENUxOOXJiS0tSd1I0NVVuQWl1Rkd0VHpRNEtUOWs2NWNNUnA4N05MQnVxRm1HMlJXRHF0MGFUbQ?oc=5",
+        "title": "Trump urges GOP Senators to terminate filibuster, pass SAVE America Act - WCNC"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62523,
+        "kind": "item",
+        "occurred_at": "2026-07-27T19:19:19+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPcUtWV2VBNE90alBLVXFKaEh2cjZkbk44aVNEQTdYS0UwN3NvZVd6dDI3NjVlSXZibjhZQ1kzaDlyVmlZeEFhdkx4dlJ6c3FuU2pwblY1WE1Eb2pkVlNPR3dCVWhnS1dWYzNBRWh5ZUY4MnVSaFJ6WVkxMF9QRnA0aDZuTEVpaHptaU1mcENaTHh2UjlLOHlZZVBpLTJZWVpGZTU3U3d3bGJ6dHczdXg4aENUWUx6d9IBuwFBVV95cUxNU2Z0RXBQOXZTZUJvSW5oRlQya3hvU1JsMGhhcGxQeHpkNlhpMEVxS3ppNW8yYUc5M2R6NnlyZ2hoZFRMWjN2U2x3OUUyMGwwby1TYzI0V3lFZ2RqTWJIUEZaU1l2NHQwLVR6YVVrNm04bllOMVpEand2YllnYXUzTXVrNU8xQ1dUbkw1TDlGVVotTjlQWVJlUERUSGJpcWhuNjRJY1lpYko2dWw2ZXQtT0tCdjJmZURLN3VF?oc=5",
+        "title": "Trump demands Senate cancel August break until it passes the SAVE America Act - PBS"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62521,
+        "kind": "item",
+        "occurred_at": "2026-07-27T20:30:29+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPOFJzTjAybXktX0YwX0hDbE9UQkNjQ0VMWjJpOFlYcmZTM3ZrblhLTFBQLU9Jd1Mxd2xJbV8tLThaTGdWYVVOQlJvWWllZ1R4bmp1OGZvNTRfTnUwdHVya182UnlsdTJnUi1MQTEyaF9naEhiSGpfSEpMeTFRNHpCUXRmeVF1ZXZBZnFXd2dYMk9IdnpxRmVRc1pqTzdFZ2dFeTZIUll3Nnhid25teGd5R0c3a0w1QzJFZVFoeW9wNUZvTU3SAcgBQVVfeXFMT0lxdERicmt5emxrZkVycG01NnVicl9tdGU3VWRVelpybGtQMmxFY2RlMEJtSnhHdThPdnp3cnN6am1GVGlmQnF0Ml9RRnZ0ekJsaWlTa1RfNVB4YzhCaEJIbXRBMnJ1LU9KVTNVdE8wSEtTM0YtUzlVZVFBNGJ0SlFXZk9XYUg2YXlFU253Q1diVkl0RHhWMkR2WkdzUEU5dnVldWdITGhjbFdXczlKNVc2MFcyVS1vdThRcHBzZGFFZUJpTW9uQnQ?oc=5",
+        "title": "'Show me how this ends.' Thune responds to Trump's escalated calls to pass SAVE America Act - PBS"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 62529,
+        "kind": "item",
+        "occurred_at": "2026-07-27T23:47:31+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0tbUxQQ1BxSTlHbjRVSGlhNjh3SzM3SVJFSXlwQWZxaS1EMG15cnJIY1p2c1I5MTV5QWVYQU01UEtPTDRzeTJYV29zMkE4ajE1SzVXdDFDM01veVJ5T3FROVYtMWVUZ9IBa0FVX3lxTE9XTS1wbDBjaEN1TlRNdlJnQVE3Vmtqb0o5SGktYVVERks4NnprYXJacU00bDVkd1BmTDRabEtCY2NWZV9EWmpFT0VpUDg0X0xRRzdVNnBPczYwUDJEQkd4X1JlUkhvWmtVUnBz?oc=5",
+        "title": "Trump pushes SAVE America Act & end to filibuster - FOX 10 Phoenix"
       }
     ]
   },

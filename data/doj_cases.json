@@ -23,7 +23,7 @@
     "court": "District of Colorado",
     "court_id": "cod",
     "docket_number": "1:25-cv-03967",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on intervenors' motion to dismiss is underway and should conclude by 7/29/26.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on intervenors' motion to dismiss is underway: intervenors filed their motion on 7/10/26; DOJ filed its response on 7/24/26; intervenors' reply due by 7/31/26.",
     "state": "Colorado"
   },
   {
@@ -101,10 +101,10 @@
   {
     "caption": "United States v. Kentucky",
     "category": "voter-data",
-    "court": "Eastern District of Kentucky",
-    "court_id": "kyed",
-    "docket_number": "3:26-cv-00019",
-    "notes": "Claims: Civil Rights Act of 1960 | Status: On 7/23/2026, the District Court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/23/26 dismissal.",
+    "court": "Sixth Circuit",
+    "court_id": "ca6",
+    "docket_number": "26-5657",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: On 7/24/26, DOJ filed a notice that it will appeal the district court's dismissal to the Sixth Circuit. | Key decisions: District Court's 7/23/26 dismissal.",
     "state": "Kentucky"
   },
   {
@@ -257,7 +257,7 @@
     "court": "Eastern District of Virginia",
     "court_id": "vaed",
     "docket_number": "3:26-cv-00042",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/14/2026, the District Court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/14/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/24/26, DOJ filed a notice that it will appeal the district court's dismissal to the Fourth Circuit. | Key decisions: District Court's 7/14/2026 dismissal.",
     "state": "Virginia"
   },
   {

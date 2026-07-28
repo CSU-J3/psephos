@@ -25072,8 +25072,8 @@
   {
     "bill_number": "H834",
     "is_vehicle": false,
-    "last_action": "Ref To Com On Rules and Operations of the Senate",
-    "last_action_at": "2025-05-15T00:00:00",
+    "last_action": "Re-ref to Elections. If fav, re-ref to Rules and Operations of the Senate",
+    "last_action_at": "2026-07-27T00:00:00",
     "session": "2025-2026 Session",
     "state": "NC",
     "state_bill_id": "2021662",
@@ -25238,6 +25238,26 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/NC/bill/H834/2025",
         "title": "NC H834: Ref To Com On Rules and Operations of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 62600,
+        "kind": "item",
+        "occurred_at": "2026-07-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/NC/bill/H834/2025",
+        "title": "NC H834: Withdrawn From Com"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 62601,
+        "kind": "item",
+        "occurred_at": "2026-07-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/NC/bill/H834/2025",
+        "title": "NC H834: Re-ref to Elections. If fav, re-ref to Rules and Operations of the Senate"
       }
     ],
     "title": "Sportsman's Voter Act",
