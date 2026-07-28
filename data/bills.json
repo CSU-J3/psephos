@@ -1422,6 +1422,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 62986,
+        "kind": "item",
+        "occurred_at": "2026-07-27T21:11:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQSGNEcWxGaU5mTzlVV1R3RkNzNVlUTEg0eS03WUlubzIyN0xDYUtfejBOaGRSSUk3Zms5bHBidHdCM0hBTmNyakpiODRFQTZDVnMtcTB0c0h6eloxNHcwVEotLWhnM09fZXowcjY5Tk5rMEpuNVp5aVNobXlCWmZSaHVVemRjZWw2QnRNdS04YWZac011VkhaR0RzdHdWdEdIMEJoaUMzbUc?oc=5",
+        "title": "Trump demands Thune not let Senate leave until SAVE Act is passed - USA Today"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 62529,
         "kind": "item",
         "occurred_at": "2026-07-27T23:47:31+00:00",
