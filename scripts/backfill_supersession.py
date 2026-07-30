@@ -1,18 +1,23 @@
-"""One-off backfill: link a terminated district docket to the circuit appeal that
-superseded it, via cases.superseded_by (handoff 13).
+"""One-off backfill: link a terminated docket to the successor that replaced it (a
+circuit appeal, or a refile in the correct venue), via cases.superseded_by (handoff 13, 14).
 
-Forward-pointing on the DEAD row: the district rows are terminated and seedless, so
-`upsert_case` never rewrites them and the asserted value is safe. The reverse lookup
-(successor -> predecessor) is a query, not a column. See schema.sql cases.superseded_by.
+Forward-pointing on the DEAD row. The circuit-appeal predecessors are terminated and
+seedless, so `upsert_case` never rewrites them. The Georgia refile is different: its
+M.D. Ga. source is terminated but still a live seed in data/doj_cases.json, so the
+collector calls `upsert_case` on it every run -- the asserted value survives anyway
+because that function's row dict omits `superseded_by` and `db.upsert` only sets listed
+columns. The reverse lookup (successor -> predecessor) is a query, not a column. See
+schema.sql cases.superseded_by.
 
 There is no automatic detection here and there shouldn't be. The signal that a tracker
-row moved to a circuit docket is a diff in data/doj_cases.json, committed and
+row moved to a successor docket is a diff in data/doj_cases.json, committed and
 deterministic since handoff 4. Procedure for the next one:
-  1. spot the docket change in the artifact's git history (a state's row gaining a
-     circuit court_id / docket_number),
-  2. confirm both rows in `cases`: the district row is `terminated`, the circuit row is
+  1. spot the docket change in the artifact's git history (a state's row gaining a new
+     court_id / docket_number), OR a new tracker row for a state that already has one
+     (the `Georgia (1)` / `Georgia (2)` refile pattern),
+  2. confirm both rows in `cases`: the source row is `terminated`, the successor row is
      live and carries the new docket,
-  3. add the (district_id, district_docket, circuit_id, circuit_docket) pair to PAIRS,
+  3. add the (source_id, source_docket, successor_id, successor_docket) pair to PAIRS,
   4. dry-run, paste the table, then --apply.
 
 Dry-run by default: prints the intended mapping and writes nothing. --apply writes and
@@ -31,14 +36,15 @@ import sys
 import config
 import db
 
-# (district case_id, district docket, circuit case_id, circuit docket). Asserted from
-# the handoff-13 recon, not derived -- captions differ at each level so no string match
-# links them. Each district row is `terminated`; each circuit row is live and carries
-# the docket below.
+# (source case_id, source docket, successor case_id, successor docket). Asserted from
+# the handoff-13/14 recon, not derived -- captions differ at each level so no string
+# match links them. Each source row is `terminated`; each successor row is live and
+# carries the docket below.
 PAIRS = [
     ("71453026", "2:25-cv-01481", "73582123", "26-2684"),   # PA -> 3d Cir.
     ("71453646", "1:25-cv-00371", "73607684", "26-1783"),   # NH -> 1st Cir.
     ("71980724", "1:25-cv-03934", "73608654", "26-1878"),   # MD -> 4th Cir.
+    ("72053306", "5:25-cv-00548", "72193752", "1:26-cv-00485"),  # GA venue refile, M.D. Ga. -> N.D. Ga.
 ]
 
 
@@ -104,7 +110,7 @@ def main(argv=None) -> int:
     db.init_db()
     conn = db.connect()
     try:
-        print("  district (terminated)          ->  circuit (live)")
+        print("  source (terminated)            ->  successor (live)")
         for src_id, src_dock, tgt_id, tgt_dock in PAIRS:
             print(f"    {src_id} {src_dock:<15}  ->  {tgt_id} {tgt_dock}")
         errs, linked = run(conn, PAIRS, apply)
@@ -117,7 +123,7 @@ def main(argv=None) -> int:
             print("\n  DRY-RUN -- all guards pass, nothing written. Re-run with --apply.")
             return 0
         conn.commit()
-        print(f"\n  APPLIED -- {linked} of {len(PAIRS)} district rows linked to their circuit appeal.")
+        print(f"\n  APPLIED -- {linked} of {len(PAIRS)} source rows linked to their successor.")
     finally:
         conn.close()
     return 0
