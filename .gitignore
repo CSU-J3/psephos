@@ -21,6 +21,11 @@ data/psephos.db-shm
 # `python -m tools.masterlist_corpus` (nine queries). The script is the reproducible path.
 data/masterlist_corpus.json
 
+# offline sasts probe corpus (handoff 11 / 5b-b): the state_bills dimension's outward
+# relations; rebuild with `python -m tools.sasts_dump` (~455 queries). The script is
+# the reproducible path.
+data/sasts_corpus.json
+
 # os
 .DS_Store
 Thumbs.db
