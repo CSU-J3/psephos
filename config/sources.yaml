@@ -328,6 +328,25 @@ state:
     - election official
     - canvass
     - signature verification
+                                      # INVERTED / adjective+token voter constructions,
+                                      # adopted on measured recall (handoff 12 Part C):
+                                      # +10 genuine bills at 100% precision over the corpus,
+                                      # no bare token, all phrases. The phrase plural rule
+                                      # applies but is a NO-OP here -- they are already
+                                      # plural, so the trailing (?:es|s)? is dead alternation,
+                                      # harmless, not intentional. WATCH `registered voters`
+                                      # and `eligible voters`: the most generic surface forms
+                                      # (adjective + token), the likeliest to pick up bond/tax
+                                      # language if the corpus moves ("a majority of registered
+                                      # voters" is a plausible construction, just absent today).
+                                      # Zero noise is MEASURED, not assumed; the bond/tax flood
+                                      # negatives are pinned in test_state.py so a corpus shift
+                                      # that breaks this trips a test rather than leaking silently.
+    - registration of voters          # inverted `voter registration`; does NOT match
+                                       # "of registering voters" (TX HB509, noise) -- tested
+    - registered voters               # WATCH: generic adjective+token
+    - eligible voters                 # WATCH: generic adjective+token
+    - provided to voters              # "information provided to voters" (ballot-measure info)
   exclude_terms:                      # REDACTED from title+description before matching (see
                                       # election_match), so a bill matching ONLY via one of these
                                       # drops, while one also carrying a real term survives:
