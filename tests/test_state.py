@@ -186,6 +186,43 @@ def test_election_filter_flood_shapes_still_dropped():
     assert not M("Relating to the creation of the Montgomery County Municipal Utility District No. 258")  # MUD
 
 
+def test_election_filter_plural_phrase_recall():
+    # Handoff 12: PHRASE terms tolerate a plural on the last word. These are the
+    # exact regressions the plural probe surfaced -- singular-only phrasing missed
+    # a bill purely on a trailing 's'.
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS)
+    assert M("Relating to penalties for intimidation of election officials")   # 'election officials'
+    assert M("Relating to the eligibility to vote in certain primary elections")  # 'primary elections'
+    assert M("Post-Election Audits by State Auditor")                          # 'election audits'
+    # The singular still matches too -- tolerance is additive, not a replacement.
+    assert M("Relating to a single election official")                         # 'election official'
+
+
+def test_election_filter_bare_token_stays_exact():
+    # The deliberate half of the decision: bare `voter` is NOT pluralized, so a bill
+    # whose ONLY hit is "voters" does not match. Asserted directly because a future
+    # broadening would otherwise silently undo it (these are live-corpus noise shapes:
+    # a bond referral, a daylight-time referendum, a League of Women Voters resolution).
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS)
+    # Each hits ONLY on "voters" (plural); no bare "voter" and no other term present.
+    assert not M("Authorizing a statewide referendum allowing voters to indicate a preference")
+    assert not M("League of Women Voters of Georgia; recognize")
+    assert not M("Board of Education; members shall be elected by voters of the district")
+    # But the singular bare token is unchanged -- it still matches.
+    assert M("Voter Fraud Prevention Act")                                      # bare 'voter'
+
+
+def test_exclusion_plural_symmetry():
+    # Handoff 12: exclusion phrases are plural-tolerant on the last word, symmetric
+    # with the term side. A synthetic "voter approvals" redacts exactly like the
+    # singular, so a bill matching ONLY via the plural noise phrase still drops.
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS, EXCLUDES)
+    assert not M("Photo enforcement systems; voter approvals")                  # plural, sole match -> drops
+    assert not M("Photo enforcement systems; voter approval")                   # singular, same result
+    # A real term still survives the plural redaction.
+    assert M("Voter approvals of early voting changes")                         # 'early voting' left
+
+
 # --- change-hash pipeline (temp DB + faked LegiScan) ------------------------
 
 def test_collect_filters_changes_and_writes():
@@ -341,6 +378,9 @@ if __name__ == "__main__":
     test_election_filter_recall_broadened_phrasings()
     test_election_filter_exclusion_redacts_noise_keeps_real()
     test_election_filter_flood_shapes_still_dropped()
+    test_election_filter_plural_phrase_recall()
+    test_election_filter_bare_token_stays_exact()
+    test_exclusion_plural_symmetry()
     test_collect_filters_changes_and_writes()
     test_change_hash_gate_skips_unchanged()
     test_idempotent_across_runs()
