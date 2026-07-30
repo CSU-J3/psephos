@@ -219,3 +219,67 @@ def test_execute_propagates_unrelated_valueerror():
     with pytest.raises(ValueError, match="syntax error"):
         conn.execute("SELCT 1")
     assert calls["reopen"] == 0
+
+
+# --- db.recover: the shared per-item recovery helper ------------------------
+# recover() is what collectors' handlers call instead of a bare rollback(). On a
+# raw sqlite3 connection (local dev, and tests) it falls through to rollback();
+# on a _Conn it takes reset(), which rebuilds the connection rather than rolling
+# back a stream that may already be dead.
+
+
+def test_recover_on_local_sqlite_rolls_back_without_raising():
+    """No reset attr -> recover() falls through to rollback(), discarding the open
+    transaction, and never raises. This is the local-dev / test path."""
+    conn = sqlite3.connect(":memory:")
+    conn.execute("CREATE TABLE t (x INTEGER)")
+    conn.commit()
+    conn.execute("INSERT INTO t VALUES (1)")  # uncommitted
+    db.recover(conn)                          # -> rollback()
+    assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 0
+
+
+def test_recover_on_conn_takes_reset_path_and_clears_pending():
+    """A _Conn has reset(), so recover() rebuilds the connection: _pending clears
+    and the connection is usable afterward."""
+    seeded = libsql.connect(":memory:")
+    seeded.execute("CREATE TABLE t (x INTEGER)")
+    seeded.commit()
+
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        return seeded
+
+    conn = db._Conn(libsql.connect(":memory:"), reopen=reopen)
+    conn.execute("CREATE TABLE t (x INTEGER)")   # _pending = True
+    assert conn._pending is True
+
+    db.recover(conn)                             # -> reset() -> reopen
+    assert calls["reopen"] == 1
+    assert conn._pending is False
+    # the rebuilt connection is live and queryable
+    assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 0
+
+
+def test_recover_survives_a_raising_rollback():
+    """The one that matters: on a _Conn whose underlying rollback() raises (a dead
+    Hrana stream), recover() must NOT propagate -- reset() rebuilds and never touches
+    the dead rollback -- where a bare conn.rollback() WOULD raise."""
+
+    class _DeadRollback:
+        def rollback(self):
+            raise ValueError(_STALE)
+        def close(self):
+            pass
+
+    conn = db._Conn(_DeadRollback(), reopen=lambda: libsql.connect(":memory:"))
+    conn._pending = True
+
+    # bare rollback() propagates the dead-stream error ...
+    with pytest.raises(ValueError, match="stream not found"):
+        conn.rollback()
+    # ... but recover() takes the reset path and survives.
+    db.recover(conn)
+    assert conn._pending is False
