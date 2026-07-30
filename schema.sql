@@ -94,6 +94,11 @@ CREATE TABLE IF NOT EXISTS cases (
     latest_entry_at TEXT,
     entries_synced_at TEXT,                  -- max CourtListener date_modified ingested for this
                                              -- docket; NULL means never bootstrapped (full walk next poll)
+    superseded_by   TEXT REFERENCES cases(case_id),  -- this docket's continuation: the appeal or
+                                             -- refile that replaced it. Set on the terminated row,
+                                             -- pointing forward; NULL for live dockets. The reverse
+                                             -- (successor -> predecessor) is a query, not a column,
+                                             -- so the collector's upsert path never has to preserve it.
     source_url      TEXT,
     seeded_from     TEXT,                    -- which tracker the case came from
     updated_at      TEXT

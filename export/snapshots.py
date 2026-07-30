@@ -212,6 +212,9 @@ def build_cases(conn) -> list[dict]:
             "plaintiff": c["plaintiff"],
             "defendant": c["defendant"],
             "filed_at": c["filed_at"],
+            "superseded_by": c["superseded_by"],   # district->circuit continuation link
+                                                   # (handoff 13); null on all but the
+                                                   # three terminated district rows.
             "timeline": entries,
         })
     return out

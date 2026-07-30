@@ -199,6 +199,7 @@ def _remote_token() -> str:
 _MIGRATIONS = [
     ("items", "state_bill_id", "TEXT REFERENCES state_bills(state_bill_id)"),
     ("cases", "entries_synced_at", "TEXT"),
+    ("cases", "superseded_by", "TEXT REFERENCES cases(case_id)"),
 ]
 
 
