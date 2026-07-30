@@ -92,8 +92,20 @@ def to_item(bill: dict, action: dict, gsource: str, ginfo: str) -> dict:
 def _term_pattern(terms: tuple[str, ...]) -> "re.Pattern":
     """Compile the terms into one word-boundary alternation, cached per unique term
     tuple. The wrapping \\b...\\b is the whole point: a term matches only as a whole
-    word or phrase, never inside a larger word."""
-    alt = "|".join(re.escape(t.casefold()) for t in terms)
+    word or phrase, never inside a larger word.
+
+    PHRASE terms (those with a space) also tolerate a plural on the last word --
+    `election official` matches `election officials` too -- while BARE single-word
+    tokens stay exact: `voter` never matches `voters`. The predicate is the space,
+    not a whitelist. A phrase carries its own context, so pluralizing its head noun
+    widens recall without widening the collision surface; a bare token has none, so
+    `voters` collides with bond-referral, referendum, and civic-resolution language
+    the singular never touched (handoff 12, measured: phrase plurals +19 at ~95%,
+    bare `voters` +56 at ~45%)."""
+    alt = "|".join(
+        re.escape(t.casefold()) + (r"(?:es|s)?" if " " in t else "")
+        for t in terms
+    )
     return re.compile(r"\b(?:" + alt + r")\b")
 
 
@@ -113,7 +125,9 @@ def election_match(bill: dict, terms: list[str],
                    excludes: "tuple[str, ...] | list[str]" = ()) -> bool:
     """Keep a bill iff its title (or description) contains one of the terms as a
     WHOLE WORD/PHRASE, casefolded. Word-boundary, NOT substring: "absentee" does not
-    match "absenteeism", "voter registration" matches only the phrase.
+    match "absenteeism", "voter registration" matches only the phrase. Phrase terms
+    are plural-tolerant on the last word ("election officials"); bare tokens are not
+    ("voters" does not match "voter") -- see _term_pattern for the why.
 
     Recall was measured against a nine-state masterlist corpus (handoff 9). Bare
     "election"/"ballot" stay OUT of `terms` -- their floods (ad-valorem-tax/bond
