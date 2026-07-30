@@ -172,6 +172,24 @@ class _Conn:
         return self._raw.close()
 
 
+def recover(conn) -> None:
+    """Discard an aborted transaction so a per-item handler can carry on. On the
+    remote _Conn the Hrana stream may already be dead, so reset() abandons it and
+    rebuilds the connection; local SQLite (and tests that wrap a raw sqlite3
+    connection directly) has no reset(), where a plain rollback() is enough. The
+    getattr, rather than a type check, is what lets those raw-connection tests take
+    the rollback path.
+
+    This helper exists because a handler that calls rollback() on a dead stream
+    raises inside the handler and takes down the very run the handler was written
+    to keep alive -- the failure family in legislation.py that handoff 15 closed."""
+    reset = getattr(conn, "reset", None)
+    if reset is not None:
+        reset()
+    else:
+        conn.rollback()
+
+
 def _remote_url(path: str | None) -> str | None:
     """The Turso URL to use, or None to use local SQLite. An explicit path always
     means local (tests/dev); otherwise honor TURSO_DATABASE_URL if present."""
