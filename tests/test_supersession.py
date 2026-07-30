@@ -73,6 +73,22 @@ def test_apply_writes_exactly_the_pairs():
     conn.close()
 
 
+def test_refile_pair_links_no_court_assumption():
+    """A refile links exactly like a circuit appeal: source and target are BOTH district
+    courts with district-format dockets. Proves the guards carry no court assumption --
+    the claim the Georgia venue refile (handoff 14) rests on."""
+    conn = _conn()
+    refile = [("300", "5:25-cv-00548", "301", "1:26-cv-00485")]  # M.D. Ga. -> N.D. Ga. shape
+    _case(conn, "300", "terminated", "5:25-cv-00548")
+    _case(conn, "301", "pending", "1:26-cv-00485")
+    errs, linked = backfill.run(conn, refile, apply=True)
+    conn.commit()
+    assert errs == [] and linked == 1
+    assert _superseded(conn)["300"] == "301"
+    assert _superseded(conn)["301"] is None   # successor untouched
+    conn.close()
+
+
 def test_dry_run_writes_nothing():
     conn = _conn()
     _seed_valid(conn)
@@ -145,6 +161,7 @@ def test_idempotent_second_run():
 
 if __name__ == "__main__":
     test_apply_writes_exactly_the_pairs()
+    test_refile_pair_links_no_court_assumption()
     test_dry_run_writes_nothing()
     test_missing_target_refuses_whole_run()
     test_non_terminated_source_refuses()
