@@ -200,7 +200,7 @@ def main() -> int:
                 totals["agency"] += counts["new_items"]
                 print(f"  agency        {term:<22} fetched {counts['fetched']:>4}  +{counts['new_items']} items")
             except Exception as exc:
-                conn.rollback()
+                db.recover(conn)      # not rollback(): a dead Hrana stream makes rollback raise
                 print(f"  agency        {term:<22} ERROR: {exc}", file=sys.stderr)
 
             try:
@@ -210,7 +210,7 @@ def main() -> int:
                 totals["presidential"] += counts["new_items"]
                 print(f"  presidential  {term:<22} fetched {counts['fetched']:>4}  +{counts['new_items']} items")
             except Exception as exc:
-                conn.rollback()
+                db.recover(conn)      # not rollback(): a dead Hrana stream makes rollback raise
                 print(f"  presidential  {term:<22} ERROR: {exc}", file=sys.stderr)
         print(f"  total: agency +{totals['agency']}, presidential +{totals['presidential']}")
     finally:
