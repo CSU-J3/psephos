@@ -29,7 +29,7 @@ Track what changed, attach the roll-call or the document behind it, and let the 
 
 The coercion category (voter-roll demands, funding threats) is not in any structured feed. It surfaces in the news channel first, then becomes a docket in the litigation channel once a state resists. You catch it with a lag, through news plus CourtListener, not in real time. That gap is expected, not a bug to engineer around.
 
-State legislation is the fifth channel, now live via LegiScan. Fifty legislatures and heavy noise make coverage the access question: a change-hash gate keeps it inside the free-tier cap by calling `getBill` only on election bills whose masterlist hash moved. What remains is depth, not existence — a `state_bills` dimension and state-level vehicle detection (5b), and a dedicated state view.
+State legislation is the fifth channel, now live via LegiScan. Fifty legislatures and heavy noise make coverage the access question: a change-hash gate keeps it inside the free-tier cap by calling `getBill` only on election bills whose masterlist hash moved. The `state_bills` dimension and the dedicated state view shipped (5b-a / 5b-c); state-level vehicle detection (5b-b) is closed as a free-tier limitation (see the limitations section).
 
 ---
 
@@ -75,7 +75,7 @@ Seed `cases` from the trackers in `config/sources.yaml` (UW, States United, Demo
 Query the Federal Register API for documents from the configured agencies matching the configured terms. Write each to `items`, grade A1. Catches executive orders and rule changes that never touch Congress. A title-only relevance score surfaces the handful of on-topic EOs and rules among the agency-rule noise (scoring title+summary floods it with EAC abstracts).
 
 ### collectors/state.py  (live)
-LegiScan, subject-filtered for elections. One `getMasterList` per state per run, then `getBill` only on election bills whose `change_hash` moved — the budget gate that holds it under the free-tier cap (a `max_getbill_per_run` guard resumes next run if hit). State items are leaf `items` rows (no bill/case dimension yet) with their own `data/state.json`. The `state_bills` dimension and state-level vehicle detection are the deferred 5b depth.
+LegiScan, subject-filtered for elections. One `getMasterList` per state per run, then `getBill` only on election bills whose `change_hash` moved — the budget gate that holds it under the free-tier cap (a `max_getbill_per_run` guard resumes next run if hit). State items reference a first-class `state_bills` dimension via `items.state_bill_id`, exported as per-bill timelines in `data/state_bills.json` (5b-a). State-level vehicle detection (5b-b) is closed as a free-tier limitation — see the limitations section.
 
 ---
 
@@ -110,7 +110,7 @@ Phases 1–3 have shipped; the system runs unattended on the 6-hour cron and per
 
 **Phase 3 (shipped).** State legislation via LegiScan, subject-filtered, with the change-hash budget gate. And the UW tracker scraper (`collectors/tracker_uw.py`) that brought litigation to the full ~31-suit DOJ list.
 
-**Remaining depth (not built).** A `state_bills` dimension and state-level vehicle detection (5b): the state channel is items-only today, so it cannot yet catch a state vehicle the way the federal `bill_relations` model does. And a dedicated state view in the read layer. This is the depth that remains, not new channels.
+**Phase 5b (complete).** The `state_bills` dimension made state bills first-class (5b-a) and a dedicated state view shipped to the read layer (5b-c). State-level vehicle detection (5b-b) is closed as a stated free-tier limitation: LegiScan's `sasts` relations express companionship and similarity, not the substitution a state vehicle would take, so the tool's own asserted relations cannot point to one (see the limitations section and `docs/findings/5b-b-vehicle-discovery.md`). No build phase remains open.
 
 ---
 
@@ -129,7 +129,7 @@ Phases 1–3 have shipped; the system runs unattended on the 6-hour cron and per
 - The demand letters and funding threats are caught with a lag, through news and the dockets they spawn, not in real time.
 - Google News items are C3 until corroborated. Do not let an uncorroborated aggregate drive the timeline.
 - The DOJ-suit case list comes from the UW tracker; if that tracker lags, coverage lags with it.
-- State coverage is live but items-only: the change-hash gate keeps it under the LegiScan free-tier cap, and it does not yet model state bills as a dimension or detect state-level vehicles (that is the deferred 5b depth).
+- State-level vehicle detection is not reachable on free-tier LegiScan data. The `sasts` relation vocabulary populated across the nine polled states expresses companionship and similarity (Same As, Crossfiled, Similar To) plus the joint-resolution/implementer pair (Enabled by, Enabling for). Substitution, the one shape a committee-substitute vehicle would take, appears zero times in 205 relations across the 455-bill dimension. 86% of those relations resolve to bills already held; the 29 unheld targets are election bills the title filter missed plus cross-subject index noise, with no vehicle among them. So the tool's own asserted relations cannot point to a vehicle, and 5b-b already closed full-text discovery structurally. What remains would require reading amendment text on bills the election filter never matched, and the per-bill query cost puts that out of reach on the free tier. 5b-b is closed. See `docs/findings/5b-b-vehicle-discovery.md`.
 
 ---
 
