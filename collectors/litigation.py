@@ -247,6 +247,10 @@ def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | No
     else:
         caption = _existing_caption(conn, case_id) or seed["caption"]
     plaintiff, defendant = split_caption(caption)
+    # `superseded_by` is deliberately absent from this dict. It is asserted out of band
+    # (scripts/backfill_supersession.py) and db.upsert only writes the columns listed
+    # here, so a seeded terminated source (e.g. the M.D. Ga. refile) keeps its link
+    # across every reuse run. Do not add it here without moving the assertion too.
     row = {
         "case_id": case_id,
         "caption": caption,
