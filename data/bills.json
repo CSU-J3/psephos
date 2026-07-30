@@ -1502,6 +1502,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 65073,
+        "kind": "item",
+        "occurred_at": "2026-07-28T14:35:32+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE95cW5UamY2WnVNWnVWOGtNOHJPNFkzMVBrNi1hR0N1eGdpcE9BVEY2Z2lRTENRaWpLRFFoUldsWmlZaXR3dzJGOGlOekozRGhlRkhfMUxoNE4?oc=5",
+        "title": "Trump warns Senate on August recess unless SAVE Act passes - Missoula Current"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 63757,
         "kind": "item",
         "occurred_at": "2026-07-28T19:03:00+00:00",

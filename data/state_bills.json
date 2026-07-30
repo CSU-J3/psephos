@@ -1694,6 +1694,50 @@
     "url": "https://legiscan.com/TX/bill/HB892/2025"
   },
   {
+    "bill_number": "HB568",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-03-03T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1890571",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65089,
+        "kind": "item",
+        "occurred_at": "2024-11-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB568/2025",
+        "title": "TX HB568: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65090,
+        "kind": "item",
+        "occurred_at": "2025-03-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB568/2025",
+        "title": "TX HB568: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65091,
+        "kind": "item",
+        "occurred_at": "2025-03-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB568/2025",
+        "title": "TX HB568: Referred to Elections"
+      }
+    ],
+    "title": "Relating to the registration of voters at a polling place and related procedures.",
+    "url": "https://legiscan.com/TX/bill/HB568/2025"
+  },
+  {
     "bill_number": "SB145",
     "is_vehicle": false,
     "last_action": "Referred to State Affairs",
@@ -1990,6 +2034,114 @@
     ],
     "title": "Relating to an opportunity to correct certain defects in an early voting ballot voted by mail.",
     "url": "https://legiscan.com/TX/bill/HB569/2025"
+  },
+  {
+    "bill_number": "SB68",
+    "is_vehicle": false,
+    "last_action": "Co-author authorized",
+    "last_action_at": "2025-03-31T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1890621",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65113,
+        "kind": "item",
+        "occurred_at": "2024-11-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB68/2025",
+        "title": "TX SB68: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65114,
+        "kind": "item",
+        "occurred_at": "2024-11-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB68/2025",
+        "title": "TX SB68: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65115,
+        "kind": "item",
+        "occurred_at": "2025-02-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB68/2025",
+        "title": "TX SB68: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65116,
+        "kind": "item",
+        "occurred_at": "2025-02-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB68/2025",
+        "title": "TX SB68: Referred to State Affairs"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65117,
+        "kind": "item",
+        "occurred_at": "2025-03-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB68/2025",
+        "title": "TX SB68: Co-author authorized"
+      }
+    ],
+    "title": "Relating to allowing a person who will be 18 years of age on the date of the general election for state and county officers to vote in the preceding primary elections.",
+    "url": "https://legiscan.com/TX/bill/SB68/2025"
+  },
+  {
+    "bill_number": "HB934",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-03-06T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1890624",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65092,
+        "kind": "item",
+        "occurred_at": "2024-11-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB934/2025",
+        "title": "TX HB934: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65093,
+        "kind": "item",
+        "occurred_at": "2025-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB934/2025",
+        "title": "TX HB934: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65094,
+        "kind": "item",
+        "occurred_at": "2025-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB934/2025",
+        "title": "TX HB934: Referred to Elections"
+      }
+    ],
+    "title": "Relating to the eligibility to vote in certain primary elections.",
+    "url": "https://legiscan.com/TX/bill/HB934/2025"
   },
   {
     "bill_number": "HB531",
@@ -3998,6 +4150,50 @@
     ],
     "title": "Relating to electronic voter registration.",
     "url": "https://legiscan.com/TX/bill/SB258/2025"
+  },
+  {
+    "bill_number": "HB425",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-02-28T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1891498",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65086,
+        "kind": "item",
+        "occurred_at": "2024-11-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB425/2025",
+        "title": "TX HB425: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65087,
+        "kind": "item",
+        "occurred_at": "2025-02-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB425/2025",
+        "title": "TX HB425: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65088,
+        "kind": "item",
+        "occurred_at": "2025-02-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB425/2025",
+        "title": "TX HB425: Referred to Elections"
+      }
+    ],
+    "title": "Relating to the registration of voters at a polling place and related procedures.",
+    "url": "https://legiscan.com/TX/bill/HB425/2025"
   },
   {
     "bill_number": "SB146",
@@ -6246,6 +6442,60 @@
     "url": "https://legiscan.com/TX/bill/SJR28/2025"
   },
   {
+    "bill_number": "SB630",
+    "is_vehicle": false,
+    "last_action": "Referred to State Affairs",
+    "last_action_at": "2025-02-03T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1897198",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65118,
+        "kind": "item",
+        "occurred_at": "2024-12-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB630/2025",
+        "title": "TX SB630: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65119,
+        "kind": "item",
+        "occurred_at": "2024-12-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB630/2025",
+        "title": "TX SB630: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65120,
+        "kind": "item",
+        "occurred_at": "2025-02-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB630/2025",
+        "title": "TX SB630: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65121,
+        "kind": "item",
+        "occurred_at": "2025-02-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB630/2025",
+        "title": "TX SB630: Referred to State Affairs"
+      }
+    ],
+    "title": "Relating to allowing a person who will be 18 years of age on the date of the general election for state and county officers to vote in the preceding primary elections.",
+    "url": "https://legiscan.com/TX/bill/SB630/2025"
+  },
+  {
     "bill_number": "SJR29",
     "is_vehicle": false,
     "last_action": "Referred to State Affairs",
@@ -7348,6 +7598,50 @@
     ],
     "title": "Relating to the method of returning a ballot to be voted by mail.",
     "url": "https://legiscan.com/TX/bill/HB1856/2025"
+  },
+  {
+    "bill_number": "HB1855",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-03-14T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1920475",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65095,
+        "kind": "item",
+        "occurred_at": "2025-01-15T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1855/2025",
+        "title": "TX HB1855: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65096,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1855/2025",
+        "title": "TX HB1855: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65097,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1855/2025",
+        "title": "TX HB1855: Referred to Elections"
+      }
+    ],
+    "title": "Relating to the registration of voters at a polling place and related procedures.",
+    "url": "https://legiscan.com/TX/bill/HB1855/2025"
   },
   {
     "bill_number": "HB1854",
@@ -8958,6 +9252,60 @@
     "url": "https://legiscan.com/TX/bill/SJR43/2025"
   },
   {
+    "bill_number": "SB891",
+    "is_vehicle": false,
+    "last_action": "Referred to State Affairs",
+    "last_action_at": "2025-02-13T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1939682",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65122,
+        "kind": "item",
+        "occurred_at": "2025-01-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB891/2025",
+        "title": "TX SB891: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65123,
+        "kind": "item",
+        "occurred_at": "2025-01-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB891/2025",
+        "title": "TX SB891: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65124,
+        "kind": "item",
+        "occurred_at": "2025-02-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB891/2025",
+        "title": "TX SB891: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65125,
+        "kind": "item",
+        "occurred_at": "2025-02-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB891/2025",
+        "title": "TX SB891: Referred to State Affairs"
+      }
+    ],
+    "title": "Relating to penalties for intimidation and harassment of election officials and election interference; creating criminal offenses.",
+    "url": "https://legiscan.com/TX/bill/SB891/2025"
+  },
+  {
     "bill_number": "SB892",
     "is_vehicle": false,
     "last_action": "Referred to State Affairs",
@@ -9098,6 +9446,50 @@
     ],
     "title": "Proposing a constitutional amendment authorizing certain persons under the age of 18 to vote in a primary election.",
     "url": "https://legiscan.com/TX/bill/HJR122/2025"
+  },
+  {
+    "bill_number": "HB2074",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-03-14T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1940604",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65098,
+        "kind": "item",
+        "occurred_at": "2025-01-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2074/2025",
+        "title": "TX HB2074: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65099,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2074/2025",
+        "title": "TX HB2074: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65100,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2074/2025",
+        "title": "TX HB2074: Referred to Elections"
+      }
+    ],
+    "title": "Relating to allowing a person who will be 18 years of age on the date of the general election for state and county officers to vote in the preceding primary elections.",
+    "url": "https://legiscan.com/TX/bill/HB2074/2025"
   },
   {
     "bill_number": "SB901",
@@ -9562,6 +9954,50 @@
     ],
     "title": "Relating to the declaration of a candidate's ineligibility on the basis of filing an application for a place on the general primary election ballot or for nomination by convention with more than one political party.",
     "url": "https://legiscan.com/TX/bill/SB901/2025"
+  },
+  {
+    "bill_number": "HB2082",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-03-14T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1941223",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65101,
+        "kind": "item",
+        "occurred_at": "2025-01-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2082/2025",
+        "title": "TX HB2082: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65102,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2082/2025",
+        "title": "TX HB2082: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65103,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2082/2025",
+        "title": "TX HB2082: Referred to Elections"
+      }
+    ],
+    "title": "Relating to ensuring access to the right to vote by all eligible voters.",
+    "url": "https://legiscan.com/TX/bill/HB2082/2025"
   },
   {
     "bill_number": "HB2139",
@@ -10036,6 +10472,50 @@
     ],
     "title": "Elections: registration; verification of an elector's United States citizenship; require, and modify voter identification requirements. Amends secs. 1 & 4, art. II of the state constitution.",
     "url": "https://legiscan.com/MI/bill/HJRB/2025"
+  },
+  {
+    "bill_number": "HB2245",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-03-14T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1946625",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65104,
+        "kind": "item",
+        "occurred_at": "2025-01-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2245/2025",
+        "title": "TX HB2245: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65105,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2245/2025",
+        "title": "TX HB2245: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65106,
+        "kind": "item",
+        "occurred_at": "2025-03-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB2245/2025",
+        "title": "TX HB2245: Referred to Elections"
+      }
+    ],
+    "title": "Relating to the verification of the citizenship status of registered voters.",
+    "url": "https://legiscan.com/TX/bill/HB2245/2025"
   },
   {
     "bill_number": "SB978",
@@ -14256,6 +14736,800 @@
     "url": "https://legiscan.com/TX/bill/SB1473/2025"
   },
   {
+    "bill_number": "SB1540",
+    "is_vehicle": false,
+    "last_action": "Effective on 9/1/25",
+    "last_action_at": "2025-06-20T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1979265",
+    "status": "4",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65126,
+        "kind": "item",
+        "occurred_at": "2025-02-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65127,
+        "kind": "item",
+        "occurred_at": "2025-02-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65128,
+        "kind": "item",
+        "occurred_at": "2025-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65129,
+        "kind": "item",
+        "occurred_at": "2025-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Referred to Business & Commerce"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65130,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Rereferred to committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65131,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Referred to State Affairs"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65132,
+        "kind": "item",
+        "occurred_at": "2025-04-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Scheduled for public hearing on . . ."
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65133,
+        "kind": "item",
+        "occurred_at": "2025-04-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Considered in public hearing"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65134,
+        "kind": "item",
+        "occurred_at": "2025-04-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Testimony taken in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65135,
+        "kind": "item",
+        "occurred_at": "2025-04-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Left pending in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65136,
+        "kind": "item",
+        "occurred_at": "2025-04-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Considered in public hearing"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65137,
+        "kind": "item",
+        "occurred_at": "2025-04-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Vote taken in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65138,
+        "kind": "item",
+        "occurred_at": "2025-04-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Reported favorably w/o amendments"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65139,
+        "kind": "item",
+        "occurred_at": "2025-04-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Recommended for local & uncontested calendar"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65140,
+        "kind": "item",
+        "occurred_at": "2025-04-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Committee report printed and distributed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65141,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Placed on local & uncontested calendar"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65142,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Laid before the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65143,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read 2nd time & passed to engrossment"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65144,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Vote recorded in Journal"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65145,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Three day rule suspended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65146,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Record vote"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65147,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read 3rd time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65148,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Passed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65150,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Reported engrossed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65151,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Received from the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65152,
+        "kind": "item",
+        "occurred_at": "2025-05-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65153,
+        "kind": "item",
+        "occurred_at": "2025-05-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Referred to Delivery of Government Efficiency"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65154,
+        "kind": "item",
+        "occurred_at": "2025-05-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Scheduled for public hearing on . . ."
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65155,
+        "kind": "item",
+        "occurred_at": "2025-05-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Considered in public hearing"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65156,
+        "kind": "item",
+        "occurred_at": "2025-05-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Testimony taken/registration(s) recorded in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65157,
+        "kind": "item",
+        "occurred_at": "2025-05-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Left pending in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65158,
+        "kind": "item",
+        "occurred_at": "2025-05-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Considered in formal meeting"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65159,
+        "kind": "item",
+        "occurred_at": "2025-05-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Reported favorably w/o amendment(s)"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65160,
+        "kind": "item",
+        "occurred_at": "2025-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Comte report filed with Committee Coordinator"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65161,
+        "kind": "item",
+        "occurred_at": "2025-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Committee report distributed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65162,
+        "kind": "item",
+        "occurred_at": "2025-05-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Committee report sent to Calendars"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65163,
+        "kind": "item",
+        "occurred_at": "2025-05-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Considered in Calendars"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65164,
+        "kind": "item",
+        "occurred_at": "2025-05-25T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Placed on General State Calendar"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65165,
+        "kind": "item",
+        "occurred_at": "2025-05-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read 2nd time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65166,
+        "kind": "item",
+        "occurred_at": "2025-05-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Amended 1-Capriglione"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65167,
+        "kind": "item",
+        "occurred_at": "2025-05-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Passed to 3rd reading as amended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65168,
+        "kind": "item",
+        "occurred_at": "2025-05-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Record vote RV#3789"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65169,
+        "kind": "item",
+        "occurred_at": "2025-05-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Statement(s) of vote recorded in Journal"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65170,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Rules suspended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65171,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Additional sponsor(s) authorized"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65172,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read 3rd time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65173,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Passed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65174,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Record vote RV#3893"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65175,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Statement(s) of vote recorded in Journal"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65176,
+        "kind": "item",
+        "occurred_at": "2025-05-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House passage as amended reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65177,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House amendment(s) laid before the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65178,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Read"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65179,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate refuses to concur"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65180,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate requests conference committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65181,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate appoints conferees"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65182,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate refuses to concur-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65183,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate requests conference committee-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65184,
+        "kind": "item",
+        "occurred_at": "2025-05-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate appoints conferees-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65185,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House grants request for conference committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65186,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House appoints conferees"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65187,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House grants request for conf comm-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65188,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House appoints conferees-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65189,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Conference committee report filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65190,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Conf. Comm. Report distributed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65191,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Rules suspended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65192,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Record vote"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65193,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate adopts conference committee report"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65195,
+        "kind": "item",
+        "occurred_at": "2025-05-31T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Senate adopts conf. comm. report-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65196,
+        "kind": "item",
+        "occurred_at": "2025-06-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House adopts conference committee report"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65197,
+        "kind": "item",
+        "occurred_at": "2025-06-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Record vote RV#4154"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65198,
+        "kind": "item",
+        "occurred_at": "2025-06-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Statement(s) of vote recorded in Journal"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65199,
+        "kind": "item",
+        "occurred_at": "2025-06-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: House adopts conf. comm. report-reported"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65200,
+        "kind": "item",
+        "occurred_at": "2025-06-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Reported enrolled"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65201,
+        "kind": "item",
+        "occurred_at": "2025-06-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Signed in the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65202,
+        "kind": "item",
+        "occurred_at": "2025-06-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Signed in the House"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65203,
+        "kind": "item",
+        "occurred_at": "2025-06-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Sent to the Governor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65204,
+        "kind": "item",
+        "occurred_at": "2025-06-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Signed by the Governor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65205,
+        "kind": "item",
+        "occurred_at": "2025-06-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1540/2025",
+        "title": "TX SB1540: Effective on 9/1/25"
+      }
+    ],
+    "title": "Relating to maintaining the confidentiality of the personal information of election officials and their employees.",
+    "url": "https://legiscan.com/TX/bill/SB1540/2025"
+  },
+  {
     "bill_number": "HB3164",
     "is_vehicle": false,
     "last_action": "Referred to Elections",
@@ -15466,6 +16740,50 @@
     ],
     "title": "Property owners' associations; development and affirmative election; provisions",
     "url": "https://legiscan.com/GA/bill/HB664/2025"
+  },
+  {
+    "bill_number": "HB661",
+    "is_vehicle": false,
+    "last_action": "House Second Readers",
+    "last_action_at": "2025-03-03T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "GA",
+    "state_bill_id": "1987893",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65245,
+        "kind": "item",
+        "occurred_at": "2025-02-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HB661/2025",
+        "title": "GA HB661: House Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65246,
+        "kind": "item",
+        "occurred_at": "2025-02-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HB661/2025",
+        "title": "GA HB661: House First Readers"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65247,
+        "kind": "item",
+        "occurred_at": "2025-03-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HB661/2025",
+        "title": "GA HB661: House Second Readers"
+      }
+    ],
+    "title": "Elections; qualifications for and registration of voters; enhance penalties",
+    "url": "https://legiscan.com/GA/bill/HB661/2025"
   },
   {
     "bill_number": "HB785",
@@ -16884,6 +18202,390 @@
     ],
     "title": "Relating to the partial count of electronic voting system ballots.",
     "url": "https://legiscan.com/TX/bill/HB3709/2025"
+  },
+  {
+    "bill_number": "SB1863",
+    "is_vehicle": false,
+    "last_action": "Committee report sent to Calendars",
+    "last_action_at": "2025-05-21T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1991022",
+    "status": "2",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65206,
+        "kind": "item",
+        "occurred_at": "2025-03-04T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65207,
+        "kind": "item",
+        "occurred_at": "2025-03-04T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65208,
+        "kind": "item",
+        "occurred_at": "2025-03-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65209,
+        "kind": "item",
+        "occurred_at": "2025-03-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Referred to State Affairs"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65210,
+        "kind": "item",
+        "occurred_at": "2025-04-07T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Scheduled for public hearing on . . ."
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65211,
+        "kind": "item",
+        "occurred_at": "2025-04-07T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Considered in public hearing"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65212,
+        "kind": "item",
+        "occurred_at": "2025-04-07T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Testimony taken in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65213,
+        "kind": "item",
+        "occurred_at": "2025-04-07T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Left pending in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65214,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Considered in public hearing"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65215,
+        "kind": "item",
+        "occurred_at": "2025-04-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Vote taken in committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65216,
+        "kind": "item",
+        "occurred_at": "2025-04-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Reported favorably w/o amendments"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65217,
+        "kind": "item",
+        "occurred_at": "2025-04-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Committee report printed and distributed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65218,
+        "kind": "item",
+        "occurred_at": "2025-05-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Placed on intent calendar"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65219,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Co-author authorized"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65220,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Rules suspended-Regular order of business"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65221,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Record vote"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65222,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Read 2nd time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65223,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Amendment(s) offered FA1 Hughes"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65224,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Amended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65225,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Vote recorded in Journal"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65226,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Passed to engrossment as amended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65228,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Rules suspended-Regular order of business"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65229,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Record vote"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65230,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Read 3rd time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65231,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Amendment(s) offered FA1 Sparks"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65232,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Amended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65233,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Vote recorded in Journal"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65234,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Passed as amended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65236,
+        "kind": "item",
+        "occurred_at": "2025-05-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Reported engrossed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65237,
+        "kind": "item",
+        "occurred_at": "2025-05-07T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Received from the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65238,
+        "kind": "item",
+        "occurred_at": "2025-05-08T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65239,
+        "kind": "item",
+        "occurred_at": "2025-05-08T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Referred to Elections"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65240,
+        "kind": "item",
+        "occurred_at": "2025-05-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Considered in formal meeting"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65241,
+        "kind": "item",
+        "occurred_at": "2025-05-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Reported favorably w/o amendment(s)"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65242,
+        "kind": "item",
+        "occurred_at": "2025-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Comte report filed with Committee Coordinator"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65243,
+        "kind": "item",
+        "occurred_at": "2025-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Committee report distributed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65244,
+        "kind": "item",
+        "occurred_at": "2025-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB1863/2025",
+        "title": "TX SB1863: Committee report sent to Calendars"
+      }
+    ],
+    "title": "Relating to the conduct of randomized county election audits.",
+    "url": "https://legiscan.com/TX/bill/SB1863/2025"
   },
   {
     "bill_number": "SB1862",
@@ -18582,6 +20284,50 @@
     "url": "https://legiscan.com/TX/bill/HB4253/2025"
   },
   {
+    "bill_number": "HB4274",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-04-01T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "1996673",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65107,
+        "kind": "item",
+        "occurred_at": "2025-03-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB4274/2025",
+        "title": "TX HB4274: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65108,
+        "kind": "item",
+        "occurred_at": "2025-04-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB4274/2025",
+        "title": "TX HB4274: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65109,
+        "kind": "item",
+        "occurred_at": "2025-04-01T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB4274/2025",
+        "title": "TX HB4274: Referred to Elections"
+      }
+    ],
+    "title": "Relating to penalties for intimidation and harassment of election officials and election interference; creating criminal offenses.",
+    "url": "https://legiscan.com/TX/bill/HB4274/2025"
+  },
+  {
     "bill_number": "SB2166",
     "is_vehicle": false,
     "last_action": "Effective on 9/1/25",
@@ -19680,6 +21426,50 @@
     ],
     "title": "Relating to requiring a person to submit proof of citizenship to register to vote, including the eligibility of certain voters to vote a limited federal ballot if the voter cannot supply the required proof and the procedures for the counting of those ballots; creating criminal offenses.",
     "url": "https://legiscan.com/TX/bill/SB16/2025"
+  },
+  {
+    "bill_number": "HB4453",
+    "is_vehicle": false,
+    "last_action": "Referred to Elections",
+    "last_action_at": "2025-04-03T00:00:00",
+    "session": "89th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2000146",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65110,
+        "kind": "item",
+        "occurred_at": "2025-03-11T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB4453/2025",
+        "title": "TX HB4453: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65111,
+        "kind": "item",
+        "occurred_at": "2025-04-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB4453/2025",
+        "title": "TX HB4453: Read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65112,
+        "kind": "item",
+        "occurred_at": "2025-04-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB4453/2025",
+        "title": "TX HB4453: Referred to Elections"
+      }
+    ],
+    "title": "Relating to nonpartisan primary elections; authorizing a fee.",
+    "url": "https://legiscan.com/TX/bill/HB4453/2025"
   },
   {
     "bill_number": "HB4528",
@@ -24350,6 +26140,40 @@
     "url": "https://legiscan.com/GA/bill/HB788/2025"
   },
   {
+    "bill_number": "HB180",
+    "is_vehicle": false,
+    "last_action": "Referred to committee: Commerce and Labor",
+    "last_action_at": "2025-03-26T00:00:00",
+    "session": "136th General Assembly",
+    "state": "OH",
+    "state_bill_id": "2010890",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65360,
+        "kind": "item",
+        "occurred_at": "2025-03-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/OH/bill/HB180/2025",
+        "title": "OH HB180: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65361,
+        "kind": "item",
+        "occurred_at": "2025-03-26T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/OH/bill/HB180/2025",
+        "title": "OH HB180: Referred to committee: Commerce and Labor"
+      }
+    ],
+    "title": "Bar adverse employment action against precinct election officials",
+    "url": "https://legiscan.com/OH/bill/HB180/2025"
+  },
+  {
     "bill_number": "HB981",
     "is_vehicle": false,
     "last_action": "Referred to Communications & Technology",
@@ -25594,6 +27418,80 @@
     "url": "https://legiscan.com/OH/bill/HB233/2025"
   },
   {
+    "bill_number": "SB205",
+    "is_vehicle": false,
+    "last_action": "Failed to pass pursuant to Senate Joint Resolution 1",
+    "last_action_at": "2026-03-23T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "WI",
+    "state_bill_id": "2024401",
+    "status": "6",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65298,
+        "kind": "item",
+        "occurred_at": "2025-04-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB205/2025",
+        "title": "WI SB205: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65299,
+        "kind": "item",
+        "occurred_at": "2025-04-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB205/2025",
+        "title": "WI SB205: Read first time and referred to Committee on Licensing, Regulatory Reform, State and Federal Affairs"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65300,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB205/2025",
+        "title": "WI SB205: Fiscal estimate received"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65301,
+        "kind": "item",
+        "occurred_at": "2025-11-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB205/2025",
+        "title": "WI SB205: Public hearing held"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65302,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB205/2025",
+        "title": "WI SB205: Representatives Andraca and Stubbs added as cosponsors"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65303,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB205/2025",
+        "title": "WI SB205: Failed to pass pursuant to Senate Joint Resolution 1"
+      }
+    ],
+    "title": "Information provided to voters concerning proposed constitutional amendments and other statewide referenda. (FE)",
+    "url": "https://legiscan.com/WI/bill/SB205/2025"
+  },
+  {
     "bill_number": "HB4356",
     "is_vehicle": false,
     "last_action": "Referred To Committee On Elections And Ethics",
@@ -25780,6 +27678,200 @@
     ],
     "title": "In voting by qualified absentee electors, further providing for date of application for absentee ballot; and, in voting by qualified mail-in electors, further providing for date of application for mail-in ballot.",
     "url": "https://legiscan.com/PA/bill/HB1298/2025"
+  },
+  {
+    "bill_number": "AB207",
+    "is_vehicle": false,
+    "last_action": "Failed to concur in pursuant to Senate Joint Resolution 1",
+    "last_action_at": "2026-03-23T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "WI",
+    "state_bill_id": "2026230",
+    "status": "6",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65265,
+        "kind": "item",
+        "occurred_at": "2025-04-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65266,
+        "kind": "item",
+        "occurred_at": "2025-04-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Read first time and referred to Committee on Campaigns and Elections"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65267,
+        "kind": "item",
+        "occurred_at": "2025-05-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Fiscal estimate received"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65268,
+        "kind": "item",
+        "occurred_at": "2025-06-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Public hearing held"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65269,
+        "kind": "item",
+        "occurred_at": "2025-10-08T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Executive action taken"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65270,
+        "kind": "item",
+        "occurred_at": "2025-10-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Report passage recommended by Committee on Campaigns and Elections, Ayes 7, Noes 0"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65271,
+        "kind": "item",
+        "occurred_at": "2025-10-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Referred to committee on Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65272,
+        "kind": "item",
+        "occurred_at": "2025-11-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Placed on calendar 11-19-2025 by Committee on Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65273,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Representative Clancy added as a coauthor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65274,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Read a second time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65275,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Representatives Andraca and Stubbs added as coauthors"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65276,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Ordered to a third reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65277,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Rules suspended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65278,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Read a third time and passed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65279,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Ordered immediately messaged"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65280,
+        "kind": "item",
+        "occurred_at": "2025-11-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Received from Assembly"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65281,
+        "kind": "item",
+        "occurred_at": "2025-11-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Read first time and referred to committee on Licensing, Regulatory Reform, State and Federal Affairs"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65282,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB207/2025",
+        "title": "WI AB207: Failed to concur in pursuant to Senate Joint Resolution 1"
+      }
+    ],
+    "title": "Information provided to voters concerning proposed constitutional amendments and other statewide referenda. (FE)",
+    "url": "https://legiscan.com/WI/bill/AB207/2025"
   },
   {
     "bill_number": "SB688",
@@ -26162,6 +28254,414 @@
     ],
     "title": "In voting by qualified mail-in electors, further providing for voting by mail-in electors.",
     "url": "https://legiscan.com/PA/bill/HB1422/2025"
+  },
+  {
+    "bill_number": "AB268",
+    "is_vehicle": false,
+    "last_action": "Failed to pass pursuant to Senate Joint Resolution 1",
+    "last_action_at": "2026-03-23T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "WI",
+    "state_bill_id": "2032448",
+    "status": "6",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65283,
+        "kind": "item",
+        "occurred_at": "2025-05-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65284,
+        "kind": "item",
+        "occurred_at": "2025-05-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Read first time and referred to Committee on Campaigns and Elections"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65285,
+        "kind": "item",
+        "occurred_at": "2025-05-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Senator Kapenga added as a cosponsor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65286,
+        "kind": "item",
+        "occurred_at": "2025-06-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Public hearing held"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65287,
+        "kind": "item",
+        "occurred_at": "2025-10-08T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Executive action taken"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65288,
+        "kind": "item",
+        "occurred_at": "2025-10-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Report passage recommended by Committee on Campaigns and Elections, Ayes 5, Noes 2"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65289,
+        "kind": "item",
+        "occurred_at": "2025-10-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Referred to committee on Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65290,
+        "kind": "item",
+        "occurred_at": "2025-11-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Placed on calendar 11-19-2025 by Committee on Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65291,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Laid on the table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65292,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB268/2025",
+        "title": "WI AB268: Failed to pass pursuant to Senate Joint Resolution 1"
+      }
+    ],
+    "title": "The right of appeal for complainants aggrieved by decisions of the Elections Commission concerning the conduct of election officials.",
+    "url": "https://legiscan.com/WI/bill/AB268/2025"
+  },
+  {
+    "bill_number": "SB270",
+    "is_vehicle": false,
+    "last_action": "Failed to pass notwithstanding the objections of the Governor pursuant to Joint Rule 82",
+    "last_action_at": "2026-05-13T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "WI",
+    "state_bill_id": "2032768",
+    "status": "5",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65304,
+        "kind": "item",
+        "occurred_at": "2025-05-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65305,
+        "kind": "item",
+        "occurred_at": "2025-05-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Read first time and referred to Committee on Licensing, Regulatory Reform, State and Federal Affairs"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65306,
+        "kind": "item",
+        "occurred_at": "2025-05-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Senator Kapenga added as a coauthor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65307,
+        "kind": "item",
+        "occurred_at": "2025-09-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Public hearing held"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65308,
+        "kind": "item",
+        "occurred_at": "2025-10-08T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Executive action taken"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65309,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Report passage recommended by Committee on Licensing, Regulatory Reform, State and Federal Affairs, Ayes 3, Noes 2"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65310,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Available for scheduling"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65311,
+        "kind": "item",
+        "occurred_at": "2025-10-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Placed on calendar 10-14-2025 pursuant to Senate Rule 18(1)"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65312,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Read a second time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65313,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Ordered to a third reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65314,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Rules suspended to give bill its third reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65315,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Read a third time and passed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65316,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Ordered immediately messaged"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65317,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Received from Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65318,
+        "kind": "item",
+        "occurred_at": "2025-11-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Read first time and referred to committee on Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65319,
+        "kind": "item",
+        "occurred_at": "2025-11-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Placed on calendar 11-19-2025 by Committee on Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65320,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Rules suspended to withdraw from calendar and take up"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65321,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Read a second time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65322,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Ordered to a third reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65323,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Rules suspended"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65324,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Read a third time and concurred in, Ayes 54, Noes 43"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65325,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Ordered immediately messaged"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65326,
+        "kind": "item",
+        "occurred_at": "2025-11-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Received from Assembly concurred in"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65327,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Report correctly enrolled"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65328,
+        "kind": "item",
+        "occurred_at": "2025-12-04T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Presented to the Governor on 12-4-2025"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65329,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Report vetoed by the Governor on 12-5-2025"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65330,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Placed on calendar 5-12-2026 pursuant to Joint Rule 82 (2)(a)"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65331,
+        "kind": "item",
+        "occurred_at": "2026-05-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB270/2025",
+        "title": "WI SB270: Failed to pass notwithstanding the objections of the Governor pursuant to Joint Rule 82"
+      }
+    ],
+    "title": "The right of appeal for complainants aggrieved by decisions of the Elections Commission concerning the conduct of election officials.",
+    "url": "https://legiscan.com/WI/bill/SB270/2025"
   },
   {
     "bill_number": "SB812",
@@ -28544,6 +31044,80 @@
     "url": "https://legiscan.com/WI/bill/SB513/2025"
   },
   {
+    "bill_number": "SB517",
+    "is_vehicle": false,
+    "last_action": "Failed to pass pursuant to Senate Joint Resolution 1",
+    "last_action_at": "2026-03-23T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "WI",
+    "state_bill_id": "2046164",
+    "status": "6",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65332,
+        "kind": "item",
+        "occurred_at": "2025-10-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB517/2025",
+        "title": "WI SB517: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65333,
+        "kind": "item",
+        "occurred_at": "2025-10-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB517/2025",
+        "title": "WI SB517: Read first time and referred to Committee on Government Operations, Labor and Economic Development"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65334,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB517/2025",
+        "title": "WI SB517: Senator Hesselbein added as a coauthor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65335,
+        "kind": "item",
+        "occurred_at": "2025-10-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB517/2025",
+        "title": "WI SB517: Fiscal estimate received"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65336,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB517/2025",
+        "title": "WI SB517: Representative J. Jacobson added as a cosponsor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65337,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/SB517/2025",
+        "title": "WI SB517: Failed to pass pursuant to Senate Joint Resolution 1"
+      }
+    ],
+    "title": "Accessibility training for election officials. (FE)",
+    "url": "https://legiscan.com/WI/bill/SB517/2025"
+  },
+  {
     "bill_number": "SB511",
     "is_vehicle": false,
     "last_action": "Failed to pass pursuant to Senate Joint Resolution 1",
@@ -29050,6 +31624,70 @@
     ],
     "title": "Poll list numbers marked on certain absentee ballots.",
     "url": "https://legiscan.com/WI/bill/AB541/2025"
+  },
+  {
+    "bill_number": "AB536",
+    "is_vehicle": false,
+    "last_action": "Failed to pass pursuant to Senate Joint Resolution 1",
+    "last_action_at": "2026-03-23T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "WI",
+    "state_bill_id": "2046613",
+    "status": "6",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65293,
+        "kind": "item",
+        "occurred_at": "2025-10-15T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB536/2025",
+        "title": "WI AB536: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65294,
+        "kind": "item",
+        "occurred_at": "2025-10-15T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB536/2025",
+        "title": "WI AB536: Read first time and referred to Committee on Campaigns and Elections"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65295,
+        "kind": "item",
+        "occurred_at": "2025-10-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB536/2025",
+        "title": "WI AB536: Fiscal estimate received"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65296,
+        "kind": "item",
+        "occurred_at": "2026-02-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB536/2025",
+        "title": "WI AB536: Representative J. Jacobson added as a coauthor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65297,
+        "kind": "item",
+        "occurred_at": "2026-03-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/WI/bill/AB536/2025",
+        "title": "WI AB536: Failed to pass pursuant to Senate Joint Resolution 1"
+      }
+    ],
+    "title": "Accessibility training for election officials. (FE)",
+    "url": "https://legiscan.com/WI/bill/AB536/2025"
   },
   {
     "bill_number": "AB534",
@@ -38398,6 +41036,60 @@
     "url": "https://legiscan.com/AZ/bill/SCR1023/2026"
   },
   {
+    "bill_number": "SB1460",
+    "is_vehicle": false,
+    "last_action": "Senate read second time",
+    "last_action_at": "2026-02-02T00:00:00",
+    "session": "Fifty-seventh Legislature - Second Regular Session (2026)",
+    "state": "AZ",
+    "state_bill_id": "2093773",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65261,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/AZ/bill/SB1460/2026",
+        "title": "AZ SB1460: Introduced in Senate and read first time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65262,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/AZ/bill/SB1460/2026",
+        "title": "AZ SB1460: Assigned to Senate JUDE Committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65263,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/AZ/bill/SB1460/2026",
+        "title": "AZ SB1460: Assigned to Senate RULES Committee"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65264,
+        "kind": "item",
+        "occurred_at": "2026-02-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/AZ/bill/SB1460/2026",
+        "title": "AZ SB1460: Senate read second time"
+      }
+    ],
+    "title": "Agricultural improvement districts; mail ballots",
+    "url": "https://legiscan.com/AZ/bill/SB1460/2026"
+  },
+  {
     "bill_number": "SB916",
     "is_vehicle": false,
     "last_action": "Failed to pass pursuant to Senate Joint Resolution 1",
@@ -40722,6 +43414,144 @@
     "url": "https://legiscan.com/GA/bill/SR838/2025"
   },
   {
+    "bill_number": "SB568",
+    "is_vehicle": false,
+    "last_action": "Senate Lost",
+    "last_action_at": "2026-03-06T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "GA",
+    "state_bill_id": "2123615",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65250,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65251,
+        "kind": "item",
+        "occurred_at": "2026-02-25T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Read and Referred"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65252,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Committee Favorably Reported By Substitute"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65253,
+        "kind": "item",
+        "occurred_at": "2026-03-04T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Read Second Time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65254,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Engrossed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65255,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Tabled"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65256,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Taken from Table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65257,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Third Read"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65258,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB568/2025",
+        "title": "GA SB568: Senate Lost"
+      }
+    ],
+    "title": "Elections and Primaries; the list of eligible voters is posted and made public prior to each primary or election; require",
+    "url": "https://legiscan.com/GA/bill/SB568/2025"
+  },
+  {
+    "bill_number": "SB562",
+    "is_vehicle": false,
+    "last_action": "Senate Read and Referred",
+    "last_action_at": "2026-02-25T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "GA",
+    "state_bill_id": "2123617",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65248,
+        "kind": "item",
+        "occurred_at": "2026-02-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB562/2025",
+        "title": "GA SB562: Senate Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65249,
+        "kind": "item",
+        "occurred_at": "2026-02-25T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SB562/2025",
+        "title": "GA SB562: Senate Read and Referred"
+      }
+    ],
+    "title": "Voters; persons of this state who are homeless to use the address of the registrar's office of the county in which such person resides; allow",
+    "url": "https://legiscan.com/GA/bill/SB562/2025"
+  },
+  {
     "bill_number": "HB1467",
     "is_vehicle": false,
     "last_action": "House Second Readers",
@@ -40832,6 +43662,258 @@
     ],
     "title": "Urge Congress to enact Safeguard American Voter Eligibility Act",
     "url": "https://legiscan.com/OH/bill/HR330/2025"
+  },
+  {
+    "bill_number": "SR937",
+    "is_vehicle": false,
+    "last_action": "Senate Read and Referred",
+    "last_action_at": "2026-03-12T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "GA",
+    "state_bill_id": "2132153",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65259,
+        "kind": "item",
+        "occurred_at": "2026-03-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SR937/2025",
+        "title": "GA SR937: Senate Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65260,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/SR937/2025",
+        "title": "GA SR937: Senate Read and Referred"
+      }
+    ],
+    "title": "U.S. Department of Homeland Security and United States Immigration and Customs Enforcement; refrain from immigration enforcement activity in the immediate vicinity of polling places and locations; urge",
+    "url": "https://legiscan.com/GA/bill/SR937/2025"
+  },
+  {
+    "bill_number": "SB0833",
+    "is_vehicle": false,
+    "last_action": "Referred To Committee On Elections And Ethics",
+    "last_action_at": "2026-03-11T00:00:00",
+    "session": "103rd Legislature",
+    "state": "MI",
+    "state_bill_id": "2132348",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65355,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/SB0833/2025",
+        "title": "MI SB0833: Introduced By Senator Joseph Bellino"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65356,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/SB0833/2025",
+        "title": "MI SB0833: Referred To Committee On Elections And Ethics"
+      }
+    ],
+    "title": "Elections: election officials; township to contract with an accredited individual to perform election law duties in the absence of a township clerk; authorize. Amends sec. 373 of 1954 PA 116 (MCL 168.373).",
+    "url": "https://legiscan.com/MI/bill/SB0833/2025"
+  },
+  {
+    "bill_number": "HB5717",
+    "is_vehicle": false,
+    "last_action": "Referred To Committee On Elections And Ethics",
+    "last_action_at": "2026-06-02T00:00:00",
+    "session": "103rd Legislature",
+    "state": "MI",
+    "state_bill_id": "2133118",
+    "status": "2",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65338,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Introduced By Representative Rep. Jennifer Wortz"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65339,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Read A First Time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65340,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Referred To Committee On Election Integrity"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65341,
+        "kind": "item",
+        "occurred_at": "2026-03-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Bill Electronically Reproduced 03/12/2026"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65342,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Reported With Recommendation With Substitute (h-1)"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65343,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Referred To Second Reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65344,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Read A Second Time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65345,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Substitute (h-1) Adopted"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65346,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Placed On Third Reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65347,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Read A Third Time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65348,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Substitute (h-2) Adopted"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65349,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Vote On Adoption Reconsidered"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65350,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Substitute (h-2) Not Adopted"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65351,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Passed; Given Immediate Effect Roll Call #166 Yeas 104 Nays 2 Excused 0 Not Voting 4"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65352,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Transmitted"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65353,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Passed By House With Immediate Effect"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65354,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB5717/2025",
+        "title": "MI HB5717: Referred To Committee On Elections And Ethics"
+      }
+    ],
+    "title": "Elections: election officials; township to contract with an accredited individual to perform election law duties in the absence of a township clerk; authorize. Amends sec. 373 of 1954 PA 116 (MCL 168.373).",
+    "url": "https://legiscan.com/MI/bill/HB5717/2025"
   },
   {
     "bill_number": "HB761",
@@ -42380,6 +45462,50 @@
     ],
     "title": "Elections: candidates; eligibility of an independent citizens redistricting commissioner to run for office; modify. Amends sec. 6, art. IV of the state constitution.",
     "url": "https://legiscan.com/MI/bill/HJRW/2025"
+  },
+  {
+    "bill_number": "S1087",
+    "is_vehicle": false,
+    "last_action": "Ref To Com On Rules and Operations of the Senate",
+    "last_action_at": "2026-06-18T00:00:00",
+    "session": "2025-2026 Session",
+    "state": "NC",
+    "state_bill_id": "2153950",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65357,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/NC/bill/S1087/2025",
+        "title": "NC S1087: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65358,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/NC/bill/S1087/2025",
+        "title": "NC S1087: Passed 1st Reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 65359,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/NC/bill/S1087/2025",
+        "title": "NC S1087: Ref To Com On Rules and Operations of the Senate"
+      }
+    ],
+    "title": "Post-Election Audits by State Auditor",
+    "url": "https://legiscan.com/NC/bill/S1087/2025"
   },
   {
     "bill_number": "SB1054",
