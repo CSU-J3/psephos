@@ -71,6 +71,14 @@ Pull every RSS feed plus each Google News query. Run two-stage dedup (below). Fo
 ### collectors/litigation.py  (live)
 Seed `cases` from the trackers in `config/sources.yaml` (UW, States United, Democracy Docket) plus the confirmed `seed_cases`. Resolve each to a CourtListener docket, then poll for new docket entries, writing them to `case_entries` and a summary to `items`. Grade A1 for court records, B2 for tracker-sourced metadata. The UW DOJ-suit tracker is scraped by `collectors/tracker_uw.py` into a deterministic `data/doj_cases.json` (court names mapped to verified CourtListener ids), which `litigation.py` loads alongside `seed_cases` — taking the channel from 3 hand-seeds to the full ~31-suit list without hardcoding it. On a fresh resolve the CourtListener `case_name` replaces the provisional caption.
 
+**Standing check — bootstrap coverage.** A docket with `entries_synced_at IS NULL` was never bootstrapped, so the alarm for gaps is a direct Turso `SELECT`. The correct form excludes superseded rows, since a terminated district docket that has been continued as a circuit appeal is complete, not unbootstrapped (handoff 13):
+
+```sql
+SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL AND superseded_by IS NULL;  -- expect 0
+```
+
+Without `AND superseded_by IS NULL` this read 3 (the PA/NH/MD district orphans) and every mention of it needed the "34 not 37" caveat. `cases.superseded_by` is set on the terminated district row, pointing forward to its circuit appeal; the reverse lookup is a query. The three appeals are first-class rows that poll normally.
+
 ### collectors/executive.py  (live)
 Query the Federal Register API for documents from the configured agencies matching the configured terms. Write each to `items`, grade A1. Catches executive orders and rule changes that never touch Congress. A title-only relevance score surfaces the handful of on-topic EOs and rules among the agency-rule noise (scoring title+summary floods it with EAC abstracts).
 
