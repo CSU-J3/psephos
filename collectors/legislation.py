@@ -235,7 +235,7 @@ def main() -> int:
                     f"+{counts['new_items']} items"
                 )
             except Exception as exc:  # one bad bill shouldn't sink the run
-                conn.rollback()
+                db.recover(conn)      # not rollback(): a dead Hrana stream makes rollback raise
                 print(f"  {entry['bill_id']:<12} ERROR: {exc}", file=sys.stderr)
     finally:
         conn.close()
