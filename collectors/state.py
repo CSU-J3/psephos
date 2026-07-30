@@ -113,9 +113,17 @@ def _term_pattern(terms: tuple[str, ...]) -> "re.Pattern":
 def _exclude_pattern(excludes: tuple[str, ...]) -> "re.Pattern":
     """Compile exclusion phrases into one alternation, cached. Internal whitespace
     matches a space OR hyphen so "voter approval" and "voter-approval" (a TX tax
-    term of art that appears both ways) both redact from the haystack."""
+    term of art that appears both ways) both redact from the haystack.
+
+    Phrase excludes also tolerate a plural on the last word, symmetric with
+    _term_pattern (handoff 12): "voter approvals" redacts like "voter approval".
+    Zero plural excludes occur in today's corpus, so this has no behavior effect
+    now -- it closes the term/exclude asymmetry before the corpus moves."""
     parts = [
-        r"\b" + r"[\s\-]+".join(re.escape(t) for t in re.split(r"\s+", e.casefold())) + r"\b"
+        r"\b"
+        + r"[\s\-]+".join(re.escape(t) for t in re.split(r"\s+", e.casefold()))
+        + (r"(?:es|s)?" if " " in e else "")
+        + r"\b"
         for e in excludes
     ]
     return re.compile("|".join(parts))
