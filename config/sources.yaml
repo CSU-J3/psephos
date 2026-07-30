@@ -295,6 +295,19 @@ state:
                                       # thrown away with the signal. Some phrases (voter
                                       # registration, early voting) are subsumed by the bares;
                                       # kept for explicit coverage if a bare is ever pruned.
+                                      # PLURAL RULE (handoff 12): a PHRASE term (one with a
+                                      # space) tolerates a plural on its last word --
+                                      # `election official` also matches `election officials`.
+                                      # Measured +19 bills at ~95% precision (election official
+                                      # +11, primary election +5, election audit +2, mail ballot
+                                      # +1); the other phrase terms add nothing, so the rule is
+                                      # free to apply broadly. BARE `voter` is deliberately NOT
+                                      # pluralized: `voters` adds 56 at ~45% (bond-referral
+                                      # "submitted to the voters", daylight-time referenda,
+                                      # League of Women Voters resolutions) -- measured, not
+                                      # assumed. The predicate is the space, not a whitelist, so
+                                      # any new phrase term inherits the tolerance. See
+                                      # collectors/state.py::_term_pattern.
     - voter
     - voting
     - voter registration
@@ -323,6 +336,10 @@ state:
                                       # "voter-approval" and "voter approval" both redact. Each is
                                       # named from the corpus noise it removes (34 bills at the
                                       # measured list; every one tax/bond/HOA/proxy, zero real).
+                                      # Plural-tolerant on the last word too (handoff 12),
+                                      # symmetric with terms: "voter approvals" redacts like
+                                      # "voter approval". No corpus effect today; closes the
+                                      # asymmetry before the corpus moves.
     - voter approval                  # TX tax term of art: ad-valorem/bond tax-rate elections
     - proxy voting                    # precinct-committee / corporate proxy voting
     - cumulative voting               # HOA / corporate cumulative voting
