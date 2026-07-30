@@ -11321,7 +11321,7 @@
     "filed_at": "2025-12-18T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
-    "superseded_by": null,
+    "superseded_by": "72193752",
     "timeline": [
       {
         "channel": "litigation",
