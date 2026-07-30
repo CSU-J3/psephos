@@ -421,10 +421,11 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
     try:
         entries, new_mark = poll()
     except common.RateBudgetExhausted:
-        conn.rollback()            # nothing half-written; docket keeps its NULL mark
-        raise                      # daily cap -> let main() abort the whole run, don't storm
+        db.recover(conn)           # nothing half-written; docket keeps its NULL mark.
+        raise                      # recover not rollback: a dead stream makes rollback raise,
+                                   # which would crash instead of letting main() abort cleanly.
     except Exception as exc:
-        conn.rollback()
+        db.recover(conn)           # recover not rollback: a dead stream makes rollback raise
         print(f"  {caption} (docket {case_id}): poll failed, skipped -- {exc}", file=sys.stderr)
         return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0, "poll_failed": True}
     if mode == "full-walk":
@@ -442,7 +443,13 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
                          (new_mark, case_id))
         conn.commit()
     except Exception:
-        conn.rollback()
+        # recover() over rollback() keeps the invariant AND survives a dead stream:
+        # reopening abandons the open transaction, so neither the entries nor the
+        # entries_synced_at UPDATE land and the mark stays unmoved -- the same
+        # outcome rollback() produced, minus the crash when rollback() hits a dead
+        # stream. Safe under reset()'s docstring warning only because this site
+        # re-raises rather than swallowing: losing this batch is intended here.
+        db.recover(conn)
         raise
     return {"caption": caption, "resolved": True, "docket_id": case_id,
             "total_entries": len(entries), "mode": mode, "since": since,
