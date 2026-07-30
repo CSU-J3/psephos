@@ -298,17 +298,6 @@ def run_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchCtx,
     conn.commit()
 
 
-def _recover(conn) -> None:
-    """Discard a source's aborted transaction. On the remote _Conn the Hrana stream
-    may be dead, so reset() rebuilds the connection; local SQLite has no reset() and
-    a plain rollback() is enough."""
-    reset = getattr(conn, "reset", None)
-    if reset is not None:
-        reset()
-    else:
-        conn.rollback()
-
-
 def process_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchCtx,
                    seen_titles: list[str], tally: dict[str, int]) -> str | None:
     """Run one source with per-entity isolation and a single retry -- the guard every
@@ -331,7 +320,7 @@ def process_source(conn, source_id: str, grade, entries: list[dict], ctx: MatchC
             del seen_titles[title_mark:]            # drop the failed attempt's cached titles
             tally.clear()
             tally.update(tally_snapshot)            # and its phantom counts
-            _recover(conn)
+            db.recover(conn)
             if attempt == 2:
                 tally["source_errors"] = tally.get("source_errors", 0) + 1
                 print(f"  source {source_id} failed twice, skipping: {exc}", file=sys.stderr)
