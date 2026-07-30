@@ -15,6 +15,7 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 os.chdir(REPO)
 
+import libsql  # noqa: E402
 import config  # noqa: E402
 import db  # noqa: E402
 import common  # noqa: E402
@@ -266,6 +267,50 @@ def test_mark_unchanged_when_write_entries_raises(tmp_path, monkeypatch):
     monkeypatch.setattr(lit, "write_entries", boom)
     with pytest.raises(RuntimeError):
         lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=5)
+    mark = conn.execute("SELECT entries_synced_at FROM cases WHERE case_id='555'").fetchone()[0]
+    assert mark == "2026-05-05T00:00:00Z"      # unmoved
+    conn.close()
+
+
+def test_mark_unchanged_under_reset_recovery(monkeypatch):
+    """The same :445 invariant, but on a remote-shaped _Conn so db.recover takes the
+    RESET path -- the only path that actually changed at :445. The local-SQLite test
+    above exercises recover()'s rollback fallthrough; this one pins the mark under
+    reset(), the site where a wrong call would corrupt the high-water mark.
+
+    reset() models a reopen: the open transaction is abandoned (nothing pending
+    lands) while committed rows persist. The stub returns the same in-memory store
+    after a rollback, which reproduces exactly that -- committed state kept, the
+    write block's transaction gone -- without needing a live Turso stream."""
+    real = libsql.connect(":memory:")
+    real.executescript(db._schema_for_remote(db.SCHEMA_PATH))
+    real.commit()
+
+    def reopen():
+        real.rollback()   # abandon the open txn, as a fresh connection would; keep committed rows
+        return real
+
+    conn = db._Conn(real, reopen=reopen)
+    lit.register_sources(conn)
+    conn.execute(
+        "INSERT INTO cases (case_id, caption, court, docket_number, entries_synced_at) "
+        "VALUES ('555', 'United States v. Existing', 'District of X', '1:25-cv-09999', "
+        "'2026-05-05T00:00:00Z')")
+    conn.commit()
+    seed = {"caption": "United States v. Existing", "docket_number": "1:25-cv-09999",
+            "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: (
+        [{"date_filed": "2026-09-09", "description": "ORDER", "date_modified": "2026-12-31T00:00:00Z"}],
+        "2026-12-31T00:00:00Z"))
+
+    def boom(*a, **k):
+        raise RuntimeError("disk full mid-write")
+
+    monkeypatch.setattr(lit, "write_entries", boom)
+    with pytest.raises(RuntimeError):
+        lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=5)
+    # recover() went through reset() (no crash), and the mark never advanced.
+    assert conn._pending is False
     mark = conn.execute("SELECT entries_synced_at FROM cases WHERE case_id='555'").fetchone()[0]
     assert mark == "2026-05-05T00:00:00Z"      # unmoved
     conn.close()
