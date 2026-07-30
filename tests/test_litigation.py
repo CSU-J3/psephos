@@ -108,6 +108,47 @@ def test_loop_continues_past_a_resolve_failure(tmp_path, monkeypatch):
     conn.close()
 
 
+def test_upsert_case_preserves_asserted_superseded_by(tmp_path):
+    """The load-bearing invariant behind the Georgia venue refile (handoff 14): a
+    terminated source row that is STILL a live seed gets an upsert_case on every run,
+    yet its out-of-band `superseded_by` must survive. It does because the row dict omits
+    that column and db.upsert only writes listed columns. Assert the link is untouched
+    AND that status/caption/updated_at DID change, so this proves the upsert actually ran
+    rather than silently no-opping and passing for the wrong reason."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    # The successor row must exist first: superseded_by is a self-FK to cases(case_id).
+    conn.execute(
+        "INSERT INTO cases (case_id, caption, status, docket_number) VALUES (?, ?, ?, ?)",
+        ("72193752", "United States v. Georgia", "pending", "1:26-cv-00485"),
+    )
+    # Pre-existing terminated source with an asserted link and a stale caption/timestamp.
+    conn.execute(
+        "INSERT INTO cases (case_id, caption, status, docket_number, updated_at, superseded_by) "
+        "VALUES (?, ?, ?, ?, ?, ?)",
+        ("72053306", "United States v. Georgia (old)", "terminated",
+         "5:25-cv-00548", "2000-01-01T00:00:00Z", "72193752"),
+    )
+    conn.commit()
+
+    seed = {"caption": "United States v. Georgia (seed)", "docket_number": "5:25-cv-00548",
+            "court": "Middle District of Georgia", "category": "voter-data", "notes": "n"}
+    docket = {"case_name": "United States v. Georgia", "date_filed": "2025-11-01",
+              "date_terminated": None, "absolute_url": "/docket/1/us-v-ga/"}
+    lit.upsert_case(conn, "72053306", seed, docket)
+    conn.commit()
+
+    row = conn.execute(
+        "SELECT superseded_by, status, caption, updated_at FROM cases WHERE case_id = '72053306'"
+    ).fetchone()
+    assert row["superseded_by"] == "72193752"                     # the link survived the rewrite
+    assert row["status"] == "pending"                             # ... and the upsert really ran
+    assert row["caption"] == "United States v. Georgia"           # case_name applied
+    assert row["updated_at"] != "2000-01-01T00:00:00Z"            # timestamp refreshed
+    conn.close()
+
+
 def test_main_exits_zero_when_every_resolve_rate_limits(tmp_path, monkeypatch):
     """The whole point of the guard: a rate-limited resolve no longer crashes main()."""
     monkeypatch.setattr(config, "load_env", lambda *a, **k: None)   # never read a real .env (no Turso creds leak in)
