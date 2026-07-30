@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCase, getCaseTimeline } from "@/lib/db";
+import { getCase, getCaseTimeline, getCaseRef, getPredecessorRef } from "@/lib/db";
 import { formatDate } from "@/lib/format";
 import { Timeline } from "@/components/Timeline";
 
@@ -16,6 +16,10 @@ export default async function CasePage({
   const c = await getCase(case_id);
   if (!c) notFound();
   const items = await getCaseTimeline(case_id);
+  // The supersession link, both directions -- court + docket only, no timeline loaded.
+  // Timelines stay separate: folding the district items into the appeal would misdate it.
+  const successor = c.superseded_by ? await getCaseRef(c.superseded_by) : null;
+  const predecessor = await getPredecessorRef(case_id);
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
@@ -60,6 +64,26 @@ export default async function CasePage({
           >
             View docket ↗
           </a>
+        )}
+        {(successor || predecessor) && (
+          <div className="mt-2 flex flex-col gap-1">
+            {successor && (
+              <Link
+                href={`/case/${successor.case_id}`}
+                className="text-sm text-sky-400 hover:underline"
+              >
+                Continued as → {successor.court} {successor.docket_number}
+              </Link>
+            )}
+            {predecessor && (
+              <Link
+                href={`/case/${predecessor.case_id}`}
+                className="text-sm text-sky-400 hover:underline"
+              >
+                ← Continues {predecessor.court} {predecessor.docket_number}
+              </Link>
+            )}
+          </div>
         )}
       </header>
 

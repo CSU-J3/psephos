@@ -41,6 +41,15 @@ export type Case = {
   source_url: string | null;
   plaintiff: string | null;
   defendant: string | null;
+  superseded_by: string | null; // the circuit appeal that replaced this district docket
+};
+
+// Court + docket only, no timeline -- for rendering a supersession link either way.
+export type CaseRef = {
+  case_id: string;
+  caption: string;
+  court: string | null;
+  docket_number: string | null;
 };
 
 export type StateBill = {
@@ -129,7 +138,7 @@ export async function getBillTimeline(billId: string): Promise<TimelineItem[]> {
 export async function getCases(): Promise<Case[]> {
   const rs = await db.execute(
     `SELECT case_id, caption, court, docket_number, status, category,
-            filed_at, latest_entry_at, source_url, plaintiff, defendant
+            filed_at, latest_entry_at, source_url, plaintiff, defendant, superseded_by
      FROM cases
      ORDER BY COALESCE(latest_entry_at, filed_at) DESC, case_id`,
   );
@@ -140,11 +149,29 @@ export async function getCases(): Promise<Case[]> {
 export async function getCase(caseId: string): Promise<Case | null> {
   const rs = await db.execute({
     sql: `SELECT case_id, caption, court, docket_number, status, category,
-                 filed_at, latest_entry_at, source_url, plaintiff, defendant
+                 filed_at, latest_entry_at, source_url, plaintiff, defendant, superseded_by
           FROM cases WHERE case_id = ?`,
     args: [caseId],
   });
   return (rs.rows[0] as unknown as Case) ?? null;
+}
+
+// The successor: the row this case names via superseded_by. Court + docket only.
+export async function getCaseRef(caseId: string): Promise<CaseRef | null> {
+  const rs = await db.execute({
+    sql: `SELECT case_id, caption, court, docket_number FROM cases WHERE case_id = ?`,
+    args: [caseId],
+  });
+  return (rs.rows[0] as unknown as CaseRef) ?? null;
+}
+
+// The predecessor: the row whose superseded_by names this case. Reverse of the column.
+export async function getPredecessorRef(caseId: string): Promise<CaseRef | null> {
+  const rs = await db.execute({
+    sql: `SELECT case_id, caption, court, docket_number FROM cases WHERE superseded_by = ?`,
+    args: [caseId],
+  });
+  return (rs.rows[0] as unknown as CaseRef) ?? null;
 }
 
 // One case's items in date order: docket entries (A1) interleaved with the
