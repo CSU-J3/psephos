@@ -29994,12 +29994,12 @@
   {
     "bill_number": "S0298",
     "is_vehicle": false,
-    "last_action": "Signed by Officers and presented to Governor",
-    "last_action_at": "2026-06-09T00:00:00",
-    "session": null,
+    "last_action": "Chapter No. 2026-138, companion bill(s) passed, see CS/SB 296 (Ch. 2026-91)",
+    "last_action_at": "2026-06-12T00:00:00",
+    "session": "2026 Regular Session",
     "state": "FL",
     "state_bill_id": "2047561",
-    "status": "3",
+    "status": "4",
     "timeline": [
       {
         "channel": "state",
@@ -30400,6 +30400,26 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/FL/bill/S0298/2026",
         "title": "FL S0298: Signed by Officers and presented to Governor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 64670,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0298/2026",
+        "title": "FL S0298: Approved by Governor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 64671,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0298/2026",
+        "title": "FL S0298: Chapter No. 2026-138, companion bill(s) passed, see CS/SB 296 (Ch. 2026-91)"
       }
     ],
     "title": "Public Records/Victims of Domestic and Dating Violence",
@@ -33444,12 +33464,12 @@
   {
     "bill_number": "H0797",
     "is_vehicle": false,
-    "last_action": "Ordered enrolled",
-    "last_action_at": "2026-03-04T00:00:00",
+    "last_action": "Chapter No. 2026-168",
+    "last_action_at": "2026-06-26T00:00:00",
     "session": "2026 Regular Session",
     "state": "FL",
     "state_bill_id": "2059453",
-    "status": "3",
+    "status": "4",
     "timeline": [
       {
         "channel": "state",
@@ -33870,6 +33890,36 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/FL/bill/H0797/2026",
         "title": "FL H0797: Ordered enrolled"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 64627,
+        "kind": "item",
+        "occurred_at": "2026-06-15T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/H0797/2026",
+        "title": "FL H0797: Signed by Officers and presented to Governor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 64628,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/H0797/2026",
+        "title": "FL H0797: Approved by Governor"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 64629,
+        "kind": "item",
+        "occurred_at": "2026-06-26T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/H0797/2026",
+        "title": "FL H0797: Chapter No. 2026-168"
       }
     ],
     "title": "Nonprofit Corporations",
