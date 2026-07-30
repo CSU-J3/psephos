@@ -33,7 +33,9 @@ TERMS = ["voter", "voting", "voter registration", "voter roll", "proof of citize
          "mail ballot", "absentee", "provisional ballot", "same-day registration",
          "voter id", "redistricting", "voted by mail", "early voting", "primary election",
          "election audit", "poll watcher", "ballot drop", "election official", "canvass",
-         "signature verification"]
+         "signature verification",
+         # handoff 12 Part C: inverted / adjective+token voter constructions
+         "registration of voters", "registered voters", "eligible voters", "provided to voters"]
 EXCLUDES = ["voter approval", "proxy voting", "cumulative voting"]
 GRADE = ("B", "2")
 
@@ -223,6 +225,29 @@ def test_exclusion_plural_symmetry():
     assert M("Voter approvals of early voting changes")                         # 'early voting' left
 
 
+def test_election_filter_inverted_voter_constructions():
+    # Handoff 12 Part C: four inverted / adjective+token voter phrases, adopted on
+    # measured recall (+10 genuine at 100% over the corpus). Pin the POSITIVES and,
+    # because `registered voters`/`eligible voters` are the generic watch terms most
+    # exposed to a corpus shift, pin the bond/tax/referendum flood negatives too --
+    # the new terms must not widen the flood.
+    M = lambda t, d="": state.election_match({"title": t, "description": d}, TERMS, EXCLUDES)
+    # positives -- genuine bills the singular list missed
+    assert M("Relating to the registration of voters at a polling place")      # registration of voters
+    assert M("Relating to the citizenship status of registered voters")        # registered voters
+    assert M("Ensuring access to the right to vote by all eligible voters")    # eligible voters
+    assert M("Information provided to voters concerning proposed amendments")   # provided to voters
+    # precision tell: the inverted form does NOT grab the "registering voters" noise bill (TX HB509)
+    assert not M("Prevent accessing private property for the purpose of registering voters")
+    # bond / tax / referendum flood shapes stay OUT -- this is the collision the finding turns on:
+    # "voters at a[n] election" must not be reachable when "registration of voters at a polling
+    # place" is (they share surface form; only the phrase context separates them).
+    assert not M("Propose for voter approval the issuance of general obligation bonds")  # excl-redacted
+    assert not M("A proposition rejected by voters at a bond election")
+    assert not M("Board members shall be elected by the qualified voters at an election")
+    assert not M("Authorizing a referendum allowing voters to indicate a preference for standard time")
+
+
 # --- change-hash pipeline (temp DB + faked LegiScan) ------------------------
 
 def test_collect_filters_changes_and_writes():
@@ -381,6 +406,7 @@ if __name__ == "__main__":
     test_election_filter_plural_phrase_recall()
     test_election_filter_bare_token_stays_exact()
     test_exclusion_plural_symmetry()
+    test_election_filter_inverted_voter_constructions()
     test_collect_filters_changes_and_writes()
     test_change_hash_gate_skips_unchanged()
     test_idempotent_across_runs()
