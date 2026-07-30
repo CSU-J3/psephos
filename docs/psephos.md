@@ -85,6 +85,12 @@ Query the Federal Register API for documents from the configured agencies matchi
 ### collectors/state.py  (live)
 LegiScan, subject-filtered for elections. One `getMasterList` per state per run, then `getBill` only on election bills whose `change_hash` moved — the budget gate that holds it under the free-tier cap (a `max_getbill_per_run` guard resumes next run if hit). State items reference a first-class `state_bills` dimension via `items.state_bill_id`, exported as per-bill timelines in `data/state_bills.json` (5b-a). State-level vehicle detection (5b-b) is closed as a free-tier limitation — see the limitations section.
 
+### Per-item recovery: `db.recover`, never bare `rollback` (handoff 15)
+
+Every collector's per-item handler recovers the connection with `db.recover(conn)`, never a bare `conn.rollback()`. On the remote backend a `rollback()` can itself raise when the Hrana stream is already dead, so a handler written to skip one bad item instead crashes the whole run — three of 28 runs failed exactly this way (2026-07-24, -27, -29), all in `legislation.py`, the rollback raising `stream not found` while trying to recover a recoverable, idempotent failure. `db.recover` uses `_Conn.reset()` (rebuild the connection) on the remote and falls through to `rollback()` on local SQLite.
+
+State is the deliberate exception, and its gap is worth stating so it isn't over-rated. `collectors/state.py` commits once for the whole multi-state run (`main()` at the two `conn.commit()` calls, none inside `collect()`), so a stream failure at the unguarded `seen_hash`/`insert` path propagates and discards every state processed that run. Its two handlers (the `getMasterList` and `getBill` `except`s) do **not** catch that — they wrap LegiScan HTTP calls only, where `conn` is never the failure, and calling `recover()` there would throw away the run's whole uncommitted batch. Making state stream-resilient needs a per-state commit to bound the batch; that is batch-boundary work, out of scope here, and belongs in its own unit. Because state runs last in the step order, such a failure costs the run's export and data commit as well as state's own batch — but the other five collectors' writes are already committed to Turso, so it delays the snapshot rather than losing data.
+
 ---
 
 ## Two-stage news dedup
