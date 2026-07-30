@@ -77,7 +77,7 @@ Seed `cases` from the trackers in `config/sources.yaml` (UW, States United, Demo
 SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL AND superseded_by IS NULL;  -- expect 0
 ```
 
-Without `AND superseded_by IS NULL` this read 3 (the PA/NH/MD district orphans) and every mention of it needed the "34 not 37" caveat. `cases.superseded_by` is set on the terminated district row, pointing forward to its circuit appeal; the reverse lookup is a query. The three appeals are first-class rows that poll normally.
+Without `AND superseded_by IS NULL` this read 3 (the PA/NH/MD district orphans) and every mention of it needed the "34 not 37" caveat. `cases.superseded_by` is set on the terminated district row, pointing forward to its successor, a circuit appeal or a venue refile; the reverse lookup is a query. The three appeals are first-class rows that poll normally.
 
 ### collectors/executive.py  (live)
 Query the Federal Register API for documents from the configured agencies matching the configured terms. Write each to `items`, grade A1. Catches executive orders and rule changes that never touch Congress. A title-only relevance score surfaces the handful of on-topic EOs and rules among the agency-rule noise (scoring title+summary floods it with EAC abstracts).

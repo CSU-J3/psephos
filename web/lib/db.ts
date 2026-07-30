@@ -41,7 +41,7 @@ export type Case = {
   source_url: string | null;
   plaintiff: string | null;
   defendant: string | null;
-  superseded_by: string | null; // the circuit appeal that replaced this district docket
+  superseded_by: string | null; // the appeal or refile that replaced this docket
 };
 
 // Court + docket only, no timeline -- for rendering a supersession link either way.
