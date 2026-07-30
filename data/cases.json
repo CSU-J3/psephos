@@ -9,6 +9,7 @@
     "filed_at": "2025-09-25T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -1142,6 +1143,7 @@
     "filed_at": "2025-09-25T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -2575,6 +2577,7 @@
     "filed_at": "2025-09-25T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -3728,6 +3731,7 @@
     "filed_at": "2025-09-25T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -4611,6 +4615,7 @@
     "filed_at": "2025-09-30T00:00:00",
     "plaintiff": "League of Women Voters",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -6024,6 +6029,7 @@
     "filed_at": "2025-12-01T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -6577,6 +6583,7 @@
     "filed_at": "2025-12-01T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -7120,6 +7127,7 @@
     "filed_at": "2025-12-02T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -7883,6 +7891,7 @@
     "filed_at": "2025-12-02T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -8486,6 +8495,7 @@
     "filed_at": "2025-12-02T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -9189,6 +9199,7 @@
     "filed_at": "2025-12-11T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -10162,6 +10173,7 @@
     "filed_at": "2025-12-11T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -10615,6 +10627,7 @@
     "filed_at": "2025-12-11T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -11308,6 +11321,7 @@
     "filed_at": "2025-12-18T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -11511,6 +11525,7 @@
     "filed_at": "2025-12-18T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -12364,6 +12379,7 @@
     "filed_at": "2025-12-18T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -13017,6 +13033,7 @@
     "filed_at": "2026-01-06T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -13690,6 +13707,7 @@
     "filed_at": "2026-01-16T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -14193,6 +14211,7 @@
     "filed_at": "2026-01-23T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -15026,6 +15045,7 @@
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -15909,6 +15929,7 @@
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -16492,6 +16513,7 @@
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -16855,6 +16877,7 @@
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -17258,6 +17281,7 @@
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -17311,6 +17335,7 @@
     "filed_at": "2026-02-27T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -17744,6 +17769,7 @@
     "filed_at": "2026-03-03T00:00:00",
     "plaintiff": "United States of America",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -17937,6 +17963,7 @@
     "filed_at": "2026-03-03T00:00:00",
     "plaintiff": "United States of America",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -18110,6 +18137,7 @@
     "filed_at": "2026-04-01T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -18253,6 +18281,7 @@
     "filed_at": "2026-04-21T00:00:00",
     "plaintiff": "Common Cause",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -18556,6 +18585,7 @@
     "filed_at": "2026-06-04T00:00:00",
     "plaintiff": "United States of America",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -18619,6 +18649,7 @@
     "filed_at": "2026-06-05T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -18772,6 +18803,7 @@
     "filed_at": "2026-06-09T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -18935,6 +18967,7 @@
     "filed_at": "2026-06-09T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -19098,6 +19131,7 @@
     "filed_at": "2026-06-15T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -19251,6 +19285,7 @@
     "filed_at": "2026-07-07T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -19344,6 +19379,7 @@
     "filed_at": "2026-07-07T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -19387,6 +19423,7 @@
     "filed_at": "2026-07-13T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
@@ -19480,6 +19517,7 @@
     "filed_at": "2026-07-24T00:00:00",
     "plaintiff": "United States",
     "status": "pending",
+    "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
