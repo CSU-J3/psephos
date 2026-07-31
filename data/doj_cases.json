@@ -122,7 +122,7 @@
     "court": "Fourth Circuit",
     "court_id": "ca4",
     "docket_number": "26-1878",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ to file opening brief by 8/31/26; State's response due by 9/30/26. | Key decisions: District Court's 6/18/26 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: DOJ has moved to expedite briefing of the appeal; otherwise, DOJ to file opening brief by 8/31/26, and State's response is due by 9/30/26. | Key decisions: District Court's 6/18/26 dismissal.",
     "state": "Maryland"
   },
   {
@@ -176,15 +176,15 @@
     "court": "District of New Jersey",
     "court_id": "njd",
     "docket_number": "3:26-cv-02025",
-    "notes": "Claims: Civil Rights Act of 1960 | Status: Briefing on motions to compel and dismiss complete.",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: On 7/29/26, the district court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/29/2026 dismissal.",
     "state": "New Jersey"
   },
   {
     "caption": "United States v. New Mexico",
     "category": "voter-data",
-    "court": "District of New Mexico",
-    "court_id": "nmd",
-    "docket_number": "1:25-cv-01193",
+    "court": "Tenth Circuit",
+    "court_id": "ca10",
+    "docket_number": "26-2126",
     "notes": "Claims: Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the 10th Circuit. | Key decisions: District Court's 7/14/2026 dismissal.",
     "state": "New Mexico"
   },
@@ -221,7 +221,7 @@
     "court": "Third Circuit",
     "court_id": "ca3",
     "docket_number": "26-2684",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/27/26 dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ to file opening brief by 9/8/26; State's response due 30 days later; and DOJ's reply due 21 days after that. | Key decisions: District Court's 6/27/26 dismissal.",
     "state": "Pennsylvania"
   },
   {
@@ -254,9 +254,9 @@
   {
     "caption": "United States v. Virginia",
     "category": "voter-data",
-    "court": "Eastern District of Virginia",
-    "court_id": "vaed",
-    "docket_number": "3:26-cv-00042",
+    "court": "Fourth Circuit",
+    "court_id": "ca4",
+    "docket_number": "26-2002",
     "notes": "Claims: Civil Rights Act 1960 | Status: On 7/24/26, DOJ filed a notice that it will appeal the district court's dismissal to the Fourth Circuit. | Key decisions: District Court's 7/14/2026 dismissal.",
     "state": "Virginia"
   },

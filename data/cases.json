@@ -15032,6 +15032,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/137/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE of Filing Fourth Notice of Supplemental Authority by Brad Raffensperger re 16 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Request for Hearing MOTION for Hearing (Tyso"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 65411,
+        "kind": "item",
+        "occurred_at": "2026-07-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/138/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
   },
@@ -15047,6 +15057,16 @@
     "status": "pending",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 65425,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -19290,6 +19310,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 65430,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 19985,
         "kind": "item",
         "occurred_at": "2026-07-07T00:00:00",
@@ -19438,6 +19468,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 65417,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 40399,
         "kind": "item",
         "occurred_at": "2026-07-13T00:00:00",
@@ -19504,6 +19544,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/19/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: RESPONSE/ANSWER by Jared DeMarinis to Motion to accelerate case processing [6], Motion to expedite decision [6]. Nature of response: in opposition. [1002023837] [26-1878] Jeffrey L"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 65418,
+        "kind": "item",
+        "occurred_at": "2026-07-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/22/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: RESPONSE/ANSWER by Maryland/DC Alliance for Retired Americans to Motion to accelerate case processing [6], Motion to expedite decision [6], notice requesting response [12]. [100202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 65419,
+        "kind": "item",
+        "occurred_at": "2026-07-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/24/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: REPLY by US to response [22], response [19], response [18].. [1002024986] [26-1878] Andrew Braniff [Entered: 07/29/2026 07:10 PM]"
       }
     ]
   },
@@ -19528,6 +19588,64 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
         "title": "United States v. Kentucky — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Oliver",
+    "case_id": "73678095",
+    "category": "voter-data",
+    "court": "Tenth Circuit",
+    "defendant": "Oliver",
+    "docket_number": "26-2126",
+    "filed_at": "2026-07-27T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 65426,
+        "kind": "item",
+        "occurred_at": "2026-07-27T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Steven Koski",
+    "case_id": "73690636",
+    "category": "voter-data",
+    "court": "Fourth Circuit",
+    "defendant": "Steven Koski",
+    "docket_number": "26-2002",
+    "filed_at": "2026-07-29T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 65434,
+        "kind": "item",
+        "occurred_at": "2026-07-29T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
+        "title": "United States v. Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 65435,
+        "kind": "item",
+        "occurred_at": "2026-07-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/3/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: BRIEFING ORDER filed. No paper copies required unless case has been tentatively calendared or copies otherwise ordered. All filings must comply with Appendix Pagination & Brief Cit"
       }
     ]
   }
