@@ -1522,6 +1522,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 66058,
+        "kind": "item",
+        "occurred_at": "2026-07-28T19:03:54+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNRjZZZUYtNnlSMXl6YzVlMHBScWcydV9mcTEyRDc0MVlHX1VoTEhDc05oY04zRDJ0ZVF0a0U2eG5YM0JXY2d4aHpXd0w2ZGJaeEdweTJzd3h2LUdYTzNJWlp5R3RXd0RTRHhkNWJMSFVhSTBad1RnYTVSZGM4NUtPcUdiZFlaVkljb0I0OHBaZTI1TmNhSDdGZXdKaw?oc=5",
+        "title": "Wall Street Journal editorial board calls Trump wrong about nixing Senate filibuster for SAVE America Act: ‘A terrible trade’ - Yahoo"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 63755,
         "kind": "item",
         "occurred_at": "2026-07-28T19:48:00+00:00",
