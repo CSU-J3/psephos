@@ -11,9 +11,14 @@ import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
 import { ExecutiveSection } from "@/components/ExecutiveSection";
 
-// Render per request against live Turso. No ISR: a single-user read-only
-// dashboard saves nothing by caching, and force-dynamic removes the build-time
-// Turso dependency (no env vars needed at build, data is always current).
+// Route stays force-dynamic: it removes the build-time Turso dependency (no env
+// vars needed at build) and keeps the bills/cases/executive queries live per
+// request, where freshness is cheap. The exception is the channel-count query,
+// which scans the whole `items` spine (~9k index rows for 5 integers); that one
+// is cached in lib/db.ts (unstable_cache, 1h) so the scan leaves the per-render
+// path. This comment used to claim a read-only dashboard "saves nothing by
+// caching" -- the per-render scan disproved that. Counts carry up to 1h of
+// staleness; every other query on the page is current.
 export const dynamic = "force-dynamic";
 
 function SectionHeading({ title, count }: { title: string; count: number }) {
