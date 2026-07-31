@@ -2,6 +2,7 @@
 // components, never in the browser (the auth token must not ship to the client).
 // Read-only by design -- collection is the Python cron's job; this app only reads.
 import { createClient } from "@libsql/client";
+import { unstable_cache } from "next/cache";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -89,13 +90,24 @@ export type ExecItem = {
 };
 
 // Channel counts -- proves the items spine is readable and shows the breadth.
-export async function getChannelCounts(): Promise<ChannelCount[]> {
-  const rs = await db.execute(
-    "SELECT channel, COUNT(*) AS n FROM items GROUP BY channel ORDER BY channel",
-  );
-  // COUNT(*) can arrive as bigint; coerce to number for the view.
-  return rs.rows.map((r) => ({ channel: String(r.channel), n: Number(r.n) }));
-}
+// This is the one homepage query that scans the whole `items` table: an index
+// scan reading one row per item (~9k) to return 5 integers. So it's the only
+// query cached -- unstable_cache pulls the scan out of the per-render path and
+// caps it at the revalidate window (<=24/day) instead of once per render. The
+// route stays force-dynamic and the other homepage queries stay live (freshness
+// is cheap there, the scan is not); unstable_cache is a data-cache primitive,
+// independent of the route's render mode. Counts carry up to 1h of staleness.
+export const getChannelCounts = unstable_cache(
+  async (): Promise<ChannelCount[]> => {
+    const rs = await db.execute(
+      "SELECT channel, COUNT(*) AS n FROM items GROUP BY channel ORDER BY channel",
+    );
+    // COUNT(*) can arrive as bigint; coerce to number for the view.
+    return rs.rows.map((r) => ({ channel: String(r.channel), n: Number(r.n) }));
+  },
+  ["channel-counts"],
+  { revalidate: 3600 },
+);
 
 // Watched bills. `bills` already stores the latest action, so no join is needed;
 // most-recently-active first.
