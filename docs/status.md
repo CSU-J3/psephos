@@ -2,15 +2,21 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-07-31.
+Last updated: 2026-08-01.
 
 ---
 
 ## Owed right now
 
-### 1. Handoff 14 invariant — OVERDUE, not pending
+### 1. Handoff 14 invariant — one read-only query, not a unit of work
 
-Three crons have run since the push (the 00:00, 06:00, 12:00Z slots on 07-31; GitHub fires the schedule late — the 00:00Z slot ran at 01:26Z). Times below are actual fire times, not slots. This should have been read after the first.
+**Scope first, because this line has already been misread once.** The unit shipped days ago and is half-proven. `--apply` ran, the export ran, and the data commit is `bd4d577` (07-30), all on origin. Six collector-driven data commits have run since — `200931f`, `dda174e`, `4059878`, `98217c5`, `7709e14`, `6eb6554` — and `superseded_by` is still present in `data/cases.json` at HEAD. So the value is no longer just `bd4d577`'s hand-written entry; a collector regenerated the file around it and did not drop it.
+
+What is owed is the **direct Turso proof and the run-log check**, nothing more. Do not write "not started", and do not re-run `--apply`.
+
+That snapshot survival is corroboration, not the proof — a no-diff or partially-completed export can leave a stale file looking healthy, which is why the standing invariant says row state comes from a query. It raises the value from *hand-written* to *DB-derived*; the SELECT is still what closes it.
+
+The doc previously said three crons had run and effectively two were usable. That count is stale: the window is now six-plus completed runs. This should have been read after the first.
 
 Procedure, in order:
 
@@ -19,13 +25,21 @@ Procedure, in order:
 
        SELECT case_id, status, superseded_by, updated_at FROM cases WHERE case_id = '72053306';
 
-Note that the first run (01:26Z) **failed** on the org-wide Turso read block (CBT's doing, not psephos's), so it never reached litigation — this is the same 07-31 01:26Z failure §2 names, not a second one. Effectively two usable runs, not three.
+Note that the 07-31 01:26Z run **failed** on the org-wide Turso read block (CBT's doing, not psephos's), so it never reached litigation — this is the same failure §2 names, not a second one. Exclude it from the usable count; the six data commits listed above are runs that reached export, so the usable window is comfortably wide now.
+
+**Record all of it in one pass**, since it's one query plus one log sweep:
+
+- The SELECT's four values: `case_id`, `status`, `superseded_by`, `updated_at`.
+- The run ids actually checked, by id, not "the recent ones".
+- The cap-abort read for each of those runs — present or absent, per run.
 
 Reading it:
 
 - `superseded_by` still `'72193752'` is load-bearing. Anything else means the unit failed and the omits-`superseded_by` invariant is broken in production.
 - `updated_at` moved on either usable run is corroborating.
 - `updated_at` unmoved *and* no cap-abort *and* no read-block on the runs that did complete is a real finding: the seed isn't being polled. One run missing it is noise. Three reasons it can legitimately be unmoved now (cap-abort, read-block, run failure), so rule each out by name before calling it a finding.
+
+**Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three.
 
 ### 2. Handoff 15 failure ratio — window open, don't close early
 
@@ -35,21 +49,23 @@ That figure is window-specific and will look wrong if you glance at recent failu
 
 Read at ~28 post-fix runs, roughly a week. **Not two days.** The original handoff said two days and that was underpowered: at the ~11% per-run baseline rate, 8 runs come back clean about 40% of the time even if the fix changed nothing. Twenty-eight runs drops that to ~4% and compares like-for-like against the baseline window.
 
+**Next read: ~2026-08-08.** The fix pushed 07-30 (`474840c`); at 4 runs/day that clears 28 post-fix runs with margin. Same sitting as §1 and §3.
+
 If the family recurs, pull the failing line before proposing anything. Same site means `reset()` isn't recovering; a different site means the audit missed one. Those want different fixes.
 
 While in the logs, note litigation's request consumption. Litigation runs third, after legislation in the same `-e` step, so those 3 failed runs aborted before it ever ran and it polled nothing on them; the fix makes ~11% more runs *reach* litigation, adding that draw against the same 250/day cap. Handoff 7's incremental polling should absorb it, handoff 8's abort is the backstop. Report a cap-abort; don't act on a single occurrence.
 
-### 3. Handoff 16 push gate — 24h clock
+### 3. Handoff 16 — PUSHED; one chart re-read owed ~08-08
 
-Three commits held, unpushed, tip `c68a425`:
+**Closed as a push gate.** Pushed 08-01 (`6eb6554..cc763c9`), four commits, verified from a fresh clone: the cache is live in `web/lib/db.ts` and the finding carries its prediction. The hashes this section previously listed (`a8103ac`, `f0b0683`, `c68a425`) are dead — rebased onto current origin/main before the push. Don't chase them.
 
-- `a8103ac` perf(web): cache the channel-count scan
-- `f0b0683` docs(web): correct the force-dynamic rationale
-- `c68a425` docs(findings): record the baseline
+The 24h `turso db inspect` gate is **deleted, not satisfied.** The Turso dashboard charts rows read per day per database directly (app.turso.tech → Databases → psephos → Analytics → Rows Read), so the two-reading cumulative protocol was unnecessary; no reading was ever taken under it. Baseline is recorded in `docs/findings/16-channel-count-baseline.md`: ~150–250K/day for Jul 26 – Aug 1, read 08-01 ~21:45Z.
 
-Gate is `turso db inspect` reading #2, ~24h after #1. `inspect` is cumulative for the billing cycle, not per-day, so two readings a known interval apart are what give a rate. Both go in `docs/findings/16-channel-count-baseline.md` with timestamps.
+What's owed is one re-read of the same chart, **~2026-08-08**, same sitting as §1 and §2.
 
-After the push, read psephos's daily rows-read for several days. The delta is what the strip was costing, measured directly, no per-source split needed. Falls hard means the strip was the bulk of psephos's own reads; barely moves means collectors were, and the ~190 renders/day ceiling was mostly them.
+**Expect it to show nothing, and don't treat that as failure.** At ~200K rows/day against 8,931 rows/scan the strip accounts for at most ~22 renders/day — a ceiling, since collectors read too — and the cache cap is ≤24/day. Current behaviour already sits at or under the cap, so the delta may be invisible inside the noise of a 150–250K band. The finding predicts this in advance rather than explaining it afterward. The change is still right: it makes a bounded cost a property of the code instead of a property of today's traffic.
+
+The old "falls hard / barely moves" split and its ~190 renders/day ceiling are gone — see the falsified list.
 
 ---
 
@@ -90,14 +106,16 @@ Things that have bitten before and will again.
 
 ---
 
-## Falsified this session
+## Falsified — running list
 
-Kept because the pattern matters more than the individual errors: every one was a confident claim about read cost or repo state, and every one died to a single command.
+Spans sessions, not just the current one. Kept because the pattern matters more than the individual errors: every one was a confident claim about read cost or repo state, and every one died to a single command or a single chart.
 
 - **Prefetch as the read amplifier.** Wrong. No `loading.tsx` means App Router doesn't fully prefetch dynamic routes, so "every prefetch is a full render" never held.
 - **`items` ≈ 6,053 rows.** That was a floor derived from snapshots, correctly labeled and then used as a magnitude anyway. Actual is 8,931; the gap is the unattached items — 2,870 of the 2,951 news items carry no bill/case/state ref, so they never attach and appear in no snapshot.
 - **`docs/handoffs/` isn't gitignored.** Read from the repo `.gitignore` in a clone, which can't see `~/.gitignore_global`. The conclusion held by accident; the reasoning didn't.
 - **state.py as a seventh bare-rollback site.** Inferred from the handler's shape without checking what the `try` wrapped. Both sites wrap pure-HTTP calls that never touch `conn`, and with the only commits at 317/319 a `reset()` there would have discarded every prior state's pending writes.
 - **~4 cache cold starts/day from deploys.** Vercel's Data Cache persists across deployments, so the cron's data commit doesn't invalidate `unstable_cache` entries. The cap is the ≤24/day from the revalidate window alone.
+- **~1.7M rows/day as psephos's rate.** Carried from the CBT thread as a user-provided peak of unstated shape, then used as a sustained rate. The per-database chart shows it is a **single-day spike on ~Jul 21**; the Jul 26 – Aug 1 regime is ~150–250K/day. Everything derived from it inherited the error — the ~190 renders/day ceiling was ~8× too high, and the "falls hard → the strip was the bulk" branch it created was never live. Same failure as the 6,053 floor: a number correctly labeled *provisional* and then used as a magnitude.
+- **Handoff 14 as an unstarted unit.** Listed as owing `--apply`, export, and a data commit. All three shipped 07-30 (`bd4d577`) and have survived six collector-driven exports. Only the read-only Turso proof was ever outstanding. A stale owed-list entry is as misleading as a wrong measurement, and costs more, because it invites redoing finished work.
 
-The two claims that survived were the ones someone queried: the `getChannelCounts` scan (provable from the schema) and `items = 8,931` (measured against production).
+The claims that survived were the ones someone queried: the `getChannelCounts` scan (provable from the schema), `items = 8,931` (measured against production), and the handoff-14 data commit (checked with `git log`, not recalled).
