@@ -20,7 +20,7 @@ The doc previously said three crons had run and effectively two were usable. Tha
 
 Procedure, in order:
 
-1. Cap-abort check across all three runs. `gh run view <id> --log`, looking for the handoff-8 daily-cap abort. You need to know whether litigation actually reached `72053306`.
+1. Cap-abort check across the post-push runs, ids from `gh run list`. `gh run view <id> --log`, looking for the handoff-8 daily-cap abort. You need to know whether litigation actually reached `72053306`.
 2. Direct Turso query. **Not the snapshot** — a no-diff run or a pre-export death leaves no new commit, and you'd read `bd4d577`'s hand-written value and credit the manual commit as the collector's work.
 
        SELECT case_id, status, superseded_by, updated_at FROM cases WHERE case_id = '72053306';
