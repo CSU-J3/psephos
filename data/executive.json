@@ -1168,5 +1168,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/07/28/2026-15190/affirmative-asylum-referrals-without-interview",
     "title": "Affirmative Asylum Referrals Without Interview"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 66328,
+    "kind": "item",
+    "occurred_at": "2026-08-03T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/08/03/2026-15611/agency-information-collection-activities",
+    "title": "Agency Information Collection Activities"
   }
 ]
