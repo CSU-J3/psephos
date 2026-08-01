@@ -36,7 +36,7 @@ Note that the 07-31 01:26Z run **failed** on the org-wide Turso read block (CBT'
 Reading it:
 
 - `superseded_by` still `'72193752'` is load-bearing. Anything else means the unit failed and the omits-`superseded_by` invariant is broken in production.
-- `updated_at` moved on either usable run is corroborating.
+- `updated_at` moved on any of the usable runs is corroborating.
 - `updated_at` unmoved *and* no cap-abort *and* no read-block on the runs that did complete is a real finding: the seed isn't being polled. One run missing it is noise. Three reasons it can legitimately be unmoved now (cap-abort, read-block, run failure), so rule each out by name before calling it a finding.
 
 **Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three. What follows them is a build decision, not another read: settle the read-layer snapshot migration against the dashboard redesign — which one is the source the other builds on — and then handoff 17.
