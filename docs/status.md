@@ -84,7 +84,7 @@ The old "falls hard / barely moves" split and its ~190 renders/day ceiling are g
 
 - **Deltas on the channel counts** against the previous export. Raw totals mean nothing on a monitoring tool.
 - **A merged reverse-chronological activity feed** across all five channels since the last cron, each entry tagged with channel and Admiralty grade. The grades exist in the data and appear nowhere on the page, and the feed is the cross-channel thesis rendered.
-- **The DOJ voter-data campaign as one object**, not 38 near-identical rows: a state grid with status coloring, exceptions surfaced (GA refile, KY appeal, circuit cases), dormant dockets demoted behind it.
+- **The DOJ voter-data campaign as one object**, not dozens of near-identical rows: a state grid with status coloring, exceptions surfaced (GA refile, KY appeal, circuit cases), dormant dockets demoted behind it.
 - **Watched bills sorted by recent cross-channel activity**, with correlation on the card (news volume, related litigation), so S. 1383 mid-floor-fight doesn't render identically to a bill dormant since referral.
 
 All read-layer: no collector or schema changes. The deltas are the only new data need, and that's one comparison against the prior snapshot. Mockup exists in the 08-01 session. **Sequencing:** decide the snapshot migration above before building this — if the read layer is moving to snapshots, build the redesign on that source once, not twice.
