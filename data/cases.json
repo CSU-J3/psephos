@@ -12366,6 +12366,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/99/united-states-v-matthews/",
         "title": "United States v. Illinois: NOTICE of Supplemental Authority re 56 MOTION to Dismiss (Frost, Elisabeth) (Entered: 07/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 66106,
+        "kind": "item",
+        "occurred_at": "2026-07-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/100/united-states-v-matthews/",
+        "title": "United States v. Illinois: NOTICE of Supplemental Authority re 56 MOTION to Dismiss (Frost, Elisabeth) (Entered: 07/31/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 66107,
+        "kind": "item",
+        "occurred_at": "2026-07-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/101/united-states-v-matthews/",
+        "title": "United States v. Illinois: OPINION entered by Judge Colleen R. Lawless on 7/31/2026. United States' Motion to Compel (Doc. 5 ) is DENIED and Defendants' Motions to Dismiss (Docs. 41, 49, 56, 64, and 67 ) are"
       }
     ]
   },
@@ -19396,6 +19416,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/23/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ECF FILER: Motion filed by America First Policy Institute - PA to proceed as intervenor in support of Appellant/Petitioner. Certificate of Service dated 07/21/2026. [26-2684] (WSZ)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 66128,
+        "kind": "item",
+        "occurred_at": "2026-07-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/31/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: Response filed by Appellee Secretary Commonwealth of Pennsylvania to motion. Certificate of Service dated 07/31/2026. [26-2684] (MJF)"
       }
     ]
   },
