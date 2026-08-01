@@ -39,7 +39,7 @@ Reading it:
 - `updated_at` moved on either usable run is corroborating.
 - `updated_at` unmoved *and* no cap-abort *and* no read-block on the runs that did complete is a real finding: the seed isn't being polled. One run missing it is noise. Three reasons it can legitimately be unmoved now (cap-abort, read-block, run failure), so rule each out by name before calling it a finding.
 
-**Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three.
+**Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three. What follows them is a build decision, not another read: settle the read-layer snapshot migration against the dashboard redesign — which one is the source the other builds on — and then handoff 17.
 
 ### 2. Handoff 15 failure ratio — window open, don't close early
 
@@ -79,6 +79,17 @@ The old "falls hard / barely moves" split and its ~190 renders/day ceiling are g
 **State batch-boundary unit.** Created by handoff 15's recon, not inherited. `state.py` commits once for the whole multi-state run (317/319), so a stream failure at the unguarded `seen_hash`/insert path propagates and discards every state processed that run. The two existing handlers (252, 273) don't catch it — they wrap LegiScan HTTP calls only. Fixing it needs per-state commits to bound the batch. state runs last in the step order, so this costs the run's export and data commit as well as state's own batch; the other five collectors' writes are already committed to Turso, so it delays the snapshot rather than losing data. Don't over-rate it.
 
 **Read-layer snapshot migration.** Serving the web layer from the committed JSON snapshots removes Turso from the request path entirely, killing the count scan, the force-dynamic re-render cost, and any preview-crawl read exposure in one move. Snapshots are exactly as fresh as the DB, since the cron's data commit is what triggers the deploy. The caveat that makes it a unit rather than a swap: anything absent from the snapshots goes invisible in the web layer, which already bit us with orphaned state items, and 2,870 unattached news items (81 of the 2,951 do carry a bill/case/state ref) are invisible by construction today. Needs its own falsification.
+
+**Dashboard redesign — from inventory to intelligence.** The homepage currently answers "what does psephos track"; it should answer "what changed and what does it connect to." Four moves, in value order:
+
+- **Deltas on the channel counts** against the previous export. Raw totals mean nothing on a monitoring tool.
+- **A merged reverse-chronological activity feed** across all five channels since the last cron, each entry tagged with channel and Admiralty grade. The grades exist in the data and appear nowhere on the page, and the feed is the cross-channel thesis rendered.
+- **The DOJ voter-data campaign as one object**, not 38 near-identical rows: a state grid with status coloring, exceptions surfaced (GA refile, KY appeal, circuit cases), dormant dockets demoted behind it.
+- **Watched bills sorted by recent cross-channel activity**, with correlation on the card (news volume, related litigation), so S. 1383 mid-floor-fight doesn't render identically to a bill dormant since referral.
+
+All read-layer: no collector or schema changes. The deltas are the only new data need, and that's one comparison against the prior snapshot. Mockup exists in the 08-01 session.
+
+**Sequencing.** Decide the snapshot migration above before building this. If the read layer is moving to snapshots, build the redesign on that source once, not twice.
 
 **Kentucky supersession candidate — unlinked.** Both rows carry `superseded_by = NULL`; nothing is asserted. `72334676` (E.D. Ky. 3:26-cv-00019) took judgment of dismissal with prejudice 2026-07-23, notice of appeal 07-24; `73674243` (6th Cir. 26-5657) opened 07-24. The district row still reads `status = pending`, so `verify()` correctly refuses it. Gated on CourtListener setting `date_terminated`. **Do not weaken the guard to accommodate it.** On the court's clock, nobody else's.
 
