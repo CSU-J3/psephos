@@ -13688,6 +13688,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 67797,
+        "kind": "item",
+        "occurred_at": "2026-07-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110170/109/united-states-v-thomas/",
+        "title": "United States v. Connecticut: ORDER denying  9  Motion to Compel; granting  60  Motion to Dismiss; finding as moot  56  and  58  Motions to Dismiss. For the reasons set forth in the attached Memorandum of Decis"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 58449,
         "kind": "item",
         "occurred_at": "2026-07-23T00:00:00",
