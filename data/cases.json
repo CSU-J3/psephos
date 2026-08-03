@@ -17302,6 +17302,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 67633,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/56/united-states-v-warner/",
+        "title": "United States v. West Virginia: MEMORANDUM OPINION AND ORDER The  24  MOTION by Kris Warner to Dismiss  1  Complaint is GRANTED; the  14  MOTION by United States of America to Compel Federal Election Records Unde"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 39709,
         "kind": "item",
         "occurred_at": "2026-07-15T00:00:00",
