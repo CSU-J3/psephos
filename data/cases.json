@@ -4596,12 +4596,32 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 68316,
+        "kind": "item",
+        "occurred_at": "2026-07-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/103/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: NOTICE OF APPEAL as to [102] Judgment, [101] Order on Motion for Leave to File,,,, Order on Motion to Dismiss for Failure to State a Claim,,,,,,,,,,,, Order on Motion to File Amicu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 63991,
         "kind": "item",
         "occurred_at": "2026-07-27T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/104/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: ELECTRONIC NOTICE AND CERTIFICATION sent to US Court of Appeals re 103 Notice of Appeal. (dpk) (Entered: 07/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 68317,
+        "kind": "item",
+        "occurred_at": "2026-07-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71457474/104/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: ELECTRONIC NOTICE AND CERTIFICATION sent to US Court of Appeals re [103] Notice of Appeal. (dpk)"
       }
     ]
   },
@@ -10160,6 +10180,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/98/united-states-v-griswold/",
         "title": "United States v. Colorado: RESPONSE to 85 MOTION to Dismiss filed by Plaintiff USA. (Hauenschild, Jonathon) (Entered: 07/24/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 68254,
+        "kind": "item",
+        "occurred_at": "2026-07-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/101/united-states-v-griswold/",
+        "title": "United States v. Colorado: REPLY to Response to 85 MOTION to Dismiss filed by Intervenor Defendants Common Cause, Kyle Giddings, Anne Keke. (Lee, Theresa) (Entered: 07/31/2026)"
       }
     ]
   },
