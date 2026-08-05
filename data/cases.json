@@ -2594,6 +2594,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/207/united-states-v-simon/",
         "title": "United States v. Minnesota: NOTICE by Minnesota, State of, Steve Simon re 63 MOTION to Dismiss/General Supplemental Authority - IL (Behrens, Angela) (Entered: 08/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70295,
+        "kind": "item",
+        "occurred_at": "2026-08-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/208/united-states-v-simon/",
+        "title": "United States v. Minnesota: NOTICE by Misael Hernandez, Minnesota Alliance for Retired Americans Educational Fund re 78 MOTION to Dismiss/General (Rule 12(B)(6) Motion to Dismiss) providing supplemental autho"
       }
     ]
   },
@@ -11408,6 +11418,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/91/united-states-v-aguilar/",
         "title": "United States v. Nevada: MOTION for Leave to File Document re 66 Motion to Dismiss by Intervenor Defendants Jacqueline Sue Bird, Institute for a Progressive Nevada, NAACP Conference of Idaho, Nevada, and U"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70388,
+        "kind": "item",
+        "occurred_at": "2026-08-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/92/united-states-v-aguilar/",
+        "title": "United States v. Nevada: Motion Leave to File Document/Excess Pages"
       }
     ]
   },
@@ -15181,6 +15201,16 @@
         "occurred_at": "2026-07-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/138/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70275,
+        "kind": "item",
+        "occurred_at": "2026-08-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/139/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
@@ -19556,6 +19586,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/31/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ECF FILER: Response filed by Appellee Secretary Commonwealth of Pennsylvania to motion. Certificate of Service dated 07/31/2026. [26-2684] (MJF)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70435,
+        "kind": "item",
+        "occurred_at": "2026-07-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/31/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: Response filed by Appellee Secretary Commonwealth of Pennsylvania to motion. Certificate of Service dated 07/31/2026. [26-2684] (MJF) [Entered: 07/31/2026 03:39 PM]"
       }
     ]
   },
@@ -19600,6 +19640,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108473039/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: TRANSCRIPT report/order form filed by Appellant US indicating transcripts are not necessary for this appeal. Served on 07/08/2026. [26-1783] (JTT) [Entered: 07/08/2026 10:59 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70390,
+        "kind": "item",
+        "occurred_at": "2026-08-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108485609/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: BRIEFING schedule set. Brief and Appendix due 09/14/2026 for appellant United States. Pursuant to F.R.A.P. 31(a), appellee's brief will be due 30 days following service of appellan"
       }
     ]
   },
@@ -19782,6 +19832,16 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
         "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70393,
+        "kind": "item",
+        "occurred_at": "2026-08-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/10/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11305217] Acknowledgment of transcript order filed by United States of America. Transcript ordered: No. Served on: 08/05/2026. Manner of Service: email. [26-2126] JTT [Entered: 08"
       }
     ]
   },
