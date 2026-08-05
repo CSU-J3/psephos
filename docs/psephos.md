@@ -54,7 +54,7 @@ See `schema.sql`. The design is items-centric: one `items` table holds every cha
 - `cases`, `case_entries` hold litigation. `category` separates voter-data suits from EO challenges from registration-law challenges.
 - `sources` is the registry. `dedup_seen` backs the two-stage news dedup.
 
-State persists in a remote **Turso** (libSQL) database — the upgrade from the committed `data/psephos.db`, which stays the local-dev fallback. `db.py` is dual-backend: an explicit path (tests, offline dev) uses local SQLite; otherwise `TURSO_DATABASE_URL` in the env routes to the remote. JSON snapshots in `data/*.json` are the diff-friendly export the cron commits and the input for the view.
+State persists in a remote **Turso** (libSQL) database — the upgrade from `data/psephos.db`, which stays the local-dev fallback (a working artifact in the repo directory, gitignored, never tracked). `db.py` is dual-backend: an explicit path (tests, offline dev) uses local SQLite; otherwise `TURSO_DATABASE_URL` in the env routes to the remote. JSON snapshots in `data/*.json` are the diff-friendly export the cron commits and the input for the view.
 
 ---
 
@@ -118,9 +118,9 @@ The cron commits this as JSON. The read-only view is live: a **Next.js app on Ve
 
 Phases 1–3 have shipped; the system runs unattended on the 6-hour cron and persists to Turso.
 
-**Phase 1 (shipped).** Scaffold, `schema.sql`, and the three MVP collectors — legislation, news, litigation (seeded from the trackers) — on the 6-hour GitHub Actions cron with JSON export and per-bill / per-case timeline data. Captures the SAVE America Act cluster and the DOJ voter-data fight.
+**Phase 1 (shipped).** Scaffold, `schema.sql`, and the three MVP collectors — legislation, news, litigation (seeded from the trackers) — on the 6-hour GitHub Actions cron with JSON export and per-bill / per-case timeline data. Captures the SAVE America Act cluster and the DOJ voter-data fight. The backend moved from local SQLite to remote Turso within this phase, before either phase-2 marker: `69bb103` made `db.py` dual-backend, and `904e228` cut production over by giving the workflow `TURSO_DATABASE_URL`. The phase-2 markers add at `b4c0524` (the Federal Register collector) and `fcaa61d` (the Next.js scaffold).
 
-**Phase 2 (shipped).** The Federal Register (executive) collector with a title-only relevance lens, and the read-only timeline view — a Next.js app on Vercel, not the originally-sketched Astro/Observable Plot. The backend also migrated from committed SQLite to remote Turso in this phase.
+**Phase 2 (shipped).** The Federal Register (executive) collector with a title-only relevance lens, and the read-only timeline view — a Next.js app on Vercel, not the originally-sketched Astro/Observable Plot. It was built on Turso from the start, not migrated onto it.
 
 **Phase 3 (shipped).** State legislation via LegiScan, subject-filtered, with the change-hash budget gate. And the UW tracker scraper (`collectors/tracker_uw.py`) that brought litigation to the full ~31-suit DOJ list.
 

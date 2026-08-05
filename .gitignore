@@ -13,7 +13,11 @@ web/.env*.local
 web/next-env.d.ts
 web/*.tsbuildinfo
 
-# sqlite working files (the committed db is data/psephos.db; ignore WAL sidecars)
+# sqlite working files. data/psephos.db is the local-dev fallback backend, a
+# working artifact only -- it has never been tracked (`git log --all -- '*.db'`
+# is empty across the full history) and must not be, since it can carry the
+# whole items spine as a binary blob. Ignore it and its WAL sidecars.
+data/psephos.db
 data/psephos.db-wal
 data/psephos.db-shm
 
