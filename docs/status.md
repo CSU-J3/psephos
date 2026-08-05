@@ -120,6 +120,7 @@ Things that have bitten before and will again.
 - `git check-ignore -v <path>` names the ignoring file and line. Use it when something is untracked and the repo `.gitignore` doesn't explain why.
 - Port 3001 for psephos dev, 3000 is CBT. Process cleanup scoped by port via `netstat`/`taskkill /PID`, never by image name.
 - psephos and CBT share the `csu-j3` Turso account and its quota. A block in one may be the other's doing.
+- A claim in a comment or a doc should name the command that checks it. The `data/psephos.db` parenthetical survived 212 commits as a false statement because it asserted a fact with no way to re-verify in place, so nobody ever did. `git check-ignore -v`, `git ls-files`, `git log --all -- <path>`: a claim that names its own check has a much shorter half-life as a lie.
 
 ---
 
