@@ -2,7 +2,7 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-08-01.
+Last updated: 2026-08-05.
 
 ---
 
@@ -39,7 +39,7 @@ Reading it:
 - `updated_at` moved on any of the usable runs is corroborating.
 - `updated_at` unmoved *and* no cap-abort *and* no read-block on the runs that did complete is a real finding: the seed isn't being polled. One run missing it is noise. Three reasons it can legitimately be unmoved now (cap-abort, read-block, run failure), so rule each out by name before calling it a finding.
 
-**Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three. What follows them is a build decision, not another read: settle the read-layer snapshot migration against the dashboard redesign — which one is the source the other builds on — and then handoff 17.
+**Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three. What follows them is a build decision, not another read — but not the one this line used to name. Handoff 18 already settled the migration against the redesign: the migration is falsified and the redesign goes first (see Open units). What follows is the redesign itself, and then handoff 17.
 
 ### 2. Handoff 15 failure ratio — window open, don't close early
 
@@ -78,8 +78,6 @@ The old "falls hard / barely moves" split and its ~190 renders/day ceiling are g
 
 **State batch-boundary unit.** Created by handoff 15's recon, not inherited. `state.py` commits once for the whole multi-state run (the two `conn.commit()` calls, lines 317 and 319), so a stream failure at the unguarded `seen_hash`/insert path propagates and discards every state processed that run. The two existing handlers (lines 252 and 273) don't catch it — they wrap LegiScan HTTP calls only. Fixing it needs per-state commits to bound the batch. state runs last in the step order, so this costs the run's export and data commit as well as state's own batch; the other five collectors' writes are already committed to Turso, so it delays the snapshot rather than losing data. Don't over-rate it.
 
-**Read-layer snapshot migration.** Serving the web layer from the committed JSON snapshots removes Turso from the request path entirely, killing the count scan, the force-dynamic re-render cost, and any preview-crawl read exposure in one move. Snapshots are exactly as fresh as the DB, since the cron's data commit is what triggers the deploy. The caveat that makes it a unit rather than a swap: anything absent from the snapshots goes invisible in the web layer, which already bit us with orphaned state items, and 2,870 unattached news items (81 of the 2,951 do carry a bill/case/state ref) are invisible by construction today. Needs its own falsification.
-
 **Dashboard redesign — from inventory to intelligence.** The homepage currently answers "what does psephos track"; it should answer "what changed and what does it connect to." Four moves, in value order:
 
 - **Deltas on the channel counts** against the previous export. Raw totals mean nothing on a monitoring tool.
@@ -87,7 +85,17 @@ The old "falls hard / barely moves" split and its ~190 renders/day ceiling are g
 - **The DOJ voter-data campaign as one object**, not dozens of near-identical rows: a state grid with status coloring, exceptions surfaced (GA refile, KY appeal, circuit cases), dormant dockets demoted behind it.
 - **Watched bills sorted by recent cross-channel activity**, with correlation on the card (news volume, related litigation), so S. 1383 mid-floor-fight doesn't render identically to a bill dormant since referral.
 
-All read-layer: no collector or schema changes. The deltas are the only new data need, and that's one comparison against the prior snapshot. Mockup exists in the 08-01 session. **Sequencing:** decide the snapshot migration above before building this — if the read layer is moving to snapshots, build the redesign on that source once, not twice.
+All read-layer: no collector or schema changes. The deltas are the only new data need, and that's one comparison against the prior snapshot. Mockup exists in the 08-01 session. **Sequencing: this goes before the snapshot migration, not after.** The earlier order was backwards. The feed is what determines whether the read path needs the 3,058 unattached news items, and no snapshot carries them, so building the feed settles the migration's data requirement rather than guessing at a requirement that does not exist yet. The strip resolves the same way: the redesign wants deltas rather than raw totals, and if totals go then `getChannelCounts` goes with them, the snapshot strip's 97% news under-report never arises, and handoff 16's cache resolves by deletion. None of that touches §3. The 08-08 chart read is a baseline measurement and stands either way.
+
+**Read-layer snapshot migration: falsified, recommend not doing it.** Measured in handoff 18. The finding is `docs/findings/18-snapshot-parity.md` (`acf5713`); read it before reopening this.
+
+The export itself is clean. The reconciliation closes to zero: 6,089 item references across the four files, 6,089 distinct ids, plus 3,058 invisible news items, against a 9,147-row spine. Nothing lost, nothing double-counted, every channel reconciling on its own. News is the only channel with an invisible set.
+
+Six fields the web layer renders or sorts on are absent from the snapshots: `bills.title`, `bills.introduced_at`, `cases.latest_entry_at`, `cases.source_url`, `state_bills.description`, `items.summary`. All six are addable, and only `cases.latest_entry_at` is non-static, so it is the single one needing a byte-stability check before it goes in. The migration is therefore cheaper than the falsification expected it to be.
+
+Cheaper is not worth doing, and nothing in handoff 18 touched the benefit side. Read cost was the justification, and handoff 16 measured it at 150–250K rows/day rather than the 1.7M spike that motivated it. Preview-crawl exposure closes in a settings toggle (see Deployment Protection below). What remains is cost: `cases.json` and `state_bills.json` are already 964K and 1.5M, 5,971 timeline entries would each gain a summary paragraph, and the swap converts collector reliability into a front-end freshness dependency. Today a run that writes Turso and dies before export leaves the site correct. After a migration it leaves the site stale with no signal, and §2 is the number that prices that risk.
+
+**What reopens this:** the redesign's activity feed needing the 3,058 unattached news items. No snapshot carries them, so that requirement means a fifth export file and the question returns on data grounds instead of cost grounds. Build the feed and find out. See the sequencing note under the redesign above.
 
 **Kentucky supersession candidate — unlinked.** Both rows carry `superseded_by = NULL`; nothing is asserted. `72334676` (E.D. Ky. 3:26-cv-00019) took judgment of dismissal with prejudice 2026-07-23, notice of appeal 07-24; `73674243` (6th Cir. 26-5657) opened 07-24. The district row still reads `status = pending`, so `verify()` correctly refuses it. Gated on CourtListener setting `date_terminated`. **Do not weaken the guard to accommodate it.** On the court's clock, nobody else's.
 
@@ -117,14 +125,16 @@ Things that have bitten before and will again.
 
 ## Falsified — running list
 
-Spans sessions, not just the current one. Kept because the pattern matters more than the individual errors: every one was a confident claim about read cost or repo state, and every one died to a single command or a single chart.
+Spans sessions, not just the current one. Kept because the pattern matters more than the individual errors: every one was a confident claim about read cost or repo state, and every one died to a single command or a single chart. Every entry is a claim made in review or in a handoff. None is a defect in the repo.
 
 - **Prefetch as the read amplifier.** Wrong. No `loading.tsx` means App Router doesn't fully prefetch dynamic routes, so "every prefetch is a full render" never held.
-- **`items` ≈ 6,053 rows.** That was a floor derived from snapshots, correctly labeled and then used as a magnitude anyway. Actual is 8,931; the gap is the unattached items — 2,870 of the 2,951 news items carry no bill/case/state ref, so they never attach and appear in no snapshot.
+- **`items` ≈ 6,053 rows.** That was a floor derived from snapshots, correctly labeled and then used as a magnitude anyway. Actual was 8,931 at 08-01 and 9,147 at 08-05; the gap is the unattached items, 3,058 of the 3,142 news items carrying no bill/case/state ref, so they never attach and appear in no snapshot. The spine grows. Read any count on this page with its date attached.
 - **`docs/handoffs/` isn't gitignored.** Read from the repo `.gitignore` in a clone, which can't see `~/.gitignore_global`. The conclusion held by accident; the reasoning didn't.
 - **state.py as a seventh bare-rollback site.** Inferred from the handler's shape without checking what the `try` wrapped. Both sites wrap pure-HTTP calls that never touch `conn`, and with the only commits at 317/319 a `reset()` there would have discarded every prior state's pending writes.
 - **~4 cache cold starts/day from deploys.** Vercel's Data Cache persists across deployments, so the cron's data commit doesn't invalidate `unstable_cache` entries. The cap is the ≤24/day from the revalidate window alone.
 - **~1.7M rows/day as psephos's rate.** Carried from the CBT thread as a user-provided peak of unstated shape, then used as a sustained rate. The per-database chart shows it is a **single-day spike on ~Jul 21**; the Jul 26 – Aug 1 regime is ~150–250K/day. Everything derived from it inherited the error — the ~190 renders/day ceiling was ~8× too high, and the "falls hard → the strip was the bulk" branch it created was never live. Same failure as the 6,053 floor: a number correctly labeled *provisional* and then used as a magnitude.
 - **Handoff 14 as an unstarted unit.** Listed as owing `--apply`, export, and a data commit. All three shipped 07-30 (`bd4d577`) and have survived six collector-driven exports. Only the read-only Turso proof was ever outstanding. A stale owed-list entry is as misleading as a wrong measurement, and costs more, because it invites redoing finished work.
+- **The state-bill sort as structurally unfixable.** Handoff 18's Part A asserted, in bold, that `getStateBills`' `COALESCE(last_action_at, updated_at)` could not be reproduced by extending the export, since `build_state_bills` omits `updated_at` for byte-stability. Wrong, and reproducible today: the 81 `(state, last_action_at)` ties break on `state_bill_id`, which the snapshot carries, and the arm that actually needs `updated_at` is `last_action_at IS NULL`, which is 0 of 484. Same failure as the `state.py` rollback claim: read the shape of the clause, saw an omitted column, asserted structural impossibility, never counted the nulls. Died to one COUNT. The guard still belongs beside that sort, because 0 of 484 is a property of today's data and not of the schema.
+- **Eight query functions in `web/lib/db.ts`, seven mapping cleanly onto the snapshots.** Thirteen, and six rendered-or-sorted fields absent. The count came from a truncated grep read as though it were the file, in the same message that recommended a build decision off the back of it.
 
-The claims that survived were the ones someone queried: the `getChannelCounts` scan (provable from the schema), `items = 8,931` (measured against production), and the handoff-14 data commit (checked with `git log`, not recalled).
+The claims that survived were the ones someone queried: the `getChannelCounts` scan (provable from the schema), `items = 8,931` (measured against production 2026-08-01), and the handoff-14 data commit (checked with `git log`, not recalled).
