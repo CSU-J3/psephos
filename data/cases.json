@@ -8542,6 +8542,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
         "title": "United States v. Washington: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 70028,
+        "kind": "item",
+        "occurred_at": "2026-08-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/89/united-states-v-hobbs/",
+        "title": "United States v. Washington: MINUTE ENTRY for proceedings held before District Judge Kymberly K. Evanson - Dep Clerk: D. Staples; Pla Counsel: Kristen Johnson, Raymond Yang; Def Counsel: Cristina Sepe, Tera He"
       }
     ]
   },
