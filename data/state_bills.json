@@ -41147,8 +41147,8 @@
     "bill_number": "SB1470",
     "is_vehicle": false,
     "last_action": "Senate JUDE Committee action: Held, voting: (0-0-0-0)",
-    "last_action_at": "2026-02-19T00:00:00",
-    "session": null,
+    "last_action_at": "2026-02-18T00:00:00",
+    "session": "Fifty-seventh Legislature - Second Regular Session (2026)",
     "state": "AZ",
     "state_bill_id": "2094523",
     "status": "1",
@@ -41192,6 +41192,16 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/AZ/bill/SB1470/2026",
         "title": "AZ SB1470: Senate read second time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 69778,
+        "kind": "item",
+        "occurred_at": "2026-02-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/AZ/bill/SB1470/2026",
+        "title": "AZ SB1470: Senate JUDE Committee action: Held, voting: (0-0-0-0)"
       },
       {
         "channel": "state",
