@@ -23,15 +23,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Bootstrap remote schema (idempotent)
-        env:
-          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
-          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
-        # Routes through db.py's dual-backend to the libSQL remote. schema.sql is
-        # CREATE ... IF NOT EXISTS, so this is a no-op on the seeded DB and a clean
-        # self-bootstrap on a fresh one. No local psephos.db is created on the runner.
-        run: python -m db
-
+      # No separate schema-bootstrap step: every collector's main() calls
+      # db.init_db() before its first query, and schema.sql is CREATE ... IF NOT
+      # EXISTS, so the first collector below self-bootstraps a fresh database.
+      # A dedicated step only re-applied that seconds earlier, and its unguarded
+      # connection cost three complete cycles to a Turso transport 502 on 08-06/07.
       - name: Run collectors
         env:
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
