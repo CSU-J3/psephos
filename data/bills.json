@@ -1608,6 +1608,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQa0hXaHRwRENpRmNOQTl2QWVWSEdyS0o5NXhMVG13blFxMTVFMVdFS3BqM2l5MC1jY285ZkpDQ2ZSVzdlTnNDNjVnUHpFLXppdlZkeFhaQko4NmprZVBVdGFNeDRUVUVkcEszWnZ6RlA0LV8xeGtLM3puMmFrZUlnOEFLYmc4YXZrYVVZY1NwaHlBWlkzaUJzM2dnMA?oc=5",
         "title": "More than 20 Republicans join Sen. Mike Lee’s bid to cancel recess unless Senate passes SAVE Act - Deseret News"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 72926,
+        "kind": "item",
+        "occurred_at": "2026-08-08T14:57:38+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNRXQyUDBJLUVBMEFUeXJTeHQxRXhCbDYxLTNhNkx4dWZJLUJ2TGxweWctY2x1MDNqWlhURkdlcTVfSXh5cXlqTnFWWGd2TnJVUHBzQkV1YWU1dFNwVTZlX0VXQ2o2VVJ5QW9wa2x0UVNtcExUSnVrYV9NRUhaRXN0MFZrLXJBcUl4MXE4NWNsQThmT3A0Y3VjcUNRR0swS2hQV3lvMFd2cWJWV1d0b2hkVWFSMjdDX2hPanlhaU10NjNMNUk?oc=5",
+        "title": "SAVE Act Buried: Thune Filed Crypto Cloture Same Morning as September Deal - Tech Times"
       }
     ]
   },
