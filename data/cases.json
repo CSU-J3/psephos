@@ -3770,7 +3770,7 @@
     "docket_number": "1:25-cv-01338",
     "filed_at": "2025-09-25T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -7196,7 +7196,7 @@
     "docket_number": "1:25-cv-01193",
     "filed_at": "2025-12-02T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -9308,7 +9308,7 @@
     "docket_number": "1:25-cv-03967",
     "filed_at": "2025-12-11T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -11674,7 +11674,7 @@
     "docket_number": "3:25-cv-03398",
     "filed_at": "2025-12-18T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -12578,7 +12578,7 @@
     "docket_number": "1:25-cv-04403",
     "filed_at": "2025-12-18T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -13252,7 +13252,7 @@
     "docket_number": "3:26-cv-00021",
     "filed_at": "2026-01-06T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -13936,7 +13936,7 @@
     "docket_number": "3:26-cv-00042",
     "filed_at": "2026-01-16T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -15314,7 +15314,7 @@
     "docket_number": "3:26-cv-02025",
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -16208,7 +16208,7 @@
     "docket_number": "3:26-cv-00019",
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
