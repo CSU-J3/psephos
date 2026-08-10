@@ -283,3 +283,37 @@ def test_recover_survives_a_raising_rollback():
     # ... but recover() takes the reset path and survives.
     db.recover(conn)
     assert conn._pending is False
+
+
+def test_migration_adds_status_checked_at_to_a_legacy_cases_table(tmp_path):
+    """A `cases` table that predates the column gets it on the next init_db().
+
+    This is the mechanism the production cron relies on: `_apply_migrations` runs
+    BEFORE the schema's executescript, and every collector main() calls init_db(),
+    so Turso takes the column on the next scheduled run with no hand-run ALTER.
+    Asserted on a table built WITHOUT the column rather than on a fresh schema --
+    a fresh db gets it from the CREATE and would pass even if _MIGRATIONS were
+    empty, which is the whole failure this test exists to catch.
+
+    (First migration test in the suite; entries_synced_at and superseded_by were
+    added without one.)"""
+    path = tmp_path / "legacy.db"
+    legacy = sqlite3.connect(path)
+    legacy.execute(
+        "CREATE TABLE cases (case_id TEXT PRIMARY KEY, caption TEXT NOT NULL, status TEXT)")
+    legacy.execute("INSERT INTO cases VALUES ('72053306', 'US v. RAFFENSPERGER', 'terminated')")
+    legacy.commit()
+    legacy.close()
+
+    cols = lambda p: [r[1] for r in sqlite3.connect(p).execute("PRAGMA table_info(cases)")]
+    assert "status_checked_at" not in cols(path)
+
+    db.init_db(str(path))
+
+    assert "status_checked_at" in cols(path)
+    # The migration is an ALTER, not a rebuild: existing rows and values survive it,
+    # and the new column reads NULL -- which is what makes every row due on the
+    # first refresh pass.
+    row = sqlite3.connect(path).execute(
+        "SELECT status, status_checked_at FROM cases WHERE case_id = '72053306'").fetchone()
+    assert row == ("terminated", None)

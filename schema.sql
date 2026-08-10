@@ -87,7 +87,13 @@ CREATE TABLE IF NOT EXISTS cases (
     court           TEXT,
     docket_number   TEXT,
     filed_at        TEXT,
-    status          TEXT,                    -- pending | dismissed | appeal | settled | decided
+    status          TEXT,                    -- pending | terminated, and nothing else: the only
+                                             -- expression that writes it is `case_status` in
+                                             -- collectors/litigation.py, which keys solely on
+                                             -- CourtListener's date_terminated. (This comment read
+                                             -- `dismissed | appeal | settled | decided` from the
+                                             -- column's creation until handoff 27; no such value was
+                                             -- ever written.)
     category        TEXT,                    -- voter-data | executive-order | registration-law | redistricting | other
     plaintiff       TEXT,
     defendant       TEXT,
@@ -99,6 +105,13 @@ CREATE TABLE IF NOT EXISTS cases (
                                              -- pointing forward; NULL for live dockets. The reverse
                                              -- (successor -> predecessor) is a query, not a column,
                                              -- so the collector's upsert path never has to preserve it.
+    status_checked_at TEXT,                  -- when `status` was last READ from CourtListener, not
+                                             -- when the docket was last polled (that is a different
+                                             -- question entirely, and entries_synced_at is not it
+                                             -- either -- see its note above). Written by
+                                             -- refresh_status() on every pass INCLUDING no-ops,
+                                             -- which is what makes it a poll receipt; `updated_at`
+                                             -- moves only when the value actually changed.
     source_url      TEXT,
     seeded_from     TEXT,                    -- which tracker the case came from
     updated_at      TEXT
