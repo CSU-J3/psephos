@@ -2,7 +2,7 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-08-09.
+Last updated: 2026-08-10.
 
 ---
 
@@ -61,11 +61,30 @@ While in the logs, note litigation's request consumption. Litigation runs third,
 
 The 24h `turso db inspect` gate is **deleted, not satisfied.** The Turso dashboard charts rows read per day per database directly (app.turso.tech → Databases → psephos → Analytics → Rows Read), so the two-reading cumulative protocol was unnecessary; no reading was ever taken under it. Baseline is recorded in `docs/findings/16-channel-count-baseline.md`: ~150–250K/day for Jul 26 – Aug 1, read 08-01 ~21:45Z.
 
-What's owed is one re-read of the same chart, **~2026-08-08**, same sitting as §1 and §2.
+What's owed is one re-read of the same chart, same sitting as §1, §2, and §4. Due ~2026-08-08 and **now overdue** — as of 2026-08-10 it has not been taken. The window to read is Aug 2–8 against the Jul 26 – Aug 1 baseline.
 
 **Expect it to show nothing, and don't treat that as failure.** At ~200K rows/day against 8,931 rows/scan the strip accounts for at most ~22 renders/day — a ceiling, since collectors read too — and the cache cap is ≤24/day. Current behaviour already sits at or under the cap, so the delta may be invisible inside the noise of a 150–250K band. The finding predicts this in advance rather than explaining it afterward. The change is still right: it makes a bounded cost a property of the code instead of a property of today's traffic.
 
 The old "falls hard / barely moves" split and its ~190 renders/day ceiling are gone — see the falsified list.
+
+### 4. Handoff 21–23 throttle work — PUSHED, VERIFIED AGAINST NOTHING
+
+The session closed with everything on origin and **no run having executed against it.** Pushed 2026-08-10 ~01:22Z; the last scheduled run finished 00:45Z. So the throttle pacing, the unbuffering, and `_log_429` are all unproven in production, and this section exists so a cold reader does not read *pushed* as *verified*.
+
+What shipped: `common._log_429` (dump the 429 before classifying), `PYTHONUNBUFFERED` on the collectors step, `PAGE_THROTTLE` 2.0 → 3.0, and the access-level corrections in the invariants and the falsified list. What is measured and solid is the **tier**, from a direct probe: first-429 at index 21, body `Rate limit exceeded: 20/min`, `retry-after: 46`, on the same token the collector loads (`docs/findings/22-throttle-scope-vs-magnitude.md`).
+
+Read the first scheduled run after 06:00Z 2026-08-10. Six checks:
+
+1. **Docket count, read off the run's own header line** — `N config seed(s) + M tracker case(s)`. Do **not** check against a remembered 34. The table holds 40 cases; 34 came from one run's header and was promptly treated as a constant, which is the same error class as the 250/day figure two entries down the falsified list. If the run prints 37 or 40, that is the header being read correctly, not a failure.
+2. **No `litigation: daily cap hit`.**
+3. **Zero 429s**, which is the prediction — at ~3.7s spacing the 60s window never fills. If any fire, `_log_429` prints the full body; quote the scope string verbatim.
+4. **Per-docket timestamps that differ from each other**, confirming `PYTHONUNBUFFERED` landed. Every line in the pre-push logs carried the process-exit timestamp. Report observed spacing against the predicted ~3.7s; this is the first real measurement of litigation's spacing the project has had.
+5. **The mark**, direct Turso query, subsuming §1's: `superseded_by` still `'72193752'` and `updated_at` off `2026-08-07T12:39:07.102924+00:00` on case `72053306`.
+6. **`entries_synced_at` across the whole table**, not one case. The starvation was table-wide since 08-06 — one row advancing does not prove the tail did.
+
+**The run is also the only available proof that the runner's `COURTLISTENER_TOKEN` is the token the probe measured.** GitHub secrets are write-only; nothing local can read the runner's value. Workflow behaviour is the sole evidence, so a full-coverage run is what closes that question and nothing else can.
+
+Note that §1's mark query, §2's failure-ratio sweep, and §3's chart re-read are all still owed and all read the same runs. Doing them in one sitting with the six checks above costs one log sweep instead of four.
 
 ---
 
@@ -106,6 +125,8 @@ Cheaper is not worth doing, and nothing in handoff 18 touched the benefit side. 
 **Vercel connector scope.** `list_projects` returns four projects, all predating psephos's first commit, and `get_project` / `get_project_deployment_protection` 404 on the psephos slug, while GitHub's commit status points at `vercel.com/csu-j3s-projects/psephos`. The connector's scope does not cover the team the project lives in. Routing around it by curling three hostnames worked once and will not generalize. Fix the scope before the next Vercel read depends on it.
 
 **`_reset_seconds` scope parsing.** The daily-vs-burst classifier discriminates on the *magnitude* of the reset rather than on what the 429 actually says, which is why a minute throttle with a long enough reset has now twice been read as a daily cap. The 429 body names its own scope (`Rate limit exceeded: 5/min`) and `common._log_429` already puts that string in the log; the rewrite is to parse it and branch on the scope instead of the number. Not urgent — pacing removed the trigger and the logging removed the blindness — but the heuristic is still structurally unsound and will misfire again the next time a window changes. The captured artifact that makes the case is `docs/findings/22-throttle-scope-vs-magnitude.md`: a 429 whose body says `20/min` and whose `retry-after` says 46, in one response. Read it before reopening this.
+
+**A test that fires `_log_429` deliberately.** Sits next to the unit above and is the smaller half of it. The detector has never fired in the collector and, if the pacing is right, never will in a healthy run — so a clean run is not a passing test of it, and its first genuine invocation would otherwise be the incident it exists to catch. Wants a synthetic 429 driven through the classification path, asserting the body reaches stderr and that the Authorization header is redacted in both the header map and the body. Reasoning in the finding above.
 
 **The de-tiering itself — cause unknown.** The API Usage table shows 147 requests on 08-05 falling to 84, then 65, then 25 across the following days. The account's rate changed server-side, with no notification, no error, and no log line; the collector's behavior changed underneath code that had not been touched. Whether it was a membership lapse, a policy change, or something applied to the account by hand is unknown, and no artifact in the repo or the dashboard says. Worth one question to Free Law Project, because the answer determines whether the six-month renewal above is the only cliff to watch or just the one with a date on it.
 

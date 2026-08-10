@@ -149,6 +149,27 @@ for up to an hour. When the six-month EDU expiry comes round, expect the same la
 the other direction, and trust the probe over the panel for anything the collector's
 behaviour depends on.
 
+## The detector is untested, and normal operation will not test it
+
+`common._log_429` is the artifact that makes this finding reproducible next time, and
+its correctness currently rests on **the probe reproducing the same body shape
+out-of-band, and on nothing else.** It has never fired in the collector.
+
+Nor should it, if the pacing is right. At ~3.7s spacing the 60s window never fills, so
+a healthy run issues zero 429s and the detector stays cold. **A clean run is therefore
+not a passing test of it** — the two outcomes are indistinguishable from the log.
+
+Its first genuine exercise is whatever run eventually trips a throttle. The most
+probable candidate is the EDU membership expiring roughly six months out and dropping
+the account back to 5/min: precisely the moment the detector matters most, and
+precisely the moment nobody is watching for it. A detector whose first real invocation
+is the incident it was built for is a detector nobody has debugged.
+
+The consequence: this wants a test that fires `_log_429` deliberately — a synthetic 429
+response through the classification path, asserting the body reaches stderr and the
+Authorization header is redacted in both the header map and the body. Left as an open
+unit; not written in the pass that measured this.
+
 ## What this does not establish
 
 Nothing here proves the GitHub Actions runner holds this token. Secrets are
