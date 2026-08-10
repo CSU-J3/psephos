@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+import sys
 import time
 from datetime import datetime, timezone
 
@@ -55,6 +56,7 @@ def _get(
             resp = requests.get(url, params=params, headers=headers, timeout=timeout)
             if resp.status_code in RETRY_STATUS:
                 if resp.status_code == 429:
+                    _log_429(url, resp, headers)
                     # Tell a daily-cap 429 (hopeless: Retry-After ~ tens of thousands of
                     # seconds, far past any wait we'd take) from a burst-rate 429
                     # (transient). _reset_seconds is UNCAPPED, so a reset beyond
@@ -115,6 +117,30 @@ def _retry_after(resp: requests.Response, attempt: int) -> float:
         except ValueError:
             pass
     return float(2 ** attempt)
+
+
+def _log_429(url: str, resp: requests.Response, sent: dict | None = None) -> None:
+    """Dump a throttle response to stderr BEFORE anything classifies it.
+
+    Which throttle fired is stated only in the body -- CourtListener returns
+    `{"detail": "Request was throttled. Rate limit exceeded: 5/min. Expected
+    available in 55 seconds."}` and carries no X-RateLimit-* header at all, so
+    `retry-after` alone gives a delay with no scope attached. Called before the
+    MAX_RETRY_AFTER comparison, so it fires on the retried 429s too; those are
+    the majority and they leave no trace today. stderr, not stdout, because a
+    collector's stdout is block-buffered under the cron and flushes at process
+    exit, which is what made per-request timing unrecoverable from the logs.
+
+    Pure logging: no return value, no control flow, nothing classified here."""
+    secret = (sent or {}).get("Authorization")
+
+    def scrub(text: str) -> str:
+        return text.replace(secret, "<redacted>") if secret and secret in text else text
+
+    safe = {k: ("<redacted>" if k.lower() == "authorization" else scrub(v))
+            for k, v in resp.headers.items()}
+    print(f"  429 from {url}\n    headers: {safe}\n    body: {scrub(resp.text)}",
+          file=sys.stderr)
 
 
 def _reset_seconds(resp: requests.Response) -> int | None:
