@@ -173,6 +173,18 @@ litigation:
                                        # hold. The common no-mark case is a 1-request descending
                                        # probe (ungated); only full walks draw this down, and a
                                        # deferred walk resumes next run.
+  status_refresh_hours: 24             # how stale `cases.status` may get before refresh_status()
+                                       # re-reads it. `status` is written by the resolve path only,
+                                       # so without this pass a case that terminates after its first
+                                       # resolve reads `pending` forever -- 9 of 40 rows were stale
+                                       # that way on 2026-08-10, all inside a four-week window
+                                       # (tools/status_audit measures it).
+  max_status_refresh_per_run: 40       # ceiling on refresh requests per run. The refresh set is
+                                       # NON-terminated rows only (33 today) -- `terminated` is
+                                       # absorbing on the court's clock, so a terminated row never
+                                       # needs re-reading and the set shrinks as rows flip. At a 24h
+                                       # gate that is ~+33/day against a ~170-200/day baseline,
+                                       # about +17%; the four 6-hourly runs share one day's pass.
   # Which docket entries become A1 items (the timeline). case_entries keeps EVERY entry;
   # only these substantive types are promoted to items. The exclude list is required: a
   # "MOTION for Leave to Appear Pro Hac Vice" matches "motion" and routine pro-hac/appearance

@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import os
 import sys
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -361,12 +362,32 @@ def test_full_walk_request_budget_defers_when_spent(tmp_path, monkeypatch):
 
     monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
     monkeypatch.setattr(lit, "poll_entries", fake_poll)
+    # main() now ends with the status refresh (handoff 27), which reaches the HTTP
+    # layer directly rather than through resolve_docket/poll_entries. Without this
+    # stub the three rows this test creates are all due, and the pass issues real
+    # requests at the fake base -- they fail, per-row isolation swallows them, and the
+    # test still passes while spending ~87s in retry backoff against a live DNS lookup.
+    refreshed = []
+
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+        refreshed.append(url)
+        return {"id": url.rstrip("/").split("/")[-1], "date_terminated": None}
+
+    monkeypatch.setattr(common, "http_get", fake_get)
 
     assert lit.main() == 0
     conn = db.connect(str(tmp_path / "m.db"))
     marked = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NOT NULL").fetchone()[0]
     nullmark = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL").fetchone()[0]
     assert (marked, nullmark) == (2, 1)
+    # The refresh ran over all three rows and stamped a receipt on each. A row resolved
+    # THIS run is immediately due (its status_checked_at is NULL), so it costs one
+    # redundant request against the docket the resolve just read -- bounded to newly
+    # resolved cases and deliberately not optimised here, since the fix would mean
+    # writing status_checked_at from upsert_case.
+    assert len(refreshed) == 3
+    assert conn.execute(
+        "SELECT COUNT(*) FROM cases WHERE status_checked_at IS NULL").fetchone()[0] == 0
     conn.close()
 
 
@@ -547,3 +568,234 @@ if __name__ == "__main__":
     test_noise_excluded()
     test_helpers()
     print("ok")
+
+
+# --------------------------------------------------------------------------- #
+# Status refresh (handoff 27): `status` is otherwise write-once
+# --------------------------------------------------------------------------- #
+def _iso(hours_ago: float) -> str:
+    return (datetime.now(timezone.utc) - timedelta(hours=hours_ago)).isoformat()
+
+
+def _refresh_db(tmp_path, rows):
+    """A cases table seeded with (case_id, status, status_checked_at, updated_at)."""
+    dbp = str(tmp_path / "r.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    for case_id, status, checked, updated in rows:
+        conn.execute(
+            "INSERT INTO cases (case_id, caption, status, status_checked_at, updated_at) "
+            "VALUES (?, ?, ?, ?, ?)", (case_id, f"case {case_id}", status, checked, updated))
+    conn.commit()
+    return conn
+
+
+def _fake_get(recorder, date_terminated=None):
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+        recorder.append(url)
+        return {"id": url.rstrip("/").split("/")[-1], "date_terminated": date_terminated}
+    return fake
+
+
+def test_refresh_selection_excludes_terminated_and_fresh(tmp_path):
+    """The refresh set is non-terminated AND stale. `terminated` is absorbing on the
+    court's clock, so re-reading it would be pure waste -- that exclusion is what keeps
+    the pass at ~+17% on the daily draw rather than doubling it."""
+    conn = _refresh_db(tmp_path, [
+        ("100", "terminated", None,     None),   # terminated -> never due, even unchecked
+        ("200", "pending",    _iso(1),  None),   # checked an hour ago -> not yet stale
+        ("300", "pending",    _iso(25), None),   # checked 25h ago -> due
+        ("400", "pending",    None,     None),   # never checked -> due
+        ("500", None,         None,     None),   # NULL status is unresolved, not terminated
+    ])
+    due = [r["case_id"] for r in lit.due_for_status_refresh(conn, _iso(24))]
+    assert "100" not in due and "200" not in due
+    assert set(due) == {"300", "400", "500"}
+    conn.close()
+
+
+def test_refresh_selection_orders_never_checked_first(tmp_path):
+    """Ordering is the difference between a capped pass that makes progress and one
+    that re-walks the same head of the list every run. Never-checked first, then
+    oldest-checked."""
+    conn = _refresh_db(tmp_path, [
+        ("100", "pending", _iso(30), None),
+        ("200", "pending", None,     None),
+        ("300", "pending", _iso(99), None),
+    ])
+    assert [r["case_id"] for r in lit.due_for_status_refresh(conn, _iso(24))] == ["200", "300", "100"]
+    conn.close()
+
+
+def test_refresh_flip_to_terminated_writes_all_three_columns(tmp_path, monkeypatch):
+    conn = _refresh_db(tmp_path, [("100", "pending", None, "2000-01-01T00:00:00Z")])
+    calls = []
+    monkeypatch.setattr(common, "http_get", _fake_get(calls, date_terminated="2026-07-23"))
+
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    assert calls == ["https://x/api/dockets/100/"]
+    assert counts["checked"] == 1 and counts["changed"] == 1 and counts["failed"] == 0
+    row = conn.execute("SELECT status, status_checked_at, updated_at FROM cases").fetchone()
+    assert row["status"] == "terminated"
+    assert row["status_checked_at"] is not None
+    assert row["updated_at"] != "2000-01-01T00:00:00Z"   # a real change stamps updated_at
+    conn.close()
+
+
+def test_refresh_noop_moves_receipt_but_not_updated_at(tmp_path, monkeypatch):
+    """The one most likely to regress and the most expensive when it does. A no-op
+    must move `status_checked_at` and leave `updated_at` alone: stamping it on 33
+    unchanged rows a day would make every row look freshly touched and destroy the
+    instrument that exposed both the starvation (handoff 25) and the orphan class."""
+    conn = _refresh_db(tmp_path, [("100", "pending", None, "2000-01-01T00:00:00Z")])
+    monkeypatch.setattr(common, "http_get", _fake_get([], date_terminated=None))
+
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    assert counts["checked"] == 1 and counts["changed"] == 0
+    row = conn.execute("SELECT status, status_checked_at, updated_at FROM cases").fetchone()
+    assert row["status"] == "pending"
+    assert row["status_checked_at"] is not None           # receipt written on the no-op
+    assert row["updated_at"] == "2000-01-01T00:00:00Z"    # ... and updated_at untouched
+    conn.close()
+
+
+def test_refresh_skips_non_numeric_case_id_without_a_request(tmp_path, monkeypatch):
+    """A B2-only seed has no docket_number, so collect_case slugifies its caption and
+    there is nothing to look up. All 40 rows are numeric today, but that is a property
+    of today's data, not of the schema."""
+    conn = _refresh_db(tmp_path, [
+        ("common-cause-v-doj", "pending", None, None),
+        ("100",                "pending", None, None),
+    ])
+    calls = []
+    monkeypatch.setattr(common, "http_get", _fake_get(calls))
+
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    assert calls == ["https://x/api/dockets/100/"]        # the slug was never requested
+    assert counts["due"] == 1 and counts["skipped"] == 1 and counts["checked"] == 1
+    slug = conn.execute(
+        "SELECT status_checked_at FROM cases WHERE case_id = 'common-cause-v-doj'").fetchone()
+    assert slug["status_checked_at"] is None              # skipped, not silently stamped
+    conn.close()
+
+
+def test_refresh_respects_the_per_run_cap(tmp_path, monkeypatch):
+    """The cap bites the FRESHEST rows, because ordering put the least-fresh first."""
+    fresh_mark = _iso(30)
+    conn = _refresh_db(tmp_path, [
+        ("100", "pending", None,       None),
+        ("200", "pending", _iso(99),   None),
+        ("300", "pending", fresh_mark, None),
+    ])
+    calls = []
+    monkeypatch.setattr(common, "http_get", _fake_get(calls))
+
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 2)
+
+    assert calls == ["https://x/api/dockets/100/", "https://x/api/dockets/200/"]
+    assert counts["due"] == 3 and counts["checked"] == 2 and counts["capped"] is True
+    # 300 was due but deferred: its receipt is untouched, so next run still sees it.
+    left = conn.execute("SELECT status_checked_at FROM cases WHERE case_id = '300'").fetchone()
+    assert left["status_checked_at"] == fresh_mark
+    conn.close()
+
+
+def test_refresh_rate_budget_breaks_cleanly_mid_pass(tmp_path, monkeypatch):
+    """A cap hit mid-pass stops the loop, keeps what already committed, and does NOT
+    raise -- main()'s exit-0 invariant keeps executive/news/state running."""
+    conn = _refresh_db(tmp_path, [
+        ("100", "pending", None, None),
+        ("200", "pending", None, None),
+        ("300", "pending", None, None),
+    ])
+    calls = []
+
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+        calls.append(url)
+        if len(calls) > 1:
+            raise common.RateBudgetExhausted(46)
+        return {"id": "100", "date_terminated": "2026-07-23"}
+
+    monkeypatch.setattr(common, "http_get", fake)
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    assert counts["aborted"] is True
+    assert counts["checked"] == 1 and counts["changed"] == 1
+    # The one that got through is committed; the rest keep NULL receipts and, being
+    # the least fresh, are exactly what next run's ordering picks up first.
+    assert conn.execute(
+        "SELECT status FROM cases WHERE case_id = '100'").fetchone()["status"] == "terminated"
+    assert conn.execute(
+        "SELECT COUNT(*) c FROM cases WHERE status_checked_at IS NULL").fetchone()["c"] == 2
+    conn.close()
+
+
+def test_refresh_failure_is_isolated_to_the_row(tmp_path, monkeypatch):
+    """One bad lookup costs that row and nothing else -- the pass carries on."""
+    conn = _refresh_db(tmp_path, [
+        ("100", "pending", None, None),
+        ("200", "pending", None, None),
+    ])
+    calls = []
+
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+        calls.append(url)
+        if "100" in url:
+            raise RuntimeError("GET failed after 4 attempts")
+        return {"id": "200", "date_terminated": "2026-07-14"}
+
+    monkeypatch.setattr(common, "http_get", fake)
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    assert counts["failed"] == 1 and counts["checked"] == 1 and counts["changed"] == 1
+    assert conn.execute(
+        "SELECT status FROM cases WHERE case_id = '200'").fetchone()["status"] == "terminated"
+    conn.close()
+
+
+def test_main_returns_zero_when_the_refresh_hits_the_cap(tmp_path, monkeypatch):
+    """End to end: the refresh runs after the seed loop, and a cap hit inside it still
+    exits 0 so executive/news/state keep running."""
+    dbp = str(tmp_path / "m.db")
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.setattr(db, "DB_PATH", dbp)
+    monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
+    monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+    monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)   # config seeds don't bind
+
+    db.init_db(dbp)
+    seed = db.connect(dbp)
+    seed.execute("INSERT INTO cases (case_id, caption, status) VALUES ('100', 'c', 'pending')")
+    seed.commit()
+    seed.close()
+
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+        raise common.RateBudgetExhausted(46)
+
+    monkeypatch.setattr(common, "http_get", fake)
+    assert lit.main() == 0
+
+
+def test_main_skips_the_refresh_when_the_seed_loop_hit_the_cap(tmp_path, monkeypatch):
+    """The budget is already spent, so every refresh request would 429 immediately.
+    Tracked with a flag rather than inferred from the loop's end state."""
+    dbp = str(tmp_path / "m.db")
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.setattr(db, "DB_PATH", dbp)
+    monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
+    monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+
+    def cap_out(*a, **k):
+        raise common.RateBudgetExhausted(46)
+
+    monkeypatch.setattr(lit, "resolve_docket", cap_out)
+    called = []
+    monkeypatch.setattr(lit, "refresh_status", lambda *a, **k: called.append(1))
+
+    assert lit.main() == 0
+    assert called == []      # refresh never attempted

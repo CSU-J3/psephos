@@ -25,6 +25,7 @@ import json
 import re
 import sys
 import time
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import common
@@ -48,8 +49,10 @@ TRACKER_ARTIFACT = "data/doj_cases.json"   # the full DOJ-suit list (collectors.
 # time keeps it off. Handoff 25 measured this directly on the 2026-08-10 runs: the
 # minimum observed spacing was 3.39s and the median 3.54-3.74s across 57 one-request
 # dockets, so every bit of the margin was CourtListener's round trip rather than
-# anything this code controls. 3.2 buys the margin from the constant instead --
-# 20 * 3.2 = 64s against a 60s window -- and costs ~7s on a ~35-request run.
+# anything this code controls. 3.2 buys the margin from the constant instead: twenty
+# requests SPAN 64s against a 60s window, so the clearance is FOUR SECONDS, not 64.
+# Read the other way it looks like room to tighten the constant, and there is none.
+# Costs ~7s on a ~35-request run.
 #
 # This does not exist to stop the abort (20/min clears MAX_RETRY_AFTER on its own);
 # it exists so the throttle is never tripped. If the tier changes, this number changes
@@ -496,6 +499,108 @@ def load_tracker_seeds(path: str = TRACKER_ARTIFACT) -> list[dict]:
     return json.loads(p.read_text(encoding="utf-8"))
 
 
+def due_for_status_refresh(conn, stale_before: str) -> list:
+    """Non-terminated rows whose `status` has not been read since `stale_before`.
+
+    `terminated` is absorbing on the court's clock -- a docket does not un-terminate
+    -- so a terminated row never needs re-reading and the refresh set shrinks as rows
+    flip. That is what keeps this pass at ~+17% on the daily draw instead of doubling
+    it. NULL status is included: it means the row was never resolved, not that it is
+    terminated.
+
+    Ordering is never-checked first, then oldest-checked: a pass that hits the cap or
+    the daily budget still makes progress on the LEAST fresh rows rather than
+    re-walking the same head of the list every run."""
+    return conn.execute(
+        """SELECT case_id, caption, status, status_checked_at
+             FROM cases
+            WHERE (status IS NULL OR status <> 'terminated')
+              AND (status_checked_at IS NULL OR status_checked_at < ?)
+            ORDER BY status_checked_at IS NOT NULL, status_checked_at, case_id""",
+        (stale_before,),
+    ).fetchall()
+
+
+def refresh_status(conn, base: str, headers: dict, stale_before: str, cap: int) -> dict:
+    """Re-read `cases.status` from CourtListener for every due row. One request each.
+
+    This exists because `status` is otherwise write-once: upsert_case sets it only
+    inside `if docket is not None:`, i.e. only on a fresh resolve, and a resolved case
+    is never re-resolved. So a case that terminates AFTER its first resolve reads
+    `pending` indefinitely -- 9 of 40 rows on 2026-08-10, six of them actively seeded
+    and polled every six hours the whole time. Polling never re-read status; this pass
+    is the only thing that does.
+
+    It iterates `cases`, not the seed list, which is the point: the three district
+    orphans that dropped out of the seed artifact (NM, VA, KY) are in the due set and
+    get covered with no seeding change at all.
+
+    Non-numeric case_ids are skipped without a request. All 40 rows are numeric today,
+    but that is a property of today's data, not of the schema -- collect_case slugifies
+    a caption for a B2-only seed with no docket_number, and such a row has no docket to
+    look up. Counting the skips keeps that visible rather than assumed.
+
+    Returns counts; writes are targeted UPDATEs (never db.upsert, which would rewrite
+    the whole row) and commit per row, matching the seed loop."""
+    rows = due_for_status_refresh(conn, stale_before)
+    skipped = [r for r in rows if not str(r["case_id"]).isdigit()]
+    due = [r for r in rows if str(r["case_id"]).isdigit()]
+    counts = {"due": len(due), "skipped": len(skipped), "checked": 0,
+              "changed": 0, "failed": 0, "capped": False, "aborted": False}
+
+    print(f"litigation: status refresh, {len(due)} row(s) due "
+          f"({len(skipped)} skipped, non-numeric case_id)")
+    if len(due) > cap:
+        counts["capped"] = True
+        print(f"  capped at {cap}/{len(due)}; the rest are the freshest and resume next run")
+        due = due[:cap]
+
+    for row in due:
+        case_id, caption = str(row["case_id"]), row["caption"]
+        try:
+            docket = common.http_get(f"{base}/dockets/{case_id}/",
+                                     headers=headers, throttle=PAGE_THROTTLE)
+            live = case_status(docket)
+            now = common.now_iso()
+            if live != row["status"]:
+                # Value moved: stamp updated_at too, since something on the row changed.
+                conn.execute(
+                    "UPDATE cases SET status = ?, status_checked_at = ?, updated_at = ? "
+                    "WHERE case_id = ?", (live, now, now, case_id))
+                counts["changed"] += 1
+                print(f"  {caption[:46]:<46} status {row['status']} -> {live}"
+                      f"  (date_terminated {docket.get('date_terminated')})")
+            else:
+                # No-op: the receipt moves, `updated_at` does NOT. Stamping it on a
+                # daily no-op would make all 33 rows look freshly touched and destroy
+                # the instrument that exposed both the starvation and the orphan class.
+                conn.execute("UPDATE cases SET status_checked_at = ? WHERE case_id = ?",
+                             (now, case_id))
+            conn.commit()
+            counts["checked"] += 1
+        except common.RateBudgetExhausted as exc:
+            # Raised by http_get before any write, so nothing is half-written and no
+            # recover() is needed. Return rather than raise: main()'s exit-0 invariant
+            # keeps executive/news/state running, and the unchecked rows are the
+            # least-fresh ones, so next run's ordering picks up exactly here.
+            counts["aborted"] = True
+            print(f"litigation: status refresh aborted, daily cap hit ({exc}); "
+                  f"{counts['checked']}/{len(due)} checked, rest retry next run",
+                  file=sys.stderr)
+            break
+        except Exception as exc:
+            # recover() not rollback(): a dead Hrana stream makes rollback() raise and
+            # would take down the pass this handler exists to keep alive (handoff 15).
+            db.recover(conn)
+            counts["failed"] += 1
+            print(f"  {caption[:46]} (docket {case_id}): status refresh failed, "
+                  f"skipped -- {exc}", file=sys.stderr)
+
+    print(f"  status refresh: {counts['checked']} checked, {counts['changed']} changed, "
+          f"{counts['skipped']} skipped, {counts['failed']} failed")
+    return counts
+
+
 def main() -> int:
     config.load_env()
     db.init_db()
@@ -507,6 +612,8 @@ def main() -> int:
     types = lit.get("substantive_entry_types", [])
     excludes = lit.get("excluded_entry_phrases", [])
     bootstrap_requests = lit.get("max_bootstrap_requests_per_run", 30)
+    refresh_hours = lit.get("status_refresh_hours", 24)
+    refresh_cap = lit.get("max_status_refresh_per_run", 40)
 
     conn = db.connect()
     try:
@@ -516,6 +623,7 @@ def main() -> int:
         tracker_seeds = load_tracker_seeds()
         print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
               f"tracker case(s) from {TRACKER_ARTIFACT}  (full-walk req budget {bootstrap_requests})")
+        cap_hit = False
         for seed in config_seeds + tracker_seeds:
             try:
                 r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_requests)
@@ -525,6 +633,7 @@ def main() -> int:
                 # dockets keep their NULL mark and retry next run.
                 print(f"litigation: daily cap hit ({exc}); aborting run. Un-probed dockets "
                       f"keep their NULL mark and retry next run.", file=sys.stderr)
+                cap_hit = True
                 break
             bootstrap_requests -= r.get("walk_requests", 0)   # only full walks draw the budget
             if r.get("deferred"):
@@ -540,6 +649,18 @@ def main() -> int:
             else:
                 tag = "B2-only (no docket_number)"
             print(f"  {r['caption'][:46]:<46} {tag}")
+
+        # After the seed loop, so a refresh failure can never cost the polling that
+        # has already committed per case. Skipped outright when the loop broke on the
+        # cap -- the budget is spent, so every refresh request would 429 immediately.
+        # Tracked with a flag rather than inferred from the loop's end state.
+        if cap_hit:
+            print("litigation: status refresh skipped (daily cap already hit this run)",
+                  file=sys.stderr)
+        else:
+            stale_before = (datetime.now(timezone.utc)
+                            - timedelta(hours=refresh_hours)).isoformat()
+            refresh_status(conn, base, headers, stale_before, refresh_cap)
     finally:
         conn.close()
     return 0
