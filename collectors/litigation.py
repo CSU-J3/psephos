@@ -38,7 +38,17 @@ CL_BASE_WEB = "https://www.courtlistener.com"
 USER_AGENT = "psephos/0.1 (+https://github.com/CSU-J3/psephos)"
 TRACKER_ARTIFACT = "data/doj_cases.json"   # the full DOJ-suit list (collectors.tracker_uw)
 
-PAGE_THROTTLE = 2.0   # seconds between CourtListener requests (rate limit is real)
+# Seconds between CourtListener requests, paced against the 20/min throttle measured
+# 2026-08-09 on the EDU membership (Developer Tools -> API Usage; 1,000/hour is the
+# other stat, and no daily is shown at this tier). 20/min fills the window at 3.0s
+# spacing exactly; per-request overhead from Turso round trips and network measured
+# ~0.7s in the 08-05/08-07 runs, so effective spacing lands near 3.7s, about 16
+# requests/min against an allowance of 20 -- margin without a boundary case. Cost is
+# roughly a minute on a 60-request run. This does not exist to stop the abort (20/min
+# clears MAX_RETRY_AFTER on its own); it exists so the throttle is never tripped.
+# If the tier changes, this number changes with it: re-read the API Usage panel, and
+# a 429 in the log will name the new scope in its body via common._log_429.
+PAGE_THROTTLE = 3.0
 EMPTY_RETRIES = 5     # retries for an unexpectedly empty page before giving up
 
 # The one heavy field write_entries never reads: recap_documents' full `plain_text`.
