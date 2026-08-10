@@ -30,6 +30,11 @@ data/masterlist_corpus.json
 # the reproducible path.
 data/sasts_corpus.json
 
+# cases.status drift measurement (handoff 26): stored status vs CourtListener today;
+# rebuild with `python -m tools.status_audit` (40 queries). The script is the
+# reproducible path. Deliberately NOT byte-stable -- it tracks a moving upstream value.
+data/status_audit.json
+
 # os
 .DS_Store
 Thumbs.db

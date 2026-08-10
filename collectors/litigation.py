@@ -249,6 +249,18 @@ def _existing_caption(conn, case_id: str) -> str | None:
     return r["caption"] if r else None
 
 
+def case_status(docket: dict) -> str:
+    """The `cases.status` value for a docket JSON: CourtListener's `date_terminated`
+    is the whole mapping.
+
+    Named so `tools/status_audit` can evaluate the SAME expression the collector
+    stores rather than a copy of it -- the audit measures whether stored values have
+    gone stale, and a paraphrase here would let the two drift and turn a stale-row
+    measurement into a mapping mismatch. Same reason tools/sasts_dump imports
+    `get_bill` from collectors.state instead of reimplementing it."""
+    return "pending" if not docket.get("date_terminated") else "terminated"
+
+
 def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | None:
     """Upsert the case row. API-derived fields are written only when we have the
     docket JSON (a fresh resolve), so a reuse run never clobbers them with None.
@@ -283,7 +295,7 @@ def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | No
     if docket is not None:
         filed_at = common.to_iso(docket.get("date_filed"))
         row["filed_at"] = filed_at
-        row["status"] = "pending" if not docket.get("date_terminated") else "terminated"
+        row["status"] = case_status(docket)
         row["source_url"] = CL_BASE_WEB + docket["absolute_url"] if docket.get("absolute_url") else None
     db.upsert(conn, "cases", row, pk="case_id")
     return filed_at

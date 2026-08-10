@@ -56,6 +56,19 @@ def test_helpers():
     assert lit.split_caption("No versus here") == (None, None)
 
 
+def test_case_status_both_branches():
+    """`date_terminated` is the whole mapping. Pinned because tools/status_audit
+    evaluates this same function against a live docket to measure how stale the
+    stored `cases.status` values are; a silent change here would move the audit's
+    yardstick along with the collector and hide the drift it exists to find.
+    Absent, null and empty-string all mean 'not terminated' -- CourtListener sends
+    null for a live docket, and the falsy check must not treat "" as a date."""
+    assert lit.case_status({"id": 1}) == "pending"
+    assert lit.case_status({"id": 1, "date_terminated": None}) == "pending"
+    assert lit.case_status({"id": 1, "date_terminated": ""}) == "pending"
+    assert lit.case_status({"id": 1, "date_terminated": "2026-06-24"}) == "terminated"
+
+
 def _raise_rate_limit(*args, **kwargs):
     raise RuntimeError("GET failed after 4 attempts: https://www.courtlistener.com/api/rest/v4/dockets/")
 
