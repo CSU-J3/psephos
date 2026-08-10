@@ -30,6 +30,12 @@ jobs:
       # connection cost three complete cycles to a Turso transport 502 on 08-06/07.
       - name: Run collectors
         env:
+          # Python block-buffers stdout when it is a pipe, which the runner's log
+          # capture is. Every per-request line therefore carried the process-exit
+          # timestamp, and throttle spacing had to be reconstructed as an interval
+          # instead of read off the log. Collectors step only -- the other steps
+          # emit at coarse enough granularity that the timestamps are already real.
+          PYTHONUNBUFFERED: "1"
           CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
           COURTLISTENER_TOKEN: ${{ secrets.COURTLISTENER_TOKEN }}
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
