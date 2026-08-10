@@ -8572,6 +8572,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/89/united-states-v-hobbs/",
         "title": "United States v. Washington: MINUTE ENTRY for proceedings held before District Judge Kymberly K. Evanson - Dep Clerk: D. Staples; Pla Counsel: Kristen Johnson, Raymond Yang; Def Counsel: Cristina Sepe, Tera He"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 73469,
+        "kind": "item",
+        "occurred_at": "2026-08-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/91/united-states-v-hobbs/",
+        "title": "United States v. Washington: Transcript Order Form"
       }
     ]
   },
@@ -12520,6 +12530,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 73448,
+        "kind": "item",
+        "occurred_at": "2026-07-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/101/united-states-v-matthews/",
+        "title": "United States v. Illinois: OPINION entered by Judge Colleen R. Lawless on 7/31/2026. United States' Motion to Compel (Doc.  5 ) is DENIED and Defendants' Motions to Dismiss (Docs.  41 ,  49 ,  56 ,  64 , and"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 69226,
         "kind": "item",
         "occurred_at": "2026-08-04T00:00:00",
@@ -15261,6 +15281,16 @@
         "occurred_at": "2026-08-05T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/140/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 73444,
+        "kind": "item",
+        "occurred_at": "2026-08-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/141/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
