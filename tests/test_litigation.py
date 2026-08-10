@@ -799,3 +799,52 @@ def test_main_skips_the_refresh_when_the_seed_loop_hit_the_cap(tmp_path, monkeyp
 
     assert lit.main() == 0
     assert called == []      # refresh never attempted
+
+
+def test_a_raising_refresh_pass_does_not_cost_the_cycle(tmp_path, monkeypatch, capsys):
+    """The exit-0 invariant at the one line that did not honour it.
+
+    refresh_status's FIRST statement is due_for_status_refresh's SELECT, which runs
+    before any per-row handler exists. A raise there left main() non-zero, and since
+    the collectors are sequential lines in one `-e` step that costs export and the data
+    commit for the whole cycle -- a lost run that looks like an empty diff. The seed
+    loop has already committed per case, so the refresh must fail alone."""
+    dbp = str(tmp_path / "m.db")
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.setattr(db, "DB_PATH", dbp)
+    monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
+    monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+    monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)
+
+    def boom(*a, **k):
+        # The realistic shape: the SELECT itself fails (missing column / dead stream).
+        raise ValueError("no such column: status_checked_at")
+
+    monkeypatch.setattr(lit, "refresh_status", boom)
+
+    assert lit.main() == 0
+    err = capsys.readouterr().err
+    assert "status refresh pass failed, skipped" in err
+    assert "no such column: status_checked_at" in err   # the cause survives to the log
+
+
+def test_the_real_selection_failure_is_caught_not_just_a_stub(tmp_path, monkeypatch, capsys):
+    """The same guard exercised through the REAL refresh_status, with the SELECT
+    failing -- so this still passes if refresh_status is ever restructured such that a
+    stubbed-out function no longer represents the failure."""
+    dbp = str(tmp_path / "m.db")
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.setattr(db, "DB_PATH", dbp)
+    monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
+    monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+    monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)
+
+    def bad_select(conn, stale_before):
+        raise ValueError("Hrana: stream not found")
+
+    monkeypatch.setattr(lit, "due_for_status_refresh", bad_select)
+
+    assert lit.main() == 0
+    assert "status refresh pass failed, skipped" in capsys.readouterr().err

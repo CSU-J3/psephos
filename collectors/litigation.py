@@ -660,7 +660,22 @@ def main() -> int:
         else:
             stale_before = (datetime.now(timezone.utc)
                             - timedelta(hours=refresh_hours)).isoformat()
-            refresh_status(conn, base, headers, stale_before, refresh_cap)
+            try:
+                refresh_status(conn, base, headers, stale_before, refresh_cap)
+            except Exception as exc:
+                # Exit-0 invariant. The collectors run as sequential lines in one `-e`
+                # step, so a raise here costs export and the data commit for the WHOLE
+                # cycle -- a lost run that looks like an empty diff. The seed loop has
+                # already committed per case; the refresh is the optional half and must
+                # never take the half that worked down with it.
+                #
+                # The unguarded line was refresh_status's first: due_for_status_refresh
+                # runs its SELECT before any per-row handler exists. Two live ways in --
+                # a missing status_checked_at if the migration hasn't applied, and a dead
+                # Hrana stream on that query, the failure family handoff 15 closed
+                # everywhere else in this file.
+                print(f"litigation: status refresh pass failed, skipped -- {exc}",
+                      file=sys.stderr)
     finally:
         conn.close()
     return 0
