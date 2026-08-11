@@ -2,89 +2,135 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-08-10.
+Last updated: 2026-08-11.
 
 ---
 
 ## Owed right now
 
-### 1. Handoff 14 invariant — one read-only query, not a unit of work
+### The first due run — the 2026-08-12 00:00Z slot
 
-**Scope first, because this line has already been misread once.** The unit shipped days ago and is half-proven. `--apply` ran, the export ran, and the data commit is `bd4d577` (07-30), all on origin. Six collector-driven data commits have run since — `200931f`, `dda174e`, `4059878`, `98217c5`, `7709e14`, `6eb6554` — and `superseded_by` is still present in `data/cases.json` at HEAD. So the value is no longer just `bd4d577`'s hand-written entry; a collector regenerated the file around it and did not drop it.
+**This is the only open item.** Everything else in this section closed on the 2026-08-11 ~23:00Z sweep and is recorded below under *Closed on the 08-11 sweep*. Read that first if any of this is unfamiliar.
 
-What is owed is the **direct Turso proof and the run-log check**, nothing more. Do not write "not started", and do not re-run `--apply`.
+The 08-10 dispatch stamped `status_checked_at` on 33 rows between **19:24:42Z and 19:26:49Z**. The gate is 24h (`status_refresh_hours: 24`), so those rows come due again at **08-11 19:24–19:26Z** — after the last scheduled run of 08-11 (18:42Z, which read the gate at 18:46:58Z and missed the boundary by 37m44s). So the next run to see a non-zero due set is the **08-12 00:00Z slot**, and it has not run as of this writing.
 
-That snapshot survival is corroboration, not the proof — a no-diff or partially-completed export can leave a stale file looking healthy, which is why the standing invariant says row state comes from a query. It raises the value from *hand-written* to *DB-derived*; the SELECT is still what closes it.
+Expect, and check in one pass:
 
-The doc previously said three crons had run and effectively two were usable. That count is stale: the window is now six-plus completed runs. This should have been read after the first.
+- **24 due**, not 33. Nine rows flipped to `terminated` on the dispatch and `terminated` is absorbing, so the gate's `status <> 'terminated'` clause drops them permanently. Confirmed by direct query, not inferred: `SELECT COUNT(*) FROM cases WHERE status IS NULL OR status <> 'terminated'` reads **24** right now. A number other than 24 means a row changed state between then and the run, which is a finding, not noise.
+- **0 changed, 0 failed.** A flip here would be a docket that terminated inside the 24h window — possible and not alarming, but name it.
+- **No `capped at 40/N`.** `max_status_refresh_per_run` is 40 and the due set is 24, so the cap cannot bind. If that line appears, the due set is bigger than the table.
 
-Procedure, in order:
+This run is also the **ongoing-cost measurement**, which is the one number the sweep could not produce.
 
-1. Cap-abort check across the post-push runs, ids from `gh run list`. `gh run view <id> --log`, looking for the handoff-8 daily-cap abort. You need to know whether litigation actually reached `72053306`.
-2. Direct Turso query. **Not the snapshot** — a no-diff run or a pre-export death leaves no new commit, and you'd read `bd4d577`'s hand-written value and credit the manual commit as the collector's work.
+**Record the denominator as a range, because a docket line is not a request.** The seed loop prints one line per docket and paginates silently — there is no `[Nreq]` marker — so line count is a floor, not a count. Both figures below are derived, neither is exact, and the refresh adds 33 once and 24 per day thereafter:
 
-       SELECT case_id, status, superseded_by, updated_at FROM cases WHERE case_id = '72053306';
+- **Floor, one request per docket line:** 34/run, 136/day → **+24.3% one-time, +17.6% ongoing.**
+- **Delta-derived, pagination included:** ~42 and ~51 requests/run, **~168–204/day** → **~+17% one-time, ~+13% ongoing.**
 
-Note that the 07-31 01:26Z run **failed** on the org-wide Turso read block (CBT's doing, not psephos's), so it never reached litigation — this is the same failure §2 names, not a second one. Exclude it from the usable count; the six data commits listed above are runs that reached export, so the usable window is comfortably wide now.
+**The pagination-inclusive figure is the truer one**, since those pages are real requests against the same ceiling. The floor only coincides with the truth on a run where every docket returns nothing, which does happen — three of these five runs had all 34 dockets at `0 entries` — but is not the steady state. The 18:42Z run is the counter-example in this very window: New York returned 10 entries and its fetch alone consumed 35.25s against a ~4.1s median.
 
-**Record all of it in one pass**, since it's one query plus one log sweep:
+An earlier draft of this section asserted that no log supported ~192/day. That was wrong and is struck: the delta derivation in handoff 25 is exactly such a log, and multi-page dockets there (Georgia 102 entries, Illinois 66, Vermont 53) are what it measured.
 
-- The SELECT's four values: `case_id`, `status`, `superseded_by`, `updated_at`.
-- The run ids actually checked, by id, not "the recent ones".
-- The cap-abort read for each of those runs — present or absent, per run.
+---
 
-Reading it:
+## Closed on the 2026-08-11 sweep
 
-- `superseded_by` still `'72193752'` is load-bearing. Anything else means the unit failed and the omits-`superseded_by` invariant is broken in production.
-- `updated_at` moved on any of the usable runs is corroborating.
-- `updated_at` unmoved *and* no cap-abort *and* no read-block on the runs that did complete is a real finding: the seed isn't being polled. One run missing it is noise. Three reasons it can legitimately be unmoved now (cap-abort, read-block, run failure), so rule each out by name before calling it a finding.
+Five runs read in one pass, all gated on `0098f3d` or a descendant. Kept in full because each closes a claim that was open for days, and because a cold reader needs the numbers to tell *verified* from *pushed*.
 
-**Read this alongside §2 and §3 on ~08-08.** All three are log or dashboard reads on the same runs; doing them in one sitting costs one sweep instead of three. What follows them is a build decision, not another read — but not the one this line used to name. Handoff 18 already settled the migration against the redesign: the migration is falsified and the redesign goes first (see Open units). What follows is the redesign itself, and then handoff 17.
+| run | slot | wall | collectors | export | due | changed | data commit |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `31423505973` | dispatch 08-10 19:19Z | 14m38s | 751s | 112s | **33** | **9** | `b8009b6` |
+| `31447092199` | 08-11 00:44Z | 7m32s | 384s | 48s | 0 | 0 | none (empty diff) |
+| `31466091373` | 08-11 06:42Z | 12m05s | 599s | 106s | 0 | 0 | none (empty diff) |
+| `31492007355` | 08-11 12:36Z | 7m35s | 388s | 50s | 0 | 0 | `bfd21b7` |
+| `31524119289` | 08-11 18:42Z | 8m02s | 411s | 50s | 0 | 0 | `118e41a` |
 
-### 2. Handoff 15 failure ratio — window open, don't close early
+Two runs committed nothing. Per the standing invariant that is an empty diff, not a failure.
 
-Baseline is 3 failures in 28 runs, all Hrana in `legislation.py`, pre-`474840c`: 07-24 (cursor/EOF), 07-27 and 07-29 (stream not found, in `collect_bill`).
+### The status-refresh unit — VERIFIED, migration applied, prediction exact
 
-That figure is window-specific and will look wrong if you glance at recent failures instead. The last 40 runs contain 5, and the other two aren't the Hrana family: 07-31 01:26Z is the org-wide Turso read block (post-fix, external, doesn't count against the recovery window), and 07-23 01:26Z predates the recon window and was never inspected. Compare like-for-like or it reads as a regression that isn't one.
+Header and summary, verbatim from `31423505973`:
 
-Read at ~28 post-fix runs, roughly a week. **Not two days.** The original handoff said two days and that was underpowered: at the ~11% per-run baseline rate, 8 runs come back clean about 40% of the time even if the fix changed nothing. Twenty-eight runs drops that to ~4% and compares like-for-like against the baseline window.
+```
+litigation: status refresh, 33 row(s) due (0 skipped, non-numeric case_id)
+  status refresh: 33 checked, 9 changed, 0 skipped, 0 failed
+```
 
-**Next read: ~2026-08-08.** The fix pushed 07-30 (`474840c`); at 4 runs/day that clears 28 post-fix runs with margin. Same sitting as §1 and §3.
+**33 due / 9 changed / 0 skipped / 0 failed**, matching the prediction on every field. The header firing at all proves the `status_checked_at` migration applied. No `status refresh pass failed` line in any of the five runs.
 
-If the family recurs, pull the failing line before proposing anything. Same site means `reset()` isn't recovering; a different site means the audit missed one. Those want different fixes.
+The nine flips are all `pending -> terminated`, matched to `case_id` against the `d168cc8` audit and then against Turso: `71457474`, `71982149`, `72021508`, `72054244`, `72055344`, `72110170`, `72156765`, `72333329`, `72334676`.
 
-While in the logs, note litigation's request consumption. Litigation runs third, after legislation in the same `-e` step, so those 3 failed runs aborted before it ever ran and it polled nothing on them; the fix makes ~11% more runs *reach* litigation, adding that draw against the same CourtListener allowance — which is 20/min and 1,000/hour, not the 250/day this line used to name; see the invariants and the falsified list. Handoff 7's incremental polling should absorb it, handoff 8's abort is the backstop. Report a cap-abort; don't act on a single occurrence.
+**Match on `case_id`, never on caption.** Two rows share the caption `United States v. Oliver` — `71982149` (the NM district orphan, terminated) and `73678095` (the live NM docket, pending). The flip line prints caption only, so a caption-keyed match silently collapses them and reports a false mismatch. This nearly produced one in the reading of this very run.
 
-### 3. Handoff 16 — PUSHED; one chart re-read owed ~08-08
+**The refresh reached three rows the seed loop cannot.** `71982149` (NM), `72156765` (VA) and `72334676` (KY) are absent from the seed artifact, so no run polls them; they carry `entries_synced_at` from late July and nothing had touched them since. All three were in the nine. That is the docstring's claim about iterating `cases` rather than the seed list, demonstrated rather than asserted.
 
-**Closed as a push gate.** Pushed 08-01 (`6eb6554..cc763c9`), four commits, verified from a fresh clone: the cache is live in `web/lib/db.ts` and the finding carries its prediction. The hashes this section previously listed (`a8103ac`, `f0b0683`, `c68a425`) are dead — rebased onto current origin/main before the push. Don't chase them.
+**The orphans, per §6 of the handoff:** all three now read `terminated` with non-NULL `status_checked_at` and `superseded_by IS NULL`. The pairs are **not** asserted and nothing here asserts them.
 
-The 24h `turso db inspect` gate is **deleted, not satisfied.** The Turso dashboard charts rows read per day per database directly (app.turso.tech → Databases → psephos → Analytics → Rows Read), so the two-reading cumulative protocol was unnecessary; no reading was ever taken under it. Baseline is recorded in `docs/findings/16-channel-count-baseline.md`: ~150–250K/day for Jul 26 – Aug 1, read 08-01 ~21:45Z.
+`python -m tools.status_audit`: **0/40 disagree**, 0 in either direction. (Run twice — 80 requests — because the first invocation's summary scrolled past the tail. Own cost, worth noting against the day's draw.)
 
-What's owed is one re-read of the same chart, same sitting as §1, §2, and §4. Due ~2026-08-08 and **now overdue** — as of 2026-08-10 it has not been taken. The window to read is Aug 2–8 against the Jul 26 – Aug 1 baseline.
+Turso state after the pass: 40 rows, **24 pending / 16 terminated**. Seven terminated rows carry NULL `status_checked_at` — they were already terminated before the pass and the gate excludes them by design, so **`status_checked_at` is not a coverage record for terminated rows.** Don't read a NULL there as an unchecked row.
 
-**Expect it to show nothing, and don't treat that as failure.** At ~200K rows/day against 8,931 rows/scan the strip accounts for at most ~22 renders/day — a ceiling, since collectors read too — and the cache cap is ≤24/day. Current behaviour already sits at or under the cap, so the delta may be invisible inside the noise of a 150–250K band. The finding predicts this in advance rather than explaining it afterward. The change is still right: it makes a bounded cost a property of the code instead of a property of today's traffic.
+### The 24h gate — WORKING, and handoff 30's own §3 premise was an arithmetic slip
 
-The old "falls hard / barely moves" split and its ~190 renders/day ceiling are gone — see the falsified list.
+All four scheduled runs reported **0 due**. Three of them were predicted; the 06:00Z run was predicted to show 24 and did not, and the gate is not the reason.
 
-### 4. Handoff 21–23 throttle work — PUSHED, VERIFIED AGAINST NOTHING
+Stamps land between **19:24:42Z and 19:26:49Z on 08-10**. Plus 24h that is **08-11 19:24–19:26Z**, which falls *after* every scheduled run of 08-11 — the 18:42Z run read the gate at 18:46:58Z and missed the boundary by 37m44s. The handoff placed the boundary between the 00:00Z and 06:00Z runs; it is between the 18:00Z and the next 00:00Z. So four consecutive 0-due runs are the gate working exactly as designed, and the 33-due-every-run failure mode is ruled out four times over.
 
-The session closed with everything on origin and **no run having executed against it.** Pushed 2026-08-10 ~01:22Z; the last scheduled run finished 00:45Z. So the throttle pacing, the unbuffering, and `_log_429` are all unproven in production, and this section exists so a cold reader does not read *pushed* as *verified*.
+The *size* half of the prediction is confirmed independently: the gate's own query reads 24 non-terminated rows today.
 
-What shipped: `common._log_429` (dump the 429 before classifying), `PYTHONUNBUFFERED` on the collectors step, `PAGE_THROTTLE` 2.0 → 3.0, and the access-level corrections in the invariants and the falsified list. What is measured and solid is the **tier**, from a direct probe: first-429 at index 21, body `Rate limit exceeded: 20/min`, `retry-after: 46`, on the same token the collector loads (`docs/findings/22-throttle-scope-vs-magnitude.md`).
+### Handoff 21–23 throttle work — VERIFIED, six checks
 
-Read the first scheduled run after 06:00Z 2026-08-10. Six checks:
+Was "PUSHED, VERIFIED AGAINST NOTHING." Pushed 2026-08-10 ~01:22Z with the last scheduled run having finished 00:45Z, so nothing had executed against it; the 19:19Z dispatch that day is the first run that did. Now read against five.
 
-1. **Docket count, read off the run's own header line** — `N config seed(s) + M tracker case(s)`. Do **not** check against a remembered 34. The table holds 40 cases; 34 came from one run's header and was promptly treated as a constant, which is the same error class as the 250/day figure two entries down the falsified list. If the run prints 37 or 40, that is the header being read correctly, not a failure.
-2. **No `litigation: daily cap hit`.**
-3. **Zero 429s**, which is the prediction — at ~3.7s spacing the 60s window never fills. If any fire, `_log_429` prints the full body; quote the scope string verbatim.
-4. **Per-docket timestamps that differ from each other**, confirming `PYTHONUNBUFFERED` landed. Every line in the pre-push logs carried the process-exit timestamp. Report observed spacing against the predicted ~3.7s; this is the first real measurement of litigation's spacing the project has had.
-5. **The mark**, direct Turso query, subsuming §1's: `superseded_by` still `'72193752'` and `updated_at` off `2026-08-07T12:39:07.102924+00:00` on case `72053306`.
-6. **`entries_synced_at` across the whole table**, not one case. The starvation was table-wide since 08-06 — one row advancing does not prove the tail did.
+1. **Docket count off the run's own header:** `2 config seed(s) + 32 tracker case(s)` = **34 polled**, identical on all five runs. The 40-row table decomposes as 34 polled + 3 superseded district rows never polled (PA `71453026`, NH `71453646`, MD `71980724`, all `entries_synced_at IS NULL`) + the 3 unseeded orphans. The Georgia district row `72053306` is superseded *and* polled, which is why 4 rows carry `superseded_by` but only 3 go unpolled.
+2. **No `litigation: daily cap hit`** in any run.
+3. **Zero 429s.** Every `429` substring across all five logs was inspected individually and is a timestamp fragment, a wheel version, or the masked-token line — not one rate-limit response. `_log_429` never fired, which is the predicted result and also means it remains untested in production (see Open units).
+4. **Spacing measured, and `PYTHONUNBUFFERED` landed** — per-docket timestamps all differ. Medians 3.95 / 4.03 / 4.13 / 4.50 / 4.58s against `PAGE_THROTTLE = 3.2` (the constant is 3.2 as built, not the 3.0 this section used to name), so latency is ~0.75–1.4s on a docket that returns nothing. **One 35.25s outlier**, 18:42Z run, on the New York line — and it is *not* unexplained: New York (`71457474`) returned **10 entries**, the largest fetch in the window, while the 33 lines around it returned 0 or 1. No 429 and no retry line. This is what a docket line costing more than one request looks like from the outside, and it is the reason the draw denominator above is a range.
+5. **The mark:** `superseded_by` still `'72193752'` — load-bearing and it holds. `updated_at` now `2026-08-11T18:44:38.003622+00:00`, off the `2026-08-07T12:39:07.102924+00:00` freeze. The starvation is broken.
+6. **`entries_synced_at` table-wide:** 40 rows, newest `2026-08-11T11:09:10-07:00`, 3 NULL and all 3 superseded, so the alarm `entries_synced_at IS NULL AND superseded_by IS NULL` reads **0**. The spread of older marks (07-07 through 08-08) is quiet dockets, not starvation — it is a `date_modified` high-water mark, not a last-polled stamp.
 
-**The run is also the only available proof that the runner's `COURTLISTENER_TOKEN` is the token the probe measured.** GitHub secrets are write-only; nothing local can read the runner's value. Workflow behaviour is the sole evidence, so a full-coverage run is what closes that question and nothing else can.
+**The token question is closed by behaviour, the only instrument available.** 34 of 34 dockets covered with zero 429s at 3.2s spacing, five runs running. At the 5/min tier that spacing 429s by roughly the sixth request, so the runner's `COURTLISTENER_TOKEN` is on the 20/min tier the probe measured.
 
-Note that §1's mark query, §2's failure-ratio sweep, and §3's chart re-read are all still owed and all read the same runs. Doing them in one sitting with the six checks above costs one log sweep instead of four.
+### Where the dispatch's 14m38s went — not the refresh
+
+The dispatch ran 12+ minutes against an 8–11 expectation, and the refresh pass is **not** the explanation. Measured directly: the pass ran 19:24:39 → 19:26:50, **131 seconds**, on 33 rows at ~4s each. The decisive comparison is the **06:42Z run — 12m05s wall with a 0-second refresh pass.** Collector wall clock swings 384s → 751s across the five runs independently of the refresh, and the export step swings 48s → 112s with it. So the refresh cost 131s exactly, and the rest is ordinary run-to-run variance that predates this unit.
+
+Every docket line in all five runs is `incremental` — **zero fresh resolves and zero full-walks** — so none of the wall clock is a bootstrap. Entry volume was 0 on 34 of 34 lines in three runs, 1 in the 12:36Z run, and 3 in the 18:42Z run (Colorado 1, Maine 2, New York 10).
+
+### Handoff 14 invariant — CLOSED
+
+Closed on the query the unit always wanted:
+
+    SELECT case_id, status, superseded_by, updated_at FROM cases WHERE case_id = '72053306';
+
+`superseded_by` reads `'72193752'` and `updated_at` has moved with the collector. Nothing about this unit is outstanding; `--apply`, the export and the data commit all shipped 07-30 (`bd4d577`) and do not get re-run. Snapshot survival across the six collector-driven data commits counted at the time (`200931f`, `dda174e`, `4059878`, `98217c5`, `7709e14`, `6eb6554`), and the further ones since, was always corroboration rather than proof — it is the query that closes it, which is why those shas are recorded here once and not tracked further.
+
+### Handoff 15 failure ratio — CLOSED, 0 in family across 49 runs
+
+Baseline was 3 failures in 28 runs, all Hrana in `legislation.py`, pre-`474840c`: **07-24 (cursor/EOF), 07-27 and 07-29 (stream not found, in `collect_bill`)**. Since the fix pushed 07-30 there are **49 runs and 4 non-successes, none in that family**:
+
+- 07-31 01:26Z — org-wide Turso read block (`BLOCKED`, reads forbidden). External, CBT's doing, already excluded.
+- 08-06 23:46Z, 08-07 01:58Z, 08-07 06:56Z — three consecutive runs killed by `Hrana: api error: status=502 Bad Gateway, upstream forward failed`, all three at **`db.py:235` in `_apply_migrations`, inside `init_db()`** — before any collector runs and before any connection exists to recover. A Turso platform outage, not the stream-death family, and `db.recover` is structurally incapable of addressing it. Recorded as its own unit below.
+
+Zero in-family failures across 49 runs against a ~11% per-run baseline: if the rate were unchanged, a clean 49 has probability ~0.4%. The recovery path is confirmed and this window closes.
+
+### Handoff 16 — CLOSED, null result
+
+**Closed as a push gate.** Pushed 08-01 (`6eb6554..cc763c9`), four commits, verified from a fresh clone: the cache is live in `web/lib/db.ts`. The hashes this section previously listed (`a8103ac`, `f0b0683`, `c68a425`) are dead — rebased onto current origin/main before the push. Don't chase them.
+
+**The result is a null, and it is the one the finding predicted before the push.** Read 2026-08-11 (baseline) and 2026-08-10 (post), tooltip per day, both panels:
+
+- Rows read: 129,573/day (Jul 26 – Aug 1) → 112,331/day (Aug 2 – 8). Down 17,242, 13.3%, about 1.9 scans/day.
+- Sample SDs 48,812 and 33,717; SE on the difference 22,423. The delta is **0.77 SE** — not distinguishable from zero. Indicative, not a formal test: seven consecutive calendar days aren't independent samples against a fixed cron schedule. The conclusion rests on the write ratio, not on this.
+- **Rows written fell 14.9% across the same window, and no read cache can move writes.** Collector activity declined and reads tracked it. Scaling baseline reads by the write ratio predicts ~110,300/day against 112,331 observed, so the residual has the wrong sign for a saving. Nothing is left to attribute to the change.
+
+Full point values, both series, in `docs/findings/16-channel-count-baseline.md`.
+
+The change is still right and the cap is untouched: ≤24 scans/day independent of render volume is provable from `revalidate: 3600` and needs no dashboard reading. The delta only ever measured today's traffic against it — and at the measured baseline the strip's ceiling was **~14.5 renders/day**, already under the cap, so there was no bindable saving for the instrument to find.
+
+Three claims died to this reading — the 150–250K band, the ~88K/day drop derived from it, and the contamination read on Aug 7. See the falsified list. The old "falls hard / barely moves" split and its ~190 renders/day ceiling are gone with them.
+
+**Standing instrument note:** hover the chart for point values, never read the shape, and read the **Rows Written** panel in the same pass. It sits on the same page, it is the control, and taking it is what turned this delta from a signal into noise at no extra cost.
 
 ---
 
@@ -104,7 +150,7 @@ Note that §1's mark query, §2's failure-ratio sweep, and §3's chart re-read a
 - **The DOJ voter-data campaign as one object**, not dozens of near-identical rows: a state grid with status coloring, exceptions surfaced (GA refile, KY appeal, circuit cases), dormant dockets demoted behind it.
 - **Watched bills sorted by recent cross-channel activity**, with correlation on the card (news volume, related litigation), so S. 1383 mid-floor-fight doesn't render identically to a bill dormant since referral.
 
-All read-layer: no collector or schema changes. The deltas are the only new data need, and that's one comparison against the prior snapshot. Mockup exists in the 08-01 session. **Sequencing: this goes before the snapshot migration, not after.** The earlier order was backwards. The feed is what determines whether the read path needs the 3,058 unattached news items, and no snapshot carries them, so building the feed settles the migration's data requirement rather than guessing at a requirement that does not exist yet. The strip resolves the same way: the redesign wants deltas rather than raw totals, and if totals go then `getChannelCounts` goes with them, the snapshot strip's 97% news under-report never arises, and handoff 16's cache resolves by deletion. None of that touches §3. The 08-08 chart read is a baseline measurement and stands either way.
+All read-layer: no collector or schema changes. The deltas are the only new data need, and that's one comparison against the prior snapshot. Mockup exists in the 08-01 session. **Sequencing: this goes before the snapshot migration, not after.** The earlier order was backwards. The feed is what determines whether the read path needs the 3,058 unattached news items, and no snapshot carries them, so building the feed settles the migration's data requirement rather than guessing at a requirement that does not exist yet. The strip resolves the same way: the redesign wants deltas rather than raw totals, and if totals go then `getChannelCounts` goes with them, the snapshot strip's 97% news under-report never arises, and handoff 16's cache resolves by deletion. None of that touches the handoff-16 chart reads, which are baseline measurements and stand either way.
 
 **Read-layer snapshot migration: falsified, recommend not doing it.** Measured in handoff 18. The finding is `docs/findings/18-snapshot-parity.md` (`acf5713`); read it before reopening this.
 
@@ -112,7 +158,7 @@ The export itself is clean. The reconciliation closes to zero: 6,089 item refere
 
 Six fields the web layer renders or sorts on are absent from the snapshots: `bills.title`, `bills.introduced_at`, `cases.latest_entry_at`, `cases.source_url`, `state_bills.description`, `items.summary`. All six are addable, and only `cases.latest_entry_at` is non-static, so it is the single one needing a byte-stability check before it goes in. The migration is therefore cheaper than the falsification expected it to be.
 
-Cheaper is not worth doing, and nothing in handoff 18 touched the benefit side. Read cost was the justification, and handoff 16 measured it at 150–250K rows/day rather than the 1.7M spike that motivated it. Preview-crawl exposure is not a live cost, and the earlier claim that it "closes in a settings toggle" was wrong in both halves. Nothing is open: every preview-shaped hostname (per-deployment, project alias, git-branch alias) returns a Vercel SSO redirect with `X-Robots-Tag: noindex` to an unauthenticated request, and no previews are produced at all, since the last 100 GitHub deployments are all Production, origin carries one branch, and no PR has ever been opened. So this leg is removed from both sides rather than recovered. The recommendation is unchanged, and rests on the read-cost falsification above. The production surface above is a different matter: snapshot serving would take it off Turso entirely. That doesn't move the recommendation, and 150–250K/day is the measured regime with this surface already live. It does mean the migration has one live benefit rather than none. What remains is cost: `cases.json` and `state_bills.json` are already 964K and 1.5M, 5,971 timeline entries would each gain a summary paragraph, and the swap converts collector reliability into a front-end freshness dependency. Today a run that writes Turso and dies before export leaves the site correct. After a migration it leaves the site stale with no signal, and §2 is the number that prices that risk.
+Cheaper is not worth doing, and nothing in handoff 18 touched the benefit side. Read cost was the justification, and handoff 16 measured it at a **129,573 rows/day mean** (Jul 26 – Aug 1, point values) rather than the 1.7M spike that motivated it — lower than the 150–250K band this line used to name, which was itself falsified. Preview-crawl exposure is not a live cost, and the earlier claim that it "closes in a settings toggle" was wrong in both halves. Nothing is open: every preview-shaped hostname (per-deployment, project alias, git-branch alias) returns a Vercel SSO redirect with `X-Robots-Tag: noindex` to an unauthenticated request, and no previews are produced at all, since the last 100 GitHub deployments are all Production, origin carries one branch, and no PR has ever been opened. So this leg is removed from both sides rather than recovered. The recommendation is unchanged, and rests on the read-cost falsification above. The production surface above is a different matter: snapshot serving would take it off Turso entirely. That doesn't move the recommendation, and ~130K/day is the measured regime with this surface already live. It does mean the migration has one live benefit rather than none. What remains is cost: `cases.json` and `state_bills.json` are already 964K and 1.5M, 5,971 timeline entries would each gain a summary paragraph, and the swap converts collector reliability into a front-end freshness dependency. Today a run that writes Turso and dies before export leaves the site correct. After a migration it leaves the site stale with no signal, and the run-failure rate is the number that prices that risk — now measured at 4 non-successes in 49 runs, none of them the recoverable family, with one Turso outage taking three of them (see the closed record above).
 
 **What reopens this:** the redesign's activity feed needing the 3,058 unattached news items. No snapshot carries them, so that requirement means a fifth export file and the question returns on data grounds instead of cost grounds. Build the feed and find out. See the sequencing note under the redesign above.
 
@@ -126,7 +172,9 @@ Cheaper is not worth doing, and nothing in handoff 18 touched the benefit side. 
 
 **`_reset_seconds` scope parsing.** The daily-vs-burst classifier discriminates on the *magnitude* of the reset rather than on what the 429 actually says, which is why a minute throttle with a long enough reset has now twice been read as a daily cap. The 429 body names its own scope (`Rate limit exceeded: 5/min`) and `common._log_429` already puts that string in the log; the rewrite is to parse it and branch on the scope instead of the number. Not urgent — pacing removed the trigger and the logging removed the blindness — but the heuristic is still structurally unsound and will misfire again the next time a window changes. The captured artifact that makes the case is `docs/findings/22-throttle-scope-vs-magnitude.md`: a 429 whose body says `20/min` and whose `retry-after` says 46, in one response. Read it before reopening this.
 
-**A test that fires `_log_429` deliberately.** Sits next to the unit above and is the smaller half of it. The detector has never fired in the collector and, if the pacing is right, never will in a healthy run — so a clean run is not a passing test of it, and its first genuine invocation would otherwise be the incident it exists to catch. Wants a synthetic 429 driven through the classification path, asserting the body reaches stderr and that the Authorization header is redacted in both the header map and the body. Reasoning in the finding above.
+**`init_db` has no retry, and a transient Turso 502 costs the whole cycle.** Found by the 08-11 sweep, not inherited. Three consecutive runs — 08-06 23:46Z, 08-07 01:58Z, 08-07 06:56Z — died on `Hrana: api error: status=502 Bad Gateway, upstream forward failed` at `db.py:235` in `_apply_migrations`, inside the module-level `init_db()`. That is *before* any collector runs and before any connection exists, so `db.recover` and the handoff-15 work do not reach it by construction: there is nothing to reset, and the process is dead at import. Three runs, ~7 hours, all five channels lost each time. The fix is a bounded retry around the migration probe — a 502 from a managed platform is transient by nature and the next scheduled run 6 hours later succeeded unaided every time. Size it against how rare this is (3 in 49 runs, one outage) before spending much on it, but a platform blip costing a full cycle at the one point in the process with no recovery path is the wrong shape.
+
+**A test that fires `_log_429` deliberately.** Sits next to the unit above and is the smaller half of it. The detector has never fired in the collector — now confirmed across five post-pacing runs at 3.2s spacing, zero 429s in any of them — and if the pacing is right it never will in a healthy run, so a clean run is not a passing test of it, and its first genuine invocation would otherwise be the incident it exists to catch. Wants a synthetic 429 driven through the classification path, asserting the body reaches stderr and that the Authorization header is redacted in both the header map and the body. Reasoning in the finding above.
 
 **The de-tiering itself — cause unknown.** The API Usage table shows 147 requests on 08-05 falling to 84, then 65, then 25 across the following days. The account's rate changed server-side, with no notification, no error, and no log line; the collector's behavior changed underneath code that had not been touched. Whether it was a membership lapse, a policy change, or something applied to the account by hand is unknown, and no artifact in the repo or the dashboard says. Worth one question to Free Law Project, because the answer determines whether the six-month renewal above is the only cliff to watch or just the one with a date on it.
 
@@ -143,7 +191,9 @@ Things that have bitten before and will again.
 - Every collector must exit 0. The workflow runs them as sequential lines in one `-e` bash step; a non-zero exit stops export and the data commit.
 - CourtListener access level, measured 2026-08-09 from the account's own Developer Tools → API Usage panel: **20 requests/minute, 1,000 requests/hour**. The panel renders two stats where the free tier renders three; **no daily figure is shown at this tier.** That is what the panel shows, not proof that no daily throttle exists — do not write "no daily limit" anywhere. The level comes from a free **EDU membership** tied to the university email on the account, and it **expires every six months — it does not auto-renew.** That distinction is the whole point of recording it: this is not a subscription that keeps running until a card declines, it is a term that ends unless somebody acts. The default outcome of forgetting is a lapse back to 5 requests/minute, the tier that produced five consecutive runs at 5-of-34 coverage. The membership landed 2026-08-09, so expiry falls around **2027-02-09** — derived from the landing date, not read off the account. The real date is in the confirmation from `donate.free.law` and in the membership section of the CourtListener account; read either before relying on the derived one. A lapse is silent: no notice, no error, no log line (that is exactly how 08-05 → 08-06 happened). Verifying instrument for every number here is the API Usage panel, **never a log count** — logs only ever see what the throttle let through.
 - There is no `X-RateLimit-*` header on a CourtListener response, so a 429's **body** is the only artifact naming which throttle fired; `retry-after` gives a delay with no scope attached. `common._log_429` writes url, headers, and body to stderr on every 429, retried ones included. Quote the scope string verbatim when reporting one.
-- Litigation's daily-cap abort fires on `num_requests × spacing < MAX_RETRY_AFTER`, not on any daily budget. That product is the whole classifier: 5/min at ~2.7s spacing aborted at request 6, 10/min at ~2.7s aborted at request 11 on 08-05, and 20/min at ~3.7s does not abort at all. A throttle whose reset outlasts the rest of the run reads as hopeless to the magnitude heuristic regardless of scope. `PAGE_THROTTLE` and the classifier are therefore not independent knobs; changing one changes the other's behavior.
+- Litigation's daily-cap abort fires on `num_requests × spacing < MAX_RETRY_AFTER`, not on any daily budget. That product is the whole classifier: 5/min at ~2.7s spacing aborted at request 6, 10/min at ~2.7s aborted at request 11 on 08-05, and 20/min at `PAGE_THROTTLE = 3.2` does not abort at all. A throttle whose reset outlasts the rest of the run reads as hopeless to the magnitude heuristic regardless of scope. `PAGE_THROTTLE` and the classifier are therefore not independent knobs; changing one changes the other's behavior. Measured wall spacing at 3.2 is **3.95–4.58s median** across five runs (08-10/08-11), i.e. the constant plus ~0.75–1.4s of latency — quote the measured figure, not the constant, when reasoning about how fast a window fills.
+- Match a case on `case_id`, never on `caption`. Two rows in `cases` share the caption `United States v. Oliver` (`71982149`, the terminated NM district orphan, and `73678095`, the live NM docket). The refresh pass's flip line prints caption only, so a caption-keyed join silently collapses them; it produced a false mismatch during the 08-11 sweep and was caught only by querying Turso.
+- `cases.status_checked_at` is not a coverage record. The refresh gate excludes `status = 'terminated'` because termination is absorbing on the court's clock, so a row that was already terminated before the pass keeps `status_checked_at IS NULL` forever — 7 of 40 rows as of 08-11. A NULL there means *never due*, not *never checked*.
 - Free Law Project runs a weekly maintenance window, **Thursdays 21:00–23:59 Pacific.** Pacific is the primary statement because that is how FLP states it and because psephos crons on fixed UTC, so the UTC boundary walks an hour with DST: Fridays **04:00–06:59 UTC** under PDT, Fridays **05:00–07:59 UTC** under PST. The Friday 06:00Z run falls inside the window under both, which is the durable fact and the reason this is recorded. Nothing in psephos accounts for it.
 - Database facts come from direct Turso queries, never from JSON snapshots. Snapshots are a lagging derivative and can produce false greens. This applies to the orphan alarm, the supersession invariant, and anything else asserting a row's state.
 - Absent cron commits are not failures. An empty-diff run commits nothing by design, so gaps in the 4/day schedule prove nothing without `gh run list`.
@@ -165,7 +215,7 @@ Spans sessions, not just the current one. Kept because the pattern matters more 
 - **`docs/handoffs/` isn't gitignored.** Read from the repo `.gitignore` in a clone, which can't see `~/.gitignore_global`. The conclusion held by accident; the reasoning didn't.
 - **state.py as a seventh bare-rollback site.** Inferred from the handler's shape without checking what the `try` wrapped. Both sites wrap pure-HTTP calls that never touch `conn`, and with the only commits at 317/319 a `reset()` there would have discarded every prior state's pending writes.
 - **~4 cache cold starts/day from deploys.** Vercel's Data Cache persists across deployments, so the cron's data commit doesn't invalidate `unstable_cache` entries. The cap is the ≤24/day from the revalidate window alone.
-- **~1.7M rows/day as psephos's rate.** Carried from the CBT thread as a user-provided peak of unstated shape, then used as a sustained rate. The per-database chart shows it is a **single-day spike on ~Jul 21**; the Jul 26 – Aug 1 regime is ~150–250K/day. Everything derived from it inherited the error — the ~190 renders/day ceiling was ~8× too high, and the "falls hard → the strip was the bulk" branch it created was never live. Same failure as the 6,053 floor: a number correctly labeled *provisional* and then used as a magnitude.
+- **~1.7M rows/day as psephos's rate.** Carried from the CBT thread as a user-provided peak of unstated shape, then used as a sustained rate. The per-database chart shows it is a **single-day spike on ~Jul 21**; the Jul 26 – Aug 1 regime is 70K–207K/day, mean 129,573 (the ~150–250K first written here has its own entry below). Everything derived from it inherited the error — the ~190 renders/day ceiling was ~8× too high, and the "falls hard → the strip was the bulk" branch it created was never live. Same failure as the 6,053 floor: a number correctly labeled *provisional* and then used as a magnitude.
 - **Handoff 14 as an unstarted unit.** Listed as owing `--apply`, export, and a data commit. All three shipped 07-30 (`bd4d577`) and have survived six collector-driven exports. Only the read-only Turso proof was ever outstanding. A stale owed-list entry is as misleading as a wrong measurement, and costs more, because it invites redoing finished work.
 - **The state-bill sort as structurally unfixable.** Handoff 18's Part A asserted, in bold, that `getStateBills`' `COALESCE(last_action_at, updated_at)` could not be reproduced by extending the export, since `build_state_bills` omits `updated_at` for byte-stability. Wrong, and reproducible today: the 81 `(state, last_action_at)` ties break on `state_bill_id`, which the snapshot carries, and the arm that actually needs `updated_at` is `last_action_at IS NULL`, which is 0 of 484. Same failure as the `state.py` rollback claim: read the shape of the clause, saw an omitted column, asserted structural impossibility, never counted the nulls. Died to one COUNT. The guard still belongs beside that sort, because 0 of 484 is a property of today's data and not of the schema.
 - **Eight query functions in `web/lib/db.ts`, seven mapping cleanly onto the snapshots.** Thirteen, and six rendered-or-sorted fields absent. The count came from a truncated grep read as though it were the file, in the same message that recommended a build decision off the back of it.
@@ -175,5 +225,9 @@ Spans sessions, not just the current one. Kept because the pattern matters more 
 - **The litigation cap resetting around 08:10Z.** Handoff 10 closed on "the litigation cap resets around 08:10Z; marks should climb on the first run after that," and the number has been repeated since. There is no reset time. DRF throttles are rolling windows with no concept of what day or hour it is — `SimpleRateThrottle` drops each request from its history exactly `duration` seconds after that request was made — so marks climbing after 08:10Z were old requests aging out one at a time, not a period rolling over. Corroborated by the 08-08 probe, whose 429 carried `retry-after: 55` six seconds into a five-request burst: a countdown from the oldest request still in the window, not to any clock boundary. Tier-independent, so this one is corrected outright rather than left pending.
 - **"74 of 250, under 30% of the daily budget — independent confirmation the daily cap is not what is firing."** Handoff 20 part B. The conclusion was right and the evidence was worthless, which is the worse failure of the two. The 74 was counted inside the suppressed window: consumption looked low *precisely because* the minute throttle was strangling the run before it could spend. A log count measures what the throttle let through, so it is structurally incapable of showing that a throttle is not binding — the tighter the throttle, the more reassuring the number. Real pre-abort baseline is 102–162 requests/day. Correcting instrument, the same as the two entries above: the API Usage panel, read off the account.
 - **Preview-crawl exposure, twice.** First asserted to close in a settings toggle, then corrected to nothing-is-open. Both were reasoning about `psephos.vercel.app`, which is not this project's hostname. The production alias is `psephos-theta.vercel.app` and it was never checked. A hostname picked by pattern-matching the project name is a guess, and `vercel inspect` would have said so at any point.
+- **The 150–250K rows/day baseline band.** Eyeballed off a chart segment on 08-01, then recorded in a findings table and cited across three documents as a measurement. **Five of the seven baseline days fall below 150K** (70,208 / 97,480 / 108,033 / 117,789 / 121,429); the range is 70K–207K and the mean is 129,573. The check that catches it is hovering the same chart for point values — available on 08-01, on the same screen, and not done. Same failure as the 1.7M entry above, one instrument later: read the shape of a chart, wrote down a range, used the range as a number.
+- **"~88K/day drop the cache cannot explain."** Derived by subtracting post-push point values from the *midpoint of the estimated band*. Comparing an estimate against a measurement and treating the gap as signal. The real delta against a measured baseline is 17,242/day at 0.77 SE, and the write series accounts for all of it. Same class as the run-duration error made the same day.
+- **The 24h refresh boundary falling between the 00:00Z and 06:00Z runs.** Handoff 30 §3, which predicted 24 due at 06:00Z and named a 33 there as proof of a broken gate. The stamps read 19:24:42–19:26:49Z on 08-10, so the boundary is **19:24Z on 08-11**, after the 18:00Z run and before the next 00:00Z — the opposite end of the day. Four consecutive 0-due runs were therefore the gate working, and a section written to detect a broken gate would have read the correct behaviour as the failure it was looking for. A boundary time asserted without computing it, when the stamps it needed were already recorded. Instrument: arithmetic on `status_checked_at`. Caught on the stamp read before it cost anything.
+- **"Aug 7's minimum is consistent with contamination."** The post-push window does contain real contamination — the CourtListener de-tiering and the litigation starvation both fall inside it — and Aug 7's 69,615 was read as its fingerprint. **Jul 27 read 70,208 with no 502s and no starvation.** A ~70K day is ordinary in this series. The contamination is documented and real; it does not surface above the noise in this instrument, and a known confound is not a licence to read any low point as its evidence.
 
-The claims that survived were the ones someone queried: the `getChannelCounts` scan (provable from the schema), `items = 8,931` (measured against production 2026-08-01), and the handoff-14 data commit (checked with `git log`, not recalled).
+The claims that survived were the ones someone queried: the `getChannelCounts` scan (provable from the schema), `items = 8,931` (measured against production 2026-08-01), the handoff-14 data commit (checked with `git log`, not recalled), and finding 16's advance prediction of a small-to-invisible delta (written before the reading, confirmed at 0.77 SE against a write-series control).
