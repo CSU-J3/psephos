@@ -273,7 +273,9 @@ path, so it does not close the preview-crawl exposure by itself.
 three things the migration was going to fix, and the only one it fixes uniquely —
 and leave the read path alone. The other two, the count scan and the
 force-dynamic re-render cost, are already bounded: finding 16 caps the strip at
-≤24 scans/day and predicts the delta is invisible inside a 150–250K rows/day band.
+≤24 scans/day and predicts the delta is invisible inside the day-to-day noise. (The
+150–250K/day band this line originally cited is falsified; the measured baseline is a
+129,573/day mean and the delta came back at 0.77 SE. Neither moves the argument here.)
 
 ## 6. Freshness coupling
 
