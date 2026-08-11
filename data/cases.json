@@ -9334,6 +9334,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 74922,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
+        "title": "United States v. Colorado — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8777,
         "kind": "item",
         "occurred_at": "2025-12-11T00:00:00",
@@ -11690,6 +11700,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 74931,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
+        "title": "United States v. Illinois — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 14642,
         "kind": "item",
         "occurred_at": "2025-12-18T00:00:00",
@@ -12591,6 +12611,16 @@
     "status": "terminated",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 74925,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -19592,6 +19622,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108471612/united-states-v-bellows/",
         "title": "United States v. Maine: BRIEFING schedule set. Brief and Appendix due 08/17/2026 for appellant United States. Pursuant to F.R.A.P. 31(a), appellee's brief will be due 30 days following service of appellan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 74934,
+        "kind": "item",
+        "occurred_at": "2026-08-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108489275/united-states-v-bellows/",
+        "title": "United States v. Maine: MOTION for Attorney Jason Anton to withdraw as counsel filed by Appellees Shenna Bellows and State of Maine. Served on 08/10/2026. [26-1676] (JRB) [Entered: 08/10/2026 01:35 PM]"
       }
     ]
   },
@@ -19808,6 +19848,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 74935,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 40399,
         "kind": "item",
         "occurred_at": "2026-07-13T00:00:00",
@@ -19929,6 +19979,16 @@
     "status": "pending",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 74932,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
+        "title": "United States v. Kentucky — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
