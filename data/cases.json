@@ -10294,6 +10294,16 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 74729,
+        "kind": "item",
+        "occurred_at": "2026-08-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/102/united-states-v-griswold/",
+        "title": "United States v. Colorado: ORDER  by Judge Philip A. Brimmer on 8/3/26.  The United States' Motion for Order to Compel Records Demanded Pursuant to the Civil Rights Act of 1960  2  is DENIED.  Secretary of S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 69217,
         "kind": "item",
         "occurred_at": "2026-08-04T00:00:00",
