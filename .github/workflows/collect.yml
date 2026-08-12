@@ -11,6 +11,14 @@ permissions:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    # Bounds the retry ladders, not the runtime. db._retry_transport sleeps up to
+    # ~10.5s per failing connection establishment and _Conn's reopen inherits it,
+    # so a sustained Turso outage multiplies that by every failing statement and
+    # every per-item recover() -- state.py alone iterates 484 bills. Without this
+    # the GitHub default of 360 minutes applies and such a run collides with the
+    # next 6-hourly cron. Runs measure 6-12 minutes, so 30 is generous; re-derive
+    # it before lengthening any ladder.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
