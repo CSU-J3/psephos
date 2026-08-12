@@ -17,12 +17,21 @@ deterministic since handoff 4. Procedure for the next one:
      (the `Georgia (1)` / `Georgia (2)` refile pattern),
   2. confirm both rows in `cases`: the source row is `terminated`, the successor row is
      live and carries the new docket,
-  3. add the (source_id, source_docket, successor_id, successor_docket) pair to PAIRS,
-  4. dry-run, paste the table, then --apply.
+  3. look for a DOCKET CROSS-REFERENCE, the strongest signal available and A1 when it
+     exists: does either row's case_entries text name the other's docket number? The
+     circuit side prints `Originating case number: <district docket>` when it dockets
+     the appeal, and the district side prints `USCA Case Number <circuit docket>` when
+     it transmits the record. Measured against the four pairs asserted before handoff
+     36, this finds three (PA both directions, NH forward, MD reverse) and correctly
+     finds nothing for the Georgia venue refile -- no court transmits a record to a
+     refile, so the rule abstains rather than misfiring. Where it is silent, step 1's
+     artifact diff is the B2 fallback,
+  4. add the (source_id, source_docket, successor_id, successor_docket) pair to PAIRS,
+  5. dry-run, paste the table, then --apply.
 
-Dry-run by default: prints the intended mapping and writes nothing. --apply writes and
-commits. Refusal-first: if ANY pair fails a guard, the whole run refuses and writes
-nothing -- a partial mapping is worse than none.
+Dry-run by default: prints each row AS QUERIED against the assertion and writes nothing.
+--apply writes and commits. Refusal-first: if ANY pair fails a guard, the whole run
+refuses and writes nothing -- a partial mapping is worse than none.
 
 Run from the repo root as a module (like the collectors: puts the repo root on
 sys.path so `import config` resolves; `python scripts/...py` would not):
@@ -45,13 +54,65 @@ PAIRS = [
     ("71453646", "1:25-cv-00371", "73607684", "26-1783"),   # NH -> 1st Cir.
     ("71980724", "1:25-cv-03934", "73608654", "26-1878"),   # MD -> 4th Cir.
     ("72053306", "5:25-cv-00548", "72193752", "1:26-cv-00485"),  # GA venue refile, M.D. Ga. -> N.D. Ga.
+    # The three unseeded district orphans, unblocked by the status-refresh pass: all
+    # three read `pending` until 2026-08-10, when refresh_status flipped them on the
+    # court's clock, and verify() refused them until it did. Evidence per pair, since
+    # they are not all the same strength (step 3 above):
+    ("72334676", "3:26-cv-00019", "73674243", "26-5657"),   # KY -> 6th Cir.  B2: no
+    #   cross-reference either way. The UW tracker's single Kentucky row was rewritten
+    #   in place in 7dbda24 (2026-07-28), kyed/3:26-cv-00019 -> ca6/26-5657, its notes
+    #   naming the appeal. Docket corroborates: dismissal with prejudice 07-23, NOA
+    #   07-24, circuit `Civil Case Docketed` 07-24, Kentucky appellees on the appeal.
+    ("72156765", "3:26-cv-00042", "73690636", "26-2002"),   # VA -> 4th Cir.  A1, reverse:
+    #   73690636's first entry, 07-29, reads `Originating case number: 3:26-cv-00042-RCY`.
+    ("71982149", "1:25-cv-01193", "73678095", "26-2126"),   # NM -> 10th Cir. A1, forward:
+    #   71982149, 07-27, `USCA Information Letter with Case Number 26-2126 for 123 Notice
+    #   of Appeal`. This is also the caption-collision pair -- both rows read `United
+    #   States v. Oliver`, which is why nothing here matches or displays on caption.
 ]
 
 
 def _case(conn, case_id):
+    """The row as the guards see it. `court` is display-only; verify() ignores it."""
     return conn.execute(
-        "SELECT case_id, status, docket_number FROM cases WHERE case_id = ?", (case_id,)
+        "SELECT case_id, status, docket_number, court FROM cases WHERE case_id = ?",
+        (case_id,),
     ).fetchone()
+
+
+def describe(conn, pairs) -> list[str]:
+    """The dry-run table: every value READ from `cases`, checked against the assertion.
+
+    This is not a reprint of PAIRS, and the distinction is the whole point. Until
+    handoff 36 main() printed the constant, so the review gate showed only its own
+    input -- the four pairs already applied went through a dry-run that verified
+    nothing, and a `--apply` that silently corrupted a docket number would have looked
+    identical to one that worked. `!=` marks a field disagreeing with the assertion,
+    which is the same condition verify() refuses on, shown per field instead of only in
+    aggregate.
+
+    No captions, deliberately. Two rows in `cases` share `United States v. Oliver` and
+    they are the two halves of the NM pair, so a caption column renders that pair as a
+    row linked to itself. Match and display on case_id -- the standing invariant."""
+    lines: list[str] = []
+    for src_id, src_dock, tgt_id, tgt_dock in pairs:
+        for role, cid, asserted in (("source", src_id, src_dock), ("target", tgt_id, tgt_dock)):
+            row = _case(conn, cid)
+            if row is None:
+                lines.append(f"    {role:<6} {cid:<9}  ROW MISSING (asserted docket {asserted})")
+                continue
+            dock = row["docket_number"] or "-"
+            dock_note = "" if dock == asserted else f"!= {asserted}"
+            status = (row["status"] or "").lower()
+            if role == "source":
+                status_note = "" if status == "terminated" else "!= terminated"
+            else:
+                status_note = "" if status != "terminated" else "!= a live docket"
+            lines.append(
+                f"    {role:<6} {cid:<9}  docket {dock:<15} {dock_note:<18}"
+                f"status {row['status'] or '-':<11} {status_note:<17}{row['court'] or '-'}")
+        lines.append("")
+    return lines
 
 
 def verify(conn, pairs) -> list[str]:
@@ -110,9 +171,12 @@ def main(argv=None) -> int:
     db.init_db()
     conn = db.connect()
     try:
-        print("  source (terminated)            ->  successor (live)")
-        for src_id, src_dock, tgt_id, tgt_dock in PAIRS:
-            print(f"    {src_id} {src_dock:<15}  ->  {tgt_id} {tgt_dock}")
+        print(f"  {len(PAIRS)} pair(s). Every value below is READ from `cases`; `!=` marks a")
+        print("  field disagreeing with the assertion in PAIRS, which is what verify() refuses")
+        print("  on. Each pair prints source (must be terminated) then target (must be live);")
+        print("  `court` appears in no tuple, so reading it here is the proof of a real read.\n")
+        for line in describe(conn, PAIRS):
+            print(line)
         errs, linked = run(conn, PAIRS, apply)
         if errs:
             print("\n  REFUSED -- guard failures, nothing written:", file=sys.stderr)

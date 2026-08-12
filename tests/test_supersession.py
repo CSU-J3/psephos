@@ -145,6 +145,38 @@ def test_docket_mismatch_refuses():
     conn.close()
 
 
+# --- the dry-run display, which IS the review gate --------------------------
+# describe() replaced a printout of the PAIRS constant (handoff 36). These assert it
+# shows queried values rather than asserted ones -- the property that makes the gate a
+# check instead of an echo. A regression here silently restores a dry-run that approves
+# anything.
+
+
+def test_describe_shows_the_queried_value_and_marks_the_disagreement():
+    conn = _conn()
+    _seed_valid(conn)
+    conn.execute("UPDATE cases SET docket_number = '26-999', court = 'Ninth Circuit' "
+                 "WHERE case_id = '900'")
+    conn.commit()
+    out = "\n".join(backfill.describe(conn, PAIRS))
+    assert "26-999" in out          # the QUERIED docket, which PAIRS does not contain
+    assert "!= 26-1" in out         # and the disagreement is marked against the assertion
+    assert "Ninth Circuit" in out   # court is in no tuple: proof the row was read, not echoed
+    conn.close()
+
+
+def test_describe_flags_a_missing_row_and_a_live_source():
+    conn = _conn()
+    _seed_valid(conn)
+    conn.execute("DELETE FROM cases WHERE case_id = '901'")          # target gone
+    conn.execute("UPDATE cases SET status = 'pending' WHERE case_id = '100'")  # source alive
+    conn.commit()
+    out = "\n".join(backfill.describe(conn, PAIRS))
+    assert "901" in out and "ROW MISSING" in out
+    assert "!= terminated" in out   # the guard verify() would refuse on, shown per field
+    conn.close()
+
+
 # --- idempotency ------------------------------------------------------------
 
 def test_idempotent_second_run():
@@ -167,5 +199,7 @@ if __name__ == "__main__":
     test_non_terminated_source_refuses()
     test_terminated_target_refuses()
     test_docket_mismatch_refuses()
+    test_describe_shows_the_queried_value_and_marks_the_disagreement()
+    test_describe_flags_a_missing_row_and_a_live_source()
     test_idempotent_second_run()
     print("ok")
