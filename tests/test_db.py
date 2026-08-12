@@ -221,6 +221,224 @@ def test_execute_propagates_unrelated_valueerror():
     assert calls["reopen"] == 0
 
 
+# --- transient transport failures at establishment --------------------------
+# The other half of the Turso failure space, and deliberately a separate
+# mechanism from the stale stream above: a 502 from the platform edge, raised
+# before a usable connection exists. Verbatim from the three runs it killed
+# (08-06 23:46Z, 08-07 01:58Z, 08-07 06:56Z), all at _apply_migrations' first
+# statement inside init_db().
+
+_BAD_GATEWAY = "Hrana: api error: status=502 Bad Gateway, upstream forward failed"
+
+# Captured at import, before any test patches libsql.connect. The fakes below build
+# REAL in-memory connections to delegate to, and calling the patched name to do that
+# would recurse into the fake itself.
+_REAL_CONNECT = libsql.connect
+
+
+def _mem():
+    return _REAL_CONNECT(":memory:")
+
+
+class _Raw502:
+    """A raw connection whose first statement raises the observed 502 when `fail`
+    is set; otherwise delegates to a real in-memory libsql connection. Counts its
+    own close() calls, since closing the dead connection before the retry is part
+    of the contract."""
+
+    def __init__(self, real, fail=False):
+        self._real = real
+        self._fail = fail
+        self.closed = 0
+
+    def execute(self, sql, params=None):
+        if self._fail:
+            raise ValueError(_BAD_GATEWAY)
+        return self._real.execute(sql, params) if params is not None else self._real.execute(sql)
+
+    def executescript(self, script):
+        return self._real.executescript(script)
+
+    def commit(self):
+        return self._real.commit()
+
+    def close(self):
+        self.closed += 1
+
+
+def _remote_env(monkeypatch):
+    """Route db._remote_url down the Turso branch without a real database."""
+    monkeypatch.setenv("TURSO_DATABASE_URL", "libsql://fake-psephos.turso.io")
+    monkeypatch.setenv("TURSO_AUTH_TOKEN", "not-a-real-token")
+
+
+def _capture_sleeps(monkeypatch):
+    """Record the ladder instead of serving it -- the suite must not sleep 10.5s."""
+    slept = []
+    monkeypatch.setattr(db.time, "sleep", lambda s: slept.append(s))
+    return slept
+
+
+def _fake_connect(monkeypatch, factory):
+    """Patch libsql.connect with `factory(n)`, n being the 1-based call number.
+    Returns the call counter so a test can assert how many attempts were made."""
+    calls = {"n": 0}
+
+    def fake(database=None, auth_token=None):
+        calls["n"] += 1
+        return factory(calls["n"])
+
+    monkeypatch.setattr(db.libsql, "connect", fake)
+    return calls
+
+
+def test_connect_retries_a_transient_transport_failure(monkeypatch):
+    """A 502 on the establishing PRAGMA sleeps once and the retry returns a usable
+    connection -- the run survives a blip instead of dying at import."""
+    _remote_env(monkeypatch)
+    slept = _capture_sleeps(monkeypatch)
+    opened = []
+
+    def factory(n):
+        raw = _Raw502(_mem(), fail=(n == 1))
+        opened.append(raw)
+        return raw
+
+    calls = _fake_connect(monkeypatch, factory)
+
+    conn = db.connect()
+    conn.execute("CREATE TABLE t (x INTEGER)")
+    conn.commit()
+    assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 0
+
+    assert calls["n"] == 2          # one failed establishment, one that worked
+    assert slept == [1.5]           # first rung only
+    assert opened[0].closed == 1    # the dead connection was closed before the retry
+
+
+def test_transport_retry_gives_up_after_four_attempts_and_raises_the_real_error(monkeypatch):
+    """The ladder is bounded: four attempts, three sleeps, ~10.5s, and then the
+    underlying error propagates as itself -- not as None, and not wrapped."""
+    _remote_env(monkeypatch)
+    slept = _capture_sleeps(monkeypatch)
+    calls = _fake_connect(monkeypatch, lambda n: _Raw502(_mem(), fail=True))
+
+    with pytest.raises(ValueError, match="502 Bad Gateway"):
+        db.connect()
+
+    assert calls["n"] == 4
+    assert slept == [1.5, 3.0, 6.0]
+    assert sum(slept) == 10.5
+
+
+def test_transport_retry_does_not_retry_a_non_transport_error(monkeypatch):
+    """Only the transport family gets the ladder. Anything else raises on the first
+    attempt with no sleep -- a syntax error must not cost 10.5s per statement."""
+    _remote_env(monkeypatch)
+    slept = _capture_sleeps(monkeypatch)
+
+    class _Broken:
+        def execute(self, sql, params=None):
+            raise ValueError('near "PRAGMA": syntax error')
+
+        def close(self):
+            pass
+
+    calls = _fake_connect(monkeypatch, lambda n: _Broken())
+
+    with pytest.raises(ValueError, match="syntax error"):
+        db.connect()
+
+    assert calls["n"] == 1
+    assert slept == []
+
+
+def test_init_db_retries_the_transport_failure_at_the_migration_probe(tmp_path, monkeypatch):
+    """The failure site as observed: db.py's _apply_migrations, not libsql.connect.
+
+    libsql.connect() is lazy, so the 502 surfaced on the first statement of the
+    migration probe. A retry wrapped around the connect alone would have retried
+    nothing; this asserts the whole bootstrap is the unit that repeats."""
+    schema = tmp_path / "mini.sql"
+    schema.write_text(
+        "PRAGMA journal_mode = WAL;\nCREATE TABLE IF NOT EXISTS t (x INTEGER);\n",
+        encoding="utf-8")
+
+    _remote_env(monkeypatch)
+    slept = _capture_sleeps(monkeypatch)
+    opened = []
+
+    def factory(n):
+        raw = _Raw502(_mem(), fail=(n == 1))
+        opened.append(raw)
+        return raw
+
+    calls = _fake_connect(monkeypatch, factory)
+
+    db.init_db(schema=str(schema))   # no path -> remote branch, per _remote_url
+
+    assert calls["n"] == 2
+    assert slept == [1.5]
+    assert opened[0].closed == 1     # dead connection closed before the retry
+    # ... and the retry actually applied the schema on the second connection.
+    assert opened[1].execute("SELECT COUNT(*) FROM t").fetchone()[0] == 0
+
+
+def test_reset_inherits_the_transport_ladder(monkeypatch):
+    """The second call site, and the one with the wider blast radius: reset() (the
+    remote arm of db.recover) rebuilds mid-run, so a rebuild landing inside a blip
+    must take the ladder too rather than failing outright."""
+    _remote_env(monkeypatch)
+    slept = _capture_sleeps(monkeypatch)
+
+    # 1st: the original connection. 2nd: a rebuild that lands in the blip. 3rd: the
+    # rebuild that succeeds.
+    calls = _fake_connect(
+        monkeypatch, lambda n: _Raw502(_mem(), fail=(n == 2)))
+
+    conn = db.connect()
+    assert calls["n"] == 1
+    conn.execute("CREATE TABLE t (x INTEGER)")   # _pending = True
+
+    db.recover(conn)                             # -> reset() -> reopen, mid-blip
+
+    assert calls["n"] == 3
+    assert slept == [1.5]
+    assert conn._pending is False
+    conn.execute("SELECT 1")                     # the rebuilt connection is live
+
+
+def test_stale_stream_is_not_a_transport_error_and_keeps_the_single_retry_path(monkeypatch):
+    """The two mechanisms must stay separate, asserted in both directions against
+    the real strings. A stale stream is not fixed by sleeping (the connection is
+    gone; only a reopen helps) and a 502 is not fixed by one immediate retry."""
+    assert db._is_transport_error(ValueError(_STALE)) is False
+    assert "stream not found" not in _BAD_GATEWAY.lower()
+    # The 404 in the stale message is the near miss the `status=` prefixes exist for.
+    assert "status=404" in _STALE
+
+    # And the stale path still behaves as it did: one reopen, no ladder, no sleep.
+    slept = _capture_sleeps(monkeypatch)
+    seeded = libsql.connect(":memory:")
+    seeded.execute("CREATE TABLE t (x INTEGER)")
+    seeded.execute("INSERT INTO t VALUES (7)")
+    seeded.commit()
+
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        return seeded
+
+    fake = _FakeRaw(libsql.connect(":memory:"))
+    fake.fail_next = True
+    conn = db._Conn(fake, reopen=reopen)
+
+    assert conn.execute("SELECT x FROM t").fetchone()["x"] == 7
+    assert calls["reopen"] == 1
+    assert slept == []
+
+
 # --- db.recover: the shared per-item recovery helper ------------------------
 # recover() is what collectors' handlers call instead of a bare rollback(). On a
 # raw sqlite3 connection (local dev, and tests) it falls through to rollback();

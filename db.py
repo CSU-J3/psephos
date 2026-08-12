@@ -23,6 +23,8 @@ from __future__ import annotations
 
 import os
 import sqlite3
+import sys
+import time
 from pathlib import Path
 
 import libsql
@@ -31,6 +33,90 @@ import config
 
 DB_PATH = "data/psephos.db"
 SCHEMA_PATH = "schema.sql"
+
+
+# --- transient transport failures at connection establishment ---------------
+# Turso is a managed platform in front of the database and its edge can fail a
+# connection outright. Three consecutive runs -- 08-06 23:46Z, 08-07 01:58Z,
+# 08-07 06:56Z -- died on
+#     Hrana: api error: status=502 Bad Gateway, upstream forward failed
+# raised from the FIRST statement inside init_db's _apply_migrations, before any
+# collector ran and before any connection existed. db.recover and the whole
+# _pending/reopen machinery below cannot reach that by construction: there is
+# nothing to reset. The next scheduled run six hours later succeeded unaided
+# every time, which is what a transient platform blip looks like, so a bounded
+# retry at establishment is the entire fix.
+#
+# State the residual honestly. All three failures were at a dedicated
+# schema-bootstrap STEP whose unguarded connection ran seconds before the
+# collectors; `2eec868` removed that step on 08-08 (see the comment in
+# `.github/workflows/collect.yml`). There are ZERO observed failures at the six
+# per-collector init_db() calls or at connect()'s PRAGMA, which are what this
+# guards. It is insurance and an instrument -- the retry's stderr line is how a
+# survived blip becomes visible -- not the repair of a measured defect.
+#
+# Deliberately distinct from the stale-stream family in _Conn.execute below.
+# That one is a 404 "stream not found" on an ESTABLISHED connection, handled by
+# a single reopen-and-retry gated on _pending; a stale stream is not fixed by
+# sleeping and a 502 is not fixed by one immediate retry. The two must not
+# converge, so the predicate below must never match a stale-stream message and
+# tests/test_db.py asserts exactly that against the real string.
+_TRANSPORT_ERRORS = (
+    # Match `status=`, never the bare number: a Hrana stream id is hex and could
+    # contain "502" on its own, which would misroute a stale stream to this path.
+    "status=502", "status=503", "status=504",
+    "bad gateway", "service unavailable", "gateway timeout",
+    "upstream forward failed",
+    "connection reset", "connection refused", "connection closed",
+    "timed out",
+)
+
+# Three sleeps, ~10.5s of ladder, four attempts. Short on purpose: connect()
+# hands this same ladder to `reopen`, so under a sustained outage every failing
+# statement can cost 10.5s and a per-item handler's recover() another -- and
+# state.py iterates 484 bills. `collect.yml` bounds the job at 30 minutes as the
+# backstop for exactly that amplification.
+_CONNECT_BACKOFF = (1.5, 3.0, 6.0)
+
+
+def _is_transport_error(exc: BaseException) -> bool:
+    text = str(exc).lower()
+    return any(sig in text for sig in _TRANSPORT_ERRORS)
+
+
+def _close_quietly(raw) -> None:
+    """Close a connection we are done with, swallowing whatever close() raises.
+
+    On the failure path the connection is already known-bad, and a close() that
+    fails with ANY type would mask the transport error we are about to retry --
+    precisely what this exists to prevent. The breadth is the point, not an
+    oversight: narrowing it to the type seen once would reintroduce the mask."""
+    try:
+        raw.close()
+    except Exception:
+        pass
+
+
+def _retry_transport(attempt, what: str):
+    """Run `attempt`, retrying it on a transient transport failure.
+
+    `attempt` must be idempotent, and both call sites are: open a connection, or
+    apply an IF NOT EXISTS schema behind guarded ADD COLUMNs. Anything that is
+    not a transport failure propagates on the first try, untouched.
+
+    The final attempt sits OUTSIDE the loop so its exception is raised by the
+    call itself with its own traceback; a `raise last` after the loop types as
+    Optional and re-raises a stale exception object."""
+    for i, delay in enumerate(_CONNECT_BACKOFF, start=1):
+        try:
+            return attempt()
+        except Exception as exc:
+            if not _is_transport_error(exc):
+                raise
+            print(f"db: {what} hit a transport error ({exc}); retry {i} of "
+                  f"{len(_CONNECT_BACKOFF)} in {delay}s", file=sys.stderr)
+            time.sleep(delay)
+    return attempt()
 
 
 # --- remote (libSQL) row wrapper --------------------------------------------
@@ -260,10 +346,24 @@ def connect(path: str | None = None):
 
         def _open():
             raw = libsql.connect(database=url, auth_token=token)
-            raw.execute("PRAGMA foreign_keys = ON")
+            try:
+                # libsql.connect() is lazy, so this PRAGMA is the first round trip
+                # and therefore where establishment actually fails. It is also the
+                # setting every remote connection needs, so the probe is free.
+                raw.execute("PRAGMA foreign_keys = ON")
+            except Exception:
+                _close_quietly(raw)
+                raise
             return raw
 
-        return _Conn(_open(), reopen=_open)
+        def _open_retrying():
+            return _retry_transport(_open, "connect")
+
+        # `reopen` gets the retrying variant, so _Conn.execute's stale-stream
+        # recovery and reset() inherit the ladder: they rebuild through this exact
+        # path, and a rebuild landing inside a blip would otherwise fail outright --
+        # the wider blast radius of the two call sites, since it fires mid-run.
+        return _Conn(_open_retrying(), reopen=_open_retrying)
     conn = sqlite3.connect(path if path is not None else DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
@@ -275,13 +375,23 @@ def init_db(path: str | None = None, schema: str = SCHEMA_PATH) -> None:
     stripped, no local dir). Local: create the data dir and run the full script."""
     url = _remote_url(path)
     if url:
-        raw = libsql.connect(database=url, auth_token=_remote_token())
-        try:
-            _apply_migrations(raw)
-            raw.executescript(_schema_for_remote(schema))
-            raw.commit()
-        finally:
-            raw.close()
+        def _bootstrap():
+            raw = libsql.connect(database=url, auth_token=_remote_token())
+            try:
+                _apply_migrations(raw)
+                raw.executescript(_schema_for_remote(schema))
+                raw.commit()
+            finally:
+                # _close_quietly, not close(): on the failure path this connection
+                # is the dead one, and a raising close() would replace the transport
+                # error _retry_transport branches on with an unrelated one.
+                _close_quietly(raw)
+
+        # The whole bootstrap retries, not just libsql.connect(): the observed 502s
+        # were raised by _apply_migrations' first statement, so retrying the connect
+        # alone would have retried nothing. Re-running it is safe -- the ALTERs are
+        # existence-guarded and the schema is CREATE ... IF NOT EXISTS.
+        _retry_transport(_bootstrap, "schema bootstrap")
         return
     target = path if path is not None else DB_PATH
     Path(target).parent.mkdir(parents=True, exist_ok=True)
