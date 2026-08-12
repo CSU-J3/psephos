@@ -173,18 +173,31 @@ litigation:
                                        # hold. The common no-mark case is a 1-request descending
                                        # probe (ungated); only full walks draw this down, and a
                                        # deferred walk resumes next run.
-  status_refresh_hours: 24             # how stale `cases.status` may get before refresh_status()
+  status_refresh_hours: 20             # how stale `cases.status` may get before refresh_status()
                                        # re-reads it. `status` is written by the resolve path only,
                                        # so without this pass a case that terminates after its first
                                        # resolve reads `pending` forever -- 9 of 40 rows were stale
                                        # that way on 2026-08-10, all inside a four-week window
                                        # (tools/status_audit measures it).
+                                       # 20 rather than 24 PINS the pass to one cron slot. The stamp
+                                       # is written mid-run, so at 24h the boundary lands inside the
+                                       # same slot's own run, minutes from where the previous run
+                                       # stamped it: whether that run catches it depends on run-to-run
+                                       # variation in when litigation reaches the pass (collector wall
+                                       # clock measured 384-751s across five runs), and a miss walks
+                                       # the refresh forward a 6h slot. At 20h the boundary sits ~4h
+                                       # ahead of the slot, clear of any plausible variation, so the
+                                       # same run each day sees the whole due set and the other three
+                                       # see 0 -- a checkable standing invariant instead of a moving
+                                       # target. Cost is firing every 24h instead of every ~30h: one
+                                       # extra pass every few days, 24 requests each.
   max_status_refresh_per_run: 40       # ceiling on refresh requests per run. The refresh set is
-                                       # NON-terminated rows only (33 today) -- `terminated` is
-                                       # absorbing on the court's clock, so a terminated row never
-                                       # needs re-reading and the set shrinks as rows flip. At a 24h
-                                       # gate that is ~+33/day against a ~170-200/day baseline,
-                                       # about +17%; the four 6-hourly runs share one day's pass.
+                                       # NON-terminated rows only (24 today, 33 before the 08-10 pass
+                                       # flipped nine) -- `terminated` is absorbing on the court's
+                                       # clock, so a terminated row never needs re-reading and the set
+                                       # shrinks as rows flip. At the gate above that is ~+24/day
+                                       # against a ~170-200/day baseline, about +13%; one run a day
+                                       # carries the whole pass and the other three draw nothing.
   # Which docket entries become A1 items (the timeline). case_entries keeps EVERY entry;
   # only these substantive types are promoted to items. The exclude list is required: a
   # "MOTION for Leave to Appear Pro Hac Vice" matches "motion" and routine pro-hac/appearance

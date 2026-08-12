@@ -12,13 +12,19 @@ Last updated: 2026-08-12.
 
 **This is the only open item.** Everything else in this section closed on the 2026-08-11 ~23:00Z sweep and is recorded below under *Closed on the 08-11 sweep*. Read that first if any of this is unfamiliar.
 
-The 08-10 dispatch stamped `status_checked_at` on 33 rows between **19:24:42Z and 19:26:49Z**. The gate is 24h (`status_refresh_hours: 24`), so those rows come due again at **08-11 19:24–19:26Z** — after the last scheduled run of 08-11 (18:42Z, which read the gate at 18:46:58Z and missed the boundary by 37m44s). So the next run to see a non-zero due set is the **08-12 00:00Z slot**, and it has not run as of this writing.
+The 08-10 dispatch stamped `status_checked_at` on 33 rows between **19:24:42Z and 19:26:49Z**. The gate was 24h, so those rows came due again at **08-11 19:24–19:26Z** — after the last scheduled run of 08-11 (18:42Z, which read the gate at 18:46:58Z and missed the boundary by 37m44s). The next run to see a non-zero due set is therefore the **08-12 00:00Z slot**. It has not been read as of this update, so nothing below is verified against it.
 
 Expect, and check in one pass:
 
 - **24 due**, not 33. Nine rows flipped to `terminated` on the dispatch and `terminated` is absorbing, so the gate's `status <> 'terminated'` clause drops them permanently. Confirmed by direct query, not inferred: `SELECT COUNT(*) FROM cases WHERE status IS NULL OR status <> 'terminated'` reads **24** right now. A number other than 24 means a row changed state between then and the run, which is a finding, not noise.
 - **0 changed, 0 failed.** A flip here would be a docket that terminated inside the 24h window — possible and not alarming, but name it.
 - **No `capped at 40/N`.** `max_status_refresh_per_run` is 40 and the due set is 24, so the cap cannot bind. If that line appears, the due set is bigger than the table.
+
+**The gate is now 20h, and the slot walk is why.** `status_refresh_hours: 20`, committed this session and unpushed as of this writing — so any run before it lands still reads 24h and the prediction above is unaffected either way, since the due *set* does not depend on the gate width.
+
+A 24h gate cannot hold a slot. The stamp is written mid-run — 19:24–19:26Z off a 19:19Z dispatch — so at 24h the boundary lands *inside* the same slot's own run the next day, minutes from wherever the previous run put it. Whether that run catches it depends on run-to-run variation in when litigation reaches the pass, and collector wall clock swung **384–751s** across the five measured runs. Miss it and the refresh walks forward a 6h slot. The walk from the 19:19Z dispatch to the 00:00Z slot above is one such step.
+
+At 20h the boundary sits ~4h ahead of the slot that stamped it, clear of variation that size, so the pass pins to whichever slot last ran it: **the first run past the boundary gets the whole due set, the other three get 0.** That turns "0 due on three of four runs" into a standing invariant worth checking rather than a moving target. Cost is firing every 24h instead of every ~30h — one extra pass every few days, 24 requests each. First check: two consecutive days where the same slot carries the pass.
 
 This run is also the **ongoing-cost measurement**, which is the one number the sweep could not produce.
 
@@ -77,6 +83,8 @@ All four scheduled runs reported **0 due**. Three of them were predicted; the 06
 Stamps land between **19:24:42Z and 19:26:49Z on 08-10**. Plus 24h that is **08-11 19:24–19:26Z**, which falls *after* every scheduled run of 08-11 — the 18:42Z run read the gate at 18:46:58Z and missed the boundary by 37m44s. The handoff placed the boundary between the 00:00Z and 06:00Z runs; it is between the 18:00Z and the next 00:00Z. So four consecutive 0-due runs are the gate working exactly as designed, and the 33-due-every-run failure mode is ruled out four times over.
 
 The *size* half of the prediction is confirmed independently: the gate's own query reads 24 non-terminated rows today.
+
+This is a reading of the **24h** gate, and it stands as the measurement that motivated changing it. The config now says 20h; see the slot-pin note in *Owed right now*.
 
 ### Handoff 21–23 throttle work — VERIFIED, six checks
 
