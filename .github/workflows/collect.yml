@@ -14,11 +14,21 @@ jobs:
     # Bounds the retry ladders, not the runtime. db._retry_transport sleeps up to
     # ~10.5s per failing connection establishment and _Conn's reopen inherits it,
     # so a sustained Turso outage multiplies that by every failing statement and
-    # every per-item recover() -- state.py alone iterates 484 bills. Without this
-    # the GitHub default of 360 minutes applies and such a run collides with the
-    # next 6-hourly cron. Runs measure 6-12 minutes, so 30 is generous; re-derive
-    # it before lengthening any ladder.
-    timeout-minutes: 30
+    # every per-item recover() -- state.py alone iterates 484 bills, which at ~21s
+    # each is ~2.8 hours. Without this the GitHub default of 360 minutes applies
+    # and such a run collides with the next 6-hourly cron.
+    #
+    # 45 and not 30. Measured wall clock is 5m42s-16m42s across 8 scheduled runs
+    # (the four of 08-11 and the four of 08-12; the 08-10 dispatch at 14m38s is a
+    # ninth point inside that range), longest run 31629075586, 08-12 18:43Z. That
+    # spread is 3x, so a 2x spike off the observed maximum is ~33 minutes and a
+    # 30-minute bound would kill a healthy run. The 6-12 minute band this comment
+    # carried until 08-13 was five runs from one sweep written as a range without
+    # its sample size, and it was falsified at both ends within a day. Re-derive
+    # from the same instrument before changing it --
+    #   gh run list --workflow collect.yml --json databaseId,createdAt,startedAt,updatedAt
+    # across more than one day -- and re-check it before lengthening any ladder.
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
