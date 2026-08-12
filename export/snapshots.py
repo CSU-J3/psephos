@@ -212,9 +212,11 @@ def build_cases(conn) -> list[dict]:
             "plaintiff": c["plaintiff"],
             "defendant": c["defendant"],
             "filed_at": c["filed_at"],
-            "superseded_by": c["superseded_by"],   # district->circuit continuation link
-                                                   # (handoff 13); null on all but the
-                                                   # three terminated district rows.
+            "superseded_by": c["superseded_by"],   # this docket's continuation: the circuit
+                                                   # appeal or venue refile that replaced it
+                                                   # (handoff 13/14/37). Set on the terminated
+                                                   # row, pointing forward; null on all but the
+                                                   # seven terminated source rows.
             "timeline": entries,
         })
     return out

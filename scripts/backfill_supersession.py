@@ -26,8 +26,25 @@ deterministic since handoff 4. Procedure for the next one:
      finds nothing for the Georgia venue refile -- no court transmits a record to a
      refile, so the rule abstains rather than misfiring. Where it is silent, step 1's
      artifact diff is the B2 fallback,
-  4. add the (source_id, source_docket, successor_id, successor_docket) pair to PAIRS,
-  5. dry-run, paste the table, then --apply.
+  4. CHECK THE CIRCUIT MAP. A district's appeals go to exactly one circuit by statute,
+     so a successor in the wrong circuit is a bad mapping whatever the dockets say.
+     Costs nothing -- no API call, no artifact -- and it is the only check here that is
+     independent of BOTH CourtListener and the UW tracker, so it is the one that still
+     catches an error the two of them agree on. All seven asserted pairs pass: W.D. Pa.
+     -> 3d, D.N.H. -> 1st, D. Md. -> 4th, E.D. Ky. -> 6th, E.D. Va. -> 4th, D.N.M. ->
+     10th. Run it in the right direction, though: a VENUE REFILE has no circuit step and
+     must stay intra-state, which is what makes M.D. Ga. -> N.D. Ga. correct and would
+     make an 11th Cir. successor there the error. Settle which kind of successor you
+     have (step 2) before applying this, or it fires backwards,
+  5. add the (source_id, source_docket, successor_id, successor_docket) pair to PAIRS,
+  6. READ THE FIVE COLUMNS FIRST -- case_id, status, superseded_by, updated_at,
+     status_checked_at -- and keep the output. apply_links is supposed to touch
+     superseded_by and nothing else, and the only way to show that is to diff the after
+     against a before. Do not substitute "updated_at doesn't show today's date": the
+     seeded Georgia row is upserted by every collector run and already read today's date
+     before the handoff-37 apply, so that test flags a clean write as a defect and
+     passes vacuously on any row nothing else writes to,
+  7. dry-run, paste the table, then --apply, then re-run the dry-run for idempotence.
 
 Dry-run by default: prints each row AS QUERIED against the assertion and writes nothing.
 --apply writes and commits. Refusal-first: if ANY pair fails a guard, the whole run

@@ -77,7 +77,19 @@ Seed `cases` from the trackers in `config/sources.yaml` (UW, States United, Demo
 SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL AND superseded_by IS NULL;  -- expect 0
 ```
 
-Without `AND superseded_by IS NULL` this read 3 (the PA/NH/MD district orphans) and every mention of it needed the "34 not 37" caveat. `cases.superseded_by` is set on the terminated district row, pointing forward to its successor, a circuit appeal or a venue refile; the reverse lookup is a query. The three appeals are first-class rows that poll normally.
+Without `AND superseded_by IS NULL` this read 3 (the PA/NH/MD district orphans) and every mention of it needed the "34 not 37" caveat. It still reads 3: those three are the only rows in the table with a NULL `entries_synced_at`, and the clause exists for them. `cases.superseded_by` is set on the terminated source row, pointing forward to its successor, a circuit appeal or a venue refile; the reverse lookup is a query. The successors are first-class rows that poll normally.
+
+**Three counts, three different sets (handoff 37/38).** Collapsing any two of them is what produced a stale line in `docs/status.md` that survived several readings, so state them separately:
+
+- **7 superseded** — `superseded_by` is set on PA `71453026`, NH `71453646`, MD `71980724`, GA `72053306`, KY `72334676`, VA `72156765`, NM `71982149`.
+- **6 unpolled** — the same set minus GA. Those six are absent from `data/doj_cases.json`, so no run polls them. GA stays seeded because the UW tracker carries two Georgia rows (`Georgia (1)` gamd, `Georgia (2)` gand), and its M.D. Ga. row is therefore superseded *and* polled.
+- **3 NULL `entries_synced_at`** — PA, NH, MD, the handoff-13 orphans. KY, VA and NM are unpolled but *not* unbootstrapped: they hold marks frozen 2026-07-27 and 07-28, from before the tracker rewrote their rows.
+
+The arithmetic that pins it: **34 seeded + 6 unpolled = 40.** Unpolled and unbootstrapped are different properties — a row dropped from the seed artifact is never polled again but keeps whatever mark it already had.
+
+State the alarm's mechanism correctly, too. `entries_synced_at IS NULL AND superseded_by IS NULL` reads 0 **because the second clause excludes PA, NH and MD** — not because their marks are populated. They are NULL and always were. Without the clause it reads 3, unchanged by the handoff-37 apply.
+
+Before asserting any future pair, check the **circuit map**: a district's appeals go to exactly one circuit by statute, so this is free, needs no API call, and is the only corroboration independent of both CourtListener and the tracker. A venue refile has no circuit step and must stay intra-state (M.D. Ga. → N.D. Ga.), so establish which kind of successor you have first.
 
 ### collectors/executive.py  (live)
 Query the Federal Register API for documents from the configured agencies matching the configured terms. Write each to `items`, grade A1. Catches executive orders and rule changes that never touch Congress. A title-only relevance score surfaces the handful of on-topic EOs and rules among the agency-rule noise (scoring title+summary floods it with EAC abstracts).
