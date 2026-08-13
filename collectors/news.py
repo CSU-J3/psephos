@@ -193,6 +193,11 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
         (
             CHANNEL, source_id, canon or link or "", title, summary or None,
             common.to_iso(raw.get("published")), common.now_iso(),
+            # case_id is DECIDED as always-NULL, not unfinished (handoff 48/49). RSS
+            # titles and summaries carry no docket numbers -- zero across 3,302 items --
+            # and matching a caption's defendant matches a secretary of state who is in
+            # the news constantly for other reasons, at ~2-3 true hits in 14. See
+            # docs/psephos.md, the news collector section and the limitations list.
             gsource, ginfo, conf, bill_id, None, chash,
             json.dumps(
                 {"title": title, "link": link, "summary": summary,
