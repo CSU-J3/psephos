@@ -10,10 +10,10 @@ Last updated: 2026-08-13.
 
 ### The pin's second day — 08-13 06:00/12:00/18:00Z and 08-14 00:00Z
 
-**This is the only open item.** The 08-13 00:00Z run is read and closed immediately below, and it cleared every prediction. What remains is the part one run cannot show: that the pass stays on the slot.
+**This is the only open item.** The 08-13 00:00Z run is read and closed immediately below, and it cleared every prediction. What remains is the part one run cannot show: that the pass stays on the slot. **Three of the four are now read and exact; only 08-14 00:00Z is outstanding.**
 
-- **08-13 06:00, 12:00, 18:00Z — 0 due on each.** The boundary is 20:58:57Z, after all three.
-- **08-14 00:00Z — 24 due again, same slot.** Two consecutive days on the same slot is the pin confirmed. **One clearing is not the pin holding** — a single 24-due run is equally consistent with a gate that happens to have cleared once and then walks.
+- **08-13 06:00, 12:00, 18:00Z — 0 due on each. READ 2026-08-13, exact on all three.** The boundary is 20:58:57Z, after all three. Runs `31676459550` (07:07Z), `31701060752` (12:39Z), `31732223080` (18:43Z), all `success`, each logging `status refresh, 0 row(s) due (0 skipped, non-numeric case_id)` then `0 checked, 0 changed, 0 skipped, 0 failed`. Wall clocks 8m, 10m, 9m, all inside the 5m42s–16m42s band. **This is the cheap half of the pin and it is now spent** — three 0-due runs are what a held gate and a walked gate both look like until the boundary is crossed, so they confirm the prediction without confirming the pin.
+- **08-14 00:00Z — 24 due again, same slot.** Two consecutive days on the same slot is the pin confirmed. **One clearing is not the pin holding** — a single 24-due run is equally consistent with a gate that happens to have cleared once and then walks. **This is the whole of what remains open**, and it is the only one of the four that can fail informatively.
 
 ### The 08-13 00:00Z run — READ, all four predictions exact
 
