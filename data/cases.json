@@ -7207,7 +7207,7 @@
     "filed_at": "2025-12-02T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
-    "superseded_by": null,
+    "superseded_by": "73678095",
     "timeline": [
       {
         "channel": "litigation",
@@ -13997,7 +13997,7 @@
     "filed_at": "2026-01-16T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
-    "superseded_by": null,
+    "superseded_by": "73690636",
     "timeline": [
       {
         "channel": "litigation",
@@ -16269,7 +16269,7 @@
     "filed_at": "2026-02-26T00:00:00",
     "plaintiff": "United States",
     "status": "terminated",
-    "superseded_by": null,
+    "superseded_by": "73674243",
     "timeline": [
       {
         "channel": "litigation",
