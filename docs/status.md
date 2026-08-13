@@ -220,7 +220,7 @@ Hand-assertion is the bottleneck — three pairs became seven in a month, each f
 
 - **P1, status: exactly one side `terminated`.** A supersession is dead → live by definition. Same condition `verify()` already guards, so the generator should share the logic rather than restate it.
 - **P2, shape: district↔circuit, or district↔district *in the same state*.** Those are the only two admitted shapes — an **appeal** and a **venue refile**. Everything else is excluded: circuit↔circuit categorically, district↔district across states, and any pair whose court string does not classify.
-- **P3, circuit map: for appeal-shaped pairs only**, the circuit must be the one that hears appeals from that district's state. Not evaluated on refiles, or it fires backwards on M.D. Ga. → N.D. Ga.
+- **P3, circuit map — DEMOTED to a flag, not a filter.** For appeal-shaped pairs only, the circuit should be the one that hears appeals from that district's state; not evaluated on refiles, or it fires backwards on M.D. Ga. → N.D. Ga. **A candidate that passes P1 and P2 and fails P3 is emitted with a warning, never dropped.** It buys nothing as a filter (zero marginal kills, below), and an **inter-circuit transfer** is precisely the case that fails it and is real. A silent drop there is unrecoverable — nothing downstream would ever show the pair existed — whereas a flagged emission costs one line a human ignores. Asymmetric costs, so the flag wins even though the filter is right almost always.
 
 **Measured, 2026-08-13, 40 cases / 4,043 `case_entries`. No known pair is lost by any predicate.** Each is reported alone against the raw 15, then in cascade, because the marginal number depends entirely on the order:
 
@@ -244,16 +244,36 @@ Filter volumes, separately: **424 self-references**, **227 bracket entry-numbers
 
 **Recall on the same corpus: 5 of 7.** Finds PA, NH, MD, NM, VA. Correctly abstains on the GA refile. Misses KY, which is input 2's job.
 
-**Immediate yield is zero new pairs, and that is the honest sell.** All 5 surviving proposals are pairs already asserted. There are **16 terminated rows, 9 of them unlinked**, and the rule proposes nothing admissible for any of the 9. So this is a prospective detector for the next supersession, not a backlog-clearer — the backlog, if there is one, is invisible to input 1 and belongs to input 2.
+**Immediate yield is zero new pairs.** All 5 surviving proposals are pairs already asserted. There are **16 terminated rows, 9 of them unlinked**, and input 1 proposes nothing admissible for any of the 9.
+
+**And there is no backlog for input 2 either — tested, not assumed (2026-08-13).** Nine `git log -S` calls on `data/doj_cases.json`, one per unlinked terminated row. **The in-place-rewrite signal fires on zero of the nine.** Eight of the nine appear in exactly one commit, `183c409`, and `git log --diff-filter=A` confirms that is the commit which *created* the artifact — so the string was added at creation and never rewritten. The ninth, `71499795` (`1:25-cv-03501`), returns zero commits because it is a `config/sources.yaml` seed and was never in the tracker at all. The contrast validates the method rather than leaving it asserted: KY's `3:26-cv-00019` appears in **two** commits (creation plus `7dbda24`), and its successor string `26-5657` appears only in `7dbda24`. That two-commit shape is what a real rewrite looks like, and none of the nine has it.
+
+| unlinked terminated row | court | kind | rewrite signal |
+| --- | --- | --- | --- |
+| `72054244` `3:25-cv-03398` | C.D. Ill. | district | none |
+| `71499795` `1:25-cv-03501` | D.D.C. | district | n/a — config seed, not tracker-sourced |
+| `72021508` `1:25-cv-03967` | D. Colo. | district | none |
+| `72110170` `3:26-cv-00021` | D. Conn. | district | none |
+| `72055344` `1:25-cv-04403` | District of D.C. | district | none |
+| `72333329` `3:26-cv-02025` | D.N.J. | district | none |
+| `71457474` `1:25-cv-01338` | N.D.N.Y. | district | none |
+| `72336804` `5:26-cv-00361` | W.D. Okla. | district | none |
+| `72347022` `26-1225` | 6th Cir. | **circuit** | none |
+
+**So nine NULLs are nine correct end states, not nine missing links.** A case that terminated without an appeal carries a correct NULL — the normal end state for litigation — and both detectors are prospective-only. Neither clears anything today.
+
+**The circuit row is the one structural gap, and it is buildable.** `72347022` (Michigan, 6th Cir. `26-1225`) was AFFIRMED 06-24 with an en banc petition 07-10. En banc stays on the same docket, so it is not a supersession; the only successor shape available to a terminated circuit row is a **cert petition**, which P2 admits no shape for. Two CourtListener lookups (the whole API cost of this recon) settle whether that is reachable: SCOTUS dockets exist in a holdable form — **2,548 filed since 2026-01-01**, carrying clean `docket_number` (`25-1432`) and real `date_filed`. A first sample ordered by `-date_filed` returned only historical imports with null dates and duplicated ids, so **filter by `date_filed__gte` before judging SCOTUS coverage** or the API will make it look dead. Circuit→SCOTUS is therefore a real shape the project could hold; nothing in psephos resolves it today, and Michigan has no cert petition yet, so its NULL is currently correct.
 
 **Cost: zero API calls.** Inputs 1 and 3 read rows already in Turso; input 2 reads git history. Nothing here touches the CourtListener budget, which is why it can run as often as wanted.
 
 **Corpus: `case_entries`, never `data/cases.json`.** The snapshot's `timeline` is built from `items`, not `case_entries`, so it does not contain the docket text this rule reads. Measured against the snapshot the rule scores 3 of 7 recall at 75% precision, and both numbers are artifacts of the missing column. See the falsified list.
 
-**Two outputs, not one.** The unresolvables are a deliverable in their own right, not a discard count:
+**Two outputs, and the order is reversed from how this unit has been framed since handoff 17.** The measurement does not support "supersession generator that also notices gaps." It supports the opposite:
 
-1. **Candidate pairs**, filtered by P1–P3, each with its triggering entry text and its grade (A1 cross-reference, B2 tracker diff).
-2. **Unresolvable references**, each with the holding row that names it. A docket-shaped string naming no row psephos holds is a **coverage gap**, and on this corpus every one of them is: `26-5243` is a real D.C. Circuit appeal the project does not hold, and `2:25-cv-09149` / `6:25-cv-01666` / `2:26-cv-00066` are the CA, OR and AZ *district originals* sitting behind circuit rows psephos does hold. **A tracker holding an appeal without its underlying case is worth surfacing on its own**, independent of any supersession question, and nothing in psephos reports it today.
+1. **PRIMARY — the coverage-gap report.** Unresolvable docket references, each with the holding row that names it. Every one on this corpus is a real gap: `26-5243` is a D.C. Circuit appeal the project does not hold, and `2:25-cv-09149` / `6:25-cv-01666` / `2:26-cv-00066` are the CA, OR and AZ **district originals sitting behind Ninth Circuit rows psephos does hold**. A tracker holding an appeal without its underlying case is a coverage defect independent of any supersession question, and **nothing in psephos reports it today**. Immediate yield: four real gaps.
+2. **SECONDARY — the pair detector.** Candidate pairs from inputs 1 and 2, filtered by P1 and P2, flagged by P3, each with triggering evidence and grade. Immediate yield: **zero**, on both inputs, measured. Its value is entirely prospective — it catches the *next* supersession without a human noticing it first, which is worth having but is not worth leading with.
+
+Leading with the detector would ship a unit whose measured output on the current corpus is an empty list.
 
 **Regression fixtures to pin with the code.** These three are what a future loosening would resurface, so each gets a test naming the predicate that must kill it:
 
