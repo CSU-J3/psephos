@@ -1312,6 +1312,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 77004,
+        "kind": "item",
+        "occurred_at": "2026-07-27T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxONjhockJZLV9qTkRYdzBYSndPNXpxZzFLTG1Md2RsQUY1c21uVDU5MTZXSjBsbkRKMDR4QkdlckpzYmNadmpOcFJIVVFFVXlYTy1nT3c2dTV1MFRtdHdvSVduQkdLWEJla2dXV1htOEhwX05hUXNYcFFEMnAza1BEX1RtbFB6aGduaERJVGFQMEZ4TVU3dDN1alpJMnQ5SXJ4aXNhS2Jncm1YSlRDN05uU0EyRzNNYkczeDh0NF9oNHVFUUJVVDhtT1R2MWpHQkgycVFGbW5HRUhGQkoxWTVVblh3WEU5d28xV3cxSmNESVJ5SzU2clZRTGNFczBRcjJIZzBTcQ?oc=5",
+        "title": "Trump urges Thune to keep Senate in session, possibly end filibuster for SAVE America Act - thenationaldesk.com"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 62318,
         "kind": "item",
         "occurred_at": "2026-07-27T13:52:00+00:00",
