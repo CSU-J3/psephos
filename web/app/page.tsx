@@ -90,6 +90,16 @@ export default async function Home() {
       </section>
 
       <section className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold tracking-tight">Reporting</h2>
+        <Link
+          href="/news"
+          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
+        >
+          Coverage from the maintained trackers, B2 sources only →
+        </Link>
+      </section>
+
+      <section className="mt-10">
         <ExecutiveSection relevant={relevant} all={executiveAll} />
       </section>
     </main>

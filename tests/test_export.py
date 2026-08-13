@@ -28,6 +28,8 @@ SOURCES = {
     "seed-cases": ("litigation", "B", "2"),
     "google-news": ("news", "C", "3"),
     "democracy-docket": ("news", "B", "2"),
+    "votebeat": ("news", "B", "2"),
+    "bolts": ("news", "B", "2"),
     "federal-register": ("executive", "A", "1"),
     "legiscan": ("state", "B", "2"),
 }
@@ -349,3 +351,71 @@ def test_state_bills_json_stable_despite_moving_updated_at():
     assert b1 == b2                                    # updated_at change does not alter output
     assert b"2026-07-01" not in b1                     # updated_at value never leaks
     assert b"2026-07-02" not in b2
+
+
+# --------------------------------------------------------------------------- #
+# build_news -- the B2 feed (handoff 49)
+# --------------------------------------------------------------------------- #
+def _demoted_item(conn, *, source_id, title, occurred_at, bill_id=None):
+    """An item from a B2 SOURCE stored with a C3 ITEM grade -- what classify()
+    writes when it attaches to the vehicle bill by inference. _item() can't make
+    one, because it derives the grade from the source."""
+    _HASH[0] += 1
+    conn.execute(
+        "INSERT INTO items (channel, source_id, source_url, title, occurred_at, "
+        "fetched_at, admiralty_source, admiralty_info, bill_id, content_hash) "
+        "VALUES (?,?,?,?,?,?,?,?,?,?)",
+        ("news", source_id, f"https://ex/{_HASH[0]}", title, occurred_at,
+         "2026-01-01T00:00:00+00:00", "C", "3", bill_id, f"h{_HASH[0]}"))
+    conn.commit()
+
+
+def test_news_excludes_c3_sources_and_keeps_b2():
+    conn = _conn()
+    _item(conn, source_id="democracy-docket", title="B2 story", occurred_at="2026-06-01")
+    _item(conn, source_id="google-news", title="C3 aggregate", occurred_at="2026-06-02")
+    out = snapshots.build_news(conn)
+    assert [e["source_id"] for e in out] == ["democracy-docket"]
+
+
+def test_news_keeps_a_b2_source_item_the_matcher_demoted_to_c3():
+    """The regression the obvious implementation causes. Filtering on the ITEM's
+    grade drops the five real Democracy Docket items classify() demoted when they
+    attached to the vehicle bill. The filter joins `sources` for exactly this."""
+    conn = _conn()
+    _demoted_item(conn, source_id="democracy-docket", title="demoted but B2 source",
+                  occurred_at="2026-06-03", bill_id=None)
+    out = snapshots.build_news(conn)
+    assert [e["title"] for e in out] == ["demoted but B2 source"]
+    assert out[0]["grade"] == "C3"          # the item keeps its demoted grade...
+    assert out[0]["source_id"] == "democracy-docket"   # ...and is still in the feed
+
+
+def test_news_carries_anchored_items_too_not_just_orphans():
+    """A feed is a channel view, not an orphanage: contents must not move when the
+    matcher changes. An anchored item appears here AND on its bill page."""
+    conn = _conn()
+    _bill(conn, "billA-119")
+    _item(conn, source_id="votebeat", title="anchored", occurred_at="2026-06-01",
+          bill_id="billA-119")
+    _item(conn, source_id="votebeat", title="unanchored", occurred_at="2026-06-02")
+    assert sorted(e["title"] for e in snapshots.build_news(conn)) == ["anchored", "unanchored"]
+
+
+def test_news_is_date_ordered_and_byte_stable():
+    conn = _conn()
+    _item(conn, source_id="bolts", title="later", occurred_at="2026-06-09")
+    _item(conn, source_id="votebeat", title="earlier", occurred_at="2026-06-01")
+    out = snapshots.build_news(conn)
+    assert [e["title"] for e in out] == ["earlier", "later"]
+    d = Path(tempfile.mkdtemp())
+    assert (snapshots.write_json(str(d / "a.json"), snapshots.build_news(conn))
+            == snapshots.write_json(str(d / "b.json"), snapshots.build_news(conn)))
+
+
+def test_news_excludes_other_channels():
+    conn = _conn()
+    _item(conn, source_id="democracy-docket", title="news", occurred_at="2026-06-01")
+    _item(conn, source_id="legiscan", title="state, also a B-graded source",
+          occurred_at="2026-06-02", state_bill_id=None)
+    assert [e["title"] for e in snapshots.build_news(conn)] == ["news"]

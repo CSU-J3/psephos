@@ -1,6 +1,9 @@
 """Deterministic JSON snapshots from the items spine.
 
-Two products, one file each under data/:
+Five files under data/, one per product. Each must also be named in `collect.yml`'s
+`git add` line, which stages snapshots explicitly (never `git add data/`, because
+data/psephos.db is not gitignored) -- a new file omitted there is written every run
+and committed by none of them, silently, since this module prints it either way.
 
   bills.json  -- per-bill timelines: legislation actions (A1) interleaved with the
                  news that explains them (C3/B2), in date order. Same-event news is
@@ -10,6 +13,20 @@ Two products, one file each under data/:
                  tracker framing (B2). No news, no litigation<->news join.
   executive.json -- the executive channel as a flat, date-ordered list: Federal
                  Register documents (A1). No bill/case scope, no clustering.
+  news.json   -- the B2 news feed: a flat, date-ordered list of items from the
+                 maintained expert trackers. NOT the news channel -- see below.
+  state_bills.json -- per-state-bill timelines, flat and date-ordered, keyed by
+                 state_bill_id (LegiScan, B2).
+
+NO ROUTE READS ANY OF THESE, and the docstring should not imply otherwise.
+`web/lib/db.ts` is a Turso client and every route is force-dynamic, so all five
+files are written every run and consumed by nothing in the running system. What
+they earn their place as is the diff-friendly committed record -- the evidentiary
+spine that makes "exactly three case objects changed" checkable years later --
+and NOT as "the input for the view", which the spec still says and which stopped
+being true when the view moved to Turso. Whether that archive is worth ~4 MB
+rewritten four times a day is an open question in docs/status.md. It is not a
+reason to read this module as feeding a page.
 
 The output is byte-identical for an unchanged DB: entries sort by (date, id),
 cluster members by id, object keys are sorted, and NO wall-clock timestamp is
@@ -30,6 +47,7 @@ BILLS_PATH = "data/bills.json"
 CASES_PATH = "data/cases.json"
 EXECUTIVE_PATH = "data/executive.json"
 STATE_BILLS_PATH = "data/state_bills.json"
+NEWS_PATH = "data/news.json"
 
 # A cluster node needs at least this many members; a lone anchor match stays a
 # standalone item (a 1-member "cluster" would add nothing and only obscure it).
@@ -231,6 +249,57 @@ def build_executive(conn) -> list[dict]:
     return sorted((_item_entry(r) for r in rows), key=_sort_key)
 
 
+def build_news(conn) -> list[dict]:
+    """The B2 news feed: a flat, date-ordered list. Reuses _item_entry / _sort_key.
+
+    THIS IS NOT THE NEWS CHANNEL, and the difference is most of it. Measured
+    against Turso 2026-08-13: the channel holds 3,407 items and this file holds
+    432; the 2,975 excluded are Google News aggregates. The exclusion is the
+    SPEC'S OWN GRADING RULE rather than a source blocklist: `config/sources.yaml`
+    grades that source C3 with the note "aggregated; corroborate before promoting
+    an item", and the spec says in as many words that an uncorroborated aggregate
+    must not drive the timeline. Anywhere this file's count is quoted, quote the
+    excluded count with it.
+
+    THOSE TWO NUMBERS MOVE, the excluded one fastest, so they are dated here and
+    `main()` prints both live on every run. The print is the current value; this
+    docstring is a reading. The plan for this unit carried 2,955 and the same
+    day's query read 2,975 -- twenty Google News items, one cron apart, which is
+    all it takes for a hardcoded complement to go stale.
+
+    ONE LIMITATION, STATED RATHER THAN DECIDED HERE. The spec's grading section
+    contemplates promoting a Google News item once corroborated. Nothing
+    implements that today, and this filter is source-level, so a promoted item
+    would keep sitting outside the feed. That is the honest consequence of
+    defining the feed by outlet reliability; if promotion is ever built, this
+    query is one of the places that has to answer for it.
+
+    THE FILTER IS ON THE SOURCE'S GRADE, NOT THE ITEM'S, and that is load-bearing.
+    `classify()` demotes an item to C3 when it attaches to the vehicle bill by
+    inference, so five Democracy Docket items are stored C3 despite coming from a
+    B2 source. Filtering on `items.admiralty_source` would silently drop exactly
+    those five. Joining `sources` instead asks the question the spec asks -- how
+    reliable is this outlet -- and survives a new B2 feed being added to config
+    without a code change. A test pins the five.
+
+    The join cannot inflate the count: `sources.id` is a PRIMARY KEY (schema.sql),
+    so every item matches at most one source row and the result is one entry per
+    item. That is the property a filtering JOIN has to earn, so it is named here.
+
+    CONTENTS ARE THE WHOLE B2 SET, not the unanchored subset. A feed is a channel
+    view, not an orphanage: defining it as "items with no bill_id" would make the
+    file's contents move whenever the matcher changed, coupling an export to
+    matcher behaviour. The anchored items correctly appear both here and on their
+    bill pages.
+    """
+    rows = conn.execute(
+        "SELECT i.* FROM items i JOIN sources s ON s.id = i.source_id "
+        "WHERE i.channel = 'news' AND s.admiralty_source = 'B' "
+        "ORDER BY i.occurred_at, i.id"
+    ).fetchall()
+    return sorted((_item_entry(r) for r in rows), key=_sort_key)
+
+
 def build_state_bills(conn) -> list[dict]:
     """Per-state-bill objects sorted by state_bill_id. Timeline = the state items
     keyed by state_bill_id, flat and date-ordered like build_cases (state bills
@@ -282,6 +351,13 @@ def main() -> int:
         cases = build_cases(conn)
         executive = build_executive(conn)
         state_bills = build_state_bills(conn)
+        news = build_news(conn)
+        # Print the excluded count beside the included one, every run: this file is
+        # a graded subset and the number is meaningless without its complement.
+        news_excluded = conn.execute(
+            "SELECT COUNT(*) FROM items i JOIN sources s ON s.id = i.source_id "
+            "WHERE i.channel = 'news' AND s.admiralty_source <> 'B'"
+        ).fetchone()[0]
     finally:
         conn.close()
 
@@ -289,11 +365,13 @@ def main() -> int:
     write_json(CASES_PATH, cases)
     write_json(EXECUTIVE_PATH, executive)
     write_json(STATE_BILLS_PATH, state_bills)
+    write_json(NEWS_PATH, news)
 
     nodes = sum(1 for b in bills for e in b["timeline"] if e["kind"] == "cluster")
     print(f"  wrote {BILLS_PATH} ({len(bills)} bills), {CASES_PATH} "
           f"({len(cases)} cases), {EXECUTIVE_PATH} ({len(executive)} executive), "
-          f"and {STATE_BILLS_PATH} ({len(state_bills)} state bills); {nodes} cluster node(s)")
+          f"{STATE_BILLS_PATH} ({len(state_bills)} state bills), and {NEWS_PATH} "
+          f"({len(news)} B2 news, {news_excluded} C3 excluded); {nodes} cluster node(s)")
     return 0
 
 

@@ -246,3 +246,48 @@ export async function getExecutiveAll(): Promise<ExecItem[]> {
   );
   return rs.rows as unknown as ExecItem[];
 }
+
+// --- the B2 news feed -------------------------------------------------------
+// NOT the news channel: 432 of 3,407 items, measured against Turso 2026-08-13.
+// The 2,975 excluded are Google News aggregates, which config/sources.yaml
+// grades C3 with "corroborate before promoting an item" -- the spec's own rule,
+// not a source blocklist. Both counts move every cron, which is why the page
+// renders the excluded count from getNewsExcludedCount() rather than a literal.
+//
+// The filter joins `sources` so it tests the SOURCE's grade, never the item's.
+// collectors/news.py classify() demotes an item to C3 when it attaches to the
+// vehicle bill by inference, so a handful of Democracy Docket items are stored
+// C3 despite coming from a B2 outlet; filtering on items.admiralty_source would
+// silently drop exactly those. Mirrors export.snapshots.build_news -- if one
+// changes, change both.
+export type NewsItem = {
+  id: number;
+  source_id: string;
+  title: string;
+  source_url: string;
+  occurred_at: string | null;
+  admiralty_source: string;
+  admiralty_info: string;
+  bill_id: string | null;
+};
+
+export async function getNewsFeed(): Promise<NewsItem[]> {
+  const rs = await db.execute(
+    `SELECT i.id, i.source_id, i.title, i.source_url, i.occurred_at,
+            i.admiralty_source, i.admiralty_info, i.bill_id
+     FROM items i JOIN sources s ON s.id = i.source_id
+     WHERE i.channel = 'news' AND s.admiralty_source = 'B'
+     ORDER BY i.occurred_at DESC, i.id DESC`,
+  );
+  return rs.rows as unknown as NewsItem[];
+}
+
+// The complement, so the feed can never be read as "the news channel". Shown
+// beside the count on the page for the same reason the export prints it.
+export async function getNewsExcludedCount(): Promise<number> {
+  const rs = await db.execute(
+    `SELECT COUNT(*) AS n FROM items i JOIN sources s ON s.id = i.source_id
+     WHERE i.channel = 'news' AND s.admiralty_source <> 'B'`,
+  );
+  return Number((rs.rows[0] as unknown as { n: number }).n);
+}
