@@ -3,6 +3,8 @@
 // Read-only by design -- collection is the Python cron's job; this app only reads.
 import { createClient } from "@libsql/client";
 import { unstable_cache } from "next/cache";
+import { windowStarts, toCells } from "@/lib/activity";
+import type { ActivityRow } from "@/lib/activity";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -12,8 +14,6 @@ export const db = createClient({
 // Row types mirror schema.sql columns exactly. Columns that are nullable in the
 // schema are nullable here. @libsql/client returns INTEGER as JS number (these
 // are all small -- ids, bill numbers, the 0/1 vehicle flag), so number is safe.
-
-export type ChannelCount = { channel: string; n: number };
 
 export type Bill = {
   bill_id: string;
@@ -89,23 +89,59 @@ export type ExecItem = {
   admiralty_info: string;
 };
 
-// Channel counts -- proves the items spine is readable and shows the breadth.
-// This is the one homepage query that scans the whole `items` table: an index
-// scan reading one row per item (~9k) to return 5 integers. So it's the only
-// query cached -- unstable_cache pulls the scan out of the per-render path and
-// caps it at the revalidate window (<=24/day) instead of once per render. The
-// route stays force-dynamic and the other homepage queries stay live (freshness
-// is cheap there, the scan is not); unstable_cache is a data-cache primitive,
-// independent of the route's render mode. Counts carry up to 1h of staleness.
-export const getChannelCounts = unstable_cache(
-  async (): Promise<ChannelCount[]> => {
-    const rs = await db.execute(
-      "SELECT channel, COUNT(*) AS n FROM items GROUP BY channel ORDER BY channel",
+// Channel activity: what psephos collected recently, with the lifetime total as
+// context. This is the one homepage query that scans the whole `items` table -- an
+// index scan reading one row per item (~9.4k) to return 15 integers -- so it is the
+// only query cached. unstable_cache pulls the scan out of the per-render path and
+// caps it at the revalidate window (<=24/day) instead of once per render. The route
+// stays force-dynamic and the other homepage queries stay live (freshness is cheap
+// there, the scan is not); unstable_cache is a data-cache primitive, independent of
+// the route's render mode.
+//
+// THE DELTAS ARE FREE. Folded into the existing GROUP BY as SUM(CASE WHEN ...) rather
+// than issued as separate windowed queries, so this costs exactly what the plain
+// counts cost: EXPLAIN QUERY PLAN reads `SCAN items USING INDEX idx_items_channel`
+// with or without them. That is also why no index on `fetched_at` was added -- there
+// is no windowed lookup to accelerate, and a new index would tax every insert to
+// speed up a scan that already has to visit every row to compute the totals.
+//
+// `fetched_at`, NOT `occurred_at`, and the difference is the whole meaning of the
+// strip. It answers "what did psephos collect in this window", which is a fact about
+// the tool. `occurred_at` is the publication or docket date, and RSS routinely carries
+// items dated days or weeks back -- the same publication-vs-collection artifact the
+// litigation poll already handles by keying its high-water mark on `date_modified`
+// rather than `date_filed`. Keyed on `occurred_at`, a backfilled week-old article
+// would either vanish from the window or report as today's movement depending on which
+// side of the boundary it fell, and neither is "what changed since you last looked".
+//
+// `now` is computed INSIDE the cached function deliberately: taking it as an argument
+// would put a moving value in the cache key and the entry would never be hit. The
+// window therefore drifts by up to the 1h TTL, which on a 24h span is a <=4% error on
+// the number least sensitive to being current.
+export const getChannelActivity = unstable_cache(
+  async (): Promise<ActivityRow[]> => {
+    const { day, week } = windowStarts(new Date());
+    const rs = await db.execute({
+      sql: `SELECT channel,
+                   COUNT(*) AS total,
+                   SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS day,
+                   SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS week
+            FROM items
+            GROUP BY channel
+            ORDER BY channel`,
+      args: [day, week],
+    });
+    // COUNT/SUM can arrive as bigint; coerce for the view.
+    return toCells(
+      rs.rows.map((r) => ({
+        channel: String(r.channel),
+        total: Number(r.total),
+        day: Number(r.day),
+        week: Number(r.week),
+      })),
     );
-    // COUNT(*) can arrive as bigint; coerce to number for the view.
-    return rs.rows.map((r) => ({ channel: String(r.channel), n: Number(r.n) }));
   },
-  ["channel-counts"],
+  ["channel-activity"],
   { revalidate: 3600 },
 );
 
