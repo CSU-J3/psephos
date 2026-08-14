@@ -164,6 +164,93 @@ def test_upsert_case_preserves_asserted_superseded_by(tmp_path):
     conn.close()
 
 
+def _entries_db(tmp_path):
+    """A temp DB with the courtlistener source row write_entries' A1 items FK to."""
+    dbp = str(tmp_path / "entries.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    conn.execute(
+        "INSERT INTO sources (id, name, channel, kind, admiralty_source, admiralty_info)"
+        " VALUES ('courtlistener', 'CL', 'litigation', 'api', 'A', '1')")
+    conn.execute("INSERT INTO cases (case_id, caption, status) VALUES ('X', 'c', 'pending')")
+    conn.commit()
+    return conn
+
+
+def test_latest_entry_at_cannot_move_backwards_on_a_backfilled_window(tmp_path):
+    """The regression that cost 12 of 40 rows, up to 83 days (handoff 55/56).
+
+    `write_entries` used to set latest_entry_at to the max date_filed IN THE POLLED
+    BATCH. That was correct while every poll was a full walk and the batch was the
+    docket. Once polling went incremental (c8b8b6f, 2026-07-22) the batch became a
+    date_modified window, and RECAP backfills old filings late -- so a window can
+    legitimately contain ONLY an old entry, and the assignment walked the column
+    backwards. West Virginia read 2026-05-15 while holding an entry from 2026-08-06.
+
+    This is that exact sequence. It fails against the assignment and passes against
+    the derivation, which is what makes it a regression test rather than a restatement
+    of the new code: the second poll's batch max (05-15) is deliberately OLDER than
+    the stored value, so an implementation that trusts the batch writes 05-15."""
+    conn = _entries_db(tmp_path)
+    types, excludes = ["order"], []
+    stored = lambda: conn.execute(
+        "SELECT latest_entry_at FROM cases WHERE case_id = 'X'").fetchone()["latest_entry_at"]
+    table_max = lambda: conn.execute(
+        "SELECT MAX(entry_at) FROM case_entries WHERE case_id = 'X'").fetchone()[0]
+
+    lit.write_entries(conn, "X", "c", None,
+                      [{"date_filed": "2026-08-06", "description": "ORDER recent"}],
+                      types, excludes)
+    conn.commit()
+    assert stored() == "2026-08-06T00:00:00"
+
+    # A later poll whose window holds only a late-backfilled OLDER filing.
+    lit.write_entries(conn, "X", "c", None,
+                      [{"date_filed": "2026-05-15", "description": "ORDER backfilled"}],
+                      types, excludes)
+    conn.commit()
+    assert stored() == "2026-08-06T00:00:00"      # unmoved: the batch is not the docket
+    assert stored() == table_max()                # and still equal to its derivation
+    conn.close()
+
+
+def test_latest_entry_at_equals_the_table_max_after_a_non_empty_poll(tmp_path):
+    """The invariant itself, stated forwards: after any poll that inserted anything,
+    the column equals MAX(case_entries.entry_at). Exercised with an out-of-order batch
+    so a max is genuinely computed rather than the last row's value being read off.
+
+    The duplicate re-poll below asserts only that the value is unchanged. It does NOT
+    pin the `if counts["new_entries"]` gate, and saying so would be a lie of the kind
+    this suite keeps catching: dropping the gate recomputes the SAME value, so no
+    assertion on the value can distinguish the two. The gate is a write-volume
+    property (34 no-op UPDATEs per run without it), and pinning it would mean counting
+    statements rather than reading state. Left unpinned deliberately, and named here
+    so the gap is visible rather than assumed covered."""
+    conn = _entries_db(tmp_path)
+    types, excludes = ["order"], []
+    batch = [
+        {"date_filed": "2026-03-01", "description": "ORDER one"},
+        {"date_filed": "2026-07-04", "description": "ORDER three"},   # the max, in the middle
+        {"date_filed": "2026-05-02", "description": "ORDER two"},
+    ]
+    counts = lit.write_entries(conn, "X", "c", None, batch, types, excludes)
+    conn.commit()
+    assert counts["new_entries"] == 3
+    row = conn.execute(
+        "SELECT latest_entry_at, (SELECT MAX(entry_at) FROM case_entries WHERE case_id = 'X')"
+        " AS m FROM cases WHERE case_id = 'X'").fetchone()
+    assert row["latest_entry_at"] == row["m"] == "2026-07-04T00:00:00"
+
+    # Re-poll the identical window: every insert_ignore is a duplicate, nothing changes.
+    again = lit.write_entries(conn, "X", "c", None, batch, types, excludes)
+    conn.commit()
+    assert again["new_entries"] == 0
+    assert conn.execute(
+        "SELECT latest_entry_at FROM cases WHERE case_id = 'X'"
+    ).fetchone()["latest_entry_at"] == "2026-07-04T00:00:00"
+    conn.close()
+
+
 def test_normalize_state_strips_the_trackers_docket_suffix():
     """`Georgia (1)` and `Georgia (2)` are one jurisdiction with two dockets, not two
     states. The artifact disambiguates inside the state field because it carries one

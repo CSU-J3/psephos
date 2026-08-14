@@ -350,9 +350,27 @@ def write_b2_item(conn, case_id: str, seed: dict, filed_at: str | None, source_u
 def write_entries(conn, case_id: str, caption: str, source_url: str | None,
                   entries: list[dict], types: list[str], excludes: list[str]) -> dict:
     """Write ALL entries to case_entries; promote substantive ones to A1 items.
-    Single transaction at the call site -- caller commits on success only."""
+    Single transaction at the call site -- caller commits on success only.
+
+    `cases.latest_entry_at` is DERIVED, not assigned: it equals
+    MAX(case_entries.entry_at) for the case, and it is recomputed at the bottom of
+    this function. This is the ONLY code path that inserts into `case_entries`, and
+    `collect_case` is its only caller, so all three poll modes -- incremental, probe
+    and full-walk -- reach the recompute by construction rather than by enumeration.
+    Keep it that way: a second insert site would need its own recompute.
+
+    Why derived rather than assigned from this batch (the defect this replaces).
+    The line here used to be `UPDATE cases SET latest_entry_at = <max date_filed in
+    this batch>`, which was correct when written in a9ba643 because every poll was a
+    full walk and the batch WAS the docket. c8b8b6f made polling incremental on
+    2026-07-22 and the batch became a window, at which point the assignment could
+    move the column BACKWARDS: an incremental window ordered by date_modified can
+    legitimately contain only an old filing, because RECAP backfills late -- which
+    poll_entries' own docstring says twenty lines above the line it broke. Measured
+    2026-08-14, 12 of 40 rows had drifted, always behind, up to 83 days; West
+    Virginia read 2026-05-15 while holding an entry from 2026-08-06. Repaired once by
+    scripts/repair_latest_entry.py and alarmed by tools/coverage_audit section 4."""
     counts = {"new_entries": 0, "new_items": 0}
-    latest = None
     for e in entries:
         entry_at = common.to_iso(e.get("date_filed"))
         docs = e.get("recap_documents") or []
@@ -371,8 +389,6 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
             "case_id": case_id, "entry_at": entry_at, "description": desc, "document_url": doc_url,
         }):
             counts["new_entries"] += 1
-        if entry_at and (latest is None or entry_at > latest):
-            latest = entry_at
         if is_substantive(desc, types, excludes):
             if db.insert_ignore(conn, "items", {
                 "channel": CHANNEL, "source_id": API_SOURCE_ID,
@@ -386,8 +402,18 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
                                        separators=(",", ":")),
             }):
                 counts["new_items"] += 1
-    if latest:
-        conn.execute("UPDATE cases SET latest_entry_at = ? WHERE case_id = ?", (latest, case_id))
+    # Recompute from the table, gated on having inserted something: insert_ignore
+    # returns False on a duplicate, so zero new rows means case_entries did not change
+    # and neither can its MAX. That makes the write necessary-and-sufficient rather
+    # than a no-op UPDATE on all 34 dockets every run. It also self-heals -- a row that
+    # drifted before this change corrects itself on its next non-empty poll, which is
+    # why the repair script is one-time rather than scheduled.
+    if counts["new_entries"]:
+        conn.execute(
+            "UPDATE cases SET latest_entry_at = "
+            "(SELECT MAX(entry_at) FROM case_entries WHERE case_id = ?) WHERE case_id = ?",
+            (case_id, case_id),
+        )
     return counts
 
 

@@ -111,7 +111,17 @@ CREATE TABLE IF NOT EXISTS cases (
                                              -- filled once by scripts/backfill_case_state.py.
     plaintiff       TEXT,
     defendant       TEXT,
-    latest_entry_at TEXT,
+    latest_entry_at TEXT,                    -- DERIVED: MAX(case_entries.entry_at) for this case.
+                                             -- Recomputed by `write_entries` in
+                                             -- collectors/litigation.py, the only path that
+                                             -- inserts into case_entries. It is NOT assigned from
+                                             -- the polled batch: an incremental window can hold
+                                             -- only a late-backfilled old filing, and assigning
+                                             -- moved this column BACKWARDS on 12 of 40 rows
+                                             -- between 2026-07-22 and 2026-08-14. Check the
+                                             -- invariant with `python -m tools.coverage_audit`
+                                             -- (section 4, expect 0); repair with
+                                             -- `python -m scripts.repair_latest_entry`.
     entries_synced_at TEXT,                  -- max CourtListener date_modified ingested for this
                                              -- docket; NULL means never bootstrapped (full walk next poll)
     superseded_by   TEXT REFERENCES cases(case_id),  -- this docket's continuation: the appeal or
