@@ -2,5 +2,16 @@
 # is Next's optional image-optimization native dep; approving its build script
 # makes `pnpm install` exit 0 (otherwise ERR_PNPM_IGNORED_BUILDS breaks both
 # `pnpm dev`/`pnpm build` locally and the Vercel install step).
+#
+# esbuild joins it 2026-08-14: vitest pulls it in via vite, same postinstall shape
+# (place a platform binary), same consequence when unapproved. CI runs `pnpm test`,
+# and an unapproved build fails the install step before any test executes.
+#
+# Two things worth knowing before touching this file. `npx vitest run` passes even
+# with the approval missing, because it skips pnpm's dependency-status check --
+# verify with `pnpm test`, which is what CI runs. And this is NOT a workspace
+# declaration: there is no `packages:` key and this app is not a monorepo root.
+# Written by `pnpm approve-builds --all`.
 allowBuilds:
+  esbuild: true
   sharp: true

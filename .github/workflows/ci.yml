@@ -1,0 +1,73 @@
+name: ci
+
+# The first CI workflow in this repo. Until 2026-08-14 `collect.yml` was the only
+# workflow, so NOTHING gated a push: 165 pytest tests existed and ran only when a human
+# remembered to run them locally. Handoff 56 asked for vitest to "fail the workflow the
+# way pytest does" -- pytest did not fail any workflow either, because there was none.
+# Both suites gate here now.
+#
+# Deliberately not folded into collect.yml. That workflow is a scheduled data job with
+# write permissions and live API keys; a test failure there would abort a collection
+# cycle, and a collection failure would look like a test failure. This one takes no
+# secrets and needs no write access, which is why `permissions` is read-only.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"        # matches collect.yml; keep the two in step
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # tests/conftest.py blocks live HTTP at HTTPAdapter.send, and no suite reads
+      # Turso, so this job needs no secrets. If a test ever fails here for want of a
+      # credential, that test is reaching something it should be stubbing.
+      - name: pytest
+        run: python -m pytest -q
+
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4      # version comes from package.json packageManager
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # Logic only -- lib/**/*.test.ts, no jsdom, no component rendering. See
+      # web/vitest.config.ts for why the line is drawn there.
+      - name: vitest
+        run: pnpm test
+
+      # Typecheck too: the read layer has no runtime test of its components, so tsc is
+      # the only thing standing behind the pages themselves.
+      - name: tsc
+        run: npx tsc --noEmit
