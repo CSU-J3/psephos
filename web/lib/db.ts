@@ -5,6 +5,8 @@ import { createClient } from "@libsql/client";
 import { unstable_cache } from "next/cache";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
+import { FEED_WINDOW } from "@/lib/feed";
+import type { FeedEntry } from "@/lib/feed";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -284,11 +286,18 @@ export async function getExecutiveAll(): Promise<ExecItem[]> {
 }
 
 // --- the B2 news feed -------------------------------------------------------
-// NOT the news channel: 432 of 3,407 items, measured against Turso 2026-08-13.
-// The 2,975 excluded are Google News aggregates, which config/sources.yaml
+// NOT the news channel: 436 of 3,422 items, measured against Turso 2026-08-14.
+// The 2,986 excluded are Google News aggregates, which config/sources.yaml
 // grades C3 with "corroborate before promoting an item" -- the spec's own rule,
 // not a source blocklist. Both counts move every cron, which is why the page
 // renders the excluded count from getNewsExcludedCount() rather than a literal.
+//
+// DIVISION OF LABOUR WITH THE HOMEPAGE FEED, so the two are not read as
+// inconsistent. This route is the B2 EVIDENTIARY ARCHIVE: the whole graded-B2
+// set, back to the beginning, which is what an item cited in an argument has to
+// be findable in. The homepage feed is the ACTIVITY SURFACE: every channel,
+// every grade, one 24h window, capped. A C3 item therefore appears on the
+// homepage and not here, by design and not by oversight.
 //
 // The filter joins `sources` so it tests the SOURCE's grade, never the item's.
 // collectors/news.py classify() demotes an item to C3 when it attaches to the
@@ -317,6 +326,47 @@ export async function getNewsFeed(): Promise<NewsItem[]> {
   );
   return rs.rows as unknown as NewsItem[];
 }
+
+// --- the merged cross-channel activity feed (move 2) -------------------------
+// Every channel, every grade, one fetched_at window, most recent first.
+//
+// NO JOIN ON `sources`, and its absence is the point. getNewsFeed above joins
+// because it FILTERS on reliability; this one filters on nothing, so there is no
+// grade test to get wrong. The grade it renders is the ITEM's own
+// (admiralty_source/admiralty_info), which is the per-item value the spec
+// provides for -- "defaults live in config/sources.yaml and may be overridden
+// per item". Displaying the item's grade and filtering on the source's are the
+// right answers to two different questions.
+//
+// C3 IS INCLUDED, decided on measurement 2026-08-14. Excluding it would drop
+// 2,986 of the news channel's 3,422 items and leave the feed reporting 4 news
+// entries in a 24h window where the strip directly above it counts 26 -- two
+// components on one page disagreeing by 85% about the same channel. The spec's
+// rule is that an uncorroborated aggregate must not DRIVE the timeline, and the
+// mitigation the spec itself prescribes is the grade badge, which every entry
+// carries. See lib/feed.ts for the ordering contract.
+//
+// Cached at the SAME 1h TTL as getChannelActivity deliberately: the strip and
+// the feed describe the same window on the same page, and different TTLs would
+// let them disagree about it. `now` is computed inside the cached function for
+// the reason given there -- an argument would put a moving value in the cache key.
+export const getFeed = unstable_cache(
+  async (): Promise<FeedEntry[]> => {
+    const { day, week } = windowStarts(new Date());
+    const rs = await db.execute({
+      sql: `SELECT id, channel, title, source_url, source_id, occurred_at,
+                   fetched_at, admiralty_source, admiralty_info,
+                   bill_id, case_id, state_bill_id
+            FROM items
+            WHERE fetched_at >= ?
+            ORDER BY fetched_at DESC, id DESC`,
+      args: [FEED_WINDOW === "day" ? day : week],
+    });
+    return rs.rows as unknown as FeedEntry[];
+  },
+  ["activity-feed"],
+  { revalidate: 3600 },
+);
 
 // The complement, so the feed can never be read as "the news channel". Shown
 // beside the count on the page for the same reason the export prints it.

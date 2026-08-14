@@ -1,12 +1,14 @@
 import Link from "next/link";
 import {
   getChannelActivity,
+  getFeed,
   getBills,
   getCases,
   getExecutiveAll,
 } from "@/lib/db";
 import { relevanceScore } from "@/lib/relevance";
 import { ChannelStrip } from "@/components/ChannelStrip";
+import { ActivityFeed } from "@/components/ActivityFeed";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
 import { ExecutiveSection } from "@/components/ExecutiveSection";
@@ -32,8 +34,9 @@ function SectionHeading({ title, count }: { title: string; count: number }) {
 }
 
 export default async function Home() {
-  const [activity, bills, cases, executiveAll] = await Promise.all([
+  const [activity, feed, bills, cases, executiveAll] = await Promise.all([
     getChannelActivity(),
+    getFeed(),
     getBills(),
     getCases(),
     getExecutiveAll(),
@@ -52,6 +55,13 @@ export default async function Home() {
 
       <section className="mt-8">
         <ChannelStrip rows={activity} />
+      </section>
+
+      {/* Directly below the strip, and reading the same 24h window off the same
+          column at the same TTL. The strip says how much moved; this says what. */}
+      <section className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold tracking-tight">Recent activity</h2>
+        <ActivityFeed rows={feed} />
       </section>
 
       <section className="mt-10">
