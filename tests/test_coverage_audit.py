@@ -136,3 +136,57 @@ def test_cert_watch_holds_terminated_circuit_rows_only():
 def test_cert_watch_excludes_a_linked_circuit_row():
     rows = [_row("72347022", "26-1225", "Sixth Circuit", superseded_by="99")]
     assert ca.cert_watch(rows) == []
+
+
+# --- section 4, the derived-column alarm ------------------------------------
+# Shown to FIRE before its zero is trusted. A zero-expected check proves nothing until
+# the pattern is demonstrated to match something -- the standing invariant this repo
+# wrote after a grep returned 0 because it was wrong, not because the log was clean.
+
+
+@pytest.fixture()
+def drift_conn(tmp_path):
+    import sqlite3
+    c = sqlite3.connect(tmp_path / "d.db")
+    c.row_factory = sqlite3.Row
+    c.execute("CREATE TABLE cases (case_id TEXT, court TEXT, docket_number TEXT,"
+              " latest_entry_at TEXT)")
+    c.execute("CREATE TABLE case_entries (id INTEGER PRIMARY KEY, case_id TEXT, entry_at TEXT)")
+    yield c
+    c.close()
+
+
+def _case(conn, case_id, stored, entries):
+    conn.execute("INSERT INTO cases VALUES (?,?,?,?)", (case_id, "D. Test", "1:25-cv-1", stored))
+    for e in entries:
+        conn.execute("INSERT INTO case_entries (case_id, entry_at) VALUES (?,?)", (case_id, e))
+
+
+def test_derived_drift_silent_when_the_column_equals_its_derivation(drift_conn):
+    _case(drift_conn, "A", "2026-08-06", ["2026-05-15", "2026-08-06"])
+    assert ca.derived_drift(drift_conn) == []
+
+
+def test_derived_drift_fires_on_the_west_virginia_shape(drift_conn):
+    """The exact defect: the column behind an entry the table already holds. This is
+    the assertion that makes the 0 in production meaningful."""
+    _case(drift_conn, "72335259", "2026-05-15", ["2026-05-15", "2026-07-13", "2026-08-06"])
+    fired = ca.derived_drift(drift_conn)
+    assert len(fired) == 1
+    assert fired[0]["case_id"] == "72335259"
+    assert fired[0]["stored"] == "2026-05-15"
+    assert fired[0]["derived"] == "2026-08-06"
+
+
+def test_derived_drift_fires_when_a_case_has_no_entries_but_a_stored_value(drift_conn):
+    """The LEFT JOIN arm. An INNER JOIN would drop this row and the alarm would read
+    clean on a case whose column is invented -- a different defect, silently hidden."""
+    _case(drift_conn, "B", "2026-08-06", [])
+    fired = ca.derived_drift(drift_conn)
+    assert len(fired) == 1 and fired[0]["derived"] is None
+
+
+def test_derived_drift_silent_on_a_case_with_neither(drift_conn):
+    """No entries and no stored value agree at NULL, and must not fire."""
+    _case(drift_conn, "C", None, [])
+    assert ca.derived_drift(drift_conn) == []

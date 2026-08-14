@@ -9,9 +9,14 @@ behaviour, kept because it was measured on this exact corpus.
 
     python -m tools.coverage_audit
 
-Exit code is the ALARM in section 1 only: 1 if any row is unreconciled, 0 otherwise.
-Sections 2 and 3 are REPORTS and are expected to be non-empty -- 7 and 1 as of
-2026-08-13. Do not read a non-zero count there as a failure.
+Exit code is the ALARM in sections 1 and 4: 1 if any row is unreconciled OR any row's
+`latest_entry_at` disagrees with its derivation, 0 otherwise. Both expect 0. Sections
+2 and 3 are REPORTS and are expected to be non-empty -- 7 and 1 as of 2026-08-13. Do
+not read a non-zero count there as a failure.
+
+(Section 4 was added 2026-08-14 and the exit code widened with it. It used to read
+"the ALARM in section 1 only", which is why this line is restated rather than left to
+be inferred from the code.)
 
 --- section 1, the reconciliation alarm --------------------------------------
 A row in `cases` matching no seed AND carrying no `superseded_by` is a row nothing
@@ -114,6 +119,38 @@ def cert_watch(rows) -> list:
             and r["superseded_by"] is None]
 
 
+def derived_drift(conn) -> list:
+    """Section 4: rows where `cases.latest_entry_at` disagrees with its own derivation,
+    MAX(case_entries.entry_at). An ALARM, expected 0.
+
+    A derived column acquired 12 disagreements silently and nothing noticed for three
+    weeks. `write_entries` assigned the max date_filed of the POLLED BATCH, correct
+    while every poll was a full walk and wrong from c8b8b6f (2026-07-22) onward, when
+    the batch became a date_modified window that can hold only a late-backfilled old
+    filing. The column walked BACKWARDS -- West Virginia read 2026-05-15 while holding
+    an entry from 2026-08-06 -- and the first thing to notice was a dormancy display
+    built on it three weeks later, which reported a false positive on its first render.
+
+    The check costs one statement and existed all along, which is the whole argument
+    for it being here: the same alarm philosophy as section 1, applied to a column
+    whose correctness nothing else asserts. The write path is fixed and the historical
+    drift is repaired (scripts/repair_latest_entry.py), so a non-zero here is a NEW
+    defect at an insert site, not the old one recurring.
+
+    LEFT JOIN so a case with no entries appears rather than vanishing: NULL derived
+    against a non-NULL stored is its own defect and should fire, not hide."""
+    out = []
+    for r in conn.execute(
+        "SELECT c.case_id, c.court, c.docket_number, c.latest_entry_at AS stored, "
+        "       MAX(e.entry_at) AS derived "
+        "FROM cases c LEFT JOIN case_entries e ON e.case_id = c.case_id "
+        "GROUP BY c.case_id ORDER BY c.case_id"
+    ).fetchall():
+        if r["stored"] != r["derived"]:
+            out.append(r)
+    return out
+
+
 def main(argv=None) -> int:
     config.load_env()
     seeded = seeded_keys()
@@ -127,6 +164,7 @@ def main(argv=None) -> int:
         alarm = unreconciled(rows, seeded)
         refs = unresolvable_refs(conn, held)
         watch = cert_watch(rows)
+        drift = derived_drift(conn)
 
         print(f"coverage_audit: {len(rows)} cases, {len(seeded)} seed keys "
               f"(union of config seed_cases + the tracker artifact)\n")
@@ -153,7 +191,14 @@ def main(argv=None) -> int:
             print(f"        {r['case_id']:<10} {str(r['docket_number']):<16} "
                   f"{r['court']}  {r['caption'][:40]}")
 
-        return 1 if alarm else 0
+        print(f"\n  [4] DERIVED-COLUMN ALARM -- latest_entry_at != MAX(case_entries.entry_at): "
+              f"{len(drift)}  (expect 0)")
+        for r in drift:
+            print(f"        FIRES  {r['case_id']:<10} {str(r['docket_number']):<16} "
+                  f"stored {str(r['stored'])[:10]} != derived {str(r['derived'])[:10]}  "
+                  f"{r['court']}")
+
+        return 1 if (alarm or drift) else 0
     finally:
         conn.close()
 
