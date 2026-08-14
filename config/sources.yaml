@@ -239,6 +239,27 @@ litigation:
   # collectors.tracker_uw as data/doj_cases.json and loaded by litigation.main(). Clean
   # split, no overlap: config seed_cases = the footnoted related suits, artifact = the
   # tracker table. (Weber was dropped here; it is the tracker's California row now.)
+  #
+  # SECOND ROLE, added 2026-08-14, with its exit condition: config may also carry a
+  # CIRCUIT SUCCESSOR THE TRACKER DEMONSTRABLY TRAILS. Each such entry names its
+  # district predecessor and carries a dated justification, because bending the split
+  # above needs a reason a later reader can check rather than take on faith.
+  #
+  # IT SELF-NEUTRALIZES, which is why this is a bend and not a fork. litigation.main()
+  # iterates `config_seeds + tracker_seeds` (litigation.py:681), so the tracker is the
+  # LAST writer; `cases.case_id` is the CourtListener docket id, so a config seed and a
+  # future artifact row for the same docket are one PK and one row, not two. When UW
+  # rewrites the state row, its values simply overwrite -- and because these entries use
+  # UW's own spelling (`Second Circuit` / `ca2`, matching all 14 existing circuit rows),
+  # the overwrite is byte-identical and the reuse lookup HITS, so not even a resolve is
+  # spent. Removal after that is tidiness, not correctness. The only standing cost is
+  # that a doubly-listed docket is polled twice per run: ~2 extra requests per run,
+  # ~8/day, against a measured 1,000/hour. Accepted deliberately.
+  #
+  # THE JOIN KEY'S SPELLING IS LOAD-BEARING. The reuse lookup is
+  # `WHERE docket_number = ? AND court = ?` on the seed's FREE-TEXT `court`, never
+  # `court_id`, so a seed reading `2nd Cir.` here would miss the artifact's
+  # `Second Circuit` later and spend a needless resolve. Match UW's string exactly.
   seed_cases:
     - caption: Common Cause v. U.S. Department of Justice
       docket_number: 1:26-cv-01352
@@ -252,6 +273,43 @@ litigation:
       court_id: dcd
       category: voter-data
       notes: Alleges DHS turned SAVE into a national citizenship database.
+
+    # --- circuit successors the tracker trails (the second role above) -------
+    # THE ANOMALY, dated 2026-08-14 and measured rather than asserted. DOJ noticed
+    # both appeals on 2026-07-23 and ca2 docketed both on 07-28. The controls are
+    # the contemporaries: Virginia noticed 07-24 and New Mexico 07-23, and UW had
+    # rewritten BOTH state rows to their circuit dockets by ~07-27/28 -- 4-5 days.
+    # These two were noticed in the same week and are still un-rewritten 22 days
+    # later, so the artifact keeps pointing at terminated district dockets and the
+    # collector, which polls only what the artifact names, cannot reach the appeals.
+    #
+    # The notes field is NOT a leading indicator and was checked before relying on
+    # one: VA and NM carry the identical "DOJ filed a notice that it will appeal"
+    # sentence AFTER their rewrite, so it is a narrative log, not a state machine.
+    # That is why the justification here rests on the skipped-contemporaries
+    # comparison instead. Remove these two entries once UW rewrites the rows.
+    - caption: United States of America v. Thomas
+      docket_number: 26-2064
+      court: Second Circuit         # UW's spelling, verbatim -- see the join-key note above
+      court_id: ca2
+      category: voter-data
+      state: Connecticut            # a state case, unlike the two federal-defendant seeds
+      notes: >-
+        Second Circuit appeal of the D. Conn. dismissal in 3:26-cv-00021 (case_id
+        72110170, terminated). Noticed 2026-07-23, docketed 2026-07-28. Seeded here
+        2026-08-14 because the UW tracker still lists the district docket; remove when
+        it rewrites the Connecticut row.
+    - caption: United States of America v. Board Of Elections of the State of New York
+      docket_number: 26-2060
+      court: Second Circuit
+      court_id: ca2
+      category: voter-data
+      state: New York
+      notes: >-
+        Second Circuit appeal of the N.D.N.Y. dismissal in 1:25-cv-01338 (case_id
+        71457474, terminated). Noticed 2026-07-23, transmitted to the court of appeals
+        07-27, docketed 2026-07-28. Seeded here 2026-08-14 because the UW tracker still
+        lists the district docket; remove when it rewrites the New York row.
 
 # ===========================================================================
 # CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)
