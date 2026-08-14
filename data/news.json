@@ -1,0 +1,4362 @@
+[
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 334,
+    "kind": "item",
+    "occurred_at": "2026-04-13T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/04/13/riverside-county-ballot-seizure-sheriff-chad-bianco-election-investigation",
+    "title": "A California sheriff seized ballots, testing the limits of local power over elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 333,
+    "kind": "item",
+    "occurred_at": "2026-04-14T13:28:15+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/14/madison-dane-county-late-arriving-ballots-supreme-court-election-republican-lawsuit",
+    "title": "Wisconsin GOP advised officials not to count late-arriving ballots, raising possibility of legal challenge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 332,
+    "kind": "item",
+    "occurred_at": "2026-04-14T14:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/04/14/maricopa-county-justin-heap-department-justice-investigation-election-records-litigation-emails",
+    "title": "Exclusive: Maricopa County Recorder Justin Heap discussed election records, litigation with feds"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 331,
+    "kind": "item",
+    "occurred_at": "2026-04-15T00:56:43+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/04/15/antrim-county-clerk-victoria-bishop-cancel-voter-registrations-notices-election-integrity",
+    "title": "Antrim County clerk allegedly changed, canceled voter registrations, state says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 330,
+    "kind": "item",
+    "occurred_at": "2026-04-15T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/04/15/delaware-county-poll-worker-prediction-market-election-betting-wager-ban",
+    "title": "Pennsylvania county bans poll workers from using election prediction markets"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 329,
+    "kind": "item",
+    "occurred_at": "2026-04-16T00:57:29+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/04/16/allen-west-dallas-county-gop-resignation-countywide-voting",
+    "title": "Dallas County GOP chair Allen West resigns after backing countywide voting for runoff"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 328,
+    "kind": "item",
+    "occurred_at": "2026-04-16T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/16/rock-county-election-clerk-training-program-state-supreme-court-election",
+    "title": "How one Wisconsin county is making running elections easier for new clerks"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 327,
+    "kind": "item",
+    "occurred_at": "2026-04-17T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/04/17/2026-election-expert-survey-troops-polling-places-seize-ballots-voting-fraud",
+    "title": "New voting requirements? Troops at the polls? We asked 37 election experts what could disrupt the 2026 elections."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 326,
+    "kind": "item",
+    "occurred_at": "2026-04-20T03:50:12+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/04/20/democratic-convention-nominates-garlin-gilchrist-secretary-of-state-2026-election",
+    "title": "Garlin Gilchrist wins Democratic nomination for secretary of state"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 325,
+    "kind": "item",
+    "occurred_at": "2026-04-20T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/04/20/2026-midterms-secretary-of-state-top-election-official-election-preview",
+    "title": "These states could elect new top election officials in 2026"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 324,
+    "kind": "item",
+    "occurred_at": "2026-04-20T11:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/20/supreme-court-legal-case-voter-data",
+    "title": "Legal case over access to sensitive voter data returns to Wisconsin Supreme Court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 323,
+    "kind": "item",
+    "occurred_at": "2026-04-20T15:13:31+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/04/20/maricopa-county-recorder-justin-heap-board-supervisors-feud-voter-disenfranchisement-claims",
+    "title": "Amid an elections power struggle, Maricopa County officials hurl unsubstantiated claims of voter disenfranchisement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 322,
+    "kind": "item",
+    "occurred_at": "2026-04-20T17:26:40+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/04/20/trump-department-justice-wayne-county-request-2024-ballots-detroit",
+    "title": "Trump administration demands 2024 ballots from Wayne County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 321,
+    "kind": "item",
+    "occurred_at": "2026-04-20T18:25:53+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/04/17/penndot-motor-voter-audit-tim-defoor-noncitizen",
+    "title": "Pennsylvania auditor general says Motor Voter system works, but improvements needed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 320,
+    "kind": "item",
+    "occurred_at": "2026-04-21T15:19:26+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/04/21/voting-rights-groups-lawsuit-trump-department-justice-state-voter-roll-requests",
+    "title": "Voting rights groups sue Trump administration to stop collection of voter data"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 319,
+    "kind": "item",
+    "occurred_at": "2026-04-21T19:24:57+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/04/21/dallas-county-gop-runoff-election-may-26-countywide-precinct-voting-lawsuit",
+    "title": "New lawsuit seeks to force Dallas County to use precinct voting again for runoff after messy primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 318,
+    "kind": "item",
+    "occurred_at": "2026-04-23T18:38:26+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/04/23/antrim-county-clerk-victoria-bishop-voter-registration-cancellations",
+    "title": "Antrim County voters confused after clerk attempts to cancel hundreds of voter registrations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 317,
+    "kind": "item",
+    "occurred_at": "2026-04-23T19:04:54+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/04/23/department-of-state-directive-robert-rossman-rite-lawsuit-state-supreme-court",
+    "title": "Pennsylvania Supreme Court considering challenge to Department of State’s interpretation of voter registration laws"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 316,
+    "kind": "item",
+    "occurred_at": "2026-04-27T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/04/27/georgia-voting-machine-deadline-election-counties-qr-codes-dominion",
+    "title": "How the Georgia legislature left counties with no way to run the 2026 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 315,
+    "kind": "item",
+    "occurred_at": "2026-04-27T13:38:20+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/04/27/navajo-county-board-supervisors-david-marshall-recorder-election-official-legislature-republican",
+    "title": "Questions swirl as Democratic board picks an ultraconservative new recorder in Navajo County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 314,
+    "kind": "item",
+    "occurred_at": "2026-04-27T20:32:36+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/04/27/guillermo-sainz-pleads-guilty-fake-voter-registration-forms-2024-election",
+    "title": "Organizer pleads guilty in Pennsylvania voter registration fraud case"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 313,
+    "kind": "item",
+    "occurred_at": "2026-04-28T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/04/28/department-of-state-sure-voter-registration-system-update-cost-timeline",
+    "title": "Pennsylvania has spent $1.4 million updating its voter registration system — but won’t provide progress reports"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 312,
+    "kind": "item",
+    "occurred_at": "2026-04-28T19:57:04+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/28/flexible-absentee-rule-leads-to-rejected-ballots-possible-lawsuit-ozaukee-county-mequon",
+    "title": "Wisconsin clerk rejects five absentee ballots over address info, raising legal questions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 311,
+    "kind": "item",
+    "occurred_at": "2026-04-28T22:29:31+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/04/28/department-justice-trump-adrian-fontes-unredacted-voter-rolls-lawsuit-dismissed-brnovich-ruling",
+    "title": "Judge dismisses Justice Department lawsuit over Arizona’s voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 310,
+    "kind": "item",
+    "occurred_at": "2026-04-29T14:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/04/29/primary-confusion-legislature-precinct-dallas-williamson-eastland-county",
+    "title": "Political parties in Texas choose how to run their primaries. Here’s how that causes headaches for voters."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 309,
+    "kind": "item",
+    "occurred_at": "2026-04-29T19:26:56+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/04/29/louisiana-v-callais-redistricting-voting-rights-act-racial-partisan-gerrymandering",
+    "title": "Supreme Court weakens Voting Rights Act, making it harder to challenge political maps for being racially discriminatory"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 308,
+    "kind": "item",
+    "occurred_at": "2026-04-29T22:01:31+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/04/29/independent-redistricting-commission-louisiana-v-callais-voting-rights-act",
+    "title": "New SCOTUS decision on Voting Rights Act could have implications for Michigan’s maps"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 307,
+    "kind": "item",
+    "occurred_at": "2026-04-29T23:35:48+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/29/wisconsin-will-likely-see-limited-local-effects-from-voting-rights-act-ruling-at-least-for-now",
+    "title": "Wisconsin will likely see limited, local effects from Voting Rights Act ruling — at least for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 306,
+    "kind": "item",
+    "occurred_at": "2026-04-30T14:17:39+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/04/30/us-supreme-court-restricts-voting-right-act-but-effect-on-pennsylvania-likely-limited",
+    "title": "U.S. Supreme Court restricts Voting Right Act, but effect on Pennsylvania likely limited"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 305,
+    "kind": "item",
+    "occurred_at": "2026-04-30T18:50:32+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/30/mequon-clerk-caroline-fochs-rejected-ballots-disputed-standard",
+    "title": "Mequon clerk rejected some ballots that appear to have met her own disputed standard"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 304,
+    "kind": "item",
+    "occurred_at": "2026-04-30T19:02:02+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/04/30/supreme-court-voting-rights-independent-redistricting-commission-lawsuit-cd3-cd7-ld6",
+    "title": "The Supreme Court weakened the Voting Rights Act. It may change how maps are drawn in Arizona."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 303,
+    "kind": "item",
+    "occurred_at": "2026-04-30T23:03:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/04/30/election-commission-orders-madison-mequon-redo-supreme-court-election-results",
+    "title": "Wisconsin Elections Commission overruled ballot-counting decisions in Madison and Mequon"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 302,
+    "kind": "item",
+    "occurred_at": "2026-05-01T19:11:08+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/01/antrim-county-clerk-victoria-bishop-cancel-voter-registrations-bureau-elections",
+    "title": "Tensions mount as Michigan and Antrim County clerk threaten legal action against each other"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 301,
+    "kind": "item",
+    "occurred_at": "2026-05-02T01:06:36+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/05/02/pinal-county-adrian-fontes-ballots-precinct-voting-court-ruling",
+    "title": "Judge strikes down rule requiring counties to aid voters who go to wrong polling place"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 300,
+    "kind": "item",
+    "occurred_at": "2026-05-04T13:52:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/04/florida-redistricting-supreme-court-louisiana-callais-gerrymander-2026-election",
+    "title": "Here’s where redistricting stands after Florida’s new congressional map and the Supreme Court’s Callais decision"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 364,
+    "kind": "item",
+    "occurred_at": "2026-05-04T14:05:45+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-2026-election-deniers",
+    "title": "NEW RESEARCH: States United Launches ElectionDeniers.org Tracking for 2026 Midterm Elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 299,
+    "kind": "item",
+    "occurred_at": "2026-05-04T14:41:28+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/04/stephanie-scott-adams-township-felony-charges-dropped-stefanie-lambert",
+    "title": "Judge dismisses felony charges in Michigan election tampering case"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 298,
+    "kind": "item",
+    "occurred_at": "2026-05-04T16:14:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/04/jocelyn-benson-conflict-of-interest-secretary-of-state-governor-race",
+    "title": "Amid GOP doubts, Jocelyn Benson seeks to assure voters she can run fair election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 297,
+    "kind": "item",
+    "occurred_at": "2026-05-04T19:28:03+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/05/04/section-2-voting-rights-act-supreme-court-voters-of-color-history",
+    "title": "How the Voting Rights Act reshaped Texas’ electoral maps"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 296,
+    "kind": "item",
+    "occurred_at": "2026-05-05T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/05/05/farmers-branch-section-2-voting-rights-act-louisiana-callais-supreme-court",
+    "title": "The Supreme Court’s voting rights decision could reshape local government across Texas"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 295,
+    "kind": "item",
+    "occurred_at": "2026-05-05T19:32:30+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/05/dane-county-appeal-23-late-madison-absentee-ballots",
+    "title": "Dane County to appeal Wisconsin Elections Commission order not to count late ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 294,
+    "kind": "item",
+    "occurred_at": "2026-05-05T21:01:41+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/05/mequon-caroline-fochs-counts-incorrectly-rejected-votes-supreme-court-race",
+    "title": "Mequon includes ‘incorrectly rejected’ votes in state-ordered certification redo"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 293,
+    "kind": "item",
+    "occurred_at": "2026-05-05T21:59:59+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/06/wayne-county-department-justice-2024-ballots-detroit-trump",
+    "title": "Wayne County tells Department of Justice it doesn’t have requested ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 292,
+    "kind": "item",
+    "occurred_at": "2026-05-06T22:38:02+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/06/law-forward-sues-election-commission-madison-late-ballots",
+    "title": "Wisconsin Elections Commission faces lawsuit, criticism over order not to count late-arriving Madison ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 291,
+    "kind": "item",
+    "occurred_at": "2026-05-07T17:36:45+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/07/jocelyn-benson-firewall-2026-governor-election",
+    "title": "Jocelyn Benson unveils ‘firewall’ for election oversight, governor run"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 290,
+    "kind": "item",
+    "occurred_at": "2026-05-08T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/05/08/2026-primarymail-ballot-envelope-dating-explainer",
+    "title": "Pennsylvania’s mail ballot dating rules have been in flux for years. Here’s what you need to know."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 363,
+    "kind": "item",
+    "occurred_at": "2026-05-08T17:02:28+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/new-election-same-lie",
+    "title": "New Election, Same Lie"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 288,
+    "kind": "item",
+    "occurred_at": "2026-05-11T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/11/louisiana-alabama-tennessee-redistricting-trump-executive-order-2026-election",
+    "title": "Two reminders that the rules of the 2026 election are still in flux"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 289,
+    "kind": "item",
+    "occurred_at": "2026-05-11T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/05/11/supreme-court-cast-vote-record-lycoming-county-decision",
+    "title": "Pennsylvania Supreme Court ruling on cast vote records creates uncertainty for counties"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 287,
+    "kind": "item",
+    "occurred_at": "2026-05-12T15:21:51+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/05/12/internet-connected-electronic-pollbook-pilot-program-2026-primary-postponed",
+    "title": "Pennsylvania won’t test internet-connected e-pollbooks in 2026 primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 286,
+    "kind": "item",
+    "occurred_at": "2026-05-14T23:32:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/14/23-madison-ballots-must-be-counted-judge-rules",
+    "title": "23 late-arriving Madison absentee ballots must be counted, judge rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 285,
+    "kind": "item",
+    "occurred_at": "2026-05-15T18:50:27+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/15/fbi-contacting-state-election-officials-milwaukee-what-we-know",
+    "title": "The FBI is contacting Wisconsin election officials. Here’s what we know."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 284,
+    "kind": "item",
+    "occurred_at": "2026-05-15T19:10:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/05/15/2026-primarymail-ballot-envelope-dating-explainer",
+    "title": "Here’s how Pennsylvania’s primary has been going so far"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 362,
+    "kind": "item",
+    "occurred_at": "2026-05-15T20:35:21+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/irrational-rationale",
+    "title": "Irrational Rationale"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 283,
+    "kind": "item",
+    "occurred_at": "2026-05-15T21:45:53+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/05/15/navajo-county-recorder-david-marshall-attorney-general-kris-mayes-arizona-constitution",
+    "title": "Arizona AG and conservative rival file lawsuits to oust new recorder in Navajo County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 282,
+    "kind": "item",
+    "occurred_at": "2026-05-18T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/18/2026-midterm-election-administration-polls-voter-fraud-access-concerns",
+    "title": "What Americans think about election policy and how the 2026 elections will go"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 281,
+    "kind": "item",
+    "occurred_at": "2026-05-19T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/19/tina-peters-colorado-governor-jared-polis-commutation-matt-crane",
+    "title": "Tina Peters’ commutation has left election officials feeling betrayed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 280,
+    "kind": "item",
+    "occurred_at": "2026-05-19T17:42:49+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/19/anthony-forlini-federal-government-noncitizen-voters-secretary-of-state-candidate",
+    "title": "Forlini says federal government helped him find 7 noncitizens registered to vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 279,
+    "kind": "item",
+    "occurred_at": "2026-05-19T23:44:23+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/05/19/explosive-device-bomb-lehigh-county-catasauqua-primary-election",
+    "title": "‘Unknown explosive device’ detonates outside Lehigh County polling place"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 278,
+    "kind": "item",
+    "occurred_at": "2026-05-20T20:32:40+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/05/20/2026-primary-election-went-smoothly-explosion-ballots-heat",
+    "title": "Pennsylvania primary goes smoothly despite a few incidents"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 277,
+    "kind": "item",
+    "occurred_at": "2026-05-21T15:45:39+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/05/21/maricopa-county-board-supervisors-justin-heap-ballot-drop-boxes-primary-election",
+    "title": "Maricopa County election fight boils over as recorder threatens felony charges over ‘unauthorized’ drop boxes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 361,
+    "kind": "item",
+    "occurred_at": "2026-05-21T18:03:50+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/the-threats-to-the-midterm-elections",
+    "title": "The Threats to the Midterm Elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 276,
+    "kind": "item",
+    "occurred_at": "2026-05-21T20:11:12+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/21/judge-dismisses-department-justice-lawsuit-voter-roll",
+    "title": "Judge dismisses federal government’s lawsuit over Wisconsin voter records"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 275,
+    "kind": "item",
+    "occurred_at": "2026-05-22T21:32:41+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/05/22/attorney-general-maricopa-county-justin-heap-noncitizen-voters-investigation-save",
+    "title": "Exclusive: Justin Heap refers alleged noncitizen voters to AG’s office after strongly worded letters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 274,
+    "kind": "item",
+    "occurred_at": "2026-05-26T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/26/secretary-of-state-attorney-general-nominees-convention-primary-election",
+    "title": "Primary voters could pick nominees for Michigan secretary of state and attorney general under new proposals"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 273,
+    "kind": "item",
+    "occurred_at": "2026-05-26T17:01:43+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/05/26/absentee-ballot-curing-lawsuit-league-women-voters",
+    "title": "Lawsuit seeks to require Wisconsin clerks to let voters fix problems with their absentee ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 272,
+    "kind": "item",
+    "occurred_at": "2026-05-27T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/27/democrats-republicans-election-priorities-trifecta-2026-election",
+    "title": "What are Democrats’ and Republicans’ election priorities if they win control of Michigan state government?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 271,
+    "kind": "item",
+    "occurred_at": "2026-05-28T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/05/28/save-database-potential-noncitizens-voter-rolls-dps",
+    "title": "Texas is cross-referencing its list of potential noncitizen voters with driver’s license records"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 270,
+    "kind": "item",
+    "occurred_at": "2026-05-28T13:28:23+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/28/trump-executive-order-mail-ballots-midterm-elections-carl-nichols",
+    "title": "Federal judge refuses to block Trump executive order on mail voting — for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 269,
+    "kind": "item",
+    "occurred_at": "2026-05-28T19:57:42+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/05/28/antrim-county-clerk-husband-victoria-randy-bishop-state-police",
+    "title": "Police report: Antrim County Clerk’s husband had unsupervised access to office, computer"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 268,
+    "kind": "item",
+    "occurred_at": "2026-05-29T14:37:38+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/29/why-sending-double-ballots-doesnt-cause-issues",
+    "title": "Sometimes officials send duplicate ballots. Here’s how security measures prevent double voting."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 360,
+    "kind": "item",
+    "occurred_at": "2026-05-29T17:21:43+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/return-to-sender",
+    "title": "Return to Sender"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 267,
+    "kind": "item",
+    "occurred_at": "2026-05-29T23:25:16+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/05/29/usps-mail-ballot-rules-trump-executive-order",
+    "title": "USPS proposal to carry out Trump’s executive order could create new barriers to mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 266,
+    "kind": "item",
+    "occurred_at": "2026-05-29T23:43:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/05/29/maricopa-county-recorder-justin-heap-board-of-supervisors-contempt-court-2026-primary",
+    "title": "Maricopa County recorder asks judge to hold board of supervisors in civil contempt of court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 265,
+    "kind": "item",
+    "occurred_at": "2026-06-01T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/01/missouri-congressional-map-2026-election-secretary-of-state-denny-hoskins",
+    "title": "A dispute over Missouri’s congressional map could snowball into a legal and logistical elections crisis"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 264,
+    "kind": "item",
+    "occurred_at": "2026-06-01T18:46:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/06/01/secretary-of-state-error-release-protected-voter-data-addresses",
+    "title": "Arizona promised these voters privacy. It accidentally broke its vow."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 354,
+    "kind": "item",
+    "occurred_at": "2026-06-02T11:58:40+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/callais-ruling-and-mississippi-supreme-court",
+    "title": "How the U.S. Supreme Court Erased a Key Voting Rights Win in Mississippi"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 263,
+    "kind": "item",
+    "occurred_at": "2026-06-02T21:51:28+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/06/02/secretary-of-state-jane-nelson-resigns-greg-abbott",
+    "title": "Secretary of State Jane Nelson, Texas’ top election official, steps down"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 353,
+    "kind": "item",
+    "occurred_at": "2026-06-03T17:54:12+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/violent-ice-surges-san-diego-volunteer-patrols-union-del-barrio-california-sanctuary-policy",
+    "title": "Amid ICE Violence, San Diego’s Volunteer Patrols Remain Undeterred"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 262,
+    "kind": "item",
+    "occurred_at": "2026-06-03T19:07:53+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/06/03/mail-ballot-notice-cure-study-university-pennsylvania-study-2024-election",
+    "title": "New study finds that ballot curing helps more mail ballots get counted"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 261,
+    "kind": "item",
+    "occurred_at": "2026-06-04T18:51:42+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/06/04/supreme-court-attorney-general-kris-mayes-fake-electors-grand-jury-redo",
+    "title": "Arizona Supreme Court declines to review fake electors case, leaving prosecution in limbo"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 359,
+    "kind": "item",
+    "occurred_at": "2026-06-04T19:19:32+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-us-v-splc",
+    "title": "Conservative and Libertarian Legal Experts Warn Against Politically Motivated Federal Prosecutions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 260,
+    "kind": "item",
+    "occurred_at": "2026-06-04T19:49:06+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/06/04/madison-deputy-clerk-jim-verbick-blamed-supreme-court-election-late-ballots",
+    "title": "Madison former deputy clerk removed from election tasks after misplacing 23 Supreme Court race ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 259,
+    "kind": "item",
+    "occurred_at": "2026-06-05T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/06/05/student-poll-worker-program-2026-primary",
+    "title": "Students across Pennsylvania step up on Election Day to keep democracy working"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 258,
+    "kind": "item",
+    "occurred_at": "2026-06-05T16:26:52+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/06/05/macomb-county-anthony-forlini-department-homeland-security-subpoena",
+    "title": "Federal government investigating potential noncitizen voters in Macomb County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 358,
+    "kind": "item",
+    "occurred_at": "2026-06-05T17:05:23+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/no-fund-allowed",
+    "title": "No Fund Allowed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 256,
+    "kind": "item",
+    "occurred_at": "2026-06-08T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/08/california-election-results-take-a-long-time",
+    "title": "Here’s why California’s election results take time"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 257,
+    "kind": "item",
+    "occurred_at": "2026-06-08T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/08/fbi-investigation-2020-election-trump-milwaukee-fulton-maricopa",
+    "title": "The Trump administration’s multiple investigations of the 2020 election may have more to do with 2026"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 255,
+    "kind": "item",
+    "occurred_at": "2026-06-08T09:45:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/06/08/secretary-of-state-jane-nelson-greg-abbott-nomination",
+    "title": "Here’s how the Texas secretary of state’s resignation could complicate the midterm elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 352,
+    "kind": "item",
+    "occurred_at": "2026-06-09T15:43:19+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/everything-everywhere-all-at-once-surveillance-your-questions-answered",
+    "title": "“Everything, Everywhere, All at Once Surveillance”: Your Questions Answered"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 254,
+    "kind": "item",
+    "occurred_at": "2026-06-09T19:37:32+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/06/09/maricopa-county-justin-heap-board-supervisors-special-prosecutor-kent-volkmer-scanner",
+    "title": "Special prosecutor investigating latest election-control disagreement in Maricopa County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 351,
+    "kind": "item",
+    "occurred_at": "2026-06-11T11:00:00+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/illinois-certificates-of-innocence-compensation",
+    "title": "In Illinois, Legislation and a Court Ruling Could Help People Move On After Wrongful Convictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 253,
+    "kind": "item",
+    "occurred_at": "2026-06-11T19:25:51+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/11/will-the-midterms-happen-questions-answered-live-event",
+    "title": "You’re invited: Will the midterms happen? Your election questions, answered"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 252,
+    "kind": "item",
+    "occurred_at": "2026-06-12T09:45:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/06/12/state-takeover-val-verde-county-harris-county",
+    "title": "The state has taken over elections in a Texas county. It’s not the one everyone expected."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 251,
+    "kind": "item",
+    "occurred_at": "2026-06-12T22:13:55+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/06/12/antrim-county-victoria-bishop-qualified-voter-file-access-revoked",
+    "title": "Michigan revokes Antrim County clerk’s access to voter roll after unauthorized cancellations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 250,
+    "kind": "item",
+    "occurred_at": "2026-06-13T16:57:48+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/06/13/2026-ballot-measure-voting-changes-republican-voter-id-fast-election-results",
+    "title": "Republican legislators put measure to change voting procedures on November ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 249,
+    "kind": "item",
+    "occurred_at": "2026-06-15T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/15/trump-election-rules-face-legal-logistical-hurdles",
+    "title": "Trump’s moves to erect voting hurdles face race against the clock"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 248,
+    "kind": "item",
+    "occurred_at": "2026-06-15T18:34:53+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/06/15/fake-elector-hearing-donald-trump-2020-election-troupis-chesebro-roman",
+    "title": "Alleged Wisconsin fake elector accomplices plead not guilty as Trump seeks to rewrite 2020 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 350,
+    "kind": "item",
+    "occurred_at": "2026-06-16T17:33:23+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/alamance-county-sheriff-terry-johnson-shannon-long",
+    "title": "A North Carolina Sheriff and ICE Ally Faces Accusations of Racism—and a Challenger This Fall"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 247,
+    "kind": "item",
+    "occurred_at": "2026-06-17T19:46:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/06/17/primary-election-2026-how-to-vote-id-mail-register-democratic-republican",
+    "title": "Everything you need to know about how to vote in Arizona’s primary election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 246,
+    "kind": "item",
+    "occurred_at": "2026-06-17T20:44:16+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/17/fbi-probe-into-ohio-organizing-collective-expands-nationally-america-votes",
+    "title": "FBI probe of Ohio voting rights group expands to include an affiliated national advocacy network"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 245,
+    "kind": "item",
+    "occurred_at": "2026-06-18T09:45:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/06/18/greg-abbott-closed-primaries-gop-convention-secretary-of-state-jane-nelson",
+    "title": "Why the GOP wants closed primaries in Texas, and what that could mean for voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 349,
+    "kind": "item",
+    "occurred_at": "2026-06-18T11:54:26+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/louisiana-immigration-detention-habeas-crisis",
+    "title": "“Stuck in Purgatory”: ICE Detention in Louisiana Can Stretch on for Years"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 244,
+    "kind": "item",
+    "occurred_at": "2026-06-18T16:00:07+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/06/18/election-law-advisory-board-reform-josh-shapiro-appointees",
+    "title": "Bipartisan election board languishing as governor fails to appoint new members"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 357,
+    "kind": "item",
+    "occurred_at": "2026-06-18T21:17:39+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/the-usual-suspects",
+    "title": "The Usual Suspects"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 243,
+    "kind": "item",
+    "occurred_at": "2026-06-18T21:48:50+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/06/18/appeals-court-maricopa-county-recorder-justin-heap-board-supervisors-stay-primary",
+    "title": "Arizona Court of Appeals pauses judge’s ruling on election powers in Maricopa County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 242,
+    "kind": "item",
+    "occurred_at": "2026-06-22T11:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/22/trump-immigration-investigation-noncitizen-voters-concerns",
+    "title": "Trump administration’s search for noncitizen voter fraud is driving its election agenda"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 241,
+    "kind": "item",
+    "occurred_at": "2026-06-22T23:08:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/22/judge-rules-against-trump-overhaul-save-database-noncitizen-voters",
+    "title": "Federal judge blocks Trump administration’s overhaul of SAVE database"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 348,
+    "kind": "item",
+    "occurred_at": "2026-06-23T18:03:04+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/solitary-confinement-colorado-jails",
+    "title": "Colorado Limited Solitary for People with Mental Illness. But Judges Still Routinely Approve It."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 347,
+    "kind": "item",
+    "occurred_at": "2026-06-23T18:03:25+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/boulder-colorado-jail-mental-illness",
+    "title": "The Jail That Replaced Boulder’s Mental Health System"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 346,
+    "kind": "item",
+    "occurred_at": "2026-06-23T18:03:41+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/boulder-solitary-jail-investigation-findings",
+    "title": "Five Takeaways from Our Investigation into Solitary Confinement in Colorado Jails"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 240,
+    "kind": "item",
+    "occurred_at": "2026-06-23T19:28:11+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/06/23/to-accommodate-overseas-voters-michigan-changes-start-dates-for-local-officials",
+    "title": "To accommodate overseas voters, Michigan changes start dates for local officials"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 239,
+    "kind": "item",
+    "occurred_at": "2026-06-24T09:45:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/06/24/team-voter-registration-system-civix-secretary-of-state",
+    "title": "Texas lawmakers want fixes to statewide voter registration system ahead of midterm election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 238,
+    "kind": "item",
+    "occurred_at": "2026-06-24T21:10:24+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/06/24/trump-department-justice-voter-rolls-appeals-court-loss-sixth-circuit",
+    "title": "Appeals court rules against Trump administration in Michigan voter roll dispute"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 237,
+    "kind": "item",
+    "occurred_at": "2026-06-25T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/06/25/how-to-vote-primary-election-2026-early-absentee-ballot-id",
+    "title": "Everything to know about voting in Michigan’s primaries"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 236,
+    "kind": "item",
+    "occurred_at": "2026-06-25T15:14:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/25/trump-election-overhaul-mail-voting-executive-order-blocked-talwani-usps-dhs",
+    "title": "Federal judge blocks key pillars of Trump executive order restricting mail voting in 2026 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 356,
+    "kind": "item",
+    "occurred_at": "2026-06-25T19:52:02+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/court-blocks-trump-mail-voting-executive-order",
+    "title": "States United Statement: Federal Court Blocks Key Portions of Trump’s Order Targeting Mail Voting Ahead of Midterm Elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 345,
+    "kind": "item",
+    "occurred_at": "2026-06-26T13:58:36+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/arizona-municipal-elections-and-partnerships-with-ice-mesa",
+    "title": "Eyeing Upcoming Elections, Arizona Activists Want Their City Officials to Stand Up to ICE"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 344,
+    "kind": "item",
+    "occurred_at": "2026-06-26T18:34:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-mail-ballot-rule-could-worsen-postal-delays-washington-secretary-of-state-warns",
+    "title": "Trump’s mail ballot rule could worsen postal delays, Washington secretary of state warns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 343,
+    "kind": "item",
+    "occurred_at": "2026-06-26T19:06:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-york-election-officials-immigration-agent-confronts-poll-worker",
+    "title": "Election officials express alarm after ICE confronts poll worker over social media post"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 355,
+    "kind": "item",
+    "occurred_at": "2026-06-26T19:18:02+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/rejection-letter",
+    "title": "Rejection Letter"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 342,
+    "kind": "item",
+    "occurred_at": "2026-06-26T20:13:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-sue-colorado-in-surging-attack-on-overseas-voters",
+    "title": "Republicans sue Colorado in surging attack on overseas voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 341,
+    "kind": "item",
+    "occurred_at": "2026-06-26T21:20:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-gop-mounts-top-down-campaign-to-block-campus-voting-sites",
+    "title": "North Carolina GOP mounts top-down campaign to block campus voting sites"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 340,
+    "kind": "item",
+    "occurred_at": "2026-06-27T00:21:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/south-dakota-republicans-reject-censuring-john-thune-over-stalled-save-america-act",
+    "title": "South Dakota Republicans reject censuring John Thune over stalled SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 339,
+    "kind": "item",
+    "occurred_at": "2026-06-27T17:02:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-york-poll-worker-confronted-by-ice-speaks-out-im-even-worried-more-about-november",
+    "title": "New York poll worker confronted by ICE speaks out: ‘I’m even worried more about November’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 338,
+    "kind": "item",
+    "occurred_at": "2026-06-27T20:08:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pulte-picks-rncs-former-election-integrity-director-for-his-national-intelligence-agencys-chief-of-staff",
+    "title": "Pulte picks RNC’s former election integrity director for his national intelligence agency’s chief of staff"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 235,
+    "kind": "item",
+    "occurred_at": "2026-06-28T14:35:50+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/06/28/department-of-justice-voter-roll-lawsuit-dismissed",
+    "title": "Judge dismisses Department of Justice lawsuit seeking Pennsylvania voters’ private information"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 337,
+    "kind": "item",
+    "occurred_at": "2026-06-28T15:54:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pennsylvanias-voter-rolls-are-safe-from-dojs-grab-rules-federal-judge-bringing-justice-dept-record-to-0-10",
+    "title": "Pennsylvania’s voter rolls are safe from DOJ’s grab, rules federal judge, bringing Justice Dept record to 0-10"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 336,
+    "kind": "item",
+    "occurred_at": "2026-06-28T16:12:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-judges-are-rejecting-trumps-anti-voting-crusade",
+    "title": "This week at Democracy Docket: Judges are rejecting Trump’s anti-voting crusade"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 335,
+    "kind": "item",
+    "occurred_at": "2026-06-28T18:15:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kansas-gop-senator-admits-there-may-not-be-enough-time-to-implement-save-america-act",
+    "title": "Kansas GOP Senator admits there may not be enough time to implement SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1160,
+    "kind": "item",
+    "occurred_at": "2026-06-29T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/29/trump-save-system-blocked-legal-ruling-noncitizen-voters",
+    "title": "Legal ruling blocking Trump hunt for noncitizen voters may not help those already flagged"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1167,
+    "kind": "item",
+    "occurred_at": "2026-06-29T13:35:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-will-hear-arizona-case-that-could-badly-weaken-key-federal-law-protecting-voter-registration",
+    "title": "Supreme Court will hear Arizona case that could badly weaken key federal law protecting voter registration"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1166,
+    "kind": "item",
+    "occurred_at": "2026-06-29T13:55:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-signals-it-will-hear-high-stakes-case-on-pennsylvania-mail-ballots",
+    "title": "Supreme Court signals it will hear high-stakes case on Pennsylvania mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1165,
+    "kind": "item",
+    "occurred_at": "2026-06-29T14:06:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-rejects-gop-bid-to-throw-out-mail-ballots-received-after-election-day-in-win-for-voters",
+    "title": "Supreme Court allows mail ballots to count after Election Day in win for voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1164,
+    "kind": "item",
+    "occurred_at": "2026-06-29T14:18:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/shattering-precedent-supreme-court-expands-trumps-dismissal-powers",
+    "title": "Shattering decades of precedent, Supreme Court expands Trump’s dismissal powers"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1163,
+    "kind": "item",
+    "occurred_at": "2026-06-29T16:21:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-mail-ballot-ruling-spurs-right-wing-meltdown-this-is-how-our-country-dies",
+    "title": "Supreme Court mail ballot ruling spurs Trump and MAGA meltdown: ‘This is how our country dies’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1162,
+    "kind": "item",
+    "occurred_at": "2026-06-29T16:27:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-trump-dismissal-powers-sonia-sotomayor-dissent",
+    "title": "Sotomayor: Supreme Court just gave Trump ‘far greater power than ever before’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1161,
+    "kind": "item",
+    "occurred_at": "2026-06-29T16:34:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-wont-hear-challenge-to-texas-anti-voting-law-in-loss-for-voters-with-disabilities",
+    "title": "Supreme Court won’t hear challenge to Texas anti-voting law in loss for voters with disabilities"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1159,
+    "kind": "item",
+    "occurred_at": "2026-06-29T16:38:52+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/06/29/supreme-court-watson-rnc-mail-ballots-absentee-deadline-grace-period",
+    "title": "Supreme Court allows states to accept mail ballots after Election Day, rejecting Republican challenge to voting access"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1686,
+    "kind": "item",
+    "occurred_at": "2026-06-29T18:20:15+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-watson-v-rnc",
+    "title": "States United Applauds U.S. Supreme Court Ruling Confirming States’ Right to Set Mail-Ballot Grace Periods"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1684,
+    "kind": "item",
+    "occurred_at": "2026-06-29T18:30:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-could-greenlight-voter-purges-right-before-election-day",
+    "title": "Supreme Court could greenlight voter purges right before Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1683,
+    "kind": "item",
+    "occurred_at": "2026-06-29T18:38:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-sues-nevada-amping-up-nationwide-campaign-against-overseas-voters",
+    "title": "RNC sues Nevada, amping up nationwide campaign against overseas voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1682,
+    "kind": "item",
+    "occurred_at": "2026-06-29T19:15:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/colorado-supreme-court-kills-redistricting-ballot-measures-for-2028",
+    "title": "Colorado Supreme Court kills redistricting ballot measures for 2028"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1681,
+    "kind": "item",
+    "occurred_at": "2026-06-29T19:20:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-watson-republicans-early-voting",
+    "title": "Supreme Court’s mail ballots ruling is also good news for early voting — but the GOP still wants to kill it"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1680,
+    "kind": "item",
+    "occurred_at": "2026-06-29T20:10:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-supreme-court-ruling-mail-voting-is-safe-from-gop-attacks-for-now",
+    "title": "After Supreme Court ruling, mail voting is safe from GOP attacks. For now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1679,
+    "kind": "item",
+    "occurred_at": "2026-06-29T20:16:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-voter-roll-grab-is-now-0-11-as-judge-dismisses-new-hampshire-lawsuit",
+    "title": "DOJ voter roll grab is now 0-11 as judge dismisses New Hampshire lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1678,
+    "kind": "item",
+    "occurred_at": "2026-06-29T20:34:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-uses-supreme-court-ruling-to-push-for-save-america-act-but-admits-its-probably-not-going-to-happen",
+    "title": "Trump uses Supreme Court ruling to push for SAVE America Act, but admits it’s ‘probably not going to happen’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1677,
+    "kind": "item",
+    "occurred_at": "2026-06-29T20:54:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-election-officials-praise-supreme-court-mail-ballot-ruling-a-rejection-of-trumps-attacks",
+    "title": "Democrats, election officials praise Supreme Court mail ballot ruling: ‘A rejection of Trump’s attacks’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 1685,
+    "kind": "item",
+    "occurred_at": "2026-06-29T21:06:29+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/supreme-court-allows-grace-periods-for-mail-voting",
+    "title": "Supreme Court Upholds Grace Periods For Mail Ballots Postmarked by Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 3216,
+    "kind": "item",
+    "occurred_at": "2026-06-30T14:34:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-strikes-down-donald-trump-birthright-citizenship-executive-order",
+    "title": "Supreme Court strikes down Trump’s attempt to eliminate birthright citizenship"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 3217,
+    "kind": "item",
+    "occurred_at": "2026-06-30T17:58:50+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-birthright-citizenship",
+    "title": "States United Responds to U.S. Supreme Court Striking Down President Trump’s Unconstitutional Birthright Citizenship Executive Order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 4113,
+    "kind": "item",
+    "occurred_at": "2026-06-30T20:17:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/cleta-mitchell-says-supreme-courts-mail-ballot-ruling-opens-door-to-kill-early-voting-lets-file-some-cases",
+    "title": "Cleta Mitchell says Supreme Court’s mail ballot ruling opens door to kill early voting: ‘Let’s file some cases’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 4112,
+    "kind": "item",
+    "occurred_at": "2026-06-30T20:33:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-trump-ruling-birthright-citizenship-just-beginning",
+    "title": "Despite Supreme Court ruling, the battle over birthright citizenship is just beginning"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 4111,
+    "kind": "item",
+    "occurred_at": "2026-06-30T20:40:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maga-hardliners-launch-latest-failed-push-to-pass-save-america-act",
+    "title": "MAGA hardliners launch latest failed push to pass SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 4110,
+    "kind": "item",
+    "occurred_at": "2026-06-30T20:51:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/following-court-order-dhs-appears-to-have-shut-down-save-for-checking-voter-citizenship",
+    "title": "Following court order, DHS appears to have shut down SAVE for checking voter citizenship"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 4733,
+    "kind": "item",
+    "occurred_at": "2026-07-01T13:22:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/jena-griswold-staunch-opponent-of-trumps-anti-voting-crusade-wins-democratic-nomination-for-colorado-attorney-general",
+    "title": "Jena Griswold, staunch opponent of Trump’s anti-voting crusade, wins Democratic nomination for Colorado attorney general"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 4732,
+    "kind": "item",
+    "occurred_at": "2026-07-01T13:45:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-james-wiley-wins-colorado-gop-secretary-of-state-nomination",
+    "title": "Election denier James Wiley wins Colorado GOP secretary of state nomination"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 5059,
+    "kind": "item",
+    "occurred_at": "2026-07-01T15:18:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hillary-clinton-trumps-gop-cant-win-a-fair-fight",
+    "title": "Hillary Clinton: Trump’s GOP ‘can’t win a fair fight’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 5058,
+    "kind": "item",
+    "occurred_at": "2026-07-01T18:12:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/red-states-demand-restored-access-to-citizenship-database-for-purging-voters",
+    "title": "Red states demand restored access to citizenship database for purging voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 5057,
+    "kind": "item",
+    "occurred_at": "2026-07-01T19:27:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-remake-supreme-court-overturn-birthright-citizenship",
+    "title": "Republicans want to remake Supreme Court to end birthright citizenship"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7176,
+    "kind": "item",
+    "occurred_at": "2026-07-01T20:08:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-blocks-usps-from-implementing-trumps-anti-mail-voting-order",
+    "title": "Court blocks USPS from implementing Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7376,
+    "kind": "item",
+    "occurred_at": "2026-07-02T13:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/07/02/mohave-county-runbeck-ballot-paper-watermarks-security-2026-election",
+    "title": "Mohave County will debut new ballot paper with added security measures in July primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7380,
+    "kind": "item",
+    "occurred_at": "2026-07-02T13:00:55+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/orders-up",
+    "title": "Orders Up"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7375,
+    "kind": "item",
+    "occurred_at": "2026-07-02T17:29:31+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/02/trump-executive-order-mail-voting-appeal-usps-naacp-postal-service",
+    "title": "Trump administration asks federal judge to quickly lift ban on planned mail voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7379,
+    "kind": "item",
+    "occurred_at": "2026-07-02T17:48:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/colorado-clemency-board-members-spoke-against-freeing-tina-peters-governor-jared-polis-fired-them",
+    "title": "Colorado clemency board members spoke against freeing Tina Peters. Governor Jared Polis fired them"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7378,
+    "kind": "item",
+    "occurred_at": "2026-07-02T18:32:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-legal-losses-election-investigation-fulton-2020",
+    "title": "After legal losses, Trump admin forges ahead with bogus election fraud probes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 7377,
+    "kind": "item",
+    "occurred_at": "2026-07-02T19:10:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-appeals-decision-blocking-trumps-executive-order-throttling-mail-voting",
+    "title": "DOJ appeals decision blocking Trump’s executive order throttling mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 9090,
+    "kind": "item",
+    "occurred_at": "2026-07-03T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-deniers-are-shifting-their-rhetoric-from-stolen-to-rigged-elections-the-distinction-is-important",
+    "title": "Election deniers are shifting their rhetoric from ‘stolen’ to ‘rigged’ elections. The distinction is important"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 9528,
+    "kind": "item",
+    "occurred_at": "2026-07-04T12:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/04/america-250-why-voting-rights-access-depend-on-states",
+    "title": "What 250 years of voting rights battles tell us about today"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 10988,
+    "kind": "item",
+    "occurred_at": "2026-07-05T13:07:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-a-rare-pro-voting-ruling-from-the-supreme-court-and-a-revealing-shift-among-election-deniers",
+    "title": "This week at Democracy Docket: A rare pro-voting ruling from the Supreme Court — and a revealing shift among election deniers"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 12192,
+    "kind": "item",
+    "occurred_at": "2026-07-06T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/07/06/mequon-disenfranchised-voters-inconsistent-standard-absentee-ballot-address",
+    "title": "How inconsistent standards led to dozens of disenfranchised voters in a Wisconsin city"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 12403,
+    "kind": "item",
+    "occurred_at": "2026-07-06T16:23:39+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/mail-voting-and-the-midterms-send-us-your-questions",
+    "title": "Mail and the Midterms: Send Us Your Questions"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 12934,
+    "kind": "item",
+    "occurred_at": "2026-07-06T16:51:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mike-johnson-house-pass-donald-trump-voter-supression-save-america-act",
+    "title": "Johnson says House will pass stalled SAVE America Act ‘one more time’ after latest Trump demands"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 12933,
+    "kind": "item",
+    "occurred_at": "2026-07-06T19:10:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-good-sign-for-voters-court-wont-fast-track-trump-doj-voter-roll-appeals",
+    "title": "In good sign for voters, court won’t fast-track Trump DOJ voter roll appeals"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 13135,
+    "kind": "item",
+    "occurred_at": "2026-07-06T23:23:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-appeals-latest-wave-of-losses-in-voter-roll-crusade",
+    "title": "Trump DOJ appeals latest wave of losses in languishing voter roll crusade"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 13781,
+    "kind": "item",
+    "occurred_at": "2026-07-07T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/07/07/secretary-of-state-republican-primary-2026-gina-swoboda-alex-kolodin",
+    "title": "Meet the Republicans who want to be Arizona’s top election official"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 14931,
+    "kind": "item",
+    "occurred_at": "2026-07-07T16:03:41+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/maine-lawsuit-state-law-testing-the-boundaries-of-suing-federal-immigration-agents",
+    "title": "This Maine Lawsuit is Testing the Boundaries of Suing Federal Immigration Agents"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 14930,
+    "kind": "item",
+    "occurred_at": "2026-07-07T17:04:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/postal-services-appeals-court-order-blocking-trumps-anti-mail-voting-order",
+    "title": "Postal Services appeals court order blocking Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 14929,
+    "kind": "item",
+    "occurred_at": "2026-07-07T18:37:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voting-groups-oppose-dhss-latest-bid-to-purge-voters-using-national-citizenship-database",
+    "title": "Pro-voting groups oppose DHS’s latest bid to purge voters using national citizenship database"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 14928,
+    "kind": "item",
+    "occurred_at": "2026-07-07T19:44:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-judge-block-justice-department-fulton-county-election-worker-subpoena",
+    "title": "Trump-appointed judge rejects DOJ’s demands for personal info of 2020 Georgia election workers"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 14927,
+    "kind": "item",
+    "occurred_at": "2026-07-07T20:09:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-schedules-special-redistricting-session-to-counter-gop-gerrymanders",
+    "title": "Maryland schedules special redistricting session to counter GOP gerrymanders"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15915,
+    "kind": "item",
+    "occurred_at": "2026-07-07T20:51:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/florida-judge-lets-republican-led-states-use-dhs-citizenship-database-for-voter-purges-contradicting-d-c-judges-order",
+    "title": "Florida judge lets Republican-led states use DHS citizenship database for voter purges, contradicting D.C. judge’s order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15914,
+    "kind": "item",
+    "occurred_at": "2026-07-07T20:56:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-rejects-trump-administration-bid-to-pause-order-blocking-attack-on-mail-voting",
+    "title": "Judge rejects Trump administration bid to pause order blocking attack on mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15909,
+    "kind": "item",
+    "occurred_at": "2026-07-07T21:28:07+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/07/trump-department-justice-letter-noncitizens-voter-rolls-election-officials",
+    "title": "Department of Justice warns election officials they could be criminally charged over noncitizen voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15913,
+    "kind": "item",
+    "occurred_at": "2026-07-07T21:42:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-to-monitor-voting-in-michigans-primary-elections",
+    "title": "Trump DOJ to monitor voting in Michigan’s primary elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15912,
+    "kind": "item",
+    "occurred_at": "2026-07-07T22:03:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-threatens-election-officials-with-criminal-prosecution",
+    "title": "Trump DOJ threatens election officials with criminal prosecution over noncitizen voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15911,
+    "kind": "item",
+    "occurred_at": "2026-07-07T22:49:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/fema-threatens-to-withhold-terrorism-prevention-funds",
+    "title": "FEMA threatens to withhold terrorism prevention funds unless states adopt Trump’s anti-voting agenda"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 15910,
+    "kind": "item",
+    "occurred_at": "2026-07-08T01:18:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-to-deploy-election-monitors-in-6-states-amid-pressure-campaign",
+    "title": "Trump DOJ to deploy election monitors in 6 states amid intense pressure campaign"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 16510,
+    "kind": "item",
+    "occurred_at": "2026-07-08T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/07/08/election-law-changes-democratic-trifecta-2026-midterm-shapiro",
+    "title": "Pennsylvania elections could look very different if Democrats win full control of state government in 2026"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17465,
+    "kind": "item",
+    "occurred_at": "2026-07-08T16:11:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/meet-the-christian-nationalist-trump-ally-and-election-denier-who-could-run-texas-elections",
+    "title": "Meet the Christian nationalist Trump ally and election denier who could run Texas elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17464,
+    "kind": "item",
+    "occurred_at": "2026-07-08T16:12:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-to-target-democratic-strongholds-for-election-monitoring",
+    "title": "Trump DOJ to target Democratic strongholds for election monitoring: ‘The more eyes on elections’ the better"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17463,
+    "kind": "item",
+    "occurred_at": "2026-07-08T16:35:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arizona-supreme-court-maricopa-county-recorder-heap-election-authorities",
+    "title": "Arizona Supreme Court gives election denier more control over Maricopa County elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17462,
+    "kind": "item",
+    "occurred_at": "2026-07-08T19:03:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-seeks-to-undo-first-appeals-loss-in-voter-roll-crusade",
+    "title": "Trump DOJ seeks to undo first appeals loss in voter roll crusade, asks for rehearing"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17461,
+    "kind": "item",
+    "occurred_at": "2026-07-08T19:49:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gavin-newsom-wants-to-make-seizing-ballots-felony",
+    "title": "Gavin Newsom wants to make seizing ballots a felony"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17460,
+    "kind": "item",
+    "occurred_at": "2026-07-08T19:51:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/citing-callais-appeals-court-vacates-native-american-redistricting-win-in-north-dakota",
+    "title": "Citing Callais, appeals court vacates Native American redistricting win in North Dakota"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17680,
+    "kind": "item",
+    "occurred_at": "2026-07-08T20:45:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-turns-to-threats-coercion-after-courts-reject-presidents-assault-on-voting",
+    "title": "Trump admin turns to threats, coercion after courts reject president’s assault on voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 17679,
+    "kind": "item",
+    "occurred_at": "2026-07-08T21:03:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhss-citizenship-database-must-remain-suspended-d-c-judge-says-in-scathing-opinion",
+    "title": "DHS citizenship database must remain suspended, D.C. judge says in scathing opinion"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 18670,
+    "kind": "item",
+    "occurred_at": "2026-07-09T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/07/09/constitutional-convention-concon-proposal-1-explained",
+    "title": "Michigan could approve a constitutional convention this year. What would that mean?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 19271,
+    "kind": "item",
+    "occurred_at": "2026-07-09T15:18:13+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/readmission-acts-and-felony-disenfranchisement",
+    "title": "A Voting Rights Promise, Betrayed for 156 Years"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20231,
+    "kind": "item",
+    "occurred_at": "2026-07-09T16:51:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/state-voter-registration-lists-largely-accurate-and-up-to-date-new-research-shows",
+    "title": "State voter registration lists largely accurate and up-to-date, new research shows"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20230,
+    "kind": "item",
+    "occurred_at": "2026-07-09T19:16:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-blocks-right-wing-effort-to-rig-census-count",
+    "title": "Court blocks right-wing effort to rig Census count"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20419,
+    "kind": "item",
+    "occurred_at": "2026-07-09T21:03:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-board-seeks-access-to-off-limits-election-area",
+    "title": "Georgia Board seeks access to off-limits election area"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20418,
+    "kind": "item",
+    "occurred_at": "2026-07-09T21:21:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-justice-department-election-monitors-conservative-legal-movement",
+    "title": "The biggest obstacle to the Trump DOJ’s election monitors? The right’s long attack on federal oversight"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20417,
+    "kind": "item",
+    "occurred_at": "2026-07-09T23:38:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-sues-new-jersey-in-eighth-lawsuit-targeting-overseas-voters",
+    "title": "RNC sues New Jersey in eighth lawsuit targeting overseas voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20415,
+    "kind": "item",
+    "occurred_at": "2026-07-09T23:39:10+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/09/trump-fires-election-assistance-commission-members-hicks-hovland-mccormick",
+    "title": "Trump fires all Election Assistance Commission members, leaving agency unable to act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 20416,
+    "kind": "item",
+    "occurred_at": "2026-07-10T00:05:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-fires-election-assistance-commission-leadership",
+    "title": "In sweeping attack on elections, Trump fires leadership of key federal voting assistance commission"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 23026,
+    "kind": "item",
+    "occurred_at": "2026-07-10T16:51:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dangerous-reckless-desperate-trumps-firing-of-eac-leaders-escalates-his-war-on-voting-election-chiefs-and-lawmakers-warn",
+    "title": "‘Dangerous … reckless … desperate’: Trump’s firing of EAC leaders escalates his war on voting, election chiefs and lawmakers warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 23025,
+    "kind": "item",
+    "occurred_at": "2026-07-10T18:17:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nevada-secretary-of-state-slams-trump-doj-letters",
+    "title": "‘It’s threats, it’s intimidation’: Nevada secretary of state slams Trump DOJ letters targeting election officials over noncitizen voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 23027,
+    "kind": "item",
+    "occurred_at": "2026-07-10T18:57:42+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/oust-of-control",
+    "title": "Oust of Control"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 23024,
+    "kind": "item",
+    "occurred_at": "2026-07-10T19:07:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/utah-republicans-concede-defeat-in-multiple-partisan-redistricting-efforts",
+    "title": "Utah Republicans concede defeat in multiple partisan redistricting efforts"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 23023,
+    "kind": "item",
+    "occurred_at": "2026-07-10T19:31:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-fired-the-entire-election-administration-commission-now-what",
+    "title": "Trump fired the entire Election Administration Commission. Now what?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 25074,
+    "kind": "item",
+    "occurred_at": "2026-07-11T14:49:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-throws-out-justice-department-new-york-voter-registration-data-demand",
+    "title": "Trump DOJ hit with 12th straight loss in voter roll crusade after court dismisses its New York demand"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 27122,
+    "kind": "item",
+    "occurred_at": "2026-07-12T11:25:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-trump-is-doing-everything-he-can-think-of-to-control-voting-but-states-arent-backing-down",
+    "title": "This week at Democracy Docket: Trump is doing everything he can think of to control voting. But states aren’t backing down"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 27751,
+    "kind": "item",
+    "occurred_at": "2026-07-12T16:23:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-is-a-big-blow-to-the-save-america-act-trump-uses-lindsey-grahams-death-to-push-stalled-anti-voter-bill",
+    "title": "‘This is a big blow to the SAVE America Act’: Trump uses Lindsey Graham’s death to push stalled anti-voter bill"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 28671,
+    "kind": "item",
+    "occurred_at": "2026-07-13T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/13/major-league-baseball-all-star-game-election-fan-vote-2026",
+    "title": "Baseball fans complain about All-Star Game voting, but MLB gets a lot right"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 30334,
+    "kind": "item",
+    "occurred_at": "2026-07-13T15:04:46+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/13/trump-eac-voting-oversight-neutralize-election-assistance",
+    "title": "Trump move to neutralize election administration agency creates chilling effect, but its impact may be muted"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 30337,
+    "kind": "item",
+    "occurred_at": "2026-07-13T16:23:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-relaunches-voter-purge-database-in-4-red-states",
+    "title": "DHS relaunches voter purge database in 4 red states"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 30336,
+    "kind": "item",
+    "occurred_at": "2026-07-13T17:44:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-improper-irs-lawsuit-judge-refers-blanche-state-bar",
+    "title": "Judge slams Trump’s IRS lawsuit as ‘improper,’ refers acting AG Blanche to bar"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 30335,
+    "kind": "item",
+    "occurred_at": "2026-07-13T18:29:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-again-avoids-lindsey-graham-questions-to-push-save-america-act",
+    "title": "Trump again avoids Lindsey Graham questions to push SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 31228,
+    "kind": "item",
+    "occurred_at": "2026-07-13T20:46:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/idaho-fires-back-against-trump-dojs-threats-over-noncitizen-voting",
+    "title": "‘Stop threatening your friends’: Idaho fires back against Trump DOJ’s threats over noncitizen voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 31227,
+    "kind": "item",
+    "occurred_at": "2026-07-13T21:14:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-0-for-13-in-voter-roll-grab-after-court-dismisses-west-virginia-lawsuit",
+    "title": "Trump DOJ 0 for 13 in voter roll grab after court dismisses West Virginia lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 32776,
+    "kind": "item",
+    "occurred_at": "2026-07-14T17:22:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-appeals-ruling-sets-worrying-postal-service-precedent-ahead-of-midterm-elections",
+    "title": "Federal appeals ruling sets worrying Postal Service precedent ahead of midterm elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 33760,
+    "kind": "item",
+    "occurred_at": "2026-07-14T17:22:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-panel-affirms-courts-can-quickly-block-usps-changes-ahead-of-election",
+    "title": "Appeals panel affirms courts can quickly block USPS changes ahead of election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 32775,
+    "kind": "item",
+    "occurred_at": "2026-07-14T17:38:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-primetime-address-voting-machines-undermine-election",
+    "title": "Trump to attack voting systems, undermine elections in primetime address Thursday"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 33759,
+    "kind": "item",
+    "occurred_at": "2026-07-14T20:34:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-is-0-15-after-gop-appointed-judges-toss-voter-roll-lawsuits-against-virginia-new-mexico",
+    "title": "DOJ is 0-15 after GOP-appointed judges toss voter roll lawsuits against Virginia, New Mexico"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 33758,
+    "kind": "item",
+    "occurred_at": "2026-07-14T20:43:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/win-for-arkansas-voters-as-judge-blocks-ballot-initiative-restrictions",
+    "title": "Win for Arkansas voters as judge blocks ballot initiative restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 33757,
+    "kind": "item",
+    "occurred_at": "2026-07-14T20:45:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-open-to-enforceable-ethics-reform-justices-tell-congress",
+    "title": "Supreme Court open to enforceable ethics reform, justices tell Congress"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 33756,
+    "kind": "item",
+    "occurred_at": "2026-07-14T21:05:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-agents-polling-places-documents-democrats-foia-demand",
+    "title": "ICE reverses, admits it may have trove of documents on agents at polling places"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 33755,
+    "kind": "item",
+    "occurred_at": "2026-07-14T21:56:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/facing-bipartisan-backlash-north-carolina-gop-operative-resigns-over-meddling-in-local-voting-plans",
+    "title": "Facing bipartisan backlash, North Carolina GOP operative resigns over ‘meddling’ in local voting plans"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 34468,
+    "kind": "item",
+    "occurred_at": "2026-07-15T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/07/15/green-bay-clerk-celestine-jeffreys-investigation-suspension-duplicate-absentee-ballot-error",
+    "title": "Green Bay clerk’s office faces investigations after duplicate ballot errors in a second consecutive election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 34467,
+    "kind": "item",
+    "occurred_at": "2026-07-15T11:55:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/07/15/al-schmidt-trump-department-justice-noncitizen-voting-criminal-prosecution-midterms",
+    "title": "Pennsylvania secretary responds to Trump administration’s threat of criminal charges over noncitizen voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 35471,
+    "kind": "item",
+    "occurred_at": "2026-07-15T14:29:33+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/california-dials-back-solitary-reforms",
+    "title": "One Step Forward, Two Steps Back for Solitary Reforms in California"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 35470,
+    "kind": "item",
+    "occurred_at": "2026-07-15T16:39:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/todd-blanche-federal-agents-voting-sites-confirmation-hearing",
+    "title": "Blanche says he will ‘follow the law’ on ICE agents at polls but won’t pledge not to deploy them"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 35469,
+    "kind": "item",
+    "occurred_at": "2026-07-15T17:12:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maricopa-county-hands-election-denier-control-over-early-voting-and-drop-boxes",
+    "title": "Maricopa County hands election denier control over early voting and drop boxes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 35468,
+    "kind": "item",
+    "occurred_at": "2026-07-15T18:53:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-intel-chief-pick-jay-clayton-2020-election-victor",
+    "title": "Trump’s pick for intel chief refuses to say who won 2020 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 35467,
+    "kind": "item",
+    "occurred_at": "2026-07-15T19:17:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/most-of-trump-dojs-voter-roll-losses-have-come-from-gop-appointed-judges",
+    "title": "Most of Trump DOJ’s voter roll losses have come from GOP-appointed judges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 35466,
+    "kind": "item",
+    "occurred_at": "2026-07-15T19:19:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-says-its-not-implementing-trumps-anti-mail-voting-order-for-now",
+    "title": "USPS says it’s not implementing Trump’s anti-mail voting order, for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 36430,
+    "kind": "item",
+    "occurred_at": "2026-07-15T19:54:22+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/07/15/maricopa-county-board-supervisors-recorder-justin-heap-election-deal",
+    "title": "Maricopa County’s election dispute is finally over — at least on paper"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 36431,
+    "kind": "item",
+    "occurred_at": "2026-07-15T19:55:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-wants-to-help-anti-voting-group-purge-california-rolls",
+    "title": "DOJ wants to help anti-voting group purge California rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 36808,
+    "kind": "item",
+    "occurred_at": "2026-07-16T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/16/trump-speech-voting-machines-intelligence-2020-election",
+    "title": "Trump teases ‘very big announcement’ about elections, but it’s unclear what it will be"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 38133,
+    "kind": "item",
+    "occurred_at": "2026-07-16T15:12:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-blocks-kansas-law-disqualifying-late-arriving-mail-ballots",
+    "title": "Court blocks Kansas law disqualifying late-arriving mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 38132,
+    "kind": "item",
+    "occurred_at": "2026-07-16T15:25:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/five-ways-trump-could-use-his-primetime-speech-to-undermine-our-elections",
+    "title": "Five ways Trump could use his primetime speech to undermine our elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 38131,
+    "kind": "item",
+    "occurred_at": "2026-07-16T16:10:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/vance-says-gop-will-accept-election-results-before-returning-to-voting-lies",
+    "title": "Vance says GOP will accept the election results, before returning to voting lies"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 38130,
+    "kind": "item",
+    "occurred_at": "2026-07-16T17:47:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/house-republicans-relaunch-save-america-act-push-in-new-reconciliation-package",
+    "title": "House Republicans relaunch SAVE America Act push in new reconciliation package"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 38134,
+    "kind": "item",
+    "occurred_at": "2026-07-16T19:41:30+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/chicago-police-traffic-stops-declined-but-unreported-traffic-stops-increased-under-snelling",
+    "title": "Chicago Police Promised to ‘Fix’ Secret Traffic Stops. A Year Later, the Problem Has Only Gotten Worse."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 39093,
+    "kind": "item",
+    "occurred_at": "2026-07-16T20:51:58+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/07/16/jane-nelson-concerns-save-data-voter-citizenship-uscis",
+    "title": "Texas secretary of state raised concerns about the federal tool used to flag potential noncitizen voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 39096,
+    "kind": "item",
+    "occurred_at": "2026-07-16T21:24:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolinas-republican-led-election-board-makes-it-easier-to-reject-ballots",
+    "title": "North Carolina’s Republican-led election board makes it easier to reject ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 39095,
+    "kind": "item",
+    "occurred_at": "2026-07-17T01:35:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-pushes-debunked-election-lies-demands-save-america-act-in-primetime-speech",
+    "title": "Trump pushes debunked election lies, demands SAVE America Act in primetime speech"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 39094,
+    "kind": "item",
+    "occurred_at": "2026-07-17T02:22:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/michigan-election-fraud-cited-in-trump-speech-had-no-impact-on-votes",
+    "title": "Michigan election fraud cited in Trump speech had no impact on votes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 39461,
+    "kind": "item",
+    "occurred_at": "2026-07-17T05:02:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/17/trump-election-speech-china-noncitizen-voters-voting-machine-vunerabilities",
+    "title": "Trump rehashes claims of election vulnerabilities, foreign interference, and fraud in primetime speech"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40893,
+    "kind": "item",
+    "occurred_at": "2026-07-17T15:43:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/that-was-some-bull-state-election-chiefs-condemn-trumps-long-debunked-election-lies",
+    "title": "‘That was some bull****’: State election chiefs condemn Trump’s long-debunked election lies"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40892,
+    "kind": "item",
+    "occurred_at": "2026-07-17T16:01:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/they-had-nothing-elections-experts-say-trumps-speech-signals-panic-over-a-flimsy-case",
+    "title": "‘They had nothing’: Elections experts say Trump’s speech signals panic over a flimsy case"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40891,
+    "kind": "item",
+    "occurred_at": "2026-07-17T16:10:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/homeland-security-mullin-threaten-state-election-officials-voter-registration-save",
+    "title": "DHS Secretary Mullin threatens to prosecute election chiefs who refuse voter roll demands"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40890,
+    "kind": "item",
+    "occurred_at": "2026-07-17T16:48:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-failed-to-follow-basic-rules-in-failed-bid-to-join-voter-purge-case",
+    "title": "Oops! Trump DOJ failed to follow basic rules in losing bid to join voter purge case, court finds"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40887,
+    "kind": "item",
+    "occurred_at": "2026-07-17T17:45:02+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/07/17/robert-howden-appointed-texas-secretary-of-state-midterms-2026",
+    "title": "Robert Howden, Abbott aide, to succeed Jane Nelson as Texas’ top election official"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40889,
+    "kind": "item",
+    "occurred_at": "2026-07-17T18:03:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-will-make-states-purge-rolls-or-lose-election-security-funding-dhs-says",
+    "title": "Trump admin will make states purge rolls or lose election security funding, DHS says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40888,
+    "kind": "item",
+    "occurred_at": "2026-07-17T18:30:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/right-wing-group-asks-supreme-court-for-access-to-state-voter-rolls",
+    "title": "Right-wing group asks Supreme Court for access to state voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 40894,
+    "kind": "item",
+    "occurred_at": "2026-07-17T19:43:38+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/about-last-night",
+    "title": "About Last Night"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 41880,
+    "kind": "item",
+    "occurred_at": "2026-07-17T19:44:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-appoints-new-secretary-of-state-ahead-of-2026-midterm-elections",
+    "title": "Texas appoints new secretary of state ahead of 2026 midterm elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 41879,
+    "kind": "item",
+    "occurred_at": "2026-07-17T19:57:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-took-a-victory-lap-in-connecticut-then-it-became-their-16th-straight-voter-roll-loss",
+    "title": "Trump DOJ took a victory lap in Connecticut. Then it became their 16th straight voter roll loss"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 41878,
+    "kind": "item",
+    "occurred_at": "2026-07-17T21:08:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/experts-debunk-trump-china-2020-voter-registration-records-claims",
+    "title": "‘Everyone has this data’: Security experts debunk Trump’s ‘absurd’ China voter file claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 41877,
+    "kind": "item",
+    "occurred_at": "2026-07-17T22:39:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-allows-usps-to-move-forward-with-trumps-anti-mail-voting-order",
+    "title": "Appeals court allows USPS to move forward with Trump’s anti-mail voting order, for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 43326,
+    "kind": "item",
+    "occurred_at": "2026-07-18T16:37:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/murkowski-slams-door-shut-on-supporting-save-america-act",
+    "title": "Murkowski slams door shut on supporting SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 43693,
+    "kind": "item",
+    "occurred_at": "2026-07-18T19:44:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-thursday-primetime-elections-speech-was-going-to-be-more-dangerous",
+    "title": "Trump’s Thursday primetime elections speech was going to be more dangerous"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 45090,
+    "kind": "item",
+    "occurred_at": "2026-07-19T11:25:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-trumps-nothing-of-a-speech-showed-the-stunning-weakness-of-his-stolen-election-case",
+    "title": "This week at Democracy Docket: Trump’s ‘nothing’ of a speech showed the stunning weakness of his stolen election case"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 46425,
+    "kind": "item",
+    "occurred_at": "2026-07-19T20:16:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/sen-warner-trump-intends-to-interfere-in-this-years-elections-this-was-the-opening-shot",
+    "title": "Sen. Warner: ‘Trump intends to interfere in this year’s elections … This was the opening shot’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 47388,
+    "kind": "item",
+    "occurred_at": "2026-07-20T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/20/federal-government-absence-nass-conference-secretaries-state",
+    "title": "Secretaries of state gathered against the backdrop of Trump’s election speech"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 47831,
+    "kind": "item",
+    "occurred_at": "2026-07-20T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/07/20/student-voter-registration-rates-lowest-civics-center-study",
+    "title": "Pennsylvania ranks last in new study of 18-year-olds’ voter registration rates"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 48805,
+    "kind": "item",
+    "occurred_at": "2026-07-20T17:17:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kansas-court-trial-republican-mail-ballot-signature-law",
+    "title": "GOP suppression law targeting mail ballot signatures goes before Kansas judge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 48804,
+    "kind": "item",
+    "occurred_at": "2026-07-20T18:15:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-election-board-again-makes-it-harder-to-vote-by-mail",
+    "title": "North Carolina election board again makes it harder to vote by mail"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 49000,
+    "kind": "item",
+    "occurred_at": "2026-07-20T20:39:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-officials-of-both-parties-rush-to-denounce-trumps-lies-defend-voting-systems",
+    "title": "Election officials of both parties rush to denounce Trump’s lies, defend voting systems"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 48999,
+    "kind": "item",
+    "occurred_at": "2026-07-20T20:48:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-doj-launched-a-new-election-integrity-website-its-riddled-with-errors",
+    "title": "Trump’s DOJ launched a new ‘election integrity’ website. It’s riddled with errors"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 48998,
+    "kind": "item",
+    "occurred_at": "2026-07-20T22:54:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-groups-seek-to-shut-down-voter-purge-database-in-gop-led-states",
+    "title": "Voting rights groups seek to shut down voter purge database in four GOP-led states"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 49911,
+    "kind": "item",
+    "occurred_at": "2026-07-21T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/07/21/absentee-ballot-spoiling-elections-commission-guidance-reversal",
+    "title": "Can Wisconsin voters void a returned absentee ballot? Issue could head back to court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 49912,
+    "kind": "item",
+    "occurred_at": "2026-07-21T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/07/21/spoiling-ballot-mallory-mcmorrow-mike-cox-dropped-out",
+    "title": "Michigan voters can still change their primary vote if their candidate dropped out"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 50529,
+    "kind": "item",
+    "occurred_at": "2026-07-21T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/07/21/primary-2026-election-results-timing-congress-governor",
+    "title": "Here’s when to expect results in Arizona’s primary election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 50530,
+    "kind": "item",
+    "occurred_at": "2026-07-21T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-deniers-are-running-for-arizonas-most-powerful-offices",
+    "title": "Election deniers are running for Arizona’s most powerful offices in high-stakes primaries. Here’s what we’re watching"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 50531,
+    "kind": "item",
+    "occurred_at": "2026-07-21T14:00:31+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/gop-run-missouri-becomes-latest-state-to-roll-back-felony-disenfranchisement",
+    "title": "GOP-Run Missouri Becomes Latest State to Roll Back Felony Disenfranchisement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 51415,
+    "kind": "item",
+    "occurred_at": "2026-07-21T14:42:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/cut-off-at-the-knees-election-chiefs-fear-long-term-damage-from-trumps-eac-firings",
+    "title": "‘Cut off at the knees’: Election chiefs fear long-term damage from Trump’s EAC firings"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 51414,
+    "kind": "item",
+    "occurred_at": "2026-07-21T15:40:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-dismisses-rnc-voter-roll-grab-in-new-jersey",
+    "title": "Federal judge dismisses RNC voter roll grab in New Jersey"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 51413,
+    "kind": "item",
+    "occurred_at": "2026-07-21T16:33:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-groups-ask-federal-judge-to-again-block-trumps-mail-voting-restrictions",
+    "title": "Voting rights groups ask federal judge to again block Trump’s mail voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 51620,
+    "kind": "item",
+    "occurred_at": "2026-07-21T20:37:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-governor-candidate-tries-fails-to-soften-election-denier-views",
+    "title": "Maryland governor candidate tries, fails to soften election denier views"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 51619,
+    "kind": "item",
+    "occurred_at": "2026-07-21T21:18:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-allies-seize-on-new-jersey-registration-error-to-advance-anti-voting-agenda",
+    "title": "Trump allies seize on New Jersey registration error to advance anti-voting agenda"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 51618,
+    "kind": "item",
+    "occurred_at": "2026-07-21T22:02:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-cites-new-jersey-registration-error-to-renew-demand-for-private-voter-data",
+    "title": "Trump DOJ cites New Jersey registration error to renew demand for statewide private voter data"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 52649,
+    "kind": "item",
+    "occurred_at": "2026-07-22T04:30:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/07/22/secretary-of-state-alex-kolodin-gina-swoboda-adrian-fontes-primary-results",
+    "title": "Alex Kolodin wins GOP nomination for secretary of state"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 53271,
+    "kind": "item",
+    "occurred_at": "2026-07-22T12:11:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-alex-kolodin-advances-in-bid-to-oversee-arizona-elections",
+    "title": "Far-right election denier Alex Kolodin advances in bid to oversee Arizona elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 53270,
+    "kind": "item",
+    "occurred_at": "2026-07-22T12:13:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/warren-petersen-secures-arizona-gop-attorney-general-nomination",
+    "title": "Warren Petersen, who aided Trump’s 2020 election probe, secures Arizona GOP attorney general nomination"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 53269,
+    "kind": "item",
+    "occurred_at": "2026-07-22T12:14:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-backed-election-denier-andy-biggs-wins-arizona-gop-governor-primary",
+    "title": "Trump-backed election denier Andy Biggs wins Arizona GOP governor primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 54222,
+    "kind": "item",
+    "occurred_at": "2026-07-22T16:07:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-brad-raffensperger-response-justice-department-noncitizen-voting-request",
+    "title": "Georgia Secretary of State’s office responds to Trump DOJ threats, defends voting policies"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 54221,
+    "kind": "item",
+    "occurred_at": "2026-07-22T16:38:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kansas-elections-chief-launches-legal-full-court-press-against-mail-ballot-grace-periods",
+    "title": "Kansas elections chief launches legal full-court press against mail ballot grace periods"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 54220,
+    "kind": "item",
+    "occurred_at": "2026-07-22T19:04:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-killed-a-man-in-houston-and-residents-want-answers-but-trumps-gerrymander-may-take-away-their-voice-in-congress",
+    "title": "ICE killed a man in Houston and residents want answers. But Trump’s gerrymander may take away their voice in Congress"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 59620,
+    "kind": "item",
+    "occurred_at": "2026-07-22T21:00:46+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-harvard-v-hhs",
+    "title": "Democracy Experts Warn Targeting Academic Institutions Threatens Rule of Law"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 54426,
+    "kind": "item",
+    "occurred_at": "2026-07-22T21:02:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voter-id-tends-to-poll-well-but-that-doesnt-mean-voters-really-want-it",
+    "title": "Voter ID tends to poll well. But that doesn’t mean voters really want it"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 54425,
+    "kind": "item",
+    "occurred_at": "2026-07-22T21:19:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/house-passes-save-america-act-anti-voting-measures-in-budget-reconciliation-stock-trading-bills",
+    "title": "House passes SAVE America Act anti-voting measures in budget reconciliation, stock trading bills"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 54424,
+    "kind": "item",
+    "occurred_at": "2026-07-22T22:24:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-refuses-to-pause-ruling-blocking-new-hampshires-proof-of-citizenship-law",
+    "title": "Judge refuses to pause ruling blocking New Hampshire’s proof of citizenship law"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 57683,
+    "kind": "item",
+    "occurred_at": "2026-07-23T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/07/23/crossover-voting-august-primary-absentee-how-to-vote",
+    "title": "Why thousands of Michigan votes likely won’t be counted in this year’s primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 57684,
+    "kind": "item",
+    "occurred_at": "2026-07-23T12:46:39+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/north-carolina-three-strikes-ramulus-mason",
+    "title": "In North Carolina, a Shooting Victim Pleads for His Shooter’s Release After 30 Years"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58363,
+    "kind": "item",
+    "occurred_at": "2026-07-23T14:28:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-says-trumps-attack-on-mail-voting-is-unconstitutional-legal-challenge-can-continue",
+    "title": "Judge says Trump’s attack on mail voting is ‘unconstitutional,’ legal challenge can continue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58362,
+    "kind": "item",
+    "occurred_at": "2026-07-23T16:50:45+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/23/new-jersey-voter-registration-snafu-fuels-national-debate",
+    "title": "Noncitizen voters discovered in New Jersey fuel nationwide debate over how frequently that happens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58874,
+    "kind": "item",
+    "occurred_at": "2026-07-23T19:48:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kalshi-locks-horns-with-wisconsin-after-state-warns-voters-about-betting-on-elections",
+    "title": "Kalshi locks horns with Wisconsin after state warns voters about betting on elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58873,
+    "kind": "item",
+    "occurred_at": "2026-07-23T20:16:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-losing-streak-continues-as-trump-appointed-judge-tosses-kentucky-voter-roll-lawsuit",
+    "title": "DOJ losing streak continues as Trump-appointed judge tosses Kentucky voter roll lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58872,
+    "kind": "item",
+    "occurred_at": "2026-07-23T21:31:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/states-sue-trump-admin-for-withholding-148m-in-disaster-aid-over-unlawful-election-demands",
+    "title": "States sue Trump admin for withholding $148M in disaster aid over ‘unlawful’ election demands"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58871,
+    "kind": "item",
+    "occurred_at": "2026-07-23T21:34:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-refuses-to-stop-tennessee-gerrymander",
+    "title": "Court refuses to stop Tennessee’s gerrymander"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 58870,
+    "kind": "item",
+    "occurred_at": "2026-07-23T23:12:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-appeals-new-round-of-voter-roll-losses-expanding-crusade",
+    "title": "Trump DOJ appeals new round of voter roll losses, expanding crusade to 8 circuits"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60087,
+    "kind": "item",
+    "occurred_at": "2026-07-24T16:23:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-jersey-wont-give-doj-data-on-noncitizens-erroneously-registered-to-vote",
+    "title": "New Jersey won’t give DOJ data on noncitizens erroneously registered to vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60086,
+    "kind": "item",
+    "occurred_at": "2026-07-24T16:49:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/wisconsin-voting-advocates-sue-to-protect-voters-from-being-disenfranchised-by-mail-delays",
+    "title": "Wisconsin voting advocates sue to protect voters from being disenfranchised by mail delays"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60088,
+    "kind": "item",
+    "occurred_at": "2026-07-24T19:15:58+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/the-guardin-state",
+    "title": "The Guardin’ State"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60299,
+    "kind": "item",
+    "occurred_at": "2026-07-24T20:11:29+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/24/democratic-states-trump-election-priorities-fema-grants-lawsuit",
+    "title": "Democratic states, leaders sue Trump administration for conditioning grant money on election policies"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60301,
+    "kind": "item",
+    "occurred_at": "2026-07-24T21:05:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-wrongly-removed-eligible-voters-from-active-voter-lists",
+    "title": "Alaska wrongly removed eligible voters from active voter lists"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60300,
+    "kind": "item",
+    "occurred_at": "2026-07-25T00:14:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-rejects-nearly-150000-mail-ballots-despite-voter-safeguards",
+    "title": "California rejects nearly 150,000 mail ballots despite voter safeguards"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 60844,
+    "kind": "item",
+    "occurred_at": "2026-07-25T12:59:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-eac-firings-threaten-access-for-voters-with-disabilities-experts-warn-2",
+    "title": "Trump’s EAC firings threaten access for voters with disabilities, experts warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 61027,
+    "kind": "item",
+    "occurred_at": "2026-07-25T20:49:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-anti-mail-voting-order-gets-blocked-again-this-time-by-federal-appeals-court",
+    "title": "Trump’s anti-mail voting order gets blocked again, this time by federal appeals court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 61403,
+    "kind": "item",
+    "occurred_at": "2026-07-26T11:12:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-how-trumps-texas-gerrymander-threatens-to-silence-a-communitys-voice",
+    "title": "This week at Democracy Docket: How Trump’s Texas gerrymander threatens to silence a community’s voice"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 61591,
+    "kind": "item",
+    "occurred_at": "2026-07-26T17:55:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/energy-dept-admits-cancelling-federal-clean-energy-grants-in-blue-states-in-yet-another-trump-blow-to-democracy",
+    "title": "Energy Dept. admits cancelling federal clean energy grants in blue states, in yet another Trump blow to democracy"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 61785,
+    "kind": "item",
+    "occurred_at": "2026-07-26T19:32:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/sen-lee-wants-to-skip-recess-to-save-the-save-america-act",
+    "title": "Sen. Lee wants to skip recess to save the SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 61976,
+    "kind": "item",
+    "occurred_at": "2026-07-27T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/07/27/trump-mullin-250000-noncitizen-voters-new-jersey-pennsylvania-california-nevada",
+    "title": "The noncitizen voter mystery: New Trump numbers raise more questions than answers"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62520,
+    "kind": "item",
+    "occurred_at": "2026-07-27T15:49:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/comey-dismissal-motion-trump-justice-department-86-47-seashell-case",
+    "title": "Comey asks judge to 86 Trump DOJ’s seashell case"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 62519,
+    "kind": "item",
+    "occurred_at": "2026-07-27T16:05:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-demands-an-end-to-the-filibuster-to-pass-the-save-america-act",
+    "title": "Trump demands an end to the filibuster to pass the SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62518,
+    "kind": "item",
+    "occurred_at": "2026-07-27T16:43:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-voter-roll-crusade-contradictions",
+    "title": "Trump DOJ said some states ‘cooperated’ with voter roll grab by providing public information. It sued other states for doing the same"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62517,
+    "kind": "item",
+    "occurred_at": "2026-07-27T20:15:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/thune-rejects-trumps-calls-to-nix-the-filibuster-and-senate-recess",
+    "title": "Thune rejects Trump’s calls to nix the filibuster and Senate recess"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62516,
+    "kind": "item",
+    "occurred_at": "2026-07-27T20:20:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-anti-mail-voting-executive-order-supreme-court-justice-department-emergency-appeal",
+    "title": "Trump DOJ asks Supreme Court to greenlight anti-mail voting order before midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62515,
+    "kind": "item",
+    "occurred_at": "2026-07-27T22:19:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kansas-court-rejects-last-minute-gop-bid-to-toss-late-arriving-mail-ballots",
+    "title": "Kansas court rejects last-minute GOP bid to toss late-arriving mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62983,
+    "kind": "item",
+    "occurred_at": "2026-07-28T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/07/28/how-to-vote-primary-election-2026-early-absentee-ballots",
+    "title": "Everything you need to know about how to vote in the Wisconsin primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 62982,
+    "kind": "item",
+    "occurred_at": "2026-07-28T09:30:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/07/28/usps-mail-delays-clerks-suggest-alternatives-lawsuit",
+    "title": "Amid USPS delays, Wisconsin officials tell voters to mail their ballots ASAP and voters sue for more options"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63446,
+    "kind": "item",
+    "occurred_at": "2026-07-28T15:19:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-sues-california-over-ballot-language-that-accurately-describes-voter-id-measure",
+    "title": "GOP sues California over ballot language that accurately describes voter ID measure"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63445,
+    "kind": "item",
+    "occurred_at": "2026-07-28T16:23:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-backs-trump-bid-to-block-some-mail-ballots-for-now-as-supreme-court-mulls-issue",
+    "title": "Appeals court backs Trump bid to block some mail ballots, for now, as Supreme Court mulls issue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63444,
+    "kind": "item",
+    "occurred_at": "2026-07-28T16:47:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-intervene-florida-proof-of-citizenship-voting-requirement",
+    "title": "RNC wants to defend Florida’s proof-of-citizenship voting requirement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63754,
+    "kind": "item",
+    "occurred_at": "2026-07-28T19:06:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-2020-declassified-election-document-dump-former-intelligence-officials-probe",
+    "title": "Did the White House order up a CIA document to support Trump’s claims on China election interference?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63753,
+    "kind": "item",
+    "occurred_at": "2026-07-28T20:07:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-advances-more-voter-suppression-measures",
+    "title": "North Carolina advances more voter suppression measures"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63752,
+    "kind": "item",
+    "occurred_at": "2026-07-28T21:54:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-jersey-governor-officially-rebuffs-trump-doj-demand-for-private-voter-data",
+    "title": "‘No legal basis’: New Jersey governor officially rebuffs Trump DOJ demand for private voter data"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 63751,
+    "kind": "item",
+    "occurred_at": "2026-07-28T23:33:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/senate-gop-confirms-jay-clayton-as-u-s-spy-chief",
+    "title": "Senate GOP confirms Jay Clayton as U.S. spy chief"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 64150,
+    "kind": "item",
+    "occurred_at": "2026-07-29T16:30:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-states-join-doj-in-asking-supreme-court-to-let-trump-block-some-mail-ballots",
+    "title": "GOP states join DOJ in asking Supreme Court to let Trump block some mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 64149,
+    "kind": "item",
+    "occurred_at": "2026-07-29T17:20:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-involved-justice-department-seashell-case-james-comey",
+    "title": "Trump intimately involved in DOJ’s seashell case against James Comey, new filing alleges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 64353,
+    "kind": "item",
+    "occurred_at": "2026-07-29T18:58:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nevada-demands-dhs-explain-sweeping-noncitizen-voter-roll-claims",
+    "title": "Nevada demands DHS explain sweeping noncitizen voter roll claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 64352,
+    "kind": "item",
+    "occurred_at": "2026-07-29T20:00:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-loses-bid-for-new-jersey-voter-rolls",
+    "title": "Trump DOJ loses bid for New Jersey voter rolls, now 0 for 18"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 64351,
+    "kind": "item",
+    "occurred_at": "2026-07-29T23:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-officials-warn-of-the-casino-ification-of-voting",
+    "title": "Election officials warn of the casino-ification of voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 64854,
+    "kind": "item",
+    "occurred_at": "2026-07-30T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/07/30/maricopa-pima-counties-id-verify-popular-voters-faster-election-results-2026",
+    "title": "New ballot drop-off option proves popular in primary, potentially leading to faster election results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65062,
+    "kind": "item",
+    "occurred_at": "2026-07-30T15:47:22+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/07/30/trump-department-homeland-security-noncitizen-voter-roll-response",
+    "title": "Pennsylvania asks Trump administration how exactly it identified potential noncitizen voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65064,
+    "kind": "item",
+    "occurred_at": "2026-07-30T15:50:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pennsylvania-calls-for-dhs-to-substantiate-sweeping-noncitizen-voter-roll-claims",
+    "title": "Pennsylvania calls for DHS to substantiate sweeping noncitizen voter roll claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65063,
+    "kind": "item",
+    "occurred_at": "2026-07-30T18:51:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-want-to-make-it-easier-to-reject-votes-cast-by-mail-in-iowa",
+    "title": "Republicans want to make it easier to reject votes cast by mail in Iowa"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65589,
+    "kind": "item",
+    "occurred_at": "2026-07-30T19:09:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/desperate-trump-threatens-thune-amid-unwavering-senate-resistance-to-save-america-act",
+    "title": "Desperate Trump threatens Thune amid unwavering Senate resistance to SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65586,
+    "kind": "item",
+    "occurred_at": "2026-07-30T19:11:21+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/07/30/save-potential-noncitizens-gave-proof-of-citizenship-to-dps",
+    "title": "Texas confirms some flagged as potential noncitizens on voter rolls had provided DPS proof of citizenship"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65588,
+    "kind": "item",
+    "occurred_at": "2026-07-30T20:42:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-challenges-dhs-over-sweeping-noncitizen-voter-claims",
+    "title": "‘Serious doubts about the reliability of your data’: California bluntly challenges DHS over sweeping noncitizen voter claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 65587,
+    "kind": "item",
+    "occurred_at": "2026-07-30T23:26:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kansas-supreme-court-deals-final-blow-to-gop-bid-to-throw-out-late-arriving-mail-ballots",
+    "title": "Kansas Supreme Court deals final blow to GOP bid to throw out late-arriving mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66053,
+    "kind": "item",
+    "occurred_at": "2026-07-31T14:26:30+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/virginia-governor-restores-voting-rights",
+    "title": "Virginia Governor Restores Voting Rights for Thousands With Past Felony Convictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66052,
+    "kind": "item",
+    "occurred_at": "2026-07-31T16:42:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/house-gop-committee-requests-classified-briefings-on-trumps-election-fraud-claims",
+    "title": "House GOP Committee requests classified briefings on Trump’s election fraud claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66054,
+    "kind": "item",
+    "occurred_at": "2026-07-31T17:40:53+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/poll-vault",
+    "title": "Poll Vault"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66051,
+    "kind": "item",
+    "occurred_at": "2026-07-31T18:39:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-cleta-mitchell-granted-dhs-elections-official-heather-honey-a-lot-of-money",
+    "title": "Election denier Cleta Mitchell granted DHS elections official Heather Honey a lot of money"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66283,
+    "kind": "item",
+    "occurred_at": "2026-07-31T22:45:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-brutal-illinois-defeat-trump-dojs-voter-roll-crusade-is-0-for-19",
+    "title": "After brutal Illinois defeat, Trump DOJ’s voter roll crusade is 0 for 19"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66850,
+    "kind": "item",
+    "occurred_at": "2026-08-01T14:40:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kamala-harris-tells-urban-league-the-voting-rights-act-wont-be-revived-any-time-soon",
+    "title": "Kamala Harris tells Urban League the Voting Rights Act won’t be revived ‘any time soon’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 66849,
+    "kind": "item",
+    "occurred_at": "2026-08-01T16:50:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/virginia-gov-spanberger-has-restored-voting-rights-for-66000-people-with-past-felony-convictions",
+    "title": "Virginia Gov. Spanberger has restored voting rights for 66,000 people with past felony convictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 67412,
+    "kind": "item",
+    "occurred_at": "2026-08-02T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-democrats-take-first-step-toward-2028-redistricting-with-special-session",
+    "title": "Maryland Democrats take first step toward 2028 redistricting with special session"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 67411,
+    "kind": "item",
+    "occurred_at": "2026-08-02T11:22:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-we-caught-doj-in-a-glaring-double-standard-on-its-voter-rolls-crusade",
+    "title": "This week at Democracy Docket: We caught DOJ in a glaring double standard on its voter rolls crusade"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 67783,
+    "kind": "item",
+    "occurred_at": "2026-08-02T18:57:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/while-trump-says-anti-weaponization-fund-isnt-dead-gop-lawmakers-are-silent-on-if-it-should-die",
+    "title": "While Trump says ‘anti-weaponization fund’ isn’t dead, GOP lawmakers are silent on if it should die"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68241,
+    "kind": "item",
+    "occurred_at": "2026-08-03T11:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/03/trump-supreme-court-mail-ballot-restrictions-executive-order-usps",
+    "title": "Trump is asking the U.S. Supreme Court to allow new mail ballot restrictions in the 2026 midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68535,
+    "kind": "item",
+    "occurred_at": "2026-08-03T15:59:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-gop-wants-voters-to-restrict-own-power-to-change-state-constitution",
+    "title": "Missouri GOP wants voters to restrict own power to change state constitution"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68534,
+    "kind": "item",
+    "occurred_at": "2026-08-03T18:09:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-todd-blanche-nomination-trump-immunity-plan-irs",
+    "title": "GOP senators sign off on corrupt immunity deal from IRS audits for Trump and sons"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68533,
+    "kind": "item",
+    "occurred_at": "2026-08-03T18:43:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blue-states-supreme-court-uphold-block-trump-mail-voting-attack",
+    "title": "Blue states urge Supreme Court to uphold block on Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68775,
+    "kind": "item",
+    "occurred_at": "2026-08-03T19:24:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-blocks-trump-ban-on-voter-registration-help-for-new-citizens-finding-likely-intentional-discrimination",
+    "title": "Court blocks Trump ban on voter registration help for new citizens, finding likely intentional discrimination"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68773,
+    "kind": "item",
+    "occurred_at": "2026-08-03T19:49:50+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/08/03/green-bay-duplicate-absentee-ballot-explanation-celestine-jeffreys",
+    "title": "Green Bay explains how voters got sent multiple absentee ballots in two straight elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 68774,
+    "kind": "item",
+    "occurred_at": "2026-08-03T20:43:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/michigan-election-officials-prepare-for-trump-doj-to-monitor-primary-elections",
+    "title": "Michigan election officials prepare for Trump DOJ to monitor primary elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69162,
+    "kind": "item",
+    "occurred_at": "2026-08-04T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/04/when-to-expect-election-results-2026-primary-timing",
+    "title": "Here’s when to expect results in Michigan’s primary election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69404,
+    "kind": "item",
+    "occurred_at": "2026-08-04T16:23:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-demand-election-documents-in-new-jersey-as-they-continue-to-seize-on-bogus-election-fraud-claims",
+    "title": "Republicans demand election documents in New Jersey as they continue to seize on bogus election fraud claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69403,
+    "kind": "item",
+    "occurred_at": "2026-08-04T16:33:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-now-0-for-20-after-judge-dismisses-colorado-voter-roll-lawsuit-with-prejudice",
+    "title": "Trump DOJ now 0 for 20 after judge dismisses Colorado voter roll lawsuit ‘with prejudice’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69402,
+    "kind": "item",
+    "occurred_at": "2026-08-04T17:41:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-democrats-clear-first-hurdle-on-path-to-redistricting",
+    "title": "Maryland Democrats clear first hurdle on path to redistricting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69401,
+    "kind": "item",
+    "occurred_at": "2026-08-04T18:22:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dozen-voting-groups-supreme-court-uphold-trump-mail-voting-order-block",
+    "title": "Voting advocates call on Supreme Court to uphold block on Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69583,
+    "kind": "item",
+    "occurred_at": "2026-08-04T19:25:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/lawsuit-seeks-evidence-of-federal-immigration-agencys-role-in-trumps-voter-purge-plans",
+    "title": "Lawsuit seeks evidence of federal immigration agency’s role in Trump’s voter purge plans"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69582,
+    "kind": "item",
+    "occurred_at": "2026-08-04T20:00:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-struggles-to-defend-demand-for-washington-voter-rolls",
+    "title": "After 20 straight losses, Trump DOJ struggles to defend demand for Washington state voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69576,
+    "kind": "item",
+    "occurred_at": "2026-08-04T20:28:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/04/league-of-women-voters-registration-naturalization-ceremony-uscis",
+    "title": "Nonpartisan groups can resume registering newly naturalized citizens to vote at USCIS sites"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69581,
+    "kind": "item",
+    "occurred_at": "2026-08-04T21:31:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/urging-supreme-court-to-greenlight-trumps-mail-voting-order-doj-seizes-on-new-jersey-registration-glitch",
+    "title": "Urging Supreme Court to greenlight Trump’s mail voting order, DOJ seizes on New Jersey registration glitch"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69580,
+    "kind": "item",
+    "occurred_at": "2026-08-04T21:37:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-blocks-anti-gerrymander-referendum-from-november-ballot-in-attempt-to-silence-voters",
+    "title": "Missouri blocks anti-gerrymander referendum from November ballot in attempt to silence voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69579,
+    "kind": "item",
+    "occurred_at": "2026-08-04T21:43:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-backs-down-from-suppression-scheme-in-texas-after-voter-outrage",
+    "title": "GOP backs down from suppression scheme in Texas after voter outrage"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69578,
+    "kind": "item",
+    "occurred_at": "2026-08-04T22:49:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-republicans-send-sweeping-voting-restrictions-to-governors-desk",
+    "title": "North Carolina Republicans send sweeping voting restrictions to governor’s desk"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69577,
+    "kind": "item",
+    "occurred_at": "2026-08-04T23:10:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-democrats-send-redistricting-amendment-to-voters",
+    "title": "Maryland Democrats send redistricting amendment to voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69768,
+    "kind": "item",
+    "occurred_at": "2026-08-05T01:13:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-voters-reject-ballot-measure-limiting-their-power-to-amend-state-constitution",
+    "title": "Missouri voters reject ballot measure limiting their power to amend state constitution"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 69767,
+    "kind": "item",
+    "occurred_at": "2026-08-05T05:30:13+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/05/trump-department-of-justice-federal-election-monitors-primary-2026",
+    "title": "Despite concerns, Department of Justice monitors kept a low profile in Michigan primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70182,
+    "kind": "item",
+    "occurred_at": "2026-08-05T13:07:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/michigan-election-chief-jocelyn-benson-to-face-prominent-election-denier-in-governors-race",
+    "title": "Michigan election chief Jocelyn Benson to face prominent election denier in governor’s race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70181,
+    "kind": "item",
+    "occurred_at": "2026-08-05T13:16:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mike-rogers-gop-convert-to-election-denial-wins-michigan-gop-senate-primary",
+    "title": "Mike Rogers, GOP convert to election denial, wins Michigan GOP Senate primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70180,
+    "kind": "item",
+    "occurred_at": "2026-08-05T13:17:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-voting-advocates-sue-after-redistricting-referendum-rejected",
+    "title": "Missouri voting advocates sue after redistricting referendum rejected"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70599,
+    "kind": "item",
+    "occurred_at": "2026-08-05T15:59:22+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-ai-and-elections",
+    "title": "States United Research Identifies AI Platform Shortcomings, Encourages Voters to Rely on State Websites for Election Information"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70598,
+    "kind": "item",
+    "occurred_at": "2026-08-05T16:35:50+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/missouri-rejects-restrictions-on-direct-democracy",
+    "title": "Missourians Reject Measure That Threatened to Kill Citizen-Led Ballot Initiatives"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70597,
+    "kind": "item",
+    "occurred_at": "2026-08-05T17:13:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-minnesota-city-is-suing-the-state-why-conspiracy-fueled-opposition-to-election-software",
+    "title": "A Minnesota city is suing the state. Why? Conspiracy-fueled opposition to election software"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70596,
+    "kind": "item",
+    "occurred_at": "2026-08-05T17:32:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-maga-already-pushing-conspiracies-about-michigan-mail-voting",
+    "title": "Trump, MAGA already pushing conspiracies about Michigan mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70595,
+    "kind": "item",
+    "occurred_at": "2026-08-05T18:56:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/jan-6-prosecutors-urge-senators-to-stop-confirming-trumps-election-denier-nominees",
+    "title": "Jan. 6 prosecutors urge Senate to stop confirming Trump’s election-denier nominees"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70805,
+    "kind": "item",
+    "occurred_at": "2026-08-05T19:44:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-republicans-threaten-lawsuit-to-block-vote-on-democrats-redistricting-plan",
+    "title": "Maryland Republicans threaten lawsuit to block vote on Democrats’ redistricting plan"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70804,
+    "kind": "item",
+    "occurred_at": "2026-08-05T20:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-warn-trump-voter-purges-quiet-period-begins",
+    "title": "Democrats warn Trump admin against promoting last-minute voter purges as ‘quiet period’ begins"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70803,
+    "kind": "item",
+    "occurred_at": "2026-08-05T20:03:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-texas-county-is-quietly-planning-to-swap-voting-maps-between-its-primary-and-november-election",
+    "title": "A Texas county is quietly planning to swap voting maps between its primary and November election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 70802,
+    "kind": "item",
+    "occurred_at": "2026-08-05T21:11:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/wisconsins-mail-voting-system-violates-the-ada-state-judge-rules",
+    "title": "Wisconsin’s mail voting system violates the ADA, state judge rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71392,
+    "kind": "item",
+    "occurred_at": "2026-08-06T09:45:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/08/06/tarrant-county-tim-ohare-polling-place-voting-access-public-meeting-arrests",
+    "title": "Fracas over reducing Tarrant County polling locations highlights public distrust over how the county runs elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71765,
+    "kind": "item",
+    "occurred_at": "2026-08-06T15:30:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-targets-u-s-citizens-living-overseas-in-latest-suppression-scheme",
+    "title": "GOP targets U.S. citizens living overseas in latest suppression scheme"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71763,
+    "kind": "item",
+    "occurred_at": "2026-08-06T22:52:46+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/06/antrim-county-victoria-bishop-trucker-randy-cleared-computer-investigation",
+    "title": "Antrim County clerk and her husband cleared of ‘criminal wrongdoing’ in computer case"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71764,
+    "kind": "item",
+    "occurred_at": "2026-08-06T23:44:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-court-shuts-down-gop-bid-to-sanitize-anti-voting-measure",
+    "title": "California court shuts down GOP bid to sanitize anti-voting measure"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71766,
+    "kind": "item",
+    "occurred_at": "2026-08-07T12:06:00+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/maine-prison-voting-rights",
+    "title": "Maine Prisoners Organize to Protect Their Rare Right to Vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71942,
+    "kind": "item",
+    "occurred_at": "2026-08-07T13:22:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/sen-marsha-blackburn-tennessee-republican-governor-primary",
+    "title": "Marsha Blackburn, leading anti-voting voice in Senate, wins Tennessee GOP governor primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71941,
+    "kind": "item",
+    "occurred_at": "2026-08-07T16:03:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-republicans-sue-to-stop-voters-from-weighing-in-on-democrats-redistricting-plan",
+    "title": "Maryland Republicans sue to stop voters from weighing in on Democrats’ redistricting plan"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 71940,
+    "kind": "item",
+    "occurred_at": "2026-08-07T16:27:45+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/08/07/green-bay-clerk-celestine-jeffreys-resigns-duplicate-ballot-incidents",
+    "title": "Green Bay clerk resigns amid investigations into duplicate ballot incidents"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72112,
+    "kind": "item",
+    "occurred_at": "2026-08-07T19:25:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-republicans-go-judge-shopping-to-run-out-clock-on-redistricting-referendum-lawsuit",
+    "title": "Missouri Republicans go judge shopping to run out clock on redistricting referendum lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72113,
+    "kind": "item",
+    "occurred_at": "2026-08-07T19:45:31+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/intelligence-gaps",
+    "title": "Intelligence Gaps"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72111,
+    "kind": "item",
+    "occurred_at": "2026-08-07T20:36:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-republican-panel-state-new-voting-system",
+    "title": "GOP-dominated panel launches overhaul of Georgia’s voting system"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72439,
+    "kind": "item",
+    "occurred_at": "2026-08-08T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/courts-have-rejected-trump-doj-voter-roll-crusade-doj-says-theyre-wrong",
+    "title": "22 courts have rejected Trump DOJ’s voter roll crusade. DOJ says they’re all just wrong"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72604,
+    "kind": "item",
+    "occurred_at": "2026-08-08T13:19:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/senate-confirms-trump-loyalist-todd-blanche-as-attorney-general",
+    "title": "Senate confirms Trump loyalist Todd Blanche as attorney general"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72603,
+    "kind": "item",
+    "occurred_at": "2026-08-08T15:08:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voters-spared-as-senate-recesses-without-passing-save-america-acts-voter-id-measure",
+    "title": "Voters spared as Senate recesses without passing SAVE America Act’s voter ID measure"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 72764,
+    "kind": "item",
+    "occurred_at": "2026-08-08T20:18:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-blocks-notorious-measure-b-that-wouldve-eliminated-mail-and-early-voting-in-california-county",
+    "title": "Judge blocks notorious ‘Measure B’ that would’ve eliminated mail and early voting in California county"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 73081,
+    "kind": "item",
+    "occurred_at": "2026-08-09T11:17:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-its-getting-embarrassing-for-trumps-doj-and-texas-voters-fight-off-a-gop-suppression-scheme",
+    "title": "This week at Democracy Docket: It’s getting embarrassing for Trump’s DOJ — and Texas voters fight off a GOP suppression scheme"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 73239,
+    "kind": "item",
+    "occurred_at": "2026-08-09T16:46:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/sen-cassidys-existential-anxiety-about-whether-blanche-will-uphold-the-constitution-on-elections",
+    "title": "Sen. Cassidy’s ‘existential anxiety’ about whether Blanche will uphold the constitution on elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 73396,
+    "kind": "item",
+    "occurred_at": "2026-08-09T19:19:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pennsylvania-gop-governor-nominee-concedes-trump-lost-2020-election-after-getting-his-endorsement",
+    "title": "Pennsylvania GOP governor nominee concedes Trump lost 2020 election, after getting his endorsement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 73941,
+    "kind": "item",
+    "occurred_at": "2026-08-10T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/08/10/2026-primary-election-when-to-expect-results",
+    "title": "Here’s when to expect results in Wisconsin’s primary election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 73942,
+    "kind": "item",
+    "occurred_at": "2026-08-10T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/10/election-officials-worried-prediction-betting-markets-kalshi-polymarket",
+    "title": "Prediction markets place odds on election results. Officials say they could erode public trust."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 74148,
+    "kind": "item",
+    "occurred_at": "2026-08-10T16:23:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-assistance-commission-new-memo-trump-dismissals",
+    "title": "Federal voting commission says it can’t change rules after Trump sacked leadership"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 74147,
+    "kind": "item",
+    "occurred_at": "2026-08-10T17:10:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-revives-arizona-voting-restrictions-ahead-of-midterms",
+    "title": "Court revives Arizona voting restrictions ahead of midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 74524,
+    "kind": "item",
+    "occurred_at": "2026-08-10T20:43:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/as-federal-protections-dwindle-more-states-pass-their-own-voting-rights-acts",
+    "title": "As federal protections dwindle, more states pass their own voting rights acts"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 74907,
+    "kind": "item",
+    "occurred_at": "2026-08-11T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/why-alabama-is-sending-half-of-its-voters-back-to-the-polls-for-a-second-primary-election",
+    "title": "Why Alabama is sending half of its voters back to the polls for a second primary election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75140,
+    "kind": "item",
+    "occurred_at": "2026-08-11T16:51:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-national-security-emergency-take-over-elections",
+    "title": "Trump signals openness to unconstitutional plot to take over elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75139,
+    "kind": "item",
+    "occurred_at": "2026-08-11T18:28:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-deniers-bombarded-michigan-with-voting-conspiracies-during-democratic-senate-primary",
+    "title": "Election deniers bombarded Michigan with voting conspiracies during Democratic Senate primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75338,
+    "kind": "item",
+    "occurred_at": "2026-08-11T19:02:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/south-dakota-republican-direct-democracy-restrictions-appeals-court-blocked",
+    "title": "South Dakota GOP direct democracy restrictions remain blocked"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75337,
+    "kind": "item",
+    "occurred_at": "2026-08-11T19:02:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-county-defends-plan-to-swap-voting-maps-between-primary-and-november-election",
+    "title": "Texas county defends plan to swap voting maps between primary and November election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75336,
+    "kind": "item",
+    "occurred_at": "2026-08-11T21:42:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-blocks-trumps-anti-mail-voting-executive-order-again-this-time-nationwide",
+    "title": "Federal judge blocks Trump’s anti-mail voting executive order again — this time nationwide"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75335,
+    "kind": "item",
+    "occurred_at": "2026-08-11T21:58:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-supreme-court-chief-justice-warns-gop-against-running-out-the-clock-on-redistricting-referendum",
+    "title": "Missouri Supreme Court Chief Justice warns GOP against running out the clock on redistricting referendum"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75334,
+    "kind": "item",
+    "occurred_at": "2026-08-12T00:36:58+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/12/trump-executive-order-mail-in-voting-postal-service-injunction",
+    "title": "Federal judge blocks Trump’s efforts to restrict mail-in voting nationwide"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75540,
+    "kind": "item",
+    "occurred_at": "2026-08-12T01:29:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-tom-tiffany-wins-wisconsin-gop-nomination-for-governor",
+    "title": "Election denier Tom Tiffany wins Wisconsin GOP nomination for governor"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75539,
+    "kind": "item",
+    "occurred_at": "2026-08-12T03:40:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-conspiracy-theorist-mike-lindell-loses-minnesota-gop-governor-primary",
+    "title": "Election conspiracy theorist Mike Lindell loses Minnesota GOP governor primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 75538,
+    "kind": "item",
+    "occurred_at": "2026-08-12T03:53:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/former-minnesota-lawmaker-who-backs-voting-restrictions-wins-gop-secretary-of-state-primary",
+    "title": "Former Minnesota lawmaker who backs voting restrictions wins GOP secretary of state primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76141,
+    "kind": "item",
+    "occurred_at": "2026-08-12T16:21:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-mike-lindell-denies-own-double-digit-loss-in-minnesota-gop-governor-primary",
+    "title": "Election denier Mike Lindell denies own double-digit loss in Minnesota GOP governor primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76140,
+    "kind": "item",
+    "occurred_at": "2026-08-12T16:57:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-hampshire-sued-for-banning-student-ids-to-vote-as-part-of-gops-broader-attack-on-young-voters",
+    "title": "New Hampshire sued for banning student IDs to vote as part of GOP’s broader attack on young voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76137,
+    "kind": "item",
+    "occurred_at": "2026-08-12T16:59:27+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/08/12/milwaukee-election-error-delayed-results-2026-primary",
+    "title": "An election night error overshadowed Milwaukee’s improvements at processing absentee ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76139,
+    "kind": "item",
+    "occurred_at": "2026-08-12T17:06:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-begs-supreme-court-to-quickly-unblock-anti-mail-voting-executive-order",
+    "title": "Trump admin begs Supreme Court to quickly unblock anti-mail voting executive order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76138,
+    "kind": "item",
+    "occurred_at": "2026-08-12T18:42:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/minnesota-supreme-court-upholds-witness-signature-for-absentee-ballots-which-can-make-voting-harder",
+    "title": "Minnesota Supreme Court upholds witness signatures for absentee ballots, which can make voting harder"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76337,
+    "kind": "item",
+    "occurred_at": "2026-08-12T18:50:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/michigan-judge-tosses-gop-lawsuit-that-aimed-to-make-it-easier-to-challenge-voter-eligibility",
+    "title": "Michigan judge tosses GOP lawsuit that aimed to make it easier to challenge voter eligibility"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76338,
+    "kind": "item",
+    "occurred_at": "2026-08-12T19:56:19+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/with-latest-win-progressive-vermont-prosecutor-looks-to-double-down-on-reforms",
+    "title": "With Latest Win, Progressive Vermont Prosecutor Looks to Double Down on Reforms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76334,
+    "kind": "item",
+    "occurred_at": "2026-08-12T21:26:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/08/12/robert-howden-secretary-of-state-defend-open-primaries-lawsuit",
+    "title": "New secretary of state will continue to defend Texas’ open primaries against GOP lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76336,
+    "kind": "item",
+    "occurred_at": "2026-08-12T21:47:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nebraska-court-throws-out-rnc-lawsuit-targeting-overseas-voters",
+    "title": "Nebraska court throws out RNC lawsuit targeting overseas voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 76335,
+    "kind": "item",
+    "occurred_at": "2026-08-12T22:21:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-revives-key-parts-of-texas-voter-suppression-law",
+    "title": "Appeals court revives key parts of Texas voter suppression law found to harm voters with disabilities"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77236,
+    "kind": "item",
+    "occurred_at": "2026-08-13T19:41:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-perfect-storm-for-nobody-to-show-up-why-alabama-voters-skipped-the-redistricting-primary",
+    "title": "‘A perfect storm for nobody to show up’: Why Alabama voters skipped the redistricting primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77235,
+    "kind": "item",
+    "occurred_at": "2026-08-13T21:12:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-dhs-twin-cities-minnesota-surveillance-operation",
+    "title": "Trump admin conducted major surveillance operation in Minnesota during protest crackdown, new filings show"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77234,
+    "kind": "item",
+    "occurred_at": "2026-08-13T21:30:32+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/08/13/federal-appeals-court-restores-mail-ballot-id-requirement-sb-1",
+    "title": "Texas’ mail ballot ID requirements restored by federal appeals court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77233,
+    "kind": "item",
+    "occurred_at": "2026-08-13T23:28:49+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/13/attorney-general-dana-nessel-charges-5-noncitizen-voters-2024-election",
+    "title": "Michigan charges 5 noncitizens for allegedly voting in 2024 election"
+  }
+]
