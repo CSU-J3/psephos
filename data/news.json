@@ -4358,5 +4358,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/michigan/2026/08/13/attorney-general-dana-nessel-charges-5-noncitizen-voters-2024-election",
     "title": "Michigan charges 5 noncitizens for allegedly voting in 2024 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77838,
+    "kind": "item",
+    "occurred_at": "2026-08-14T14:09:03+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/kansas-supreme-court-ballot-measure-defeat-and-new-judicial-appointments",
+    "title": "A Ballot Measure’s Defeat, and New Judicial Appointments, Foil Kansas Conservatives"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77837,
+    "kind": "item",
+    "occurred_at": "2026-08-14T16:38:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hakeem-jeffries-restoring-voting-rights-reforming-supreme-court-top-priorities-for-democrats",
+    "title": "Hakeem Jeffries: Restoring voting rights, reforming Supreme Court top priorities for Democrats"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77836,
+    "kind": "item",
+    "occurred_at": "2026-08-14T17:34:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-supreme-court-gutted-vra-mississippi-tries-to-bring-back-a-gop-gerrymander",
+    "title": "After Supreme Court gutted VRA, Mississippi tries to bring back a GOP gerrymander"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 77839,
+    "kind": "item",
+    "occurred_at": "2026-08-14T18:25:35+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/cisa-later",
+    "title": "CISA Later"
   }
 ]
