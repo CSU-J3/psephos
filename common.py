@@ -23,6 +23,38 @@ RETRY_STATUS = {429, 500, 502, 503, 504}
 UNIT_SEP = "\x1f"  # field separator for content hashing
 
 
+class HttpError(RuntimeError):
+    """A non-retryable HTTP error status, carrying the body that explains it.
+
+    RUNTIMEERROR SUBCLASS DELIBERATELY, and the choice is load-bearing rather
+    than stylistic. `resolve_docket`'s caller catches `RuntimeError` to treat a
+    failed resolve as a per-item skip (collectors/litigation.py); the two poll
+    handlers catch broad `Exception`. Raising anything outside that hierarchy
+    would let a malformed request escape `main()` and take down a run, which is
+    the exit-0 invariant that transport failures already honour. A bad query is
+    a per-item failure, not a run-ending one.
+
+    Deliberately NOT a sibling of RateBudgetExhausted, which is not a
+    RuntimeError precisely because a spent daily cap SHOULD abort the run rather
+    than be swallowed per item.
+
+    THE BODY TRAVELS WITH THE EXCEPTION. `raise_for_status()` used to be what
+    ran here, and it discards the response body -- so a 400 arrived as
+    "400 Client Error: Bad Request for url: ..." with the server's explanation
+    thrown away. CourtListener answers a bad filter with exactly the diagnostic
+    needed (`{"detail":"Unknown filter parameters are not allowed.",
+    "unknown_params":["case_name__icontains"]}`), and losing it cost four
+    requests and a second session to recover.
+    """
+
+    def __init__(self, status_code: int, url: str, body: str = ""):
+        self.status_code = status_code
+        self.url = url
+        self.body = body
+        detail = f": {body[:500]}" if body else ""
+        super().__init__(f"HTTP {status_code} for {url}{detail}")
+
+
 class RateBudgetExhausted(Exception):
     """A daily request cap is spent; no retry within our wait budget can refill it.
     Distinct from a burst-rate 429 (transient, retried). Carries seconds until the
@@ -46,7 +78,9 @@ def _get(
 
     `throttle` sleeps before the request to stay under a documented rate limit.
     Retries on 429 and 5xx with exponential backoff (honoring Retry-After when
-    present); raises for any other error status.
+    present); raises `HttpError` IMMEDIATELY on any other error status, without
+    sleeping or retrying, carrying the response body. See HttpError for why the
+    two categories are separated and why the body has to survive the raise.
     """
     if throttle:
         time.sleep(throttle)
@@ -69,7 +103,28 @@ def _get(
                         raise RateBudgetExhausted(reset)
                 time.sleep(_retry_after(resp, attempt))
                 continue
-            resp.raise_for_status()
+            # RETRYABILITY IS A CATEGORY, NOT A SEVERITY. Retry exists for answers
+            # that can differ next time: a 429 (the window moves), a 5xx in
+            # RETRY_STATUS (the server may recover), a transport failure (the
+            # connection may succeed). A 4xx outside that set is the server saying
+            # the REQUEST is wrong, and re-sending it unchanged cannot change the
+            # answer -- so raise on the first response, with no sleep and no loop.
+            # This extends the principle the 429 path above already states in as
+            # many words ("abort now rather than flail MAX_RETRIES times"); that
+            # reasoning was applied to the daily cap and never to the rest.
+            #
+            # Measured cost of the old behaviour: `raise_for_status()` raised
+            # HTTPError, a requests.RequestException subclass, which the handler
+            # below caught and retried -- so every 400/401/403/404 in this
+            # project's history cost 4 requests against a contended quota and 7s
+            # of backoff, and threw away the body that said why. One malformed
+            # CourtListener query on 2026-08-14 spent 4 of a 2-request budget and
+            # yielded nothing.
+            # `status_code >= 400` rather than `resp.ok`: the same test without
+            # depending on a requests-specific property, which keeps the Response
+            # surface this function needs to exactly status_code/headers/text/json.
+            if resp.status_code >= 400:
+                raise HttpError(resp.status_code, url, resp.text)
             return resp
         except requests.RequestException as exc:
             last_exc = exc
