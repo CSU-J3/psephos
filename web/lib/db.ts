@@ -291,3 +291,70 @@ export async function getNewsExcludedCount(): Promise<number> {
   );
   return Number((rs.rows[0] as unknown as { n: number }).n);
 }
+
+// --- the DOJ voter-data campaign ---------------------------------------------
+// One row per docket in the campaign, keyed by the jurisdiction DOJ sued. The
+// filter is `state IS NOT NULL`, which is the campaign's own definition rather
+// than a hand-maintained id list: collectors/litigation.py writes `state` from
+// the tracker artifact and leaves it NULL for the two config seeds, which sue
+// federal agencies (Common Cause v. DOJ, LWV v. DHS) and belong to no state.
+// 38 of 40 rows as of 2026-08-14 -- both counts move as the tracker does.
+//
+// `status_checked_at` comes back because it is the ONLY honest "last checked"
+// receipt. `entries_synced_at` is the upstream CourtListener date_modified
+// high-water, held on an empty window by design, so a docket polled 4x/day and
+// quiet for a month carries a month-old mark -- Hawaii reads 2026-07-15 there
+// against a status_checked_at of 2026-08-14. Rendering the former would report
+// psephos asleep on a docket it had just read. It is NOT selected here, so the
+// wrong column is not in reach of the view at all.
+export type CampaignRow = {
+  case_id: string;
+  state: string;
+  caption: string;
+  court: string | null;
+  docket_number: string | null;
+  status: string | null;
+  filed_at: string | null;
+  latest_entry_at: string | null;
+  status_checked_at: string | null;
+  superseded_by: string | null;
+  source_url: string | null;
+};
+
+// The tracker's own status prose, one string per case: the latest B2 subject item
+// written by collectors/litigation.py:write_b2_item from the artifact's `notes`.
+// These are VERSIONED -- the collector writes a new item whenever the notes change
+// and dedups on content_hash, so there are 81 rows over 40 cases -- hence MAX(id)
+// rather than a plain join, which would fan out to every historical revision.
+//
+// This is the only thing on the page that can tell a stayed docket from a dead
+// one. Arizona's reads "On 6/22/26, the 9th Circuit stayed DOJ's appeal pending
+// resolution of the appeals in DOJ's cases against CA and OR" -- a fact no docket
+// date carries. It is B2 and must render as B2: it is the tracker's summary, not
+// a court record, and the page grades it separately from the docket facts.
+export async function getTrackerNotes(): Promise<Map<string, string>> {
+  const rs = await db.execute(
+    `SELECT i.case_id, i.summary
+     FROM items i
+     JOIN (SELECT case_id, MAX(id) AS mid FROM items
+           WHERE channel = 'litigation' AND admiralty_source = 'B'
+             AND case_id IS NOT NULL
+           GROUP BY case_id) m ON m.mid = i.id`,
+  );
+  const out = new Map<string, string>();
+  for (const r of rs.rows as unknown as { case_id: string; summary: string | null }[]) {
+    if (r.summary) out.set(r.case_id, r.summary);
+  }
+  return out;
+}
+
+export async function getCampaignRows(): Promise<CampaignRow[]> {
+  const rs = await db.execute(
+    `SELECT case_id, state, caption, court, docket_number, status, filed_at,
+            latest_entry_at, status_checked_at, superseded_by, source_url
+     FROM cases
+     WHERE state IS NOT NULL
+     ORDER BY state, case_id`,
+  );
+  return rs.rows as unknown as CampaignRow[];
+}

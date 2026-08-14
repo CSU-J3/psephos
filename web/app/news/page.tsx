@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getNewsFeed, getNewsExcludedCount } from "@/lib/db";
 import { formatDate } from "@/lib/format";
+import { Grade } from "@/components/Grade";
 
 // Live Turso per request, no build-time dependency -- same as every other route.
 // Deliberately NOT reading data/news.json: no route in this app reads a snapshot,
@@ -71,10 +72,11 @@ export default async function NewsPage() {
                   <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500">
                     <span className="tabular-nums">{formatDate(it.occurred_at)}</span>
                     <span>{it.source_id}</span>
-                    <span className="rounded border border-neutral-700 px-1.5 py-0.5 font-mono tabular-nums">
-                      {it.admiralty_source}
-                      {it.admiralty_info}
-                    </span>
+                    {/* Was an inline span duplicating Grade.tsx, which had shipped
+                        06-30 and was already rendering in the executive section and
+                        every timeline. The copy dropped the reliability tint, so a
+                        C3-demoted item here read identically to a B2 one. */}
+                    <Grade grade={`${it.admiralty_source}${it.admiralty_info}`} />
                     {it.bill_id && (
                       <Link
                         href={`/bill/${it.bill_id}`}

@@ -67,6 +67,19 @@ export default async function Home() {
       </section>
 
       <section className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold tracking-tight">
+          The DOJ voter-data campaign
+        </h2>
+        <Link
+          href="/campaign"
+          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
+        >
+          One grid over all 50 states and DC: where DOJ sued, where it lost, and where
+          it has not acted →
+        </Link>
+      </section>
+
+      <section className="mt-10">
         <SectionHeading title="Cases" count={cases.length} />
         {cases.length === 0 ? (
           <p className="text-sm text-neutral-500">No cases yet.</p>
