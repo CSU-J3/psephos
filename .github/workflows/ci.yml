@@ -31,10 +31,13 @@ jobs:
         with:
           python-version: "3.12"        # matches collect.yml; keep the two in step
 
+      # requirements-dev.txt, not requirements.txt: the latter is what the cron
+      # installs and carries no test runner. Installing the production list and then
+      # running pytest is how this job failed its first run.
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
       # tests/conftest.py blocks live HTTP at HTTPAdapter.send, and no suite reads
       # Turso, so this job needs no secrets. If a test ever fails here for want of a
@@ -51,7 +54,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v4      # version comes from package.json packageManager
+      # package_json_file is resolved from the REPO ROOT, not from the job's
+      # working-directory -- `defaults.run` applies to `run` steps only, never to an
+      # action's inputs. There is no root package.json, so the default made the action
+      # fail with "No pnpm version is specified" on this job's first run. Pointing it
+      # at web/package.json is what lets it read `packageManager` for the version.
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: web/package.json
 
       - uses: actions/setup-node@v4
         with:

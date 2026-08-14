@@ -1,0 +1,10 @@
+# Test-only dependencies. Kept OUT of requirements.txt deliberately: that file is what
+# the cron installs on every scheduled run, and the collectors have no business pulling
+# a test runner into production.
+#
+# Its absence here is what failed ci.yml's first run -- the job installed
+# requirements.txt and then ran `python -m pytest`, which was not there. Locally it had
+# always been present in the environment, so seven weeks of "165 tests pass" never
+# needed it declared. The first thing CI verified was that this file had to exist.
+-r requirements.txt
+pytest>=8.0
