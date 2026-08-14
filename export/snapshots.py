@@ -278,9 +278,23 @@ def build_news(conn) -> list[dict]:
     `classify()` demotes an item to C3 when it attaches to the vehicle bill by
     inference, so five Democracy Docket items are stored C3 despite coming from a
     B2 source. Filtering on `items.admiralty_source` would silently drop exactly
-    those five. Joining `sources` instead asks the question the spec asks -- how
-    reliable is this outlet -- and survives a new B2 feed being added to config
-    without a code change. A test pins the five.
+    those five. Joining `sources` is the better of the two available fields and
+    survives a new B2 feed being added to config without a code change. A test
+    pins the five.
+
+    THIS DOCSTRING USED TO CLAIM THE JOIN "asks the question the spec asks -- how
+    reliable is this outlet". Measured false 2026-08-14 and corrected here rather
+    than left standing while the policy question waits. `sources` is the DELIVERY
+    PIPE, not the outlet, and the two diverge: 138 of the 2,986 Google News items
+    (4.6%) come from outlets this config already grades B2, Democracy Docket 105
+    of them. Split by cohort, 74 predate the earliest item in the B2 Democracy
+    Docket feed (2026-06-26) and are backfill asymmetry -- that feed reaches back
+    only to psephos's first poll -- while 31 fall inside its coverage window and
+    11 of those (35.5%) are absent from it, which is an ongoing pipe miss. So the
+    same outlet's same journalism is graded B2 or C3 by which feed carried it.
+    The fix is outlet-level promotion, which the spec already contemplates ("C3
+    until corroborated, then promote") and nothing implements; it is a grading
+    POLICY change and deliberately not made here. See docs/status.md.
 
     The join cannot inflate the count: `sources.id` is a PRIMARY KEY (schema.sql),
     so every item matches at most one source row and the result is one entry per
