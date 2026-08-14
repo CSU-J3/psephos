@@ -1037,3 +1037,106 @@ def test_the_real_selection_failure_is_caught_not_just_a_stub(tmp_path, monkeypa
 
     assert lit.main() == 0
     assert "status refresh pass failed, skipped" in capsys.readouterr().err
+
+
+def test_config_then_tracker_seed_is_one_row_last_writer_wins(tmp_path, monkeypatch):
+    """The charter's exit condition, pinned at its seam (handoff 70).
+
+    config/sources.yaml may carry a circuit successor the UW tracker trails. That
+    bend is only safe because it SELF-NEUTRALIZES: litigation.main() iterates
+    `config_seeds + tracker_seeds`, so the tracker writes last, and `cases.case_id`
+    is the CourtListener docket id, so both seeds land on ONE row rather than two.
+    When UW rewrites the state row its values simply overwrite the config seed's.
+
+    WHAT THIS PROTECTS: a refactor that reorders those two lists -- or keys the
+    reuse lookup differently -- silently breaks the self-neutralization, and the
+    symptom would be a stale config value winning over the tracker (e.g. a `state`
+    that no longer matches, dropping the row off /campaign) with nothing red.
+
+    It also pins the free-text join key. The reuse lookup is
+    `WHERE docket_number = ? AND court = ?` on `court`, NOT `court_id`, so the
+    config seed has to spell the court exactly as UW does ("Second Circuit") or the
+    tracker's later pass misses and spends a second resolve on a docket already
+    held. The assertion is that resolve is called ONCE across both seeds.
+    """
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    conn.commit()
+
+    calls = {"n": 0}
+
+    def fake_resolve(base, headers, dn, court_id):
+        calls["n"] += 1
+        assert (dn, court_id) == ("26-2064", "ca2")
+        return {"id": 73686333, "absolute_url": "/docket/73686333/usa-v-thomas/",
+                "date_filed": "2026-07-28", "date_terminated": None,
+                "case_name": "United States of America v. Thomas"}
+
+    monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], None))
+
+    # The config seed as it now ships: UW's court spelling, its own state.
+    config_seed = {
+        "caption": "United States of America v. Thomas", "docket_number": "26-2064",
+        "court": "Second Circuit", "court_id": "ca2", "category": "voter-data",
+        "state": "Connecticut", "notes": "seeded 2026-08-14; remove on UW rewrite",
+    }
+    # The artifact row UW will eventually publish. Same docket, same court spelling.
+    # `state` carries the tracker's disambiguation suffix so the assertion also shows
+    # normalize_state ran on the WINNING write. `category` is deliberately made to
+    # differ from the config seed's -- in production both read "voter-data", which
+    # would make the assertion pass whichever write landed and pin nothing. A
+    # discriminator is the only way this test can tell the order it exists to pin.
+    tracker_seed = dict(config_seed, state="Connecticut (1)",
+                        category="registration-law",
+                        notes="Claims: Civil Rights Act 1960 | Status: appeal docketed")
+
+    for seed in [config_seed] + [tracker_seed]:        # main()'s order, literally
+        lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=5)
+
+    # `notes` is deliberately absent here: it lands on the B2 item, not the case row.
+    rows = conn.execute("SELECT case_id, court, docket_number, state, category "
+                        "FROM cases").fetchall()
+    assert len(rows) == 1                              # ONE row, not two
+    assert str(rows[0]["case_id"]) == "73686333"       # keyed on the CL docket id
+    assert rows[0]["state"] == "Connecticut"           # suffix stripped on the winning write
+    assert rows[0]["category"] == "registration-law"   # the TRACKER's value: it wrote LAST
+    assert calls["n"] == 1                             # reuse hit: no second resolve spent
+    conn.close()
+
+
+def test_reuse_lookup_misses_when_the_court_string_disagrees(tmp_path, monkeypatch):
+    """The negative half, and the reason the config comment insists on UW's spelling.
+
+    Spell the court differently between the two seeds and the reuse lookup -- which
+    matches on the free-text `court` -- misses, so the second pass resolves again.
+    Same single row in the end (the docket id is the PK either way), but a request
+    was spent to learn what the first pass already knew.
+    """
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    conn.commit()
+    calls = {"n": 0}
+
+    def fake_resolve(base, headers, dn, court_id):
+        calls["n"] += 1
+        return {"id": 73686333, "absolute_url": "/docket/73686333/usa-v-thomas/",
+                "date_filed": "2026-07-28", "date_terminated": None,
+                "case_name": "United States of America v. Thomas"}
+
+    monkeypatch.setattr(lit, "resolve_docket", fake_resolve)
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], None))
+    base_seed = {"caption": "US v. Thomas", "docket_number": "26-2064",
+                 "court_id": "ca2", "category": "voter-data", "state": "Connecticut",
+                 "notes": "n"}
+    for court in ("2nd Cir.", "Second Circuit"):       # the mistake, then UW's form
+        lit.collect_case(conn, "base", {}, dict(base_seed, court=court), [], [],
+                         bootstrap_requests=5)
+
+    assert len(conn.execute("SELECT case_id FROM cases").fetchall()) == 1
+    assert calls["n"] == 2                             # the miss cost a second resolve
+    conn.close()
