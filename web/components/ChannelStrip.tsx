@@ -1,8 +1,10 @@
 import type { ChannelCount } from "@/lib/db";
 
-// The four channels of federal pressure as a count strip across the top: the
-// breadth of the items spine at a glance (legislation / executive / litigation /
-// news, whichever are present).
+// The channels of federal pressure as a count strip across the top: the breadth
+// of the items spine at a glance. FIVE today -- executive, legislation,
+// litigation, news, state. The `sm:grid-cols-4` below wraps the fifth onto its
+// own row; that is move 1's problem, since the redesign replaces raw totals with
+// deltas. Corrected here so the comment stops contradicting the query.
 export function ChannelStrip({ counts }: { counts: ChannelCount[] }) {
   if (counts.length === 0) {
     return <p className="text-sm text-neutral-500">No items yet.</p>;
