@@ -164,6 +164,108 @@ def test_upsert_case_preserves_asserted_superseded_by(tmp_path):
     conn.close()
 
 
+def test_normalize_state_strips_the_trackers_docket_suffix():
+    """`Georgia (1)` and `Georgia (2)` are one jurisdiction with two dockets, not two
+    states. The artifact disambiguates inside the state field because it carries one
+    row per docket; a per-state view joining the raw value renders two Georgia cells.
+    Pinned here because the suffix is the tracker's convention and can only be caught
+    at the boundary. The None arm is the config seeds, which carry no state at all."""
+    assert lit.normalize_state("Georgia (1)") == "Georgia"
+    assert lit.normalize_state("Georgia (2)") == "Georgia"
+    assert lit.normalize_state("Georgia") == "Georgia"
+    assert lit.normalize_state("New Hampshire") == "New Hampshire"   # a space survives
+    assert lit.normalize_state("DC") == "DC"                          # DC is a value, not a gap
+    assert lit.normalize_state(None) is None
+    assert lit.normalize_state("") is None
+    assert lit.normalize_state("   ") is None
+
+
+def test_upsert_case_writes_state_from_the_seed_and_null_for_a_config_seed(tmp_path):
+    """Two arms of one rule, because they fail in opposite directions.
+
+    A tracker seed carries `state` and the row must take it NORMALIZED -- writing the
+    raw `Georgia (1)` would push the artifact's row convention into the database and
+    every consumer would have to know about it.
+
+    A config seed carries no `state` key at all, and the row must take NULL. Common
+    Cause v. DOJ and LWV v. DHS sue federal agencies; they have no state, and the NULL
+    is the mechanism that keeps them out of every per-state view rather than an
+    absence nobody noticed. `.get()` returning None must not become the string 'None'
+    or an empty string, both of which would render as a 32nd jurisdiction."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+
+    tracker_seed = {"caption": "United States v. Georgia", "docket_number": "5:25-cv-00548",
+                    "court": "Middle District of Georgia", "category": "voter-data",
+                    "state": "Georgia (1)", "notes": "n"}
+    lit.upsert_case(conn, "72053306", tracker_seed, None)
+
+    config_seed = {"caption": "Common Cause v. U.S. Department of Justice",
+                   "docket_number": "1:26-cv-01352", "court": "D.D.C.",
+                   "category": "voter-data", "notes": "n"}
+    lit.upsert_case(conn, "73218916", config_seed, None)
+    conn.commit()
+
+    states = {r["case_id"]: r["state"]
+              for r in conn.execute("SELECT case_id, state FROM cases").fetchall()}
+    assert states == {"72053306": "Georgia", "73218916": None}
+    conn.close()
+
+
+def test_state_is_rewritten_on_the_reuse_path_not_only_on_first_resolve(tmp_path):
+    """`state` must sit in the UNCONDITIONAL row dict, not behind `if docket is not None`.
+
+    This is the invariant the whole column design rests on: the backfill is one-time
+    only because the collector rewrites `state` on every seeded row on every run. Reuse
+    (docket=None) IS the steady state -- both 2026-08-10 runs polled 34 dockets and
+    printed `incremental` for all 34, with zero resolves -- so a write behind that guard
+    would land on first resolve and never again. A tracker rename, or a change to
+    normalize_state, would then diverge from the database silently and permanently.
+    That is the write-once shape `status` already has (see tools/status_audit), and it
+    is the wrong shape for a column added to render a per-state view.
+
+    The discrimination was demonstrated, not assumed: with the write moved inside the
+    guard this fails on the last assertion below (`'Georgia' != 'Georgia Corrected'`).
+    `test_normalize_state_...` keeps passing under either placement, since it never
+    calls upsert_case. `test_upsert_case_writes_state_...` also fails under the guard,
+    but only INCIDENTALLY -- it happens to pass `docket=None`, so it exercises the reuse
+    path by accident of how it was written rather than by anything it asserts, and it
+    would stop covering this the moment someone handed it a docket. That is the argument
+    for a dedicated test rather than leaning on the coverage next door.
+
+    Two arms, since a rename must both apply and normalize: `Georgia (1)` -> `Georgia (2)`
+    is the same jurisdiction and must stay `Georgia` (the value cannot go stale as
+    `Georgia` for the wrong reason), and a genuine relabel must actually move."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+
+    seed = {"caption": "United States v. Georgia", "docket_number": "5:25-cv-00548",
+            "court": "Middle District of Georgia", "category": "voter-data",
+            "state": "Georgia (1)", "notes": "n"}
+    docket = {"case_name": "United States v. RAFFENSPERGER", "date_filed": "2025-12-18",
+              "date_terminated": "2026-01-23", "absolute_url": "/docket/1/us-v-ga/"}
+    lit.upsert_case(conn, "72053306", seed, docket)      # first resolve
+    conn.commit()
+
+    state = lambda: conn.execute(
+        "SELECT state FROM cases WHERE case_id = '72053306'").fetchone()["state"]
+    assert state() == "Georgia"
+
+    # The tracker's suffix moves on a refile; the jurisdiction does not. Reuse path.
+    lit.upsert_case(conn, "72053306", {**seed, "state": "Georgia (2)"}, None)
+    conn.commit()
+    assert state() == "Georgia"
+
+    # A genuine relabel on the reuse path must reach the column. This is the assertion
+    # that fails if the write sits behind the docket guard.
+    lit.upsert_case(conn, "72053306", {**seed, "state": "Georgia Corrected"}, None)
+    conn.commit()
+    assert state() == "Georgia Corrected"
+    conn.close()
+
+
 def test_main_exits_zero_when_every_resolve_rate_limits(tmp_path, monkeypatch):
     """The whole point of the guard: a rate-limited resolve no longer crashes main()."""
     monkeypatch.setattr(config, "load_env", lambda *a, **k: None)   # never read a real .env (no Turso creds leak in)

@@ -305,6 +305,7 @@ _MIGRATIONS = [
     ("cases", "entries_synced_at", "TEXT"),
     ("cases", "superseded_by", "TEXT REFERENCES cases(case_id)"),
     ("cases", "status_checked_at", "TEXT"),
+    ("cases", "state", "TEXT"),
 ]
 
 

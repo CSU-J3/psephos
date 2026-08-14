@@ -83,6 +83,29 @@ def split_caption(caption: str) -> tuple[str | None, str | None]:
     return (m[0].strip(), m[1].strip()) if len(m) == 2 else (None, None)
 
 
+_STATE_SUFFIX = re.compile(r"\s*\(\d+\)\s*$")
+
+
+def normalize_state(value: str | None) -> str | None:
+    """The tracker's state label with its disambiguation suffix stripped.
+
+    `data/doj_cases.json` carries one row per DOCKET, so a state with two dockets
+    disambiguates inside the state field itself: `Georgia (1)` is the M.D. Ga. suit
+    and `Georgia (2)` the N.D. Ga. refile that replaced it. That suffix is the
+    tracker's bookkeeping, not part of the state's name, and a per-state view that
+    joins on the raw value renders two Georgia cells for one jurisdiction. Strip it
+    once, here, at the boundary where the artifact enters the database, so no
+    consumer has to know the artifact's row convention.
+
+    Returns None when the seed carries no `state` at all. That is not a gap: the two
+    `config/sources.yaml` seeds (Common Cause v. DOJ, LWV v. DHS) are suits against
+    federal agencies, so they have no state by construction and the NULL is what
+    keeps them out of any per-state grouping. See schema.sql cases.state."""
+    if not value:
+        return None
+    return _STATE_SUFFIX.sub("", value).strip() or None
+
+
 def is_substantive(description: str, types: list[str], excludes: list[str]) -> bool:
     """True if the entry should be promoted to an A1 items row."""
     d = (description or "").lower()
@@ -289,6 +312,11 @@ def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | No
         "court": seed.get("court"),
         "docket_number": seed.get("docket_number"),
         "category": seed.get("category"),
+        # Seed-derived like court/docket/category, so it belongs in the base dict and
+        # not behind the `docket is not None` gate -- the artifact is the only source
+        # of it and CourtListener never supplies one. A seed that carries no state
+        # writes NULL, which is correct for the two federal-defendant config seeds.
+        "state": normalize_state(seed.get("state")),
         "plaintiff": plaintiff,
         "defendant": defendant,
         "seeded_from": SEED_SOURCE_ID,

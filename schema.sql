@@ -95,6 +95,20 @@ CREATE TABLE IF NOT EXISTS cases (
                                              -- column's creation until handoff 27; no such value was
                                              -- ever written.)
     category        TEXT,                    -- voter-data | executive-order | registration-law | redistricting | other
+    state           TEXT,                    -- the jurisdiction DOJ sued, e.g. 'Georgia', 'DC'. Written by
+                                             -- `upsert_case` in collectors/litigation.py from the tracker
+                                             -- artifact's `state` field, through `normalize_state`, which
+                                             -- strips the per-docket disambiguation suffix (`Georgia (1)`
+                                             -- -> `Georgia`). NOT derivable from `court`: a circuit hears
+                                             -- appeals from several states, so `First Circuit` alone covers
+                                             -- RI, MA, ME and NH -- 14 of the 40 rows are circuit rows and
+                                             -- court-derivation fails on every one. NULL is meaningful and
+                                             -- correct on the two config seeds (Common Cause v. DOJ, LWV v.
+                                             -- DHS), which are suits against federal agencies and belong in
+                                             -- no per-state view. A terminated row that has dropped out of
+                                             -- the artifact keeps whatever value it had, since nothing
+                                             -- upserts it again; the six that predate this column were
+                                             -- filled once by scripts/backfill_case_state.py.
     plaintiff       TEXT,
     defendant       TEXT,
     latest_entry_at TEXT,

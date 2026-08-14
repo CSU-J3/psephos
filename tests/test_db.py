@@ -535,3 +535,38 @@ def test_migration_adds_status_checked_at_to_a_legacy_cases_table(tmp_path):
     row = sqlite3.connect(path).execute(
         "SELECT status, status_checked_at FROM cases WHERE case_id = '72053306'").fetchone()
     assert row == ("terminated", None)
+
+
+def test_migration_adds_state_to_a_legacy_cases_table(tmp_path):
+    """Same mechanism as the test above, for `cases.state` (handoff 53).
+
+    Written separately rather than folded in, because the two columns reach production
+    by the same route but mean different things on arrival: a NULL `status_checked_at`
+    makes a row DUE, while a NULL `state` makes a row INVISIBLE to a per-state view.
+    The second failure is silent -- a grid renders 30 cells instead of 31 and nothing
+    errors -- so the ALTER landing on the live Turso table is the only thing standing
+    between the column and a hole nobody would be told about.
+
+    Asserted against a table built WITHOUT the column: a fresh schema would gain it
+    from the CREATE and pass even with _MIGRATIONS empty."""
+    path = tmp_path / "legacy_state.db"
+    legacy = sqlite3.connect(path)
+    legacy.execute(
+        "CREATE TABLE cases (case_id TEXT PRIMARY KEY, caption TEXT NOT NULL, status TEXT)")
+    legacy.execute("INSERT INTO cases VALUES ('71453026', 'US v. PENNSYLVANIA', 'terminated')")
+    legacy.commit()
+    legacy.close()
+
+    cols = lambda p: [r[1] for r in sqlite3.connect(p).execute("PRAGMA table_info(cases)")]
+    assert "state" not in cols(path)
+
+    db.init_db(str(path))
+
+    assert "state" in cols(path)
+    # ALTER, not rebuild: the row survives and the new column reads NULL. This row is
+    # one of the six the collector can never reach -- W.D. Pa. dropped out of the
+    # tracker when its appeal was docketed -- so NULL here is exactly the state the
+    # backfill exists to clear.
+    row = sqlite3.connect(path).execute(
+        "SELECT status, state FROM cases WHERE case_id = '71453026'").fetchone()
+    assert row == ("terminated", None)
