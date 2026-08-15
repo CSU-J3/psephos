@@ -364,3 +364,71 @@ def test_process_entry_stores_the_outlet_preferring_the_structured_field(tmp_pat
     assert got["Headline one - Some Wire"] == "Votebeat"        # structured wins
     assert got["Headline two - Democracy Docket"] == "Democracy Docket"   # parsed
     conn.close()
+
+
+# --------------------------------------------------------------------------- #
+# The suffix defeated fuzzy dedup (handoff 82, Part B)
+#
+# Google News appends ` - Publisher`, inflating the title by two or three tokens
+# -- enough to hold token_sort_ratio under the 0.90 cutoff, so the same article
+# from an outlet's own feed and from Google News did not collapse. 30 such pairs
+# were sitting in the database when this was measured, one B2 and one C3.
+# --------------------------------------------------------------------------- #
+def test_strip_outlet_suffix_leaves_the_headline():
+    assert news.strip_outlet_suffix("A headline - Votebeat") == "A headline"
+    assert news.strip_outlet_suffix("No suffix here") == "No suffix here"
+    # The stored title is NOT rewritten; only the dedup key is computed from this.
+    assert news.strip_outlet_suffix("Court Cases - Idaho Thing - Democracy Docket") \
+        == "Court Cases - Idaho Thing"
+
+
+def test_the_same_article_collapses_across_the_two_pipes():
+    """THE DEFECT. The outlet's own feed carries the bare headline; Google News
+    carries it with a publisher tag. Before this they were two rows."""
+    conn, ctx, gn_grade = _env()
+    seen: list[str] = []
+    headline = ("Trump DOJ loses again, now 0 for 5 on voter roll cases, as court "
+                "rejects Rhode Island lawsuit")
+    a = news.process_entry(conn, _entry(headline, "https://democracydocket.com/x", "same lede"),
+                           "democracy-docket", ("B", "2"), ctx, seen)
+    b = news.process_entry(conn, _entry(f"{headline} - Democracy Docket",
+                                        "https://news.google.com/rss/articles/CBMi123",
+                                        "same lede"),
+                           "google-news", gn_grade, ctx, seen)
+    assert a == "new"
+    # Stage 2a, not 2b: with the suffix stripped the two hash IDENTICALLY, so the
+    # collapse happens at the cheap exact-match stage and never reaches the fuzzy
+    # scan. Before Part B this was a second row.
+    assert b == "dup_hash"
+    assert _count(conn, "Rhode Island") == 1
+
+    # The realistic shape too: the two pipes rarely carry the same lede, so the
+    # hashes differ and the fuzzy stage is what has to catch it. That is the path
+    # the suffix was actually defeating.
+    c = news.process_entry(conn, _entry("Court blocks USPS from implementing the order",
+                                        "https://democracydocket.com/y", "lede from the feed"),
+                           "democracy-docket", ("B", "2"), ctx, seen)
+    d = news.process_entry(conn, _entry("Court blocks USPS from implementing the order"
+                                        " - Democracy Docket",
+                                        "https://news.google.com/rss/articles/CBMi456",
+                                        "a different lede entirely"),
+                           "google-news", gn_grade, ctx, seen)
+    assert c == "new" and d == "dup_fuzzy"
+    assert _count(conn, "Court blocks USPS") == 1
+    conn.close()
+
+
+def test_a_plain_rss_headline_ending_in_a_dash_phrase_is_not_truncated():
+    """The stripping is scoped to the aggregator on purpose. `- explained` is not a
+    publisher, and truncating it would collapse two genuinely different articles
+    that happen to share a prefix."""
+    conn, ctx, gn_grade = _env()
+    seen: list[str] = []
+    news.process_entry(conn, _entry("Voter roll purges - explained", "https://votebeat.org/1"),
+                       "votebeat", ("B", "2"), ctx, seen)
+    r = news.process_entry(conn, _entry("Voter roll purges - what comes next",
+                                        "https://votebeat.org/2"),
+                           "votebeat", ("B", "2"), ctx, seen)
+    assert r == "new"                              # not folded into the first
+    assert _count(conn, "Voter roll purges") == 2
+    conn.close()

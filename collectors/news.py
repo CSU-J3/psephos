@@ -165,7 +165,16 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
     link = (raw.get("link") or "").strip()
     summary = clean_html(raw.get("summary") or "")
     canon = canonical_url(link)
-    title_norm = normalize_text(title)
+    # DEDUP ON THE HEADLINE, NOT ON THE AGGREGATOR'S DECORATION. Google News appends
+    # ` - Publisher` to every title, which inflates it by two or three tokens -- and
+    # that is enough to hold token_sort_ratio under the 0.90 cutoff, so the SAME
+    # article arriving from an outlet's own feed and from Google News did not
+    # collapse. Measured 2026-08-15: 30 such pairs sitting in the database, one
+    # graded B2 and one C3. Stripped only for the aggregator, because the
+    # convention is its own -- a plain RSS headline ending in ` - explained` is not
+    # a publisher and must not be truncated.
+    dedup_title = strip_outlet_suffix(title) if source_id == GNEWS_SOURCE_ID else title
+    title_norm = normalize_text(dedup_title)
     lede_norm = normalize_text(summary)[:LEDE_CHARS]
     chash = common.content_hash(title_norm, lede_norm)
 
@@ -267,6 +276,17 @@ def outlet_from_title(title: str) -> str | None:
     if " - " not in title:
         return None
     return title.rsplit(" - ", 1)[1].strip() or None
+
+
+def strip_outlet_suffix(title: str) -> str:
+    """The headline without the aggregator's ` - Publisher` tail.
+
+    Used for DEDUP KEYS ONLY -- the stored `title` keeps the suffix, because it is
+    what the feed actually said and the outlet now lives in its own column. The
+    point is that the same article must hash the same whether it arrived from an
+    outlet's own feed or from Google News wearing a publisher tag."""
+    outlet = outlet_from_title(title)
+    return title[: -(len(outlet) + 3)].strip() if outlet else title
 
 
 def gnews_url(base: str, query: str) -> str:
