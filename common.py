@@ -84,7 +84,17 @@ def _get(
     """
     if throttle:
         time.sleep(throttle)
+    # EXHAUSTION HAS TWO CAUSES AND THE MESSAGE HAS TO SAY WHICH. A retryable
+    # status and a transport failure both end up at the raise below, so the last
+    # attempt's outcome is recorded here rather than reconstructed there.
+    # Whichever fired LAST wins and clears the other: reporting a status
+    # alongside a transport exception would pair two failures that never
+    # co-occurred, and a stale __cause__ from three attempts ago is worse than
+    # none. Clearing last_exc on the status path is also what keeps that path's
+    # `from None` behaviour with a single raise statement.
     last_exc: Exception | None = None
+    last_status: int | None = None
+    last_body = ""
     for attempt in range(MAX_RETRIES):
         try:
             resp = requests.get(url, params=params, headers=headers, timeout=timeout)
@@ -101,6 +111,7 @@ def _get(
                     reset = _reset_seconds(resp)
                     if reset is not None and reset > MAX_RETRY_AFTER:
                         raise RateBudgetExhausted(reset)
+                last_exc, last_status, last_body = None, resp.status_code, resp.text
                 time.sleep(_retry_after(resp, attempt))
                 continue
             # RETRYABILITY IS A CATEGORY, NOT A SEVERITY. Retry exists for answers
@@ -127,9 +138,26 @@ def _get(
                 raise HttpError(resp.status_code, url, resp.text)
             return resp
         except requests.RequestException as exc:
-            last_exc = exc
+            last_exc, last_status = exc, None
             time.sleep(2 ** attempt)
-    raise RuntimeError(f"GET failed after {MAX_RETRIES} attempts: {url}") from last_exc
+    # THE ASYMMETRY THIS CLOSES. HttpError above exists because raise_for_status()
+    # discarded the body that explained the failure -- and the retryable branch
+    # beside it discarded the status AND the body, taking `continue` without
+    # recording the response, so exhaustion raised this bare message from None.
+    # Measured cost: at the 2026-08-15 00:00Z run all nine LegiScan states failed
+    # identically with "GET failed after 4 attempts: https://api.legiscan.com/",
+    # about twenty minutes of a 30m15s run, and the log cannot say whether that
+    # was 429, 500 or 503. Not academic -- LegiScan's EDU tier carries a monthly
+    # cap that presents as a 429, so the log as written cannot separate "upstream
+    # had a bad night" from "we are out of quota for the month", and "transient"
+    # becomes a verdict on persistence with the cause never measured.
+    # Same shape as HttpError's (status, then body at 500 chars); the prefix is
+    # unchanged, so the new material is strictly appended.
+    detail = ""
+    if last_status is not None:
+        detail = f" (last: HTTP {last_status}{f': {last_body[:500]}' if last_body else ''})"
+    raise RuntimeError(
+        f"GET failed after {MAX_RETRIES} attempts: {url}{detail}") from last_exc
 
 
 def http_get(
