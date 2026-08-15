@@ -308,10 +308,29 @@ def build_news(conn) -> list[dict]:
     """
     rows = conn.execute(
         "SELECT i.* FROM items i JOIN sources s ON s.id = i.source_id "
-        "WHERE i.channel = 'news' AND s.admiralty_source = 'B' "
+        f"WHERE i.channel = 'news' AND ({news_feed_predicate()}) "
         "ORDER BY i.occurred_at, i.id"
     ).fetchall()
     return sorted((_item_entry(r) for r in rows), key=_sort_key)
+
+
+def news_feed_predicate() -> str:
+    """The feed's membership rule: a B2 PIPE or a B2 OUTLET.
+
+    OUTLET PROMOTION (handoff 82) is the second half, and it is a read-time
+    derivation on purpose. Nothing rewrites `items.admiralty_source`: the item's
+    stored grade records what the delivery pipe said, which the spec's
+    record-both-and-flag rule wants kept, and a policy that may change should not
+    be baked into 109 rows. Stored would also not have saved any work -- all three
+    filtering call sites test the SOURCE's grade, so promoting by rewriting the
+    item would have left every one of them unchanged.
+
+    THIS TEXT IS DUPLICATED IN TYPESCRIPT (`web/lib/db.ts`) because the export and
+    the view are different runtimes. The B2 outlet list is generated from
+    `config/sources.yaml` on this side and pinned to it by a test on the other, so
+    the two can drift only through a failing test rather than silently."""
+    return ("s.admiralty_source = 'B' OR ("
+            + config.news_outlet_sql(config.b2_outlet_keys()) + ")")
 
 
 def build_state_bills(conn) -> list[dict]:
@@ -368,9 +387,13 @@ def main() -> int:
         news = build_news(conn)
         # Print the excluded count beside the included one, every run: this file is
         # a graded subset and the number is meaningless without its complement.
+        # The exact complement of build_news, so the two always sum to the channel.
+        # NOT `<> 'B'`: with outlet promotion the membership rule is no longer a
+        # single column test, and negating only half of it would double-count every
+        # promoted item -- reported as both included and excluded.
         news_excluded = conn.execute(
             "SELECT COUNT(*) FROM items i JOIN sources s ON s.id = i.source_id "
-            "WHERE i.channel = 'news' AND s.admiralty_source <> 'B'"
+            f"WHERE i.channel = 'news' AND NOT ({news_feed_predicate()})"
         ).fetchone()[0]
     finally:
         conn.close()

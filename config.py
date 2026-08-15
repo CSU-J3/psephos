@@ -57,3 +57,46 @@ def grade(d: dict | None) -> tuple[str, str]:
     """Normalize a {source, info} Admiralty grade dict to ('A', '1') strings."""
     d = d or {}
     return str(d.get("source", "")), str(d.get("info", ""))
+
+
+def b2_outlet_keys(sources: dict | None = None) -> list[str]:
+    """Normalized names of the outlets this config grades B2, for outlet promotion.
+
+    DERIVED FROM THE FEED LIST RATHER THAN RESTATED. The registry already says
+    which outlets are B2 -- that is what a B2 feed entry means -- so a second
+    hand-maintained list would only be a way for the two to disagree. A feed id
+    normalizes to the same key its outlet name does (`democracy-docket` and
+    `Democracy Docket` and `democracydocket.com` all reduce to `democracydocket`),
+    which is what lets one list serve both.
+
+    The key is a PREFIX, matched against a normalized `items.outlet`. Prefix rather
+    than equality because outlets spell themselves inconsistently across the
+    corpus: 106 items say `Democracy Docket`, 20 say `democracydocket.com`, and
+    States United arrives as `States United Democracy Center`. Equality drops every
+    variant, which is how this unit's own first measurement undercounted by 20."""
+    news = (sources or load_sources()).get("news", {})
+    return sorted(
+        outlet_key(f["id"]) for f in news.get("feeds", [])
+        if str(grade(f.get("grade"))[0]).upper() == "B"
+    )
+
+
+def outlet_key(value: str | None) -> str:
+    """Fold an outlet name or feed id to a comparable key: lowercase alphanumerics.
+
+    Mirrors the SQL in `news_outlet_sql` exactly. If you change one, change both --
+    the parity test in tests/test_export.py exists because they can silently
+    disagree, and a promotion rule that disagrees with itself between the export
+    and the view is the failure this whole unit is about."""
+    return "".join(ch for ch in (value or "").lower() if ch.isalnum())
+
+
+def news_outlet_sql(keys: list[str], column: str = "i.outlet") -> str:
+    """SQL predicate: does `column` name one of these B2 outlets?
+
+    The REPLACE chain is the SQL spelling of `outlet_key` -- lowercase, then drop
+    the two characters outlets actually vary on (spaces and dots). Written as a
+    string rather than parameterised because it is generated from config, never
+    from user input, and both callers need the identical text."""
+    norm = f"REPLACE(REPLACE(LOWER({column}), ' ', ''), '.', '')"
+    return " OR ".join(f"{norm} LIKE '{k}%'" for k in keys)

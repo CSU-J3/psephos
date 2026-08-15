@@ -10,6 +10,7 @@ Run:  pytest tests/test_export.py
 from __future__ import annotations
 
 import os
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -18,6 +19,7 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO))
 os.chdir(REPO)  # db.init_db uses a repo-relative schema path
 
+import config  # noqa: E402
 import db  # noqa: E402
 from export import snapshots  # noqa: E402
 
@@ -419,3 +421,82 @@ def test_news_excludes_other_channels():
     _item(conn, source_id="legiscan", title="state, also a B-graded source",
           occurred_at="2026-06-02", state_bill_id=None)
     assert [e["title"] for e in snapshots.build_news(conn)] == ["news"]
+
+
+# --------------------------------------------------------------------------- #
+# Outlet promotion: the two runtimes must agree (handoff 82, Part C)
+#
+# The membership rule is written twice -- Python for the export, TypeScript for
+# the view -- because they are different runtimes. That is tolerable only if a
+# test fails when they disagree, since the failure mode is silent: news.json and
+# /news would simply carry different items, which is the exact defect (one
+# outlet's journalism graded two ways) this unit exists to remove.
+# --------------------------------------------------------------------------- #
+DB_TS = Path(REPO) / "web" / "lib" / "db.ts"
+
+
+def test_b2_outlet_keys_are_derived_from_the_feed_list():
+    """Derived, not restated. A B2 feed entry IS the statement that the outlet is
+    B2, so a second hand-maintained list could only be a way to disagree."""
+    keys = config.b2_outlet_keys()
+    assert keys == sorted(keys)                     # order pinned, so the TS array can match
+    assert "democracydocket" in keys and "votebeat" in keys
+    # Google News is C3 and must never appear -- promoting the aggregator itself
+    # would readmit the 2,844 items the feed exists to exclude.
+    assert "googlenews" not in keys
+
+
+def test_the_typescript_outlet_list_matches_the_config():
+    """THE PIN. web/lib/db.ts hardcodes the keys because it cannot read the YAML at
+    request time; this is what stops that copy from rotting."""
+    src = DB_TS.read_text(encoding="utf-8")
+    m = re.search(r"B2_OUTLET_KEYS\s*=\s*\[(.*?)\]", src, re.S)
+    assert m, "B2_OUTLET_KEYS not found in web/lib/db.ts"
+    ts_keys = sorted(re.findall(r'"([^"]+)"', m.group(1)))
+    assert ts_keys == config.b2_outlet_keys()
+
+
+def test_the_sql_fold_matches_the_python_fold():
+    """`outlet_key` and the REPLACE chain must agree on every spelling that appears
+    in the live corpus, or an item is promoted by one runtime and not the other."""
+    for spelling in ("Democracy Docket", "democracydocket.com", "votebeat.org",
+                     "States United Democracy Center", "Votebeat"):
+        folded = config.outlet_key(spelling)
+        # The SQL does lowercase + drop spaces and dots; outlet_key drops all
+        # non-alphanumerics. They agree because these are the only characters the
+        # live spellings vary on -- asserted here so a new spelling with, say, an
+        # ampersand fails loudly instead of diverging.
+        sql_equivalent = spelling.lower().replace(" ", "").replace(".", "")
+        assert folded == sql_equivalent, spelling
+    assert any(config.outlet_key("democracydocket.com").startswith(k)
+               for k in config.b2_outlet_keys())
+
+
+def test_the_predicate_and_its_complement_partition_the_channel(tmp_path):
+    """The feed and the excluded count must sum to the channel. Negating only the
+    source clause would report a promoted item as both."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    conn.execute("INSERT INTO sources (id, name, channel, kind, admiralty_source,"
+                 " admiralty_info, enabled) VALUES ('google-news','g','news','rss','C','3',1)")
+    conn.execute("INSERT INTO sources (id, name, channel, kind, admiralty_source,"
+                 " admiralty_info, enabled) VALUES ('votebeat','v','news','rss','B','2',1)")
+    rows = [("google-news", "promoted", "democracydocket.com"),
+            ("google-news", "aggregate", "The Hill"),
+            ("votebeat", "direct", None)]
+    for i, (sid, title, outlet) in enumerate(rows):
+        conn.execute(
+            "INSERT INTO items (channel, source_id, source_url, title, fetched_at,"
+            " admiralty_source, admiralty_info, outlet, content_hash)"
+            " VALUES ('news',?,'u',?, '2026-08-15','C','3',?,?)", (sid, title, outlet, f"h{i}"))
+    conn.commit()
+
+    pred = snapshots.news_feed_predicate()
+    inc = conn.execute("SELECT COUNT(*) AS n FROM items i JOIN sources s ON s.id=i.source_id"
+                       f" WHERE i.channel='news' AND ({pred})").fetchone()["n"]
+    exc = conn.execute("SELECT COUNT(*) AS n FROM items i JOIN sources s ON s.id=i.source_id"
+                       f" WHERE i.channel='news' AND NOT ({pred})").fetchone()["n"]
+    assert (inc, exc) == (2, 1)          # promoted + direct in; the aggregate out
+    assert inc + exc == len(rows)        # a partition, not two overlapping filters
+    conn.close()

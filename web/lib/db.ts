@@ -316,12 +316,54 @@ export type NewsItem = {
   bill_id: string | null;
 };
 
+// --- outlet promotion (handoff 82) -------------------------------------------
+// `source_id` is the DELIVERY PIPE, not the publisher, and one aggregator carries
+// hundreds of outlets -- so filtering on the pipe's grade graded the same
+// journalism B2 or C3 by which feed happened to carry it. 159 Google News items
+// come from outlets this config already grades B2, read individually and correct
+// 159 of 159 (2026-08-15).
+//
+// PROMOTION IS READ-TIME. Nothing rewrites items.admiralty_source: the item's
+// stored grade records what the pipe said, which the spec's record-both rule
+// wants kept, and a policy that may change should not be baked into rows.
+//
+// KEYS ARE MIRRORED FROM config/sources.yaml, where they are derived from the B2
+// feed ids. A Python test pins this array against that file, so the export and
+// this view can drift only through a failing test. Prefix-matched, because
+// outlets spell themselves inconsistently: `Democracy Docket` (106 items),
+// `democracydocket.com` (20), `States United Democracy Center` against a
+// `states-united` feed id. Equality drops every variant.
+export const B2_OUTLET_KEYS = ["bolts", "democracydocket", "statesunited", "votebeat"];
+
+// The SQL spelling of the same fold: lowercase, then drop the two characters
+// outlets actually vary on. Must stay identical to config.outlet_key/news_outlet_sql.
+function outletPredicate(column: string): string {
+  const norm = `REPLACE(REPLACE(LOWER(${column}), ' ', ''), '.', '')`;
+  return B2_OUTLET_KEYS.map((k) => `${norm} LIKE '${k}%'`).join(" OR ");
+}
+
+// A B2 pipe, or a B2 outlet on any pipe.
+const NEWS_FEED_PREDICATE = `s.admiralty_source = 'B' OR (${outletPredicate("i.outlet")})`;
+
+// The displayed grade: promoted to B2 by the OUTLET, otherwise the item's own.
+//
+// NOT a flat 'B','2' for every feed member, and the difference is load-bearing.
+// `classify()` demotes five Democracy Docket items to C3 when they attach to the
+// vehicle bill by inference -- a deliberate per-item override, which the spec
+// provides for and which stamping the feed's grade on every row would erase. Those
+// five arrive on the outlet's own RSS feed, where `outlet` is NULL (the source_id
+// already names the publisher), so this CASE leaves them exactly as they are.
+const NEWS_GRADE = (col: string, promoted: string) =>
+  `CASE WHEN ${outletPredicate("i.outlet")} THEN '${promoted}' ELSE ${col} END`;
+
 export async function getNewsFeed(): Promise<NewsItem[]> {
   const rs = await db.execute(
     `SELECT i.id, i.source_id, i.title, i.source_url, i.occurred_at,
-            i.admiralty_source, i.admiralty_info, i.bill_id
+            ${NEWS_GRADE("i.admiralty_source", "B")} AS admiralty_source,
+            ${NEWS_GRADE("i.admiralty_info", "2")} AS admiralty_info,
+            i.bill_id
      FROM items i JOIN sources s ON s.id = i.source_id
-     WHERE i.channel = 'news' AND s.admiralty_source = 'B'
+     WHERE i.channel = 'news' AND (${NEWS_FEED_PREDICATE})
      ORDER BY i.occurred_at DESC, i.id DESC`,
   );
   return rs.rows as unknown as NewsItem[];
@@ -354,8 +396,18 @@ export const getFeed = unstable_cache(
   async (): Promise<FeedEntry[]> => {
     const { day, week } = windowStarts(new Date());
     const rs = await db.execute({
-      sql: `SELECT id, channel, title, source_url, source_id, occurred_at,
-                   fetched_at, admiralty_source, admiralty_info,
+      // The grade is derived, not raw, for the SAME reason the news feed derives
+      // it: an outlet psephos grades B2 must not badge C3 here while badging B2 on
+      // /news. Two components on one site disagreeing about one item's reliability
+      // is the defect outlet promotion exists to remove, and the homepage is where
+      // a reader meets these items first. No JOIN is still needed -- the rule reads
+      // items.outlet, not the source row -- so the note above about this query
+      // filtering on nothing continues to hold.
+      sql: `SELECT id, channel, title, source_url, source_id, occurred_at, fetched_at,
+                   CASE WHEN ${outletPredicate("outlet")} THEN 'B'
+                        ELSE admiralty_source END AS admiralty_source,
+                   CASE WHEN ${outletPredicate("outlet")} THEN '2'
+                        ELSE admiralty_info END AS admiralty_info,
                    bill_id, case_id, state_bill_id
             FROM items
             WHERE fetched_at >= ?
@@ -371,9 +423,12 @@ export const getFeed = unstable_cache(
 // The complement, so the feed can never be read as "the news channel". Shown
 // beside the count on the page for the same reason the export prints it.
 export async function getNewsExcludedCount(): Promise<number> {
+  // The exact complement of getNewsFeed, so the pair always sums to the channel.
+  // NOT `<> 'B'`: the membership rule is two clauses now, and negating one of them
+  // would report every promoted item as both included and excluded.
   const rs = await db.execute(
     `SELECT COUNT(*) AS n FROM items i JOIN sources s ON s.id = i.source_id
-     WHERE i.channel = 'news' AND s.admiralty_source <> 'B'`,
+     WHERE i.channel = 'news' AND NOT (${NEWS_FEED_PREDICATE})`,
   );
   return Number((rs.rows[0] as unknown as { n: number }).n);
 }
