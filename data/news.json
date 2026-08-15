@@ -1,6 +1,386 @@
 [
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 885,
+    "kind": "item",
+    "occurred_at": "2022-04-28T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNFp3Zm01QzJsWnJ4WDN3WDYwSnR4WmE3a0sxR3dmcFRuWFJUVVVDbkNhTmpoT0R2VGdGeVNNQnYtclNPZkd5NFJ3MDZlY1I5R2pGNkk0cWN0YldPMi1NQXJEenNFWTZJRGJGS1hzME93SXhBbUF6MGxKalNrcDdpWDZvQ19SRFVKa2MxeWgySmdNVVFRdk9XRjhCV09fVFF2a0dRRkpUTFNkWWdrYVMw?oc=5",
+    "title": "How a trusted voter roll program came under attack by extremists - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 66063,
+    "kind": "item",
+    "occurred_at": "2023-12-15T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQN1B0RVBOblhqNmdOOUU2Um8tcnFhNjg0NUY2ZlEtMnFWN0wyWHEzcnI0ZGNramd5M3FsMnNteE92SWYtYUF1ZkluNF84dWZoLVVKZm9nd2ZYLWE3Rlg3QllkRWlaZENoaHpISF9VRzRrLUsyZXRrWGp3LUxPRWpJc1kyMUN1WFp6V2lnWlYxcEExb1VxXzlpNnFmbDE?oc=5",
+    "title": "Shapiro administration cancels $10.7 million contract for Pennsylvania voter roll system upgrade - votebeat.org"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 2083,
+    "kind": "item",
+    "occurred_at": "2024-09-26T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOY25JNkRZZlRiUndZYmk1X0RDdWRvWk9UV3IyVmUxNGJtMHFTaTQxNnU3RDRrTEs0cUV2RmhCbUdmbk5UWV90bVpzU1lZcGtTdlMwOFBkSnVVbEJXcE5VVkdDM2xFb3Nwa3d1SU9NZldTYjhjNTdmVUt2MGd5a1dBRHg3ejUybE95aTJWbXRUWVAyejJLbzB3LW1NelZDUktNRFJoZHJUOA?oc=5",
+    "title": "What’s the Difference Between Voter ID and Proof of Citizenship? - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 838,
+    "kind": "item",
+    "occurred_at": "2025-09-04T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOWWtRSnRib0ZTNXR6TXdWMzdmNklOYmlxb09paXp4ZEhqR0R6QkFDd2JiczRmZjc4enJYcGpRTWhNMGVxaFhHa19fVzRTQWFJYVRmVVpxNXBIelFyWlZ4N1ZMRnVwdnNWcDdOeXBIbEs4T0YtOHdndmVQYW9KcWNYNXRDX3hPMEdvb1RaVlM5b1dLWi1KWlJtYTNwcXV6NkFXdWFwenVZdXFMLUU?oc=5",
+    "title": "Why ensuring ‘clean’ voter rolls is such a touchy subject - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 2067,
+    "kind": "item",
+    "occurred_at": "2025-09-15T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNSkN5cDNzTTk0UTlNdmlQanRwQTBvSy1sclZxTzdXT1RpdlVYbTFSMGl0TXhjcGdxNlQxZkhicXJ0VUVUbjJFTEhKQ2k0dUUwNWcxbnB3NllDS0sxVWxIckxESUlLQ1l0VGlIdlg1NTJJZ3ZrY3dxNW9sQ0FDMWhBVUFkMURRYk04d2c5QWViaUNnTVAwLTNPVGxOWmJMV1hKZExwdXBaU2staW5XaFEzemRMYTFqNWlOTHIxcTM2RXVNWndzb0dCVG53ellvQQ?oc=5",
+    "title": "Right Wing Groups Press Election Agency on Proof Citizenship Rule for Voter Registration - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 875,
+    "kind": "item",
+    "occurred_at": "2025-10-16T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNRThiOTNJeGZwNVhIUFNPMmNRTmUxOHlvcHliVmRrRjBQMm1OVmYwTnJhR01UTWVOZExqY1VPaU1vYmJSaVY3MjBSRThraWVtOTFJUjdZTGk4NTNLelFUTXAtMEswZXB0Y0xraWJoaTF4UWxlLUN4Q2p1NlQ0QmFWWDlVZU5VWHM?oc=5",
+    "title": "🚨 NY Citizens Audit Civic Fund v. James - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 62800,
+    "kind": "item",
+    "occurred_at": "2026-01-09T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNbkZCdjctRjJIS0ZLYlMxMGJpUklHTGxjNThvWnM2NDc2cHZ6SUxFUW8xMzQteXhBLThheTFfdHk3cGk5VV9pSXZxVTRKZnloZ3RibVVHZTJXX1NVTF9rcEVOcExVYmNhTzFjY1ZzbzJFTE8xbmFIQTh2R1MxWHlwM3B0NjM5cDRBOEphNmlfYVZOV3dYM19ETGtlX2RLR19kWlpjam0zZTQ2MVBSMFV5dl9HNUt4cjBHNU5GV1hOUGZSeHJfV3REdUF5X1RqX0Vfcko5QW9SejFldw?oc=5",
+    "title": "Federal court blocks key parts of Trump’s anti-voting order, restores states’ control over elections - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1421,
+    "kind": "item",
+    "occurred_at": "2026-01-13T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOZDBHakdjMjVXQ1pMajZzdDNiZ21YUGtaQWlORi1QSHJNRFFneGR3TnN1UERKeS1NWVdmM0R5QjBNMVZ4X3RlRTI3ZXRGTUpjeDVJNU5Wa2Q1U0pUUHM2VnVkeGhUdUtfdlB6ZmMwZWZnVlplbFhnVEYzbDFWS3o0ZTZ2Wkkwa0pvdldsZUJ0S0h1dw?oc=5",
+    "title": "Trump’s election executive order again set back with latest court ruling - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 828,
+    "kind": "item",
+    "occurred_at": "2026-01-29T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxQWWJLd2xGRDh4MnZiSEVSY2lMMU9xaXBhZ2Nta3pINl8tY1Q5ZjVydmFqOEozNkd4TkxzNkNFOGJRby1xazk0THVhWVNneVZ1UkJJVFNPaXF3azVLOTNiZjhJUy1UNC1WZktkdENOLVNzeGQ1Q0xjLUhTeGloQks1dFlrSEt1NlpHRzQ2QzhaUEZ5VHV3UHRqSlN4YzkxdEhYdjBlbHRlcGxzR3dYOXZhaEJoSWpxcU5IUFF4T3N6VURBZw?oc=5",
+    "title": "New GOP anti-voting bill may be the most dangerous attack on voting rights ever - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1279,
+    "kind": "item",
+    "occurred_at": "2026-01-30T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNNFBGaEs5cU5OSEZmMmlFc0VQb05KNHVpSXlqamRvNTczVE90R3B5VTJGS1l5R1NUdlRNUWdINjM1OFVLN0tlZzhpb2VBTHYzWVhrbm0wSThPeThpcF9BZzBWZi1DMGNjUXk3cEZsTFZDUl9qai1QaExDT1JzeGlOd2J6d3pyTlhwUUM1Rjktc0UyTW14TUpWUHhIQ3FmWG1GeUMtbF93VjFsZTk5ekJFN2h3?oc=5",
+    "title": "In major rebuke, federal judge blocks key parts of Trump’s anti-voting order - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 2900,
+    "kind": "item",
+    "occurred_at": "2026-02-06T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNMFotMEVYNDN0UmtlTlNnMUM2bWs1dDRxalk1YzJhOXJMelU0cUFlZmJXNEhmeTA4Tk9JUTBQWDV2SHI1UmZweE9KTzltbEtGUEk3VkkxaDNwQ2ZHRTU2a3QxS29GMDRLMldIa09rcmVuV0tTX2ZRQWNwTDRrVnhGVll1elJ4eUQwOTJaaFdYTHJYUnFYNS16Mk04LVpyNHpmMEhQU1NUYUV3RTNnQUVPbjVQNFFScUktX1l5WjU0VzNvZw?oc=5",
+    "title": "Republicans propose major election-law changes ahead of 2026 midterms - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 681,
+    "kind": "item",
+    "occurred_at": "2026-02-10T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNOVJrdDhabGpHX0hyVDlFSUt2R0ktT2pkNWloakdaVTdKSjh3bXZOM0loeEFLZld5TUNBVUpXVmpvQnc4czV2Z05wWnBiaGhVbzBGQ3F2UXpoVFc3UXlnWjdyWkVPUHc5Q1JBZ21HQTI3VVhJblZJZUFFYzhvV1o5Qk0zRkRlMXN3UXZSRU9CdlU2QnUwQjVKVHE4ZEI4cG1lRWQxb1lJUkFONHcyOFFhVFJwTHNrOHB1VUF3Zzh3N0V3UHB6YVJvUEh3M2hHR0ViSVRTcg?oc=5",
+    "title": "Judge swats down Trump administration’s pursuit of Michigan voter data - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 878,
+    "kind": "item",
+    "occurred_at": "2026-02-10T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNUGlGNVZSdmFhWW1PS21aVzB2TGZyeFlka0pRQkdjMU1QNWxwMnNmVS1WdFU2emdPQ2NIb0NMa1AwMlJiQ2REd0szZEhPd0FxYmxlY01SRV95VEtVRWNjN2pjVmVBZ21sU3ZNWW0zTl9HVnpCZE8zQlB0TjRnaVAyTkgzcEQwSERpTmIzakpVWHhjSmN3Z0dZZ2RxT19EYnltUkFLTHFseFM3QjdPSnR5REZoNUg5VVBwUmxHMw?oc=5",
+    "title": "House Republicans further voter ID bills that would disenfranchise millions - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 515,
+    "kind": "item",
+    "occurred_at": "2026-02-16T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPVnhLaUZvYkZmZWRNUWNwOHRHY182aGhuY3JlMDdjcFBmMkV1VXBqcktFRjZMV05KQVc1aXBfQktRSGFtcnpyNnhfRmxPOWl0Uk5LVHlMenV5MzlrbmR3Tnp1REkzQ2RxNnJRcFFaSS1McE9MUnNPbXY0WFJsSy1SejhWdGxfajYtZ19td2YwRlVlS0VueTZRcFdzZy14X05jTWt6b0NJSW9kQjY4UWp3?oc=5",
+    "title": "A Trump-backed bill could throw the 2026 midterms into disarray - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 724,
+    "kind": "item",
+    "occurred_at": "2026-02-26T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNZGFzc3ItSkcwcGFSckVadzcyNDRsb2J4UGJ0VWVaX1BjNW1UcFpqOEpDNy1NYlo1Mld5SDZOQkt6QVA0bU9XZDRib2QyUFl3NVU2YV95ZHJhcDFMcXdTNzBhRjkwWnVkY0hwdXh3S0R3eldXRVpVRG0wNnFCZEhwWUJ3R09sUkNG?oc=5",
+    "title": "🚨 United States of America v. Caldwell - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 826,
+    "kind": "item",
+    "occurred_at": "2026-02-28T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNU2NQSlFQbVg0RnZOcGQtTGRQZHBjZTJORGFaZGtHUHYxZEd3SGd4NG9ULTl4OXJrNGJEeVNxQXRRd1M1XzdVakQxY3ZUTTNLdTBKWWk1dDEwbEpRVEpIdnhBTDBGN0taTEpyYTVBNEpCVHVhQ2FfNDdnMlJ0Q1V1WmF2Mms4WEdVRTJTQmNKWUE0TDlfU3FXa1N1ZFlrNTRk?oc=5",
+    "title": "SAVE America Act would crash voter registration drives - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 5074,
+    "kind": "item",
+    "occurred_at": "2026-03-06T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQd3BmMVJRclVPcWw1R1ZGdW1TZV9WTlF1UkVHQzhpaV90MHFWVkgxSHVGU0NmTVFZdnJsd2RMQ3h4bGgtWk1ZaFFuQ0cxT3QwOEtmaTBJeDA0aTdMQWZxbjFSd3RHT3d0bk9zcURBVjdCT0VISjNJMnVzNmNtZ1dRWjZiOUtPdlhSSGpIOEdnVHBQY1BXWldZdDdhdlFtTUV4bVY5amwzdWViOEVpcW1MVjJzVlM1eEhlTTJZ?oc=5",
+    "title": "DOJ aims to speed up voter roll case as deadline for removing voters looms - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1744,
+    "kind": "item",
+    "occurred_at": "2026-03-07T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQZTN1c1d0Wk9Fb2lBSUlLYzQxNTViTG1MM3Z3TkNhVXhBc0NINGRKSzExcnI3cmxzM3VmWXlPQ2hYV1p3QnR6QWxORTRheGs4NHRYeXNZWFJnaGh5dU4zakVwQTVMY0V4Y2NZWndzM0tVcWFJc2NqOXR2dWVRWHhCU3JOV1FKT0R6MTZTRlNlV1RpTE14ZElucU9HaWoxUEstYTR4RVJDd1JBOXZ6eVgtSjdqLVVMUW1N?oc=5",
+    "title": "Even red states are defiantly rejecting DOJ’s demands for private voter data - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 718,
+    "kind": "item",
+    "occurred_at": "2026-03-11T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxORWNsSVpNbFg0MmVfbEFaRXNVNGJ1NWwxTkZWXzNXZ1RYb3J4MVMxZHYwR25OOWFTV3lfdWRxSVQ2bzZuNFdKdm9sSmZ6dzlQQ0YtZkVSZ2cwM19xQUcxVWVrc2wtdWptdC1aWGYxMDBZME9fWG5zRWhtOFVXWmhSUE5DaVlyRllSS01UNGtqMmhwNVc1bmg0c1kyWFY5YmhUT245MkJyRjQzZHZleWc3b1BXLXFlQkR4WHBCem1oZzduUQ?oc=5",
+    "title": "DOJ switched positions on Kentucky’s voter rolls, making farce of its own lawsuit - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 642,
+    "kind": "item",
+    "occurred_at": "2026-03-14T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOa0p4MHZQUXBzbVBveWRfcF9uOUdubEp2SEltZGExV3V2V1pXb2lVMUdCTTFFb191bko2MmdENjdHb2hWbjE4cnNieEJNVnNzbmNjb1o1UERyclhCYmdHODd3Z1NDbFlfc0M5UUhwQW5YZGJWckZ5dG5JXzBkcFlVenZqTGR3eHJYV1RVQjEzSG9qcndFejI4QmRGUQ?oc=5",
+    "title": "Why Michigan’s voter roll case could be first to reach the Supreme Court - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 518,
+    "kind": "item",
+    "occurred_at": "2026-03-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNbGRFckR4em54UzFRVGlLd25HNWlydnlaYWRuSm1Vd3RacVdWcTkwaUszSmZzN2ExMHh0UXJ3WWpvUXQxZ3Q1RXkxTzRucUYyVEJnaWJCSDVROEVxTndLSmVMcGxJSVpzRklvVVROdmpVZzJkemxjNnRsdHNqUDZQVUNranJ1c011MElucS1mZEVYSE84UnJULWxZNWVNeDgyN2cyYzNjTzkxSEg1dFdzeGRkcFB0M2x6cVJ5TXpseDJDYTdseVRXODVLOEs?oc=5",
+    "title": "In Florida, Republicans are getting done what Congress can’t - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 633,
+    "kind": "item",
+    "occurred_at": "2026-03-24T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQVmJGeE84OHk3SFpUdW9oR2tzbjJvS1VhRkhkNC1RQmFhWlN6TnJGUnVEX1pnRzYyU1pDVGM0elZveDlsV1VET3VnWnBrQVZadDRZejRHcm00OXZtOGdnZHFYX082NWNwc1BjRDNUeXRrR3NpNmUxUFoxdEh0SVdtY0drS1JOTHhiMHd3R2x5a3Z3V2h3aFZXYzVBX0NLOFVvalV6VGd3Q3V4Z3lmSXkyam5ZZw?oc=5",
+    "title": "Oklahoma hands over voter rolls to Trump DOJ, including personal data - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1741,
+    "kind": "item",
+    "occurred_at": "2026-03-26T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBKeFFQM2JEV29OVm42VlRwaUlxNTMyRXlYYzBiSEtfUU9PQXBfVzFyZG1oYzZOWlZpbUxOT3gzQjlUc1BvaVhiYVVGZGJuVlp5VzVORE1KV1pCb2FnRHl6WXhEQ1Q5ZURZMTNWQ3IzckNzQ2NYOTdLVg?oc=5",
+    "title": "DOJ said it had no plans to share voter data with DHS. Guess what it’s now planning to do - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 779,
+    "kind": "item",
+    "occurred_at": "2026-03-31T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPcjUzRjl2ejBvWHRVZG9NWjQxd0dlVzVGUGJwcnV2OXJxSm1jSGM1NzNHOWhKUDNWNDdIbFpUMHVsWk4yX0ItWDFsS1FFNXlNTWwzYUxIWnZ6OTJYcmMzR3N2cl8tUWZpeFpqUkdiVWN4RmlveTl0S0ZzZlpVNmtZLWJCTDl5aUJHSFB1ZWFBRVduR3lEdVdUN3pTdHZGN3hQSjVtOUE5ZTRVVnVZVS1WZlRHUFFWUS1kcC1hTGhNQnZwZmhoN2NVX2NSS1lFMXAxTVAzLW1YczNWZGh6Tmc0ZlJOdW0?oc=5",
+    "title": "Trump executive order would give federal government huge role in 2026 midterms - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 792,
+    "kind": "item",
+    "occurred_at": "2026-03-31T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPVUdMN1N6VFJucjZNZzhlc1pYZ0JDSkUybnV2QWtWeHplb05PYzBIWjE2eDhXNThXTmlPN0J1eVAySmxXMWN0RENfa00xRzQ0eWhOME40VER0YmhmZVRsd2pBdnRUYUpLMFN3NXI2dUxtbXZsY1B6aW5JeFFHN0ZYbk5LU1hGRVdnR0ZnbVlsSGdzMTFKVzJNOEwtLW4?oc=5",
+    "title": "Trump signs sweeping order attacking mail-in voting - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1800,
+    "kind": "item",
+    "occurred_at": "2026-03-31T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBoNVVJU3c3anZ6LV9JUEswOWtMaEhpMTBYVE9jTmp6YlptNEZzR20tcGRyZEZiMHFCR2FyRy1GMEV1aVdka3JySWthYkROZ05oQ2tEazBqS1JpMmxuSzNUel93X3dPdjlMcnM3eGJ6OFRZdWZ3Q29za2lsSG5Odw?oc=5",
+    "title": "Sharing the Facts About Trump’s Second Executive Order on Elections - States United Democracy Center"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 711,
+    "kind": "item",
+    "occurred_at": "2026-04-01T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE4temZuU09TR2tySDFKZ0RrMjRGX2U0R3ZPNTQ4Q245MGQyV1dyVWJxWTlfZHRkOFJsbVZqOGVONTgwemdqeGtXZGhMRjNuTUxidFRWQVk3RW03aUxmRnNfVnpmaVA2SzlQR3VsRnV4TkU2Z0k?oc=5",
+    "title": "Trump DOJ sues Idaho as even red states resist voter data demands - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 725,
+    "kind": "item",
+    "occurred_at": "2026-04-01T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQQlUwWDI2d2JtMWloTkxwaEw5OUc0bEdsVlVhVElYemVaV2hmdFdiaTAwdS1heDZpS2k5Q3NqZzZhc0NCSjc3TEJiZFB6MzZPajR6Z2xVbzBId3B4Qnl0SDFYU094ZjE0blpKTVdpcF8yZ09neFNYT2NsX045ZHNPRG5n?oc=5",
+    "title": "Court Cases - Idaho DOJ Voter Data Access Challenge - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 800,
+    "kind": "item",
+    "occurred_at": "2026-04-01T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUmtIX0duZ1dvN0x4ZnI1REJoWkwtMnRUa1FBekpqZDAxVTdGWWlZazdTdWQ3OFQ0NFl2SmRJUzR6N1VoTmk2blpMcGVZNURzMWpxd1hheTRjVFdCM1BrbE40TmQxVlNJY2h0TTZKUXJEZWxSN2VjQi1xR2lKLUdXOU9pZlcwV1NQaDlveGk2dU5iM2NfRFE?oc=5",
+    "title": "Democrats sue to block Trump’s ‘unlawful’ order targeting mail-in voting - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1792,
+    "kind": "item",
+    "occurred_at": "2026-04-01T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPc1JncFRmb2RvSkYwVk1vVU5jRlZNNGVOall2aE9TN1lqRXBTM20yeHNURWdOZ1M0WTZLTWtEQzZuR212bWpnb2VibEdRdkJZdk0yYmFHLUtwa1BvZ2JIV1BKRzN0N1BkcEtZSlZOV21vZGhJVEhXZnZxYlkyRG9QY0FDYU9iQ2lfNjVKaTRSSjFhaGl3?oc=5",
+    "title": "Court Cases - Trump Mail-In Voting Executive Order Challenge (DSCC) - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 49017,
+    "kind": "item",
+    "occurred_at": "2026-04-01T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOSi1QZVRHQlNmZ2ZmQTUxWEI1cWZFaHJxMDhsOWJOMTBsSGlFbGlNT0ZJSFJ6UmNGUjItVmNGWEk1Y3dGUjN3U095cmZKZnYtbXNVSHB0SlkyZDlVOTdYaGRnZDBXMXVqYmctdFVxT2RQMV9aZmJDMlhfdVJWcUdrdzZ3UFNVemctY285Z2ZtRTJfSkxHZEZCVHYxS1hUSkpQZ3VwWGVSc1B4RExZZjduQ20wYTliLXJjRnpBWlhpRnBmU2NiVWtMQVM1NA?oc=5",
+    "title": "Trump’s anti-voting order will mean chaos for mail voters if left to stand, experts warn - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 775,
+    "kind": "item",
+    "occurred_at": "2026-04-03T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQejNJOEE2cEpCUDVLM2ExNlFCcjFkblViVWFjT2NSNDU0VWdULWh3cVpkYVFFX2E2c05fVDFWU0tkMWJxT0YzWkRtUlJIOWRuRDlUeGpIUWNmSGpTVUZ6STFKMXNFRmRDaTgyamVVU1gzVVMwRkZmdVhEbzBuLUNlLTVreUtqcndRZmZSclR3WHFvX3dwczJRbHNCUU5fTkZPZW9WSERfUUZBVFBhZEprRVRfc3JrLUtlcHlwaHNKLTB3aWdtby1xSkFGdmFPQ2pxWUE?oc=5",
+    "title": "Trump executive order is unconstitutional, lawsuit argues - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1743,
+    "kind": "item",
+    "occurred_at": "2026-04-03T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOSG9IakltVkRXaDZJOG1WbTVxTGdFREJhUmlEVVR1STVGSjVlT1pGN2ZxSFhXOGZiM196U0ZaQVJrVDNYTk4zVDEtb21sNmZsUExVMlQ2WGVxclVodjhkSmNWRkN0TmF1dHVGRFZxYnlNRWFoTVpUdVQtRmdhY1Btczh6Qks2ZEJzS1JqVWh3UU82SS1hdlc3alR2azZ3TW5ORWFtYkcwd01XWnlqSVdEZU5Mb0N3SW8?oc=5",
+    "title": "Trump’s anti-voting order may backfire, damaging DOJ’s voter roll campaign - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 2918,
+    "kind": "item",
+    "occurred_at": "2026-04-03T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQU003UjVELVA4QUZZUU5rM3BKWnI5MWtqYTFZbGd2cVJtT0Q3eXJnNjdmZHZLWGFfZktFZ3ZDclFoc3BtUkRMVHRIbHFycDhPR2t5MHVfNklEQ1ZLcW1oX3hwQXVkR3JUZ2NZS2xubVVnU0llU1JFempsSVY2UjhhX1JneEdQcFl4NUNsQXpzTjN3d3hvRk1mX3hNSXgxRFh5UFBJeGVBR3h0VVc2aktETDNrMGNTTzA?oc=5",
+    "title": "Trump anti-voting order buried in lawsuits as fourth challenge rolls in - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 778,
+    "kind": "item",
+    "occurred_at": "2026-04-06T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPQldkWXZqbEE0a2JKeDFjYWtGal9aLW1ZRW9RQlRvN3lFSGlERzY5SnVtYk5NUE9JXzZ4cmViT2dBS0JCS2RsSGFLT0JCdDMyMWNkbEE3cnVzLVMxOUd6QUtpdDlIR2dwbEU3TEdWQzNLN3l3dkhCYkxlNHZfc24xMFhUUVBIeEdZX2xjc09BYUtpbWdMbFFLejRGcjc4bEJub01OazN5dXZCZGNFU1BrTk9kUWFWRnJzTHNVNlNuc21UTEpxelpLSzJQM0o2blJ1?oc=5",
+    "title": "We still have questions about Trump’s new executive order on elections - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 719,
+    "kind": "item",
+    "occurred_at": "2026-04-07T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQc3R6dEwxUjhqeFBPazRsSjlsTFQzWW5mMWg5S2RLRHJ6QzlsSDA2Q2xxb25FNXpkeGtsMXdjdS1pMmREcDVvZVBhWmVzLWEtbUx4SFVwVGFndWsxRGtPajFVaHdGeFpicUlBRkxYOUZKaWFBdUU5UEJUTmJTcjFYcHczVXF3dDJSQzVRdUJ5bVZuNVpRZHZLQnJ1X295OC0wcHpDaTFDTWM2dGNiZERIMkVQVmxfZzlwWlo2eG5lSzlZd0o1NGc?oc=5",
+    "title": "New filing: DOJ said it wouldn’t give state voter data to DHS — then admitted it would - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 535,
+    "kind": "item",
+    "occurred_at": "2026-04-08T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPOUlYVGxEUWRqYXJrOGJnOTB4MXE0M29lSWxhMGJ1UVRkdzNKMVJhNU1BVkp1NzhTTUwzMUFwbm9hTzJMX3lIZzl5Z0NfQkg3ZkdhTGFxUkExcWZmNGV1cVlaYUNHaWwwZG84Y3NYa2JsN20tUmtmYWZpdmJka1FMS0dVU0ZDY25RZTNZd3IzTUpJRzRjQjBVYkg2QXlaLWlTcGxNR0hzRzVIRXFnZHk4alFfUnJxVEtYWFluMHd5T3poZl9DU0RlTzZOdXhYN3hjbHRMVl9B?oc=5",
+    "title": "As SAVE America Act stalls, GOP states are quietly enacting their own proof of citizenship laws - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 655,
+    "kind": "item",
+    "occurred_at": "2026-04-09T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTHp4NG9kN1JfUEpLY2taYXpub3Jnc1dDRUhXbUlLaFYxQUxVRktYRFI1RDkweWNHSUxkSURlZExBXzdmVTR4X2ZXcExuN1czckl3dy16ejFVMDJ3WkR0V1c1eDlhVWhXWXJ1N0dEYmFudEpoV0NFUGc5eTJaX0hFUDhVT2Z3azlUZExYU2NTclZJcEF4N3RnYi04aVJZRHhfZG16SV9nQ2Q0akZlZGNTSjJXb1NyQVJhY2lkcGRseFZYV3M?oc=5",
+    "title": "Trump DOJ now 0 for 4 on voter roll cases as court rejects Massachusetts lawsuit - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 334,
     "kind": "item",
@@ -61,6 +441,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 641,
+    "kind": "item",
+    "occurred_at": "2026-04-16T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQOUJ5dkZ0YnFfZmxhdFNuSy1Cc09XOFpvZmlCbTBrZmVMQ19LeE5ab3ZfWk03NjdvR0hXV1NiaGRHQ3hfSTBuaEVjU1dYRkRNaTZvNTVId2V2SmFLbGNPSlh2STZSZ1hmZkI2VFQ2Si04LWRSZVJEYTk3VDBLT19xSkduVFpLMkVvM205TnRvbnZQQlVDckNpel9MMTB0bVlhaVk5SGpLU2plOEwtV0Y3NnlfVQ?oc=5",
+    "title": "DOJ wants do-over for ‘legally deficient’ demand for state voter rolls - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 328,
     "kind": "item",
@@ -68,6 +458,26 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/04/16/rock-county-election-clerk-training-program-state-supreme-court-election",
     "title": "How one Wisconsin county is making running elections easier for new clerks"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1742,
+    "kind": "item",
+    "occurred_at": "2026-04-17T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNLTRMMGJWdXNZRXBFcDZVR2hrZDdaT05STDJaelFoZ2x0LV93VF9VNUNPNGNBVXFaeGx4M0xBMkZBRHNvWF81RmtXQlVacXNYckFZbE13WHR3Rm5lSUFkeGdEdWkwdjZ5OVNuRWFSaEtpQnlfazRuTmZpclNTQ1JmNFREUTU0VVFDV1ZiNHc3bUh0NzhfRGE2OEZwZG44VEhnY0RRc2RqQjBSc2d0eWdySkV1bWNNbEh2Tk03TVkwUzBMcWsySTdDai1Sa3A3R1puSFE?oc=5",
+    "title": "Trump DOJ loses again, now 0 for 5 on voter roll cases, as court rejects Rhode Island lawsuit - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 5070,
+    "kind": "item",
+    "occurred_at": "2026-04-17T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOQm9FWmpjeS1ma2xGX01CVEpGb3lZOTVTVkdNWVM2Z1BUQkZBblBINWJNdWYySjJkeFM0d0EtR3VCbHJXWUpTWjJtT0JuVXRWa1gtSnFER0ctRldIclBSYl9scm0zNWdfUHpGOE9NcXNfV2dUX1p0VG1WdEpqRHB4NTMxVjBzY2dTbEcyQmp6VU4yOUdaX1F2cFlMLUl1Tk5EQkVF?oc=5",
+    "title": "Trump DOJ scrambles to salvage Minnesota voter roll case — but files wrong document and leans on shaky new claim - Democracy Docket"
   },
   {
     "channel": "news",
@@ -141,6 +551,56 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 599,
+    "kind": "item",
+    "occurred_at": "2026-04-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNQ0ZvQk92dUg3TW1fOXpHeVBnb05yTXEweW1pRTRHSXR3ZkI0NG1XTTVKaUNWNTYyYnhkMFdubzFqT2doZWNYZ285NXBSeEdVQS1salEyQ2Z0ZDFKLUs4Q0xfbEhaejZoaU1QRy1FZEFjZ09uWGVCOEx4aDZ6Z19oR1FnT2JPVkk5QUtiaUJoR3VDVDlNb1F1aEJ4R1ktMTQ0X0RWVmZEcTN3bnlDclNOQTkxV1d0T1J4S1pjczlNU1lQV0E?oc=5",
+    "title": "Trump administration creating illegal national voter list, lawsuit argues - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 652,
+    "kind": "item",
+    "occurred_at": "2026-04-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOaE1qcGJWVnl5TG1xTU1sSnd5WVpHaE1HRTRZUGVWOWZQajhyaDVlTXhKTkpLcVVMSVVydkpLOEJ3NUJKNkNjc0RfbHNKX1BBc2hiSGVJeVppTjFPaWFYb0hfbGlLNDRGWmFpS1ZhZXVhdV9xRm5abzZ4ejJNeENlRU9xdWhjU2tTM0lnTFJJRUh6cFdyXzRRMzg4UFhDRm1oYW5KZm5DYmJibEFoQmQtcEdTSUVuZw?oc=5",
+    "title": "Trump DOJ falsely tells court it doesn’t want voter data to purge rolls - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 704,
+    "kind": "item",
+    "occurred_at": "2026-04-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxPejNPOTNuYUVSdmFSZldrTHM4Uk9MblNDOGV5cHJldjdIWDRIbFVtZEJCRDFxWW1qV2hDVlEzZGlPSXBVM1JBTWlmWWVQSFl6a2FaUDNud2hzY20zeVNtTEFCUEE3WFpGSEhKU2s2eDlfRFYtMFJxemxGVWNMSnJHbUREMjFpc185eE1qQjdOakJsTk9DQUdwUUhSZllsd19UdWRzTW1VQlJFQnQxNVMtdWRXTDdfbDRyeHlHOHQ5cklVbTdOYkd0RGhDbkREUmc3Wl9jNXFaLWlfbkpU?oc=5",
+    "title": "New lawsuit aims to block Trump DOJ from building national voter database via state voter roll grab - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1257,
+    "kind": "item",
+    "occurred_at": "2026-04-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQcnM5MUNpczFhWlRDb1l5NjZGTW9jM0RqbUQwWjlhSlR2WFBrRzRQaDVRYk5FWHlLa3pqMWQ1MWJ6WG82VEtHYS1fQ2NSUHE2aG5SaGtvNUhXa0tSclJoVUFvdm8xS1oyb29rUVdYVnpqbThzQnUwMlhMMWdMN21nWm1aYlpKREVk?oc=5",
+    "title": "🚨 Common Cause v. U.S. Department of Justice - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1799,
+    "kind": "item",
+    "occurred_at": "2026-04-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQX1VLc19fZkNieFQ3Ui00a0VpRmxMOHhrbm5yRkhabTdOVEpMc2lnODlVOW8xZ2hDa1phYzBzN2dBaVJBSTVDVV9jcmh6RXZNY3NGNGMtWmdUX0dIWUxBOUVJRHZVVWhCTzRrM1lreWU2WVF4aGxZQlVhc2N6d2pLbTVOaWQ0MEp1bGROYy02bVRJSUlvNmhqdW9YUGNodEF0Wmdzd3lGSWpkeDlCN2xQdkh6bFU0VENfSldtX21vTkk?oc=5",
+    "title": "A dozen red states want to help defend Trump’s anti-mail voting executive order - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 320,
     "kind": "item",
@@ -158,6 +618,46 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/04/21/dallas-county-gop-runoff-election-may-26-countywide-precinct-voting-lawsuit",
     "title": "New lawsuit seeks to force Dallas County to use precinct voting again for runoff after messy primary"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 4149,
+    "kind": "item",
+    "occurred_at": "2026-04-22T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPa1NtMzVYb01rcFV2THNZWXdiY1lldnpDZmNlLXhFNzZxS3p0VU5NRU44OHVla09Tc0FJWEU0dUctVlJrSDNUSkJwQkFmdF83TjRxQTliMm9OVHFHTzFEOWtsMkVObUtzWDBHTTloSTVnSzZxV3pXbGQ0aFNlcnhQbkdRajBveDNhZlN6UXFrcVNJdw?oc=5",
+    "title": "🚨 League of Women Voters of Alaska v. Dahlstrom - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 691,
+    "kind": "item",
+    "occurred_at": "2026-04-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPUVRWV1ZLSGhFTy1CZHBoU3FtWTBBODVXeV9HS0ZOMmJrT2RJYzlwaEtiMHo1XzFITU5obTNFWVdEaGg3TGJ2NFVCQ3llb2NyOVphNG5JX1JMTUNIZi12ZzgwLUU3cmo5bE5DNlY2aU91MW9PcHowZG5DVDk4aXdUUHlkNlVpbzZhQVEyYTY2UlV3em5oUU5sTTFfZl9tYlJac0lBMmdBVUk1dFVJV2NNdkZpSlQ?oc=5",
+    "title": "Voting rights groups sue Alaska for sharing voter data with Trump DOJ - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1244,
+    "kind": "item",
+    "occurred_at": "2026-04-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOTlBJbmJRMHU0RW5LZE04eHZxSlo4eG1TNzRsdWFTSmV0S2pIZmxENWY4SlloMnhlZW40VUN1RDlheW05OFdXWDVVN09ZUmdDdHYwRlBfYnVvRE1TRmU2VWJ1bGkyMXgyX1FzMXpXTldJV3l2dXZUbzNWcVBpWlFSSkxRd0x2dlRmLXhOUXp4V2ROYVVkTHcxN25pa19RTHJDVXBqQjg5UVZ1a2pQZ0wwMk5LQWxPem54VjFXeGJIdUpzZzlTLV9QMk1qbGtnb09wcERiZU04UVhDUQ?oc=5",
+    "title": "Emails reveal DOJ officials planned to share voter rolls with DHS much earlier than they admitted - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 2622,
+    "kind": "item",
+    "occurred_at": "2026-04-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQcUlNRGtBdV9XekxNNlJ6V01MLTcwb3ZvWWltUGpaNjRQOWtyOFpfdnNJWVZpN0h6S1NDSk02SjNxdDNENktvcHVkcUV6a25iMHZBaVNTcDFBWXI0UmRXYkQ1NEt2RnJlQUtDc1dDV3labDFUNk0wUHBkTktMR0FzUlpmUksyeVYxOElPV25Ud2dqejlVazhkd2tvZnpBd0tzLTc0a2sweENTN0NtSVU1VEdSRHZ3VGU4SHp3S3JjYnBUQnpwRnc?oc=5",
+    "title": "Pennsylvania case could lead to more voter registration applications getting rejected - Votebeat"
   },
   {
     "channel": "news",
@@ -208,6 +708,26 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/04/27/guillermo-sainz-pleads-guilty-fake-voter-registration-forms-2024-election",
     "title": "Organizer pleads guilty in Pennsylvania voter registration fraud case"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 606,
+    "kind": "item",
+    "occurred_at": "2026-04-28T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPMXpsWlVITEdBTE81VEVsS0ZEeU5TMkxFOHFXeE40NkRUZU1rWjBBd3lkQzZnSDJ1Y1U0c0o4MGJYeE1qTnRycWVpcTJVSG5HYXhrdWtmV0hEcnBLYjh3UkU2WkdwdEhJdTR4NmpwcEkxSVpoYzRYcV9JOU8tY2V0WFhLVWM3VHRDQmZnNzRwb012cWJUeGs5aDY1cFZFT3QzRXhyTlJ1NFNKa1lXenBHajRQYjNmcVNqWTRCQVVnVkI1MDVJcU9fY1RfcU5oX1pZOHNld0Q1UQ?oc=5",
+    "title": "Judge: Arizona doesn’t have to hand voter rolls to the Trump administration - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 631,
+    "kind": "item",
+    "occurred_at": "2026-04-28T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPT3NtNXVlMEtKTFM3ZS1Tdk9LYmZKSlQ0NFI5TlBORjJEWFVFVzNSd3VOdUhoSW5feElYSnhEYTRSY0NSUUVNeTQ1OXF6Um9QdWEwT3h5VDY0eXBxOFR4UHpwUFJsLUtWU0xvR0tIZldLODJxbUtFdWRxVjNENTFsSTlNMEU1b2ZUanA0cEZVWGQ2a0RXRG5tOGVrbEdWeURFOWpqSmJzZzh4dzRSZjhmakJxNGNBUXNU?oc=5",
+    "title": "In major blow to Trump DOJ, court rejects demand for Arizona’s voter rolls - Democracy Docket"
   },
   {
     "channel": "news",
@@ -491,6 +1011,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 620,
+    "kind": "item",
+    "occurred_at": "2026-05-12T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNZy13T25WN3FVNm1PZkcyTEZ0dDNSTVJYTXRkT3FaRnYyMGptNl81ZnVZckdleFRpOUpheUlmak5ZUGFGTnFnUXJZSlo3QWtvMUZ3dkp2QzFVNkROZThDX3Y3QVNnYTd4Mk5zcmhnR2hoU1dqLXFpczVhQzBEUUVzSTdOSFNCU2RNZUZxdkRyRUVqeHhxLWc2SjcxNEdtczRLalZWUkI4OGtCNGNyaG45eTlWRUdrVlFyMUE1eEp2TWxCQzQ?oc=5",
+    "title": "Trump DOJ cites its own legal memo to defend voter roll demands on eve of appeal - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 287,
     "kind": "item",
@@ -498,6 +1028,36 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/05/12/internet-connected-electronic-pollbook-pilot-program-2026-primary-postponed",
     "title": "Pennsylvania won’t test internet-connected e-pollbooks in 2026 primary"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 5071,
+    "kind": "item",
+    "occurred_at": "2026-05-13T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOdl9TZDdKcllULTE3Q3huUHBMYno3TmxVWmZ3eXY1YWo1dzk1TXZ4czVrNUtqMFFhMVc3NWQzUDUtV0pfT0x5VlljTDZLbjBJNGw2TEwwNHhQUGEtQVYyTkFWeVVab3NudDdvS2YtTHQyeUVXdUFDaGp5RWtKRkxaUV8wQlUyNm03T3JZUWEzSndKamVsTG52OHh3SkgtSTRuWF9tcWNIczJJXy1lbWpJUnlQNkV4S0YtdWc?oc=5",
+    "title": "DOJ voter roll grab: Court sounds skeptical of Trump bid for Michigan data - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1776,
+    "kind": "item",
+    "occurred_at": "2026-05-14T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQZ1VmUVQ0SXZkSWlpUUpHRHN2M1NxMTdoYVhYVkNmYmJqSmFKNlhtMjdJLXlUUnJHWDZZY1QzeGlORjgzMmJ6Skg5ZEl1VjFacmZ4OG9PX2NZMWhKeHJ6cW1mcVJrUWpGeDNuU2w4YkFUd2puNFZGMmNzMXV1bjdGLUV2Mk1zVng1SEJZbG5TMnVRem95YVZLS2g2XzJGYlgtZVNvY3BrQUJYRE9EbWVtZTh6SlFuZzlCZERscWJNc0NqdlFwTVE?oc=5",
+    "title": "Judge seems hesitant to quickly block Trump’s executive order targeting mail voting - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 11522,
+    "kind": "item",
+    "occurred_at": "2026-05-14T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPa1hJRXNZTmZPMXV3NlRLWWg1ajNBZ0NIcEJpZXRJUXFHUXJIdG95TjVCUW51eTZDMzNVdHZsY1UwNzhYQkRDcXFMUTBPa0ZrOG5yZUFvdldJUjl2MzZVRWd0UzJFS1JrdWE5RW51NFVtYi05SE14MWNFUUVhazNJaWg5MGFPWEpWLTNoZkVvYS1DQ29VY1I1dzJ5ekNVcUVtUENzSGRB?oc=5",
+    "title": "Report: Trump White House helping build national voter list - Democracy Docket"
   },
   {
     "channel": "news",
@@ -561,6 +1121,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 619,
+    "kind": "item",
+    "occurred_at": "2026-05-19T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPNTVoR1ZXWGR2U2RxSWxmaHZvRnE4YUlTWnhHYVg3dVJ2MVFCaTNNLXFwWWFTWWJNQzVCVVN5WWhHSmNDMk5CT3h0dGhkLWcyUzJxNzBGNUtKNWotSHh1Vm1oT0U4cXRiZFZwYmZHRXU5VktnelEzTzlPeTEzZXJMQThtVXBiWVg2MzJaTzRLU25sNzFLOGVpMmNJaUpRM29NbFd2Y2dza3dDZlJ5WDdOanUwczYzc0VWekdzcng4blM5MVB4bnhqTDJn?oc=5",
+    "title": "Court bashes internal DOJ legal memo that Trump admin used to justify voter roll grab - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 281,
     "kind": "item",
@@ -591,6 +1161,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 1260,
+    "kind": "item",
+    "occurred_at": "2026-05-20T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxPd2lSWVF2QjAwSnVNcldhMDRIeUVTeXlaamJLd0tkTV9La0dlMjc2M25ZZUhSWmFYbG9iWUFPRmR3ZWMzY01ZZWxBZ01lTXFFWkVPV0EtX3F3QWFCaV9mb2ZFazdLQTJGN2hwUURfeDNfV1FUNmNrQzF1NlM5TGNFQmdtSjlPeFN0SlpTdW1waFRBOHpmU2Z2YXVpbUJSQQ?oc=5",
+    "title": "Court Cases - California Voter Roll Maintenance Challenge (Judicial Watch) - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 278,
     "kind": "item",
@@ -598,6 +1178,26 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/05/20/2026-primary-election-went-smoothly-explosion-ballots-heat",
     "title": "Pennsylvania primary goes smoothly despite a few incidents"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 615,
+    "kind": "item",
+    "occurred_at": "2026-05-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNZ0w2ZnhiVVQ4bmc1Rl9zd2U5RmR2NjNiNU9tSmVuSnNOWi1aNDJuYjIwa0R3WGdsWllvVFBzaHZWajBHZzdrT0owelFJbVBaaUdvclNYNy1SM0ExU1VhaWt6TDRuSlNHaVM3dTBqeTNaaTh2dEJNRzNpOEFOU3pBU2k1RkhnSTRaVHFNMDlESVkzOHpwUWVQc3pIR0lORkpVNWVRUlRGQmRWd1dwbUtvbHJnSF9BWEp3OV9B?oc=5",
+    "title": "Trump DOJ loses in Maine, Wisconsin as courts rebuff demand for voter rolls - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 664,
+    "kind": "item",
+    "occurred_at": "2026-05-21T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOTVotS3J4U29NYUZuRWZfX1VNN19hcS1uanRGblNXTWExWUxoZkFXeDdGVnA0UlZKR1FMbXVZckJXMUNjN2EyZ2RtbHU2S2Q1OGJSemtXenhWOHdEY1E4ZlRYQjREbHM4cFk2My1hMk40QWpQNXFwQU9NUTZGTVVfZEFsNFc0Q1FNeXBXTXdib2lzYl9mS19sc3dWY2JPckIxT0E?oc=5",
+    "title": "Court denies Trump administration access to voter data in Wisconsin - Votebeat"
   },
   {
     "channel": "news",
@@ -671,6 +1271,26 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 765,
+    "kind": "item",
+    "occurred_at": "2026-05-28T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQVkdmT2VOaVJRLUM3RFMyMzNYak12NlY2U0RacHFFeWZqelFpNlFjZDVXYVpIMzdxWEJQNkJQcjhmdnYyOG04dUllZ1lzbUcySjZEemFiUnZvZll1a3FnX25wdnJrWmpTMTRXSXhrcXgtUTZhSGRNdGpvcGRTdkt4NXhHSUNBS3RtTmhDZGtUcWY3ZGhfQUVXUjJJNlR2WEZ6Nldpd1RmMU1WMEdhYkNWWQ?oc=5",
+    "title": "A federal judge won’t immediately block Trump executive order on mail voting - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 10819,
+    "kind": "item",
+    "occurred_at": "2026-05-28T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQQXctNjgzOTlJU0NLNGwxTTlCOG5GNU9rNEo5U0UzYkk1VXlpdHVtRXVZVXlrdlhZcDFXbXVNbWg1djMtRXAxaWxpNzlVZjVxVXVwZjRZTmhEZDUzV3FQUC1jTzdoYTZONHM4NzEwbFRLZkhzR3puaFR4aF9kNzh6SE5ERnRWMG40U256NFVCcEhIeWxjek1uSm5fQ1RKZVk?oc=5",
+    "title": "Judge denies attempt to stop Trump’s mail voting order - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 271,
     "kind": "item",
@@ -698,6 +1318,46 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/michigan/2026/05/28/antrim-county-clerk-husband-victoria-randy-bishop-state-police",
     "title": "Police report: Antrim County Clerk’s husband had unsupervised access to office, computer"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 766,
+    "kind": "item",
+    "occurred_at": "2026-05-29T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQTFZONlk2NUdPVklSTE9jSGlual83dkp6VUkwYzdCTXFkYlRQNWkwOHotWTM2dU1ZLVdUNEhRcXpOd0tTVkxXc004dGpaYUZCT2ViQkljdkZzVTROcDlTMTZaT2VGb3I4TnlCVGJONV9fbGNjb3lQWjQ1YWVQYlVoOElIdjQwTzM3ekdTZFRjRDE2ZTVE?oc=5",
+    "title": "USPS proposal could let agency reject some federal mail ballot deliveries - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 7187,
+    "kind": "item",
+    "occurred_at": "2026-05-29T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNeUNJUWdtd1NjTURnWmpkVWFZWGFZX25FQVJDUkVkSFRMamp0eHVVbDMweG5teDA4TkFRRjlMVF9aNFdpN1VsN0dpaEtlSklfQVV5NTBuM0hCbHhwakx1VExRTW5Xd2FXVW1nUngxZlhEaEpYaVl5aHdjUGY4bXViTTBla09GWWhjQ25BOC1OUGJaejhWNUVkcTJB?oc=5",
+    "title": "Texas is checking whether voters it flagged as potential noncitizens already provided proof of citizenship. - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 9102,
+    "kind": "item",
+    "occurred_at": "2026-05-29T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPSVBYUmg1YlNCc2VRQk5WdEsyYTdqUzFCdzBRZXZEMk1uSk5RY0V5Y1dSdVZEelRSRTNOSS1oTVJkeXdtWmlqa3pJSHpTV0VCbXhrYzJlVi1XT1Zac0FWVXRvSVFwOHg0bi13WW5BX3FsRmhTSG5HeERpODFvTVdVYVVFNERZM0FBaXRxT2F6TlVBdVRSSk9iZ1ZNb1RGSjQ?oc=5",
+    "title": "Postal Service moving forward with Trump’s attack on mail voting - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 12200,
+    "kind": "item",
+    "occurred_at": "2026-05-29T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNNmYwMXNBRDJSbVZPY1lNWnRTUzB2UkV3Zk1MWk50aGNuekY5UjZQSUhPNHNBR3k4eU85bC1iYWpxMmhfZTR5dDg2LV9HaHlEWE12ZmRSWWlpVmh6UnU2WF9oWWNrQVd1cmpxX1pqSzRwYlVxZE9qeFg0dHdOTzJNUlc2OGtCZlRUWGRRNDBDNzZ6dHFyXzZBdU9GRGpTMWJRQ1dCOWJWOFVZVm1ZSW9ERzl5OTVFbWY1VTBxYUc2ZFA?oc=5",
+    "title": "New Hampshire: GOP bid to require documentary proof of citizenship struck down - Democracy Docket"
   },
   {
     "channel": "news",
@@ -761,6 +1421,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 1765,
+    "kind": "item",
+    "occurred_at": "2026-06-02T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPOFIxa192REcyb1lnWF9pNUdUeW1uZDc2d1o0MGdxS284bnBPYVBFa3NiSG1pbHVaczF5ZDBwSmU0RVp2OGppZzY2T1FCdWhtUXQ1YUxOdkFNTHpCSzkxR3VGb3o0c0dCa2xFcnBtVUFXdG4yeDI2TzRjdWEzTXloSTNJS1ppMmllNGwzbFY5RlNHTWp4a3RMY2EtY3Y5Q2hqS0VkS19rbmdTZw?oc=5",
+    "title": "Trump order targeting mail voting leaves judge ‘very concerned’ - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 354,
     "kind": "item",
@@ -781,6 +1451,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 626,
+    "kind": "item",
+    "occurred_at": "2026-06-03T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPSml3aW40ckYwTDNLZmt3MkxBc1F3eGRSUjFud0xSQmd6cm5DUGE3ejNuc3ZsaWlaVkdIX0stOEIzQ0hPRGNCTExkY0pSYlF6ZHdOdUZFYzRaVHUzaTJsUGgyQTNCU2xmWGFoUmtqRmlmV3ZYa3plMGFmelpHUlRnUFF1RThJYVNxM0hHOEJjWmFDUzEtZjEzbzVNMkhVVkJmQUd2UFJR?oc=5",
+    "title": "Michael Gates, who helped lead DOJ’s voter roll grab, advances in California attorney general race - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 353,
     "kind": "item",
@@ -798,6 +1478,36 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/06/03/mail-ballot-notice-cure-study-university-pennsylvania-study-2024-election",
     "title": "New study finds that ballot curing helps more mail ballots get counted"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 398,
+    "kind": "item",
+    "occurred_at": "2026-06-04T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxORXhLOEdhQ1NaaHZvc09aRzlaS2pfZm1HM2daLTdGUTFWclljZXhHVkRPX0JTQk1RMGVqLXZjcnZ1bmtPMjQyRWZNbk04b2Q0dUlVMUZoVnZOdGlmWnhScHRxWmRaam5FRU9BNi15Y0hWWUV3Vjd1eUVGM3BqdG4zVld4Y0wxVGhaSEczbFVBN2VFTmlzOVFpWk9ybUU1SjB5NU5RbWxGWkNfNkx0Ylh4MVJBS0FqakVUWm9CakhzUVNOWU5t?oc=5",
+    "title": "Republicans introduce REAL ID bill to sneak parts of SAVE America Act past Senate - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 426,
+    "kind": "item",
+    "occurred_at": "2026-06-04T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPbDdoS0ljbVByeEZnSmtWOUljNEtoSU1kNmNQNFFRRkMtUTdCYWJSUFVWVXB6cG0wTFhXWnFPbmsyekpISHhUYmhsRnhHV0Y2bS05b1YxOTR1cF9uZFUwMktTSTFXc3BzNVBHcUtqb1NfaE9yekxuV2F2eDgxend1NURqRXRkb0h2elE3RG1lSDBrUFJTd3ExZXlFM2hrdk50OUVVT0ln?oc=5",
+    "title": "Senate rejects yet another GOP push to revive SAVE America Act - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 587,
+    "kind": "item",
+    "occurred_at": "2026-06-04T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQZFhvUVZWU0hQdG5MazdUZUZnLUo4UlFuQm9NWkxHRTEyME1zMUFacHh4Wm1DSXFSRG1KZmJnSXEzS21LbHNwRElCeDQwc1BqaU9JY0szZWZkQmxocGdMTXdTcHBsYWtwaUlCbWNhNzdzeTNUMk15MzhBZmMwZlgwbHdtSFBTOGVtR25yZFk5VWppNTNtOEZZWDg4RHNJaXIyMUlzRWo5VHduNFE?oc=5",
+    "title": "Trump DOJ voter roll grab echoes ‘poll taxes and literacy tests,’ civil rights group warns - Democracy Docket"
   },
   {
     "channel": "news",
@@ -828,6 +1538,26 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/06/04/madison-deputy-clerk-jim-verbick-blamed-supreme-court-election-late-ballots",
     "title": "Madison former deputy clerk removed from election tasks after misplacing 23 Supreme Court race ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1737,
+    "kind": "item",
+    "occurred_at": "2026-06-05T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxONkdkT184SFQ4M1NOZmZqS01tMEo1RUJXZVVzT1hRcjZaTWJQSFNNLWJvLTJxNHhUaXdyTHZoY25JY0hrRjVjc3JKcXBRbzZoNHQwRFZaRjVaZHV0SEVmYUY1amEydnRDN1NIN1dpU0JDSUdHYWpVZ01iQTdwWTVJaHlnaDhJUmxSb1FqdlFMbnp0T0duMGVpdkh5QUxlQnpTMWVPUjgxTFFvaFRmekhMYTdUT2c3NHB6b25ZQjhEOU51aGJyc3hWNXJrOExBUjA?oc=5",
+    "title": "DOJ appeals Maine and Wisconsin voter roll losses, taking every defeat to appellate courts - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 53278,
+    "kind": "item",
+    "occurred_at": "2026-06-05T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNRkhPLVJJZ2cwbld5clczcXRSS2lmRHJnSUR5V09xYzBSTkRPWV90Q2NXUjJtVUk4bVBiY3A2UmY5OTI3TE1PQmp2YmpIQTV4REpEdk9sWFpHdU9ha2x1bUszMWN3bE5nUzRKbmpSRmxyOGJXcTJXX3JXZEY2c1RVTnlCSWRGUEZSQkFnZVU2THFiTFRkMUxGa1phTWctSkJBQ1pNNEFyTENqUQ?oc=5",
+    "title": "Trump admin targets potentially nonexistent federal funds for voter registration - Democracy Docket"
   },
   {
     "channel": "news",
@@ -891,6 +1621,26 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 584,
+    "kind": "item",
+    "occurred_at": "2026-06-09T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNREhMU2ZYNFdSSmotbVQ5NDRjSE4zVEFkcG03OGNrNHNXZ2djaEtKdXo5anZkU29WdkhzRm9YNXBMa0dFVzJYYUFOZ0F5SzJvOEpTeHMxQXRQUi13bWF1TVNOY01BUmNVVzNqWXRiTXcyQXdyNnduT01GRkNKSmJsWXg3Y3diUmMxaFhqbnZFbUp6S25HQnFESjA0WEFGWnVrN0FZY01hMFFsZkI5RDlybEJPUF8zZnBwVzdPc05hWVpvcEgy?oc=5",
+    "title": "Trump DOJ argues Georgia can conduct last-minute voter purges, despite federal law - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1758,
+    "kind": "item",
+    "occurred_at": "2026-06-09T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNb21JYVA0OUJMa3ZuUTZCODdHdmVMQWhZNVJWOXJJTGZWaFNJRXItUjVTN0pCOVZrbVA4MFNxNHJmMFVTRmllSUZycldrMkUtcXVyQTREbFBxWElGTjRNWGJodWluZkFBMlZwTFV4VWJONlpPNzZBN284M29aa0ZZMGp2VjFqeDdVUnVrUEJ2TlJZSnU4WDA4cGp5bVRmMVNqNVdoX0ZfRzZZb3BZRVM2UmJmc2dGTTE3ZXYzUzM3X0tNYTUwTGFjOS1TOGdJbEtucFE?oc=5",
+    "title": "Trump admin will push for more time to implement anti-mail voting order, new filing suggests - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 352,
     "kind": "item",
@@ -911,6 +1661,36 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 578,
+    "kind": "item",
+    "occurred_at": "2026-06-10T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOLUc2QmhxYXVPZnBFU1ZxNHQzUU1nS1BfWkZBaVNKeWlJYUJDNEpMNVRkTlpNX0k2MElDdEVCUXEwOURRSk9jTFBuQzd1Mk9VYVAtTFhGYzQ4S3ZLQm13SmIzZUtadGJibWlnSHJBdGJKMWVsWkNFeG56VVRWUTlLQ1JXSUdBb0hDNEFEUE0ySHB0RGpaVTVtbnNlMGEzUUxBQXRaOS1ldkljbHBZSmFTYUw2VDMxaDJSc0s2eW92SHhWdk8wallhUDZSdjd3eVk?oc=5",
+    "title": "DOJ’s latest answer on why it wants state voter rolls: ‘I’m not going to get into the details’ - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 583,
+    "kind": "item",
+    "occurred_at": "2026-06-10T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQS2F0LVZ6M3JselA3TTY1SXJXZW9zbzJiWlkwOHF3ZTBhZGdNTkQzR3NzTmk5TFlhUXF1VWFTdjRKY1F3ZWNuZHlObWI2ZlIyVHU1MDBHSEtjX280Tk5ySG4yRW9XV25LWGZoNnlLSTJSbmQ4OHVJZFRvODhQck9YcTFMZW9lWGNZOS03M2ZJQUFQZ1MybGxuNm1xMVFJc2ItcVlYb0NFdUdKT2xDLTVmTTdvR3g4MUVHa2FMM0pXTmpoRlZoWV9Z?oc=5",
+    "title": "Trump DOJ doubles down on claim that states can purge voters right before elections - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 391,
+    "kind": "item",
+    "occurred_at": "2026-06-11T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOdVZhNmtsUmNwYWNPWmpNb3AyaWhFY3VraXlhMzVSR3NCSldkSnRRZnNteWxHajJoOC1jVmRlRDJlV3dzakJQZXZ5NWQ4d1dSckYtTkctVVdMTlNpUWZBLTJZZ2xjTUR0SElBNjRER3dQTDFMQVg2cmE3dHJ1NjZQUDVxVW5tUHJielJzVFVGMFZCN21vZDFoMkxZeHVzREd0SWpr?oc=5",
+    "title": "Trump claims military is gunning for extreme anti-voting SAVE America Act - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 351,
     "kind": "item",
@@ -928,6 +1708,16 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/06/11/will-the-midterms-happen-questions-answered-live-event",
     "title": "You’re invited: Will the midterms happen? Your election questions, answered"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1224,
+    "kind": "item",
+    "occurred_at": "2026-06-12T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQcDZCTlpSX3pqc05TQnpVYk1WaElWZXlPRlB1NV9YcGFxdENyUG1BSjBaa2l0Y0NndjRHRDgwU25lVVphRlpVSUZQUjhuVXZWM3kyOEdaVHUyU3BZQjFyNDBVLWJneEdSYmpqWDE1ZmhXU3FrNURHV19SUEYzNXg3Ukw4QmVNUHlYUjRCUThXMGs0OGhsb2xBdkVkVDBmQWwxZ1VVak1fYw?oc=5",
+    "title": "Trump DOJ steps in to defend Ohio’s proof of citizenship law - Democracy Docket"
   },
   {
     "channel": "news",
@@ -961,6 +1751,26 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 384,
+    "kind": "item",
+    "occurred_at": "2026-06-15T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQMFp3NE5vakp3d0lKa2ZwZHNSalhrRG1MRDRGcU9CM1VzQlllZFh0TUx0NkdfSFUzNXVobk44X3J3ZUd3blJwN1h2dXhocno2Sm03d1B0b1dmazBXdnRhcTU3SjVNQkVNTHJ5TWs0VWUzel9qT0JRcjFEVzBRQjd3cWdOUHlXRUZzVE9XSHVkZXFZNkZ3VS1mUnAzMjNWNmliSDhYaV9TdEpVN21wbmFrUzdpX1U0cXRrTnNlaXBWakVDRnJwdHU4MldpUkI?oc=5",
+    "title": "Trump repeats demands GOP pass anti-voting SAVE America Act, despite losing recent votes - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1759,
+    "kind": "item",
+    "occurred_at": "2026-06-15T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQLW1ROUN1OW83elpWLUN0Uzd5X2ZyM3hsbXNpWDAyMVJWbUdJT0RESnp0Z1g0WXRVeXI0Z2hyQ0hXcGw2M1R5UXhTd2JmQTBRS01QYVBQYWxqOVNzOFpqcWswTk9YbVlFT0VfWU9UazIzSFduczB3MlJST1VwY3Bsa1VXd01ETWotQy13Z0lpOUxPaThER0tvczRNcTE?oc=5",
+    "title": "Could Trump erect new hurdles to voting before the November election? - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 249,
     "kind": "item",
@@ -981,6 +1791,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 2620,
+    "kind": "item",
+    "occurred_at": "2026-06-16T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNdkNrZ3VUbnU1dXg1WUg0WmtlaTZxNGRNck9MOERmaWF4NHpQSkc3aHpaamEyQkN5a1BmbUR3YVJ0VEZTMm5odnNhUXp4OFdfYmxSMzNudHZocDNmOHVlcmhhRlFKZjBNUUpEc3JzcmxQei1yczBBUkdrZ1FldEdxT3ZIbVpYb2ZaRFBLZ1pEOFhCN3JQT0hlMVRBc21pSmlKbGxVRGgxTFFBM1hnek5jc1hMQUFDNXZjUldxTlNGNnRabGFSNmd4QjBicnU?oc=5",
+    "title": "Trump’s DOJ wants to purge voters right before elections. Will the Supreme Court allow it? - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 350,
     "kind": "item",
@@ -988,6 +1808,36 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/alamance-county-sheriff-terry-johnson-shannon-long",
     "title": "A North Carolina Sheriff and ICE Ally Faces Accusations of Racism—and a Challenger This Fall"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 410,
+    "kind": "item",
+    "occurred_at": "2026-06-17T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNNjRlSkswSHRTWlFjeElESVBTQ1F2ZTRCTEgtWS1PMXBVWnRnVnp3eE02Z1lFTUM4cFhvd2JXa20wZUE4Q0M2Q1h1RXNoMXgyZFoyYUVfN181UWxHelRnWlpVcXAwWXJ0R1FOMkZ6T2JYcVhJVUROWUNoMk9GbWhPZGpEdFBPcEZQNXdab3UtR3UyYi1XVXl1UnhMcGJjTEV1YzY5d0JLRS1adjFmWXc?oc=5",
+    "title": "Trump delays intel chief confirmation hearing to force SAVE America Act vote - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 4749,
+    "kind": "item",
+    "occurred_at": "2026-06-17T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiiwJBVV95cUxQejBTNGNhd0c2anB6SWVKelZXcnA1LVFTNWpRVm1EeF9BbERsRmQtYkNjYUVNc213UmRJNkItRWJYbG84eGNCeExKRnczS01wTGxad1l2WEZISmhNUldYMXNfSDh1SFU4Z0s0WGZ5N3RwUHg0dFBzdFZHZnJpdExBOWdEaTA1WnMyS19KRkpGY1pYcThaZzAxVVppNVhuSWFwTW9qNEtSMzk3eS1pNThaUDZEeDczZWdOUTBKOWtiT2FCNGMyRWdicUJEbFFkMC12MGRoY1hnQUw2NHZxbFZZWGh3Z2llcVhGR2VqVlNmamkwTHBWdFVxR0dSNnRGOUFlQlRDVU9faDVxV1k?oc=5",
+    "title": "Trump’s ‘flagrantly unconstitutional’ order attacking mail voting is already being implemented and must be blocked now, new filing alleges - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 9532,
+    "kind": "item",
+    "occurred_at": "2026-06-17T17:23:22+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOTC1zaC1HeTVEdW14VzJFdV9jZXdDVHg4TmlUdmNqTXZGM3NMeS11V1JwaUdFTzd1NUIxZWxpVFNrRDZrdUVEMUoxZGdRYVl3amVzMTFHNUNXR3NLNGNOczZ6QlExX0JWQjEzMEUyOFBPeTZhaXhVY000T2lnX1FQVWwwLVVtTFp5NEY0U1phcFI3U3NHeEZkNXBiQUxodlB4aWN1NHdURQ?oc=5",
+    "title": "Right-wing legal group sues to obtain Oklahoma’s voter rolls - Democracy Docket"
   },
   {
     "channel": "news",
@@ -1008,6 +1858,26 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/06/17/fbi-probe-into-ohio-organizing-collective-expands-nationally-america-votes",
     "title": "FBI probe of Ohio voting rights group expands to include an affiliated national advocacy network"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 7413,
+    "kind": "item",
+    "occurred_at": "2026-06-18T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQNWM2d0M1Y3dLTkNKYW42ZUk1SEluQ25ISGZhQjNkLWxUal91UmdCaDJkSlR3S1haQXRMN2dqYkZvRWxCbURRLVhUcV8xOUY3UG9mZFBUTEM1RTdKdVhUZGRIYk11VElSa0VQaS1tcmVXejZhTEdxbzIxMHhJdDZMcTJtOUtsMU9HOUpaTEtjMFdCUG5OSkFrOEJQNlFUbmUwdTdnSml3cGo0T3VxM1ZFMDFYaVV5WmVNTmRjbGVmbDJRWEtMQlBN?oc=5",
+    "title": "Postal Service takes another step toward implementing Trump’s anti-mail voting order - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 9101,
+    "kind": "item",
+    "occurred_at": "2026-06-18T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNMGs1RW82dk5ya0h0alVXdTU3bjNWNHdyeVZnemVwUXNQV05ZTjJlTEFCUjBVVDlGOEZ2QzAxTFdiYUlGZ1VmVHJWQTJtTzNBc21OeE90b0dWWkJDWnFUMkdoTnZob1Faa2dfRDR2cGRNTkZncHNRa01FMG0ya0gtQXBudENsdzhJZGlRSFZTWEVZeVE5amVFdUFmRGxKV3BKVGRteFQ0SjMwQ0dIZ0E?oc=5",
+    "title": "Judge lets lawsuits against Trump’s attack on mail voting proceed - Democracy Docket"
   },
   {
     "channel": "news",
@@ -1061,6 +1931,26 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 648,
+    "kind": "item",
+    "occurred_at": "2026-06-21T14:53:22+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQODVVbU5ZYnFQX053RThaaVN0YlpiMlBNRHkyMjNGMUwxZ2lJOE1RdEJWT2F2dzItSWhpNmI2YWY5SWk4SEFGMDM3NDdYWmpEUGo1ajRscjlMWEQ0YVEyQ2RackZuTGt6dUwtelFadGhlSlIzOTYxQ2RXVlNtR1FRUnFhWWJfRXJwSF9CMXZNcXpnNEoyTi1iRjVFSEp5RlRpVEIwM25iNTJIQkRfUHZGcHBrQkVGSGNYWWljT0lsZjd2WlVnRHNqSjQyV0k1dmNFTFdfalZzUS1xelZYTlFN?oc=5",
+    "title": "This week at Democracy Docket: Trump's attack on mail voting advances, while Georgia Republicans retreat - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 17703,
+    "kind": "item",
+    "occurred_at": "2026-06-22T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQWkRETTRyTWRlWFdiaV9rQVZlWjVBX0lWbXVKMHAxdHpIel93Nmg2UDBsR0RRMWRnNVdvNGVOSXk3QVljU256UGR3a2NJaVhPaUtZNEY5dUVvWmZSVVFUN1l0NVQzc2ZMRVctV1lUSm4zM1lNclA0S3pjMHJmRlZ6YTU3Mm1tNDY4cjVvRzZnM0pqSENJMThMZWYxajkzNzhfNmZxb3dvMlVNQ0l4MDBsaGNn?oc=5",
+    "title": "Judge rules against core pillar of Trump’s election agenda - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 242,
     "kind": "item",
@@ -1071,6 +1961,26 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 567,
+    "kind": "item",
+    "occurred_at": "2026-06-22T15:18:22+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNZV9jZXk4Ym5RemZaVmZxSFVLNWNZSzJ1azFCVS13WFBVRHdNSE5PVFc0RTRadnBINTRZdE1RQktvQmxrREFKbjBtU3haejlsUjFmZkVpTUdReUs1d0FPSHBqbVdPTFVRLUtBa2JnVlZKVWVNUXF0bW0wRDdNTnBZLVotZnpVQTZxUWNNZ0M2dlFWQUtJaTlUcC1kZkpwYng1dkR0Qkx1NU0zUEds?oc=5",
+    "title": "DOJ now 0-9 in voter roll cases after Trump-appointed judge tosses its Maryland demand - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 1243,
+    "kind": "item",
+    "occurred_at": "2026-06-22T18:38:22+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNQVdZRHVGUzRLbVZ4TFJVVXVNS0pYUXRqclpFME1PSWF5VUlqRzFuSGI5NVhpYno4bmp2ZjllLW5mZm5Pdmd3NGZqN0ZaWEdobEFLUFhwX2x1NVNWU09qOHBTMVg2N1E1dFRkU1ZqbkxjY0RnaFQyQzgwQjMyeWdQUXVSaHdiNlo3M0Z4OUc2UFNqYWd4WVc2Sm9ndk52NE9qX0pXdFloWHhRUXdEeUR4bU1nZDVhTzhGTjVKUVZSNWtJdmk5aDlhOGp3X2VJdlE?oc=5",
+    "title": "In blow to Trump, federal judge blocks DHS from using citizenship database to purge voters - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 241,
     "kind": "item",
@@ -1078,6 +1988,16 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/06/22/judge-rules-against-trump-overhaul-save-database-noncitizen-voters",
     "title": "Federal judge blocks Trump administration’s overhaul of SAVE database"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 23429,
+    "kind": "item",
+    "occurred_at": "2026-06-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOX0pTV19yY1FpNzZWNjFPOEJnNjA3cTlLcGFGREwwdWdFb196Qlhvb3Q0T3o2dVdqWFkwMkNuaDVCQjlrYV9kU2RBMjhLZEMtQzdZZHRVdFVqOW16a3RrYVMxVWIxdkc4ZHh3eERqVmdQRnZjdmhDZG1TX0NPb0MycTI5ZlpjWkxTY25PZkNjWlFoclNYbGtwd0RWMjVPNVFubWszUDNRTmNvcWpTUGJFdWhmTmZSZnZ3ZkRibTlB?oc=5",
+    "title": "Election chiefs say ‘desperate’ Trump DHS plan to blackmail states into purging voters ‘endangers American lives’ - Democracy Docket"
   },
   {
     "channel": "news",
@@ -1131,6 +2051,46 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 376,
+    "kind": "item",
+    "occurred_at": "2026-06-24T16:08:28+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQbUxJdkxtNUNwMGFwWmpDUVdXT3FXS0Y5cGZzTjNOMjdfcVpJWVhhSUJNZGdJTUFWQTAxSTd2Q0JVQ2VLSjZ3ajQ1enlUSHFJa19LWlJ3S0haZTZjdVQtdGVTX1dRdFduV1p3cXVJRjlJRlJmdndvaHFhTW9lTjlSZlQ1eDZ1bVVhZTg1MXZpNVNmM1RhLVZ4b0RlaUZrSVF4MVJVM0tSQUUxNDFaVGgyWkgtRkRfWmU4dS1idWxxLTZhUXlIU1hYaA?oc=5",
+    "title": "Trump threatens to sabotage housing bill to push ‘National Emergency’ SAVE America Act - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 575,
+    "kind": "item",
+    "occurred_at": "2026-06-24T19:28:48+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPVkdJQzlDNTRoZlJrTE1pVTRmNmN2YV9wSXN4SFVnMjBQUGRlVWRfbDRPS3RsSC1tc2FDWXpVcEtDZTlXa2s0aDZ4LW03U1Q2NTdTMzJRX1V2MXBMdWJXWF9NdzJiWEdIVk1lWVJUZVQ4bTE4WXV1UE5NZ1k4c3FzQzBHbEJpYmVUdTUtcWxncHdUWURJMkotOUhfNGtORndWZjZMV3U5NWpzMFJYS3dIcndfaG9kbUZWVm1HaGdR?oc=5",
+    "title": "Trump DOJ suffers first appeals court loss — after nine lower court failures — in floundering voter roll crusade - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 733,
+    "kind": "item",
+    "occurred_at": "2026-06-24T20:44:24+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWU5fU2VTNUZBcVlTbTI4LW5BY3k5cTJBc0ljODlmWUwzSThEYTBuRVowTDNxdlFMZnNwR0taTVVTeWlVeXBIdUJITGgyXzBIQkVPQlJvTEZpdHJTVlktdXVvdXZSZmZQYVJzMXRSSG1uUVhPeFpZR0FWeU1HVHpsX0tteFhjZkxGUzBUWEVtZW1WanF4SHZNczFuQkNrRjhHUjRvYjEtSmxxSk5ac1hqcUlQbVdUd1lpR1FheXFQWlg?oc=5",
+    "title": "In big win for voters, court permanently blocks key parts of Trump’s first anti-voting executive order - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 565,
+    "kind": "item",
+    "occurred_at": "2026-06-24T21:10:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOdFE1Z3Z4VG80bG1SOG9rZU53ckM0YnlBNnVEYndNZ2pBTG56MlBJb1hXdFpELTU2S1Fzb2QwLXg5aFhRdUhGWFZXdmM2QkVBT3U1RU91WGhZM19NNXk1OEtjR3d4SDkyVHdwV0VoNERHOG9RazI2UVFTdWcwcGdmV3l3U2J4cUgzeHZfQzJ6S0RaeElBY0Utd3hPQ0k4aUVLbWJralJZaWRVa2hLSHZWS0loZktBZw?oc=5",
+    "title": "Trump’s effort to get voter data just got slapped down by the highest court yet - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 238,
     "kind": "item",
@@ -1158,6 +2118,16 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/06/25/trump-election-overhaul-mail-voting-executive-order-blocked-talwani-usps-dhs",
     "title": "Federal judge blocks key pillars of Trump executive order restricting mail voting in 2026 election"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 561,
+    "kind": "item",
+    "occurred_at": "2026-06-25T18:23:48+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOSWpLQmRwSllXMHJ0aTlTdWxTSmpxc1pFUHM0Tkhwd2Z1NnM0WTBUcjhxaHp0QnEwNTNpTkxFcE11OWJfa2RaX2FkcjE1NWsxWmpkUGplc3V2dERxTlQxV0NPT1JwRGtBanZSME5rYUE3SktUdHVER3ZVeVFvemNvb1FFcE5abEpmRTFQY3p4cFVGazVwMEVfVWxlQ3ZGa1VzZG00WlNxT0lSaUxrX0M4cg?oc=5",
+    "title": "Pro-voting group sues Trump DOJ over its alleged voter purge lists - Democracy Docket"
   },
   {
     "channel": "news",
@@ -1241,6 +2211,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 579,
+    "kind": "item",
+    "occurred_at": "2026-06-27T10:37:22+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNYVFTSS11X2N3WWtlRlprS0R3eERSaEJVMXc3aUM4R2wtTWRRZ29YLXA0eTJYamd5UW5xelhQSHdTeFdmZ2RsTFBRVDM0QmxDaDFaYjY5V0hyNnFVd3hFczVaX1BweTFmdW1EdS01NnpyZEFPZDRiRjNpVTkzSnpwbW5vbEFjOF9YVWZYMVZxZHVzQUxUQ2VYRjFSUHZqU01TaVE?oc=5",
+    "title": "The courts walloped Trump’s anti-voting agenda this week - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 339,
     "kind": "item",
@@ -1258,6 +2238,16 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/pulte-picks-rncs-former-election-integrity-director-for-his-national-intelligence-agencys-chief-of-staff",
     "title": "Pulte picks RNC’s former election integrity director for his national intelligence agency’s chief of staff"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 27767,
+    "kind": "item",
+    "occurred_at": "2026-06-28T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOFVHTVpqY3ZDcWJ5Tm1jbjRuWWg0UVEzZ09OLWhCR0dqbkxEUl9UbWJzS3BDM0tyUUZOdmRiWFJwNi1MR0w0aG53OVhVbHNiUzhnX1BTb3F1R21rZTI2cG9BdzB0OVpQbzMzdWo2anZHNFVBOXZ2NTZPcDdqZjVBa1dFWi1jZjRJRGlqYzRyY2ZuREFwNVhxcnB1VXpLTU9nMHc?oc=5",
+    "title": "Judge rebuffs Trump attempt to obtain Pennsylvania voter information - Votebeat"
   },
   {
     "channel": "news",
@@ -1631,6 +2621,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 7409,
+    "kind": "item",
+    "occurred_at": "2026-07-02T17:29:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRzFicTdtcjN2aWZqYjg0dVBQUWlmY0lrRHJPWkJzajJpUkhRSWM0ckhwUGl6S1gzRm55V3FLX1oxTE9mcUVuTG1lMm1MMHBFRm9vZTcwZVBQdVdaeTlYNmRKSUpvSFRpX3lKSGs1cWlqcHRRZG91VVV5NmZ4cG50THVTbXdhZk9DRGNHNUExSGV1aklMWV9vQTFSSkExUXVKZ1lTV2tZNWJRdXJtODZhWUJB?oc=5",
+    "title": "Federal officials are racing against the clock to rein in mail voting in the 2026 midterms - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 7375,
     "kind": "item",
@@ -1828,6 +2828,16 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-rejects-trump-administration-bid-to-pause-order-blocking-attack-on-mail-voting",
     "title": "Judge rejects Trump administration bid to pause order blocking attack on mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 16516,
+    "kind": "item",
+    "occurred_at": "2026-07-07T21:28:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPMGoyRkd0bks4ZXBOYkhSYkp3NkM1dzFDaTN1TWItMUVnNXRNV1dvbWNyQlNrRE80eGtVX3JMdGRhQWdEanZmbmNTTGNwQkdNQ0JQZGdzcjlYdmMxMUItcTJ3MzZMdjlkR0ViWTVlWk9OMVc0aW51UkFmRGpEbndoaVlfdEZyMkIwMkp6NncyZkhkSkQ5Y3U2WkJpRDQycjQ3MGNXS2tVUmdXU0I2a0lyb0ZVbHZ0NjVDeU1HcQ?oc=5",
+    "title": "Trump administration threatens state election officials with criminal charges if they have noncitizen voters - Votebeat"
   },
   {
     "channel": "news",
@@ -2951,6 +3961,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 54764,
+    "kind": "item",
+    "occurred_at": "2026-07-22T23:01:57+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOUERXOTZwUXJXd1pZaDlEdHg4b1luQWdoR1Z2bWMtMTJiM1FqY2tid2FaSjZMQ3hxbnlxVFFKUGxDcWsxR2w0QzA5MFpNbFo2TGdFR0xVREZseEpZT1VvZTVMdHVwLUlzUjVZX1NzVHVudFVKeGh2a2ZoYTJ1YkdoWVRGal9wVzhPRGZab3lBV1Jac2w3RlZwamNGMUNHYWlaTmFXNGozYTJNQjBFSFBvYUl2NlJhV29lSllnRnlMVkM?oc=5",
+    "title": "Judge keeps block on New Hampshire’s proof of citizenship law in place, for now - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 57683,
     "kind": "item",
@@ -2978,6 +3998,16 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-says-trumps-attack-on-mail-voting-is-unconstitutional-legal-challenge-can-continue",
     "title": "Judge says Trump’s attack on mail voting is ‘unconstitutional,’ legal challenge can continue"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 58888,
+    "kind": "item",
+    "occurred_at": "2026-07-23T16:50:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPV1JOTG9jWERCaXp4SnN0SjgtSUE5RVVFZ2tSQ3VtTUhfVWR6T3dILVFId1l5S0RyWUtIdUJYTlE0MWF5aUQ1Zk93VmNFNnVuOXlYSEYyRTJYaXJjTUZwUG9vel9rb0Y0S1lkSWhSU3FqT1dONVpWZ1lWcWhKTHZRVlV3bW9wWm1DTjVhclpoeFA0U29MUVVIa09VRWRxYU9HMW9VOEdR?oc=5",
+    "title": "New Jersey’s disclosure of noncitizens on the voter rolls due to a software glitch echoes past problems in other states - Votebeat"
   },
   {
     "channel": "news",
@@ -3038,6 +4068,16 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-appeals-new-round-of-voter-roll-losses-expanding-crusade",
     "title": "Trump DOJ appeals new round of voter roll losses, expanding crusade to 8 circuits"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 67981,
+    "kind": "item",
+    "occurred_at": "2026-07-24T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNYmM1akJvalZfa3dXeXlDQmo0QXQ0aEtaWW5ETWprS3FsNUVKdmY5S2stcG1MNjRCcUNQN19MZE1Ia21CdGNpdVN5VzNNdUd2Qm1VRHNDQk9yLXpuWVJTUFByLVAydXdIUWxpd3ZQS3FCeWc3SVViNm9XMkxBc0NvckJZYUtBNzk2N2p1UHN1V3JqVWVMUWZTd0Q3ekNfSXdGVzV1VGZyeTJNbS0xOEE?oc=5",
+    "title": "Trump administration is coercing states to change election laws, lawsuit claims - votebeat.org"
   },
   {
     "channel": "news",
@@ -3411,6 +4451,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 65595,
+    "kind": "item",
+    "occurred_at": "2026-07-30T19:11:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNZjFUYVpWa3V5WFRyeDdfOWVEV0hDQm9HVkhBMVZPSkFkM3R3T1o0MTZvRGU3WUlXR25CbDFwV2hhTzhac1F2MER0UGQwNUVhUHBtZXhZLVdSSlg1RTFvRndGV2tSWG1kQjczdmc1SXdhRmhXdVc1ZUM3dG5lTnZQNXNmOTdrUXk5VUMxX3ZEMmp6ZkVkUVgtMDNheTlCaGEzSmRSTg?oc=5",
+    "title": "Texas officials tell counties to reinstate some voters flagged by a federal program as potential noncitizens - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 65586,
     "kind": "item",
@@ -3548,6 +4598,16 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/08/03/trump-supreme-court-mail-ballot-restrictions-executive-order-usps",
     "title": "Trump is asking the U.S. Supreme Court to allow new mail ballot restrictions in the 2026 midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 68247,
+    "kind": "item",
+    "occurred_at": "2026-08-03T11:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNbEx5VGR0U3QweUVRdXJ6Z296X1B0cWRPUy0zWUhkYTVtZzZKd2lrQmVPd01XTnh6aDBxNTF4azlyYU9JUEx3VmQ5R1EzbVVwaUtkZERIdmloVWt3MUFkZDZoV0dQNDVwS2xBWXdXRVoxakJ6ekF1Ym93UGJYa1JYT1ljY0FHQm1vem1OTG9VM2hzcXoxQWdObTdyVlNGYzFJLWY5enZfTHRYRm8xdjllXw?oc=5",
+    "title": "Trump wants the Supreme Court to let him put new restrictions on mail ballots in the midterms, but time is growing short - Votebeat"
   },
   {
     "channel": "news",
@@ -3901,6 +4961,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 71775,
+    "kind": "item",
+    "occurred_at": "2026-08-06T16:35:58+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOOEhTVVlucVYzUzlnenN2NWFNbkRrSFFMQmZuN1djSWRrTkEyTGJLNlZyaW9JUTNwdFVjbFRuZUgyckdldzhfQkh6SGpwa2xaYTBpeEc4THNhc3ZKZk1vNldzdWlyM1FBUHp0MGJhd09yYkx0WmVlS3dlNi1DZ25aZGVhTGtJMkxvQkhYb1hCd2JPaWs3NWJqU1lwbw?oc=5",
+    "title": "DOJ is 0 for 21 as court dismisses D.C. voter roll grab - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 71763,
     "kind": "item",
@@ -3918,6 +4988,16 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/california-court-shuts-down-gop-bid-to-sanitize-anti-voting-measure",
     "title": "California court shuts down GOP bid to sanitize anti-voting measure"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 74720,
+    "kind": "item",
+    "occurred_at": "2026-08-07T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPWGQzb2hfUzBhbjQ2OFdLSnNXS1Z6d0wzLU55R3ZHbkpFTmpUNm5hNlUtWkttS2xReFVvYkt3WUJsWG9OWF9YdGwtTGtWUVdUX1VwOHVNRG9rd1JDbmpCeXY1QXVaVTE0aEQ0a1RnN3F5TjY2MmVDaXh5THhHYlg4dHhpZ1QyRXN0?oc=5",
+    "title": "Court Cases - Hawaii Voter Roll Maintenance Challenge (PILF) - Democracy Docket"
   },
   {
     "channel": "news",
@@ -4178,6 +5258,16 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-supreme-court-chief-justice-warns-gop-against-running-out-the-clock-on-redistricting-referendum",
     "title": "Missouri Supreme Court Chief Justice warns GOP against running out the clock on redistricting referendum"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 75346,
+    "kind": "item",
+    "occurred_at": "2026-08-12T00:36:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQaFQwMk9PYTk1UUxvWWEyRGhRR3lPTWxIUGFraURuVkpsNkZIM1ptTzdWVi1KN1RzdmtCcW1yM29tdmJ5c0dJX0hjbnZ1NGhncEs5QkQwT243T1lmSHVoWFI2MW04OFJCMENBbVl4MkFDRXBSM3pRZWdPLWNXdDdBZ2xtcUdXQ0xCbGdvRjhTSkVfV1Z6NXNIQmh3dDNFYnJtc3BPdjdPTlVkZ0Vq?oc=5",
+    "title": "New court ruling makes it even less likely that Trump’s mail-voting rules will affect the midterms - Votebeat"
   },
   {
     "channel": "news",

@@ -1372,16 +1372,6 @@
       {
         "channel": "news",
         "grade": "C3",
-        "id": 62524,
-        "kind": "item",
-        "occurred_at": "2026-07-27T16:08:54+00:00",
-        "source_id": "google-news",
-        "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQd2wxc1VlVjBkX2ZwTHA3XzFrX1R4emU0SF9MOW5iMUF2TWhEUUQ5OFR2ZWhSOVZMRzBWQ3FTZ0tucG9lWlVsbzNUaXpJX3kyYjJKdWlZZG1wZGp0b0k1Um1wa1RwN3V2ODdnR0t1UmdyNEk0a2JleHRKVXVubVNHMVozYkN2M0xrSG9mZXc0WGtsRFRCNjRFLUZ3UHR6dEQyQXhkdUp1WmJFTmlqbHhURkJn?oc=5",
-        "title": "Trump demands an end to the filibuster to pass the SAVE America Act - Democracy Docket"
-      },
-      {
-        "channel": "news",
-        "grade": "C3",
         "id": 62528,
         "kind": "item",
         "occurred_at": "2026-07-27T16:58:08+00:00",
