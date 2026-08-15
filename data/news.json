@@ -4398,5 +4398,65 @@
     "source_id": "states-united",
     "source_url": "https://statesunited.org/cisa-later",
     "title": "CISA Later"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 78044,
+    "kind": "item",
+    "occurred_at": "2026-08-14T19:33:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-fails-to-convince-full-sixth-circuit-to-resurrect-michigan-voter-roll-loss",
+    "title": "Trump DOJ fails to convince full Sixth Circuit to resurrect Michigan voter roll loss"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 78043,
+    "kind": "item",
+    "occurred_at": "2026-08-14T20:03:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-goes-0-for-22-as-nevada-court-rejects-voter-roll-demand",
+    "title": "Trump DOJ goes 0 for 22 as Nevada court rejects voter roll demand"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 78042,
+    "kind": "item",
+    "occurred_at": "2026-08-14T21:06:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/attorney-general-blanche-appears-to-endorse-gop-candidate-in-latest-politicization-of-doj",
+    "title": "Attorney General Blanche appears to endorse GOP candidate in latest politicization of DOJ"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 78039,
+    "kind": "item",
+    "occurred_at": "2026-08-14T21:20:53+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/14/hamtramck-mayor-election-37-ballots-adam-alharbi",
+    "title": "37 Hamtramck ballots could flip mayoral race after Michigan Supreme Court declines appeal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 78041,
+    "kind": "item",
+    "occurred_at": "2026-08-14T22:06:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-blocks-gop-effort-to-get-rid-of-black-judicial-seat-in-mississippi",
+    "title": "Federal judge blocks GOP effort to get rid of Black judicial seat in Mississippi"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 78040,
+    "kind": "item",
+    "occurred_at": "2026-08-14T23:16:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-supreme-court-refuses-to-stop-gop-led-county-from-changing-voting-maps-between-primary-and-november-election",
+    "title": "Texas Supreme Court refuses to stop GOP-led county from changing voting maps between primary and November election"
   }
 ]

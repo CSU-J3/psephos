@@ -8622,6 +8622,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/92/united-states-v-hobbs/",
         "title": "United States v. Washington: TRANSCRIPT REQUEST by Intervenor Parties Common Power, Washington Alliance for Retired Americans for proceedings held on 8/4/2026 re 89 Motion Hearing,,,,. Requesting Attorney: Abh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77888,
+        "kind": "item",
+        "occurred_at": "2026-08-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/93/united-states-v-hobbs/",
+        "title": "United States v. Washington: NOTICE OF FILING OF OFFICIAL TRANSCRIPT of Motion Hearing held on 8/4/2026 before Judge Kymberly K. Evanson.Parties have seven (7) calendar days to file with the court a Notice of "
       }
     ]
   },
@@ -11518,6 +11528,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/92/united-states-v-aguilar/",
         "title": "United States v. Nevada: MOTION for Leave to File Document re 66 Motion to Dismiss by Intervenor Defendants Jacqueline Sue Bird, Institute for a Progressive Nevada, NAACP Conference of Idaho, Nevada, and U"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77874,
+        "kind": "item",
+        "occurred_at": "2026-08-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/93/united-states-v-aguilar/",
+        "title": "United States v. Nevada: Order AND Order on Motion for Leave to File Excess Pages AND Order on Motion for Leave to File Excess Pages AND Order on Motion for Leave to File Excess Pages AND Order on Motion f"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77875,
+        "kind": "item",
+        "occurred_at": "2026-08-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/94/united-states-v-aguilar/",
+        "title": "United States v. Nevada: Judgment"
       }
     ]
   },
@@ -18166,6 +18196,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72347022/128/1/united-states-v-jocelyn-benson/",
         "title": "United States v. Michigan: ORDER: Upon consideration of the motions of Honest Elections Project, The American Constitutional Rights Union, and Liberty Legal Foundation, for leave to file a brief as amicus cu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77871,
+        "kind": "item",
+        "occurred_at": "2026-08-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72347022/132/1/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan: ORDER filed: The motion to expedite [107] is GRANTED IN PART. The petition for en banc rehearing [106] is DENIED. Decision for publication. R. Guy Cole, Jr., John B. Nalbandian, an"
       }
     ]
   },
@@ -20132,6 +20172,94 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73678095/12/united-states-v-oliver/",
         "title": "United States v. New Mexico: [11305296] Minute order filed - Notice due that record is complete by 08/10/2026 for Erik Paltrow, Clerk of Court (oclk). (Text Only - No Attachment) [26-2126] [Entered: 08/05/2026"
+      }
+    ]
+  },
+  {
+    "caption": "United States of America v. Board Of Elections of the State of New York",
+    "case_id": "73682036",
+    "category": "voter-data",
+    "court": "Second Circuit",
+    "defendant": "Board Of Elections of the State of New York",
+    "docket_number": "26-2060",
+    "filed_at": "2026-07-28T00:00:00",
+    "plaintiff": "United States of America",
+    "status": "pending",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77851,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/2/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: DISTRICT COURT MEMORANDUM-DECISION AND ORDER, dated 07/10/2026, RECEIVED. [Entered: 07/28/2026 02:01 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77852,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/3/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: DISTRICT COURT JUDGMENT, dated 07/10/2026, RECEIVED. [Entered: 07/28/2026 02:34 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 77850,
+        "kind": "item",
+        "occurred_at": "2026-07-28T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States of America v. Thomas",
+    "case_id": "73686333",
+    "category": "voter-data",
+    "court": "Second Circuit",
+    "defendant": "Thomas",
+    "docket_number": "26-2064",
+    "filed_at": "2026-07-28T00:00:00",
+    "plaintiff": "United States of America",
+    "status": "pending",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77848,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/2/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: DISTRICT COURT ORDER, dated 07/17/2026, RECEIVED. [Entered: 07/28/2026 04:35 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 77849,
+        "kind": "item",
+        "occurred_at": "2026-07-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/3/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: DISTRICT COURT JUDGMENT, dated 07/23/2026, RECEIVED. [Entered: 07/28/2026 04:36 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 77847,
+        "kind": "item",
+        "occurred_at": "2026-07-28T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas — voter-data"
       }
     ]
   },
