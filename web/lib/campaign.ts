@@ -49,6 +49,11 @@ export type Cell = {
   // The terminated row(s) this jurisdiction continued FROM. superseded_by is set
   // on the dead row pointing forward, so the predecessor is the one carrying it.
   predecessors: CampaignRow[];
+  // Rows that are neither the live docket nor a predecessor: an ending the record
+  // holds with NO link asserted to whatever is live in the same state. These used
+  // to be dropped -- see buildCells. The three buckets are exhaustive by
+  // construction, which is the invariant the page depends on.
+  unlinked: CampaignRow[];
   chain: ChainKind | null;
   quietDays: number | null;
   dormant: boolean;
@@ -88,15 +93,38 @@ export function buildCells(rows: CampaignRow[], now: Date): Cell[] {
 
   return JURISDICTIONS.map(([name, code]) => {
     const group = byState.get(name) ?? [];
-    // The live docket is the one nothing supersedes. Every jurisdiction in the
-    // campaign has exactly one; if a future chain ever produced two, take the
-    // most recently filed rather than rendering a broken cell.
+    // The live docket is the one nothing supersedes. A jurisdiction usually has
+    // exactly one -- but between a successor landing and its supersession being
+    // asserted it has TWO, and that window is the whole reason this is written the
+    // way it is.
+    //
+    // THIS USED TO DISCARD THE LOSER AND SAY SO: "if a future chain ever produced
+    // two, take the most recently filed rather than rendering a broken cell." The
+    // case was foreseen and mishandled. Taking one and dropping the other IS the
+    // broken cell; it just failed silently. The dropped row carried no
+    // superseded_by, so it was not a predecessor either, and no section on the
+    // page could reach it. Observed on CT and NY: the cell flipped active on the
+    // live Second Circuit row, `Ended in this record` fell 8 -> 6, and the
+    // 3:26-cv-00021 dismissal was absent from the page in every section. KY, VA
+    // and NM each passed through the same window unobserved.
+    //
+    // So the partition is now TOTAL: live + predecessors + unlinked === group, and
+    // a test asserts it rather than a comment promising it.
     const liveRows = group.filter((r) => !r.superseded_by);
+    // Ordering rule, in two parts. Pending beats terminated: filing order alone
+    // picked correctly only by luck, since a successor is normally filed later, and
+    // inverted it would put a terminated docket on the cell and call the whole
+    // state ended. Most-recently-filed breaks the remaining ties.
     const live =
       liveRows.length <= 1
         ? liveRows[0] ?? null
-        : [...liveRows].sort((a, b) => (b.filed_at ?? "").localeCompare(a.filed_at ?? ""))[0];
+        : [...liveRows].sort(
+            (a, b) =>
+              Number(a.status === "terminated") - Number(b.status === "terminated") ||
+              (b.filed_at ?? "").localeCompare(a.filed_at ?? ""),
+          )[0];
     const predecessors = group.filter((r) => r.superseded_by);
+    const unlinked = liveRows.filter((r) => r !== live);
 
     // Three states, not two. A jurisdiction whose only live row is `terminated`
     // has ENDED -- distinct from never sued, and distinct from still running.
@@ -116,6 +144,10 @@ export function buildCells(rows: CampaignRow[], now: Date): Cell[] {
       status,
       live,
       predecessors,
+      unlinked,
+      // A chain is an ASSERTED continuation, so it keys off predecessors only. An
+      // unlinked ending is precisely the case where no link exists, and giving it a
+      // chain here would invent the relationship the record does not have.
       chain: predecessors.length && live ? (isCircuit(live.court) ? "appeal" : "refile") : null,
       quietDays,
       // Dormancy is a claim about a LIVE docket going quiet. A terminated docket is
@@ -182,6 +214,9 @@ export type CampaignSummary = {
   none: number;
   chains: number;
   dormant: number;
+  // Cells holding an ending with no link asserted to what is live beside it.
+  // Counts CELLS, like chains and dormant, not rows.
+  unlinkedEndings: number;
   total: number;
 };
 
@@ -195,5 +230,6 @@ export function summarize(cells: Cell[]): CampaignSummary {
     none: count((c) => c.status === "none"),
     chains: count((c) => c.chain !== null),
     dormant: count((c) => c.dormant),
+    unlinkedEndings: count((c) => c.unlinked.length > 0),
   };
 }

@@ -158,6 +158,98 @@ describe("the three cell states", () => {
   });
 });
 
+describe("the display invariant: no row is dropped", () => {
+  // THE WINDOW. Between a successor landing and its supersession being asserted, a
+  // state holds TWO rows with superseded_by IS NULL. buildCells used to take the
+  // most recently filed as `live` and drop the other on the floor -- it is not a
+  // predecessor (that requires superseded_by), so no section could render it.
+  //
+  // Observed on CT and NY: the cell flipped active on the live Second Circuit row,
+  // `Ended in this record` fell 8 -> 6, and the district dismissal appeared nowhere
+  // on the page. KY, VA and NM each passed through it unobserved. The window
+  // reopens whenever the tracker rewrites a row before the pair is asserted, which
+  // is the ordinary case rather than the exotic one.
+  const window = [
+    row({ case_id: "CT-D", state: "Connecticut", status: "terminated",
+          court: "District of Connecticut", docket_number: "3:26-cv-00021",
+          filed_at: "2025-11-01T00:00:00" }),
+    row({ case_id: "CT-C", state: "Connecticut", court: "Second Circuit",
+          docket_number: "26-2064", filed_at: "2026-07-28T00:00:00" }),
+  ];
+
+  it("keeps an unlinked terminated row reachable instead of discarding it", () => {
+    const c = cellFor(window, "Connecticut");
+    expect(c.live?.case_id).toBe("CT-C");
+    expect(c.status).toBe("active");
+    // Nothing is asserted between them, so this is NOT a chain -- rendering it as
+    // one would invent the link the record does not have.
+    expect(c.chain).toBeNull();
+    expect(c.predecessors).toEqual([]);
+    expect(c.unlinked.map((r) => r.case_id)).toEqual(["CT-D"]);
+  });
+
+  it("holds the partition total for every cell, which is the invariant itself", () => {
+    // The property, not an instance: each input row appears in exactly one of
+    // live / predecessors / unlinked. This is what stops the next bucket from being
+    // added by quietly dropping rows again.
+    const mixed = [
+      ...window,
+      row({ case_id: "NV", state: "Nevada" }),                       // single live
+      row({ case_id: "P", state: "Pennsylvania", status: "terminated",
+            superseded_by: "S" }),                                   // linked chain
+      row({ case_id: "S", state: "Pennsylvania", court: "Third Circuit" }),
+      row({ case_id: "MI", state: "Michigan", status: "terminated",
+            court: "Sixth Circuit" }),                               // ended, final
+    ];
+    const cells = buildCells(mixed, NOW);
+    const seen = cells.flatMap((c) => [
+      ...(c.live ? [c.live.case_id] : []),
+      ...c.predecessors.map((r) => r.case_id),
+      ...c.unlinked.map((r) => r.case_id),
+    ]);
+    expect(seen.sort()).toEqual(mixed.map((r) => r.case_id).sort());
+    expect(new Set(seen).size).toBe(mixed.length);   // exactly one bucket each
+  });
+
+  it("prefers a pending row as live even when the terminated one was filed later", () => {
+    // Filing order alone is not the rule. A successor is normally filed later, so
+    // filed_at picked correctly by luck; invert it and the old rule would put a
+    // terminated docket on the cell and call the whole state ended.
+    const inverted = [
+      row({ case_id: "LIVE", state: "Maine", filed_at: "2025-01-01T00:00:00" }),
+      row({ case_id: "DEAD", state: "Maine", status: "terminated",
+            filed_at: "2026-08-01T00:00:00" }),
+    ];
+    const c = cellFor(inverted, "Maine");
+    expect(c.live?.case_id).toBe("LIVE");
+    expect(c.status).toBe("active");
+    expect(c.unlinked.map((r) => r.case_id)).toEqual(["DEAD"]);
+  });
+
+  it("stays empty on healthy data, so the new section is an alarm and not decoration", () => {
+    const healthy = [
+      row({ case_id: "NV", state: "Nevada" }),
+      row({ case_id: "P", state: "Pennsylvania", status: "terminated", superseded_by: "S" }),
+      row({ case_id: "S", state: "Pennsylvania", court: "Third Circuit" }),
+      row({ case_id: "MI", state: "Michigan", status: "terminated", court: "Sixth Circuit" }),
+    ];
+    const cells = buildCells(healthy, NOW);
+    expect(cells.every((c) => c.unlinked.length === 0)).toBe(true);
+    expect(summarize(cells).unlinkedEndings).toBe(0);
+  });
+
+  it("counts cells, not rows, the same way chains and dormant do", () => {
+    const two = [
+      ...window,
+      row({ case_id: "NY-D", state: "New York", status: "terminated",
+            court: "Northern District of New York", filed_at: "2025-11-01T00:00:00" }),
+      row({ case_id: "NY-C", state: "New York", court: "Second Circuit",
+            filed_at: "2026-07-28T00:00:00" }),
+    ];
+    expect(summarize(buildCells(two, NOW)).unlinkedEndings).toBe(2);
+  });
+});
+
 describe("dormancy", () => {
   const quiet = (latest: string) =>
     cellFor([row({ case_id: "H", state: "Hawaii", latest_entry_at: latest })], "Hawaii");

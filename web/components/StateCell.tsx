@@ -33,6 +33,21 @@ export function StateCell({ cell }: { cell: Cell }) {
               ●
             </span>
           )}
+          {/* A third marker, against this file's own "two markers" rule, and the
+              exception is argued rather than assumed: the grid is the surface where
+              the failure actually showed. With this cell reading `active` and its
+              terminated docket rendered nowhere, a reader who scans only the grid
+              sees a state whose dismissal has vanished. Like ● and unlike a badge,
+              it is exceptional -- it marks a link psephos owes, so the healthy grid
+              carries none at all. */}
+          {cell.unlinked.length > 0 && (
+            <span
+              title={`${cell.unlinked.length} ended docket(s) here with no link asserted to the live one`}
+              className="text-neutral-400"
+            >
+              †
+            </span>
+          )}
         </span>
       </div>
       <div className="mt-1 truncate font-mono text-[11px] text-neutral-500">

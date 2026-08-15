@@ -45,6 +45,12 @@ export default async function CampaignPage() {
   const s = summarize(cells);
 
   const chains = cells.filter((c) => c.chain !== null);
+  // Endings the record holds with nothing asserted to connect them to what is live
+  // in the same state. Neither existing section can hold these without lying:
+  // `Continued elsewhere` asserts a link driven by superseded_by, which these have
+  // by definition none of, and `Ended in this record` says the LIVE docket is
+  // terminated, which in these states it is not.
+  const unlinked = cells.filter((c) => c.unlinked.length > 0);
   // Michigan first: it is terminated at a CIRCUIT with no successor, the campaign's
   // furthest-progressed loss, and it would otherwise sort among the district
   // dismissals as though it were one.
@@ -81,7 +87,8 @@ export default async function CampaignPage() {
         <p className="mt-3 text-xs leading-relaxed text-neutral-500">
           ↑ continued as a circuit appeal · ↻ refiled in another district ·{" "}
           <span className="text-amber-400">●</span> no docket activity in over{" "}
-          {DORMANT_AFTER_DAYS} days. An unfilled cell means{" "}
+          {DORMANT_AFTER_DAYS} days · † ended here, with no link asserted to the live
+          docket. An unfilled cell means{" "}
           <strong className="font-medium text-neutral-400">no suit in this record</strong>{" "}
           — not that the state complied. DOJ demanded data from all 50 states and DC,
           but psephos holds no compliance data, so the {s.none} blanks say only that no
@@ -130,6 +137,68 @@ export default async function CampaignPage() {
             </ProseRow>
           ))}
         </ul>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="mb-3 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
+          Ended, with no link asserted
+          <span className="text-sm font-normal tabular-nums text-neutral-500">
+            {unlinked.length}
+          </span>
+        </h2>
+        <p className="mb-3 text-xs leading-relaxed text-neutral-500">
+          A docket that ended while another docket in the same state is live, with{" "}
+          <strong className="font-medium text-neutral-400">nothing in the record
+          connecting them</strong>. That is a third thing from the two sections around
+          it: a continuation psephos has not asserted, rather than one it has or one
+          that does not exist. Until the link is asserted the two dockets are separate
+          facts, and this section says so rather than guessing at the relationship.
+        </p>
+        {unlinked.length === 0 ? (
+          <p className="text-sm text-neutral-500">
+            Nothing unlinked — every ending in the record either points forward to a
+            successor or is the state&apos;s last word.
+          </p>
+        ) : (
+          <ul className="space-y-3">
+            {unlinked.map((c) => (
+              <ProseRow key={c.code}>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="font-medium">{c.name}</span>
+                  <span className="shrink-0 text-xs text-neutral-500">
+                    live here: {c.live?.court}{" "}
+                    <span className="font-mono">{c.live?.docket_number}</span>
+                  </span>
+                </div>
+                {c.unlinked.map((r) => {
+                  const status = trackerStatus(notes.get(r.case_id));
+                  return (
+                    <div key={r.case_id} className="mt-2">
+                      <p className="text-sm text-neutral-400">
+                        <Link href={`/case/${r.case_id}`} className="hover:underline">
+                          {r.court} <span className="font-mono">{r.docket_number}</span>
+                        </Link>
+                        <span className="text-neutral-600">
+                          {" "}
+                          terminated {formatDate(r.latest_entry_at)}
+                        </span>
+                      </p>
+                      {status && (
+                        <p className="mt-1 flex flex-wrap items-baseline gap-2 text-sm text-neutral-300">
+                          <span>{status}</span>
+                          <Grade grade={B2} />
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+                <div className="mt-2">
+                  <Grade grade={A1} />
+                </div>
+              </ProseRow>
+            ))}
+          </ul>
+        )}
       </section>
 
       <section className="mt-10">
