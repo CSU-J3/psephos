@@ -101,16 +101,44 @@ def _get(
             if resp.status_code in RETRY_STATUS:
                 if resp.status_code == 429:
                     _log_429(url, resp, headers)
-                    # Tell a daily-cap 429 (hopeless: Retry-After ~ tens of thousands of
-                    # seconds, far past any wait we'd take) from a burst-rate 429
-                    # (transient). _reset_seconds is UNCAPPED, so a reset beyond
-                    # MAX_RETRY_AFTER is by definition a wait we won't take -> abort now
-                    # rather than flail MAX_RETRIES times and discard the status.
-                    # Limitation: a cap with NO Retry-After AND no body count degrades to
-                    # the old retry-then-RuntimeError; CourtListener's throttle body carries it.
-                    reset = _reset_seconds(resp)
-                    if reset is not None and reset > MAX_RETRY_AFTER:
-                        raise RateBudgetExhausted(reset)
+                    # CLASSIFY ON THE SCOPE'S UNIT, NOT THE RESET'S MAGNITUDE.
+                    # This used to read any reset above MAX_RETRY_AFTER as a spent
+                    # daily budget and abort the run. Finding 22 measured the response
+                    # that refutes it: `Rate limit exceeded: 20/min` with
+                    # `retry-after: 46`. The reset is large BECAUSE the burst was
+                    # tight -- 20 requests inside 14.5s means the oldest ages out at
+                    # t=60, so 60-14.5 ~= 46 -- and a per-minute window's ceiling is
+                    # 60s, DOUBLE MAX_RETRY_AFTER. So under the old rule the tighter
+                    # the burst, the more certainly it was misread as a daily cap.
+                    # Cost: both 429s this account has ever produced are per-minute
+                    # scopes, so every real 429 in the project's history aborted
+                    # litigation for the cycle over a condition clearing in under a
+                    # minute, while the daily branch never saw a real response.
+                    #
+                    # Retry is viable, measured against _retry_after rather than
+                    # assumed: retry-after 46 caps to 30 per attempt, so requests land
+                    # at t = 0, 30, 60, 90 and the third is past the window, with a
+                    # fourth in reserve. The 60s ceiling means EVERY per-minute
+                    # throttle clears inside MAX_RETRIES.
+                    #
+                    # The unscoped arm below is deliberately untouched: where a body
+                    # names its scope we believe it, and where nothing parses the old
+                    # magnitude rule still runs. The fix adds information rather than
+                    # swapping one guess for another.
+                    #
+                    # Known cost of the unit rule: an /hour scope is sub-daily, so it
+                    # retries, but its window (up to 3600s) outlasts the ~90s ladder --
+                    # it exhausts to RuntimeError, a per-item skip, spending four
+                    # requests to learn that. CourtListener's 1,000/hour is real. That
+                    # is still preferred to aborting the collector on a window that may
+                    # well clear, and a per-item skip keeps the run alive either way.
+                    scope = _throttle_scope(resp)
+                    if scope == "cap":
+                        raise RateBudgetExhausted(_reset_seconds(resp))
+                    if scope is None:
+                        reset = _reset_seconds(resp)
+                        if reset is not None and reset > MAX_RETRY_AFTER:
+                            raise RateBudgetExhausted(reset)
                 last_exc, last_status, last_body = None, resp.status_code, resp.text
                 time.sleep(_retry_after(resp, attempt))
                 continue
@@ -226,10 +254,46 @@ def _log_429(url: str, resp: requests.Response, sent: dict | None = None) -> Non
           file=sys.stderr)
 
 
+# The scope units a throttle body can name, split by whether their window can
+# clear inside the retry ladder. Matched on PREFIXES rather than first letters,
+# which is load-bearing: "m" is ambiguous between min and month, and reading a
+# monthly cap as a burst is precisely the failure this classifier prevents --
+# also the shape LegiScan's EDU cap would take. DRF spells these out as
+# second/minute/hour/day as readily as abbreviating them, so both must match.
+_BURST_UNITS = ("sec", "min", "hour")
+_CAP_UNITS = ("day", "week", "month", "year")
+
+
+def _throttle_scope(resp: requests.Response) -> str | None:
+    """Which throttle a 429 names: `burst` (retryable), `cap` (hopeless), or None.
+
+    The scope lives ONLY in the body. CourtListener sends no X-RateLimit-* header
+    of any kind -- finding 22 dumped all twenty headers to confirm it -- so
+    `retry-after` gives a delay with no scope attached, and any classifier reading
+    the header alone is guessing while looking informed.
+
+    Both real captures read `Rate limit exceeded: <N>/<unit>.`, so the unit is the
+    token after the slash. Returns None rather than guessing when nothing parses,
+    which hands the decision back to _get's magnitude fallback."""
+    m = re.search(r"[Rr]ate limit exceeded:\s*\d+\s*/\s*([A-Za-z]+)", resp.text)
+    if not m:
+        return None
+    unit = m.group(1).lower()
+    if unit.startswith(_BURST_UNITS):
+        return "burst"
+    if unit.startswith(_CAP_UNITS):
+        return "cap"
+    return None
+
+
 def _reset_seconds(resp: requests.Response) -> int | None:
     """Seconds until a throttle frees, UNCAPPED (unlike _retry_after): the Retry-After
-    header, else the count in an `Expected available in N seconds` throttle body. The
-    magnitude is what lets _get tell a daily cap (huge) from a burst (small)."""
+    header, else the count in an `Expected available in N seconds` throttle body.
+
+    Magnitude is now the FALLBACK discriminator, not the primary one: _throttle_scope
+    reads the scope's unit from the body and only an unscoped throttle is decided on
+    this number. The docstring used to claim the magnitude was what told a cap from a
+    burst, which finding 22 refuted -- a 20/min throttle reports up to 60s."""
     ra = resp.headers.get("Retry-After")
     if ra and ra.isdigit():
         return int(ra)
