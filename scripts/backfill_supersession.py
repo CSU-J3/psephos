@@ -86,6 +86,22 @@ PAIRS = [
     #   71982149, 07-27, `USCA Information Letter with Case Number 26-2126 for 123 Notice
     #   of Appeal`. This is also the caption-collision pair -- both rows read `United
     #   States v. Oliver`, which is why nothing here matches or displays on caption.
+    # The two Second Circuit appeals, 2026-08-15. UNLIKE every pair above, these
+    # successors were not acquired from the tracker artifact -- the UW rows still name
+    # the district dockets, so the circuit rows exist only because config/sources.yaml
+    # seeds them (see the second-role comment there). Evidence per pair is A1 on BOTH
+    # sides and independent of the tracker prose that raised the question:
+    ("72110170", "3:26-cv-00021", "73686333", "26-2064"),   # CT -> 2d Cir.  Forward, from
+    #   72110170's own entries: judgment for defendants and `NOTICE OF APPEAL ... by USA`
+    #   both 07-23, plus a clerk's certificate of the record on appeal. Reverse, from the
+    #   circuit row's metadata: `appeal_from_str` reads `DISTRICT OF CONNECTICUT (NEW
+    #   HAVEN)`. Circuit map agrees -- D. Conn. appeals lie to ca2 and nowhere else.
+    ("71457474", "1:25-cv-01338", "73682036", "26-2060"),   # NY -> 2d Cir.  Forward:
+    #   71457474 holds judgment 07-10, `NOTICE OF APPEAL` 07-23, and `ELECTRONIC NOTICE
+    #   AND CERTIFICATION sent to US Court of Appeals re 103 Notice of Appeal` 07-27.
+    #   Reverse: `appeal_from_str` reads `NDNY (SYRACUSE)`. Note the district is the
+    #   NORTHERN district of New York, not the Southern -- the caption says only "State
+    #   of New York", so the originating court comes from the metadata, not the name.
 ]
 
 

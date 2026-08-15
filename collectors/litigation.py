@@ -328,6 +328,18 @@ def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | No
         row["filed_at"] = filed_at
         row["status"] = case_status(docket)
         row["source_url"] = CL_BASE_WEB + docket["absolute_url"] if docket.get("absolute_url") else None
+        # Stamped HERE, in the docket branch only, because this branch is the one that
+        # actually read status off CourtListener -- `case_status(docket)` on the line
+        # above is that read. The reuse path (docket is None) re-reads nothing, so it
+        # must not stamp, or the receipt would claim a check that never happened.
+        #
+        # This closes the handoff-27 deferral, which was carried on the argument that
+        # the cost was bounded and unmeasured. It is measured now: the 2026-08-15
+        # 00:00Z run seeded CT and NY, and the refresh pass that followed read 26 due
+        # against the 24 it would otherwise have had -- one redundant request per newly
+        # resolved case, against the docket the resolve had just read, in the same run.
+        # Small, but it is pure waste on a contended budget and the fix is one line.
+        row["status_checked_at"] = common.now_iso()
     db.upsert(conn, "cases", row, pk="case_id")
     return filed_at
 

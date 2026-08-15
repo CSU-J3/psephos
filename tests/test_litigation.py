@@ -569,12 +569,19 @@ def test_full_walk_request_budget_defers_when_spent(tmp_path, monkeypatch):
     marked = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NOT NULL").fetchone()[0]
     nullmark = conn.execute("SELECT COUNT(*) FROM cases WHERE entries_synced_at IS NULL").fetchone()[0]
     assert (marked, nullmark) == (2, 1)
-    # The refresh ran over all three rows and stamped a receipt on each. A row resolved
-    # THIS run is immediately due (its status_checked_at is NULL), so it costs one
-    # redundant request against the docket the resolve just read -- bounded to newly
-    # resolved cases and deliberately not optimised here, since the fix would mean
-    # writing status_checked_at from upsert_case.
-    assert len(refreshed) == 3
+    # Every row carries a receipt and NONE of them costs a refresh request. This
+    # assertion was `== 3` until 2026-08-15 and pinned the handoff-27 deferral: a row
+    # resolved this run used to land with status_checked_at NULL, which made it
+    # immediately due, so the refresh re-read the very docket the resolve had just
+    # read. upsert_case now stamps the receipt in its docket branch, so all three are
+    # already fresh and the pass has nothing to do.
+    #
+    # Zero, not one: all three seeds carry docket_number and court_id and the fake
+    # resolve returns a docket for each, so all three take the branch that stamps. The
+    # third row's NULL in the line above is `entries_synced_at` -- a DEFERRED WALK, not
+    # an unresolved docket. Those two NULLs mean different things and this test holds
+    # both, which is exactly how they get conflated.
+    assert len(refreshed) == 0
     assert conn.execute(
         "SELECT COUNT(*) FROM cases WHERE status_checked_at IS NULL").fetchone()[0] == 0
     conn.close()
