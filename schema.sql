@@ -34,6 +34,17 @@ CREATE TABLE IF NOT EXISTS items (
     bill_id          TEXT REFERENCES bills(bill_id),
     case_id          TEXT REFERENCES cases(case_id),
     state_bill_id    TEXT REFERENCES state_bills(state_bill_id),
+    -- The PUBLISHER, which is not the same thing as source_id (the delivery pipe).
+    -- One aggregator source carries hundreds of outlets, and the spec grades
+    -- outlets, so the two must be stored separately or the grade answers the wrong
+    -- question. PROVENANCE DIFFERS BY ROW and matters: items collected from
+    -- 2026-08-15 carry the publisher's own structured <source> element out of the
+    -- feed, while rows backfilled before that date carry a parse of the
+    -- ` - Publisher` suffix Google News appends to the title -- a field the
+    -- publisher controls but does not intend as data. Measured 139/139 correct on
+    -- the B2-outlet cohort, but they are not the same evidence. NULL on
+    -- non-aggregated feeds, where source_id already names the outlet.
+    outlet           TEXT,
     content_hash     TEXT NOT NULL,          -- sha256 of canonical content, for dedup
     raw_json         TEXT,                   -- original payload, kept for traceability
     UNIQUE(content_hash)

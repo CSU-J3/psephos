@@ -306,6 +306,7 @@ _MIGRATIONS = [
     ("cases", "superseded_by", "TEXT REFERENCES cases(case_id)"),
     ("cases", "status_checked_at", "TEXT"),
     ("cases", "state", "TEXT"),
+    ("items", "outlet", "TEXT"),
 ]
 
 

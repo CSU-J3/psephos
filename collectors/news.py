@@ -186,10 +186,14 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
             return "dup_fuzzy"
 
     bill_id, (gsource, ginfo), conf = classify(f"{title} {summary}", ctx, source_grade)
+    # Prefer the feed's own <source> element; fall back to the title suffix. Stored
+    # rather than derived at read time because it is a FACT about the item, where
+    # the grade it earns is a policy that can change without re-collecting.
+    outlet = (raw.get("outlet") or "").strip() or outlet_from_title(title)
     cur = conn.execute(
         "INSERT INTO items (channel, source_id, source_url, title, summary, occurred_at, "
         "fetched_at, admiralty_source, admiralty_info, confidence, bill_id, case_id, "
-        "content_hash, raw_json) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+        "outlet, content_hash, raw_json) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
         (
             CHANNEL, source_id, canon or link or "", title, summary or None,
             common.to_iso(raw.get("published")), common.now_iso(),
@@ -198,10 +202,10 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
             # and matching a caption's defendant matches a secretary of state who is in
             # the news constantly for other reasons, at ~2-3 true hits in 14. See
             # docs/psephos.md, the news collector section and the limitations list.
-            gsource, ginfo, conf, bill_id, None, chash,
+            gsource, ginfo, conf, bill_id, None, outlet, chash,
             json.dumps(
                 {"title": title, "link": link, "summary": summary,
-                 "published": raw.get("published")},
+                 "published": raw.get("published"), "outlet": outlet},
                 separators=(",", ":"),
             ),
         ),
@@ -233,9 +237,36 @@ def fetch_feed(url: str) -> list[dict]:
             "link": e.get("link", ""),
             "summary": e.get("summary", e.get("description", "")),
             "published": e.get("published", e.get("updated")),
+            # THE PUBLISHER, WHICH THIS USED TO THROW AWAY. Google News RSS carries
+            # `<source url="...">Publisher</source>` on every entry and feedparser
+            # exposes it as `entry.source`; keeping only the four fields above meant
+            # the one authoritative statement of who wrote the piece was parsed and
+            # discarded on all 3,003 items, leaving the ` - Publisher` title suffix
+            # as the only signal -- a field the publisher controls and does not
+            # intend as data. Absent on plain RSS, where source_id already names the
+            # outlet, so this is None there and the column stays NULL.
+            "outlet": (e.get("source") or {}).get("title") or None,
         }
         for e in parsed.entries
     ]
+
+
+def outlet_from_title(title: str) -> str | None:
+    """The publisher from Google News's ` - Publisher` title suffix, or None.
+
+    THE FALLBACK, NOT THE SOURCE OF TRUTH. `fetch_feed` now keeps the feed's own
+    `<source>` element; this exists for rows collected before it did (backfill) and
+    for the day an aggregator stops sending one. The two are not equal evidence and
+    `items.outlet`'s schema comment says which is which.
+
+    Splits on the LAST separator, because a headline can contain its own: the four
+    `Court Cases - <name> - Democracy Docket` items in the corpus parse correctly
+    only this way. Measured 139/139 correct across the B2-outlet cohort, so the
+    parse is sound -- what it cannot do is survive an outlet renaming itself, which
+    two items already show by arriving as `votebeat.org` rather than `Votebeat`."""
+    if " - " not in title:
+        return None
+    return title.rsplit(" - ", 1)[1].strip() or None
 
 
 def gnews_url(base: str, query: str) -> str:

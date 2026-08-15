@@ -292,3 +292,75 @@ if __name__ == "__main__":
     test_cache_truncated_on_failure_so_retry_writes_own_entries()
     test_db_reset_swaps_connection_and_clears_pending()
     print("ok")
+
+
+# --------------------------------------------------------------------------- #
+# The outlet is a stored fact (handoff 82, Part A)
+#
+# `source_id` is the DELIVERY PIPE, not the publisher: one aggregator carries
+# hundreds of outlets. The spec grades outlets, so storing only the pipe answers
+# the wrong question -- which is how the same journalism ended up B2 or C3 by
+# which feed carried it. fetch_feed used to drop the feed's own <source> element,
+# leaving the title suffix as the only signal.
+# --------------------------------------------------------------------------- #
+def test_outlet_from_title_takes_the_last_separator():
+    """A headline can contain its own ' - '. The four `Court Cases - <name> -
+    Democracy Docket` items in the live corpus parse correctly only this way."""
+    assert news.outlet_from_title("Headline here - Votebeat") == "Votebeat"
+    assert news.outlet_from_title(
+        "Court Cases - Idaho DOJ Voter Data Access Challenge - Democracy Docket"
+    ) == "Democracy Docket"
+
+
+def test_outlet_from_title_is_none_when_there_is_no_suffix():
+    """Plain RSS titles carry no publisher suffix, and inventing one from a
+    hyphenated headline would be worse than leaving the column NULL."""
+    assert news.outlet_from_title("No separator at all") is None
+    assert news.outlet_from_title("") is None
+    assert news.outlet_from_title("Trailing separator - ") is None
+
+
+def test_outlet_parse_survives_an_outlet_renaming_itself_only_by_luck():
+    """Two live items arrive as `votebeat.org` rather than `Votebeat`. The parse
+    returns what the feed said -- it is not the parser's job to canonicalise -- so
+    any promotion rule keyed on this must match aliases, not exact names."""
+    assert news.outlet_from_title("Some headline - votebeat.org") == "votebeat.org"
+
+
+def test_fetch_feed_keeps_the_structured_source_element(monkeypatch):
+    """The authoritative field. It was being parsed and thrown away on every item,
+    which is what left the title suffix as the only signal in the first place."""
+    class _Resp:
+        content = b"<rss/>"
+        def raise_for_status(self): pass
+
+    class _Parsed:
+        entries = [
+            {"title": "A headline - Votebeat", "link": "https://x/1",
+             "summary": "s", "published": "2026-08-01",
+             "source": {"title": "Votebeat", "href": "https://votebeat.org"}},
+            {"title": "Plain RSS item", "link": "https://y/2",
+             "summary": "s", "published": "2026-08-01"},          # no <source>
+        ]
+
+    monkeypatch.setattr(news.requests, "get", lambda *a, **k: _Resp())
+    monkeypatch.setattr(news.feedparser, "parse", lambda _c: _Parsed())
+    got = news.fetch_feed("https://feed")
+    assert got[0]["outlet"] == "Votebeat"
+    assert got[1]["outlet"] is None       # plain RSS: source_id already names it
+
+
+def test_process_entry_stores_the_outlet_preferring_the_structured_field(tmp_path):
+    """Structured beats parsed when both exist, and the parse fills in when it
+    does not -- which is the whole backfill story in one row."""
+    conn, ctx, gn_grade = _env()
+    news.process_entry(conn, _entry("Headline one - Some Wire", "https://a/1",
+                                    outlet="Votebeat"),
+                       "google-news", gn_grade, ctx, [])
+    news.process_entry(conn, _entry("Headline two - Democracy Docket", "https://a/2"),
+                       "google-news", gn_grade, ctx, [])
+    got = {r["title"]: r["outlet"] for r in
+           conn.execute("SELECT title, outlet FROM items").fetchall()}
+    assert got["Headline one - Some Wire"] == "Votebeat"        # structured wins
+    assert got["Headline two - Democracy Docket"] == "Democracy Docket"   # parsed
+    conn.close()
