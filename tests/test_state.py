@@ -416,3 +416,189 @@ if __name__ == "__main__":
     test_upsert_state_bill_masterlist_only()
     test_upsert_state_bill_getbill_enriches()
     print("ok")
+
+
+# --- the batch boundary (handoff 81) ----------------------------------------
+#
+# collect() used to commit nothing: main() committed once after it returned, so
+# all nine states rode in ONE transaction and a stream failure at the unguarded
+# write path discarded every state processed that run. The two existing handlers
+# do not catch it -- they wrap getMasterList and getBill, pure HTTP, which is why
+# the 2026-08-15 incident (nine states failing at exactly those calls) survived
+# while a failure four lines further down would not have.
+
+def _masterlist_for(offset: int):
+    """A per-state copy of the masterlist fixture with distinct bill_ids.
+
+    Necessary, not decorative: the fixture is one payload and the change-hash gate
+    is keyed on bill_id, so replaying it verbatim for a second state would gate
+    every bill out as already-seen and the test would 'pass' having written
+    nothing. Each state gets its own bills."""
+    ml = json.loads(json.dumps(MASTERLIST))
+    for k, v in ml["masterlist"].items():
+        if k == "session" or not isinstance(v, dict):
+            continue
+        v["bill_id"] = v["bill_id"] + offset
+        v["change_hash"] = f"{offset}-{v['change_hash']}"
+    return ml
+
+
+OFFSETS = {"TX": 0, "GA": 100, "FL": 200}
+
+
+@contextmanager
+def _patched_states(getbill_fail: str | None = None):
+    """Fake LegiScan for several states at once, each with its own bills."""
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+        if params["op"] == "getMasterList":
+            return _masterlist_for(OFFSETS[params["state"]])
+        # Bill ids are 1700001 + the state's offset, so the range test has to be
+        # against the id, not against the offset itself.
+        if getbill_fail is not None and \
+                1700001 + OFFSETS[getbill_fail] <= params["id"] < 1700001 + OFFSETS[getbill_fail] + 100:
+            raise RuntimeError("getBill exploded")
+        return GETBILL
+
+    orig = common.http_get
+    common.http_get = fake
+    try:
+        yield
+    finally:
+        common.http_get = orig
+
+
+class _CountingConn:
+    """Delegating proxy that counts commits, so 'per state, not per run' is
+    assertable rather than inferred. __getattr__ delegation matters for db.recover,
+    which probes `getattr(conn, "reset", None)` and must find nothing here so it
+    takes the local rollback path."""
+
+    def __init__(self, raw):
+        self._raw = raw
+        self.commits = 0
+
+    def commit(self):
+        self.commits += 1
+        return self._raw.commit()
+
+    def __getattr__(self, name):
+        return getattr(self._raw, name)
+
+
+def _items_for(conn, offset):
+    lo, hi = 1700001 + offset, 1700001 + offset + 99
+    return conn.execute(
+        "SELECT COUNT(*) AS n FROM items WHERE CAST(state_bill_id AS INTEGER) BETWEEN ? AND ?",
+        (lo, hi)).fetchone()["n"]
+
+
+def test_a_failing_state_does_not_discard_the_states_around_it(monkeypatch):
+    """THE UNIT. A write-path failure in the middle state costs that state only.
+
+    Durability is checked AFTER an explicit rollback: uncommitted writes are
+    visible on the same connection, so counting without one would pass whether or
+    not anything was committed -- the check has to be able to fail."""
+    raw = _env()
+    conn = _CountingConn(raw)
+
+    real = state.upsert_state_bill
+
+    def boom(c, bill, rawbill, st):
+        if st == "GA":
+            raise RuntimeError("Hrana: stream not found")
+        return real(c, bill, rawbill, st)
+
+    monkeypatch.setattr(state, "upsert_state_bill", boom)
+    with _patched_states():
+        results = state.collect(conn, BASE, KEY, ["TX", "GA", "FL"], TERMS, GRADE,
+                                budget=500, throttle=0.0)      # must NOT raise
+
+    conn.rollback()                       # discard anything still pending
+    assert _items_for(conn, OFFSETS["TX"]) == 6      # committed before GA ran
+    assert _items_for(conn, OFFSETS["GA"]) == 0      # discarded whole
+    assert _items_for(conn, OFFSETS["FL"]) == 6      # still attempted after
+    assert results["GA"]["error_msg"] is not None
+    assert results["GA"]["new_items"] == 0           # not claimed, since nothing persisted
+    assert results["TX"]["new_items"] == 6 and results["FL"]["new_items"] == 6
+    raw.close()
+
+
+def test_the_boundary_is_per_state_not_per_run():
+    """One commit per state processed. Per bill would be 484 round trips for a
+    granularity the change-hash gate does not need."""
+    raw = _env()
+    conn = _CountingConn(raw)
+    with _patched_states():
+        state.collect(conn, BASE, KEY, ["TX", "GA", "FL"], TERMS, GRADE,
+                      budget=500, throttle=0.0)
+    assert conn.commits == 3
+    raw.close()
+
+
+def test_recover_fires_on_the_db_path_and_on_neither_http_path(monkeypatch):
+    """The exclusion, pinned as behaviour rather than left as prose. db.recover
+    belongs where `conn` IS the failure. The two HTTP handlers wrap getMasterList
+    and getBill, where the connection is fine and a reset() would discard the
+    state's pending writes for a failure that had nothing to do with it."""
+    calls = []
+    monkeypatch.setattr(db, "recover", lambda c: calls.append("recover"))
+
+    # (a) a write-path failure -> recover
+    raw = _env()
+    real = state.upsert_state_bill
+    monkeypatch.setattr(state, "upsert_state_bill",
+                        lambda c, b, r, st: (_ for _ in ()).throw(RuntimeError("dead stream"))
+                        if st == "GA" else real(c, b, r, st))
+    with _patched_states():
+        state.collect(raw, BASE, KEY, ["GA"], TERMS, GRADE, budget=500, throttle=0.0)
+    assert calls == ["recover"]
+    raw.close()
+
+    # (b) a getBill failure -> per-bill skip, no recover
+    calls.clear()
+    monkeypatch.setattr(state, "upsert_state_bill", real)
+    raw = _env()
+    with _patched_states(getbill_fail="GA"):
+        r = state.collect(raw, BASE, KEY, ["GA"], TERMS, GRADE, budget=500, throttle=0.0)
+    assert calls == [] and r["GA"]["errors"] == 2
+    raw.close()
+
+    # (c) a getMasterList failure -> per-state skip, no recover
+    calls.clear()
+    raw = _env()
+
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+        return {"status": "ERROR", "alert": {"message": "Unknown state abbreviation"}}
+
+    orig = common.http_get
+    common.http_get = fake
+    try:
+        r = state.collect(raw, BASE, KEY, ["ZZ"], TERMS, GRADE, budget=500, throttle=0.0)
+    finally:
+        common.http_get = orig
+    assert calls == [] and r["ZZ"]["error_msg"] is not None
+    raw.close()
+
+
+def test_a_discarded_state_resumes_on_the_next_run(monkeypatch):
+    """The self-healing claim, demonstrated rather than asserted. A discarded
+    state stored no change_hash, so the gate re-fetches its bills next run and the
+    items land -- which is why per-state partials are the intended failure mode
+    and not data loss."""
+    raw = _env()
+    real = state.upsert_state_bill
+    monkeypatch.setattr(state, "upsert_state_bill",
+                        lambda c, b, r, st: (_ for _ in ()).throw(RuntimeError("dead stream")))
+    with _patched_states():
+        state.collect(raw, BASE, KEY, ["GA"], TERMS, GRADE, budget=500, throttle=0.0)
+    raw.rollback()
+    assert _items_for(raw, OFFSETS["GA"]) == 0
+    assert state.seen_hash(raw, 1700001 + OFFSETS["GA"]) is None    # nothing stored
+
+    monkeypatch.setattr(state, "upsert_state_bill", real)           # the blip passes
+    with _patched_states():
+        r = state.collect(raw, BASE, KEY, ["GA"], TERMS, GRADE, budget=500, throttle=0.0)
+    raw.rollback()
+    assert r["GA"]["new_items"] == 6
+    assert _items_for(raw, OFFSETS["GA"]) == 6
+    raw.close()

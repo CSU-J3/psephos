@@ -240,7 +240,15 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
     per-state counts. Per-state try/except so one bad state doesn't sink the run;
     per-bill try/except on getBill so one bad bill doesn't skip the rest of its
     state. `budget` caps getBill calls across the whole run -- an unfetched bill's
-    hash is left unstored so the next run resumes it."""
+    hash is left unstored so the next run resumes it.
+
+    THIS FUNCTION OWNS ITS TRANSACTION BOUNDARY and commits once per state; it used
+    to commit nothing and leave that to main(). A caller should not assume it can
+    still wrap the whole poll in one transaction. The failure mode that buys is
+    per-state partials: completed states are durable, the failing state is
+    discarded whole, later states are still attempted. That is safe because the
+    change-hash gate makes it resumable -- a bill whose hash never committed has no
+    stored hash, so the next run re-fetches it, and items dedup on content_hash."""
     gsource, ginfo = grade
     results: dict[str, dict] = {}
     getbill_used = 0
@@ -254,45 +262,73 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
             results[state] = counts
             continue
 
-        for raw in master:
-            if not election_match(raw, terms, excludes):
-                continue
-            counts["election_bills"] += 1
-            bill_id = raw.get("bill_id")
-            change_hash = raw.get("change_hash")
-            if bill_id is None:
-                continue
-            # change-hash gate: unchanged since last run -> no getBill.
-            if change_hash is not None and seen_hash(conn, bill_id) == change_hash:
-                continue
-            counts["changed"] += 1
-            if getbill_used >= budget:
-                continue  # budget exhausted; leave hash unstored, resume next run
-            try:
-                bill = get_bill(base, key, bill_id, throttle)
-            except Exception:
-                counts["errors"] += 1
-                continue
-            getbill_used += 1
-            counts["getbills"] += 1
-            norm = {
-                "bill_id": bill_id,
-                "state": bill.get("state") or state,
-                "bill_number": bill.get("bill_number") or raw.get("number"),
-                "url": bill.get("url") or bill.get("state_link") or raw.get("url") or "",
-            }
-            # Fill/refresh the state_bills dimension from the fetched record before
-            # writing its action items (items.state_bill_id references it).
-            upsert_state_bill(conn, bill, raw, state)
-            for action in bill.get("history") or []:
-                if db.insert_ignore(conn, "items", to_item(norm, action, gsource, ginfo)):
-                    counts["new_items"] += 1
-            # Store the masterlist change_hash -- the same value the gate compares
-            # against next run -- so unchanged bills gate cleanly. (LegiScan's
-            # masterlist and getBill hashes match; prefer the gate's own signal.)
-            new_hash = change_hash or bill.get("change_hash")
-            if new_hash:
-                remember_hash(conn, bill_id, new_hash)
+        # THE BATCH BOUNDARY IS THE STATE (handoff 81). Everything below writes to
+        # the database, and none of it was guarded: the two handlers in this
+        # function wrap getMasterList and getBill, which are pure HTTP, so a stream
+        # failure here propagated out of collect(), past main()'s except-less
+        # try/finally, and exited non-zero. That is not merely this collector's
+        # batch -- state runs last of six lines in one `bash -e` step, and Export
+        # and Commit are separate steps with no `if: always()`, so the run loses
+        # its snapshot and data commit too. (Not its data: the other five
+        # collectors have already committed to Turso.)
+        #
+        # The 2026-08-15 incident is the near miss that shows the shape. All nine
+        # states failed -- at getMasterList, inside a handler, so the run survived
+        # and printed nine ERROR lines. Four lines further down it would have taken
+        # the whole run.
+        #
+        # Committing per state bounds the loss to one state. db.recover, never a
+        # bare rollback: here `conn` IS the failure, and rollback() on a dead Hrana
+        # stream raises and takes down the run this handler exists to keep alive.
+        try:
+            for raw in master:
+                if not election_match(raw, terms, excludes):
+                    continue
+                counts["election_bills"] += 1
+                bill_id = raw.get("bill_id")
+                change_hash = raw.get("change_hash")
+                if bill_id is None:
+                    continue
+                # change-hash gate: unchanged since last run -> no getBill.
+                if change_hash is not None and seen_hash(conn, bill_id) == change_hash:
+                    continue
+                counts["changed"] += 1
+                if getbill_used >= budget:
+                    continue  # budget exhausted; leave hash unstored, resume next run
+                try:
+                    bill = get_bill(base, key, bill_id, throttle)
+                except Exception:
+                    counts["errors"] += 1
+                    continue
+                getbill_used += 1
+                counts["getbills"] += 1
+                norm = {
+                    "bill_id": bill_id,
+                    "state": bill.get("state") or state,
+                    "bill_number": bill.get("bill_number") or raw.get("number"),
+                    "url": bill.get("url") or bill.get("state_link") or raw.get("url") or "",
+                }
+                # Fill/refresh the state_bills dimension from the fetched record
+                # before writing its action items (items.state_bill_id references it).
+                upsert_state_bill(conn, bill, raw, state)
+                for action in bill.get("history") or []:
+                    if db.insert_ignore(conn, "items", to_item(norm, action, gsource, ginfo)):
+                        counts["new_items"] += 1
+                # Store the masterlist change_hash -- the same value the gate compares
+                # against next run -- so unchanged bills gate cleanly. (LegiScan's
+                # masterlist and getBill hashes match; prefer the gate's own signal.)
+                new_hash = change_hash or bill.get("change_hash")
+                if new_hash:
+                    remember_hash(conn, bill_id, new_hash)
+            conn.commit()
+        except Exception as exc:
+            db.recover(conn)
+            # new_items is zeroed rather than reported: those rows were rolled back,
+            # and a count claiming rows that no longer exist is the kind of plausible
+            # wrong number this project keeps finding. The attempt counters stay --
+            # they describe work done, and the API calls were really spent.
+            counts["new_items"] = 0
+            counts["error_msg"] = f"batch discarded after a write failure: {exc}"
 
         results[state] = counts
     return results
@@ -316,6 +352,9 @@ def main() -> int:
         register_source(conn, base, grade[0], grade[1])
         conn.commit()
         results = collect(conn, base, key, states, terms, grade, budget, THROTTLE, excludes)
+        # collect() now commits per state, so this is a no-op tail rather than the
+        # run's only commit. Kept because it costs nothing and still closes any
+        # transaction a future edit opens between the last state and here.
         conn.commit()
         total = 0
         for state, c in results.items():
