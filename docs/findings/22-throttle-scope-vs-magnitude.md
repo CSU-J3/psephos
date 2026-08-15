@@ -1,5 +1,10 @@
 # Finding 22 — a 20/min throttle producing a 46-second reset
 
+**CLOSED 2026-08-15 by `d31f9e8`.** The rewrite this file was written to justify has
+shipped: `common._throttle_scope` reads the scope's unit out of the body and `_get`
+branches on that instead of the number. The closing section is at the bottom; the
+measurement below is unchanged and is what the fix was built against.
+
 A captured CourtListener 429 in which the scope string and the reset magnitude
 contradict each other inside one response body. Tracked here because the
 `_reset_seconds` rewrite is not happening in the session that measured this, and
@@ -176,3 +181,81 @@ Nothing here proves the GitHub Actions runner holds this token. Secrets are
 write-only; no local read can confirm the value. The only available evidence is the
 workflow's own behaviour — a run polling the full docket list is what demonstrates the
 runner's token carries the same membership.
+
+---
+
+# Closed — 2026-08-15, `d31f9e8`
+
+`common._throttle_scope` parses the unit after the slash in `Rate limit exceeded:
+<N>/<unit>` and `_get` branches on it: sub-daily units (`sec`, `min`, `hour`) retry
+regardless of the reset's magnitude, `day` and longer raise `RateBudgetExhausted`, and
+**an unparseable scope keeps the old magnitude rule bit-for-bit**. That last arm is the
+design: where the body names its scope we believe it, and where nothing parses nothing
+changes, so the fix adds information rather than replacing one guess with another. The
+four pre-existing 429 tests pass unmodified, which is what demonstrates it.
+
+Units match on prefixes rather than first letters. `m` is ambiguous between `min` and
+`month`, and a monthly cap read as a burst is the exact failure this classifier exists
+to prevent — it is also the shape LegiScan's EDU cap would take.
+
+## The cost, measured before the fix rather than asserted after it
+
+**Both 429s this account has ever produced are per-minute scopes** — `5/min` at the
+08-05/06 de-tiering, `20/min` at this file's probe. So every real 429 in the project's
+history aborted litigation for the cycle over a condition that clears in under a
+minute, and **the daily-cap branch those aborts were routed through has never once
+been exercised by a real response.** The classifier had been wrong on 100% of its live
+inputs and right on a category it never saw. The open-units entry that tracked this
+put it as "has now twice been read as a daily cap"; the sharper statement is that
+there was no third case to get right.
+
+Latent rather than active only because `PAGE_THROTTLE = 3.2` never fills the 60s
+window. It becomes active the moment anything bursts faster than ~3s spacing, and on
+the calendar it becomes active when the EDU membership lapses to 5/min around
+2027-02-09 — precisely the moment the abort would be most expensive.
+
+## Retry viability, which is the fix's correctness condition
+
+Classifying a burst as retryable is only right if the retry can succeed. Measured
+against `_retry_after` rather than reasoned about:
+
+| response | requests land at | window | outcome |
+| --- | --- | --- | --- |
+| this file's capture, `retry-after: 46` | t = 0, 30, 60, 90 | 46s | **clears on request 3** |
+| the 08-09 `5/min` body, no header preserved | t = 0, 1, 3, 7 | 55s | never clears → exhausts |
+
+Waits cap at `MAX_RETRY_AFTER = 30`, so cumulative wait crosses 46s by the third
+request with a fourth in reserve. Since a per-minute window's ceiling is 60s — the
+derivation at the top of this file — **every** per-minute throttle clears inside
+`MAX_RETRIES`.
+
+Row two is an artifact of preservation, not of the wire: the header dump above proves
+the server sends `retry-after`, while the 08-09 capture kept only the body. Absent a
+header the exponential fallback reaches 7s against a 55s window and exhausts. **Even
+that degrades correctly** — `RuntimeError` is a per-item skip (`collectors/litigation.py:525`,
+`:657`) and the run continues, where `RateBudgetExhausted` aborted the collector
+outright at `:521`, `:647`, `:696`. Both rows are pinned by tests.
+
+**Known cost of the unit rule, stated rather than discovered later.** An `/hour` scope
+is sub-daily, so it retries, but its window can reach 3600s against a ladder topping
+out near 90s — it exhausts to a per-item skip, spending four requests to learn that.
+CourtListener's 1,000/hour is real, so this is not hypothetical. It is still preferred
+to aborting on a window that may well clear.
+
+## The test this file asked for, and why the logging stays anyway
+
+The section above — "The detector is untested, and normal operation will not test it"
+— resolves. `_log_429` now fires deliberately under test, on replayed real bodies
+rather than constructed ones, each fixture carrying its capture date and provenance so
+a later reader can tell evidence from a format guess. The `250/day` cap fixture is
+labelled **constructed, not observed**, because no real daily-cap 429 exists for this
+account and that figure is on the falsified list as one never read off it.
+
+**`_log_429` is not now redundant and must not be removed as such.** The fixtures pin
+the parser against formats that were real on two dates in August 2026. An upstream
+change to the body's wording passes every test in this suite and fails silently in
+production — the parser would return `None`, the magnitude fallback would take over,
+and a per-minute throttle would once again read as a daily cap with nothing red
+anywhere. The live log is the only instrument that can catch that, and its first real
+invocation is still whatever run eventually trips a throttle. A green suite is not
+evidence the parser matches what CourtListener is sending today.
