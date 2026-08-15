@@ -368,7 +368,48 @@ def connect(path: str | None = None):
     conn = sqlite3.connect(path if path is not None else DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
+    # SAY SO WHEN THE FALLBACK IS TAKEN BY ACCIDENT. An explicit path means local was
+    # ASKED for (tests, offline dev) and is silent. No path and no URL means the
+    # caller wanted whatever `connect()` gives and got the local file -- which is
+    # the trap: a `.env` sitting on disk is not the environment, and a script that
+    # forgets `config.load_env()` reads a stale local database while looking exactly
+    # like a production read. Measured 2026-08-15: an ad-hoc query reported 12 news
+    # items against production's 87, and what exposed it was an unrelated missing
+    # table raising sqlite3.OperationalError -- an accident of which query ran
+    # first. A single-query session has no such accident available.
+    if path is None:
+        print(f"db: no TURSO_DATABASE_URL in the environment; using the local SQLite "
+              f"fallback at {DB_PATH}. Numbers read here are NOT production. Call "
+              "config.load_env() first if you meant Turso.", file=sys.stderr)
     return conn
+
+
+def backend(conn) -> str:
+    """Name the backend a connection actually reached: `turso` or `sqlite`.
+
+    THE DISCRIMINATOR IS THE CONNECTION OBJECT, NOT THE ENVIRONMENT, and that is the
+    whole point. Every other way of asking -- is `.env` present, is TURSO_DATABASE_URL
+    set now, did I mean to load it -- describes intent, and intent is what goes wrong.
+    The object records what happened.
+
+    Use it in any read-only analysis that reports a figure, so the figure arrives with
+    its provenance attached. `tools/coverage_audit.py` is unaffected by the trap
+    because it calls `config.load_env()` itself before connecting; that is the pattern
+    to copy, not a reason to skip naming the backend."""
+    return "turso" if isinstance(conn, _Conn) else "sqlite"
+
+
+def require_remote(conn, what: str = "this reading") -> None:
+    """Raise unless `conn` reached Turso. For scripts and analyses whose output is
+    only meaningful against production -- an alarm, an audit, a count quoted into a
+    doc. Fails loudly and immediately rather than answering from the local fallback,
+    which is the failure mode this exists to remove: a wrong number that looks right."""
+    if backend(conn) != "turso":
+        raise RuntimeError(
+            f"{what} requires the remote Turso database, but this connection is "
+            f"local SQLite. Call config.load_env() before db.connect(), and check "
+            f"TURSO_DATABASE_URL is in the .env being loaded."
+        )
 
 
 def init_db(path: str | None = None, schema: str = SCHEMA_PATH) -> None:

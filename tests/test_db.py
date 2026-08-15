@@ -570,3 +570,69 @@ def test_migration_adds_state_to_a_legacy_cases_table(tmp_path):
     row = sqlite3.connect(path).execute(
         "SELECT status, state FROM cases WHERE case_id = '71453026'").fetchone()
     assert row == ("terminated", None)
+
+
+# --------------------------------------------------------------------------- #
+# Connection provenance (handoff 81)
+#
+# A `.env` file on disk is not the environment. A script that connects without
+# calling config.load_env() gets the LOCAL fallback and reads a stale database
+# while looking exactly like a production read -- measured 2026-08-15, when an
+# ad-hoc query reported 12 news items against production's 87. What exposed it
+# was an unrelated missing table raising sqlite3.OperationalError, an accident of
+# which query happened to run first; a single-query session has no such accident
+# available. So the backend has to be nameable from the connection itself.
+# --------------------------------------------------------------------------- #
+def test_backend_names_the_connection_not_the_environment(monkeypatch, tmp_path):
+    """The discriminator is the object. Asking the env instead is what fails --
+    it reports intent, and intent is the thing that goes wrong."""
+    local = db.connect(str(tmp_path / "t.db"))
+    assert db.backend(local) == "sqlite"
+    local.close()
+
+    # Env set AFTER the local connection exists: the connection is still local, and
+    # backend() must still say so. An env-based check would now answer "turso".
+    _remote_env(monkeypatch)
+    local2 = db.connect(str(tmp_path / "t2.db"))
+    assert db.backend(local2) == "sqlite"
+    local2.close()
+
+    assert db.backend(db._Conn(_mem())) == "turso"
+
+
+def test_require_remote_refuses_to_answer_from_the_local_fallback(tmp_path):
+    """A wrong number that looks right is the failure being removed, so this raises
+    rather than returning something plausible."""
+    local = db.connect(str(tmp_path / "t.db"))
+    with pytest.raises(RuntimeError, match="requires the remote Turso database"):
+        db.require_remote(local, "the orphan alarm")
+    # The message has to name the fix, not just the fault.
+    try:
+        db.require_remote(local)
+    except RuntimeError as exc:
+        assert "config.load_env()" in str(exc)
+    local.close()
+    db.require_remote(db._Conn(_mem()))          # remote passes, silently
+
+
+def test_the_accidental_fallback_announces_itself(monkeypatch, tmp_path, capsys):
+    """No path and no URL means the caller wanted whatever connect() gives and got
+    the local file. That is the trap, so it prints -- to stderr, where the
+    collectors' other diagnostics go."""
+    monkeypatch.delenv("TURSO_DATABASE_URL", raising=False)
+    monkeypatch.chdir(tmp_path)
+    Path("data").mkdir()
+    conn = db.connect()
+    err = capsys.readouterr().err
+    assert "no TURSO_DATABASE_URL" in err and "NOT production" in err
+    assert "config.load_env()" in err
+    conn.close()
+
+
+def test_an_explicitly_local_connection_stays_quiet(tmp_path, capsys):
+    """An explicit path means local was ASKED for -- every test in this suite and
+    all offline dev. Warning there would train the reader to ignore the line that
+    matters, which is the only thing that makes the warning above worth having."""
+    conn = db.connect(str(tmp_path / "t.db"))
+    assert capsys.readouterr().err == ""
+    conn.close()
