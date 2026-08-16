@@ -103,19 +103,6 @@ export default async function Home() {
         <ActivityFeed rows={feed} />
       </section>
 
-      <section className="mt-10">
-        <SectionHeading title="Watched bills" count={bills.length} />
-        {bills.length === 0 ? (
-          <p className="text-sm text-neutral-500">No bills yet.</p>
-        ) : (
-          <ul className="space-y-3">
-            {bills.map((b) => (
-              <BillRow key={b.bill_id} bill={b} />
-            ))}
-          </ul>
-        )}
-      </section>
-
       {/* ONE OBJECT, NOT DOZENS OF NEAR-IDENTICAL ROWS -- the redesign block's move
           3, whose home half had not been done. /campaign was built to replace the
           flat list and the flat list stayed, so the page carried both: a link to the
@@ -194,27 +181,51 @@ export default async function Home() {
       </section>
 
       <section className="mt-10">
-        <h2 className="mb-3 text-lg font-semibold tracking-tight">State legislation</h2>
-        <Link
-          href="/state-bills"
-          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
-        >
-          Election bills across the watched states, subject-filtered via LegiScan →
-        </Link>
-      </section>
-
-      <section className="mt-10">
-        <h2 className="mb-3 text-lg font-semibold tracking-tight">Reporting</h2>
-        <Link
-          href="/news"
-          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
-        >
-          Coverage from the maintained trackers, B2 sources only →
-        </Link>
+        <SectionHeading title="Watched bills" count={bills.length} />
+        {bills.length === 0 ? (
+          <p className="text-sm text-neutral-500">No bills yet.</p>
+        ) : (
+          <ul className="space-y-3">
+            {bills.map((b) => (
+              <BillRow key={b.bill_id} bill={b} />
+            ))}
+          </ul>
+        )}
       </section>
 
       <section className="mt-10">
         <ExecutiveSection relevant={relevant} all={executiveAll} />
+      </section>
+
+      {/* The two channels that have their own route and no summary worth putting
+          here, as one row at the bottom rather than two full-width sections in the
+          middle. They were padding the page between the live channels and the
+          executive one: EO 14248 and EO 14399 are the executive channel's headline
+          documents, and they sat below two one-line link cards on a 13,000-pixel
+          page. Order across the whole page is now liveness -- what moves, then what
+          does not, then the archives. */}
+      <section className="mt-10">
+        <h2 className="mb-3 text-lg font-semibold tracking-tight">Archives</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Link
+            href="/state-bills"
+            className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
+          >
+            <span className="font-medium text-neutral-100">State legislation</span>
+            <span className="mt-1 block text-xs text-neutral-500">
+              Election bills across the watched states, subject-filtered via LegiScan →
+            </span>
+          </Link>
+          <Link
+            href="/news"
+            className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
+          >
+            <span className="font-medium text-neutral-100">Reporting</span>
+            <span className="mt-1 block text-xs text-neutral-500">
+              Coverage from the maintained trackers, B2 sources only →
+            </span>
+          </Link>
+        </div>
       </section>
     </main>
   );
