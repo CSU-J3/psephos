@@ -1,7 +1,18 @@
 import Link from "next/link";
 import { Grade } from "@/components/Grade";
-import { buildFeed, entryLink, type FeedEntry } from "@/lib/feed";
+import {
+  buildFeed,
+  cardAnchor,
+  cardLink,
+  entryLink,
+  HISTORY_AFTER_DAYS,
+  type FeedAnchor,
+  type FeedCard,
+  type FeedEntry,
+} from "@/lib/feed";
 import { formatDate } from "@/lib/format";
+import { billLabel } from "@/lib/bill";
+import { stateBillLabel } from "@/lib/statebill";
 
 // Move 2: one reverse-chronological list across all five channels, each entry
 // carrying its channel and its Admiralty grade. This is the redesign's answer to
@@ -24,17 +35,222 @@ const CHANNEL_LABEL: Record<string, string> = {
   state: "state",
 };
 
-export function ActivityFeed({ rows }: { rows: FeedEntry[] }) {
-  // TRANSITIONAL. buildFeed now returns cards; this flattens them straight back to
-  // the row list this component was written against, so the grouping commit stands
-  // on its own without a half-rendered card in the tree. The next commit renders
-  // the cards properly and this flattening goes away.
-  const { cards, total_cards, total_entries, truncated } = buildFeed(rows);
-  const entries = cards.flatMap((c) => c.entries);
-  const total = total_entries;
-  void total_cards;
+const CARD = "rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 transition-colors hover:border-neutral-700";
+const META = "mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500";
 
-  if (entries.length === 0) {
+// A card's date span, or a single date when every entry shares one, or nothing at
+// all when no entry carries a date. Litigation rows can have a NULL occurred_at.
+function dateRange(card: FeedCard): string | null {
+  if (!card.first_occurred_at || !card.last_occurred_at) return null;
+  const first = formatDate(card.first_occurred_at);
+  const last = formatDate(card.last_occurred_at);
+  return first === last ? first : `${first} – ${last}`;
+}
+
+// "55 docket entries" reads as what a docket walk is; "55 items" does not. Every
+// other channel gets the generic word. Groups are always >= 2, so no singular form.
+function countLabel(card: FeedCard): string {
+  const noun = card.entries[0].channel === "litigation" ? "docket entries" : "items";
+  return `${card.entries.length} ${noun}`;
+}
+
+// The header for a group: the DIMENSION's own words, not the first entry's title.
+// Unifies the caption spelling as a side effect -- litigation items carry the seed
+// spelling ("United States of America v. State of Oregon, et al.") in every title,
+// while cases.caption reads "United States v. State of Oregon". One header keyed on
+// the case row means the page says it one way.
+function AnchorHeader({ anchor }: { anchor: FeedAnchor }) {
+  if (anchor.kind === "case") {
+    return (
+      <>
+        <span className="font-medium text-neutral-100">{anchor.caption}</span>
+        <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-400">
+          {anchor.court && <span>{anchor.court}</span>}
+          {anchor.docket_number && (
+            <span className="font-mono">{anchor.docket_number}</span>
+          )}
+          {anchor.status && <span className="text-neutral-500">{anchor.status}</span>}
+        </div>
+      </>
+    );
+  }
+  if (anchor.kind === "bill") {
+    return (
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <span className="font-mono text-sm text-neutral-400">{billLabel(anchor)}</span>
+          <span className="ml-2 font-medium text-neutral-100">
+            {anchor.short_title ?? anchor.title ?? anchor.id}
+          </span>
+        </div>
+        {/* Same markup as BillRow: the vehicle flag is the whole point of the
+            project and must look identical wherever it appears. */}
+        {anchor.is_vehicle === 1 && (
+          <span className="shrink-0 rounded border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-amber-400">
+            Vehicle
+          </span>
+        )}
+      </div>
+    );
+  }
+  return (
+    <div className="min-w-0">
+      <span className="font-mono text-sm text-neutral-400">{stateBillLabel(anchor)}</span>
+      {anchor.title && (
+        <span className="ml-2 font-medium text-neutral-100">{anchor.title}</span>
+      )}
+    </div>
+  );
+}
+
+// The supersession link, in whichever direction the record holds it. Both can be
+// present at once -- a circuit docket that was appealed from a district and then
+// itself continued is a middle link -- so neither is an `else`. Same two sentences
+// the case detail page renders, moved up to where the reader meets the docket.
+function ChainLine({ anchor }: { anchor: FeedAnchor }) {
+  if (anchor.kind !== "case") return null;
+  const { successor, predecessor } = anchor;
+  if (!successor && !predecessor) return null;
+  return (
+    <div className="mt-1.5 flex flex-col gap-0.5 text-xs">
+      {successor && (
+        <Link
+          href={`/case/${successor.case_id}`}
+          className="text-sky-400/90 hover:underline"
+        >
+          → continued as {successor.court} {successor.docket_number}
+        </Link>
+      )}
+      {predecessor && (
+        <Link
+          href={`/case/${predecessor.case_id}`}
+          className="text-sky-400/90 hover:underline"
+        >
+          ← continues {predecessor.court} {predecessor.docket_number}
+        </Link>
+      )}
+    </div>
+  );
+}
+
+// One unanchored entry, or one anchored entry that is the only thing its dimension
+// did in the window. Renders exactly as every row did before grouping existed.
+function SingletonRow({ e }: { e: FeedEntry }) {
+  const link = entryLink(e);
+  return (
+    <li className={CARD}>
+      <a
+        href={e.source_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-sm font-medium text-neutral-100 hover:underline"
+      >
+        {e.title}
+      </a>
+      <div className={META}>
+        <span className="uppercase tracking-wide text-neutral-400">
+          {CHANNEL_LABEL[e.channel] ?? e.channel}
+        </span>
+        {/* The entry's OWN occurred_at, not the fetched_at the list is
+            ordered by. A backdated RSS item sorts to the top as newly
+            collected and still reads as the older story it is. */}
+        <span className="tabular-nums">{formatDate(e.occurred_at)}</span>
+        <span>{e.source_id}</span>
+        <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
+        {link && (
+          <Link href={link.href} className="text-neutral-400 hover:underline">
+            {link.label} →
+          </Link>
+        )}
+      </div>
+    </li>
+  );
+}
+
+// Every entry in the window that shares an anchor, as ONE object.
+//
+// This is what the 2026-08-16 seed day needed and did not have: 174 of that
+// window's 192 entries were four dockets being walked end to end, rendered as 174
+// near-identical rows each repeating its caption, with the 50-row cap cutting
+// through the middle of them. One card per docket says the same thing in four
+// lines and leaves the rest of the window reachable.
+function GroupCard({ card }: { card: FeedCard }) {
+  const anchor = cardAnchor(card);
+  const link = cardLink(card);
+  const newest = card.entries[0];
+  const range = dateRange(card);
+  // The bare docket text. litigation.py stores the caption-prefixed string in
+  // `title` and the plain entry text in `summary`, and the header above already
+  // names the case -- so the prefix would be read twice on every card.
+  const text = newest.channel === "litigation" ? (newest.summary ?? newest.title) : newest.title;
+
+  return (
+    <li className={CARD}>
+      {anchor ? (
+        <AnchorHeader anchor={anchor} />
+      ) : (
+        // An anchor id with no dimension row behind it. Not expected; the card still
+        // renders rather than disappearing, and says what it is keyed on.
+        <span className="font-medium text-neutral-100">{link?.label ?? card.key}</span>
+      )}
+
+      {anchor && <ChainLine anchor={anchor} />}
+
+      <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+        <span className="font-medium tabular-nums text-neutral-300">
+          {countLabel(card)}
+        </span>
+        {range && <span className="tabular-nums text-neutral-500">{range}</span>}
+        {/* NEUTRAL, NO VALENCE -- the same rule the strip's deltas follow. This
+            says which KIND of collection produced the count, not that anything is
+            wrong. A docket loaded in one run is a correct reading of a real event
+            (psephos started watching it); it is simply not news from today. */}
+        {card.history && (
+          <span className="rounded border border-neutral-700 bg-neutral-800 px-1.5 py-0.5 text-neutral-400">
+            history
+          </span>
+        )}
+      </div>
+
+      {card.history && (
+        <p className="mt-1 text-xs text-neutral-600">
+          Docket loaded; nothing dated in the last {HISTORY_AFTER_DAYS} days.
+        </p>
+      )}
+
+      <a
+        href={newest.source_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 block truncate text-sm text-neutral-300 hover:underline"
+        title={text}
+      >
+        {text}
+      </a>
+
+      <div className={META}>
+        <span className="uppercase tracking-wide text-neutral-400">
+          {CHANNEL_LABEL[newest.channel] ?? newest.channel}
+        </span>
+        {/* Distinct grades, so a docket carrying A1 court records and the B2
+            tracker line badges both -- and 55 A1 entries badge A1 once. */}
+        {card.grades.map((g) => (
+          <Grade key={g} grade={g} />
+        ))}
+        {link && (
+          <Link href={link.href} className="text-neutral-400 hover:underline">
+            {link.label} →
+          </Link>
+        )}
+      </div>
+    </li>
+  );
+}
+
+export function ActivityFeed({ rows }: { rows: FeedEntry[] }) {
+  const { cards, total_cards, total_entries, truncated } = buildFeed(rows);
+
+  if (cards.length === 0) {
     // A quiet window is a reading, not an error. Three of five channels collected
     // nothing in 24h when this was built, so an empty feed is reachable and must
     // say which window it is empty for.
@@ -48,51 +264,35 @@ export function ActivityFeed({ rows }: { rows: FeedEntry[] }) {
   return (
     <>
       <ul className="space-y-2">
-        {entries.map((e) => {
-          const link = entryLink(e);
-          return (
-            <li
-              key={e.id}
-              className="rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 transition-colors hover:border-neutral-700"
-            >
-              <a
-                href={e.source_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-neutral-100 hover:underline"
-              >
-                {e.title}
-              </a>
-              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500">
-                <span className="uppercase tracking-wide text-neutral-400">
-                  {CHANNEL_LABEL[e.channel] ?? e.channel}
-                </span>
-                {/* The entry's OWN occurred_at, not the fetched_at the list is
-                    ordered by. A backdated RSS item sorts to the top as newly
-                    collected and still reads as the older story it is. */}
-                <span className="tabular-nums">{formatDate(e.occurred_at)}</span>
-                <span>{e.source_id}</span>
-                <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
-                {link && (
-                  <Link href={link.href} className="text-neutral-400 hover:underline">
-                    {link.label} →
-                  </Link>
-                )}
-              </div>
-            </li>
-          );
-        })}
+        {cards.map((card) =>
+          card.entries.length === 1 ? (
+            <SingletonRow key={card.key} e={card.entries[0]} />
+          ) : (
+            <GroupCard key={card.key} card={card} />
+          ),
+        )}
       </ul>
-      {/* Never a silent top-N. A capped list that does not say so reads as the
-          whole window, which is the failure the standing rule names. */}
-      {truncated && (
-        <p className="mt-3 text-xs text-neutral-500">
-          Showing {entries.length} of {total} items collected in the last 24 hours.{" "}
-          <Link href="/news" className="text-neutral-400 hover:underline">
-            The full B2 news archive is at /news →
-          </Link>
-        </p>
-      )}
+      {/* BOTH NUMBERS, ALWAYS. After grouping, neither one alone describes the
+          window: 22 cards hides that 192 things were collected, and 192 entries
+          hides that they were 22 subjects. The standing rule that a bounded list
+          says what it bounded now has two numbers to say, and the untruncated
+          branch says them too -- which on the seed day is the branch that renders,
+          since 22 cards no longer reach the cap that 192 entries did. */}
+      <p className="mt-3 text-xs text-neutral-500">
+        {truncated ? (
+          <>
+            Showing {cards.length} of {total_cards} cards ({total_entries} entries)
+            collected in the last 24 hours.{" "}
+            <Link href="/news" className="text-neutral-400 hover:underline">
+              The full B2 news archive is at /news →
+            </Link>
+          </>
+        ) : (
+          <>
+            {total_cards} cards, {total_entries} entries, last 24 hours.
+          </>
+        )}
+      </p>
     </>
   );
 }
