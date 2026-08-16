@@ -331,6 +331,24 @@ def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | No
     row = {
         "case_id": case_id,
         "caption": caption,
+        # COURT AND DOCKET_NUMBER COME STRAIGHT OFF THE SEED, NEVER OFF THE DOCKET,
+        # and three separate things depend on that being true. It reads like a
+        # detail and it is load-bearing, so changing it means changing them:
+        #   1. The reuse lookup in collect_case, `WHERE docket_number = ? AND
+        #      court = ?` against the seed's own values. Write CourtListener's
+        #      spelling here instead and every seed re-resolves every run -- one
+        #      wasted request per seed forever, silently, and for a PINNED seed it
+        #      also means the pin fires every run rather than once.
+        #   2. tools/coverage_audit section 1, whose seed join is `(docket_number,
+        #      court)` and is exact by construction for this reason. A mismatch
+        #      turns healthy rows into reconciliation-alarm firings.
+        #   3. The charter's claim that a tracker rewrite overwrites a config seed
+        #      byte-identically -- true only because both write the same two fields
+        #      from their own seed dict. If this took the docket's spelling, the
+        #      artifact row and the config row would differ and `cases.case_id`
+        #      would stop collapsing them into one row.
+        # No test asserts the property directly; it is enforced by the three
+        # consumers failing in three different ways, which is why it is written down.
         "court": seed.get("court"),
         "docket_number": seed.get("docket_number"),
         "category": seed.get("category"),
