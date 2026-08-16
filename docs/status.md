@@ -2,7 +2,7 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-08-15.
+Last updated: 2026-08-16.
 
 ---
 
@@ -304,6 +304,14 @@ Bold is the three written by this apply. The other four are the pairs asserted t
 **The never-bootstrapped alarm still reads 0, and the mechanism is the clause, not the marks.** `entries_synced_at IS NULL AND superseded_by IS NULL` = **0** because the second clause excludes PA, NH and MD — *not* because their `entries_synced_at` is populated. It is NULL and always was. Strip the clause and it reads **3**, unchanged by this apply. KY/VA/NM never contributed in either form.
 
 **Snapshot left to the cron, with the diff predicted before it lands.** No local `python -m export.snapshots`. `data/cases.json` as committed at `2a6a89b` carries `superseded_by` on exactly the four older rows and null on KY/VA/NM, so the next data commit must change **exactly three case objects** — `72334676` → `73674243`, `72156765` → `73690636`, `71982149` → `73678095`, each null to the target id. Anything else in that commit is drift and should be read before it lands.
+
+### Production read for handoff 86 — CLOSED 2026-08-16, reconciles exactly
+
+**Two reads, both timestamped, 23 seconds apart.** Production page `2026-08-16T20:47:27Z` (HTTP 200, `X-Vercel-Cache: MISS`, `Age: 0`, `Cache-Control: no-store` — a fresh server render, not a CDN copy). Turso `2026-08-16T20:47:50Z`, `db.backend()` = `turso`, `require_remote` passed. **Every figure matches; there is no residual to attribute to drift.** Strip against a per-channel `GROUP BY`: legislation `+0/+0/73`, executive `+0/+0/118`, litigation `+174/+207/2,146`, news `+18/+212/3,417`, state `+0/+0/3,882`, all five identical in both. History sub-counts: litigation **174 = 174**, news **11 = 11**, the other three absent on the page and 0 in the query. Feed footer `22 cards, 192 entries` against a window of **192** rows in **22** anchor groups (4 case anchors + 18 unanchored news). Tagged cards: 4 group + 11 singleton = 15, against **15** occurrences of the hover string and **1** distinct spelling of it. Tagged news singletons **11 = the strip's news history 11**, which is the reconciliation the tag was added for. Home campaign line `31 of 51 · 25 active · 6 ended · 12 continued elsewhere · 2 quiet` against `/campaign` (read `20:48:16Z`) `31 of 51 — 25 active, 6 ended, 12 continued`, with its sections reading Continued elsewhere 12, Ended in this record 6, Quiet 2, unlinked 0 — and the home line correctly omits its `ended, no link asserted` clause, which renders only when that count is non-zero. Executive `12 relevant` / `Show all 118`.
+
+**The exactness is explained, not assumed, because a future read will not get it.** The two queries are cached separately at 1h and each computes `now` inside its own call, so their 24h windows can sit up to an hour apart. That can only change a number if items sit near the boundary, and **0 items fall in the 24h–25h band** (`2026-08-15T19:48Z`–`20:48Z`) — the window's oldest item is `00:39:59Z` and its newest `18:15:03Z`. So an hour-stale cache would have returned the same figures. **Read this as "the drift had no room to bite today", not as "the drift is not real".** A read taken shortly after a cron run, with items ageing out mid-window, should differ by a few items and that is not a defect.
+
+**One thing this read falsified, and it is in this document.** The paragraph appended at `a1ac0a1` says the four dockets were "full-walked by the 06:25Z run". `fetched_at` on all 174 litigation items reads **2026-08-16T01:44:39Z .. 02:04:39Z** — Weber `01:44:39–01:45:24`, Fontes `01:45:34–01:45:59`, Oregon `01:56:35–01:57:09`, LWV `02:04:27–02:04:39` — so the run that *committed* at 06:25Z did not collect them. The claim came from handoff 86 §1 and was carried in unchecked; §1's instrument was `git show 5cee65e:data/cases.json` against `git show HEAD:`, a diff spanning several commits, which identifies the commit that first **exported** the timelines and not the run that **collected** them. Two different questions with two different instruments, and the same-family error this list already records under "a description of a thing read as the thing". `fetched_at` answers the collection question directly and needed one query. Which scheduled run owns 01:44Z is not resolvable from Turso — the 00:xx run had already committed by 00:44Z — and wants the workflow run log; the correction to the sentence itself is a separate edit, recorded here rather than silently left in the commit that made it.
 
 ---
 
