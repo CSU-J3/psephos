@@ -46,6 +46,25 @@ export function ChannelStrip({ rows }: { rows: ActivityRow[] }) {
               /{WINDOW_DAYS.week}d
             </span>
           </div>
+          {/* WHICH KIND OF COLLECTION PRODUCED THE DELTA, not a correction to it.
+              The headline stays "what did psephos collect", which is the definition
+              this strip has carried in three places and which holds; what was
+              missing is that nothing beside it said a seed day looks exactly like a
+              busy day. On 2026-08-16 four dockets were seeded and walked, and this
+              cell read +174/24h with no way to tell that all 174 were dated between
+              Sep 2025 and Jul 2026.
+
+              ONLY WHEN NON-ZERO, unlike the deltas above. Zero is information for
+              "+0 collected"; a "0 history" line on every quiet cell is not, and the
+              strip is five cells wide. */}
+          {r.day_history > 0 && (
+            <div
+              className="mt-0.5 text-xs tabular-nums text-neutral-600"
+              title={`${r.day_history} of the last 24 hours' ${r.day} items were already more than ${WINDOW_DAYS.week} days old when collected`}
+            >
+              {r.day_history} history
+            </div>
+          )}
           <div className="mt-1.5 text-xs tabular-nums text-neutral-600">
             {r.total.toLocaleString()} total
           </div>

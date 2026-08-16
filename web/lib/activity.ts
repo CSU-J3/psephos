@@ -23,6 +23,10 @@ export type ActivityRow = {
   total: number;
   day: number;
   week: number;
+  // How much of `day` was ALREADY OLD when it was collected -- the docket-walk
+  // signature. See getChannelActivity for the arithmetic and ChannelStrip for why
+  // it renders only when non-zero.
+  day_history: number;
 };
 
 export const WINDOW_DAYS = { day: 1, week: 7 } as const;
@@ -49,7 +53,8 @@ export function windowStarts(now: Date): { day: string; week: string } {
 export function toCells(rows: ActivityRow[]): ActivityRow[] {
   const byChannel = new Map(rows.map((r) => [r.channel, r]));
   const canonical: ActivityRow[] = CHANNELS.map(
-    (channel) => byChannel.get(channel) ?? { channel, total: 0, day: 0, week: 0 },
+    (channel) =>
+      byChannel.get(channel) ?? { channel, total: 0, day: 0, week: 0, day_history: 0 },
   );
   const extra = rows.filter((r) => !(CHANNELS as readonly string[]).includes(r.channel));
   return [...canonical, ...extra];

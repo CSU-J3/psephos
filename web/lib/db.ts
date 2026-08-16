@@ -5,7 +5,7 @@ import { createClient } from "@libsql/client";
 import { unstable_cache } from "next/cache";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
-import { FEED_WINDOW } from "@/lib/feed";
+import { FEED_WINDOW, HISTORY_AFTER_DAYS } from "@/lib/feed";
 import type { FeedAnchor, FeedEntry } from "@/lib/feed";
 
 export const db = createClient({
@@ -120,6 +120,28 @@ export type ExecItem = {
 // would put a moving value in the cache key and the entry would never be hit. The
 // window therefore drifts by up to the 1h TTL, which on a 24h span is a <=4% error on
 // the number least sensitive to being current.
+
+// HOW MUCH OF THE 24h DELTA WAS ALREADY OLD WHEN IT WAS COLLECTED. Same threshold
+// constant the feed's card classifier uses, imported rather than written twice, so
+// the strip and the feed cannot disagree about what "history" means. The strip
+// counts ENTRIES and the feed labels CARDS, and every entry of a history card is
+// counted here, so the two reconcile: this number is >= the sum over history cards,
+// and equal when no card is mixed.
+//
+// The date arithmetic is date-only via substr(...,1,10), which is what makes it
+// format-blind: occurred_at is naive on litigation rows and +00:00-suffixed on news
+// while fetched_at is always suffixed, and comparing the YYYY-MM-DD prefixes needs
+// neither normalized. A NULL occurred_at yields NULL and is not counted, the same
+// rule lib/feed.ts:isHistoryEntry takes.
+//
+// STILL FREE. Folded into the same GROUP BY as the other three, so it costs what
+// they cost: EXPLAIN QUERY PLAN reads `SCAN items USING INDEX idx_items_channel`
+// with this column present, verified against production 2026-08-16 before it was
+// written. If that ever stops being true, this is the column to drop.
+const HISTORY_SUM = `SUM(CASE WHEN fetched_at >= ?
+             AND julianday(substr(fetched_at,1,10)) - julianday(substr(occurred_at,1,10)) > ?
+            THEN 1 ELSE 0 END)`;
+
 export const getChannelActivity = unstable_cache(
   async (): Promise<ActivityRow[]> => {
     const { day, week } = windowStarts(new Date());
@@ -127,11 +149,12 @@ export const getChannelActivity = unstable_cache(
       sql: `SELECT channel,
                    COUNT(*) AS total,
                    SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS day,
-                   SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS week
+                   SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS week,
+                   ${HISTORY_SUM} AS day_history
             FROM items
             GROUP BY channel
             ORDER BY channel`,
-      args: [day, week],
+      args: [day, week, day, HISTORY_AFTER_DAYS],
     });
     // COUNT/SUM can arrive as bigint; coerce for the view.
     return toCells(
@@ -140,10 +163,17 @@ export const getChannelActivity = unstable_cache(
         total: Number(r.total),
         day: Number(r.day),
         week: Number(r.week),
+        day_history: Number(r.day_history),
       })),
     );
   },
-  ["channel-activity"],
+  // v2 for the same reason getFeed's key is bumped: the cached row shape gained a
+  // column, and unstable_cache entries outlive a deploy. A stale v1 entry degrades
+  // gently here (day_history undefined, so the line simply does not render) rather
+  // than rendering wrong -- but for up to an hour the feed would be showing history
+  // cards while the strip above it showed no history at all, which is exactly the
+  // disagreement these two are cached at the same TTL to prevent.
+  ["channel-activity", "v2"],
   { revalidate: 3600 },
 );
 

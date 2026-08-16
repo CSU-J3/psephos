@@ -11,6 +11,7 @@ const row = (over: Partial<ActivityRow> & Pick<ActivityRow, "channel">): Activit
   total: 0,
   day: 0,
   week: 0,
+  day_history: 0,
   ...over,
 });
 
@@ -95,6 +96,26 @@ describe("zero-filling the strip", () => {
     const cells = toCells([row({ channel: "coercion", total: 4, day: 1, week: 4 })]);
     expect(cells).toHaveLength(6);
     expect(cells[5]).toMatchObject({ channel: "coercion", day: 1 });
+  });
+
+  it("zero-fills the history sub-count too", () => {
+    // A channel the query skipped must get 0 rather than undefined: the strip
+    // renders the line on `> 0`, and undefined > 0 is false but reads as a bug
+    // waiting to happen the first time someone sums the column.
+    const cells = toCells([row({ channel: "litigation", day: 174, day_history: 174 })]);
+    expect(cells.find((c) => c.channel === "litigation")?.day_history).toBe(174);
+    expect(cells.filter((c) => c.channel !== "litigation").every((c) => c.day_history === 0))
+      .toBe(true);
+  });
+
+  it("never reports more history than it collected in the window", () => {
+    // The invariant that makes the line readable: it is a SUB-count of `day`, so a
+    // cell can read "174 history" under "+174/24h" but never above it.
+    const cells = toCells([
+      row({ channel: "litigation", day: 174, day_history: 174 }),
+      row({ channel: "news", day: 18, day_history: 11 }),
+    ]);
+    expect(cells.every((c) => c.day_history <= c.day)).toBe(true);
   });
 
   it("does not mutate the rows it was handed", () => {
