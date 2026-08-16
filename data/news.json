@@ -32,6 +32,16 @@
   {
     "channel": "news",
     "grade": "C3",
+    "id": 78802,
+    "kind": "item",
+    "occurred_at": "2025-06-04T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQaU5LX25kQjVlNjhkTDR3azN2dlpieXBtMHh0bk9FU1VXVm9FY0ZDc2h2ejZvT0FORk9DaGNWdmd4VzhLbGQzV3ZwMjVlRWJtUXd1OVA2YjdpdFNNMTVLcmlmYzlHY1pBZndveTBXOTM0WElMTmNtQk1XY2VUUUlUcmQ1VzhuRnZJTkY1a3NEZkJSRkRvT2dPN3RqSGJGbXlQVHBycTNlajFDU25ya2lqQlVsSUhYTUEtcDdyTl9GMmVlUHIwSm5TbHRHdUw0dnpIcVd5QloxT0VWN1E?oc=5",
+    "title": "DOJ Threatens Wisconsin Elections Commission with Funding Cutoff Over Alleged Voting Law Violation - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
     "id": 838,
     "kind": "item",
     "occurred_at": "2025-09-04T07:00:00+00:00",
