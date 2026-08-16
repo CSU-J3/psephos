@@ -1,5 +1,1243 @@
 [
   {
+    "caption": "United States v. State of Oregon",
+    "case_id": "71363789",
+    "category": "voter-data",
+    "court": "District of Oregon",
+    "defendant": "State of Oregon",
+    "docket_number": "6:25-cv-01666",
+    "filed_at": "2025-09-16T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "superseded_by": "72356772",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 78953,
+        "kind": "item",
+        "occurred_at": "2025-09-16T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.) — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78954,
+        "kind": "item",
+        "occurred_at": "2025-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/1/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Complaint. (fee exempt status selected) Jury Trial Requested: No. Filed by United States of America against All Defendants (Attachments: # 1 Civil Cover Sheet, # 2 Attachment). (Va"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78955,
+        "kind": "item",
+        "occurred_at": "2025-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/3/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Case Management Order signed on 09/17/2025 by Judge Mustafa T. Kasubhai. (bd) (Entered: 09/17/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78956,
+        "kind": "item",
+        "occurred_at": "2025-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/4/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Amended Civil Cover Sheet regarding Complaint 1 . Filed by United States of America. (Vandenberg, David) (Entered: 09/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78957,
+        "kind": "item",
+        "occurred_at": "2025-09-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/12/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion to Intervene . Harry B. Wilson,Dallas S. DeLuca for Our Oregon,Harry B. Wilson,Dallas S. DeLuca for Dan DiIulio,Harry B. Wilson,Dallas S. DeLuca for Emma Craddock,Harry B. W"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78958,
+        "kind": "item",
+        "occurred_at": "2025-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/13/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Certificate of Service by United States of America of Complaint 1 for Tobias Read (1) Filed by United States of America. (Vandenberg, David) (Entered: 09/29/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78959,
+        "kind": "item",
+        "occurred_at": "2025-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/14/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Certificate of Service by United States of America of Complaint 1 for Tobias Read (2) Filed by United States of America. (Vandenberg, David) (Entered: 09/29/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78960,
+        "kind": "item",
+        "occurred_at": "2025-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/15/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Certificate of Service by United States of America of Complaint 1 on the State of Oregon Filed by United States of America. (Vandenberg, David) (Entered: 09/29/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78961,
+        "kind": "item",
+        "occurred_at": "2025-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/17/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Notice of Correction by Clerk regarding 12 Motion to intervene. A Clerical error has been discovered in the case record: An incorrect PDF was attached to the entry (exhibit F). The"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78962,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/22/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion for Stay for Lack of Appropriations. Filed by United States of America. (Vandenberg, David) (Entered: 10/01/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78963,
+        "kind": "item",
+        "occurred_at": "2025-10-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/24/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai: Defendant's Unopposed Motion for Stay (ECF No. 22 ) is GRANTED as follows: This matter is stayed until (1) funding is restored to the Department"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79005,
+        "kind": "item",
+        "occurred_at": "2025-10-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78964,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/25/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Second Motion for Stay Due to Lapse of Appropriations. Filed by United States of America. (Vandenberg, David) (Entered: 10/24/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78965,
+        "kind": "item",
+        "occurred_at": "2025-10-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/26/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai: Before the Court is Plaintiff's Unopposed Second Motion for Stay (ECF No. 25 ). The Court declines to exercise its discretion to extend the stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79001,
+        "kind": "item",
+        "occurred_at": "2025-10-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78966,
+        "kind": "item",
+        "occurred_at": "2025-10-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/27/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai: The Court understands that Plaintiff's counsel needs additional clarity regarding the Court's orders. Accordingly, this case is set for a teleph"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78967,
+        "kind": "item",
+        "occurred_at": "2025-11-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/29/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): MINUTES of Proceedings: Telephonic Status Conference held before Judge Mustafa T. Kasubhai. Defendants' Motion to Dismiss is due November 17, 2025. Plaintiff's Response to the Moti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78968,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/30/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Response in Opposition to Motion to Intervene 12 . Filed by United States of America. (Attachments: # 1 NC Consent Decree) (Vandenberg, David) (Entered: 11/17/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78969,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/31/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Proposed Motion to Dismiss for Failure to State a Claim and Memorandum in Support. Filed by Dan DiIulio, Our Oregon, Stephen Gomez, Emma Craddock. (Khanna, Abha) (Entered: 11/17/20"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78970,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/32/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion to Dismiss . Filed by State of Oregon, Tobias Read. (Castelli, Thomas) (Entered: 11/17/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78971,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/33/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Declaration of Thomas H. Castelli In Support of State Defendants' Motion To Dismiss. Filed by Tobias Read, State of Oregon. (Related document(s): Motion to Dismiss 32 .) (Attachmen"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78972,
+        "kind": "item",
+        "occurred_at": "2025-11-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/34/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion for Leave to File Amicus Brief. Filed by Democratic National Committee. (Isaak, Misha) (Entered: 11/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78973,
+        "kind": "item",
+        "occurred_at": "2025-11-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/35/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Memorandum of Amicus Curiae entered by Misha Isaak on behalf of Democratic National Committee . Filed by Democratic National Committee. (Isaak, Misha) Modified docket text on 11/19"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78974,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/38/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai GRANTING Motion for Leave to File Amicus Brief 34 . (bd) (Entered: 11/21/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79007,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78975,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/39/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion for Leave to File Amici Curiae Brief. Filed by American Civil Liberties Union of Oregon, League of Women Voters of Oregon. (Attachments: # 1 Proposed Document Proposed Amici"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78976,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/44/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Unopposed Motion to Appear as Amicus Curiae . Filed by Phil Keisling, Mary Estill Buchanan, Miles Rapoport, Joan Anderson Growe, John Gale, Kathy Boockvar, Sam Reed. (Attachments: "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78977,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/45/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Reply to Response in Opposition to Motion to Intervene 12 . Filed by Emma Craddock, Dan DiIulio, Stephen Gomez, Our Oregon. (Khanna, Abha) (Entered: 12/01/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78978,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/48/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai GRANTING Motion for Leave to File Amici Curiae Brief 39 . (bd) (Entered: 12/01/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79006,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78979,
+        "kind": "item",
+        "occurred_at": "2025-12-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/51/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion for Leave to Appear by Special Admission, Motion for Leave . Filed by Maryland. (Attachments: # 1 Exhibit Exhibit A- Certificate of Good Standing, # 2 Proposed Order Propose"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78980,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/52/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): OPINION AND ORDER signed on 12/5/2025 by Judge Mustafa T. Kasubhai: Our Oregon, Dan DiIulio, Stephen Gomez, and Emma Craddock's Motion to Intervene (ECF No. 12 ) is GRANTED. (bd) ("
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78981,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/53/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai GRANTING Unopposed Motion to Appear as Amicus Curiae 44 . (bd) (Entered: 12/05/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78982,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/54/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): SCHEDULING ORDER by Judge Mustafa T. Kasubhai regarding Proposed Motion to Dismiss for Failure to State a Claim and Memorandum in Support 31, Motion to Dismiss 32 . Oral Argument i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78983,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/55/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Unopposed Motion to Appear as Amicus Curiae . Filed by Maryland. (Attachments: # 1 Exhibit Multistate Amicus Brief, # 2 Proposed Order) (Kobrin, Daniel) (Entered: 12/05/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78984,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/56/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Amicus Brief . Filed by Kathy Boockvar, Mary Estill Buchanan, John Gale, Joan Anderson Growe, Phil Keisling, Miles Rapoport, Sam Reed. (Related document(s): Motion to Dismiss 32 .)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79002,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion to Appear as Amicus Curiae"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78985,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/57/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Response in Opposition to Motion to Dismiss 32 . Filed by United States of America. (Vandenberg, David) (Entered: 12/08/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78986,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/58/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai GRANTING Unopposed Motion to Appear as Amicus Curiae 55 . (bd) (Entered: 12/08/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78999,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion to Appear as Amicus Curiae"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78987,
+        "kind": "item",
+        "occurred_at": "2025-12-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/59/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai: Before the Court is the State of Maryland's Motion for Special Admission by Governmental Attorney Daniel Kobrin. ECF No. 51 . Admission of gover"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79003,
+        "kind": "item",
+        "occurred_at": "2025-12-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Leave AND Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78988,
+        "kind": "item",
+        "occurred_at": "2025-12-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/60/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Reply in Response to Opposition to Proposed Motion to Dismiss for Failure to State a Claim and Memorandum in Support 31 . Filed by Emma Craddock, Dan DiIulio, Stephen Gomez, Our Or"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78989,
+        "kind": "item",
+        "occurred_at": "2025-12-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/61/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Reply to Motion to Dismiss 32 . Filed by Tobias Read, State of Oregon. (Castelli, Thomas) (Entered: 12/22/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78990,
+        "kind": "item",
+        "occurred_at": "2026-01-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/63/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): MINUTES of Proceedings: Motion Hearing Held regarding Proposed Motion to Dismiss for Failure to State a Claim and Memorandum in Support 31 and Motion to Dismiss 32 . Motions are ta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79004,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion Hearing Held"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78991,
+        "kind": "item",
+        "occurred_at": "2026-01-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/65/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Notice of Supplemental Authority re Motion to Dismiss for Failure to State a Claim 31 Filed by Emma Craddock, Dan DiIulio, Stephen Gomez, Our Oregon. (Related document(s): Motion t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78992,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/66/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai: The Court is aware of correspondence from Attorney General Pamela Bondi addressed to Minnesota Governor Tim Walz, dated January 24, 2026. The le"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78993,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/67/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Notice of Supplemental Authority Filed by United States of America. (Attachments: # 1 Exhibit 1 - USA v. GA Complaint, # 2 Exhibit 2 - USA v. GA Consent Decree, # 3 Exhibit 3 - USA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78994,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/68/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): MINUTES of Proceedings: Motion Hearing Held by videoconference before Judge Mustafa T. Kasubhai. For the reasons articulated on the record at oral argument and supplemental oral ar"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79000,
+        "kind": "item",
+        "occurred_at": "2026-01-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion Hearing Held"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78995,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/73/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): OPINION AND ORDER signed on 2/5/2026 by Judge Mustafa T. Kasubhai: Defendants' and Intervenors' Motions to Dismiss (ECF Nos. 31, 32 ) are GRANTED. This case is DISMISSED WITHOUT LE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78996,
+        "kind": "item",
+        "occurred_at": "2026-02-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/74/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): JUDGMENT signed on 02/05/2026 by Judge Mustafa T. Kasubhai: Based on the record, IT IS ORDERED AND ADJUDGED this action is dismissed without leave to amend. Pending motions, if any"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78998,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): USCA Case Number and Notice confirming Docketing Record on Appeal re Notice of Appeal 76 . Case Appealed to Ninth Circuit Case Number 26-1231 assigned. (jw)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78997,
+        "kind": "item",
+        "occurred_at": "2026-03-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71363789/78/united-states-v-state-of-oregon/",
+        "title": "United States of America v. State of Oregon, et al. (D. Or.): Transcript Designation and Order Form regarding Notice of Appeal 76 . Eric Neff. Filed by United States of America. Transcript is due by 4/13/2026. (Neff, Eric) (Entered: 03/12/202"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Shirley Weber",
+    "case_id": "71452580",
+    "category": "voter-data",
+    "court": "Central District of California",
+    "defendant": "Shirley Weber",
+    "docket_number": "2:25-cv-09149",
+    "filed_at": "2025-09-25T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "superseded_by": "72356732",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 78807,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71452580/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.) — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78808,
+        "kind": "item",
+        "occurred_at": "2025-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/1/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): COMPLAINT No Fee Required - US Government, filed by Plaintiff UNITED STATES OF AMERICA. (Attachments: # 1 Civil Cover Sheet) (Attorney Brittany E Bennett added to party UNITED STAT"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78809,
+        "kind": "item",
+        "occurred_at": "2025-10-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/6/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION to Stay Case pending Lapse in Appropriations filed by Plaintiff UNITED STATES OF AMERICA. (Attachments: # 1 Proposed Order) (Bennett, Brittany) (Entered"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78810,
+        "kind": "item",
+        "occurred_at": "2025-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/14/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION to Intervene filed by Proposed Intervenors NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights and Education Network. Motion set"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78811,
+        "kind": "item",
+        "occurred_at": "2025-10-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/18/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): DECLARATION OF SERVICE filed by Proposed Intervenor-Defendants NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights and Education Network, re NOTICE OF MOTIO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78812,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/19/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER RE TRANSFER PURSUANT to this Court's General Order in the Matter of Assignment of Cases and Duties to the District Judges. Related Case- filed. Related Case No: 8:25-cv-01370"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78813,
+        "kind": "item",
+        "occurred_at": "2025-10-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/20/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): SCHEDULING NOTICE by Judge David O. Carter re: MOTION to Intervene 14, and MOTION to Stay Case pending Lapse in Appropriations 6 Motions are set for hearing on 11/17/2025 at 09:00 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78814,
+        "kind": "item",
+        "occurred_at": "2025-10-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/23/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): INITIAL STANDING ORDER by Judge David O. Carter. (dve) (Entered: 10/20/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78815,
+        "kind": "item",
+        "occurred_at": "2025-10-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/24/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION to Intervene filed by Proposed Intervenor-Defendant League of Women Voters of California. Motion set for hearing on 11/17/2025 at 09:00 AM before Judge "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78816,
+        "kind": "item",
+        "occurred_at": "2025-10-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/26/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): SCHEDULING NOTICE by Judge David O. Carter. Hearings re: MOTION to Intervene 14, MOTION to Intervene 24, and MOTION to Stay Case pending Lapse in Appropriations 6 are RESCHEDULED t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78817,
+        "kind": "item",
+        "occurred_at": "2025-10-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/27/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): OPPOSITION to NOTICE OF MOTION AND MOTION to Intervene 24, NOTICE OF MOTION AND MOTION to Intervene 14 filed by Plaintiff United States of America. (Attachments: # 1 Exhibit NC Con"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78818,
+        "kind": "item",
+        "occurred_at": "2025-11-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/30/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): REPLY IN SUPPORT OF NOTICE OF MOTION AND MOTION to Intervene 24 filed by Movant League of Women Voters of California. (Zelphin, Grayce) (Entered: 11/03/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78819,
+        "kind": "item",
+        "occurred_at": "2025-11-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/31/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): REPLY in support of NOTICE OF MOTION AND MOTION to Intervene 14 filed by Movants NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights and Education Network. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78820,
+        "kind": "item",
+        "occurred_at": "2025-11-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/32/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): (IN CHAMBERS): NOVEMBER 6, 2025 STATUS CONFERENCE by Judge David O. Carter:The Court SETS a hearing on November 17, 2025 at 9:00 AM in Courtroom One in the United States Courthouse"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78821,
+        "kind": "item",
+        "occurred_at": "2025-11-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/37/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION to Dismiss filed by Defendant Shirley Weber. Motion set for hearing on 12/8/2025 at 08:30 AM before Judge David O. Carter. (Attachments: # 1 Memorandum "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78822,
+        "kind": "item",
+        "occurred_at": "2025-11-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/44/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Amicus Curiae Brief filed filed by Movant Democratic National Committee. RE: Minutes of In Chambers Order/Directive - no proceeding held,, Set/Reset Hearing, 32 . (Rosenspire, Hale"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78823,
+        "kind": "item",
+        "occurred_at": "2025-11-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/50/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Notice of Withdrawal of Motion to Stay Case 6 filed by Planitiff United States of America. (Bennett, Brittany) (Entered: 11/13/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78824,
+        "kind": "item",
+        "occurred_at": "2025-11-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/57/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): EX PARTE APPLICATION to Continue Hearing from 12/8/2025 to 12/22/2025 Re: NOTICE OF MOTION AND MOTION to Dismiss 37 filed by Plaintiff United States of America. (Attachments: # 1 D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78825,
+        "kind": "item",
+        "occurred_at": "2025-11-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/60/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): RESPONSE filed by Defendants State of California, Shirley Weberto EX PARTE APPLICATION to Continue Hearing from 12/8/2025 to 12/22/2025 Re: NOTICE OF MOTION AND MOTION to Dismiss 3"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78826,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/62/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION for Leave to file Motion to Dismiss filed by Proposed Intervenor-Defendants NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78833,
+        "kind": "item",
+        "occurred_at": "2025-11-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/69/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): MINUTES OF Motion Hearing re Motion to Stay 6 and Motions to Intervene 14 24 held before Judge David O. Carter: The case is called. For reasons as stated on the record, the motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78827,
+        "kind": "item",
+        "occurred_at": "2025-11-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/63/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): OPPOSITION to NOTICE OF MOTION AND MOTION to Dismiss 37 filed by Plaintiff United States of America. (Bennett, Brittany) (Entered: 11/18/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78828,
+        "kind": "item",
+        "occurred_at": "2025-11-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/64/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Notice NOTICE OF ERRATA RE: OPPOSITION TO MOTION TO DISMISS filed by Plaintiff United States of America. (Attachments: # 1 Memorandum Opposition to Defendants' Motion to Dismiss)(B"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78829,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/65/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Proposed Order re Motions to Dismiss Submitted with Consent of All Parties filed by Defendants State of California, Shirley Weber (Setrakian, Robert William) (Entered: 11/19/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78834,
+        "kind": "item",
+        "occurred_at": "2025-11-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/70/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): MINUTES OF Motion Hearing re Motion to Stay 6 and Motions to Intervene 14 24 held before Judge David O. Carter: The case is called. The Court GRANTS Motions to Intervene 14 24 . De"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78830,
+        "kind": "item",
+        "occurred_at": "2025-11-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/66/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Intervenors NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights and Education Network for Court Smart (CS). Court will contact Bridge"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78831,
+        "kind": "item",
+        "occurred_at": "2025-11-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/67/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION to Dismiss filed by Intervenor-Defendant League of Women Voters of California. Motion set for hearing on 12/4/2025 at 07:30 AM before Judge David O. Car"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78832,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/68/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Plaintiff United States of America DCN number: 2:25-cv-09149 for Court Smart (CS). (Neff, Eric) (Entered: 11/21/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78835,
+        "kind": "item",
+        "occurred_at": "2025-11-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/71/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER SETTING SCHEDULE FOR MOTION TO DISMISS by Judge David O. Carter 62 37 67 . ( State Defendants Reply/Responses due by 11/25/2025, Plaintiffs opposition to Intervenor's Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78836,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/72/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Intervenor-Defendant League of Women Voters of California for Court Smart (CS). Court will contact Brandee Calagui at bcalagui@aclunc.org with further instru"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78870,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78871,
+        "kind": "item",
+        "occurred_at": "2025-11-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Intervene AND Intervene AND Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78837,
+        "kind": "item",
+        "occurred_at": "2025-11-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/78/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): REPLY In Support of Motion to Dismiss filed by Defendant Shirley Weber. (Brudigam, Malcolm) (Entered: 11/25/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78838,
+        "kind": "item",
+        "occurred_at": "2025-11-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/81/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): OPPOSITION to NOTICE OF MOTION AND MOTION for Leave to file Motion to Dismiss 62, NOTICE OF MOTION AND MOTION to Dismiss 67 filed by Plaintiff United States of America. (Bennett, B"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78839,
+        "kind": "item",
+        "occurred_at": "2025-11-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/83/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Amicus Curiae Brief filed filed by Movant Maryland and Amici States. RE: Minutes of In Chambers Order/Directive - no proceeding held,, Set/Reset Motion Hearing and R&R Deadlines, 7"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78840,
+        "kind": "item",
+        "occurred_at": "2025-11-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/84/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF MOTION AND MOTION to File Amicus Brief filed by Amicus Curiae Bipartisan Former Secretaries of State. Motion set for hearing on 12/4/2025 at 07:30 AM before Judge David O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78841,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/85/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): REPLY IN SUPPORT OF NOTICE OF MOTION AND MOTION to Dismiss 67 filed by Movant League of Women Voters of California. (Zelphin, Grayce) (Entered: 12/01/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78842,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/86/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): REPLY in Support of Motion to Dismiss filed by Movants NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights and Education Network. (Madduri, Lalitha) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78843,
+        "kind": "item",
+        "occurred_at": "2025-12-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/87/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): REQUEST for Order for Produce Records (52 USC 20701) filed by Plaintiff United States of America. Request set for hearing on 12/4/2025 at 07:30 AM before Judge David O. Carter. (At"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78844,
+        "kind": "item",
+        "occurred_at": "2025-12-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/88/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): First EX PARTE APPLICATION to Withdraw Plaintiff's Motion for Order to Produce Records filed by Defendant Shirley Weber. (Attachments: # 1 Declaration, # 2 Proposed Order) (Brudiga"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78845,
+        "kind": "item",
+        "occurred_at": "2025-12-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/89/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): OPPOSITION to First EX PARTE APPLICATION to Withdraw Plaintiff's Motion for Order to Produce Records 88 filed by Plaintiff United States of America. (Bennett, Brittany) (Entered: 1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78846,
+        "kind": "item",
+        "occurred_at": "2025-12-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/91/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Interested Party for Court Smart (CS). Court will contact Shiloh Marx at Shiloh@shilohmarx.com with further instructions regarding this order. Transcript pre"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78850,
+        "kind": "item",
+        "occurred_at": "2025-12-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/97/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): MINUTES OF MOTION Hearing re Motions to Dismiss 37 67 held before District Judge David O. Carter: Motion hearing held. The Court hears oral argument from the parties. The Court tak"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78847,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/92/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT for proceedings held on Monday, November 17, 2025. Court Reporter/Electronic Court Recorder: Exceptional Reporting Services, Inc, phone number (361)949-2988. Transcript "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78848,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/94/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Notice filed by Plaintiff United States of America. (Attachments: # 1 Supplement Filed Motion to Compel Production of Documents, # 2 Memorandum Filed Memorandum in Support of Motio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78849,
+        "kind": "item",
+        "occurred_at": "2025-12-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/95/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF LODGING filed [Proposed] Order Setting Schedule for Amicus Briefs re NOTICE OF MOTION AND MOTION to Dismiss 37 (Attachments: # 1 Proposed Order Proposed Order Setting Sch"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78872,
+        "kind": "item",
+        "occurred_at": "2025-12-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78851,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/98/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER SETTING SCHEDULE FOR AMICUS BRIEFS by Judge David O. Carter. SEE DOCUMENT FOR FURTHER INFORMATION. (twdb) (Entered: 12/08/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78852,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/99/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Defendants State of California, Shirley Weber for Court Smart (CS). (Cohen, Michael) (Entered: 12/08/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78853,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/100/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT for proceedings held on 12/04/2025 at 7:38am. Court Reporter/Electronic Court Recorder: EXCEPTIONAL REPORTING SERVICES, INC., phone number (361) 949-2988. Transcript may"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78854,
+        "kind": "item",
+        "occurred_at": "2025-12-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/102/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): APPLICATION for an Order Denying or Deferring Briefing on Plaintiff's Motion for an Order to Produce Records; Memorandum of Points and Authorities in Support Thereof Fee Exemption "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78855,
+        "kind": "item",
+        "occurred_at": "2025-12-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/103/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Intervenor-Defendant League of Women Voters of California for Court Smart (CS). Court will contact Brandee Calagui at bcalagui@aclunc.org with further instru"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78856,
+        "kind": "item",
+        "occurred_at": "2025-12-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/108/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT ORDER as to Plaintiff United States of America for Court Smart (CS). (Neff, Eric) (Entered: 12/10/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78857,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/111/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): TRANSCRIPT for proceedings held on 11/19/2025 at 9:07am. Court Reporter/Electronic Court Recorder: EXCEPTIONAL REPORTING SERVICES, INC., phone number (361) 949-2988. Transcript may"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78858,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/113/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): OPPOSITION to REQUEST for Order for Produce Records (52 USC 20701) 87 filed by Movants NAACP, NAACP California-Hawaii State Conference, Services, Immigrant Rights and Education Net"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78859,
+        "kind": "item",
+        "occurred_at": "2025-12-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/114/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER by Judge David O. Carter: Granting 102 California's Ex Parte Application for and Order Denying or Deferring Briefing on Plaintiff's Motion For an Order to Produce Records. SE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78860,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/115/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER (IN CHAMBERS) by District Judge David O. Carter: MOTION to Stay Case pending Lapse in Appropriations 6 and EX PARTE APPLICATION to Continue Hearing 57 are denied as moot. THE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78861,
+        "kind": "item",
+        "occurred_at": "2025-12-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/116/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): (IN CHAMBERS) ORDER FOR TRANSCRIPTS by Judge David O. Carter: The Court orders the transcripts for proceedings held on November 17, 2025 (Dkt. 69), November 19, 2025 (Dkt. 70), and"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78862,
+        "kind": "item",
+        "occurred_at": "2025-12-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/121/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Amicus Curiae Brief filed filed by Amicus Former Employees of the U.S. Department of Justice. RE: Order 98 . (Henson, Aaron) (Entered: 12/22/2025)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78863,
+        "kind": "item",
+        "occurred_at": "2026-01-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/124/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE of Decision: United States District Court for the District of Connecticut Issuing Order to Show Cause filed by Plaintiff United States of America. (Attachments: # 1 Exhibit "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78864,
+        "kind": "item",
+        "occurred_at": "2026-01-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/127/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Order by Judge David O. Carter: Per the Court's Order on 12/8/25 [Dkt. 98], the Court accepts all amicus briefs filed by the 12/22/2025 deadline. Amicus briefs from the Democratic "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78865,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/128/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER by Judge David O. Carter: Granting 37 Defendant's MOTION to Dismiss and Intervenors' Motions to Dismiss [62-1], 67 . Therefore, the motions are DISMISSED WITHOUT LEAVE TO AME"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78866,
+        "kind": "item",
+        "occurred_at": "2026-01-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/129/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): EX PARTE APPLICATION for Extension of Time to File Motion for Reconsideration filed by Plaintiff United States of America. (Attachments: # 1 Supplement, # 2 Proposed Order) (Bennet"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78867,
+        "kind": "item",
+        "occurred_at": "2026-01-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/130/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): ORDER by Judge David O. Carter ORDER DENYING UNITED STATES OF AMERICAS EX PARTE APPLICATION FOR ORDER EXTENDING TIME TO FILE MOTION FOR RECONSIDERATION 129 (Entered: 01/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78868,
+        "kind": "item",
+        "occurred_at": "2026-02-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/131/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTICE OF APPEAL to the 9th Circuit Court of Appeals filed by Plaintiff United States of America. Appeal of Order on Motion to Dismiss,, Order on Motion for Leave to File Document,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78869,
+        "kind": "item",
+        "occurred_at": "2026-03-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/133/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTIFICATION from Ninth Circuit Court of Appeals of case number assigned and briefing schedule. Appeal Docket No. 26-1232 assigned to Notice of Appeal to 9th Circuit Court of Appea"
+      }
+    ]
+  },
+  {
     "caption": "United States v. COMMONWEALTH OF PENNSYLVANIA",
     "case_id": "71453026",
     "category": "voter-data",
@@ -4685,7 +5923,7 @@
     "filed_at": "2025-09-30T00:00:00",
     "plaintiff": "League of Women Voters",
     "status": "terminated",
-    "superseded_by": null,
+    "superseded_by": "73544809",
     "timeline": [
       {
         "channel": "litigation",
@@ -14048,6 +15286,450 @@
     ]
   },
   {
+    "caption": "United States v. Fontes",
+    "case_id": "72110941",
+    "category": "voter-data",
+    "court": "District of Arizona",
+    "defendant": "Fontes",
+    "docket_number": "2:26-cv-00066",
+    "filed_at": "2026-01-06T00:00:00",
+    "plaintiff": "United States",
+    "status": "terminated",
+    "superseded_by": "73443024",
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 78873,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72110941/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.) — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78874,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/1/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): COMPLAINT filed by United States of America. (submitted by Brittany Bennett) (Attachments: # 1 Civil Cover Sheet)(REK) (Entered: 01/06/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78875,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/5/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): PRELIMINARY ORDER This matter having recently come before this Court, the parties are advised of the following preliminary policies and procedures that will govern these proceeding"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78876,
+        "kind": "item",
+        "occurred_at": "2026-01-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/6/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): ORDER directing the Clerk of Court to terminate any or all Defendants in this matter, without further notice, that have not been served within the time required by Fed. R. Civ. P. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78877,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/7/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to Compel Production of Records pursuant to Civil Rights Act of 1960 by United States of America. (Attachments: # 1 Proposed Order)(Bennett, Brittany) (Entered: 01/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78878,
+        "kind": "item",
+        "occurred_at": "2026-01-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/8/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MEMORANDUM in Support of 7 MOTION to Compel Production of Records pursuant to Civil Rights Act of 1960 by Plaintiff United States of America. (Attachments: # 1 Exhibit Letter to SO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78879,
+        "kind": "item",
+        "occurred_at": "2026-01-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/9/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to Intervene Unopposed Motion to Intervene as Defendant by Arizona Alliance for Retired Americans. (Attachments: # 1 Exhibit Exhibits A-J, # 2 Proposed Order Proposed Order)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78880,
+        "kind": "item",
+        "occurred_at": "2026-01-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/14/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to Intervene by Common Cause, Kara Janssen, Shannon Roivas, Caleb D Trevino. (Attachments: # 1 Exhibit 1 - Motion to Dismiss, # 2 Exhibit 2 - Declaration of Jennifer Guzman "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78881,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/16/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): First STIPULATION FOR EXTENSION OF TIME TO ANSWER COMPLAINT by Adrian Fontes. (Attachments: # 1 Proposed Order)(Hartman-Tellez, Karen) (Entered: 01/15/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78882,
+        "kind": "item",
+        "occurred_at": "2026-01-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/17/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): NOTICE re: Proposed Intervenors' Notice of Supplemental Authority by Common Cause, Kara Janssen, Shannon Roivas, Caleb D Trevino re: 14 MOTION to Intervene . (Attachments: # 1 Exhi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78883,
+        "kind": "item",
+        "occurred_at": "2026-02-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/20/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): ORDER that the 16 Stipulation For Extension of Time is granted. IT IS FURTHER ORDERED that Defendant shall file his response to the Complaint (Doc. 1 ) and his response to the Moti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78884,
+        "kind": "item",
+        "occurred_at": "2026-02-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/21/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): *MOTION to Withdraw as Attorney Ex Parte Application for Withdrawal as Counsel Filed with Client Consent - D. Andrew Gaona filed by David Andrew Gaona. (Attachments: # 1 Forms Exhi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78885,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/22/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION for Leave to File Motion to Dismiss and Opposition to Motion to Compel by Arizona Alliance for Retired Americans. (Attachments: # 1 Proposed Order)(Madduri, Lalitha) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78886,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/23/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): *STRICKEN per Order Doc. 32 LODGED Proposed Motion to Dismiss re: 22 MOTION for Leave to File Motion to Dismiss and Opposition to Motion to Compel . Document to be filed by Clerk i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78887,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/24/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): *STRICKEN per Order at Doc. 32 LODGED Proposed Response in Opposition to Motion for Order to Compel re: 22 MOTION for Leave to File Motion to Dismiss and Opposition to Motion to Co"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78888,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/25/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to Dismiss for Failure to State a Claim by Adrian Fontes. (Hartman-Tellez, Karen) (Entered: 02/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78889,
+        "kind": "item",
+        "occurred_at": "2026-02-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/26/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): RESPONSE to Motion re: 7 MOTION to Compel Production of Records pursuant to Civil Rights Act of 1960 filed by Adrian Fontes. (Hartman-Tellez, Karen) (Entered: 02/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78890,
+        "kind": "item",
+        "occurred_at": "2026-03-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/27/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to File Amicus Curiae Brief by Democratic National Committee. (Attachments: # 1 Attachment Amicus Brief of the Democratic National Committee, # 2 Proposed Order)(Arellano, D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78891,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/29/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to File Amicus Curiae Brief by Anna Baldwin, David Becker, Gregory Friel, Bradley Heard, Brian Heffernan, Robert Kengle, Timothy Lambert, Justin Levitt, Steven Mulroy, Dana "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78892,
+        "kind": "item",
+        "occurred_at": "2026-03-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/30/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): **Filed at (Doc. 43 )** LODGED Proposed Unopposed Brief of Amici Curiae Former Employees of U.S. Dept. of Justice re: 29 MOTION to File Amicus Curiae Brief. Document to be filed by"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78893,
+        "kind": "item",
+        "occurred_at": "2026-03-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/31/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to File Amicus Curiae by Brennan Center for Justice at NYU School of Law, Campaign Legal Center. (Attachments: # 1 Proposed Order Proposed Order Granting Motion to file Amic"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78894,
+        "kind": "item",
+        "occurred_at": "2026-03-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/32/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): ORDER denying Alliance's Motion to Intervene (Doc. 9 ) and the Common Cause Intervenors' Motion to Intervene (Doc. 14 ). IT IS FURTHER ORDERED denying Alliance's Motion for Leave t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78895,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/33/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION for Leave to File Amicus Brief by Maryland, State of, California, State of, Colorado, State of, Connecticut, State of, Delaware, State of, District of Columbia, Hawaii, Stat"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78896,
+        "kind": "item",
+        "occurred_at": "2026-03-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/34/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): **Filed at (Doc. 44 )** LODGED Proposed Multistate Amicus Brief re: 33 MOTION for Leave to File Amicus Brief. Document to be filed by Clerk if Motion or Stipulation for Leave to Fi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78897,
+        "kind": "item",
+        "occurred_at": "2026-03-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/35/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): *RESPONSE in Opposition re: 25 MOTION to Dismiss for Failure to State a Claim, REPLY to Response to Motion re: 7 MOTION to Compel filed by United States of America. (Attachments: #"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78898,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/36/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION for Leave to File Amicus Brief by League of United Latin American Citizens. (Attachments: # 1 Proposed Order)(Messer, Joshua) *Modified text on 3/17/2026 (EJA). (Entered: 03"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78899,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/37/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): NOTICE of Errata re: 36 MOTION for Leave to File Motion for Leave to File Amicus Brief by Movant League of United Latin American Citizens.. (Attachments: # 1 Attachment, # 2 Exhibi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78900,
+        "kind": "item",
+        "occurred_at": "2026-03-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/38/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): **Field at (Doc. 45 )** LODGED Proposed Amicus Brief of the League of United Latin American Citizens in Support of Defendant's Motion to Dismiss re: 36 MOTION for Leave to File Mot"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78901,
+        "kind": "item",
+        "occurred_at": "2026-03-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/39/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): REPLY to Response to Motion re: 25 MOTION to Dismiss for Failure to State a Claim filed by Adrian Fontes. (Hartman-Tellez, Karen) (Entered: 03/20/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78902,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/40/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): MOTION to File Amicus Curiae by Common Cause, Kara Janssen, Shannon Roivas, Caleb D Trevino. (Attachments: # 1 Proposed Order)(Nimlo, Lilian) (Entered: 04/08/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78903,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/41/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): **Filed at (Doc. 46 )** LODGED Proposed Brief of Amici Curiae Common Cause, Shannon Roivas, Caleb D. Trevino and Kara Janssen re: 40 MOTION to File Amicus Curiae. Document to be fi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78904,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/42/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): ORDER granting 27, 29, 31, 33, 36, 40 Motions to File Amicus Curiae. The Clerk shall file Docs. 30, 34, 38 and 41 . Signed by Judge Susan M Brnovich on 4/13/26. (DXD) (Entered: 04/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78905,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/43/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): AMICUS BRIEF re: 42 Order by Anna Baldwin, David Becker, Gregory Friel, Bradley Heard, Brian Heffernan, Robert Kengle, Timothy Lambert, Justin Levitt, Steven Mulroy, Dana Paikowsky"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78906,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/44/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): AMICUS BRIEF re: 42 Order by California, State of, Colorado, State of, Connecticut, State of, Delaware, State of, District of Columbia, Hawaii, State of, Maine, State of, Maryland,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78907,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/45/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): AMICUS BRIEF re: 42 Order by League of United Latin American Citizens. (DXD) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78908,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/46/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): AMICUS BRIEF re: 42 Order by Common Cause, Kara Janssen, Shannon Roivas, Caleb D Trevino. (DXD) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78909,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/47/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): ORDER granting 21 Motion to Withdraw as Attorney. Attorney David Andrew Gaona is relieved of any further responsibilities in connection with this action. Signed by Judge Susan M Br"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78910,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/48/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): *AMENDED by (Doc. 50 ) ORDER granting Secretary Fontes' Motion to Dismiss (Doc. 25 ) and dismissing the case. FURTHER ORDERED directing the Clerk of Court to enter final judgment a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78911,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/49/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): *AMENDED by (Doc. 51 ) CLERK'S JUDGMENT - IT IS ORDERED AND ADJUDGED that pursuant to the Court's order filed April 28, 2026, final judgment is entered. Plaintiff to take nothing, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78912,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/50/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): AMENDED ORDER granting Secretary Fontes' Motion to Dismiss (Doc. 25 ) and dismissing the case. FURTHER ORDERED directing the Clerk of Court to enter final judgment and terminate th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78913,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/51/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): AMENDED CLERK'S JUDGMENT - IT IS ORDERED AND ADJUDGED that pursuant to the Court's order filed April 28, 2026, final judgment is entered. Plaintiff to take nothing, and the complai"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78914,
+        "kind": "item",
+        "occurred_at": "2026-06-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/52/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): NOTICE OF APPEAL to 9th Circuit Court of Appeals re: 50 Order, 51 Clerks Judgment by United States of America. (Hauenschild, Jonathon) (Entered: 06/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 78915,
+        "kind": "item",
+        "occurred_at": "2026-06-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72110941/53/united-states-v-fontes/",
+        "title": "United States of America v. Fontes (D. Ariz.): USCA Case Number re: 52 Notice of Appeal. Case number 26-3609, Ninth Circuit. (EJA) (Entered: 06/04/2026)"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Koski",
     "case_id": "72156765",
     "category": "voter-data",
@@ -19752,6 +21434,120 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108489275/united-states-v-bellows/",
         "title": "United States v. Maine: MOTION for Attorney Jason Anton to withdraw as counsel filed by Appellees Shenna Bellows and State of Maine. Served on 08/10/2026. [26-1676] (JRB) [Entered: 08/10/2026 01:35 PM]"
+      }
+    ]
+  },
+  {
+    "caption": "League of Women Voters v. DHS",
+    "case_id": "73544809",
+    "category": "voter-data",
+    "court": "D.C. Circuit",
+    "defendant": "DHS",
+    "docket_number": "26-5243",
+    "filed_at": "2026-06-29T00:00:00",
+    "plaintiff": "League of Women Voters",
+    "status": "pending",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 79043,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.) — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79044,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208864243/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): NOTICE OF APPEAL [2180761] seeking review of a decision by the U.S. District Court in 1:25-cv-03501-SLS filed by Frank Bisignano, Markwayne Mullin, SSA and DHS. Appeal assigned USC"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79045,
+        "kind": "item",
+        "occurred_at": "2026-06-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208864246/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): CLERK'S ORDER [2180762] filed directing party to file initial submissions: APPELLANT docketing statement due 07/29/2026. APPELLANT certificate as to parties due 07/29/2026. APPELLA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79046,
+        "kind": "item",
+        "occurred_at": "2026-07-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208867559/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): EMERGENCY MOTION [2182390] to stay underlying order pending appeal filed by Frank Bisignano, SSA, DHS and Markwayne Mullin (Service Date: 07/08/2026 by CM/ECF NDA) Length Certifica"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79047,
+        "kind": "item",
+        "occurred_at": "2026-07-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208867885/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): MOTION [2182576] to participate as amicus curiae [Disclosure Listing: Not Attached] filed by Eric H. Wessan [Service Date: 07/09/2026 ] [26-5243] (Wessan, Eric) [Entered: 07/09/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79048,
+        "kind": "item",
+        "occurred_at": "2026-07-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208867917/1/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): CONSENT MOTION [2182590] to participate as amicus curiae [Disclosure Listing: Not Applicable to this Party] filed by Arizona Senate President Warren Petersen; and Speaker of the Ar"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79049,
+        "kind": "item",
+        "occurred_at": "2026-07-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208867942/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): PER CURIAM ORDER [2182598] filed directing response to motion for stay pending appeal [2182390-2]. Appellees response to motion is due by 4:00 p.m. on Thursday, July 16, 2026. Any "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79050,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208869896/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): MOTION [2183624] to participate as amicus curiae [Disclosure Listing: Not Attached] filed by The Honest Elections Project [Service Date: 07/16/2026 ] [26-5243]--[Edited 07/16/2026 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79051,
+        "kind": "item",
+        "occurred_at": "2026-07-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208869918/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): RESPONSE IN OPPOSITION [2183635] to motion for stay pending appeal [2182390-2] filed by League of Women Voters, League of Women Voters of Texas, League of Women Voters of Louisiana"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 79052,
+        "kind": "item",
+        "occurred_at": "2026-07-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208870652/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): REPLY [2184033] filed by Frank Bisignano, DHS, Markwayne Mullin and SSA to response [2183635-2] [Service Date: 07/20/2026 by CM/ECF NDA] Length Certification: 2593 words. [26-5243]"
       }
     ]
   },
