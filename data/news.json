@@ -4951,6 +4951,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 79470,
+    "kind": "item",
+    "occurred_at": "2026-08-06T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE91enhXdmZ2bHJIOUZDOExuNmhoT3F5STE1UWZiWHJWMVJKekp2cWc2S2t4eE5CQ25LV2RBRWxBZWxlMUNtQzNaOFhxY3h0bDFtTHhVblQ5YUYtMHdsWGsxdlR1Y0dwXzQzb1dwOTFMQVFkRlhfSVJLYXMzZkhVVEk?oc=5",
+    "title": "How could Trump rig the midterms? - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 71392,
     "kind": "item",
@@ -5558,5 +5568,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/texas-supreme-court-refuses-to-stop-gop-led-county-from-changing-voting-maps-between-primary-and-november-election",
     "title": "Texas Supreme Court refuses to stop GOP-led county from changing voting maps between primary and November election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 79468,
+    "kind": "item",
+    "occurred_at": "2026-08-16T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-will-trump-restrict-mail-voting-during-the-midterms-its-up-to-the-supreme-court-now",
+    "title": "This week at Democracy Docket: Will Trump restrict mail voting during the midterms? It’s up to the Supreme Court now"
   }
 ]
