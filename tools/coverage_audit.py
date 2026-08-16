@@ -111,6 +111,40 @@ def unresolvable_refs(conn, held: set[str]) -> dict[str, list[tuple[str, str]]]:
     return found
 
 
+def classify_ref(tok: str, naming_courts: list[str], naming_dockets: list[str]) -> str:
+    """Which KIND of gap a section-2 reference is. Three, not one.
+
+    THE LIST USED TO BE UNDIFFERENTIATED AND WAS READ AS ONE CANDIDATE, which is
+    what this exists to prevent. The distinction was already written down -- in this
+    module's docstring -- and the docstring is not what a reader of the output sees.
+    Information in the wrong place is not available.
+
+      predecessor  a DISTRICT-form token named by a CIRCUIT row: psephos holds the
+                   appeal and not the case under it. Seed and supersede FORWARD.
+      successor    a CIRCUIT-form token named by a district row: psephos holds the
+                   original and not what continued it. Seed and supersede BACKWARD.
+      self-ref     the token is the naming row's OWN docket in another notation.
+                   Arizona's local `CV-26-00066-PHX-SMB` renders the held
+                   `2:26-cv-00066` as the token `26-00066`. Noise, not a gap.
+
+    Self-reference is matched on DIGITS ONLY, after dropping the court-division
+    prefix, so `26-00066` matches `2:26-cv-00066`. Residual risk is stated rather
+    than solved, the same trade DATE_LIKE takes above: a genuine circuit docket
+    whose digits happen to be a suffix of its naming row's district number would be
+    dismissed as noise. Both regexes and both fields were already in hand.
+    """
+    digits = lambda s: re.sub(r"\D", "", s or "")
+    if any(digits(d).endswith(digits(tok)) for d in naming_dockets if d):
+        return "self-ref"
+    is_district = bool(DISTRICT_DOCKET.fullmatch(tok))
+    named_by_circuit = any((c or "").strip().endswith("Circuit") for c in naming_courts)
+    if is_district and named_by_circuit:
+        return "predecessor"
+    if not is_district and not named_by_circuit:
+        return "successor"
+    return "reference"
+
+
 def cert_watch(rows) -> list:
     """Section 3. Terminated circuit rows with no successor."""
     return [r for r in rows
@@ -181,9 +215,20 @@ def main(argv=None) -> int:
                       f"-> {r['superseded_by']}  {r['court']}")
 
         print(f"\n  [2] UNRESOLVABLE DOCKET REFERENCES: {len(refs)} distinct  (a report, not an alarm)")
+        print("      predecessor = we hold the appeal, not the case under it (seed + supersede forward)")
+        print("      successor   = we hold the original, not what continued it (seed + supersede back)")
+        print("      self-ref    = the naming row's own docket in another notation; noise, not a gap")
+        print("      NOT MONOTONIC UNDER SEEDING: holding a docket removes its token AND adds that")
+        print("      docket's own entries to the corpus, which can surface further references.")
+        by_case = {r["case_id"]: r for r in rows}
         for tok, occ in sorted(refs.items()):
             named = sorted({c for c, _ in occ})
-            print(f"        {tok:<18} x{len(occ):<3} named by {','.join(named)}")
+            kind = classify_ref(
+                tok,
+                [by_case[c]["court"] for c in named if c in by_case],
+                [by_case[c]["docket_number"] for c in named if c in by_case],
+            )
+            print(f"        {tok:<18} x{len(occ):<3} {kind:<12} named by {','.join(named)}")
             print(f"            {occ[0][1][:150]}")
 
         print(f"\n  [3] CERT WATCH -- terminated circuit rows, no successor: {len(watch)}")

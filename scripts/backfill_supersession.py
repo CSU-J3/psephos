@@ -130,6 +130,15 @@ PAIRS = [
     #   2026-06-04 on 73443024: `... filed in 2:26-cv-00066-SMB`. Tracker: 4/28/26
     #   dismissal, and separately that ca9 stayed THIS appeal on 6/22/26 pending the
     #   CA and OR appeals -- a fact about the appeal, not about the dismissal.
+
+    # The first pair with NO state on either side, and nothing here depends on one:
+    # both rows sue federal agencies, so `state` is NULL by construction and neither
+    # appears on /campaign. It is a litigation-channel link only. A1 forward from the
+    # predecessor's own record; circuit map: D.D.C. appeals lie to the D.C. Circuit.
+    ("71499795", "1:25-cv-03501", "73544809", "26-5243"),   # LWV v. DHS -> D.C. Cir.
+    #   Entry 2026-06-29 on 71499795: `USCA Case Number 26-5243 for 113 Notice of
+    #   Appeal to DC Circuit Court`. Unlike CT/NY there was no tracker-lag argument
+    #   to make -- UW carries neither row -- so this was seeded on the entry alone.
 ]
 
 

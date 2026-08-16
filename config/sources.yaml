@@ -273,6 +273,30 @@ litigation:
       court_id: dcd
       category: voter-data
       notes: Alleges DHS turned SAVE into a national citizenship database.
+    # The D.C. Circuit appeal of the row above. Same shape as CT/NY -- a successor
+    # psephos lacked -- but the WAIT QUESTION THAT JUSTIFIED THOSE TWO DOES NOT
+    # APPLY HERE, and that is the whole reason this is seeded rather than deferred.
+    # CT/NY rested on a measured tracker lag: UW rewrote VA and NM within 4-5 days
+    # and had left those two for 22. There is no such argument to make about this
+    # one, because the UW tracker NEVER carries it -- 1:25-cv-03501 is a config seed
+    # against federal agencies and appears nowhere in data/doj_cases.json. Waiting
+    # for a rewrite would be waiting for an event that cannot occur, so recency is
+    # not the test; it is 48 days old regardless.
+    # A1 evidence, from the terminated predecessor's own record: entry 2026-06-29 on
+    # 71499795 reads `USCA Case Number 26-5243 for 113 Notice of Appeal to DC
+    # Circuit Court`. Circuit map: D.D.C. appeals lie to the D.C. Circuit.
+    # No `state`, matching its predecessor -- these sue federal agencies and belong
+    # to no jurisdiction, so both stay off the /campaign grid by construction.
+    - caption: League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.)
+      docket_number: 26-5243
+      court: D.C. Circuit
+      court_id: cadc
+      category: voter-data
+      notes: >-
+        D.C. Circuit appeal of the D.D.C. dismissal in 1:25-cv-03501 (case_id
+        71499795, terminated), which names it in its 2026-06-29 entry. Seeded
+        2026-08-16; permanent, because the UW tracker carries neither this case nor
+        its predecessor.
 
     # --- circuit successors the tracker trails (the second role above) -------
     # THE ANOMALY, dated 2026-08-14 and measured rather than asserted. DOJ noticed

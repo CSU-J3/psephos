@@ -190,3 +190,44 @@ def test_derived_drift_silent_on_a_case_with_neither(drift_conn):
     """No entries and no stored value agree at NULL, and must not fire."""
     _case(drift_conn, "C", None, [])
     assert ca.derived_drift(drift_conn) == []
+
+
+# --------------------------------------------------------------------------- #
+# Section 2 classifies the KIND of gap (handoff 85)
+#
+# The list used to be undifferentiated and was read as one candidate, which cost a
+# handoff. The distinction was already written down -- in the module docstring --
+# and a docstring is not what a reader of the OUTPUT sees. Information in the wrong
+# place is not available.
+# --------------------------------------------------------------------------- #
+def test_a_district_token_named_by_a_circuit_row_is_a_predecessor():
+    """We hold the appeal and not the case under it: seed, then supersede FORWARD.
+    This is the CA/OR/AZ shape, three real gaps closed in handoff 85."""
+    assert ca.classify_ref("2:25-cv-09149", ["Ninth Circuit"], ["26-1232"]) == "predecessor"
+
+
+def test_a_circuit_token_named_by_a_district_row_is_a_successor():
+    """We hold the original and not what continued it: the CT/NY and 26-5243 shape."""
+    assert ca.classify_ref("26-5243", ["D.D.C."], ["1:25-cv-03501"]) == "successor"
+
+
+def test_the_naming_rows_own_docket_in_another_notation_is_noise():
+    """Arizona's local format renders the HELD 2:26-cv-00066 as the token 26-00066.
+    Surfaced by seeding that very docket, so it is a live shape and not a
+    hypothetical -- and it is noise rather than a gap."""
+    assert ca.classify_ref("26-00066", ["District of Arizona"], ["2:26-cv-00066"]) == "self-ref"
+
+
+def test_self_reference_wins_over_the_shape_test():
+    """Checked FIRST on purpose: a self-reference can otherwise look like a
+    successor (circuit-form token, district naming row) and send a reader hunting
+    for a docket the project already holds."""
+    assert ca.classify_ref("26-00066", ["District of Arizona"], ["2:26-cv-00066"]) != "successor"
+
+
+def test_an_ordinary_cross_reference_is_neither():
+    """Most of what remains is a filing naming some OTHER case -- a related case, a
+    miscellaneous docket. Not a coverage gap of either actionable shape, and it must
+    not be labelled as one."""
+    assert ca.classify_ref("8:25-cv-01370", ["Central District of California"],
+                           ["2:25-cv-09149"]) == "reference"
