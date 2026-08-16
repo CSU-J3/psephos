@@ -16,6 +16,7 @@ import {
 const entry = (over: Partial<FeedEntry> & Pick<FeedEntry, "id">): FeedEntry => ({
   channel: "news",
   title: `item ${over.id}`,
+  summary: null,
   source_url: "https://example.test/a",
   source_id: "google-news",
   occurred_at: "2026-08-14T00:00:00+00:00",

@@ -6,10 +6,55 @@
 import { WINDOW_DAYS } from "@/lib/activity";
 import { daysBetween } from "@/lib/format";
 
+// A docket this case continues into, or continues from. Court + docket only --
+// enough to render the chain line, and deliberately no timeline, which is the same
+// split lib/db.ts:CaseRef already makes for the case detail page.
+export type ChainRef = {
+  case_id: string;
+  court: string | null;
+  docket_number: string | null;
+};
+
+// The dimension row an entry hangs off, carried so a card can put a real header on
+// a group instead of repeating one entry's title. Discriminated on `kind`, which is
+// the same three-way distinction entryLink and anchorOf make.
+export type FeedAnchor =
+  | {
+      kind: "case";
+      id: string;
+      caption: string;
+      court: string | null;
+      docket_number: string | null;
+      status: string | null;
+      successor: ChainRef | null;
+      predecessor: ChainRef | null;
+    }
+  | {
+      kind: "bill";
+      id: string;
+      bill_type: string;
+      number: number;
+      short_title: string | null;
+      title: string | null;
+      is_vehicle: number;
+    }
+  | {
+      kind: "state";
+      id: string;
+      state: string;
+      bill_number: string;
+      title: string | null;
+    };
+
 export type FeedEntry = {
   id: number;
   channel: string;
   title: string;
+  // The bare docket text. collectors/litigation.py writes
+  // `title = f"{caption}: {desc[:180]}"` and `summary = desc`, so a card that
+  // already names the case in its header renders the summary and drops the
+  // caption prefix without parsing anything back out of the title.
+  summary: string | null;
   source_url: string;
   source_id: string;
   occurred_at: string | null;
@@ -19,6 +64,10 @@ export type FeedEntry = {
   bill_id: string | null;
   case_id: string | null;
   state_bill_id: string | null;
+  // OPTIONAL, because it is a joined row rather than a column of `items`: the pure
+  // functions here group and order without it, and the tests construct entries that
+  // have none. getFeed always sets it (null when the entry is unanchored).
+  anchor?: FeedAnchor | null;
 };
 
 // The homepage shows one window. 24h, not 7d: measured 2026-08-14 the 7d window
@@ -196,4 +245,11 @@ export function entryLink(e: FeedEntry): { href: string; label: string } | null 
 // so the card header and a singleton row can never resolve to different places.
 export function cardLink(card: FeedCard): { href: string; label: string } | null {
   return entryLink(card.entries[0]);
+}
+
+// The dimension row for a card's header. Read off the first entry for the same
+// reason cardLink is: every entry on a card shares the anchor it grouped on, so
+// they all carry the same joined row and the first is as good as any.
+export function cardAnchor(card: FeedCard): FeedAnchor | null {
+  return card.entries[0].anchor ?? null;
 }

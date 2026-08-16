@@ -6,7 +6,7 @@ import { unstable_cache } from "next/cache";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
 import { FEED_WINDOW } from "@/lib/feed";
-import type { FeedEntry } from "@/lib/feed";
+import type { FeedAnchor, FeedEntry } from "@/lib/feed";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -380,6 +380,28 @@ export async function getNewsFeed(): Promise<NewsItem[]> {
 // per item". Displaying the item's grade and filtering on the source's are the
 // right answers to two different questions.
 //
+// THE DIMENSION JOINS ARE FOR THE CARD HEADER, NOT FOR A GRADE TEST, so the line
+// above still holds: they are all LEFT JOINs on the anchor columns, they filter
+// nothing, and an entry anchored to nothing comes back with every joined column
+// NULL rather than being dropped. What they buy is a group card that can say
+// "United States v. State of Oregon, D. Or. 6:25-cv-01666, terminated" once
+// instead of repeating the caption on all 55 of its rows.
+//
+// THE CHAIN IS JOINED TWO DIFFERENT WAYS, ON PURPOSE. Measured against the
+// 2026-08-16 window, resolving supersession from the feed's own rows fails on 4 of
+// 4 case cards: Oregon, Weber and Fontes each point at a Ninth Circuit successor
+// that is NOT in the window, and the fourth card (LWV v. DHS at the D.C. Circuit)
+// carries no superseded_by at all -- it is the SUCCESSOR of a D.D.C. row, which is
+// the only thing explaining why a pending circuit docket arrived with 10 entries.
+//   - successor: a plain LEFT JOIN. `superseded_by` points at a primary key, so it
+//     is many-to-one and cannot multiply rows.
+//   - predecessor: correlated subqueries, NOT a join. The reverse lookup is
+//     one-to-MANY in principle -- nothing in schema.sql makes `superseded_by`
+//     unique, and two districts consolidating into one appeal is an ordinary shape
+//     -- so a LEFT JOIN would silently duplicate every entry of that docket the day
+//     it happened. Unique across all 13 today; the subquery is what keeps that from
+//     being load-bearing.
+//
 // C3 IS INCLUDED, decided on measurement 2026-08-14. Excluding it would drop
 // 2,986 of the news channel's 3,422 items and leave the feed reporting 4 news
 // entries in a 24h window where the strip directly above it counts 26 -- two
@@ -392,6 +414,89 @@ export async function getNewsFeed(): Promise<NewsItem[]> {
 // the feed describe the same window on the same page, and different TTLs would
 // let them disagree about it. `now` is computed inside the cached function for
 // the reason given there -- an argument would put a moving value in the cache key.
+
+// The flat row the query returns, before the anchor columns are folded into a
+// nested object. Named so the mapping below is a typed transformation rather than
+// a cast -- `rs.rows as unknown as FeedEntry[]` cannot build a nested `anchor`.
+type FeedRow = {
+  id: number;
+  channel: string;
+  title: string;
+  summary: string | null;
+  source_url: string;
+  source_id: string;
+  occurred_at: string | null;
+  fetched_at: string;
+  admiralty_source: string;
+  admiralty_info: string;
+  bill_id: string | null;
+  case_id: string | null;
+  state_bill_id: string | null;
+  c_caption: string | null;
+  c_court: string | null;
+  c_docket: string | null;
+  c_status: string | null;
+  s_case_id: string | null;
+  s_court: string | null;
+  s_docket: string | null;
+  p_case_id: string | null;
+  p_court: string | null;
+  p_docket: string | null;
+  b_type: string | null;
+  b_number: number | null;
+  b_short_title: string | null;
+  b_title: string | null;
+  b_is_vehicle: number | null;
+  sb_state: string | null;
+  sb_bill_number: string | null;
+  sb_title: string | null;
+};
+
+// Flat columns -> the discriminated anchor. Checked in the same order entryLink
+// and feed.anchorOf use, so an entry can never group on one anchor and render the
+// header of another.
+function toAnchor(r: FeedRow): FeedAnchor | null {
+  if (r.bill_id && r.b_type !== null && r.b_number !== null) {
+    return {
+      kind: "bill",
+      id: r.bill_id,
+      bill_type: r.b_type,
+      number: r.b_number,
+      short_title: r.b_short_title,
+      title: r.b_title,
+      is_vehicle: r.b_is_vehicle ?? 0,
+    };
+  }
+  if (r.case_id && r.c_caption !== null) {
+    return {
+      kind: "case",
+      id: r.case_id,
+      caption: r.c_caption,
+      court: r.c_court,
+      docket_number: r.c_docket,
+      status: r.c_status,
+      successor: r.s_case_id
+        ? { case_id: r.s_case_id, court: r.s_court, docket_number: r.s_docket }
+        : null,
+      predecessor: r.p_case_id
+        ? { case_id: r.p_case_id, court: r.p_court, docket_number: r.p_docket }
+        : null,
+    };
+  }
+  if (r.state_bill_id && r.sb_state !== null && r.sb_bill_number !== null) {
+    return {
+      kind: "state",
+      id: r.state_bill_id,
+      state: r.sb_state,
+      bill_number: r.sb_bill_number,
+      title: r.sb_title,
+    };
+  }
+  // An anchor id with no dimension row behind it: the entry still renders and still
+  // groups, it just gets no header. Not expected, and not worth dropping a row over.
+  return null;
+}
+
 export const getFeed = unstable_cache(
   async (): Promise<FeedEntry[]> => {
     const { day, week } = windowStarts(new Date());
@@ -400,23 +505,60 @@ export const getFeed = unstable_cache(
       // it: an outlet psephos grades B2 must not badge C3 here while badging B2 on
       // /news. Two components on one site disagreeing about one item's reliability
       // is the defect outlet promotion exists to remove, and the homepage is where
-      // a reader meets these items first. No JOIN is still needed -- the rule reads
-      // items.outlet, not the source row -- so the note above about this query
-      // filtering on nothing continues to hold.
-      sql: `SELECT id, channel, title, source_url, source_id, occurred_at, fetched_at,
-                   CASE WHEN ${outletPredicate("outlet")} THEN 'B'
-                        ELSE admiralty_source END AS admiralty_source,
-                   CASE WHEN ${outletPredicate("outlet")} THEN '2'
-                        ELSE admiralty_info END AS admiralty_info,
-                   bill_id, case_id, state_bill_id
-            FROM items
-            WHERE fetched_at >= ?
-            ORDER BY fetched_at DESC, id DESC`,
+      // a reader meets these items first. The rule reads items.outlet, not the
+      // source row, so this is still no join on `sources`.
+      sql: `SELECT i.id, i.channel, i.title, i.summary, i.source_url, i.source_id,
+                   i.occurred_at, i.fetched_at,
+                   CASE WHEN ${outletPredicate("i.outlet")} THEN 'B'
+                        ELSE i.admiralty_source END AS admiralty_source,
+                   CASE WHEN ${outletPredicate("i.outlet")} THEN '2'
+                        ELSE i.admiralty_info END AS admiralty_info,
+                   i.bill_id, i.case_id, i.state_bill_id,
+                   c.caption AS c_caption, c.court AS c_court,
+                   c.docket_number AS c_docket, c.status AS c_status,
+                   s.case_id AS s_case_id, s.court AS s_court,
+                   s.docket_number AS s_docket,
+                   (SELECT p.case_id FROM cases p
+                     WHERE p.superseded_by = i.case_id LIMIT 1) AS p_case_id,
+                   (SELECT p.court FROM cases p
+                     WHERE p.superseded_by = i.case_id LIMIT 1) AS p_court,
+                   (SELECT p.docket_number FROM cases p
+                     WHERE p.superseded_by = i.case_id LIMIT 1) AS p_docket,
+                   b.bill_type AS b_type, b.number AS b_number,
+                   b.short_title AS b_short_title, b.title AS b_title,
+                   b.is_vehicle AS b_is_vehicle,
+                   sb.state AS sb_state, sb.bill_number AS sb_bill_number,
+                   sb.title AS sb_title
+            FROM items i
+            LEFT JOIN cases c ON c.case_id = i.case_id
+            LEFT JOIN cases s ON s.case_id = c.superseded_by
+            LEFT JOIN bills b ON b.bill_id = i.bill_id
+            LEFT JOIN state_bills sb ON sb.state_bill_id = i.state_bill_id
+            WHERE i.fetched_at >= ?
+            ORDER BY i.fetched_at DESC, i.id DESC`,
       args: [FEED_WINDOW === "day" ? day : week],
     });
-    return rs.rows as unknown as FeedEntry[];
+    return (rs.rows as unknown as FeedRow[]).map((r) => ({
+      id: r.id,
+      channel: r.channel,
+      title: r.title,
+      summary: r.summary,
+      source_url: r.source_url,
+      source_id: r.source_id,
+      occurred_at: r.occurred_at,
+      fetched_at: r.fetched_at,
+      admiralty_source: r.admiralty_source,
+      admiralty_info: r.admiralty_info,
+      bill_id: r.bill_id,
+      case_id: r.case_id,
+      state_bill_id: r.state_bill_id,
+      anchor: toAnchor(r),
+    }));
   },
-  ["activity-feed"],
+  // v2: the row shape changed (summary + the anchor object). unstable_cache entries
+  // outlive a deploy, so without the bump the new component would spend up to an
+  // hour rendering blank headers off v1 rows that carry neither.
+  ["activity-feed", "v2"],
   { revalidate: 3600 },
 );
 
