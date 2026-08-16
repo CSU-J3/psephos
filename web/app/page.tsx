@@ -4,8 +4,11 @@ import {
   getFeed,
   getBills,
   getCases,
+  getCampaignRows,
   getExecutiveAll,
 } from "@/lib/db";
+import type { Case, CaseRef } from "@/lib/db";
+import { buildCells, summarize } from "@/lib/campaign";
 import { relevanceScore } from "@/lib/relevance";
 import { ChannelStrip } from "@/components/ChannelStrip";
 import { ActivityFeed } from "@/components/ActivityFeed";
@@ -33,16 +36,52 @@ function SectionHeading({ title, count }: { title: string; count: number }) {
   );
 }
 
+// How many of the top dockets to show before the disclosure. Eight is enough to
+// read the campaign's last week without the section becoming the 46-row list it
+// replaced.
+const RECENT_CASES = 8;
+
+// The supersession pair, resolved from rows the page already holds -- no extra
+// query, and no reverse lookup in SQL. `superseded_by` is set on the DEAD row and
+// points forward, so the forward direction is a lookup by id and the backward
+// direction is this map.
+//
+// BUILT FROM ALL ROWS, NOT THE VISIBLE SLICE. The top-8 window currently contains
+// LWV v. DHS (D.D.C.) whose successor is the D.C. Circuit row further down the
+// list; keyed on the slice, its chain line would silently disappear.
+function buildChains(cases: Case[]) {
+  const byId = new Map(cases.map((c) => [c.case_id, c]));
+  const bySuccessor = new Map<string, Case>();
+  for (const c of cases) if (c.superseded_by) bySuccessor.set(c.superseded_by, c);
+  return (c: Case): { successor?: CaseRef | null; predecessor?: CaseRef | null } => ({
+    successor: c.superseded_by ? byId.get(c.superseded_by) : null,
+    predecessor: bySuccessor.get(c.case_id) ?? null,
+  });
+}
+
 export default async function Home() {
-  const [activity, feed, bills, cases, executiveAll] = await Promise.all([
+  const [activity, feed, bills, cases, campaignRows, executiveAll] = await Promise.all([
     getChannelActivity(),
     getFeed(),
     getBills(),
     getCases(),
+    getCampaignRows(),
     getExecutiveAll(),
   ]);
   // Score the broad channel server-side; the section toggles relevant vs all.
   const relevant = executiveAll.filter((it) => relevanceScore(it.title) > 0);
+
+  // The same three functions /campaign runs, over the same rows, so the two pages
+  // cannot report different numbers for the same moment.
+  const campaign = summarize(buildCells(campaignRows, new Date()));
+
+  const chainFor = buildChains(cases);
+  const recentCases = cases.slice(0, RECENT_CASES);
+  const restCases = cases.slice(RECENT_CASES);
+  // A DATA RULE, not a constant. All 46 rows read `voter-data` today, so the badge
+  // is decoration and is hidden; it returns on its own the day a second kind of
+  // suit lands, with no code change.
+  const showCategory = new Set(cases.map((c) => c.category)).size > 1;
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
@@ -77,29 +116,80 @@ export default async function Home() {
         )}
       </section>
 
+      {/* ONE OBJECT, NOT DOZENS OF NEAR-IDENTICAL ROWS -- the redesign block's move
+          3, whose home half had not been done. /campaign was built to replace the
+          flat list and the flat list stayed, so the page carried both: a link to the
+          grid, and then 46 rows underneath it repeating what the grid says. The
+          summary is now the section, the eight most recently moved dockets are the
+          detail, and the rest is one disclosure away. */}
       <section className="mt-10">
         <h2 className="mb-3 text-lg font-semibold tracking-tight">
           The DOJ voter-data campaign
         </h2>
         <Link
           href="/campaign"
-          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 text-sm text-neutral-300 transition-colors hover:border-neutral-700"
+          className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 transition-colors hover:border-neutral-700"
         >
-          One grid over all 50 states and DC: where DOJ sued, where it lost, and where
-          it has not acted →
+          <p className="text-sm text-neutral-300">
+            <span className="font-medium text-neutral-100">
+              {campaign.sued} of {campaign.total} jurisdictions sued
+            </span>{" "}
+            · {campaign.active} active · {campaign.ended} ended ·{" "}
+            {campaign.chains} continued elsewhere · {campaign.dormant} quiet
+            {campaign.unlinkedEndings > 0 && (
+              <> · {campaign.unlinkedEndings} ended, no link asserted</>
+            )}
+          </p>
+          <p className="mt-1 text-xs text-neutral-500">
+            One grid over all 50 states and DC: where DOJ sued, where it lost, and
+            where it has not acted →
+          </p>
         </Link>
-      </section>
 
-      <section className="mt-10">
-        <SectionHeading title="Cases" count={cases.length} />
         {cases.length === 0 ? (
-          <p className="text-sm text-neutral-500">No cases yet.</p>
+          <p className="mt-4 text-sm text-neutral-500">No cases yet.</p>
         ) : (
-          <ul className="space-y-3">
-            {cases.map((c) => (
-              <CaseRow key={c.case_id} c={c} />
-            ))}
-          </ul>
+          <>
+            <h3 className="mt-6 mb-3 flex items-baseline gap-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">
+              Recently moved
+              <span className="text-xs font-normal tabular-nums text-neutral-600">
+                {recentCases.length} of {cases.length}
+              </span>
+            </h3>
+            <ul className="space-y-3">
+              {recentCases.map((c) => (
+                <CaseRow
+                  key={c.case_id}
+                  c={c}
+                  showCategory={showCategory}
+                  chain={chainFor(c)}
+                />
+              ))}
+            </ul>
+            {restCases.length > 0 && (
+              // A native <details>: no client bundle for a disclosure.
+              // ExecutiveSection is a client component because it SWAPS two arrays;
+              // this only shows and hides one, which the platform already does.
+              <details className="mt-3 group">
+                <summary className="cursor-pointer list-none rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 text-sm text-neutral-400 transition-colors hover:border-neutral-700">
+                  <span className="group-open:hidden">All {cases.length} dockets →</span>
+                  <span className="hidden group-open:inline">
+                    Hide the other {restCases.length} ↑
+                  </span>
+                </summary>
+                <ul className="mt-3 space-y-3">
+                  {restCases.map((c) => (
+                    <CaseRow
+                      key={c.case_id}
+                      c={c}
+                      showCategory={showCategory}
+                      chain={chainFor(c)}
+                    />
+                  ))}
+                </ul>
+              </details>
+            )}
+          </>
         )}
       </section>
 
