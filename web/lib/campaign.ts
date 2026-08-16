@@ -1,4 +1,5 @@
 import type { CampaignRow } from "@/lib/db";
+import { utcDay } from "@/lib/format";
 
 // Derivation for the DOJ voter-data campaign grid. Pure functions over rows the
 // page has already fetched -- no queries here, so the shape of a cell can be
@@ -71,12 +72,14 @@ export function isCircuit(court: string | null): boolean {
 
 // Whole days between a naive ISO date and `now`, read in UTC for the same reason
 // formatDate does: parsing through the runtime's local zone can shift the day.
+//
+// The parse is format.utcDay, shared with formatDate and with the feed's history
+// classifier so all three read a date the same way. The SIGNATURE is deliberately
+// unchanged -- `now` stays a Date rather than becoming a string, because every
+// caller has a Date and its four tests pin this exact shape.
 export function daysSince(value: string | null, now: Date): number | null {
-  if (!value) return null;
-  const m = /^(\d{4})-(\d{2})-(\d{2})/.exec(value);
-  if (!m) return null;
-  const [, y, mo, d] = m;
-  const then = Date.UTC(Number(y), Number(mo) - 1, Number(d));
+  const then = utcDay(value);
+  if (then === null) return null;
   const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   return Math.floor((today - then) / 86_400_000);
 }

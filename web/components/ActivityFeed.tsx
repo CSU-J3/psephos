@@ -25,7 +25,14 @@ const CHANNEL_LABEL: Record<string, string> = {
 };
 
 export function ActivityFeed({ rows }: { rows: FeedEntry[] }) {
-  const { entries, total, truncated } = buildFeed(rows);
+  // TRANSITIONAL. buildFeed now returns cards; this flattens them straight back to
+  // the row list this component was written against, so the grouping commit stands
+  // on its own without a half-rendered card in the tree. The next commit renders
+  // the cards properly and this flattening goes away.
+  const { cards, total_cards, total_entries, truncated } = buildFeed(rows);
+  const entries = cards.flatMap((c) => c.entries);
+  const total = total_entries;
+  void total_cards;
 
   if (entries.length === 0) {
     // A quiet window is a reading, not an error. Three of five channels collected
