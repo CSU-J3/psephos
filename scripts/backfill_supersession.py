@@ -102,6 +102,34 @@ PAIRS = [
     #   Reverse: `appeal_from_str` reads `NDNY (SYRACUSE)`. Note the district is the
     #   NORTHERN district of New York, not the Southern -- the caption says only "State
     #   of New York", so the originating court comes from the metadata, not the name.
+
+    # The three Ninth Circuit pairs, and these run the OPPOSITE DIRECTION from every
+    # pair above. Elsewhere psephos held the district row and acquired the successor;
+    # here it held the CIRCUIT row and acquired the predecessor, because the tracker
+    # had already moved each state to its appeal and stopped naming the original
+    # (handoff 84/85). So the source rows below were seeded specifically to be
+    # superseded, which is why they land unlinked and this step is separate.
+    #
+    # Evidence is A1 FORWARD from the successor's own record in all three, which is
+    # the strongest shape available: the circuit row's `CASE OPENED` entry names the
+    # district docket it came from, verbatim and with judge initials. Corroborated by
+    # the tracker's per-state `Key decisions: District Court's <date> dismissal`, and
+    # by CourtListener's own `date_terminated` on each district row once resolved --
+    # three instruments, and the second and third differ in kind from the first.
+    # Circuit map: C.D. Cal., D. Or. and D. Ariz. all appeal to the Ninth and nowhere
+    # else, so these are appeals rather than venue refiles.
+    ("71452580", "2:25-cv-09149", "72356732", "26-1232"),   # CA -> 9th Cir. Entry
+    #   2026-03-03 on 72356732: `notice of appeal / petition filed in
+    #   2:25-cv-09149-DOC-ADS`. Tracker: District Court's 1/15/26 dismissal.
+    ("71363789", "6:25-cv-01666", "72356772", "26-1231"),   # OR -> 9th Cir. Entry
+    #   2026-03-03 on 72356772: `... filed in 6:25-cv-01666-MTK`. Tracker: 2/5/26
+    #   dismissal, matching this row's own date_terminated exactly -- which is also
+    #   the discriminator that picked 71363789 over CourtListener's empty twin
+    #   71956700. See the pin comment in config/sources.yaml.
+    ("72110941", "2:26-cv-00066", "73443024", "26-3609"),   # AZ -> 9th Cir. Entry
+    #   2026-06-04 on 73443024: `... filed in 2:26-cv-00066-SMB`. Tracker: 4/28/26
+    #   dismissal, and separately that ca9 stayed THIS appeal on 6/22/26 pending the
+    #   CA and OR appeals -- a fact about the appeal, not about the dismissal.
 ]
 
 
