@@ -56,7 +56,14 @@ export function ChannelStrip({ rows }: { rows: ActivityRow[] }) {
 
               ONLY WHEN NON-ZERO, unlike the deltas above. Zero is information for
               "+0 collected"; a "0 history" line on every quiet cell is not, and the
-              strip is five cells wide. */}
+              strip is five cells wide.
+
+              RECONCILES WITH THE FEED'S `history` TAGS TO WITHIN THE CACHE DRIFT,
+              NOT EXACTLY. This count and the feed's cards come from two separately
+              cached queries, each computing `now` inside its own cached call, so
+              their 24h windows can sit up to the 1h TTL apart. A reader counting
+              tagged cards against this number should expect agreement, not
+              identity. See the HISTORY_SUM comment in lib/db.ts. */}
           {r.day_history > 0 && (
             <div
               className="mt-0.5 text-xs tabular-nums text-neutral-600"

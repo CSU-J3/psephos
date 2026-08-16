@@ -128,6 +128,15 @@ export type ExecItem = {
 // counted here, so the two reconcile: this number is >= the sum over history cards,
 // and equal when no card is mixed.
 //
+// THAT RECONCILIATION HOLDS AT A SHARED INSTANT, AND THE TWO DO NOT SHARE ONE.
+// getChannelActivity and getFeed are cached separately and each computes `now`
+// INSIDE its own cached call -- deliberately, since an argument would put a moving
+// value in the cache key and the entry would never be hit. So the two 24h windows
+// can sit up to the 1h TTL apart, and an item near the boundary can be inside one
+// window and outside the other. Expect the strip's count and the feed's tagged
+// cards to agree to within that drift, not exactly. Same TTL on both is what keeps
+// the drift bounded; it is not what makes them simultaneous.
+//
 // The date arithmetic is date-only via substr(...,1,10), which is what makes it
 // format-blind: occurred_at is naive on litigation rows and +00:00-suffixed on news
 // while fetched_at is always suffixed, and comparing the YYYY-MM-DD prefixes needs
@@ -432,6 +441,22 @@ export async function getNewsFeed(): Promise<NewsItem[]> {
 //     it happened. Unique across all 13 today; the subquery is what keeps that from
 //     being load-bearing.
 //
+// THE PREDECESSOR SUBQUERIES CARRY `ORDER BY p.case_id LIMIT 1`, AND BOTH HALVES
+// EARN THEIR PLACE. SQLite silently returns the first row of a multi-row scalar
+// subquery rather than erroring, so without LIMIT the choice is the engine's. But
+// the sharper hazard is that these are THREE INDEPENDENT subqueries with nothing
+// tying them to one row: on a case with two predecessors each resolves its own
+// "first row", and a bare LIMIT 1 leaves them free to disagree. The failure would
+// not be an arbitrary-but-coherent predecessor, it would be a SPLICED one --
+// case_id from one row beside court and docket_number from another -- so the chain
+// line would link to one docket while displaying a different docket's court. That
+// is a false statement about the record, not an unstable choice among true ones.
+// A total order over a unique column resolves all three to the SAME row.
+//
+// This changes no output today: every case has 0 or 1 predecessors (13 rows carry
+// superseded_by, 13 distinct values). It pins the behaviour before the case that
+// needs it exists, which is the only time the pinning is free.
+//
 // C3 IS INCLUDED, decided on measurement 2026-08-14. Excluding it would drop
 // 2,986 of the news channel's 3,422 items and leave the feed reporting 4 news
 // entries in a 24h window where the strip directly above it counts 26 -- two
@@ -549,11 +574,14 @@ export const getFeed = unstable_cache(
                    s.case_id AS s_case_id, s.court AS s_court,
                    s.docket_number AS s_docket,
                    (SELECT p.case_id FROM cases p
-                     WHERE p.superseded_by = i.case_id LIMIT 1) AS p_case_id,
+                     WHERE p.superseded_by = i.case_id
+                     ORDER BY p.case_id LIMIT 1) AS p_case_id,
                    (SELECT p.court FROM cases p
-                     WHERE p.superseded_by = i.case_id LIMIT 1) AS p_court,
+                     WHERE p.superseded_by = i.case_id
+                     ORDER BY p.case_id LIMIT 1) AS p_court,
                    (SELECT p.docket_number FROM cases p
-                     WHERE p.superseded_by = i.case_id LIMIT 1) AS p_docket,
+                     WHERE p.superseded_by = i.case_id
+                     ORDER BY p.case_id LIMIT 1) AS p_docket,
                    b.bill_type AS b_type, b.number AS b_number,
                    b.short_title AS b_short_title, b.title AS b_title,
                    b.is_vehicle AS b_is_vehicle,

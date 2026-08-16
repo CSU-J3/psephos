@@ -38,6 +38,29 @@ const CHANNEL_LABEL: Record<string, string> = {
 const CARD = "rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 transition-colors hover:border-neutral-700";
 const META = "mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500";
 
+// ONE STRING, ON EVERY HISTORY TAG, GROUP OR SINGLETON. The tag is a claim about
+// entries, and it means the same thing on a 55-entry docket walk as on one
+// backdated news item, so it must not read as two different claims depending on
+// which card it lands on. The threshold is interpolated rather than written as "7"
+// so this cannot drift from the constant the classifier and the strip already share.
+const HISTORY_TITLE =
+  `Every entry here is dated more than ${HISTORY_AFTER_DAYS} days before psephos collected it.`;
+
+// NEUTRAL, NO VALENCE -- the same rule the strip's deltas follow. This says which
+// KIND of collection produced the card, not that anything is wrong. A docket loaded
+// in one run, or a story published months before the aggregator surfaced it, is a
+// correct reading of a real event; it is simply not news from today.
+function HistoryTag() {
+  return (
+    <span
+      title={HISTORY_TITLE}
+      className="rounded border border-neutral-700 bg-neutral-800 px-1.5 py-0.5 text-neutral-400"
+    >
+      history
+    </span>
+  );
+}
+
 // A card's date span, or a single date when every entry shares one, or nothing at
 // all when no entry carries a date. Litigation rows can have a NULL occurred_at.
 function dateRange(card: FeedCard): string | null {
@@ -134,8 +157,15 @@ function ChainLine({ anchor }: { anchor: FeedAnchor }) {
 }
 
 // One unanchored entry, or one anchored entry that is the only thing its dimension
-// did in the window. Renders exactly as every row did before grouping existed.
-function SingletonRow({ e }: { e: FeedEntry }) {
+// did in the window.
+//
+// IT CARRIES THE HISTORY TAG TOO, and the reason is a number the reader could not
+// otherwise check. `history` was always computed on every card, but only groups
+// rendered it -- so on 2026-08-16 the strip read `news ... 11 history` while not one
+// news row said which 11 it meant. A count the page cannot be reconciled against is
+// exactly the number a reader stops on. The tag sits beside the entry's own date,
+// which is the field it is a claim about.
+function SingletonRow({ e, history }: { e: FeedEntry; history: boolean }) {
   const link = entryLink(e);
   return (
     <li className={CARD}>
@@ -155,6 +185,7 @@ function SingletonRow({ e }: { e: FeedEntry }) {
             ordered by. A backdated RSS item sorts to the top as newly
             collected and still reads as the older story it is. */}
         <span className="tabular-nums">{formatDate(e.occurred_at)}</span>
+        {history && <HistoryTag />}
         <span>{e.source_id}</span>
         <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
         {link && (
@@ -201,15 +232,7 @@ function GroupCard({ card }: { card: FeedCard }) {
           {countLabel(card)}
         </span>
         {range && <span className="tabular-nums text-neutral-500">{range}</span>}
-        {/* NEUTRAL, NO VALENCE -- the same rule the strip's deltas follow. This
-            says which KIND of collection produced the count, not that anything is
-            wrong. A docket loaded in one run is a correct reading of a real event
-            (psephos started watching it); it is simply not news from today. */}
-        {card.history && (
-          <span className="rounded border border-neutral-700 bg-neutral-800 px-1.5 py-0.5 text-neutral-400">
-            history
-          </span>
-        )}
+        {card.history && <HistoryTag />}
       </div>
 
       {card.history && (
@@ -266,7 +289,7 @@ export function ActivityFeed({ rows }: { rows: FeedEntry[] }) {
       <ul className="space-y-2">
         {cards.map((card) =>
           card.entries.length === 1 ? (
-            <SingletonRow key={card.key} e={card.entries[0]} />
+            <SingletonRow key={card.key} e={card.entries[0]} history={card.history} />
           ) : (
             <GroupCard key={card.key} card={card} />
           ),
