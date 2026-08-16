@@ -360,7 +360,11 @@ def test_main_exits_zero_when_every_resolve_rate_limits(tmp_path, monkeypatch):
     monkeypatch.setattr(db, "DB_PATH", str(tmp_path / "m.db"))      # local temp DB, not the repo's
     monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
     monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
+    # Both resolution entry points, not just the search: a seed may pin a
+    # CourtListener id (handoff 85), and "every resolve rate-limits" has to cover
+    # that one too or the pinned seed reaches the network from a test.
     monkeypatch.setattr(lit, "resolve_docket", _raise_rate_limit)
+    monkeypatch.setattr(lit, "fetch_docket", _raise_rate_limit)
     assert lit.main() == 0
 
 
@@ -961,7 +965,8 @@ def test_main_returns_zero_when_the_refresh_hits_the_cap(tmp_path, monkeypatch):
     monkeypatch.setattr(db, "DB_PATH", dbp)
     monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
     monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
-    monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)   # config seeds don't bind
+    monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)
+    monkeypatch.setattr(lit, "fetch_docket", lambda *a, **k: None)   # pinned path binds nothing either   # config seeds don't bind
 
     db.init_db(dbp)
     seed = db.connect(dbp)
@@ -990,6 +995,7 @@ def test_main_skips_the_refresh_when_the_seed_loop_hit_the_cap(tmp_path, monkeyp
         raise common.RateBudgetExhausted(46)
 
     monkeypatch.setattr(lit, "resolve_docket", cap_out)
+    monkeypatch.setattr(lit, "fetch_docket", cap_out)      # the pinned path caps out too
     called = []
     monkeypatch.setattr(lit, "refresh_status", lambda *a, **k: called.append(1))
 
@@ -1012,6 +1018,7 @@ def test_a_raising_refresh_pass_does_not_cost_the_cycle(tmp_path, monkeypatch, c
     monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
     monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
     monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)
+    monkeypatch.setattr(lit, "fetch_docket", lambda *a, **k: None)   # pinned path binds nothing either
 
     def boom(*a, **k):
         # The realistic shape: the SELECT itself fails (missing column / dead stream).
@@ -1036,6 +1043,7 @@ def test_the_real_selection_failure_is_caught_not_just_a_stub(tmp_path, monkeypa
     monkeypatch.setenv("COURTLISTENER_TOKEN", "test-token")
     monkeypatch.setattr(lit, "load_tracker_seeds", lambda *a, **k: [])
     monkeypatch.setattr(lit, "resolve_docket", lambda *a, **k: None)
+    monkeypatch.setattr(lit, "fetch_docket", lambda *a, **k: None)   # pinned path binds nothing either
 
     def bad_select(conn, stale_before):
         raise ValueError("Hrana: stream not found")
@@ -1146,4 +1154,82 @@ def test_reuse_lookup_misses_when_the_court_string_disagrees(tmp_path, monkeypat
 
     assert len(conn.execute("SELECT case_id FROM cases").fetchall()) == 1
     assert calls["n"] == 2                             # the miss cost a second resolve
+    conn.close()
+
+
+# --------------------------------------------------------------------------- #
+# A seed may pin a CourtListener id (handoff 85)
+#
+# resolve_docket binds only on exactly one match, and that strictness is the
+# property rather than the obstacle: relaxing it would trade a loud refusal on one
+# row for a silent arbitrary bind on every future collision. But CourtListener can
+# hold TWO records for one docket number -- 6:25-cv-01666/ord does -- and then the
+# search can never return one. The pin is a per-seed override carrying its own
+# evidence; every unpinned seed resolves exactly as strictly as before.
+# --------------------------------------------------------------------------- #
+def test_a_pinned_seed_fetches_by_id_and_never_resolves(tmp_path, monkeypatch):
+    """The pin must not go through the search at all -- a search that cannot return
+    one row is exactly what the pin exists to bypass."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)          # the B2 item's source_id FKs to sources
+    conn.commit()
+    calls = {"resolve": 0, "fetch": []}
+
+    def no_resolve(*a, **k):
+        calls["resolve"] += 1
+        raise AssertionError("a pinned seed must not call resolve_docket")
+
+    monkeypatch.setattr(lit, "resolve_docket", no_resolve)
+    monkeypatch.setattr(lit, "fetch_docket",
+                        lambda base, headers, cl_id: (calls["fetch"].append(cl_id) or {
+                            "id": int(cl_id), "case_name": "United States v. State of Oregon",
+                            "date_filed": "2025-09-16", "date_terminated": "2026-02-05",
+                            "absolute_url": "/docket/71363789/x/"}))
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], None))
+
+    seed = {"caption": "United States of America v. State of Oregon, et al. (D. Or.)",
+            "docket_number": "6:25-cv-01666", "court": "District of Oregon",
+            "court_id": "ord", "case_id": "71363789", "category": "voter-data",
+            "state": "Oregon", "notes": "n"}
+    r = lit.collect_case(conn, "base", {}, seed, [], [], 10)
+
+    assert calls["resolve"] == 0 and calls["fetch"] == ["71363789"]
+    assert r["resolved"] is True
+    row = conn.execute("SELECT case_id, status, state, docket_number FROM cases").fetchone()
+    # Fetched, not short-circuited to reuse: status comes from CourtListener. A
+    # NULL status here would render this terminated predecessor as an ACTIVE cell
+    # on /campaign, which is the outcome the whole seeding unit is about.
+    assert row["case_id"] == "71363789"
+    assert row["status"] == "terminated"
+    assert row["state"] == "Oregon" and row["docket_number"] == "6:25-cv-01666"
+    conn.close()
+
+
+def test_an_unpinned_seed_still_resolves_strictly(tmp_path, monkeypatch):
+    """The seam. Adding a pin must not loosen anything for the 32 tracker seeds and
+    the six unpinned config seeds."""
+    dbp = str(tmp_path / "t.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    lit.register_sources(conn)
+    conn.commit()
+    seen = {"resolve": 0, "fetch": 0}
+
+    monkeypatch.setattr(lit, "fetch_docket",
+                        lambda *a, **k: seen.update(fetch=seen["fetch"] + 1) or {})
+    monkeypatch.setattr(lit, "resolve_docket",
+                        lambda base, headers, dn, cid: (seen.update(resolve=seen["resolve"] + 1) or
+                                                        {"id": 999, "case_name": "United States v. Delaware",
+                                                         "date_filed": "2025-09-01",
+                                                         "date_terminated": None,
+                                                         "absolute_url": "/docket/999/x/"}))
+    monkeypatch.setattr(lit, "poll_entries", lambda *a, **k: ([], None))
+
+    seed = {"caption": "United States v. Delaware", "docket_number": "1:25-cv-01453",
+            "court": "District of Delaware", "court_id": "ded", "category": "voter-data",
+            "notes": "n"}
+    lit.collect_case(conn, "base", {}, seed, [], [], 10)
+    assert seen == {"resolve": 1, "fetch": 0}
     conn.close()

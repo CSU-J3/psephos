@@ -133,6 +133,28 @@ def resolve_docket(base: str, headers: dict, docket_number: str, court_id: str) 
     return results[0]
 
 
+def fetch_docket(base: str, headers: dict, cl_id: str) -> dict:
+    """One docket by CourtListener id, for a seed that PINS one.
+
+    WHY A PIN EXISTS AT ALL. `resolve_docket` binds only on exactly one match and
+    that strictness is the property, not the obstacle -- relaxing it would trade a
+    loud refusal on one row for a silent arbitrary bind on every future collision.
+    But CourtListener can hold two records for one docket, and when it does, the
+    search can never return one. `6:25-cv-01666`/ord is the first such case here:
+    `71363789` carries `date_terminated 2026-02-05` and the real entries, while
+    `71956700` carries neither and would have bound as a permanently empty row.
+
+    A PIN IS A SEED-LEVEL OVERRIDE WITH ITS EVIDENCE IN THE SEED, never a global
+    rule. The refusal stays exactly as strict for every unpinned seed.
+
+    Fetched rather than short-circuited to the reuse path, and the difference is
+    load-bearing: reuse leaves `docket` None, `upsert_case` writes status/filed_at/
+    source_url only when a docket is present, and a row with a NULL status renders
+    as ACTIVE on /campaign -- which is precisely wrong for a terminated predecessor.
+    One request buys the same fidelity a normal resolve has."""
+    return common.http_get(f"{base}/dockets/{cl_id}/", headers=headers, throttle=PAGE_THROTTLE)
+
+
 def _fetch_page(url: str, params: dict | None, headers: dict,
                 retry_empty: bool = True) -> dict:
     """Fetch one page, retrying defensively on an empty result set.
@@ -463,8 +485,13 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
         # leaves nothing half-seeded and the case re-resolves next run. A genuine bug is
         # NOT swallowed: an unresolved lookup returns None (handled next), and a malformed
         # seed raises KeyError, which is not a RuntimeError and still surfaces.
+        # A seed may PIN a CourtListener id when the docket-number search cannot
+        # return exactly one -- see fetch_docket. Only the pinned seed skips the
+        # search; every other seed resolves exactly as strictly as before.
+        pinned = str(seed.get("case_id") or "").strip()
         try:
-            docket = resolve_docket(base, headers, dn, court_id)
+            docket = (fetch_docket(base, headers, pinned) if pinned
+                      else resolve_docket(base, headers, dn, court_id))
         except RuntimeError as exc:
             print(f"  {caption} ({dn}/{court_id}): resolve failed, skipped -- {exc}", file=sys.stderr)
             return {"caption": caption, "resolved": False, "new_entries": 0,

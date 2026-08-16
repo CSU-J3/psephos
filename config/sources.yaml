@@ -311,6 +311,79 @@ litigation:
         07-27, docketed 2026-07-28. Seeded here 2026-08-14 because the UW tracker still
         lists the district docket; remove when it rewrites the New York row.
 
+    # --- district ORIGINALS behind circuit rows we hold (the FIRST role) ------
+    # THE OPPOSITE DIRECTION FROM THE TWO ABOVE, and the difference decides whether
+    # these entries are temporary. CT/NY are successors the tracker has not caught
+    # up to yet, so they carry "remove when it rewrites". These three are
+    # PREDECESSORS: the tracker has ALREADY moved each state to its Ninth Circuit
+    # docket (data/doj_cases.json holds 26-1232 / 26-1231 / 26-3609 at court
+    # "Ninth Circuit"), and it will never carry the district original again. So
+    # they are permanent seeds for cases the artifact does not cover -- the same
+    # category as the two federal-defendant seeds above, not the amended second
+    # role. There is no duplicate poll: no artifact row shares these dockets.
+    #
+    # EVIDENCE, two instruments differing in kind, per row rather than shared.
+    # A1: each district docket is named in its OWN circuit row's CourtListener
+    # entry ("CASE OPENED. A copy of your notice of appeal / petition filed in
+    # <docket> has been received..."), so the cross-reference runs from the record
+    # psephos already holds. B2: each state's tracker note carries its own
+    # "Key decisions: District Court's <date> dismissal". The AZ note's line about
+    # the 9th Circuit staying DOJ's appeal pending CA and OR is about the APPEALS
+    # and was deliberately not read as covering the other two.
+    #
+    # Docket form: seeded bare, as the audit extracts them and as the circuit rows
+    # are stored. The entries name them with judge initials appended
+    # (2:25-cv-09149-DOC-ADS); if a resolve misses, that fuller string is the
+    # fallback and is preserved in the entry text.
+    - caption: United States of America v. Weber, et al. (C.D. Cal.)
+      docket_number: 2:25-cv-09149
+      court: Central District of California
+      court_id: cacd
+      category: voter-data
+      state: California
+      notes: >-
+        District original behind the Ninth Circuit appeal 26-1232 (case_id 72356732),
+        which names it in its 2026-03-03 CASE OPENED entry. Tracker records the
+        District Court's 1/15/26 dismissal. Seeded 2026-08-16; permanent, because the
+        artifact carries this state at its circuit docket and never at this one.
+    # PINNED, and the only pinned seed. CourtListener holds TWO records for this
+    # docket number in `ord`, so the exact-match resolve can never return one and
+    # correctly refuses to bind. The pin is per-seed and carries its evidence; the
+    # refusal stays exactly as strict everywhere else, because a global relaxation
+    # would trade one loud refusal for a silent arbitrary bind on every future
+    # collision. Both instruments, measured 2026-08-16 and differing in kind:
+    #   71363789 -- date_terminated 2026-02-05, matching the tracker's "District
+    #               Court's 2/5/26 dismissal" to the day, AND carries the real
+    #               docket entries (#78, filed 2026-03-12).
+    #   71956700 -- no termination date and NO entries at all; binding here would
+    #               have produced a permanently empty row that polls forever.
+    # Checked project-wide when this was found: zero rows show the bound-but-empty
+    # signature (entries_synced_at set, no case_entries), so this is a one-off
+    # rather than a class.
+    - caption: United States of America v. State of Oregon, et al. (D. Or.)
+      docket_number: 6:25-cv-01666
+      court: District of Oregon
+      court_id: ord
+      case_id: '71363789'
+      category: voter-data
+      state: Oregon
+      notes: >-
+        District original behind the Ninth Circuit appeal 26-1231 (case_id 72356772),
+        which names it in its 2026-03-03 CASE OPENED entry. Tracker records the
+        District Court's 2/5/26 dismissal. Seeded 2026-08-16; permanent, for the same
+        reason as the California entry above. CourtListener id pinned -- see above.
+    - caption: United States of America v. Fontes (D. Ariz.)
+      docket_number: 2:26-cv-00066
+      court: District of Arizona
+      court_id: azd
+      category: voter-data
+      state: Arizona
+      notes: >-
+        District original behind the Ninth Circuit appeal 26-3609 (case_id 73443024),
+        which names it in its 2026-06-04 CASE OPENED entry. Tracker records the
+        District Court's 4/28/26 dismissal, and separately that the 9th Circuit stayed
+        this appeal on 6/22/26 pending CA and OR. Seeded 2026-08-16; permanent.
+
 # ===========================================================================
 # CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)
 # ===========================================================================
