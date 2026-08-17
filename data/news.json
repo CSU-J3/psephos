@@ -5588,5 +5588,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/attorney-general-blanche-says-taking-state-voter-rolls-case-to-supreme-court-is-a-possibility",
     "title": "Attorney General Blanche says taking state voter rolls case to Supreme Court is a ‘possibility’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80239,
+    "kind": "item",
+    "occurred_at": "2026-08-17T11:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/17/trump-cisa-election-security-call-fontes-cybersecurity",
+    "title": "‘I don’t trust you’: Tensions reach boiling point on election security call for state leaders hosted by Trump administration"
   }
 ]
