@@ -5598,5 +5598,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/08/17/trump-cisa-election-security-call-fontes-cybersecurity",
     "title": "‘I don’t trust you’: Tensions reach boiling point on election security call for state leaders hosted by Trump administration"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80483,
+    "kind": "item",
+    "occurred_at": "2026-08-17T16:33:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-tina-peters-gets-alarming-new-elections-job-in-deep-red-california-county",
+    "title": "Election denier Tina Peters gets alarming new elections job in deep red California county"
   }
 ]

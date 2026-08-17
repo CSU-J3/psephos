@@ -11598,6 +11598,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/103/united-states-v-griswold/",
         "title": "United States v. Colorado: FINAL JUDGMENT re: 102 Order, by Clerk on 8/4/26. (sgrim) (Entered: 08/04/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80254,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/105/united-states-v-griswold/",
+        "title": "United States v. Colorado: NOTICE OF APPEAL as to 103 Clerk's Judgment, 102 Order on Motion to Dismiss,,,,,,,,, Order on Motion to Compel,, by Plaintiff USA (Tucker, James) (Entered: 08/17/2026)"
       }
     ]
   },
@@ -12071,6 +12081,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 40581,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
+        "title": "United States v. Nevada — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 80310,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -12786,6 +12806,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/94/united-states-v-aguilar/",
         "title": "United States v. Nevada: Judgment"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80311,
+        "kind": "item",
+        "occurred_at": "2026-08-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/93/united-states-v-aguilar/",
+        "title": "United States v. Nevada: ORDER - IT IS ORDERED that Defendant and Defendant-Intervenors' Motions to Dismiss are GRANTED. (ECF Nos. 42, 66 and 68 )It is FURTHER ORDERED that good cause appearing under LR 7-"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80312,
+        "kind": "item",
+        "occurred_at": "2026-08-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/94/united-states-v-aguilar/",
+        "title": "United States v. Nevada: JUDGMENT entered per 93 Order. Signed by Clerk of Court Debra K. Kempi on 8/14/2026. (Copies have been distributed pursuant to the NEF - BLE) (Entered: 08/14/2026)"
       }
     ]
   },
@@ -13904,6 +13944,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/102/united-states-v-matthews/",
         "title": "United States v. Illinois: JUDGMENT entered in a Civil Action. (DW) (Entered: 08/04/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80303,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/104/united-states-v-matthews/",
+        "title": "United States v. Illinois: NOTICE OF APPEAL as to 101 Order on Motion to Dismiss,,,, Order on Motion to Compel,,,, Order on Motion to Dismiss for Failure to State a Claim,,,, Order Dismissing Case, by United"
       }
     ]
   },
@@ -14598,6 +14648,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/80/united-states-v-evans/",
         "title": "United States v. DC: MEMORANDUM OPINION: For the reasons contained herein, the Court will DENY Plaintiff's motion to compel records, Dkt.  2 , and DENY as moot Defendants' motion to dismiss, Dkt.  41 ,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80257,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/83/united-states-v-evans/",
+        "title": "United States v. DC: Notice of Appeal to DC Circuit"
       }
     ]
   },
@@ -18008,6 +18068,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/107/united-states-v-caldwell/",
         "title": "United States v. New Jersey: OPINION Filed.  Signed by Judge Zahid N. Quraishi on 7/29/2026. (jal, )"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80322,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/110/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: NOTICE OF APPEAL as to 107 Opinion, 108 Order on Motion to Compel, Order on Motion to Dismiss by THE UNITED STATES OF AMERICA. The Clerk's Office hereby certifies the record and th"
       }
     ]
   },
@@ -19502,6 +19572,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 80308,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
+        "title": "United States v. Michigan — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 7416,
         "kind": "item",
         "occurred_at": "2026-02-27T00:00:00",
@@ -20714,6 +20794,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 40 Motion for Leave to File Amicus Brief. The Court treats the 40 Motion's attachment, ECF No. 40-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80242,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/50/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Response to (non-motion) Document"
       }
     ]
   },
