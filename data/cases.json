@@ -2380,7 +2380,7 @@
     "docket_number": "0:25-cv-03761",
     "filed_at": "2025-09-25T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -3852,6 +3852,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/209/united-states-v-simon/",
         "title": "United States v. Minnesota: NOTICE by Misael Hernandez, Minnesota Alliance for Retired Americans Educational Fund re 78 MOTION to Dismiss/General (Rule 12(B)(6) Motion to Dismiss) providing supplemental autho"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80520,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/210/united-states-v-simon/",
+        "title": "United States v. Minnesota: ORDER granting 63 Motion to Dismiss/General; granting 78 Motion to Dismiss/General; granting 83 Motion to Dismiss/General; and denying 70 Motion to Compel. (Written Opinion) Signed"
       }
     ]
   },
@@ -12074,7 +12084,7 @@
     "docket_number": "3:25-cv-00728",
     "filed_at": "2025-12-11T00:00:00",
     "plaintiff": "United States",
-    "status": "pending",
+    "status": "terminated",
     "superseded_by": null,
     "timeline": [
       {
@@ -13954,6 +13964,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/104/united-states-v-matthews/",
         "title": "United States v. Illinois: NOTICE OF APPEAL as to 101 Order on Motion to Dismiss,,,, Order on Motion to Compel,,,, Order on Motion to Dismiss for Failure to State a Claim,,,, Order Dismissing Case, by United"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80512,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/105/united-states-v-matthews/",
+        "title": "United States v. Illinois: Short Record of Appeal Sent to US Court of Appeals re 104 Notice of Appeal (DW) (Entered: 08/17/2026)"
       }
     ]
   },
@@ -14658,6 +14678,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/83/united-states-v-evans/",
         "title": "United States v. DC: Notice of Appeal to DC Circuit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80499,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/83/united-states-v-evans/",
+        "title": "United States v. DC: NOTICE OF APPEAL TO DC CIRCUIT COURT as to 81 Order on Motion to Dismiss,,,,,, Order on Motion to Compel, 80 Memorandum & Opinion, by UNITED STATES OF AMERICA. Fee Status: No Fee P"
       }
     ]
   },
@@ -21980,6 +22010,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/26/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: COURT ORDER filed denying motion to accelerate case processing [6]; denying motion to expedite decision [6]. Copies to all parties. [1002028170] [26-1878] TW [Entered: 08/04/2026 1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 80516,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/36/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Order filed"
       }
     ]
   },

@@ -5608,5 +5608,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/election-denier-tina-peters-gets-alarming-new-elections-job-in-deep-red-california-county",
     "title": "Election denier Tina Peters gets alarming new elections job in deep red California county"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80753,
+    "kind": "item",
+    "occurred_at": "2026-08-17T18:32:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/communities-sue-homeland-security-department-scheme-terrorism-grants-election-changes",
+    "title": "U.S. communities sue DHS over scheme to force states to restrict voting by withholding anti-terrorism funds"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80752,
+    "kind": "item",
+    "occurred_at": "2026-08-17T19:31:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-sigal-chattah-us-attorneys-office-nevada",
+    "title": "Appeals court rules Nevada’s top federal prosecutor was unlawfully appointed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80751,
+    "kind": "item",
+    "occurred_at": "2026-08-17T19:33:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-readies-1000-election-monitors-for-midterm-elections",
+    "title": "Trump DOJ readies 1,000 election monitors for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80750,
+    "kind": "item",
+    "occurred_at": "2026-08-17T19:44:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-23rd-loss-for-doj-federal-judge-rejects-its-demand-for-minnesota-voter-rolls",
+    "title": "In 23rd loss for DOJ, federal judge rejects its demand for Minnesota voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80746,
+    "kind": "item",
+    "occurred_at": "2026-08-17T20:06:32+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/17/13-absentee-ballots-uncounted-detroit-2026-primary-election",
+    "title": "13 Detroit voters disenfranchised in primary because their absentee ballots were mishandled"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80749,
+    "kind": "item",
+    "occurred_at": "2026-08-17T20:55:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-governor-vetoes-sweeping-voting-restrictions",
+    "title": "North Carolina governor vetoes sweeping voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80748,
+    "kind": "item",
+    "occurred_at": "2026-08-17T20:59:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/minneapolis-must-employ-bipartisan-election-judges-in-time-for-midterms-state-supreme-court-rules",
+    "title": "Minneapolis must employ bipartisan election judges in time for midterms, state supreme court rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 80747,
+    "kind": "item",
+    "occurred_at": "2026-08-17T22:37:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-keeps-appealing-its-voter-roll-cases",
+    "title": "Even after 23 straight losses, Trump DOJ keeps appealing its voter roll cases"
   }
 ]
