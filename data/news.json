@@ -5688,5 +5688,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-keeps-appealing-its-voter-roll-cases",
     "title": "Even after 23 straight losses, Trump DOJ keeps appealing its voter roll cases"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 81394,
+    "kind": "item",
+    "occurred_at": "2026-08-18T14:01:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/battle-for-disputed-indiana-election-fueled-by-redistricting-hinges-on-ballots-missing-signatures",
+    "title": "Battle for disputed Indiana election fueled by redistricting hinges on ballots missing signatures"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 81393,
+    "kind": "item",
+    "occurred_at": "2026-08-18T16:03:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-backs-off-exclusive-voter-fraud-contract-with-thomson-reuters-after-public-outcry",
+    "title": "ICE backs off exclusive voter fraud contract with Thomson Reuters after public outcry"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 81395,
+    "kind": "item",
+    "occurred_at": "2026-08-18T16:16:22+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/how-the-census-shapes-politics-send-us-your-questions",
+    "title": "How the Census Shapes Politics: Send Us Your Questions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 81392,
+    "kind": "item",
+    "occurred_at": "2026-08-18T16:36:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hypocrisy-alert-trump-mortal-foe-of-mail-voting-again-votes-by-mail",
+    "title": "Hypocrisy alert: Trump, mortal foe of mail voting, again votes by mail"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 81391,
+    "kind": "item",
+    "occurred_at": "2026-08-18T17:22:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/conservative-activist-scott-presler-accused-of-violating-pennsylvania-campaign-finance-laws",
+    "title": "Conservative activist Scott Presler accused of violating Pennsylvania campaign finance laws"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 81390,
+    "kind": "item",
+    "occurred_at": "2026-08-18T17:23:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/age-restrictions-on-mail-voting-are-unconstitutional-fourth-circuit-says-in-rare-26th-amendment-case",
+    "title": "Age restrictions on mail voting are unconstitutional, Fourth Circuit says in rare 26th Amendment case"
   }
 ]

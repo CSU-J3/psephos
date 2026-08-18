@@ -2386,6 +2386,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 81221,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
+        "title": "United States v. Minnesota — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 7441,
         "kind": "item",
         "occurred_at": "2025-09-25T00:00:00",
@@ -3862,6 +3872,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/210/united-states-v-simon/",
         "title": "United States v. Minnesota: ORDER granting 63 Motion to Dismiss/General; granting 78 Motion to Dismiss/General; granting 83 Motion to Dismiss/General; and denying 70 Motion to Compel. (Written Opinion) Signed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81223,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/212/united-states-v-simon/",
+        "title": "United States v. Minnesota: NOTICE OF APPEAL TO 8TH CIRCUIT as to 211 Judgment, 210 Order on Motion to Dismiss/General, Order on Motion for Miscellaneous Relief,, by United States of America. (Tucker, James) "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81224,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/211/united-states-v-simon/",
+        "title": "United States v. Minnesota: JUDGMENT (Attachments: # 1 Civil Notice - appeal)(MMG) (Entered: 08/18/2026)"
       }
     ]
   },
@@ -12836,6 +12866,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/94/united-states-v-aguilar/",
         "title": "United States v. Nevada: JUDGMENT entered per 93 Order. Signed by Clerk of Court Debra K. Kempi on 8/14/2026. (Copies have been distributed pursuant to the NEF - BLE) (Entered: 08/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81226,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/96/united-states-v-aguilar/",
+        "title": "United States v. Nevada: NOTICE OF APPEAL as to 94 Judgment, 93 Order on Motion to Dismiss,,,,,,,,, Order on Motion for Leave to File Excess Pages,,,,,,,,,,,,,,,,,,,,,,,, Order on Motion to Compel,,,,, by "
       }
     ]
   },
@@ -14688,6 +14728,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/83/united-states-v-evans/",
         "title": "United States v. DC: NOTICE OF APPEAL TO DC CIRCUIT COURT as to 81 Order on Motion to Dismiss,,,,,, Order on Motion to Compel, 80 Memorandum & Opinion, by UNITED STATES OF AMERICA. Fee Status: No Fee P"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81206,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/84/united-states-v-evans/",
+        "title": "United States v. DC: Transmission of Notice of Appeal and Docket Sheet to USCA"
       }
     ]
   },
@@ -21052,6 +21102,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73453198/30/united-states-v-wisconsin-elections-commission/",
         "title": "United States v. Wisconsin: Order issued GRANTING motion to extend time to file appellees' brief. [28] Appellees' brief due on or before 08/17/2026 for Melissa Adams. Appellant's reply brief, if any, is due o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81241,
+        "kind": "item",
+        "occurred_at": "2026-07-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/30/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Order issued GRANTING motion to extend time to file appellees' brief. [28] Appellees' brief due on or before 08/17/2026 for Melissa Adams, et al. Appellant's reply brief, if any, i"
       }
     ]
   },
@@ -22020,6 +22080,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/36/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: Order filed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81217,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/32/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: MOTION by Liberty Legal Foundation to file amicus curiae brief without consent of all parties on appeal within time allowed by FRAP 29(e).. Date and method of service: 08/17/2026 e"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81218,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/36/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: ORDER filed granting Motion to file amicus curiae brief (Liberty Legal Foundation) [32]. Disclosure Statement filed (if corporate amicus)? Y. Appearance Form filed? Y. Copies to al"
       }
     ]
   },
