@@ -22,8 +22,18 @@ exists only where something re-checks.
 Measured 2026-08-19: 25 non-terminated rows, all stamped, none never-checked, the whole
 set refreshed in one pass 97 seconds wide. The 7 rows with a NULL receipt are all
 `terminated` and are excluded from the due set by construction. Worst-case age of a
-stored status is therefore 20 h of threshold plus up to one 6 h cron cycle = 26 h, not
-"indefinitely".
+stored status is therefore 20 h of threshold plus up to one 6 h cron cycle = **26 h
+WHILE DUE <= CAP**, not "indefinitely".
+
+State the condition every time the figure is quoted, because it is the half that fails
+silently. 40 is not binding against 25 due, so today every due row is refreshed in the
+run that finds it. Let the due set exceed the cap -- a backfill, a seeding batch, or a
+cron that did not run and left two intervals' worth due at once -- and the overflow
+resumes on the NEXT run, which adds a full 6 h cycle per overflow round. Nothing
+reports that: the collector prints its capped line to stderr, the rows keep a stale
+`status`, and every consumer reads a value that looks current. `due_for_status_refresh`
+orders NULLs and oldest first, so the overflow is at least the freshest rows rather
+than the stalest, which bounds the damage without removing it.
 
 This tool still measures the drift that remains inside that window. It is no longer
 measuring an unbounded defect.
