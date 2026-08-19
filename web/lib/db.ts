@@ -741,6 +741,8 @@ export type BoardMonthly = {
   stateBillsFirstSeen: MonthRow[];
   /** Federal legislative actions per month -- channel='legislation' only. */
   legislationActions: MonthRow[];
+  /** Per-state first-seen months, for the map's per-frame running dot totals. */
+  stateBillsByState: Record<string, MonthRow[]>;
 };
 
 // FIRST SEEN IS MIN(items.occurred_at) PER BILL, NOT state_bills.last_action_at, and
@@ -752,7 +754,7 @@ export type BoardMonthly = {
 // so the same bill can leave one bar and join another between two runs.
 export const getBoardMonthly = unstable_cache(
   async (): Promise<BoardMonthly> => {
-    const [sb, leg] = await Promise.all([
+    const [sb, leg, byState] = await Promise.all([
       db.execute(
         `SELECT substr(first_seen, 1, 7) AS month, COUNT(*) AS n FROM (
            SELECT state_bill_id, MIN(occurred_at) AS first_seen FROM items
@@ -765,14 +767,32 @@ export const getBoardMonthly = unstable_cache(
          WHERE channel = 'legislation' AND occurred_at IS NOT NULL
          GROUP BY month ORDER BY month`,
       ),
+      // Same first-seen definition, split by state. The map's dot is a RUNNING TOTAL to
+      // the frame, so it needs the month a bill entered the record, not its latest action.
+      db.execute(
+        `SELECT sb.state AS state, substr(f.first_seen, 1, 7) AS month, COUNT(*) AS n
+         FROM (SELECT state_bill_id, MIN(occurred_at) AS first_seen FROM items
+               WHERE state_bill_id IS NOT NULL AND occurred_at IS NOT NULL
+               GROUP BY state_bill_id) f
+         JOIN state_bills sb ON sb.state_bill_id = f.state_bill_id
+         GROUP BY state, month ORDER BY state, month`,
+      ),
     ]);
     const rows = (rs: typeof sb) =>
       (rs.rows as unknown as { month: string; n: number }[]).map((r) => ({
         month: r.month,
         n: Number(r.n),
       }));
-    return { stateBillsFirstSeen: rows(sb), legislationActions: rows(leg) };
+    const perState: Record<string, MonthRow[]> = {};
+    for (const r of byState.rows as unknown as { state: string; month: string; n: number }[]) {
+      (perState[r.state] ??= []).push({ month: r.month, n: Number(r.n) });
+    }
+    return {
+      stateBillsFirstSeen: rows(sb),
+      legislationActions: rows(leg),
+      stateBillsByState: perState,
+    };
   },
-  ["board-monthly", "v1"],
+  ["board-monthly", "v2"],
   { revalidate: 3600 },
 );

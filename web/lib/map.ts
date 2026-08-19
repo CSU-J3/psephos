@@ -120,3 +120,54 @@ export function partitionByStates(values: readonly string[]): {
     neverSued: US_STATES.filter((f) => !hit.has(f.ab)),
   };
 }
+
+// --- the small-jurisdiction gutter ---------------------------------------------------
+//
+// DC renders at roughly 7 units^2 against Texas at 28,678, so nine jurisdictions on the
+// eastern seaboard are unclickable and unreadable at any sane page width. They render as
+// labelled squares in a gutter to the right of the map, with leader lines back to their
+// real centroids.
+//
+// The gutter's x is derived, not guessed: the easternmost point of any significant ring
+// is Maine at x=957 (measured over the committed geometry, slivers excluded), so a
+// gutter at 987 clears the map by 30 units and the viewBox is widened to 1041 to hold
+// both. geometry.test.ts asserts zero overlap against all 51 bounding boxes rather than
+// trusting these numbers.
+
+export const MAP_VIEWBOX = { width: 1041, height: 610 };
+export const GUTTER_X = 987;
+export const CALLOUT_SIZE = 40;
+export const CALLOUT_PITCH = 48;
+const CALLOUT_TOP = 96;
+
+/** North to south, which is how a reader scans the seaboard they are standing in for. */
+const CALLOUT_ORDER = ["VT", "NH", "MA", "RI", "CT", "NJ", "DE", "MD", "DC"] as const;
+
+export type Callout = {
+  ab: string;
+  name: string;
+  /** Square in map units. */
+  x: number;
+  y: number;
+  size: number;
+  /** The real centroid, for the leader line. */
+  cx: number;
+  cy: number;
+};
+
+export const CALLOUTS: Callout[] = CALLOUT_ORDER.map((ab, i) => {
+  const f = US_STATES.find((s) => s.ab === ab);
+  if (!f) throw new Error(`map: no geometry for callout ${ab}`);
+  return {
+    ab,
+    name: f.name,
+    x: GUTTER_X,
+    y: CALLOUT_TOP + i * CALLOUT_PITCH,
+    size: CALLOUT_SIZE,
+    cx: f.cx,
+    cy: f.cy,
+  };
+});
+
+/** Codes drawn in the gutter rather than on the map. */
+export const CALLOUT_ABS = new Set<string>(CALLOUT_ORDER);

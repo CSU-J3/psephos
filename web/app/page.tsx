@@ -8,6 +8,7 @@ import {
   getExecutiveAll,
   getStateBills,
   getBoardMonthly,
+  getTrackerNotes,
 } from "@/lib/db";
 import type { Case, CaseRef, NewsItem } from "@/lib/db";
 import {
@@ -32,7 +33,9 @@ import {
   frames,
   isEoNumbered,
 } from "@/lib/board";
-import { RecordsBoard } from "@/components/RecordsBoard";
+import { RecordsMap, type MapState } from "@/components/RecordsMap";
+import { buildCells, trackerStatus } from "@/lib/campaign";
+import { tryResolveState } from "@/lib/map";
 import { SourceLegend } from "@/components/SourceLegend";
 import { TheRead } from "@/components/TheRead";
 
@@ -87,7 +90,7 @@ function buildChains(cases: Case[]) {
 }
 
 export default async function Home() {
-  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills, monthly] =
+  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills, monthly, trackerNotes] =
     await Promise.all([
       getChannelActivity(),
       getTimelineEntries(),
@@ -97,6 +100,7 @@ export default async function Home() {
       getExecutiveAll(),
       getStateBills(),
       getBoardMonthly(),
+      getTrackerNotes(),
     ]);
 
   const now = new Date();
@@ -161,6 +165,39 @@ export default async function Home() {
   };
   const domain = boardDomain(boardInput, now);
   const boardFrames = frames(domain, now);
+
+  // --- the map's per-jurisdiction rows -------------------------------------------
+  // Posture comes from buildCells, the SAME classifier /campaign renders, so the two
+  // pages cannot disagree about whether a suit is live. The note is the tracker's own
+  // Status field, extracted verbatim -- trackerStatus pulls the field out of a
+  // pipe-delimited string, it does not interpret it, and nothing here classifies an
+  // outcome from prose.
+  const cells = buildCells(campaignRows, now);
+  const mapStates: MapState[] = cells.map((c) => {
+    const rows = [c.live, ...c.predecessors, ...c.unlinked].filter(
+      (r): r is NonNullable<typeof r> => r !== null,
+    );
+    const feature = tryResolveState(c.name) ?? tryResolveState(c.code);
+    return {
+      ab: feature?.ab ?? c.code,
+      name: feature?.name ?? c.name,
+      posture: c.status === "active" ? "live" : c.status === "ended" ? "ended" : "none",
+      bills: 0, // the running total is per-frame and computed in the component
+      dockets: rows.map((r) => ({
+        caseId: r.case_id,
+        court: r.court,
+        docket: r.docket_number,
+        filed: r.filed_at,
+        status: r.status,
+        entries: null,
+        supersededBy: r.superseded_by,
+        predecessorOf: c.predecessors.some((p) => p.case_id === r.case_id)
+          ? (c.live?.case_id ?? null)
+          : null,
+      })),
+      notes: c.live ? trackerStatus(trackerNotes.get(c.live.case_id)) : null,
+    };
+  });
 
   // The executive section still swaps two arrays client-side; the read's line above
   // reports the same split from the same lens.
@@ -244,16 +281,16 @@ export default async function Home() {
             State voter records
           </h2>
 
-          {/* The scrubber lands in commit 6; until then the chart renders its final
-              frame, which is the one a static page should show. */}
           <div className="mb-6 rounded-lg border border-neutral-800 bg-neutral-900/40 p-3">
-            <RecordsBoard
+            <RecordsMap
               domain={domain}
               filings={filings}
-              stateBills={monthly.stateBillsFirstSeen}
+              stateBillMonths={monthly.stateBillsFirstSeen}
               legislation={monthly.legislationActions}
               eos={eoTicks}
-              frame={boardFrames[boardFrames.length - 1]}
+              frames={boardFrames}
+              states={mapStates}
+              billsByStateMonth={monthly.stateBillsByState}
             />
           </div>
 
