@@ -1,13 +1,32 @@
 """Measure how far `cases.status` has drifted from CourtListener.
 
-`cases.status` is write-once. It is set in exactly one place --
-`collectors.litigation.upsert_case`, inside the `if docket is not None:` branch --
-so it is written only on a FRESH RESOLVE and never again. Every reuse run leaves it
-untouched, and reuse is the steady state, not an edge case: both 2026-08-10 runs
+`cases.status` has TWO writers. This paragraph used to name one, and the correction is
+the reason the file is worth re-reading before quoting it.
+
+`collectors.litigation.upsert_case` writes it inside the `if docket is not None:`
+branch, so from that path it is written only on a FRESH RESOLVE and never again. Every
+reuse run leaves it untouched, and reuse is the steady state: both 2026-08-10 runs
 polled 34 dockets and printed `incremental` for all 34 with zero resolve lines, so
-`status` was not written once across either run. A case that terminated after its
-first resolve therefore still reads `pending` today, indefinitely. This tool measures
-how many, and by how much.
+`status` was not written once across either run from this path. That much still holds.
+
+What no longer holds is the conclusion drawn from it -- that a case terminating after
+its first resolve reads `pending` indefinitely. `collectors.litigation.refresh_status`
+(litigation.py:635, called at :775) exists precisely to close that, and it landed after
+this docstring was written. It re-reads status from CourtListener for every
+non-terminated row whose `status_checked_at` is NULL or older than
+`status_refresh_hours` (20 in config/sources.yaml, not the code default of 24), capped
+at `max_status_refresh_per_run` (40), and writes `UPDATE cases SET status = ?,
+status_checked_at = ?` at :679. `status_checked_at` is its receipt, and a receipt column
+exists only where something re-checks.
+
+Measured 2026-08-19: 25 non-terminated rows, all stamped, none never-checked, the whole
+set refreshed in one pass 97 seconds wide. The 7 rows with a NULL receipt are all
+`terminated` and are excluded from the due set by construction. Worst-case age of a
+stored status is therefore 20 h of threshold plus up to one 6 h cron cycle = 26 h, not
+"indefinitely".
+
+This tool still measures the drift that remains inside that window. It is no longer
+measuring an unbounded defect.
 
 It measures ONLY that: whether the stored value still matches what the mapping would
 produce today. It shares `case_status` with the collector rather than paraphrasing it,
@@ -17,8 +36,21 @@ clean. That is the right trade here because this is a one-shot measurement feedi
 decision about write policy, and the failure mode it targets is stale rows, not a
 wrong mapping. Do not read a clean result as evidence the expression is correct.
 
-Input is data/cases.json (the committed snapshot, 40 rows) -- NOT Turso. Like
-tools/sasts_dump, the property is no database CONNECTION, not no import:
+Input is data/cases.json (the committed snapshot) -- NOT Turso. READ THE VERDICT
+ACCORDINGLY: a row this tool reports as stale is stale IN THE SNAPSHOT, which may
+simply mean the export has not run since the change. It is not evidence that the
+database is wrong, and the output's "stored" column does not say which it is.
+
+That is not hypothetical. On 2026-08-19 this tool reported 2 of 46 rows as stored
+`pending` against a live `date_terminated` -- 72026664 (Nevada, terminated 08-14) and
+71453336 (Minnesota, terminated 08-17). Both were already `terminated` in Turso. The
+snapshot's last export was the 08-16 06:25Z data commit, so Minnesota's termination
+postdates it. The finding was export lag reported as drift, and it was read as drift.
+To tell them apart, query Turso for the flagged case_ids before concluding anything.
+
+The row count in the snapshot moves; it was 40 when this was written and 46 on
+2026-08-19. Do not treat the number as fixed. Like tools/sasts_dump, the property is
+no database CONNECTION, not no import:
 `collectors.litigation` pulls in `db` at module level, and importing it for
 `case_status` and `PAGE_THROTTLE` is the point -- a copied constant or a copied
 expression is the thing being avoided.
