@@ -35,6 +35,14 @@ data/sasts_corpus.json
 # reproducible path. Deliberately NOT byte-stable -- it tracks a moving upstream value.
 data/status_audit.json
 
+# vercel. `vercel link` writes .vercel/project.json (projectId + orgId) into the
+# linked directory. Nothing covered it before this rule -- not the repo file and not
+# ~/.gitignore_global -- so `git check-ignore -v .vercel/project.json` returned
+# nothing and the link would have written into a trackable path. The ids are account
+# identifiers rather than secrets, but they are machine-local link state and do not
+# belong in the tree. Added BEFORE the first link, not after.
+.vercel/
+
 # os
 .DS_Store
 Thumbs.db
