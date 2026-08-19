@@ -42,6 +42,21 @@ export const DORMANT_AFTER_DAYS = 60;
 export type CellStatus = "active" | "ended" | "none";
 export type ChainKind = "appeal" | "refile";
 
+/** The dockets `row` CONTINUES, i.e. those superseded BY it.
+ *
+ * The two chain directions live on different rows and this is the reverse one.
+ * `superseded_by` is written on the dead row pointing FORWARD, so "continued as"
+ * reads straight off that column on the predecessor. "continues" is the lookup
+ * back, and belongs on the successor. Computing it as "is this row a predecessor?
+ * then name the live case" puts BOTH on the predecessor, pointing at the same id --
+ * a row that claims to be continued as X and to continue X at once.
+ *
+ * Returns an array: a successor may absorb more than one docket, and a single value
+ * would show one and silently hide the others. */
+export function continuesOf(group: CampaignRow[], row: CampaignRow): string[] {
+  return group.filter((o) => o.superseded_by === row.case_id).map((o) => o.case_id);
+}
+
 export type Cell = {
   name: string;
   code: string;

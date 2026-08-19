@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import type { CampaignRow } from "@/lib/db";
 import {
   buildCells,
+  continuesOf,
   summarize,
   trackerStatus,
   contestsEnding,
@@ -315,5 +316,35 @@ describe("tracker prose", () => {
       .toBe(false);
     expect(contestsEnding("The parties settled on 3/24/2026.")).toBe(false);
     expect(contestsEnding(null)).toBe(false);
+  });
+});
+
+describe("continuesOf -- the reverse chain direction", () => {
+  // The defect this replaced rendered BOTH directions on the predecessor, pointing
+  // at the same id: "continued as 73582123 - continues 73582123" on the Western
+  // District of Pennsylvania row, while the Third Circuit row that actually
+  // continues it said nothing. All twelve chained jurisdictions rendered that way
+  // in production. Asserted here as the TRUTH of the claim, not its presence.
+  const pred = row({ case_id: "71453026", state: "Pennsylvania", superseded_by: "73582123" });
+  const succ = row({ case_id: "73582123", state: "Pennsylvania" });
+  const group = [pred, succ];
+
+  it("puts 'continues' on the SUCCESSOR, naming the predecessor", () => {
+    expect(continuesOf(group, succ)).toEqual(["71453026"]);
+  });
+
+  it("puts NOTHING on the predecessor -- it is continued as, not continuing", () => {
+    expect(continuesOf(group, pred)).toEqual([]);
+  });
+
+  it("never names a row as continuing itself", () => {
+    for (const r of group) expect(continuesOf(group, r)).not.toContain(r.case_id);
+  });
+
+  it("returns every predecessor when a successor absorbs more than one", () => {
+    const a = row({ case_id: "a", state: "Test", superseded_by: "z" });
+    const b = row({ case_id: "b", state: "Test", superseded_by: "z" });
+    const z = row({ case_id: "z", state: "Test" });
+    expect(continuesOf([a, b, z], z).sort()).toEqual(["a", "b"]);
   });
 });

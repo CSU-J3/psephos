@@ -34,7 +34,7 @@ import {
   isEoNumbered,
 } from "@/lib/board";
 import { RecordsMap, type MapState } from "@/components/RecordsMap";
-import { buildCells, trackerStatus } from "@/lib/campaign";
+import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
 import { tryResolveState } from "@/lib/map";
 import { SourceLegend } from "@/components/SourceLegend";
 import { TheRead } from "@/components/TheRead";
@@ -194,10 +194,18 @@ export default async function Home() {
         // court record -- a missing figure was the honest form until the query
         // existed. It does now.
         entries: r.entry_count,
+        // TWO DIRECTIONS, AND THEY BELONG ON DIFFERENT ROWS. `superseded_by` is set
+        // on the dead row pointing FORWARD, so "continued as" renders on the
+        // predecessor. "continues" is the reverse and belongs on the row being
+        // continued INTO -- the successor -- naming what it continues. This
+        // previously fired on the predecessor and pointed at the live case, so one
+        // row said both "continued as X" and "continues X" about the same id, which
+        // is circular and false, while the successor said nothing at all.
         supersededBy: r.superseded_by,
-        predecessorOf: c.predecessors.some((p) => p.case_id === r.case_id)
-          ? (c.live?.case_id ?? null)
-          : null,
+        // An ARRAY, because a successor can continue more than one docket and a
+        // single-valued field would silently show one and hide the rest -- the same
+        // shape as the predecessor-lookup defect recorded in the falsified list.
+        continues: continuesOf(rows, r),
       })),
       notes: c.live ? trackerStatus(trackerNotes.get(c.live.case_id)) : null,
     };

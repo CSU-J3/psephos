@@ -41,7 +41,8 @@ export type MapState = {
     status: string | null;
     entries: number | null;
     supersededBy: string | null;
-    predecessorOf: string | null;
+    /** Dockets this row CONTINUES. Plural: a successor may absorb more than one. */
+    continues: string[];
   }[];
   /** getTrackerNotes() prose, rendered VERBATIM. Never parsed. */
   notes: string | null;
@@ -360,7 +361,7 @@ export function RecordsMap({
                     {d.docket} · filed {d.filed?.slice(0, 10) ?? "—"} · {d.status}
                     {d.entries !== null && <> · {d.entries} entries</>}
                     {d.supersededBy && <> · continued as {d.supersededBy}</>}
-                    {d.predecessorOf && <> · continues {d.predecessorOf}</>}
+                    {d.continues.length > 0 && <> · continues {d.continues.join(", ")}</>}
                   </li>
                 ))}
               </ul>
