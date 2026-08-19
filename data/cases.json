@@ -3892,6 +3892,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/211/united-states-v-simon/",
         "title": "United States v. Minnesota: JUDGMENT (Attachments: # 1 Civil Notice - appeal)(MMG) (Entered: 08/18/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81442,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
+        "title": "United States v. Minnesota: Order/Notice to Attorney"
       }
     ]
   },
@@ -11648,6 +11658,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/105/united-states-v-griswold/",
         "title": "United States v. Colorado: NOTICE OF APPEAL as to 103 Clerk's Judgment, 102 Order on Motion to Dismiss,,,,,,,,, Order on Motion to Compel,, by Plaintiff USA (Tucker, James) (Entered: 08/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81426,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/106/united-states-v-griswold/",
+        "title": "United States v. Colorado: LETTER Transmitting Notice of Appeal to all counsel advising of the transmittal of the 105 Notice of Appeal filed by USA to the U.S. Court of Appeals. (Attachments: # 1 Preliminary"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 81427,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72021508/107/united-states-v-griswold/",
+        "title": "United States v. Colorado: USCA Case Number 26-1326 for 105 Notice of Appeal filed by USA. (echa, ) (Entered: 08/18/2026)"
       }
     ]
   },
