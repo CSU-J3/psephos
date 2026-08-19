@@ -212,7 +212,22 @@ def build_bills(conn, anchors) -> list[dict]:
 
 def build_cases(conn) -> list[dict]:
     """Per-case objects sorted by case_id. Timeline = docket (A1) + tracker framing
-    (B2) items keyed by case_id. No clustering (anchors are bill-scoped), no news."""
+    (B2) items keyed by case_id. No clustering (anchors are bill-scoped), no news.
+
+    Emits 14 of the table's 17 columns. The three held back, deliberately:
+    `updated_at` and `entries_synced_at` both move independently of content -- the
+    first on every touch, the second as an upstream high-water mark -- and either
+    would rewrite this file four times a day with no change in what it says, which
+    is exactly the property the archive exists for (see the state_bills precedent,
+    test_state_bills_json_stable_despite_moving_updated_at). `seeded_from` is
+    non-null on all 46 rows with a single distinct value, so it would add a constant
+    key carrying no information.
+
+    The omission this docstring exists to prevent is not a missing column but a
+    missing METHOD: the original inventory of what was absent was written by reading
+    the code and came out at five when the answer was seven. The check is
+    PRAGMA table_info(cases) differenced against the emitted keys, which is a query.
+    """
     out = []
     cases = conn.execute("SELECT * FROM cases ORDER BY case_id").fetchall()
     for c in cases:
@@ -235,6 +250,32 @@ def build_cases(conn) -> list[dict]:
                                                    # (handoff 13/14/37). Set on the terminated
                                                    # row, pointing forward; null on all but the
                                                    # seven terminated source rows.
+            # The four below were in the table and not in the file. Their absence was
+            # invisible for as long as it lasted, because nothing read the snapshot for
+            # them -- it surfaced only when the board's mock had to join back to
+            # data/doj_cases.json for every per-state figure, and when status_audit
+            # reported export lag as database drift. Key ORDER here is presentational:
+            # write_json serialises with sort_keys=True, so the file is alphabetical
+            # whatever this literal says.
+            "state": c["state"],                   # the key every per-state reading needs.
+                                                   # Written by upsert_case through
+                                                   # normalize_state, which strips the
+                                                   # "Georgia (1)" suffix at the boundary.
+                                                   # NULL on the three federal-defendant rows
+                                                   # (Common Cause v. DOJ, LWV v. DHS, and the
+                                                   # D.C. Circuit successor 26-5243) -- a suit
+                                                   # against a federal agency has no state.
+                                                   # NOT derivable from `court`: 14 rows are
+                                                   # circuit rows and a circuit spans several.
+            "latest_entry_at": c["latest_entry_at"],   # the column getCases ORDERS BY. Absent,
+                                                       # the ordering could not be checked
+                                                       # against the snapshot at all.
+            "status_checked_at": c["status_checked_at"],   # the receipt proving `status` was
+                                                           # re-read. Its absence is what let
+                                                           # a stale write-once premise stand.
+            "source_url": c["source_url"],         # every other exported object carries one;
+                                                   # without it a case cannot be opened from
+                                                   # the snapshot.
             "timeline": entries,
         })
     return out

@@ -9,6 +9,7 @@ Run:  pytest tests/test_export.py
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -67,8 +68,12 @@ def _bill(conn, bill_id, is_vehicle=0):
     conn.commit()
 
 
-def _case(conn, case_id):
-    db.upsert(conn, "cases", {"case_id": case_id, "caption": case_id}, pk="case_id")
+def _case(conn, case_id, **cols):
+    """Seed one case. Extra columns (state, latest_entry_at, source_url, ...) pass
+    through, so a test can distinguish 'exported as null' from 'key dropped'."""
+    row = {"case_id": case_id, "caption": case_id}
+    row.update(cols)
+    db.upsert(conn, "cases", row, pk="case_id")
     conn.commit()
 
 
@@ -236,6 +241,65 @@ def test_case_timeline_is_items_only_no_clustering():
     tl = cases[0]["timeline"]
     assert [e["kind"] for e in tl] == ["item", "item"]
     assert [e["grade"] for e in tl] == ["B2", "A1"]   # date order: framing then docket
+
+
+def test_case_carries_state_and_the_other_three_recovered_columns():
+    """The four keys handoff 88 added. `state` is the one every per-state reading
+    needs and the one whose absence forced the board's mock to join back to
+    data/doj_cases.json."""
+    conn = _conn()
+    _case(conn, "1:25-cv-01453", state="Delaware", latest_entry_at="2026-08-18",
+          status_checked_at="2026-08-19T12:00:00", source_url="https://example.test/docket/1")
+    c = snapshots.build_cases(conn)[0]
+    assert c["state"] == "Delaware"
+    assert c["latest_entry_at"] == "2026-08-18"
+    assert c["status_checked_at"] == "2026-08-19T12:00:00"
+    assert c["source_url"] == "https://example.test/docket/1"
+
+
+def test_null_state_is_exported_as_null_not_dropped():
+    """A federal-defendant case has no state, and the snapshot must SAY so. Dropping
+    the key would make 'no state' and 'this export predates the column' identical to
+    a reader -- the same confusion that made status_audit report lag as drift."""
+    conn = _conn()
+    _case(conn, "1:26-cv-01352")             # Common Cause v. DOJ: no state, correctly
+    c = snapshots.build_cases(conn)[0]
+    assert "state" in c                      # key present ...
+    assert c["state"] is None                # ... and explicitly null
+    for k in ("latest_entry_at", "status_checked_at", "source_url"):
+        assert k in c and c[k] is None
+
+
+def test_cases_json_keys_are_sorted_in_the_EMITTED_FILE():
+    """Asserted on the bytes, not on the dict. write_json sets sort_keys=True, so the
+    literal's order in build_cases cannot affect the file -- a test over the dict
+    would be testing the standard library instead of this module's contract."""
+    conn = _conn()
+    _case(conn, "1:25-cv-01453", state="Delaware")
+    out = Path(tempfile.mkdtemp())
+    raw = snapshots.write_json(str(out / "cases.json"), snapshots.build_cases(conn))
+    obj = json.loads(raw.decode("utf-8"))[0]
+    keys = [k for k in obj]                  # json.loads preserves file order
+    assert keys == sorted(keys)
+    assert "state" in keys
+
+
+def test_cases_json_is_byte_identical_and_timestamp_free():
+    """The determinism contract, extended over the four new keys: two runs of the same
+    database produce the same bytes, so the archive's diff means a content change."""
+    conn = _conn()
+    _case(conn, "1:25-cv-01453", state="Delaware", latest_entry_at="2026-08-18",
+          status_checked_at="2026-08-19T12:00:00", source_url="https://example.test/d/1")
+    _item(conn, source_id="courtlistener", title="MOTION to Dismiss",
+          occurred_at="2026-06-02", case_id="1:25-cv-01453")
+    cases = snapshots.build_cases(conn)
+
+    out = Path(tempfile.mkdtemp())
+    b1 = snapshots.write_json(str(out / "a.json"), cases)
+    b2 = snapshots.write_json(str(out / "b.json"), cases)
+    assert b1 == b2
+    assert b1.endswith(b"\n")
+    assert b"2026-01-01T00:00:00" not in b1        # no fetched_at / wall-clock leaked
 
 
 # --- executive channel -------------------------------------------------------
