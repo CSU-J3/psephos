@@ -7,6 +7,7 @@ import {
   getCampaignRows,
   getExecutiveAll,
   getStateBills,
+  getBoardMonthly,
 } from "@/lib/db";
 import type { Case, CaseRef, NewsItem } from "@/lib/db";
 import {
@@ -25,6 +26,13 @@ import { CaseRow } from "@/components/CaseRow";
 import { ExecutiveSection } from "@/components/ExecutiveSection";
 import { RotatingTime } from "@/components/RotatingTime";
 import { buildTimeline } from "@/lib/timeline";
+import {
+  boardDomain,
+  cumulativeFilings,
+  frames,
+  isEoNumbered,
+} from "@/lib/board";
+import { RecordsBoard } from "@/components/RecordsBoard";
 import { SourceLegend } from "@/components/SourceLegend";
 import { TheRead } from "@/components/TheRead";
 
@@ -79,7 +87,7 @@ function buildChains(cases: Case[]) {
 }
 
 export default async function Home() {
-  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills] =
+  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills, monthly] =
     await Promise.all([
       getChannelActivity(),
       getTimelineEntries(),
@@ -88,6 +96,7 @@ export default async function Home() {
       getCampaignRows(),
       getExecutiveAll(),
       getStateBills(),
+      getBoardMonthly(),
     ]);
 
   const now = new Date();
@@ -119,6 +128,39 @@ export default async function Home() {
   const billsRead = readBills(bills, now);
   const executive = readExecutive(executiveAll, now);
   const stateBillsRead = readStateBills(stateBills, now);
+
+  // --- the records chart -------------------------------------------------------
+  // Every input is derived from rows, none is a literal. cumulativeFilings collapses
+  // one row per state into one step per DISTINCT filing date -- 31 states, 14 dates on
+  // 2026-08-18 -- and the domain floors on whichever series starts first rather than on
+  // the filings, which is currently the state-bill series at 2024-11.
+  const firstFiledByState = [
+    ...campaignRows
+      .reduce((m, r) => {
+        const prev = m.get(r.state);
+        if (!prev || (r.filed_at && r.filed_at < prev)) m.set(r.state, r.filed_at);
+        return m;
+      }, new Map<string, string | null>())
+      .entries(),
+  ].map(([state, filed_at]) => ({ state, filed_at }));
+
+  const filings = cumulativeFilings(firstFiledByState);
+  const eoTicks = executiveAll
+    .filter((it) => isEoNumbered(it.title) && relevanceScore(it.title) > 0 && it.occurred_at)
+    .map((it) => ({
+      date: it.occurred_at!.slice(0, 10),
+      t: Date.parse(`${it.occurred_at!.slice(0, 10)}T00:00:00Z`),
+      title: it.title,
+    }));
+
+  const boardInput = {
+    filings,
+    stateBills: monthly.stateBillsFirstSeen,
+    legislation: monthly.legislationActions,
+    eos: eoTicks,
+  };
+  const domain = boardDomain(boardInput, now);
+  const boardFrames = frames(domain, now);
 
   // The executive section still swaps two arrays client-side; the read's line above
   // reports the same split from the same lens.
@@ -201,6 +243,20 @@ export default async function Home() {
           <h2 className="mb-3 text-lg font-semibold tracking-tight">
             State voter records
           </h2>
+
+          {/* The scrubber lands in commit 6; until then the chart renders its final
+              frame, which is the one a static page should show. */}
+          <div className="mb-6 rounded-lg border border-neutral-800 bg-neutral-900/40 p-3">
+            <RecordsBoard
+              domain={domain}
+              filings={filings}
+              stateBills={monthly.stateBillsFirstSeen}
+              legislation={monthly.legislationActions}
+              eos={eoTicks}
+              frame={boardFrames[boardFrames.length - 1]}
+            />
+          </div>
+
           <Link
             href="/campaign"
             className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 transition-colors hover:border-neutral-700"

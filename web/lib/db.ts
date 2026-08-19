@@ -730,3 +730,49 @@ export async function getCampaignRows(): Promise<CampaignRow[]> {
   );
   return rs.rows as unknown as CampaignRow[];
 }
+
+// --- the records chart's two monthly series -----------------------------------------
+// Aggregated in SQL rather than by pulling rows: both are counts over the whole spine,
+// and the page needs 28 integers, not 9,000 rows.
+export type MonthRow = { month: string; n: number };
+
+export type BoardMonthly = {
+  /** State bills by the month they FIRST appear in the record. */
+  stateBillsFirstSeen: MonthRow[];
+  /** Federal legislative actions per month -- channel='legislation' only. */
+  legislationActions: MonthRow[];
+};
+
+// FIRST SEEN IS MIN(items.occurred_at) PER BILL, NOT state_bills.last_action_at, and
+// the two are different series rather than two spellings of one. Bucketed on
+// last_action_at the March 2025 peak reads 108, because a bill counts in whatever month
+// it most recently moved; bucketed on first appearance it reads 92, which is the number
+// handoff 87 quotes and the question the bars actually answer -- how many NEW bills
+// entered the record that month. last_action_at also re-dates a bill every time it acts,
+// so the same bill can leave one bar and join another between two runs.
+export const getBoardMonthly = unstable_cache(
+  async (): Promise<BoardMonthly> => {
+    const [sb, leg] = await Promise.all([
+      db.execute(
+        `SELECT substr(first_seen, 1, 7) AS month, COUNT(*) AS n FROM (
+           SELECT state_bill_id, MIN(occurred_at) AS first_seen FROM items
+           WHERE state_bill_id IS NOT NULL AND occurred_at IS NOT NULL
+           GROUP BY state_bill_id)
+         GROUP BY month ORDER BY month`,
+      ),
+      db.execute(
+        `SELECT substr(occurred_at, 1, 7) AS month, COUNT(*) AS n FROM items
+         WHERE channel = 'legislation' AND occurred_at IS NOT NULL
+         GROUP BY month ORDER BY month`,
+      ),
+    ]);
+    const rows = (rs: typeof sb) =>
+      (rs.rows as unknown as { month: string; n: number }[]).map((r) => ({
+        month: r.month,
+        n: Number(r.n),
+      }));
+    return { stateBillsFirstSeen: rows(sb), legislationActions: rows(leg) };
+  },
+  ["board-monthly", "v1"],
+  { revalidate: 3600 },
+);
