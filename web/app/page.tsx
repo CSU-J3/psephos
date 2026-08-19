@@ -266,7 +266,7 @@ export default async function Home() {
           moving under the second, one below. The tracks are the handoff's:
           1.32fr / 1.16fr / .86fr with floors, so the middle column can hold the
           board's 1041-unit viewBox without the timeline collapsing. */}
-      <div className="mt-10 grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)] min-[1900px]:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)_minmax(340px,.86fr)]">
+      <div className="mt-10 grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)] 3xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)_minmax(340px,.86fr)]">
         {/* Column 1 -- the last 7 days, every channel on one axis by occurred_at. */}
         <section>
           <h2 className="mb-3 text-lg font-semibold tracking-tight">The last 7 days</h2>

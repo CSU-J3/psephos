@@ -65,7 +65,7 @@ export function TheRead({
   stateBills: StateBillsRead;
 }) {
   return (
-    <div className="grid gap-x-10 gap-y-5 md:grid-cols-2 min-[1900px]:grid-cols-3">
+    <div className="grid gap-x-10 gap-y-5 mid:grid-cols-2 3xl:grid-cols-3">
       <Line label="Reporting" href="/news">
         {news.collectedLast24h === 0 ? (
           <>

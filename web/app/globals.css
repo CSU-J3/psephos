@@ -8,6 +8,25 @@
    same two. Section 7 asserts the computed set across the whole document, which is how
    the four were found. */
 @theme {
+  /* THE UNIT IS THE FIX, and this is not the fix it looks like.
+     `min-[1900px]:grid-cols-...` compiled to a real rule that was then permanently
+     overridden: Tailwind v4 emits this media query ahead of the named breakpoints, so
+     above 1900px both it and every named query match, and on equal specificity the LAST
+     one wins -- `xl:` (80rem). Both such classes in this app were present, valid and
+     inert, and the three-column board never rendered at any width.
+     Promoting it to a theme breakpoint is NOT sufficient, measured rather than assumed:
+     `--breakpoint-3xl: 1900px` still emitted at the head of the stylesheet, ahead of
+     40rem, and stayed inert. v4 orders breakpoints WITHIN A UNIT, so a px value sorts
+     ahead of the rem-valued defaults instead of among them. Declared in rem it emits
+     last, after 80rem, where a wider breakpoint belongs.
+     So: match the unit the default scale uses. A breakpoint that does not sort with the
+     others is not a breakpoint, whatever it is declared as -- and it fails silently,
+     because the losing layout is a narrower one that looks deliberate.
+     scripts/assert-layout.mjs asserts the computed track count, never the class. */
+  --breakpoint-mid: 62.5rem; /* = 1000px. The read's own middle step: section 4.3
+                                specifies 2 columns at >=1000px, and `md:` is 768. */
+  --breakpoint-3xl: 118.75rem; /* = 1900px at a 16px root */
+
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
