@@ -1,1 +1,99 @@
 @import "tailwindcss";
+
+/* Exactly two type stacks, board-wide, DECLARED THROUGH THE THEME rather than beside
+   it. Overriding `body { font-family }` alone computed FOUR stacks, measured: Tailwind
+   v4's preflight sets its own sans on `html` and its own mono on `code, kbd, samp, pre`,
+   so a separate declaration adds a stack instead of replacing one. Setting --font-sans
+   and --font-mono in @theme makes preflight, the utilities and these rules all name the
+   same two. Section 7 asserts the computed set across the whole document, which is how
+   the four were found. */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+:root {
+  /* Aliases, so component CSS can say var(--mono) without knowing it is Tailwind's. */
+  --sans: var(--font-sans);
+  --mono: var(--font-mono);
+
+  /* One hue, one meaning, board-wide. The chart, the map and the timeline take
+     their colours from here so the board is not a separate visual language from
+     the rest of the read layer.
+
+     Red is DOJ in court and violet is legislation at both levels, deliberately not
+     the electoral convention: the jurisdictions DOJ sued are largely the
+     politically blue ones, so red-state/blue-marker would read backwards on a US
+     map. Any future palette change has to clear the same test. */
+  --c-litigation: oklch(0.62 0.19 24); /* DOJ in court */
+  --c-legislation: oklch(0.62 0.17 295); /* bills, federal and state */
+  --c-executive: oklch(0.72 0.15 75); /* executive orders */
+  --c-outcome: oklch(0.68 0.12 195); /* RESERVED: a court rejected the demand.
+                                        Unused until the teal layer exists; stroke
+                                        is reserved for it and nothing else may
+                                        take stroke. */
+}
+
+body {
+  font-family: var(--sans);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--mono);
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* --- the rotating collection timestamp ------------------------------------------
+   THE CSS IS THE FEATURE. A previous attempt shipped the class toggle without the
+   rules that style it, so the swap was an instant cut while the code read as though
+   it crossfaded -- see the falsified list. Verification is reading
+   getComputedStyle(el).transitionDuration and sampling opacity mid-transition, not
+   observing that a class changed.
+
+   340ms each way with a 5px rise. The readings are stacked in one grid cell so the
+   container is sized by the widest of them at mount, measured by the layout engine
+   rather than guessed from a character count -- proportional digits make a count a
+   bad proxy, and an unreserved width twitches the underline on every swap. */
+.rt-stack {
+  display: inline-grid;
+  vertical-align: baseline;
+}
+
+.rt-reading {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  transition:
+    opacity 340ms ease,
+    transform 340ms ease;
+}
+
+.rt-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rt-out {
+  opacity: 0;
+  transform: translateY(5px);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-reading {
+    transition-duration: 1ms;
+  }
+  .rt-out {
+    transform: none;
+  }
+}
