@@ -18,6 +18,28 @@ wins: "the query wins and the mock is wrong; report the difference before buildi
 it." That is a build decision and it belongs to a reader, so this tool reports and
 exits 0. Do not wire it into CI expecting a non-zero signal.
 
+MEASURED VALUES, 2026-08-18. Recorded here and not only in the commit message, because
+the handoff that states the expectations lives under docs/handoffs/, which is gitignored
+globally -- so its in-place correction is not durable and the next reader of a fresh
+clone sees only the original 25/6. This docstring is committed and it is the instrument,
+which makes it the right place for what the instrument actually read:
+
+  2a  31 states. pending>0 23; none 8; chained>0 12; earliest 2025-09-16 (Oregon).
+      The handoff's 25/6 was ACCURATE WHEN WRITTEN. Two dockets terminated after it --
+      Nevada 72026664 on 08-14, Minnesota 71453336 on 08-17 -- and refresh_status
+      picked both up in Turso. chained held at 12, so no supersession landed: a docket
+      resolved, which is a different answer from a wrong literal. The eight at zero are
+      Minnesota, Colorado, Nevada, DC, Illinois, New Jersey, Oklahoma, Michigan.
+  2b  0.
+  2c  31 distinct values; 0 with no geometry; 20 features with no state value; 51 of 51.
+  2d  9 states, all nine counts matching: TX 198, WI 59, PA 52, AZ 41, GA 39, MI 32,
+      OH 24, FL 20, NC 19.
+  2e  26 rows at status='4', uncurated.
+
+The EXPECT_* constants below are still the handoff's numbers, deliberately. They are
+what the PASS/FAIL compares against; this block is what the database said. Do not
+reconcile them by editing the constants -- the disagreement IS the report.
+
 What it measures: whether today's Turso rows match the specific figures section 2 states,
 for 2a, 2b and 2d; and, for 2c, whether every stored `cases.state` resolves to a feature
 the map actually draws. The value list under 2c is still a report -- it is the two set
