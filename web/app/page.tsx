@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {
   getChannelActivity,
-  getFeed,
+  getTimelineEntries,
   getBills,
   getCases,
   getCampaignRows,
@@ -79,10 +79,10 @@ function buildChains(cases: Case[]) {
 }
 
 export default async function Home() {
-  const [activity, feed, bills, cases, campaignRows, executiveAll, stateBills] =
+  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills] =
     await Promise.all([
       getChannelActivity(),
-      getFeed(),
+      getTimelineEntries(),
       getBills(),
       getCases(),
       getCampaignRows(),
@@ -92,30 +92,27 @@ export default async function Home() {
 
   const now = new Date();
 
-  // THE NEWS LINE READS getFeed, NOT getNewsFeed, and the choice is load-bearing.
+  // ONE QUERY FEEDS BOTH, because the timeline's set is a strict superset of the
+  // news line's. getTimelineEntries returns everything dated in the band range plus
+  // everything collected in the last 24h; filtering that on fetched_at recovers
+  // exactly what the old 24h feed query returned, so nothing is fetched twice.
   //
-  // getNewsFeed is the /news query: B2 only, unwindowed, ~436 rows. Feeding it here
-  // would make the grade sort a no-op -- every candidate is B2, so "highest-graded"
-  // silently degrades to "newest" and the lead is always a tracker item, which is
-  // not what the line claims to say.
+  // THE NEWS LINE STILL COUNTS TODAY'S COLLECTION, not the 7-day dated set, and that
+  // is the line's own claim: "N of the M stories collected today are dated in the
+  // last 7 days". The pairing is what exposes an aggregator delivering old news as
+  // new, so both halves must come from the collected set.
   //
-  // getFeed is every channel, every grade, over a 24h `fetched_at` window with no
-  // row cap, and it already applies outlet promotion. Filtered to the news channel
-  // it IS the denominator the line needs: section 4.2 asks for "dated within 7 days
-  // against total collected in 24h", and that is one set partitioned by date rather
-  // than two independently-sourced numbers. The mock's own lead was a B2 Democracy
-  // Docket item drawn out of a mixed set, which only the mixed query can reproduce.
-  //
-  // The consequence, stated rather than hidden: `datedInWindow` counts backdated
-  // items among TODAY'S COLLECTION, not every news item dated in the last week. A
-  // story dated four days ago and collected three days ago is in neither number.
-  // That is the intended reading -- the pairing is what exposes an aggregator
-  // delivering old news as new -- but it is not "all news dated this week".
-  const newsToday = feed.filter((e) => e.channel === "news") as NewsItem[];
+  // It reads these rows rather than getNewsFeed for a second reason: getNewsFeed is
+  // B2-only, which would make the grade sort a no-op and always lead with a tracker
+  // item. These rows are every grade, with outlet promotion already applied.
+  const collectedSince = new Date(now.getTime() - 24 * 3_600_000).toISOString();
+  const newsToday = entries.filter(
+    (e) => e.channel === "news" && e.fetched_at >= collectedSince,
+  ) as NewsItem[];
   const collectedLast24h =
     activity.find((r) => r.channel === "news")?.day ?? newsToday.length;
 
-  const timeline = buildTimeline(feed, now);
+  const timeline = buildTimeline(entries, now);
   const news = readNews(newsToday, collectedLast24h, now);
   const litigation = readLitigation(campaignRows);
   const campaign = readCampaign(campaignRows, now);

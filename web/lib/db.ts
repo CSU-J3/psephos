@@ -6,6 +6,7 @@ import { unstable_cache } from "next/cache";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
 import { FEED_WINDOW, HISTORY_AFTER_DAYS } from "@/lib/feed";
+import { BAND_DAYS } from "@/lib/timeline";
 import type { FeedAnchor, FeedEntry } from "@/lib/feed";
 
 export const db = createClient({
@@ -552,9 +553,39 @@ function toAnchor(r: FeedRow): FeedAnchor | null {
   return null;
 }
 
-export const getFeed = unstable_cache(
+// THE TIMELINE WINDOWS ON occurred_at, NOT fetched_at, and this replaced getFeed.
+//
+// The homepage column is headed "The last 7 days" and used to be fed a 24h fetched_at
+// window arranged by date -- which is a different section: "what was collected today,
+// arranged by date". Measured 2026-08-19, the difference is not cosmetic: of 232 items
+// dated in the last 7 days, 114 were collected before the 24h window and were therefore
+// invisible. 2026-08-14 rendered as one C3 news item while the record actually held a
+// Nevada judgment, a Michigan order and a Washington transcript notice on that date,
+// all fetched on 08-15 and 08-17.
+//
+// So the predicate is a UNION, and both halves are load-bearing:
+//   substr(occurred_at,1,10) >= bandStart  -- everything DATED in the band range,
+//                                             whenever it was collected. The bands.
+//   fetched_at >= day                      -- everything COLLECTED in the last 24h,
+//                                             whenever it is dated. Without this the
+//                                             docket-walk back-history (dated Sep 2025
+//                                             onward) drops out and the seed rows
+//                                             vanish with it.
+//
+// substr(...,1,10) rather than a timestamp comparison because occurred_at is naive on
+// litigation rows and +00:00-suffixed on news; the date-only form is what makes the two
+// comparable, the same rule format.utcDay takes.
+//
+// The collected-in-24h flag is NOT computed here. It is derived per row from fetched_at
+// at render time (lib/timeline.isFresh), which is what keeps the two instruments
+// independent: the query decides what is in the window, the flag decides what is new.
+export const getTimelineEntries = unstable_cache(
   async (): Promise<FeedEntry[]> => {
-    const { day, week } = windowStarts(new Date());
+    const now = new Date();
+    const { day } = windowStarts(now);
+    const bandStart = new Date(now.getTime() - (BAND_DAYS - 1) * 86_400_000)
+      .toISOString()
+      .slice(0, 10);
     const rs = await db.execute({
       // The grade is derived, not raw, for the SAME reason the news feed derives
       // it: an outlet psephos grades B2 must not badge C3 here while badging B2 on
@@ -592,9 +623,9 @@ export const getFeed = unstable_cache(
             LEFT JOIN cases s ON s.case_id = c.superseded_by
             LEFT JOIN bills b ON b.bill_id = i.bill_id
             LEFT JOIN state_bills sb ON sb.state_bill_id = i.state_bill_id
-            WHERE i.fetched_at >= ?
+            WHERE substr(i.occurred_at, 1, 10) >= ? OR i.fetched_at >= ?
             ORDER BY i.fetched_at DESC, i.id DESC`,
-      args: [FEED_WINDOW === "day" ? day : week],
+      args: [bandStart, day],
     });
     return (rs.rows as unknown as FeedRow[]).map((r) => ({
       id: r.id,
@@ -613,12 +644,12 @@ export const getFeed = unstable_cache(
       anchor: toAnchor(r),
     }));
   },
-  // v2: the row shape changed (summary + the anchor object). unstable_cache entries
-  // outlive a deploy, so without the bump the new component would spend up to an
-  // hour rendering blank headers off v1 rows that carry neither.
-  ["activity-feed", "v2"],
+  // A NEW KEY, not a bump of "activity-feed": the window predicate changed, so v2
+  // rows are a different set rather than a different shape, and unstable_cache
+  // entries outlive a deploy.
+  ["timeline-entries", "v1"],
   { revalidate: 3600 },
-);
+)
 
 // The complement, so the feed can never be read as "the news channel". Shown
 // beside the count on the page for the same reason the export prints it.
