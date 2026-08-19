@@ -189,7 +189,11 @@ export default async function Home() {
         docket: r.docket_number,
         filed: r.filed_at,
         status: r.status,
-        entries: null,
+        // The RAW docket length. It shipped as null because CampaignRow carried no
+        // count, and a made-up number on a docket line is a false claim about a
+        // court record -- a missing figure was the honest form until the query
+        // existed. It does now.
+        entries: r.entry_count,
         supersededBy: r.superseded_by,
         predecessorOf: c.predecessors.some((p) => p.case_id === r.case_id)
           ? (c.live?.case_id ?? null)

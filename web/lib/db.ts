@@ -691,6 +691,11 @@ export type CampaignRow = {
   status_checked_at: string | null;
   superseded_by: string | null;
   source_url: string | null;
+  /** RAW docket length from case_entries, NOT the count of promoted items. The map
+   *  panel shipped with `entries: null` on every docket line because this row had no
+   *  count at all, and inventing one would have been a false claim about a court
+   *  record. See export/snapshots.py's entry_count for the same distinction. */
+  entry_count: number;
 };
 
 // The tracker's own status prose, one string per case: the latest B2 subject item
@@ -722,8 +727,13 @@ export async function getTrackerNotes(): Promise<Map<string, string>> {
 
 export async function getCampaignRows(): Promise<CampaignRow[]> {
   const rs = await db.execute(
+    // One scalar subquery per row on a query that already returns ~40. Counted in
+    // SQL rather than joined and grouped: a LEFT JOIN on case_entries would fan the
+    // result out to one row per docket entry (4,594 of them) to recover 46 integers.
     `SELECT case_id, state, caption, court, docket_number, status, filed_at,
-            latest_entry_at, status_checked_at, superseded_by, source_url
+            latest_entry_at, status_checked_at, superseded_by, source_url,
+            (SELECT COUNT(*) FROM case_entries e WHERE e.case_id = cases.case_id)
+              AS entry_count
      FROM cases
      WHERE state IS NOT NULL
      ORDER BY state, case_id`,

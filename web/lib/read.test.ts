@@ -57,6 +57,7 @@ function campaignRow(over: Partial<CampaignRow> = {}): CampaignRow {
     caption: "United States v. Oregon",
     court: "District of Oregon",
     docket_number: "3:25-cv-01",
+    entry_count: 0,
     status: "pending",
     filed_at: daysAgo(30),
     latest_entry_at: daysAgo(2),

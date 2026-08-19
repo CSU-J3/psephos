@@ -31,6 +31,9 @@ function row(over: Partial<CampaignRow> & Pick<CampaignRow, "case_id" | "state">
     filed_at: "2025-12-01T00:00:00",
     latest_entry_at: "2026-08-10T00:00:00",
     status_checked_at: "2026-08-14T00:59:00+00:00",
+    // Raw docket length. Defaulted rather than made optional: CampaignRow requires it,
+    // and a fixture that could omit a required field would drift from the real shape.
+    entry_count: 0,
     superseded_by: null,
     source_url: null,
     ...over,
