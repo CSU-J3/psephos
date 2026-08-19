@@ -19,11 +19,12 @@ import {
 } from "@/lib/read";
 import { relevanceScore } from "@/lib/relevance";
 import { ChannelStrip } from "@/components/ChannelStrip";
-import { ActivityFeed } from "@/components/ActivityFeed";
+import { DayTimeline } from "@/components/DayTimeline";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
 import { ExecutiveSection } from "@/components/ExecutiveSection";
 import { RotatingTime } from "@/components/RotatingTime";
+import { buildTimeline } from "@/lib/timeline";
 import { SourceLegend } from "@/components/SourceLegend";
 import { TheRead } from "@/components/TheRead";
 
@@ -114,6 +115,7 @@ export default async function Home() {
   const collectedLast24h =
     activity.find((r) => r.channel === "news")?.day ?? newsToday.length;
 
+  const timeline = buildTimeline(feed, now);
   const news = readNews(newsToday, collectedLast24h, now);
   const litigation = readLitigation(campaignRows);
   const campaign = readCampaign(campaignRows, now);
@@ -189,11 +191,10 @@ export default async function Home() {
           1.32fr / 1.16fr / .86fr with floors, so the middle column can hold the
           board's 1041-unit viewBox without the timeline collapsing. */}
       <div className="mt-10 grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)] min-[1900px]:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)_minmax(340px,.86fr)]">
-        {/* Column 1 -- the last 7 days. The day-grouped cross-channel timeline
-            replaces this feed in commit 4. */}
+        {/* Column 1 -- the last 7 days, every channel on one axis by occurred_at. */}
         <section>
           <h2 className="mb-3 text-lg font-semibold tracking-tight">The last 7 days</h2>
-          <ActivityFeed rows={feed} />
+          <DayTimeline timeline={timeline} />
         </section>
 
         {/* Column 2 -- state voter records. The chart, map, scrubber and detail
