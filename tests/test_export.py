@@ -86,6 +86,17 @@ def _state_bill(conn, state_bill_id, *, state="TX", bill_number="SB100",
     conn.commit()
 
 
+def _entry(conn, case_id, entry_at, description):
+    """Seed one RAW docket entry. Deliberately separate from _item: write_entries
+    inserts every entry here and promotes only the substantive ones into items, so a
+    test can build a case whose raw docket is longer than its exported timeline."""
+    conn.execute(
+        "INSERT INTO case_entries (case_id, entry_at, description) VALUES (?,?,?)",
+        (case_id, entry_at, description),
+    )
+    conn.commit()
+
+
 _HASH = [0]
 
 
@@ -268,6 +279,55 @@ def test_null_state_is_exported_as_null_not_dropped():
     assert c["state"] is None                # ... and explicitly null
     for k in ("latest_entry_at", "status_checked_at", "source_url"):
         assert k in c and c[k] is None
+
+
+def test_entry_count_is_the_raw_docket_and_differs_from_the_timeline():
+    """entry_count counts case_entries; the timeline is built from items, the
+    PROMOTED subset. The inequality is the whole point of the key, so the fixture
+    makes them differ on purpose: 5 raw entries, 2 of them promoted.
+
+    A fixture where the two coincided would pass while proving nothing, so this was
+    mutation-checked -- and the first attempt at that check was itself too weak,
+    which is worth recording. Shrinking the FIXTURE to 2 raw entries failed the test
+    on `assert 2 == 5`, the literal, proving only that the fixture had changed. The
+    real check mutates the CODE, `entry_count := len(entries)`, injecting the exact
+    defect the key exists to prevent; with the relationship asserted first that fails
+    on
+        assert 2 != 2
+    which is this assertion doing the detecting. Reverted after. Measured against
+    production the same day: raw 4,594 vs promoted 2,170 across 46 cases, differing
+    on every row, promoted never exceeding raw."""
+    conn = _conn()
+    _case(conn, "1:25-cv-01453", state="Delaware")
+    for n in range(5):                       # the raw docket: five entries
+        _entry(conn, "1:25-cv-01453", f"2026-06-0{n + 1}", f"Docket text {n}")
+    # only two of them cleared is_substantive and became items
+    _item(conn, source_id="courtlistener", title="MOTION to Dismiss",
+          occurred_at="2026-06-02", case_id="1:25-cv-01453")
+    _item(conn, source_id="courtlistener", title="ORDER granting motion",
+          occurred_at="2026-06-04", case_id="1:25-cv-01453")
+
+    c = snapshots.build_cases(conn)[0]
+    # RELATIONSHIP FIRST, literals second, and the order is deliberate: these two are
+    # the claim, the literals below are the fixture's bookkeeping. Asserted after the
+    # literals they could never fail on their own -- if entry_count is pinned to 5 and
+    # the timeline to 2, `!=` is already implied and detects nothing.
+    assert c["entry_count"] != len(c["timeline"])        # the claim the key exists for
+    assert c["entry_count"] >= len(c["timeline"])        # promoted can never exceed raw
+    assert c["entry_count"] == 5
+    assert len(c["timeline"]) == 2
+
+
+def test_entry_count_is_zero_not_missing_on_an_unbootstrapped_case():
+    """A case whose docket was never walked has no entries, and the file must say 0
+    rather than omit the key -- 'no entries' and 'this export predates the key' must
+    stay distinguishable, the same rule as the null state."""
+    conn = _conn()
+    _case(conn, "1:26-cv-01352")
+    c = snapshots.build_cases(conn)[0]
+    assert "entry_count" in c
+    assert c["entry_count"] == 0
+    assert c["timeline"] == []
 
 
 def test_cases_json_keys_are_sorted_in_the_EMITTED_FILE():

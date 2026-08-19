@@ -276,6 +276,18 @@ def build_cases(conn) -> list[dict]:
             "source_url": c["source_url"],         # every other exported object carries one;
                                                    # without it a case cannot be opened from
                                                    # the snapshot.
+            # THE RAW DOCKET LENGTH, WHICH IS NOT len(timeline). write_entries inserts
+            # every docket entry into case_entries and promotes only those passing
+            # is_substantive into items; the timeline below is built from items, so it
+            # is the PROMOTED subset. Both numbers are real and they answer different
+            # questions -- "how long is this docket" vs "how much of it was worth an
+            # item". Measured across all 46 cases on 2026-08-19: raw 4,594, promoted
+            # 2,170, and the two differ on EVERY row (0 of 46 equal, and promoted
+            # never exceeds raw, which it cannot). A reader who assumes
+            # entry_count == len(timeline) is wrong by a factor of two.
+            "entry_count": conn.execute(
+                "SELECT COUNT(*) FROM case_entries WHERE case_id = ?", (c["case_id"],)
+            ).fetchall()[0][0],
             "timeline": entries,
         })
     return out
