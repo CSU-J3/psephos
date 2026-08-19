@@ -168,7 +168,7 @@ describe("readLitigation", () => {
       campaignRow({ case_id: "b", state: "Utah", filed_at: daysAgo(10) }),
       campaignRow({ case_id: "c", state: "Nevada", filed_at: daysAgo(10) }),
     ];
-    const r = readLitigation(rows, NOW);
+    const r = readLitigation(rows);
     expect(r.latestFiling).toBe(daysAgo(10));
     expect(r.filedOnLatest.map((x) => x.case_id).sort()).toEqual(["b", "c"]);
     expect(r.totalCases).toBe(3);
@@ -177,12 +177,12 @@ describe("readLitigation", () => {
   it("reports whether a docket has moved since that filing", () => {
     const moved = [campaignRow({ filed_at: daysAgo(10), latest_entry_at: daysAgo(2) })];
     const quiet = [campaignRow({ filed_at: daysAgo(10), latest_entry_at: daysAgo(20) })];
-    expect(readLitigation(moved, NOW).movedSinceFiling).toBe(true);
-    expect(readLitigation(quiet, NOW).movedSinceFiling).toBe(false);
+    expect(readLitigation(moved).movedSinceFiling).toBe(true);
+    expect(readLitigation(quiet).movedSinceFiling).toBe(false);
   });
 
   it("says nothing on an empty corpus without inventing a date", () => {
-    const r = readLitigation([], NOW);
+    const r = readLitigation([]);
     expect(r).toMatchObject({ latestFiling: null, movedSinceFiling: false, totalCases: 0 });
     expect(r.filedOnLatest).toEqual([]);
   });

@@ -123,8 +123,14 @@ export type LitigationRead = {
   totalCases: number;
 };
 
-export function readLitigation(rows: readonly CampaignRow[], now: Date): LitigationRead {
-  void now; // the reading is relative to the record, not to the clock
+/**
+ * Takes no `now`. The reading is relative to the record -- latest filing, what shares
+ * it, whether anything moved after it -- and none of that consults the clock. The other
+ * five take a `now` because they window against it; a sixth parameter here purely for
+ * signature symmetry would misdescribe what the function reads. Add it when something
+ * needs it.
+ */
+export function readLitigation(rows: readonly CampaignRow[]): LitigationRead {
   const latest = newest(rows, (r) => r.filed_at);
   const latestFiling = latest?.filed_at ?? null;
   const filedAtT = latestFiling ? Date.parse(latestFiling) : NaN;
@@ -222,11 +228,16 @@ export type StateBillsRead = {
 };
 
 /**
- * Section 4.2 also asks for "total actions". That number is a count of `items` carrying
- * a `state_bill_id`, and `getStateBills` returns the bills, not their items -- so it is
- * NOT derivable from this input and is deliberately absent rather than approximated by
- * the bill count. If the line is wanted, the page must fetch the count and pass it; a
- * bill total labelled "actions" would be a wrong number wearing a right label.
+ * The line is bills, states, and whether anything is dated in the window:
+ * "484 bills across 9 states, none dated in the last 7 days".
+ *
+ * NO "TOTAL ACTIONS", and this is settled rather than deferred. Section 4.2 asked for
+ * one and quoted 3,882, but that figure was read off `data/state_bills.json`'s
+ * timelines -- a count of `items` carrying a `state_bill_id` -- and written as though it
+ * came from the bills table. It is a number from the wrong artifact wearing the right
+ * label. `getStateBills` returns bills, not their items, so the count is not derivable
+ * here, and the fix is to drop the claim rather than to add a fetch that recovers it:
+ * the sentence is complete without it.
  */
 export function readStateBills(bills: readonly StateBill[], now: Date): StateBillsRead {
   const latest = newest(bills, (b) => b.last_action_at);
