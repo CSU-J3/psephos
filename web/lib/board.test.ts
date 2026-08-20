@@ -8,6 +8,8 @@ import {
   monthlyMax,
   quarterTicks,
   isEoNumbered,
+  POSTURE_FILL,
+  POSTURE_LABEL,
   visibleAt,
   xOf,
   type Domain,
@@ -239,5 +241,33 @@ describe("isEoNumbered", () => {
     expect(isEoNumbered("Airworthiness Directives; Transport Category Airplanes")).toBe(false);
     expect(isEoNumbered("Privacy Act of 1974; System of Records")).toBe(false);
     expect(isEoNumbered("Executive Order on something unnumbered")).toBe(false);
+  });
+});
+
+describe("the paint vocabulary", () => {
+  // These live in lib/ rather than in the component precisely so the key and the mark
+  // read one value. That only holds while both records stay TOTAL over Posture: a
+  // posture missing from either is a jurisdiction the map paints and the key cannot
+  // name, which is the defect the board shipped with at a larger scale.
+  const POSTURES = ["live", "ended", "none"] as const;
+
+  it("covers every posture in both records", () => {
+    expect(Object.keys(POSTURE_FILL).sort()).toEqual([...POSTURES].sort());
+    expect(Object.keys(POSTURE_LABEL).sort()).toEqual([...POSTURES].sort());
+  });
+
+  it("gives each posture a distinct fill, since the fill IS the distinction", () => {
+    expect(new Set(Object.values(POSTURE_FILL)).size).toBe(POSTURES.length);
+  });
+
+  it("gives each posture a distinct wording", () => {
+    expect(new Set(Object.values(POSTURE_LABEL)).size).toBe(POSTURES.length);
+  });
+
+  it("derives the ended fill FROM the live one rather than restating it", () => {
+    // Not decoration: "ended" is meant to read as the same channel dimmed, so it must
+    // move when --c-litigation moves. A hardcoded oklch would silently stop matching.
+    expect(POSTURE_FILL.ended).toContain("var(--c-litigation)");
+    expect(POSTURE_FILL.live).toContain("var(--c-litigation)");
   });
 });

@@ -9,8 +9,19 @@ import {
   US_STATES,
   tryResolveState,
 } from "@/lib/map";
-import { visibleAt, type EoTick, type FilingStep, type Frame, type MonthCount, type Domain } from "@/lib/board";
+import {
+  POSTURE_FILL,
+  POSTURE_LABEL,
+  visibleAt,
+  type EoTick,
+  type FilingStep,
+  type Frame,
+  type MonthCount,
+  type Domain,
+  type Posture,
+} from "@/lib/board";
 import { RecordsBoard } from "@/components/RecordsBoard";
+import { BoardKey } from "@/components/SourceLegend";
 
 // The map, its scrubber and the detail panel. Receives rows as props from the server
 // page: no client-side database access, no fetch on mount, no map library.
@@ -24,8 +35,14 @@ import { RecordsBoard } from "@/components/RecordsBoard";
 //   brightness hover
 // Selection and hover therefore touch neither fill nor stroke -- if hover changed fill,
 // a cursor crossing the map would read as posture changing under it.
+//
+// THIS LIST IS NOT THE KEY, AND MUST NOT BE READ AS ONE. It was, and that is the
+// defect this unit fixed: it is a map-only list written by this file about this file,
+// it names nothing in <RecordsBoard> directly above the map, and the board's key is
+// built from what the DOM actually paints. Enumerate encodings from the emitted DOM,
+// not from here. The two must agree, and only one of them is evidence.
 
-export type Posture = "live" | "ended" | "none";
+export type { Posture };
 
 export type MapState = {
   ab: string;
@@ -46,12 +63,6 @@ export type MapState = {
   }[];
   /** getTrackerNotes() prose, rendered VERBATIM. Never parsed. */
   notes: string | null;
-};
-
-const FILL: Record<Posture, string> = {
-  live: "var(--c-litigation)",
-  ended: "color-mix(in oklch, var(--c-litigation) 42%, #171717)",
-  none: "#1f1f1f",
 };
 
 /** Dot radius from a running total. Sub-linear so Texas does not swamp North Carolina. */
@@ -223,7 +234,7 @@ export function RecordsMap({
               key={f.ab}
               data-ab={f.ab}
               d={f.d}
-              fill={FILL[postureAt(f.ab)]}
+              fill={POSTURE_FILL[postureAt(f.ab)]}
               stroke="#0a0a0a"
               strokeWidth={0.6}
               filter={isSel ? "url(#map-glow)" : undefined}
@@ -267,7 +278,7 @@ export function RecordsMap({
                 width={c.size}
                 height={c.size}
                 rx={3}
-                fill={FILL[postureAt(c.ab)]}
+                fill={POSTURE_FILL[postureAt(c.ab)]}
                 stroke="#0a0a0a"
                 strokeWidth={0.6}
                 filter={isSel ? "url(#map-glow)" : undefined}
@@ -319,6 +330,8 @@ export function RecordsMap({
         })}
       </svg>
 
+      <BoardKey />
+
       {/* --- panel ---------------------------------------------------------------- */}
       {/* Fixed min-height so selecting does not reflow the column. */}
       <div
@@ -343,11 +356,7 @@ export function RecordsMap({
             </div>
             <p className="mt-1 text-xs text-neutral-400">
               <span className="rounded border border-neutral-700 px-1.5 py-0.5">
-                {chosen.posture === "live"
-                  ? "suit live"
-                  : chosen.posture === "ended"
-                    ? "suit ended"
-                    : "never sued"}
+                {POSTURE_LABEL[chosen.posture]}
               </span>{" "}
               · {cumulativeBills(chosen.ab)} tracked{" "}
               {cumulativeBills(chosen.ab) === 1 ? "bill" : "bills"}

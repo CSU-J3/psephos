@@ -205,3 +205,26 @@ export function clipWidth(frame: Frame, domain: Domain, width: number): number {
 export function isEoNumbered(title: string): boolean {
   return /^EO\s+\d+/.test(title.trim());
 }
+
+// --- the board's paint vocabulary -------------------------------------------------
+//
+// HERE RATHER THAN IN THE COMPONENT, so the key and the mark it names read the SAME
+// value. A key is a claim about what the page paints; a key holding its own copy of a
+// colour is a claim that can quietly stop being true, which is the failure this unit
+// is about. Everything else stays a CSS variable referenced by name for the same
+// reason -- one definition, quoted, never transcribed.
+
+export type Posture = "live" | "ended" | "none";
+
+export const POSTURE_FILL: Record<Posture, string> = {
+  live: "var(--c-litigation)",
+  ended: "color-mix(in oklch, var(--c-litigation) 42%, #171717)",
+  none: "#1f1f1f",
+};
+
+/** What each posture is called, in the key and in the detail panel. One wording. */
+export const POSTURE_LABEL: Record<Posture, string> = {
+  live: "suit live",
+  ended: "suit ended",
+  none: "never sued",
+};

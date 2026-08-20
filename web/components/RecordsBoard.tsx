@@ -175,6 +175,22 @@ export function RecordsBoard({
         <path d={legPath} fill="none" stroke="var(--c-legislation)" strokeWidth={1.25} opacity={0.5} />
       </g>
 
+      {/* --- the two below-axis series, named in place ------------------------- */}
+      {/* OUTSIDE THE CLIP, with the axis and the ticks, because a label is frame and
+          not data: a label that wipes in behind the scrubber reads as a series that
+          did not exist until that month. Both series are the same violet and differ
+          only in mark, which the key states and these two say again at the mark
+          itself -- the key is on a rule below, and a reader tracing a shape should
+          not have to leave the chart to find out what it is. The aria-label above is
+          unchanged; it already describes the whole figure to a reader who gets no
+          marks at all. */}
+      <text x={PAD_L + 4} y={AXIS_Y + H_BOT - 14} fontSize={10} fill="#8b7bb8">
+        state bills first seen
+      </text>
+      <text x={PAD_L + 4} y={AXIS_Y + H_BOT - 3} fontSize={10} fill="#6f6a86">
+        federal legislative actions
+      </text>
+
       {/* --- executive orders: A MARKER LAYER, NOT A SERIES --------------------- */}
       {/* They get no scale. An EO has no magnitude to plot, so plotting one would be
           inventing a quantity; the tick says only "one happened, here". */}
