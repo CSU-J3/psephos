@@ -5888,5 +5888,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-judge-sides-with-gop-blocks-voters-from-challenging-gerrymander",
     "title": "Missouri judge sides with GOP, blocks voters from challenging gerrymander"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82990,
+    "kind": "item",
+    "occurred_at": "2026-08-20T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/08/20/green-winnebago-counties-election-results-reporting-issues-modem-transmission",
+    "title": "Issues with modem-based systems held up election results reporting in two Wisconsin counties"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82989,
+    "kind": "item",
+    "occurred_at": "2026-08-20T10:00:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/08/20/josh-shapiro-stacy-garrity-governor-2026-midterm-election-policy",
+    "title": "How Josh Shapiro and Stacy Garrity stack up on election issues"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82988,
+    "kind": "item",
+    "occurred_at": "2026-08-20T12:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/20/trump-census-bureau-noncitizen-voters-2020-election-methodology",
+    "title": "A new Trump administration analysis claims noncitizens voted in 2020. Experts are questioning its validity."
   }
 ]
