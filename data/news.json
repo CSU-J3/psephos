@@ -5828,5 +5828,65 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/arizona/2026/08/19/navajo-county-undelivered-mail-ballots-postal-service-records-data-analysis",
     "title": "Over 1,300 ballots never made it to voters in Navajo County. That isn’t unusual."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82428,
+    "kind": "item",
+    "occurred_at": "2026-08-19T18:38:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-census-bureau-revive-2020-election-lies-advance-attack-voting",
+    "title": "Trump attempts to use U.S. Census Bureau to revive 2020 election lies, advance attack on voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82427,
+    "kind": "item",
+    "occurred_at": "2026-08-19T20:34:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/how-trumps-doj-could-try-to-sell-its-voter-roll-crusade-to-the-supreme-court",
+    "title": "With nothing but losses, here’s how Trump’s DOJ could try to sell its voter roll crusade to the Supreme Court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82426,
+    "kind": "item",
+    "occurred_at": "2026-08-19T20:47:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-redistricting-battle-moves-toward-supreme-court-showdown",
+    "title": "Missouri redistricting battle moves toward Supreme Court showdown"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82425,
+    "kind": "item",
+    "occurred_at": "2026-08-19T21:41:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/right-wing-lawsuit-seeking-wisconsin-voter-rolls-booted-by-federal-appeals-court",
+    "title": "Right-wing lawsuit seeking Wisconsin voter rolls booted by federal appeals court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82424,
+    "kind": "item",
+    "occurred_at": "2026-08-19T22:07:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-dismisses-lawsuit-seeking-to-prevent-misuse-of-seized-fulton-county-voter-data",
+    "title": "Court dismisses lawsuit seeking to prevent misuse of seized Fulton County voter data"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 82423,
+    "kind": "item",
+    "occurred_at": "2026-08-19T22:42:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-judge-sides-with-gop-blocks-voters-from-challenging-gerrymander",
+    "title": "Missouri judge sides with GOP, blocks voters from challenging gerrymander"
   }
 ]

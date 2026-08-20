@@ -20,10 +20,10 @@
   {
     "caption": "United States v. Colorado",
     "category": "voter-data",
-    "court": "District of Colorado",
-    "court_id": "cod",
-    "docket_number": "1:25-cv-03967",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/3/26, the district dismissed DOJ's claims on the merits. | Key decisions: District Court's 8/3/2026 dismissal.",
+    "court": "Tenth Circuit",
+    "court_id": "ca10",
+    "docket_number": "26-1326",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/18/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Tenth Circuit. | Key decisions: District Court's 8/3/2026 dismissal.",
     "state": "Colorado"
   },
   {
@@ -32,7 +32,7 @@
     "court": "District of Connecticut",
     "court_id": "ctd",
     "docket_number": "3:26-cv-00021",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the 2nd Circuit. | Key decisions: District Court's 7/17/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the Second Circuit. | Key decisions: District Court's 7/17/2026 dismissal.",
     "state": "Connecticut"
   },
   {
@@ -41,7 +41,7 @@
     "court": "District of D.C.",
     "court_id": "dcd",
     "docket_number": "1:25-cv-04403",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/6/26, the district court dismissed DOJ's claims on the merits. | Key decisions: District Court's 8/6/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the DC Circuit. | Key decisions: District Court's 8/6/2026 dismissal.",
     "state": "DC"
   },
   {
@@ -59,7 +59,7 @@
     "court": "Middle District of Georgia",
     "court_id": "gamd",
     "docket_number": "5:25-cv-00548",
-    "notes": "Claims: Civil Rights Act 1960 | Status: 1/23/26 : The district court dismissed DOJ's lawsuit for filing in the wrong court. DOJ can refile in proper venue.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: 1/23/26 : The district court dismissed DOJ's lawsuit for filing in the wrong court. DOJ can refile in the proper venue.",
     "state": "Georgia (1)"
   },
   {
@@ -95,7 +95,7 @@
     "court": "Central District of Illinois",
     "court_id": "ilcd",
     "docket_number": "3:25-cv-03398",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/31/26, the district court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/31/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Seventh Circuit. | Key decisions: District Court's 7/31/2026 dismissal.",
     "state": "Illinois"
   },
   {
@@ -149,7 +149,7 @@
     "court": "District of Minnesota",
     "court_id": "mnd",
     "docket_number": "0:25-cv-03761",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 8/17/26, the district court dismissed DOJ's suit on the merits. | Key decisions: District Court's 8/17/26 dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Eighth Circuit. | Key decisions: District Court's 8/17/26 dismissal.",
     "state": "Minnesota"
   },
   {
@@ -158,7 +158,7 @@
     "court": "District of Nevada",
     "court_id": "nvd",
     "docket_number": "3:25-cv-00728",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of the state's motion to dismiss concluded. Intervenors' filed a motion to dismiss on 7/16/26; DOJ's response is due 7/30/26. | Key decisions: District Court's 8/14/26 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Ninth Circuit. | Key decisions: District Court's 8/14/26 dismissal.",
     "state": "Nevada"
   },
   {
@@ -176,7 +176,7 @@
     "court": "District of New Jersey",
     "court_id": "njd",
     "docket_number": "3:26-cv-02025",
-    "notes": "Claims: Civil Rights Act of 1960 | Status: On 7/29/26, the district court dismissed DOJ's claims on the merits. | Key decisions: District Court's 7/29/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Third Circuit. | Key decisions: District Court's 7/29/2026 dismissal.",
     "state": "New Jersey"
   },
   {
@@ -185,7 +185,7 @@
     "court": "Tenth Circuit",
     "court_id": "ca10",
     "docket_number": "26-2126",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the 10th Circuit. | Key decisions: District Court's 7/14/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the Tenth Circuit. | Key decisions: District Court's 7/14/2026 dismissal.",
     "state": "New Mexico"
   },
   {
@@ -194,7 +194,7 @@
     "court": "Northern District of New York",
     "court_id": "nynd",
     "docket_number": "1:25-cv-01338",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the 2nd Circuit. | Key decisions: District Court's 7/10/2026 dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the Second Circuit. | Key decisions: District Court's 7/10/2026 dismissal.",
     "state": "New York"
   },
   {

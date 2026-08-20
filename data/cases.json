@@ -2396,6 +2396,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 82258,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
+        "title": "United States v. Minnesota — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 7441,
         "kind": "item",
         "occurred_at": "2025-09-25T00:00:00",
@@ -5085,6 +5095,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 59840,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 82264,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -12170,6 +12190,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 82259,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
+        "title": "United States v. Nevada — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8314,
         "kind": "item",
         "occurred_at": "2025-12-11T00:00:00",
@@ -12924,6 +12954,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 82240,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72053306/united-states-v-raffensperger/",
+        "title": "United States v. Georgia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 11937,
         "kind": "item",
         "occurred_at": "2025-12-18T00:00:00",
@@ -13129,6 +13169,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 74931,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
+        "title": "United States v. Illinois — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 82250,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -14044,6 +14094,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/105/united-states-v-matthews/",
         "title": "United States v. Illinois: Short Record of Appeal Sent to US Court of Appeals re 104 Notice of Appeal (DW) (Entered: 08/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 82251,
+        "kind": "item",
+        "occurred_at": "2026-08-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72054244/106/united-states-v-matthews/",
+        "title": "United States v. Illinois: NOTICE of Docketing Record on Appeal from USCA re 104 Notice of Appeal filed by United States of America. USCA Case Number 26-2695. (BMG) (Entered: 08/19/2026)"
       }
     ]
   },
@@ -14063,6 +14123,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 74925,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
+        "title": "United States v. DC — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 82232,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -14768,6 +14838,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/84/united-states-v-evans/",
         "title": "United States v. DC: Transmission of Notice of Appeal and Docket Sheet to USCA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 82238,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72055344/84/united-states-v-evans/",
+        "title": "United States v. DC: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals docketing fee was not paid because the appe"
       }
     ]
   },
@@ -14797,6 +14877,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 59745,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
+        "title": "United States v. Connecticut — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 82230,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -17293,6 +17383,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 65425,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
+        "title": "United States v. New Jersey — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 82261,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -21480,6 +21580,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108488612/united-states-v-galvin/",
         "title": "United States v. Massachusetts: ORDER entered: On July 22, 2026, Movant Liberty Legal Foundation filed a brief as amicus curiae. The brief is non-compliant because the caption on the front cover of the brief does"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 82256,
+        "kind": "item",
+        "occurred_at": "2026-08-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108494390/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER entered: No objections having been filed, the motion of Liberty Legal Foundation for leave to file an amicus curiae brief in support of the Appellant and reversal is granted,"
       }
     ]
   },
@@ -22192,6 +22302,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 82262,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 65426,
         "kind": "item",
         "occurred_at": "2026-07-27T00:00:00",
@@ -22218,6 +22338,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73678095/12/united-states-v-oliver/",
         "title": "United States v. New Mexico: [11305296] Minute order filed - Notice due that record is complete by 08/10/2026 for Erik Paltrow, Clerk of Court (oclk). (Text Only - No Attachment) [26-2126] [Entered: 08/05/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 82263,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/22/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11308844] Minute order filed - the brief and appendix submitted by appellant is accepted for filing. The parties will be notified via separate docket entry if paper copies are req"
       }
     ]
   },
@@ -22340,6 +22470,30 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/3/united-states-v-steven-koski/",
         "title": "United States v. Virginia: BRIEFING ORDER filed. No paper copies required unless case has been tentatively calendared or copies otherwise ordered. All filings must comply with Appendix Pagination & Brief Cit"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Griswold",
+    "case_id": "74667007",
+    "category": "voter-data",
+    "court": "Tenth Circuit",
+    "defendant": "Griswold",
+    "docket_number": "26-1326",
+    "filed_at": "2026-08-18T00:00:00",
+    "plaintiff": "United States",
+    "status": "pending",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 82229,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
+        "title": "United States v. Colorado — voter-data"
       }
     ]
   }
