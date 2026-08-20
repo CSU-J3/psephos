@@ -87,15 +87,55 @@ def build_params(agencies: list[str], term: str, since: str | None) -> dict:
     return params
 
 
+# EVERY presidential document type, not the one this shape used to request.
+# ENUMERATED FROM THE DATA on 2026-08-20: all 8,549 PRESDOCU documents were paged
+# with no type condition and the distinct `subtype` values read off the results --
+# Proclamation 4,422, Executive Order 1,556, Memorandum 806, Determination 797,
+# Notice 781, Other 59, Presidential Order 16, plus 112 rows carrying no subtype at
+# all. The earlier list was built by proposing candidates and keeping the ones the
+# API accepted, which found six and could not have found the seventh: a set defined
+# by proposal can only confirm or reject what someone thought to name.
+#
+# The 112 untyped rows are deliberately unhandled -- every example is 1994-95, far
+# below the `since` floor, and no query value corresponds to them.
+#
+# `presidential_order` is IN despite 16 documents that are mostly sequestration
+# orders. The type list controls what the terms can SEE; the terms control
+# relevance. Holding a type back because most of its documents are off-topic
+# filters at the wrong layer -- the same argument would have excluded `notice`,
+# which carries the annual elections-interference emergency continuation.
+PRESIDENTIAL_TYPES = [
+    "determination",
+    "executive_order",
+    "memorandum",
+    "notice",
+    "other",
+    "presidential_order",
+    "proclamation",
+]
+
+
 def build_presidential_params(term: str, since: str | None) -> dict:
     """Presidential-shape first-page query dict. Filters by document *type* rather
-    than agency: executive orders are attributed to the EOP slug, not a cabinet
+    than agency: presidential documents are attributed to the EOP slug, not a cabinet
     agency, so the type filter is what catches them (and keeps the agency list clean
-    for the regulatory channel). No agencies filter on this shape."""
+    for the regulatory channel). No agencies filter on this shape.
+
+    Requests ALL SEVEN types. It requested only `executive_order` until 2026-08-20,
+    which made every proclamation, memorandum, determination, notice and presidential
+    order invisible to the channel -- a national emergency declaration or an
+    Insurrection Act invocation among them. The highest-value document the widening
+    collects is a NOTICE, not a proclamation: the annual "Continuation of the National
+    Emergency With Respect to Foreign Interference in or Undermining Public Confidence
+    in United States Elections", which the existing terms already match.
+
+    The condition repeats as an OR -- verified, not assumed: executive_order alone
+    returns 289 since the floor, proclamation alone 180, both repeated 469 -- so this
+    stays ONE request per term and the cost is pagination, not extra calls."""
     params = {
         "conditions[term]": term,
         "conditions[type][]": "PRESDOCU",
-        "conditions[presidential_document_type][]": "executive_order",
+        "conditions[presidential_document_type][]": PRESIDENTIAL_TYPES,
         "per_page": PER_PAGE,
         "order": "newest",
         "fields[]": FIELDS,

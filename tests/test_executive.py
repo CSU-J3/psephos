@@ -118,7 +118,24 @@ def test_build_presidential_params():
     p = executive.build_presidential_params("election", SINCE)
     # Presidential shape filters by document type, sets no agencies filter.
     assert p["conditions[type][]"] == "PRESDOCU"
-    assert p["conditions[presidential_document_type][]"] == "executive_order"
+    # THE EXACT SORTED SET, not membership. `"proclamation" in p[...]` would pass a
+    # regression that silently dropped executive_order, and dropping a type is the
+    # failure this whole unit exists to correct. Sorted so the assertion is order-
+    # independent without being weaker.
+    assert sorted(p["conditions[presidential_document_type][]"]) == [
+        "determination",
+        "executive_order",
+        "memorandum",
+        "notice",
+        "other",
+        "presidential_order",
+        "proclamation",
+    ]
+    # And the module constant is the same set -- so a future edit cannot widen the
+    # constant while leaving the params behind, or vice versa.
+    assert sorted(executive.PRESIDENTIAL_TYPES) == sorted(
+        p["conditions[presidential_document_type][]"]
+    )
     assert "conditions[agencies][]" not in p
     assert p["conditions[term]"] == "election"
     assert p["conditions[publication_date][gte]"] == SINCE
