@@ -33,11 +33,19 @@ export function ChannelStrip({ rows }: { rows: ActivityRow[] }) {
             {r.channel}
           </div>
           {/* Zero renders as 0, never blank. A channel that collected nothing is a
-              reading, and on this data it is the common case. */}
+              reading, and on this data it is the common case.
+
+              "COLLECTED" IS THE LOAD-BEARING WORD, and it is copy rather than a fix.
+              This strip windows on fetched_at; the timeline beside it groups by
+              occurred_at. Both are right for what they answer, and without the word
+              they read as two numbers disagreeing about the same question rather
+              than as two definitions. The history line below already says
+              "when collected"; the headline said nothing, which left the reader to
+              infer the definition from a figure. */}
           <div className="mt-1 text-2xl font-semibold tabular-nums text-neutral-100">
             +{r.day}
             <span className="ml-1 text-xs font-normal text-neutral-500">
-              /{WINDOW_DAYS.day * 24}h
+              {" "}collected /{WINDOW_DAYS.day * 24}h
             </span>
           </div>
           <div className="mt-0.5 text-sm tabular-nums text-neutral-400">
