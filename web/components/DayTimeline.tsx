@@ -106,7 +106,17 @@ function Band({ band, collapsed }: { band: DayBand; collapsed: boolean }) {
     <li className="flex gap-4 border-t border-neutral-900 py-3 first:border-t-0">
       <div className="w-24 shrink-0">
         <div className="text-xs tabular-nums text-neutral-400">{formatDate(band.day)}</div>
-        {band.hasFresh && <div className="mt-0.5 text-[10px] text-neutral-600">today</div>}
+        {/* "collected", never "today". The band is grouped on occurred_at and this
+            flag is computed from fetched_at, so it fires on any band holding
+            something read in the last 24 hours -- which on this page means bands
+            dated Aug 19, 18 and 17 all carried the word "today" directly under
+            their own dates. The mechanism is right and the copy contradicted the
+            date one line above it. Same word as the strip's headline, for the same
+            reason: two instruments answering different questions have to say which
+            question they answered. */}
+        {band.hasFresh && (
+          <div className="mt-0.5 text-[10px] text-neutral-600">collected</div>
+        )}
       </div>
 
       <div className="min-w-0 flex-1">
