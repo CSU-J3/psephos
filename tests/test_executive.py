@@ -10,6 +10,7 @@ Run:  pytest tests/test_executive.py
 from __future__ import annotations
 
 import os
+import re
 import sys
 import tempfile
 from contextlib import contextmanager
@@ -21,7 +22,14 @@ os.chdir(REPO)  # config / db use repo-relative paths
 import common  # noqa: E402
 import config  # noqa: E402
 import db  # noqa: E402
+from export import snapshots  # noqa: E402
 from collectors import executive  # noqa: E402
+
+# MIRRORS web/lib/board.ts's isEoNumbered: /^EO\s+\d+/ over the rendered title.
+# Duplicated deliberately -- the Python suite cannot import the TS lens, and the
+# invariant "a non-EO must not satisfy it" is worth asserting on this side of the
+# boundary too. If the TS regex changes, this must change with it.
+_EO_PREFIX = re.compile(r"^EO\s+\d+")
 
 BASE = "https://www.federalregister.gov/api/v1"
 AGENCIES = ["justice-department", "homeland-security-department"]
@@ -178,6 +186,63 @@ def test_document_item_row():
     assert eo_row["title"] == ("EO 14248: Preserving and Protecting the "
                                "Integrity of American Elections")
     assert eo_row["occurred_at"].startswith("2025-03-25")  # signing_date wins over publication_date
+
+
+def test_non_eo_presidential_rows_render_as_what_they_are():
+    """A proclamation, notice or presidential order must never be labelled an EO --
+    and an EO must still be labelled one. BOTH DIRECTIONS, because a test that only
+    proves the negative passes if EO detection breaks entirely: strip the prefix
+    logic altogether and "no prefix on a proclamation" still holds.
+
+    The prefix is derived from executive_order_number, which non-EO presidential
+    documents do not carry, so the negative half is structural rather than lucky.
+    web/lib/board.ts's isEoNumbered then keys the chart's amber tick off that
+    prefix, so a row without it takes no tick -- the marker layer stays EO-only.
+    """
+    # NEGATIVE: the types the widening collects, none of which carry an EO number.
+    for subtype, title in [
+        ("Proclamation", "Declaring a National Emergency at the Southern Border"),
+        ("Notice", "Continuation of the National Emergency With Respect to Foreign "
+                   "Interference in or Undermining Public Confidence in United States Elections"),
+        ("Presidential Order", "Designating Antifa as a Domestic Terrorist Organization"),
+        ("Memorandum", "Delegation of Authority Under the Act"),
+    ]:
+        doc = _doc("2025-70001", title=title, type_="Presidential Document")
+        doc["subtype"] = subtype
+        doc["executive_order_number"] = None       # the field exists and is empty
+        row = executive.document_item_row(doc, "A", "1")
+        assert row["title"] == title[:300], f"{subtype} title was rewritten"
+        assert not row["title"].startswith("EO "), f"{subtype} was labelled an EO"
+        assert not _EO_PREFIX.match(row["title"]), f"{subtype} matches isEoNumbered"
+        assert row["channel"] == "executive"       # still collected, still graded
+
+    # POSITIVE: an EO must STILL get its prefix and still satisfy isEoNumbered.
+    # Without this half the negative assertions above are satisfied by deleting the
+    # feature they are meant to constrain.
+    eo = _doc("2025-06011", title="Preserving and Protecting the Integrity of American Elections",
+              pubdate="2025-03-28", type_="Presidential Document")
+    eo["subtype"] = "Executive Order"
+    eo["executive_order_number"] = 14248
+    eo_row = executive.document_item_row(eo, "A", "1")
+    assert eo_row["title"].startswith("EO 14248: ")
+    assert _EO_PREFIX.match(eo_row["title"])       # the tick fires for this one
+
+
+def test_build_executive_passes_non_eo_rows_through_unchanged():
+    """export/snapshots.build_executive selects on channel alone, with no type
+    filter, so a widened collector needs no export change. Pinned because that is a
+    claim about the exporter, not an obvious property of it."""
+    conn = _env()
+    pres = _doc("2025-70002", title="Continuation of the National Emergency", type_="Presidential Document")
+    pres["subtype"] = "Notice"
+    pres["executive_order_number"] = None
+    with _patched({"election": _pages([pres])}):
+        executive.collect_term(conn, BASE, AGENCIES, "election", SINCE, 0.0, "A", "1")
+    out = snapshots.build_executive(conn)
+    assert len(out) == 1
+    assert out[0]["title"] == "Continuation of the National Emergency"
+    assert not out[0]["title"].startswith("EO ")
+    conn.close()
 
 
 # --- pipeline (temp DB + faked FR) ------------------------------------------
