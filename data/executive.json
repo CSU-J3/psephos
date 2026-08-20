@@ -1258,5 +1258,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/08/03/2026-15611/agency-information-collection-activities",
     "title": "Agency Information Collection Activities"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 82730,
+    "kind": "item",
+    "occurred_at": "2026-08-20T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/08/20/2026-16981/application-for-relief-from-disabilities-imposed-by-federal-laws-with-respect-to-the-acquisition",
+    "title": "Application for Relief From Disabilities Imposed by Federal Laws With Respect to the Acquisition, Receipt, Transfer, Shipment, Transportation, or Possession of Firearms"
   }
 ]
