@@ -14,7 +14,7 @@
     "court": "Ninth Circuit",
     "court_id": "ca9",
     "docket_number": "26-1232",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Oral argument for appeal held on 5/19/26; awaiting decision. | Key decisions: District Court's 1/15/26 dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Oral argument for appeal held on 5/19/26; awaiting decision. | Key decisions: District Court's 1/15/26 dismissal.",
     "state": "California"
   },
   {
@@ -38,9 +38,9 @@
   {
     "caption": "United States v. DC",
     "category": "voter-data",
-    "court": "District of D.C.",
-    "court_id": "dcd",
-    "docket_number": "1:25-cv-04403",
+    "court": "DC Circuit",
+    "court_id": null,
+    "docket_number": "26-5296",
     "notes": "Claims: Civil Rights Act 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the DC Circuit. | Key decisions: District Court's 8/6/2026 dismissal.",
     "state": "DC"
   },
@@ -92,9 +92,9 @@
   {
     "caption": "United States v. Illinois",
     "category": "voter-data",
-    "court": "Central District of Illinois",
-    "court_id": "ilcd",
-    "docket_number": "3:25-cv-03398",
+    "court": "Seventh Circuit",
+    "court_id": "ca7",
+    "docket_number": "26-2695",
     "notes": "Claims: Civil Rights Act 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Seventh Circuit. | Key decisions: District Court's 7/31/2026 dismissal.",
     "state": "Illinois"
   },
@@ -149,7 +149,7 @@
     "court": "District of Minnesota",
     "court_id": "mnd",
     "docket_number": "0:25-cv-03761",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Eighth Circuit. | Key decisions: District Court's 8/17/26 dismissal.",
+    "notes": "Claims: 1. HAVA 2. Civil Rights Act 1960 | Status: On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Eighth Circuit. | Key decisions: District Court's 8/17/26 dismissal.",
     "state": "Minnesota"
   },
   {
@@ -167,7 +167,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1783",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/29/26 dismissal.",
+    "notes": "Claims: 1. HAVA 2. Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/29/26 dismissal.",
     "state": "New Hampshire"
   },
   {

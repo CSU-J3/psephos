@@ -5918,5 +5918,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/08/20/trump-census-bureau-noncitizen-voters-2020-election-methodology",
     "title": "A new Trump administration analysis claims noncitizens voted in 2020. Experts are questioning its validity."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83312,
+    "kind": "item",
+    "occurred_at": "2026-08-20T17:28:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/no-chick-fil-a-no-voting-one-north-carolina-countys-argument-for-closing-polls-on-sundays",
+    "title": "No Chick-fil-A, no voting: One North Carolina county’s argument for closing polls on Sundays"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83313,
+    "kind": "item",
+    "occurred_at": "2026-08-20T17:34:50+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/measures-to-require-supermajority-south-dakota-north-dakota",
+    "title": "“Disrespectful for Voters”: The Dakotas Weigh Raising the Bar for Direct Democracy"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83311,
+    "kind": "item",
+    "occurred_at": "2026-08-20T17:39:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-supreme-court-swiftly-takes-up-fight-over-voters-right-to-challenge-gop-gerrymander",
+    "title": "Missouri Supreme Court swiftly takes up fight over voters’ right to challenge GOP gerrymander"
   }
 ]

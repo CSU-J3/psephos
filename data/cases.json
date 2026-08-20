@@ -2393,9 +2393,9 @@
     "court": "District of Minnesota",
     "defendant": "Simon",
     "docket_number": "0:25-cv-03761",
-    "entry_count": 236,
+    "entry_count": 238,
     "filed_at": "2025-09-25T00:00:00",
-    "latest_entry_at": "2026-08-18T00:00:00",
+    "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
     "state": "Minnesota",
@@ -2417,6 +2417,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 82258,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
+        "title": "United States v. Minnesota — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 83062,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -3932,6 +3942,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
         "title": "United States v. Minnesota: Order/Notice to Attorney"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 83064,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/213/united-states-v-simon/",
+        "title": "United States v. Minnesota: (Text-Only) ORDER: In the Court's August 17, 2026 Order 210 the Court neglected to include two additional parties who were allowed to intervene in this action among the list of Int"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 83063,
+        "kind": "item",
+        "occurred_at": "2026-08-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/214/united-states-v-simon/",
+        "title": "United States v. Minnesota: TRANSMITTAL OF APPEAL LETTER TO U. S. COURT OF APPEALS, 8TH CIRCUIT, Re: Notice of Appeal to 8th Circuit 212 . (MMG) (Entered: 08/19/2026)"
       }
     ]
   },
@@ -9336,7 +9366,7 @@
     "court": "Western District of Washington",
     "defendant": "Hobbs",
     "docket_number": "3:25-cv-06078",
-    "entry_count": 126,
+    "entry_count": 127,
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-08-14T00:00:00",
     "plaintiff": "United States",
@@ -17484,9 +17514,9 @@
     "court": "District of New Jersey",
     "defendant": "CALDWELL",
     "docket_number": "3:26-cv-02025",
-    "entry_count": 180,
+    "entry_count": 181,
     "filed_at": "2026-02-26T00:00:00",
-    "latest_entry_at": "2026-08-17T00:00:00",
+    "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
     "state": "New Jersey",
@@ -18403,6 +18433,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/110/united-states-v-caldwell/",
         "title": "United States v. New Jersey: NOTICE OF APPEAL as to 107 Opinion, 108 Order on Motion to Compel, Order on Motion to Dismiss by THE UNITED STATES OF AMERICA. The Clerk's Office hereby certifies the record and th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 83079,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72333329/112/united-states-v-caldwell/",
+        "title": "United States v. New Jersey: USCA Case Number 26-3085 for 110 Notice of Appeal (USCA) filed by THE UNITED STATES OF AMERICA. USCA Case Manager Kirsi (Document Restricted - Court Only) (ca3kr) (Entered: 08/20/2"
       }
     ]
   },
@@ -20338,7 +20378,7 @@
     "court": "Ninth Circuit",
     "defendant": "Weber, et al.",
     "docket_number": "26-1232",
-    "entry_count": 120,
+    "entry_count": 121,
     "filed_at": "2026-03-03T00:00:00",
     "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States of America",
@@ -20348,6 +20388,16 @@
     "status_checked_at": "2026-08-20T00:36:14.999136+00:00",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 83005,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
+        "title": "United States v. California — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -20537,9 +20587,9 @@
     "court": "Ninth Circuit",
     "defendant": "State of Oregon, et al.",
     "docket_number": "26-1231",
-    "entry_count": 81,
+    "entry_count": 83,
     "filed_at": "2026-03-03T00:00:00",
-    "latest_entry_at": "2026-08-05T00:00:00",
+    "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
     "state": "Oregon",
@@ -21253,9 +21303,9 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 47,
+    "entry_count": 48,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-18T00:00:00",
+    "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -21422,9 +21472,9 @@
     "court": "First Circuit",
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 44,
+    "entry_count": 48,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-05T00:00:00",
+    "latest_entry_at": "2026-08-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -22210,6 +22260,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 83070,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 33345,
         "kind": "item",
         "occurred_at": "2026-07-07T00:00:00",
@@ -22671,9 +22731,9 @@
     "court": "Fourth Circuit",
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 15,
+    "entry_count": 20,
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-08-10T00:00:00",
+    "latest_entry_at": "2026-08-12T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -22729,6 +22789,64 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
         "title": "United States v. Colorado — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Bernadette Matthews",
+    "case_id": "74671260",
+    "category": "voter-data",
+    "court": "Seventh Circuit",
+    "defendant": "Bernadette Matthews",
+    "docket_number": "26-2695",
+    "entry_count": 3,
+    "filed_at": "2026-08-17T00:00:00",
+    "latest_entry_at": "2026-08-19T00:00:00",
+    "plaintiff": "United States",
+    "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
+    "state": "Illinois",
+    "status": "pending",
+    "status_checked_at": "2026-08-20T18:23:51.031148+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 83056,
+        "kind": "item",
+        "occurred_at": "2026-08-17T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
+        "title": "United States v. Illinois — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. DC",
+    "case_id": "united-states-v-dc",
+    "category": "voter-data",
+    "court": "DC Circuit",
+    "defendant": "DC",
+    "docket_number": "26-5296",
+    "entry_count": 0,
+    "filed_at": null,
+    "latest_entry_at": null,
+    "plaintiff": "United States",
+    "source_url": null,
+    "state": "DC",
+    "status": null,
+    "status_checked_at": null,
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 83008,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com",
+        "title": "United States v. DC — voter-data"
       }
     ]
   }
