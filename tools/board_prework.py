@@ -88,11 +88,14 @@ import os
 import config
 import db
 
-# The 51 features the map draws. Section 4.1 moves this file into web/lib/us-states.json;
-# until that commit lands it is the copy under docs/design/, so both are tried and the
-# one actually read is printed. A missing file degrades 2c to the plain value dump rather
-# than failing the run -- the geometry is not a database fact and 2c has other work.
-GEOMETRY_PATHS = ("web/lib/us-states.json", "docs/design/psephos-us-states-albers.json")
+# The 51 features the map draws. This carried a second, transitional arm on
+# docs/design/psephos-us-states-albers.json, scoped by its own comment to "until that
+# commit lands". It landed at 7fbf6c1: web/lib/us-states.json is tracked and
+# byte-identical, so the first arm always won and the second named a path that does not
+# exist in a fresh clone at all. A missing file still degrades 2c to the plain value
+# dump rather than failing the run -- the geometry is not a database fact and 2c has
+# other work.
+GEOMETRY_PATH = "web/lib/us-states.json"
 
 # --- the expectations, quoted from handoff 87 section 2 ----------------------------
 # Kept as literals beside the reads they judge, so a stale figure is visible here rather
@@ -174,10 +177,9 @@ def read_2b(conn) -> None:
 
 
 def load_geometry() -> tuple[list[dict], str | None]:
-    """The map's 51 features, from whichever copy exists. Returns ([], None) if neither."""
-    for path in GEOMETRY_PATHS:
-        if os.path.exists(path):
-            return json.load(open(path, encoding="utf-8")), path
+    """The map's 51 features. Returns ([], None) if the file is absent."""
+    if os.path.exists(GEOMETRY_PATH):
+        return json.load(open(GEOMETRY_PATH, encoding="utf-8")), GEOMETRY_PATH
     return [], None
 
 
@@ -191,8 +193,7 @@ def read_2c(conn) -> None:
 
     geom, path = load_geometry()
     if not geom:
-        print("\n  geometry not found at either "
-              f"{' or '.join(GEOMETRY_PATHS)}; set difference skipped.")
+        print(f"\n  geometry not found at {GEOMETRY_PATH}; set difference skipped.")
         return
 
     # A jurisdiction resolves if its stored value matches a feature's full name or its
