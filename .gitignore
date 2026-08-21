@@ -43,6 +43,13 @@ data/status_audit.json
 # belong in the tree. Added BEFORE the first link, not after.
 .vercel/
 
+# claude code. Writes .claude/scheduled_tasks.lock into the repo root. Same shape as
+# .vercel/ above and confirmed the same way: `git check-ignore -v .claude` returned
+# nothing before this rule -- not the repo file, not ~/.gitignore_global -- so a
+# tool-written lock file was sitting in a trackable path with nothing covering it.
+# Machine-local session state, not a repo artifact.
+.claude/
+
 # os
 .DS_Store
 Thumbs.db
