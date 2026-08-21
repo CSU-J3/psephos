@@ -5948,5 +5948,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-supreme-court-swiftly-takes-up-fight-over-voters-right-to-challenge-gop-gerrymander",
     "title": "Missouri Supreme Court swiftly takes up fight over voters’ right to challenge GOP gerrymander"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83628,
+    "kind": "item",
+    "occurred_at": "2026-08-20T19:58:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-election-deniers-influencing-trumps-anti-voting-policy-from-outside-the-white-house",
+    "title": "The election deniers influencing Trump’s anti-voting policy from the outside"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83627,
+    "kind": "item",
+    "occurred_at": "2026-08-20T22:30:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/disgraced-gop-operative-drove-voting-place-cuts-in-north-carolina",
+    "title": "Disgraced GOP operative drove voting place cuts in North Carolina"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83626,
+    "kind": "item",
+    "occurred_at": "2026-08-20T22:35:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-election-board-denies-voting-site-at-nations-largest-hbcu-for-second-time",
+    "title": "North Carolina election board denies voting site at nation’s largest HBCU for second time"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83625,
+    "kind": "item",
+    "occurred_at": "2026-08-20T23:36:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-sue-trump-doj-for-records-on-potential-ballot-seizures-in-midterms",
+    "title": "Democrats sue Trump DOJ for records on potential ballot seizures in midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 83624,
+    "kind": "item",
+    "occurred_at": "2026-08-20T23:49:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-appeals-court-wont-block-gop-led-county-from-changing-voting-maps-after-primary",
+    "title": "Texas appeals court won’t block GOP-led county from changing voting maps after primary"
   }
 ]
