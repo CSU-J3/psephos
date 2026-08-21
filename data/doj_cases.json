@@ -173,9 +173,9 @@
   {
     "caption": "United States v. New Jersey",
     "category": "voter-data",
-    "court": "District of New Jersey",
-    "court_id": "njd",
-    "docket_number": "3:26-cv-02025",
+    "court": "Third Circuit",
+    "court_id": "ca3",
+    "docket_number": "26-3085",
     "notes": "Claims: Civil Rights Act of 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Third Circuit. | Key decisions: District Court's 7/29/2026 dismissal.",
     "state": "New Jersey"
   },

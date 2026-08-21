@@ -610,6 +610,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 84306,
+        "kind": "item",
+        "occurred_at": "2026-02-11T02:24:28+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQREZkRHpBOGhua2M0NHY4S3B6NXZzTFVaa2FsYllia1lMMElweHllOUtwWGlrVFVjWUlHRG1KV0t6bWVUcHFtTXB0TzVsZEo4S3lqdnpMaFRaS3VVRUxFMHRHa2dMZ1hxX1VzenFTR1VJRkxFN3k1RDNyN1YtN2Z3UlRyeDQzM3hBNGVncld2RkhKMzk3OHJCNU5ma3J1WTRDeTZkVm9FZl_SAa4BQVVfeXFMT1B6TXFKdU53eHVueXpwTUd3VGFVZzNMQUZiTzJDU29LZkM4ZGV5WTllX1hVMkRPd25QUzZkc25xaEtlS1dnd0lQYUJYZ3BVX0JfVTM0QTVyaEIyWEpZdlFOSmpROFhCTU45dzMwYmhNMFNIZlBiN0NRQnNDTmdKQ1UxVUc3elhEMVl2RVZtbno4ZXhEb0RaUFNsOGJBZmhUSzhZRVRLVVJiTWxjV2xB?oc=5",
+        "title": "House passes bill to require proof of citizenship to register to vote, drawing ire of voting rights groups - ABC News - Breaking News, Latest News and Videos"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 534,
         "kind": "item",
         "occurred_at": "2026-02-11T08:00:00+00:00",

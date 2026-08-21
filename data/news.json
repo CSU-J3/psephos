@@ -32,6 +32,36 @@
   {
     "channel": "news",
     "grade": "C3",
+    "id": 84318,
+    "kind": "item",
+    "occurred_at": "2025-01-31T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPNlBIeHpRX25HX3dzS0dBczJvbENpQ2xpbG90ZWNFQjEzZmd6QnVnMVFfM182ZFVRaldDMHB1aUpXTXo0VlRkTUxkUl9yaEJaMnRIQzI1bGRlUEtRcTVtaktHaG1UMDN1REFRZmlYVnFJNXlYbGc1MG5FVUhnRHduemtEc1VSSDdCY256NmRwa1V1U2hrMDVmY3hMMjhETGE4Z0ctRV9B?oc=5",
+    "title": "What’s Really Behind Republicans’ Push for Proof of Citizenship? - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 84311,
+    "kind": "item",
+    "occurred_at": "2025-02-25T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNbjZIMGpFeGlfZ3o4T3FRa19PRHNnMGsxVXNFTWRZUzk0RTFSVFI5Q0FYNFlnaEROcEV3aVA0SG41cTBHbHc3LWkxTHZOQnRjeHlSX2tKSl9EQWdCNXpTcDJrczhfejNzV1djaFZYWDNPY2RtaENfa3ZteWphZmw0YzBtT0Y0aGM3Tm0zUmhRd0hyUE1jd25jZWpqczJBV1lB?oc=5",
+    "title": "Voting rights groups win ruling on Arizona’s stricter proof-of-citizenship laws - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 84316,
+    "kind": "item",
+    "occurred_at": "2025-03-31T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQcFhSb0ZzMThNdXhaSEFyUWxtenVrc0FjSnEyWWJ4MVl3NE5EeS1NQTRFZG9mOExmRkRqaXNxQ0VtLVlCaTJjN3lqTkJSR21CMGpNOU1LN3kySHVXNmZkVUpJRm0tdWxvMHFyYUJzdlNhLXlFczdsQ0Znelh0d2pXZ0stcWtFdzlvWXhCSkVfR0NUQkQyYlVDdXRtX0hOMk0yV1F6a2RlSjZ4MXM?oc=5",
+    "title": "Letters asking longtime Arizona voters to prove citizenship cause confusion - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
     "id": 78802,
     "kind": "item",
     "occurred_at": "2025-06-04T07:00:00+00:00",
@@ -118,6 +148,16 @@
     "source_id": "google-news",
     "source_url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNMFotMEVYNDN0UmtlTlNnMUM2bWs1dDRxalk1YzJhOXJMelU0cUFlZmJXNEhmeTA4Tk9JUTBQWDV2SHI1UmZweE9KTzltbEtGUEk3VkkxaDNwQ2ZHRTU2a3QxS29GMDRLMldIa09rcmVuV0tTX2ZRQWNwTDRrVnhGVll1elJ4eUQwOTJaaFdYTHJYUnFYNS16Mk04LVpyNHpmMEhQU1NUYUV3RTNnQUVPbjVQNFFScUktX1l5WjU0VzNvZw?oc=5",
     "title": "Republicans propose major election-law changes ahead of 2026 midterms - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 84323,
+    "kind": "item",
+    "occurred_at": "2026-02-06T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxOTjVoVjNkQVZJMW1EdXdsYUZLX2p2MVhhbGxPX0dablBodEF5UTN2TWVrUmNnQ3BOWXExMnBrZllFOHB6VTUtOTdCdmZFcHl5cm9hTHZ1cFBjR3NNOTVwOHpyZ29jM0pKN0FPSjc2YWdWWFM5cC0wVVNqeUIzYlZSN0dJNlczdVo3NmU0bWRfR1ZUUWI3MjZZdDQ2UjQzVi1KYTdsM25BVkFWNG1XdHB1N1NldV81TGFLT0VKUWFaQjJrTnZxSURJMmxVWDQwVVlQRVNsTWkteElRNy1VdVJscHlGcm1URml4UkswOU1PcS1FVE12V3JMUFVHTmtOQQ?oc=5",
+    "title": "GOP fast tracks monster voter suppression bill that could disenfranchise millions by requiring proof of citizenship at polls - Democracy Docket"
   },
   {
     "channel": "news",
@@ -5998,5 +6038,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/texas-appeals-court-wont-block-gop-led-county-from-changing-voting-maps-after-primary",
     "title": "Texas appeals court won’t block GOP-led county from changing voting maps after primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84300,
+    "kind": "item",
+    "occurred_at": "2026-08-21T15:33:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arkansas-supreme-court-rejects-bid-to-save-direct-democracy-ballot-initiative",
+    "title": "Arkansas Supreme Court rejects bid to save direct democracy ballot initiative"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84301,
+    "kind": "item",
+    "occurred_at": "2026-08-21T16:29:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/right-wing-group-loses-bid-to-block-new-trial-in-colorado-voter-intimidation-suit",
+    "title": "Right-wing group loses bid to block new trial in Colorado voter intimidation suit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84299,
+    "kind": "item",
+    "occurred_at": "2026-08-21T17:00:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-appears-to-have-hired-lawyer-convicted-of-hacking-election-sites",
+    "title": "Exclusive: Trump DOJ appears to have hired lawyer convicted of hacking election sites to check ‘integrity’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84298,
+    "kind": "item",
+    "occurred_at": "2026-08-21T17:19:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/9th-circuit-junks-gop-lawsuit-challenging-nevadas-mail-ballot-grace-period",
+    "title": "9th Circuit junks GOP lawsuit challenging Nevada’s mail ballot grace period"
   }
 ]

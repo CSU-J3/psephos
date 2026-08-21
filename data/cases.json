@@ -16635,9 +16635,9 @@
     "court": "Northern District of Georgia",
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 228,
+    "entry_count": 229,
     "filed_at": "2026-01-23T00:00:00",
-    "latest_entry_at": "2026-08-19T00:00:00",
+    "latest_entry_at": "2026-08-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
@@ -21303,9 +21303,9 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 48,
+    "entry_count": 50,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-19T00:00:00",
+    "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -21472,9 +21472,9 @@
     "court": "First Circuit",
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 48,
+    "entry_count": 52,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-17T00:00:00",
+    "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -21631,6 +21631,46 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73470017/00108471602/1/united-states-v-amore/",
         "title": "United States v. Rhode Island: BRIEFING schedule set. Brief and Appendix due 08/17/2026 for appellant United States. Pursuant to F.R.A.P. 31(a), appellee's brief will be due 30 days following service of appellan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84119,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108494612/united-states-v-amore/",
+        "title": "United States v. Rhode Island: MOTION requesting leave for Attorney Rodkangyil Orion Danjuma to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton Mc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84120,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108494735/united-states-v-amore/",
+        "title": "United States v. Rhode Island: MOTION requesting leave for Attorney Gregory A. Clarick to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84121,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108494739/united-states-v-amore/",
+        "title": "United States v. Rhode Island: MOTION requesting leave for Attorney David Kumagai to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary. Serv"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84122,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108494851/united-states-v-amore/",
+        "title": "United States v. Rhode Island: MOTION requesting leave for Attorney Jared F. Davidson to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary. "
       }
     ]
   },
@@ -21641,9 +21681,9 @@
     "court": "First Circuit",
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 52,
+    "entry_count": 58,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-19T00:00:00",
+    "latest_entry_at": "2026-08-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -21820,6 +21860,46 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108494390/united-states-v-galvin/",
         "title": "United States v. Massachusetts: ORDER entered: No objections having been filed, the motion of Liberty Legal Foundation for leave to file an amicus curiae brief in support of the Appellant and reversal is granted,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84102,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108494599/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION requesting leave for Attorney Rodkangyil Orion Danjuma to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton Mc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84103,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108494765/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION requesting leave for Attorney Gregory A. Clarick to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84104,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108494769/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION requesting leave for Attorney David Kumagai to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary. Serv"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84105,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108494842/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: MOTION requesting leave for Attorney Jared F. Davidson to enter an appearance on behalf of Movant(s) Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary. "
       }
     ]
   },
@@ -22692,9 +22772,9 @@
     "court": "Second Circuit",
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 48,
+    "entry_count": 49,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-08-19T00:00:00",
+    "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -22816,7 +22896,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-08-20T18:23:51.031148+00:00",
+    "status_checked_at": "2026-08-21T18:26:50.740753+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22828,6 +22908,45 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
         "title": "United States v. Illinois — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Lieutenant Governor and Secretary of State of New",
+    "case_id": "74676722",
+    "category": "voter-data",
+    "court": "Third Circuit",
+    "defendant": "Lieutenant Governor and Secretary of State of New",
+    "docket_number": "26-3085",
+    "entry_count": 5,
+    "filed_at": "2026-08-20T00:00:00",
+    "latest_entry_at": "2026-08-20T00:00:00",
+    "plaintiff": "United States",
+    "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
+    "state": "New Jersey",
+    "status": "pending",
+    "status_checked_at": "2026-08-21T18:25:20.534965+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 84110,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
+        "title": "United States v. New Jersey — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 84111,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74676722/4/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
+        "title": "United States v. New Jersey: ORDER (Clerk) The District Court granted the League of Women Voters of New Jersey, Latino Action Network, Maungsai Somboon, Make the Road New Jersey, Jamie Y. Ding, Danielle Litwak"
       }
     ]
   },
