@@ -116,3 +116,46 @@ textarea {
     transform: none;
   }
 }
+
+/* --- the map's two filter states, COMPOSED ----------------------------------------
+   Selection and hover are both `filter`, and before this rule one erased the other.
+   The map painted selection with the SVG `filter` presentation attribute and hover
+   with Tailwind's `hover:brightness-150`, which emits a real CSS `filter` declaration
+   -- and any CSS declaration beats a presentation attribute. So a reader who clicked
+   a state saw brightness and no glow for exactly as long as the pointer stayed on the
+   shape they had just clicked, which is the whole moment the affordance exists for.
+
+   Measured rather than reasoned about: after a real mouse click the computed filter
+   read `brightness(1.5)`, not `url(#map-glow)`. A SYNTHETIC click reads the glow
+   correctly, because it moves no pointer -- which is how this survived a pass.
+
+   The fix composes instead of dropping hover. Both states are slots in one chain, so
+   both can hold at once and a hovered selected state shows both. `var(--x, )` with an
+   empty fallback is the same space-trick Tailwind's own filter chain uses.
+
+   THE RULE IS DELIBERATELY UNLAYERED, and that is load-bearing rather than
+   incidental. Tailwind v4 emits its utilities inside `@layer utilities`, and an
+   unlayered declaration beats any layered one whatever the specificity -- so this
+   wins over `hover:brightness-150` outright and does not depend on winning a
+   specificity count. Moving it into a layer would hand the property back to the
+   utility and restore the defect silently. Measured: reverting the two shapes to the
+   presentation-attribute form makes the real-pointer assertion fail 3 of 6 with
+   `glow:false` while the pointer rests on the shape, and pass all 3 with it away.
+
+   SELECTION IS DRIVEN BY aria-pressed, which the shapes already carry, so the
+   accessible state and the painted state cannot diverge -- there is only one of them.
+   Delete that attribute and the glow goes with it, which is the correct coupling and
+   is asserted with a real pointer in scripts/assert-encodings.mjs. */
+.map-shape {
+  filter: var(--map-selected, ) var(--map-hovered, );
+  transition: filter 150ms ease;
+  cursor: pointer;
+}
+
+.map-shape:hover {
+  --map-hovered: brightness(1.5);
+}
+
+.map-shape[aria-pressed="true"] {
+  --map-selected: url(#map-glow);
+}

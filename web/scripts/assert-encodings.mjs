@@ -204,6 +204,62 @@ for (const f of FRAME_FRACTIONS) {
   unknown.push(...r.unknown);
 }
 
+// --- selection, PROVED WITH A REAL POINTER ------------------------------------
+//
+// THE POINTER BEING REAL IS THE ENTIRE ASSERTION, and the next person to read this
+// will be tempted to simplify it into page.click() or dispatchEvent. Do not.
+//
+// Selection and hover are both the CSS `filter` property. A dispatched click moves no
+// pointer, so :hover never matches, so the element reports the selection filter alone
+// and the check passes -- while a human, whose pointer is by definition sitting on the
+// shape they just clicked, sees something different. That is not a hypothetical: the
+// collision shipped and survived a verification pass for exactly this reason.
+//
+// So each case is measured twice: with the pointer resting on the shape it clicked
+// (both states must hold, composed) and with the pointer moved away (selection alone
+// must survive). A composition failure shows up as the glow missing in the first
+// reading and present in the second.
+//
+// The three targets are one large polygon, one callout square, and DC -- the callout
+// whose `ab` comes from `feature?.ab ?? c.code` and whose panel title proves the
+// lookup resolved rather than fell through.
+const readFilter = (ab) =>
+  page.evaluate((ab) => {
+    const el = document.querySelector(`svg [data-ab="${ab}"]`);
+    const f = getComputedStyle(el).filter;
+    return {
+      glow: /url\(.*#map-glow.*\)/.test(f),
+      brightness: /brightness/.test(f),
+      pressed: el.getAttribute("aria-pressed") === "true",
+      raw: f,
+    };
+  }, ab);
+
+const selection = [];
+for (const ab of ["CA", "MA", "DC"]) {
+  const at = await page.$eval(`svg [data-ab="${ab}"]`, (e) => {
+    const b = e.getBoundingClientRect();
+    // The bbox centre of a concave state (FL, HI, MI, LA) is outside its own paint --
+    // the Michigan-centroid problem that LABEL_ANCHOR already exists for, biting a
+    // second instrument. These three are convex enough for the centre to land inside,
+    // which is why they are the three and not an arbitrary sample.
+    return { x: b.x + b.width / 2, y: b.y + b.height / 2 };
+  });
+
+  await page.mouse.click(at.x, at.y);
+  await page.waitForTimeout(220);
+  selection.push({ label: `${ab} selected, pointer ON it`, hovered: true, ...(await readFilter(ab)) });
+
+  // Move the pointer well clear, without clicking: selection must survive on its own.
+  await page.mouse.move(4, 4);
+  await page.waitForTimeout(220);
+  selection.push({ label: `${ab} selected, pointer AWAY`, hovered: false, ...(await readFilter(ab)) });
+
+  await page.mouse.click(at.x, at.y);
+  await page.mouse.move(4, 4);
+  await page.waitForTimeout(120);
+}
+
 const named = await page.$$eval("[data-key] [data-encoding]", (els) =>
   els.map((e) => e.getAttribute("data-encoding")).sort(),
 );
@@ -235,6 +291,16 @@ check(
 // older assertion would have gone on proving nothing at a larger number.
 check("data-key blocks", keyCount, 1);
 check("data-legend blocks", legendCount, 1);
+
+console.log("");
+console.log("selection under a real pointer:");
+for (const r of selection) {
+  check(
+    r.label,
+    { glow: r.glow, brightness: r.brightness, pressed: r.pressed },
+    { glow: true, brightness: r.hovered, pressed: true },
+  );
+}
 
 console.log(failures === 0 ? "\nOK" : "\n" + failures + " FAILED");
 process.exit(failures === 0 ? 0 : 1);

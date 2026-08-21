@@ -31,10 +31,18 @@ import { BoardKey } from "@/components/SourceLegend";
 //   stroke     RESERVED for outcome. Unused this unit; the teal layer takes it when it
 //              exists, and until then nothing else may.
 //   violet dot state bills tracked, radius scaled by the running total
-//   glow       selection
-//   brightness hover
+//   filter     selection AND hover, COMPOSED into one chain -- see .map-shape in
+//              globals.css. Two meanings on one property is exactly what the rule
+//              above forbids, and they were not composed: hover's CSS declaration
+//              beat selection's presentation attribute, so the glow did not paint
+//              while the pointer sat on the shape that had just been clicked.
 // Selection and hover therefore touch neither fill nor stroke -- if hover changed fill,
 // a cursor crossing the map would read as posture changing under it.
+//
+// AND THE RULE ONLY EVER COVERED THE PROPERTIES IT NAMED. It protected fill and
+// stroke, listed glow and brightness as separate encodings, and never noticed they
+// are one property. A rule applied to the properties someone thought to name leaves
+// the ones they did not.
 //
 // THIS LIST IS NOT THE KEY, AND MUST NOT BE READ AS ONE. It was, and that is the
 // defect this unit fixed: it is a map-only list written by this file about this file,
@@ -237,8 +245,7 @@ export function RecordsMap({
               fill={POSTURE_FILL[postureAt(f.ab)]}
               stroke="#0a0a0a"
               strokeWidth={0.6}
-              filter={isSel ? "url(#map-glow)" : undefined}
-              className="cursor-pointer transition-[filter] hover:brightness-150"
+              className="map-shape"
               tabIndex={0}
               role="button"
               aria-label={f.name}
@@ -281,8 +288,7 @@ export function RecordsMap({
                 fill={POSTURE_FILL[postureAt(c.ab)]}
                 stroke="#0a0a0a"
                 strokeWidth={0.6}
-                filter={isSel ? "url(#map-glow)" : undefined}
-                className="cursor-pointer hover:brightness-150"
+                className="map-shape"
                 tabIndex={0}
                 role="button"
                 aria-label={c.name}
