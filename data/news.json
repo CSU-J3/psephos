@@ -6108,5 +6108,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/bullst-nevada-election-chief-blasts-trumps-noncitizen-voter-roll-claims-after-dhs-walks-them-back",
     "title": "‘Bulls**t’: Nevada election chief blasts Trump’s noncitizen voter roll claims after DHS walks them back"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84943,
+    "kind": "item",
+    "occurred_at": "2026-08-22T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/08/22/yavapai-county-save-tool-noncitizen-voters-michelle-burchill",
+    "title": "The SAVE system isn’t reliable, but it still might be useful. One Arizona county’s experience shows how."
   }
 ]
