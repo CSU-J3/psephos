@@ -6078,5 +6078,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/9th-circuit-junks-gop-lawsuit-challenging-nevadas-mail-ballot-grace-period",
     "title": "9th Circuit junks GOP lawsuit challenging Nevada’s mail ballot grace period"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84540,
+    "kind": "item",
+    "occurred_at": "2026-08-21T19:41:40+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/monitoring-the-situation",
+    "title": "Monitoring the Situation"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84539,
+    "kind": "item",
+    "occurred_at": "2026-08-21T20:43:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/acting-u-s-attorney-was-serving-illegally-when-he-subpoenaed-letitia-james-appeals-court-rules",
+    "title": "Acting U.S. attorney was serving illegally when he subpoenaed Letitia James, appeals court rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 84538,
+    "kind": "item",
+    "occurred_at": "2026-08-21T22:03:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/bullst-nevada-election-chief-blasts-trumps-noncitizen-voter-roll-claims-after-dhs-walks-them-back",
+    "title": "‘Bulls**t’: Nevada election chief blasts Trump’s noncitizen voter roll claims after DHS walks them back"
   }
 ]
