@@ -2393,9 +2393,9 @@
     "court": "District of Minnesota",
     "defendant": "Simon",
     "docket_number": "0:25-cv-03761",
-    "entry_count": 239,
+    "entry_count": 240,
     "filed_at": "2025-09-25T00:00:00",
-    "latest_entry_at": "2026-08-19T00:00:00",
+    "latest_entry_at": "2026-08-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
     "state": "Minnesota",
@@ -3972,6 +3972,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/214/united-states-v-simon/",
         "title": "United States v. Minnesota: TRANSMITTAL OF APPEAL LETTER TO U. S. COURT OF APPEALS, 8TH CIRCUIT, Re: Notice of Appeal to 8th Circuit 212 . (MMG) (Entered: 08/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 85381,
+        "kind": "item",
+        "occurred_at": "2026-08-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71453336/215/united-states-v-simon/",
+        "title": "United States v. Minnesota: USCA Case Number 26-2679 for 212 Notice of Appeal to 8th Circuit filed by United States of America. (ACH) (Entered: 08/21/2026)"
       }
     ]
   },
