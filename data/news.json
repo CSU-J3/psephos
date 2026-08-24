@@ -6168,5 +6168,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/08/24/minnesota-vouching-election-law-hidden-camera-voter-id",
     "title": "A state election law in Minnesota faces a surreal test"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 86812,
+    "kind": "item",
+    "occurred_at": "2026-08-24T14:43:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-supreme-court-confronts-gop-sheriff-who-seized-650000-ballots-in-election-conspiracy",
+    "title": "California Supreme Court confronts GOP sheriff who seized 650,000 ballots in election conspiracy"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 86811,
+    "kind": "item",
+    "occurred_at": "2026-08-24T15:51:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-again-begs-supreme-court-to-give-anti-mail-voting-order-the-go-ahead",
+    "title": "DOJ again begs Supreme Court to give anti-mail voting order the go-ahead"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 86809,
+    "kind": "item",
+    "occurred_at": "2026-08-24T16:38:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/24/votebeat-expert-desk-2026-midterms-journalist-signups",
+    "title": "Votebeat’s Expert Desk is back for the 2026 midterms. Journalists can sign up now."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 86810,
+    "kind": "item",
+    "occurred_at": "2026-08-24T17:34:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/explainer-the-battle-over-trumps-bid-to-restrict-mail-voting-hits-a-pivotal-point-where-things-stand-and-what-comes-next",
+    "title": "Explainer: The battle over Trump’s bid to restrict mail voting hits a pivotal point. Where things stand and what comes next"
   }
 ]

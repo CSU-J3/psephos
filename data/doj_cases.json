@@ -146,9 +146,9 @@
   {
     "caption": "United States v. Minnesota",
     "category": "voter-data",
-    "court": "District of Minnesota",
-    "court_id": "mnd",
-    "docket_number": "0:25-cv-03761",
+    "court": "Eighth District",
+    "court_id": null,
+    "docket_number": "26-2679",
     "notes": "Claims: 1. HAVA 2. Civil Rights Act 1960 | Status: On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Eighth Circuit. | Key decisions: District Court's 8/17/26 dismissal.",
     "state": "Minnesota"
   },

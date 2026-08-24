@@ -6070,9 +6070,9 @@
     "court": "D.D.C.",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 238,
+    "entry_count": 241,
     "filed_at": "2025-09-30T00:00:00",
-    "latest_entry_at": "2026-08-21T00:00:00",
+    "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
     "state": null,
@@ -7489,6 +7489,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/141/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: Notice of Appeal to DC Circuit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 86558,
+        "kind": "item",
+        "occurred_at": "2026-08-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/141/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: NOTICE OF APPEAL TO DC CIRCUIT COURT as to 112 Order on Motion for Summary Judgment,, Order on Motion to Dismiss,,,,, 111 Memorandum & Opinion, by STATE OF TEXAS. Filing fee $ 605,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 86559,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/142/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals fee was paid re 141 Notice of Appeal to DC "
       }
     ]
   },
@@ -21333,9 +21353,9 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 55,
+    "entry_count": 56,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-21T00:00:00",
+    "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -21502,9 +21522,9 @@
     "court": "First Circuit",
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 52,
+    "entry_count": 55,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-20T00:00:00",
+    "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -22966,7 +22986,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-08-23T18:15:43.437847+00:00",
+    "status_checked_at": "2026-08-24T18:26:11.339639+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22995,7 +23015,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-08-23T18:15:39.797991+00:00",
+    "status_checked_at": "2026-08-24T18:26:07.663169+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23046,6 +23066,35 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com",
         "title": "United States v. DC — voter-data"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Minnesota",
+    "case_id": "united-states-v-minnesota",
+    "category": "voter-data",
+    "court": "Eighth District",
+    "defendant": "Minnesota",
+    "docket_number": "26-2679",
+    "entry_count": 0,
+    "filed_at": null,
+    "latest_entry_at": null,
+    "plaintiff": "United States",
+    "source_url": null,
+    "state": "Minnesota",
+    "status": null,
+    "status_checked_at": null,
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 86621,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com",
+        "title": "United States v. Minnesota — voter-data"
       }
     ]
   }
