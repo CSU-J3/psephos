@@ -12312,7 +12312,7 @@
     "court": "District of Nevada",
     "defendant": "Aguilar",
     "docket_number": "3:25-cv-00728",
-    "entry_count": 110,
+    "entry_count": 112,
     "filed_at": "2025-12-11T00:00:00",
     "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
@@ -13091,6 +13091,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/96/united-states-v-aguilar/",
         "title": "United States v. Nevada: NOTICE OF APPEAL as to 94 Judgment, 93 Order on Motion to Dismiss,,,,,,,,, Order on Motion for Leave to File Excess Pages,,,,,,,,,,,,,,,,,,,,,,,, Order on Motion to Compel,,,,, by "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87321,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72026664/98/united-states-v-aguilar/",
+        "title": "United States v. Nevada: USCA Order for Time Schedule"
       },
       {
         "channel": "litigation",

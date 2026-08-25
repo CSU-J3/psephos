@@ -102,6 +102,16 @@
   {
     "channel": "news",
     "grade": "C3",
+    "id": 87510,
+    "kind": "item",
+    "occurred_at": "2026-01-05T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPVlg5YzVEY0FFN0dnS25YTkRnc0ZmSDVMOWhudk84V3NzTVQxUEV3SndGTS03cC1wUTBxMzNRU1BWckY4RnQwZ1B1SEduYWFiNkZVbUJpUjJUOEU0NUQ5SlVodXJUcDlUOFVQUzFWUjZTTHZFb1BpT2l5TkhzRUs4aW0xWXZjX09ONFRqb0loUWtFVUw5RUFmTlJFcWQzb09mZ3BYUWFOVkJzNWUyX2lZNVBMa1NnMTVyTXVzRzd0WWlPZkNjYlE?oc=5",
+    "title": "The Trump administration is building a ‘national voter roll’, former DOJ lawyers warn - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
     "id": 62800,
     "kind": "item",
     "occurred_at": "2026-01-09T08:00:00+00:00",
@@ -6298,5 +6308,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/michigan/2026/08/25/proof-of-citizenship-americans-for-citizen-voting-amendment-deadlock",
     "title": "Proof-of-citizenship amendment fails to make November ballot, for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87497,
+    "kind": "item",
+    "occurred_at": "2026-08-25T09:44:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/08/25/galveston-county-redistricting-after-primary-legal-challenge",
+    "title": "What we know about Galveston County’s redistricting and what it means for voters"
   }
 ]
