@@ -660,6 +660,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 87837,
+        "kind": "item",
+        "occurred_at": "2026-03-11T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQTF9IS19kTjgwbUxtWG5qbExGZ3U4c2QzZVBnd2I2Vkd0QjQ0Q1FFYXpyRFNLSWhlVlVxSUgzRFYyNENVVklQRGYtMk1fclAxQkdRQnRVR2pwOXFNcnRzdUZzU1R1cTNrNzhuVTYtUzZ4Q0lUQWpMaWp6YjlpRXpzUExja0UzTnVUd0N2V0t2eFNjcnFaNFdQSWtVZnBmbWs?oc=5",
+        "title": "Cornyn Op-Ed: Why the SAVE Act Matters More than the Filibuster - Senator Cornyn (.gov)"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 1229,
         "kind": "item",
         "occurred_at": "2026-03-16T07:00:00+00:00",
@@ -726,6 +736,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQNjZNYWROZVRqSVlnc2tSdEt0NTZFQ2VUVHUtYkhGU05aQmcza1F0UEhfMHM2cGF2dG5wRVlVV0lvVGo3NVN0bTV6S18zTlQxWEE5OHdTQzIxeElOT3ltdWRYV0FJUTZjUTRvUlptUDBFMXZObFZzbTRCdEZZeXRhOFJqdlk1aEVhcTZEbmltUTJGUjRNNVpzWDZBTWlCMEkwTnV4clFTMzVhdlM5SjFVMXczdi1lWnhqLU1rUjZPMVBWbVpwRTZFOQ?oc=5",
         "title": "GOP-led proof of citizenship voting bill advances despite concerns from Democratic colleagues - Michigan Advance"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 87828,
+        "kind": "item",
+        "occurred_at": "2026-03-17T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1uVHdab1hSeDBZemVlcl84S3FNUVRsUm5RdmJUWE5KSWlZZU1hM1Myd24xRzdKT2didjE5NWpvSjhNRGxwSDNEYnZhSTZIa3d0OUhiOVBtMXRwd2s3UGVpSmhLSWJDNUE?oc=5",
+        "title": "What is the SAVE America Act? And has it passed? - The 19th News"
       },
       {
         "channel": "legislation",
@@ -1668,6 +1688,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQZ05DS3BxSjRwaEhnWFlueEd1MjhnZWgwRk1hRnoyNlRndi1uMTJaclVWbTJ3M1JTVEEzTHpTVXpDQjZDcG5tVDdvM1UyRld6ZWp4YUFPZzNmNERsM2xSdG5lbzVnWktPSXoxTTB6eVM4bEEzbjVHY3Jla2FDUk5fZkpJbXZubXNwN2RoY3poSTZwMDI0OHZDbW1yVWFPRG9aVmtnRnNVVFlFQQ?oc=5",
         "title": "Trump cancels signing of bipartisan housing bill until his SAVE America Act is passed - ABC News - Breaking News, Latest News and Videos"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 87825,
+        "kind": "item",
+        "occurred_at": "2026-08-25T15:55:20+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/federal-court-blocks-ohio-law-requiring-proof-of-citizenship-for-voter-registration",
+        "title": "Federal court blocks Ohio law requiring proof of citizenship for voter registration"
       }
     ]
   },

@@ -7519,9 +7519,9 @@
     "court": "District of Vermont",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 104,
+    "entry_count": 106,
     "filed_at": "2025-12-01T00:00:00",
-    "latest_entry_at": "2026-08-21T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
@@ -8087,6 +8087,16 @@
         "occurred_at": "2026-08-13T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/89/united-states-v-hanzas/",
+        "title": "United States v. Vermont: NOTICE of Supplemental Authority by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim (Abbuhl, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87661,
+        "kind": "item",
+        "occurred_at": "2026-08-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/90/united-states-v-hanzas/",
         "title": "United States v. Vermont: NOTICE of Supplemental Authority by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim (Abbuhl, "
       }
     ]
@@ -10085,9 +10095,9 @@
     "court": "District of Delaware",
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 165,
+    "entry_count": 168,
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -10784,6 +10794,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/91/united-states-v-albence/",
         "title": "United States v. Delaware: NOTICE of Supplemental Authority re Motion to Dismiss (D.I. 36 ), by Bethany Jennings, Gemma Lowery. (Billion, Mark) Modified on 7/26/2026 (nms). (Entered: 07/24/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87570,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: Oral Order AND ~Util - Set Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87571,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/97/united-states-v-albence/",
+        "title": "United States v. Delaware: ORAL ORDER: An oral argument hearing to address the pending motions (D.I. 3, 33, 36, and 39 ) is now set for 9/17/2026, at 11:00 AM in Courtroom 6A. Ordered by Judge Richard G. And"
       }
     ]
   },
@@ -16705,9 +16735,9 @@
     "court": "Northern District of Georgia",
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 229,
+    "entry_count": 230,
     "filed_at": "2026-01-23T00:00:00",
-    "latest_entry_at": "2026-08-21T00:00:00",
+    "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
@@ -17574,6 +17604,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/141/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87613,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/144/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Response (Non-Motion)"
       }
     ]
   },
@@ -21373,9 +21413,9 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 70,
+    "entry_count": 88,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -21980,9 +22020,9 @@
     "court": "First Circuit",
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 54,
+    "entry_count": 62,
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -22219,6 +22259,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108496440/united-states-v-bellows/",
         "title": "United States v. Maine: MOTION requesting leave for Attorney Jonathan Rosenberg to enter an appearance on behalf of Movant(s) Former Employees of the U.S. Department of Justice. Served on 08/24/2026. [26-"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87620,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108496871/united-states-v-bellows/",
+        "title": "United States v. Maine: MOTION requesting leave for Attorney Zachary L. Heiden to enter an appearance on behalf of Movant(s) American Civil Liberties Union of Maine. Served on 08/25/2026. [26-1676] (ZLH) "
       }
     ]
   },
@@ -23046,7 +23096,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-08-24T18:26:11.339639+00:00",
+    "status_checked_at": "2026-08-25T18:27:16.515132+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23075,7 +23125,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-08-24T18:26:07.663169+00:00",
+    "status_checked_at": "2026-08-25T18:27:12.768415+00:00",
     "superseded_by": null,
     "timeline": [
       {

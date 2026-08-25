@@ -6311,6 +6311,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 87844,
+    "kind": "item",
+    "occurred_at": "2026-08-25T02:13:47+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPTlVfcG5iWlRtWThqVU1nRTA3M2haTWFrNGpmZGp2SGc2c1oxcDV0aEZMdTNQQ0I0TEx4aEhtWUxnc3RpTkNzOE5qSGcwYk82MDBRM01kVW9OWGdpLTFkMVdPNl90bXhrUUJmYmFNcUd1UnVOVjcwS0tfZVU5UGxxNV9DMXNrMERkZm9JY0k1UFBIOWFSSmptUFRn?oc=5",
+    "title": "🚨League of Women Voters of South Dakota v. Johnson - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 87497,
     "kind": "item",
@@ -6318,5 +6328,25 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/08/25/galveston-county-redistricting-after-primary-legal-challenge",
     "title": "What we know about Galveston County’s redistricting and what it means for voters"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 87825,
+    "kind": "item",
+    "occurred_at": "2026-08-25T15:55:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-court-blocks-ohio-law-requiring-proof-of-citizenship-for-voter-registration",
+    "title": "Federal court blocks Ohio law requiring proof of citizenship for voter registration"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87824,
+    "kind": "item",
+    "occurred_at": "2026-08-25T16:17:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-seizes-on-supreme-court-decision-to-press-case-for-trump-mail-voting-order",
+    "title": "DOJ seizes on Supreme Court decision to press case for Trump mail voting order"
   }
 ]
