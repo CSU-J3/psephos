@@ -6208,5 +6208,95 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/explainer-the-battle-over-trumps-bid-to-restrict-mail-voting-hits-a-pivotal-point-where-things-stand-and-what-comes-next",
     "title": "Explainer: The battle over Trump’s bid to restrict mail voting hits a pivotal point. Where things stand and what comes next"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87039,
+    "kind": "item",
+    "occurred_at": "2026-08-24T19:46:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-compares-mail-ballots-to-fake-bombs-cremated-remains",
+    "title": "USPS compares mail ballots to fake bombs, cremated remains"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87038,
+    "kind": "item",
+    "occurred_at": "2026-08-24T20:54:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-supreme-court-puzzled-by-gop-sheriffs-bizarre-defense-for-seizing-ballots",
+    "title": "California Supreme Court puzzled by GOP sheriff’s ‘bizarre’ defense for seizing ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87036,
+    "kind": "item",
+    "occurred_at": "2026-08-24T21:12:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-major-blow-to-voters-supreme-court-greenlights-trumps-attack-on-mail-voting-before-midterms",
+    "title": "Supreme Court lifts injunction blocking Trump’s attack on mail voting before midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87037,
+    "kind": "item",
+    "occurred_at": "2026-08-24T22:11:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-advocates-challenge-south-dakotas-confusing-proof-of-citizenship-system",
+    "title": "Voting rights advocates challenge South Dakota’s ‘confusing’ proof-of-citizenship system"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 87050,
+    "kind": "item",
+    "occurred_at": "2026-08-24T22:37:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNZ2pZM25OUkJLa0RfMWRwS1RYQzJLWVB1ZkJZRlZPWVE4NENRSEhBckFlRkEzREFMSFVvMzhiYUNGWk9mQXRxVVI0TEZxbENpMml1WlBncFdoT0VIeEQydzdYR3NYNU1zS2loZEtMb25RS2JxVXdIZmxucTY3cTY2WUhPZGNqR0U2eVI1WUdrSFNDMkhrTUlIOVA5OWhxWlh2b1VqeEFWbEJvRE84NUJiM190UkFfclcxS2VLZWVVdHZaX19id3RTN0xB?oc=5",
+    "title": "Supreme Court sides with Trump over mail-voting restrictions — but they still might not affect the midterms - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87034,
+    "kind": "item",
+    "occurred_at": "2026-08-24T22:37:11+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/24/supreme-court-lifts-stay-trump-executive-order-on-elections-mail-ballot-restrictions",
+    "title": "Supreme Court lifts 1 of 2 blocks on Trump’s mail-voting executive order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87035,
+    "kind": "item",
+    "occurred_at": "2026-08-24T23:32:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/jackson-slams-supreme-court-majority-for-injecting-chaos-into-midterms",
+    "title": "Jackson slams Supreme Court majority for injecting ‘chaos’ into midterms as voting advocates blast mail ballot ruling"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 87041,
+    "kind": "item",
+    "occurred_at": "2026-08-25T00:32:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPOTFCVFRfTHB3TEtmT2lPVmNBclFKbE5MMFRBa3NzSVFtSnFTNFNmd1l0WWNJNUpsTE00Ujc2Rm9QTDFVdE9MZXFPb1cycXMtWmFiRmxmSk1qMmZtNFdUd01UT1JiMXp5VzFpNkdKZjktVnl0dnFrSjc0RlZqRlNzSlFsaVFBRGNCWUlQTzJnREVzVFFEWnVsOTQ3WFQyZVI2SzdPU0tkMm41RXQ0SHE0NTRSV3E?oc=5",
+    "title": "Supporters vow to go to court to force election on whether Michigan voters should have to prove their citizenship - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 87033,
+    "kind": "item",
+    "occurred_at": "2026-08-25T00:32:41+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/08/25/proof-of-citizenship-americans-for-citizen-voting-amendment-deadlock",
+    "title": "Proof-of-citizenship amendment fails to make November ballot, for now"
   }
 ]
