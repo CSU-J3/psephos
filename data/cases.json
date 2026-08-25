@@ -21970,7 +21970,7 @@
     "court": "First Circuit",
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 52,
+    "entry_count": 54,
     "filed_at": "2026-06-15T00:00:00",
     "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
@@ -22199,6 +22199,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108496176/united-states-v-bellows/",
         "title": "United States v. Maine: MOTION requesting leave for Attorney Sophia Lin Lakin to enter an appearance filed by Not Party American Civil Liberties Union of Maine. Served on 08/24/2026. [26-1676] (SLL) [Ente"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 87102,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108496440/united-states-v-bellows/",
+        "title": "United States v. Maine: MOTION requesting leave for Attorney Jonathan Rosenberg to enter an appearance on behalf of Movant(s) Former Employees of the U.S. Department of Justice. Served on 08/24/2026. [26-"
       }
     ]
   },
