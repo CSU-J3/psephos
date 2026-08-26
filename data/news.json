@@ -6348,5 +6348,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-seizes-on-supreme-court-decision-to-press-case-for-trump-mail-voting-order",
     "title": "DOJ seizes on Supreme Court decision to press case for Trump mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88065,
+    "kind": "item",
+    "occurred_at": "2026-08-25T20:15:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-renew-bid-to-block-trumps-unlawful-anti-mail-voting-order",
+    "title": "Democrats renew bid to block Trump’s ‘unlawful’ anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88064,
+    "kind": "item",
+    "occurred_at": "2026-08-26T00:08:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/08/26/elon-musk-wisconsin-voters-million-dollar-checks-no-criminal-charges",
+    "title": "Elon Musk won’t face criminal charges for offering voters $1 million checks during 2025 Supreme Court election"
   }
 ]
