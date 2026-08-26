@@ -6368,5 +6368,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/08/26/elon-musk-wisconsin-voters-million-dollar-checks-no-criminal-charges",
     "title": "Elon Musk won’t face criminal charges for offering voters $1 million checks during 2025 Supreme Court election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88519,
+    "kind": "item",
+    "occurred_at": "2026-08-26T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/08/26/mail-voting-list-removal-2027-law-doug-ducey",
+    "title": "Hundreds of thousands of Arizonans could be removed from the mail voting list in 2027"
   }
 ]
