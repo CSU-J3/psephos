@@ -6070,9 +6070,9 @@
     "court": "D.D.C.",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 241,
+    "entry_count": 243,
     "filed_at": "2025-09-30T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
     "state": null,
@@ -21854,6 +21854,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 88553,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 13203,
         "kind": "item",
         "occurred_at": "2026-06-09T00:00:00",
@@ -22309,9 +22319,9 @@
     "court": "D.C. Circuit",
     "defendant": "DHS",
     "docket_number": "26-5243",
-    "entry_count": 29,
+    "entry_count": 30,
     "filed_at": "2026-06-29T00:00:00",
-    "latest_entry_at": "2026-07-30T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
@@ -22418,6 +22428,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73544809/01208870652/league-of-women-voters-v-dhs/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): REPLY [2184033] filed by Frank Bisignano, DHS, Markwayne Mullin and SSA to response [2183635-2] [Service Date: 07/20/2026 by CM/ECF NDA] Length Certification: 2593 words. [26-5243]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88533,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208882124/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): CLERK'S ORDER [2189970] filed consolidating cases 26-5301 (Consolidation started 08/26/2026) with 26-5243 [26-5243, 26-5301]"
       }
     ]
   },
@@ -22973,9 +22993,9 @@
     "court": "Second Circuit",
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 51,
+    "entry_count": 54,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-08-17T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
@@ -23146,7 +23166,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-08-25T18:27:16.515132+00:00",
+    "status_checked_at": "2026-08-26T19:34:42.423705+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23175,7 +23195,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-08-25T18:27:12.768415+00:00",
+    "status_checked_at": "2026-08-26T19:34:38.169298+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23217,6 +23237,16 @@
     "status_checked_at": "2026-08-26T00:35:57.077315+00:00",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 88556,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
+        "title": "United States v. Nevada — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -23309,6 +23339,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 86621,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com",
+        "title": "United States v. Minnesota — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 88555,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",

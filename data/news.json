@@ -6378,5 +6378,95 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/arizona/2026/08/26/mail-voting-list-removal-2027-law-doug-ducey",
     "title": "Hundreds of thousands of Arizonans could be removed from the mail voting list in 2027"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88737,
+    "kind": "item",
+    "occurred_at": "2026-08-26T13:58:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/michigan-board-rejects-proof-of-citizenship-ballot-measure-for-november-election-but-legal-challenge-looms",
+    "title": "Michigan board rejects proof-of-citizenship ballot measure for November election, but legal challenge looms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88736,
+    "kind": "item",
+    "occurred_at": "2026-08-26T15:24:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/by-wide-margin-americans-oppose-trumps-handling-of-elections-poll-finds",
+    "title": "By wide margin, Americans oppose Trump’s handling of elections, poll finds"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88729,
+    "kind": "item",
+    "occurred_at": "2026-08-26T16:00:19+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/26/trump-supreme-court-mail-ballots-legal-challenge-uncertainty",
+    "title": "Election officials wrestle with uncertainty amid legal battles over Trump mail ballot restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88735,
+    "kind": "item",
+    "occurred_at": "2026-08-26T16:09:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-seeks-private-contractor-to-collect-voter-files-nationwide-for-fraud-detection",
+    "title": "Trump administration seeks private contractor to collect voter files nationwide for ‘fraud detection’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88734,
+    "kind": "item",
+    "occurred_at": "2026-08-26T16:11:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/for-missouris-older-voters-these-special-ballots-are-a-lifeline-and-theyre-at-risk",
+    "title": "For Missouri’s older voters, these special ballots are a lifeline — and they’re at risk"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88733,
+    "kind": "item",
+    "occurred_at": "2026-08-26T16:49:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democratic-states-launch-new-legal-battle-over-trumps-mail-voting-order",
+    "title": "Democratic states launch new legal battle over Trump’s mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88732,
+    "kind": "item",
+    "occurred_at": "2026-08-26T16:56:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-clears-way-for-legal-fight-on-constitutionality-of-trumps-attack-on-mail-voting",
+    "title": "Judge lifts second block on Trump’s mail voting order, clears way for legal fight on constitutionality"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88731,
+    "kind": "item",
+    "occurred_at": "2026-08-26T16:58:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/citing-callais-appeals-court-overturns-black-voters-redistricting-win-in-georgia",
+    "title": "Citing Callais, appeals court overturns Black voters’ redistricting win in Georgia"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 88730,
+    "kind": "item",
+    "occurred_at": "2026-08-26T17:43:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-blocks-maryland-democrats-redistricting-plans-setting-up-state-supreme-court-appeal",
+    "title": "Judge blocks Maryland Democrats’ redistricting plans, setting up state Supreme Court appeal"
   }
 ]
