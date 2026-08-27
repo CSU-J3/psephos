@@ -6070,7 +6070,7 @@
     "court": "D.D.C.",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 243,
+    "entry_count": 245,
     "filed_at": "2025-09-30T00:00:00",
     "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "League of Women Voters",
@@ -7509,6 +7509,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/142/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals fee was paid re 141 Notice of Appeal to DC "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 89043,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: USCA Case Number 26-5301 for 141 Notice of Appeal to DC Circuit Court, filed by STATE OF TEXAS. (mg)"
       }
     ]
   },
@@ -22100,9 +22110,9 @@
     "court": "First Circuit",
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 62,
+    "entry_count": 63,
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-08-25T00:00:00",
+    "latest_entry_at": "2026-08-27T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -23239,14 +23249,14 @@
     "court": "Seventh Circuit",
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 12,
+    "entry_count": 13,
     "filed_at": "2026-08-17T00:00:00",
     "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-08-26T19:34:42.423705+00:00",
+    "status_checked_at": "2026-08-27T17:02:35.816919+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23275,7 +23285,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-08-26T19:34:38.169298+00:00",
+    "status_checked_at": "2026-08-27T17:02:32.187651+00:00",
     "superseded_by": null,
     "timeline": [
       {

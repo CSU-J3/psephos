@@ -6481,6 +6481,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 89324,
+    "kind": "item",
+    "occurred_at": "2026-08-26T21:47:59+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPWkF1T2RiN0Fyejc0ZFNCYjhLelBOWGszYzU2X3I2c0ZTNDFVREs3ZDhERzlMTGUzZ08wdDktRjllbl9IOU9yVmJ4dHVyM0JKem1kanRRdTEtS3FRVjhSLVN6bUNlVEUwSzZYa0dJbkVLVWxrOG9waHB4WFJCMUt5NnAxSUxVUG9VS2tjem9Ka0JjSkZoOE1OclZUbGp4REVuTDJzWXVJSjJ3UQ?oc=5",
+    "title": "It’s almost time to vote, but we still don’t know if Trump’s mail ballot restrictions will be in place for the midterms - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 89019,
     "kind": "item",
