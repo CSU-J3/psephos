@@ -6468,5 +6468,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-blocks-maryland-democrats-redistricting-plans-setting-up-state-supreme-court-appeal",
     "title": "Judge blocks Maryland Democrats’ redistricting plans, setting up state Supreme Court appeal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89020,
+    "kind": "item",
+    "occurred_at": "2026-08-26T20:29:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-groups-challenge-usps-rule-on-trumps-anti-voting-order-n-next-chapter-of-litigation",
+    "title": "Voting rights groups challenge USPS rule on Trump’s anti-voting order in next chapter of litigation"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89019,
+    "kind": "item",
+    "occurred_at": "2026-08-26T22:31:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-lacks-high-confidence-in-its-pennsylvania-noncitizen-voter-roll-claims",
+    "title": "DHS lacks ‘high confidence’ in its Pennsylvania noncitizen voter roll claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89018,
+    "kind": "item",
+    "occurred_at": "2026-08-26T23:06:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maine-gop-governor-nominee-plans-to-ask-trump-admin-to-send-ice-to-the-polls",
+    "title": "Maine GOP governor nominee plans to ask Trump admin to send ICE to the polls"
   }
 ]

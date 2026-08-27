@@ -7519,14 +7519,14 @@
     "court": "District of Vermont",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 107,
+    "entry_count": 108,
     "filed_at": "2025-12-01T00:00:00",
     "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:24.646256+00:00",
+    "status_checked_at": "2026-08-27T05:28:51.109100+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -8098,6 +8098,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/90/united-states-v-hanzas/",
         "title": "United States v. Vermont: NOTICE of Supplemental Authority by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim (Abbuhl, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88831,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/92/united-states-v-hanzas/",
+        "title": "United States v. Vermont: RESPONSE re 83 ; 85 ; 86 ; 87 ; 88 ; 89 ; 90 NOTICE of Supplemental Authority re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim by United States of America. (Bachand, J"
       }
     ]
   },
@@ -9433,7 +9443,7 @@
     "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
     "state": "Washington",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:28.394407+00:00",
+    "status_checked_at": "2026-08-27T05:28:54.823160+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -10102,7 +10112,7 @@
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:32.024475+00:00",
+    "status_checked_at": "2026-08-27T05:28:58.561182+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -11890,7 +11900,7 @@
     "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
     "state": "Hawaii",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:36.470434+00:00",
+    "status_checked_at": "2026-08-27T05:29:03.116675+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -16735,14 +16745,14 @@
     "court": "Northern District of Georgia",
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 230,
+    "entry_count": 232,
     "filed_at": "2026-01-23T00:00:00",
     "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:40.124567+00:00",
+    "status_checked_at": "2026-08-27T05:29:06.855969+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -17603,6 +17613,16 @@
         "occurred_at": "2026-08-07T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/141/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88794,
+        "kind": "item",
+        "occurred_at": "2026-08-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/143/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       },
       {
@@ -19159,7 +19179,7 @@
     "source_url": "https://www.courtlistener.com/docket/72334921/united-states-v-henderson/",
     "state": "Utah",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:43.770422+00:00",
+    "status_checked_at": "2026-08-27T05:29:11.552897+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19538,7 +19558,7 @@
     "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:48.369058+00:00",
+    "status_checked_at": "2026-08-27T05:29:15.447171+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20029,9 +20049,9 @@
     "court": "Sixth Circuit",
     "defendant": "Jocelyn Benson",
     "docket_number": "26-1225",
-    "entry_count": 131,
+    "entry_count": 132,
     "filed_at": "2026-02-27T00:00:00",
-    "latest_entry_at": "2026-08-14T00:00:00",
+    "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
     "state": "Michigan",
@@ -20495,7 +20515,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
     "state": "California",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:52.056718+00:00",
+    "status_checked_at": "2026-08-27T05:29:19.169705+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20704,7 +20724,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
     "state": "Oregon",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:56.028914+00:00",
+    "status_checked_at": "2026-08-27T05:29:22.876228+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20883,7 +20903,7 @@
     "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
     "state": "Idaho",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:00.334850+00:00",
+    "status_checked_at": "2026-08-27T05:29:26.709860+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21032,7 +21052,7 @@
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:04.000805+00:00",
+    "status_checked_at": "2026-08-27T05:29:30.816824+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21351,7 +21371,7 @@
     "source_url": "https://www.courtlistener.com/docket/73443024/united-states-of-america-v-fontes/",
     "state": "Arizona",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:07.648742+00:00",
+    "status_checked_at": "2026-08-27T05:29:34.568841+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21413,14 +21433,14 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 88,
+    "entry_count": 92,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-25T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:12.146182+00:00",
+    "status_checked_at": "2026-08-27T05:29:38.587308+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21592,14 +21612,14 @@
     "court": "First Circuit",
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 55,
+    "entry_count": 65,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:15.856364+00:00",
+    "status_checked_at": "2026-08-27T05:29:42.311307+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21811,14 +21831,14 @@
     "court": "First Circuit",
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 75,
+    "entry_count": 85,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:19.551940+00:00",
+    "status_checked_at": "2026-08-27T05:29:46.008955+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22050,6 +22070,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108496482/united-states-v-galvin/",
         "title": "United States v. Massachusetts: MOTION requesting leave for Attorney Jonathan Rosenberg to enter an appearance on behalf of Movant(s) Former Employees of the U.S. Department of Justice. Served on 08/24/2026. [26-"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88809,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108497884/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER entered: On August 21, 2026, Democratic National Committee filed a brief as amicus curiae. The brief is non-compliant because the caption on the front cover of the brief does"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88810,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108497894/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER entered: Upon consideration, Attorneys Jared F. Davidson, David Kumagai, Gregory A. Clarick, and Rodkangyil Orion Danjuma's motions for leave to enter an appearance on behalf"
       }
     ]
   },
@@ -22067,7 +22107,7 @@
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:24.017963+00:00",
+    "status_checked_at": "2026-08-27T05:29:50.454529+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22326,7 +22366,7 @@
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:51.334827+00:00",
+    "status_checked_at": "2026-08-27T05:30:18.219515+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22448,14 +22488,14 @@
     "court": "Third Circuit",
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 54,
+    "entry_count": 55,
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:27.798122+00:00",
+    "status_checked_at": "2026-08-27T05:29:54.200544+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22577,6 +22617,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/32/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ORDER (FREEMAN, Circuit Judge) denying Motion filed by America First Policy Institute - Pennsylvania to proceed as intervenor in support of Appellant. Panel No.: ACO-116. Freeman, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88827,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/32/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ORDER (FREEMAN, Circuit Judge) denying Motion filed by America First Policy Institute - Pennsylvania to proceed as intervenor in support of Appellant. Panel No.: ACO-116. Freeman, "
       }
     ]
   },
@@ -22587,14 +22637,14 @@
     "court": "First Circuit",
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 23,
+    "entry_count": 27,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-08-11T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:31.486904+00:00",
+    "status_checked_at": "2026-08-27T05:29:58.237091+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22656,6 +22706,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108489203/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: MOTION for leave to file amicus curiae brief in support of Appellant filed by Movant(s) Liberty Legal Foundation. Served on 08/10/2026. [26-1783] (SB) [Entered: 08/10/2026 11:59 AM"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88818,
+        "kind": "item",
+        "occurred_at": "2026-08-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108494704/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION to extend time to file brief filed by Appellees David M. Scanlan and State of New Hampshire. Served on 08/20/2026. [26-1783] (MAT) [Entered: 08/20/2026 10:33 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88819,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108498047/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER entered: No objections having been filed, the motion of Liberty Legal Foundation for leave to file an amicus curiae brief in support of the Appellant and reversal is granted,"
       }
     ]
   },
@@ -22673,7 +22743,7 @@
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:35.990657+00:00",
+    "status_checked_at": "2026-08-27T05:30:02.694643+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22872,7 +22942,7 @@
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:39.644921+00:00",
+    "status_checked_at": "2026-08-27T05:30:06.480002+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22921,7 +22991,7 @@
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:43.301027+00:00",
+    "status_checked_at": "2026-08-27T05:30:10.232583+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23000,7 +23070,7 @@
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:16.796403+00:00",
+    "status_checked_at": "2026-08-27T05:28:43.157437+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23042,14 +23112,14 @@
     "court": "Second Circuit",
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 49,
+    "entry_count": 51,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-08-20T00:00:00",
+    "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:20.540939+00:00",
+    "status_checked_at": "2026-08-27T05:28:46.949869+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23081,6 +23151,16 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88775,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/51/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION, to amend caption, on behalf of Appellee SEIU District 1199NE, Appellee Connecticut Alliance for Retired Americans, Appellee Connecticut Citizen Action Group, Appellee Bette"
       }
     ]
   },
@@ -23098,7 +23178,7 @@
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:38:47.718609+00:00",
+    "status_checked_at": "2026-08-27T05:30:14.470175+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23137,7 +23217,7 @@
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:37:12.971342+00:00",
+    "status_checked_at": "2026-08-27T05:28:39.420347+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23159,9 +23239,9 @@
     "court": "Seventh Circuit",
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 7,
+    "entry_count": 12,
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
@@ -23188,9 +23268,9 @@
     "court": "Third Circuit",
     "defendant": "Lieutenant Governor and Secretary of State of New",
     "docket_number": "26-3085",
-    "entry_count": 8,
+    "entry_count": 11,
     "filed_at": "2026-08-20T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
@@ -23227,14 +23307,14 @@
     "court": "Ninth Circuit",
     "defendant": "Aguilar, et al.",
     "docket_number": "26-5375",
-    "entry_count": 9,
+    "entry_count": 10,
     "filed_at": "2026-08-20T00:00:00",
-    "latest_entry_at": "2026-08-21T00:00:00",
+    "latest_entry_at": "2026-08-25T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
     "state": "Nevada",
     "status": "pending",
-    "status_checked_at": "2026-08-26T00:35:57.077315+00:00",
+    "status_checked_at": "2026-08-27T05:28:35.597350+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23286,6 +23366,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74694778/9/united-states-of-america-v-aguilar-et-al/",
         "title": "United States v. Nevada: DEFECTIVE --- STATUS REPORT filed by Appellant United States of America.--[Wrong filing event, attached to motion at DE 6] [Entered: 08/21/2026 03:51 PM] [Edited: 08/24/2026 09:33 "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 88815,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74694778/10/united-states-of-america-v-aguilar-et-al/",
+        "title": "United States v. Nevada: MEDIATION ORDER: By 9/2/2026, counsel to email Circuit Mediator regarding settlement potential. Include Ninth Circuit case name and number in subject line. This communication will "
       }
     ]
   },
