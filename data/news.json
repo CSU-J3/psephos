@@ -6508,5 +6508,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/maine-gop-governor-nominee-plans-to-ask-trump-admin-to-send-ice-to-the-polls",
     "title": "Maine GOP governor nominee plans to ask Trump admin to send ICE to the polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89590,
+    "kind": "item",
+    "occurred_at": "2026-08-27T17:06:46+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/wyoming-gop-primary-secretary-of-state-freedom-caucus",
+    "title": "Wyoming Voters Oust GOP Faction that Wants to Crack Down on Elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89589,
+    "kind": "item",
+    "occurred_at": "2026-08-27T17:22:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-ultimately-wants-the-chaos-states-cant-implement-anti-mail-voting-order-before-midterms-experts-warn",
+    "title": "‘Trump ultimately wants the chaos’: States can’t implement anti-mail voting order before midterms, experts warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89588,
+    "kind": "item",
+    "occurred_at": "2026-08-27T17:33:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-defends-trumps-anti-mail-voting-order-as-modest-in-new-court-filing",
+    "title": "DOJ defends Trump’s anti-mail voting order as ‘modest’ in new court filing"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89587,
+    "kind": "item",
+    "occurred_at": "2026-08-27T18:05:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/explainer-whats-next-in-the-legal-battles-over-trumps-attack-on-mail-voting",
+    "title": "What’s next in the legal battles over Trump’s attack on mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89586,
+    "kind": "item",
+    "occurred_at": "2026-08-27T19:51:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/taking-cues-from-trump-gop-candidates-push-for-law-enforcement-at-polls",
+    "title": "Taking cues from Trump, GOP candidates push for law enforcement at polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89585,
+    "kind": "item",
+    "occurred_at": "2026-08-27T21:28:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/facing-time-crunch-north-carolina-takes-first-step-to-comply-with-new-usps-mail-voting-rule-while-fighting-it",
+    "title": "Facing time crunch, North Carolina takes first step to comply with new USPS mail voting rule while fighting it"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89584,
+    "kind": "item",
+    "occurred_at": "2026-08-27T22:44:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/congressman-demands-answers-on-trump-dojs-election-monitors-after-troubling-hire-exposed",
+    "title": "Congressman demands answers on Trump DOJ’s election monitors after troubling hire exposed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89583,
+    "kind": "item",
+    "occurred_at": "2026-08-28T01:56:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-blocks-trumps-anti-mail-voting-order-again-citing-risk-to-states-and-voters",
+    "title": "Federal judge blocks Trump’s anti-mail voting order again, citing risk to states and voters"
   }
 ]
