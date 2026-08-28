@@ -6588,5 +6588,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-blocks-trumps-anti-mail-voting-order-again-citing-risk-to-states-and-voters",
     "title": "Federal judge blocks Trump’s anti-mail voting order again, citing risk to states and voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89853,
+    "kind": "item",
+    "occurred_at": "2026-08-28T03:27:09+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/28/trump-mail-voting-executive-order-2026-midterms-court-updates",
+    "title": "Federal judge places new freeze on Trump mail-ballot rules, setting up likely Supreme Court showdown"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 89868,
+    "kind": "item",
+    "occurred_at": "2026-08-28T03:32:18+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQdk56UTRJenJWZG9vaEhPdGFuWU9BdTBMbDl1a1ZacnpYYVRPczdNQXpWUE8xTERzbUo1cmlaZUJYYXVXRkxJTEdUREdKN2MxbHN3V2lmRnVaUzAyUjVBMlN0MWZqTjRRZkRJS2pqbUxrS1VjelkyUl9YOU5xVnFXa2R3QnJQNzlZeTQxUXlBRHJvVXRkblhpX1V5M1NPemdsdDMtNl9UQTNZN00?oc=5",
+    "title": "Everything you need to know about the status of Trump’s mail-voting restrictions for the midterms - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89854,
+    "kind": "item",
+    "occurred_at": "2026-08-28T14:13:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/exclusive-another-election-denial-leader-hired-by-dhs-drafted-letter-threatening-states-over-voting-audits",
+    "title": "Exclusive: Another election denial leader, hired by DHS, drafted letter threatening states over voting audits"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 89855,
+    "kind": "item",
+    "occurred_at": "2026-08-28T15:27:34+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/mail-voting-your-questions-answered",
+    "title": "Mail Voting in Turmoil: Your Questions Answered"
   }
 ]
