@@ -6628,5 +6628,55 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/mail-voting-your-questions-answered",
     "title": "Mail Voting in Turmoil: Your Questions Answered"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 90098,
+    "kind": "item",
+    "occurred_at": "2026-08-28T18:10:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/public-objections-pause-new-voting-restrictions-in-north-carolina-at-least-for-now",
+    "title": "Public objections pause new voting restrictions in North Carolina – at least for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 90097,
+    "kind": "item",
+    "occurred_at": "2026-08-28T18:11:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-threatens-new-lawsuit-over-new-jersey-voter-records-after-earlier-case-was-tossed",
+    "title": "RNC threatens new lawsuit over New Jersey voter records after earlier case was tossed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 90096,
+    "kind": "item",
+    "occurred_at": "2026-08-28T18:27:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/second-judge-blocks-maryland-democrats-redistricting-plan-but-state-supreme-court-will-have-final-word",
+    "title": "Second judge blocks Maryland Democrats’ redistricting plan, but state Supreme Court will have final word"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 90095,
+    "kind": "item",
+    "occurred_at": "2026-08-28T19:28:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-appeals-court-order-temporarily-blocking-trumps-attack-on-mail-voting",
+    "title": "DOJ appeals court order temporarily blocking Trump’s attack on mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 90099,
+    "kind": "item",
+    "occurred_at": "2026-08-28T20:34:13+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/blocked-delivery",
+    "title": "Blocked Delivery"
   }
 ]

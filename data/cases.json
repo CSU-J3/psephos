@@ -7536,7 +7536,7 @@
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:56:57.997574+00:00",
+    "status_checked_at": "2026-08-29T01:19:59.399486+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -9453,7 +9453,7 @@
     "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
     "state": "Washington",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:02.023957+00:00",
+    "status_checked_at": "2026-08-29T01:20:02.933427+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -10115,14 +10115,14 @@
     "court": "District of Delaware",
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 169,
+    "entry_count": 172,
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-08-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:05.763553+00:00",
+    "status_checked_at": "2026-08-29T01:20:06.482032+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -10834,6 +10834,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/97/united-states-v-albence/",
         "title": "United States v. Delaware: ORAL ORDER: An oral argument hearing to address the pending motions (D.I. 3, 33, 36, and 39 ) is now set for 9/17/2026, at 11:00 AM in Courtroom 6A. Ordered by Judge Richard G. And"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 89897,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: 1 - Terminate Hearings AND Oral Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 89898,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/99/united-states-v-albence/",
+        "title": "United States v. Delaware: ORAL ORDER: Due to an unforeseen scheduling conflict, the hearing set for 9/17/2026, is CANCELED and will be rescheduled for a date to be determined. Ordered by Judge Richard G. An"
       }
     ]
   },
@@ -11910,7 +11930,7 @@
     "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
     "state": "Hawaii",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:09.544308+00:00",
+    "status_checked_at": "2026-08-29T01:20:41.193794+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -16762,7 +16782,7 @@
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:14.052499+00:00",
+    "status_checked_at": "2026-08-29T01:20:44.811564+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19189,7 +19209,7 @@
     "source_url": "https://www.courtlistener.com/docket/72334921/united-states-v-henderson/",
     "state": "Utah",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:17.780439+00:00",
+    "status_checked_at": "2026-08-29T01:20:48.431913+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19568,7 +19588,7 @@
     "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:21.497655+00:00",
+    "status_checked_at": "2026-08-29T01:20:51.976275+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20525,7 +20545,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
     "state": "California",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:25.919824+00:00",
+    "status_checked_at": "2026-08-29T01:20:55.550637+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20734,7 +20754,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
     "state": "Oregon",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:29.683402+00:00",
+    "status_checked_at": "2026-08-29T01:20:59.133570+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20913,7 +20933,7 @@
     "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
     "state": "Idaho",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:33.906823+00:00",
+    "status_checked_at": "2026-08-29T01:21:03.761121+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21062,7 +21082,7 @@
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:37.792803+00:00",
+    "status_checked_at": "2026-08-29T01:21:07.428329+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21381,7 +21401,7 @@
     "source_url": "https://www.courtlistener.com/docket/73443024/united-states-of-america-v-fontes/",
     "state": "Arizona",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:41.551216+00:00",
+    "status_checked_at": "2026-08-29T01:21:10.957228+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21443,14 +21463,14 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 93,
+    "entry_count": 96,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-27T00:00:00",
+    "latest_entry_at": "2026-08-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:45.332654+00:00",
+    "status_checked_at": "2026-08-29T01:21:14.526420+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21629,7 +21649,7 @@
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:49.698284+00:00",
+    "status_checked_at": "2026-08-29T01:21:18.731625+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21848,7 +21868,7 @@
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:53.512528+00:00",
+    "status_checked_at": "2026-08-29T01:21:22.426469+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22117,7 +22137,7 @@
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:57:57.388245+00:00",
+    "status_checked_at": "2026-08-29T01:21:25.937221+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22144,6 +22164,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 48581,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
+        "title": "United States v. Maine — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 89905,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -22396,7 +22426,7 @@
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:25.455861+00:00",
+    "status_checked_at": "2026-08-29T01:21:51.493487+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22535,7 +22565,7 @@
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:01.583532+00:00",
+    "status_checked_at": "2026-08-29T01:21:29.502427+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22684,7 +22714,7 @@
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:05.302341+00:00",
+    "status_checked_at": "2026-08-29T01:21:33.525247+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22783,7 +22813,7 @@
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:09.045775+00:00",
+    "status_checked_at": "2026-08-29T01:21:37.069164+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22982,7 +23012,7 @@
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:13.516582+00:00",
+    "status_checked_at": "2026-08-29T01:21:40.594671+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23031,7 +23061,7 @@
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:17.247963+00:00",
+    "status_checked_at": "2026-08-29T01:21:44.153967+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23110,7 +23140,7 @@
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:56:50.467907+00:00",
+    "status_checked_at": "2026-08-29T01:19:52.282569+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23159,7 +23189,7 @@
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:56:54.240684+00:00",
+    "status_checked_at": "2026-08-29T01:19:55.854697+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23218,7 +23248,7 @@
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:58:20.958114+00:00",
+    "status_checked_at": "2026-08-29T01:21:47.724323+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23257,7 +23287,7 @@
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:56:46.661802+00:00",
+    "status_checked_at": "2026-08-29T01:19:48.620061+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23354,13 +23384,23 @@
     "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
     "state": "Nevada",
     "status": "pending",
-    "status_checked_at": "2026-08-28T01:56:42.923916+00:00",
+    "status_checked_at": "2026-08-29T01:19:45.037019+00:00",
     "superseded_by": null,
     "timeline": [
       {
         "channel": "litigation",
         "grade": "B2",
         "id": 88556,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
+        "title": "United States v. Nevada — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 89910,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
