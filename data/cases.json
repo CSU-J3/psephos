@@ -22130,9 +22130,9 @@
     "court": "First Circuit",
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 67,
+    "entry_count": 78,
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-08-27T00:00:00",
+    "latest_entry_at": "2026-08-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -22409,6 +22409,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108498623/united-states-v-bellows/",
         "title": "United States v. Maine: ORDER directing Appellees Marpheen Chann and John Schneck to file a conforming brief. Brief due 09/03/2026. [26-1676] (JW) [Entered: 08/27/2026 04:55 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 91135,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108498996/united-states-v-bellows/",
+        "title": "United States v. Maine: ORDER entered: Upon consideration, Attorney Rodkangyil Orion Danjuma, Gregory A. Clarick, David Kumagai, and Jared F. Davidson's motion for leave to enter an appearance on behalf o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 91136,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108499139/united-states-v-bellows/",
+        "title": "United States v. Maine: ORDER entered: Upon consideration, Attorneys Theresa J. Lee, Carol Garvan, Sophia Lin Lakin, and Zachary L. Heiden's motions for leave to enter appearances on behalf of movant Amer"
       }
     ]
   },
@@ -23316,7 +23336,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-08-29T15:53:56.129495+00:00",
+    "status_checked_at": "2026-08-30T15:40:06.914032+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23345,7 +23365,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-08-29T15:53:52.557353+00:00",
+    "status_checked_at": "2026-08-30T15:40:03.194177+00:00",
     "superseded_by": null,
     "timeline": [
       {
