@@ -6698,5 +6698,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/the-justice-department-files-its-opposition-to-pro-voting-groups-request-for-a-block-on-a-new-final-rule-to-restrict-mail-voting",
     "title": "In new filing, DOJ opposes block on Trump’s anti-mail voting rule"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 91747,
+    "kind": "item",
+    "occurred_at": "2026-08-30T20:21:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voter-id-for-mail-voting-qualifies-for-november-ballot-in-colorado",
+    "title": "Voter ID for mail voting qualifies for November ballot in Colorado"
   }
 ]
