@@ -6708,5 +6708,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/voter-id-for-mail-voting-qualifies-for-november-ballot-in-colorado",
     "title": "Voter ID for mail voting qualifies for November ballot in Colorado"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 91946,
+    "kind": "item",
+    "occurred_at": "2026-08-31T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/08/31/trump-mail-voting-postal-service-election-challenges-court",
+    "title": "Trump’s mail voting restrictions would create logistical nightmare for midterm elections"
   }
 ]
