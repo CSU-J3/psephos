@@ -6718,5 +6718,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/08/31/trump-mail-voting-postal-service-election-challenges-court",
     "title": "Trump’s mail voting restrictions would create logistical nightmare for midterm elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92168,
+    "kind": "item",
+    "occurred_at": "2026-08-31T16:43:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/less-than-half-of-republican-attorneys-general-sign-on-to-defend-trumps-anti-mail-voting-order-in-court",
+    "title": "Less than half of Republican attorneys general sign on to defend Trump’s anti-mail voting order in court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92167,
+    "kind": "item",
+    "occurred_at": "2026-08-31T17:11:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-throws-out-right-wing-bid-for-minnesotas-voter-rolls",
+    "title": "Appeals court throws out right-wing bid for Minnesota’s voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92166,
+    "kind": "item",
+    "occurred_at": "2026-08-31T18:37:37+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/08/31/voter-suspense-list-registration-canceled-confirm-address",
+    "title": "Here’s what you need to know about Texas’ voter suspense list"
   }
 ]

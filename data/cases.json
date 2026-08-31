@@ -21463,9 +21463,9 @@
     "court": "Seventh Circuit",
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 96,
+    "entry_count": 98,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-28T00:00:00",
+    "latest_entry_at": "2026-08-31T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -21861,9 +21861,9 @@
     "court": "First Circuit",
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 85,
+    "entry_count": 95,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-26T00:00:00",
+    "latest_entry_at": "2026-08-31T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -22120,6 +22120,46 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108497894/united-states-v-galvin/",
         "title": "United States v. Massachusetts: ORDER entered: Upon consideration, Attorneys Jared F. Davidson, David Kumagai, Gregory A. Clarick, and Rodkangyil Orion Danjuma's motions for leave to enter an appearance on behalf"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 91973,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108497553/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER directing Party Bipartisan American Election Project to file a conforming brief. [26-1657] (GRC) [Entered: 08/26/2026 11:26 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 91974,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108497629/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER directing Amici Curiae Lawyers' Committee for Civil Rights Under Law and National Urban League to file a conforming brief. [26-1657] (GRC) [Entered: 08/26/2026 12:47 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 91975,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108497756/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER entered: On August 24, 2026, Former Employees of the U.S. Department of Justice filed a brief as amici curiae. The brief is non-compliant because the caption on the front cov"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 91976,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108497777/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER entered: On August 24, 2026, Local Governments and Local Election Officials filed a brief as amici curiae. The brief is non-compliant because the caption on the front cover o"
       }
     ]
   },
