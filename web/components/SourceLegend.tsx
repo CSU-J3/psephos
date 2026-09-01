@@ -1,4 +1,4 @@
-import { POSTURE_FILL, POSTURE_LABEL } from "@/lib/board";
+import { OVERLAY_LABEL, POSTURE_FILL, POSTURE_LABEL, type Overlay } from "@/lib/board";
 
 // THE REGISTER, shared by both keys on this page rather than copied into each. A key
 // that drifts from the other key is a second vocabulary, which is the problem a key
@@ -202,6 +202,39 @@ export function BoardKey() {
         >
           election executive order
         </Entry>
+      </div>
+
+      {/*
+        THE THIRD ROW IS A NEGATIVE CLAIM and it is the only one on this page. Every
+        entry above says "this mark means this". These say "these numbers have no
+        mark" -- the map paints litigation posture, and the line beneath it also
+        reports chains, dormancy and unlinked endings that no fill carries. A reader
+        taking the line as a key for the map goes looking for fills that are not
+        there; this row is what stops that, and it is option 4 of
+        docs/findings/board-fill-vocabulary.md.
+
+        NO data-encoding ON THESE ENTRIES, deliberately, and it is not a shortcut.
+        assert-encodings joins `[data-key] [data-encoding]` against what the board
+        actually paints, in BOTH directions -- so naming an encoding here would fail
+        the "named but not emitted" arm, correctly: the page emits no such mark. The
+        marker is `data-unpainted`, which is the same reasoning that made this block
+        `data-key` rather than a second `data-legend`: a thing that is counted apart
+        must be markable apart.
+
+        THE WORDINGS ARE READ FROM OVERLAY_LABEL, the same record the line reads, so
+        the claim and the numbers it disclaims cannot drift into two vocabularies.
+      */}
+      <div className={REGISTER}>
+        <span className="w-10 shrink-0 uppercase tracking-wide text-neutral-600">Line</span>
+        {(Object.keys(OVERLAY_LABEL) as Overlay[]).map((field) => (
+          <span key={field} data-unpainted={field}>
+            {OVERLAY_LABEL[field]}
+          </span>
+        ))}
+        <span className="text-neutral-600">
+          counted in the line below and marked per cell on /campaign; the map does not
+          paint them
+        </span>
       </div>
     </div>
   );

@@ -264,6 +264,21 @@ const named = await page.$$eval("[data-key] [data-encoding]", (els) =>
   els.map((e) => e.getAttribute("data-encoding")).sort(),
 );
 const keyCount = await page.$$eval("[data-key]", (els) => els.length);
+
+// --- the line against the key -------------------------------------------------
+//
+// A SECOND JOIN, over a different pair of sets, and it exists because the first one
+// cannot see this failure at all. The encodings join asks whether every MARK is
+// named. This asks whether every FIGURE the summary line prints is either painted by
+// the map or disclaimed as unpainted -- the ambiguity the board shipped with, where a
+// three-fill map sat above a six-figure line and nothing said which figures the fills
+// carried.
+const figures = await page.$$eval("[data-figure]", (els) =>
+  els.map((e) => e.getAttribute("data-figure")).sort(),
+);
+const unpainted = await page.$$eval("[data-key] [data-unpainted]", (els) =>
+  els.map((e) => e.getAttribute("data-unpainted")).sort(),
+);
 const legendCount = await page.$$eval("[data-legend]", (els) => els.length);
 
 await browser.close();
@@ -273,7 +288,9 @@ const namedSet = new Set(named);
 
 console.log("\nframes sampled: " + JSON.stringify(perFrame));
 console.log("emitted: " + JSON.stringify(emittedSorted));
-console.log("named:   " + JSON.stringify(named) + "\n");
+console.log("named:   " + JSON.stringify(named));
+console.log("figures: " + JSON.stringify(figures));
+console.log("unpainted: " + JSON.stringify(unpainted) + "\n");
 
 check("unclassified marks", unknown.slice(0, 6), []);
 check(
@@ -291,6 +308,25 @@ check(
 // older assertion would have gone on proving nothing at a larger number.
 check("data-key blocks", keyCount, 1);
 check("data-legend blocks", legendCount, 1);
+
+// ONE DIRECTION ONLY, and the asymmetry is deliberate rather than a half-finished
+// join. Every figure the line prints that the map does not paint must be disclaimed
+// in the key. The reverse arm is NOT asserted, because `unlinkedEndings` renders
+// behind a `> 0` conditional: on a day when nothing is unlinked the line does not
+// print it while the key still names it. That is the key being complete, not the key
+// lying, and an assertion that failed on it would be demanding the key go quiet
+// whenever a count reached zero.
+//
+// The exclusion list is FOUR here where board.test.ts has five. `none` is missing
+// from this one because the line never renders it -- there is no [data-figure="none"]
+// to exclude. It is excluded in the unit test on the different ground that the map
+// paints it. Same key, two lists, two reasons.
+const AGGREGATE_OR_PAINTED = new Set(["sued", "total", "active", "ended"]);
+check(
+  "line figures the map does not paint, disclaimed in the key",
+  figures.filter((f) => !AGGREGATE_OR_PAINTED.has(f) && !unpainted.includes(f)),
+  [],
+);
 
 console.log("");
 console.log("selection under a real pointer:");
