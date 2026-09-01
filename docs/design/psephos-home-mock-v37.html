@@ -1,0 +1,1016 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>psephos — homepage mockup v4 (wide + pressure board)</title>
+<style>
+  :root{
+    --bg:#0a0a0a; --panel:#111111; --panel2:#171717; --line:#262626; --line2:#333333;
+    --t1:#f5f5f5; --t2:#d4d4d4; --t3:#a3a3a3; --t4:#737373; --t5:#525252;
+    --a1:#34d399; --a1bg:#052e22; --a1ln:#065f46;
+    --b2:#38bdf8; --b2bg:#082f49; --b2ln:#0c4a6e;
+    --c3:#fbbf24; --c3bg:#451a03; --c3ln:#78350f;
+    --veh:#f59e0b; --link:#7dd3fc; --new:#e5e5e5;
+    --lit:#a78bfa; --leg:#38bdf8; --state:#2dd4bf; --exec:#f59e0b;
+    --hot:#ef4444; --hotdim:#7f1d1d; --cool:#3f3f46;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Inter","Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono","Cascadia Mono","JetBrains Mono","Roboto Mono",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--t2);font:14px/1.45 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  a:hover .title,a.lead:hover{text-decoration:underline;text-underline-offset:2px}
+  main{max-width:2200px;margin:0 auto;padding:40px 40px 64px}
+  h1{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:0;color:var(--t1)}
+  .tag{color:var(--t4);font-size:13px;margin:4px 0 0}
+  h2{font-size:15px;font-weight:600;color:var(--t1);margin:0 0 14px;display:flex;align-items:baseline;gap:8px}
+  h2 .n{color:var(--t4);font-weight:400;font-size:13px}
+  h2 .right{margin-left:auto;font-weight:400;font-size:12px;color:var(--t3);border:1px solid var(--line);border-radius:6px;padding:3px 8px}
+  section{margin-top:40px}
+  .list{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+  .muted{color:var(--t4)}
+  .mono{font-family:var(--mono);font-size:12px;color:var(--t3);white-space:nowrap}
+  .badge{display:inline-flex;align-items:center;font-size:11px;line-height:1;padding:3px 6px;border-radius:5px;border:1px solid var(--line2);color:var(--t3);white-space:nowrap}
+  .badge.a1{color:var(--a1);background:var(--a1bg);border-color:var(--a1ln);font-family:var(--mono);font-weight:600}
+  .badge.b2{color:var(--b2);background:var(--b2bg);border-color:var(--b2ln);font-family:var(--mono);font-weight:600}
+  .badge.c3{color:var(--c3);background:var(--c3bg);border-color:var(--c3ln);font-family:var(--mono);font-weight:600}
+  .badge.veh{color:var(--veh);border-color:#92400e;background:#2a1604;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+
+  /* the read, two columns of lines */
+  .read{margin-top:28px}
+  #asof{cursor:default;border-bottom:1px dotted #3f3f46;display:inline-block;text-align:left;vertical-align:baseline}
+  #asof .rot{display:inline-block;will-change:transform,opacity;
+    transition:opacity .34s cubic-bezier(.4,0,.2,1),transform .34s cubic-bezier(.4,0,.2,1)}
+  #asof .rot.out{opacity:0;transform:translateY(-5px)}
+  #asof .rot.in{opacity:0;transform:translateY(5px);transition:none}
+  @media (prefers-reduced-motion:reduce){
+    #asof .rot{transition:opacity .2s linear}
+    #asof .rot.out,#asof .rot.in{transform:none}
+  }
+  .readgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;border:1px solid var(--line);border-radius:8px;background:var(--line);overflow:hidden}
+  .readgrid .row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:20px;padding:16px 22px;background:var(--panel)}
+  @media (min-width:1900px){.readgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .readgrid .lab{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);padding-top:3px}
+  .readgrid .txt{font-size:14px;line-height:1.6;color:var(--t2);max-width:78ch}
+  .readgrid .txt b{color:var(--t1);font-weight:500}
+  .lead{color:var(--t1);border-bottom:1px solid var(--line2)}
+  .readgrid a.muted{color:var(--t4)}
+  .foot-line{margin-top:12px;font-size:12px;color:var(--t5)}
+
+  /* what has happened / what it would take */
+  .tabs{display:flex;gap:6px;margin:0 0 14px}
+  .tabs button{background:transparent;border:1px solid var(--line);border-radius:7px;color:var(--t4);font:13px var(--sans);padding:7px 14px;cursor:pointer}
+  .tabs button:hover{color:var(--t2);border-color:#3d3d3d}
+  .tabs button[aria-selected=true]{color:var(--t1);border-color:#4a4a4a;background:var(--panel2)}
+  .tabs button .k{font:11px var(--mono);color:var(--t5);margin-left:7px}
+  .tabs button[aria-selected=true] .k{color:var(--t3)}
+  .panel[hidden]{display:none}
+
+  .facts{display:grid;grid-template-columns:1fr;gap:1px;border:1px solid var(--line);border-radius:8px;background:var(--line);overflow:hidden}
+  @media (min-width:1000px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1900px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .fact{background:var(--panel);padding:16px 20px;display:grid;grid-template-columns:106px minmax(0,1fr);gap:20px;align-items:baseline}
+  .fact .when{font:11px var(--mono);color:var(--t4);line-height:1.5}
+  .fact .what{font-size:13px;line-height:1.5;color:var(--t2)}
+  .fact .what b{color:var(--t1);font-weight:500}
+  .fact .src{margin-top:5px;font-size:11px;color:var(--t5);display:flex;gap:6px;align-items:center}
+
+  .paths{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+  .path{padding:16px 18px;border-top:1px solid var(--line)}
+  .path:first-child{border-top:0}
+  .path .ph{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .path .pq{font-size:14px;color:var(--t1);font-weight:500}
+  .path .pc{font:11px var(--mono);color:var(--t4);text-transform:uppercase;letter-spacing:.04em}
+  .path .pc.motion{color:#fbbf24}
+  .steps{display:grid;gap:14px;margin-top:13px}
+  @media (min-width:760px){.steps{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}}
+  .step{border-top:3px solid #242424;padding-top:7px}
+  .step.done{border-top-color:#b02525}
+  .step.part{border-top-color:#7a4a14}
+  .step .sn{font-size:12px;color:var(--t4);line-height:1.4}
+  .step.done .sn{color:var(--t2)}
+  .step .sd{font:11px var(--mono);color:var(--t5);margin-top:3px}
+  .path .pnote{margin-top:10px;font-size:12px;color:var(--t4);line-height:1.55}
+  .path .pnote .src{display:inline-flex;gap:6px;align-items:center;margin-left:4px}
+  .em{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+  .em .lede{padding:16px 18px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.6;color:var(--t2);max-width:130ch}
+  .em .lede b{color:var(--t1);font-weight:500}
+  .emrow{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1.5fr) 160px;gap:26px;padding:16px 20px;border-top:1px solid var(--line);align-items:baseline}
+  .emrow:first-of-type{border-top:0}
+  .emrow .q{font-size:13px;color:var(--t1);line-height:1.45}
+  .emrow .basis{font-size:12px;color:var(--t4);line-height:1.55}
+  .emrow .basis code{font-family:var(--mono);font-size:11px;color:var(--t3)}
+  code,kbd,samp,pre{font-family:var(--mono)}
+  input,button,select,textarea{font-family:inherit}
+  .see{font:11px var(--mono);letter-spacing:.03em;text-transform:uppercase;border:1px solid var(--line2);border-radius:5px;padding:4px 8px;display:inline-block;color:var(--t4);white-space:nowrap}
+  .see.yes{color:#5eead4;border-color:#134e4a;background:#04211f}
+  .see.blind{color:#fbbf24;border-color:#78350f;background:#2a1604}
+  .see.na{color:var(--t5)}
+  @media (max-width:900px){.emrow{grid-template-columns:1fr;gap:6px}}
+  .tabnote{margin-top:14px;font-size:12px;color:var(--t5);line-height:1.65;max-width:120ch}
+
+  /* shell */
+  .shell{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;margin-top:40px}
+  @media (min-width:1280px){.shell{grid-template-columns:minmax(0,2.05fr) minmax(360px,1fr)}.shell>.side{grid-column:2}}
+  @media (min-width:1900px){.shell{grid-template-columns:minmax(0,1.32fr) minmax(440px,1.16fr) minmax(340px,.86fr)}.shell>.side{grid-column:3}}
+  .shell>*{min-width:0}
+  .shell section:first-child{margin-top:0}
+
+  /* board */
+  .board{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+  .board .hd{padding:18px 20px 16px;border-bottom:1px solid var(--line)}
+  .board .big{display:flex;align-items:baseline;gap:10px}
+  .board .big .num{font-size:38px;line-height:1;font-weight:600;color:var(--t1);letter-spacing:-.02em;min-width:2.1ch;display:inline-block}
+  .board .big{flex-wrap:wrap;gap:10px 8px}
+  .board .big .den{font-size:14px;color:var(--t4)}
+  .board .big .num2{font-size:38px;line-height:1;font-weight:600;color:#5eead4;letter-spacing:-.02em;margin-left:12px;min-width:2.1ch;display:inline-block}
+  .board .cap{font-size:13px;color:var(--t3);margin-top:8px;line-height:1.55;min-height:141px}
+  .board .chartwrap{padding:20px 20px 0;overflow:visible}
+  .board svg{display:block;width:100%;height:auto;overflow:visible}
+  .axis{font:10px var(--mono);fill:var(--t5)}
+  .ticks text{font:7px var(--mono);fill:#7a7a7a}
+  .ticks line{stroke:#3f3f46;stroke-width:.8}
+  #revealrect{transition:width .45s ease}
+  .evdot{r:1.3px;transition:r .35s ease,opacity .35s ease,fill .35s ease}
+  .evdot{opacity:0}
+  .evdot.rej{fill:#2dd4bf}
+  .evdot.rej.past{opacity:.5}
+  .evdot.suit{fill:#ef4444}
+  .evdot.suit.past{opacity:.45}
+  .evdot.rej.lit{fill:#7dffe4;opacity:1;r:2.4px;filter:drop-shadow(0 0 2px rgba(45,212,191,.9))}
+  .evdot.suit.lit{fill:#ff6b64;opacity:1;r:2.4px;filter:drop-shadow(0 0 2px rgba(239,68,68,.9))}
+  .ann text{font:5.6px var(--mono);fill:#d4d4d4}
+  .ann text.d{fill:#8a8a8a}
+  .ann line{stroke:#6b6b6b;stroke-width:.7;stroke-dasharray:1.5 2}
+  .key{padding:14px 20px 16px;display:grid;gap:11px}
+  .krow{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;align-items:baseline;font-size:11px}
+  .klab{color:var(--t4);text-transform:uppercase;letter-spacing:.06em;font-size:10px;line-height:1.5}
+  .kits{display:flex;flex-wrap:wrap;gap:7px 18px;align-items:center;color:var(--t3)}
+  .kunit{color:var(--t5);font-family:var(--mono);font-size:10px}
+  .key i.k{display:inline-block;margin-right:8px;vertical-align:middle}
+  .key i.k.line{width:15px;height:2px;border-radius:1px}
+  .key i.k.line.red{background:#ef4444}
+  .key i.k.line.teal{background:#2dd4bf}
+  .key i.k.evd{width:7px;height:7px;border-radius:50%;background:#7dffe4;box-shadow:0 0 4px rgba(45,212,191,.9)}
+  .key i.k.unk{width:14px;height:9px;border-radius:2px;background:repeating-linear-gradient(45deg,#3f3f46 0 1px,transparent 1px 4px);border:1px solid #2c2c2c}
+  .key i.k.bar{width:9px;height:9px;border-radius:2px;background:#7c3aed}
+  .key i.k.dot{width:7px;height:7px;border-radius:50%;background:#ddd6fe}
+  .key i.k.eo{width:2px;height:12px;border-radius:1px;background:#f59e0b}
+  .key i.k.sw{width:11px;height:11px;border-radius:2px}
+  .key i.k.sw.active{background:#7a1717;border:1px solid #b02525}
+  .key i.k.sw.ended{background:#3a2426;border:1px solid #5c4145}
+  .key i.k.sw.none{background:#121212;border:1px dashed #2c2c2c}
+  .key i.k.sw.held{background:#7a1717;border:2px solid #2dd4bf}
+  .key i.k.billdot{width:8px;height:8px;border-radius:50%;background:#a78bfa}
+  .chartnote{padding:10px 20px 16px;font-size:11px;color:var(--t5);line-height:1.55;border-bottom:1px solid var(--line)}
+  .mapwrap{padding:22px 22px 16px}
+  .mapwrap svg{display:block;width:100%;height:auto}
+  .mapwrap path,.mapwrap rect{stroke-linejoin:round}
+  .mapwrap svg{cursor:default}
+  .st{transition:fill .35s ease,stroke .25s ease,filter .35s ease}
+  .st-active{fill:#7a1717;stroke:#b02525;stroke-width:1}
+  .st-ended{fill:#3a2426;stroke:#5c4145;stroke-width:1}
+  .st-none{fill:#121212;stroke:#2c2c2c;stroke-width:1}
+  .st-held{stroke:#2dd4bf;stroke-width:2.2}
+    .billdot{fill:#a78bfa;stroke:#0a0a0a;stroke-width:1.2;pointer-events:none;transition:opacity .45s ease,r .45s ease}
+  .billtotal{font:600 15px var(--mono);letter-spacing:.4px;fill:#c4b5fd;paint-order:stroke;stroke:#0a0a0a;stroke-width:3.5px;stroke-linejoin:round;pointer-events:none;opacity:0;transition:opacity .45s ease}
+  .billdelta{font:700 15px var(--mono);letter-spacing:.4px;text-anchor:middle;fill:#ede9fe;paint-order:stroke;stroke:#0a0a0a;stroke-width:3.5px;stroke-linejoin:round;pointer-events:none;opacity:0;transition:opacity .5s ease}
+  .lead{stroke:#3a3a3a;stroke-width:1;pointer-events:none}
+  .st.hot{filter:brightness(1.28)}
+  .st-new{fill:#f0413a;filter:drop-shadow(0 0 6px rgba(240,65,58,.95)) brightness(1.05)}
+  .added{font:12px var(--mono);color:#fca5a5;min-width:96px}
+  .added.none{color:var(--t5)}
+  .mapwrap svg [data-ab]{cursor:pointer}
+  .st.dim{opacity:.35}
+  .st.sel{filter:brightness(1.5) drop-shadow(0 0 4px rgba(255,255,255,.85))}
+  .st.hover-hint{stroke:#8a8a8a}
+  .st:focus{outline:none}
+  .st:focus-visible{stroke:#fff;stroke-width:2.4}
+  .st-withheld{fill:#0f3b36;stroke:#2dd4bf;stroke-width:1}
+  .st-produced{fill:#7a1717;stroke:#b02525;stroke-width:1}
+  .st-unknown{fill:#141414;stroke:#2c2c2c;stroke-width:1;stroke-dasharray:3 2}
+  .swatch.held{background:#7a1717;border:2px solid #2dd4bf}
+  .swatch.unknown{background:#141414;border:1px dashed #2c2c2c}
+  .scrub{display:flex;align-items:center;gap:16px;padding:2px 20px 12px}
+  .scrub input[type=range]{flex:1;accent-color:#ef4444;background:transparent;height:20px;cursor:pointer}
+  .scrub .when{font:12px var(--mono);color:var(--t3);min-width:74px;display:inline-block}
+  .scrub button{background:transparent;border:1px solid var(--line2);color:var(--t3);border-radius:6px;font:11px var(--sans);padding:4px 9px;cursor:pointer}
+  .scrub button:hover{color:var(--t1);border-color:#555}
+  .detail{padding:0 20px 18px;min-height:132px}
+  .detail .dname{color:var(--t1);font-size:14px;font-weight:500;display:flex;align-items:baseline;gap:8px}
+  .detail .dname .clear{margin-left:auto;background:transparent;border:1px solid var(--line2);color:var(--t4);border-radius:5px;font:11px var(--sans);padding:3px 8px;cursor:pointer}
+  .detail .dname .clear:hover{color:var(--t2);border-color:#555}
+  .detail .dname .pill{font:11px var(--mono);border:1px solid var(--line2);border-radius:5px;padding:2px 6px;color:var(--t3)}
+  .detail .dname .pill.bills{color:#c4b5fd;border-color:#4c1d95;background:#140b26}
+  .detail .dname .pill.on{color:#fca5a5;border-color:#8d1f1f;background:#2a0d0d}
+  .detail table{width:100%;border-collapse:collapse;margin-top:8px}
+  .detail td{padding:7px 0;font-size:12px;color:var(--t3);vertical-align:top;line-height:1.45}
+  .detail td.c1{color:var(--t2);padding-right:18px}
+  .detail td.c2{white-space:nowrap;color:var(--t4);font-family:var(--mono);font-size:11px;padding-right:18px}
+  .detail td.c3{white-space:nowrap;text-align:right;color:var(--t4)}
+  .detail .sub{font-size:12px;color:var(--t4);margin-top:8px;line-height:1.55}
+  .detail .hint{font-size:12px;color:var(--t5)}
+  .ablabel{font:600 16px var(--mono);fill:#ededed;letter-spacing:.5px}
+  .swatch.active{background:#7a1717;border:1px solid #b02525}
+  .swatch.ended{background:#3a2426;border:1px solid #5c4145}
+  .swatch.none{background:#121212;border:1px solid #2c2c2c}
+  .board .note{padding:0 20px 18px;font-size:12px;color:var(--t4);line-height:1.6}
+  .board .note b{color:var(--t3);font-weight:500}
+  .board .legend{display:flex;flex-wrap:wrap;gap:10px 16px;padding:6px 20px 16px;font-size:11px;color:var(--t4);align-items:center}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+  .swatch.active{background:#611414;border:1px solid #8d1f1f}
+  .swatch.ended{background:#1c1c1f;border:1px solid #3a3a3f}
+  .swatch.none{border:1px dashed #2e2e2e}
+  .swatch.bills{background:var(--state);border-radius:50%;width:6px;height:6px}
+  .srcline{padding:14px 20px;border-top:1px solid var(--line);font-size:12px;color:var(--t4);display:flex;gap:10px;align-items:baseline;line-height:1.55}
+
+  /* timeline */
+  .tl{border:1px solid var(--line);border-radius:8px;background:var(--panel);overflow:hidden}
+  .day{display:grid;grid-template-columns:150px minmax(0,1fr);border-top:1px solid var(--line)}
+  .day:first-child{border-top:0}
+  .day .dl{padding:16px 18px;border-right:1px solid var(--line)}
+  .day .dl .d{color:var(--t1);font-weight:600;font-size:14px}
+  .day .dl .w{color:var(--t4);font-size:12px}
+  .day .dl .c{color:var(--t5);font-size:11px;margin-top:8px;line-height:1.5}
+  .ev{display:grid;grid-template-columns:18px minmax(0,1fr);gap:0 12px;padding:14px 20px 14px 14px;border-top:1px solid #1c1c1c;border-left:2px solid transparent}
+  .day .evs>.ev:first-child{border-top:0}
+  .ev.lit{border-left-color:var(--lit)} .ev.news{border-left-color:#3f3f3f} .ev.rec{border-left-color:transparent}
+  .dot{width:8px;height:8px;border-radius:50%;margin-top:7px;border:1.5px solid var(--t5);justify-self:center}
+  .dot.new{background:var(--new);border-color:var(--new)}
+  .dot.rec{border-style:dashed}
+  .ev .t{font-size:14px;line-height:21px;color:var(--t1)}
+  .ev .t .who{font-weight:500}
+  .ev .t .court{color:var(--t4);font-weight:400}
+  .ev .t .txt{color:var(--t2)}
+  .ev .m{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-top:6px;font-size:12px;color:var(--t4);line-height:16px}
+  .ev .m .ch{letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+  .ev.rec .t{color:var(--t3)}
+  .ev.more .t{color:var(--t3);font-size:13px}
+  .ev.more .t::after{content:" ▸";color:var(--t5)}
+  .ev.none .t{color:var(--t5);font-size:13px}
+  .day.folded .evs{display:flex;align-items:center;padding:18px 20px 18px 14px;color:var(--t3);font-size:13px;gap:10px}
+  .day.folded .evs::after{content:"▸";color:var(--t5);margin-left:auto}
+  .chain{color:var(--link)}
+  .earlier{padding:16px 20px;font-size:13px;color:var(--t3);border-top:1px solid var(--line)}
+
+  .row{display:block;padding:14px 18px;border-top:1px solid var(--line)}
+  .row:first-child{border-top:0}
+  .row:hover{background:var(--panel2)}
+  .title{color:var(--t1);font-size:14px;line-height:20px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin-top:6px;font-size:12px;color:var(--t4);line-height:16px}
+  .r{margin-left:auto}
+  .ex .row{display:flex;gap:16px;align-items:baseline;padding:13px 18px}
+  .ex .row .title{flex:1;min-width:0;font-size:13px;line-height:19px}
+  .ex .row .when{white-space:nowrap;font-size:12px;color:var(--t4);display:flex;gap:8px;align-items:center}
+  .nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .nav a{border:1px solid var(--line);border-radius:8px;padding:8px 15px;font-size:13px;color:var(--t3);background:transparent}
+  .nav a:hover{color:var(--t1);border-color:#3f3f46;background:var(--panel2)}
+  .nav a.on{color:var(--t1);border-color:#4a4a4a;background:var(--panel2)}
+  .legend2{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--t4);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+  .legend2 .dot{margin:0}
+  #ruler{position:fixed;right:12px;bottom:12px;font:11px/1 var(--mono);color:var(--t3);background:#000c;border:1px solid var(--line2);border-radius:6px;padding:6px 8px;pointer-events:none}
+  @media (max-width:640px){.readgrid{grid-template-columns:1fr}.readgrid .row{border-left:0}.day{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>psephos</h1>
+    <p class="tag">The erosion of voting rights across five channels of pressure, federal and state.</p>
+    <nav class="nav" aria-label="Sections">
+      <a href="#" class="on" aria-current="page">Overview</a>
+      <a href="#" title="One grid over all 50 states and DC: where DOJ sued, where it lost, where it has not acted">The DOJ voter-data campaign</a>
+      <a href="#" title="Election bills across the watched states, subject-filtered via LegiScan">State legislation</a>
+      <a href="#" title="Coverage from the maintained trackers, B2 sources only">Reporting</a>
+    </nav>
+    <p class="legend2"><span class="dot new"></span> collected in the last 24 hours &middot; <span class="dot rec"></span> added to the record &middot; Source grades: <span class="badge a1">A1</span> primary record (dockets, Federal Register, Congress.gov) &middot; <span class="badge b2">B2</span> maintained tracker &middot; <span class="badge c3">C3</span> aggregator, corroborate before relying on it.</p>
+  </header>
+
+  <section class="read" aria-label="The read">
+    <h2>The read <span class="n">as of <time id="asof" datetime="2026-08-16T18:16:00Z" title="Last collection: 2026-08-16 18:16 UTC">Aug 16, 18:16Z</time></span></h2>
+    <div class="readgrid">
+      <div class="row"><div class="lab">News</div><div class="txt"><b>7 articles dated Aug 14–16.</b> Lead (B2, Democracy Docket, Aug 16): <a href="#" class="lead">Blanche says taking state voter rolls case to the Supreme Court is a 'possibility'</a>. 18 collected today, 11 dated a week or more ago.</div></div>
+      <div class="row"><div class="lab">Litigation</div><div class="txt"><b>Latest filings Aug 14:</b> <a href="#" class="lead">v. Aguilar</a> (D. Nev.), judgment · <a href="#" class="lead">v. Jocelyn Benson</a> (6th Cir.), rehearing en banc denied · <a href="#" class="lead">v. Hobbs</a> (W.D. Wash.), transcript filed. Nothing dated Aug 15–16 yet.</div></div>
+      <div class="row"><div class="lab">DOJ campaign</div><div class="txt"><b>31 of 51 jurisdictions sued</b>; 25 active, 6 ended, 12 continued on appeal, 2 quiet. <a href="#" class="muted">The grid →</a></div></div>
+      <div class="row"><div class="lab">Bills</div><div class="txt"><b>None of the 6 watched bills has moved</b> since Mar 26, 2026 (S. 1383, the vehicle: considered by the Senate).</div></div>
+      <div class="row"><div class="lab">Executive</div><div class="txt"><b>Nothing new</b> since Apr 23, 2026 (2026 Election Administration and Voting Survey notice). 12 of 118 Federal Register documents in the record are election-related.</div></div>
+      <div class="row"><div class="lab">State bills</div><div class="txt"><b>3,882 actions on 484 tracked bills</b> across 9 states; none dated in the last 7 days. <a href="#" class="muted">The list →</a></div></div>
+    </div>
+    <div class="foot-line">Every sentence above is computed from the record. Collected in the last 24 hours: 192 records, 174 litigation (all past docket entries) and 18 news; nothing in legislation, executive or state.</div>
+  </section>
+
+
+  <section aria-label="What has changed, and what it would take">
+    <h2>Where this stands <span class="n">what has already changed, and what would have to happen next</span></h2>
+    <div class="tabs" role="tablist">
+      <button role="tab" id="t-now" aria-controls="p-now" aria-selected="true" type="button">On the books now<span class="k">8</span></button>
+      <button role="tab" id="t-next" aria-controls="p-next" aria-selected="false" type="button">What it would take<span class="k">5 paths</span></button>
+      <button role="tab" id="t-em" aria-controls="p-em" aria-selected="false" type="button">If an emergency is declared<span class="k">0 on the record</span></button>
+    </div>
+
+    <div class="panel" id="p-now" role="tabpanel" aria-labelledby="t-now">
+      <div class="facts">
+        <div class="fact"><div class="when">May 15, 2025</div><div><div class="what"><b>Texas SJR37</b> passed: a constitutional amendment requiring a voter to be a US citizen. Goes to voters for ratification.</div><div class="src"><span class="badge a1">A1</span> LegiScan · TX SJR37</div></div></div>
+        <div class="fact"><div class="when">Jun 20, 2025</div><div><div class="what"><b>Texas SB510</b> passed: penalties where a voter registrar fails to comply with registration law. <b>HB493</b> narrowed poll-watcher eligibility the same day.</div><div class="src"><span class="badge a1">A1</span> LegiScan · TX SB510, HB493</div></div></div>
+        <div class="fact"><div class="when">Mar 20, 2026</div><div><div class="what"><b>Ohio SB293</b> passed: the deadline to return an absentee ballot was revised.</div><div class="src"><span class="badge a1">A1</span> LegiScan · OH SB293</div></div></div>
+        <div class="fact"><div class="when">Jun 15, 2026</div><div><div class="what"><b>Arizona HCR2001</b> passed: citizenship, identification and early voting. Goes to voters for ratification.</div><div class="src"><span class="badge a1">A1</span> LegiScan · AZ HCR2001</div></div></div>
+        <div class="fact"><div class="when">Jun 16, 2026</div><div><div class="what"><b>Ohio SB63</b> passed: ranked choice voting prohibited, with funding withheld from jurisdictions that use it.</div><div class="src"><span class="badge a1">A1</span> LegiScan · OH SB63</div></div></div>
+        <div class="fact"><div class="when">Mar 25, 2025<br>Mar 31, 2026</div><div><div class="what"><b>EO 14248</b> and <b>EO 14399</b> were published. Whether either is operating today is not in the record; a judge blocked an election EO on Aug 16 per reporting.</div><div class="src"><span class="badge a1">A1</span> Federal Register <span class="badge c3">C3</span> status from reporting</div></div></div>
+        <div class="fact"><div class="when">since Sep 2025</div><div><div class="what">DOJ has demanded voter data from <b>31 of 51 jurisdictions</b>; 25 suits are live, 12 have moved to a court of appeals.</div><div class="src"><span class="badge a1">A1</span> CourtListener · 46 dockets</div></div></div>
+        <div class="fact"><div class="when">through Aug 2026</div><div><div class="what">In Wisconsin, <b>56 of 59</b> tracked election bills failed and 3 were vetoed. Nothing in the watched set became law there.</div><div class="src"><span class="badge a1">A1</span> LegiScan · WI</div></div></div>
+      </div>
+      <div class="tabnote">Eight things the record says are already true, each with the row it came from. Passage is not the same as taking effect: SJR37 and HCR2001 are constitutional amendments that still go to voters, and psephos does not track election results.</div>
+    </div>
+
+    <div class="panel" id="p-next" role="tabpanel" aria-labelledby="t-next" hidden>
+      <div class="paths">
+
+        <div class="path">
+          <div class="ph"><span class="pq">The SAVE Act becomes law</span><span class="pc">2 of 5 · stalled 19 months</span></div>
+          <div class="steps">
+            <div class="step done"><div class="sn">Introduced</div><div class="sd">Jan 3, 2025</div></div>
+            <div class="step done"><div class="sn">Passed the House</div><div class="sd">Apr 10, 2025</div></div>
+            <div class="step"><div class="sn">Out of Senate Rules</div><div class="sd">referred Jan 16, 2025</div></div>
+            <div class="step"><div class="sn">Senate floor vote</div><div class="sd">—</div></div>
+            <div class="step"><div class="sn">Signed</div><div class="sd">—</div></div>
+          </div>
+          <div class="pnote">The Senate companion, S. 128, has not moved since it was referred.<span class="src"><span class="badge a1">A1</span> hr22-119 · s128-119</span></div>
+        </div>
+
+        <div class="path">
+          <div class="ph"><span class="pq">A vehicle bill carries the text instead</span><span class="pc motion">2 of 4 · moving</span></div>
+          <div class="steps">
+            <div class="step done"><div class="sn">Vehicle identified</div><div class="sd">s1383-119</div></div>
+            <div class="step done"><div class="sn">Live in the Senate</div><div class="sd">Mar 26, 2026</div></div>
+            <div class="step part"><div class="sn">Election text attached</div><div class="sd">not on the record</div></div>
+            <div class="step"><div class="sn">Enacted</div><div class="sd">—</div></div>
+          </div>
+          <div class="pnote">S. 1383 is a veterans accessibility bill. It was taken up on a House message, which is the posture an unrelated rider needs. This is the path the trackers do not watch.<span class="src"><span class="badge a1">A1</span> s1383-119 · is_vehicle</span></div>
+        </div>
+
+        <div class="path">
+          <div class="ph"><span class="pq">The voter-roll fight reaches the Supreme Court</span><span class="pc">2 of 5</span></div>
+          <div class="steps">
+            <div class="step done"><div class="sn">Suits filed</div><div class="sd">31 jurisdictions</div></div>
+            <div class="step done"><div class="sn">Appeals taken</div><div class="sd">12 dockets</div></div>
+            <div class="step"><div class="sn">DOJ wins one</div><div class="sd">0 reported</div></div>
+            <div class="step"><div class="sn">Cert petition</div><div class="sd">none filed</div></div>
+            <div class="step"><div class="sn">Cert granted</div><div class="sd">—</div></div>
+          </div>
+          <div class="pnote">A tracker put DOJ at 0 for 22 on Aug 14, and the Attorney General called a Supreme Court filing a possibility on Aug 16. psephos records filings and terminations, not who won.<span class="src"><span class="badge b2">B2</span> Democracy Docket</span></div>
+        </div>
+
+        <div class="path">
+          <div class="ph"><span class="pq">Texas requires documentary proof of citizenship</span><span class="pc motion">1 of 3</span></div>
+          <div class="steps">
+            <div class="step done"><div class="sn">Passed the legislature</div><div class="sd">May 15, 2025</div></div>
+            <div class="step"><div class="sn">Ratified by voters</div><div class="sd">not tracked here</div></div>
+            <div class="step"><div class="sn">In effect</div><div class="sd">—</div></div>
+          </div>
+          <div class="pnote">Arizona HCR2001 is on the same path, one step in as of Jun 15, 2026.<span class="src"><span class="badge a1">A1</span> TX SJR37 · AZ HCR2001</span></div>
+        </div>
+
+        <div class="path">
+          <div class="ph"><span class="pq">The election executive orders operate unblocked</span><span class="pc motion">contested</span></div>
+          <div class="steps">
+            <div class="step done"><div class="sn">Published</div><div class="sd">Mar 2025 · Mar 2026</div></div>
+            <div class="step done"><div class="sn">Challenged in court</div><div class="sd">per reporting</div></div>
+            <div class="step part"><div class="sn">In force today</div><div class="sd">not in the record</div></div>
+          </div>
+          <div class="pnote">psephos records that a document was published, not whether it operates. Closing this row needs an outcome field, or a tracker cited by name.<span class="src"><span class="badge c3">C3</span> gap in the record</span></div>
+        </div>
+
+      </div>
+      <div class="tabnote">Five paths, each broken into steps that either happened or did not. No weights and no index: a single number would need weights nobody can check, and it would be the only figure on this page not traceable to a row.</div>
+    </div>
+
+    <div class="panel" id="p-em" role="tabpanel" aria-labelledby="t-em" hidden>
+      <div class="em">
+        <div class="lede">Nothing on the record touches this. The date of a federal election is set by statute and <b>no president can move it</b>; the United States voted through the Civil War in 1864 and through both world wars. What follows is what each step would actually require, and whether psephos would see it happen. <b>Two rows below are blind spots in the collector as it stands.</b></div>
+
+        <div class="emrow">
+          <div class="q">A federal election moves</div>
+          <div class="basis">Requires an act of Congress. The dates are fixed by <code>2 U.S.C. §7</code> (House), <code>2 U.S.C. §1</code> (Senate) and <code>3 U.S.C. §1</code> (presidential electors). No presidential authority to postpone exists.</div>
+          <div><span class="see yes">would see it</span><div class="basis" style="margin-top:6px">a bill on Congress.gov</div></div>
+        </div>
+
+        <div class="emrow">
+          <div class="q">Terms end regardless</div>
+          <div class="basis">The 20th Amendment ends congressional terms on Jan 3 and the presidential term on Jan 20 at noon. A missed election leaves offices <b>vacant</b>; it does not extend anyone's term. This is the structural answer to the question.</div>
+          <div><span class="see na">nothing to watch</span></div>
+        </div>
+
+        <div class="emrow">
+          <div class="q">A state extends its own voting period</div>
+          <div class="basis">The Electoral Count Reform Act of 2022 replaced the old "failed to make a choice" provision with an <b>extraordinary and catastrophic</b> standard, and requires that any extension run under state law enacted <b>before</b> election day. State and local primaries have been postponed under state emergency law before, in New York after Sandy in 2012 and widely in 2020.</div>
+          <div><span class="see yes">would see it</span><div class="basis" style="margin-top:6px">the pre-enacted law, LegiScan, 9 watched states</div></div>
+        </div>
+
+        <div class="emrow">
+          <div class="q">A national emergency is declared</div>
+          <div class="basis">The National Emergencies Act, <code>50 U.S.C. §1601</code> et seq., unlocks a catalog of standby powers. None of them moves an election date. Declarations publish in the Federal Register, usually as a <b>proclamation</b>.</div>
+          <div><span class="see blind">blind spot</span><div class="basis" style="margin-top:6px">collector requests executive orders only</div></div>
+        </div>
+
+        <div class="emrow">
+          <div class="q">The Insurrection Act is invoked</div>
+          <div class="basis"><code>10 U.S.C. §§251-255</code> permits domestic deployment and requires a proclamation to disperse first. It does not authorize closing polls or suspending an election.</div>
+          <div><span class="see blind">blind spot</span><div class="basis" style="margin-top:6px">proclamation, same gap</div></div>
+        </div>
+
+        <div class="emrow">
+          <div class="q">Wartime communications powers</div>
+          <div class="basis"><code>47 U.S.C. §606</code> reaches wire and radio in war. Adjacent to voting rather than about it: it touches the information environment, not the ballot. Recorded here so it is not mistaken for an election power.</div>
+          <div><span class="see blind">blind spot</span></div>
+        </div>
+
+      </div>
+      <div class="tabnote">The honest status of this tab today is that psephos would not tell you. The executive collector asks the Federal Register for <code>presidential_document_type=executive_order</code> and filters on election language, so a proclamation declaring an emergency would be collected by neither shape. Closing that is one config change and one term list, not a rewrite. Until it is closed, this tab is a written answer rather than a monitor.</div>
+    </div>
+  </section>
+
+  <div class="shell">
+    <section>
+      <h2>The last 7 days <span class="n">by the date things happened · <span class="dot new" style="display:inline-block;vertical-align:middle;margin:0 2px 0 0"></span> collected in the last 24 hours</span><a href="#" class="right">Earlier →</a></h2>
+      <div class="tl">
+        <div class="day">
+          <div class="dl"><div class="d">Aug 16</div><div class="w">Sunday · today</div><div class="c">6 reports · 4 dockets added</div></div>
+          <div class="evs">
+            <a class="ev news" href="#"><span class="dot new"></span><div><div class="t">Attorney General Blanche says taking state voter rolls case to Supreme Court is a 'possibility'</div><div class="m"><span class="ch">News</span><span>Democracy Docket</span><span class="badge b2">B2</span></div></div></a>
+            <a class="ev news" href="#"><span class="dot new"></span><div><div class="t">This week at Democracy Docket: Will Trump restrict mail voting during the midterms? It's up to the Supreme Court now</div><div class="m"><span class="ch">News</span><span>Democracy Docket</span><span class="badge b2">B2</span></div></div></a>
+            <div class="ev news more"><span class="dot new"></span><div><div class="t">4 more reports · Google News: Breakingthenews.net, NBC News, Yahoo, Davis Vanguard</div><div class="m"><span class="ch">News</span><span class="badge c3">C3</span></div></div></div>
+            <div class="ev rec"><span class="dot rec"></span><div><div class="t">Added to the record: United States v. State of Oregon <span class="court">(D. Or.)</span>, v. Shirley Weber <span class="court">(C.D. Cal.)</span>, v. Fontes <span class="court">(D. Ariz.)</span>, League of Women Voters v. DHS <span class="court">(D.C. Cir.)</span> · 174 past entries, Sep 2025 – Jul 2026</div><div class="m"><span class="ch">Litigation</span><span class="chain">→ each continued in the Ninth Circuit; LWV continues D.D.C. 1:25-cv-03501</span></div></div></div>
+          </div>
+        </div>
+        <div class="day">
+          <div class="dl"><div class="d">Aug 15</div><div class="w">Saturday</div></div>
+          <div class="evs"><div class="ev none"><span></span><div class="t">Nothing recorded.</div></div></div>
+        </div>
+        <div class="day">
+          <div class="dl"><div class="d">Aug 14</div><div class="w">Friday</div><div class="c">4 filings · 11 reports</div></div>
+          <div class="evs">
+            <a class="ev lit" href="#"><span class="dot"></span><div><div class="t"><span class="who">United States v. Aguilar</span> <span class="court">D. Nev. · 3:25-cv-00728</span> <span class="txt">— Judgment; Order on Motion for Leave to File Excess Pages…</span></div><div class="m"><span class="ch">Litigation</span><span>2 entries</span><span class="badge a1">A1</span></div></div></a>
+            <a class="ev lit" href="#"><span class="dot"></span><div><div class="t"><span class="who">United States v. Jocelyn Benson</span> <span class="court">6th Cir. · 26-1225</span> <span class="txt">— ORDER filed: The motion to expedite [107] is GRANTED IN PART. The petition for en banc rehearing [106] is DENIED. Decision for publication.</span></div><div class="m"><span class="ch">Litigation</span><span class="badge a1">A1</span></div></div></a>
+            <a class="ev lit" href="#"><span class="dot"></span><div><div class="t"><span class="who">United States v. Hobbs</span> <span class="court">W.D. Wash. · 3:25-cv-06078</span> <span class="txt">— NOTICE OF FILING OF OFFICIAL TRANSCRIPT of Motion Hearing held on 8/4/2026 before Judge Kymberly K. Evanson.</span></div><div class="m"><span class="ch">Litigation</span><span class="badge a1">A1</span></div></div></a>
+            <a class="ev news" href="#"><span class="dot"></span><div><div class="t">Trump DOJ goes 0 for 22 as Nevada court rejects voter roll demand</div><div class="m"><span class="ch">News</span><span>Democracy Docket</span><span class="badge b2">B2</span></div></div></a>
+            <a class="ev news" href="#"><span class="dot"></span><div><div class="t">Trump DOJ fails to convince full Sixth Circuit to resurrect Michigan voter roll loss</div><div class="m"><span class="ch">News</span><span>Democracy Docket</span><span class="badge b2">B2</span></div></div></a>
+            <a class="ev news" href="#"><span class="dot"></span><div><div class="t">Attorney General Blanche appears to endorse GOP candidate in latest politicization of DOJ</div><div class="m"><span class="ch">News</span><span>Democracy Docket</span><span class="badge b2">B2</span></div></div></a>
+            <div class="ev news more"><span class="dot"></span><div><div class="t">8 more reports · Democracy Docket ×4, Bolts, States United, Votebeat · Google News ×1</div><div class="m"><span class="ch">News</span><span class="badge b2">B2</span><span class="badge c3">C3</span></div></div></div>
+          </div>
+        </div>
+        <div class="day folded"><div class="dl"><div class="d">Aug 13</div><div class="w">Thursday</div></div><div class="evs">2 filings (v. Hanzas, v. Hobbs) · 4 reports</div></div>
+        <div class="day folded"><div class="dl"><div class="d">Aug 12</div><div class="w">Wednesday</div></div><div class="evs">15 reports</div></div>
+        <div class="day folded"><div class="dl"><div class="d">Aug 11</div><div class="w">Tuesday</div></div><div class="evs">7 reports</div></div>
+        <div class="day folded"><div class="dl"><div class="d">Aug 10</div><div class="w">Monday</div></div><div class="evs">2 filings (v. Bellows, v. Scanlan) · 5 reports</div></div>
+        <div class="earlier">Earlier days, one per line, on the full timeline →</div>
+      </div>
+    </section>
+
+    <div class="boardcol">
+      <section>
+        <h2>State voter records <span class="n">DOJ demands, and what courts did with them</span><a href="#" class="right">The grid →</a></h2>
+        <div class="board">
+
+          <div class="hd">
+            <div class="big"><span class="num">31</span><span class="den">of 51 sued for their voter records</span><span class="num2">10</span><span class="den">demands a court rejected</span></div>
+            <div class="cap">First suit Sep 16, 2025 (Oregon). Six by Sep 25, seventeen by Dec 18, thirty-one by Jun 15, 2026. No new jurisdiction in 62 days.</div>
+          </div>
+          <div class="chartwrap">
+            <svg viewBox="0 -8 320 176" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="January 1 2025 to August 17 2026, day resolution. Above the axis, cumulative jurisdictions sued and jurisdictions where a court rejected the demand. Below the axis, state election bills first seen and federal legislative actions per month.">
+              <defs>
+                <linearGradient id="unk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a1a1aa" stop-opacity="0"/><stop offset="1" stop-color="#a1a1aa" stop-opacity=".07"/></linearGradient>
+                <pattern id="hatch" width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="6" stroke="#a1a1aa" stroke-opacity=".11" stroke-width="0.8"/></pattern>
+                <linearGradient id="maskgrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient>
+                <mask id="fadeleft"><rect x="0" y="0" width="139.22" height="96" fill="url(#maskgrad)"/></mask>
+                <clipPath id="reveal"><rect id="revealrect" x="-4" y="-12" width="324" height="180"/></clipPath>
+                <linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ef4444" stop-opacity=".40"/><stop offset="1" stop-color="#ef4444" stop-opacity=".06"/></linearGradient>
+              </defs>
+              <line x1="0" y1="0.5" x2="320" y2="0.5" stroke="#3f3f46" stroke-width="1" stroke-dasharray="3 3"/>
+              <text class="axis" x="0" y="-2">51 jurisdictions</text>
+              <rect x="0" y="0" width="139.22" height="96" fill="url(#unk)"/>
+              <rect x="0" y="0" width="139.22" height="96" fill="url(#hatch)" mask="url(#fadeleft)"/>
+              <g clip-path="url(#reveal)">
+              <path d="M0,96.0 H139.22 V94.12 H144.08 V84.71 H180.24 V80.94 H180.78 V75.29 H185.63 V69.65 H189.41 V64.0 H199.66 V60.24 H205.06 V58.35 H227.18 V48.94 H227.72 V47.06 H245.53 V45.18 H280.61 V43.29 H282.77 V39.53 H286.0 V37.65 H320.0 H320.0 V77.18 H318.38 V80.94 H314.06 V82.82 H312.98 V84.71 H310.83 V86.59 H309.75 V88.47 H306.51 V90.35 H303.27 V92.24 H293.02 V94.12 H260.1 V96.0 H0.0 Z" fill="url(#g)"/>
+              <path d="M0,96.0 H260.1 V94.12 H293.02 V92.24 H303.27 V90.35 H306.51 V88.47 H309.75 V86.59 H310.83 V84.71 H312.98 V82.82 H314.06 V80.94 H318.38 V77.18 H320.0 V96.0 H0 Z" fill="#2dd4bf" fill-opacity=".16"/>
+              <path d="M0,96.0 H139.22 V94.12 H144.08 V84.71 H180.24 V80.94 H180.78 V75.29 H185.63 V69.65 H189.41 V64.0 H199.66 V60.24 H205.06 V58.35 H227.18 V48.94 H227.72 V47.06 H245.53 V45.18 H280.61 V43.29 H282.77 V39.53 H286.0 V37.65 H320.0" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linejoin="miter"/>
+              <path d="M0,96.0 H260.1 V94.12 H293.02 V92.24 H303.27 V90.35 H306.51 V88.47 H309.75 V86.59 H310.83 V84.71 H312.98 V82.82 H314.06 V80.94 H318.38 V77.18 H320.0" fill="none" stroke="#2dd4bf" stroke-width="1.6" stroke-linejoin="miter"/>
+              <rect x="0.50" y="96.5" width="15.73" height="22.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="17.23" y="96.5" width="14.11" height="29.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="32.34" y="96.5" width="15.73" height="46.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="49.07" y="96.5" width="15.19" height="11.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="65.26" y="96.5" width="15.72" height="4.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="81.98" y="96.5" width="15.19" height="3.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="98.17" y="96.5" width="15.73" height="2.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="114.90" y="96.5" width="15.73" height="1.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="131.63" y="96.5" width="15.19" height="2.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="147.82" y="96.5" width="15.73" height="19.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="164.55" y="96.5" width="15.19" height="7.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="180.74" y="96.5" width="15.72" height="8.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="197.46" y="96.5" width="15.73" height="20.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="214.19" y="96.5" width="14.11" height="11.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="229.30" y="96.5" width="15.73" height="5.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="246.03" y="96.5" width="15.19" height="2.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="262.22" y="96.5" width="15.73" height="5.50" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="278.95" y="96.5" width="15.19" height="6.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="295.14" y="96.5" width="15.73" height="0.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/><rect x="311.87" y="96.5" width="7.63" height="0.00" rx="0.8" fill="#7c3aed" fill-opacity=".62"/>
+              <path d="M8.37,98.00 L24.29,96.00 L40.20,96.00 L56.67,105.00 L73.12,96.50 L89.58,96.00 L106.03,96.50 L122.77,96.00 L139.22,96.00 L155.69,96.00 L172.15,96.00 L188.60,99.50 L205.32,99.00 L221.25,104.50 L237.17,105.50 L253.62,96.00 L270.09,96.00 L286.54,96.00 L303.00,96.00 L315.69,96.00" fill="none" stroke="#ddd6fe" stroke-width="1.3" stroke-opacity=".95"/>
+              <circle cx="8.37" cy="98.00" r="1.8" fill="#ddd6fe"/><circle cx="56.67" cy="105.00" r="1.8" fill="#ddd6fe"/><circle cx="73.12" cy="96.50" r="1.8" fill="#ddd6fe"/><circle cx="106.03" cy="96.50" r="1.8" fill="#ddd6fe"/><circle cx="188.60" cy="99.50" r="1.8" fill="#ddd6fe"/><circle cx="205.32" cy="99.00" r="1.8" fill="#ddd6fe"/><circle cx="221.25" cy="104.50" r="1.8" fill="#ddd6fe"/><circle cx="237.17" cy="105.50" r="1.8" fill="#ddd6fe"/>
+              <rect x="9.25" y="83" width="2" height="13" rx="1" fill="#f59e0b" fill-opacity=".85"><title>EO 14152 — Jan 20, 2025</title></rect><rect x="43.79" y="83" width="2" height="13" rx="1" fill="#f59e0b" fill-opacity=".85"><title>EO 14248 — Mar 25, 2025</title></rect><rect x="243.99" y="83" width="2" height="13" rx="1" fill="#f59e0b" fill-opacity=".85"><title>EO 14399 — Mar 31, 2026</title></rect>
+              <g class="events"><circle class="evdot suit" data-m="2025-09" cx="139.22" cy="94.12"><title>1 jurisdictions sued as of 2025-09-16</title></circle><circle class="evdot suit" data-m="2025-09" cx="144.08" cy="84.71"><title>6 jurisdictions sued as of 2025-09-25</title></circle><circle class="evdot suit" data-m="2025-12" cx="180.24" cy="80.94"><title>8 jurisdictions sued as of 2025-12-01</title></circle><circle class="evdot suit" data-m="2025-12" cx="180.78" cy="75.29"><title>11 jurisdictions sued as of 2025-12-02</title></circle><circle class="evdot suit" data-m="2025-12" cx="185.63" cy="69.65"><title>14 jurisdictions sued as of 2025-12-11</title></circle><circle class="evdot suit" data-m="2025-12" cx="189.41" cy="64.0"><title>17 jurisdictions sued as of 2025-12-18</title></circle><circle class="evdot suit" data-m="2026-01" cx="199.66" cy="60.24"><title>19 jurisdictions sued as of 2026-01-06</title></circle><circle class="evdot suit" data-m="2026-01" cx="205.06" cy="58.35"><title>20 jurisdictions sued as of 2026-01-16</title></circle><circle class="evdot suit" data-m="2026-02" cx="227.18" cy="48.94"><title>25 jurisdictions sued as of 2026-02-26</title></circle><circle class="evdot suit" data-m="2026-02" cx="227.72" cy="47.06"><title>26 jurisdictions sued as of 2026-02-27</title></circle><circle class="evdot suit" data-m="2026-04" cx="245.53" cy="45.18"><title>27 jurisdictions sued as of 2026-04-01</title></circle><circle class="evdot suit" data-m="2026-06" cx="280.61" cy="43.29"><title>28 jurisdictions sued as of 2026-06-05</title></circle><circle class="evdot suit" data-m="2026-06" cx="282.77" cy="39.53"><title>30 jurisdictions sued as of 2026-06-09</title></circle><circle class="evdot suit" data-m="2026-06" cx="286.0" cy="37.65"><title>31 jurisdictions sued as of 2026-06-15</title></circle><circle class="evdot rej" data-m="2026-04" data-ev="AZ" cx="260.1" cy="94.12"><title>AZ: voter-record demand rejected 2026-04-28</title></circle><circle class="evdot rej" data-m="2026-06" data-ev="PA" cx="293.02" cy="92.24"><title>PA: voter-record demand rejected 2026-06-28</title></circle><circle class="evdot rej" data-m="2026-07" data-ev="CT" cx="303.27" cy="90.35"><title>CT: voter-record demand rejected 2026-07-17</title></circle><circle class="evdot rej" data-m="2026-07" data-ev="KY" cx="306.51" cy="88.47"><title>KY: voter-record demand rejected 2026-07-23</title></circle><circle class="evdot rej" data-m="2026-07" data-ev="NJ" cx="309.75" cy="86.59"><title>NJ: voter-record demand rejected 2026-07-29</title></circle><circle class="evdot rej" data-m="2026-07" data-ev="IL" cx="310.83" cy="84.71"><title>IL: voter-record demand rejected 2026-07-31</title></circle><circle class="evdot rej" data-m="2026-08" data-ev="CO" cx="312.98" cy="82.82"><title>CO: voter-record demand rejected 2026-08-04</title></circle><circle class="evdot rej" data-m="2026-08" data-ev="DC" cx="314.06" cy="80.94"><title>DC: voter-record demand rejected 2026-08-06</title></circle><circle class="evdot rej" data-m="2026-08" data-ev="MI" cx="318.38" cy="79.06"><title>MI: voter-record demand rejected 2026-08-14</title></circle><circle class="evdot rej" data-m="2026-08" data-ev="NV" cx="318.38" cy="77.18"><title>NV: voter-record demand rejected 2026-08-14</title></circle></g>
+              </g>
+              <g class="ann">
+                <line x1="53.42" y1="28" x2="53.42" y2="94"/>
+                <text x="56" y="17">Apr 10, 2025</text><text class="d" x="56" y="25">SAVE Act to Senate</text>
+                <line x1="139.22" y1="52" x2="139.22" y2="84"/>
+                <text x="142" y="41">Sep 16, 2025</text><text class="d" x="142" y="49">first suit, Oregon</text>
+                <line x1="260.1" y1="28" x2="260.1" y2="46"/>
+                <text x="257" y="17" text-anchor="end">Apr 28, 2026</text><text class="d" x="257" y="25" text-anchor="end">first record demand rejected</text>
+                <line x1="286" y1="28" x2="286" y2="38"/>
+                <text x="318" y="17" text-anchor="end">Jun 15, 2026</text><text class="d" x="318" y="25" text-anchor="end">last new suit</text>
+              </g>
+              <line id="mark" x1="320" y1="0" x2="320" y2="142" stroke="#d4d4d4" stroke-width="1" stroke-dasharray="2 2" opacity=".5"/>
+              <circle id="markdot" cx="320" cy="37.65" r="3" fill="#fca5a5"/>
+              <circle id="markdot2" cx="320" cy="77.18" r="3" fill="#5eead4"/>
+              <line x1="139.22" y1="4" x2="139.22" y2="142" stroke="#71717a" stroke-width="0.7" stroke-dasharray="2 3" opacity=".55"/>
+              <line x1="0" y1="96" x2="320" y2="96" stroke="#3f3f46" stroke-width="1"/>
+              <g class="ticks">
+                <line x1="0" y1="142" x2="0" y2="147"/><text x="0" y="156">Jan 2025</text>
+                <line x1="48.57" y1="142" x2="48.57" y2="147"/><text x="48.57" y="156" text-anchor="middle">Apr</text>
+                <line x1="97.67" y1="142" x2="97.67" y2="147"/><text x="97.67" y="156" text-anchor="middle">Jul</text>
+                <line x1="147.32" y1="142" x2="147.32" y2="147"/><text x="147.32" y="156" text-anchor="middle">Oct</text>
+                <line x1="196.96" y1="142" x2="196.96" y2="147"/><text x="196.96" y="156" text-anchor="middle">Jan 2026</text>
+                <line x1="245.53" y1="142" x2="245.53" y2="147"/><text x="245.53" y="156" text-anchor="middle">Apr</text>
+                <line x1="294.64" y1="142" x2="294.64" y2="147"/><text x="294.64" y="156" text-anchor="middle">Jul 2026</text>
+                <text x="320" y="167" text-anchor="end" fill="#8a8a8a">today · Aug 17</text>
+              </g>
+            </svg>
+
+          </div>
+          <div class="chartnote">Sessions drive most of the shape below the line: Wisconsin opened in October with 27 bills, Arizona and Florida in January. The honest comparison is one session against the next, not month against month. Nine states are watched, not fifty.</div>
+          <div class="mapwrap"><svg viewBox="0 0 1041 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jurisdictions sued for their voter records, by state. Nine small north-eastern jurisdictions are called out in a column to the right of the map.">
+<path tabindex="0" role="button" data-ab="AL" class="st st-none" d="M648,492L648,492L648,492ZM642,384L689,380L702,427L710,440L707,443L706,450L709,457L708,465L711,469L694,471L661,474L660,477L665,481L666,486L664,490L659,490L656,488L653,482L652,490L646,489L642,455L644,386Z"><title>Alabama</title></path>
+<path tabindex="0" role="button" data-ab="AK" class="st st-none" d="M104,552L104,552L104,552ZM99,570L103,565L105,569ZM95,582L95,582L95,582ZM93,575L99,571L103,571L105,573L95,580ZM93,583L93,583L93,583ZM89,588L89,588L89,588ZM72,594L72,594L72,594ZM71,592L71,592L71,592ZM68,593L68,593L68,593ZM66,590L66,590L66,590ZM68,564L68,564L68,564ZM61,591L61,591L61,591ZM58,592L58,592L58,592ZM66,524L66,524L66,524ZM56,596L56,596L56,596ZM45,597L45,597L45,597ZM43,595L43,595L43,595ZM41,596L41,596L41,596ZM44,547L50,547L51,551L48,552ZM31,601L34,600L38,596L40,598L37,601ZM51,505L59,501L66,500L65,504L71,505L74,504L71,500L73,498L67,496L66,492L59,484L62,481L67,481L70,479L72,475L75,471L78,471L82,468L87,468L89,465L94,466L95,469L101,469L104,472L109,471L114,473L123,474L126,472L133,474L147,547L155,547L162,552L164,555L167,552L167,548L169,546L176,552L181,554L193,565L200,567L203,573L201,578L198,575L193,574L188,565L183,563L182,560L178,557L176,557L171,551L175,558L173,557L168,559L160,554L151,551L141,550L135,552L126,547L124,545L119,547L121,553L114,554L109,560L105,560L107,552L107,549L112,544L106,546L102,553L100,557L96,560L96,562L100,564L96,569L90,572L86,576L86,578L82,579L77,586L71,586L67,589L56,592L53,594L47,595L49,592L57,590L62,585L66,585L75,579L81,573L84,563L76,566L71,561L65,564L64,558L66,557L64,551L58,553L53,547L54,545L51,538L54,534L61,526L64,528L67,525L71,525L73,523L72,517L73,514L68,517L59,516L55,514L54,509L56,509ZM25,603L29,599L31,600ZM28,573L28,573L28,573ZM20,602L20,602L20,602ZM27,568L27,568L27,568ZM16,603L16,603L16,603ZM34,518L39,518L45,522L41,524L39,521ZM7,603L7,603L7,603ZM23,540L23,540L23,540ZM0,602L0,602L0,602ZM-6,601L-6,601L-6,601ZM-10,599L-10,599L-10,599ZM-11,601L-11,601L-11,601ZM-15,601L-15,601L-15,601ZM-18,600L-18,600L-18,600ZM-20,597L-20,597L-20,597ZM-30,593L-30,593L-30,593ZM-35,593L-35,593L-35,593ZM-41,589L-41,589L-41,589ZM-56,577L-56,577L-56,577ZM-58,571L-58,571L-58,571ZM197,577L197,577L197,577ZM196,577L196,577L196,577ZM195,575L195,575L195,575ZM188,570L188,570L188,570ZM187,569L187,569L187,569ZM186,577L186,577L186,577ZM185,573L187,570L194,576L196,580L190,578ZM183,574L183,574L183,574ZM180,567L182,565L185,564L189,567L184,569L183,572ZM175,556L178,557L181,563L180,566ZM174,565L177,563L181,573ZM173,566L173,566L173,566ZM169,561L172,558L175,559L177,563L174,562L174,565ZM121,555L121,555L121,555ZM120,551L120,551L120,551Z"><title>Alaska</title></path>
+<path tabindex="0" role="button" data-ab="AZ" class="st st-active" d="M145,407L149,407L150,401L147,400L148,392L152,389L154,380L157,377L163,374L160,370L158,363L156,359L157,356L159,353L158,345L160,331L167,331L170,335L173,331L176,313L203,318L239,324L265,328L247,456L208,450L172,429L142,412Z"><title>Arizona</title></path>
+<path tabindex="0" role="button" data-ab="CO" class="st st-ended" d="M277,237L301,240L333,244L361,247L395,249L394,272L390,341L372,339L349,338L315,334L265,328L268,302L268,299Z"><title>Colorado</title></path>
+<path tabindex="0" role="button" data-ab="FL" class="st st-none" d="M815,594L815,594L815,594ZM813,596L813,596L813,596ZM807,599L807,599L807,599ZM794,604L795,602L800,598L805,600L796,604ZM790,605L790,605L790,605ZM786,605L786,605L786,605ZM777,558L777,558L777,558ZM770,606L770,606L770,606ZM720,495L720,495L720,495ZM711,469L714,475L766,471L767,476L770,476L769,466L770,465L780,466L783,476L787,486L795,500L806,514L805,517L807,522L812,529L820,544L823,554L824,575L822,574L821,580L822,583L820,586L807,590L805,585L801,578L793,574L792,575L785,563L780,559L781,555L778,557L769,546L766,543L771,533L765,530L767,534L765,537L762,533L762,527L764,517L762,510L759,505L755,505L750,500L746,498L745,495L740,491L732,487L727,487L726,492L723,492L716,497L712,498L714,501L707,500L708,497L706,494L696,488L689,486L681,486L664,490L666,486L665,481L660,477L661,474L694,471Z"><title>Florida</title></path>
+<path tabindex="0" role="button" data-ab="GA" class="st st-active" d="M689,380L713,377L735,374L732,379L732,382L738,385L741,385L744,391L748,396L755,400L756,402L762,406L766,412L771,414L774,423L777,424L781,430L781,433L786,435L787,436L783,442L781,451L781,454L778,460L780,461L780,466L770,465L769,466L770,476L767,476L766,471L714,475L711,469L708,465L709,457L706,450L707,443L710,440L702,427Z"><title>Georgia</title></path>
+<path tabindex="0" role="button" data-ab="IN" class="st st-none" d="M640,230L647,231L652,228L686,224L686,225L688,247L693,284L691,286L694,292L688,295L683,295L684,298L680,304L677,305L674,313L669,309L666,312L666,314L662,315L661,313L657,316L655,319L651,316L647,315L639,320L638,317L642,309L647,298L646,293L643,288L645,284Z"><title>Indiana</title></path>
+<path tabindex="0" role="button" data-ab="KS" class="st st-none" d="M394,272L422,273L465,275L510,275L512,277L516,278L514,286L519,293L522,295L523,344L489,344L459,344L433,343L390,341Z"><title>Kansas</title></path>
+<path tabindex="0" role="button" data-ab="ME" class="st st-active" d="M940,115L940,115L940,115ZM938,116L938,116L938,116ZM936,112L936,112L936,112ZM932,116L932,116L932,116ZM934,125L934,125L934,125ZM931,119L931,119L931,119ZM930,116L930,116L930,116ZM910,150L905,145L891,102L895,103L894,99L897,99L895,96L900,86L898,83L898,76L900,74L899,67L906,48L909,48L910,51L912,52L917,49L923,46L930,50L937,74L939,80L945,80L946,87L949,90L952,88L957,95L955,99L953,99L950,106L947,104L944,110L939,114L937,110L935,111L937,115L936,118L932,114L931,110L929,120L930,123L918,131L913,138Z"><title>Maine</title></path>
+<path tabindex="0" role="button" data-ab="MA" class="st st-active" d="M928,187L928,187L928,187ZM918,188L921,184L925,187ZM871,168L884,165L903,161L906,156L909,155L911,159L914,158L909,166L917,171L922,178L929,175L931,177L920,183L918,179L915,185L913,186L911,183L910,182L905,176L899,178L899,178L871,184L871,183Z"><title>Massachusetts</title></path>
+<path tabindex="0" role="button" data-ab="MN" class="st st-active" d="M479,71L511,71L511,62L516,64L518,73L520,77L531,79L532,81L536,80L540,78L551,82L553,87L555,84L563,87L566,91L571,90L577,86L578,89L588,88L592,91L596,91L590,94L582,98L573,106L570,109L559,119L560,121L556,122L556,136L551,139L548,144L548,147L551,150L550,154L549,166L554,170L557,170L564,175L565,178L572,182L576,187L576,193L549,194L516,195L491,195L491,154L487,152L484,147L489,142L489,140L489,131L486,123L485,102L481,89L481,78Z"><title>Minnesota</title></path>
+<path tabindex="0" role="button" data-ab="NJ" class="st st-ended" d="M849,246L850,244L851,241L861,231L854,226L850,221L852,216L850,214L855,204L870,209L869,216L869,217L867,221L871,222L872,225L873,237L870,247L867,251L865,257L863,259L863,254L859,254L852,250L849,246Z"><title>New Jersey</title></path>
+<path tabindex="0" role="button" data-ab="NC" class="st st-none" d="M864,329L864,329L864,329ZM863,350L863,350L863,350ZM756,334L780,331L812,326L840,320L859,316L866,328L864,328L860,319L856,317L859,323L857,326L851,330L847,330L847,333L856,330L859,330L860,336L860,330L863,329L866,335L860,344L852,345L843,343L854,347L850,356L855,353L859,354L856,360L862,350L863,350L856,361L851,361L844,365L838,370L834,377L833,384L829,383L823,386L798,368L778,371L777,369L772,365L749,367L735,374L713,377L713,371L717,369L717,366L721,363L726,362L733,356L735,356L738,350L741,351L747,345L751,346L755,338Z"><title>North Carolina</title></path>
+<path tabindex="0" role="button" data-ab="ND" class="st st-none" d="M377,66L404,68L445,70L479,71L481,78L481,89L485,102L486,123L489,131L489,140L460,139L412,137L371,134Z"><title>North Dakota</title></path>
+<path tabindex="0" role="button" data-ab="OK" class="st st-ended" d="M372,339L390,341L433,343L459,344L489,344L523,344L523,355L527,381L526,421L520,418L517,416L512,413L511,415L506,414L501,416L499,415L493,418L492,420L485,415L484,417L481,414L476,419L475,414L472,417L467,413L463,416L462,413L454,409L452,411L443,407L439,407L438,404L429,403L424,398L426,354L396,352L372,351Z"><title>Oklahoma</title></path>
+<path tabindex="0" role="button" data-ab="PA" class="st st-active" d="M756,209L768,200L769,206L800,201L841,192L847,197L850,202L855,204L850,214L852,216L850,221L854,226L861,231L851,241L847,242L845,245L816,251L782,257L765,260L761,239Z"><title>Pennsylvania</title></path>
+<path tabindex="0" role="button" data-ab="SD" class="st st-none" d="M369,156L371,134L412,137L460,139L489,140L489,142L484,147L487,152L491,154L491,195L488,195L488,200L491,204L488,212L491,218L488,218L487,215L476,210L467,210L466,212L457,206L434,205L404,204L365,201Z"><title>South Dakota</title></path>
+<path tabindex="0" role="button" data-ab="TX" class="st st-none" d="M372,351L396,352L426,354L424,398L429,403L438,404L439,407L443,407L452,411L454,409L462,413L463,416L467,413L472,417L475,414L476,419L481,414L484,417L485,415L492,420L493,418L499,415L501,416L506,414L511,415L512,413L517,416L520,418L526,421L529,423L535,423L535,435L535,458L540,463L540,467L542,469L545,476L546,484L542,490L543,502L539,507L541,510L535,511L522,517L527,513L522,514L524,509L518,511L517,514L520,515L520,519L523,519L510,530L492,539L480,548L475,555L470,566L470,574L473,587L470,576L470,569L472,560L480,546L489,541L489,540L484,542L482,540L482,544L477,547L474,553L469,552L473,556L469,564L468,576L469,583L472,588L471,592L474,595L467,597L464,593L452,592L447,589L443,588L440,585L434,584L431,574L428,570L428,559L425,556L420,552L419,548L412,541L410,534L406,526L405,522L398,513L394,511L390,506L378,505L373,503L372,505L366,505L364,510L361,517L357,522L353,521L348,517L337,511L330,504L328,498L328,492L325,487L323,480L316,475L312,470L309,468L306,463L302,460L299,454L296,452L295,447L339,451L363,453L365,430L367,408L371,351Z"><title>Texas</title></path>
+<path tabindex="0" role="button" data-ab="WY" class="st st-none" d="M369,156L365,201L361,247L333,244L301,240L277,237L244,232L247,210L256,154L258,142L263,143L298,148L339,153Z"><title>Wyoming</title></path>
+<path tabindex="0" role="button" data-ab="CT" class="st st-active" d="M871,184L899,178L899,178L902,191L902,193L893,197L885,198L882,203L874,208L872,206L876,203L874,201Z"><title>Connecticut</title></path>
+<path tabindex="0" role="button" data-ab="MO" class="st st-none" d="M502,262L521,262L545,261L571,260L576,265L576,273L578,280L584,286L590,290L591,297L595,296L601,298L598,309L598,313L606,321L607,320L614,326L615,332L614,333L619,340L621,340L620,349L617,351L616,351L615,352L615,354L612,358L614,360L612,363L600,364L605,357L604,352L586,353L550,355L523,355L523,344L522,295L519,293L514,286L516,278L512,277L510,275L505,268Z"><title>Missouri</title></path>
+<path tabindex="0" role="button" data-ab="WV" class="st st-active" d="M733,295L738,293L740,290L739,285L741,280L744,283L746,281L745,278L746,273L750,269L754,269L758,263L760,256L761,247L759,241L761,239L765,260L782,257L784,269L790,261L792,262L794,257L800,258L805,253L811,256L814,260L813,265L803,259L803,266L797,277L794,275L790,286L784,283L784,287L780,297L776,305L777,309L773,310L767,315L761,318L758,316L755,320L750,319L747,313L741,311L734,302Z"><title>West Virginia</title></path>
+<path tabindex="0" role="button" data-ab="IL" class="st st-ended" d="M576,265L577,259L581,258L584,252L584,248L581,245L582,241L588,239L593,236L596,231L596,224L592,222L587,215L618,214L634,212L634,217L640,230L645,284L643,288L646,293L647,298L642,309L638,317L639,320L637,323L639,327L632,330L634,335L632,337L624,334L621,338L621,340L619,340L614,333L615,332L614,326L607,320L606,321L598,313L598,309L601,298L595,296L591,297L590,290L584,286L578,280L576,273Z"><title>Illinois</title></path>
+<path tabindex="0" role="button" data-ab="NM" class="st st-active" d="M265,328L315,334L349,338L372,339L372,351L371,351L367,408L365,430L363,453L339,451L295,447L296,452L264,448L263,458L247,456Z"><title>New Mexico</title></path>
+<path tabindex="0" role="button" data-ab="AR" class="st st-none" d="M523,355L550,355L586,353L604,352L605,357L600,364L612,363L613,367L608,369L610,372L605,378L607,383L603,387L604,389L598,393L599,400L595,402L593,409L590,411L592,415L588,420L591,430L589,433L569,434L535,435L535,423L529,423L526,421L527,381Z"><title>Arkansas</title></path>
+<path tabindex="0" role="button" data-ab="CA" class="st st-active" d="M77,374L81,377L79,378ZM75,384L78,390L76,389ZM65,358L65,358L65,358ZM58,374L58,374L58,374ZM57,355L63,359L57,357ZM50,355L54,355L52,358ZM47,353L47,353L47,353ZM33,160L84,175L100,179L83,246L157,356L156,359L158,363L160,370L163,374L157,377L154,380L152,389L148,392L147,400L150,401L149,407L145,407L99,402L98,398L99,388L97,382L92,376L86,370L82,369L82,362L76,362L70,357L69,354L65,349L59,348L55,345L49,344L46,340L49,335L50,328L46,325L47,321L42,313L37,300L35,296L36,289L40,286L38,281L35,281L31,274L32,267L33,261L35,261L35,266L38,270L39,265L36,257L39,256L38,253L33,260L29,255L26,253L28,250L27,243L24,240L20,229L22,227L21,219L24,216L24,209L22,202L18,197L19,193L27,184L28,179L31,173L32,166L30,164Z"><title>California</title></path>
+<path tabindex="0" role="button" data-ab="DE" class="st st-active" d="M849,246L849,246L849,246ZM845,245L847,242L851,241L850,244L849,249L853,252L855,258L860,263L861,263L864,270L853,273Z"><title>Delaware</title></path>
+<path tabindex="0" role="button" data-ab="DC" class="st st-ended" d="M826,267L830,267L828,270Z"><title>District of Columbia</title></path>
+<path tabindex="0" role="button" data-ab="HI" class="st st-active" d="M305,584L310,578L310,573L315,576L322,578L326,582L326,584L332,589L329,593L322,595L317,598L314,603L309,600L309,594ZM292,558L294,555L296,559L300,557L306,561L305,564L299,566L297,561ZM292,567L292,567L292,567ZM284,558L287,558L289,560L286,562ZM279,554L280,551L291,553L288,555ZM258,543L261,543L265,540L267,546L271,549L262,549ZM226,533L231,528L235,529L236,534L233,536L230,536ZM216,537L220,533L217,538Z"><title>Hawaii</title></path>
+<path tabindex="0" role="button" data-ab="IA" class="st st-none" d="M491,195L516,195L549,194L576,193L579,199L577,202L580,211L586,212L587,215L592,222L596,224L596,231L593,236L588,239L582,241L581,245L584,248L584,252L581,258L577,259L576,265L571,260L545,261L521,262L502,262L500,259L501,255L499,245L499,242L496,240L497,234L494,230L491,218L488,212L491,204L488,200L488,195Z"><title>Iowa</title></path>
+<path tabindex="0" role="button" data-ab="KY" class="st st-active" d="M621,340L621,338L624,334L632,337L634,335L632,330L639,327L637,323L639,320L647,315L651,316L655,319L657,316L661,313L662,315L666,314L666,312L669,309L674,313L677,305L680,304L684,298L683,295L688,295L694,292L691,286L693,284L699,283L704,290L710,290L714,293L716,291L721,292L727,288L728,292L733,295L734,302L741,311L747,313L741,320L735,325L733,330L729,334L720,339L704,341L681,343L672,343L645,346L641,345L641,350L617,351L620,349ZM616,351L615,352L616,351Z"><title>Kentucky</title></path>
+<path tabindex="0" role="button" data-ab="MD" class="st st-active" d="M850,285L849,285L850,285ZM847,281L847,281L847,281ZM782,257L816,251L845,245L853,273L864,270L863,280L855,284L852,285L851,282L848,276L846,279L841,274L842,271L846,271L839,266L839,259L842,252L837,254L836,259L838,263L836,269L838,274L841,277L840,279L844,284L838,281L835,282L830,278L827,280L825,278L827,274L828,270L830,267L826,267L818,264L819,262L814,260L811,256L805,253L800,258L794,257L792,262L790,261L784,269Z"><title>Maryland</title></path>
+<path tabindex="0" role="button" data-ab="MI" class="st st-ended" d="M677,131L682,132L680,133ZM663,133L663,133L663,133ZM662,139L662,139L662,139ZM661,136L661,136L661,136ZM659,142L659,142L659,142ZM657,150L657,150L657,150ZM655,153L655,153L655,153ZM646,140L646,140L646,140ZM652,228L655,224L659,216L660,205L659,198L652,184L654,180L652,175L655,168L655,160L657,159L657,155L661,154L664,148L665,151L664,156L666,158L668,153L667,146L674,142L670,138L675,133L681,135L685,135L687,138L697,140L701,147L699,149L702,154L702,162L699,166L699,169L695,171L694,177L699,180L705,171L710,168L715,172L719,186L722,191L721,200L716,199L715,207L712,210L713,213L708,222L686,225L686,224ZM601,92L610,86L614,84L610,89L603,93ZM585,123L591,120L594,117L601,116L613,106L619,101L624,100L615,112L616,117L619,112L624,112L628,114L633,121L644,121L652,115L662,114L670,111L670,118L676,118L683,115L684,121L690,126L693,124L694,128L685,127L681,129L676,127L674,131L671,128L663,127L661,130L657,132L653,131L650,135L645,139L648,134L644,135L643,138L638,140L632,153L630,151L631,148L627,147L628,140L622,137L623,135L612,134L607,131L590,128L588,124Z"><title>Michigan</title></path>
+<path tabindex="0" role="button" data-ab="MS" class="st st-none" d="M644,493L644,493L644,493ZM639,493L639,493L639,493ZM635,494L635,494L635,494ZM632,494L632,494L632,494ZM589,433L591,430L588,420L592,415L590,411L593,409L595,402L599,400L598,393L604,389L603,387L642,384L644,386L642,455L646,489L644,491L636,490L627,494L625,495L618,485L619,477L583,479L584,478L582,473L585,473L584,467L586,466L587,461L593,453L590,451L595,448L591,445L593,442L590,441L591,436Z"><title>Mississippi</title></path>
+<path tabindex="0" role="button" data-ab="MT" class="st st-none" d="M198,39L233,46L265,52L303,57L340,62L377,66L371,134L369,156L339,153L298,148L263,143L258,142L256,154L253,148L250,148L250,151L237,148L235,151L228,149L227,152L225,149L224,142L219,139L220,134L219,132L215,118L208,123L205,120L206,115L209,114L208,109L213,96L209,96L205,90L205,88L201,80L195,74L197,69L193,62Z"><title>Montana</title></path>
+<path tabindex="0" role="button" data-ab="NH" class="st st-active" d="M886,111L887,105L891,102L905,145L910,150L909,155L906,156L903,161L884,165L882,163L881,146L883,133L882,128L885,126L888,122L886,117Z"><title>New Hampshire</title></path>
+<path tabindex="0" role="button" data-ab="NY" class="st st-active" d="M899,196L899,196L899,196ZM897,198L897,198L897,198ZM869,217L867,221L869,217ZM816,154L816,154L816,154ZM814,154L814,154L814,154ZM768,200L776,192L780,186L777,182L775,176L784,172L796,170L800,172L809,169L813,167L817,162L819,161L817,154L819,152L815,150L815,146L820,141L822,138L829,128L832,124L858,118L859,127L862,134L861,140L864,145L864,149L867,150L871,168L871,183L871,184L874,201L876,203L872,206L874,208L874,211L877,208L891,204L895,200L900,202L896,206L886,213L872,219L869,216L870,209L855,204L850,202L847,197L841,192L800,201L769,206Z"><title>New York</title></path>
+<path tabindex="0" role="button" data-ab="OH" class="st st-none" d="M721,223L721,223L721,223ZM719,222L719,222L719,222ZM686,225L708,222L718,225L719,224L726,227L733,223L738,223L742,218L748,213L756,209L761,239L759,241L761,247L760,256L758,263L754,269L750,269L746,273L745,278L746,281L744,283L741,280L739,285L740,290L738,293L733,295L728,292L727,288L721,292L716,291L714,293L710,290L704,290L699,283L693,284L688,247Z"><title>Ohio</title></path>
+<path tabindex="0" role="button" data-ab="OR" class="st st-active" d="M71,70L74,74L77,74L80,80L79,87L86,91L94,90L98,91L103,95L112,94L118,96L123,95L136,96L139,95L171,102L172,107L175,109L176,112L167,124L164,129L162,130L157,137L158,140L162,143L158,150L149,191L122,185L100,179L84,175L33,160L31,157L32,149L34,146L33,140L43,126L45,121L57,92L61,81L62,75L65,71Z"><title>Oregon</title></path>
+<path tabindex="0" role="button" data-ab="TN" class="st st-none" d="M612,363L614,360L612,358L615,354L615,352L616,351L617,351L641,350L641,345L645,346L672,343L681,343L704,341L720,339L756,334L755,338L751,346L747,345L741,351L738,350L735,356L733,356L726,362L721,363L717,366L717,369L713,371L713,377L689,380L642,384L603,387L607,383L605,378L610,372L608,369L613,367Z"><title>Tennessee</title></path>
+<path tabindex="0" role="button" data-ab="UT" class="st st-active" d="M198,201L200,202L247,210L244,232L277,237L268,299L268,302L265,328L239,324L203,318L176,313Z"><title>Utah</title></path>
+<path tabindex="0" role="button" data-ab="VA" class="st st-active" d="M855,284L863,280L858,288L859,292L857,301L855,304L853,301L853,292ZM850,285L849,285L850,285ZM747,313L750,319L755,320L758,316L761,318L767,315L773,310L777,309L776,305L780,297L784,287L784,283L790,286L794,275L797,277L803,266L803,259L813,265L814,260L819,262L818,264L826,267L828,270L827,274L825,279L826,281L830,279L832,283L838,283L840,285L846,287L846,295L848,300L845,299L849,305L847,309L840,305L846,310L849,308L855,308L859,316L840,320L812,326L780,331L756,334L720,339L729,334L733,330L735,325L741,320Z"><title>Virginia</title></path>
+<path tabindex="0" role="button" data-ab="WA" class="st st-active" d="M93,51L93,51L93,51ZM99,25L99,25L99,25ZM99,20L99,20L99,20ZM98,23L98,23L98,23ZM95,31L99,28L99,31L97,33ZM96,18L96,18L96,18ZM94,20L94,20L94,20ZM95,13L95,13L95,13ZM91,21L96,20L98,22L96,27L92,24ZM91,19L91,19L91,19ZM184,36L171,92L171,102L139,95L136,96L123,95L118,96L112,94L103,95L98,91L94,90L86,91L79,87L80,80L77,74L74,74L71,70L66,69L64,65L66,60L70,59L66,57L67,55L71,54L67,51L67,43L68,34L66,30L66,23L70,20L77,27L81,28L90,33L95,33L95,38L92,43L97,39L95,46L92,52L96,52L96,47L98,42L102,38L101,31L98,25L101,27L102,21L99,19L100,14L115,19L140,25Z"><title>Washington</title></path>
+<path tabindex="0" role="button" data-ab="WI" class="st st-active" d="M642,146L642,146L642,146ZM636,150L636,150L636,150ZM584,113L584,113L584,113ZM583,116L583,116L583,116ZM581,115L581,115L581,115ZM580,117L580,117L580,117ZM580,114L580,114L580,114ZM579,113L579,113L579,113ZM579,118L579,118L579,118ZM576,114L576,114L576,114ZM560,121L568,120L576,115L580,116L577,123L580,120L585,123L588,124L590,128L607,131L612,134L623,135L622,137L628,140L627,147L631,148L630,151L632,153L629,157L626,166L628,166L633,159L636,157L638,151L642,148L635,165L635,174L633,176L632,181L633,185L631,195L632,201L634,206L634,212L618,214L587,215L586,212L580,211L577,202L579,199L576,193L576,187L572,182L565,178L564,175L557,170L554,170L549,166L550,154L551,150L548,147L548,144L551,139L556,136L556,122Z"><title>Wisconsin</title></path>
+<path tabindex="0" role="button" data-ab="NE" class="st st-none" d="M365,201L404,204L434,205L457,206L466,212L467,210L476,210L487,215L488,218L491,218L494,230L497,234L496,240L499,242L499,245L501,255L500,259L502,262L505,268L510,275L465,275L422,273L394,272L395,249L361,247Z"><title>Nebraska</title></path>
+<path tabindex="0" role="button" data-ab="SC" class="st st-none" d="M735,374L749,367L772,365L777,369L778,371L798,368L823,386L816,392L813,399L814,404L811,408L808,408L807,411L801,419L792,424L793,427L790,429L786,435L781,433L781,430L777,424L774,423L771,414L766,412L762,406L756,402L755,400L748,396L744,391L741,385L738,385L732,382L732,379Z"><title>South Carolina</title></path>
+<path tabindex="0" role="button" data-ab="ID" class="st st-active" d="M171,102L171,92L184,36L198,39L193,62L197,69L195,74L201,80L205,88L205,90L209,96L213,96L208,109L209,114L206,115L205,120L208,123L215,118L219,132L220,134L219,139L224,142L225,149L227,152L228,149L235,151L237,148L250,151L250,148L253,148L256,154L247,210L200,202L198,201L160,193L149,191L158,150L162,143L158,140L157,137L162,130L164,129L167,124L176,112L175,109L172,107Z"><title>Idaho</title></path>
+<path tabindex="0" role="button" data-ab="NV" class="st st-active" d="M100,179L122,185L149,191L160,193L198,201L176,313L173,331L170,335L167,331L160,331L158,345L159,353L157,356L83,246Z"><title>Nevada</title></path>
+<path tabindex="0" role="button" data-ab="VT" class="st st-active" d="M858,118L886,111L886,117L888,122L885,126L882,128L883,133L881,146L882,163L884,165L871,168L867,150L864,149L864,145L861,140L862,134L859,127Z"><title>Vermont</title></path>
+<path tabindex="0" role="button" data-ab="LA" class="st st-none" d="M638,497L638,497L638,497ZM629,498L631,495L632,498ZM624,510L624,510L624,510ZM610,521L610,521L610,521ZM606,521L606,521L606,521ZM602,522L602,522L602,522ZM577,511L583,512L580,514ZM535,435L569,434L589,433L591,436L590,441L593,442L591,445L595,448L590,451L593,453L587,461L586,466L584,467L585,473L582,473L584,478L583,479L619,477L618,485L625,495L619,499L619,501L624,502L626,498L628,501L627,507L623,508L626,513L632,514L635,518L634,522L624,516L620,515L613,521L608,515L601,523L598,520L590,517L590,513L588,514L584,508L579,509L579,506L574,508L575,511L571,513L565,512L554,508L548,508L541,510L539,507L543,502L542,490L546,484L545,476L542,469L540,467L540,463L535,458Z"><title>Louisiana</title></path>
+<path tabindex="0" role="button" data-ab="RI" class="st st-active" d="M911,183L913,186L909,188ZM908,188L908,188L908,188ZM907,196L907,196L907,196ZM902,193L902,191L899,178L905,176L910,182L907,181L908,191Z"><title>Rhode Island</title></path>
+<circle class="billdot" data-dot="AZ" cx="208" cy="382" r="6"/>
+<text class="billtotal" data-total="AZ" x="219" y="387">0</text><text class="billdelta" data-delta="AZ" x="219" y="372"></text>
+<circle class="billdot" data-dot="FL" cx="767" cy="516" r="6"/>
+<text class="billtotal" data-total="FL" x="778" y="521">0</text><text class="billdelta" data-delta="FL" x="778" y="506"></text>
+<circle class="billdot" data-dot="GA" cx="736" cy="428" r="6"/>
+<text class="billtotal" data-total="GA" x="747" y="433">0</text><text class="billdelta" data-delta="GA" x="747" y="418"></text>
+<circle class="billdot" data-dot="MI" cx="670" cy="167" r="6"/>
+<text class="billtotal" data-total="MI" x="681" y="172">0</text><text class="billdelta" data-delta="MI" x="681" y="157"></text>
+<circle class="billdot" data-dot="NC" cx="801" cy="351" r="6"/>
+<text class="billtotal" data-total="NC" x="812" y="356">0</text><text class="billdelta" data-delta="NC" x="812" y="341"></text>
+<circle class="billdot" data-dot="OH" cx="724" cy="253" r="6"/>
+<text class="billtotal" data-total="OH" x="735" y="258">0</text><text class="billdelta" data-delta="OH" x="735" y="243"></text>
+<circle class="billdot" data-dot="PA" cx="806" cy="226" r="6"/>
+<text class="billtotal" data-total="PA" x="817" y="231">0</text><text class="billdelta" data-delta="PA" x="817" y="216"></text>
+<circle class="billdot" data-dot="TX" cx="434" cy="469" r="6"/>
+<text class="billtotal" data-total="TX" x="445" y="474">0</text><text class="billdelta" data-delta="TX" x="445" y="459"></text>
+<circle class="billdot" data-dot="WI" cx="595" cy="167" r="6"/>
+<text class="billtotal" data-total="WI" x="606" y="172">0</text><text class="billdelta" data-delta="WI" x="606" y="157"></text>
+<line x1="972" y1="70" x2="972" y2="522" stroke="#262626" stroke-width="1"/>
+<line class="lead" x1="873" y1="136" x2="987" y2="104"/>
+<line class="lead" x1="893" y1="140" x2="987" y2="152"/>
+<line class="lead" x1="897" y1="172" x2="987" y2="200"/>
+<line class="lead" x1="904" y1="184" x2="987" y2="248"/>
+<line class="lead" x1="886" y1="190" x2="987" y2="296"/>
+<line class="lead" x1="862" y1="230" x2="987" y2="344"/>
+<line class="lead" x1="853" y1="260" x2="987" y2="392"/>
+<line class="lead" x1="832" y1="263" x2="987" y2="440"/>
+<line class="lead" x1="828" y1="268" x2="987" y2="488"/>
+<rect tabindex="0" role="button" data-ab="VT" class="st st-active" x="987" y="84" width="40" height="40" rx="5"><title>Vermont</title></rect>
+<text class="ablabel" x="1007" y="110" text-anchor="middle" pointer-events="none">VT</text>
+<rect tabindex="0" role="button" data-ab="NH" class="st st-active" x="987" y="132" width="40" height="40" rx="5"><title>New Hampshire</title></rect>
+<text class="ablabel" x="1007" y="158" text-anchor="middle" pointer-events="none">NH</text>
+<rect tabindex="0" role="button" data-ab="MA" class="st st-active" x="987" y="180" width="40" height="40" rx="5"><title>Massachusetts</title></rect>
+<text class="ablabel" x="1007" y="206" text-anchor="middle" pointer-events="none">MA</text>
+<rect tabindex="0" role="button" data-ab="RI" class="st st-active" x="987" y="228" width="40" height="40" rx="5"><title>Rhode Island</title></rect>
+<text class="ablabel" x="1007" y="254" text-anchor="middle" pointer-events="none">RI</text>
+<rect tabindex="0" role="button" data-ab="CT" class="st st-active" x="987" y="276" width="40" height="40" rx="5"><title>Connecticut</title></rect>
+<text class="ablabel" x="1007" y="302" text-anchor="middle" pointer-events="none">CT</text>
+<rect tabindex="0" role="button" data-ab="NJ" class="st st-ended" x="987" y="324" width="40" height="40" rx="5"><title>New Jersey</title></rect>
+<text class="ablabel" x="1007" y="350" text-anchor="middle" pointer-events="none">NJ</text>
+<rect tabindex="0" role="button" data-ab="DE" class="st st-active" x="987" y="372" width="40" height="40" rx="5"><title>Delaware</title></rect>
+<text class="ablabel" x="1007" y="398" text-anchor="middle" pointer-events="none">DE</text>
+<rect tabindex="0" role="button" data-ab="MD" class="st st-active" x="987" y="420" width="40" height="40" rx="5"><title>Maryland</title></rect>
+<text class="ablabel" x="1007" y="446" text-anchor="middle" pointer-events="none">MD</text>
+<rect tabindex="0" role="button" data-ab="DC" class="st st-ended" x="987" y="468" width="40" height="40" rx="5"><title>District of Columbia</title></rect>
+<text class="ablabel" x="1007" y="494" text-anchor="middle" pointer-events="none">DC</text>
+</svg></div>
+          <div class="key">
+            <div class="krow"><span class="klab">Above the line<br>voter records</span><span class="kits"><span><i class="k line red"></i>jurisdictions sued</span><span><i class="k line teal"></i>demand rejected in court</span><span><i class="k unk"></i>demands sent, undated</span><span><i class="k evd"></i>each filing or ruling; lights in its month</span><span class="kunit">cumulative, of 51</span></span></div>
+            <div class="krow"><span class="klab">Below the line<br>bills</span><span class="kits"><span><i class="k bar"></i>state bills first seen</span><span><i class="k dot"></i>federal actions</span><span><i class="k eo"></i>election executive order</span><span class="kunit">per month, 92 max</span></span></div>
+            <div class="krow"><span class="klab">On the map<br>voter records</span><span class="kits"><span><i class="k sw active"></i>suit live</span><span><i class="k sw ended"></i>suit ended</span><span><i class="k sw none"></i>never sued</span><span><i class="k sw held"></i>demand rejected</span><span><i class="k billdot"></i>bills tracked, running total; +N flashes on arrival</span></span></div>
+          </div>
+          <div class="scrub">
+            <span class="when" id="when">today</span>
+            <input type="range" id="scrub" min="0" max="19" value="19" step="1" aria-label="Month">
+            <span class="added" id="added"></span><button id="play" type="button">Replay</button>
+          </div>
+          <div class="detail" id="detail"></div>
+          <div class="srcline"><span class="badge b2">B2</span><span>Democracy Docket, Aug 14: DOJ is 0 for 22 in these suits. psephos records filings and terminations, not who won; that count is the tracker's, not ours.</span></div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="side">
+      <section style="margin-top:0">
+        <h2>Watched bills <span class="n">6 · none moved since Mar 26</span></h2>
+        <div class="list">
+          <a class="row" href="#"><div class="title" style="display:flex;gap:10px;align-items:baseline"><span class="mono">S. 1383</span><span>Veterans Accessibility Advisory Committee Act</span><span class="badge veh r">Vehicle</span></div><div class="meta" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Mar 26, 2026 — Considered by Senate (Message from the House considered).</div></a>
+          <a class="row" href="#"><div class="title" style="display:flex;gap:10px;align-items:baseline"><span class="mono">H.R. 7300</span><span>MEGA Act</span></div><div class="meta" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Feb 2, 2026 — Referred to the Subcommittee on Border Security and Enforcement.</div></a>
+          <a class="row" href="#"><div class="title" style="display:flex;gap:10px;align-items:baseline"><span class="mono">H.R. 7296</span><span>SAVE America Act</span></div><div class="meta" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Jan 30, 2026 — Referred to the House Committee on House Administration.</div></a>
+          <a class="row" href="#"><div class="title" style="display:flex;gap:10px;align-items:baseline"><span class="mono">S. 3752</span><span>SAVE America Act</span></div><div class="meta" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Jan 29, 2026 — Read twice and referred to the Committee on Rules and Administration.</div></a>
+          <a class="row" href="#"><div class="title" style="display:flex;gap:10px;align-items:baseline"><span class="mono">H.R. 22</span><span>SAVE Act</span></div><div class="meta" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Apr 10, 2025 — Received in the Senate.</div></a>
+          <a class="row" href="#"><div class="title" style="display:flex;gap:10px;align-items:baseline"><span class="mono">S. 128</span><span>SAVE Act (Senate companion)</span></div><div class="meta" style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Jan 16, 2025 — Read twice and referred to the Committee on Rules and Administration.</div></a>
+        </div>
+      </section>
+
+      <section class="ex">
+        <h2>Executive <span class="n">12 election-related of 118</span><a href="#" class="right">All 118</a></h2>
+        <div class="list">
+          <a class="row" href="#"><div class="title">2026 Election Administration and Voting Survey (collection)</div><div class="when"><span class="badge a1">A1</span><span>Apr 23, 2026</span></div></a>
+          <a class="row" href="#"><div class="title">EO 14399: Ensuring Citizenship Verification and Integrity in Federal Elections</div><div class="when"><span class="badge a1">A1</span><span>Mar 31, 2026</span></div></a>
+          <a class="row" href="#"><div class="title">Request for Comment: Election Audit Standards; Correction</div><div class="when"><span class="badge a1">A1</span><span>Feb 25, 2026</span></div></a>
+          <a class="row" href="#"><div class="title">Request for Comment: Election Audit Standards</div><div class="when"><span class="badge a1">A1</span><span>Feb 23, 2026</span></div></a>
+          <a class="row" href="#"><div class="title">2026 Election Administration and Voting Survey (proposals, approvals)</div><div class="when"><span class="badge a1">A1</span><span>Jan 12, 2026</span></div></a>
+          <a class="row" href="#"><div class="title">Petition of America First Legal Foundation for Rulemaking Before the EAC</div><div class="when"><span class="badge a1">A1</span><span>Aug 21, 2025</span></div></a>
+          <a class="row" href="#"><div class="title">Voting System Manufacturer Registration, Testing, Anomaly Reporting…</div><div class="when"><span class="badge a1">A1</span><span>Jul 24, 2025</span></div></a>
+          <a class="row" href="#"><div class="title">Request for Comment: U.S. Elections Survey-Election Office Staffing</div><div class="when"><span class="badge a1">A1</span><span>Jun 17, 2025</span></div></a>
+          <a class="row" href="#"><div class="title">EO 14248: Preserving and Protecting the Integrity of American Elections</div><div class="when"><span class="badge a1">A1</span><span>Mar 25, 2025</span></div></a>
+          <a class="row" href="#"><div class="title">EO 14152: Holding Former Government Officials Accountable for Election Interference…</div><div class="when"><span class="badge a1">A1</span><span>Jan 20, 2025</span></div></a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+
+
+  
+</main>
+<div id="ruler"></div>
+<script>
+  var r=document.getElementById('ruler');
+  function u(){r.textContent='mockup v6 · '+window.innerWidth+' wide · page '+document.documentElement.scrollHeight+' px (v3 was 2,721; live 5,820)';}
+  u(); window.addEventListener('resize',u);
+</script>
+
+<script id="campaign-js">
+(function(){
+  var DATA = {"sued":{"OR":{"name":"Oregon","first":"2025-09-16","cases":[{"cap":"United States v. State of Oregon","court":"District of Oregon","dk":"6:25-cv-01666","st":"terminated","filed":"2025-09-16","last":null,"n":55,"to":"Ninth Circuit 26-1231"},{"cap":"United States of America v. State of Oregon, et al.","court":"Ninth Circuit","dk":"26-1231","st":"pending","filed":"2026-03-03","last":null,"n":16,"to":null}],"status":"active"},"CA":{"name":"California","first":"2025-09-25","cases":[{"cap":"United States v. Shirley Weber","court":"Central District of California","dk":"2:25-cv-09149","st":"terminated","filed":"2025-09-25","last":null,"n":66,"to":"Ninth Circuit 26-1232"},{"cap":"United States of America v. Weber, et al.","court":"Ninth Circuit","dk":"26-1232","st":"pending","filed":"2026-03-03","last":null,"n":18,"to":null}],"status":"active"},"PA":{"name":"Pennsylvania","first":"2025-09-25","cases":[{"cap":"United States v. COMMONWEALTH OF PENNSYLVANIA","court":"Western District of Pennsylvania","dk":"2:25-cv-01481","st":"terminated","filed":"2025-09-25","last":null,"n":112,"to":"Third Circuit 26-2684"},{"cap":"United States v. Secretary Commonwealth of Pennsylvania","court":"Third Circuit","dk":"26-2684","st":"pending","filed":"2026-07-07","last":null,"n":11,"to":null}],"status":"active"},"MN":{"name":"Minnesota","first":"2025-09-25","cases":[{"cap":"United States v. Simon","court":"District of Minnesota","dk":"0:25-cv-03761","st":"pending","filed":"2025-09-25","last":null,"n":147,"to":null}],"status":"active"},"NH":{"name":"New Hampshire","first":"2025-09-25","cases":[{"cap":"United States v. NH Secretary of State","court":"District of New Hampshire","dk":"1:25-cv-00371","st":"terminated","filed":"2025-09-25","last":null,"n":114,"to":"First Circuit 26-1783"},{"cap":"United States v. Scanlan","court":"First Circuit","dk":"26-1783","st":"pending","filed":"2026-07-07","last":null,"n":5,"to":null}],"status":"active"},"NY":{"name":"New York","first":"2025-09-25","cases":[{"cap":"United States v. Board Of Elections of the State of New York","court":"Northern District of New York","dk":"1:25-cv-01338","st":"terminated","filed":"2025-09-25","last":null,"n":89,"to":"Second Circuit 26-2060"},{"cap":"United States of America v. Board Of Elections of the State of New York","court":"Second Circuit","dk":"26-2060","st":"pending","filed":"2026-07-28","last":null,"n":3,"to":null}],"status":"active"},"VT":{"name":"Vermont","first":"2025-12-01","cases":[{"cap":"United States v. Hanzas","court":"District of Vermont","dk":"2:25-cv-00903","st":"pending","filed":"2025-12-01","last":null,"n":56,"to":null}],"status":"active"},"MD":{"name":"Maryland","first":"2025-12-01","cases":[{"cap":"United States v. DeMarinis","court":"District of Maryland","dk":"1:25-cv-03934","st":"terminated","filed":"2025-12-01","last":null,"n":53,"to":"Fourth Circuit 26-1878"},{"cap":"United States v. Jared DeMarinis","court":"Fourth Circuit","dk":"26-1878","st":"pending","filed":"2026-07-13","last":null,"n":14,"to":null}],"status":"active"},"NM":{"name":"New Mexico","first":"2025-12-02","cases":[{"cap":"United States v. Oliver","court":"District of New Mexico","dk":"1:25-cv-01193","st":"terminated","filed":"2025-12-02","last":null,"n":75,"to":"Tenth Circuit 26-2126"},{"cap":"United States v. Oliver","court":"Tenth Circuit","dk":"26-2126","st":"pending","filed":"2026-07-27","last":null,"n":3,"to":null}],"status":"active"},"WA":{"name":"Washington","first":"2025-12-02","cases":[{"cap":"United States v. Hobbs","court":"Western District of Washington","dk":"3:25-cv-06078","st":"pending","filed":"2025-12-02","last":null,"n":65,"to":null}],"status":"active"},"DE":{"name":"Delaware","first":"2025-12-02","cases":[{"cap":"United States v. Albence","court":"District of Delaware","dk":"1:25-cv-01453","st":"pending","filed":"2025-12-02","last":null,"n":69,"to":null}],"status":"active"},"CO":{"name":"Colorado","first":"2025-12-11","cases":[{"cap":"United States v. Griswold","court":"District of Colorado","dk":"1:25-cv-03967","st":"terminated","filed":"2025-12-11","last":null,"n":101,"to":null}],"status":"ended"},"HI":{"name":"Hawaii","first":"2025-12-11","cases":[{"cap":"United States v. Nago","court":"District of Hawaii","dk":"1:25-cv-00522","st":"pending","filed":"2025-12-11","last":null,"n":44,"to":null}],"status":"active"},"NV":{"name":"Nevada","first":"2025-12-11","cases":[{"cap":"United States v. Aguilar","court":"District of Nevada","dk":"3:25-cv-00728","st":"pending","filed":"2025-12-11","last":null,"n":72,"to":null}],"status":"active"},"GA":{"name":"Georgia","first":"2025-12-18","cases":[{"cap":"United States v. RAFFENSPERGER","court":"Middle District of Georgia","dk":"5:25-cv-00548","st":"terminated","filed":"2025-12-18","last":null,"n":19,"to":"Northern District of Georgia 1:26-cv-00485"},{"cap":"United States v. Raffensperger","court":"Northern District of Georgia","dk":"1:26-cv-00485","st":"pending","filed":"2026-01-23","last":null,"n":86,"to":null}],"status":"active"},"IL":{"name":"Illinois","first":"2025-12-18","cases":[{"cap":"United States v. Matthews","court":"Central District of Illinois","dk":"3:25-cv-03398","st":"terminated","filed":"2025-12-18","last":null,"n":90,"to":null}],"status":"ended"},"DC":{"name":"DC","first":"2025-12-18","cases":[{"cap":"United States v. EVANS","court":"District of D.C.","dk":"1:25-cv-04403","st":"terminated","filed":"2025-12-18","last":null,"n":68,"to":null}],"status":"ended"},"CT":{"name":"Connecticut","first":"2026-01-06","cases":[{"cap":"United States v. Thomas","court":"District of Connecticut","dk":"3:26-cv-00021","st":"terminated","filed":"2026-01-06","last":null,"n":67,"to":"Second Circuit 26-2064"},{"cap":"United States of America v. Thomas","court":"Second Circuit","dk":"26-2064","st":"pending","filed":"2026-07-28","last":null,"n":3,"to":null}],"status":"active"},"AZ":{"name":"Arizona","first":"2026-01-06","cases":[{"cap":"United States v. Fontes","court":"District of Arizona","dk":"2:26-cv-00066","st":"terminated","filed":"2026-01-06","last":null,"n":43,"to":"Ninth Circuit 26-3609"},{"cap":"United States of America v. Fontes","court":"Ninth Circuit","dk":"26-3609","st":"pending","filed":"2026-06-04","last":null,"n":5,"to":null}],"status":"active"},"VA":{"name":"Virginia","first":"2026-01-16","cases":[{"cap":"United States v. Koski","court":"Eastern District of Virginia","dk":"3:26-cv-00042","st":"terminated","filed":"2026-01-16","last":null,"n":49,"to":"Fourth Circuit 26-2002"},{"cap":"United States v. Steven Koski","court":"Fourth Circuit","dk":"26-2002","st":"pending","filed":"2026-07-29","last":null,"n":2,"to":null}],"status":"active"},"NJ":{"name":"New Jersey","first":"2026-02-26","cases":[{"cap":"United States v. CALDWELL","court":"District of New Jersey","dk":"3:26-cv-02025","st":"terminated","filed":"2026-02-26","last":null,"n":89,"to":null}],"status":"ended"},"KY":{"name":"Kentucky","first":"2026-02-26","cases":[{"cap":"United States v. Adams","court":"Eastern District of Kentucky","dk":"3:26-cv-00019","st":"terminated","filed":"2026-02-26","last":null,"n":57,"to":"Sixth Circuit 26-5657"},{"cap":"United States v. Michael Adams","court":"Sixth Circuit","dk":"26-5657","st":"pending","filed":"2026-07-24","last":null,"n":3,"to":null}],"status":"active"},"UT":{"name":"Utah","first":"2026-02-26","cases":[{"cap":"United States v. Henderson","court":"District of Utah","dk":"2:26-cv-00166","st":"pending","filed":"2026-02-26","last":null,"n":36,"to":null}],"status":"active"},"WV":{"name":"West Virginia","first":"2026-02-26","cases":[{"cap":"United States v. Warner","court":"Southern District of West Virginia","dk":"2:26-cv-00156","st":"pending","filed":"2026-02-26","last":null,"n":42,"to":null}],"status":"active"},"OK":{"name":"Oklahoma","first":"2026-02-26","cases":[{"cap":"United States v. Ziriax","court":"Western District of Oklahoma","dk":"5:26-cv-00361","st":"terminated","filed":"2026-02-26","last":null,"n":4,"to":null}],"status":"ended"},"MI":{"name":"Michigan","first":"2026-02-27","cases":[{"cap":"United States v. Jocelyn Benson","court":"Sixth Circuit","dk":"26-1225","st":"terminated","filed":"2026-02-27","last":null,"n":43,"to":null}],"status":"ended"},"ID":{"name":"Idaho","first":"2026-04-01","cases":[{"cap":"United States v. McGrane","court":"District of Idaho","dk":"1:26-cv-00197","st":"pending","filed":"2026-04-01","last":null,"n":13,"to":null}],"status":"active"},"WI":{"name":"Wisconsin","first":"2026-06-05","cases":[{"cap":"United States v. Wisconsin Elections Commission","court":"Seventh Circuit","dk":"26-2217","st":"pending","filed":"2026-06-05","last":null,"n":14,"to":null}],"status":"active"},"RI":{"name":"Rhode Island","first":"2026-06-09","cases":[{"cap":"United States v. Amore","court":"First Circuit","dk":"26-1665","st":"pending","filed":"2026-06-09","last":null,"n":15,"to":null}],"status":"active"},"MA":{"name":"Massachusetts","first":"2026-06-09","cases":[{"cap":"United States v. Galvin","court":"First Circuit","dk":"26-1657","st":"pending","filed":"2026-06-09","last":null,"n":16,"to":null}],"status":"active"},"ME":{"name":"Maine","first":"2026-06-15","cases":[{"cap":"United States v. Bellows","court":"First Circuit","dk":"26-1676","st":"pending","filed":"2026-06-15","last":null,"n":15,"to":null}],"status":"active"}},"bills":{"TX":{"n":198,"last":"2025-06-22"},"PA":{"n":52,"last":"2026-06-30"},"OH":{"n":24,"last":"2026-06-25"},"MI":{"n":32,"last":"2026-06-23"},"GA":{"n":39,"last":"2026-04-02"},"NC":{"n":19,"last":"2026-07-27"},"WI":{"n":59,"last":"2026-05-13"},"FL":{"n":20,"last":"2026-06-26"},"AZ":{"n":41,"last":"2026-06-19"}}};
+  var SUED = DATA.sued, BILLS = DATA.bills;
+  // Where a horizontal label actually fits inside each state, not the centroid. A
+  // centroid is a point, and for a state made of two lobes it can land outside the
+  // shape or on its border: Michigan's falls in Lake Michigan, on the western outline
+  // of the Lower Peninsula. These anchors come from a scanline over the same path data
+  // the map is drawn from: for every row, the widest run inside the polygon, keeping
+  // only rows whose neighbours 10 units above and below still hold it, and dropping
+  // the degenerate slivers the simplified paths carry (Michigan alone has nine), so the
+  // label band fits and not just its midline. Regenerate whenever the geometry changes.
+  var BILL_XY = {AZ:[199.1,408],FL:[784.8,520],GA:[744.9,443],MI:[687.6,199],NC:[800,345],OH:[724,238],PA:[808.8,229],TX:[423.3,464],WI:[590.6,154]};
+  var BILL_DELTA = {"TX":[0,28,67,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"PA":[0,11,7,13,3,0,0,0,0,2,1,1,1,0,1,1,1,1,0,0],"OH":[0,1,4,1,0,1,1,0,3,2,3,0,0,1,3,0,1,1,0,0],"MI":[0,1,1,1,3,2,2,2,1,5,0,0,0,0,2,0,7,4,0,0],"GA":[0,15,6,1,0,0,0,0,0,0,0,0,4,10,2,0,0,0,0,0],"NC":[0,2,6,4,0,0,0,0,0,0,0,0,0,0,0,3,2,2,0,0],"WI":[0,1,1,2,2,3,1,0,0,27,4,5,6,4,3,0,0,0,0,0],"FL":[0,0,0,0,0,0,0,0,1,3,2,5,9,0,0,0,0,0,0,0],"AZ":[0,0,0,0,0,0,0,0,0,0,4,5,20,8,0,0,0,4,0,0]};
+  var BILLS_BY_MONTH = {"TX":[103,131,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198],"PA":[9,20,27,40,43,43,43,43,43,45,46,47,48,48,49,50,51,52,52,52],"OH":[2,3,7,8,8,9,10,10,13,15,18,18,18,19,22,22,23,24,24,24],"MI":[1,2,3,4,7,9,11,13,14,19,19,19,19,19,21,21,28,32,32,32],"GA":[1,16,22,23,23,23,23,23,23,23,23,23,27,37,39,39,39,39,39,39],"NC":[0,2,8,12,12,12,12,12,12,12,12,12,12,12,12,15,17,19,19,19],"WI":[0,1,2,4,6,9,10,10,10,37,41,46,52,56,59,59,59,59,59,59],"FL":[0,0,0,0,0,0,0,0,1,4,6,11,20,20,20,20,20,20,20,20],"AZ":[0,0,0,0,0,0,0,0,0,0,4,9,29,37,37,37,37,41,41,41]};
+  // month stops on a day-resolution axis: the last day of the frame's month, today for the last.
+  var MX = [16.2,31.3,48.0,64.2,80.9,97.1,113.9,130.6,146.8,163.5,179.7,196.4,213.2,228.3,245.0,261.2,277.9,294.1,310.8,320.0];
+  var REJ_BY_MONTH = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,6,10];
+  var MONTHS = ["2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"];
+  var LABEL  = ["Jan 2025","Feb 2025","Mar 2025","Apr 2025","May 2025","Jun 2025","Jul 2025","Aug 2025","Sep 2025","Oct 2025","Nov 2025","Dec 2025","Jan 2026","Feb 2026","Mar 2026","Apr 2026","May 2026","Jun 2026","Jul 2026","Aug 2026 (to date)"];
+  var svg = document.querySelector('.mapwrap svg');
+  var svg2 = document.querySelector('.chartwrap svg');
+  var shapes = [].slice.call(svg.querySelectorAll('[data-ab]'));
+  var byAb = {}; shapes.forEach(function(el){ (byAb[el.dataset.ab] = byAb[el.dataset.ab] || []).push(el); });
+  var detail = document.getElementById('detail');
+  var scrub = document.getElementById('scrub'), when = document.getElementById('when'), play = document.getElementById('play');
+  var num = document.querySelector('.board .num'), cap = document.querySelector('.board .cap');
+  var selected = null, hovered = null, month = 19, fadeTimer = null;
+  // Court rejections of DOJ voter-roll demands, each read off a dated headline in
+  // psephos's own news channel (B2 unless noted). A rejection means compelled
+  // production failed; it does not prove nothing was handed over earlier.
+  var WITHHELD = {
+    AZ:{on:'2026-04-28', why:'Federal judge dismissed the suit for Arizona registration data'},
+    PA:{on:'2026-06-28', why:'Pennsylvania shed the demand for unredacted rolls'},
+    CT:{on:'2026-07-17', why:'Rejected; DOJ\u2019s 16th straight loss'},
+    KY:{on:'2026-07-23', why:'Trump-appointed judge tossed the suit'},
+    NJ:{on:'2026-07-29', why:'Governor rebuffed the demand; the court loss made DOJ 0 for 18'},
+    IL:{on:'2026-07-31', why:'Defeat took DOJ to 0 for 19'},
+    CO:{on:'2026-08-04', why:'Dismissed with prejudice, 0 for 20'},
+    DC:{on:'2026-08-06', why:'Dismissed, 0 for 21'},
+    MI:{on:'2026-08-14', why:'Full Sixth Circuit declined to revive DOJ\u2019s loss'},
+    NV:{on:'2026-08-14', why:'Court rejected the demand, 0 for 22'}
+  };
+
+  var DEFAULT = 'The 20 states with no suit on the record are the stronger read. Four of them are watched-bill states: <b>Texas</b> (198 bills), <b>Ohio</b> (24), <b>North Carolina</b> (19), <b>Florida</b> (20). Pressure there is legislative, not litigative.';
+  var HINT = 'Click a state for its dockets. Drag the slider to replay the campaign by filing date.';
+
+  function suedBy(ab, m){ var s = SUED[ab]; return s && s.first.slice(0,7) <= MONTHS[m]; }
+  function countBy(m){ var n=0; for (var ab in SUED) if (suedBy(ab,m)) n++; return n; }
+  function addedIn(m){ var out=[]; for (var ab in SUED) if (SUED[ab].first.slice(0,7) === MONTHS[m]) out.push(ab); return out; }
+
+  function paint(){
+    var live = month === MONTHS.length - 1;
+    shapes.forEach(function(el){
+      var ab = el.dataset.ab, s = SUED[ab];
+      el.classList.remove('st-active','st-ended','st-none','st-held','st-new','hot','dim','sel');
+      if (!suedBy(ab, month))      el.classList.add('st-none');
+      else if (!live)              el.classList.add('st-active');
+      else                         el.classList.add(s.status === 'active' ? 'st-active' : 'st-ended');
+      // Second channel, same map: a teal edge means a court has rejected the demand.
+      // Date-gated, so replaying the campaign does not show a ruling before it happened.
+      var w = WITHHELD[ab];
+      if (w && w.on.slice(0,7) <= MONTHS[month]) el.classList.add('st-held');
+      // What moved in this frame.
+      if (s && s.first.slice(0,7) === MONTHS[month]) el.classList.add('st-new');
+      if (selected === ab) el.classList.add('sel');
+      if (hovered === ab) el.classList.add('hot');
+    });
+    // The dot fades in with the state's first tracked bill and grows with the running
+    // total. The number is the change in this frame only: it flashes and fades, so the
+    // eye catches movement rather than a standing figure that never moves (Texas sat at
+    // 198 for seventeen frames).
+    for (var bs in BILLS_BY_MONTH) {
+      var c = BILLS_BY_MONTH[bs][month], d = BILL_DELTA[bs][month];
+      var dEl  = svg.querySelector('[data-dot='   + bs + ']');
+      var totEl = svg.querySelector('[data-total=' + bs + ']');
+      var tEl  = svg.querySelector('[data-delta=' + bs + ']');
+      if (!dEl) continue;
+      var rad = c ? +(3 + Math.sqrt(c) * 0.62).toFixed(1) : 3;
+      dEl.setAttribute('opacity', c ? 1 : 0);
+      dEl.setAttribute('r', rad);
+      // The dot and its number are one object, centred together on the state's centroid.
+      // Anchoring the dot on the centroid and hanging the number off its right pushed the
+      // pair off-centre by half the label, which is what made Wisconsin and Michigan look
+      // shoved eastward. Measured, not estimated: the radius and the digit count both move.
+      var base = BILL_XY[bs], gap = 6;
+      if (totEl) totEl.textContent = c;
+      var labelW = (totEl && totEl.getComputedTextLength) ? totEl.getComputedTextLength() : String(c).length * 8.6;
+      var groupW = 2 * rad + gap + labelW;
+      var startX = base[0] - groupW / 2;
+      dEl.setAttribute('cx', (startX + rad).toFixed(1));
+      dEl.setAttribute('cy', base[1]);
+      if (totEl) { totEl.setAttribute('x', (startX + 2 * rad + gap).toFixed(1)); totEl.setAttribute('y', base[1] + 5); totEl.style.opacity = c ? 1 : 0; }
+      if (tEl) {
+        // the increment sits centred over the whole pair
+        tEl.setAttribute('x', base[0]);
+        tEl.setAttribute('y', base[1] - rad - 7);
+        if (d > 0) { tEl.textContent = '+' + d; tEl.style.opacity = 1; }
+        else { tEl.style.opacity = 0; }
+      }
+    }
+    // The total stands; only the increment fades, so movement reads without losing the level.
+    if (fadeTimer) clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(function(){
+      var ts = svg.querySelectorAll('.billdelta');
+      for (var i = 0; i < ts.length; i++) ts[i].style.opacity = 0;
+    }, 1400);
+    // Events on the two lines light up in the frame they happened, the same way a
+    // state does on the map when its suit lands.
+    // The chart replays with the map: nothing is drawn past the frame, and an event
+    // flashes in the frame it happened, then settles.
+    var rr = document.getElementById('revealrect');
+    if (rr) rr.setAttribute('width', (parseFloat(MX[month]) + 4).toFixed(1));
+    var evs = svg2.querySelectorAll('.evdot');
+    for (var e = 0; e < evs.length; e++) {
+      var em = evs[e].dataset.m;
+      evs[e].classList.toggle('lit',  em === MONTHS[month]);
+      evs[e].classList.toggle('past', em <  MONTHS[month]);
+    }
+    var n = countBy(month), r = REJ_BY_MONTH[month];
+    var addedNow = addedIn(month);
+    var ad = document.getElementById('added');
+    if (ad) {
+      ad.textContent = addedNow.length ? '+' + addedNow.length + ' this month' : 'no new suit';
+      ad.className = addedNow.length ? 'added' : 'added none';
+    }
+    num.textContent = n;
+    document.querySelector('.board .num2').textContent = r;
+    var mark = document.getElementById('mark'), dot = document.getElementById('markdot'), dot2 = document.getElementById('markdot2');
+    if (mark) {
+      var mx = MX[month].toFixed(1);
+      mark.setAttribute('x1', mx); mark.setAttribute('x2', mx);
+      dot.setAttribute('cx', mx);  dot.setAttribute('cy', (96 - (n / 51) * 96).toFixed(1));
+      dot2.setAttribute('cx', mx); dot2.setAttribute('cy', (96 - (r / 51) * 96).toFixed(1));
+    }
+    when.textContent = LABEL[month];
+    if (live) {
+      cap.innerHTML = '<span style="color:#fca5a5">Red</span> is DOJ suing a state for its voter registration records: first suit Sep 16, 2025, thirty-one jurisdictions by Jun 15, 2026, none since. ' +
+        '<span style="color:#5eead4">Teal</span> is a court rejecting that demand for records: one by Apr 2026, two by Jun, ten by Aug 14. The shaded gap is what is still unresolved. <span style="color:#c4b5fd">Violet</span> below the line is legislation, state bars and the federal line. ' +
+        '<span style="color:#737373">The hatched band is the part psephos cannot date: DOJ demanded records before it sued anyone, and no channel carries a demand date. The news collector has almost nothing before Apr 2026, and the dockets record only that a complaint was filed. Rejections are read off dated headlines in the news channel, not from a field.</span>';
+    } else {
+      var add = addedIn(month).map(function(a){ return SUED[a].name; });
+      cap.innerHTML = 'Sued by the end of ' + LABEL[month] + '. ' +
+        (add.length ? 'Added that month: <b>' + add.join(', ') + '</b>.' : 'No new jurisdiction that month.') +
+        ' Rejected in court by then: <b>' + REJ_BY_MONTH[month] + '</b>.' +
+        ' <span style="color:#737373">Live-versus-ended is only known for today; the record carries no termination date, so earlier frames show "sued by then" alone.</span>';
+    }
+  }
+
+  function fmt(d){ if(!d) return '—'; var p=d.split('-'); var M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return M[+p[1]-1]+' '+(+p[2])+', '+p[0]; }
+
+  function show(ab){
+    var s = SUED[ab], b = BILLS[ab];
+    var name = s ? s.name : (byAb[ab][0].querySelector('title') || {}).textContent || ab;
+    var w = WITHHELD[ab], wtxt = null;
+    if (w) {
+      var f = s && s.first, days = null;
+      if (f) days = Math.round((new Date(w.on) - new Date(f)) / 86400000);
+      wtxt = (f ? 'Sued ' + fmt(f) + ' \u2192 rejected ' + fmt(w.on) + (days !== null ? ' \u00b7 ' + days + ' days' : '') + '. ' : 'Rejected ' + fmt(w.on) + '. ') + w.why + '.';
+    }
+    var html = '<div class="dname">' + name +
+      (s ? '<span class="pill on">' + (s.status === 'active' ? 'suit live' : 'suit ended') + '</span>' : '<span class="pill">not sued</span>') +
+      (b ? '<span class="pill bills">' + b.n + ' bills tracked</span>' : '') +
+      '<button type="button" class="clear" id="clear" aria-label="Clear selection">clear</button></div>';
+    if (s) {
+      html += '<table>';
+      s.cases.forEach(function(c){
+        html += '<tr><td class="c1">' + c.cap + (c.to ? '<br><span style="color:#7dd3fc">&rarr; continued as ' + c.to + '</span>' : '') +
+                '</td><td class="c2">' + (c.court||'') + '<br>' + (c.dk||'') +
+                '</td><td class="c3">filed ' + fmt(c.filed) + '<br>' + c.st + ' · ' + c.n + ' entries</td></tr>';
+      });
+      html += '</table>';
+      if (w) html += '<div class="sub"><b style="color:#5eead4">Demand rejected in court.</b> ' + wtxt + ' <span style="color:#525252">Reported, not a field in the record.</span></div>';
+    } else {
+      html += '<div class="sub">' + (w ? '<b style="color:#5eead4">Voter-record demand rejected in court.</b> ' + wtxt + ' ' : 'No suit for this state\u2019s voter records on the record. Whether DOJ demanded them here, and when, is not something psephos can answer. ') +
+        (b ? ' State bills tracked here: <b style=\"color:#c4b5fd\">' + (BILLS_BY_MONTH[ab] ? BILLS_BY_MONTH[ab][month] : b.n) + '</b> by ' + LABEL[month] + ', ' + b.n + ' in all, last action ' + fmt(b.last) + '.' : '') + '</div>';
+    }
+    detail.innerHTML = html;
+    var c = document.getElementById('clear');
+    if (c) c.addEventListener('click', function(){ selected = null; paint(); reset(); });
+  }
+
+  function reset(){ detail.innerHTML = '<div class="sub">' + DEFAULT + '</div><div class="hint" style="margin-top:8px">' + HINT + '</div>'; }
+
+  function select(ab){
+    selected = (selected === ab) ? null : ab;
+    paint();
+    selected ? show(selected) : reset();
+  }
+
+  shapes.forEach(function(el){
+    var ab = el.dataset.ab;
+    el.addEventListener('click', function(e){ e.preventDefault(); select(ab); });
+    el.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(ab); }
+      if (e.key === 'Escape' && selected) { selected = null; paint(); reset(); }
+    });
+    // hover is an affordance, not a read: it outlines the shape and shows the
+    // browser tooltip from <title>. The panel only changes on click or focus.
+    el.addEventListener('mouseenter', function(){ hovered = ab; paint(); });
+    el.addEventListener('mouseleave', function(){ hovered = null; paint(); });
+    el.addEventListener('focus', function(){ hovered = ab; paint(); });
+    el.addEventListener('blur',  function(){ hovered = null; paint(); });
+  });
+
+  svg.addEventListener('click', function(e){ if (!e.target.closest('[data-ab]')) { selected = null; paint(); reset(); } });
+
+  scrub.addEventListener('input', function(){ month = +scrub.value; paint(); });
+  var timer = null;
+  function stop(){ if (timer) { clearTimeout(timer); timer = null; } play.textContent = 'Replay'; }
+  play.addEventListener('click', function(){
+    if (timer) { stop(); return; }
+    play.textContent = 'Stop';
+    month = 0; scrub.value = 0; paint();
+    function tick(){
+      // Dwell on months where something moved; skim the quiet ones.
+      var wait = addedIn(month).length ? 1500 : 550;
+      timer = setTimeout(function(){
+        if (month >= MONTHS.length - 1) { stop(); return; }
+        month++; scrub.value = month; paint(); tick();
+      }, wait);
+    }
+    tick();
+  });
+  scrub.addEventListener('mousedown', stop);
+  scrub.addEventListener('touchstart', stop);
+
+  reset(); paint();
+})();
+</script>
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('.tabs [role=tab]'));
+  function sel(t){
+    tabs.forEach(function(x){
+      var on = x===t;
+      x.setAttribute('aria-selected', on ? 'true':'false');
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click', function(){ sel(t); });
+    t.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        e.preventDefault();
+        var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];
+        n.focus(); sel(n);
+      }
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  // One collection moment, read in several zones. psephos records in UTC because the
+  // collectors run on a UTC cron, but a reader converting Z in their head is a reader
+  // getting it wrong, so the same instant rotates through the zones the record covers.
+  var host = document.getElementById('asof');
+  if (!host) return;
+  var when = new Date(host.getAttribute('datetime'));
+  var ZONES = [
+    {tz:'UTC', z:true},
+    {tz:'America/New_York'},
+    {tz:'America/Chicago'},
+    {tz:'America/Denver'},
+    {tz:'America/Los_Angeles'},
+    {tz:'America/Anchorage'},
+    {tz:'Pacific/Honolulu'}
+  ];
+  function render(z){
+    if (z.z) {
+      var d = new Intl.DateTimeFormat('en-US',{timeZone:'UTC',month:'short',day:'numeric'}).format(when);
+      var t = new Intl.DateTimeFormat('en-US',{timeZone:'UTC',hour:'2-digit',minute:'2-digit',hour12:false}).format(when);
+      return d + ', ' + t + 'Z';
+    }
+    var parts = new Intl.DateTimeFormat('en-US',{timeZone:z.tz,month:'short',day:'numeric',
+      hour:'numeric',minute:'2-digit',timeZoneName:'short'}).formatToParts(when);
+    var g = {}; parts.forEach(function(p){ g[p.type] = g[p.type] ? g[p.type] + p.value : p.value; });
+    return g.month + ' ' + g.day + ', ' + g.hour + ':' + g.minute + ' ' + g.dayPeriod + ' ' + g.timeZoneName;
+  }
+  var strings = ZONES.map(render);
+  host.title = 'Last collection\n' + strings.join('\n');
+
+  var span = document.createElement('span');
+  span.className = 'rot';
+  span.textContent = strings[0];
+  host.textContent = '';
+  host.appendChild(span);
+
+  // Reserve the widest reading so the swap never nudges what follows it.
+  var probe = document.createElement('span');
+  probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre';
+  probe.style.font = getComputedStyle(span).font;
+  document.body.appendChild(probe);
+  var w = 0;
+  strings.forEach(function(t){ probe.textContent = t; w = Math.max(w, probe.getBoundingClientRect().width); });
+  document.body.removeChild(probe);
+  host.style.minWidth = Math.ceil(w) + 'px';
+
+  var i = 0, paused = false, busy = false;
+  host.addEventListener('mouseenter', function(){ paused = true; });
+  host.addEventListener('mouseleave', function(){ paused = false; });
+
+  function step(){
+    if (paused || busy) return;
+    busy = true;
+    i = (i + 1) % strings.length;
+    span.classList.add('out');                        // rise and fade out
+    setTimeout(function(){
+      span.textContent = strings[i];
+      span.classList.remove('out');
+      span.classList.add('in');                       // reposition below, no transition
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          span.classList.remove('in');                // transition back in
+          busy = false;
+        });
+      });
+    }, 340);
+  }
+  setInterval(step, 4000);
+})();
+</script>
+</body>
+</html>
