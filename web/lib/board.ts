@@ -8,6 +8,8 @@
 // a count written into a spec is stale by build time, and this project has a list of
 // the ones that were.
 
+import type { CampaignSummary } from "@/lib/campaign";
+
 const DAY_MS = 86_400_000;
 
 export type Domain = { start: number; end: number };
@@ -227,4 +229,29 @@ export const POSTURE_LABEL: Record<Posture, string> = {
   live: "suit live",
   ended: "suit ended",
   none: "never sued",
+};
+
+// --- the line's overlay vocabulary --------------------------------------------------
+//
+// THE FIGURES THE LINE COUNTS AND THE MAP DOES NOT PAINT, here for the same reason
+// POSTURE_LABEL is here: the key and the line must read ONE value. The key makes a
+// negative claim -- "these numbers have no mark" -- and a negative claim transcribed
+// into a second place is a claim that can quietly stop matching the numbers it is
+// about.
+//
+// KEYED OFF CampaignSummary RATHER THAN OFF THREE STRING LITERALS. Extract narrows to
+// nothing if a field is renamed there, which makes the matching key in OVERLAY_LABEL an
+// excess property and a compile error. A plain union would go on naming a field that no
+// longer exists.
+
+export type Overlay = Extract<
+  keyof CampaignSummary,
+  "chains" | "dormant" | "unlinkedEndings"
+>;
+
+/** What each unpainted figure is called, in the line and in the key. One wording. */
+export const OVERLAY_LABEL: Record<Overlay, string> = {
+  chains: "continued elsewhere",
+  dormant: "quiet",
+  unlinkedEndings: "ended, no link asserted",
 };

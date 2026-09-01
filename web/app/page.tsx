@@ -32,6 +32,7 @@ import {
   cumulativeFilings,
   frames,
   isEoNumbered,
+  OVERLAY_LABEL,
 } from "@/lib/board";
 import { RecordsMap, type MapState } from "@/components/RecordsMap";
 import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
@@ -310,14 +311,35 @@ export default async function Home() {
             href="/campaign"
             className="block rounded-lg border border-neutral-800 bg-neutral-900 p-4 transition-colors hover:border-neutral-700"
           >
+            {/*
+              EVERY FIGURE CARRIES data-figure, including the two that are aggregates
+              rather than postures. The attribute is what lets assert-encodings join
+              the line against the key without either side holding a list of the
+              other's contents -- a list is the thing that drifts. The three unpainted
+              wordings are READ FROM OVERLAY_LABEL, never typed here: the key makes a
+              negative claim about these exact words and a second copy could stop
+              matching it silently.
+            */}
             <p className="text-sm text-neutral-300">
               <span className="font-medium text-neutral-100">
-                {campaign.sued} of {campaign.total} jurisdictions sued
+                <span data-figure="sued">{campaign.sued}</span> of{" "}
+                <span data-figure="total">{campaign.total}</span> jurisdictions sued
               </span>{" "}
-              · {campaign.active} active · {campaign.ended} ended ·{" "}
-              {campaign.chains} continued elsewhere · {campaign.dormant} quiet
+              · <span data-figure="active">{campaign.active}</span> active ·{" "}
+              <span data-figure="ended">{campaign.ended}</span> ended ·{" "}
+              <span data-figure="chains">{campaign.chains}</span>{" "}
+              {OVERLAY_LABEL.chains} ·{" "}
+              <span data-figure="dormant">{campaign.dormant}</span>{" "}
+              {OVERLAY_LABEL.dormant}
               {campaign.unlinkedEndings > 0 && (
-                <> · {campaign.unlinkedEndings} ended, no link asserted</>
+                <>
+                  {" "}
+                  ·{" "}
+                  <span data-figure="unlinkedEndings">
+                    {campaign.unlinkedEndings}
+                  </span>{" "}
+                  {OVERLAY_LABEL.unlinkedEndings}
+                </>
               )}
             </p>
             <p className="mt-1 text-xs text-neutral-500">

@@ -8,12 +8,14 @@ import {
   monthlyMax,
   quarterTicks,
   isEoNumbered,
+  OVERLAY_LABEL,
   POSTURE_FILL,
   POSTURE_LABEL,
   visibleAt,
   xOf,
   type Domain,
 } from "@/lib/board";
+import { summarize } from "@/lib/campaign";
 
 const NOW = new Date("2026-08-19T02:00:00Z");
 const D: Domain = {
@@ -269,5 +271,46 @@ describe("the paint vocabulary", () => {
     // move when --c-litigation moves. A hardcoded oklch would silently stop matching.
     expect(POSTURE_FILL.ended).toContain("var(--c-litigation)");
     expect(POSTURE_FILL.live).toContain("var(--c-litigation)");
+  });
+});
+
+describe("the line's overlay vocabulary", () => {
+  // WHAT THE LINE PRINTS THAT THE MAP DOES NOT PAINT, enumerated from CampaignSummary
+  // rather than from three literals, so a field added to the summary and dropped into
+  // the line cannot arrive undisclaimed.
+  //
+  // THE EXCLUSION LIST IS WRITTEN OUT, not derived, so the exclusions are visible
+  // rather than implied by whatever a filter happens to fall through.
+  //
+  // IT HAS FIVE ENTRIES WHERE assert-encodings.mjs HAS FOUR, and the two lists differ
+  // for different reasons rather than by oversight:
+  //
+  //   sued, total     aggregates. Denominator and numerator of one sentence, not
+  //                   postures, and nothing on the map is a candidate to paint them.
+  //   active, ended   PAINTED. POSTURE_FILL carries both.
+  //   none            PAINTED TOO, as `#1f1f1f` under POSTURE_LABEL.none -- and it is
+  //                   the reason this list is five. It is excluded HERE because the
+  //                   map paints it; it is absent from the DOM-side list because the
+  //                   line never renders it at all. Same key, two different grounds.
+  //
+  // `active` here is `live` there: the line calls the figure "active", the key calls
+  // the same jurisdictions "suit live". That is one figure under two wordings and this
+  // unit deliberately did not reconcile them -- see the posture-wording item on the
+  // status board. No count is quoted, deliberately: this file's own header says a
+  // count written into a spec is stale by build time, and the draft of this comment
+  // said "26 active" while the page said 29.
+  const AGGREGATE_OR_PAINTED = ["sued", "total", "active", "ended", "none"];
+
+  it("names exactly the summary figures the map does not paint", () => {
+    const unpainted = Object.keys(summarize([])).filter(
+      (k) => !AGGREGATE_OR_PAINTED.includes(k),
+    );
+    expect(Object.keys(OVERLAY_LABEL).sort()).toEqual(unpainted.sort());
+  });
+
+  it("gives each unpainted figure a distinct wording", () => {
+    expect(new Set(Object.values(OVERLAY_LABEL)).size).toBe(
+      Object.keys(OVERLAY_LABEL).length,
+    );
   });
 });
