@@ -6808,5 +6808,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/after-outraged-voters-revolted-texas-battleground-county-takes-up-new-plan-to-cut-polling-locations",
     "title": "After outraged voters revolted, Texas battleground county takes up new plan to cut polling locations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92791,
+    "kind": "item",
+    "occurred_at": "2026-09-01T13:23:27+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/california-child-reunification-reform",
+    "title": "California Could Give Formerly Incarcerated Parents a Chance to Get Their Kids Back"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 92793,
+    "kind": "item",
+    "occurred_at": "2026-09-01T13:41:22+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQRnZLTDNYMDRmUWNZdmJzd3FzTWczck44TTZWVklrSllwZ0Jkem5qbklvbkJyWjVoeFlxZ1NmVVZFaGU1a1FVWjBhc043MU9Eek44RVhucmlBa0dqRXAwVVJ2V2gzQWQ1VmFITlZlMGJ5Ujd4UXJnTmpUOVdLOEdXMkhGTWxycDRDcE51eVhQdGUxSVhOdEJvTEtR?oc=5",
+    "title": "New lawsuit challenges Trump’s ‘flagrantly unlawful’ bid to create federal voter database for midterms - Democracy Docket"
   }
 ]
