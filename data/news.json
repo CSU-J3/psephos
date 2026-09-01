@@ -6748,5 +6748,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/08/31/voter-suspense-list-registration-canceled-confirm-address",
     "title": "Here’s what you need to know about Texas’ voter suspense list"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92376,
+    "kind": "item",
+    "occurred_at": "2026-08-31T19:10:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/right-wing-group-asks-supreme-court-to-put-michigan-proof-of-citizenship-amendment-on-november-ballot",
+    "title": "Right-wing group asks Supreme Court to put Michigan proof-of-citizenship amendment on November ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92375,
+    "kind": "item",
+    "occurred_at": "2026-08-31T19:36:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-wont-lift-temporary-block-on-trumps-anti-mail-voting-order",
+    "title": "Federal judge won’t lift temporary block on Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92374,
+    "kind": "item",
+    "occurred_at": "2026-08-31T23:21:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-trump-doj-press-supreme-court-to-weaken-federal-protection-against-last-minute-voter-purges",
+    "title": "Republicans, Trump DOJ press Supreme Court to weaken federal protection against last-minute voter purges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92373,
+    "kind": "item",
+    "occurred_at": "2026-09-01T00:14:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-asks-appeals-court-to-revive-anti-voting-usps-mail-ballot-rule",
+    "title": "Trump admin asks appeals court to revive anti-voting USPS mail ballot rule"
   }
 ]
