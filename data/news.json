@@ -6788,5 +6788,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-asks-appeals-court-to-revive-anti-voting-usps-mail-ballot-rule",
     "title": "Trump admin asks appeals court to revive anti-voting USPS mail ballot rule"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92583,
+    "kind": "item",
+    "occurred_at": "2026-09-01T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/01/usps-election-mail-ballots-plan-whistleblower-richard-blumenthal",
+    "title": "USPS whistleblower alleges rushed mail ballot systems could disenfranchise voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 92584,
+    "kind": "item",
+    "occurred_at": "2026-09-01T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-outraged-voters-revolted-texas-battleground-county-takes-up-new-plan-to-cut-polling-locations",
+    "title": "After outraged voters revolted, Texas battleground county takes up new plan to cut polling locations"
   }
 ]
