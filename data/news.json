@@ -6812,6 +6812,16 @@
   {
     "channel": "news",
     "grade": "B2",
+    "id": 93011,
+    "kind": "item",
+    "occurred_at": "2026-09-01T13:10:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-rush-to-implement-trump-order-could-cause-catastrophic-failure-of-mail-voting-whistleblower-claims",
+    "title": "USPS rush to implement Trump order could cause ‘catastrophic failure’ of mail voting, whistleblower claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
     "id": 92791,
     "kind": "item",
     "occurred_at": "2026-09-01T13:23:27+00:00",
@@ -6828,5 +6838,35 @@
     "source_id": "google-news",
     "source_url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQRnZLTDNYMDRmUWNZdmJzd3FzTWczck44TTZWVklrSllwZ0Jkem5qbklvbkJyWjVoeFlxZ1NmVVZFaGU1a1FVWjBhc043MU9Eek44RVhucmlBa0dqRXAwVVJ2V2gzQWQ1VmFITlZlMGJ5Ujd4UXJnTmpUOVdLOEdXMkhGTWxycDRDcE51eVhQdGUxSVhOdEJvTEtR?oc=5",
     "title": "New lawsuit challenges Trump’s ‘flagrantly unlawful’ bid to create federal voter database for midterms - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93012,
+    "kind": "item",
+    "occurred_at": "2026-09-01T17:39:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/homeland-security-state-citizenship-lists-portal-trump-anti-voting-executive-order",
+    "title": "DHS posts ‘Citizenship Lists Portal’ to advance Trump’s anti-voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93010,
+    "kind": "item",
+    "occurred_at": "2026-09-01T17:48:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-federal-judge-has-said-from-the-start-trumps-anti-mail-voting-order-is-unconstitutional",
+    "title": "A federal judge has said from the start Trump’s anti-mail voting order is unconstitutional. Here’s how"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93009,
+    "kind": "item",
+    "occurred_at": "2026-09-01T18:53:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/unforgiving-new-usps-portal-could-reject-10000-mail-ballots-due-to-a-single-error-whistleblower-warns",
+    "title": "‘Unforgiving’ new USPS portal could reject 10,000 mail ballots due to a single error, whistleblower warns"
   }
 ]
