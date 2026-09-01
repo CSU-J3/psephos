@@ -1,6 +1,6 @@
 # The map's fill vocabulary against the line beneath it
 
-**Status: PROPOSAL. Nothing here is implemented. Corey decides.**
+**Status: DECIDED 2026-09-01: option 4, `c322259`.**
 
 Measured 2026-08-20 against a production build at `e677481`, from the emitted DOM and
 from `/campaign`, not from either component's comments.
