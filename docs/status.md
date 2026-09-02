@@ -8,7 +8,9 @@ Last updated: 2026-09-02.
 
 ## Owed right now
 
-**Every bullet below is struck: nothing here is open.** All four closed on 2026-09-01 — three decided, one read — and they stay in place for their reasoning, which is this page's convention. The next open item goes here rather than into a section further down.
+**One open item, and the four struck below it.** The four all closed on 2026-09-01 — three decided, one read — and they stay in place for their reasoning, which is this page's convention. **This line said "nothing here is open" until 2026-09-02**, and the sentence right after it promised that the next open item would land here rather than in a section further down; that promise is what this edit is keeping.
+
+- **The case-anchor fallthrough.** `lib/feed.ts:237` labels a case anchor `` `case ${e.case_id}` ``, and two rows carry hand-seeded slug keys — `united-states-v-dc`, `united-states-v-minnesota` — with **4 items** between them. Either reaching the feed window renders **"case united-states-v-minnesota"** on the homepage while a correct caption sits unused in the row. **The data is clean**: the caption-slug read is 0 of 52, so there is nothing to backfill and this is purely a render path. **Unblocked by: nobody.** It is a small fix that was deliberately not folded into handoff 92's wording commit, because burying it in a diff about something else is how a located defect stops being findable. Read below for the two ways the diagnostic query misleads if re-run.
 
 **Nothing owed was a task.** What was open was decisions and watches, listed below and deliberately not counted — a total in a heading goes stale on every edit to the list under it, which is the failure the paragraph after this one records happening three times in two days.
 
@@ -68,6 +70,24 @@ Everything else: the executive type filter closed 2026-08-20 (section below) —
 3. ~~**The outlet-promotion unit**~~ — **SHIPPED 2026-08-15** in three parts: `714feac` (store the publisher), `b99f144` (dedup on the headline), `d4c6a5b` (grade by outlet), plus `606b386` (first export). Section below.
 
 4. ~~**The dead `min-[1900px]:` variant**~~ — **CLOSED 2026-08-19, `04cbc23`**, and reclassified on the way: a build defect of the board unit rather than an item owed after it, since handoff 87 is not done until the layout it specifies renders. Three breakpoints were wrong, not one, and the third was found by the assertion the first two produced. Full account in the board section below.
+
+### One posture vocabulary — SHIPPED 2026-09-02, and the line stopped implying 6 < 2
+
+**Two wording problems on one set of jurisdictions, and the first was structural rather than textual.** `lib/board.test.ts` had named this unit and deferred it: *"the line calls the figure `active`, the key calls the same jurisdictions `suit live` … this unit deliberately did not reconcile them — see the posture-wording item on the status board."* This is that item. `e42f0eb`, unpushed at the time of writing.
+
+**The split lived in the type, not the copy.** `CellStatus` was `"active" | "ended" | "none"` while `Posture` was `"live" | "ended" | "none"`, joined by a ternary in `app/page.tsx` that translated between them at render — so the homepage printed **"29 active" directly above a key saying "suit live" about exactly those 29**, with nothing telling a reader they were one claim. The fix replaces `CellStatus` with the key's own `Posture`, which makes `POSTURE_LABEL[cell.status]` a direct lookup: **a surface cannot name a posture the key does not define**, and the translating ternary had nowhere left to live. A wording-only fix would have left the split one layer down to leak back the next time someone rendered `cell.status`.
+
+**The typechecker found a consumer the plan had missed, and it is the most illustrative one.** `TheRead.tsx` already *said* "still live" in prose while reading a field named `active` — the right word on the wrong field. That is how a two-vocabulary split hides: not as a visible disagreement, but as a surface that happens to have chosen the other side's word by hand.
+
+**The line read as an arithmetic impossibility, and the figures were all correct.** Measured live: `ended` = **2** (Michigan, Oklahoma), `unlinkedEndings` = **6** (Colorado, DC, Illinois, Minnesota, Nevada, New Jersey), rendered adjacently as *"2 ended … 6 ended, no link asserted"*. A phrase that looks like a subset carried **three times** the count of the set it appeared to sit inside. Nothing about the numbers was wrong — they were in one sentence that implied a relationship they do not have, which is the same failure shape as a cap bounding rows when the reader's question was about subjects.
+
+**Two changes fix it.** `OVERLAY_LABEL.unlinkedEndings` becomes **"carrying an unlinked ending"** — an *attribute* of a jurisdiction rather than a status competing with the postures, which is what it actually is. And the line splits into two registers: the postures **partition** the 31 sued, then *"among those 31:"* scopes the overlays, which can co-occur. The `/campaign` strip never had the problem because it keeps the clause that does the work — *"ended here, with no link asserted **to the live docket**"* — and the line had dropped it.
+
+**The new wording deliberately says nothing about whether the jurisdiction is itself live or ended.** The two sets are **disjoint today but not by construction**: `unlinked` is every unsuperseded row that is not the cell's own docket, and `status` keys off that docket alone, so a jurisdiction whose *every* unsuperseded docket is terminated lands in **both**. Measured overlap right now is **none**. A wording like "ended, state still live" would read better and be wrong the day that changes.
+
+**A third join, and it is over words rather than marks.** `assert-encodings.mjs` now asserts that each posture the line names is spelled exactly as the key spells it, **both sides read from the DOM** so the script holds no third copy. Red-proved by reverting the line to "active": it fails naming `line "active"` against `key "suit live"`. **None of the three existing joins could have caught this** — the figure was disclaimed, every mark was named, and the two surfaces simply used different words for one set. A second check pins that the line names exactly `{live, ended}`; `none` is the complement the map paints, and a figure for it would put a third posture in a sentence about two. **25 checks** (board 14, state-bills 11), 224 tests.
+
+**One thing the rename would have broken quietly.** `AGGREGATE_OR_PAINTED` lists the figures exempt from the "disclaimed in the key" check, and it exists in **two places for two different reasons** — `assert-encodings.mjs` and `board.test.ts`. Both had to gain `live`, or the rename would have failed a check it did not break, reporting `live` as an undisclaimed figure when all that changed was its name.
 
 ### The swatch is the ink — RULED 2026-09-02, and the finding that produced the ruling was wrong about itself
 
@@ -586,6 +606,14 @@ Three claims died to this reading — the 150–250K band, the ~88K/day drop der
 **Standing instrument note:** hover the chart for point values, never read the shape, and read the **Rows Written** panel in the same pass. It sits on the same page, it is the control, and taking it is what turned this delta from a signal into noise at no extra cost.
 
 ---
+
+### Session-open reads, 2026-09-02 — both classified, neither opened work
+
+**The caption-slug read returns zero, so the classification is anchor fallthrough rather than a data backfill.** `SELECT … FROM cases WHERE caption LIKE '%-V-%' OR caption = UPPER(caption)` returns **0 of 52**; both arms read 0 independently. Two notes for whoever runs it next. The query as specified names a column that does not exist — `cases` has no `id`, its primary key is `case_id` — so it errors rather than returning empty, and an error is not a zero. And SQLite's `LIKE` is ASCII-case-**insensitive** by default, so `'%-V-%'` already matches a lowercase `-v-`; the query looks case-sensitive and is not, which is the difference between covering the slug case and only appearing to.
+
+**The data is clean and the slugs are real, which is exactly why the fallthrough is the live risk.** Two rows carry hand-seeded slug keys — `united-states-v-dc` and `united-states-v-minnesota` — both with proper captions (*"United States v. DC"*, *"United States v. Minnesota"*), and between them **4 items**. `lib/feed.ts:237` labels a case anchor `` `case ${e.case_id}` ``, so either of those items reaching the feed window renders **"case united-states-v-minnesota"** on the homepage while a correct caption sits in the row. **Located, not fixed** — it is a rendering change on a surface this unit did not touch, and folding it into a wording commit would have hidden it inside a diff about something else.
+
+**Move 4 stays deferred: both reopen counts read 1 against a threshold of 2.** Bills with nonzero 30d cross-channel activity: **1** (`s1383-119`, 15 items keyed on `fetched_at`, 8 on `occurred_at`). Bills carrying ≥1 news item: **1** (`s1383-119`, 96 items). Unchanged in breadth since the 08-13 reading that recorded 86 — the count moved, the **sample did not**, which is the number that matters here. The dependency half is also unchanged: **0** items carry both a `bill_id` and a `case_id`, so nothing in the spine links a bill to a suit. Nothing built, per the reopen conditions.
 
 ## Open units, roughly in order
 
