@@ -1,7 +1,13 @@
 import Link from "next/link";
 import type { StateBill } from "@/lib/db";
 import { formatDate } from "@/lib/format";
-import { STAGE_STYLE, stageOf, stateBillLabel, stateBillStatus } from "@/lib/statebill";
+import {
+  STAGE_STYLE,
+  stageEncoding,
+  stageOf,
+  stateBillLabel,
+  stateBillStatus,
+} from "@/lib/statebill";
 
 // One state election bill with its latest action, as a hairline row rather than a
 // card. The card version cost ~110px each and the page renders these in runs of 198
@@ -17,7 +23,17 @@ import { STAGE_STYLE, stageOf, stateBillLabel, stateBillStatus } from "@/lib/sta
 // The amber Vehicle badge stays wired for 5b-b. Nothing is flagged today -- is_vehicle
 // is 0 across all 484 rows -- and it is kept because the column exists and a state
 // vehicle is the one thing on this page that would deserve to interrupt the ramp.
+// BECAUSE it is unpaintable on live data, assert-encodings.mjs cannot sample it and
+// says so rather than certifying a set it never reached. Unlike the matrix's unstaged
+// column, this branch is pinned by no test at all -- a stated gap, not a covered one.
 // No sponsor field: state bills carry none.
+//
+// TWO ATTRIBUTES EXIST FOR THE ENCODINGS JOIN, and they are not decoration. `data-stage`
+// on the link names the stage this row CLAIMS -- the link's own border-left-color is the
+// tick -- and `data-chip` marks the stage name beside the title. The script reads the
+// claim, then checks the paint against what the key declares for that stage, which is
+// the only way to catch a row that says Passed and is painted like something else.
+// Colour alone cannot do it: stages 2 and 3 are painted identically.
 export function StateBillRow({ bill }: { bill: StateBill }) {
   const stage = stageOf(bill);
   const style = stage ? STAGE_STYLE[stage] : null;
@@ -30,6 +46,7 @@ export function StateBillRow({ bill }: { bill: StateBill }) {
         href={`/state-bill/${bill.state_bill_id}`}
         className="block border-b border-[#1c1c1c] border-l-2 py-2 pr-3 pl-3.5 transition-colors hover:bg-neutral-900"
         style={{ borderLeftColor: style?.tick ?? "transparent" }}
+        data-stage={stage ? stageEncoding(stage) : "unstaged"}
       >
         <div className="flex items-baseline gap-2.5">
           <span className="shrink-0 font-mono text-[0.8rem] whitespace-nowrap text-neutral-500">
@@ -51,6 +68,7 @@ export function StateBillRow({ bill }: { bill: StateBill }) {
             <span
               className="shrink-0 text-[0.72rem] whitespace-nowrap"
               style={{ color: style?.chip ?? "#737373", fontWeight: style?.bold ? 600 : 400 }}
+              data-chip=""
             >
               {status}
             </span>

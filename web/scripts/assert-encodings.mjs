@@ -1,7 +1,12 @@
 /**
- * Asserts that EVERY VISUAL ENCODING THE BOARD EMITS IS NAMED ON THE PAGE.
+ * Asserts that EVERY VISUAL ENCODING THESE PAGES EMIT IS NAMED ON THE PAGE.
  *
- *   node scripts/assert-encodings.mjs [url]     # default http://localhost:3001/
+ *   node scripts/assert-encodings.mjs [origin]  # default http://localhost:3001
+ *
+ * TWO ROUTES, ONE INSTRUMENT: `/` (the board) and `/state-bills` (the stage matrix).
+ * The argument is now an ORIGIN rather than a URL, because the script picks its own
+ * routes; a full URL still works, its origin is taken. Both sections use the same
+ * `check()` and share one exit code.
  *
  * Exit code is the alarm: 0 every emitted encoding is named, 1 otherwise.
  *
@@ -48,7 +53,8 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright-core");
 
-const URL = process.argv[2] ?? "http://localhost:3001/";
+const ORIGIN = new URL(process.argv[2] ?? "http://localhost:3001").origin;
+const BOARD_URL = ORIGIN + "/";
 const EXE =
   process.env.CHROMIUM_PATH ??
   "C:/Users/meh/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe";
@@ -73,7 +79,7 @@ const check = (name, actual, expected) => {
 
 const browser = await chromium.launch({ executablePath: EXE });
 const page = await browser.newPage({ viewport: { width: 2542, height: 1400 } });
-await page.goto(URL, { waitUntil: "networkidle" });
+await page.goto(BOARD_URL, { waitUntil: "networkidle" });
 await page.waitForTimeout(1000);
 
 // The classifier runs IN THE PAGE, so it reads computed values rather than attributes.
@@ -281,6 +287,210 @@ const unpainted = await page.$$eval("[data-key] [data-unpainted]", (els) =>
 );
 const legendCount = await page.$$eval("[data-legend]", (els) => els.length);
 
+// --- /state-bills: the stage matrix -------------------------------------------
+//
+// SAME JOIN, SECOND PAGE. The matrix column headers are that page's key, and until this
+// section existed nothing checked them -- docs/status.md carried "the matrix's key is
+// asserted by nothing" as a stated gap. The board's argument applies unchanged: a key
+// that drifts from the ink it decodes fails silently and looks fine.
+//
+// IDENTITY COMES FROM AN ATTRIBUTE HERE, NOT FROM COLOUR, and that is a real difference
+// from the board rather than a convenience. Stages 2 and 3 (Engrossed, Enrolled) are
+// painted IDENTICALLY -- both `var(--leg-dim)` on all four surfaces -- so a classifier
+// reading only computed colour cannot tell them apart and would be reporting a
+// resolution it does not have. So each mark declares which stage it CLAIMS via
+// `data-stage`, and the script checks that claim against the paint the key declares for
+// that stage. Identity from the attribute, verification from the pixel. A row that says
+// Passed and is painted like Failed fails `paint disagreeing with the key`, which is
+// the failure colour-only classification cannot see.
+//
+// THE SWEEP IS LOAD-BEARING, exactly like the board's frames. The default view carries
+// ten movement rows, which cannot paint all six stages; tick and chip coverage only
+// completes under `?all=1`. A single-view enumeration concludes half the ramp is unused
+// -- the same error as sampling one frame.
+//
+// TWO PAINTED SURFACES ARE EXCLUDED BY NAME rather than by falling through the
+// classifier, which is the board section's rule applied here. The zero middot carries
+// `data-zero`: it is the ABSENCE of a stage, not a stage, and self-decoding in a table
+// of numbers. The totals row carries no `data-stage`: its cells are stage-specific but
+// painted a flat neutral for every column on purpose, so they belong to the totals
+// vocabulary and would fail against all six declared colours if claimed. Both are
+// counted and printed, so an exclusion that starts swallowing real marks is visible.
+//
+// TWO BRANCHES ARE UNREACHABLE ON LIVE DATA AND THIS SCRIPT DOES NOT CLAIM THEM:
+//
+//   unstaged column   draws only for a bill outside stages 1-6, and all 484 rows are
+//                     inside them. The header carries `data-unreachable`, not
+//                     `data-encoding`, so it never enters the join. That branch is
+//                     pinned by components/StateMatrix.test.ts instead.
+//   Vehicle badge     draws only for is_vehicle = 1, and that is 0 across all 484.
+//                     Pinned by NOTHING. Stated here so it is a known gap rather than
+//                     a discovered one.
+//
+// Both are asserted to be absent rather than silently skipped: if either ever becomes
+// reachable, the check below fails and forces this comment to be re-read. That is the
+// point -- an unreachable branch that quietly becomes reachable is how a key goes stale.
+const STATE_VIEWS = [
+  ["default", "/state-bills"],
+  ["one state", "/state-bills?state=TX"],
+  ["all bills", "/state-bills?all=1"],
+];
+
+// Surfaces whose absence is meaningful. `dot` and `cell` come from the matrix, which
+// every view renders; `tick` and `chip` come from bill rows and are what the sweep is
+// for. Introduced declares no tick and is still expected in the tick set -- see the
+// coverage check, which deliberately excludes nothing.
+const SURFACES = ["dot", "cell", "tick", "chip"];
+
+const sbEmitted = new Set();
+const sbClaimed = new Set();
+let sbRowsUnclaimed = 0;
+const sbMismatch = [];
+const sbUnknown = [];
+const sbPerView = [];
+const sbBySurface = { dot: new Set(), cell: new Set(), tick: new Set(), chip: new Set() };
+let sbNamed = [];
+let sbDeclared = {}; // reported, not asserted -- see the ramp note below
+let sbKeyCount = null;
+let sbUnreachable = [];
+let sbUnstagedSampled = 0;
+let sbVehicleSampled = 0;
+
+for (const [label, path] of STATE_VIEWS) {
+  await page.goto(ORIGIN + path, { waitUntil: "networkidle" });
+  await page.waitForTimeout(180);
+
+  const r = await page.evaluate(() => {
+    // Resolve the page's own values instead of carrying copies. The key declares each
+    // stage's four surface colours as authored (`var(--leg-dim)`, `#404040`); this turns
+    // them into the same rgb strings getComputedStyle returns, so the comparison is
+    // between two computed values and never between a computed value and a transcript.
+    const probe = document.createElement("span");
+    probe.style.position = "absolute";
+    probe.style.opacity = "0";
+    document.body.appendChild(probe);
+    const resolve = (v) => {
+      if (!v || v === "none") return "none";
+      probe.style.color = "";
+      probe.style.color = v;
+      return getComputedStyle(probe).color;
+    };
+
+    const keyBlocks = document.querySelectorAll("[data-key]");
+    const heads = [...document.querySelectorAll("[data-key] [data-encoding]")];
+    const declared = {};
+    for (const h of heads) {
+      declared[h.getAttribute("data-encoding")] = {
+        dot: resolve(h.getAttribute("data-paint-dot")),
+        cell: resolve(h.getAttribute("data-paint-cell")),
+        tick: resolve(h.getAttribute("data-paint-tick")),
+        chip: resolve(h.getAttribute("data-paint-chip")),
+      };
+    }
+    probe.remove();
+
+    const found = { dot: [], cell: [], tick: [], chip: [] };
+    const mismatch = [];
+    const unknown = [];
+    const claimed = [];
+
+    // A mark's claim, its surface, and the colour it actually carries.
+    //
+    // THE CLAIM IS RECORDED BEFORE THE KEY IS CONSULTED, and that ordering is the whole
+    // reason `emitted but not named` can fail at all. An earlier draft of this section
+    // built the emitted set out of `declared`, so every emitted encoding was by
+    // construction one the key named and the join could not fail -- a check that reads as
+    // the strongest one here and asserts nothing. It is precisely the defect this file
+    // exists to catch, in the file that catches it. So: claim first, verify second, and a
+    // claim the key does not name survives into the join rather than being swallowed.
+    const record = (surface, encoding, painted) => {
+      if (!encoding) {
+        unknown.push({ surface, painted });
+        return;
+      }
+      claimed.push(encoding);
+      if (!(encoding in declared)) return; // unnamed -> the join below reports it
+      const want = declared[encoding][surface];
+      // Introduced declares no tick; the row paints a transparent border for it.
+      const ok =
+        want === "none"
+          ? /rgba\(0, 0, 0, 0\)|transparent/.test(painted)
+          : painted === want;
+      if (ok) found[surface].push(encoding);
+      else mismatch.push({ surface, encoding, painted, declared: want });
+    };
+
+    // 1. the key's own dots
+    for (const h of heads) {
+      const dot = h.querySelector("span[style]");
+      if (!dot) continue;
+      record("dot", h.getAttribute("data-encoding"), getComputedStyle(dot).backgroundColor);
+    }
+
+    // 2. matrix counts. Zeros are frame furniture -- the middot is the ABSENCE of a
+    //    stage, not a stage -- and are excluded by name rather than by falling through.
+    for (const c of document.querySelectorAll("table [data-stage]")) {
+      record("cell", c.getAttribute("data-stage"), getComputedStyle(c).color);
+    }
+
+    // 3. row ticks and 4. row chips. Counted against ALL row links, so a row rendered
+    //    by some other path -- painting a tick while claiming nothing -- is caught
+    //    rather than skipped by the selector that only looks for claims.
+    const rowLinks = document.querySelectorAll("li > a");
+    const rowClaims = document.querySelectorAll("li > a[data-stage]");
+    for (const row of rowClaims) {
+      const enc = row.getAttribute("data-stage");
+      record("tick", enc, getComputedStyle(row).borderLeftColor);
+      const chip = row.querySelector("[data-chip]");
+      if (chip) record("chip", enc, getComputedStyle(chip).color);
+    }
+
+    return {
+      claimed: [...new Set(claimed)].sort(),
+      rowsUnclaimed: rowLinks.length - rowClaims.length,
+      declared,
+      named: [...new Set(heads.map((h) => h.getAttribute("data-encoding")))].sort(),
+      keyCount: keyBlocks.length,
+      unreachable: [...document.querySelectorAll("[data-unreachable]")].map((e) =>
+        e.getAttribute("data-unreachable"),
+      ),
+      zeros: document.querySelectorAll("[data-zero]").length,
+      // The two branches this script states it cannot reach, counted so that becoming
+      // reachable is an alarm rather than a silent change of what the sweep covers.
+      unstagedSampled: document.querySelectorAll('[data-stage="unstaged"]').length,
+      vehicleSampled: [...document.querySelectorAll("li > a[data-stage] span")].filter(
+        (e) => e.textContent.trim() === "Vehicle",
+      ).length,
+      found,
+      mismatch,
+      unknown,
+    };
+  });
+
+  sbNamed = r.named;
+  sbDeclared = r.declared;
+  sbKeyCount = r.keyCount;
+  sbUnreachable = r.unreachable;
+  sbUnstagedSampled += r.unstagedSampled;
+  sbVehicleSampled += r.vehicleSampled;
+  sbMismatch.push(...r.mismatch);
+  sbUnknown.push(...r.unknown);
+  sbRowsUnclaimed += r.rowsUnclaimed;
+  r.claimed.forEach((e) => sbClaimed.add(e));
+  for (const surface of SURFACES) {
+    for (const e of r.found[surface]) {
+      sbEmitted.add(e);
+      sbBySurface[surface].add(e);
+    }
+  }
+  sbPerView.push({
+    view: label,
+    marks: SURFACES.reduce((a, s) => a + r.found[s].length, 0),
+    stages: new Set(SURFACES.flatMap((s) => r.found[s])).size,
+    zeros: r.zeros,
+  });
+}
+
 await browser.close();
 
 const emittedSorted = [...emitted].sort();
@@ -337,6 +547,128 @@ for (const r of selection) {
     { glow: true, brightness: r.hovered, pressed: true },
   );
 }
+
+console.log("");
+console.log("--- /state-bills -------------------------------------------------");
+console.log("views swept: " + JSON.stringify(sbPerView));
+console.log("claimed: " + JSON.stringify([...sbClaimed].sort()));
+console.log("verified: " + JSON.stringify([...sbEmitted].sort()));
+console.log("named:   " + JSON.stringify(sbNamed));
+// EMPTY IS THE EXPECTED READING, and it does not mean "nothing was declared". The
+// unstaged header only renders when a bill is outside stages 1-6, so on live data there
+// is no [data-unreachable] element in the DOM at all. A non-empty list here means the
+// branch became reachable, which the check further down turns into a failure.
+console.log(
+  "unreachable markers in the DOM: " +
+    JSON.stringify(sbUnreachable) +
+    (sbUnreachable.length === 0 ? "  (none rendered -- branch not reached, as expected)" : ""),
+);
+for (const surface of SURFACES) {
+  console.log("  " + surface.padEnd(5) + " paints: " + JSON.stringify([...sbBySurface[surface]].sort()));
+}
+console.log("");
+
+// REPORTED, NOT ASSERTED, and the distinction is the finding. On four of six stages the
+// key's DOT is a different colour from the ink it decodes: Introduced shows #404040 over
+// a row that draws no tick at all, Vetoed shows #d4d4d4 over an #a3a3a3 tick, Failed
+// #525252 over #404040, and Passed's dot is --c-legislation while its cells are
+// --leg-bright. The swatch is a family resemblance to the ink rather than a sample of it.
+//
+// This is inherited from the mock and is NOT asserted here, because asserting it would
+// fail on shipped, deliberate design -- a check that goes red on the intended state is a
+// check that gets switched off. Printing it keeps the divergence in front of whoever
+// reads this output, which is the honest instrument for something nobody has decided is
+// a defect yet. If it is ever decided to be one, the assertion is two lines below.
+const ramp = Object.entries(sbDeclared).map(([stage, p]) => ({
+  stage: stage.replace("stage-", ""),
+  dot: p.dot,
+  tick: p.tick,
+  cell: p.cell,
+  dotIsInk: p.dot === p.tick && p.dot === p.cell,
+}));
+console.log("key swatch vs the ink it decodes (reported, not asserted):");
+for (const r of ramp) {
+  console.log(
+    "  " +
+      (r.dotIsInk ? "same " : "DIFFERS") +
+      "  " +
+      r.stage.padEnd(11) +
+      " dot " +
+      r.dot.padEnd(22) +
+      " tick " +
+      r.tick.padEnd(22) +
+      " cell " +
+      r.cell,
+  );
+}
+console.log("");
+
+const sbNamedSet = new Set(sbNamed);
+
+// An unrecognised mark is a FAILURE, never a shrug -- the board's rule, and the reason
+// this instrument exists. A painted surface carrying a stage the key does not name is
+// exactly the encoding nobody can decode.
+check("state-bills: unclassified marks", sbUnknown.slice(0, 6), []);
+
+// THE CHECK COLOUR-ONLY CLASSIFICATION CANNOT MAKE. Every mark declares a stage; this
+// asserts the paint it carries is the paint that stage declares in the key. It catches a
+// row that says Passed and is inked like Failed -- invisible to a classifier that infers
+// the stage FROM the ink, because there the two can never disagree.
+check("state-bills: paint disagreeing with the key", sbMismatch.slice(0, 6), []);
+
+// CLAIMED, not verified -- see record(). A stage the page paints and the key omits must
+// reach this line even though nothing could check its colour against a key entry that
+// does not exist. "unstaged" is excluded here and counted on its own below: it is the
+// declared-unreachable branch, not an encoding the key owes an entry.
+check(
+  "state-bills: emitted but not named",
+  [...sbClaimed].sort().filter((e) => e !== "unstaged" && !sbNamedSet.has(e)),
+  [],
+);
+
+// Every row link claims a stage; a tick painted by a row that claims nothing is an
+// encoding with no possible entry in any key.
+check("state-bills: row links painting a tick without claiming a stage", sbRowsUnclaimed, 0);
+check(
+  "state-bills: named but not emitted",
+  sbNamed.filter((e) => !sbEmitted.has(e)),
+  [],
+);
+
+// PER-SURFACE, AND THIS IS WHAT THE SWEEP BUYS. The union above passes as soon as any
+// one surface paints a stage, so a tick that silently stopped painting Vetoed would hide
+// behind the matrix cell that still does. Ticks and chips only reach every stage under
+// ?all=1, which is why three views are visited rather than one.
+//
+// `dot` and `cell` are not asserted this way: the key draws all six dots on every view
+// by construction, and the matrix draws all six columns, so the assertion would be
+// vacuous rather than merely redundant.
+//
+// NO STAGE IS EXCLUDED HERE, and the one that looks like it should be is the point.
+// Introduced declares `tick: "none"`, so an exclusion for it reads as obviously needed
+// -- and would be inert, because a declared-none tick is recorded as painted when the
+// row actually paints a transparent border. That recording IS the assertion that
+// Introduced draws no rule: drop the tick and the row paints something, and the
+// mismatch check fires. An exclusion here would have quietly removed that.
+for (const surface of ["tick", "chip"]) {
+  const painted = sbBySurface[surface];
+  check(
+    "state-bills: every named stage painted on " + surface,
+    sbNamed.filter((e) => !painted.has(e)),
+    [],
+  );
+}
+
+// One key, asserted for the board's own reason: two keys diverging while both look
+// present is the failure that opened this file.
+check("state-bills: data-key blocks", sbKeyCount, 1);
+
+// THE STATED BOUNDARY, ASSERTED RATHER THAN ASSUMED. Both branches are unpaintable on
+// live data, so the sweep cannot have sampled them and must not imply it did. If either
+// count ever moves off zero the branch has become reachable, the key owes it an entry,
+// and the comment above owes a rewrite -- which is the alarm, not a nuisance.
+check("state-bills: unstaged sampled (unreachable by construction)", sbUnstagedSampled, 0);
+check("state-bills: vehicle badges sampled (unreachable, and pinned by no test)", sbVehicleSampled, 0);
 
 console.log(failures === 0 ? "\nOK" : "\n" + failures + " FAILED");
 process.exit(failures === 0 ? 0 : 1);

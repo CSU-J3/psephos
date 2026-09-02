@@ -79,6 +79,21 @@ export const STAGE_STYLE: Record<StageCode, StageStyle> = {
   "6": { dot: "#525252", tick: "#404040", cell: "#525252", chip: "#525252", bold: false },
 };
 
+// The join vocabulary, DERIVED FROM THE DISPLAY VOCABULARY so it cannot become a third
+// one. scripts/assert-encodings.mjs reads these off `data-encoding` in the matrix key
+// and off `data-stage` on every painted surface, then joins the two sets. Nothing
+// transcribes the list: change STATUS_LABELS and both sides of that join move together.
+//
+// It exists because colour cannot carry the identity here. Stages 2 and 3 are painted
+// IDENTICALLY on all four surfaces -- both are `var(--leg-dim)` -- so a classifier that
+// read only computed colour would have to report Engrossed and Enrolled as one thing,
+// or guess. The attribute says which stage a mark claims to be; the paint is then
+// checked against what that stage declares. Identity from the attribute, verification
+// from the pixel.
+export function stageEncoding(code: StageCode): string {
+  return `stage-${STATUS_LABELS[code].toLowerCase()}`;
+}
+
 // A bill's stage, or null when its status is missing or outside the ramp. The matrix
 // uses this to pick a column; the row itself renders either way.
 export function stageOf(bill: Pick<StateBill, "status">): StageCode | null {
