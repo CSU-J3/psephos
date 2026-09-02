@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Grade } from "@/components/Grade";
 import { entryLink, type FeedEntry } from "@/lib/feed";
 import { formatDate } from "@/lib/format";
-import type { DayBand, SeedRow, Timeline } from "@/lib/timeline";
+import { dayKey, type DayBand, type SeedRow, type Timeline } from "@/lib/timeline";
 
 // Every channel on one axis, ordered by the date things happened, with a date rail
 // down the left.
@@ -13,6 +13,14 @@ import type { DayBand, SeedRow, Timeline } from "@/lib/timeline";
 // pairing is why this replaced the activity feed: the feed could order by arrival or
 // by occurrence and had to pick, so a backdated story either posed as today's news or
 // vanished into the middle of the list.
+//
+// THE AXIS IS UTC-DAYED ON PURPOSE, following dayKey's rule; banding on the viewer's
+// local day was rejected because two readers in different zones would then disagree
+// about which day an item happened on, and the axis would contradict the Z-stamps the
+// record itself carries. The cost is that the top band opens at 00:00Z, which is 6 PM
+// the previous evening in Denver, so it can sit empty for hours of the reader's own
+// day -- the "UTC days" qualifier on the header and the word "yet" in an open day's
+// empty copy are the whole accommodation.
 
 /** Roughly how many rows the newest days may spend before the rest fold to one line. */
 const ROW_BUDGET = 12;
@@ -98,7 +106,15 @@ function SeedLine({ s }: { s: SeedRow }) {
   );
 }
 
-function Band({ band, collapsed }: { band: DayBand; collapsed: boolean }) {
+function Band({
+  band,
+  collapsed,
+  isToday,
+}: {
+  band: DayBand;
+  collapsed: boolean;
+  isToday: boolean;
+}) {
   const rowCount =
     band.cases.length + band.news.shown.length + band.other.length + band.seeds.length;
 
@@ -122,7 +138,11 @@ function Band({ band, collapsed }: { band: DayBand; collapsed: boolean }) {
       <div className="min-w-0 flex-1">
         {band.empty ? (
           // A gap the reader can see is information; a gap they cannot is not.
-          <p className="text-sm text-neutral-600">Nothing recorded</p>
+          // The current UTC day is still open, so its gap is "yet": nothing has
+          // landed AND the day is not over. A finished day's gap is settled.
+          <p className="text-sm text-neutral-600">
+            {isToday ? "Nothing recorded yet" : "Nothing recorded"}
+          </p>
         ) : collapsed ? (
           <p className="text-sm text-neutral-500">
             {rowCount} {rowCount === 1 ? "entry" : "entries"}
@@ -183,7 +203,17 @@ function Band({ band, collapsed }: { band: DayBand; collapsed: boolean }) {
   );
 }
 
-export function DayTimeline({ timeline }: { timeline: Timeline }) {
+export function DayTimeline({
+  timeline,
+  now,
+}: {
+  timeline: Timeline;
+  now: Date;
+}) {
+  // The page already holds the clock and hands it to buildTimeline; take it from
+  // there rather than reading one here, so the bands and this comparison cannot be
+  // computed against two different instants.
+  const todayKey = dayKey(now.toISOString());
   // Newest days expand until the budget is spent, then the rest fold to one line
   // each. The fold is by position, not by age: a quiet week at the top leaves more
   // budget for the days that follow it.
@@ -201,7 +231,12 @@ export function DayTimeline({ timeline }: { timeline: Timeline }) {
     <div>
       <ul>
         {timeline.bands.map((b, i) => (
-          <Band key={b.day} band={b} collapsed={collapsed[i]} />
+          <Band
+            key={b.day}
+            band={b}
+            collapsed={collapsed[i]}
+            isToday={b.day === todayKey}
+          />
         ))}
       </ul>
       {timeline.olderThanWindow.length > 0 && (

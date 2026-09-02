@@ -282,8 +282,11 @@ export default async function Home() {
       <div className="mt-10 grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)] 3xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)_minmax(340px,.86fr)]">
         {/* Column 1 -- the last 7 days, every channel on one axis by occurred_at. */}
         <section>
-          <h2 className="mb-3 text-lg font-semibold tracking-tight">The last 7 days</h2>
-          <DayTimeline timeline={timeline} />
+          <h2 className="mb-3 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
+            The last 7 days
+            <span className="text-sm font-normal text-neutral-500">UTC days</span>
+          </h2>
+          <DayTimeline timeline={timeline} now={now} />
         </section>
 
         {/* Column 2 -- state voter records. The chart, map, scrubber and detail
