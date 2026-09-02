@@ -48,6 +48,16 @@
      map. Any future palette change has to clear the same test. */
   --c-litigation: oklch(0.62 0.19 24); /* DOJ in court */
   --c-legislation: oklch(0.62 0.17 295); /* bills, federal and state */
+
+  /* Two steps either side of --c-legislation, same hue and chroma, for the state
+     stage ramp: --leg-dim is a bill in motion between chambers, --leg-bright is one
+     that passed. They are declared HERE rather than in the page that uses them so a
+     hue change moves all three together -- the whole point of the block. Only the
+     three moving stages take the ramp; Introduced, Vetoed and Failed stay neutral.
+     See STAGE_STYLE in web/lib/statebill.ts, which names these. */
+  --leg-bright: oklch(0.75 0.15 295);
+  --leg-dim: oklch(0.62 0.17 295 / 0.55);
+
   --c-executive: oklch(0.72 0.15 75); /* executive orders */
   --c-outcome: oklch(0.68 0.12 195); /* RESERVED: a court rejected the demand.
                                         Unused until the teal layer exists; stroke
