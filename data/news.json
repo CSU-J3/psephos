@@ -6868,5 +6868,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/unforgiving-new-usps-portal-could-reject-10000-mail-ballots-due-to-a-single-error-whistleblower-warns",
     "title": "‘Unforgiving’ new USPS portal could reject 10,000 mail ballots due to a single error, whistleblower warns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93224,
+    "kind": "item",
+    "occurred_at": "2026-09-01T20:20:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/whistleblower-usps-violated-court-orders-advance-trump-mail-voting-attack",
+    "title": "USPS repeatedly defied courts to advance Trump’s mail voting attack, whistleblower alleges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93223,
+    "kind": "item",
+    "occurred_at": "2026-09-01T20:33:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/as-election-looms-states-are-stuck-in-wait-and-see-mode-on-trump-mail-voting-order",
+    "title": "As election looms, states are stuck in wait-and-see mode on Trump mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93222,
+    "kind": "item",
+    "occurred_at": "2026-09-01T20:48:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-hampshire-asks-appeals-court-to-quickly-dismiss-dojs-voter-roll-grab",
+    "title": "New Hampshire asks appeals court to quickly dismiss DOJ’s voter roll grab"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93221,
+    "kind": "item",
+    "occurred_at": "2026-09-01T21:32:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blue-states-voting-orgs-rebut-trump-admins-justifications-for-restricting-mail-voting-ahead-of-pivotal-hearing",
+    "title": "Blue states, voting orgs rebut Trump admin’s justifications for restricting mail voting ahead of pivotal hearing"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93220,
+    "kind": "item",
+    "occurred_at": "2026-09-01T23:02:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-deliberate-barrier-texas-battleground-county-cuts-30-of-midterm-voting-locations",
+    "title": "‘A deliberate barrier’: Texas battleground county cuts 30% of midterm voting locations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93219,
+    "kind": "item",
+    "occurred_at": "2026-09-02T01:01:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-whistleblower-report-bolsters-challenges-to-trumps-anti-mail-voting-order",
+    "title": "USPS whistleblower report bolsters challenges to Trump’s anti-mail voting order"
   }
 ]
