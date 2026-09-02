@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Grade } from "@/components/Grade";
-import { entryLink, type FeedEntry } from "@/lib/feed";
+import { anchorLabel, entryLink, type FeedEntry } from "@/lib/feed";
 import { formatDate } from "@/lib/format";
 import { dayKey, type DayBand, type SeedRow, type Timeline } from "@/lib/timeline";
 
@@ -156,11 +156,21 @@ function Band({
           <ul className="space-y-2">
             {band.cases.map((g) => (
               <Row key={g.caseId} fresh={g.fresh}>
+                {/* THE CAPTION, WHICH THIS ROW'S OWN TYPE ALWAYS SAID IT RENDERED --
+                    CaseGroup is documented as "the caption once, the entry text
+                    beneath", and it printed `case ${g.caseId}` instead. The group's
+                    entries carry the anchor, so the name was one property away the
+                    whole time; this was the copy a reader actually met, since the
+                    homepage renders this component and not ActivityFeed.
+
+                    NOT `uppercase` any more. That class suited a bare key and ruins a
+                    caption -- "UNITED STATES V. MINNESOTA" loses the "v." a case name
+                    is read by. The styling was fitted to the defect. */}
                 <Link
                   href={`/case/${g.caseId}`}
-                  className="text-xs uppercase tracking-wide text-neutral-500 hover:text-neutral-300"
+                  className="text-xs tracking-wide text-neutral-500 hover:text-neutral-300"
                 >
-                  case {g.caseId}
+                  {anchorLabel(g.entries[0]?.anchor) ?? `case ${g.caseId}`}
                 </Link>
                 <ul className="mt-1 space-y-1">
                   {g.entries.map((e) => (

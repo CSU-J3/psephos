@@ -5,6 +5,8 @@
 
 import { WINDOW_DAYS } from "@/lib/activity";
 import { daysBetween } from "@/lib/format";
+import { billLabel } from "@/lib/bill";
+import { stateBillLabel } from "@/lib/statebill";
 
 // A docket this case continues into, or continues from. Court + docket only --
 // enough to render the chain line, and deliberately no timeline, which is the same
@@ -226,17 +228,67 @@ export function buildFeed(rows: FeedEntry[], limit: number = FEED_LIMIT): Feed {
   };
 }
 
+// THE ONE PLACE AN ANCHOR IS TURNED INTO A NAME. Two callers, and they used to be
+// two implementations: entryLink built a label inline while DayTimeline's docket
+// header hardcoded `case ${caseId}` and never called entryLink at all. That second
+// one is the copy a reader actually met on the homepage, and its own type docstring
+// says the row is "the caption once, the entry text beneath" -- so the caption was
+// always the intent and the id was what shipped. Extracting the function is what
+// makes that divergence impossible rather than merely fixed twice.
+//
+// IT WAS AN ID ON ALL THREE ARMS, not just the reported one. Every arm returned the
+// raw key: `s1383-119`, `case 71452580`, `1890243`. The anchor hanging off the entry
+// already carried what each display helper needs, so this was reading past the answer
+// rather than lacking it -- and `AnchorHeader` renders those same helpers on a group
+// card, which left the page naming one case two ways depending on whether its window
+// happened to hold one entry or several.
+//
+// THE CASE ARM GOT NOTICED AND THE OTHER TWO DID NOT, which is the part worth
+// keeping. Two hand-seeded rows key on slugs, so the feed could print `case
+// united-states-v-minnesota` -- visibly wrong. `1890243` is a bare LegiScan id and
+// strictly less legible, and it drew no complaint because a number reads as though
+// somebody chose it. Legibility of the symptom is not severity of the defect.
+//
+// Returns null rather than a fallback, so each caller states its OWN fallback where
+// the reader can see it: the two are not the same string, and a shared default would
+// have to pick one and be wrong at the other site.
+export function anchorLabel(a: FeedAnchor | null | undefined): string | null {
+  if (!a) return null;
+  if (a.kind === "bill") return billLabel(a);
+  if (a.kind === "case") return a.caption;
+  return stateBillLabel(a);
+}
+
 // The cross-channel link, which is most of why the feed is worth building: an
 // entry that belongs to a bill, a case or a state bill says so and goes there.
 // Checked in that order and at most one is returned -- items carry at most one
 // anchor today (measured 2026-08-13: zero items carry both a bill_id and a
 // case_id), and if that ever stops being true the first match is still a link
 // to somewhere real rather than a rendering decision made at random.
+//
+// FALLING BACK TO THE ID IS REAL, NOT DEFENSIVE. `anchor` is optional -- the pure
+// tests construct entries without one -- and `getFeed` builds a case anchor only
+// when the joined caption is non-null, so an entry can arrive carrying an id and
+// no dimension row behind it. The id is then the only true thing left to print.
 export function entryLink(e: FeedEntry): { href: string; label: string } | null {
-  if (e.bill_id) return { href: `/bill/${e.bill_id}`, label: e.bill_id };
-  if (e.case_id) return { href: `/case/${e.case_id}`, label: `case ${e.case_id}` };
+  const named = anchorLabel(e.anchor);
+  // Each arm takes the name only when the anchor is the MATCHING kind. An entry
+  // carrying two ids would otherwise label a bill link with a case caption, which is
+  // worse than the id it replaced -- a wrong name reads as authoritative.
+  const a = e.anchor;
+  if (e.bill_id) {
+    return { href: `/bill/${e.bill_id}`, label: a?.kind === "bill" ? named! : e.bill_id };
+  }
+  if (e.case_id) {
+    // No `case ` prefix once a caption is available: the caption already reads as a
+    // case name. The prefix stays on the fallback, where the bare key would
+    // otherwise be an unexplained number sitting beside a headline.
+    const label = a?.kind === "case" ? named! : `case ${e.case_id}`;
+    return { href: `/case/${e.case_id}`, label };
+  }
   if (e.state_bill_id) {
-    return { href: `/state-bill/${e.state_bill_id}`, label: e.state_bill_id };
+    const label = a?.kind === "state" ? named! : e.state_bill_id;
+    return { href: `/state-bill/${e.state_bill_id}`, label };
   }
   return null;
 }
