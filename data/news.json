@@ -6958,5 +6958,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/democrats-demand-inspector-general-probe-usps-whistleblower-mail-voting-claims",
     "title": "Democrats demand inspector general probe USPS whistleblower mail voting claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93872,
+    "kind": "item",
+    "occurred_at": "2026-09-02T17:53:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-wont-block-new-hampshires-student-id-voting-ban-for-now",
+    "title": "Federal judge won’t block New Hampshire’s student ID voting ban — for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93871,
+    "kind": "item",
+    "occurred_at": "2026-09-02T17:53:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-chief-says-ice-could-make-arrests-at-polling-places-ignoring-federal-ban",
+    "title": "DHS chief says ICE could make arrests at polling places — ignoring federal ban on armed agents at voting sites"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93870,
+    "kind": "item",
+    "occurred_at": "2026-09-02T18:51:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-use-mail-ballots-more-than-republicans-thats-why-trump-is-attacking-it",
+    "title": "Democrats use mail voting more than Republicans. That’s why Trump is attacking it"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93869,
+    "kind": "item",
+    "occurred_at": "2026-09-02T19:33:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/leading-elections-expert-says-trumps-mail-voting-restrictions-will-create-massive-chaos-and-confusion",
+    "title": "Leading elections expert says Trump’s mail voting restrictions will create ‘massive chaos and confusion’"
   }
 ]

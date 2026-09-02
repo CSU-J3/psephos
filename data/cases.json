@@ -22767,9 +22767,9 @@
     "court": "First Circuit",
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 32,
+    "entry_count": 34,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-01T00:00:00",
+    "latest_entry_at": "2026-09-02T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -22866,6 +22866,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108501023/1/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: MOTION for summary disposition filed by Appellees David M. Scanlan and State of New Hampshire. Served on 09/01/2026. [26-1783] (MAT) [Entered: 09/01/2026 02:28 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 93696,
+        "kind": "item",
+        "occurred_at": "2026-09-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108501850/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER granting motion to extend time to file brief filed by Appellees State of New Hampshire and David M. Scanlan. Brief due 10/02/2026 for appellees David M. Scanlan and State of "
       }
     ]
   },
@@ -23203,9 +23213,9 @@
     "court": "Second Circuit",
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 55,
+    "entry_count": 62,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-08-27T00:00:00",
+    "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
@@ -23242,6 +23252,26 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States of America v. Board Of Elections of the State of New York — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 93667,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/57/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Project Civica, FILED. Service date 08/31/2026 by ACMS. [Entered: 08/31/2026 11:44 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 93668,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/59/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: DEFECTIVE DOCUMENT, Motion to file Amicus Curiae Brief, at docket entry 57, on behalf of Amicus Curiae Project Civica, FILED. [Entered: 09/01/2026 12:45 PM]"
       }
     ]
   },
