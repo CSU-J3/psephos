@@ -87,6 +87,25 @@ describe("DayTimeline — the anchor chip", () => {
     expect(html).not.toMatch(/>\s*case\s*<!-- -->/);
   });
 
+  // THE SEED ROW IS THE ONLY PLACE DayTimeline CALLS entryLink WITH A CASE, and it
+  // needed its own test rather than being assumed covered. A case entry inside the
+  // window routes to the docket GROUP, which labels through anchorLabel -- so every
+  // other assertion here exercises that path and none of them touches entryLink's case
+  // arm. Back-history entries become "added to the record" seed rows instead, and
+  // SeedLine labels those through entryLink. Two labelling paths, one component; a
+  // suite that only knew about the first would report the second as covered.
+  it("names a seeded docket, the one path here that labels through entryLink", () => {
+    const html = render([
+      slugCase({
+        id: 8,
+        occurred_at: "2025-09-01T00:00:00+00:00", // long before it was collected
+        fetched_at: "2026-08-14T06:00:00+00:00", // -> isHistoryEntry, so a seed row
+      }),
+    ]);
+    expect(html).toContain("United States v. Minnesota");
+    expect(html).not.toMatch(/>[^<>]*united-states-v[^<>]*</);
+  });
+
   it("still routes on the id it stopped displaying", () => {
     expect(render([slugCase()])).toContain('href="/case/united-states-v-minnesota"');
   });
