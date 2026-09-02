@@ -39,11 +39,36 @@ export const STAGE_ORDER: readonly StageCode[] = ["1", "2", "3", "4", "5", "6"];
 // -- while Failed is a session ending under it. Dimming them equally would erase
 // that, and Wisconsin is the case that shows it: 3 vetoed against 56 failed.
 //
-// Four roles, because the mock paints four surfaces and they genuinely differ: `dot`
-// is the column-header key, `tick` a row's 2px left rule, `cell` a matrix count,
-// `chip` the stage name on a row. Only stage 1 makes cell and chip disagree (a count
-// is worth reading; a chip saying "Introduced" is the least informative thing on the
-// row), and that is copied from the mock rather than smoothed away.
+// Four roles, because the page paints four surfaces: `dot` is the column-header key,
+// `tick` a row's 2px left rule, `cell` a matrix count, `chip` the stage name on a row.
+// Only stage 1 makes cell and chip disagree (a count is worth reading; a chip saying
+// "Introduced" is the least informative thing on the row).
+//
+// THE SWATCH IS A SAMPLE OF THE INK, NOT A FAMILY RESEMBLANCE TO IT: `dot === cell` on
+// every stage, and assert-encodings.mjs fails if that ever stops being true. A key whose
+// swatch is merely near the colour it explains is a key the reader has to squint past,
+// and it is the kind of thing that drifts one stage at a time because each step looks
+// close enough on its own.
+//
+// The mock did not have this rule and could not have had it. Its dot painted a general
+// per-stage colour that was sometimes the cell and sometimes not, plus a hard-coded
+// ternary overriding it for stage 1 alone -- which left Introduced named by THREE
+// different greys at once: n700 on the dot, n500 on the chip, n400 on the cell. The
+// first port of it here half-normalised that (Failed's dot moved to its cell) and left
+// Introduced and Passed diverging, which is a job stopped in the middle rather than a
+// decision. This finishes it.
+//
+// `dot` AND `cell` STAY SEPARATE FIELDS, deliberately, even though the rule now makes
+// them equal. Deriving one from the other would make the assertion true by construction
+// -- exactly the vacuity that this project's own encodings script shipped in its first
+// draft and had to fix. Two fields that must agree can disagree, which is the only
+// reason checking them is worth anything.
+//
+// TICK IS EXEMPT AND IS NEVER ASSERTED AGAINST THE DOT. A 2px rule against a near-black
+// ground is a different contrast problem from 0.4rem of text: at that width the ramp's
+// dim step is nearly invisible, so the tick is free to run brighter or darker than the
+// count it accompanies. It is its own channel. The script prints it beside the other two
+// every run so the divergence stays visible, and asserts nothing about it.
 export type StageStyle = {
   dot: string;
   tick: string | null; // null = no tick; Introduced gets no rule
@@ -53,7 +78,7 @@ export type StageStyle = {
 };
 
 export const STAGE_STYLE: Record<StageCode, StageStyle> = {
-  "1": { dot: "#404040", tick: null, cell: "#a3a3a3", chip: "#737373", bold: false },
+  "1": { dot: "#a3a3a3", tick: null, cell: "#a3a3a3", chip: "#737373", bold: false },
   "2": {
     dot: "var(--leg-dim)",
     tick: "var(--leg-dim)",
@@ -69,7 +94,7 @@ export const STAGE_STYLE: Record<StageCode, StageStyle> = {
     bold: false,
   },
   "4": {
-    dot: "var(--c-legislation)",
+    dot: "var(--leg-bright)",
     tick: "var(--c-legislation)",
     cell: "var(--leg-bright)",
     chip: "var(--leg-bright)",

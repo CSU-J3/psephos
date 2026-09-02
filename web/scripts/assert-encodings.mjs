@@ -568,37 +568,44 @@ for (const surface of SURFACES) {
 }
 console.log("");
 
-// REPORTED, NOT ASSERTED, and the distinction is the finding. On four of six stages the
-// key's DOT is a different colour from the ink it decodes: Introduced shows #404040 over
-// a row that draws no tick at all, Vetoed shows #d4d4d4 over an #a3a3a3 tick, Failed
-// #525252 over #404040, and Passed's dot is --c-legislation while its cells are
-// --leg-bright. The swatch is a family resemblance to the ink rather than a sample of it.
+// THE SWATCH IS A SAMPLE OF THE INK. `dot === cell` on every stage, asserted below.
 //
-// This is inherited from the mock and is NOT asserted here, because asserting it would
-// fail on shipped, deliberate design -- a check that goes red on the intended state is a
-// check that gets switched off. Printing it keeps the divergence in front of whoever
-// reads this output, which is the honest instrument for something nobody has decided is
-// a defect yet. If it is ever decided to be one, the assertion is two lines below.
+// This was a printed finding for exactly one unit and is now a check, which is the whole
+// life-cycle the reporting form exists for: print a divergence nobody has ruled on, get
+// a ruling, assert it. What it caught was not deliberate design, as the finding first
+// claimed -- the mock's dot painted a per-stage colour that was sometimes the cell and
+// sometimes not, plus a ternary overriding stage 1 alone, and the first port of it here
+// normalised Failed and stopped. Introduced and Passed were the half it did not finish.
+//
+// TWO AXES, AND ONLY ONE IS ASSERTED. An earlier version of this report tested
+// `dot === tick && dot === cell` and printed one DIFFERS column for both, which
+// overstated the dot/cell divergence as four stages when it was two. They are separate
+// questions. `tick` is a 2px rule against a near-black ground -- a different contrast
+// problem from 0.4rem of text, where the ramp's dim step is nearly invisible -- so it is
+// free to run brighter or darker than the count it accompanies. It is printed beside the
+// others every run so the divergence stays visible, and nothing is asserted about it.
 const ramp = Object.entries(sbDeclared).map(([stage, p]) => ({
   stage: stage.replace("stage-", ""),
   dot: p.dot,
   tick: p.tick,
   cell: p.cell,
-  dotIsInk: p.dot === p.tick && p.dot === p.cell,
+  swatchIsInk: p.dot === p.cell,
+  tickMatchesDot: p.dot === p.tick,
 }));
-console.log("key swatch vs the ink it decodes (reported, not asserted):");
+console.log("key swatch vs the ink it decodes (dot/cell asserted, tick reported only):");
 for (const r of ramp) {
   console.log(
     "  " +
-      (r.dotIsInk ? "same " : "DIFFERS") +
+      (r.swatchIsInk ? "dot=cell" : "DIFFERS ") +
       "  " +
       r.stage.padEnd(11) +
       " dot " +
       r.dot.padEnd(22) +
-      " tick " +
-      r.tick.padEnd(22) +
       " cell " +
-      r.cell,
+      r.cell.padEnd(22) +
+      " tick " +
+      r.tick +
+      (r.tickMatchesDot ? "" : "  (own channel)"),
   );
 }
 console.log("");
@@ -658,6 +665,23 @@ for (const surface of ["tick", "chip"]) {
     [],
   );
 }
+
+// THE RULING, ASSERTED. A key whose swatch is merely NEAR the colour it explains is one
+// the reader has to squint past, and it drifts one stage at a time because each step
+// looks close enough on its own.
+//
+// THIS COMPARES THE TWO DECLARED VALUES, not the rendered dot against a declared one --
+// worth saying, because the stronger reading is the tempting one and it is wrong. It
+// closes the loop only in company: `paint disagreeing with the key` above already checks
+// each rendered dot against its own declaration, so a dot restyled in the component
+// fails THERE. Between them, rendered dot == declared dot == declared cell. Neither
+// check spans that chain alone, and reading this one as though it did would leave the
+// component-restyle case looking covered twice and the pair looking redundant.
+check(
+  "state-bills: key swatch is the cell ink",
+  ramp.filter((r) => !r.swatchIsInk).map((r) => r.stage),
+  [],
+);
 
 // One key, asserted for the board's own reason: two keys diverging while both look
 // present is the failure that opened this file.
