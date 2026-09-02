@@ -8,6 +8,8 @@ import {
   DORMANT_AFTER_DAYS,
 } from "@/lib/campaign";
 import type { Cell } from "@/lib/campaign";
+// The key's own record, so this page cannot name a posture the map does not define.
+import { POSTURE_LABEL } from "@/lib/board";
 import { StateCell } from "@/components/StateCell";
 import { Grade } from "@/components/Grade";
 import { formatDate } from "@/lib/format";
@@ -73,8 +75,9 @@ export default async function CampaignPage() {
           The DOJ voter-data campaign
         </h1>
         <p className="mt-1 text-sm text-neutral-400">
-          {s.sued} of {s.total} jurisdictions sued — {s.active} active, {s.ended} ended,{" "}
-          {s.chains} continued through an appeal or a refile.
+          {s.sued} of {s.total} jurisdictions sued — {s.live} {POSTURE_LABEL.live},{" "}
+          {s.ended} {POSTURE_LABEL.ended}, {s.chains} continued through an appeal or a
+          refile.
         </p>
       </header>
 

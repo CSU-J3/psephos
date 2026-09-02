@@ -293,13 +293,22 @@ describe("the line's overlay vocabulary", () => {
   //                   map paints it; it is absent from the DOM-side list because the
   //                   line never renders it at all. Same key, two different grounds.
   //
-  // `active` here is `live` there: the line calls the figure "active", the key calls
-  // the same jurisdictions "suit live". That is one figure under two wordings and this
-  // unit deliberately did not reconcile them -- see the posture-wording item on the
-  // status board. No count is quoted, deliberately: this file's own header says a
-  // count written into a spec is stale by build time, and the draft of this comment
-  // said "26 active" while the page said 29.
-  const AGGREGATE_OR_PAINTED = ["sued", "total", "active", "ended", "none"];
+  // `live` here is `live` there, and that is the change. This list used to read
+  // "active", because the line called the figure `active` while the key called the same
+  // jurisdictions "suit live" -- one figure under two wordings, which the comment here
+  // recorded and deferred to "the posture-wording item on the status board". That item
+  // is done: `Posture` is now the only vocabulary, `CampaignSummary.live` is named for
+  // the posture it counts, and the ternary that used to translate between the two is
+  // gone from app/page.tsx.
+  //
+  // The list is still five and `none` is still the reason. It is excluded HERE because
+  // the map paints it; it is absent from the DOM-side list because the line never
+  // renders it at all. Same key, two different grounds -- that part is unchanged.
+  //
+  // No count is quoted, deliberately: this file's own header says a count written into
+  // a spec is stale by build time, and a draft of this comment said "26 active" while
+  // the page said 29.
+  const AGGREGATE_OR_PAINTED = ["sued", "total", "live", "ended", "none"];
 
   it("names exactly the summary figures the map does not paint", () => {
     const unpainted = Object.keys(summarize([])).filter(

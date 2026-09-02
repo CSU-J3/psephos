@@ -129,7 +129,7 @@ export function TheRead({
         <span className="text-neutral-100">
           {campaign.sued} of {campaign.total} jurisdictions sued
         </span>
-        , {campaign.active} still live and {campaign.ended} ended.{" "}
+        , {campaign.live} still live and {campaign.ended} ended.{" "}
         {campaign.chains > 0 && <>{campaign.chains} continued elsewhere. </>}
         {campaign.dormant > 0 && <>{campaign.dormant} quiet.</>}
       </Line>

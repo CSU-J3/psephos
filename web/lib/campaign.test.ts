@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { CampaignRow } from "@/lib/db";
+import { POSTURE_LABEL, type Posture } from "@/lib/board";
 import {
   buildCells,
   continuesOf,
@@ -74,7 +75,7 @@ describe("chain traversal", () => {
     const c = cellFor(chain, "Pennsylvania");
     expect(c.live?.case_id).toBe("S");
     expect(c.predecessors.map((p) => p.case_id)).toEqual(["P"]);
-    expect(c.status).toBe("active");
+    expect(c.status).toBe("live");
   });
 
   it("calls a district-to-circuit continuation an appeal", () => {
@@ -126,8 +127,8 @@ describe("chain traversal", () => {
 });
 
 describe("the three cell states", () => {
-  it("treats a pending live docket as active", () => {
-    expect(cellFor([row({ case_id: "A", state: "Nevada" })], "Nevada").status).toBe("active");
+  it("treats a pending live docket as live", () => {
+    expect(cellFor([row({ case_id: "A", state: "Nevada" })], "Nevada").status).toBe("live");
   });
 
   it("treats a state with no rows as none, and does not link it", () => {
@@ -184,7 +185,7 @@ describe("the display invariant: no row is dropped", () => {
   it("keeps an unlinked terminated row reachable instead of discarding it", () => {
     const c = cellFor(window, "Connecticut");
     expect(c.live?.case_id).toBe("CT-C");
-    expect(c.status).toBe("active");
+    expect(c.status).toBe("live");
     // Nothing is asserted between them, so this is NOT a chain -- rendering it as
     // one would invent the link the record does not have.
     expect(c.chain).toBeNull();
@@ -226,7 +227,7 @@ describe("the display invariant: no row is dropped", () => {
     ];
     const c = cellFor(inverted, "Maine");
     expect(c.live?.case_id).toBe("LIVE");
-    expect(c.status).toBe("active");
+    expect(c.status).toBe("live");
     expect(c.unlinked.map((r) => r.case_id)).toEqual(["DEAD"]);
   });
 
@@ -251,6 +252,41 @@ describe("the display invariant: no row is dropped", () => {
             filed_at: "2026-07-28T00:00:00" }),
     ];
     expect(summarize(buildCells(two, NOW)).unlinkedEndings).toBe(2);
+  });
+});
+
+describe("one vocabulary", () => {
+  // THE TEST THAT EXISTS BECAUSE THIS USED TO BE TWO WORDS. A cell's posture was
+  // "active" while the map's key called the same jurisdictions "suit live", and a
+  // ternary in app/page.tsx translated between them -- so the homepage said "29 active"
+  // above a key saying "suit live" about exactly those 29, with nothing on the page
+  // telling a reader they were one claim.
+  //
+  // Asserting the SETS rather than the spelling is deliberate. A test comparing string
+  // literals would pass just as happily with two vocabularies as with one, since both
+  // sides would be transcribed here; comparing the type's inhabitants against the key's
+  // keys fails the moment a surface can name a posture the key does not define.
+  it("gives every cell posture an entry in the key, and no key entry a missing posture", () => {
+    const postures: Posture[] = ["live", "ended", "none"];
+    expect(Object.keys(POSTURE_LABEL).sort()).toEqual([...postures].sort());
+  });
+
+  it("names the summary field for the posture it counts", () => {
+    const s = summarize([]);
+    for (const p of ["live", "ended", "none"] as const) {
+      expect(s).toHaveProperty(p);
+    }
+    // The old name is gone rather than aliased: an alias is a second vocabulary with
+    // extra steps, and would let a caller keep saying "active" indefinitely.
+    expect(s).not.toHaveProperty("active");
+  });
+
+  it("counts a live cell under the posture the key names it by", () => {
+    const cells = buildCells([row({ case_id: "A", state: "Nevada" })], NOW);
+    const nv = cells.find((c) => c.name === "Nevada")!;
+    expect(nv.status).toBe("live");
+    expect(POSTURE_LABEL[nv.status]).toBe("suit live");
+    expect(summarize(cells).live).toBe(1);
   });
 });
 

@@ -253,5 +253,20 @@ export type Overlay = Extract<
 export const OVERLAY_LABEL: Record<Overlay, string> = {
   chains: "continued elsewhere",
   dormant: "quiet",
-  unlinkedEndings: "ended, no link asserted",
+  // NOT "ended, no link asserted", which is what this said and which read as a subset
+  // of the posture beside it. Measured on the live page: `ended` is 2 and this is 6, so
+  // a phrase that looks like a subset carried THREE TIMES the count of the set it
+  // appeared to sit inside -- arithmetic a reader cannot reconcile and should not have
+  // to. The /campaign strip never had the problem because it keeps the clause that
+  // does the work: "ended here, with no link asserted TO THE LIVE DOCKET".
+  //
+  // "carrying" is doing something specific: it makes this an ATTRIBUTE of a
+  // jurisdiction rather than a status competing with the postures, which is what it
+  // actually is. It also says nothing about whether that jurisdiction is itself live or
+  // ended -- and that is deliberate, because the two sets are disjoint TODAY but not by
+  // construction. `unlinked` is every unsuperseded row that is not the cell's own
+  // docket, and `status` keys off that docket alone, so a jurisdiction whose every
+  // unsuperseded docket is terminated lands in both. Measured overlap right now: none.
+  // A wording like "ended, state still live" would be wrong the day that changes.
+  unlinkedEndings: "carrying an unlinked ending",
 };

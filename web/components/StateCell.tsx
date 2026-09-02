@@ -11,7 +11,7 @@ import type { Cell } from "@/lib/campaign";
 // finding, not padding. They are NOT a claim about compliance -- psephos holds no
 // compliance data, and the page says so under the grid.
 const TINT: Record<Cell["status"], string> = {
-  active: "border-sky-500/40 bg-sky-500/10 text-sky-200",
+  live: "border-sky-500/40 bg-sky-500/10 text-sky-200",
   ended: "border-neutral-700 bg-neutral-800/60 text-neutral-400",
   none: "border-neutral-800/60 bg-transparent text-neutral-600",
 };

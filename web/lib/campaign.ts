@@ -1,4 +1,5 @@
 import type { CampaignRow } from "@/lib/db";
+import type { Posture } from "@/lib/board";
 import { utcDay } from "@/lib/format";
 
 // Derivation for the DOJ voter-data campaign grid. Pure functions over rows the
@@ -39,7 +40,24 @@ export const JURISDICTIONS: ReadonlyArray<readonly [name: string, code: string]>
 // day of being named in the spec.
 export const DORMANT_AFTER_DAYS = 60;
 
-export type CellStatus = "active" | "ended" | "none";
+// ONE VOCABULARY FOR ONE SET OF JURISDICTIONS, and this used to be two.
+//
+// A cell's posture was `"active" | "ended" | "none"` here while the map's key called the
+// same three things `live | ended | none`, and `app/page.tsx` carried a ternary
+// translating between them at render. So the homepage said "29 active" over a key that
+// said "suit live" about exactly those 29 jurisdictions -- one figure, two words, and a
+// reader with no way to know they were the same claim.
+//
+// A wording-only fix would have left the split intact one layer down and let it leak
+// back the next time someone rendered `cell.status`. Importing the key's own type
+// instead makes the agreement structural: `POSTURE_LABEL[cell.status]` is a direct
+// lookup, so a surface CANNOT name a posture the key does not define, and the
+// translating ternary had nowhere left to live.
+//
+// The import is type-only. `board.ts` imports `CampaignSummary` from this file, so the
+// two modules reference each other -- but both directions are erased at compile time
+// and no runtime cycle exists.
+export type { Posture };
 export type ChainKind = "appeal" | "refile";
 
 /** The dockets `row` CONTINUES, i.e. those superseded BY it.
@@ -60,7 +78,7 @@ export function continuesOf(group: CampaignRow[], row: CampaignRow): string[] {
 export type Cell = {
   name: string;
   code: string;
-  status: CellStatus;
+  status: Posture;
   live: CampaignRow | null;
   // The terminated row(s) this jurisdiction continued FROM. superseded_by is set
   // on the dead row pointing forward, so the predecessor is the one carrying it.
@@ -149,11 +167,11 @@ export function buildCells(rows: CampaignRow[], now: Date): Cell[] {
     // Michigan is why this matters: it is terminated at the Sixth Circuit with no
     // successor, the campaign's first appellate loss, and a two-state grid would
     // render it identically to Oklahoma's district dismissal.
-    const status: CellStatus = !live
+    const status: Posture = !live
       ? "none"
       : live.status === "terminated"
         ? "ended"
-        : "active";
+        : "live";
 
     const quietDays = live ? daysSince(live.latest_entry_at, now) : null;
     return {
@@ -171,7 +189,7 @@ export function buildCells(rows: CampaignRow[], now: Date): Cell[] {
       // Dormancy is a claim about a LIVE docket going quiet. A terminated docket is
       // not dormant, it is finished, and flagging it would put the campaign's
       // decided losses in the same bucket as its stalled suits.
-      dormant: status === "active" && quietDays !== null && quietDays > DORMANT_AFTER_DAYS,
+      dormant: status === "live" && quietDays !== null && quietDays > DORMANT_AFTER_DAYS,
     };
   });
 }
@@ -227,7 +245,10 @@ export function contestsEnding(status: string | null): boolean {
 
 export type CampaignSummary = {
   sued: number;
-  active: number;
+  // Named for the posture it counts, not for a synonym of it -- see the note on
+  // Posture above. Renaming this from `active` is what removed the last place the two
+  // vocabularies could drift apart.
+  live: number;
   ended: number;
   none: number;
   chains: number;
@@ -243,7 +264,7 @@ export function summarize(cells: Cell[]): CampaignSummary {
   return {
     total: cells.length,
     sued: count((c) => c.status !== "none"),
-    active: count((c) => c.status === "active"),
+    live: count((c) => c.status === "live"),
     ended: count((c) => c.status === "ended"),
     none: count((c) => c.status === "none"),
     chains: count((c) => c.chain !== null),

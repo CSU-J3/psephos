@@ -33,6 +33,7 @@ import {
   frames,
   isEoNumbered,
   OVERLAY_LABEL,
+  POSTURE_LABEL,
 } from "@/lib/board";
 import { RecordsMap, type MapState } from "@/components/RecordsMap";
 import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
@@ -182,7 +183,11 @@ export default async function Home() {
     return {
       ab: feature?.ab ?? c.code,
       name: feature?.name ?? c.name,
-      posture: c.status === "active" ? "live" : c.status === "ended" ? "ended" : "none",
+      // NO TRANSLATION HERE ANY MORE. This line used to be a ternary mapping the
+      // cell's vocabulary onto the map's, which is what a two-vocabulary system looks
+      // like from the inside: a working conversion nobody reads as a problem. Cells and
+      // postures are now the same type, so there is nothing to convert.
+      posture: c.status,
       bills: 0, // the running total is per-frame and computed in the component
       dockets: rows.map((r) => ({
         caseId: r.case_id,
@@ -318,18 +323,37 @@ export default async function Home() {
               EVERY FIGURE CARRIES data-figure, including the two that are aggregates
               rather than postures. The attribute is what lets assert-encodings join
               the line against the key without either side holding a list of the
-              other's contents -- a list is the thing that drifts. The three unpainted
-              wordings are READ FROM OVERLAY_LABEL, never typed here: the key makes a
-              negative claim about these exact words and a second copy could stop
-              matching it silently.
+              other's contents -- a list is the thing that drifts. The unpainted
+              wordings are READ FROM OVERLAY_LABEL and the posture wordings from
+              POSTURE_LABEL, never typed here: the key makes a claim about these exact
+              words and a second copy could stop matching it silently.
+
+              TWO CLAUSES, AND THE SPLIT IS THE FIX RATHER THAN DECORATION. The
+              postures PARTITION the 31 sued; the overlays are ATTRIBUTES those same
+              jurisdictions can carry, and more than one at once. Run as a single flat
+              list they read as one series, so "2 ended" followed by "6 carrying an
+              unlinked ending" invited the arithmetic a reader cannot make work -- the
+              larger number looking like a subset of the smaller. Nothing about the
+              figures was wrong; they were in one sentence that implied a relationship
+              they do not have. "among those N" names the set the second clause is over.
+
+              POSTURE_LABEL.none IS DELIBERATELY ABSENT. The line counts what DOJ did,
+              and "never sued" is the complement -- total minus sued -- which the map
+              paints and the /campaign copy explains. A figure for it here would be a
+              third posture in a sentence about two.
             */}
             <p className="text-sm text-neutral-300">
               <span className="font-medium text-neutral-100">
                 <span data-figure="sued">{campaign.sued}</span> of{" "}
                 <span data-figure="total">{campaign.total}</span> jurisdictions sued
               </span>{" "}
-              · <span data-figure="active">{campaign.active}</span> active ·{" "}
-              <span data-figure="ended">{campaign.ended}</span> ended ·{" "}
+              · <span data-figure="live">{campaign.live}</span>{" "}
+              <span data-posture="live">{POSTURE_LABEL.live}</span> ·{" "}
+              <span data-figure="ended">{campaign.ended}</span>{" "}
+              <span data-posture="ended">{POSTURE_LABEL.ended}</span>
+            </p>
+            <p className="mt-1 text-sm text-neutral-400">
+              among those {campaign.sued}:{" "}
               <span data-figure="chains">{campaign.chains}</span>{" "}
               {OVERLAY_LABEL.chains} ·{" "}
               <span data-figure="dormant">{campaign.dormant}</span>{" "}

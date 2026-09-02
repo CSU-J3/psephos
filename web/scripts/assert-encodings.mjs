@@ -287,6 +287,32 @@ const unpainted = await page.$$eval("[data-key] [data-unpainted]", (els) =>
 );
 const legendCount = await page.$$eval("[data-legend]", (els) => els.length);
 
+// --- the line's posture wordings against the key's ------------------------------
+//
+// A THIRD JOIN, and it is over words rather than marks. The first asks whether every
+// painted encoding is named; the second whether every figure the line prints is painted
+// or disclaimed. Neither can see two surfaces naming the SAME jurisdictions differently,
+// which is what the page did: the line said "29 active" directly above a key saying
+// "suit live" about exactly those 29, and every existing check passed the whole time.
+//
+// BOTH SIDES ARE READ FROM THE DOM, so the script holds no copy of either wording. It
+// compares the line's rendered text against the key entry's rendered text for the same
+// posture -- a transcription here would be a third vocabulary, free to agree with a
+// stale version of both.
+const postureWording = await page.evaluate(() => {
+  const text = (el) => (el ? el.textContent.trim() : null);
+  const out = [];
+  for (const el of document.querySelectorAll("[data-posture]")) {
+    const p = el.getAttribute("data-posture");
+    out.push({
+      posture: p,
+      line: text(el),
+      key: text(document.querySelector(`[data-key] [data-encoding="posture-${p}"]`)),
+    });
+  }
+  return out;
+});
+
 // --- /state-bills: the stage matrix -------------------------------------------
 //
 // SAME JOIN, SECOND PAGE. The matrix column headers are that page's key, and until this
@@ -519,6 +545,28 @@ check(
 check("data-key blocks", keyCount, 1);
 check("data-legend blocks", legendCount, 1);
 
+// ONE VOCABULARY, JOINED DOM-TO-DOM. Each posture the line names must be spelled
+// exactly as the key spells it. This is the check that would have caught active/live,
+// and none of the three that already existed could: the figure was disclaimed, the
+// marks were all named, and the two surfaces simply used different words for one set.
+console.log("posture wording, line vs key: " + JSON.stringify(postureWording));
+check(
+  "line and key spell each posture identically",
+  postureWording.filter((p) => p.line === null || p.key === null || p.line !== p.key),
+  [],
+);
+
+// The line names exactly the two postures it has figures for. `none` is absent on
+// purpose -- it is the complement of `sued`, the map paints it, and a figure for it
+// would put a third posture in a sentence about two. Asserted rather than left to
+// convention, because "the line renders what it renders" is how a surface quietly
+// stops naming something it should.
+check(
+  "postures the line names",
+  postureWording.map((p) => p.posture).sort(),
+  ["ended", "live"],
+);
+
 // ONE DIRECTION ONLY, and the asymmetry is deliberate rather than a half-finished
 // join. Every figure the line prints that the map does not paint must be disclaimed
 // in the key. The reverse arm is NOT asserted, because `unlinkedEndings` renders
@@ -531,7 +579,11 @@ check("data-legend blocks", legendCount, 1);
 // from this one because the line never renders it -- there is no [data-figure="none"]
 // to exclude. It is excluded in the unit test on the different ground that the map
 // paints it. Same key, two lists, two reasons.
-const AGGREGATE_OR_PAINTED = new Set(["sued", "total", "active", "ended"]);
+//
+// `live` WAS `active` UNTIL THE POSTURE-WORDING UNIT, and this line had to move with
+// the figure or the check below would have failed on a rename that broke nothing --
+// reporting `live` as an undisclaimed figure when what actually changed was its name.
+const AGGREGATE_OR_PAINTED = new Set(["sued", "total", "live", "ended"]);
 check(
   "line figures the map does not paint, disclaimed in the key",
   figures.filter((f) => !AGGREGATE_OR_PAINTED.has(f) && !unpainted.includes(f)),
