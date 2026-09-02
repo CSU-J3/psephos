@@ -1,7 +1,17 @@
-// Merged cross-channel activity feed -- move 2 of the dashboard redesign. Pure
-// functions only (no database client, no next/cache) so the ordering, the cap and
-// the cross-link resolution test without standing either up. Same split as
-// lib/activity.ts, for the same reason.
+// The feed module: the entry and anchor types the whole read layer passes around, the
+// window and history thresholds, and the cross-link resolution. Pure functions only
+// (no database client, no next/cache), same split as lib/activity.ts.
+//
+// IT USED TO CARRY A CARD LAYER AND NO LONGER DOES. buildFeed, the cap, the anchor
+// grouping and their types existed for ActivityFeed -- move 2's homepage feed -- which
+// was replaced by the day-grouped timeline in 4703298, left mounted by nothing for
+// months, and deleted. The live path is getFeed -> buildTimeline -> DayTimeline, and it
+// imports none of what was removed.
+//
+// The contracts were re-homed rather than dropped: lib/timeline.ts owns the ordering
+// and the grouping the page actually uses, and timeline.test.ts pins them -- including
+// the grade-before-recency fold that keeps C3 items reachable, which is move 2's own
+// decision and was the one thing the deleted tests carried that was not mechanical.
 
 import { WINDOW_DAYS } from "@/lib/activity";
 import { daysBetween } from "@/lib/format";
@@ -77,78 +87,11 @@ export type FeedEntry = {
 // archive, not an activity feed. /news remains the place to read the whole B2 set.
 export const FEED_WINDOW: "day" | "week" = "day";
 
-// A cap, and the count it hides, always rendered together. The standing rule is
-// that a workflow bounding its coverage says what it dropped -- a silent top-N
-// reads as "this is everything" when it is not.
-//
-// IT COUNTS CARDS, NOT ENTRIES, and that change is the whole point of grouping.
-// Measured 2026-08-16: four dockets were seeded and walked in one run, so the 24h
-// window held 192 entries of which 174 were four dockets' back-history. At 50
-// ENTRIES the cap cut inside the litigation block and hid 7 news items collected in
-// the same window -- the cap was deciding what a reader could reach, on an axis
-// (row count) that had nothing to do with what mattered. The same window is 22
-// cards, so the cap stops binding at all and the seed day renders whole.
-export const FEED_LIMIT = 50;
-
 // Older than the strip's own week AT THE MOMENT IT WAS FETCHED. Tied to
 // WINDOW_DAYS.week deliberately rather than given its own number: "older than the
 // 7d cell directly above this feed" is a definition a reader can check against the
 // page, and it is not a threshold pulled from the air.
 export const HISTORY_AFTER_DAYS = WINDOW_DAYS.week;
-
-// Ordering, stated once. `fetched_at DESC, id DESC`.
-//
-// THE WINDOW AND THE ORDER SHARE A COLUMN DELIBERATELY. Order on anything else --
-// occurred_at being the obvious candidate -- and an item enters the list in the
-// middle as it ages into the window, because RSS routinely carries publication
-// dates days behind collection. A reader watching the top of the feed would never
-// see it arrive. Keying both on fetched_at means new entries always appear at the
-// top and leave from the bottom, which is the only behaviour a feed can be read
-// as having. Each entry still DISPLAYS its own occurred_at, so a backdated story
-// is legible as backdated rather than silently re-dated.
-//
-// `id DESC` is the tiebreak, and it is load-bearing rather than cosmetic: a
-// collector run writes many rows inside the same second, so fetched_at alone
-// leaves within-batch order to whatever the engine returns. Same reason
-// export.snapshots sorts on the (occurred_at, id) pair rather than on the
-// timestamp alone.
-export function compareEntries(a: FeedEntry, b: FeedEntry): number {
-  if (a.fetched_at !== b.fetched_at) return a.fetched_at < b.fetched_at ? 1 : -1;
-  return b.id - a.id;
-}
-
-export type AnchorKind = "case" | "bill" | "state";
-
-// One card: either a single unanchored entry, or every entry in the window that
-// shares an anchor. A docket walk arrives as one card saying how many entries and
-// over what dates, instead of 55 rows each repeating the same caption.
-export type FeedCard = {
-  key: string; // `case:<id>` | `bill:<id>` | `state:<id>` | `item:<id>`
-  anchor: AnchorKind | null;
-  entries: FeedEntry[]; // >= 1, in compareEntries order
-  newest_fetched_at: string; // the ordering key, from entries[0]
-  newest_id: number; // the tiebreak, from entries[0]
-  first_occurred_at: string | null;
-  last_occurred_at: string | null;
-  history: boolean;
-  grades: string[]; // distinct `${source}${info}`, in first-seen order
-};
-
-export type Feed = {
-  cards: FeedCard[];
-  total_cards: number;
-  total_entries: number;
-  truncated: boolean;
-};
-
-// The anchor an entry groups on, checked in the SAME order entryLink uses so a card
-// can never group on one anchor and link to another. At most one is returned.
-function anchorOf(e: FeedEntry): { kind: AnchorKind; id: string } | null {
-  if (e.bill_id) return { kind: "bill", id: e.bill_id };
-  if (e.case_id) return { kind: "case", id: e.case_id };
-  if (e.state_bill_id) return { kind: "state", id: e.state_bill_id };
-  return null;
-}
 
 // Was this entry already old when it was collected? The docket-walk signature: a
 // bootstrap poll writes an entire docket's history in one run, so every row lands
@@ -160,72 +103,6 @@ function anchorOf(e: FeedEntry): { kind: AnchorKind; id: string } | null {
 export function isHistoryEntry(e: FeedEntry): boolean {
   const lag = daysBetween(e.occurred_at, e.fetched_at);
   return lag !== null && lag > HISTORY_AFTER_DAYS;
-}
-
-// Group into cards, sort, and cap. `total_entries` is the pre-cap ENTRY count and
-// `total_cards` the pre-cap CARD count; the page renders both, because after
-// grouping neither one alone says what the window held.
-//
-// Only entries INSIDE the window group, since the window is what the query returns.
-// A docket with one entry in the window is therefore a card of one, and reads as
-// that one entry -- which is correct: nothing else about it moved today.
-export function buildFeed(rows: FeedEntry[], limit: number = FEED_LIMIT): Feed {
-  const sorted = [...rows].sort(compareEntries);
-
-  // Insertion order over `sorted` is already card order: a card's newest entry is
-  // the first one seen for that key, so the Map preserves the ordering the
-  // comparator gives. It is still sorted explicitly below -- see there.
-  const groups = new Map<string, { anchor: AnchorKind | null; entries: FeedEntry[] }>();
-  for (const e of sorted) {
-    const a = anchorOf(e);
-    const key = a ? `${a.kind}:${a.id}` : `item:${e.id}`;
-    const g = groups.get(key);
-    if (g) g.entries.push(e);
-    else groups.set(key, { anchor: a?.kind ?? null, entries: [e] });
-  }
-
-  const cards: FeedCard[] = [...groups].map(([key, g]) => {
-    const dates = g.entries
-      .map((e) => e.occurred_at)
-      .filter((d): d is string => !!d)
-      .sort();
-    const grades: string[] = [];
-    for (const e of g.entries) {
-      const grade = `${e.admiralty_source}${e.admiralty_info}`;
-      if (!grades.includes(grade)) grades.push(grade);
-    }
-    return {
-      key,
-      anchor: g.anchor,
-      entries: g.entries,
-      newest_fetched_at: g.entries[0].fetched_at,
-      newest_id: g.entries[0].id,
-      first_occurred_at: dates[0] ?? null,
-      last_occurred_at: dates[dates.length - 1] ?? null,
-      // A card is history only when EVERY entry is. A docket that was walked and
-      // then moved today is not history, and its date range shows the mix.
-      history: g.entries.every(isHistoryEntry),
-      grades,
-    };
-  });
-
-  // Cards order by their NEWEST entry, which keeps the contract stated above one
-  // level up: a card arrives at the top and leaves from the bottom, because it is
-  // keyed on the same column as the window. A card whose oldest entry is the oldest
-  // thing in the window still sorts by when it was last collected.
-  cards.sort((a, b) => {
-    if (a.newest_fetched_at !== b.newest_fetched_at) {
-      return a.newest_fetched_at < b.newest_fetched_at ? 1 : -1;
-    }
-    return b.newest_id - a.newest_id;
-  });
-
-  return {
-    cards: cards.slice(0, limit),
-    total_cards: cards.length,
-    total_entries: sorted.length,
-    truncated: cards.length > limit,
-  };
 }
 
 // THE ONE PLACE AN ANCHOR IS TURNED INTO A NAME. Two callers, and they used to be
@@ -291,17 +168,4 @@ export function entryLink(e: FeedEntry): { href: string; label: string } | null 
     return { href: `/state-bill/${e.state_bill_id}`, label };
   }
   return null;
-}
-
-// A group card links to its anchor by the same function applied to its first entry,
-// so the card header and a singleton row can never resolve to different places.
-export function cardLink(card: FeedCard): { href: string; label: string } | null {
-  return entryLink(card.entries[0]);
-}
-
-// The dimension row for a card's header. Read off the first entry for the same
-// reason cardLink is: every entry on a card shares the anchor it grouped on, so
-// they all carry the same joined row and the first is as good as any.
-export function cardAnchor(card: FeedCard): FeedAnchor | null {
-  return card.entries[0].anchor ?? null;
 }
