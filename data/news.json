@@ -6928,5 +6928,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/usps-whistleblower-report-bolsters-challenges-to-trumps-anti-mail-voting-order",
     "title": "USPS whistleblower report bolsters challenges to Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93433,
+    "kind": "item",
+    "occurred_at": "2026-09-02T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-redistricting-referendum-faces-its-final-legal-test-for-november-ballot",
+    "title": "Missouri redistricting referendum faces its final legal test for November ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 93432,
+    "kind": "item",
+    "occurred_at": "2026-09-02T10:00:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/09/02/auditor-general-report-voter-roll-noncitizens-2026-election",
+    "title": "Watchdog releases review of Michigan registered voters"
   }
 ]

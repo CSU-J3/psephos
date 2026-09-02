@@ -1278,5 +1278,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/08/25/2026-17324/fee-for-certain-h-1b-petitions",
     "title": "Fee for Certain H-1B Petitions"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 93330,
+    "kind": "item",
+    "occurred_at": "2026-08-31T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/02/2026-18046/continuation-of-the-national-emergency-with-respect-to-foreign-interference-in-or-undermining-public",
+    "title": "Continuation of the National Emergency With Respect to Foreign Interference in or Undermining Public Confidence in United States Elections"
   }
 ]
