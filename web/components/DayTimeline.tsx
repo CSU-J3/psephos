@@ -161,7 +161,8 @@ function Band({
                     beneath", and it printed `case ${g.caseId}` instead. The group's
                     entries carry the anchor, so the name was one property away the
                     whole time; this was the copy a reader actually met, since the
-                    homepage renders this component and not ActivityFeed.
+                    homepage renders this component -- the similarly-named ActivityFeed
+                    was mounted by nothing and has since been deleted.
 
                     NOT `uppercase` any more. That class suited a bare key and ruins a
                     caption -- "UNITED STATES V. MINNESOTA" loses the "v." a case name

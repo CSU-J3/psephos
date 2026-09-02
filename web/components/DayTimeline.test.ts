@@ -14,13 +14,13 @@ import type { FeedEntry } from "@/lib/feed";
 // time and one function on the way to the DOM read past it -- so a pure test alone would
 // have been the wrong instrument for it.
 //
-// THIS TESTS DayTimeline AND NOT ActivityFeed, which is a correction worth recording.
-// Both components call entryLink, and the obvious file to test is the one named after
-// the feed. But `ActivityFeed` is mounted by NO route: it went up in a9fb298 and was
-// taken down in 4703298 when the day-grouped timeline replaced it, and it is now
-// referenced by nothing except its own definition. A render test on it would have
-// covered dead code while the live surface stayed untested -- which is worse than no
-// test, because it reads as coverage. DayTimeline is what app/page.tsx renders.
+// THIS TESTS DayTimeline, AND THE COMPONENT NAMED AFTER THE FEED IS WHY THAT IS WORTH
+// SAYING. `ActivityFeed` also called entryLink and was the obvious file to test -- and
+// it was mounted by no route, having gone up in a9fb298 and come down in 4703298 when
+// the day-grouped timeline replaced it. A render test on it would have covered dead
+// code while the live surface stayed untested, which is worse than no test because it
+// reads as coverage. It has since been deleted; this note stays because the trap was
+// the NAME, and the next reader looking for "the feed" will still start there.
 //
 // No jsdom: renderToStaticMarkup only, same as StateMatrix.test.ts, on constructed
 // fixtures through the real buildTimeline the page uses.
