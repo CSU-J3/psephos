@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>psephos — DOJ voter-data campaign (mock v3)</title>
+<style>
+:root { --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+ --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+ --bg:#0a0a0a; --n900:#171717; --n800:#262626; --n700:#404040; --n600:#525252;
+ --n500:#737373; --n400:#a3a3a3; --n300:#d4d4d4; --fg:#e5e5e5;
+ --cy:#67e8f9; --cyd:#164e63; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font-family:var(--sans); }
+a { color:inherit; text-decoration:none; }
+.wrap { max-width:62rem; margin:0 auto; padding:3rem 1.5rem 4rem; }
+.back { font-size:.875rem; color:var(--n400); }
+h1 { margin:1.2rem 0 0; font-size:1.5rem; font-weight:600; letter-spacing:-.015em; }
+.sub { margin-top:.25rem; font-size:.875rem; color:var(--n400); }
+.grid { display:grid; grid-template-columns:repeat(9,1fr); gap:.3rem; margin-top:1.4rem; }
+.cell { border:1px solid #1c1c1c; border-radius:.3rem; padding:.32rem .4rem; min-height:2.6rem;
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.2rem .3rem; }
+.cell.live { border-color:var(--cyd); background:#07171c; }
+.cell.live:hover { border-color:var(--cy); }
+.cell.ended { background:#121212; border-color:#2a2a2a; }
+.gc { font-weight:600; font-size:.8rem; }
+.gm { color:var(--cy); font-size:.7rem; }
+.cell.ended .gm { color:var(--n500); }
+.gd { flex-basis:100%; font-family:var(--mono); font-size:.62rem; color:var(--n500);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.legend { margin-top:.7rem; font-size:.72rem; color:var(--n500); line-height:1.5; }
+h2 { margin:2.4rem 0 .3rem; font-size:1.05rem; font-weight:600;
+  display:flex; align-items:baseline; gap:.5rem; }
+h2 .n { font-size:.8rem; font-weight:400; color:var(--n500); }
+.intro { margin:0 0 .6rem; font-size:.78rem; color:var(--n500); line-height:1.55; max-width:56rem; }
+ul { list-style:none; margin:0; padding:0; }
+li { padding:.55rem .6rem; border-bottom:1px solid #1c1c1c; }
+li:target { background:#0d1a1e; outline:1px solid var(--cyd); border-radius:.3rem; }
+.l1 { display:flex; align-items:baseline; gap:.55rem; flex-wrap:wrap; }
+.nm { font-weight:600; font-size:.9rem; min-width:7.5rem; }
+.mono { font-family:var(--mono); font-size:.78rem; }
+.dim { color:var(--n500); } .dim2 { color:var(--n500); font-size:.78rem; }
+.arr { color:var(--n600); }
+.right { margin-left:auto; }
+.badge { font-size:.62rem; text-transform:lowercase; border:1px solid var(--n700);
+  border-radius:.25rem; padding:.1rem .35rem; color:var(--n400); }
+.chip { font-family:var(--mono); font-size:.6rem; border:1px solid #1f3a46; color:#7dd3fc;
+  border-radius:.2rem; padding:.08rem .28rem; margin-left:.35rem; }
+.l2 { margin:.28rem 0 0 8.05rem; font-size:.8rem; color:var(--n300);
+  overflow:hidden; display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; }
+.l3 { margin:.15rem 0 0 8.05rem; font-size:.68rem; color:var(--n600); }
+.qd { color:#d9c979; font-size:.75rem; }
+.warn { margin:.4rem 0 .1rem 8.05rem; font-size:.75rem; color:#e0c26a; border:1px solid #5c4a1a;
+  background:#1c1608; border-radius:.3rem; padding:.4rem .55rem; line-height:1.45; }
+@media (max-width:760px) { .grid { grid-template-columns:repeat(6,1fr); }
+  .l2,.l3,.warn { margin-left:0; } .nm { min-width:0; } }
+
+.seclines { margin-top:1.6rem; border-top:1px solid var(--n800); }
+.secline { display:flex; align-items:baseline; gap:.6rem; padding:.6rem .2rem; border-bottom:1px solid #1c1c1c; }
+.secline:hover { background:var(--n900); }
+.st1 { font-weight:600; font-size:.95rem; }
+.secline .n { font-size:.8rem; color:var(--n500); font-variant-numeric:tabular-nums; }
+.roster { margin-left:auto; font-size:.68rem; color:var(--n600); letter-spacing:.03em; }
+.tw { color:var(--n600); }
+.panel { margin-top:1.2rem; } .panel h2 { margin:0 0 .3rem; }
+.close { margin-left:auto; font-size:.72rem; color:var(--n500); font-weight:400; }
+.close:hover { color:var(--fg); }
+li.hl { background:#0d1a1e; outline:1px solid var(--cyd); border-radius:.3rem; }
+
+.mvh { margin:1.8rem 0 .2rem; font-size:.8rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; color:var(--n500); }
+.mvh .n { font-weight:400; text-transform:none; letter-spacing:0; color:var(--n600); font-size:.72rem; margin-left:.4rem; }
+.mvl li { display:flex; align-items:baseline; gap:.6rem; padding:.42rem .2rem; border-bottom:1px solid #161616; }
+.mvd { font-size:.72rem; color:var(--n600); min-width:6.2rem; }
+.mvn { font-weight:600; font-size:.85rem; min-width:6.4rem; }
+.mvt { font-size:.82rem; color:var(--n300); min-width:0; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.mvs { font-size:.68rem; color:var(--n600); white-space:nowrap; }
+.mvs:hover { color:var(--n300); }
+@media (max-width:760px){ .mvd{min-width:4.5rem} .mvt{white-space:normal;-webkit-line-clamp:1;display:-webkit-box;-webkit-box-orient:vertical} }
+</style></head><body><div class="wrap">
+<a class="back" href="#">← psephos</a>
+<h1>The DOJ voter-data campaign</h1>
+<p class="sub">31 of 51 jurisdictions sued — 29 suit live, 2 suit ended, 12 continued through an appeal or a refile.</p><div class="grid"><div class="cell"><span class="gc">AL</span><span class="gd">–</span></div><div class="cell"><span class="gc">AK</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="AZ"><span class="gc">AZ</span><span class="gm">↑•</span><span class="gd">26-3609</span></a><div class="cell"><span class="gc">AR</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="CA"><span class="gc">CA</span><span class="gm">↑</span><span class="gd">26-1232</span></a><a class="cell live" href="#" data-st="CO"><span class="gc">CO</span><span class="gm">†</span><span class="gd">26-1326</span></a><a class="cell live" href="#" data-st="CT"><span class="gc">CT</span><span class="gm">↑</span><span class="gd">26-2064</span></a><a class="cell live" href="#" data-st="DE"><span class="gc">DE</span><span class="gd">1:25-cv-01..</span></a><a class="cell live" href="#" data-st="DC"><span class="gc">DC</span><span class="gm">†</span><span class="gd">26-5296</span></a><div class="cell"><span class="gc">FL</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="GA"><span class="gc">GA</span><span class="gm">↻</span><span class="gd">1:26-cv-00..</span></a><a class="cell live" href="#" data-st="HI"><span class="gc">HI</span><span class="gm">•</span><span class="gd">1:25-cv-00..</span></a><a class="cell live" href="#" data-st="ID"><span class="gc">ID</span><span class="gm">•</span><span class="gd">1:26-cv-00..</span></a><a class="cell live" href="#" data-st="IL"><span class="gc">IL</span><span class="gm">†</span><span class="gd">26-2695</span></a><div class="cell"><span class="gc">IN</span><span class="gd">–</span></div><div class="cell"><span class="gc">IA</span><span class="gd">–</span></div><div class="cell"><span class="gc">KS</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="KY"><span class="gc">KY</span><span class="gm">↑</span><span class="gd">26-5657</span></a><div class="cell"><span class="gc">LA</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="ME"><span class="gc">ME</span><span class="gd">26-1676</span></a><a class="cell live" href="#" data-st="MD"><span class="gc">MD</span><span class="gm">↑</span><span class="gd">26-1878</span></a><a class="cell live" href="#" data-st="MA"><span class="gc">MA</span><span class="gd">26-1657</span></a><a class="cell ended" href="#" data-st="MI"><span class="gc">MI</span><span class="gd">26-1225</span></a><a class="cell live" href="#" data-st="MN"><span class="gc">MN</span><span class="gm">†</span><span class="gd">26-2679</span></a><div class="cell"><span class="gc">MS</span><span class="gd">–</span></div><div class="cell"><span class="gc">MO</span><span class="gd">–</span></div><div class="cell"><span class="gc">MT</span><span class="gd">–</span></div><div class="cell"><span class="gc">NE</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="NV"><span class="gc">NV</span><span class="gm">†</span><span class="gd">26-5375</span></a><a class="cell live" href="#" data-st="NH"><span class="gc">NH</span><span class="gm">↑</span><span class="gd">26-1783</span></a><a class="cell live" href="#" data-st="NJ"><span class="gc">NJ</span><span class="gm">†</span><span class="gd">26-3085</span></a><a class="cell live" href="#" data-st="NM"><span class="gc">NM</span><span class="gm">↑</span><span class="gd">26-2126</span></a><a class="cell live" href="#" data-st="NY"><span class="gc">NY</span><span class="gm">↑</span><span class="gd">26-2060</span></a><div class="cell"><span class="gc">NC</span><span class="gd">–</span></div><div class="cell"><span class="gc">ND</span><span class="gd">–</span></div><div class="cell"><span class="gc">OH</span><span class="gd">–</span></div><a class="cell ended" href="#" data-st="OK"><span class="gc">OK</span><span class="gd">5:26-cv-00..</span></a><a class="cell live" href="#" data-st="OR"><span class="gc">OR</span><span class="gm">↑</span><span class="gd">26-1231</span></a><a class="cell live" href="#" data-st="PA"><span class="gc">PA</span><span class="gm">↑</span><span class="gd">26-2684</span></a><a class="cell live" href="#" data-st="RI"><span class="gc">RI</span><span class="gd">26-1465</span></a><div class="cell"><span class="gc">SC</span><span class="gd">–</span></div><div class="cell"><span class="gc">SD</span><span class="gd">–</span></div><div class="cell"><span class="gc">TN</span><span class="gd">–</span></div><div class="cell"><span class="gc">TX</span><span class="gd">–</span></div><a class="cell live" href="#" data-st="UT"><span class="gc">UT</span><span class="gd">2:26-cv-..</span></a><a class="cell live" href="#" data-st="VT"><span class="gc">VT</span><span class="gd">2:26-cv-00..</span></a><a class="cell live" href="#" data-st="VA"><span class="gc">VA</span><span class="gm">↑</span><span class="gd">26-2002</span></a><a class="cell live" href="#" data-st="WA"><span class="gc">WA</span><span class="gd">3:25-cv-..</span></a><a class="cell live" href="#" data-st="WV"><span class="gc">WV</span><span class="gd">26-2217</span></a><a class="cell live" href="#" data-st="WI"><span class="gc">WI</span><span class="gd">2:26-cv-..</span></a><div class="cell"><span class="gc">WY</span><span class="gd">–</span></div></div><p class="legend">↑ continued as a circuit appeal · ↻ refiled in another district · • no docket activity in over 60 days · † ended here, with no link asserted to the live docket. An unfilled cell means no suit in this record — not that the state complied. DOJ demanded data from all 50 states and DC, but psephos holds no compliance data, so the 20 blanks say only that no docket for them has reached the tracker. <strong>Every populated cell opens its state below; section lines open their lists.</strong></p><h2 class="mvh">Latest movement <span class="n">eight most recent docket entries, any state</span></h2>
+<ul class="mvl"><li class="mv"><span class="mvd mono">Aug 24, 2026</span><span class="mvn">Nevada</span>
+ <span class="mvt">District docket 3:25-cv-00728 terminated.</span><span class="chip">A1</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="NV">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 21, 2026</span><span class="mvn">Minnesota</span>
+ <span class="mvt">District docket 0:25-cv-03761 terminated.</span><span class="chip">A1</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="MN">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 20, 2026</span><span class="mvn">New Jersey</span>
+ <span class="mvt">District docket 3:26-cv-02025 terminated.</span><span class="chip">A1</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="NJ">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 19, 2026</span><span class="mvn">DC</span>
+ <span class="mvt">District docket 1:25-cv-04403 terminated.</span><span class="chip">A1</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="DC">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 18, 2026</span><span class="mvn">Nevada</span>
+ <span class="mvt">DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Ninth Circuit.</span><span class="chip">B2</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="NV">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 18, 2026</span><span class="mvn">Colorado</span>
+ <span class="mvt">District docket 1:25-cv-03967 terminated.</span><span class="chip">A1</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="CO">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 17, 2026</span><span class="mvn">DC</span>
+ <span class="mvt">DOJ filed a notice that it will appeal the district court's dismissal of the suit to the DC Circuit.</span><span class="chip">B2</span>
+ <a class="mvs" href="#" data-sec="unlinked" data-st="DC">unlinked ›</a></li><li class="mv"><span class="mvd mono">Aug 14, 2026</span><span class="mvn">Michigan</span>
+ <span class="mvt">The Sixth Circuit denied DOJ's request to rehear the appellate panel's decision affirming dismissal of the case.</span><span class="chip">B2</span>
+ <a class="mvs" href="#" data-sec="ended" data-st="MI">ended ›</a></li></ul><div class="seclines"><a class="secline" href="#" data-sec="continued"><span class="st1">Continued elsewhere</span>
+ <span class="n">12</span><span class="roster mono">AZ CA CT GA KY MD NH NM NY OR PA VA</span><span class="tw">›</span></a><a class="secline" href="#" data-sec="unlinked"><span class="st1">Ended, with no link asserted</span>
+ <span class="n">6</span><span class="roster mono">CO DC IL MN NV NJ</span><span class="tw">›</span></a><a class="secline" href="#" data-sec="ended"><span class="st1">Ended in this record</span>
+ <span class="n">2</span><span class="roster mono">MI OK</span><span class="tw">›</span></a><a class="secline" href="#" data-sec="quiet"><span class="st1">Quiet</span>
+ <span class="n">3</span><span class="roster mono">HI ID AZ</span><span class="tw">›</span></a></div><section class="panel" id="p-continued" hidden><h2>Continued elsewhere <span class="n">12</span>
+ <a href="#" class="close" data-close>× close</a></h2><p class="intro">An appeal and a refile are not the same event. An appeal means a district court ruled and the case went up; a refile means DOJ moved venue with no ruling on the merits. The grid marks them differently for that reason.</p>
+ <ul><li id="st-AZ"><div class="l1"><span class="nm">Arizona</span>
+      <span class="mono dim">District of Arizona 2:26-cv-00066</span><span class="arr">→</span>
+      <span class="mono">Ninth Circuit 26-3609</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-CA"><div class="l1"><span class="nm">California</span>
+      <span class="mono dim">Central District of California 2:25-cv-09149</span><span class="arr">→</span>
+      <span class="mono">Ninth Circuit 26-1232</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-CT"><div class="l1"><span class="nm">Connecticut</span>
+      <span class="mono dim">District of Connecticut 3:26-cv-00021</span><span class="arr">→</span>
+      <span class="mono">Second Circuit 26-2064</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-GA"><div class="l1"><span class="nm">Georgia</span>
+      <span class="mono dim">Middle District of Georgia 5:25-cv-00548</span><span class="arr">→</span>
+      <span class="mono">Northern District of Georgia 1:26-cv-00485</span>
+      <span class="badge refile">refile</span><span class="chip">A1</span></div></li><li id="st-KY"><div class="l1"><span class="nm">Kentucky</span>
+      <span class="mono dim">Eastern District of Kentucky 3:26-cv-00019</span><span class="arr">→</span>
+      <span class="mono">Sixth Circuit 26-5657</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-MD"><div class="l1"><span class="nm">Maryland</span>
+      <span class="mono dim">District of Maryland 1:25-cv-03934</span><span class="arr">→</span>
+      <span class="mono">Fourth Circuit 26-1878</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-NH"><div class="l1"><span class="nm">New Hampshire</span>
+      <span class="mono dim">District of New Hampshire 1:25-cv-00371</span><span class="arr">→</span>
+      <span class="mono">First Circuit 26-1783</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-NM"><div class="l1"><span class="nm">New Mexico</span>
+      <span class="mono dim">District of New Mexico 1:25-cv-01193</span><span class="arr">→</span>
+      <span class="mono">Tenth Circuit 26-2126</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-NY"><div class="l1"><span class="nm">New York</span>
+      <span class="mono dim">Northern District of New York 1:25-cv-01338</span><span class="arr">→</span>
+      <span class="mono">Second Circuit 26-2060</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-OR"><div class="l1"><span class="nm">Oregon</span>
+      <span class="mono dim">District of Oregon 6:25-cv-01666</span><span class="arr">→</span>
+      <span class="mono">Ninth Circuit 26-1231</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-PA"><div class="l1"><span class="nm">Pennsylvania</span>
+      <span class="mono dim">Western District of Pennsylvania 2:25-cv-01481</span><span class="arr">→</span>
+      <span class="mono">Third Circuit 26-2684</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li><li id="st-VA"><div class="l1"><span class="nm">Virginia</span>
+      <span class="mono dim">Eastern District of Virginia 3:26-cv-00042</span><span class="arr">→</span>
+      <span class="mono">Fourth Circuit 26-2002</span>
+      <span class="badge appeal">appeal</span><span class="chip">A1</span></div></li></ul></section><section class="panel" id="p-unlinked" hidden><h2>Ended, with no link asserted <span class="n">6</span>
+ <a href="#" class="close" data-close>× close</a></h2><p class="intro">A docket that ended while another docket in the same state is live, with nothing in the record connecting them. That is a third thing from the two sections around it: a continuation psephos has not asserted, rather than one it has or one that does not exist. Until the link is asserted the two dockets are separate facts, and this section says so rather than guessing at the relationship.</p>
+ <ul><li id="st-CO"><div class="l1"><span class="nm">Colorado</span>
+      <span class="mono dim">1:25-cv-03967</span><span class="dim2">terminated Aug 18, 2026</span>
+      <span class="right dim2">live here: <span class="mono">Tenth Circuit 26-1326</span></span></div>
+      <div class="l2">On 8/3/26, the district dismissed DOJ's claims on the merits. <span class="chip">B2</span></div></li><li id="st-DC"><div class="l1"><span class="nm">DC</span>
+      <span class="mono dim">1:25-cv-04403</span><span class="dim2">terminated Aug 19, 2026</span>
+      <span class="right dim2">live here: <span class="mono">DC Circuit 26-5296</span></span></div>
+      <div class="l2">On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the DC Circuit. <span class="chip">B2</span></div></li><li id="st-IL"><div class="l1"><span class="nm">Illinois</span>
+      <span class="mono dim">3:25-cv-03398</span><span class="dim2">terminated Aug 19, 2026</span>
+      <span class="right dim2">live here: <span class="mono">Seventh Circuit 26-2695</span></span></div>
+      <div class="l2">On 8/14/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Seventh Circuit. <span class="chip">B2</span></div></li><li id="st-MN"><div class="l1"><span class="nm">Minnesota</span>
+      <span class="mono dim">0:25-cv-03761</span><span class="dim2">terminated Aug 21, 2026</span>
+      <span class="right dim2">live here: <span class="mono">Eighth Circuit 26-2679</span></span></div>
+      <div class="l2">On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Eighth Circuit. <span class="chip">B2</span></div></li><li id="st-NV"><div class="l1"><span class="nm">Nevada</span>
+      <span class="mono dim">3:25-cv-00728</span><span class="dim2">terminated Aug 24, 2026</span>
+      <span class="right dim2">live here: <span class="mono">Ninth Circuit 26-5375</span></span></div>
+      <div class="l2">On 8/18/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Ninth Circuit. <span class="chip">B2</span></div></li><li id="st-NJ"><div class="l1"><span class="nm">New Jersey</span>
+      <span class="mono dim">3:26-cv-02025</span><span class="dim2">terminated Aug 20, 2026</span>
+      <span class="right dim2">live here: <span class="mono">Third Circuit 26-3085</span></span></div>
+      <div class="l2">On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Third Circuit. <span class="chip">B2</span></div></li></ul></section><section class="panel" id="p-ended" hidden><h2>Ended in this record <span class="n">2</span>
+ <a href="#" class="close" data-close>× close</a></h2><p class="intro">The live docket is terminated and psephos holds nothing that continues it. Which court ended it is the whole content of the row: a circuit affirmance is a different outcome from a district dismissal, and Oklahoma is a settlement rather than either. "In this record" is load-bearing — where the tracker's B2 line names an appeal the A1 record does not have, both are shown and the disagreement is flagged rather than resolved.</p>
+ <ul><li id="st-MI"><div class="l1"><span class="nm">Michigan</span>
+      <span class="dim2">Sixth Circuit</span><span class="mono dim">26-1225</span><span class="chip">A1</span>
+      <span class="right dim2">last entry Aug 24, 2026</span></div>
+      <div class="l2">On 8/14/26, the Sixth Circuit denied DOJ's request to rehear the appellate panel's decision affirming dismissal of the case. <span class="chip">B2</span></div><div class="warn">Sources disagree. The docket record above is terminated with no successor held; the tracker line names a further step. If that step produced a new docket, psephos has not resolved it — a coverage gap on the tracker side, not a closed case.</div></li><li id="st-OK"><div class="l1"><span class="nm">Oklahoma</span>
+      <span class="dim2">Western District of Oklahoma</span><span class="mono dim">5:26-cv-00301</span><span class="chip">A1</span>
+      <span class="right dim2">last entry Mar 24, 2026</span></div>
+      <div class="l2">The parties settled on 3/24/2026, with the state agreeing to provide its voter data in exchange for DOJ's dismissal of the suit. <span class="chip">B2</span></div></li></ul></section><section class="panel" id="p-quiet" hidden><h2>Quiet <span class="n">3</span>
+ <a href="#" class="close" data-close>× close</a></h2><p class="intro">Live dockets with no activity in over 60 days. Quiet is not dead: a docket can be stayed, or waiting on a ruling. The tracker's own status line is what distinguishes them, and it is graded B2 beside the A1 docket record. The date beside each is when psephos last read the docket's status, so a long silence is the court's, not this tool's.</p>
+ <ul><li id="st-HI"><div class="l1"><span class="nm">Hawaii</span>
+      <span class="dim2">District of Hawaii</span><span class="mono dim">1:25-cv-00522</span><span class="chip">A1</span>
+      <span class="right qd">128 days quiet</span></div>
+      <div class="l2">The case is stayed pending the 9th Circuit's resolution of the appeals in DOJ's suits against CA and OR. <span class="chip">B2</span></div><div class="l3">status last read Sep 2, 2026</div></li><li id="st-ID"><div class="l1"><span class="nm">Idaho</span>
+      <span class="dim2">District of Idaho</span><span class="mono dim">1:26-cv-00197</span><span class="chip">A1</span>
+      <span class="right qd">93 days quiet</span></div>
+      <div class="l2">The case is stayed pending the 9th Circuit's resolution of the appeals in DOJ's suits against CA and OR. <span class="chip">B2</span></div><div class="l3">status last read Sep 2, 2026</div></li><li id="st-AZ-q"><div class="l1"><span class="nm">Arizona</span>
+      <span class="dim2">Ninth Circuit</span><span class="mono dim">26-3609</span><span class="chip">A1</span>
+      <span class="right qd">72 days quiet</span></div>
+      <div class="l2">On 6/22/26, the 9th Circuit stayed DOJ's appeal pending resolution of the appeals in DOJ's cases against CA and OR. <span class="chip">B2</span></div><div class="l3">status last read Sep 2, 2026</div></li></ul></section></div><script>
+const open1 = (key, st) => {
+  document.querySelectorAll('.panel').forEach(p=>p.hidden=true);
+  document.querySelectorAll('li.hl').forEach(l=>l.classList.remove('hl'));
+  const p = document.getElementById('p-'+key); if(!p) return;
+  p.hidden = false;
+  if (st) { const li = p.querySelector('#st-'+st) || p.querySelector('#st-'+st+'-q');
+    if (li) li.classList.add('hl'); }
+  p.scrollIntoView({behavior:'smooth', block:'start'});
+};
+const HOME = {AZ:'continued',CA:'continued',CT:'continued',GA:'continued',KY:'continued',
+ MD:'continued',NH:'continued',NM:'continued',NY:'continued',OR:'continued',PA:'continued',
+ VA:'continued',CO:'unlinked',DC:'unlinked',IL:'unlinked',MN:'unlinked',NV:'unlinked',
+ NJ:'unlinked',MI:'ended',OK:'ended',HI:'quiet',ID:'quiet'};
+document.querySelectorAll('.cell[data-st]').forEach(c=>c.onclick=e=>{
+  e.preventDefault(); const key=HOME[c.dataset.st]; if (key) open1(key, c.dataset.st); });
+document.querySelectorAll('.secline').forEach(s=>s.onclick=e=>{e.preventDefault();open1(s.dataset.sec);});
+document.addEventListener('click',e=>{ if(e.target.dataset.close!==undefined){e.preventDefault();
+  e.target.closest('.panel').hidden=true; window.scrollTo({top:0,behavior:'smooth'});}});
+document.querySelectorAll('.mvs').forEach(a=>a.onclick=e=>{e.preventDefault();open1(a.dataset.sec,a.dataset.st);});</script></body></html>
