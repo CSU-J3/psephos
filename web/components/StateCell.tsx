@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Cell } from "@/lib/campaign";
+import type { SectionKey } from "@/lib/movement";
 
 // One jurisdiction in the campaign grid. Deliberately small: the code, the live
 // docket, and two markers. The claims that need words -- which court ended it,
@@ -16,7 +17,13 @@ const TINT: Record<Cell["status"], string> = {
   none: "border-neutral-800/60 bg-transparent text-neutral-600",
 };
 
-export function StateCell({ cell }: { cell: Cell }) {
+export function StateCell({
+  cell,
+  section,
+}: {
+  cell: Cell;
+  section?: SectionKey | null;
+}) {
   const body = (
     <>
       <div className="flex items-baseline justify-between gap-1">
@@ -67,10 +74,23 @@ export function StateCell({ cell }: { cell: Cell }) {
       </div>
     );
   }
+
+  // A CELL IN NO SECTION KEEPS ITS DOCKET LINK, which the mock does not do. Nine sued
+  // jurisdictions are simply live -- not continued, unlinked, ended or quiet -- and the
+  // mock's cells for them carry a click handler that looks up an undefined key and
+  // silently returns, so they render as links and do nothing. A dead affordance is
+  // worse than none. The docket is a real destination and stays the fallback.
+  const href = section
+    ? `/campaign?section=${section}&state=${cell.code}#section`
+    : `/case/${cell.live.case_id}`;
+  const title = section
+    ? `${cell.name} — open its row below`
+    : `${cell.name} — ${cell.live.court ?? ""} ${cell.live.docket_number ?? ""}`;
+
   return (
     <Link
-      href={`/case/${cell.live.case_id}`}
-      title={`${cell.name} — ${cell.live.court ?? ""} ${cell.live.docket_number ?? ""}`}
+      href={href}
+      title={title}
       className={`${className} transition-colors hover:border-neutral-500`}
     >
       {body}

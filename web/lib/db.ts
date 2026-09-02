@@ -8,6 +8,7 @@ import type { ActivityRow } from "@/lib/activity";
 import { FEED_WINDOW, HISTORY_AFTER_DAYS } from "@/lib/feed";
 import { BAND_DAYS } from "@/lib/timeline";
 import type { FeedAnchor, FeedEntry } from "@/lib/feed";
+import type { MovementRow } from "@/lib/movement";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -739,6 +740,40 @@ export async function getCampaignRows(): Promise<CampaignRow[]> {
      ORDER BY state, case_id`,
   );
   return rs.rows as unknown as CampaignRow[];
+}
+
+// The campaign's most recent docket movement, for /campaign's Latest movement list.
+//
+// SOURCE IS `items`, NOT `case_entries`, and the obvious table is the wrong one. The
+// list shows a grade on every row -- A1 on a docket line, B2 on the tracker's status
+// prose -- and `case_entries` has no grade column at all. The B2 rows are not docket
+// entries in the first place: `write_b2_item` promotes the artifact's notes, so they
+// exist only in `items`. Reading `case_entries` would have produced a list that was
+// gradeless and missing every tracker line, which looks like the mock until compared.
+//
+// A NULL `occurred_at` IS EXCLUDED HERE rather than sorted last. 68 of the 2,079
+// campaign litigation items carry no date, and "most recent" is a claim none of them
+// can support -- placing them anywhere in a recency list asserts a position they do
+// not have. They remain reachable on their own case timelines.
+//
+// LIMIT 40, not 8. The cut belongs to lib/movement.ts, which is where the ordering is
+// tested; a query that returned exactly 8 would make the pure function's slice a no-op
+// and leave the shipped ordering untested. 40 is comfortably more than any limit the
+// page will ask for and still one small read.
+export async function getCampaignMovement(): Promise<MovementRow[]> {
+  const rs = await db.execute(
+    `SELECT i.id, i.case_id, c.state, i.occurred_at,
+            COALESCE(i.summary, i.title) AS text,
+            i.admiralty_source || i.admiralty_info AS grade
+       FROM items i
+       JOIN cases c ON c.case_id = i.case_id
+      WHERE c.state IS NOT NULL
+        AND i.channel = 'litigation'
+        AND i.occurred_at IS NOT NULL
+      ORDER BY i.occurred_at DESC, i.id DESC
+      LIMIT 40`,
+  );
+  return rs.rows as unknown as MovementRow[];
 }
 
 // --- the records chart's two monthly series -----------------------------------------
