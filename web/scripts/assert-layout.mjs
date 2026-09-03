@@ -43,12 +43,54 @@ const EXE =
   process.env.CHROMIUM_PATH ??
   "C:/Users/meh/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe";
 
-/** viewport width -> [shell tracks, read tracks]. Below 1000 both collapse to one. */
-const EXPECTED_TRACKS = [
-  [2542, 3, 3],
-  [1280, 2, 2],
-  [900, 1, 1],
+/**
+ * THE ZONE MATRIX: viewport width -> [zone tracks, wire tracks, last wire cell's
+ * grid-column]. Every row is a width the layout is supposed to hold, and the
+ * boundaries are pinned FROM BOTH SIDES -- 1900/1899, 1280/1279, 1180/1179, 640/639 --
+ * because a breakpoint that never fires and a breakpoint off by one look identical in
+ * a table sampled at round numbers only. The three-width table this replaced could not
+ * have caught either.
+ *
+ * WHAT CHANGED AND WHY THE OLD ROWS WERE STALE RATHER THAN WRONG. The second column
+ * used to be "read tracks", the grid holding TheRead's six channel sentences. The wire
+ * replaced TheRead and ChannelStrip, TheRead was deleted, and the finder -- which
+ * matches on content, `/REPORTING|LITIGATION/i` -- then landed on the wire, whose
+ * arrangement is five across rather than three. So the script went on measuring a real
+ * grid against another grid's expectations and failed 3 of 3 while the page was right.
+ * That is the failure mode this file's own header warns about, arriving from the other
+ * direction: not a class present and inert, but an expectation outliving its subject.
+ *
+ * THE WIRE'S STEPS ARE ITS OWN, not the zones'. Five cells want 1180 to sit across;
+ * three zones want 1280 and 1900. They are independent grids and the matrix says so --
+ * at 1279 the zones have collapsed to one column while the wire is still five across.
+ */
+const EXPECTED_ZONES = [
+  [2542, 3, 5, "auto"],
+  [1920, 3, 5, "auto"],
+  [1900, 3, 5, "auto"],
+  [1899, 2, 5, "auto"],
+  [1280, 2, 5, "auto"],
+  [1279, 1, 5, "auto"],
+  [1180, 1, 5, "auto"],
+  [1179, 1, 2, "1 / -1"],
+  [900, 1, 2, "1 / -1"],
+  [640, 1, 2, "1 / -1"],
+  [639, 1, 1, "auto"],
+  [500, 1, 1, "auto"],
 ];
+
+/**
+ * The named areas at each zone count. Track count alone does not say WHERE the board
+ * sits, and the middle band is the whole point of the reflow: two columns carrying
+ * feed beside rail with the board on a full-width row of its own beneath them. A
+ * two-track grid that stacked feed/board with the rail underneath would satisfy the
+ * count and be the wrong page.
+ */
+const EXPECTED_AREAS = {
+  3: "feed board side",
+  2: "feed side board board",
+  1: "feed board side",
+};
 
 let failures = 0;
 const check = (name, actual, expected) => {
@@ -69,7 +111,7 @@ console.log(`\nassert-layout against ${URL}`);
 
 /* --- computed grid tracks at each width ---------------------------------- */
 console.log("\ngrid tracks (computed, not classes)");
-for (const [w, shellExp, readExp] of EXPECTED_TRACKS) {
+for (const [w, zonesExp, wireExp, spanExp] of EXPECTED_ZONES) {
   await page.setViewportSize({ width: w, height: 1400 });
   await page.waitForTimeout(600);
   const got = await page.evaluate(() => {
@@ -78,17 +120,32 @@ for (const [w, shellExp, readExp] of EXPECTED_TRACKS) {
     );
     const tracks = (el) =>
       getComputedStyle(el).gridTemplateColumns.split(/\s+/).filter(Boolean).length;
-    // The shell is the grid that contains the map; the read is the one that holds
-    // the six channel sentences. Both are found by content, not by class.
-    const shell = grids.find((g) => g.querySelector('svg[aria-label^="DOJ voter-data"]'));
-    const read = grids.find((g) => /REPORTING|LITIGATION/i.test(g.innerText ?? ""));
+    // The zone grid is the one that contains the map; the wire is the one holding the
+    // channel cells. Both are found by CONTENT -- the map's aria-label, the cells' own
+    // data-channel -- never by a styling class, for the reason in this file's header:
+    // a class can be present, valid and inert, which is the defect it exists to catch.
+    const zones = grids.find((g) => g.querySelector('svg[aria-label^="DOJ voter-data"]'));
+    const wire = grids.find((g) => g.querySelector('[data-channel="legislation"]'));
+    const cells = wire ? [...wire.children] : [];
+    const last = cells[cells.length - 1];
     return {
-      shell: shell ? tracks(shell) : -1,
-      read: read ? tracks(read) : -1,
+      zones: zones ? tracks(zones) : -1,
+      wire: wire ? tracks(wire) : -1,
+      areas: zones
+        ? getComputedStyle(zones).gridTemplateAreas.replace(/"/g, "").trim()
+        : "",
+      span: last ? getComputedStyle(last).gridColumn : "",
+      cells: cells.length,
       overflow: document.documentElement.scrollWidth > window.innerWidth,
     };
   });
-  check(`${w}px shell/read`, [got.shell, got.read], [shellExp, readExp]);
+  check(`${w}px zones/wire tracks`, [got.zones, got.wire], [zonesExp, wireExp]);
+  check(`${w}px zone areas`, got.areas, EXPECTED_AREAS[zonesExp]);
+  // The five-cell wire leaves a bordered hole in its two-column band unless the last
+  // cell spans the row. Asserted as a computed grid-column so the rule is measured
+  // where it applies and NOT where it does not: stretching that cell in the five- or
+  // one-column arrangement would be its own defect, and "auto" is the assertion there.
+  check(`${w}px last wire cell span`, got.span, spanExp);
   check(`${w}px no horizontal overflow`, got.overflow, false);
 }
 
