@@ -247,3 +247,38 @@ textarea {
 @media (min-width: 640px) and (max-width: 1179.98px) {
   .wire > :nth-child(5):nth-last-child(1) { grid-column: 1 / -1; }
 }
+
+/* THE BOARD REFLOWS: chart beside map once the board itself is wide enough for both.
+   The replay drives them together -- a moving dot on the chart, colours on the map --
+   so they have to be co-visible; stacked at full width, neither fits a screen with the
+   other.
+
+   A CONTAINER QUERY, NOT A VIEWPORT QUERY, and the difference is load-bearing rather
+   than stylistic. In the 1900+ three-column arrangement the board column is ~880px
+   wide on a 2560px viewport: a viewport query would put the chart beside the map in a
+   column too narrow for either, which is the exact failure it would be trying to fix.
+   The board's own width is the only thing that answers the question.
+
+   Areas rather than track assignment, so the DOM order inside RecordsMap -- chart,
+   scrubber, map, detail -- is free to stay what it is for the stacked arrangement. The
+   scrubber and the detail panel span both columns because both drive, and are driven
+   by, the pair above them. 46/54 because the map's viewBox is the wider figure and the
+   chart reads fine narrower; the mock's own ratio. */
+.z-board {
+  container-type: inline-size;
+  container-name: board;
+}
+
+@container board (min-width: 1080px) {
+  .board {
+    display: grid;
+    column-gap: 24px;
+    align-items: start;
+    grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+    grid-template-areas: "chart map" "scrub scrub" "detail detail";
+  }
+  .board > .board-chart { grid-area: chart; }
+  .board > .board-map { grid-area: map; align-self: center; }
+  .board > .board-scrub { grid-area: scrub; }
+  .board > .board-detail { grid-area: detail; }
+}

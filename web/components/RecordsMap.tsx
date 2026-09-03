@@ -174,18 +174,23 @@ export function RecordsMap({
   const toggle = (ab: string) => setSelected((cur) => (cur === ab ? null : ab));
 
   return (
-    <div>
-      <RecordsBoard
-        domain={domain}
-        filings={filings}
-        stateBills={stateBillMonths}
-        legislation={legislation}
-        eos={eos}
-        frame={frame}
-      />
+    // `board` is the grid the container query reshapes; see globals.css. The four
+    // children below carry the area hooks and are laid out by NAME, so this DOM order
+    // (chart, scrubber, map, detail) is free to stay what it is at narrow widths.
+    <div className="board">
+      <div className="board-chart">
+        <RecordsBoard
+          domain={domain}
+          filings={filings}
+          stateBills={stateBillMonths}
+          legislation={legislation}
+          eos={eos}
+          frame={frame}
+        />
+      </div>
 
       {/* --- scrubber ------------------------------------------------------------ */}
-      <div className="mt-2 flex items-center gap-3">
+      <div className="board-scrub mt-2 flex items-center gap-3">
         <button
           type="button"
           onClick={() => {
@@ -221,7 +226,7 @@ export function RecordsMap({
       {/* --- map ----------------------------------------------------------------- */}
       <svg
         viewBox={`0 0 ${MAP_VIEWBOX.width} ${MAP_VIEWBOX.height}`}
-        className="mt-3 w-full"
+        className="board-map mt-3 w-full"
         role="img"
         aria-label={`DOJ voter-data suits and tracked state bills by jurisdiction, through ${frame.label}`}
         onClick={(e) => {
@@ -342,7 +347,7 @@ export function RecordsMap({
       {/* Fixed min-height so selecting does not reflow the column. */}
       <div
         data-panel
-        className="mt-3 min-h-[220px] rounded-lg border border-neutral-800 bg-neutral-900/40 p-4"
+        className="board-detail mt-3 min-h-[220px] rounded-lg border border-neutral-800 bg-neutral-900/40 p-4"
       >
         {!chosen ? (
           <p className="text-sm text-neutral-500">

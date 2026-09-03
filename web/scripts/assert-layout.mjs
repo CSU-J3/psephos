@@ -154,9 +154,16 @@ await page.setViewportSize({ width: 2542, height: 1400 });
 await page.waitForTimeout(600);
 const frames = await page.evaluate(async () => {
   const input = document.querySelector('input[type="range"][aria-label="Month"]');
+  // THE WHOLE BOARD, reached by `closest`, never by `parentElement`. This read
+  // `.parentElement` and meant the board's root -- until the chart gained a wrapper for
+  // its grid area, at which point the same expression silently began measuring the
+  // chart alone. The check went on passing while its subject shrank, which is the
+  // weaker assertion: the board can reflow across frames through the detail panel
+  // without the chart moving at all. `closest(".board")` names what is meant, and it
+  // is the grid root whether or not the chart is wrapped.
   const root = document
     .querySelector('svg[aria-label^="Cumulative jurisdictions"]')
-    .parentElement;
+    .closest(".board");
   const setter = Object.getOwnPropertyDescriptor(
     window.HTMLInputElement.prototype,
     "value",
