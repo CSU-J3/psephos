@@ -167,3 +167,58 @@ describe("DayTimeline — the anchor chip", () => {
     expect(html).not.toContain("/bill/");
   });
 });
+
+// THE LEDGER ROW, added when the feed's rows went single-line. What is worth pinning is
+// not that the row renders -- it is visible on the page -- but the TRADE the shape makes.
+// A one-line row has to drop something when the title is long, and which thing it drops
+// is a decision the page cannot show you until a long title arrives on a narrow column.
+// The title truncates because it is a link and is recoverable; the grade does not,
+// because a story whose grade scrolled off is exactly what this project refuses to show.
+// Those two classes sit on two different elements and nothing but a test says they must.
+describe("DayTimeline — the ledger row", () => {
+  const long = (over: Partial<FeedEntry> = {}) =>
+    entry({
+      id: 40,
+      channel: "news",
+      title: "A".repeat(400),
+      source_id: "democracy-docket",
+      admiralty_source: "B",
+      admiralty_info: "2",
+      ...over,
+    });
+
+  it("truncates the title rather than wrapping it", () => {
+    // Pinned to the title element's own class string, not to the bare word: `truncate`
+    // appears on the docket row too, so a looser assertion would pass with the news
+    // title wrapping exactly as it did before the ledger.
+    expect(render([long()])).toContain("min-w-0 flex-1 truncate");
+  });
+
+  it("keeps the grade off the truncating element, so it cannot be clipped away", () => {
+    const html = render([long()]);
+    // The grade sits in a shrink-0 group; were it inside the truncating title, a long
+    // headline would push the provenance out of the row entirely. Asserting the group's
+    // own class string, so moving the grade into the title fails here.
+    expect(html).toContain("flex shrink-0 items-baseline gap-2");
+    expect(html).toContain("B2");
+  });
+
+  it("names the delivering source on the row", () => {
+    expect(render([long()])).toContain("democracy-docket");
+  });
+
+  it("still renders the anchor link beside the row it belongs to", () => {
+    // The entryLink path the file above exists to cover: the ledger reshaped the row
+    // around it and must not have dropped it.
+    const html = render([long({ bill_id: "s1383-119" })]);
+    expect(html).toContain("/bill/s1383-119");
+  });
+
+  it("renders a docket entry on one line under its caption", () => {
+    const html = render([
+      slugCase({ id: 50, summary: "ORDER granting motion to extend time." }),
+    ]);
+    expect(html).toContain("ORDER granting motion to extend time.");
+    expect(html).toContain("A1");
+  });
+});

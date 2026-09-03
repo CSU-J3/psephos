@@ -22,8 +22,15 @@ import { dayKey, type DayBand, type SeedRow, type Timeline } from "@/lib/timelin
 // day -- the "UTC days" qualifier on the header and the word "yet" in an open day's
 // empty copy are the whole accommodation.
 
-/** Roughly how many rows the newest days may spend before the rest fold to one line. */
-const ROW_BUDGET = 12;
+/** Roughly how many rows the newest days may spend before the rest fold to one line.
+ *
+ *  12 -> 10 WITH THE LEDGER, and the two changes are one decision. A ledger row is a
+ *  single line where the old row wrapped to two or three, so the same budget would
+ *  have expanded further down the page than it used to rather than the same distance.
+ *  10 is what puts two typical days above the fold on this data. The mock left the
+ *  budget as an open question and the live code already had an answer; this tunes the
+ *  answer rather than replacing it. */
+const ROW_BUDGET = 10;
 
 function FreshDot({ fresh }: { fresh: boolean }) {
   return fresh ? (
@@ -52,25 +59,73 @@ function Row({
   );
 }
 
+// THE LEDGER ROW: one line, title ellipsized, provenance right. It replaces a wrapping
+// flex row whose title, grade and anchor link all sat on the same baseline and pushed
+// each other onto second and third lines. A ledger of one-line rows is scannable down
+// the left edge, which is the whole argument for the shape.
+//
+// THE TITLE TRUNCATES AND THE PROVENANCE DOES NOT, which is the trade the shape forces.
+// A title is recoverable -- it is a link, and the full text is one hover or one click
+// away. The grade is not recoverable from anywhere else on the row, and a story whose
+// grade scrolled off is exactly the item this project refuses to present. So `truncate`
+// is on the title and `shrink-0` on the source and grade.
+function LedgerRow({
+  fresh,
+  href,
+  children,
+  meta,
+}: {
+  fresh: boolean;
+  href?: string;
+  children: React.ReactNode;
+  meta: React.ReactNode;
+}) {
+  const title = (
+    <div className="min-w-0 flex-1 truncate text-[13px] leading-5 text-neutral-200">
+      {children}
+    </div>
+  );
+  return (
+    <Row fresh={fresh}>
+      <div className="flex min-w-0 items-baseline gap-3">
+        {href ? (
+          <a
+            href={href}
+            className="min-w-0 flex-1 truncate text-[13px] leading-5 text-neutral-200 underline decoration-neutral-800 underline-offset-2 hover:decoration-neutral-500"
+          >
+            {children}
+          </a>
+        ) : (
+          title
+        )}
+        <div className="flex shrink-0 items-baseline gap-2 whitespace-nowrap text-xs text-neutral-500">
+          {meta}
+        </div>
+      </div>
+    </Row>
+  );
+}
+
 function EntryLine({ e, fresh }: { e: FeedEntry; fresh: boolean }) {
   const link = entryLink(e);
   return (
-    <Row fresh={fresh}>
-      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <a
-          href={e.source_url}
-          className="text-sm text-neutral-200 underline decoration-neutral-800 underline-offset-2 hover:decoration-neutral-500"
-        >
-          {e.title}
-        </a>
-        <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
-        {link && (
-          <Link href={link.href} className="text-xs text-neutral-500 hover:text-neutral-300">
-            {link.label}
-          </Link>
-        )}
-      </div>
-    </Row>
+    <LedgerRow
+      fresh={fresh}
+      href={e.source_url}
+      meta={
+        <>
+          {link && (
+            <Link href={link.href} className="hover:text-neutral-300">
+              {link.label}
+            </Link>
+          )}
+          <span>{e.source_id}</span>
+          <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
+        </>
+      }
+    >
+      {e.title}
+    </LedgerRow>
   );
 }
 
@@ -166,7 +221,15 @@ function Band({
 
                     NOT `uppercase` any more. That class suited a bare key and ruins a
                     caption -- "UNITED STATES V. MINNESOTA" loses the "v." a case name
-                    is read by. The styling was fitted to the defect. */}
+                    is read by. The styling was fitted to the defect.
+
+                    THE GROUPING SURVIVES THE LEDGER: caption once, entries beneath,
+                    each entry its own one-line row. The mock draws the caption inline
+                    on every docket row, which reads well at its two-row sample and
+                    repeats the same 40-character caption five times on a day when one
+                    docket takes five entries -- the common shape here. Keeping the
+                    group header costs one line per docket and keeps the ledger's left
+                    edge scannable, which is what the shape is for. */}
                 <Link
                   href={`/case/${g.caseId}`}
                   className="text-xs tracking-wide text-neutral-500 hover:text-neutral-300"
@@ -175,8 +238,16 @@ function Band({
                 </Link>
                 <ul className="mt-1 space-y-1">
                   {g.entries.map((e) => (
-                    <li key={e.id} className="text-sm text-neutral-300">
-                      {e.summary ?? e.title}
+                    <li
+                      key={e.id}
+                      className="flex min-w-0 items-baseline gap-3 text-[13px] leading-5 text-neutral-300"
+                    >
+                      <span className="min-w-0 flex-1 truncate">
+                        {e.summary ?? e.title}
+                      </span>
+                      <span className="shrink-0 whitespace-nowrap text-xs text-neutral-500">
+                        <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
+                      </span>
                     </li>
                   ))}
                 </ul>
