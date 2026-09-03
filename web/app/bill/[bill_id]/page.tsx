@@ -55,8 +55,8 @@ export default async function BillPage({
       <section className="mt-8">
         <h2 className="mb-3 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
           Timeline
-          <span className="text-sm font-normal tabular-nums text-neutral-500">
-            {items.length}
+          <span className="text-sm font-normal text-neutral-500">
+            <span className="tabular-nums">{items.length}</span> entries · each row expands
           </span>
         </h2>
         <Timeline items={items} />

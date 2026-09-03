@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCase, getCaseTimeline, getCaseRef, getPredecessorRef } from "@/lib/db";
 import { formatDate } from "@/lib/format";
+import { gradeOf, promoteStatus } from "@/lib/ledger";
+import { Grade } from "@/components/Grade";
 import { Timeline } from "@/components/Timeline";
 
 // Live Turso per request, no build-time dependency -- same as home.
@@ -16,6 +18,10 @@ export default async function CasePage({
   const c = await getCase(case_id);
   if (!c) notFound();
   const items = await getCaseTimeline(case_id);
+  // The tracker's reading of the case is a standing fact, not an event, so it sits in
+  // the header rather than dated into the docket -- where, on 29 of 52 cases, it also
+  // repeated itself up to five times. See lib/ledger.promoteStatus.
+  const { status, ledger } = promoteStatus(items);
   // The supersession link, both directions -- court + docket only, no timeline loaded.
   // Timelines stay separate: folding the district items into the appeal would misdate it.
   const successor = c.superseded_by ? await getCaseRef(c.superseded_by) : null;
@@ -87,14 +93,28 @@ export default async function CasePage({
         )}
       </header>
 
+      {status && (
+        <div className="mt-4 rounded-r border-l-2 border-neutral-600 bg-neutral-900/60 px-3 py-2">
+          <div className="flex items-baseline gap-2">
+            <span className="text-sm text-neutral-300">{status.title}</span>
+            <Grade grade={gradeOf(status)} dense />
+          </div>
+          {status.summary && (
+            <p className="mt-1 text-[0.82rem] leading-relaxed text-neutral-400">
+              {status.summary}
+            </p>
+          )}
+        </div>
+      )}
+
       <section className="mt-8">
         <h2 className="mb-3 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
-          Timeline
-          <span className="text-sm font-normal tabular-nums text-neutral-500">
-            {items.length}
+          Docket
+          <span className="text-sm font-normal text-neutral-500">
+            <span className="tabular-nums">{ledger.length}</span> entries · each row expands
           </span>
         </h2>
-        <Timeline items={items} />
+        <Timeline items={ledger} />
       </section>
     </main>
   );
