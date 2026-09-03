@@ -1,6 +1,13 @@
 import { describe, it, expect } from "vitest";
 import type { TimelineItem } from "@/lib/db";
-import { bestGrade, entryText, pagePrefix, promoteStatus } from "@/lib/ledger";
+import {
+  bestGrade,
+  entryText,
+  pagePrefix,
+  promoteStatus,
+  sliceLedger,
+  SLICE_HEAD,
+} from "@/lib/ledger";
 
 // Fixtures, not live rows. Three of the six cases these assertions cover cannot be
 // reached by any page a reader can visit -- see the "unreachable" describe blocks --
@@ -323,5 +330,117 @@ describe("promoteStatus", () => {
     const { status: promoted, ledger } = promoteStatus([]);
     expect(promoted).toBeNull();
     expect(ledger).toEqual([]);
+  });
+});
+
+describe("sliceLedger", () => {
+  // Fixtures are handed to the function OUT OF ORDER on purpose. The three queries
+  // already `ORDER BY occurred_at, id`, so a test built on pre-sorted input would pass
+  // against a function that does nothing but reverse -- and would keep passing if a
+  // query's ORDER BY were ever dropped. Shuffled input is what makes the assertion
+  // about this function rather than about the SQL behind it.
+  const row = (id: number, occurred_at: string | null, channel = "litigation") =>
+    item({ id, title: `entry ${id}`, occurred_at, channel });
+
+  const days = (n: number) =>
+    Array.from({ length: n }, (_, i) =>
+      row(i + 1, `2026-01-${String(i + 1).padStart(2, "0")}T00:00:00`));
+
+  const shuffled = (rows: TimelineItem[]) => {
+    // Deterministic reordering -- odd indices first, then even, reversed.
+    const odd = rows.filter((_, i) => i % 2 === 1).reverse();
+    const even = rows.filter((_, i) => i % 2 === 0);
+    return [...odd, ...even];
+  };
+
+  it("puts the newest first, from input in no particular order", () => {
+    const { head } = sliceLedger(shuffled(days(5)));
+    expect(head.map((r) => r.id)).toEqual([5, 4, 3, 2, 1]);
+  });
+
+  it("compares occurred_at as a STRING, the way the query does", () => {
+    // `occurred_at` is naive on litigation rows and "+00:00"-suffixed on news, and
+    // Date.parse applies the runtime's local zone to the naive form -- the whole reason
+    // lib/format.ts has utcDay. SQLite compared these as TEXT; so does this. Run in a
+    // zone behind UTC, a Date.parse implementation puts the naive Feb row on top.
+    const naive = row(1, "2026-02-01T00:00:00", "litigation");
+    const suffixed = row(2, "2026-02-01T06:00:00+00:00", "news");
+    const { head } = sliceLedger([naive, suffixed]);
+    expect(head.map((r) => r.id)).toEqual([2, 1]);
+  });
+
+  it("breaks a tie on id, newest id first", () => {
+    const a = row(7, "2026-03-01T00:00:00");
+    const b = row(9, "2026-03-01T00:00:00");
+    const { head } = sliceLedger([a, b]);
+    expect(head.map((r) => r.id)).toEqual([9, 7]);
+  });
+
+  it("shows everything and offers no fold at exactly the boundary", () => {
+    // 403 of the 542 pages in production sit at or under 10, so this is the common
+    // render rather than the edge one. /state-bill/2032448 is exactly 10.
+    const { head, rest } = sliceLedger(shuffled(days(10)));
+    expect(head).toHaveLength(10);
+    expect(rest).toEqual([]);
+  });
+
+  it("folds exactly one entry at 11", () => {
+    // Reachable: 2 cases (73544809, 73582123) and 5 state bills sit at exactly 11, so
+    // the singular label draws on a real page rather than only in this file.
+    const { head, rest } = sliceLedger(shuffled(days(11)));
+    expect(head).toHaveLength(10);
+    expect(rest.map((r) => r.id)).toEqual([1]);
+  });
+
+  it("folds the remainder on a long docket, losing nothing", () => {
+    const all = days(43);
+    const { head, rest } = sliceLedger(shuffled(all));
+    expect(head).toHaveLength(10);
+    expect(rest).toHaveLength(33);
+    // The partition is total and ordered: head ++ rest is the whole list, newest-first.
+    expect([...head, ...rest].map((r) => r.id)).toEqual(
+      all.map((r) => r.id).reverse());
+  });
+
+  it("interleaves channels inside one slice, ordering on date and never on channel", () => {
+    // The /bill/s1383-119 shape. A slice that grouped by channel would put the four
+    // legislation rows together; the timeline's whole claim is that an action and the
+    // reporting that explains it sit adjacent when they happened adjacently.
+    const rows = [
+      row(1, "2026-02-01T00:00:00", "legislation"),
+      row(2, "2026-02-02T00:00:00+00:00", "news"),
+      row(3, "2026-02-03T00:00:00", "legislation"),
+      row(4, "2026-02-04T00:00:00+00:00", "news"),
+    ];
+    const { head } = sliceLedger(shuffled(rows));
+    expect(head.map((r) => [r.id, r.channel])).toEqual([
+      [4, "news"], [3, "legislation"], [2, "news"], [1, "legislation"],
+    ]);
+  });
+
+  it("leaves an empty timeline empty, with no fold", () => {
+    const { head, rest } = sliceLedger([]);
+    expect(head).toEqual([]);
+    expect(rest).toEqual([]);
+  });
+
+  it("does not mutate the array it was given", () => {
+    // It sorts, and Array.prototype.sort is in-place. The three pages pass the same
+    // array to pagePrefix and the channel-label check BEFORE slicing; reordering it
+    // under them would not throw, it would quietly change what those two computed.
+    const rows = shuffled(days(4));
+    const before = rows.map((r) => r.id);
+    sliceLedger(rows);
+    expect(rows.map((r) => r.id)).toEqual(before);
+  });
+
+  it("takes a custom head size, so the constant is not baked into the split", () => {
+    const { head, rest } = sliceLedger(days(5), 2);
+    expect(head.map((r) => r.id)).toEqual([5, 4]);
+    expect(rest.map((r) => r.id)).toEqual([3, 2, 1]);
+  });
+
+  it("SLICE_HEAD is the shipped default", () => {
+    expect(SLICE_HEAD).toBe(10);
   });
 });

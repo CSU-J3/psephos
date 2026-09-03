@@ -145,6 +145,52 @@ function fold(s: string): string {
     .replace(/[^a-z0-9]+/g, "");
 }
 
+/** Rows shown before the fold. */
+export const SLICE_HEAD = 10;
+
+export type Slice = {
+  /** The latest `head` entries, newest first. */
+  head: TimelineItem[];
+  /** Everything older, still newest first. Empty when nothing is folded. */
+  rest: TimelineItem[];
+};
+
+/**
+ * Newest first, then split at `head`.
+ *
+ * NEWEST FIRST, RULED 2026-09-02. A docket reads oldest-first in PACER because a docket
+ * is a filing record; this is a monitor, and the question it exists to answer is what
+ * moved last. The full chronological reading stays available -- expanding the fold puts
+ * the whole record on the page -- so nothing is lost, and there is NO second sort inside
+ * the fold: the order is uniform, or the page would run 43, 42 ... 34, then 1, 2, 3.
+ *
+ * THE SORT KEY IS THE `occurred_at` STRING, NOT A PARSED DATE, and that is a
+ * correctness requirement rather than a shortcut. `occurred_at` is naive on litigation
+ * rows (`2025-12-11T00:00:00`) and `+00:00`-suffixed on news, and `Date.parse` reads the
+ * naive form in the runtime's local zone -- the reason `lib/format.ts` carries `utcDay`
+ * at all. Comparing the raw strings is exactly what SQLite's TEXT collation did in the
+ * three `ORDER BY occurred_at, id` queries feeding this, so the result here is provably
+ * the reverse of the query rather than an independent guess at chronology.
+ *
+ * It sorts rather than reversing, so the tests can hand it shuffled input. A test built
+ * on pre-sorted rows would pass against a function that only called `.reverse()`, and
+ * would go on passing if a query ever lost its ORDER BY.
+ *
+ * COPIES BEFORE SORTING. `Array.prototype.sort` is in-place, and every caller hands the
+ * same array to `pagePrefix` and to the channel-label check BEFORE slicing it. Sorting
+ * the caller's array would not throw; it would quietly change what those two computed.
+ */
+export function sliceLedger(
+  items: readonly TimelineItem[],
+  head: number = SLICE_HEAD,
+): Slice {
+  const ordered = [...items].sort(
+    (a, b) =>
+      (b.occurred_at ?? "").localeCompare(a.occurred_at ?? "") || b.id - a.id,
+  );
+  return { head: ordered.slice(0, head), rest: ordered.slice(head) };
+}
+
 export type Promotion = {
   /** The tracker's current reading of the case, lifted out of the ledger. */
   status: TimelineItem | null;
