@@ -169,3 +169,81 @@ textarea {
 .map-shape[aria-pressed="true"] {
   --map-selected: url(#map-glow);
 }
+
+/* THE ZONES: the v42 page grid, three named areas rather than three tracks.
+   Declared here rather than as Tailwind arbitrary variants because the shape is a
+   REFLOW, not a resize -- the board moves from beside the feed to underneath it and
+   back -- and `grid-template-areas` says that in three lines where an arbitrary-value
+   utility would say it in an unreadable one.
+
+   Base is a single column: feed, then board, then rail. At 1280 the rail comes up
+   beside the feed and the board takes a full-width row of its own beneath them --
+   NOT the third column moving under the second, which is what the old two-column
+   step did. At 1900 all three sit side by side.
+
+   The middle track's 560px floor at 1900 is what keeps the board's 1041-unit viewBox
+   from collapsing the feed beside it; the old comment on this grid named the same
+   constraint against the old tracks. */
+.zones {
+  display: grid;
+  gap: 40px 28px;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "feed" "board" "side";
+}
+
+@media (min-width: 1280px) {
+  .zones {
+    grid-template-columns: minmax(0, 1.9fr) minmax(360px, 1fr);
+    grid-template-areas: "feed side" "board board";
+  }
+}
+
+@media (min-width: 1900px) {
+  .zones {
+    grid-template-columns: minmax(0, 1.02fr) minmax(560px, 1.3fr) minmax(340px, 0.72fr);
+    grid-template-areas: "feed board side";
+  }
+}
+
+.z-feed { grid-area: feed; min-width: 0; }
+.z-board { grid-area: board; min-width: 0; }
+.z-side { grid-area: side; min-width: 0; }
+
+/* The rail stacks its own sections; the zones gap governs the columns, not what is
+   inside one of them. */
+.z-side > * + * { margin-top: 24px; }
+
+/* THE WIRE GRID, in CSS rather than as utilities because the utility form silently
+   lost. `sm:grid-cols-2 min-[1180px]:grid-cols-5` renders TWO columns at 1900: both
+   utilities match above 1180, and Tailwind emits the arbitrary `min-[...]` variant
+   BEFORE the named `sm`, so the later rule wins at every width above 640 and the
+   five-across arrangement never draws. Same class of defect as the conflicting-utility
+   trap: appending a utility does not override one already in the string, and every test
+   stayed green while the layout was wrong. Explicit media queries cannot be reordered.
+
+   One column, then two at 640, then five at 1180 -- the mock's own steps. */
+.wire {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 640px) {
+  .wire { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1180px) {
+  .wire { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+/* FIVE CELLS IN TWO COLUMNS LEAVE A HOLE, and the hole is bordered, so it reads as a
+   missing sixth channel rather than as empty space. The mock has this flaw at its own
+   1180 breakpoint and does not address it. The last cell spans the row instead.
+
+   `:nth-child(5):nth-last-child(1)` and not `:last-child`: the span is correct ONLY
+   when the wire holds exactly five cells. lib/activity.ts appends any non-canonical
+   channel rather than dropping it, so a sixth channel fills the third row exactly and
+   must not be stretched. The selector turns itself off in that case. */
+@media (min-width: 640px) and (max-width: 1179.98px) {
+  .wire > :nth-child(5):nth-last-child(1) { grid-column: 1 / -1; }
+}

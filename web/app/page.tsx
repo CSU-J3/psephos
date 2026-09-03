@@ -21,6 +21,8 @@ import {
 } from "@/lib/read";
 import { relevanceScore } from "@/lib/relevance";
 import { Wire } from "@/components/Wire";
+import { billLabel } from "@/lib/bill";
+import { formatDate } from "@/lib/format";
 import { DayTimeline } from "@/components/DayTimeline";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
@@ -51,14 +53,8 @@ import { SourceLegend } from "@/components/SourceLegend";
 // inside the cached call; every other query on the page is current.
 export const dynamic = "force-dynamic";
 
-function SectionHeading({ title, count }: { title: string; count: number }) {
-  return (
-    <h2 className="mb-3 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
-      {title}
-      <span className="text-sm font-normal tabular-nums text-neutral-500">{count}</span>
-    </h2>
-  );
-}
+// SectionHeading was deleted here: its only caller was the "Watched bills" heading in
+// the old column 3, and the rail's fold carries that reading in its <summary> instead.
 
 // How many of the top dockets to show before the disclosure. Eight is enough to
 // read the campaign's last week without the section becoming the 46-row list it
@@ -131,6 +127,11 @@ export default async function Home() {
   const litigation = readLitigation(campaignRows);
   const campaign = readCampaign(campaignRows, now);
   const billsRead = readBills(bills, now);
+  // The vehicle, for the fold's summary line. Read off the watchlist rather than off
+  // billsRead.latest, which is only the vehicle by coincidence of S. 1383 holding the
+  // most recent action -- the day another bill moves, latest stops being the vehicle
+  // and the summary would silently drop the one flag this project exists to surface.
+  const vehicleBill = bills.find((b) => b.is_vehicle === 1) ?? null;
   const executive = readExecutive(executiveAll, now);
   const stateBillsRead = readStateBills(stateBills, now);
 
@@ -277,13 +278,15 @@ export default async function Home() {
         />
       </section>
 
-      {/* Three columns above 1900px, two above 1280 with the third column's content
-          moving under the second, one below. The tracks are the handoff's:
-          1.32fr / 1.16fr / .86fr with floors, so the middle column can hold the
-          board's 1041-unit viewBox without the timeline collapsing. */}
-      <div className="mt-10 grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)] 3xl:grid-cols-[minmax(0,1.32fr)_minmax(440px,1.16fr)_minmax(340px,.86fr)]">
-        {/* Column 1 -- the last 7 days, every channel on one axis by occurred_at. */}
-        <section>
+      {/* THE ZONES, three named areas rather than three tracks -- see .zones in
+          globals.css for the shape and why it is declared there. One column below
+          1280; feed beside rail with the board full-width beneath at 1280; all three
+          side by side at 1900. The board moving between rows is a reflow the old
+          track-based grid could not express: it could only drop the third column's
+          content under the second. */}
+      <div className="zones mt-10">
+        {/* Feed -- the last 7 days, every channel on one axis by occurred_at. */}
+        <section className="z-feed">
           <h2 className="mb-3 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
             The last 7 days
             <span className="text-sm font-normal text-neutral-500">UTC days</span>
@@ -291,10 +294,10 @@ export default async function Home() {
           <DayTimeline timeline={timeline} now={now} />
         </section>
 
-        {/* Column 2 -- state voter records. The chart, map, scrubber and detail
-            panel land here in commits 5 and 6; until then the column carries the
-            campaign's dockets so the shell is never a placeholder. */}
-        <section>
+        {/* Board -- state voter records: the chart, map, scrubber and detail panel.
+            Recently-moved used to sit at the bottom of this column and is now in the
+            rail; the board keeps only what the replay drives. */}
+        <section className="z-board">
           <h2 className="mb-3 text-lg font-semibold tracking-tight">
             State voter records
           </h2>
@@ -372,68 +375,133 @@ export default async function Home() {
             </p>
           </Link>
 
-          {cases.length === 0 ? (
-            <p className="mt-4 text-sm text-neutral-500">No cases yet.</p>
-          ) : (
-            <>
-              <h3 className="mt-6 mb-3 flex items-baseline gap-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">
-                Recently moved
-                <span className="text-xs font-normal tabular-nums text-neutral-600">
-                  {recentCases.length} of {cases.length}
-                </span>
-              </h3>
-              <ul className="space-y-3">
-                {recentCases.map((c) => (
-                  <CaseRow
-                    key={c.case_id}
-                    c={c}
-                    showCategory={showCategory}
-                    chain={chainFor(c)}
-                  />
-                ))}
-              </ul>
-              {restCases.length > 0 && (
-                // A native <details>: no client bundle for a disclosure.
-                <details className="mt-3 group">
-                  <summary className="cursor-pointer list-none rounded-lg border border-neutral-800 bg-neutral-900 px-4 py-3 text-sm text-neutral-400 transition-colors hover:border-neutral-700">
-                    <span className="group-open:hidden">All {cases.length} dockets →</span>
-                    <span className="hidden group-open:inline">
-                      Hide the other {restCases.length} ↑
-                    </span>
-                  </summary>
-                  <ul className="mt-3 space-y-3">
-                    {restCases.map((c) => (
-                      <CaseRow
-                        key={c.case_id}
-                        c={c}
-                        showCategory={showCategory}
-                        chain={chainFor(c)}
-                      />
-                    ))}
-                  </ul>
-                </details>
+        </section>
+
+        {/* THE RAIL: recently-moved, then the two federal channels as folds. All three
+            were previously columns 2 and 3; the rail is where the page puts what a
+            reader consults rather than reads. */}
+        <div className="z-side">
+          <section>
+            <h3 className="mb-2 flex items-baseline gap-2 text-sm font-semibold uppercase tracking-wide text-neutral-400">
+              Recently moved
+              <span className="text-xs font-normal tabular-nums text-neutral-600">
+                {recentCases.length} of {cases.length}
+              </span>
+              <Link
+                href="/campaign"
+                className="ml-auto text-xs font-normal normal-case tracking-normal text-neutral-500 hover:text-neutral-300"
+              >
+                All {cases.length} →
+              </Link>
+            </h3>
+            {cases.length === 0 ? (
+              <p className="text-sm text-neutral-500">No cases yet.</p>
+            ) : (
+              <>
+                <ul className="rounded-lg border border-neutral-800 bg-neutral-900/40 py-1">
+                  {recentCases.map((c) => (
+                    <CaseRow
+                      key={c.case_id}
+                      c={c}
+                      showCategory={showCategory}
+                      chain={chainFor(c)}
+                      compact
+                    />
+                  ))}
+                </ul>
+                {restCases.length > 0 && (
+                  // A native <details>: no client bundle for a disclosure.
+                  <details className="group mt-2">
+                    <summary className="cursor-pointer list-none px-3.5 py-2 text-xs text-neutral-500 transition-colors hover:text-neutral-300">
+                      <span className="group-open:hidden">
+                        The other {restCases.length} dockets →
+                      </span>
+                      <span className="hidden group-open:inline">
+                        Hide the other {restCases.length} ↑
+                      </span>
+                    </summary>
+                    <ul className="mt-1 rounded-lg border border-neutral-800 bg-neutral-900/40 py-1">
+                      {restCases.map((c) => (
+                        <CaseRow
+                          key={c.case_id}
+                          c={c}
+                          showCategory={showCategory}
+                          chain={chainFor(c)}
+                          compact
+                        />
+                      ))}
+                    </ul>
+                  </details>
+                )}
+              </>
+            )}
+          </section>
+
+          {/* Watched bills, folded. The summary carries the reading so the fold is
+              worth leaving shut: the count, whether anything moved, and the vehicle.
+              Native <details> again -- a disclosure does not need a client bundle. */}
+          <details className="group rounded-lg border border-neutral-800 bg-neutral-900">
+            <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-2.5 gap-y-1 px-4 py-3">
+              <span className="text-sm font-semibold tracking-tight text-neutral-100">
+                Watched bills
+              </span>
+              <span className="text-xs text-neutral-500">
+                {bills.length}
+                {billsRead.movedInWindow.length === 0 && billsRead.latestActionAt ? (
+                  <> · none moved since {formatDate(billsRead.latestActionAt)}</>
+                ) : (
+                  <> · {billsRead.movedInWindow.length} moved in 7 days</>
+                )}
+              </span>
+              {vehicleBill && (
+                <>
+                  <span className="rounded border border-amber-500/40 bg-amber-500/10 px-1.5 py-px text-[10px] font-semibold uppercase tracking-wide text-amber-400">
+                    Vehicle
+                  </span>
+                  <span className="text-xs text-neutral-500">
+                    {billLabel(vehicleBill)}
+                  </span>
+                </>
               )}
-            </>
-          )}
-        </section>
+              <span className="ml-auto text-xs text-neutral-600 group-open:hidden">↓</span>
+              <span className="ml-auto hidden text-xs text-neutral-600 group-open:inline">
+                ↑
+              </span>
+            </summary>
+            <div className="border-t border-neutral-800 px-3 py-3">
+              {bills.length === 0 ? (
+                <p className="text-sm text-neutral-500">No bills yet.</p>
+              ) : (
+                <ul className="space-y-3">
+                  {bills.map((b) => (
+                    <BillRow key={b.bill_id} bill={b} />
+                  ))}
+                </ul>
+              )}
+            </div>
+          </details>
 
-        {/* Column 3 -- watched bills and the executive channel. */}
-        <section>
-          <SectionHeading title="Watched bills" count={bills.length} />
-          {bills.length === 0 ? (
-            <p className="text-sm text-neutral-500">No bills yet.</p>
-          ) : (
-            <ul className="space-y-3">
-              {bills.map((b) => (
-                <BillRow key={b.bill_id} bill={b} />
-              ))}
-            </ul>
-          )}
-
-          <div className="mt-10">
-            <ExecutiveSection relevant={relevant} all={executiveAll} />
-          </div>
-        </section>
+          {/* Executive, folded. ExecutiveSection keeps its own client-side
+              relevant/all swap; the fold wraps it rather than replacing it. */}
+          <details className="group rounded-lg border border-neutral-800 bg-neutral-900">
+            <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-2.5 gap-y-1 px-4 py-3">
+              <span className="text-sm font-semibold tracking-tight text-neutral-100">
+                Executive
+              </span>
+              <span className="text-xs text-neutral-500">
+                {executive.relevant} election-relevant of {executive.total}
+                {executive.latest && <> · latest {formatDate(executive.latest.occurred_at)}</>}
+              </span>
+              <span className="ml-auto text-xs text-neutral-600 group-open:hidden">↓</span>
+              <span className="ml-auto hidden text-xs text-neutral-600 group-open:inline">
+                ↑
+              </span>
+            </summary>
+            <div className="border-t border-neutral-800 px-3 py-3">
+              <ExecutiveSection relevant={relevant} all={executiveAll} />
+            </div>
+          </details>
+        </div>
       </div>
     </main>
   );

@@ -282,7 +282,11 @@ export function Wire({
     .filter((c) => !(CHANNELS as readonly string[]).includes(c));
 
   return (
-    <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-neutral-800 bg-neutral-800 sm:grid-cols-2 min-[1180px]:grid-cols-5">
+    // The grid itself is `.wire` in globals.css, not utilities: the utility form
+    // rendered two columns at 1900 because Tailwind emitted the arbitrary min-[1180px]
+    // variant ahead of the named `sm`, so the wrong rule won above 640. See the comment
+    // there, which also covers why the fifth cell spans the row in the two-column band.
+    <div className="wire overflow-hidden rounded-lg border border-neutral-800 bg-neutral-800">
       {[...CHANNELS, ...extra].map((channel) => (
         <Cell key={channel} channel={channel} row={byChannel.get(channel)}>
           {clause[channel] ?? <>No reading for this channel.</>}
