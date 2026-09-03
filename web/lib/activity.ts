@@ -24,8 +24,16 @@ export type ActivityRow = {
   day: number;
   week: number;
   // How much of `day` was ALREADY OLD when it was collected -- the docket-walk
-  // signature. See getChannelActivity for the arithmetic and ChannelStrip for why
-  // it renders only when non-zero.
+  // signature. See getChannelActivity for the arithmetic.
+  //
+  // RENDERED BY NOTHING SINCE THE WIRE REPLACED THE STRIP. ChannelStrip drew it as a
+  // "N history" line on non-zero cells; the v42 wire has no such line, so the figure is
+  // computed and unread. That is a deliberate consequence of the mock rather than an
+  // oversight, and it costs something real: on 2026-08-16 four dockets were seeded and
+  // walked, and the litigation cell read +174/24h with nothing on the page to say all
+  // 174 were dated between Sep 2025 and Jul 2026. A seed day and a busy day now look
+  // alike. Kept computed because the query is free and the alternative -- deleting it
+  // and rediscovering the need -- is worse. Delete it only with the query.
   day_history: number;
 };
 
