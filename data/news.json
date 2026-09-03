@@ -1171,6 +1171,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 94314,
+    "kind": "item",
+    "occurred_at": "2026-05-16T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQYzRDekw2dUNJbm1NSG1laEljMTBSNEhqQ24tOXBFQlVrQWlmellyUVAwTGRERHc2MDcxekV1Mko1NHpUSWNvV0VEWEY2SjJkRzJ4LWdFY0ZncFFtdGF4aC1RX0FLVTNIRW0zVUxsSDYxQVQ5TE5OWElIcERIMjVaZmtWV3pVdkJETlhWTVcyQ3dLel9sYWlFRHBlVEhGYnVsVTE2RnFrQ1VTSHpDNG12cw?oc=5",
+    "title": "Trump seeks passage of SAVE America Act via housing and FISA bills - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 282,
     "kind": "item",
@@ -7028,5 +7038,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/new-lawsuit-challenges-dhs-over-unverified-noncitizen-voter-roll-claims",
     "title": "New lawsuit challenges DHS over unverified noncitizen voter roll claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94307,
+    "kind": "item",
+    "occurred_at": "2026-09-03T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-to-rule-in-pivotal-challenge-to-trumps-attack-on-mail-voting",
+    "title": "Federal judge to rule in pivotal challenge to Trump’s attack on mail voting"
   }
 ]
