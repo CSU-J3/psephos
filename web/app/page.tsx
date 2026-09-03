@@ -20,7 +20,7 @@ import {
   readStateBills,
 } from "@/lib/read";
 import { relevanceScore } from "@/lib/relevance";
-import { ChannelStrip } from "@/components/ChannelStrip";
+import { Wire } from "@/components/Wire";
 import { DayTimeline } from "@/components/DayTimeline";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
@@ -39,7 +39,6 @@ import { RecordsMap, type MapState } from "@/components/RecordsMap";
 import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
 import { tryResolveState } from "@/lib/map";
 import { SourceLegend } from "@/components/SourceLegend";
-import { TheRead } from "@/components/TheRead";
 
 // Route stays force-dynamic: it removes the build-time Turso dependency (no env
 // vars needed at build) and keeps the bills/cases/executive queries live per
@@ -264,20 +263,18 @@ export default async function Home() {
         <SourceLegend />
       </header>
 
+      {/* The wire: the read and the strip merged into one row of five cells, a
+          channel's numbers and its sentence in the same cell rather than 200px
+          apart. The campaign sentence is not carried over -- the board states it. */}
       <section className="mt-8">
-        <TheRead
+        <Wire
+          rows={activity}
           news={news}
           litigation={litigation}
-          campaign={campaign}
           bills={billsRead}
           executive={executive}
           stateBills={stateBillsRead}
         />
-        {/* The strip's numbers survive the read as one muted line beneath it: the
-            read says what happened, this says how much. */}
-        <div className="mt-6 border-t border-neutral-900 pt-4">
-          <ChannelStrip rows={activity} />
-        </div>
       </section>
 
       {/* Three columns above 1900px, two above 1280 with the third column's content
