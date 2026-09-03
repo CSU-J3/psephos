@@ -7051,6 +7051,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 94817,
+    "kind": "item",
+    "occurred_at": "2026-09-03T03:08:49+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQQ1NjQk91UW1RWmI3VU5YR3N2cy1jMlVrVzh0WUtlaXpKNDdjZ1hUT1lXcXRnWWYyYUU3RGdvVW1ya3UzQ29ETlkxMjJpM2VzVW1Gb2ZtR2Y4ajJ4dUFzQ0tSTFpvN1hpeDQxMVBRRFpxZFJ3bGx3TlZGZEdHRnI4S1lTTUlQT1ZPV2c?oc=5",
+    "title": "🚨Coalition for Humane Immigrant Rights v. U.S. Department of Homeland Security - democracydocket.com"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 94307,
     "kind": "item",
@@ -7088,5 +7098,45 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/portland-violence-interrupters",
     "title": "In Portland, Violence Interrupters Struggle to Keep a Steady Foothold"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94804,
+    "kind": "item",
+    "occurred_at": "2026-09-03T16:30:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/03/walter-mebane-eforensics-south-korea-2020-parlimentary-election",
+    "title": "A warning from Korea"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94806,
+    "kind": "item",
+    "occurred_at": "2026-09-03T17:02:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-cant-tell-judge-whether-usps-mail-ballot-portal-is-ready-to-launch",
+    "title": "USPS says mail ballot portal may launch next week after DOJ fumbles questions in court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94803,
+    "kind": "item",
+    "occurred_at": "2026-09-03T18:15:04+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/03/election-truth-alliance-walter-mebane-2024-election-fraud-model",
+    "title": "His model was built to detect voter fraud. Now it’s testing the limits of election trust."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94805,
+    "kind": "item",
+    "occurred_at": "2026-09-03T19:32:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-appears-deeply-skeptical-of-case-for-trumps-mail-voting-restrictions",
+    "title": "Judge appears deeply skeptical of case for Trump’s mail voting restrictions"
   }
 ]
