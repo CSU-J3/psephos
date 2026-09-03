@@ -1728,6 +1728,16 @@
         "source_id": "democracy-docket",
         "source_url": "https://www.democracydocket.com/news-alerts/federal-court-blocks-ohio-law-requiring-proof-of-citizenship-for-voter-registration",
         "title": "Federal court blocks Ohio law requiring proof of citizenship for voter registration"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 94082,
+        "kind": "item",
+        "occurred_at": "2026-09-02T20:27:07+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE96enZWYzh3VTJTTVZ5UUZ1Wm9ybTFOclNPMUk3VmNLMzg5OWdFaW9iMTY2eHk0TzVtRHRsUHNabjBlZWNfY3o3QnJ2SVNFVVo3RURsZEJqQXpnZm9NU3lfenZTeGgxa3lk?oc=5",
+        "title": "Thune rejects filibuster changes for SAVE America Act despite Trump pressure - eciks.org"
       }
     ]
   },

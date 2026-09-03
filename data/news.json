@@ -3361,6 +3361,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 94095,
+    "kind": "item",
+    "occurred_at": "2026-07-15T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOV1M4LW1zMDlmRWNneV9jbWhTRVd6T2hVTXF0NVBUQUdZblkzNWl5RlJIVXdSNWNKR3dYWGc1UmtCY1VUX3N5aVh2RjJWY1FVMWlPWjNwZGVsZWR4NFp0VFk4eTNVeGJDcy1na3hiUUMwbWwyMTVOdzRUcjRHOFdVX2liZ0tlbmtfSWVBb3ozY1B0YVBUMWdvdEJFQklsSXJPSVRzSlFPMHFTUkNOSGFZUFpzX09sU2NnT2dUZWUxYnN2WVpTNWZUNzRhX3pfQQ?oc=5",
+    "title": "Pennsylvania’s top voting official claps back at Trump administration’s threat of criminal prosecution - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 34468,
     "kind": "item",
@@ -6998,5 +7008,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/leading-elections-expert-says-trumps-mail-voting-restrictions-will-create-massive-chaos-and-confusion",
     "title": "Leading elections expert says Trump’s mail voting restrictions will create ‘massive chaos and confusion’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94081,
+    "kind": "item",
+    "occurred_at": "2026-09-02T20:43:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/floridas-proof-of-citizenship-voting-restriction-hit-with-third-pro-voting-lawsuit",
+    "title": "Florida’s proof-of-citizenship voting restriction hit with third pro-voting lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94080,
+    "kind": "item",
+    "occurred_at": "2026-09-02T22:46:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-lawsuit-challenges-dhs-over-unverified-noncitizen-voter-roll-claims",
+    "title": "New lawsuit challenges DHS over unverified noncitizen voter roll claims"
   }
 ]
