@@ -443,10 +443,10 @@ export default async function Home() {
               Native <details> again -- a disclosure does not need a client bundle. */}
           <details className="group rounded-lg border border-neutral-800 bg-neutral-900">
             <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-2.5 gap-y-1 px-4 py-3">
-              <span className="text-sm font-semibold tracking-tight text-neutral-100">
+              <span className="text-[15px] font-semibold tracking-tight text-neutral-100">
                 Watched bills
               </span>
-              <span className="text-xs text-neutral-500">
+              <span className="text-[14px] text-neutral-500">
                 {bills.length}
                 {billsRead.movedInWindow.length === 0 && billsRead.latestActionAt ? (
                   <> · none moved since {formatDate(billsRead.latestActionAt)}</>
@@ -459,7 +459,7 @@ export default async function Home() {
                   <span className="rounded border border-amber-500/40 bg-amber-500/10 px-1.5 py-px text-[10px] font-semibold uppercase tracking-wide text-amber-400">
                     Vehicle
                   </span>
-                  <span className="text-xs text-neutral-500">
+                  <span className="text-[14px] text-neutral-500">
                     {billLabel(vehicleBill)}
                   </span>
                 </>
@@ -486,10 +486,10 @@ export default async function Home() {
               relevant/all swap; the fold wraps it rather than replacing it. */}
           <details className="group rounded-lg border border-neutral-800 bg-neutral-900">
             <summary className="flex cursor-pointer list-none flex-wrap items-baseline gap-x-2.5 gap-y-1 px-4 py-3">
-              <span className="text-sm font-semibold tracking-tight text-neutral-100">
+              <span className="text-[15px] font-semibold tracking-tight text-neutral-100">
                 Executive
               </span>
-              <span className="text-xs text-neutral-500">
+              <span className="text-[14px] text-neutral-500">
                 {executive.relevant} election-relevant of {executive.total}
                 {executive.latest && <> · latest {formatDate(executive.latest.occurred_at)}</>}
               </span>

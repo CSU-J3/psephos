@@ -128,10 +128,10 @@ export function RecordsBoard({
         strokeWidth={1}
         strokeDasharray="3 3"
       />
-      <text x={PAD_L - 6} y={AXIS_Y - (H_TOP - 12) + 4} textAnchor="end" fontSize={10} fill="#737373">
+      <text x={PAD_L - 6} y={AXIS_Y - (H_TOP - 12) + 4} textAnchor="end" fontSize={13} fill="#737373">
         {JURISDICTIONS}
       </text>
-      <text x={PAD_L - 6} y={AXIS_Y + 4} textAnchor="end" fontSize={10} fill="#737373">
+      <text x={PAD_L - 6} y={AXIS_Y + 4} textAnchor="end" fontSize={13} fill="#737373">
         0
       </text>
 
@@ -184,10 +184,10 @@ export function RecordsBoard({
           not have to leave the chart to find out what it is. The aria-label above is
           unchanged; it already describes the whole figure to a reader who gets no
           marks at all. */}
-      <text x={PAD_L + 4} y={AXIS_Y + H_BOT - 14} fontSize={10} fill="#8b7bb8">
+      <text x={PAD_L + 4} y={AXIS_Y + H_BOT - 14} fontSize={13} fill="#8b7bb8">
         state bills first seen
       </text>
-      <text x={PAD_L + 4} y={AXIS_Y + H_BOT - 3} fontSize={10} fill="#6f6a86">
+      <text x={PAD_L + 4} y={AXIS_Y + H_BOT - 3} fontSize={13} fill="#6f6a86">
         federal legislative actions
       </text>
 
@@ -218,7 +218,7 @@ export function RecordsBoard({
             x={x(q.t)}
             y={AXIS_Y + H_BOT + 22}
             textAnchor="middle"
-            fontSize={10}
+            fontSize={13}
             fill={q.label.length === 4 ? "#a3a3a3" : "#525252"}
           >
             {q.label}
@@ -236,7 +236,7 @@ export function RecordsBoard({
         strokeWidth={1}
         strokeDasharray="2 3"
       />
-      <text x={PAD_L + clipW - 5} y={18} textAnchor="end" fontSize={11} fill="#d4d4d4">
+      <text x={PAD_L + clipW - 5} y={18} textAnchor="end" fontSize={14} fill="#d4d4d4">
         {lastVisible?.total ?? 0} of {JURISDICTIONS}
       </text>
     </svg>

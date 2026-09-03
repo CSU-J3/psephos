@@ -47,7 +47,7 @@ export function CaseRow({
           className="block rounded-lg px-3.5 py-2.5 transition-colors hover:bg-neutral-900"
         >
           <div className="flex min-w-0 items-baseline gap-2.5">
-            <span className="min-w-0 flex-1 truncate text-[13px] leading-5 text-neutral-100">
+            <span className="min-w-0 flex-1 truncate text-[14px] leading-[19px] text-neutral-100">
               {c.caption}
             </span>
             {c.status && (

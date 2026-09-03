@@ -81,7 +81,7 @@ function LedgerRow({
   meta: React.ReactNode;
 }) {
   const title = (
-    <div className="min-w-0 flex-1 truncate text-[13px] leading-5 text-neutral-200">
+    <div className="min-w-0 flex-1 truncate text-[14px] leading-[21px] text-neutral-200">
       {children}
     </div>
   );
@@ -91,14 +91,14 @@ function LedgerRow({
         {href ? (
           <a
             href={href}
-            className="min-w-0 flex-1 truncate text-[13px] leading-5 text-neutral-200 underline decoration-neutral-800 underline-offset-2 hover:decoration-neutral-500"
+            className="min-w-0 flex-1 truncate text-[14px] leading-[21px] text-neutral-200 underline decoration-neutral-800 underline-offset-2 hover:decoration-neutral-500"
           >
             {children}
           </a>
         ) : (
           title
         )}
-        <div className="flex shrink-0 items-baseline gap-2 whitespace-nowrap text-xs text-neutral-500">
+        <div className="flex shrink-0 items-baseline gap-2 whitespace-nowrap text-[13px] text-neutral-500">
           {meta}
         </div>
       </div>
@@ -176,7 +176,7 @@ function Band({
   return (
     <li className="flex gap-4 border-t border-neutral-900 py-3 first:border-t-0">
       <div className="w-24 shrink-0">
-        <div className="text-xs tabular-nums text-neutral-400">{formatDate(band.day)}</div>
+        <div className="text-[15px] tabular-nums text-neutral-400">{formatDate(band.day)}</div>
         {/* "collected", never "today". The band is grouped on occurred_at and this
             flag is computed from fetched_at, so it fires on any band holding
             something read in the last 24 hours -- which on this page means bands
@@ -240,12 +240,12 @@ function Band({
                   {g.entries.map((e) => (
                     <li
                       key={e.id}
-                      className="flex min-w-0 items-baseline gap-3 text-[13px] leading-5 text-neutral-300"
+                      className="flex min-w-0 items-baseline gap-3 text-[14px] leading-[21px] text-neutral-300"
                     >
                       <span className="min-w-0 flex-1 truncate">
                         {e.summary ?? e.title}
                       </span>
-                      <span className="shrink-0 whitespace-nowrap text-xs text-neutral-500">
+                      <span className="shrink-0 whitespace-nowrap text-[13px] text-neutral-500">
                         <Grade grade={`${e.admiralty_source}${e.admiralty_info}`} />
                       </span>
                     </li>

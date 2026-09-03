@@ -104,19 +104,19 @@ function Cell({
         <span
           className={
             day === 0
-              ? "text-xl font-normal leading-none text-neutral-600"
-              : "text-xl font-semibold leading-none text-neutral-100"
+              ? "text-[22px] font-normal leading-none text-neutral-600"
+              : "text-[22px] font-semibold leading-none text-neutral-100"
           }
         >
           +{day}
         </span>
-        <span className="text-xs text-neutral-500">
+        <span className="text-[13px] text-neutral-500">
           /{WINDOW_DAYS.day * 24}h &middot; +{week} /{WINDOW_DAYS.week}d
         </span>
-        <span className="ml-auto text-xs text-neutral-500">{total.toLocaleString()}</span>
+        <span className="ml-auto text-[13px] text-neutral-500">{total.toLocaleString()}</span>
       </div>
 
-      <p className="mt-[9px] text-xs leading-[17px] text-neutral-400">
+      <p className="mt-[9px] text-[13px] leading-[18px] text-neutral-400">
         {children}
         {/* WHICH KIND OF COLLECTION PRODUCED THE DELTA, restored from the strip. The
             wire's first draft dropped it and nothing else on the page carried it, so a

@@ -4,7 +4,7 @@ import { OVERLAY_LABEL, POSTURE_FILL, POSTURE_LABEL, type Overlay } from "@/lib/
 // that drifts from the other key is a second vocabulary, which is the problem a key
 // exists to solve.
 const REGISTER =
-  "flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-neutral-500";
+  "flex flex-wrap items-center gap-x-6 gap-y-2 text-[12.5px] text-neutral-500";
 
 // The source-grade legend, on a rule under the nav.
 //

@@ -202,7 +202,7 @@ export function RecordsMap({
           }}
           className="rounded border border-neutral-700 px-2 py-1 text-xs text-neutral-300 transition-colors hover:border-neutral-500"
         >
-          {playing ? "Stop" : "Replay"}
+          {playing ? "Stop" : "Play"}
         </button>
         <input
           type="range"
@@ -312,7 +312,7 @@ export function RecordsMap({
                 x={c.x + c.size / 2}
                 y={c.y + c.size / 2 + 4}
                 textAnchor="middle"
-                fontSize={12}
+                fontSize={14}
                 fill="#e5e5e5"
                 pointerEvents="none"
               >
@@ -449,7 +449,7 @@ function BillMarker({
         ref={textRef}
         x={startX + 2 * r + 6}
         y={ay + 5}
-        fontSize={12}
+        fontSize={14}
         fill="#f5f5f5"
         // paint-order keeps the count legible over both the red fill and black.
         style={{ paintOrder: "stroke", stroke: "#0a0a0a", strokeWidth: 3 }}
