@@ -1152,6 +1152,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 94550,
+        "kind": "item",
+        "occurred_at": "2026-07-09T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOcFFiUXNubWcxeVFwMmJ5UmVBdU9wVkhESGw2aElEQW5FSFBOTHJrREY0Z2puSF9jbW1ZeWpoeDIyNFdDMl91X3NtZzZZVHRNZERhUElnWjJXWFNKNTc2OG9MNE1FZkdqSGZOeFo4UlhRclcyWV9vQXhhdWdlS205WUhjZ1ZNX09ialZiZtIBkgFBVV95cUxPMTE1aU9IOVhYNTlkWmpBS1d1bHFidEYtOEx6TlZIRWJGalNUSjNhRTNQUG1COVNtZmloVWNyQU5qOXd0SU9scXpyLUlFYjJhc1JpMG5waEdiQVdjc0l6RUphRXRQcm1HekNQa2hVRjlVakhPb2dPMDRCMENPTDRoSzh4UGl1em1uM3dzSUp6UHhGQQ?oc=5",
+        "title": "What is the SAVE America Act, and why does Trump want it passed? - The New Arab"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 18671,
         "kind": "item",
         "occurred_at": "2026-07-09T09:11:15+00:00",

@@ -721,6 +721,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 94551,
+    "kind": "item",
+    "occurred_at": "2026-04-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ3p1ZEQybGJVX0RIUERwZEVvcWdRaG5rRGxRUnJKRWthUGtVbFR4ZGNpcUdzLTAtNjQwc0ZSdXRJbDI4dkdTYmhFQWFDZ2pEY1pMNFNqcWZKdFN3QjNET0JnVlJnUXQ1b2N6V0c1V2pycmJ3Um9ERHh1V2dFT29LdkZjOF9icUFiM1R2U082T2NPXzVXanNtRFVOc0ZrZmZGWkNDVkdERFRXM0xuUGx3UHVn?oc=5",
+    "title": "Senate rejects bid to revive SAVE America Act, but the war isn’t over - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 318,
     "kind": "item",
@@ -7048,5 +7058,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-to-rule-in-pivotal-challenge-to-trumps-attack-on-mail-voting",
     "title": "Federal judge to rule in pivotal challenge to Trump’s attack on mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94545,
+    "kind": "item",
+    "occurred_at": "2026-09-03T12:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mail-voting-live-updates-judge-weighs-fate-of-trumps-anti-voting-executive-order",
+    "title": "Mail voting live updates: Judge weighs fate of Trump’s anti-voting executive order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94544,
+    "kind": "item",
+    "occurred_at": "2026-09-03T14:51:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-is-hiding-efforts-to-implement-anti-mail-voting-order-democrats-tell-court",
+    "title": "Trump administration is ‘hiding’ efforts to implement anti-mail voting order, Democrats tell court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 94546,
+    "kind": "item",
+    "occurred_at": "2026-09-03T15:04:14+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/portland-violence-interrupters",
+    "title": "In Portland, Violence Interrupters Struggle to Keep a Steady Foothold"
   }
 ]
