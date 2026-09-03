@@ -275,6 +275,7 @@ export default async function Home() {
           bills={billsRead}
           executive={executive}
           stateBills={stateBillsRead}
+          vehicle={vehicleBill}
         />
       </section>
 

@@ -20,11 +20,17 @@ import type {
 // zero-fill and append draw on no page anyone can visit today.
 //
 // It is the same argument StateBillRow.test.ts makes for the Vehicle badge, and the
-// Vehicle badge is here too -- it moved into the legislation cell in this commit, and
-// on live data it renders only because S. 1383 happens to be the most recently actioned
-// of the six watched bills. That is a property of the data, not of the component: the
-// day a non-vehicle bill takes an action, the badge stops drawing and nothing fails.
-// A fixture is the only place that branch is pinned independent of what the cron holds.
+// Vehicle badge is here too. It USED to read `bills.latest?.is_vehicle === 1`, which
+// draws on live data only because S. 1383 holds the most recent action of the six
+// watched bills -- a property of the data, not of the component. The badge now takes
+// the flagged bill as a prop, and the test below constructs the state that falsified
+// the old form: a `latest` that is not the vehicle, which is where the page lands the
+// first time any other watched bill moves. The cron cannot produce it on demand, so a
+// fixture is the only place it is pinned.
+//
+// The history clause is here for the same reason from the other side: day_history is
+// non-zero only on a docket-walk day, so the branch that renders it is unreachable on
+// most days' data and the branch that stays silent is unreachable on those.
 //
 // Same idiom as StateBillRow.test.ts and StateMatrix.test.ts: renderToStaticMarkup, no
 // jsdom, no testing library.
@@ -168,24 +174,44 @@ describe("Wire — the legislation cell carries the Vehicle badge", () => {
     };
   }
 
-  it("names the vehicle when the latest watched bill carries the flag", () => {
-    const html = render(full, {
-      bills: { ...BILLS, total: 6, latest: bill(), latestActionAt: "2026-03-26T00:00:00" },
-    });
+  it("names the vehicle it is given", () => {
+    const html = render(full, { bills: { ...BILLS, total: 6 }, vehicle: bill() });
     expect(html).toContain("Vehicle");
     expect(html).toContain("S. 1383");
   });
 
-  it("draws no badge when the latest watched bill is not a vehicle", () => {
+  it("draws no badge when the watchlist holds no vehicle", () => {
+    expect(render(full, { bills: { ...BILLS, total: 6 }, vehicle: null })).not.toContain(
+      "Vehicle",
+    );
+  });
+
+  // THE REGRESSION THIS PROP EXISTS TO PREVENT, and live data cannot reach it today.
+  // The badge used to read `bills.latest?.is_vehicle === 1`, which is correct on this
+  // watchlist only because S. 1383 holds the most recent action of the six. Give the
+  // component a `latest` that is NOT the vehicle -- the state the page enters the first
+  // time any other watched bill moves -- and the old code drew nothing while the
+  // watchlist still held a flagged bill.
+  it("still names the vehicle when the most recent action is some other bill", () => {
     const html = render(full, {
       bills: {
         ...BILLS,
         total: 6,
-        latest: bill({ is_vehicle: 0, bill_id: "hr22-119", bill_type: "hr", number: 22 }),
-        latestActionAt: "2026-03-26T00:00:00",
+        latest: bill({
+          bill_id: "hr22-119",
+          bill_type: "hr",
+          number: 22,
+          is_vehicle: 0,
+          latest_action_at: "2026-09-03T00:00:00",
+        }),
+        latestActionAt: "2026-09-03T00:00:00",
       },
+      vehicle: bill(),
     });
-    expect(html).not.toContain("Vehicle");
+    expect(html).toContain("Vehicle");
+    expect(html).toContain("S. 1383");
+    // And it is the vehicle that is named, not whatever moved last.
+    expect(html).not.toContain("H.R. 22");
   });
 
   it("says the watchlist is empty rather than saying nothing", () => {
@@ -193,5 +219,33 @@ describe("Wire — the legislation cell carries the Vehicle badge", () => {
     // is TheRead's and it survives the merge: "no movement" tells a reader nothing about
     // whether the system is quiet or broken.
     expect(render(full)).toContain("No bills on the watchlist.");
+  });
+});
+
+describe("Wire — the history clause", () => {
+  // A SEED DAY AND A BUSY DAY LOOK ALIKE WITHOUT IT. day_history counts how much of the
+  // 24h delta was already old when collected -- the docket-walk signature. It survived
+  // in ActivityRow while nothing rendered it; this is the clause that reads it.
+  const walked = [
+    row("legislation", { day: 0, week: 0, total: 73 }),
+    row("executive", { day: 0, week: 0, total: 129 }),
+    row("litigation", { day: 174, week: 174, total: 2245, day_history: 174 }),
+    row("news", { day: 91, week: 301, total: 4268 }),
+    row("state", { day: 0, week: 0, total: 3882 }),
+  ];
+
+  it("says how much of the delta was already old", () => {
+    expect(render(walked)).toContain("174 of them already older than 7 days");
+  });
+
+  it("draws the clause only on the channel that walked", () => {
+    const html = render(walked);
+    expect([...html.matchAll(/already older than/g)]).toHaveLength(1);
+  });
+
+  it("stays silent when nothing was backdated", () => {
+    // Zero is information for the delta and noise here: a "0 already older" clause on
+    // every quiet cell, five cells wide, says nothing a reader can use.
+    expect(render(full)).not.toContain("already older than");
   });
 });

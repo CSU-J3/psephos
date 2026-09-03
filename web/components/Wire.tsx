@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ActivityRow } from "@/lib/activity";
+import type { Bill } from "@/lib/db";
 import { CHANNELS, WINDOW_DAYS } from "@/lib/activity";
 import { billLabel } from "@/lib/bill";
 import { formatDate } from "@/lib/format";
@@ -71,6 +72,7 @@ function Cell({
   const day = row?.day ?? 0;
   const week = row?.week ?? 0;
   const total = row?.total ?? 0;
+  const historyCount = row?.day_history ?? 0;
   const href = CHANNEL_HREF[channel];
   const label = CHANNEL_LABEL[channel] ?? channel;
   return (
@@ -114,7 +116,29 @@ function Cell({
         <span className="ml-auto text-xs text-neutral-500">{total.toLocaleString()}</span>
       </div>
 
-      <p className="mt-[9px] text-xs leading-[17px] text-neutral-400">{children}</p>
+      <p className="mt-[9px] text-xs leading-[17px] text-neutral-400">
+        {children}
+        {/* WHICH KIND OF COLLECTION PRODUCED THE DELTA, restored from the strip. The
+            wire's first draft dropped it and nothing else on the page carried it, so a
+            seed day and a busy day looked alike: on 2026-08-16 four dockets were seeded
+            and walked, and litigation read +174/24h with all 174 dated between Sep 2025
+            and Jul 2026. The delta is not wrong, it is a different question, and this
+            clause is what says which one it answered.
+
+            ONLY WHEN NON-ZERO, unlike the delta above it. Zero is information for
+            "+0 collected"; a "0 already older" clause on every quiet cell is not, and
+            the wire is five cells wide. */}
+        {historyCount > 0 && (
+          <span
+            className="text-neutral-600"
+            title={`${historyCount} of the last 24 hours' ${day} items were already more than ${WINDOW_DAYS.week} days old when collected`}
+          >
+            {" "}
+            {historyCount} of them already older than {WINDOW_DAYS.week} days when
+            collected.
+          </span>
+        )}
+      </p>
     </div>
   );
 }
@@ -126,6 +150,7 @@ export function Wire({
   bills,
   executive,
   stateBills,
+  vehicle = null,
 }: {
   rows: ActivityRow[];
   news: NewsRead;
@@ -133,6 +158,17 @@ export function Wire({
   bills: BillsRead;
   executive: ExecutiveRead;
   stateBills: StateBillsRead;
+  // THE VEHICLE, READ OFF THE FLAG RATHER THAN OFF THE ORDERING. This used to be
+  // `bills.latest?.is_vehicle === 1`, which draws the badge today only because S. 1383
+  // happens to hold the most recent action of the six watched bills. That is a property
+  // of the data, not of the page: the day any other watched bill takes an action,
+  // `latest` stops being the vehicle and the badge silently stops drawing -- on exactly
+  // the day the watchlist moved, which is when a reader most needs it.
+  //
+  // BillsRead cannot answer the question, so the caller does: it holds the full
+  // watchlist and finds the flagged row. lib/read.ts stays untouched, which was the
+  // constraint; a prop was never the thing being avoided.
+  vehicle?: Bill | null;
 }) {
   const byChannel = new Map(rows.map((r) => [r.channel, r]));
 
@@ -159,12 +195,12 @@ export function Wire({
               {formatDate(bills.latestActionAt)}).
             </>
           )}{" "}
-          {bills.latest?.is_vehicle === 1 && (
+          {vehicle && (
             <>
               <span className="rounded border border-amber-500/40 bg-amber-500/10 px-1.5 py-px text-[10px] font-semibold uppercase tracking-wide text-amber-400">
                 Vehicle
               </span>{" "}
-              <span className="whitespace-nowrap">{billLabel(bills.latest)}</span>.
+              <span className="whitespace-nowrap">{billLabel(vehicle)}</span>.
             </>
           )}
         </>
