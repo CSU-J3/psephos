@@ -2,7 +2,13 @@ name: collect
 
 on:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours (UTC)
+    # 17 past, not on the hour. GitHub queues scheduled workflows for everyone at
+    # once and the top of the hour is the worst of it -- a run can sit minutes to
+    # tens of minutes behind its slot, and 00:00Z is the peak of the peak. Nothing
+    # downstream depends on the exact minute: the collectors are idempotent on
+    # content_hash and the litigation poll works off a stored high-water mark, so
+    # the offset changes when a cycle starts and nothing about what it collects.
+    - cron: "17 */6 * * *"   # every 6 hours (UTC), off the top of the hour
   workflow_dispatch: {}
 
 permissions:
