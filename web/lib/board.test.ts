@@ -226,8 +226,53 @@ describe("quarterTicks", () => {
     expect(apr2025.label).toBe("Q2");
   });
 
-  it("gives the LAST tick the year, since there is no end label to carry it", () => {
-    expect(t.at(-1)!.label).toBe(String(new Date(t.at(-1)!.t).getUTCFullYear()));
+  // THE GUARANTEE IS ABOUT THE AXIS, NOT ABOUT THE LAST TICK, which is the distinction
+  // the unguarded overwrite lost. Stated as a property over every window below.
+  it("names the final year exactly once, on the live domain", () => {
+    const year = String(new Date(t.at(-1)!.t).getUTCFullYear());
+    expect(t.filter((x) => x.label === year)).toHaveLength(1);
+  });
+
+  // 1. JANUARY IN WINDOW. The live shape, and the one that printed the year twice:
+  //    Q1 2026 carries "2026" and the window ends in Q3, so the trailing overwrite
+  //    would put a second "2026" nine months to its right.
+  it("does not repeat a year the axis already names", () => {
+    const d: Domain = {
+      start: Date.parse("2025-04-01T00:00:00Z"),
+      end: Date.parse("2026-08-19T00:00:00Z"),
+    };
+    const ticks = quarterTicks(d);
+    expect(ticks.map((x) => x.label)).toEqual(["Q2", "Q3", "Q4", "2026", "Q2", "Q3"]);
+    expect(ticks.filter((x) => x.label === "2026")).toHaveLength(1);
+  });
+
+  // 2. NO JANUARY IN WINDOW. The guard must not cost the guarantee: with no Q1 tick
+  //    nothing else can carry the year, so the last tick still takes it. This is the
+  //    test that fails if the guard is written as an unconditional removal.
+  it("still gives the last tick the year when no Q1 tick is in the window", () => {
+    const d: Domain = {
+      start: Date.parse("2025-04-01T00:00:00Z"),
+      end: Date.parse("2025-11-01T00:00:00Z"),
+    };
+    const ticks = quarterTicks(d);
+    expect(ticks.map((x) => x.label)).toEqual(["Q2", "Q3", "2025"]);
+    expect(ticks.at(-1)!.label).toBe("2025");
+  });
+
+  // 3. WINDOW ENDING ON A JANUARY TICK. Both rules point at the same tick and the same
+  //    string, so the guard must be idempotent rather than skipping the label it was
+  //    about to write. A naive "skip if the year appears anywhere" reads the last tick's
+  //    own label and leaves it as whatever Q1 set -- which happens to be right here, and
+  //    would be wrong if the two rules ever disagreed; the slice excludes it on purpose.
+  it("is idempotent when the last tick is itself the January one", () => {
+    const d: Domain = {
+      start: Date.parse("2025-04-01T00:00:00Z"),
+      end: Date.parse("2026-02-01T00:00:00Z"),
+    };
+    const ticks = quarterTicks(d);
+    expect(ticks.map((x) => x.label)).toEqual(["Q2", "Q3", "Q4", "2026"]);
+    expect(ticks.at(-1)!.label).toBe("2026");
+    expect(ticks.filter((x) => x.label === "2026")).toHaveLength(1);
   });
 });
 

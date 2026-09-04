@@ -174,10 +174,29 @@ export function quarterTicks(domain: Domain): { t: number; label: string }[] {
     q += 1;
     if (q > 3) { q = 0; y += 1; }
   }
-  // The last tick takes the year, whatever quarter it is.
+  // The last tick takes the year, UNLESS the axis already names that year.
+  //
+  // THE GUARANTEE IS "THE AXIS NAMES ITS FINAL YEAR", NOT "THE LAST TICK CARRIES IT",
+  // and the unguarded overwrite confused the two. Two rules meet here and each is
+  // right alone: Q1 takes the year (above), and the last tick takes the year (here,
+  // because there is no end label to carry it). When the window's final quarter is not
+  // Q1 but its January IS in view, both fire on the same year and the axis prints it
+  // twice -- measured live as `2025 Q2 Q3 Q4 2026 Q2 2026`, with the reader left to
+  // work out that the two 2026s are nine months apart.
+  //
+  // So the overwrite is now conditional on the year being unnamed, which is the
+  // guarantee stated directly. It cannot weaken it: when no Q1 tick is in the window
+  // nothing else can be carrying the year, the condition holds, and the last tick takes
+  // it exactly as before.
+  //
+  // Only this rule changed. The Q1 rule is untouched, deliberately -- it is not the one
+  // that was overreaching, and a fix that moved both would make the duplicate go away
+  // without saying which rule was wrong.
   if (out.length) {
     const last = out[out.length - 1];
-    last.label = String(new Date(last.t).getUTCFullYear());
+    const year = String(new Date(last.t).getUTCFullYear());
+    const alreadyNamed = out.slice(0, -1).some((x) => x.label === year);
+    if (!alreadyNamed) last.label = year;
   }
   return out;
 }
