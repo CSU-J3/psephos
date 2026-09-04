@@ -7198,5 +7198,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-denies-right-wing-groups-bid-to-force-michigan-proof-of-citizenship-measure-on-november-ballot",
     "title": "Supreme Court denies right-wing group’s bid to force Michigan proof-of-citizenship measure on November ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95487,
+    "kind": "item",
+    "occurred_at": "2026-09-04T15:45:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/fbi-subpoenas-nevada-election-chiefs-office-for-voter-related-information",
+    "title": "FBI subpoenas Nevada election chief’s office for voter-related information"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95486,
+    "kind": "item",
+    "occurred_at": "2026-09-04T16:07:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hours-before-absentee-ballots-go-out-north-carolina-approves-new-restrictions",
+    "title": "Hours before absentee ballots go out, North Carolina approves new restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95485,
+    "kind": "item",
+    "occurred_at": "2026-09-04T16:26:18+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/09/04/proof-of-citizenship-americans-for-citizen-voting-supreme-court",
+    "title": "Proof-of-citizenship amendment won’t be on Michigan’s November ballot"
   }
 ]
