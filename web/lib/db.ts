@@ -347,7 +347,34 @@ export async function getExecutiveAll(): Promise<ExecItem[]> {
      FROM items WHERE channel = 'executive'
      ORDER BY occurred_at DESC, id DESC`,
   );
-  return rs.rows as unknown as ExecItem[];
+  // MAPPED TO PLAIN LITERALS, because this result crosses into a Client Component and
+  // `rs.rows` does not survive that boundary. libSQL hands back `Row` objects, not
+  // object literals, and React's serializer refuses them:
+  //
+  //   Only plain objects can be passed to Client Components from Server Components.
+  //   Classes or other objects with methods are not supported.
+  //
+  // ONE WARNING PER ROW, measured at 129 on a clean dev load against 129 executive
+  // items — the whole array, not a sampled part of it. `ExecutiveSection` is `"use
+  // client"` and takes `all`, so every row this returns makes the crossing.
+  //
+  // THE CAST WAS THE DEFECT, not the boundary. `as unknown as ExecItem[]` asserted a
+  // shape the value never had, and a double cast is exactly the construct that silences
+  // the compiler's objection to that; the type-checker had nothing left to say and the
+  // runtime said it instead. Mapping here rather than at the call site puts the fix
+  // where the untruth was introduced, so no future caller can inherit it.
+  //
+  // Other queries in this file carry the same cast and do NOT warn, because their
+  // results never cross into a client component. Those are out of scope here and are
+  // real: the cast is equally untrue there, it is just not yet load-bearing.
+  return rs.rows.map((r) => ({
+    id: Number(r.id),
+    title: String(r.title),
+    source_url: String(r.source_url),
+    occurred_at: r.occurred_at === null ? null : String(r.occurred_at),
+    admiralty_source: String(r.admiralty_source),
+    admiralty_info: String(r.admiralty_info),
+  }));
 }
 
 // --- the B2 news feed -------------------------------------------------------
