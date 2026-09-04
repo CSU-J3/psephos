@@ -7221,6 +7221,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 95726,
+    "kind": "item",
+    "occurred_at": "2026-09-04T16:26:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQN3M2eHNzN3dndTVMNjRja25GOEw5OS1URExDM1FzTWdMUndoLWhXM3pMNmpxTDgwNV9RMXc5VkdaQWtpM2JVVVBkRWRoWVg5UGs3RG5WUFh3OUlpbGJicnNPWS1ycEszNHNJLWx5LWFjQ2JRSDZJbzY0N0FmRm5NU0hvZkVtUHpuLUpTZjlVSXpTZWlrUmEzbXRrMjQxeWtNakh3cmRZdDRaSFU5ZVE?oc=5",
+    "title": "Top Republican voting priority fails to make Michigan ballot - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 95485,
     "kind": "item",
@@ -7228,5 +7238,55 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/michigan/2026/09/04/proof-of-citizenship-americans-for-citizen-voting-supreme-court",
     "title": "Proof-of-citizenship amendment won’t be on Michigan’s November ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95724,
+    "kind": "item",
+    "occurred_at": "2026-09-04T16:49:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-threatens-pro-voting-group-over-its-voter-registration-research",
+    "title": "DHS threatens pro-voting group over its voter registration research"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95723,
+    "kind": "item",
+    "occurred_at": "2026-09-04T17:32:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blue-states-urge-supreme-court-to-sit-out-trumps-anti-mail-voting-order-fight-for-now",
+    "title": "Blue states urge Supreme Court to sit out Trump’s anti-mail voting order fight for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95722,
+    "kind": "item",
+    "occurred_at": "2026-09-04T18:32:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-still-hasnt-denied-usps-whistleblowers-claims",
+    "title": "Trump administration still hasn’t denied USPS whistleblower’s claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95725,
+    "kind": "item",
+    "occurred_at": "2026-09-04T18:34:31+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/enveloping-confusion",
+    "title": "Enveloping Confusion"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95721,
+    "kind": "item",
+    "occurred_at": "2026-09-04T20:32:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-missouri-and-texas-republicans-make-opposite-arguments-on-whether-redistricting-maps-can-change-after-a-primary",
+    "title": "In Missouri and Texas, Republicans make opposite arguments on whether redistricting maps can change after a primary"
   }
 ]

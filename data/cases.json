@@ -21984,6 +21984,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 95542,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 13203,
         "kind": "item",
         "occurred_at": "2026-06-09T00:00:00",
