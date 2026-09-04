@@ -282,3 +282,159 @@ textarea {
   .board > .board-scrub { grid-area: scrub; }
   .board > .board-detail { grid-area: detail; }
 }
+
+/* --- THE CHART'S LABEL LAYER -------------------------------------------------
+   Every glyph on the records chart is HTML positioned over the SVG, never SVG
+   text. An SVG font-size is in USER UNITS, so a 13u label rendered at 8.44px
+   where the chart shares the board row (584px) and 12.37px where it is stacked
+   (857px): one declaration, two sizes, both decided by layout rather than by
+   typography. In CSS pixels the type is width-independent by construction.
+
+   `.board-plot` is the positioning context and it wraps THE SVG ALONE. The
+   caption strip is a sibling, outside it, because the label percentages are of
+   the plot box -- fold the captions in and every `top` silently rescales.
+
+   Colours are the greys the SVG text carried, moved rather than rechosen, so
+   this is a change of coordinate system and not a change of palette. */
+.board-plot {
+  position: relative;
+}
+.board-plot > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.board-labels {
+  position: absolute;
+  inset: 0;
+  /* The layer must not eat the map's or the scrubber's pointer; only the
+     markers, which carry a title, take it back. */
+  pointer-events: none;
+}
+.board-lbl {
+  position: absolute;
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1;
+  color: #737373;
+}
+/* Right-aligned to the rail, mirroring the textAnchor="end" this replaced. */
+.board-lbl.rail {
+  transform: translate(-100%, -50%);
+}
+.board-lbl.axis {
+  transform: translate(-50%, -50%);
+  color: #a3a3a3;
+}
+.board-lbl.axis.minor {
+  font-size: 11px;
+  color: #525252;
+}
+/* ABOVE the line's end rather than centred on it. Centred, the chip occluded the last
+   milestone marker at 1400px and not at 2560px -- a fixed-pixel object over a scaling
+   plot covers more of the coordinate space the narrower the chart gets, and the mark it
+   covers is the one nearest the end. The offsets are in percentages OF THE CHIP, so the
+   clearance does not move with the container either. */
+.board-chip {
+  position: absolute;
+  transform: translate(-100%, -160%);
+  white-space: nowrap;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  color: #d4d4d4;
+  background: #1c1c1f;
+  border: 1px solid #333338;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+/* First frames only: no room to the left of the leading edge, so hang right. */
+.board-chip.leads {
+  transform: translate(0, -160%);
+}
+/* Near the 51-ceiling there is no room above the line, so drop below it instead.
+   Declared after `.leads` deliberately: same specificity, and the vertical decision
+   is the one that must win when both apply -- the combined rule below then restores
+   the horizontal one. */
+.board-chip.below {
+  transform: translate(-100%, 60%);
+}
+.board-chip.leads.below {
+  transform: translate(0, 60%);
+}
+.board-ms {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1c1c1f;
+  border: 1px solid #333338;
+  color: #c9c9ce;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1;
+  pointer-events: auto;
+  cursor: default;
+}
+.board-ms:hover {
+  border-color: #737373;
+  color: #ececef;
+}
+
+/* The captions. Unreached entries stay in the flow and go invisible: the strip's
+   height is then identical on every frame -- which assert-layout asserts across
+   all 23 -- while the replay still never names a date it has not reached. */
+.board-caps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 10px 2px 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.45;
+  color: #737373;
+}
+.board-caps li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.board-caps li[data-reached="false"] {
+  visibility: hidden;
+}
+.board-caps .n {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1c1c1f;
+  border: 1px solid #333338;
+  color: #c9c9ce;
+  font-size: 10px;
+}
+
+/* THE DENSITY RULE, and it is measured on the CHART rather than on the viewport
+   for the same reason the board's own reflow is: in the 1900+ arrangement the
+   board column is ~880px on a 2560px viewport, so a viewport query would thin
+   the labels of a chart that has plenty of room. Below 560px of chart the
+   quarter labels collide, so the minors drop and the years carry the axis. */
+.board-chart {
+  container-type: inline-size;
+  container-name: boardchart;
+}
+@container boardchart (max-width: 560px) {
+  .board-lbl.axis.minor {
+    display: none;
+  }
+}

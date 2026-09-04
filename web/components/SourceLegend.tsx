@@ -202,6 +202,34 @@ export function BoardKey() {
         >
           election executive order
         </Entry>
+        {/*
+          THE ONE ENTRY WHOSE MARK IS NOT SVG. Milestone markers are HTML in the
+          chart's label layer, because the whole point of that layer is that glyphs
+          leave the coordinate system -- a numeral in user units is the thing being
+          fixed. The join still holds it to account in both directions; what changed
+          is where assert-encodings has to look for the emitted side, which is why
+          that script grew an HTML sweep in the same unit.
+        */}
+        <Entry
+          encoding="milestone-marker"
+          swatch={
+            <svg aria-hidden width="14" height="14" className="shrink-0">
+              <circle cx="7" cy="7" r="6.4" fill="#1c1c1f" stroke="#333338" strokeWidth={1} />
+              <text
+                x="7"
+                y="10.3"
+                textAnchor="middle"
+                fontSize={8.5}
+                fill="#c9c9ce"
+                style={{ fontFamily: "var(--mono)" }}
+              >
+                1
+              </text>
+            </svg>
+          }
+        >
+          campaign milestone, captioned below the chart
+        </Entry>
       </div>
 
       {/*
