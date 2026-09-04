@@ -7138,5 +7138,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-appears-deeply-skeptical-of-case-for-trumps-mail-voting-restrictions",
     "title": "Judge appears deeply skeptical of case for Trump’s mail voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95050,
+    "kind": "item",
+    "occurred_at": "2026-09-03T20:15:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-approves-north-carolinas-mail-ballots-on-eve-of-sending-them-to-voters",
+    "title": "USPS approves North Carolina’s mail ballot design on eve of sending them to voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95049,
+    "kind": "item",
+    "occurred_at": "2026-09-03T20:59:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-asks-supreme-court-to-lift-pause-on-mail-voting-restrictions-as-judge-weighs-stronger-block",
+    "title": "DOJ asks Supreme Court to lift pause on mail voting restrictions as judge weighs stronger block"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95048,
+    "kind": "item",
+    "occurred_at": "2026-09-03T21:49:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-supreme-court-greenlights-redistricting-referendum-for-november-ballot",
+    "title": "Missouri Supreme Court blocks GOP gerrymander, gives voters final say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95045,
+    "kind": "item",
+    "occurred_at": "2026-09-03T22:30:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/09/03/have-you-moved-letter-secretary-of-state-maricopa-navajo-mohave-graham-greenlee",
+    "title": "Thousands of Arizona voters received letters asking if they’d moved. Here’s why."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95047,
+    "kind": "item",
+    "occurred_at": "2026-09-03T22:54:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-supreme-court-upholds-democrats-redistricting-plan",
+    "title": "Maryland Supreme Court upholds Democrats’ redistricting plan"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95046,
+    "kind": "item",
+    "occurred_at": "2026-09-03T23:33:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-denies-right-wing-groups-bid-to-force-michigan-proof-of-citizenship-measure-on-november-ballot",
+    "title": "Supreme Court denies right-wing group’s bid to force Michigan proof-of-citizenship measure on November ballot"
   }
 ]
