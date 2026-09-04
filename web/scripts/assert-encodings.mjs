@@ -23,6 +23,24 @@
  *   emitted but not named   an encoding the reader has no way to decode
  *   named but not emitted   a key entry claiming paint the page does not lay down
  *
+ * AND THAT JOIN IS A SELF-JOIN, WHICH IS THE CONTRACT THIS FILE NOW STATES RATHER THAN
+ * IMPLIES. Both of its sides are read out of the same rendered document, so what the two
+ * directions above establish is that the page AGREES WITH ITSELF. That is worth
+ * establishing and it is not the same as the page being right. A commit that drops a
+ * mark from the paint and its row from the key moves both sides at once: every check
+ * here stays green, at a smaller number, with nothing in the file able to notice the
+ * number moved. **A set that can shrink silently is the one failure this script exists
+ * to prevent, and until the expected set arrived it was the one shape it could not see.**
+ *
+ * SO THERE IS A THIRD SIDE: `encodings.expected.mjs`, written by hand from the spec and
+ * derived from no render. The reconciliation at the foot of this file compares it against
+ * both of the other two in four named directions. It is deliberately NOT generated —
+ * a fixture regenerated from the DOM is the self-join again with an extra file in it.
+ *
+ * A RECONCILIATION FAILURE IS A QUESTION. It says a set moved; it does not say whether
+ * moving was correct. A human rules, and a "deliberate" ruling is spent by editing the
+ * fixture in the same commit as the paint.
+ *
  * AND IT ENUMERATES FROM THE DOM, NEVER FROM A COMPONENT'S HEADER COMMENT. The
  * comment at RecordsMap.tsx names five encodings; it is a map-only list, it says
  * nothing about the chart directly above the map, and the chart emits six more. A
@@ -56,12 +74,24 @@
  */
 
 import { createRequire } from "node:module";
+import { pathToFileURL } from "node:url";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright-core");
 
 const ORIGIN = new URL(process.argv[2] ?? "http://localhost:3001").origin;
 const BOARD_URL = ORIGIN + "/";
+
+// THE EXPECTED SET, and the override exists for ONE purpose: red-proving this check
+// against mutated copies without touching the repo's fixture. A red-proof that edits the
+// file under test leaves the question of whether it was restored, and this project has a
+// falsified entry about instruments whose subject moved underneath them. Default is the
+// tracked file; the scratch copies live outside the repo and never enter a commit.
+const EXPECTED_PATH = process.env.ENCODINGS_EXPECTED ?? "./encodings.expected.mjs";
+const expectedMod = await import(
+  EXPECTED_PATH.startsWith(".") ? EXPECTED_PATH : pathToFileURL(EXPECTED_PATH).href
+);
+const EXPECTED = expectedMod.EXPECTED;
 const EXE =
   process.env.CHROMIUM_PATH ??
   "C:/Users/meh/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe";
@@ -781,6 +811,57 @@ check("state-bills: data-key blocks", sbKeyCount, 1);
 // and the comment above owes a rewrite -- which is the alarm, not a nuisance.
 check("state-bills: unstaged sampled (unreachable by construction)", sbUnstagedSampled, 0);
 check("state-bills: vehicle badges sampled (unreachable, and pinned by no test)", sbVehicleSampled, 0);
+
+// --- THE THIRD SIDE: reconciliation against the expected set ----------------------
+//
+// EVERYTHING ABOVE IS A SELF-JOIN. `emitted` and `named` are both read out of the same
+// rendered document, so together they prove the page agrees with itself — worth proving,
+// and not the same as proving the page is right. Drop a mark from the paint and its row
+// from the key in one commit and both sides move together: every check above stays green
+// at a smaller number, with nothing to compare that number against. The set can shrink
+// silently, which is the one failure the join was built to prevent and the one shape it
+// cannot see.
+//
+// `encodings.expected.mjs` is written by hand from the spec and derived from no render,
+// so it is the side the page cannot vote on. Reconciliation is FOUR DIRECTIONS per route
+// rather than a set equality, because the four mean four different things and a reader
+// needs to know which one fired:
+//
+//   emitted but not expected   the page paints something the fixture does not list —
+//                              a new encoding shipped without its fixture row
+//   expected but not emitted   the fixture lists paint the page does not lay down —
+//                              a mark removed, or a fixture row that was never real
+//   named but not expected     the key names something the fixture does not list
+//   expected but not named     the fixture lists something the key does not name
+//
+// A FAILURE HERE IS A QUESTION, NOT A VERDICT, and the script does not pretend to answer
+// it. A divergence is either a defect or a deliberate set change; only a human can rule.
+// If the ruling is "deliberate", the fixture is edited IN THE SAME COMMIT as the paint —
+// the precedent the milestone-marker row set, where paint, key row and expected row
+// landed together and the join moved 9→10 with nothing red in between.
+const reconcile = (label, expectedRows, emittedSet, namedList) => {
+  const exp = expectedRows.map((r) => r.encoding).sort();
+  const expSet = new Set(exp);
+  const em = [...emittedSet].sort();
+  const nm = [...new Set(namedList)].sort();
+  console.log(`\n${label}: expected ${exp.length}, emitted ${em.length}, named ${nm.length}`);
+  check(`${label}: emitted but not expected`, em.filter((e) => !expSet.has(e)), []);
+  check(`${label}: expected but not emitted`, exp.filter((e) => !emittedSet.has(e)), []);
+  check(`${label}: named but not expected`, nm.filter((e) => !expSet.has(e)), []);
+  check(`${label}: expected but not named`, exp.filter((e) => !nm.includes(e)), []);
+};
+
+console.log("\nreconciliation against the expected set (the side the page cannot vote on)");
+reconcile("board", EXPECTED.board, emitted, named);
+// `unstaged` is a claim rather than an encoding — the declared-unreachable branch, which
+// the fixture states is deliberately absent. Excluded here on the same grounds the
+// emitted-but-not-named check above excludes it, and by name rather than by fallthrough.
+reconcile(
+  "state-bills",
+  EXPECTED.stateBills,
+  new Set([...sbClaimed].filter((e) => e !== "unstaged")),
+  sbNamed,
+);
 
 console.log(failures === 0 ? "\nOK" : "\n" + failures + " FAILED");
 process.exit(failures === 0 ? 0 : 1);
