@@ -28,6 +28,13 @@
  * nothing about the chart directly above the map, and the chart emits six more. A
  * comment is a claim by a file's author about that file. Only the DOM is evidence.
  *
+ * THE EMITTED SIDE HAS THREE ROOTS, NOT TWO. The map SVG, the chart SVG, and the
+ * chart's HTML label layer -- because the chart's glyphs left the coordinate system
+ * and its milestone markers left with them. The two SVG roots are classified by
+ * COMPUTED PAINT; the HTML root is the one place an encoding is read by name, and it
+ * is fenced accordingly: a named element must render a real box, unsuppressed, before
+ * the join counts it. See the sweep for why that fence is the whole of its honesty.
+ *
  * IT SWEEPS FRAMES, and that is load-bearing rather than merely thorough. The chart's
  * LIT filing dot (r=3.4, opacity 1) emits ZERO instances at the landing frame --
  * every dot is dim at "to date", because the newest filing is months old. It appears
@@ -177,6 +184,35 @@ const emittedAt = () =>
         classify(el, pair[1]);
       }
     }
+
+    // --- THE HTML LABEL LAYER, swept as a third root ------------------------------
+    //
+    // NOT EVERY MARK THIS PAGE PAINTS IS SVG ANY MORE. The chart's lettering moved out
+    // of the coordinate system, and one of its marks moved with it: milestone markers
+    // are HTML positioned over the plot. The two loops above walk `svg` roots only, so
+    // a marker is invisible to them -- and the key entry naming it would then fail the
+    // "named but not emitted" arm, which would be the old rule applied correctly to
+    // reach a false conclusion about the page.
+    //
+    // A MARK COUNTS AS EMITTED ONLY IF IT IS ACTUALLY RENDERED. Reading `data-encoding`
+    // off the DOM and believing it would turn this arm from an observation into a
+    // declaration -- the page asserting its own encodings -- and a declaration is
+    // exactly what "present, valid and inert" defeats. That is the defect assert-layout
+    // was written for, and this file's own header describes the same shape from the
+    // other direction. So a candidate must have a real box and no visibility or display
+    // suppression before the join believes it. An element that is in the markup but
+    // paints nothing is NOT emitted, and the join is entitled to say so.
+    const labels = document.querySelector(".board-labels");
+    if (labels) {
+      for (const el of labels.querySelectorAll("[data-encoding]")) {
+        const box = el.getBoundingClientRect();
+        const cs = getComputedStyle(el);
+        if (box.width < 1 || box.height < 1) continue;
+        if (cs.visibility === "hidden" || cs.display === "none" || cs.opacity === "0") continue;
+        found.add(el.getAttribute("data-encoding"));
+      }
+    }
+
     return { emitted: [...found].sort(), unknown };
   });
 

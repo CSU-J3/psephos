@@ -181,6 +181,44 @@ console.log("\nboard height across frames");
 console.log(`  frames measured: ${frames.n}   values: ${frames.distinct.join(", ")}`);
 check("one distinct board height", frames.distinct.length, 1);
 
+/* --- the chart's lettering is width-independent --------------------------- */
+//
+// THE REGRESSION GUARD AGAINST LETTERING RE-ENTERING THE COORDINATE SYSTEM, and it has
+// to be measured in a browser because the defect was invisible everywhere else. The
+// chart's labels used to be SVG <text> at `font-size="13"` -- thirteen USER UNITS, so
+// the rendered size was 13 * (chart width / 900). Measured on the production build
+// before this changed: 9.16px at a 740px viewport and 11.22px at 883px, and worse where
+// the board actually reflows -- 8.44px at 1400px, where the chart shares the board row
+// at 584px, against 12.37px at 2560px, where it is stacked at 857px. One declaration,
+// four sizes, none of them the specified one.
+//
+// TWO WIDTHS, NOT ONE, AND THEY MUST AGREE. A single width could be satisfied by any
+// declaration that happens to land on 12 there; the claim is that the size does not
+// move with the container, and only a pair can say that. 740 and 883 are both wide
+// enough that the container rule leaves the minors alone, so the same two nodes exist
+// in both frames.
+//
+// ASSERTED ON A MAJOR LABEL, whose presence is not conditional. The minors are reported
+// beside it rather than asserted: they are dropped below 560px of chart by design, so a
+// missing one is a correct render at some widths and this row is not where that belongs.
+console.log("\nchart lettering (CSS pixels, not user units)");
+for (const w of [740, 883]) {
+  await page.setViewportSize({ width: w, height: 1400 });
+  await page.waitForTimeout(600);
+  const type = await page.evaluate(() => {
+    const major = document.querySelector(".board-lbl.axis:not(.minor)");
+    const minor = document.querySelector(".board-lbl.axis.minor");
+    const chart = document.querySelector(".board-plot");
+    return {
+      major: major ? getComputedStyle(major).fontSize : "(absent)",
+      minor: minor ? getComputedStyle(minor).fontSize : "(absent)",
+      chartW: chart ? +chart.getBoundingClientRect().width.toFixed(2) : -1,
+    };
+  });
+  console.log(`    chart ${type.chartW}px   minor ${type.minor}`);
+  check(`${w}px chart label font-size`, type.major, "12px");
+}
+
 /* --- exactly two type stacks (production build only) --------------------- */
 const fonts = await page.evaluate(() => {
   const s = new Set();
