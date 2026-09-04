@@ -1,11 +1,13 @@
 import { describe, expect, it } from "vitest";
 import type { Bill, CampaignRow, ExecItem, NewsItem, StateBill } from "@/lib/db";
+import type { ActivityRow } from "@/lib/activity";
 import { buildCells, summarize } from "@/lib/campaign";
 import {
   READ_WINDOW_DAYS,
   gradeRank,
   readBills,
   readCampaign,
+  readCollectedAt,
   readExecutive,
   readLitigation,
   readNews,
@@ -294,5 +296,88 @@ describe("readStateBills", () => {
 
   it("survives an empty dimension", () => {
     expect(readStateBills([], NOW)).toMatchObject({ bills: 0, states: 0, latestActionAt: null });
+  });
+});
+
+// A fixed clock stands in for render time throughout. Every assertion below is that
+// the answer came off the rows and NOT off this value.
+const RENDER_TIME = "2026-08-16T18:16:00.000Z";
+
+const activity = (
+  channel: string,
+  last_fetch: string | null,
+): ActivityRow => ({ channel, total: 0, day: 0, week: 0, day_history: 0, last_fetch });
+
+describe("collection time", () => {
+  it("reads the newest fetch across channels, not the render clock", () => {
+    // The defect, stated as a test: the header used to render new Date(). These rows
+    // were collected six hours before this page was drawn, and six hours is what the
+    // label must say.
+    const collected = readCollectedAt([
+      activity("legislation", "2026-08-16T12:00:00.000+00:00"),
+      activity("news", "2026-08-16T12:00:04.881+00:00"),
+      activity("state", "2026-08-16T11:59:58.120+00:00"),
+    ]);
+    expect(collected).toBe("2026-08-16T12:00:04.881+00:00");
+    expect(collected).not.toBe(RENDER_TIME);
+  });
+
+  it("reports a stale record as stale rather than as fresh", () => {
+    // THE CASE THE OLD LABEL GOT EXACTLY BACKWARDS. A cron that last ran nine days ago
+    // is the single most important thing this header can say, and `new Date()` said
+    // the opposite with total confidence -- the longer the outage, the more current
+    // the page looked. Note the rows are far outside every window the read layer uses;
+    // that they still produce an answer is the query's doing, asserted in db.test.ts.
+    const collected = readCollectedAt([
+      activity("news", "2026-08-07T06:00:00.000+00:00"),
+      activity("litigation", "2026-08-07T06:02:31.000+00:00"),
+    ]);
+    expect(collected).toBe("2026-08-07T06:02:31.000+00:00");
+    expect(Date.parse(collected!)).toBeLessThan(Date.parse(RENDER_TIME));
+  });
+
+  it("skips channels that have never collected", () => {
+    // A null-filled channel must neither win the max nor drag it down. Both failure
+    // directions are checked, because "skips nulls" implemented as a sort would pass
+    // one and fail the other depending on the comparator.
+    expect(
+      readCollectedAt([
+        activity("legislation", null),
+        activity("news", "2026-08-16T12:00:04.881+00:00"),
+        activity("executive", null),
+      ]),
+    ).toBe("2026-08-16T12:00:04.881+00:00");
+  });
+
+  it("returns null when nothing has ever been collected", () => {
+    // The signal for "no collection recorded". It must be reachable -- an empty
+    // database and an all-null strip are the same statement -- and it must be null
+    // rather than a date, so the page can render the sentence instead of a time.
+    expect(readCollectedAt([])).toBeNull();
+    expect(readCollectedAt([activity("news", null), activity("state", null)])).toBeNull();
+  });
+
+  it("ignores an unparseable timestamp rather than returning it", () => {
+    // A malformed value must not become the label. Date.parse yields NaN, the row is
+    // skipped, and the good row answers -- the same rule gradeRank takes for a bad
+    // numeral: a data defect must not blank or corrupt the homepage.
+    expect(
+      readCollectedAt([
+        activity("news", "not a date"),
+        activity("state", "2026-08-16T12:00:00.000+00:00"),
+      ]),
+    ).toBe("2026-08-16T12:00:00.000+00:00");
+    expect(readCollectedAt([activity("news", "not a date")])).toBeNull();
+  });
+
+  it("does not care what order the rows arrive in", () => {
+    const rows = [
+      activity("legislation", "2026-08-14T00:00:00.000+00:00"),
+      activity("news", "2026-08-16T12:00:04.881+00:00"),
+      activity("state", "2026-08-15T06:00:00.000+00:00"),
+    ];
+    const forward = readCollectedAt(rows);
+    expect(readCollectedAt([...rows].reverse())).toBe(forward);
+    expect(forward).toBe("2026-08-16T12:00:04.881+00:00");
   });
 });

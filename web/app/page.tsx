@@ -14,6 +14,7 @@ import type { Case, CaseRef, NewsItem } from "@/lib/db";
 import {
   readBills,
   readCampaign,
+  readCollectedAt,
   readExecutive,
   readLitigation,
   readNews,
@@ -121,6 +122,12 @@ export default async function Home() {
   ) as NewsItem[];
   const collectedLast24h =
     activity.find((r) => r.channel === "news")?.day ?? newsToday.length;
+
+  // The header's collection time, read off the record. `now` still drives every
+  // window below -- those ARE questions about the present -- but the label is not a
+  // window, it is a claim about when collection last happened, and only the rows can
+  // answer that.
+  const collectedAt = readCollectedAt(activity);
 
   const timeline = buildTimeline(entries, now);
   const news = readNews(newsToday, collectedLast24h, now);
@@ -235,7 +242,15 @@ export default async function Home() {
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h1 className="text-2xl font-semibold tracking-tight">psephos</h1>
           <p className="text-xs text-neutral-500">
-            collected <RotatingTime iso={now.toISOString()} />
+            {collectedAt ? (
+              <>
+                collected <RotatingTime iso={collectedAt} />
+              </>
+            ) : (
+              // NOT a fallback to the clock. An empty record is the state where a
+              // rendered time would be most misleading and least questioned.
+              "no collection recorded"
+            )}
           </p>
         </div>
         <p className="mt-1 text-sm text-neutral-400">

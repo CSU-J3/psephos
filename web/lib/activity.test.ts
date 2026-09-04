@@ -12,6 +12,7 @@ const row = (over: Partial<ActivityRow> & Pick<ActivityRow, "channel">): Activit
   day: 0,
   week: 0,
   day_history: 0,
+  last_fetch: null,
   ...over,
 });
 
@@ -116,6 +117,24 @@ describe("zero-filling the strip", () => {
       row({ channel: "news", day: 18, day_history: 11 }),
     ]);
     expect(cells.every((c) => c.day_history <= c.day)).toBe(true);
+  });
+
+  it("null-fills the collection time rather than inventing one", () => {
+    // The four counts zero-fill because zero is the true count for a channel with no
+    // rows. There is NO true timestamp for such a channel, so it gets null -- and the
+    // distinction has to hold at the type as well as the value, because a stand-in
+    // date would render as a real reading with nothing on the page to mark it as
+    // manufactured. That is the defect this whole unit removes, reintroduced one
+    // layer down.
+    const cells = toCells([row({ channel: "news", total: 3416, last_fetch: "2026-09-03T20:26:11.004+00:00" })]);
+    expect(cells.find((c) => c.channel === "news")?.last_fetch)
+      .toBe("2026-09-03T20:26:11.004+00:00");
+    expect(cells.filter((c) => c.channel !== "news").every((c) => c.last_fetch === null))
+      .toBe(true);
+    // Not undefined, not "", not an epoch date. Explicitly null.
+    for (const c of cells.filter((c) => c.channel !== "news")) {
+      expect(c.last_fetch).toBeNull();
+    }
   });
 
   it("does not mutate the rows it was handed", () => {

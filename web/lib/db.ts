@@ -153,6 +153,22 @@ const HISTORY_SUM = `SUM(CASE WHEN fetched_at >= ?
              AND julianday(substr(fetched_at,1,10)) - julianday(substr(occurred_at,1,10)) > ?
             THEN 1 ELSE 0 END)`;
 
+// `MAX(fetched_at)` RIDES THIS SCAN AND IS DELIBERATELY UNGUARDED -- no CASE WHEN,
+// unlike the three aggregates above it. That asymmetry is the whole point and it is
+// asserted in lib/db.test.ts rather than left to a reader:
+//
+//   - `day`, `week` and `day_history` are windowed BECAUSE they answer "how much
+//     arrived recently", and a window is what makes the answer mean anything.
+//   - `last_fetch` answers "when did the record last move", which a window would
+//     destroy. Guard it with `fetched_at >= day` and a system that has not collected
+//     in 25 hours reports NULL -- reading as "never collected" at exactly the moment
+//     the true answer, a timestamp 25 hours old, is the one worth seeing.
+//
+// The header label is the reason: it exists to expose a stalled cron, so the figure
+// behind it must survive the stall it is meant to show.
+//
+// FREE, on the same argument HISTORY_SUM makes above: folded into the same GROUP BY
+// over the same index scan, no join and no second query.
 export const getChannelActivity = unstable_cache(
   async (): Promise<ActivityRow[]> => {
     const { day, week } = windowStarts(new Date());
@@ -161,13 +177,16 @@ export const getChannelActivity = unstable_cache(
                    COUNT(*) AS total,
                    SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS day,
                    SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS week,
-                   ${HISTORY_SUM} AS day_history
+                   ${HISTORY_SUM} AS day_history,
+                   MAX(fetched_at) AS last_fetch
             FROM items
             GROUP BY channel
             ORDER BY channel`,
       args: [day, week, day, HISTORY_AFTER_DAYS],
     });
-    // COUNT/SUM can arrive as bigint; coerce for the view.
+    // COUNT/SUM can arrive as bigint; coerce for the view. `last_fetch` is a TEXT
+    // aggregate and stays a string -- or stays NULL, which is a real answer (a channel
+    // with no rows) and must not become "null" or an epoch date on the way through.
     return toCells(
       rs.rows.map((r) => ({
         channel: String(r.channel),
@@ -175,16 +194,21 @@ export const getChannelActivity = unstable_cache(
         day: Number(r.day),
         week: Number(r.week),
         day_history: Number(r.day_history),
+        last_fetch: r.last_fetch == null ? null : String(r.last_fetch),
       })),
     );
   },
-  // v2 for the same reason getFeed's key is bumped: the cached row shape gained a
-  // column, and unstable_cache entries outlive a deploy. A stale v1 entry degrades
-  // gently here (day_history undefined, so the line simply does not render) rather
-  // than rendering wrong -- but for up to an hour the feed would be showing history
-  // cards while the strip above it showed no history at all, which is exactly the
-  // disagreement these two are cached at the same TTL to prevent.
-  ["channel-activity", "v2"],
+  // v3, bumped on the same rule that produced v2: the cached row shape gained a
+  // column, and unstable_cache entries outlive a deploy. v2 said: a stale entry
+  // degrades gently (day_history undefined, so the line simply does not render).
+  //
+  // THAT ARGUMENT DOES NOT CARRY TO `last_fetch`, which is why the bump is not
+  // optional here. A stale v2 entry has no `last_fetch` at all, so every row reads
+  // undefined, `readCollectedAt` finds nothing, and the header says "no collection
+  // recorded" on a system that is collecting perfectly well -- an alarm firing on a
+  // cache miss rather than on the record. Without the bump that state persists for up
+  // to the TTL after a deploy.
+  ["channel-activity", "v3"],
   { revalidate: 3600 },
 );
 

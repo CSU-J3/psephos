@@ -36,7 +36,7 @@ import type {
 // jsdom, no testing library.
 
 function row(channel: string, over: Partial<ActivityRow> = {}): ActivityRow {
-  return { channel, total: 0, day: 0, week: 0, day_history: 0, ...over };
+  return { channel, total: 0, day: 0, week: 0, day_history: 0, last_fetch: null, ...over };
 }
 
 const NEWS: NewsRead = {

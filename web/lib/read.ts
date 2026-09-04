@@ -20,6 +20,7 @@
 // is zero: the empty sentence is built from it.
 
 import type { Bill, CampaignRow, ExecItem, NewsItem, StateBill } from "@/lib/db";
+import type { ActivityRow } from "@/lib/activity";
 import { buildCells, summarize, type CampaignSummary } from "@/lib/campaign";
 import { relevanceScore } from "@/lib/relevance";
 
@@ -66,6 +67,30 @@ export function gradeRank(source: string | null, info: string | null): number {
   const letter = (source ?? "Z").trim().toUpperCase().charCodeAt(0) || 90;
   const numeral = Number.parseInt((info ?? "").trim(), 10);
   return letter * 10 + (Number.isFinite(numeral) ? numeral : 9);
+}
+
+// --- collection time -----------------------------------------------------------------
+
+/**
+ * When the record last moved: the maximum `last_fetch` across every channel, or null
+ * when nothing has ever been collected.
+ *
+ * THE HEADER USED TO RENDER `new Date()`, which made "collected <time>" a statement
+ * about when the page was loaded. It agreed with the record only by coincidence, and
+ * it agreed most convincingly when the cron had stopped -- the one case where a
+ * reader needs it to disagree. This reads the rows instead.
+ *
+ * Nulls are skipped rather than treated as zero. A channel with no rows has no
+ * collection time, and a channel that has never collected must not drag the maximum
+ * down or stand in for one that has.
+ *
+ * Null out means NOTHING has been collected on any channel. The caller must render
+ * that as its own statement -- "no collection recorded" -- and must not fall back to
+ * the clock, which would restore the defect precisely where the record is most
+ * suspect. See app/page.tsx.
+ */
+export function readCollectedAt(rows: readonly ActivityRow[]): string | null {
+  return newest(rows, (r) => r.last_fetch)?.last_fetch ?? null;
 }
 
 // --- news --------------------------------------------------------------------------

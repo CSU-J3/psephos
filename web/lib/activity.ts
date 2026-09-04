@@ -35,6 +35,13 @@ export type ActivityRow = {
   // alike. Kept computed because the query is free and the alternative -- deleting it
   // and rediscovering the need -- is worse. Delete it only with the query.
   day_history: number;
+  // The most recent `fetched_at` on this channel, or NULL when the channel has no
+  // rows at all -- which is why it is nullable rather than zero-filled like the four
+  // counts above. A channel that has never been collected has no collection time, and
+  // any stand-in date here would be the exact invention the header label exists to
+  // remove: it would render as a real reading and there would be nothing on the page
+  // to say it was manufactured. See `readCollectedAt`, which skips nulls.
+  last_fetch: string | null;
 };
 
 export const WINDOW_DAYS = { day: 1, week: 7 } as const;
@@ -62,7 +69,10 @@ export function toCells(rows: ActivityRow[]): ActivityRow[] {
   const byChannel = new Map(rows.map((r) => [r.channel, r]));
   const canonical: ActivityRow[] = CHANNELS.map(
     (channel) =>
-      byChannel.get(channel) ?? { channel, total: 0, day: 0, week: 0, day_history: 0 },
+      byChannel.get(channel) ??
+      // `last_fetch: null`, NOT a date. See the field's comment: zero is the honest
+      // fill for a count and there is no honest fill for a timestamp.
+      { channel, total: 0, day: 0, week: 0, day_history: 0, last_fetch: null },
   );
   const extra = rows.filter((r) => !(CHANNELS as readonly string[]).includes(r.channel));
   return [...canonical, ...extra];
