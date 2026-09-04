@@ -8,7 +8,7 @@ Last updated: 2026-09-03.
 
 ## Owed right now
 
-~~**Open as of 2026-09-03: the homepage rebuild to its v42 mock.** Spec is `docs/design/psephos-home-mock-v42.html` (`c4fc0a3`), approved in browser and tracked the same day. One-line scope: the wire replaces TheRead + ChannelStrip, the feed becomes a two-day ledger, recently-moved and the bill/executive folds move to a rail, the board reflows chart beside map by container query at board-width ≥ 1080px, type scale one notch up, the replay button rests as Play. **Unblocked by: a written plan, then approval.** Until implemented, this line is the durable record that the mock is a spec rather than a sketch — the provenance rule this page states at the executive-filter entry.~~ **SHIPPED 2026-09-03**, eight commits, hashes pinned post-push. The opening commit — the one that put this line here — rides with them, and is unpushed too. Section below.
+~~**Open as of 2026-09-03: the homepage rebuild to its v42 mock.** Spec is `docs/design/psephos-home-mock-v42.html` (`c4fc0a3`), approved in browser and tracked the same day. One-line scope: the wire replaces TheRead + ChannelStrip, the feed becomes a two-day ledger, recently-moved and the bill/executive folds move to a rail, the board reflows chart beside map by container query at board-width ≥ 1080px, type scale one notch up, the replay button rests as Play. **Unblocked by: a written plan, then approval.** Until implemented, this line is the durable record that the mock is a spec rather than a sketch — the provenance rule this page states at the executive-filter entry.~~ **SHIPPED AND PUSHED 2026-09-03**, eight commits, `fe23ec0` … `c98db9e`, contiguous above the cron's `777c904`. The opening commit — the one that put this line here — rode with them as `fa41f2c`. Section below.
 
 **Nothing open again as of 2026-09-02**, and the item that briefly sat here closed the same day it was written down. ~~**Owed as of the later 2026-09-02 close: the push of `c8d65aa`**~~ — **PUSHED**, no rebase needed, the cron had not run. ~~**Owed now: the push of `e21507a`**, the `/news` ledger. Held by the workflow gate, not by any doubt about the work; nothing in the repo is blocked on it.~~ **PUSHED**, confirmed 2026-09-03 by ancestry rather than by memory: `git merge-base --is-ancestor e21507a origin/main` exits 0, and the 09-03 cron commits (`5fc2809`, `bcd064b`) sit above it. ~~**One thing is owed as of the 2026-09-02 close: the push.**~~ **PUSHED.** *(A later unit was unpushed; it is at the top of this list and has since landed.)* **And the three shas that sentence cited are dead.** A cron data commit (`5ad2cc5`) landed between the commits and the push, so the unit rebased onto it and every hash was rewritten to `07271c5`, `215b725`, `75f33da`, sitting contiguously above the cron. **Confirmed by patch-id rather than by the rebase reporting success** — all three `git patch-id --stable` values are identical across the rewrite, which is the only check that says the content survived rather than merely that the command exited 0. Nothing else is owed. The four all closed on 2026-09-01 — three decided, one read — and they stay in place for their reasoning, which is this page's convention. **This line said "nothing here is open" until 2026-09-02**, and the sentence right after it promised that the next open item would land here rather than in a section further down; that promise is what this edit is keeping.
 
@@ -75,22 +75,26 @@ Everything else: the executive type filter closed 2026-08-20 (section below) —
 
 ### The homepage rebuild to its v42 mock — SHIPPED 2026-09-03, and two of its own instruments were measuring something else
 
-**Eight commits, unpushed at the time of writing.** The mock is tracked at `c4fc0a3`, approved in browser 2026-09-03.
+**Eight commits, `fe23ec0` … `c98db9e`, pushed 2026-09-03.** The mock is tracked at `c4fc0a3`, approved in browser 2026-09-03.
 
-**No hash is cited for them here, deliberately.** They are local, a cron data commit lands every ~6 hours, and the rebase that push needs rewrites every one — which is exactly how this page orphaned nine citations across six commits in handoff 88. The table is ordered and named instead; **the hashes are pinned in a follow-up commit after the push**, from values read off `origin/main`.
+**The hashes below were written after the push, not before it, and the wait was not theoretical.** They were local when this section was drafted, and citing them then would have been citing values a rebase was about to destroy — which is how this page orphaned nine citations across six commits in handoff 88. **A cron data commit, `777c904`, landed between the draft and the push**, so all ten local commits rebased and every hash the draft would have carried is dead. The table was ordered and named until the values could be read off `origin/main`. **Survival was confirmed by `git patch-id --stable` captured before the rebase, ten of ten identical after it** — the rebase also exited 0, which on its own says nothing about content.
 
 | # | unit | hash |
 | --- | --- | --- |
-| 1 | the wire replaces the read and the strip | *pinned post-push* |
-| 2 | TheRead and ChannelStrip deleted, orphaned by the wire | *pinned post-push* |
-| 3 | the feed renders as a ledger | *pinned post-push* |
-| 4 | the rail | *pinned post-push* |
-| 5 | the wire reads the flag, not the coincidence | *pinned post-push* |
-| 6 | assert-layout learns the zone matrix | *pinned post-push* |
-| 7 | the board reflows, chart beside map | *pinned post-push* |
-| 8 | the type scale, one notch up; the button rests as Play | *pinned post-push* |
+| 1 | the wire replaces the read and the strip | `fe23ec0` |
+| 2 | TheRead and ChannelStrip deleted, orphaned by the wire | `396681c` |
+| 3 | the feed renders as a ledger | `10a788f` |
+| 4 | the rail | `70a4037` |
+| 5 | the wire reads the flag, not the coincidence | `3dd54e2` |
+| 6 | assert-layout learns the zone matrix | `af7d961` |
+| 7 | the board reflows, chart beside map | `4278dd7` |
+| 8 | the type scale, one notch up; the button rests as Play | `c98db9e` |
+
+The opening commit that put the owed line on this board is `fa41f2c`; the section you are reading is `bca2ff6`. Both are post-rebase and both are reachable from `origin/main`, checked one by one rather than inferred from the push succeeding.
 
 **After-numbers against C0's baseline, at the same viewport height.** `main.scrollHeight` on `/`: **4,723 → 2,591 at 1689** and **2,939 → 1,829 at 2560**, both at **height 1080**. The mock measures 2,551 at 1689. The height is pinned because `scrollHeight` is height-sensitive and the plan's first draft fixed only width — a comparison against a differently-sized window would be measuring the window.
+
+**Re-read on production after the deploy, and the two agree exactly: 2,591 at 1689 and 1,829 at 2560**, against `psephos-theta.vercel.app` at the same height 1080. Worth doing rather than assuming, because a local dev render and a production build are different artifacts — different CSS pipeline, no dev overlay — and the number that matters is the one a reader actually gets. The wide arrangement was checked with it: five wire cells across at both widths, three zones at 2560 and two at 1689, and the replay button resting as **Play**.
 
 **The container query earns itself on a measurement, not an argument.** The board reflows chart-beside-map at a **board** width of 1080, never a viewport width, and the reason is in the numbers: in the three-column arrangement at a 2560px viewport the board column is **883px**. A viewport rule at 1080 would have put the chart beside the map inside that 883px column — the exact failure it exists to prevent. Measured across ten widths: 883/763px stays stacked, 1819…1199px reflows, 1020px stacks again.
 
