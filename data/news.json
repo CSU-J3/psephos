@@ -7358,5 +7358,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/democrats-voting-rights-advocates-praise-block-on-trumps-anti-mail-voting-order-for-midterms",
     "title": "Democrats, voting rights advocates praise block on Trump’s anti-mail voting order for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 96357,
+    "kind": "item",
+    "occurred_at": "2026-09-05T14:14:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-latest-win-for-voters-appeals-court-rejects-bid-to-revive-dhs-voter-purge-database-for-now",
+    "title": "In latest win for voters, appeals court rejects bid to revive DHS voter purge database, for now"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 96356,
+    "kind": "item",
+    "occurred_at": "2026-09-05T14:33:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-gop-lawsuit-aims-to-restore-missouris-gerrymandered-map",
+    "title": "New GOP lawsuit aims to restore Missouri’s gerrymandered map"
   }
 ]
