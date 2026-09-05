@@ -7378,5 +7378,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/new-gop-lawsuit-aims-to-restore-missouris-gerrymandered-map",
     "title": "New GOP lawsuit aims to restore Missouri’s gerrymandered map"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 96561,
+    "kind": "item",
+    "occurred_at": "2026-09-05T15:36:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-republicans-ask-supreme-court-to-restore-gerrymander-for-midterms",
+    "title": "Missouri Republicans ask Supreme Court to restore gerrymander for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 96560,
+    "kind": "item",
+    "occurred_at": "2026-09-05T15:42:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-asks-judge-to-let-usps-mail-voting-restrictions-take-effect-despite-another-courts-block",
+    "title": "Trump DOJ asks judge to let USPS mail voting restrictions take effect, despite another court’s block"
   }
 ]
