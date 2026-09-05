@@ -2,6 +2,7 @@
 // components, never in the browser (the auth token must not ship to the client).
 // Read-only by design -- collection is the Python cron's job; this app only reads.
 import { createClient } from "@libsql/client";
+import type { Row, Value } from "@libsql/client";
 import { unstable_cache } from "next/cache";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
@@ -92,6 +93,132 @@ export type ExecItem = {
   admiralty_source: string;
   admiralty_info: string;
 };
+
+// --- column coercions and row mappers ----------------------------------------
+// EVERY QUERY BELOW MAPS ITS ROWS. None of them casts, and the difference is not
+// stylistic. libSQL hands back `Row` -- `{ length: number; [i: number]: Value;
+// [name: string]: Value }` -- and every declared type in this file says
+// `bill_id: string`. `rs.rows as unknown as Bill[]` closed that gap by telling the
+// compiler to stop talking, 19 times, and the file lived its whole life that way.
+//
+// IT DETONATED ONCE. `getExecutiveAll` returned raw rows into a `"use client"`
+// component and React refused all 129 of them -- "Only plain objects can be passed
+// to Client Components" -- because a `Row` carries NON-ENUMERABLE own properties
+// (`length`, and one per column index). The cast had removed the one compile-time
+// objection that would have caught it, so the runtime raised it instead, per row,
+// in a channel nobody was reading. The other 18 did not warn only because their
+// results never crossed that boundary; they were latent on a condition, and nothing
+// guarded the condition.
+//
+// A SPREAD WAS MEASURED AND IS NOT ENOUGH, which is worth writing down because it
+// is the obvious cheaper fix. Against live rows -- plain table, aliased join,
+// aggregate, GROUP BY expression -- `Object.keys({...r})` equals `rs.columns`
+// exactly, in order, with equal values, and the spread drops the non-enumerable
+// props that made React refuse the row. So a spread is CORRECT AT RUNTIME. It still
+// does not earn the type: `{...r}` inherits `Row`'s index signatures, and tsc reads
+// it as `{[name: string]: Value; length: number}` -- "missing the following
+// properties from type 'Bill': bill_id, bill_type, number, congress, and 8 more."
+// The compiler wants the fields named, and naming them is the whole point.
+//
+// `== null` RATHER THAN `=== null` in the nullable coercion, deliberately: a column
+// this file stops selecting arrives as `undefined`, not `null`, and `String(undefined)`
+// is the string "undefined" -- a silent wrong answer landing in exactly the fields
+// whose nullability the reader is trusting.
+//
+// WHAT THIS BUYS AND WHAT IT DOES NOT, stated plainly so the next reader does not
+// overtrust it. The compiler now checks the FIELD SET: a mapper missing a declared
+// field or inventing an extra one fails `tsc`, which is the check the cast removed,
+// and the value it returns is a plain object literal, which is the runtime property
+// React refused. What it still cannot check is the LINK TO THE SQL -- `Row` answers
+// every name with `Value`, so `asText(r.b_numbr)` compiles and yields the string
+// "undefined" at runtime. That gap is smaller than the one removed and it is not
+// zero; closing it needs the query text itself to be typed, which is a different
+// unit than this one.
+const asText = (v: Value): string => String(v);
+const asTextOrNull = (v: Value): string | null => (v == null ? null : String(v));
+const asNumber = (v: Value): number => Number(v);
+const asNumberOrNull = (v: Value): number | null => (v == null ? null : Number(v));
+
+function toBill(r: Row): Bill {
+  return {
+    bill_id: asText(r.bill_id),
+    bill_type: asText(r.bill_type),
+    number: asNumber(r.number),
+    congress: asNumber(r.congress),
+    short_title: asTextOrNull(r.short_title),
+    title: asTextOrNull(r.title),
+    sponsor: asTextOrNull(r.sponsor),
+    status: asTextOrNull(r.status),
+    is_vehicle: asNumber(r.is_vehicle),
+    latest_action: asTextOrNull(r.latest_action),
+    latest_action_at: asTextOrNull(r.latest_action_at),
+    introduced_at: asTextOrNull(r.introduced_at),
+  };
+}
+
+function toCase(r: Row): Case {
+  return {
+    case_id: asText(r.case_id),
+    caption: asText(r.caption),
+    court: asTextOrNull(r.court),
+    docket_number: asTextOrNull(r.docket_number),
+    status: asTextOrNull(r.status),
+    category: asTextOrNull(r.category),
+    filed_at: asTextOrNull(r.filed_at),
+    latest_entry_at: asTextOrNull(r.latest_entry_at),
+    source_url: asTextOrNull(r.source_url),
+    plaintiff: asTextOrNull(r.plaintiff),
+    defendant: asTextOrNull(r.defendant),
+    superseded_by: asTextOrNull(r.superseded_by),
+  };
+}
+
+function toCaseRef(r: Row): CaseRef {
+  return {
+    case_id: asText(r.case_id),
+    caption: asText(r.caption),
+    court: asTextOrNull(r.court),
+    docket_number: asTextOrNull(r.docket_number),
+  };
+}
+
+function toStateBill(r: Row): StateBill {
+  return {
+    state_bill_id: asText(r.state_bill_id),
+    state: asText(r.state),
+    bill_number: asText(r.bill_number),
+    session: asTextOrNull(r.session),
+    title: asTextOrNull(r.title),
+    description: asTextOrNull(r.description),
+    status: asTextOrNull(r.status),
+    url: asTextOrNull(r.url),
+    is_vehicle: asNumber(r.is_vehicle),
+    last_action: asTextOrNull(r.last_action),
+    last_action_at: asTextOrNull(r.last_action_at),
+  };
+}
+
+function toTimelineItem(r: Row): TimelineItem {
+  return {
+    id: asNumber(r.id),
+    channel: asText(r.channel),
+    title: asText(r.title),
+    summary: asTextOrNull(r.summary),
+    source_url: asText(r.source_url),
+    occurred_at: asTextOrNull(r.occurred_at),
+    admiralty_source: asText(r.admiralty_source),
+    admiralty_info: asText(r.admiralty_info),
+  };
+}
+
+// `rows[0]` is TYPED `Row` and is `undefined` on an empty result -- the index
+// signature has no `noUncheckedIndexedAccess` behind it. The `?? null` these
+// helpers replace was carrying that runtime truth past a type that denies it, so
+// the guard is kept explicitly rather than inherited from the cast it removed.
+function firstOrNull<T>(rows: Row[], map: (r: Row) => T): T | null {
+  const r = rows[0] as Row | undefined;
+  return r ? map(r) : null;
+}
 
 // Channel activity: what psephos collected recently, with the lifetime total as
 // context. This is the one homepage query that scans the whole `items` table -- an
@@ -221,7 +348,7 @@ export async function getBills(): Promise<Bill[]> {
      FROM bills
      ORDER BY COALESCE(latest_action_at, introduced_at) DESC, bill_id`,
   );
-  return rs.rows as unknown as Bill[];
+  return rs.rows.map(toBill);
 }
 
 // One watched bill by id, or null if not found (the detail page 404s on null).
@@ -232,7 +359,7 @@ export async function getBill(billId: string): Promise<Bill | null> {
           FROM bills WHERE bill_id = ?`,
     args: [billId],
   });
-  return (rs.rows[0] as unknown as Bill) ?? null;
+  return firstOrNull(rs.rows, toBill);
 }
 
 // The interleave: one bill's items in date order. Legislation actions (A1) and
@@ -246,7 +373,7 @@ export async function getBillTimeline(billId: string): Promise<TimelineItem[]> {
           ORDER BY occurred_at, id`,
     args: [billId],
   });
-  return rs.rows as unknown as TimelineItem[];
+  return rs.rows.map(toTimelineItem);
 }
 
 // Cases. `cases` already stores the latest entry; most-recently-moved first.
@@ -257,7 +384,7 @@ export async function getCases(): Promise<Case[]> {
      FROM cases
      ORDER BY COALESCE(latest_entry_at, filed_at) DESC, case_id`,
   );
-  return rs.rows as unknown as Case[];
+  return rs.rows.map(toCase);
 }
 
 // One case by id (CourtListener numeric id or a hand-seeded slug), or null.
@@ -268,7 +395,7 @@ export async function getCase(caseId: string): Promise<Case | null> {
           FROM cases WHERE case_id = ?`,
     args: [caseId],
   });
-  return (rs.rows[0] as unknown as Case) ?? null;
+  return firstOrNull(rs.rows, toCase);
 }
 
 // The successor: the row this case names via superseded_by. Court + docket only.
@@ -277,7 +404,7 @@ export async function getCaseRef(caseId: string): Promise<CaseRef | null> {
     sql: `SELECT case_id, caption, court, docket_number FROM cases WHERE case_id = ?`,
     args: [caseId],
   });
-  return (rs.rows[0] as unknown as CaseRef) ?? null;
+  return firstOrNull(rs.rows, toCaseRef);
 }
 
 // The predecessor: the row whose superseded_by names this case. Reverse of the column.
@@ -286,7 +413,7 @@ export async function getPredecessorRef(caseId: string): Promise<CaseRef | null>
     sql: `SELECT case_id, caption, court, docket_number FROM cases WHERE superseded_by = ?`,
     args: [caseId],
   });
-  return (rs.rows[0] as unknown as CaseRef) ?? null;
+  return firstOrNull(rs.rows, toCaseRef);
 }
 
 // One case's items in date order: docket entries (A1) interleaved with the
@@ -299,7 +426,7 @@ export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
           ORDER BY occurred_at, id`,
     args: [caseId],
   });
-  return rs.rows as unknown as TimelineItem[];
+  return rs.rows.map(toTimelineItem);
 }
 
 // All state bills, grouped-render order: by state, then most-recently-acted first.
@@ -310,7 +437,7 @@ export async function getStateBills(): Promise<StateBill[]> {
      FROM state_bills
      ORDER BY state, COALESCE(last_action_at, updated_at) DESC, state_bill_id`,
   );
-  return rs.rows as unknown as StateBill[];
+  return rs.rows.map(toStateBill);
 }
 
 // One state bill by id (str LegiScan bill_id), or null -> the detail page 404s.
@@ -321,7 +448,7 @@ export async function getStateBill(id: string): Promise<StateBill | null> {
           FROM state_bills WHERE state_bill_id = ?`,
     args: [id],
   });
-  return (rs.rows[0] as unknown as StateBill) ?? null;
+  return firstOrNull(rs.rows, toStateBill);
 }
 
 // One state bill's items in date order (all channel="state" / B2 today; the news
@@ -334,7 +461,7 @@ export async function getStateBillTimeline(id: string): Promise<TimelineItem[]> 
           ORDER BY occurred_at, id`,
     args: [id],
   });
-  return rs.rows as unknown as TimelineItem[];
+  return rs.rows.map(toTimelineItem);
 }
 
 // The whole executive channel, date-ordered (newest first). Relevance scoring
@@ -408,6 +535,21 @@ export type NewsItem = {
   bill_id: string | null;
 };
 
+// The two grade fields are the CASE expression's output, not the stored column --
+// same names, derived values. See NEWS_GRADE below.
+function toNewsItem(r: Row): NewsItem {
+  return {
+    id: asNumber(r.id),
+    source_id: asText(r.source_id),
+    title: asText(r.title),
+    source_url: asText(r.source_url),
+    occurred_at: asTextOrNull(r.occurred_at),
+    admiralty_source: asText(r.admiralty_source),
+    admiralty_info: asText(r.admiralty_info),
+    bill_id: asTextOrNull(r.bill_id),
+  };
+}
+
 // --- outlet promotion (handoff 82) -------------------------------------------
 // `source_id` is the DELIVERY PIPE, not the publisher, and one aggregator carries
 // hundreds of outlets -- so filtering on the pipe's grade graded the same
@@ -458,7 +600,7 @@ export async function getNewsFeed(): Promise<NewsItem[]> {
      WHERE i.channel = 'news' AND (${NEWS_FEED_PREDICATE})
      ORDER BY i.occurred_at DESC, i.id DESC`,
   );
-  return rs.rows as unknown as NewsItem[];
+  return rs.rows.map(toNewsItem);
 }
 
 // --- the merged cross-channel activity feed (move 2) -------------------------
@@ -559,6 +701,46 @@ type FeedRow = {
   sb_bill_number: string | null;
   sb_title: string | null;
 };
+
+// The widest mapper in the file, and the one that most repays being written out:
+// 27 columns from five tables and three correlated subqueries, every join LEFT, so
+// nearly every field is legitimately nullable and `toAnchor` below branches on
+// exactly those nulls.
+function toFeedRow(r: Row): FeedRow {
+  return {
+    id: asNumber(r.id),
+    channel: asText(r.channel),
+    title: asText(r.title),
+    summary: asTextOrNull(r.summary),
+    source_url: asText(r.source_url),
+    source_id: asText(r.source_id),
+    occurred_at: asTextOrNull(r.occurred_at),
+    fetched_at: asText(r.fetched_at),
+    admiralty_source: asText(r.admiralty_source),
+    admiralty_info: asText(r.admiralty_info),
+    bill_id: asTextOrNull(r.bill_id),
+    case_id: asTextOrNull(r.case_id),
+    state_bill_id: asTextOrNull(r.state_bill_id),
+    c_caption: asTextOrNull(r.c_caption),
+    c_court: asTextOrNull(r.c_court),
+    c_docket: asTextOrNull(r.c_docket),
+    c_status: asTextOrNull(r.c_status),
+    s_case_id: asTextOrNull(r.s_case_id),
+    s_court: asTextOrNull(r.s_court),
+    s_docket: asTextOrNull(r.s_docket),
+    p_case_id: asTextOrNull(r.p_case_id),
+    p_court: asTextOrNull(r.p_court),
+    p_docket: asTextOrNull(r.p_docket),
+    b_type: asTextOrNull(r.b_type),
+    b_number: asNumberOrNull(r.b_number),
+    b_short_title: asTextOrNull(r.b_short_title),
+    b_title: asTextOrNull(r.b_title),
+    b_is_vehicle: asNumberOrNull(r.b_is_vehicle),
+    sb_state: asTextOrNull(r.sb_state),
+    sb_bill_number: asTextOrNull(r.sb_bill_number),
+    sb_title: asTextOrNull(r.sb_title),
+  };
+}
 
 // Flat columns -> the discriminated anchor. Checked in the same order entryLink
 // and feed.anchorOf use, so an entry can never group on one anchor and render the
@@ -679,7 +861,7 @@ export const getTimelineEntries = unstable_cache(
             ORDER BY i.fetched_at DESC, i.id DESC`,
       args: [bandStart, day],
     });
-    return (rs.rows as unknown as FeedRow[]).map((r) => ({
+    return rs.rows.map(toFeedRow).map((r) => ({
       id: r.id,
       channel: r.channel,
       title: r.title,
@@ -713,7 +895,7 @@ export async function getNewsExcludedCount(): Promise<number> {
     `SELECT COUNT(*) AS n FROM items i JOIN sources s ON s.id = i.source_id
      WHERE i.channel = 'news' AND NOT (${NEWS_FEED_PREDICATE})`,
   );
-  return Number((rs.rows[0] as unknown as { n: number }).n);
+  return asNumber(rs.rows[0].n);
 }
 
 // --- the DOJ voter-data campaign ---------------------------------------------
@@ -750,6 +932,37 @@ export type CampaignRow = {
   entry_count: number;
 };
 
+function toCampaignRow(r: Row): CampaignRow {
+  return {
+    case_id: asText(r.case_id),
+    state: asText(r.state),
+    caption: asText(r.caption),
+    court: asTextOrNull(r.court),
+    docket_number: asTextOrNull(r.docket_number),
+    status: asTextOrNull(r.status),
+    filed_at: asTextOrNull(r.filed_at),
+    latest_entry_at: asTextOrNull(r.latest_entry_at),
+    status_checked_at: asTextOrNull(r.status_checked_at),
+    superseded_by: asTextOrNull(r.superseded_by),
+    source_url: asTextOrNull(r.source_url),
+    entry_count: asNumber(r.entry_count),
+  };
+}
+
+// `state` is NOT NULL here by the query's own WHERE clause, `text` by COALESCE and
+// `grade` by concatenation of two NOT NULL columns -- so all three coerce as text
+// rather than nullable text. That is a property of this query, not of the schema.
+function toMovementRow(r: Row): MovementRow {
+  return {
+    id: asNumber(r.id),
+    case_id: asText(r.case_id),
+    state: asText(r.state),
+    occurred_at: asText(r.occurred_at),
+    text: asText(r.text),
+    grade: asText(r.grade),
+  };
+}
+
 // The tracker's own status prose, one string per case: the latest B2 subject item
 // written by collectors/litigation.py:write_b2_item from the artifact's `notes`.
 // These are VERSIONED -- the collector writes a new item whenever the notes change
@@ -771,8 +984,9 @@ export async function getTrackerNotes(): Promise<Map<string, string>> {
            GROUP BY case_id) m ON m.mid = i.id`,
   );
   const out = new Map<string, string>();
-  for (const r of rs.rows as unknown as { case_id: string; summary: string | null }[]) {
-    if (r.summary) out.set(r.case_id, r.summary);
+  for (const r of rs.rows) {
+    const summary = asTextOrNull(r.summary);
+    if (summary) out.set(asText(r.case_id), summary);
   }
   return out;
 }
@@ -790,7 +1004,7 @@ export async function getCampaignRows(): Promise<CampaignRow[]> {
      WHERE state IS NOT NULL
      ORDER BY state, case_id`,
   );
-  return rs.rows as unknown as CampaignRow[];
+  return rs.rows.map(toCampaignRow);
 }
 
 // The campaign's most recent docket movement, for /campaign's Latest movement list.
@@ -824,13 +1038,19 @@ export async function getCampaignMovement(): Promise<MovementRow[]> {
       ORDER BY i.occurred_at DESC, i.id DESC
       LIMIT 40`,
   );
-  return rs.rows as unknown as MovementRow[];
+  return rs.rows.map(toMovementRow);
 }
 
 // --- the records chart's two monthly series -----------------------------------------
 // Aggregated in SQL rather than by pulling rows: both are counts over the whole spine,
 // and the page needs 28 integers, not 9,000 rows.
 export type MonthRow = { month: string; n: number };
+
+// COUNT(*) can arrive as bigint, and `month` is a substr() expression -- neither is
+// a column read straight off a table, which is precisely why they need coercing.
+function toMonthRow(r: Row): MonthRow {
+  return { month: asText(r.month), n: asNumber(r.n) };
+}
 
 export type BoardMonthly = {
   /** State bills by the month they FIRST appear in the record. */
@@ -874,14 +1094,10 @@ export const getBoardMonthly = unstable_cache(
          GROUP BY state, month ORDER BY state, month`,
       ),
     ]);
-    const rows = (rs: typeof sb) =>
-      (rs.rows as unknown as { month: string; n: number }[]).map((r) => ({
-        month: r.month,
-        n: Number(r.n),
-      }));
+    const rows = (rs: typeof sb) => rs.rows.map(toMonthRow);
     const perState: Record<string, MonthRow[]> = {};
-    for (const r of byState.rows as unknown as { state: string; month: string; n: number }[]) {
-      (perState[r.state] ??= []).push({ month: r.month, n: Number(r.n) });
+    for (const r of byState.rows) {
+      (perState[asText(r.state)] ??= []).push(toMonthRow(r));
     }
     return {
       stateBillsFirstSeen: rows(sb),
