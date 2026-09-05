@@ -7288,5 +7288,75 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/in-missouri-and-texas-republicans-make-opposite-arguments-on-whether-redistricting-maps-can-change-after-a-primary",
     "title": "In Missouri and Texas, Republicans make opposite arguments on whether redistricting maps can change after a primary"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95935,
+    "kind": "item",
+    "occurred_at": "2026-09-04T21:28:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-ask-court-to-fast-track-bid-to-block-trump-order-as-1st-ballots-head-to-voters",
+    "title": "Democrats ask court to fast-track bid to block Trump order as first ballots head to voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95929,
+    "kind": "item",
+    "occurred_at": "2026-09-04T21:33:49+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/04/justice-department-noncitizen-voting-criminal-charges-pennsylvania-new-jersey-wisconsin",
+    "title": "Department of Justice charges 5 in Pennsylvania, Wisconsin, and New Jersey with crimes related to noncitizen voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95934,
+    "kind": "item",
+    "occurred_at": "2026-09-04T21:37:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-keeps-block-on-new-hampshire-voting-restrictions",
+    "title": "Appeals court keeps block on New Hampshire voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95932,
+    "kind": "item",
+    "occurred_at": "2026-09-04T21:50:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-major-win-for-voters-judge-blocks-trumps-mail-voting-restrictions-for-midterms",
+    "title": "In major win for voters, judge blocks Trump’s mail voting restrictions for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95933,
+    "kind": "item",
+    "occurred_at": "2026-09-04T21:51:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-opens-internal-probe-into-whistleblowers-mail-voting-claims-dems-say",
+    "title": "USPS opens internal probe into whistleblower’s mail voting claims, Dems say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95931,
+    "kind": "item",
+    "occurred_at": "2026-09-04T23:32:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/justice-department-immediately-asks-first-circuit-to-revive-anti-mail-voting-order-halted-by-judge",
+    "title": "Justice Department immediately asks First Circuit to revive anti-mail voting order halted by judge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 95930,
+    "kind": "item",
+    "occurred_at": "2026-09-05T00:46:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-voting-rights-advocates-praise-block-on-trumps-anti-mail-voting-order-for-midterms",
+    "title": "Democrats, voting rights advocates praise block on Trump’s anti-mail voting order for midterms"
   }
 ]
