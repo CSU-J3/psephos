@@ -131,6 +131,42 @@ PAIRS = [
     #   dismissal, and separately that ca9 stayed THIS appeal on 6/22/26 pending the
     #   CA and OR appeals -- a fact about the appeal, not about the dismissal.
 
+    # The four Shape B pairs, 2026-09-06. These came out of the reconciliation alarm
+    # rather than out of an artifact diff spotted by eye: coverage_audit's section 1
+    # had been reading 6 for up to seventeen days, and every one of the six was a
+    # terminated district row whose successor psephos ALREADY HELD and had already
+    # polled. So step 1's signal was present in the artifact the whole time; what was
+    # new was reading the alarm. See docs/findings/reconciliation-alarm-2026-09-06.md.
+    #
+    # The other two firing rows (MN, DC) are deliberately NOT here. Their successors
+    # are unresolved slug rows holding zero entries, because UW spells their courts
+    # 'Eighth District' and 'DC Circuit' and neither is a key in tracker_uw.COURT_IDS,
+    # so court_id comes back null and the docket never resolves. Asserting a pair onto
+    # an unpolled slug would link a real row to a stub; that is its own unit, and it
+    # has to canonicalize the court strings first.
+    ("72021508", "1:25-cv-03967", "74667007", "26-1326"),   # CO -> 10th Cir. A1 forward:
+    #   72021508, 2026-08-18, `USCA Case Number 26-1326 for 105 Notice of Appeal filed
+    #   by USA`. Reverse is silent -- 74667007 holds one entry, a bare `Civil case
+    #   docketed. Preliminary record filed.` naming no district docket. Circuit map:
+    #   D. Colo. appeals lie to the Tenth and nowhere else.
+    ("72026664", "3:25-cv-00728", "74694778", "26-5375"),   # NV -> 9th Cir. A1 BOTH ways:
+    #   forward, 72026664's `NOTICE OF APPEAL as to 94 Judgment` 2026-08-18; reverse,
+    #   74694778's `CASE OPENED. A copy of your notice of appeal / petition filed in
+    #   3:25-cv-00728-ART-CLB has been received` 2026-08-20. The docket NUMBER looks
+    #   wrong for a Ninth Circuit case -- 26-5375 sits in the range this record's D.C.
+    #   Circuit rows occupy (26-5243, 26-5296, 26-5301) -- and it was checked for that
+    #   reason rather than waved through. The reverse entry settles it: the appeal
+    #   itself names the D. Nev. docket. Circuit map agrees, D. Nev. -> 9th.
+    ("72054244", "3:25-cv-03398", "74671260", "26-2695"),   # IL -> 7th Cir. A1 forward:
+    #   72054244, 2026-08-19, `NOTICE of Docketing Record on Appeal from USCA re 104
+    #   Notice of Appeal`, after `Short Record of Appeal Sent to US Court of Appeals`
+    #   08-17. Reverse is silent: 74671260's entries carry its own `[26-2695]` bracket
+    #   but never the district number. Circuit map: C.D. Ill. -> 7th.
+    ("72333329", "3:26-cv-02025", "74676722", "26-3085"),   # NJ -> 3d Cir. A1 BOTH ways:
+    #   forward, 72333329's `USCA Case Number 26-3085 for 110 Notice of Appeal (USCA)`
+    #   2026-08-20; reverse, 74676722's `CIVIL CASE DOCKETED. Notice filed by Appellant
+    #   USA in District Court No. 3:26-cv-02025.` the same day. Circuit map: D.N.J. -> 3d.
+
     # The first pair with NO state on either side, and nothing here depends on one:
     # both rows sue federal agencies, so `state` is NULL by construction and neither
     # appears on /campaign. It is a litigation-channel link only. A1 forward from the
