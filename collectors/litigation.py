@@ -367,6 +367,12 @@ def upsert_case(conn, case_id: str, seed: dict, docket: dict | None) -> str | No
         filed_at = common.to_iso(docket.get("date_filed"))
         row["filed_at"] = filed_at
         row["status"] = case_status(docket)
+        # The date `status` is derived FROM, kept beside the bit derived from it. Same
+        # branch, same read, no extra request -- `case_status(docket)` on the line above
+        # is already looking at this value and discarding everything but its truthiness.
+        # NULL on a pending docket, which is what CourtListener sends and what makes
+        # `status` read 'pending'; the two can never disagree because they are one read.
+        row["date_terminated"] = common.to_iso(docket.get("date_terminated"))
         row["source_url"] = CL_BASE_WEB + docket["absolute_url"] if docket.get("absolute_url") else None
         # Stamped HERE, in the docket branch only, because this branch is the one that
         # actually read status off CourtListener -- `case_status(docket)` on the line
@@ -623,7 +629,7 @@ def due_for_status_refresh(conn, stale_before: str) -> list:
     the daily budget still makes progress on the LEAST fresh rows rather than
     re-walking the same head of the list every run."""
     return conn.execute(
-        """SELECT case_id, caption, status, status_checked_at
+        """SELECT case_id, caption, status, status_checked_at, date_terminated
              FROM cases
             WHERE (status IS NULL OR status <> 'terminated')
               AND (status_checked_at IS NULL OR status_checked_at < ?)
@@ -672,15 +678,31 @@ def refresh_status(conn, base: str, headers: dict, stale_before: str, cap: int) 
             docket = common.http_get(f"{base}/dockets/{case_id}/",
                                      headers=headers, throttle=PAGE_THROTTLE)
             live = case_status(docket)
+            live_terminated = common.to_iso(docket.get("date_terminated"))
             now = common.now_iso()
-            if live != row["status"]:
+            # THE DATE IS PART OF THE COMPARISON, not a passenger on the status change.
+            # `status` is one bit of this value, so a row can be right about the bit and
+            # wrong about the date -- a corrected or amended termination date moves the
+            # date and not the bit, and comparing only `status` would hold the stale one
+            # while the receipt above kept claiming the row was checked.
+            #
+            # WHAT THIS DOES NOT REACH, stated here because the obvious reading is that
+            # it does: `terminated` is absorbing in due_for_status_refresh, so the rows
+            # ALREADY terminated when this column arrived are never in the due set and
+            # this pass will never see them. Their dates come from the one-time backfill
+            # (handoff 97 H1b), not from here. What this branch covers is every docket
+            # that terminates FROM NOW ON: it is pending, so it is due, and when it
+            # flips, the bit and the date land in the same UPDATE.
+            moved = live != row["status"] or live_terminated != row["date_terminated"]
+            if moved:
                 # Value moved: stamp updated_at too, since something on the row changed.
                 conn.execute(
-                    "UPDATE cases SET status = ?, status_checked_at = ?, updated_at = ? "
-                    "WHERE case_id = ?", (live, now, now, case_id))
+                    "UPDATE cases SET status = ?, date_terminated = ?, "
+                    "status_checked_at = ?, updated_at = ? "
+                    "WHERE case_id = ?", (live, live_terminated, now, now, case_id))
                 counts["changed"] += 1
                 print(f"  {caption[:46]:<46} status {row['status']} -> {live}"
-                      f"  (date_terminated {docket.get('date_terminated')})")
+                      f"  (date_terminated {row['date_terminated']} -> {live_terminated})")
             else:
                 # No-op: the receipt moves, `updated_at` does NOT. Stamping it on a
                 # daily no-op would make all 33 rows look freshly touched and destroy

@@ -307,6 +307,7 @@ _MIGRATIONS = [
     ("cases", "status_checked_at", "TEXT"),
     ("cases", "state", "TEXT"),
     ("items", "outlet", "TEXT"),
+    ("cases", "date_terminated", "TEXT"),
 ]
 
 

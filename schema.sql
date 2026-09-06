@@ -105,6 +105,23 @@ CREATE TABLE IF NOT EXISTS cases (
                                              -- `dismissed | appeal | settled | decided` from the
                                              -- column's creation until handoff 27; no such value was
                                              -- ever written.)
+    date_terminated TEXT,                    -- CourtListener's own date_terminated, kept rather than
+                                             -- collapsed. `status` above is derived from exactly this
+                                             -- value and carries one bit of it; the DATE was read on
+                                             -- every resolve and every status refresh and thrown away
+                                             -- from the column's creation until handoff 97.
+                                             -- WHAT NEEDED IT, and why one bit was not enough: the
+                                             -- read layer derives "a court rejected this demand" from
+                                             -- the docket entries at the disposition, and a docket's
+                                             -- interlocutory orders use the SAME vocabulary as its
+                                             -- terminal one -- "Motion to Compel is DENIED" appears
+                                             -- months before the order that ends the case. Scoped to
+                                             -- this date the rule agreed with a per-case eyeball on
+                                             -- 20 of 20 dockets; unscoped, on 10 of 20. The date is
+                                             -- the whole difference between a derivation and a list.
+                                             -- NULL is correct and expected on a pending docket: it
+                                             -- is what CourtListener sends, and `status` reads
+                                             -- 'pending' from the same absence.
     category        TEXT,                    -- voter-data | executive-order | registration-law | redistricting | other
     state           TEXT,                    -- the jurisdiction DOJ sued, e.g. 'Georgia', 'DC'. Written by
                                              -- `upsert_case` in collectors/litigation.py from the tracker

@@ -277,8 +277,22 @@ def test_null_state_is_exported_as_null_not_dropped():
     c = snapshots.build_cases(conn)[0]
     assert "state" in c                      # key present ...
     assert c["state"] is None                # ... and explicitly null
-    for k in ("latest_entry_at", "status_checked_at", "source_url"):
+    for k in ("latest_entry_at", "status_checked_at", "source_url", "date_terminated"):
         assert k in c and c[k] is None
+
+
+def test_cases_json_carries_the_termination_date():
+    """`status` is one bit of `date_terminated`, and the snapshot now carries both.
+
+    Exported because the public record should hold the DATE a docket was disposed of
+    and not only that it was: the read layer's outcomes derivation is scoped to this
+    date, and a snapshot carrying the bit alone could not be checked against it."""
+    conn = _conn()
+    _case(conn, "3:26-cv-00019", state="Kentucky", status="terminated",
+          date_terminated="2026-07-23T00:00:00")
+    c = snapshots.build_cases(conn)[0]
+    assert c["status"] == "terminated"
+    assert c["date_terminated"] == "2026-07-23T00:00:00"
 
 
 def test_entry_count_is_the_raw_docket_and_differs_from_the_timeline():

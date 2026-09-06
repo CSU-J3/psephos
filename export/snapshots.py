@@ -214,7 +214,7 @@ def build_cases(conn) -> list[dict]:
     """Per-case objects sorted by case_id. Timeline = docket (A1) + tracker framing
     (B2) items keyed by case_id. No clustering (anchors are bill-scoped), no news.
 
-    Emits 14 of the table's 17 columns. The three held back, deliberately:
+    Emits 15 of the table's 18 columns. The three held back, deliberately:
     `updated_at` and `entries_synced_at` both move independently of content -- the
     first on every touch, the second as an upstream high-water mark -- and either
     would rewrite this file four times a day with no change in what it says, which
@@ -242,6 +242,11 @@ def build_cases(conn) -> list[dict]:
             "docket_number": c["docket_number"],
             "category": c["category"],
             "status": c["status"],
+            "date_terminated": c["date_terminated"],   # the date `status` is derived from,
+                                                   # carried so the public record holds the
+                                                   # disposition date and not only the bit.
+                                                   # NULL on every pending row, which is
+                                                   # what CourtListener sends.
             "plaintiff": c["plaintiff"],
             "defendant": c["defendant"],
             "filed_at": c["filed_at"],

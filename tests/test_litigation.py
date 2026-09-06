@@ -843,6 +843,96 @@ def test_refresh_flip_to_terminated_writes_all_three_columns(tmp_path, monkeypat
     conn.close()
 
 
+def test_refresh_flip_writes_the_termination_date_not_only_the_bit(tmp_path, monkeypatch):
+    """`status` carries one bit of `date_terminated`; the column carries the date.
+
+    The read layer derives "a court rejected this demand" from the docket entries AT
+    the disposition, and a docket's interlocutory orders use the same vocabulary as
+    its terminal one. Scoped to this date the rule agreed with a per-case eyeball on
+    20 of 20 dockets and unscoped on 10 of 20, so a flip that wrote the bit and
+    dropped the date would leave the derivation with nothing to anchor on."""
+    conn = _refresh_db(tmp_path, [("100", "pending", None, "2000-01-01T00:00:00Z")])
+    monkeypatch.setattr(common, "http_get", _fake_get([], date_terminated="2026-07-23"))
+
+    lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    row = conn.execute("SELECT status, date_terminated FROM cases").fetchone()
+    assert row["status"] == "terminated"
+    # Stored through common.to_iso, the same normalisation `filed_at` takes, so the
+    # two date columns on this row are the same shape rather than two conventions.
+    assert row["date_terminated"] == "2026-07-23T00:00:00"
+    conn.close()
+
+
+def test_refresh_moves_a_corrected_date_when_the_bit_does_not_move(tmp_path, monkeypatch):
+    """The case the status-only comparison cannot see. A court amending its
+    termination date moves the date and NOT the bit, so a `moved` test keyed on
+    `status` alone would hold the stale date while the receipt above went on claiming
+    the row had been checked -- the exact shape of the write-once defect handoff 27
+    fixed for `status` itself, one column over."""
+    conn = _refresh_db(tmp_path, [("100", "pending", None, "2000-01-01T00:00:00Z")])
+    conn.execute("UPDATE cases SET date_terminated = '2026-07-01T00:00:00' "
+                 "WHERE case_id = '100'")
+    conn.commit()
+    monkeypatch.setattr(common, "http_get", _fake_get([], date_terminated=None))
+
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    # status is 'pending' before and after -- the bit does not move -- but the stored
+    # date disagrees with the live one, so this is a change and is written as one.
+    row = conn.execute("SELECT status, date_terminated, updated_at FROM cases").fetchone()
+    assert counts["changed"] == 1
+    assert row["status"] == "pending"
+    assert row["date_terminated"] is None
+    assert row["updated_at"] != "2000-01-01T00:00:00Z"
+    conn.close()
+
+
+def test_refresh_noop_leaves_the_termination_date_alone(tmp_path, monkeypatch):
+    """A no-op is a no-op across both columns, and this is the guard on the pairing
+    above: making the date part of the comparison must not turn an unchanged row into
+    a change and start stamping `updated_at` on all of them."""
+    conn = _refresh_db(tmp_path, [("100", "pending", None, "2000-01-01T00:00:00Z")])
+    conn.execute("UPDATE cases SET date_terminated = NULL WHERE case_id = '100'")
+    conn.commit()
+    monkeypatch.setattr(common, "http_get", _fake_get([], date_terminated=None))
+
+    counts = lit.refresh_status(conn, "https://x/api", {}, _iso(24), 40)
+
+    row = conn.execute("SELECT date_terminated, updated_at FROM cases").fetchone()
+    assert counts["changed"] == 0
+    assert row["date_terminated"] is None
+    assert row["updated_at"] == "2000-01-01T00:00:00Z"
+    conn.close()
+
+
+def test_upsert_case_keeps_the_date_beside_the_bit(tmp_path):
+    """One read, two columns, and they cannot disagree because `case_status` is
+    looking at exactly the value stored next to it."""
+    dbp = str(tmp_path / "u.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    seed = {"caption": "United States v. Adams", "court": "E.D. Ky.",
+            "docket_number": "3:26-cv-00019", "category": "voter-data", "state": "Kentucky"}
+
+    lit.upsert_case(conn, "72334676", seed,
+                    {"case_name": "United States v. Adams", "date_filed": "2026-02-11",
+                     "date_terminated": "2026-07-23", "absolute_url": "/docket/72334676/x/"})
+    conn.commit()
+    row = conn.execute("SELECT status, date_terminated FROM cases").fetchone()
+    assert (row["status"], row["date_terminated"]) == ("terminated", "2026-07-23T00:00:00")
+
+    # A pending docket writes NULL, which is what CourtListener sends and what makes
+    # `status` read 'pending'. Not "unknown" and not an empty string.
+    lit.upsert_case(conn, "99999", dict(seed, caption="United States v. Pending"),
+                    {"case_name": "United States v. Pending", "date_filed": "2026-02-11",
+                     "date_terminated": None, "absolute_url": "/docket/99999/y/"})
+    conn.commit()
+    row = conn.execute("SELECT status, date_terminated FROM cases WHERE case_id='99999'").fetchone()
+    assert (row["status"], row["date_terminated"]) == ("pending", None)
+    conn.close()
+
+
 def test_refresh_noop_moves_receipt_but_not_updated_at(tmp_path, monkeypatch):
     """The one most likely to regress and the most expensive when it does. A no-op
     must move `status_checked_at` and leave `updated_at` alone: stamping it on 33
