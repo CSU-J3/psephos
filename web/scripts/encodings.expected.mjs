@@ -53,14 +53,14 @@ export const BOARD = [
   // jurisdiction's shape carries its posture fill and this stroke at once -- they are
   // independent properties by the map's own one-property-one-meaning rule -- so the
   // classifier records both from one element rather than choosing.
-  { encoding: "outcome-stroke", paint: "RecordsMap.tsx:255,298", key: "SourceLegend.tsx:125", since: "HEAD" },
+  { encoding: "outcome-stroke", paint: "RecordsMap.tsx:255,298", key: "SourceLegend.tsx:125", since: "a63eba3" },
   { encoding: "state-bill-dot", paint: "RecordsMap.tsx:447", key: "SourceLegend.tsx:126", since: "c6a551d" },
 
   // The chart. Five SVG marks and one that is not SVG at all.
   { encoding: "filings-cumulative", paint: "RecordsBoard.tsx:279", key: "SourceLegend.tsx:143", since: "c6a551d" },
   // Same scale and same ceiling as the red line above it, so the two are comparable by
   // eye. It cannot cross that line: every jurisdiction here is one the red line counts.
-  { encoding: "outcome-cumulative", paint: "RecordsBoard.tsx:309", key: "SourceLegend.tsx:157", since: "HEAD" },
+  { encoding: "outcome-cumulative", paint: "RecordsBoard.tsx:309", key: "SourceLegend.tsx:157", since: "a63eba3" },
   { encoding: "filing-date-dot", paint: "RecordsBoard.tsx:290", key: "SourceLegend.tsx:158", since: "c6a551d" },
   { encoding: "state-bills-monthly", paint: "RecordsBoard.tsx:309", key: "SourceLegend.tsx:169", since: "c6a551d" },
   { encoding: "legislation-monthly", paint: "RecordsBoard.tsx:314", key: "SourceLegend.tsx:180", since: "c6a551d" },
