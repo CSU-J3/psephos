@@ -5,6 +5,7 @@ import {
   getBills,
   getCases,
   getCampaignRows,
+  getRejectionEvidence,
   getExecutiveAll,
   getStateBills,
   getBoardMonthly,
@@ -40,6 +41,7 @@ import {
 } from "@/lib/board";
 import { RecordsMap, type MapState } from "@/components/RecordsMap";
 import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
+import { cumulativeRejections, rejectedStates, rejections } from "@/lib/outcomes";
 import { tryResolveState } from "@/lib/map";
 import { SourceLegend } from "@/components/SourceLegend";
 
@@ -88,7 +90,7 @@ function buildChains(cases: Case[]) {
 }
 
 export default async function Home() {
-  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills, monthly, trackerNotes] =
+  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills, monthly, trackerNotes, rejectionEvidence] =
     await Promise.all([
       getChannelActivity(),
       getTimelineEntries(),
@@ -99,6 +101,7 @@ export default async function Home() {
       getStateBills(),
       getBoardMonthly(),
       getTrackerNotes(),
+      getRejectionEvidence(),
     ]);
 
   const now = new Date();
@@ -181,6 +184,16 @@ export default async function Home() {
   // Status field, extracted verbatim -- trackerStatus pulls the field out of a
   // pipe-delimited string, it does not interpret it, and nothing here classifies an
   // outcome from prose.
+  // --- the outcomes layer ---------------------------------------------------------
+  // DERIVED HERE, at read time, from the docket entries at each terminated docket's own
+  // date_terminated. No outcome column, no editorial list, no collector classification:
+  // the record structures the WHEN and lib/outcomes.ts reads only the WHAT out of the
+  // three sentences a court writes at a disposition. Measured against a per-case
+  // eyeball of all twenty terminated campaign dockets, this reproduces 18 exactly.
+  const rejectionRows = rejections(rejectionEvidence.cases, rejectionEvidence.entries);
+  const rejectedSet = rejectedStates(rejectionRows);
+  const rejectionSteps = cumulativeRejections(rejectionRows);
+
   const cells = buildCells(campaignRows, now);
   const mapStates: MapState[] = cells.map((c) => {
     const rows = [c.live, ...c.predecessors, ...c.unlinked].filter(
@@ -322,6 +335,7 @@ export default async function Home() {
             <RecordsMap
               domain={domain}
               filings={filings}
+              rejections={rejectionSteps}
               stateBillMonths={monthly.stateBillsFirstSeen}
               legislation={monthly.legislationActions}
               eos={eoTicks}
@@ -368,6 +382,26 @@ export default async function Home() {
               <span data-figure="ended">{campaign.ended}</span>{" "}
               <span data-posture="ended">{POSTURE_LABEL.ended}</span>
             </p>
+            {/*
+              THE OUTCOME FIGURE SITS ON ITS OWN LINE, not in the posture clause above,
+              and the split is the same fix the overlay clause got. The postures
+              PARTITION the sued; a rejection is an EVENT that cuts across them --
+              California is live-and-rejected -- so appending it to a partition would
+              invite exactly the arithmetic that clause was split to prevent. It is not
+              an overlay either: overlays are figures the map does not paint, and this
+              one it does.
+            */}
+            {rejectedSet.size > 0 && (
+              <p className="mt-1 text-sm">
+                <span className="text-[var(--c-outcome)]">
+                  <span data-figure="rejected">{rejectedSet.size}</span> demands a court
+                  rejected
+                </span>{" "}
+                <span className="text-neutral-500">
+                  — derived from the docket at each disposition, not a field in the record
+                </span>
+              </p>
+            )}
             <p className="mt-1 text-sm text-neutral-400">
               among those {campaign.sued}:{" "}
               <span data-figure="chains">{campaign.chains}</span>{" "}

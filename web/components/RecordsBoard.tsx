@@ -166,6 +166,7 @@ export function RecordsBoard({
   stateBills,
   legislation,
   eos,
+  rejections,
   frame,
 }: {
   domain: Domain;
@@ -173,6 +174,10 @@ export function RecordsBoard({
   stateBills: MonthCount[];
   legislation: MonthCount[];
   eos: EoTick[];
+  /** Cumulative jurisdictions whose demand a court rejected -- the same step shape as
+   *  `filings`, on the same scale and against the same ceiling, so the two lines are
+   *  comparable by eye rather than merely adjacent. */
+  rejections: FilingStep[];
   frame: Frame;
 }) {
   const x = (t: number) => PAD_L + xOf(t, domain, PLOT);
@@ -202,6 +207,22 @@ export function RecordsBoard({
     return d;
   }, [filings, domain]);
 
+  // Built by the SAME expression as the red line rather than a copy of it, so the two
+  // cannot drift into different step geometry.
+  const stepPathOf = (steps: FilingStep[]) => {
+    if (!steps.length) return "";
+    let d = `M ${x(domain.start)} ${AXIS_Y}`;
+    let prev = 0;
+    for (const s of steps) {
+      d += ` L ${x(s.t)} ${yOfTotal(prev)} L ${x(s.t)} ${yOfTotal(s.total)}`;
+      prev = s.total;
+    }
+    d += ` L ${x(domain.end)} ${yOfTotal(prev)}`;
+    return d;
+  };
+
+  const outcomePath = useMemo(() => stepPathOf(rejections), [rejections, domain]);
+
   const legPath = useMemo(() => {
     if (!legislation.length) return "";
     return legislation
@@ -217,6 +238,8 @@ export function RecordsBoard({
   const ticks = useMemo(() => quarterTicks(domain), [domain]);
   const visibleFilings = visibleAt(filings, frame);
   const lastVisible = visibleFilings.at(-1);
+  const lastRejection = visibleAt(rejections, frame).at(-1);
+  const rejectedSoFar = lastRejection?.total ?? 0;
 
   /** The running total on the date a milestone marks, so a marker sits ON the line. */
   const totalAt = (t: number) => {
@@ -253,7 +276,15 @@ export function RecordsBoard({
           viewBox={`0 0 ${W} ${H}`}
           className="w-full"
           role="img"
-          aria-label={`Cumulative jurisdictions sued and monthly legislative activity, through ${frame.label}`}
+          aria-label={
+            `Cumulative jurisdictions sued${
+              rejectedSoFar > 0
+                ? ` and jurisdictions whose demand a court rejected, ${rejectedSoFar} of ${
+                    lastVisible?.total ?? 0
+                  }`
+                : ""
+            }, and monthly legislative activity, through ${frame.label}`
+          }
         >
           <defs>
             {/* Width follows the frame. Every data layer is inside it; the axis is not. */}
@@ -277,6 +308,13 @@ export function RecordsBoard({
           {/* --- above the axis: cumulative jurisdictions --------------------------- */}
           <g clipPath="url(#board-frame)">
             <path d={stepPath} fill="none" stroke="var(--c-litigation)" strokeWidth={1.75} />
+
+            {/* THE SECOND CHANNEL, on the same axis and the same ceiling. It reads as a
+                fraction of the line above it because it IS one: every jurisdiction here
+                is a jurisdiction sued, so the teal line can never cross the red. Inside
+                the same clip, so it is replay-gated by construction rather than by a
+                second gate that could be forgotten. */}
+            <path d={outcomePath} fill="none" stroke="var(--c-outcome)" strokeWidth={1.5} />
 
             {/* One dot per distinct filing date, dim by default, lit in its own frame. */}
             {filings.map((s) => {
@@ -415,6 +453,20 @@ export function RecordsBoard({
           >
             {lastVisible?.total ?? 0} of {JURISDICTIONS}
           </span>
+
+          {/* The teal line's own numeral, bound to ITS last step and not to the red
+              one's. Rendered only once the replay has reached a rejection: a "0
+              rejected" chip on the opening frames would be a claim about a period the
+              record has not reached rather than a reading of it, which is the same rule
+              the milestone markers follow. */}
+          {rejectedSoFar > 0 && (
+            <span
+              className={`board-chip outcome${chipLeads ? " leads" : ""}`}
+              style={{ left: pctX(PAD_L + clipW), top: pctY(yOfTotal(rejectedSoFar)) }}
+            >
+              {rejectedSoFar} rejected
+            </span>
+          )}
         </div>
       </div>
 

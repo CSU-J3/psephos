@@ -28,8 +28,12 @@ import { BoardKey } from "@/components/SourceLegend";
 //
 // ONE PROPERTY, ONE MEANING. Nothing here may take a second job:
 //   fill       litigation posture -- suit live / suit ended / never sued
-//   stroke     RESERVED for outcome. Unused this unit; the teal layer takes it when it
-//              exists, and until then nothing else may.
+//   stroke     OUTCOME -- a court ruled against this jurisdiction's records demand.
+//              Teal, --c-outcome, taken by the layer this line reserved it for
+//              (handoff 97). ORTHOGONAL TO FILL BY CONSTRUCTION, which is the whole
+//              reason it needed its own property: US v. Weber was rejected 2026-01-15
+//              AND appealed, so California carries a teal stroke over a live-red fill.
+//              A posture value could not have said both.
 //   violet dot state bills tracked, radius scaled by the running total
 //   filter     selection AND hover, COMPOSED into one chain -- see .map-shape in
 //              globals.css. Two meanings on one property is exactly what the rule
@@ -86,6 +90,7 @@ export function RecordsMap({
   legislation,
   eos,
   frames,
+  rejections,
   states,
   billsByStateMonth,
 }: {
@@ -95,6 +100,8 @@ export function RecordsMap({
   legislation: MonthCount[];
   eos: EoTick[];
   frames: Frame[];
+  /** Cumulative rejections, same step shape as `filings` so one gate serves both. */
+  rejections: FilingStep[];
   states: MapState[];
   /** ab -> [{month, n}], for the per-frame running dot totals. */
   billsByStateMonth: Record<string, MonthCount[]>;
@@ -171,6 +178,19 @@ export function RecordsMap({
     return byAb.get(ab)?.posture ?? "none";
   };
 
+  // REPLAY-GATED LIKE THE POSTURES, and for the same reason: a stroke for a ruling the
+  // replay has not reached yet would show the board its own endpoint. Same `visibleAt`
+  // over the same step shape, so the map's teal and the chart's teal line can never
+  // disagree about which frame a rejection lands in.
+  const rejectedByFrame = new Set<string>();
+  for (const step of visibleAt(rejections, frame)) {
+    for (const state of step.states) {
+      const f = tryResolveState(state);
+      if (f) rejectedByFrame.add(f.ab);
+    }
+  }
+  const rejectedAt = (ab: string): boolean => rejectedByFrame.has(ab);
+
   const toggle = (ab: string) => setSelected((cur) => (cur === ab ? null : ab));
 
   return (
@@ -185,6 +205,7 @@ export function RecordsMap({
           stateBills={stateBillMonths}
           legislation={legislation}
           eos={eos}
+          rejections={rejections}
           frame={frame}
         />
       </div>
@@ -248,12 +269,12 @@ export function RecordsMap({
               data-ab={f.ab}
               d={f.d}
               fill={POSTURE_FILL[postureAt(f.ab)]}
-              stroke="#0a0a0a"
-              strokeWidth={0.6}
+              stroke={rejectedAt(f.ab) ? "var(--c-outcome)" : "#0a0a0a"}
+              strokeWidth={rejectedAt(f.ab) ? 1.4 : 0.6}
               className="map-shape"
               tabIndex={0}
               role="button"
-              aria-label={f.name}
+              aria-label={rejectedAt(f.ab) ? `${f.name} — demand rejected in court` : f.name}
               aria-pressed={isSel}
               onClick={() => toggle(f.ab)}
               onKeyDown={(e) => {
@@ -291,12 +312,12 @@ export function RecordsMap({
                 height={c.size}
                 rx={3}
                 fill={POSTURE_FILL[postureAt(c.ab)]}
-                stroke="#0a0a0a"
-                strokeWidth={0.6}
+                stroke={rejectedAt(c.ab) ? "var(--c-outcome)" : "#0a0a0a"}
+                strokeWidth={rejectedAt(c.ab) ? 1.4 : 0.6}
                 className="map-shape"
                 tabIndex={0}
                 role="button"
-                aria-label={c.name}
+                aria-label={rejectedAt(c.ab) ? `${c.name} — demand rejected in court` : c.name}
                 aria-pressed={isSel}
                 onClick={() => toggle(c.ab)}
                 onKeyDown={(e) => {

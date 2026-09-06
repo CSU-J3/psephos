@@ -58,9 +58,21 @@ const frameAt = (end: string, label = end): Frame => ({
   toDate: false,
 });
 
-function render(frame: Frame): string {
+// The teal series defaults to EMPTY here, deliberately: every assertion in this file
+// is about the red line, the label layer and the caption strip, and a fixture carrying
+// rejections would change what those assertions are measured against. The outcomes
+// layer has its own fixture below and its own tests in lib/outcomes.test.ts.
+function render(frame: Frame, rejections: FilingStep[] = []): string {
   return renderToStaticMarkup(
-    createElement(RecordsBoard, { domain, filings, stateBills, legislation, eos, frame }),
+    createElement(RecordsBoard, {
+      domain,
+      filings,
+      stateBills,
+      legislation,
+      eos,
+      rejections,
+      frame,
+    }),
   );
 }
 
@@ -178,7 +190,15 @@ describe("RecordsBoard label layer", () => {
       { date: "2025-09-16", t: day("2025-09-16"), added: 50, total: 50, states: ["x"] },
     ];
     const low = renderToStaticMarkup(
-      createElement(RecordsBoard, { domain, filings, stateBills, legislation, eos, frame: frameAt("2026-12-31") }),
+      createElement(RecordsBoard, {
+        domain,
+        filings,
+        stateBills,
+        legislation,
+        eos,
+        rejections: [],
+        frame: frameAt("2026-12-31"),
+      }),
     );
     const near = renderToStaticMarkup(
       createElement(RecordsBoard, {
@@ -186,6 +206,7 @@ describe("RecordsBoard label layer", () => {
         filings: high,
         stateBills,
         legislation,
+        rejections: [],
         eos,
         frame: frameAt("2026-12-31"),
       }),

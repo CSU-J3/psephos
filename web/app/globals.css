@@ -59,10 +59,15 @@
   --leg-dim: oklch(0.62 0.17 295 / 0.55);
 
   --c-executive: oklch(0.72 0.15 75); /* executive orders */
-  --c-outcome: oklch(0.68 0.12 195); /* RESERVED: a court rejected the demand.
-                                        Unused until the teal layer exists; stroke
-                                        is reserved for it and nothing else may
-                                        take stroke. */
+  --c-outcome: oklch(0.68 0.12 195); /* A court rejected the demand. BUILT, handoff 97;
+                                        this read RESERVED / "unused until the teal
+                                        layer exists" from `04cbc23` until then, and
+                                        the reservation held -- stroke on a map shape
+                                        and a second cumulative line on the chart are
+                                        the only things that take it. Derived at read
+                                        time by lib/outcomes.ts from the docket entries
+                                        at each docket's own date_terminated; there is
+                                        no outcome column and no editorial list. */
 }
 
 body {
@@ -363,6 +368,15 @@ textarea {
 }
 .board-chip.leads.below {
   transform: translate(0, 60%);
+}
+/* The outcome chip. Same object, its own ink, so the two numerals on the leading edge
+   are told apart by the same colour that tells their lines apart -- reading the teal
+   figure in the red chip's grey would make it look like a second reading of the same
+   series. It never takes `.below`: it sits under the red line by construction (its
+   line cannot cross that one), so the ceiling case that rule exists for cannot arise. */
+.board-chip.outcome {
+  color: var(--c-outcome);
+  border-color: color-mix(in oklch, var(--c-outcome) 40%, #333338);
 }
 .board-ms {
   position: absolute;

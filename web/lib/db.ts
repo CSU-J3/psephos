@@ -10,6 +10,7 @@ import { FEED_WINDOW, HISTORY_AFTER_DAYS } from "@/lib/feed";
 import { BAND_DAYS } from "@/lib/timeline";
 import type { FeedAnchor, FeedEntry } from "@/lib/feed";
 import type { MovementRow } from "@/lib/movement";
+import type { DocketEntry, TerminatedCase } from "@/lib/outcomes";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -989,6 +990,58 @@ export async function getTrackerNotes(): Promise<Map<string, string>> {
     if (summary) out.set(asText(r.case_id), summary);
   }
   return out;
+}
+
+// --- the outcomes layer: the docket text at each disposition -------------------------
+//
+// TWO COLUMNS AND A DATE WINDOW, done in SQL rather than by pulling case_entries. The
+// campaign's twenty terminated dockets hold 2,400+ raw entries between them and the
+// derivation needs the handful at each one's own termination date -- about seventy
+// rows. Fetching the dockets and filtering in TS would read two orders of magnitude
+// more than the question requires, on the query this page runs per render.
+//
+// `date(...)` does the window in SQLite, on the DATE PREFIX of both sides: entry_at is
+// bare-date on some rows and timestamped on others, and date_terminated is stored
+// through common.to_iso and so always carries a midnight time. Comparing the raw
+// strings would drop every timestamped entry on a bare-date boundary.
+//
+// The ±1 day is not slack. New Hampshire's dismissal order is 06-29 and its judgment
+// and date_terminated are 06-30 -- the order is the event, and a zero-width window
+// would miss it and report New Hampshire as never rejected.
+export async function getRejectionEvidence(): Promise<{
+  cases: TerminatedCase[];
+  entries: DocketEntry[];
+}> {
+  const rs = await db.execute(
+    `SELECT c.case_id, c.state, c.date_terminated, e.entry_at, e.description
+       FROM cases c
+       JOIN case_entries e ON e.case_id = c.case_id
+      WHERE c.status = 'terminated'
+        AND c.state IS NOT NULL
+        AND c.date_terminated IS NOT NULL
+        AND date(substr(e.entry_at, 1, 10))
+            BETWEEN date(substr(c.date_terminated, 1, 10), '-1 day')
+                AND date(substr(c.date_terminated, 1, 10), '+1 day')
+      ORDER BY c.case_id, e.entry_at, e.id`,
+  );
+  const cases = new Map<string, TerminatedCase>();
+  const entries: DocketEntry[] = [];
+  for (const r of rs.rows) {
+    const case_id = asText(r.case_id);
+    if (!cases.has(case_id)) {
+      cases.set(case_id, {
+        case_id,
+        state: asText(r.state),
+        date_terminated: asText(r.date_terminated),
+      });
+    }
+    entries.push({
+      case_id,
+      entry_at: asTextOrNull(r.entry_at),
+      description: asTextOrNull(r.description),
+    });
+  }
+  return { cases: [...cases.values()], entries };
 }
 
 export async function getCampaignRows(): Promise<CampaignRow[]> {

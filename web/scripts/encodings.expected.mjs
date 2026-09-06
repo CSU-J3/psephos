@@ -36,17 +36,31 @@
  * reason it is worth having for that route.
  */
 
-/** Board — `/`. Ten encodings: three map postures, one map dot, six chart marks. */
+/** Board — `/`. Twelve encodings: three map postures, one map outcome stroke, one map
+ *  dot, seven chart marks. */
 export const BOARD = [
   // The map's three fills. One paint site serves all three: `postureAt` picks the fill,
   // so they are distinguished by value and not by call site.
   { encoding: "posture-live", paint: "RecordsMap.tsx:250,293", key: "SourceLegend.tsx:116", since: "c6a551d" },
   { encoding: "posture-ended", paint: "RecordsMap.tsx:250,293", key: "SourceLegend.tsx:119", since: "c6a551d" },
   { encoding: "posture-none", paint: "RecordsMap.tsx:250,293", key: "SourceLegend.tsx:122", since: "c6a551d" },
+  // THE OUTCOME LAYER. Its two rows arrived WITH their paint and their key entries in
+  // one commit, which is the precedent milestone-marker set and the only shape that
+  // keeps the join green throughout: a row landing early fails "named but not emitted"
+  // and one landing late fails the other arm.
+  //
+  // This is the first encoding that shares an ELEMENT with another. A rejected
+  // jurisdiction's shape carries its posture fill and this stroke at once -- they are
+  // independent properties by the map's own one-property-one-meaning rule -- so the
+  // classifier records both from one element rather than choosing.
+  { encoding: "outcome-stroke", paint: "RecordsMap.tsx:255,298", key: "SourceLegend.tsx:125", since: "HEAD" },
   { encoding: "state-bill-dot", paint: "RecordsMap.tsx:447", key: "SourceLegend.tsx:126", since: "c6a551d" },
 
   // The chart. Five SVG marks and one that is not SVG at all.
   { encoding: "filings-cumulative", paint: "RecordsBoard.tsx:279", key: "SourceLegend.tsx:143", since: "c6a551d" },
+  // Same scale and same ceiling as the red line above it, so the two are comparable by
+  // eye. It cannot cross that line: every jurisdiction here is one the red line counts.
+  { encoding: "outcome-cumulative", paint: "RecordsBoard.tsx:309", key: "SourceLegend.tsx:157", since: "HEAD" },
   { encoding: "filing-date-dot", paint: "RecordsBoard.tsx:290", key: "SourceLegend.tsx:158", since: "c6a551d" },
   { encoding: "state-bills-monthly", paint: "RecordsBoard.tsx:309", key: "SourceLegend.tsx:169", since: "c6a551d" },
   { encoding: "legislation-monthly", paint: "RecordsBoard.tsx:314", key: "SourceLegend.tsx:180", since: "c6a551d" },

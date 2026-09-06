@@ -65,9 +65,13 @@ export function SourceLegend() {
 // encodings against named ones rather than counting boxes -- the count was never the
 // question.
 //
-// RESERVED STROKE IS ABSENT ON PURPOSE. There is nothing to name until the teal layer
-// exists, and a key entry for an unpainted encoding is the same lie in the other
-// direction.
+// THE RESERVED STROKE IS NAMED NOW. This block read "RESERVED STROKE IS ABSENT ON
+// PURPOSE -- there is nothing to name until the teal layer exists, and a key entry for
+// an unpainted encoding is the same lie in the other direction." The layer exists
+// (handoff 97), so the two entries arrived WITH their paint and their expected-set rows
+// in one commit -- the same atomic move the milestone marker made, and for the same
+// reason: a key row landing before or after its paint is red in one direction or the
+// other for as long as the gap lasts.
 //
 // Hover and selection are absent for a different reason and it is not an oversight:
 // they are affordances rather than encodings of the record, they carry no datum, and
@@ -122,6 +126,30 @@ export function BoardKey() {
         <Entry encoding="posture-none" swatch={<Chip posture="none" />}>
           {POSTURE_LABEL.none}
         </Entry>
+        {/* THE SWATCH IS A STROKE, because the encoding is a stroke. A filled teal chip
+            would name the wrong property and would read as a fourth posture -- which is
+            the one thing this layer is not: it rides OVER a posture, and California
+            carries it over a live fill. The swatch shows a neutral shape with a teal
+            edge, which is what the map draws. */}
+        <Entry
+          encoding="outcome-stroke"
+          swatch={
+            <svg aria-hidden width="14" height="14" className="shrink-0">
+              <rect
+                x="1.5"
+                y="1.5"
+                width="11"
+                height="11"
+                rx="2"
+                fill="#1f1f1f"
+                stroke="var(--c-outcome)"
+                strokeWidth={1.4}
+              />
+            </svg>
+          }
+        >
+          demand rejected
+        </Entry>
         <Entry
           encoding="state-bill-dot"
           swatch={
@@ -153,6 +181,21 @@ export function BoardKey() {
           }
         >
           jurisdictions sued, cumulative to 51
+        </Entry>
+        <Entry
+          encoding="outcome-cumulative"
+          swatch={
+            <svg aria-hidden width="20" height="11" className="shrink-0">
+              <path
+                d="M 0 9 L 9 9 L 9 6 L 20 6"
+                fill="none"
+                stroke="var(--c-outcome)"
+                strokeWidth={1.5}
+              />
+            </svg>
+          }
+        >
+          demand rejected in court, cumulative
         </Entry>
         <Entry
           encoding="filing-date-dot"

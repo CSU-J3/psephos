@@ -141,6 +141,7 @@ const emittedAt = () =>
       executive: resolve("var(--c-executive)"),
       ended: resolve("color-mix(in oklch, var(--c-litigation) 42%, #171717)"),
       none: resolve("#1f1f1f"),
+      outcome: resolve("var(--c-outcome)"),
     };
     probe.remove();
 
@@ -170,6 +171,14 @@ const emittedAt = () =>
       if (tag === "line" && NEUTRAL.test(stroke)) return;
 
       if (where === "map") {
+        // READ BEFORE THE FILLS AND WITHOUT RETURNING. A rejected jurisdiction emits
+        // TWO encodings from one element -- its posture fill and its outcome stroke --
+        // which is what "one property, one meaning" buys: the two are independent, so
+        // the classifier must record both rather than pick. Returning here would hide
+        // whichever posture the rejected states happen to carry.
+        if ((tag === "path" || tag === "rect") && stroke === C.outcome) {
+          found.add("outcome-stroke");
+        }
         if (tag === "path" || tag === "rect") {
           if (fill === C.litigation) return void found.add("posture-live");
           if (fill === C.ended) return void found.add("posture-ended");
@@ -183,6 +192,9 @@ const emittedAt = () =>
       if (where === "chart") {
         if (tag === "path" && stroke === C.litigation) {
           return void found.add("filings-cumulative");
+        }
+        if (tag === "path" && stroke === C.outcome) {
+          return void found.add("outcome-cumulative");
         }
         if (tag === "path" && stroke === C.legislation) {
           return void found.add("legislation-monthly");
@@ -649,7 +661,12 @@ check(
 // `live` WAS `active` UNTIL THE POSTURE-WORDING UNIT, and this line had to move with
 // the figure or the check below would have failed on a rename that broke nothing --
 // reporting `live` as an undisclaimed figure when what actually changed was its name.
-const AGGREGATE_OR_PAINTED = new Set(["sued", "total", "live", "ended"]);
+// `rejected` joins the set because the map PAINTS it -- teal stroke on the shape --
+// which is the same ground `live` and `ended` are here on. It does NOT join the list in
+// lib/board.test.ts, and the asymmetry is not an oversight: that one is computed over
+// `Object.keys(summarize())`, and this figure is derived by lib/outcomes.ts rather than
+// by summarize, so it never appears there. Same key, two lists, two reasons -- still.
+const AGGREGATE_OR_PAINTED = new Set(["sued", "total", "live", "ended", "rejected"]);
 check(
   "line figures the map does not paint, disclaimed in the key",
   figures.filter((f) => !AGGREGATE_OR_PAINTED.has(f) && !unpainted.includes(f)),
