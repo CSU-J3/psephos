@@ -7418,5 +7418,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-a-resounding-win-for-voters-and-defeat-for-trump-but-the-fight-for-mail-voting-isnt-over",
     "title": "This week at Democracy Docket: A resounding win for voters — and defeat for Trump. But the fight for mail voting isn’t over"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 97370,
+    "kind": "item",
+    "occurred_at": "2026-09-06T15:35:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/justice-department-asks-supreme-court-to-lift-block-on-usps-mail-voting-restrictions",
+    "title": "Justice Department asks Supreme Court to lift block on USPS mail voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 97369,
+    "kind": "item",
+    "occurred_at": "2026-09-06T16:35:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/states-challenging-trumps-mail-voting-rule-must-mail-more-than-51-million-ballots-by-late-october",
+    "title": "States challenging Trump’s mail voting rule must mail more than 51 million ballots by late October"
   }
 ]
