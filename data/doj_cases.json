@@ -39,7 +39,7 @@
     "caption": "United States v. DC",
     "category": "voter-data",
     "court": "DC Circuit",
-    "court_id": null,
+    "court_id": "cadc",
     "docket_number": "26-5296",
     "notes": "Claims: Civil Rights Act 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the DC Circuit. | Key decisions: District Court's 8/6/2026 dismissal.",
     "state": "DC"
@@ -147,7 +147,7 @@
     "caption": "United States v. Minnesota",
     "category": "voter-data",
     "court": "Eighth District",
-    "court_id": null,
+    "court_id": "ca8",
     "docket_number": "26-2679",
     "notes": "Claims: 1. HAVA 2. Civil Rights Act 1960 | Status: Expedited briefing of appeal is underway: DOJ filed its opening brief on 8/28/26; state to file its response by 9/11/26; DOJ's reply due 9/18/26. | Key decisions: District Court's 8/17/26 dismissal.",
     "state": "Minnesota"
