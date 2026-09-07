@@ -1,4 +1,5 @@
-"""Three read-only coverage questions about `cases`, in one pass. Writes nothing.
+"""Six read-only coverage questions about `cases` and the tracker artifact, in one
+pass. Writes nothing.
 
 This is what survived the handoff 17 supersession-generator unit. That unit proposed a
 two-input pair detector behind a three-predicate cascade; it was measured (handoff 40-42)
@@ -9,14 +10,23 @@ behaviour, kept because it was measured on this exact corpus.
 
     python -m tools.coverage_audit
 
-Exit code is the ALARM in sections 1 and 4: 1 if any row is unreconciled OR any row's
-`latest_entry_at` disagrees with its derivation, 0 otherwise. Both expect 0. Sections
-2 and 3 are REPORTS and are expected to be non-empty -- 7 and 1 as of 2026-08-13. Do
-not read a non-zero count there as a failure.
+Exit code is the ALARM in sections 1, 4, 5 and 6: 1 if any row is unreconciled, OR any
+row's `latest_entry_at` disagrees with its derivation, OR any tracker court fails to
+classify, OR any row was never polled and is linked to nothing. All four expect 0.
+Sections 2 and 3 are REPORTS and are expected to be non-empty -- 6 and 1 as of
+2026-09-07. Do not read a non-zero count there as a failure.
 
 (Section 4 was added 2026-08-14 and the exit code widened with it. It used to read
 "the ALARM in section 1 only", which is why this line is restated rather than left to
-be inferred from the code.)
+be inferred from the code. Sections 5 and 6 were added 2026-09-07 with unit C and it
+widened again -- the same restatement, for the same reason.)
+
+DELIVERY IS THE POINT OF UNIT C, NOT DETECTION. Every alarm here was correct and
+available before it was read: section 1 read 6 for seventeen days, and tracker_uw's
+unmapped-court WARN -- section 5's subject -- fired four times a day into a stderr
+nothing reads. This script exits non-zero so that .github/workflows/audit.yml can
+turn that into a standing GitHub issue a person has to close. Run on demand too;
+read the exit status directly, never through a pipe, which reports the pager's.
 
 --- section 1, the reconciliation alarm --------------------------------------
 A row in `cases` matching no seed AND carrying no `superseded_by` is a row nothing
@@ -31,9 +41,13 @@ unlinked terminated rows. One join against a cascade of three predicates, a rege
 a corpus decision. Redundant against a cheaper instrument.
 
 THE ORDERING TRAP (handoff 26 section 3, shipped as a bug once). The seed set is the
-UNION of both sources: config/sources.yaml -> litigation.seed_cases (2) plus
-data/doj_cases.json (32) = 34, which is the list `litigation.main()` actually
-iterates. Against the ARTIFACT ALONE the numbers change and both are easy to misquote:
+UNION of both sources: config/sources.yaml -> litigation.seed_cases (8) plus
+data/doj_cases.json (32) = 40, which is the list `litigation.main()` actually
+iterates. (Those were 2 and 34 when this paragraph was written; the config side
+grew and the prose did not, until unit C read the tool's own output line and found
+it disagreeing with the file it sits in.)
+
+Against the ARTIFACT ALONE the numbers change and both are easy to misquote:
 8 rows read unseeded rather than 6, and the ALARM reads 2 rather than 0 -- the two
 extras being the config seeds, which are polled every run. 8 is the unseeded count and
 2 is the alarm count; they are different questions and neither is the other. Reuse
@@ -83,6 +97,8 @@ import re
 
 import config
 import db
+from collectors.litigation import load_tracker_seeds
+from collectors.tracker_uw import COURT_IDS
 from tools.status_audit import seeded_keys
 
 # Year-dash forms only. District: 1:25-cv-03934. Circuit: 26-2684. The {3,5} tail is
@@ -185,6 +201,70 @@ def derived_drift(conn) -> list:
     return out
 
 
+def unclassified_courts(seeds: list[dict]) -> list[dict]:
+    """Section 5: tracker-artifact rows whose court does not classify. ALARM, expect 0.
+
+    THE SUBJECT IS THE ARTIFACT, NOT `cases`, and that scoping is a correction rather
+    than a preference. `COURT_IDS` exists for exactly one job: turning a court NAME
+    scraped by tracker_uw into a CourtListener id. Config seeds in
+    config/sources.yaml carry a hand-authored `court_id` and never consult it --
+    `collect_case` reads `seed.get("court_id")` off whichever seed it was handed. So
+    a check over `SELECT DISTINCT court FROM cases` is the wrong denominator: measured
+    2026-09-07 it reports 38 of 39 classifying and flags 'D.D.C.' twice, both of them
+    healthy config-seeded rows (Common Cause v. DOJ, LWV v. DHS). An alarm shipped at
+    that scope would have been born permanently red on correct data, which is the
+    failure this section exists to prevent.
+
+    WHY IT EXISTS. tracker_uw prints a WARN on an unmapped court and has done, four
+    times a day, into a stderr nothing reads -- while two rows sat unresolved for
+    seventeen days because UW spells the Eighth Circuit 'Eighth District' and the D.C.
+    Circuit 'DC Circuit'. The aliases added in 6470a79 fix those two and nothing else:
+    an alias exists only once someone has NOTICED the miss, and noticing is what
+    failed. This turns the noticing into an exit code.
+
+    TWO PREDICATES, and they are not the same one twice. `court_id` is normally
+    `COURT_IDS.get(court)`, so a name that fails to classify usually arrives with a
+    null id -- but the artifact is a committed file that can outlive an edit to the
+    map. Removing an alias leaves a stale non-null id beside a name that no longer
+    classifies, and checking only the id would miss it.
+
+    Pure, taking rows rather than reading the file, because the suite must never read
+    the live artifact -- the cron rewrites it, and a test pinned to it would fail for
+    reasons that are not the test's subject. `main()` does the loading."""
+    out = []
+    for s in seeds:
+        court = s.get("court")
+        if court not in COURT_IDS or not s.get("court_id"):
+            out.append(s)
+    return out
+
+
+def unbootstrapped(conn) -> list:
+    """Section 6: rows never bootstrapped and linked to nothing. ALARM, expect 0.
+
+    `entries_synced_at IS NULL` means no poll ever walked this docket. On its own that
+    is not a defect: a terminated district row continued as a circuit appeal is
+    COMPLETE, not unbootstrapped, and three such rows (PA 71453026, NH 71453646, MD
+    71980724) have held a NULL mark since handoff 13 and always will. The alarm is the
+    subset carrying no `superseded_by` -- never polled AND linked to nothing.
+
+    Measured 2026-09-07: 0 with the clause, 3 without it, the three being exactly those
+    orphans. That is the same shape as section 1 and the same trap: without the second
+    clause the query reads 3 and every mention of it needs a caveat, which is how a
+    standing check stops being run.
+
+    This query is already written down -- docs/psephos.md carries it as the standing
+    bootstrap-coverage check, to be pasted into a Turso shell by a human who remembers.
+    Nobody remembered. Moving it here is the whole thesis of unit C: the query was
+    correct, available and unrun, exactly like section 1's alarm and exactly like
+    tracker_uw's WARN. The gap was never detection."""
+    return conn.execute(
+        "SELECT case_id, docket_number, court, status FROM cases "
+        "WHERE entries_synced_at IS NULL AND superseded_by IS NULL "
+        "ORDER BY case_id"
+    ).fetchall()
+
+
 def main(argv=None) -> int:
     config.load_env()
     seeded = seeded_keys()
@@ -199,6 +279,9 @@ def main(argv=None) -> int:
         refs = unresolvable_refs(conn, held)
         watch = cert_watch(rows)
         drift = derived_drift(conn)
+        artifact = load_tracker_seeds()
+        unmapped = unclassified_courts(artifact)
+        unbooted = unbootstrapped(conn)
 
         print(f"coverage_audit: {len(rows)} cases, {len(seeded)} seed keys "
               f"(union of config seed_cases + the tracker artifact)\n")
@@ -243,7 +326,26 @@ def main(argv=None) -> int:
                   f"stored {str(r['stored'])[:10]} != derived {str(r['derived'])[:10]}  "
                   f"{r['court']}")
 
-        return 1 if (alarm or drift) else 0
+        print()
+        print(f"  [5] VOCABULARY ALARM -- tracker courts that do not classify: "
+              f"{len(unmapped)}  (expect 0)")
+        print(f"      {len(artifact)} artifact row(s) checked against COURT_IDS "
+              f"({len(COURT_IDS)} keys, aliases included). Config seeds are NOT in "
+              f"scope: they carry a hand-authored court_id and never consult the map.")
+        for s in unmapped:
+            print(f"        FIRES  {str(s.get('state')):<16} court={s.get('court')!r} "
+                  f"court_id={s.get('court_id')!r}  {s.get('docket_number')}")
+            print(f"               add + verify its CourtListener id in "
+                  f"collectors.tracker_uw.COURT_IDS")
+
+        print()
+        print(f"  [6] BOOTSTRAP ALARM -- never polled and linked to nothing: "
+              f"{len(unbooted)}  (expect 0)")
+        for r in unbooted:
+            print(f"        FIRES  {r['case_id']:<10} {str(r['docket_number']):<16} "
+                  f"{r['court']}  status={r['status']}")
+
+        return 1 if (alarm or drift or unmapped or unbooted) else 0
     finally:
         conn.close()
 

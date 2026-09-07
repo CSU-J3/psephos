@@ -231,3 +231,124 @@ def test_an_ordinary_cross_reference_is_neither():
     not be labelled as one."""
     assert ca.classify_ref("8:25-cv-01370", ["Central District of California"],
                            ["2:25-cv-09149"]) == "reference"
+
+
+# --- section 5, the vocabulary alarm ----------------------------------------
+#
+# Synthetic rows only. The suite never reads data/doj_cases.json: the cron rewrites
+# that file, so a test pinned to it would go red for reasons that are not the test's
+# subject, and would report a UW edit as a defect in this code. The live reading --
+# 32 rows, 0 unclassified, 0 null court_id on 2026-09-07 -- is a dated measurement and
+# lives in docs/status.md, not here.
+#
+# Every expect-0 alarm in this file is red-proved before it is trusted. An alarm that
+# has never been seen fire is an assumption; this suite's own history is the argument
+# (see the zero-expected-grep invariant in docs/status.md).
+
+
+def _seed(court, court_id, state="Somewhere", docket="1:26-cv-00001"):
+    return {"state": state, "court": court, "court_id": court_id,
+            "docket_number": docket, "caption": "United States v. X"}
+
+
+def test_vocab_alarm_fires_on_an_unmapped_court_name():
+    # The exact defect that hid for seventeen days: UW types a court name that is not
+    # a key, COURT_IDS.get returns None, court_id is null, the row never resolves.
+    rows = [_seed("Ninth District", None, state="Somewhere", docket="2:26-cv-00002")]
+    out = ca.unclassified_courts(rows)
+    assert len(out) == 1
+    assert out[0]["court"] == "Ninth District"
+
+
+def test_vocab_alarm_fires_on_a_null_court_id_even_when_the_name_classifies():
+    # The second predicate, and it is not the first one twice. The artifact is a
+    # committed file that can outlive an edit to the map, so a real name can arrive
+    # beside a null id. Checking only the name would miss it.
+    assert ca.unclassified_courts([_seed("Ninth Circuit", None)]) != []
+
+
+def test_vocab_alarm_fires_on_a_stale_id_whose_name_no_longer_classifies():
+    # The mirror case: a non-null id beside a name that is not a key -- what removing
+    # an alias would leave behind. Checking only the id would miss THIS one, which is
+    # why both predicates are evaluated rather than one standing in for the other.
+    assert ca.unclassified_courts([_seed("Eighth Districts", "ca8")]) != []
+
+
+def test_vocab_alarm_is_silent_on_the_two_aliases():
+    # 6470a79's aliases are inside COURT_IDS, so UW's spellings classify. If this ever
+    # fires, the aliases were dropped and the two rows they cover stop resolving.
+    rows = [_seed("Eighth District", "ca8"), _seed("DC Circuit", "cadc")]
+    assert ca.unclassified_courts(rows) == []
+
+
+def test_vocab_alarm_is_silent_on_ordinary_names():
+    rows = [_seed("Ninth Circuit", "ca9"), _seed("District of Minnesota", "mnd"),
+            _seed("D.C. Circuit", "cadc")]
+    assert ca.unclassified_courts(rows) == []
+
+
+def test_vocab_alarm_is_silent_on_an_empty_artifact():
+    # load_tracker_seeds returns [] when the artifact is missing, which is not an
+    # error -- the config seeds still run. An empty list must not read as an alarm.
+    assert ca.unclassified_courts([]) == []
+
+
+def test_vocab_alarm_does_not_police_config_seed_spellings():
+    # THE SCOPE CORRECTION, pinned. 'D.D.C.' is how config/sources.yaml spells the
+    # district court, with a hand-authored court_id; it is not a COURT_IDS key and
+    # never needs to be, because collect_case reads court_id straight off the seed.
+    # This section takes ARTIFACT rows, so a config spelling can only reach it by
+    # someone widening the caller to pass `cases` rows or config seeds -- which is the
+    # scope error C0 caught before it shipped, and would have made this alarm born red
+    # on two healthy rows.
+    assert ca.unclassified_courts([_seed("D.D.C.", "dcd")]) != []
+
+
+# --- section 6, the bootstrap alarm -----------------------------------------
+
+
+@pytest.fixture()
+def cases_conn(tmp_path):
+    import sqlite3
+    c = sqlite3.connect(tmp_path / "cases.db")
+    c.row_factory = sqlite3.Row
+    c.execute("CREATE TABLE cases (case_id TEXT PRIMARY KEY, docket_number TEXT, "
+              "court TEXT, status TEXT, entries_synced_at TEXT, superseded_by TEXT)")
+    return c
+
+
+def _boot_case(conn, case_id, synced, superseded, status="terminated"):
+    conn.execute("INSERT INTO cases VALUES (?, ?, ?, ?, ?, ?)",
+                 (case_id, "1:26-cv-00001", "District of Somewhere", status,
+                  synced, superseded))
+
+
+def test_bootstrap_alarm_fires_on_a_never_polled_unlinked_row(cases_conn):
+    _boot_case(cases_conn, "1", synced=None, superseded=None)
+    out = ca.unbootstrapped(cases_conn)
+    assert [r["case_id"] for r in out] == ["1"]
+
+
+def test_bootstrap_alarm_is_silent_on_the_pa_nh_md_shape(cases_conn):
+    # A terminated district docket continued as a circuit appeal is COMPLETE, not
+    # unbootstrapped. Three real rows have held a NULL mark since handoff 13 and
+    # always will; without the superseded_by clause this query reads 3 instead of 0,
+    # and a check that needs a caveat every time is a check that stops being run.
+    _boot_case(cases_conn, "1", synced=None, superseded="99")
+    assert ca.unbootstrapped(cases_conn) == []
+
+
+def test_bootstrap_alarm_is_silent_on_a_polled_row(cases_conn):
+    _boot_case(cases_conn, "1", synced="2026-09-01T00:00:00", superseded=None,
+          status="pending")
+    assert ca.unbootstrapped(cases_conn) == []
+
+
+def test_bootstrap_alarm_separates_the_two_clauses(cases_conn):
+    # All four combinations at once, so a rewrite that drops either clause fails here
+    # rather than in production: only the both-NULL row may fire.
+    _boot_case(cases_conn, "fires", synced=None, superseded=None)
+    _boot_case(cases_conn, "linked", synced=None, superseded="99")
+    _boot_case(cases_conn, "polled", synced="2026-09-01T00:00:00", superseded=None)
+    _boot_case(cases_conn, "both", synced="2026-09-01T00:00:00", superseded="99")
+    assert [r["case_id"] for r in ca.unbootstrapped(cases_conn)] == ["fires"]

@@ -1,0 +1,113 @@
+name: audit
+
+# The delivery half of unit C. Every alarm this runs was already correct and already
+# available before this workflow existed -- coverage_audit section 1 read 6 for
+# seventeen days, and tracker_uw's unmapped-court WARN (now section 5) fired four
+# times a day into a stderr nothing reads. Nothing here improves detection. What it
+# adds is a reader: a red run opens a GitHub issue that stays open until a person
+# closes it.
+#
+# The issue, not the red run, is the delivery surface, and that distinction is the
+# whole design. This repo's other scheduled workflow has gone red 10 times in 200
+# runs; the most recent (2026-08-21, the "Commit data changes" step) left no fix
+# commit and no mention in any doc, and the next run simply succeeded. A run status
+# is a thing you have to go and look at. An open issue is a thing that is there when
+# you next look at the repo at all.
+
+on:
+  schedule:
+    # 05:17Z daily. The reasoning, and its limit, stated rather than implied: the
+    # 00:17 collect cycle's MEASURED landing band is 2h08-4h42 past its slot and
+    # closes around 05:00, so this nominally reads a database the night's collection
+    # has already written. But this workflow is queued by the same scheduler and
+    # carries the same lag, so in practice it will often land inside the 06:17
+    # cycle's window instead. That precision is not available and is not claimed.
+    #
+    # It is harmless because the audit is read-only and idempotent. The one real
+    # consequence is that a mid-cycle read could in principle catch a transient
+    # section 1 -- which is a reason to read the issue BODY, where the offending
+    # rows are named, rather than reacting to the red status alone.
+    - cron: "17 5 * * *"
+  workflow_dispatch: {}
+
+# Least privilege, twice over. contents:read because the audit writes nothing to the
+# repo; issues:write because the delivery surface is an issue. Note this workflow
+# never gets contents:write -- unlike collect.yml, it has no data commit to make.
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"        # matches collect.yml and ci.yml; keep in step
+
+      # requirements.txt, not -dev: this runs the tool, not the suite.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # TURSO_AUTH_TOKEN is the variable db.py reads; TURSO_READ_TOKEN is a
+      # READ-ONLY Turso token held as a separate secret. Least privilege is achieved
+      # by the MAPPING alone -- no code change, and this workflow cannot write to the
+      # database even if the tool one day tried to.
+      #
+      # `set -o pipefail` is load-bearing: without it the step's exit status is
+      # tee's, not the audit's, and a red audit would report success. That is the
+      # same trap docs/status.md records for piping this tool to `head`.
+      - name: coverage_audit
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
+        run: |
+          set -o pipefail
+          python -m tools.coverage_audit | tee audit.out
+
+      # The delivery surface. ONE standing issue, reused: a red run comments on the
+      # open issue if there is one and opens it if there is not, so a week of red
+      # runs is one issue with seven comments rather than seven issues nobody reads.
+      # It is never closed from here -- a person closes it, which is what makes the
+      # closing an acknowledgement rather than a side effect.
+      - name: Raise or update the standing issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: coverage_audit red
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "cc @CSU-J3"
+            echo
+            echo "\`coverage_audit\` exited non-zero on \`${GITHUB_REF_NAME}\`."
+            echo
+            echo "Run: ${RUN_URL}"
+            echo
+            echo "Exit code covers sections 1, 4, 5 and 6, all of which expect 0."
+            echo "Sections 2 and 3 are reports and are expected non-empty -- a count"
+            echo "there is not the failure. The FIRES lines below are."
+            echo
+            echo '```'
+            cat audit.out 2>/dev/null || echo "(no output captured -- the audit step itself failed to run)"
+            echo '```'
+          } > issue-body.md
+
+          # Exact-title match, not the search ranking: `gh issue list --search` is
+          # fuzzy and would happily return a different issue whose body mentions the
+          # phrase. Selecting on .title == is what makes reuse deterministic.
+          num=$(gh issue list --state open --limit 100 --json number,title \
+                  --jq "[.[] | select(.title == \"${TITLE}\")] | first | .number // empty")
+
+          if [ -n "$num" ]; then
+            echo "commenting on existing issue #${num}"
+            gh issue comment "$num" --body-file issue-body.md
+          else
+            echo "opening the standing issue"
+            gh issue create --title "$TITLE" --body-file issue-body.md
+          fi
