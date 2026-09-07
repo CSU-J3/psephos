@@ -6,6 +6,7 @@ import {
   trackerStatus,
   contestsEnding,
   DORMANT_AFTER_DAYS,
+  isCircuit,
 } from "@/lib/campaign";
 import type { Cell } from "@/lib/campaign";
 // The key's own record, so this page cannot name a posture the map does not define.
@@ -108,7 +109,10 @@ export default async function CampaignPage({
     if (key === "ended") {
       return [...m].sort(
         (a, b) =>
-          Number(b.live?.court?.includes("Circuit")) - Number(a.live?.court?.includes("Circuit")),
+          // isCircuit, not a bare includes("Circuit"): the substring test is the same
+          // classification made a second way, and it disagreed with the glyph on any
+          // court the alias map covers. One predicate, one answer.
+          Number(isCircuit(b.live?.court ?? null)) - Number(isCircuit(a.live?.court ?? null)),
       );
     }
     if (key === "quiet") return [...m].sort((a, b) => (b.quietDays ?? 0) - (a.quietDays ?? 0));

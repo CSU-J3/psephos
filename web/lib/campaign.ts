@@ -1,6 +1,7 @@
 import type { CampaignRow } from "@/lib/db";
 import type { Posture } from "@/lib/board";
 import { utcDay } from "@/lib/format";
+import { canonicalCourt } from "@/lib/court";
 
 // Derivation for the DOJ voter-data campaign grid. Pure functions over rows the
 // page has already fetched -- no queries here, so the shape of a cell can be
@@ -100,7 +101,12 @@ export type Cell = {
 // (M.D. Ga. -> N.D. Ga., intra-state, no circuit step -- see the circuit-map
 // invariant in docs/status.md).
 export function isCircuit(court: string | null): boolean {
-  return !!court && /\bcircuit\b/i.test(court);
+  // Through canonicalCourt first: UW spells the Eighth Circuit 'Eighth District',
+  // which this regex does not match, so an un-canonicalized read would call a circuit
+  // appeal a venue refile. Callers reading from lib/db already receive canonical
+  // values -- this is idempotent on those and correct on a raw string either way.
+  const name = canonicalCourt(court);
+  return !!name && /\bcircuit\b/i.test(name);
 }
 
 // Whole days between a naive ISO date and `now`, read in UTC for the same reason

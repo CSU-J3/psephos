@@ -88,33 +88,47 @@ COURT_IDS = {
     "Eleventh Circuit": "ca11",
     "D.C. Circuit": "cadc",
     "Federal Circuit": "cafc",
-    # ALIASES -- the tracker's spellings, not the courts' names.
-    #
-    # The block above is a closed set and was verified as one: all 13 courts of appeals,
-    # spelled the way CourtListener spells them. What it is closed OVER is the vocabulary
-    # of court names. The UW artifact is written in a different vocabulary -- whatever the
-    # tracker's authors typed -- and on two rows the two disagree. 'Eighth District' is not
-    # a court at all; the Eighth Circuit is. 'DC Circuit' is the right court missing its
-    # periods. Neither was a key here, so `COURT_IDS.get(court)` returned None, court_id
-    # was null, and `collect_case` took its B2-only branch on both rows forever: no
-    # request was ever made for them, so they read as unresolved rather than as failed.
-    # That is what coverage_audit's section 1 was reporting for seventeen days.
-    #
-    # Aliases are the bridge, and they belong HERE rather than in a normalizer upstream,
-    # because the stored `court` string is a join key -- the reuse lookup in collect_case,
-    # coverage_audit's (docket_number, court) seed join, and the byte-identical overwrite
-    # between a tracker row and a config seed all match on it verbatim. Rewriting the
-    # value would break those three; mapping it to the right court_id breaks nothing.
-    #
-    # This is a bridge, not a fix for the class. An alias only exists once someone has
-    # noticed the miss. The guard is Unit C's vocabulary alarm: every distinct court
-    # string in the artifact must classify, and an unclassified one fails loudly instead
-    # of falling through to a null court_id and silence. Until that ships, the WARN this
-    # module already prints on an unmapped court is the only signal, and it goes to a
-    # stderr nothing reads -- which is the whole reason these two rows survived.
+}
+
+# The alias set carries its OWN name rather than sitting inline in COURT_IDS above,
+# because it is pinned against the read layer: web/lib/court.ts maps the same two
+# spellings to the courts' NAMES for display, and tests/test_court_alias_agreement.py
+# fails if either side gains or loses a key. Inline entries could not be imported
+# without also importing 45 real court names, so the agreement test would have had to
+# parse this file to find them.
+#
+# ALIASES -- the tracker's spellings, not the courts' names.
+#
+# The block above is a closed set and was verified as one: all 13 courts of appeals,
+# spelled the way CourtListener spells them. What it is closed OVER is the vocabulary
+# of court names. The UW artifact is written in a different vocabulary -- whatever the
+# tracker's authors typed -- and on two rows the two disagree. 'Eighth District' is not
+# a court at all; the Eighth Circuit is. 'DC Circuit' is the right court missing its
+# periods. Neither was a key here, so `COURT_IDS.get(court)` returned None, court_id
+# was null, and `collect_case` took its B2-only branch on both rows forever: no
+# request was ever made for them, so they read as unresolved rather than as failed.
+# That is what coverage_audit's section 1 was reporting for seventeen days.
+#
+# Aliases are the bridge, and they belong HERE rather than in a normalizer upstream,
+# because the stored `court` string is a join key -- the reuse lookup in collect_case,
+# coverage_audit's (docket_number, court) seed join, and the byte-identical overwrite
+# between a tracker row and a config seed all match on it verbatim. Rewriting the
+# value would break those three; mapping it to the right court_id breaks nothing.
+#
+# This is a bridge, not a fix for the class. An alias only exists once someone has
+# noticed the miss. The guard is Unit C's vocabulary alarm: every distinct court
+# string in the artifact must classify, and an unclassified one fails loudly instead
+# of falling through to a null court_id and silence. Until that ships, the WARN this
+# module already prints on an unmapped court is the only signal, and it goes to a
+# stderr nothing reads -- which is the whole reason these two rows survived.
+COURT_ALIASES = {
     "Eighth District": "ca8",       # UW's spelling for the Eighth Circuit (MN, 26-2679)
     "DC Circuit": "cadc",           # UW's spelling for the D.C. Circuit (DC, 26-5296)
 }
+
+# Merged in, so every existing reader -- COURT_IDS.get(court) in parse_rows, the
+# lowercase-slug test -- sees one map and behaves exactly as before.
+COURT_IDS.update(COURT_ALIASES)
 
 REQUIRED_COLUMNS = ("State", "Current Federal Court", "Current Case Number")
 ROW_COUNT_MIN, ROW_COUNT_MAX = 25, 40   # ~32 physical rows (31 jurisdictions, GA doubled)

@@ -11,6 +11,7 @@ import { BAND_DAYS } from "@/lib/timeline";
 import type { FeedAnchor, FeedEntry } from "@/lib/feed";
 import type { MovementRow } from "@/lib/movement";
 import type { DocketEntry, TerminatedCase } from "@/lib/outcomes";
+import { canonicalCourt } from "@/lib/court";
 
 export const db = createClient({
   url: process.env.TURSO_DATABASE_URL!,
@@ -161,7 +162,7 @@ function toCase(r: Row): Case {
   return {
     case_id: asText(r.case_id),
     caption: asText(r.caption),
-    court: asTextOrNull(r.court),
+    court: canonicalCourt(asTextOrNull(r.court)),
     docket_number: asTextOrNull(r.docket_number),
     status: asTextOrNull(r.status),
     category: asTextOrNull(r.category),
@@ -178,7 +179,7 @@ function toCaseRef(r: Row): CaseRef {
   return {
     case_id: asText(r.case_id),
     caption: asText(r.caption),
-    court: asTextOrNull(r.court),
+    court: canonicalCourt(asTextOrNull(r.court)),
     docket_number: asTextOrNull(r.docket_number),
   };
 }
@@ -723,14 +724,14 @@ function toFeedRow(r: Row): FeedRow {
     case_id: asTextOrNull(r.case_id),
     state_bill_id: asTextOrNull(r.state_bill_id),
     c_caption: asTextOrNull(r.c_caption),
-    c_court: asTextOrNull(r.c_court),
+    c_court: canonicalCourt(asTextOrNull(r.c_court)),
     c_docket: asTextOrNull(r.c_docket),
     c_status: asTextOrNull(r.c_status),
     s_case_id: asTextOrNull(r.s_case_id),
-    s_court: asTextOrNull(r.s_court),
+    s_court: canonicalCourt(asTextOrNull(r.s_court)),
     s_docket: asTextOrNull(r.s_docket),
     p_case_id: asTextOrNull(r.p_case_id),
-    p_court: asTextOrNull(r.p_court),
+    p_court: canonicalCourt(asTextOrNull(r.p_court)),
     p_docket: asTextOrNull(r.p_docket),
     b_type: asTextOrNull(r.b_type),
     b_number: asNumberOrNull(r.b_number),
@@ -938,7 +939,7 @@ function toCampaignRow(r: Row): CampaignRow {
     case_id: asText(r.case_id),
     state: asText(r.state),
     caption: asText(r.caption),
-    court: asTextOrNull(r.court),
+    court: canonicalCourt(asTextOrNull(r.court)),
     docket_number: asTextOrNull(r.docket_number),
     status: asTextOrNull(r.status),
     filed_at: asTextOrNull(r.filed_at),
