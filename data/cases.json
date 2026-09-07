@@ -2405,7 +2405,7 @@
     "state": "Minnesota",
     "status": "terminated",
     "status_checked_at": "2026-08-18T00:33:53.270419+00:00",
-    "superseded_by": null,
+    "superseded_by": "74687843",
     "timeline": [
       {
         "channel": "litigation",
@@ -14415,7 +14415,7 @@
     "state": "DC",
     "status": "terminated",
     "status_checked_at": "2026-08-10T19:25:21.340790+00:00",
-    "superseded_by": null,
+    "superseded_by": "74671625",
     "timeline": [
       {
         "channel": "litigation",
@@ -23630,18 +23630,18 @@
     ]
   },
   {
-    "caption": "United States v. DC",
+    "caption": "United States v. Monica Evans",
     "case_id": "74671625",
     "category": "voter-data",
     "court": "DC Circuit",
     "date_terminated": null,
-    "defendant": "DC",
+    "defendant": "Monica Evans",
     "docket_number": "26-5296",
     "entry_count": 3,
-    "filed_at": null,
+    "filed_at": "2026-08-19T00:00:00",
     "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States",
-    "source_url": null,
+    "source_url": "https://www.courtlistener.com/docket/74671625/united-states-v-monica-evans/",
     "state": "DC",
     "status": "pending",
     "status_checked_at": "2026-09-07T04:51:00.359384+00:00",
@@ -23730,18 +23730,18 @@
     ]
   },
   {
-    "caption": "United States v. Minnesota",
+    "caption": "United States v. Steve Simon",
     "case_id": "74687843",
     "category": "voter-data",
     "court": "Eighth District",
     "date_terminated": null,
-    "defendant": "Minnesota",
+    "defendant": "Steve Simon",
     "docket_number": "26-2679",
     "entry_count": 31,
-    "filed_at": null,
+    "filed_at": "2026-08-21T00:00:00",
     "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "United States",
-    "source_url": null,
+    "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
     "status": "pending",
     "status_checked_at": "2026-09-07T04:51:04.119881+00:00",
