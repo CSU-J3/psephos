@@ -138,12 +138,15 @@ PAIRS = [
     # polled. So step 1's signal was present in the artifact the whole time; what was
     # new was reading the alarm. See docs/findings/reconciliation-alarm-2026-09-06.md.
     #
-    # The other two firing rows (MN, DC) are deliberately NOT here. Their successors
-    # are unresolved slug rows holding zero entries, because UW spells their courts
-    # 'Eighth District' and 'DC Circuit' and neither is a key in tracker_uw.COURT_IDS,
-    # so court_id comes back null and the docket never resolves. Asserting a pair onto
-    # an unpolled slug would link a real row to a stub; that is its own unit, and it
-    # has to canonicalize the court strings first.
+    # The other two firing rows (MN, DC) were deliberately NOT here until Unit A, and
+    # the reason is kept rather than deleted because it is what ordered that unit.
+    # Their successors were unresolved slug rows holding zero entries: UW spells their
+    # courts 'Eighth District' and 'DC Circuit', neither was a key in
+    # tracker_uw.COURT_IDS, so court_id came back null and the docket never resolved.
+    # Asserting a pair onto an unpolled slug would have linked a real row to a stub.
+    # Unit A cleared the preconditions in order -- re-key onto the CourtListener ids
+    # (scripts/rekey_slug_cases.py), aliases in COURT_IDS (6470a79), canonicalCourt at
+    # the read boundary (7ac866e) -- and the pairs are asserted below.
     ("72021508", "1:25-cv-03967", "74667007", "26-1326"),   # CO -> 10th Cir. A1 forward:
     #   72021508, 2026-08-18, `USCA Case Number 26-1326 for 105 Notice of Appeal filed
     #   by USA`. Reverse is silent -- 74667007 holds one entry, a bare `Civil case
@@ -166,6 +169,33 @@ PAIRS = [
     #   forward, 72333329's `USCA Case Number 26-3085 for 110 Notice of Appeal (USCA)`
     #   2026-08-20; reverse, 74676722's `CIVIL CASE DOCKETED. Notice filed by Appellant
     #   USA in District Court No. 3:26-cv-02025.` the same day. Circuit map: D.N.J. -> 3d.
+
+    # The two Shape A pairs, 2026-09-07, closing the alarm the Shape B block above
+    # opened. Both successors are now numeric-keyed, polled, and canonically
+    # classified. Canonicalisation landed FIRST, deliberately: on UW's stored spelling
+    # 'Eighth District' does not satisfy isCircuit, so Minnesota's cell would have been
+    # born drawing the refile glyph for a circuit appeal.
+    ("71453336", "0:25-cv-03761", "74687843", "26-2679"),   # MN -> 8th Cir. A1 forward:
+    #   71453336, 2026-08-21, `USCA Case Number 26-2679 for 212 Notice of Appeal to 8th
+    #   Circuit filed by United States of America.`, following `NOTICE OF APPEAL TO 8TH
+    #   CIRCUIT` 08-18 and `TRANSMITTAL OF APPEAL LETTER TO U. S. COURT OF APPEALS, 8TH
+    #   CIRCUIT` 08-19. Reverse ENTRIES are silent -- none of 74687843's entries names
+    #   the district docket -- but the reverse METADATA is not: `appeal_from_str` reads
+    #   `U.S. District Court for the District of Minnesota`, read fresh 2026-09-07.
+    #   Circuit map: D. Minn. -> 8th, and CourtListener's own court id on the successor
+    #   is `ca8`, which is independent of UW's 'Eighth District' spelling entirely.
+    ("72055344", "1:25-cv-04403", "74671625", "26-5296"),   # DC -> D.C. Cir. A1 reverse,
+    #   and the reverse is where the substance is. 74671625, 2026-08-19: `NOTICE OF
+    #   APPEAL [2188985] seeking review of a decision by the U.S. District Court in
+    #   1:25-cv-04403-RDM filed by USA. Appeal assigned USCA Case Number: 26-5296.` --
+    #   a single entry naming BOTH dockets. The forward side is weaker than it looks
+    #   and is recorded as such rather than counted: 72055344 carries `NOTICE OF APPEAL
+    #   TO DC CIRCUIT COURT` 08-17 and two transmission entries 08-18, but its 08-19
+    #   `USCA Case Number` entry is a 16-character stub with no number in it, so the
+    #   forward direction establishes that an appeal was taken, not which docket it
+    #   became. `appeal_from_str` reads `United States District Court for the District
+    #   of Columbia`, read fresh 2026-09-07. Circuit map: D.D.C. -> D.C. Cir., and the
+    #   successor's court id is `cadc`.
 
     # The first pair with NO state on either side, and nothing here depends on one:
     # both rows sue federal agencies, so `state` is NULL by construction and neither

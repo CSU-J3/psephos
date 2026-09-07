@@ -2,12 +2,37 @@ name: collect
 
 on:
   schedule:
-    # 17 past, not on the hour. GitHub queues scheduled workflows for everyone at
-    # once and the top of the hour is the worst of it -- a run can sit minutes to
-    # tens of minutes behind its slot, and 00:00Z is the peak of the peak. Nothing
-    # downstream depends on the exact minute: the collectors are idempotent on
-    # content_hash and the litigation poll works off a stored high-water mark, so
-    # the offset changes when a cycle starts and nothing about what it collects.
+    # 17 past, not on the hour. The original reasoning was that GitHub queues
+    # scheduled workflows for everyone at once, that the top of the hour is the
+    # worst of it, and that 00:00Z is the peak of the peak. Nothing downstream
+    # depends on the exact minute: the collectors are idempotent on content_hash
+    # and the litigation poll works off a stored high-water mark, so the offset
+    # changes when a cycle starts and nothing about what it collects.
+    #
+    # ANNOTATED 2026-09-07, both halves, because the sentence above asserted a
+    # magnitude and a mechanism with no basis attached and one of them is wrong.
+    #
+    # MAGNITUDE -- measured, and far larger than "minutes to tens of minutes".
+    # Against the slots this expression names (00:17 / 06:17 / 12:17 / 18:17Z),
+    # the four runs of 2026-09-06 started at 04:41:40Z, 10:59:25Z, 15:29:32Z and
+    # 20:25:44Z: lags of 4h24m, 4h42m, 3h12m and 2h08m. The band is 2h08-4h42,
+    # so a run is expected two to five HOURS after its slot, not minutes. That
+    # matters to anyone timing a read against the next run, and getting it wrong
+    # once already armed a watcher against the wrong window.
+    #
+    # MECHANISM -- the queuing half is contradicted by the run records, and is
+    # stated here with its basis so the next reader can falsify it rather than
+    # inherit it. On every completed run inspected, createdAt == startedAt, which
+    # says the row is created at DISPATCH rather than created at the slot and
+    # held in a queue. BASIS, stated inline because a mechanism claim needs one:
+    # n=3 completed runs, created==started on all three, and no live queued row
+    # has ever been observed for this workflow. That is thin, and it is written
+    # thin on purpose -- it is this project's dated-absence rule applied to a
+    # mechanism claim instead of an absence claim. The first queued row anyone
+    # observes falsifies it, which is more than the original sentence offered.
+    #
+    # The offset itself is unchanged and still fine: whatever produces the lag,
+    # nothing downstream depends on the minute, for the reasons above.
     - cron: "17 */6 * * *"   # every 6 hours (UTC), off the top of the hour
   workflow_dispatch: {}
 
