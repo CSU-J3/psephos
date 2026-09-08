@@ -1,40 +1,39 @@
 import { describe, it, expect } from "vitest";
-import type { CampaignRow, Bill, StateBill } from "@/lib/db";
+import type { Bill, StateBill } from "@/lib/db";
 import {
   docketTotals,
   openSplit,
+  isDojFiling,
+  dojFilings,
+  relatedSuits,
   stateOutcomes,
   wisconsinOutcomes,
   monthsSince,
   saveStallMonths,
   vehicleQuietSince,
   SAVE_SENATE_COMPANION,
+  type DocketLike,
 } from "@/lib/stands";
 
 // Fixtures are CONSTRUCTED, on the same rule campaign.test.ts states: a membership
 // read from production goes stale by build time and teaches the suite to be ignored.
 // Every row below is shaped like the real thing and owned by the test.
 //
-// The one exception is deliberate and narrow -- the LEDGER block at the foot of this
-// file builds a fixture whose SHAPE reproduces the 2026-09-07 reading (52 dockets,
-// 29 district, 23 circuit, 31 open = 9 + 22). It pins the arithmetic, not the record:
-// the numbers are constructed from counted rows here, so live drift cannot fail it.
+// The LEDGER block at the foot builds a fixture whose SHAPE reproduces the 2026-09-07
+// reading. It pins the arithmetic, not the record: the numbers are counted out of
+// rows constructed here, so live drift cannot fail it. What it guards is that the
+// splits are computed the documented way, which is the part that silently inverts.
 
-function caseRow(
-  over: Partial<CampaignRow> & Pick<CampaignRow, "case_id">,
-): CampaignRow {
+type Row = DocketLike & { case_id: string; state: string | null; caption: string };
+
+function caseRow(over: Partial<Row> & Pick<Row, "case_id">): Row {
   return {
     state: "Testland",
     caption: `case ${over.case_id}`,
     court: "District of Test",
-    docket_number: "1:25-cv-00001",
     status: "pending",
-    filed_at: "2025-12-01T00:00:00",
-    latest_entry_at: "2026-08-10T00:00:00",
-    status_checked_at: "2026-08-14T00:59:00+00:00",
     superseded_by: null,
-    source_url: null,
-    entry_count: 0,
+    plaintiff: "United States",
     ...over,
   };
 }
@@ -72,12 +71,57 @@ function stateBill(over: Partial<StateBill> & Pick<StateBill, "state_bill_id">):
   };
 }
 
+// --- SCOPE: who filed, never who has a state ---------------------------------------
+
+describe("DOJ scope is read off the plaintiff column, not inherited from a state filter", () => {
+  it("counts a DOJ suit that names no state", () => {
+    // THE FIRST OF THE TWO FAILURES A STATE FILTER CANNOT SEE. `WHERE state IS NOT
+    // NULL` selects the right 49 rows today only because the three it drops happen to
+    // be the three DOJ did not file. A DOJ suit with no state would be dropped from
+    // DOJ's own count, silently.
+    const row = caseRow({ case_id: "doj-stateless", state: null, plaintiff: "United States" });
+    expect(isDojFiling(row)).toBe(true);
+    expect(dojFilings([row])).toHaveLength(1);
+    expect(relatedSuits([row])).toHaveLength(0);
+  });
+
+  it("excludes a related suit even when it names a state", () => {
+    // THE SECOND, in the other direction. A related suit that acquired a state would
+    // be added to DOJ's count by a state filter, and nothing would say so.
+    const row = caseRow({
+      case_id: "related-with-state",
+      state: "Michigan",
+      plaintiff: "League of Women Voters",
+    });
+    expect(isDojFiling(row)).toBe(false);
+    expect(dojFilings([row])).toHaveLength(0);
+    expect(relatedSuits([row])).toHaveLength(1);
+  });
+
+  it("accepts both spellings of the United States that the table carries", () => {
+    expect(isDojFiling(caseRow({ case_id: "a", plaintiff: "United States" }))).toBe(true);
+    expect(isDojFiling(caseRow({ case_id: "b", plaintiff: "United States of America" }))).toBe(true);
+  });
+
+  it("treats a missing plaintiff as not-DOJ rather than guessing", () => {
+    expect(isDojFiling(caseRow({ case_id: "c", plaintiff: null }))).toBe(false);
+  });
+
+  it("names the three real related suits when they are the input", () => {
+    const rows = [
+      caseRow({ case_id: "71499795", state: null, court: "D.D.C.", plaintiff: "League of Women Voters" }),
+      caseRow({ case_id: "73218916", state: null, court: "D.D.C.", plaintiff: "Common Cause" }),
+      caseRow({ case_id: "73544809", state: null, court: "D.C. Circuit", plaintiff: "League of Women Voters" }),
+      caseRow({ case_id: "doj-1", state: "Oregon" }),
+    ];
+    expect(relatedSuits(rows).map((r) => r.case_id)).toEqual(["71499795", "73218916", "73544809"]);
+    expect(dojFilings(rows).map((r) => r.case_id)).toEqual(["doj-1"]);
+  });
+});
+
 // --- TRAP 1: 'Eighth District' ------------------------------------------------------
 
 describe("the canonicalization trap: UW types 'Eighth District' for the Eighth Circuit", () => {
-  // Five rows, one of them the tracker's misspelling. Raw /\bcircuit\b/ sees two
-  // circuits here; through canonicalCourt it sees three. On the live table that one
-  // row is the whole difference between 29/23 and 30/22, and between 9/22 and 10/21.
   const rows = [
     caseRow({ case_id: "d1", court: "District of Oregon" }),
     caseRow({ case_id: "d2", court: "Western District of Washington" }),
@@ -91,9 +135,8 @@ describe("the canonicalization trap: UW types 'Eighth District' for the Eighth C
   });
 
   it("would read 2/3 the other way round if the regex ran on the raw string", () => {
-    // The defective implementation, written out so the test states what it is
-    // guarding against rather than only asserting the right answer. If docketTotals
-    // ever stops canonicalizing, the assertion above becomes this line's answer.
+    // The defective implementation, written out so the test states what it guards
+    // against rather than only asserting the right answer.
     const naive = rows.filter((r) => /\bcircuit\b/i.test(r.court ?? "")).length;
     expect(naive).toBe(2);
     expect(docketTotals(rows).circuit).toBe(3);
@@ -101,8 +144,6 @@ describe("the canonicalization trap: UW types 'Eighth District' for the Eighth C
   });
 
   it("carries the same trap into the open split", () => {
-    // Terminate one true circuit; the misspelled one must still be counted as a
-    // circuit among the open rows.
     const withEnding = rows.map((r) =>
       r.case_id === "c1" ? caseRow({ ...r, status: "terminated" }) : r,
     );
@@ -110,8 +151,7 @@ describe("the canonicalization trap: UW types 'Eighth District' for the Eighth C
   });
 
   it("also canonicalizes 'DC Circuit', the tracker's other spelling", () => {
-    const r = [caseRow({ case_id: "x", court: "DC Circuit" })];
-    expect(docketTotals(r).circuit).toBe(1);
+    expect(docketTotals([caseRow({ case_id: "x", court: "DC Circuit" })]).circuit).toBe(1);
   });
 });
 
@@ -170,9 +210,6 @@ describe("monthsSince -- whole months against the record's clock, never new Date
   });
 
   it("does not drift the way days/30 does", () => {
-    // Two years to the day is 24 months. Dividing 730 days by 30 gives 24.33, and
-    // flooring it still reads 24 -- but at 25 months the same arithmetic reads 25.36
-    // and the drift keeps growing. Calendar fields do not drift at all.
     expect(monthsSince("2024-02-29T00:00:00", "2026-02-28T00:00:00+00:00")).toBe(23);
     expect(monthsSince("2024-03-01T00:00:00", "2026-03-01T00:00:00+00:00")).toBe(24);
   });
@@ -225,59 +262,80 @@ describe("stateOutcomes -- vetoed and failed counted separately", () => {
 
 // --- the ledger ---------------------------------------------------------------------
 
-describe("the section's docket arithmetic reproduces the 2026-09-07 reading", () => {
-  // 52 dockets: 23 circuit (one of them spelled 'Eighth District'), 29 district.
-  // 21 rows ended -- 17 of them superseded by a successor, 4 terminated outright --
-  // leaving 31 open, 22 of which are appeals.
+describe("the section's docket arithmetic, DOJ-scoped, reproduces the ruled figures", () => {
+  // 52 rows in `cases`: 49 DOJ filings and 3 related suits.
   //
-  // Built from counted rows so the assertions below are arithmetic over this fixture
-  // and cannot fail when the live campaign moves. What they pin is that the SPLIT is
-  // computed the documented way, which is the part that silently inverts.
-  const rows: CampaignRow[] = [
-    ...Array.from({ length: 9 }, (_, i) =>
-      caseRow({ case_id: `dist-open-${i}`, court: "District of Test" }),
-    ),
-    ...Array.from({ length: 20 }, (_, i) =>
+  //   DOJ       27 district (8 open, 19 ended) + 22 circuit (21 open, 1 ended) = 49
+  //   related    2 district (1 open, 1 ended) +  1 circuit (1 open)            =  3
+  //
+  // One DOJ circuit row is spelled 'Eighth District'. One DOJ circuit row is ended --
+  // Michigan's, the only terminated circuit row in the record.
+  const doj: Row[] = [
+    ...Array.from({ length: 8 }, (_, i) => caseRow({ case_id: `dj-dist-open-${i}` })),
+    ...Array.from({ length: 19 }, (_, i) =>
       caseRow({
-        case_id: `dist-done-${i}`,
-        court: "District of Test",
+        case_id: `dj-dist-done-${i}`,
         status: "terminated",
-        superseded_by: i < 17 ? `circ-open-${i}` : null,
+        superseded_by: i < 17 ? `dj-circ-open-${i}` : null,
       }),
     ),
-    ...Array.from({ length: 21 }, (_, i) =>
-      caseRow({ case_id: `circ-open-${i}`, court: "Ninth Circuit" }),
+    ...Array.from({ length: 20 }, (_, i) =>
+      caseRow({ case_id: `dj-circ-open-${i}`, court: "Ninth Circuit" }),
     ),
-    caseRow({ case_id: "circ-open-eighth", court: "Eighth District" }),
-    caseRow({ case_id: "circ-done", court: "Sixth Circuit", status: "terminated" }),
+    caseRow({ case_id: "dj-circ-open-eighth", court: "Eighth District" }),
+    caseRow({ case_id: "dj-circ-done", court: "Sixth Circuit", status: "terminated" }),
   ];
+  const related: Row[] = [
+    caseRow({
+      case_id: "71499795", state: null, court: "D.D.C.", status: "terminated",
+      superseded_by: "73544809", plaintiff: "League of Women Voters",
+    }),
+    caseRow({ case_id: "73218916", state: null, court: "D.D.C.", plaintiff: "Common Cause" }),
+    caseRow({ case_id: "73544809", state: null, court: "D.C. Circuit", plaintiff: "League of Women Voters" }),
+  ];
+  const all = [...doj, ...related];
 
-  it("counts 52 dockets, 29 district and 23 circuit", () => {
-    expect(docketTotals(rows)).toEqual({ total: 52, district: 29, circuit: 23 });
+  it("holds 52 rows, of which 49 are DOJ filings and 3 are not", () => {
+    expect(all).toHaveLength(52);
+    expect(dojFilings(all)).toHaveLength(49);
+    expect(relatedSuits(all)).toHaveLength(3);
   });
 
-  it("counts 31 open -- 9 district and 22 on appeal", () => {
-    expect(openSplit(rows)).toEqual({ total: 31, district: 9, circuit: 22 });
+  it("counts 49 dockets DOJ filed -- 27 district and 22 appeals", () => {
+    expect(docketTotals(dojFilings(all))).toEqual({ total: 49, district: 27, circuit: 22 });
+  });
+
+  it("counts 29 of them open -- 8 district and 21 on appeal", () => {
+    expect(openSplit(dojFilings(all))).toEqual({ total: 29, district: 8, circuit: 21 });
+  });
+
+  it("the unscoped count is the ledger that was withdrawn, and differs by exactly the three", () => {
+    // 52 / 29 / 23 and 31 = 9 + 22 were issued as the DOJ campaign's figures. They
+    // are the arithmetic over ALL rows, and they fold in a docket whose defendant is
+    // DOJ. Kept as an assertion so the difference is a measured three rows rather
+    // than a remembered anecdote.
+    expect(docketTotals(all)).toEqual({ total: 52, district: 29, circuit: 23 });
+    expect(openSplit(all)).toEqual({ total: 31, district: 9, circuit: 22 });
+    expect(docketTotals(all).total - docketTotals(dojFilings(all)).total).toBe(3);
   });
 
   it("a superseded row is closed even where its status still reads pending", () => {
-    // The chain direction that matters: superseded_by lives on the DEAD row. A row
-    // carrying it is complete however its own status column reads.
     const r = [caseRow({ case_id: "x", status: "pending", superseded_by: "y" })];
     expect(openSplit(r).total).toBe(0);
   });
 
-  it("without canonicalization the same fixture reads 30/22 and 10/21", () => {
-    // The exact pair of wrong readings the D0 pass measured on the live table,
-    // reproduced here so the numbers in the record have a test that names them.
-    const naiveCircuit = rows.filter((r) => /\bcircuit\b/i.test(r.court ?? ""));
-    const naiveOpen = rows.filter(
+  it("without canonicalization the DOJ split reads 28/21 and 9/20", () => {
+    // The pair of wrong readings a raw regex produces on this fixture, written out so
+    // the failure mode has a test that names its numbers.
+    const d = dojFilings(all);
+    const naiveCircuit = d.filter((r) => /\bcircuit\b/i.test(r.court ?? "")).length;
+    expect(naiveCircuit).toBe(21);
+    expect(d.length - naiveCircuit).toBe(28);
+    const naiveOpen = d.filter(
       (r) => !r.superseded_by && (r.status ?? "").toLowerCase() !== "terminated",
     );
-    expect(naiveCircuit.length).toBe(22);
-    expect(rows.length - naiveCircuit.length).toBe(30);
     const naiveOpenCircuit = naiveOpen.filter((r) => /\bcircuit\b/i.test(r.court ?? "")).length;
-    expect(naiveOpenCircuit).toBe(21);
-    expect(naiveOpen.length - naiveOpenCircuit).toBe(10);
+    expect(naiveOpenCircuit).toBe(20);
+    expect(naiveOpen.length - naiveOpenCircuit).toBe(9);
   });
 });

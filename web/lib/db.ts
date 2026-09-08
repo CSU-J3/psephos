@@ -1045,6 +1045,56 @@ export async function getRejectionEvidence(): Promise<{
   return { cases: [...cases.values()], entries };
 }
 
+/** One `cases` row, scoped for the "Where this stands" section.
+ *
+ * SEPARATE FROM `CampaignRow`, AND DELIBERATELY SO. `getCampaignRows` filters
+ * `WHERE state IS NOT NULL` because the campaign grid is one cell per jurisdiction
+ * and a stateless row has no cell. That filter lands on the right 49 dockets BY SIDE
+ * EFFECT -- the three rows it drops happen to be the three whose plaintiff is not the
+ * United States -- and a figure that depends on a coincidence between two unrelated
+ * properties is one nobody can check. So this query drops the filter, carries
+ * `plaintiff`, and lets the section scope on the column that actually means what the
+ * sentence says.
+ *
+ * `state` is nullable here, which is the whole point: League of Women Voters v. DHS,
+ * its D.C. Circuit appeal, and Common Cause v. DOJ are suits against federal agencies
+ * and name no state. */
+export type DocketRow = {
+  case_id: string;
+  state: string | null;
+  caption: string;
+  court: string | null;
+  status: string | null;
+  superseded_by: string | null;
+  plaintiff: string | null;
+};
+
+function toDocketRow(r: Row): DocketRow {
+  return {
+    case_id: asText(r.case_id),
+    state: asTextOrNull(r.state),
+    caption: asText(r.caption),
+    // Canonicalized at the read boundary like every other reader of this column --
+    // 'Eighth District' is the UW tracker's spelling of the Eighth Circuit, and the
+    // section's district/circuit split inverts on it. See lib/court.ts.
+    court: canonicalCourt(asTextOrNull(r.court)),
+    status: asTextOrNull(r.status),
+    superseded_by: asTextOrNull(r.superseded_by),
+    plaintiff: asTextOrNull(r.plaintiff),
+  };
+}
+
+/** Every docket in `cases`, stateless ones included. The section splits them by
+ *  plaintiff; nothing here decides that. */
+export async function getDocketRows(): Promise<DocketRow[]> {
+  const rs = await db.execute(
+    `SELECT case_id, state, caption, court, status, superseded_by, plaintiff
+     FROM cases
+     ORDER BY state, case_id`,
+  );
+  return rs.rows.map(toDocketRow);
+}
+
 export async function getCampaignRows(): Promise<CampaignRow[]> {
   const rs = await db.execute(
     // One scalar subquery per row on a query that already returns ~40. Counted in

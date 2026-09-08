@@ -17,6 +17,47 @@ import { utcDay } from "@/lib/format";
 // THE FUNCTIONS TAKE ROWS, NEVER QUERIES. What population a figure describes is the
 // caller's decision and a visible one; see the scope note on docketTotals.
 
+/** The minimum a docket must carry to be counted. Structural rather than a named
+ *  import so both `DocketRow` and `CampaignRow` satisfy it without either becoming a
+ *  dependency of this file. */
+export type DocketLike = {
+  court: string | null;
+  status: string | null;
+  superseded_by: string | null;
+  plaintiff: string | null;
+};
+
+/** Suits the United States FILED, which is the only population a sentence beginning
+ *  "DOJ has sued" may count.
+ *
+ * SCOPED ON `plaintiff`, EXPLICITLY, AND NOT INHERITED FROM A STATE FILTER. The
+ * campaign query's `WHERE state IS NOT NULL` selects the same 49 rows today, and it
+ * does so by coincidence: the three rows it drops are stateless BECAUSE their
+ * defendant is a federal agency, not because anyone scoped on who sued. Two unrelated
+ * properties agreeing today is not a rule, and the failure is silent in both
+ * directions -- a DOJ suit naming no state would be dropped from DOJ's own count, and
+ * a related suit that acquired a state would be added to it. Both are tested.
+ *
+ * The vocabulary is two spellings of one party, measured across the table: 43 rows
+ * read 'United States' and 6 read 'United States of America'. A prefix test covers
+ * both and any third spelling of the same plaintiff. */
+export function isDojFiling(row: DocketLike): boolean {
+  return (row.plaintiff ?? "").startsWith("United States");
+}
+
+/** The dockets DOJ filed. */
+export function dojFilings<T extends DocketLike>(rows: readonly T[]): T[] {
+  return rows.filter(isDojFiling);
+}
+
+/** The dockets DOJ did NOT file: suits brought by civil-society plaintiffs against
+ *  federal agencies. They stay in the record and leave the DOJ count -- the section
+ *  names them in their own clause rather than dropping them, because a reader who
+ *  counts the map and the sentence should be able to reconcile the difference. */
+export function relatedSuits<T extends DocketLike>(rows: readonly T[]): T[] {
+  return rows.filter((r) => !isDojFiling(r));
+}
+
 export type DocketTotals = {
   total: number;
   district: number;
@@ -32,14 +73,14 @@ export type DocketTotals = {
  * plausible on a page. One row decides it. `isCircuit` runs `canonicalCourt` before
  * the regex; call it rather than re-implementing the test.
  *
- * SCOPE IS THE CALLER'S, and it is not a detail. `getCampaignRows()` filters
- * `WHERE state IS NOT NULL`, which drops three dockets whose defendant is a federal
- * agency rather than a state -- League of Women Voters v. DHS (and its D.C. Circuit
- * appeal) and Common Cause v. DOJ. Those three are in `cases` as related suits, and
- * in two of them the United States is the DEFENDANT. Counting them inside a figure
- * introduced by "DOJ has sued" would report a suit against DOJ as one of DOJ's own.
- * So this function counts what it is handed and says so; the page chooses. */
-export function docketTotals(rows: readonly CampaignRow[]): DocketTotals {
+ * SCOPE IS THE CALLER'S, and the caller must scope. This counts what it is handed.
+ * The section hands it `dojFilings(rows)` -- 49 dockets -- because the sentence it
+ * feeds begins "DOJ has sued", and three rows in `cases` are suits against federal
+ * agencies in which the United States is the DEFENDANT. One of them is Common Cause
+ * v. U.S. Department of Justice. Counting those inside DOJ's own figure reported a
+ * suit against DOJ as one of DOJ's filings, which is what the ledger of 52/29/23
+ * did. See `isDojFiling`. */
+export function docketTotals(rows: readonly DocketLike[]): DocketTotals {
   const circuit = rows.filter((r) => isCircuit(r.court)).length;
   return { total: rows.length, district: rows.length - circuit, circuit };
 }
@@ -50,7 +91,7 @@ export function docketTotals(rows: readonly CampaignRow[]): DocketTotals {
  * complete however its own status column reads -- a terminated district docket
  * continued as a circuit appeal is finished, not open. Same canonicalization trap as
  * above: read raw, this split reads 10/21 where the record says 9/22. */
-export function openSplit(rows: readonly CampaignRow[]): DocketTotals {
+export function openSplit(rows: readonly DocketLike[]): DocketTotals {
   const open = rows.filter((r) => !r.superseded_by && !isTerminated(r));
   return docketTotals(open);
 }
@@ -59,7 +100,7 @@ export function openSplit(rows: readonly CampaignRow[]): DocketTotals {
  *  carries a termination date; the campaign rows the page fetches expose the status
  *  string, so that is what this reads. Kept separate from `openSplit` so the
  *  predicate has one home. */
-function isTerminated(row: CampaignRow): boolean {
+function isTerminated(row: DocketLike): boolean {
   return (row.status ?? "").toLowerCase() === "terminated";
 }
 
@@ -158,3 +199,26 @@ export function vehicleQuietSince(bills: readonly Bill[]): string | null {
   }
   return newest;
 }
+
+/** The presidential document types the executive collector asks the Federal Register
+ *  for. Tab 3's spine sentence names them, and a sentence that names a collector's
+ *  configuration is a claim about a file -- exactly the shape that went stale in this
+ *  repo before: the mock's earlier spine said "executive orders only", which was true
+ *  when drawn and false two days later.
+ *
+ *  WRITTEN TWICE ON PURPOSE, and held equal by a test. `collectors/executive.py`
+ *  needs the list as query values; the page needs it as prose. Neither derives from
+ *  the other across a language boundary, so `tests/test_presidential_types_agreement.py`
+ *  parses this literal and fails in BOTH directions -- adding a type to the collector
+ *  without following it here breaks the build, which is the requirement. That test
+ *  lives on the Python side for the same reason the court-alias one does: the Python
+ *  list is the one a person edits. */
+export const PRESIDENTIAL_TYPES: readonly string[] = [
+  "determination",
+  "executive order",
+  "memorandum",
+  "notice",
+  "other",
+  "presidential order",
+  "proclamation",
+];
