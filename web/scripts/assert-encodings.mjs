@@ -321,6 +321,20 @@ const readFilter = (ab) =>
 
 const selection = [];
 for (const ab of ["CA", "MA", "DC"]) {
+  // SCROLL IT INTO VIEW FIRST, and this is not a nicety. getBoundingClientRect is
+  // VIEWPORT-relative and page.mouse.click takes VIEWPORT coordinates, so reading the
+  // box without scrolling makes this block silently depend on the map being above the
+  // fold -- a dependency on the page's LENGTH, which has nothing to do with what these
+  // six assertions are about.
+  //
+  // It broke the moment a section was added above the zones: the map moved to y=2331
+  // in a 950px viewport, every click landed on nothing, and the script reported six
+  // failures about glow, brightness and pressed-state on a map whose paint was
+  // perfect. That is this file's own documented failure mode arriving from the other
+  // side -- a check that names the thing it is missing while pointed at a different
+  // object -- and it would have recurred on any future page-length change.
+  await page.$eval(`svg [data-ab="${ab}"]`, (e) => e.scrollIntoView({ block: "center" }));
+  await page.waitForTimeout(120);
   const at = await page.$eval(`svg [data-ab="${ab}"]`, (e) => {
     const b = e.getBoundingClientRect();
     // The bbox centre of a concave state (FL, HI, MI, LA) is outside its own paint --
