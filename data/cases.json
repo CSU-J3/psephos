@@ -9470,6 +9470,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 98740,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9122,
         "kind": "item",
         "occurred_at": "2025-12-02T00:00:00",
@@ -15191,6 +15201,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 82230,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
+        "title": "United States v. Connecticut — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 98685,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -21560,6 +21580,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 98742,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 9211,
         "kind": "item",
         "occurred_at": "2026-06-05T00:00:00",
@@ -21741,6 +21771,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 87899,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 98736,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -22340,6 +22380,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 98723,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
+        "title": "United States v. Maine — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 10367,
         "kind": "item",
         "occurred_at": "2026-06-15T00:00:00",
@@ -22787,9 +22837,9 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 61,
+    "entry_count": 64,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-03T00:00:00",
+    "latest_entry_at": "2026-09-08T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -22951,6 +23001,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 83070,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 98729,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -23399,6 +23459,16 @@
     "timeline": [
       {
         "channel": "litigation",
+        "grade": "B2",
+        "id": 98732,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York — voter-data"
+      },
+      {
+        "channel": "litigation",
         "grade": "A1",
         "id": 77851,
         "kind": "item",
@@ -23487,7 +23557,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 54,
+    "entry_count": 55,
     "filed_at": "2026-07-28T00:00:00",
     "latest_entry_at": "2026-09-08T00:00:00",
     "plaintiff": "United States of America",
@@ -23556,6 +23626,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/54/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: CAPTION, per Court Order filed 08/31/2026, AMENDED. [Entered: 08/31/2026 01:26 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 98677,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/56/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION, for___relief, on behalf of Appellee Stephanie Thomas, FILED. Service date 09/08/2026 by ACMS. [Entered: 09/08/2026 03:13 PM]"
       }
     ]
   },
@@ -23607,9 +23687,9 @@
     "date_terminated": null,
     "defendant": "Griswold",
     "docket_number": "26-1326",
-    "entry_count": 1,
+    "entry_count": 11,
     "filed_at": "2026-08-18T00:00:00",
-    "latest_entry_at": "2026-08-18T00:00:00",
+    "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
@@ -23650,6 +23730,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 98721,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
+        "title": "United States v. Illinois — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 83056,
         "kind": "item",
         "occurred_at": "2026-08-17T00:00:00",
@@ -23667,9 +23757,9 @@
     "date_terminated": null,
     "defendant": "Monica Evans",
     "docket_number": "26-5296",
-    "entry_count": 3,
+    "entry_count": 5,
     "filed_at": "2026-08-19T00:00:00",
-    "latest_entry_at": "2026-08-19T00:00:00",
+    "latest_entry_at": "2026-08-27T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671625/united-states-v-monica-evans/",
     "state": "DC",
@@ -23737,6 +23827,16 @@
     "status_checked_at": "2026-09-08T11:26:35.121750+00:00",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 98730,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
+        "title": "United States v. New Jersey — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",

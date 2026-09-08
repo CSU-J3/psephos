@@ -32,7 +32,7 @@
     "court": "District of Connecticut",
     "court_id": "ctd",
     "docket_number": "3:26-cv-00021",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the Second Circuit. | Key decisions: District Court's 7/17/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ to file opening brief by 9/24/26; State's response due 10/29/26. | Key decisions: District Court's 7/17/2026 dismissal.",
     "state": "Connecticut"
   },
   {
@@ -95,7 +95,7 @@
     "court": "Seventh Circuit",
     "court_id": "ca7",
     "docket_number": "26-2695",
-    "notes": "Claims: Civil Rights Act 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Seventh Circuit. | Key decisions: District Court's 7/31/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ to file opening brief by 9/28/26. | Key decisions: District Court's 7/31/2026 dismissal.",
     "state": "Illinois"
   },
   {
@@ -113,7 +113,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1676",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ filed its opening brief on 7/17/26; the state filed its response on 8/17/26; DOJ's reply due by 9/7/26. | Key decisions: District Court's 5/21/26 dismissal.",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Briefing of appeal completed on 9/4/26; awaiting decision. | Key decisions: District Court's 5/21/26 dismissal.",
     "state": "Maine"
   },
   {
@@ -167,7 +167,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1783",
-    "notes": "Claims: 1. HAVA 2. Civil Rights Act 1960 | Status: On 7/6/26, DOJ filed a notice that it will appeal the district court's dismissal of the suit. | Key decisions: District Court's 6/29/26 dismissal.",
+    "notes": "Claims: 1. HAVA 2. Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ filed its opening brief on 8/3/26, and the State has an extension to file its response by 10/2/26. | Key decisions: District Court's 6/29/26 dismissal.",
     "state": "New Hampshire"
   },
   {
@@ -176,7 +176,7 @@
     "court": "Third Circuit",
     "court_id": "ca3",
     "docket_number": "26-3085",
-    "notes": "Claims: Civil Rights Act of 1960 | Status: On 8/17/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Third Circuit. | Key decisions: District Court's 7/29/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: Briefing of appeal underway: DOJ to file opening brief by 10/14/26; State's response due 30 days later; and DOJ's reply due 21 days later. | Key decisions: District Court's 7/29/2026 dismissal.",
     "state": "New Jersey"
   },
   {
@@ -191,10 +191,10 @@
   {
     "caption": "United States v. New York",
     "category": "voter-data",
-    "court": "Northern District of New York",
-    "court_id": "nynd",
-    "docket_number": "1:25-cv-01338",
-    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: On 7/23/26, DOJ filed a notice that it will appeal the district court's dismissal to the Second Circuit. | Key decisions: District Court's 7/10/2026 dismissal.",
+    "court": "Second Circuit",
+    "court_id": "ca2",
+    "docket_number": "26-2060",
+    "notes": "Claims: 1. National Voter Registration Act 2. HAVA 3. Civil Rights Act 1960 | Status: Briefing of appeal underway; DOJ filed its opening brief on 8/25/26. | Key decisions: District Court's 7/10/2026 dismissal.",
     "state": "New York"
   },
   {
@@ -230,7 +230,7 @@
     "court": "First Circuit",
     "court_id": "ca1",
     "docket_number": "26-1665",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal underway: DOJ filed its opening brief on 7/17/26; the state filed its response on 8/17/26; DOJ's reply due 9/7/26. | Key decisions: District Court's 4/17/2026 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal completed on 9/4/26; awaiting decision. | Key decisions: District Court's 4/17/2026 dismissal.",
     "state": "Rhode Island"
   },
   {
@@ -266,7 +266,7 @@
     "court": "Western District of Washington",
     "court_id": "wawd",
     "docket_number": "3:25-cv-06078",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing on motions to compel and dismiss completed.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Hearing on parties' motions to compel and dismiss held on 8/4/26; awaiting decision.",
     "state": "Washington"
   },
   {
@@ -284,7 +284,7 @@
     "court": "Seventh Circuit",
     "court_id": "ca7",
     "docket_number": "26-2217",
-    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal is underway: DOJ filed its opening brief on 7/9/26; the state filed its response on 8/17/26; and DOJ's reply is due 9/8/26. | Key decisions: District Court's 5/21/26 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: Briefing of appeal completed on 9/4/26; awaiting decision. | Key decisions: District Court's 5/21/26 dismissal.",
     "state": "Wisconsin"
   }
 ]

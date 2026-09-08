@@ -7498,5 +7498,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-asks-supreme-court-to-let-it-use-immigration-database-to-purge-state-voter-rolls",
     "title": "DOJ asks Supreme Court to let it use immigration database to purge state voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98904,
+    "kind": "item",
+    "occurred_at": "2026-09-08T16:59:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-confirms-internal-probe-into-whistleblowers-mail-voting-allegations",
+    "title": "USPS confirms internal probe into whistleblower’s mail voting allegations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98903,
+    "kind": "item",
+    "occurred_at": "2026-09-08T18:37:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/minnesota-justice-warns-electronic-poll-book-conspiracy-theory-could-threaten-voters-ability-to-cast-ballots",
+    "title": "Minnesota justice warns electronic poll book conspiracy theory could threaten voters’ ability to cast ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98902,
+    "kind": "item",
+    "occurred_at": "2026-09-08T20:22:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/delaware-upholds-rights-for-permanent-absentee-ballot-voters-rejecting-gop-challenge",
+    "title": "Delaware upholds rights for permanent absentee ballot voters, rejecting GOP challenge"
   }
 ]
