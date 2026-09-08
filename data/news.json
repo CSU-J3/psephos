@@ -7468,5 +7468,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/09/08/thomas-carroll-fulton-county-disciplinary-board-2020-election",
     "title": "Attorney faces possible discipline over conduct in 2020 Fulton County election lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98664,
+    "kind": "item",
+    "occurred_at": "2026-09-08T14:54:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/postal-service-overstepped-its-powers-with-mail-voting-rules-pro-voter-groups-tell-appeals-court",
+    "title": "Postal Service overstepped its powers with mail voting rules, pro-voter groups tell appeals court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98665,
+    "kind": "item",
+    "occurred_at": "2026-09-08T16:24:29+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/pierce-county-sheriff-elections-or-appointments",
+    "title": "In Washington, a County Mulls Ending Sheriff Elections—and Ousting Its Right-Wing Sheriff"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98663,
+    "kind": "item",
+    "occurred_at": "2026-09-08T16:25:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-asks-supreme-court-to-let-it-use-immigration-database-to-purge-state-voter-rolls",
+    "title": "DOJ asks Supreme Court to let it use immigration database to purge state voter rolls"
   }
 ]
