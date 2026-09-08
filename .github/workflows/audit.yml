@@ -82,7 +82,12 @@ jobs:
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
         run: |
           set -o pipefail
-          python -m tools.coverage_audit | tee audit.out
+          # 2>&1 so the TRACEBACK reaches audit.out and therefore the issue body.
+          # The first scheduled run (2026-09-08) died at db.connect() and delivered
+          # an EMPTY fence: stdout held nothing, stderr held the only explanation,
+          # and tee never saw it. The issue is the delivery surface, and it
+          # delivered nothing about the one failure it has ever had to report.
+          python -m tools.coverage_audit 2>&1 | tee audit.out
 
       # The delivery surface. ONE standing issue, reused: a red run comments on the
       # open issue if there is one and opens it if there is not, so a week of red
@@ -108,7 +113,18 @@ jobs:
             echo "there is not the failure. The FIRES lines below are."
             echo
             echo '```'
-            cat audit.out 2>/dev/null || echo "(no output captured -- the audit step itself failed to run)"
+            # -s, NOT `cat || echo`. The fallback used to key on cat's EXIT STATUS,
+            # but tee CREATES audit.out before the tool writes a byte, so on a crash
+            # cat SUCCEEDS on an empty file and the marker never fires. 2026-09-08
+            # proved it: an empty fence, and the marker written for precisely that
+            # case structurally unable to reach it. The condition is now the file
+            # being non-empty, which is the thing actually meant.
+            if [ -s audit.out ]; then
+              cat audit.out
+            else
+              echo "(nothing captured on stdout or stderr before the audit exited --"
+              echo " see the run log linked above)"
+            fi
             echo '```'
           } > issue-body.md
 

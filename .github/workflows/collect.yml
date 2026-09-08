@@ -112,7 +112,14 @@ jobs:
           # is not in .gitignore, so a glob add could start committing the binary.
           # Every new snapshot must be added here by name or it is written each run
           # and never committed -- silent, since the export prints it either way.
-          git add data/bills.json data/cases.json data/executive.json data/state_bills.json data/news.json data/doj_cases.json
+          # THIS WARNING WAS CORRECT AND UNHEEDED: data/generated_at.json was added
+          # to the export and not to this line, so it was rewritten every cron and
+          # committed by none of them, leaving the tracked copy frozen at a
+          # hand-seeded 2026-09-07 -- which is the clock assert-gates.mjs compares
+          # `recheck_after` against, and the date the page shows readers as its
+          # as-of. A prose warning cannot fail. tests/test_snapshot_staging.py now
+          # joins this line to the export's own *_PATH constants and does.
+          git add data/bills.json data/cases.json data/executive.json data/state_bills.json data/news.json data/doj_cases.json data/generated_at.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
