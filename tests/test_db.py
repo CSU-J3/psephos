@@ -636,3 +636,155 @@ def test_an_explicitly_local_connection_stays_quiet(tmp_path, capsys):
     conn = db.connect(str(tmp_path / "t.db"))
     assert capsys.readouterr().err == ""
     conn.close()
+
+
+# --- a read-only token, and the code field that identifies its refusal -------------
+# audit.yml maps TURSO_AUTH_TOKEN to a READ-ONLY secret, so the audit cannot write
+# even if the tool one day tried to. Its first scheduled run (2026-09-08) died before
+# reading a row: Turso counts `PRAGMA foreign_keys = ON` as a write, and that PRAGMA
+# is on the connect path, so the mapping made the database unreachable rather than
+# merely unwritable. These pin the tolerated path AND its discriminator.
+
+_BLOCKED = """Hrana: `stream error: `Error { message: "Operation was blocked: SQL write operations are forbidden (current session doesn't have write permission)", code: "BLOCKED" }`"""
+
+# Same prose, different code. Must NOT be treated as a read-only refusal.
+_WORDING_ONLY = """Hrana: `stream error: `Error { message: "Operation was blocked: SQL write operations are forbidden (current session doesn't have write permission)", code: "SQLITE_BUSY" }`"""
+
+# Same code, wording Turso has never shipped. MUST be treated as one -- this is the
+# whole point of reading the field instead of the sentence.
+_CODE_ONLY = """Hrana: `stream error: `Error { message: "no.", code: "BLOCKED" }`"""
+
+
+class _RawReadOnly:
+    """A raw connection behind a read-only token: the establishing PRAGMA comes back
+    refused, everything else delegates to a real in-memory libsql connection."""
+
+    def __init__(self, real, error=_BLOCKED, probe_error=None):
+        self._real = real
+        self._error = error
+        self._probe_error = probe_error
+        self.closed = 0
+        self.seen = []
+
+    def execute(self, sql, params=None):
+        self.seen.append(sql)
+        if sql.upper().startswith("PRAGMA"):
+            raise ValueError(self._error)
+        if self._probe_error is not None and sql == "SELECT 1":
+            raise ValueError(self._probe_error)
+        return self._real.execute(sql, params) if params is not None else self._real.execute(sql)
+
+    def commit(self):
+        return self._real.commit()
+
+    def close(self):
+        self.closed += 1
+
+
+def test_a_read_only_token_connects_with_foreign_keys_unenforced(monkeypatch):
+    """The refusal is tolerated and SELECT 1 takes over as the establishment probe.
+    Foreign keys constrain writes, so a session that cannot write needs none."""
+    _remote_env(monkeypatch)
+    raws = []
+
+    def factory(_n):
+        raw = _RawReadOnly(_mem())
+        raws.append(raw)
+        return raw
+
+    calls = _fake_connect(monkeypatch, factory)
+    conn = db.connect()
+
+    assert conn.fk_enforced is False
+    assert raws[0].seen == ["PRAGMA foreign_keys = ON", "SELECT 1"]
+    assert calls["n"] == 1, "BLOCKED is not a transport error and must not retry"
+    assert raws[0].closed == 0, "the connection is usable and must not be closed"
+    assert conn.execute("SELECT 1").fetchone()[0] == 1
+    conn.close()
+
+
+def test_the_read_only_branch_reads_the_code_field_not_the_wording(monkeypatch):
+    """Turso's prose is not an interface. A reworded message carrying code BLOCKED is
+    still a read-only refusal; the same sentence under a different code is not, and
+    must propagate rather than silently yielding an unenforced connection."""
+    _remote_env(monkeypatch)
+
+    _fake_connect(monkeypatch, lambda _n: _RawReadOnly(_mem(), error=_CODE_ONLY))
+    conn = db.connect()
+    assert conn.fk_enforced is False
+    conn.close()
+
+    raws = []
+
+    def factory(_n):
+        raw = _RawReadOnly(_mem(), error=_WORDING_ONLY)
+        raws.append(raw)
+        return raw
+
+    _fake_connect(monkeypatch, factory)
+    with pytest.raises(ValueError, match="SQLITE_BUSY"):
+        db.connect()
+    assert raws[0].closed == 1, "a genuine failure still closes the dead connection"
+
+
+def test_a_read_only_connection_whose_probe_fails_still_raises(monkeypatch):
+    """Tolerating the PRAGMA does not mean tolerating a dead connection. If SELECT 1
+    cannot run either, establishment failed and says so."""
+    _remote_env(monkeypatch)
+    raws = []
+
+    def factory(_n):
+        raw = _RawReadOnly(_mem(), probe_error="Hrana: something else entirely")
+        raws.append(raw)
+        return raw
+
+    _fake_connect(monkeypatch, factory)
+    with pytest.raises(ValueError, match="something else entirely"):
+        db.connect()
+    assert raws[0].closed == 1
+
+
+def test_reset_rebuilds_a_read_only_connection(monkeypatch):
+    """_open now returns (raw, fk_enforced), so `reopen` must unwrap it. Left as the
+    bare pair, self._raw becomes a tuple and every later statement dies -- mid-run,
+    inside the recovery path, which is the worst place to find out."""
+    _remote_env(monkeypatch)
+    calls = _fake_connect(monkeypatch, lambda _n: _RawReadOnly(_mem()))
+    conn = db.connect()
+
+    conn.reset()
+
+    assert calls["n"] == 2
+    assert conn.fk_enforced is False
+    assert conn.execute("SELECT 1").fetchone()[0] == 1
+    conn.close()
+
+
+def test_write_helpers_refuse_on_an_unenforced_connection(monkeypatch):
+    """The server would refuse these anyway. Refusing here is what stops a future
+    writer inheriting the read-only fallback and reading the refusal as a connection
+    fault three layers down, naming a PRAGMA it never wrote."""
+    _remote_env(monkeypatch)
+    _fake_connect(monkeypatch, lambda _n: _RawReadOnly(_mem()))
+    conn = db.connect()
+
+    with pytest.raises(RuntimeError, match="READ-ONLY"):
+        db.upsert(conn, "cases", {"id": 1, "court": "x"}, "id")
+    with pytest.raises(RuntimeError, match="READ-ONLY"):
+        db.insert_ignore(conn, "items", {"id": 1})
+
+    conn.close()
+
+
+def test_write_helpers_pass_on_an_enforcing_connection(tmp_path):
+    """A local sqlite3.Connection carries no fk_enforced attribute and applies the
+    PRAGMA successfully, so the getattr default is what keeps it writing."""
+    conn = db.connect(str(tmp_path / "t.db"))
+    conn.execute("CREATE TABLE t (id INTEGER PRIMARY KEY, v TEXT)")
+
+    db.upsert(conn, "t", {"id": 1, "v": "a"}, "id")
+    assert db.insert_ignore(conn, "t", {"id": 2, "v": "b"}) is True
+    conn.commit()
+
+    assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 2
+    conn.close()

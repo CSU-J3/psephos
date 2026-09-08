@@ -22,6 +22,7 @@ pinned exactly.
 from __future__ import annotations
 
 import os
+import re
 import sqlite3
 import sys
 import time
@@ -82,6 +83,34 @@ _CONNECT_BACKOFF = (1.5, 3.0, 6.0)
 def _is_transport_error(exc: BaseException) -> bool:
     text = str(exc).lower()
     return any(sig in text for sig in _TRANSPORT_ERRORS)
+
+
+# --- a read-only token's refusal --------------------------------------------
+# Turso enforces a read-only auth token by BLOCKING write statements, and it counts
+# `PRAGMA foreign_keys = ON` among them. Because that PRAGMA is on the connect path,
+# the refusal arrives as a failure to ESTABLISH rather than as a failed write:
+#
+#   ValueError: Hrana: `stream error: `Error { message: "Operation was blocked: SQL
+#   write operations are forbidden (current session doesn't have write permission)",
+#   code: "BLOCKED" }``
+#
+# THE DISCRIMINATOR IS THE CODE FIELD, NEVER THE MESSAGE. "Operation was blocked:
+# SQL write operations are forbidden" is Turso's prose, and prose is not an
+# interface -- it can be reworded in a point release with no version bump and no
+# symptom here beyond connections that quietly stop working. `code` is the field the
+# protocol defines. This client hands it to us inside a serialized error rather than
+# as an attribute, so what follows extracts THAT FIELD from the serialization; it
+# does not match against the wording sitting beside it. A future client exposing
+# `.code` directly is preferred, and is tried first.
+_BLOCKED_CODE = re.compile(r'\bcode:\s*"BLOCKED"')
+
+
+def _is_write_forbidden(exc: BaseException) -> bool:
+    """Did the server refuse this statement because the session cannot write?"""
+    code = getattr(exc, "code", None)
+    if isinstance(code, str):
+        return code.strip().upper() == "BLOCKED"
+    return _BLOCKED_CODE.search(str(exc)) is not None
 
 
 def _close_quietly(raw) -> None:
@@ -189,8 +218,14 @@ class _Cur:
 
 
 class _Conn:
-    def __init__(self, raw, reopen=None):
+    def __init__(self, raw, reopen=None, fk_enforced=True):
         self._raw = raw
+        # False ONLY on a connection whose server refused `PRAGMA foreign_keys = ON`
+        # because the token is read-only. Reads are unaffected; the write helpers
+        # refuse on it. Defaults True so every existing construction site keeps the
+        # contract it already had -- local SQLite, which applies the PRAGMA, and the
+        # tests that wrap a raw connection directly.
+        self.fk_enforced = fk_enforced
         # `reopen` rebuilds the underlying libSQL connection (same url/token, with
         # PRAGMA foreign_keys re-applied); None on local SQLite and in tests that
         # wrap a connection directly, which disables the reopen-and-retry path.
@@ -348,16 +383,39 @@ def connect(path: str | None = None):
         token = _remote_token()
 
         def _open():
+            """Open a raw connection. Returns (raw, fk_enforced)."""
             raw = libsql.connect(database=url, auth_token=token)
             try:
                 # libsql.connect() is lazy, so this PRAGMA is the first round trip
                 # and therefore where establishment actually fails. It is also the
                 # setting every remote connection needs, so the probe is free.
                 raw.execute("PRAGMA foreign_keys = ON")
+                return raw, True
+            except Exception as exc:
+                if not _is_write_forbidden(exc):
+                    _close_quietly(raw)
+                    raise
+            # A READ-ONLY TOKEN REFUSED THE PRAGMA. That refusal is the token working
+            # as mapped, not a fault -- but Turso counts this PRAGMA as a WRITE, and
+            # it sits on the connect path, so the refusal made every read-only
+            # connection impossible rather than merely unable to write. audit.yml ran
+            # for the first time on 2026-09-08 and died here, before reading a row.
+            #
+            # Proceeding is correct rather than a concession: foreign keys constrain
+            # WRITES, and a session that cannot write needs no enforcement. What does
+            # need replacing is the probe -- the PRAGMA was also how establishment
+            # was proven, so SELECT 1 takes that job. A transport failure on it still
+            # reaches _retry_transport, unchanged.
+            #
+            # The connection is marked fk_enforced=False and the write helpers refuse
+            # on it. The server would refuse them anyway; the flag is what stops a
+            # future writer INHERITING this fallback silently.
+            try:
+                raw.execute("SELECT 1")
             except Exception:
                 _close_quietly(raw)
                 raise
-            return raw
+            return raw, False
 
         def _open_retrying():
             return _retry_transport(_open, "connect")
@@ -366,7 +424,11 @@ def connect(path: str | None = None):
         # recovery and reset() inherit the ladder: they rebuild through this exact
         # path, and a rebuild landing inside a blip would otherwise fail outright --
         # the wider blast radius of the two call sites, since it fires mid-run.
-        return _Conn(_open_retrying(), reopen=_open_retrying)
+        # `reopen` drops the flag deliberately: a rebuild goes through the same
+        # url and token and therefore reaches the same permission, so a connection
+        # cannot change its fk_enforced under itself mid-run.
+        raw, fk_enforced = _open_retrying()
+        return _Conn(raw, reopen=lambda: _open_retrying()[0], fk_enforced=fk_enforced)
     conn = sqlite3.connect(path if path is not None else DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON")
@@ -449,8 +511,36 @@ def init_db(path: str | None = None, schema: str = SCHEMA_PATH) -> None:
         conn.close()
 
 
+def _require_writable(conn, what: str) -> None:
+    """Refuse a write on a connection opened with a read-only token.
+
+    THE SERVER IS THE REAL ENFORCEMENT and this does not pretend otherwise -- a write
+    that got past here would still come back BLOCKED. What this adds is WHERE the
+    refusal happens and what it says. Without it the failure arrives from three
+    layers down as a Hrana stream error naming a PRAGMA the caller never wrote,
+    which is how the read-only path was misread as a connection fault in the first
+    place (2026-09-08, audit.yml's first run).
+
+    It reads `fk_enforced` rather than a separate read-only flag on purpose: those
+    are the same fact. The connection is unenforced BECAUSE the session cannot
+    write, and keeping one attribute keeps them from drifting apart.
+
+    getattr with a True default so a local sqlite3.Connection -- which has no such
+    attribute and enforces the PRAGMA successfully -- passes untouched."""
+    if getattr(conn, "fk_enforced", True):
+        return
+    raise RuntimeError(
+        f"{what} refused: this connection was opened with a READ-ONLY Turso token. "
+        f"Its server declined `PRAGMA foreign_keys = ON`, so foreign keys are not "
+        f"enforced on it and no write may run through it. Reads are unaffected. "
+        f"Anything that mutates needs a writing token in TURSO_AUTH_TOKEN -- see "
+        f"the read-only branch in db.connect()."
+    )
+
+
 def upsert(conn, table: str, row: dict, pk: str) -> None:
     """INSERT, or UPDATE the non-pk columns on conflict with the primary key."""
+    _require_writable(conn, f"upsert into {table}")
     cols = list(row)
     placeholders = ", ".join("?" for _ in cols)
     updates = ", ".join(f"{c} = excluded.{c}" for c in cols if c != pk)
@@ -467,6 +557,7 @@ def insert_ignore(conn, table: str, row: dict) -> bool:
     Relies on the table's UNIQUE constraint to drop duplicates, which is how
     bill_actions, bill_relations, and items stay idempotent across runs.
     """
+    _require_writable(conn, f"insert into {table}")
     cols = list(row)
     placeholders = ", ".join("?" for _ in cols)
     sql = f"INSERT OR IGNORE INTO {table} ({', '.join(cols)}) VALUES ({placeholders})"

@@ -55,9 +55,23 @@ jobs:
           pip install -r requirements.txt
 
       # TURSO_AUTH_TOKEN is the variable db.py reads; TURSO_READ_TOKEN is a
-      # READ-ONLY Turso token held as a separate secret. Least privilege is achieved
-      # by the MAPPING alone -- no code change, and this workflow cannot write to the
-      # database even if the tool one day tried to.
+      # READ-ONLY Turso token held as a separate secret. The MAPPING is what enforces
+      # least privilege, and it works: this workflow cannot write to the database even
+      # if the tool one day tried to.
+      #
+      # WHAT WAS FALSE HERE WAS "no code change". This comment claimed least privilege
+      # cost nothing but a variable name. The first scheduled run (2026-09-08) never
+      # read a row: Turso counts `PRAGMA foreign_keys = ON` as a WRITE, db.py issued
+      # it on every connect as its establishment probe, and the token refused it --
+      # correctly, which is the part worth separating. The mapping did its job; the
+      # code could not live with the job being done, and the failure looked like a
+      # broken connection rather than a permission boundary holding.
+      #
+      # db.connect() now tolerates that refusal, marks the connection
+      # foreign-key-unenforced (foreign keys constrain writes; a session that cannot
+      # write needs none), and db's write helpers refuse on such a connection. So
+      # least privilege here costs one code path. That is a smaller and truer claim
+      # than the one this comment used to make.
       #
       # `set -o pipefail` is load-bearing: without it the step's exit status is
       # tee's, not the audit's, and a red audit would report success. That is the
