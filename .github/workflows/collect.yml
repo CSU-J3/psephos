@@ -14,11 +14,30 @@ on:
     #
     # MAGNITUDE -- measured, and far larger than "minutes to tens of minutes".
     # Against the slots this expression names (00:17 / 06:17 / 12:17 / 18:17Z),
-    # the four runs of 2026-09-06 started at 04:41:40Z, 10:59:25Z, 15:29:32Z and
-    # 20:25:44Z: lags of 4h24m, 4h42m, 3h12m and 2h08m. The band is 2h08-4h42,
-    # so a run is expected two to five HOURS after its slot, not minutes. That
-    # matters to anyone timing a read against the next run, and getting it wrong
-    # once already armed a watcher against the wrong window.
+    # the OBSERVED SPREAD is 2h05m to 5h04m across n=16 scheduled runs, 2026-09-04
+    # to 09-08 -- every run since this expression took its current form at 58c6aca.
+    # A seventeenth is deliberately excluded: 09-07 12:36:16Z is either the 12:17
+    # slot 19m late or the 06:17 slot 6h19m late, and nothing in the run record
+    # decides which.
+    #
+    # So a run is expected two to five HOURS after its slot, not minutes. That is
+    # the durable part, and it matters to anyone timing a read against the next
+    # run; getting it wrong once already armed a watcher against the wrong window.
+    #
+    # THIS IS THE SECOND CORRECTION TO THESE LINES, and saying so is the point.
+    # The first fixed an arithmetic error -- the hours had been dropped from every
+    # subtraction, turning 2h08m into 8 minutes. The second is this one: the
+    # figures that replaced it, "the band is 2h08-4h42", were four runs of ONE DAY
+    # written as an operating envelope, and the fuller table breaks them in both
+    # directions -- 2h05m below the floor, 5h04m above the ceiling, twice. Same
+    # claim, corrected twice, wrong in a different way each time.
+    #
+    # A SPREAD IS NOT A BOUND. What is written above is what was observed over five
+    # days; a run outside it falsifies nothing and needs no edit here. Instrument:
+    # pull the whole run_started_at table across days before writing any range, and
+    # check the cron expression's own history first -- runs before 58c6aca were on
+    # `0 */6` and belong to different slots entirely, so a table that reaches back
+    # past it is measuring two schedules at once.
     #
     # MECHANISM -- the queuing half is contradicted by the run records, and is
     # stated here with its basis so the next reader can falsify it rather than

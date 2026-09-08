@@ -193,8 +193,32 @@ The measured lag against the stated anchors, all four 09-06 runs:
 | 12:17Z | 15:29:32Z | 3h12m |
 | 18:17Z | 20:25:44Z | 2h08m |
 
-So the band is **2h08–4h42**, expected landing for the 00:17Z slot is **~02:25–05:00Z**, and
-the original ~02:2x estimate was right. The correction was worse than the thing it corrected.
+~~So the band is **2h08–4h42**, expected landing for the 00:17Z slot is **~02:25–05:00Z**, and
+the original ~02:2x estimate was right. The correction was worse than the thing it corrected.~~
+
+**STRUCK 2026-09-08. This is the THIRD correction layer on one claim, and the layering is the
+finding.** Layer 1 was the original ~02:2x estimate. Layer 2 was a "minute band" whose arithmetic
+had dropped the hours — corrected above, and correctly. Layer 3 is the struck sentence: it fixed
+that arithmetic and then generalised **four runs of a single day** into an operating envelope,
+which is a different error wearing the first one's clothes.
+
+The fuller table — **n=16 scheduled runs, 2026-09-04 to 09-08**, every run since the cron took its
+current form at `58c6aca` — reads **2h05m to 5h04m**. That breaks the band in **both** directions:
+2h05m below the floor (09-05 18:17Z), and 5h04m above the ceiling **twice** (09-04 06:17Z at
+5h03m, 09-08 06:17Z at 5h04m). A seventeenth run is unassignable and is filed as such rather than
+averaged in: **09-07 12:36:16Z** is either the 12:17 slot 19 minutes late or the 06:17 slot 6h19m
+late, and nothing in the run record decides which.
+
+So the derived **~02:25–05:00Z** window is withdrawn, and with it the claim that the original
+estimate was vindicated — nothing measured here was ever precise enough to vindicate anything.
+**The correction was not "worse than the thing it corrected"; both were the same mistake at
+different scales**, and the table above (185, 187–194) stays because it is a record of four real
+runs, which is exactly what it should always have been called.
+
+**Instruments, two.** A range computed from one day's runs is a sample, not an envelope — pull the
+whole `run_started_at` table across days before writing any range. And check the cron expression's
+own history first: runs before `58c6aca` were on `0 */6` and belong to different slots entirely,
+so a table reaching back past it silently measures two schedules at once.
 
 **Why it is recorded here rather than fixed silently.** The failure is not the subtraction, it
 is that finding the cron expression *felt* like finding the ground truth, and the feeling

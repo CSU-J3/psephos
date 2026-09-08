@@ -17,11 +17,20 @@ name: audit
 on:
   schedule:
     # 05:17Z daily. The reasoning, and its limit, stated rather than implied: the
-    # 00:17 collect cycle's MEASURED landing band is 2h08-4h42 past its slot and
-    # closes around 05:00, so this nominally reads a database the night's collection
-    # has already written. But this workflow is queued by the same scheduler and
-    # carries the same lag, so in practice it will often land inside the 06:17
-    # cycle's window instead. That precision is not available and is not claimed.
+    # 00:17 collect cycle usually lands some HOURS after its slot, so this nominally
+    # reads a database the night's collection has already written. HOW MANY hours is
+    # not a figure this comment gets to state. It used to cite a band of 2h08-4h42
+    # and a close "around 05:00" derived from it; both came from four runs of a
+    # single day, and the fuller table breaks them in both directions (see
+    # collect.yml, where the spread is restated with its n and its dates).
+    #
+    # But this workflow is queued by the same scheduler and carries the same lag, so
+    # in practice it will often land inside the 06:17 cycle's window instead. That
+    # precision is not available and is not claimed.
+    #
+    # One sample of its own, recorded as one sample and not as a band: the first
+    # scheduled run, 2026-09-08, started 09:46:31Z -- 4h29m past the slot, and so
+    # inside the 06:17 cycle's window exactly as the paragraph above expects.
     #
     # It is harmless because the audit is read-only and idempotent. The one real
     # consequence is that a mid-cycle read could in principle catch a transient
