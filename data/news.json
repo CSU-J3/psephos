@@ -7458,5 +7458,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/gerrymander-foes-urge-supreme-court-not-to-revive-gop-map-in-missouri",
     "title": "Gerrymander foes urge Supreme Court not to revive GOP map in Missouri"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 98390,
+    "kind": "item",
+    "occurred_at": "2026-09-08T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/09/08/thomas-carroll-fulton-county-disciplinary-board-2020-election",
+    "title": "Attorney faces possible discipline over conduct in 2020 Fulton County election lawsuit"
   }
 ]
