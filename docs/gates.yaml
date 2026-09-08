@@ -121,20 +121,36 @@
   produced_by: "web/lib/campaign.ts#summarize"
   renders_as: "DOJ has sued {sued} of {total} jurisdictions over voter-roll data"
 
+# THE THREE DOCKET GATES CARRY THEIR SCOPE IN THE SENTENCE, not only in the code.
+# They count `dojFilings(rows)` -- the 49 dockets whose plaintiff is the United
+# States -- and NOT every row in `cases`. Three rows are suits by civil-society
+# plaintiffs against federal agencies, one of them against DOJ itself, and an
+# earlier reading folded those into a figure introduced by "DOJ has sued". A scope
+# that lives only in a filter is a scope no reader of the page can check, so the
+# words "DOJ filed" are part of what these gates render.
+
 - id: dockets-total
   kind: derived
   produced_by: "web/lib/stands.ts#docketTotals"
-  renders_as: "{total} dockets"
+  renders_as: "{total} dockets DOJ filed"
 
 - id: district-circuit-split
   kind: derived
   produced_by: "web/lib/stands.ts#docketTotals"
-  renders_as: "{district} district suits and {circuit} appeals"
+  renders_as: "{district} district suits and {circuit} appeals, all of them DOJ filings"
 
 - id: open-split
   kind: derived
   produced_by: "web/lib/stands.ts#openSplit"
-  renders_as: "{open} dockets remain open -- {district} district, {circuit} on appeal"
+  renders_as: "{open} of DOJ's dockets remain open -- {district} district, {circuit} on appeal"
+
+# The complement, named rather than dropped. These suits stay in the record and
+# leave the DOJ count; a reader who tries to reconcile the map against the sentence
+# should find the difference stated instead of having to discover it.
+- id: related-suits
+  kind: derived
+  produced_by: "web/lib/stands.ts#relatedSuits"
+  renders_as: "{n} related suits by civil-society plaintiffs against federal agencies, none of them DOJ filings"
 
 - id: wi-outcomes
   kind: derived
