@@ -96,3 +96,24 @@ jobs:
       # half of those matches are in the checker's own header.
       - name: assert-casts
         run: node scripts/assert-casts.mjs
+
+      # The expiry half of the gate register, and only that half. Checks 1 and 2 of
+      # assert-gates join against a rendered DOM and need playwright plus a running
+      # server, which is what keeps assert-encodings and assert-layout out of this
+      # workflow; check 3 needs a YAML file and a date string, so it runs here.
+      #
+      # It is the half worth automating. An authored claim expires SILENTLY -- the
+      # page keeps rendering it, correctly formatted, sourced and graded, long after
+      # nobody has checked whether it is still true -- and `recheck_after` is the
+      # only property of such a claim a machine can fail on. The DOM join catches a
+      # claim nobody registered; this catches a claim nobody revisited.
+      #
+      # NOTE THIS NOTIFIES AND BLOCKS NOTHING. Vercel deploys from git on its own,
+      # so a red run here does not hold a deploy. That is deliberate: recon section
+      # 7.7 declined a build gate because a stale claim blocking an unrelated deploy
+      # creates pressure to widen the gate rather than recheck the claim.
+      #
+      # It reads data/generated_at.json, written by the export each cron, NEVER the
+      # runner's clock -- so the comparison is against when the record last moved.
+      - name: assert-gates (expiry)
+        run: node scripts/assert-gates.mjs --expiry-only

@@ -48,6 +48,20 @@ CASES_PATH = "data/cases.json"
 EXECUTIVE_PATH = "data/executive.json"
 STATE_BILLS_PATH = "data/state_bills.json"
 NEWS_PATH = "data/news.json"
+# The record's own clock, and the ONLY clock anything downstream is allowed to read.
+# MAX(fetched_at) over every item -- the same aggregate `getChannelActivity` computes
+# per channel for the header's "collected" label, taken across all channels here.
+#
+# It is a file rather than a query because its readers cannot reach Turso: the expiry
+# half of `web/scripts/assert-gates.mjs` runs in CI, which takes no database
+# credentials by design. Writing it here means the check compares an authored
+# claim's expiry against WHEN THE RECORD LAST MOVED rather than against the wall
+# clock of whatever machine happens to be running it.
+#
+# NULL stays null. A record with no items has no collection time, and the readers
+# say so in their own words instead of substituting a clock -- the same rule
+# `readCollectedAt` follows in the read layer.
+GENERATED_AT_PATH = "data/generated_at.json"
 
 # A cluster node needs at least this many members; a lone anchor match stays a
 # standalone item (a 1-member "cluster" would add nothing and only obscure it).
@@ -453,6 +467,9 @@ def main() -> int:
             "SELECT COUNT(*) FROM items i JOIN sources s ON s.id = i.source_id "
             f"WHERE i.channel = 'news' AND NOT ({news_feed_predicate()})"
         ).fetchone()[0]
+        generated_at = conn.execute(
+            "SELECT MAX(fetched_at) FROM items"
+        ).fetchone()[0]
     finally:
         conn.close()
 
@@ -461,12 +478,14 @@ def main() -> int:
     write_json(EXECUTIVE_PATH, executive)
     write_json(STATE_BILLS_PATH, state_bills)
     write_json(NEWS_PATH, news)
+    write_json(GENERATED_AT_PATH, {"generated_at": generated_at})
 
     nodes = sum(1 for b in bills for e in b["timeline"] if e["kind"] == "cluster")
     print(f"  wrote {BILLS_PATH} ({len(bills)} bills), {CASES_PATH} "
           f"({len(cases)} cases), {EXECUTIVE_PATH} ({len(executive)} executive), "
           f"{STATE_BILLS_PATH} ({len(state_bills)} state bills), and {NEWS_PATH} "
-          f"({len(news)} B2 news, {news_excluded} C3 excluded); {nodes} cluster node(s)")
+          f"({len(news)} B2 news, {news_excluded} C3 excluded); {nodes} cluster node(s); "
+          f"{GENERATED_AT_PATH} generated_at={generated_at}")
     return 0
 
 

@@ -1,0 +1,152 @@
+# docs/gates.yaml -- the claim register for the "Where this stands" section.
+#
+# WHY THIS FILE EXISTS. The section states things about the world. Some of them
+# are read out of the record every render and cannot go stale without the record
+# going stale first; some of them are editorial claims sourced to reporting, and
+# those rot silently. This file is where the second kind carries its source and
+# its expiry, and where the first kind is forbidden from carrying a value at all.
+#
+# TWO SHAPES, and the difference is the whole point (recon section 6).
+#
+#   authored -- an editorial claim. Carries grade, source, the date the SOURCE
+#               said it, an expiry, and what would falsify it.
+#   derived  -- a figure read from the record. Carries `produced_by` and
+#               `renders_as` and NO NUMBER. A derived entry holding a literal is
+#               the rot this file exists to end: 25, 12 and 46 all rotted in this
+#               repo while looking maintained, because they were written down.
+#
+# ENFORCEMENT is `web/scripts/assert-gates.mjs`, three checks, two entry points:
+#
+#   1. every `data-gate` id in the rendered section has an entry here
+#   2. every entry here with `renders_as` appears in the rendered section
+#   3. every authored entry's `recheck_after` is not in the past
+#
+# 1 and 2 join against the DOM and are hand-run beside assert-encodings and
+# assert-layout. 3 needs no browser and runs in ci.yml. See that script's header.
+#
+# `status: stale` IS AN ACKNOWLEDGEMENT, NOT A SUPPRESSION. It stops check 3
+# failing the run; it does NOT stop the chip rendering grey with its date. The
+# grey is the reader's signal and it is never silenced. What `stale` says is
+# "a human has seen that this is past due and has not yet rechecked it".
+#
+# AND DO NOT BACKDATE A RECHECK TO DODGE THE GREY. `doj-demands-all-51` below
+# ships grey on its first render, carrying an `asserted_on` from ~Sep 2025,
+# because that is when the reporting behind it was published. Moving the date
+# would make the file lie in exactly the direction it was built to prevent.
+#
+# recheck_after defaults by grade, per recon section 7.5, as starting numbers to
+# be adjusted rather than a law: C3 30 days, B2 90 days, statutes 365 days.
+
+- id: doj-scotus-possibility
+  claim: "the Attorney General called a Supreme Court filing a possibility"
+  kind: authored
+  grade: {source: B, info: 2}
+  source: "Democracy Docket"
+  asserted_on: 2026-08-16
+  recheck_after: 2026-11-14
+  falsified_by: "a docket entry showing a cert petition filed"
+  status: active
+  renders_as: "The Attorney General called a Supreme Court filing a possibility on Aug 16."
+
+- id: cert-window-nov-12
+  claim: "a cert petition runs roughly 90 days from the Sixth Circuit's rehearing denial"
+  kind: authored
+  grade: {source: B, info: 2}
+  source: "UW DOJ-suit tracker prose, data/doj_cases.json (Michigan row, ca6 26-1225)"
+  # The tracker's own words: "On 8/14/26, the Sixth Circuit denied DOJ's request to
+  # rehear the appellate panel's decision affirming dismissal of the case."
+  asserted_on: 2026-08-14
+  # Two days AFTER the ~Nov 12 window the claim itself names, so the recheck falls
+  # once the window has closed rather than while it is still open. The section
+  # renders "closes ~Nov 12"; this date is when a human looks again.
+  recheck_after: 2026-11-14
+  falsified_by: "a cert petition docketed"
+  status: active
+  renders_as: "Cert window open -- closes ~Nov 12"
+
+- id: eo-blocked-per-reporting
+  claim: "a judge blocked an election executive order on Aug 16"
+  kind: authored
+  grade: {source: C, info: 3}
+  source: "reporting, uncorroborated in this record"
+  asserted_on: 2026-08-16
+  # C3, so 30 days. THIS GOES GREY ON 2026-09-16 unless someone rechecks it, and
+  # check 3 fails the run on that date. Both are the design working. psephos
+  # records that a document published, not whether it operates -- the section says
+  # so in its own words -- and this is the claim that gap hangs on.
+  recheck_after: 2026-09-15
+  falsified_by: "an outcome field, or a tracker cited by name, saying whether either EO operates"
+  status: active
+  renders_as: "a judge blocked an election EO on Aug 16 per reporting"
+
+- id: doj-demands-all-51
+  claim: "the written voter-roll demands went to all 50 states and DC"
+  kind: authored
+  grade: {source: B, info: 2}
+  source: "Democracy Docket"
+  # SHIPS GREY ON DAY ONE, deliberately, and this is the decision embedded in the
+  # unit D handoff rather than an oversight. The reporting behind it is from about
+  # September 2025; a B2 90-day recheck dated from the source therefore expired in
+  # 2025. The honest options were "re-verify now and carry a fresh date" or "ship
+  # grey with the real one"; the second was chosen. The day is approximate because
+  # the source is a month, not a date -- see `asserted_precision`.
+  asserted_on: 2025-09-01
+  asserted_precision: month
+  recheck_after: 2025-11-30
+  falsified_by: "a jurisdiction shown never to have received a demand letter"
+  # stale, not active: a human has seen the expiry and has not rechecked. Check 3
+  # passes; the chip still renders grey with its 2025 date.
+  status: stale
+  renders_as: "The written demands went to all 50 states and DC."
+
+# --- derived: no literal values below this line ----------------------------------
+#
+# `produced_by` names the function that computes the figure. Four of these
+# functions do not exist yet -- they land in D3, in web/lib/stands.ts -- and the
+# names are fixed here first so the component cannot invent a different one.
+#
+# TWO OF THESE ARE TRAPS, measured at D0 and written down where the implementer
+# will see them:
+#
+#   district-circuit-split and open-split MUST classify through canonicalCourt.
+#   The UW tracker types 'Eighth District' for the Eighth Circuit. Read raw, the
+#   pair inverts to 30/22 and 10/21 and both readings look plausible.
+#
+#   vehicle-quiet-since MUST read bills.latest_action_at, NOT the bill's timeline.
+#   S. 1383's timeline carries news items far newer than its last floor action, so
+#   a timeline max silently reports a reporting date as a legislative one.
+
+- id: suits-jurisdictions
+  kind: derived
+  produced_by: "web/lib/campaign.ts#summarize"
+  renders_as: "DOJ has sued {sued} of {total} jurisdictions over voter-roll data"
+
+- id: dockets-total
+  kind: derived
+  produced_by: "web/lib/stands.ts#docketTotals"
+  renders_as: "{total} dockets"
+
+- id: district-circuit-split
+  kind: derived
+  produced_by: "web/lib/stands.ts#docketTotals"
+  renders_as: "{district} district suits and {circuit} appeals"
+
+- id: open-split
+  kind: derived
+  produced_by: "web/lib/stands.ts#openSplit"
+  renders_as: "{open} dockets remain open -- {district} district, {circuit} on appeal"
+
+- id: wi-outcomes
+  kind: derived
+  produced_by: "web/lib/stands.ts#wisconsinOutcomes"
+  renders_as: "In Wisconsin, {failed} of {tracked} tracked election bills failed and {vetoed} were vetoed."
+
+- id: save-stall-months
+  kind: derived
+  produced_by: "web/lib/stands.ts#saveStallMonths"
+  renders_as: "stalled {months} months"
+
+- id: vehicle-quiet-since
+  kind: derived
+  produced_by: "web/lib/stands.ts#vehicleQuietSince"
+  renders_as: "quiet since {date}"
