@@ -209,6 +209,16 @@ current form at `58c6aca` — reads **2h05m to 5h04m**. That breaks the band in 
 averaged in: **09-07 12:36:16Z** is either the 12:17 slot 19 minutes late or the 06:17 slot 6h19m
 late, and nothing in the run record decides which.
 
+**NOTHING ALREADY RECORDED IS RETROACTIVELY WRONG, and it is worth saying so rather than leaving
+a future reader to audit for damage that is not there.** Every table this correction touches sits
+entirely inside the current expression: the four-run table above is 09-06, and the ten-run census
+the correction rests on spans **09-05 to 09-07**, its earliest run starting 09-05 04:32:20Z --
+more than a day after `58c6aca` landed at 2026-09-04T02:14Z. Only a table reaching back **past**
+that point would be mixing two schedules, and none of them does. The earlier history is bounded
+too, so the window is closed at both ends: `a1971f1` (2026-06-29) re-enabled `0 */6` and `dc9e1e3`
+(2026-06-27) had commented it out. The hazard is real and is recorded as an instrument; it simply
+has not bitten anything in this file.
+
 So the derived **~02:25–05:00Z** window is withdrawn, and with it the claim that the original
 estimate was vindicated — nothing measured here was ever precise enough to vindicate anything.
 **The correction was not "worse than the thing it corrected"; both were the same mistake at
