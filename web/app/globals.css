@@ -49,8 +49,11 @@
   --c-litigation: oklch(0.62 0.19 24); /* DOJ in court */
   --c-legislation: oklch(0.62 0.17 295); /* bills, federal and state */
 
-  /* Two steps either side of --c-legislation, same hue and chroma, for the state
-     stage ramp: --leg-dim is a bill in motion between chambers, --leg-bright is one
+  /* Two steps from --c-legislation, SAME HUE, for the state stage ramp: --leg-bright
+     is one lightness step up (0.62 -> 0.75) at a slightly lower chroma (0.17 -> 0.15),
+     and --leg-dim is not a step down at all but the same colour at 55% alpha. The hue
+     is what all three share; chroma is not, and neither step is the other's mirror.
+     --leg-dim is a bill in motion between chambers, --leg-bright is one
      that passed. They are declared HERE rather than in the page that uses them so a
      hue change moves all three together -- the whole point of the block. Only the
      three moving stages take the ramp; Introduced, Vetoed and Failed stay neutral.
@@ -452,3 +455,185 @@ textarea {
     display: none;
   }
 }
+
+/* ---------------------------------------------------------------------------------
+   "Where this stands" -- the section's own vocabulary.
+
+   HOW MUCH OF THIS IS NEW, stated plainly because the unit-D handoff said otherwise
+   and the D0 pass measured it. The handoff's premise was that this CSS already
+   existed in the v37/v42 lineage; it does not. Those mocks are standalone HTML files
+   carrying their own <style>, and NOTHING below was in globals.css. Five classes are
+   the mock's own additions over v37 -- .asofchip, .gate, .rk, .rk.stale, .see.part --
+   and the rest come from the mock's stylesheet, which never shipped. Both groups are
+   new work here.
+
+   Written against literal hex like every other block in this file, not against the
+   mock's --t1/--panel variables, which are the mock's and do not exist in the app.
+   --------------------------------------------------------------------------------- */
+
+/* The as-of stamp: the section's figures are a reading, and a reading has a time. */
+.asofchip {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: #a3a3a3;
+  border: 1px solid #262626;
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+/* "derived" -- this figure is computed from a row, not typed by a person. Teal
+   because it is the same claim the outcome channel makes: read off the record. */
+.gate {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--c-outcome);
+  border: 1px solid #134e4a;
+  background: #04211f;
+  border-radius: 5px;
+  padding: 2px 6px;
+  letter-spacing: 0.03em;
+}
+
+/* The recheck stamp on an authored claim. */
+.rk {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #a3a3a3;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+/* PAST ITS RECHECK: grey, dashed, and it KEEPS ITS DATE. Never silent removal --
+   a claim that quietly disappears takes its expiry with it, and the reader cannot
+   tell a rechecked claim from a deleted one. Dashed rather than merely dimmer so the
+   difference survives a low-contrast display. */
+.rk.stale {
+  color: #8a8a8a;
+  background: #161616;
+  border-color: #3a3a3a;
+  border-style: dashed;
+}
+
+/* Whether psephos would see a thing. Four states, and the fourth is the point:
+   `part` is a scoped negative -- the document type is collected but the term list is
+   untested -- which is a different claim from yes and from no. */
+.see {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 4px 8px;
+  display: inline-block;
+  color: #a3a3a3;
+}
+.see.yes { color: #5eead4; border-color: #134e4a; background: #04211f; }
+.see.na { color: #737373; }
+.see.part { color: #d4a04c; border-color: #5c4415; background: #1f1604; }
+
+/* Tabs. */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+.tabs button {
+  background: transparent;
+  border: 1px solid #262626;
+  border-radius: 7px;
+  color: #a3a3a3;
+  font: 13px var(--sans);
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.tabs button:hover { color: #e5e5e5; border-color: #3d3d3d; }
+.tabs button[aria-selected="true"] {
+  color: #fafafa;
+  border-color: #4a4a4a;
+  background: #161618;
+}
+.tabs button .k { font: 11px var(--mono); color: #737373; margin-left: 7px; }
+.tabs button[aria-selected="true"] .k { color: #a3a3a3; }
+
+/* Facts: a date rail and a claim, so the eye can run down the dates. */
+.factlist { border: 1px solid #262626; border-radius: 8px; overflow: hidden; }
+.fact {
+  background: #121214;
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 20px;
+  align-items: baseline;
+  border-top: 1px solid #262626;
+}
+.fact:first-child { border-top: 0; }
+.fact .when { font: 11px var(--mono); color: #a3a3a3; line-height: 1.5; }
+.fact .what { font-size: 13px; line-height: 1.55; color: #d4d4d4; }
+.fact .what b { color: #fafafa; font-weight: 500; }
+.fact .src {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #737373;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+/* Below the fold of a narrow column the date rail costs more than it gives. */
+@media (max-width: 640px) {
+  .fact { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+
+/* Paths and statutes share a row shell. */
+.pathlist { border: 1px solid #262626; border-radius: 8px; overflow: hidden; background: #121214; }
+.path { padding: 16px 18px; border-top: 1px solid #262626; }
+.path:first-child { border-top: 0; }
+.path .ph { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.path .pq { font-size: 14px; color: #fafafa; font-weight: 500; }
+.path .pc {
+  font: 11px var(--mono);
+  color: #a3a3a3;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.path .pc.motion { color: #fbbf24; text-transform: none; letter-spacing: 0; }
+.path .pnote { margin-top: 10px; font-size: 12px; color: #a3a3a3; line-height: 1.6; max-width: 130ch; }
+.path .pnote .src { display: inline-flex; gap: 6px; align-items: center; margin-left: 4px; }
+
+/* The steps. `data-done` is the encoding and it is an ATTRIBUTE, not a class, so the
+   done/not-done state is legible in the DOM to anything checking the page. */
+.psteps { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.psteps li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 12px;
+  padding-left: 16px;
+  position: relative;
+}
+.psteps li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid #4a4a4a;
+}
+.psteps li[data-done="true"]::before { background: var(--c-legislation); border-color: var(--c-legislation); }
+.psteps li .sl { color: #d4d4d4; min-width: 170px; }
+.psteps li[data-done="false"] .sl { color: #8a8a8a; }
+.psteps li .sd { font: 11px var(--mono); color: #737373; }
+
+/* The emergency tab's shell. */
+.em { border: 1px solid #262626; border-radius: 8px; background: #121214; overflow: hidden; }
+.em .lede {
+  padding: 16px 18px;
+  border-bottom: 1px solid #262626;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #d4d4d4;
+  max-width: 130ch;
+  margin: 0;
+}
+.em .lede b { color: #fafafa; font-weight: 500; }

@@ -5,6 +5,7 @@ import {
   getBills,
   getCases,
   getCampaignRows,
+  getDocketRows,
   getRejectionEvidence,
   getExecutiveAll,
   getStateBills,
@@ -44,6 +45,7 @@ import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
 import { cumulativeRejections, rejectedStates, rejections } from "@/lib/outcomes";
 import { tryResolveState } from "@/lib/map";
 import { SourceLegend } from "@/components/SourceLegend";
+import { WhereThisStands } from "@/components/WhereThisStands";
 
 // Route stays force-dynamic: it removes the build-time Turso dependency (no env
 // vars needed at build) and keeps the bills/cases/executive queries live per
@@ -90,13 +92,16 @@ function buildChains(cases: Case[]) {
 }
 
 export default async function Home() {
-  const [activity, entries, bills, cases, campaignRows, executiveAll, stateBills, monthly, trackerNotes, rejectionEvidence] =
+  const [activity, entries, bills, cases, campaignRows, docketRows, executiveAll, stateBills, monthly, trackerNotes, rejectionEvidence] =
     await Promise.all([
       getChannelActivity(),
       getTimelineEntries(),
       getBills(),
       getCases(),
       getCampaignRows(),
+      // Separate from campaignRows on purpose: that query filters `state IS NOT NULL`
+      // for the grid, and the section scopes on `plaintiff` instead. See lib/db.ts.
+      getDocketRows(),
       getExecutiveAll(),
       getStateBills(),
       getBoardMonthly(),
@@ -306,6 +311,17 @@ export default async function Home() {
           vehicle={vehicleBill}
         />
       </section>
+
+      {/* Where this stands -- what has already changed, and what would have to happen
+          next. Sits between the wire and the zones: the wire says how much moved, this
+          says what it amounts to, and the zones below are the evidence. Every figure
+          is derived at render and registered in docs/gates.yaml. */}
+      <WhereThisStands
+        docketRows={docketRows}
+        bills={bills}
+        stateBills={stateBills}
+        collectedAt={collectedAt}
+      />
 
       {/* THE ZONES, three named areas rather than three tracks -- see .zones in
           globals.css for the shape and why it is declared there. One column below
