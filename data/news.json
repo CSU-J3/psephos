@@ -7528,5 +7528,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/delaware-upholds-rights-for-permanent-absentee-ballot-voters-rejecting-gop-challenge",
     "title": "Delaware upholds rights for permanent absentee ballot voters, rejecting GOP challenge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99120,
+    "kind": "item",
+    "occurred_at": "2026-09-08T21:19:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/justice-department-makes-final-case-to-1st-circuit-to-revive-usps-anti-mail-voting-rule",
+    "title": "Justice Department makes final case to 1st Circuit to revive USPS anti-mail voting rule"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99119,
+    "kind": "item",
+    "occurred_at": "2026-09-08T21:39:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-big-win-for-voters-supreme-court-wont-revive-missouri-gerrymander-before-midterms",
+    "title": "In big win for voters, Supreme Court won’t revive Missouri gerrymander before midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99118,
+    "kind": "item",
+    "occurred_at": "2026-09-08T23:06:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-revives-missouri-gop-gerrymander-right-after-supreme-court-rejects-states-emergency-bid",
+    "title": "Federal judge revives Missouri GOP gerrymander right after Supreme Court rejects state’s emergency bid"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99117,
+    "kind": "item",
+    "occurred_at": "2026-09-09T00:31:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-redistricting-fight-erupts-again-referendum-backers",
+    "title": "Missouri redistricting fight erupts again as referendum backers ask judge to pause order, appeal to 8th Circuit"
   }
 ]
