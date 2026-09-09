@@ -1,0 +1,375 @@
+name: dom-checks
+
+# The DOM lane: the three checks that need a browser AND a running server, which is
+# precisely why they have never run anywhere but a developer's machine. `assert-gates`
+# (checks 1 and 2), `assert-encodings` and `assert-layout` are correct, available and
+# unrun on any schedule -- the same shape unit C found in the coverage alarms, one
+# layer out.
+#
+# WHY A THIRD WORKFLOW AND NOT A JOB IN ci.yml. ci.yml's header states that it "takes
+# no secrets and needs no write access, which is why `permissions` is read-only". This
+# lane needs both. The read layer resolves every page from Turso at REQUEST time --
+# `web/lib/db.ts` non-null-asserts TURSO_DATABASE_URL and TURSO_AUTH_TOKEN, and a
+# server booted without them answers 500, measured rather than assumed -- and the
+# delivery surface is an issue. A job carrying those inside ci.yml would make that
+# sentence false, and a job-level `permissions:` override would make it QUIETLY false,
+# which is worse than loudly. ci.yml also runs on `pull_request`, where a fork gets no
+# secrets: the lane would be structurally red on every fork PR, forever.
+#
+# `assert-gates --expiry-only` STAYS IN ci.yml and is deliberately not duplicated here.
+# It needs a YAML file and a date string, it gates every push today, and folding it
+# into a lane that can fail on a browser download would let a playwright install take
+# down the one gate check that currently works.
+#
+# THE PREFLIGHT IS THE LOAD-BEARING PIECE, and its reasoning belongs in this file
+# rather than in a commit message, because it is the reason the file is shaped this
+# way. Two of the three scripts have no vocabulary for "I could not run": measured
+# against a server holding bad credentials, `assert-encodings` throws on a missing
+# selector and exits 1, and `assert-layout` prints a FULL TABLE of
+# `[-1,-1] (expected [3,5])` at every width -- and exits 1 -- against a page that never
+# rendered at all. That is worse than silence. Silence sends nobody anywhere; a
+# confident wrong diagnosis sends a person to hunt a breakpoint regression in a page
+# that is correct.
+#
+# So the guard runs BEFORE any script can produce a diagnosis. A classifier applied
+# afterwards would be arguing with output that already exists. If the preflight fails,
+# no script runs, and the first line of the issue body disclaims everything beneath it.
+#
+# THE RESIDUAL, STATED RATHER THAN PAPERED OVER. After a GREEN preflight,
+# `assert-encodings` and `assert-layout` still fold "assertions failed" and "threw
+# mid-run" into the same exit 1. The preflight removes the dominant cause of the
+# second -- the page being absent -- not the class of it: a browser crash or a timeout
+# mid-sweep still lands as exit 1. So PAGE FAILED is the MOST LIKELY reading of that
+# code and not a proven one. Giving those two scripts real exit-3 vocabulary is a
+# separate unit; until it lands, this comment is where that uncertainty is recorded,
+# and the issue body does not claim a certainty the codes do not carry.
+#
+# NOTE THIS NOTIFIES AND BLOCKS NOTHING, on ci.yml's precedent. Vercel deploys from git
+# on its own; a red run here opens an issue and holds no deploy.
+
+on:
+  schedule:
+    # 03:17Z daily. WHAT THIS SLOT IS AND IS NOT CHOSEN ON.
+    #
+    # It is NOT chosen to land after a collection cycle finishes writing. That would be
+    # the property worth having, and it is not available: `collect.yml` is
+    # `17 */6 * * *`, this repo's observed scheduler lag on its other daily job is
+    # ~4h30m (2026-09-08 started 4h29m31s late, 2026-09-09 4h33m47s), and a cycle
+    # itself runs 2h05m-5h08m. The lag and the cycle duration are the same order of
+    # magnitude, so no slot can be argued to land outside a write window -- and the
+    # quantity that would settle it, when a cycle FINISHES, is the one audit.yml
+    # records as unmeasured in this repo. Claiming otherwise here would be claiming a
+    # number nobody has taken.
+    #
+    # It IS chosen on the one property that is available: separation from audit.yml's
+    # 05:17Z, so the two do not queue in the same minute and two red deliveries arrive
+    # as two events a reader can tell apart rather than one batch.
+    #
+    # WHERE THE DATA EXPOSURE ACTUALLY SITS, so a reader knows which direction to
+    # suspect first. It is narrower than coverage_audit's and it is not zero.
+    # `assert-encodings`' reconciliation is the exposed check: a mid-write database can
+    # leave an expected mark unpainted, which surfaces as "expected but not emitted".
+    # `assert-layout` is nearly data-blind -- its board-height check asserts
+    # self-consistency ACROSS FRAMES WITHIN ONE RUN, and its font and track assertions
+    # read CSS rather than content.
+    - cron: "17 3 * * *"
+  workflow_dispatch: {}
+
+# Least privilege, on audit.yml's pattern. contents:read because this writes nothing to
+# the repo; issues:write because the delivery surface is an issue. No contents:write --
+# unlike collect.yml there is no data commit to make.
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  dom:
+    runs-on: ubuntu-latest
+    # Measured locally: 93.5s for the whole lane, of which the three checks are 27.2s
+    # and `next build` is 47.3s. 15 gives headroom for a slower runner without letting
+    # a hung browser sit for hours.
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    env:
+      ORIGIN: http://localhost:3001
+      # Pinned because playwright-core is deliberately NOT a dependency of this app
+      # (see the headers of assert-layout.mjs and assert-encodings.mjs), so an
+      # unpinned install would float the browser build from run to run. The CI browser
+      # will therefore drift from the `chromium-1228` path those headers document for
+      # local runs. That is fine: the local path is a developer convenience and this is
+      # the pin that makes a CI run reproducible.
+      PLAYWRIGHT_VERSION: "1.63.0"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # package_json_file resolves from the REPO ROOT, not from defaults.working-
+      # directory -- `defaults.run` applies to `run` steps only, never to an action's
+      # inputs. Same trap ci.yml records from its own first run.
+      - uses: pnpm/action-setup@v4
+        with:
+          package_json_file: web/package.json
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # A PRODUCTION build, never `next dev`. `next dev` injects <nextjs-portal>, whose
+      # font stack is a third computed value that does not exist in what ships --
+      # assert-layout asserts exactly two stacks and would read three.
+      - name: Build
+        run: pnpm build
+
+      # NOT CACHED, and the measurement is why. With `--only-shell` the browser install
+      # is 7.0s and 275 MB where the full chromium install is 14.2s and 707 MB (local
+      # figures; a runner's network is its own and is not claimed here). At 7s the
+      # browser has stopped being this lane's dominant term -- `next build` at 47.3s is
+      # -- and an actions/cache entry would buy single-digit seconds in exchange for a
+      # stale-key failure mode that would present as a PAGE DEFECT. Wrong trade.
+      #
+      # `--only-shell` is verified rather than assumed: all three scripts run green
+      # against chrome-headless-shell, which is what they get anyway, since each
+      # launches headless through `executablePath`.
+      #
+      # A CDN failure here fails the step BEFORE the preflight, which the issue body
+      # classifies as CANNOT RUN -- correctly, since nothing rendered.
+      - name: Install playwright-core and the headless shell
+        run: |
+          npm --prefix "$RUNNER_TEMP/pw" install "playwright-core@${PLAYWRIGHT_VERSION}"
+          node "$RUNNER_TEMP/pw/node_modules/playwright-core/cli.js" install --only-shell chromium
+
+      # GLOBBED, NEVER CONSTRUCTED. The revision is in the directory name
+      # (chromium_headless_shell-1243/...) and a hand-built path is a guess about a
+      # number the install chose. Exactly one match or the step fails: zero means the
+      # install did not land where this expects, and two means an ambiguity that would
+      # otherwise be resolved silently by whichever sorted first.
+      - name: Resolve the shell binary
+        run: |
+          shopt -s nullglob
+          matches=( "$HOME/.cache/ms-playwright"/chromium_headless_shell-*/chrome-headless-shell )
+          if [ "${#matches[@]}" -ne 1 ]; then
+            echo "expected exactly one headless shell binary, found ${#matches[@]}:"
+            printf '  %s\n' "${matches[@]}"
+            exit 1
+          fi
+          echo "resolved ${matches[0]}"
+          echo "CHROMIUM_PATH=${matches[0]}" >> "$GITHUB_ENV"
+
+      # The credentials live on THIS STEP and nowhere else. TURSO_AUTH_TOKEN is the
+      # variable the read layer reads; TURSO_READ_TOKEN is the read-only secret --
+      # audit.yml's mapping, and the same reasoning: this lane renders pages, it never
+      # writes a row.
+      #
+      # Backgrounded with output redirected to a file. The redirect is not tidiness:
+      # a step whose child holds stdout open does not finish.
+      - name: Start the built server
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
+        run: |
+          nohup pnpm start > "$RUNNER_TEMP/server.log" 2>&1 &
+          echo "server pid $!"
+
+      # THE PREFLIGHT. See the header for why this exists and why it runs first.
+      #
+      # BOTH ROUTES, not just the board. `assert-encodings` navigates `/` AND
+      # `/state-bills`; a preflight on `/` alone would let a 500 on the second route
+      # reach the script, which would throw, which the body would then label PAGE
+      # FAILED -- the exact miscategorisation this step exists to prevent, arriving
+      # through the one door left open.
+      #
+      # The retries absorb boot: --retry-connrefused for the race with the server
+      # coming up, and curl treats a 5xx as retryable, so a page still warming gets its
+      # chance before this is called a failure.
+      - name: preflight
+        id: preflight
+        run: |
+          for route in "/" "/state-bills"; do
+            echo "preflight ${ORIGIN}${route}"
+            curl -fsS --retry 30 --retry-delay 1 --retry-connrefused -o /dev/null "${ORIGIN}${route}"
+          done
+
+      # The three checks. Each runs whenever the PAGE RENDERED, not merely when the
+      # step before it passed, so one comment carries all three verdicts instead of
+      # stopping at the first red. Specifying `if:` replaces the implicit success()
+      # condition, which is what allows a later check to run after an earlier one fails.
+      #
+      # `${PIPESTATUS[0]}`, not the pipeline's status: tee exits 0 whatever the script
+      # did, and a red check reporting success is the trap audit.yml records for its
+      # own pipe and docs/status.md records for piping a tool to `head`.
+      - name: assert-gates
+        id: gates
+        if: steps.preflight.outcome == 'success'
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set +e
+          node scripts/assert-gates.mjs "$ORIGIN" 2>&1 | tee "$RUNNER_TEMP/gates.out"
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: assert-encodings
+        id: encodings
+        if: steps.preflight.outcome == 'success'
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set +e
+          node scripts/assert-encodings.mjs "$ORIGIN" 2>&1 | tee "$RUNNER_TEMP/encodings.out"
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      - name: assert-layout
+        id: layout
+        if: steps.preflight.outcome == 'success'
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set +e
+          node scripts/assert-layout.mjs "$ORIGIN/" 2>&1 | tee "$RUNNER_TEMP/layout.out"
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
+      # The delivery surface, on audit.yml's pattern: ONE standing issue, reused. A red
+      # run comments on the open issue if there is one and opens it if there is not, so
+      # a week of red runs is one issue with seven comments rather than seven issues
+      # nobody reads. Never closed from here -- a person closes it, which is what makes
+      # the closing an acknowledgement rather than a side effect.
+      #
+      # WHAT IS NEW HERE IS THE FIRST LINE. Exit 2 and exit 3 need OPPOSITE actions --
+      # fix the page versus fix the harness -- and one label over two causes is this
+      # project's recurring defect. So the state is decided before anything is printed,
+      # and it is the first sentence a reader meets, not something buried under a fence.
+      - name: Raise or update the standing issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: dom-checks red
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PREFLIGHT: ${{ steps.preflight.outcome }}
+          GATES_RC: ${{ steps.gates.outputs.rc }}
+          ENCODINGS_RC: ${{ steps.encodings.outputs.rc }}
+          LAYOUT_RC: ${{ steps.layout.outputs.rc }}
+        run: |
+          # A step failing BEFORE the preflight -- install, build, browser, boot --
+          # leaves PREFLIGHT as `skipped` and folds into the same state as a preflight
+          # that ran and failed: nothing rendered, no check ran. Three states, not four.
+          #
+          # CANNOT RUN takes precedence over a failing check. An instrument that could
+          # not run contaminates the reading beside it, so a run holding both is
+          # reported as broken rather than as a page defect.
+          if [ "$PREFLIGHT" != "success" ]; then
+            HEADLINE="**CANNOT RUN** -- the page never rendered, so no check ran. Nothing below is a statement about the page."
+            ACTION="Fix the harness: this lane's install, build, browser resolve, server boot or preflight. The page is not implicated, and no diagnosis of it exists in this comment."
+          elif [ "$GATES_RC" = "3" ]; then
+            HEADLINE="**CANNOT RUN** -- \`assert-gates\` could not perform its check (exit 3) against a page that DID render. This is a broken instrument, not a failing page."
+            ACTION="Fix the instrument or its inputs: \`docs/gates.yaml\`, \`data/generated_at.json\`, or the playwright install. The captured output names what it could not do."
+          else
+            failed=""
+            if [ -n "$GATES_RC" ] && [ "$GATES_RC" != "0" ]; then
+              failed="${failed} \`assert-gates\` (exit ${GATES_RC})"
+            fi
+            if [ -n "$ENCODINGS_RC" ] && [ "$ENCODINGS_RC" != "0" ]; then
+              failed="${failed} \`assert-encodings\` (exit ${ENCODINGS_RC})"
+            fi
+            if [ -n "$LAYOUT_RC" ] && [ "$LAYOUT_RC" != "0" ]; then
+              failed="${failed} \`assert-layout\` (exit ${LAYOUT_RC})"
+            fi
+            HEADLINE="**PAGE FAILED** --${failed} against a page that rendered. The page disagrees with what it is asserted to render."
+            ACTION="Fix the page."
+            # The fixture sentence is appended ONLY when assert-encodings is the one
+            # that failed. Offering it under a layout failure would point a reader at a
+            # file that has nothing to do with the defect -- a smaller version of the
+            # same error this whole first line exists to prevent.
+            if [ -n "$ENCODINGS_RC" ] && [ "$ENCODINGS_RC" != "0" ]; then
+              ACTION="${ACTION} Or the fixture, if the set really did move: a reconciliation failure in \`assert-encodings\` is a question rather than a verdict, and a deliberate ruling is spent by editing \`encodings.expected.mjs\` in the same commit as the paint."
+            fi
+          fi
+
+          verdict() {
+            if [ -z "$2" ]; then
+              echo "| $1 | not run |"
+            elif [ "$2" = "0" ]; then
+              echo "| $1 | exit 0 |"
+            else
+              echo "| $1 | **exit $2** |"
+            fi
+          }
+
+          # -s, not `cat || echo`: tee CREATES the file before the script writes a
+          # byte, so on a crash `cat` succeeds on an empty file and a fallback keyed on
+          # its exit status never fires. audit.yml paid for that one on 2026-09-08.
+          capture() {
+            if [ -n "$3" ] && [ "$3" != "0" ] && [ -s "$2" ]; then
+              echo ""
+              echo "<details><summary>$1 (exit $3)</summary>"
+              echo ""
+              echo '```'
+              tail -c 20000 "$2"
+              echo '```'
+              echo ""
+              echo "</details>"
+            fi
+          }
+
+          {
+            echo "cc @CSU-J3"
+            echo
+            echo "$HEADLINE"
+            echo
+            echo "$ACTION"
+            echo
+            echo "Run: ${RUN_URL}"
+            echo
+            echo "| check | verdict |"
+            echo "| --- | --- |"
+            echo "| preflight | ${PREFLIGHT} |"
+            verdict "assert-gates" "$GATES_RC"
+            verdict "assert-encodings" "$ENCODINGS_RC"
+            verdict "assert-layout" "$LAYOUT_RC"
+            echo
+            echo "Exit codes: \`assert-gates\` is split -- 1 expiry, 2 DOM join, 3 could not run."
+            echo "\`assert-encodings\` and \`assert-layout\` have no exit 3: for those two, 1 covers"
+            echo "both a failed assertion and a throw mid-run. The preflight above removes the"
+            echo "dominant cause of the second, so PAGE FAILED is the most likely reading of a 1"
+            echo "from them and not a proven one."
+
+            capture "assert-gates" "$RUNNER_TEMP/gates.out" "$GATES_RC"
+            capture "assert-encodings" "$RUNNER_TEMP/encodings.out" "$ENCODINGS_RC"
+            capture "assert-layout" "$RUNNER_TEMP/layout.out" "$LAYOUT_RC"
+
+            if [ "$PREFLIGHT" != "success" ] && [ -s "$RUNNER_TEMP/server.log" ]; then
+              echo
+              echo "<details><summary>server log</summary>"
+              echo
+              echo '```'
+              tail -c 20000 "$RUNNER_TEMP/server.log"
+              echo '```'
+              echo
+              echo "</details>"
+            fi
+          } > "$RUNNER_TEMP/issue-body.md"
+
+          # Exact-title match, not the search ranking: `gh issue list --search` is fuzzy
+          # and would happily return a different issue whose body mentions the phrase.
+          # Selecting on .title == is what makes reuse deterministic.
+          num=$(gh issue list --state open --limit 100 --json number,title \
+                  --jq "[.[] | select(.title == \"${TITLE}\")] | first | .number // empty")
+
+          if [ -n "$num" ]; then
+            echo "commenting on existing issue #${num}"
+            gh issue comment "$num" --body-file "$RUNNER_TEMP/issue-body.md"
+          else
+            echo "opening the standing issue"
+            gh issue create --title "$TITLE" --body-file "$RUNNER_TEMP/issue-body.md"
+          fi

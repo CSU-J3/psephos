@@ -239,9 +239,15 @@ async function checkDom(gates, origin) {
 
   const browser = await chromium.launch({ executablePath: exe });
   let rendered;
+  let status = null;
   try {
     const page = await browser.newPage();
-    await page.goto(origin, { waitUntil: "networkidle" });
+    // The response is CAPTURED rather than discarded, and that capture is the whole of
+    // the instrument the CANNOT RUN message below gained. `page.goto` returns null only
+    // for a same-document navigation, which a fresh page cannot make -- so the null is
+    // handled rather than asserted away.
+    const response = await page.goto(origin, { waitUntil: "networkidle" });
+    status = response === null ? null : response.status();
     rendered = await page.evaluate(
       ([sel, attr]) => {
         const root = document.querySelector(sel);
@@ -255,11 +261,27 @@ async function checkDom(gates, origin) {
   }
 
   if (rendered === null) {
-    // Not a FAIL: nothing was compared. Until D4 ships the component this is the
-    // expected answer, and it must not read as "the join passed".
+    // Not a FAIL: nothing was compared, and it must not read as "the join passed".
+    //
+    // AND IT REPORTS WHAT IT SAW, NEVER WHY. This message used to assert a cause it had
+    // no instrument for -- "the section is not rendered there ... until the component
+    // ships" -- which was true while D4 was unbuilt and then went stale, silently, on
+    // the day D4 shipped. A message whose entire job is to report what could NOT be
+    // determined is the worst place in this file to state an unverified reason.
+    //
+    // The HTTP status is the one thing this function actually observes about the page,
+    // and it was being thrown away at the `goto` above. Captured, it separates a 200
+    // that lacks the section from a 500 that lacks everything -- without either being
+    // claimed as the cause.
     cannotRun(
-      `no ${SECTION_SELECTOR} on ${origin} -- the section is not rendered there.\n` +
-        "        Until the component ships, `--expiry-only` is the runnable half."
+      `${SECTION_SELECTOR} not found on ${origin}` +
+        (status === null
+          ? " -- no HTTP response was recorded for the navigation.\n"
+          : ` -- the page returned HTTP ${status}.\n`) +
+        "        That is the whole of what was observed. The selector's absence has more\n" +
+        "        than one cause -- the section not rendering, the route erroring, a server\n" +
+        "        that is not this app -- and nothing here distinguishes them.\n" +
+        "        `--expiry-only` is the half that runs without a page."
     );
   }
 
