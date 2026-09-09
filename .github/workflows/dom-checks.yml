@@ -124,7 +124,23 @@ jobs:
       # A PRODUCTION build, never `next dev`. `next dev` injects <nextjs-portal>, whose
       # font stack is a third computed value that does not exist in what ships --
       # assert-layout asserts exactly two stacks and would read three.
+      #
+      # AND IT CARRIES THE CREDENTIALS. This lane's first dispatch is what established
+      # that (run 34418518584, 2026-09-09, red at this step): `web/lib/db.ts` constructs
+      # the libsql client at MODULE SCOPE, and `next build`'s page-data collection loads
+      # those modules -- so a build without them dies at `/campaign` and `/news` with
+      # `URL_INVALID: The URL 'undefined' is not in a valid format`, before any check in
+      # this lane exists to be run.
+      #
+      # The reasoning that first put them on the server step alone was that every route
+      # is `ƒ (Dynamic)`. That is true and it answers a different question: `ƒ` says when
+      # data is FETCHED, never when the client is CONSTRUCTED. A LAZY client in the read
+      # layer would take this back to one step -- a build should not need a database --
+      # and is queued as its own unit rather than folded in here.
       - name: Build
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
         run: pnpm build
 
       # NOT CACHED, and the measurement is why. With `--only-shell` the browser install
@@ -162,10 +178,11 @@ jobs:
           echo "resolved ${matches[0]}"
           echo "CHROMIUM_PATH=${matches[0]}" >> "$GITHUB_ENV"
 
-      # The credentials live on THIS STEP and nowhere else. TURSO_AUTH_TOKEN is the
-      # variable the read layer reads; TURSO_READ_TOKEN is the read-only secret --
-      # audit.yml's mapping, and the same reasoning: this lane renders pages, it never
-      # writes a row.
+      # TWO STEPS CARRY THE CREDENTIALS -- Build and this one -- and nowhere else. See
+      # the Build step for why a build needs them at all; it is not obvious and it cost
+      # this lane its first run. TURSO_AUTH_TOKEN is the variable the read layer reads;
+      # TURSO_READ_TOKEN is the read-only secret -- audit.yml's mapping, and the same
+      # reasoning: this lane renders pages, it never writes a row.
       #
       # Backgrounded with output redirected to a file. The redirect is not tidiness:
       # a step whose child holds stdout open does not finish.
