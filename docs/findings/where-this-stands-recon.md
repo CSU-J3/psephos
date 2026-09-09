@@ -21,6 +21,24 @@ this page moves; re-read before quoting.
 
 ## 1. The inventory — 24 statements, three tabs
 
+**THE 24 DOES NOT DECOMPOSE FROM THE TABLES BELOW, noted 2026-09-09 and deliberately not
+re-counted.** Tab 1 prints **13** table rows, Tab 2 prints **14**, and Tab 3 prints six statutory
+rows in prose plus three DEAD spine statements — more than 24 however they are grouped. The figure
+reconciles only as `13 rows + 5 paths + 6 statutory rows`, which counts Tab 1 in **rows** and Tab 2
+in **paths**: one heading over two units, and the third instance of that failure on this project's
+record. **No better total is offered here**, because the total was never the load-bearing number.
+What is countable exactly is what the decisions touch, and that is what later work should cite:
+
+- **Decision 2 (SUED, not "demanded") touches ONE statement** — Tab 1 **7a**, DEAD as worded. It
+  survives only as the gated authored claim, which exists as `doj-demands-all-51` and is
+  `status: stale`. Tab 2 path 3's *"Suits filed 31 jurisdictions"* is already SUED wording and
+  DERIVABLE; it survives unchanged.
+- **Decision 3 (tab 3 ships, rewritten) touches THREE** — the two `blind spot` badges and the
+  closing tabnote. All three are rewritten, none dropped; the six statutory rows ship unchanged.
+- **FIVE more are DERIVABLE-but-drifting and are touched by neither decision** — 7b, 7c, 7d,
+  *"stalled 19 months"* and *"Appeals taken 12 dockets"*. These are the ones the derived gates
+  exist to stop, and they rot without any editorial decision being wrong.
+
 Classes: **DERIVABLE** (computable from the record today), **AUTHORED** (an editorial claim no
 table produces), **DEAD** (falsified by the record).
 
@@ -244,8 +262,19 @@ Absent at origin and locally, confirmed. Two shapes.
 A derived entry holding a number is how 25, 12 and 46 rotted while looking maintained.
 
 **Enforcement: `assert-gates.mjs`, joined both directions, plus `recheck_after` expiry.** It
-matches the house pattern (`assert-encodings`, `assert-layout`), catches ungated claims and orphan
-gates in one run, and shares an exit code. Expiry is the part that earns the file: an authored
+catches ungated claims and orphan gates in one run.
+
+**CORRECTED 2026-09-09 — this paragraph said it "matches the house pattern (`assert-encodings`,
+`assert-layout`) … and shares an exit code", and what shipped deliberately does not.** The other
+three scripts are binary: `exit(failures === 0 ? 0 : 1)`. `assert-gates` has **four** codes —
+`0 OK`, `1 EXPIRY`, `2 DOM`, `3 CANNOT_RUN` — and the departure is the point, not a drift from the
+pattern. The failures need different actions: an expired claim is a claim to go and recheck, a DOM
+join failure is a claim to gate or a gate to delete, and they are not the same errand. And
+`CANNOT_RUN` carries the distinction this repo shipped twice in one day elsewhere — **a run that
+COULD NOT CHECK is not a run that checked clean**, which is `sha_sweep`'s NOT CHECKED ending and
+its coverage-gap list, in a different tool. Binary would collapse all three into `1` and a reader
+would have to open the log to learn which errand they were on.
+ Expiry is the part that earns the file: an authored
 claim with a date goes stale invisibly, and `recheck_after` is the only property of it a machine
 can fail on.
 
@@ -282,5 +311,20 @@ Decisions recorded elsewhere in this file and approved the same day: `cases.cour
 and classified at read (§5), the sequencing (§5), the circuit figure of 23 contingent on that
 classification (§2), and the deliberate omission of an ordinal in the design-note-ages family (§4).
 
-One sub-question stays open for the plan: whether the page displays the verbatim court string or
-the canonical one.
+**The last sub-question is DECIDED, 2026-09-09: the page displays the VERBATIM court string, and
+canonicalization stays a CLASSIFICATION concern.** This ratifies what production already does
+rather than changing anything — which is the reason to write it down, since an undecided state that
+happens to be coherent is one nobody has to defend until something else depends on it.
+
+Three things decide it together. **Canonicalization is already scoped to classification**:
+`campaign.ts` runs `isCircuit` through `canonicalCourt`, so district-vs-circuit bucketing is
+canonical while the value shown is not. **§5 already ruled the stored value stays verbatim**,
+because `cases.court` is a join key in three places and rewriting it breaks all three — and display
+following storage is the consistent reading rather than a second rule. **And the reader sees what
+the tracker actually typed**, which is what a record is for: `'Eighth District'` on the page is UW's
+own words, and the fact that psephos knows it means the Eighth Circuit shows up in the bucketing
+rather than by silently correcting the source.
+
+As built: `CaseRow.tsx` and `case/[case_id]/page.tsx` render `{c.court}` raw, including both
+supersession directions. **No gate displays a court string at all** — all eight `renders_as`
+templates are counts or dates — so the register did not force this and would not have.
