@@ -32,6 +32,23 @@ on:
     # directions -- 2h05m below the floor, 5h04m above the ceiling, twice. Same
     # claim, corrected twice, wrong in a different way each time.
     #
+    # FOUR MORE SAMPLES, 2026-09-09, recorded as samples and not folded into the
+    # spread above. Against the same slots, off run_started_at: 09-08 21:10:58Z =
+    # 2h53m58s (18:17), 09-09 04:44:51Z = 4h27m51s (00:17), 09-09 11:25:40Z =
+    # 5h08m40s (06:17), 09-09 16:40:07Z = 4h23m07s (12:17). The third is a NEW
+    # MAXIMUM, past the 5h04m25s ceiling by 4m15s -- the second time in three days
+    # a fresh reading has broken the previous outer bound, both times LONGER and
+    # both on the 06:17 slot. The n=16 reading above is left exactly as it was.
+    #
+    # THE CLOCK IS PART OF THE SAMPLE, and this is the third correction to these
+    # lines rather than a new kind of mistake. These four were first read off the
+    # DATA COMMIT timestamps -- 3h04m, 4h43m, 5h22m, 4h28m -- a different
+    # instrument from the one this record uses, which would have put three wrong
+    # figures into a run_started_at table while supporting a conclusion that
+    # happens to be true either way. Same family as the two corrections above: a
+    # lag written down without the pair of events it subtracts. Record the clock
+    # beside the number, and re-derive rather than transcribe.
+    #
     # A SPREAD IS NOT A BOUND. What is written above is what was observed over five
     # days; a run outside it falsifies nothing and needs no edit here. Instrument:
     # pull the whole run_started_at table across days before writing any range, and

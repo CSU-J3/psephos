@@ -28,9 +28,12 @@ on:
     # in practice it will often land inside the 06:17 cycle's window instead. That
     # precision is not available and is not claimed.
     #
-    # One sample of its own, recorded as one sample and not as a band: the first
-    # scheduled run, 2026-09-08, started 09:46:31Z -- 4h29m past the slot, and so
-    # inside the 06:17 cycle's window exactly as the paragraph above expects.
+    # Two samples of its own, recorded as samples and not as a band: 2026-09-08
+    # started 09:46:31Z, 4h29m31s past the slot, and 2026-09-09 started 09:50:47Z,
+    # 4h33m47s. Both land inside the 06:17 cycle's window exactly as the paragraph
+    # above expects. Both are run_started_at readings, the same instrument
+    # collect.yml's table uses -- said out loud because a commit-clock reading of
+    # the same runs gives different figures and does not belong beside these.
     #
     # It is harmless because the audit is read-only and idempotent. The one real
     # consequence is that a mid-cycle read could in principle catch a transient
