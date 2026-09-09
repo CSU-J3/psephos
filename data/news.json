@@ -7578,5 +7578,95 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-election-chief-could-be-held-in-contempt-for-using-gerrymandered-map-amid-dueling-court-orders",
     "title": "Missouri election chief could be held in contempt for using gerrymandered map amid dueling court orders"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99788,
+    "kind": "item",
+    "occurred_at": "2026-09-09T17:30:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-refuses-to-reinstate-ohio-gops-voting-restriction-during-appeal",
+    "title": "Court refuses to reinstate Ohio GOP’s voting restriction during appeal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99787,
+    "kind": "item",
+    "occurred_at": "2026-09-09T17:46:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-election-chief-asks-federal-judge-to-shield-him-from-contempt-charges-after-defying-state-supreme-court",
+    "title": "Missouri election chief asks federal judge to shield him from contempt charges after defying state supreme court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99786,
+    "kind": "item",
+    "occurred_at": "2026-09-09T18:07:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/thousands-of-overseas-voters-could-be-disenfranchised-by-trump-mail-voting-rule-advocates-warn",
+    "title": "Thousands of overseas voters could be disenfranchised by Trump mail voting rule, advocates warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99785,
+    "kind": "item",
+    "occurred_at": "2026-09-09T18:09:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/uncharted-territory-votes-already-cast-could-be-at-risk-if-trumps-order-is-revived",
+    "title": "‘Uncharted territory’: Votes already cast could be at risk if Trump’s order is revived"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99784,
+    "kind": "item",
+    "occurred_at": "2026-09-09T18:34:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-argues-trumps-mail-voting-restrictions-should-go-into-effect-even-if-voters-are-disenfranchised",
+    "title": "DOJ argues Trump’s mail voting restrictions should go into effect even if voters are disenfranchised"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99783,
+    "kind": "item",
+    "occurred_at": "2026-09-09T19:12:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-voting-rule-would-be-chaos-if-implemented-this-close-to-election-blue-states-warn-supreme-court",
+    "title": "USPS voting rule ‘would be chaos’ if implemented this close to election, blue states warn Supreme Court"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 99782,
+    "kind": "item",
+    "occurred_at": "2026-09-09T20:35:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ohio-asks-6th-circuit-to-lift-pause-on-new-voter-registration-restrictions",
+    "title": "Ohio asks 6th Circuit to lift pause on new voter registration restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99781,
+    "kind": "item",
+    "occurred_at": "2026-09-09T20:37:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-makes-it-harder-for-some-overseas-voters-to-request-a-ballot",
+    "title": "Trump administration makes it harder for some overseas voters to request a ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99780,
+    "kind": "item",
+    "occurred_at": "2026-09-09T20:38:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/catastrophic-postal-workers-slam-trumps-mail-voting-restrictions-urge-supreme-court-to-uphold-block",
+    "title": "‘Catastrophic’: Postal workers slam Trump’s mail voting restrictions, urge Supreme Court to uphold block"
   }
 ]

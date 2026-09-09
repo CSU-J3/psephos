@@ -1748,6 +1748,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE96enZWYzh3VTJTTVZ5UUZ1Wm9ybTFOclNPMUk3VmNLMzg5OWdFaW9iMTY2eHk0TzVtRHRsUHNabjBlZWNfY3o3QnJ2SVNFVVo3RURsZEJqQXpnZm9NU3lfenZTeGgxa3lk?oc=5",
         "title": "Thune rejects filibuster changes for SAVE America Act despite Trump pressure - eciks.org"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 99782,
+        "kind": "item",
+        "occurred_at": "2026-09-09T20:35:25+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/ohio-asks-6th-circuit-to-lift-pause-on-new-voter-registration-restrictions",
+        "title": "Ohio asks 6th Circuit to lift pause on new voter registration restrictions"
       }
     ]
   },

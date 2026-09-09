@@ -21537,9 +21537,9 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 98,
+    "entry_count": 103,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-08-31T00:00:00",
+    "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -21716,6 +21716,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73453198/30/united-states-v-wisconsin-elections-commission/",
         "title": "United States v. Wisconsin: Order issued GRANTING motion to extend time to file appellees' brief. [28] Appellees' brief due on or before 08/17/2026 for Melissa Adams, et al. Appellant's reply brief, if any, i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99618,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/97/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Submitted appellant reply brief by Kelsey E. McGee for Appellant USA. [97] NOTE: Access to this entry is limited to counsel of record. Once the document is approved by the court, i"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99619,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/98/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Appellant's reply brief filed by Appellant USA. Paper copies due on 09/11/2026. [98] [7553359] [26-2217] (CAG) [Entered: 09/04/2026 04:20 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99620,
+        "kind": "item",
+        "occurred_at": "2026-09-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73453198/100/united-states-v-wisconsin-elections-commission/",
+        "title": "United States v. Wisconsin: Paper copies of appellant reply brief filed by Appellant USA. [100] [7554147] [26-2217] (DAB) [Entered: 09/09/2026 01:42 PM]"
       }
     ]
   },
@@ -21727,9 +21757,9 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 98,
+    "entry_count": 108,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-09-02T00:00:00",
+    "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -21996,6 +22026,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73470017/00108501799/united-states-v-amore/",
         "title": "United States v. Rhode Island: ORDER directing Appellees Carolyn Betensky, Michael Zack Mezera, Rhode Island Alliance for Retired Americans, and SEIU District 1199NE to file a conforming brief. Brief due 09/09/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99573,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108504077/united-states-v-amore/",
+        "title": "United States v. Rhode Island: APPELLEES' BRIEF filed by Appellees Carolyn Betensky, Michael Zack Mezera, Rhode Island Alliance for Retired Americans and SEIU District 1199NE. Served on 09/02/2026. Nine paper co"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99574,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108504083/united-states-v-amore/",
+        "title": "United States v. Rhode Island: REPLY BRIEF filed by Appellant US. Served on 09/04/2026. Nine paper copies identical to that of the electronically filed brief must be submitted so that they are received by the co"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99575,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108504359/united-states-v-amore/",
+        "title": "United States v. Rhode Island: ORDER directing Movant Electronic Privacy Information Center to file a conforming brief. Brief due 09/15/2026. [26-1665] (ALW) [Entered: 09/08/2026 02:14 PM]"
       }
     ]
   },
@@ -22007,9 +22067,9 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 95,
+    "entry_count": 103,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-08-31T00:00:00",
+    "latest_entry_at": "2026-09-08T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -22316,6 +22376,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108497777/united-states-v-galvin/",
         "title": "United States v. Massachusetts: ORDER entered: On August 24, 2026, Local Governments and Local Election Officials filed a brief as amici curiae. The brief is non-compliant because the caption on the front cover o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99559,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/00108504129/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: ORDER directing Appellees Massachusetts Alliance for Retired Americans and New England State Area Conference of the National Association for the Advancement of Colored People to fi"
       }
     ]
   },
@@ -22327,9 +22397,9 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 89,
+    "entry_count": 91,
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-09-04T00:00:00",
+    "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -22646,6 +22716,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73488435/00108501670/united-states-v-bellows/",
         "title": "United States v. Maine: APPELLEE'S BRIEF filed by Appellee League of Women Voters of Maine. Served on 08/28/2026. Nine paper copies identical to that of the electronically filed brief must be submitted so"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99556,
+        "kind": "item",
+        "occurred_at": "2026-09-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73488435/00108505366/united-states-v-bellows/",
+        "title": "United States v. Maine: ORDER entered. On August 24, 2026, Lawyers' Committee for Civil Rights and National Urban League filed a brief as amici curiae. The brief is non-compliant because the caption on th"
       }
     ]
   },
@@ -22837,9 +22917,9 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 64,
+    "entry_count": 68,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-08T00:00:00",
+    "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -22976,6 +23056,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/32/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ORDER (FREEMAN, Circuit Judge) denying Motion filed by America First Policy Institute - Pennsylvania to proceed as intervenor in support of Appellant. Panel No.: ACO-116. Freeman, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99571,
+        "kind": "item",
+        "occurred_at": "2026-09-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) directing Attorney Joshua R. Zuckerman, Esq. for Appellant USA to submit 4 hard copies in white covers for the Appellant's Joint Appendix Volume I filed on 9/8/2"
       }
     ]
   },
@@ -22987,9 +23077,9 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 35,
+    "entry_count": 36,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-02T00:00:00",
+    "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -23647,9 +23737,9 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 20,
+    "entry_count": 22,
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-08-12T00:00:00",
+    "latest_entry_at": "2026-09-08T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -23657,6 +23747,16 @@
     "status_checked_at": "2026-09-09T04:52:01.740892+00:00",
     "superseded_by": null,
     "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 99590,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
+        "title": "United States v. Virginia — voter-data"
+      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -23817,9 +23917,9 @@
     "date_terminated": null,
     "defendant": "Lieutenant Governor and Secretary of State of New",
     "docket_number": "26-3085",
-    "entry_count": 11,
+    "entry_count": 21,
     "filed_at": "2026-08-20T00:00:00",
-    "latest_entry_at": "2026-08-26T00:00:00",
+    "latest_entry_at": "2026-09-04T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
@@ -23867,9 +23967,9 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 31,
+    "entry_count": 33,
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-09-01T00:00:00",
+    "latest_entry_at": "2026-09-03T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -23977,9 +24077,9 @@
     "date_terminated": null,
     "defendant": "Aguilar, et al.",
     "docket_number": "26-5375",
-    "entry_count": 10,
+    "entry_count": 14,
     "filed_at": "2026-08-20T00:00:00",
-    "latest_entry_at": "2026-08-25T00:00:00",
+    "latest_entry_at": "2026-09-03T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
     "state": "Nevada",
@@ -24056,6 +24156,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74694778/10/united-states-of-america-v-aguilar-et-al/",
         "title": "United States v. Nevada: MEDIATION ORDER: By 9/2/2026, counsel to email Circuit Mediator regarding settlement potential. Include Ninth Circuit case name and number in subject line. This communication will "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 99563,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74694778/13/united-states-of-america-v-aguilar-et-al/",
+        "title": "United States v. Nevada: ORDER FILED. The unopposed motion (Docket Entry No. 6) to stay appellate proceedings is granted. The briefing schedule is vacated.\nAppellate proceedings other than mediation are st"
       }
     ]
   }
