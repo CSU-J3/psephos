@@ -28,6 +28,22 @@ on:
     # in practice it will often land inside the 06:17 cycle's window instead. That
     # precision is not available and is not claimed.
     #
+    # AND THE QUANTITY THAT WOULD ACTUALLY DECIDE THIS SLOT IS UNMEASURED IN THIS
+    # REPO. Everything above is about when a run STARTS. What 05:17 needs to know is
+    # when the night's collection FINISHES, since the database is written across a
+    # cycle rather than at its opening -- and nothing here records that. Not an
+    # oversight in the table: run_started_at cannot answer it by construction, being
+    # the near edge of the interval whose far edge is the question. The nearest
+    # available proxy is the DATA COMMIT, which lands after the export AND ONLY ON
+    # A DIFF -- a cycle that collects nothing writes no commit at all, so the proxy
+    # goes missing on exactly the quiet runs, which are the runs where a stale read
+    # would be hardest to notice. That is a SECOND and INDEPENDENT reason it is not
+    # in the record, beside the first: a table whose rows come off two different
+    # subtractions cannot be checked against itself. So the proxy exists, is not
+    # used, and this slot rests on a quantity nobody has measured.
+    # Said plainly because a reader who wants that number has to go and make it, and
+    # should know that before mistaking one of the numbers above for it.
+    #
     # Two samples of its own, recorded as samples and not as a band: 2026-09-08
     # started 09:46:31Z, 4h29m31s past the slot, and 2026-09-09 started 09:50:47Z,
     # 4h33m47s. Both land inside the 06:17 cycle's window exactly as the paragraph
