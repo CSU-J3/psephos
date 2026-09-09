@@ -46,11 +46,15 @@ that has nothing to do with the citations.
 
 THE ENVIRONMENT IS PART OF THE CHECK
 ====================================
-In a SHALLOW clone most citations report unresolvable because the history is absent, not
-because the citations are bad: 51 of 53 at `--depth 6`. `git clone --depth 40` is this
-project's session-open pattern, so the first run in a new session will look like the doc
-has rotted when nothing is wrong. This prints the shallow state and refuses to call the
-reading authoritative when it is shallow.
+In a SHALLOW clone most citations land in `not commits` because the object is absent, not
+because the citations are bad: 51 of 53 at `--depth 6`. That figure was measured while this
+tool still had a separate `unresolvable` category to put them in. IT NO LONGER DOES, and
+the consequence is the reason that category was removed: `is_commit` asks whether THIS
+clone holds the object, so a sha the clone lacks is indistinguishable from a docket id and
+is counted as one. `git clone --depth 40` is this project's session-open pattern, so the
+first run in a new session will look like the doc has rotted when nothing is wrong. This
+prints the shallow state, refuses to call the reading authoritative when it is shallow, and
+says so again on the `not commits` line, which is where the damage actually lands.
 
 AND THE STALENESS GATE COSTS A NETWORK ROUND-TRIP -- one `git ls-remote <remote>
 refs/heads/<branch>` per run, to tell a current ref from a stale one. This is a
@@ -186,12 +190,35 @@ def main() -> int:
         # reason. `git show` needs no such care: it hands back the blob as stored.
         with open(args.doc, encoding="utf-8", newline="") as fh:
             text = fh.read()
-        same = git("diff", "--quiet", args.ref, "--", args.doc).returncode == 0
-        ahead = git("rev-list", "--count", f"{args.ref}..HEAD").stdout.strip() or "?"
-        rel = (f"IDENTICAL to {args.ref}" if same
-               else f"DIFFERS from {args.ref}, {ahead} commit(s) unpushed")
+        # TWO INDEPENDENT REASONS the tree can differ from the ref, and they co-occur.
+        # Reporting only their sum printed `DIFFERS ... 0 commit(s) unpushed`, which reads
+        # as a contradiction and is two halves answering different questions -- the same
+        # shape as off_local meaning opposite things in the two modes.
+        #
+        # The count is scoped TO THIS DOC because the corpus is this doc. Repo-wide, an
+        # unpushed commit touching only tools/ would be reported beside a document that has
+        # not moved, which is this line's own defect reappearing inside its fix.
+        same_as_ref = git("diff", "--quiet", args.ref, "--", args.doc).returncode == 0
+        dirty = git("diff", "--quiet", "HEAD", "--", args.doc).returncode != 0
+        ahead = git("rev-list", "--count", f"{args.ref}..HEAD", "--", args.doc).stdout.strip()
+        n_ahead = int(ahead) if ahead.isdigit() else 0
+        if same_as_ref:
+            rel = f"IDENTICAL to {args.ref}"
+        elif n_ahead and dirty:
+            rel = (f"DIFFERS from {args.ref} -- {n_ahead} unpushed commit(s) touching this"
+                   " doc, and uncommitted edits")
+        elif n_ahead:
+            rel = f"DIFFERS from {args.ref} -- {n_ahead} unpushed commit(s) touching this doc"
+        elif dirty:
+            rel = (f"DIFFERS from {args.ref} -- uncommitted edits, 0 unpushed commit(s)"
+                   " touching this doc")
+        else:
+            # Neither cause applies, so the ref is not an ancestor of HEAD for this path.
+            rel = (f"DIFFERS from {args.ref} -- neither unpushed commits nor uncommitted"
+                   " edits; HEAD and the ref have diverged for this path")
         print(f"  corpus: WORKING TREE {args.doc}")
-        print(f"          pre-push mode, {rel}")
+        print(f"          pre-push mode")
+        print(f"          {rel}")
         print("          off-origin-local is INFORMATIONAL here")
     else:
         shown = git("show", f"{args.ref}:{args.doc}")
@@ -225,7 +252,14 @@ def main() -> int:
     # uninformative as one that passes everything, and this check has done both.
     print(f"\n  tokens seen            {len(tokens)}")
     print(f"  resolve as commits     {len(hashes)}   <- the denominator")
-    print(f"  not commits            {len(notcommits)}   (docket ids, bill ids, entry numbers)")
+    print(f"  not commits            {len(notcommits)}   (docket ids, bill ids, entry numbers --")
+    print("                              AND any sha this clone does not hold. Nothing here")
+    print("                              separates them: is_commit asks whether THIS clone has")
+    print("                              the object, so a sha from another clone, or one past")
+    print("                              a shallow clone's depth, is counted as an id.)")
+    if shallow:
+        print("                              THIS CLONE IS SHALLOW: read the bucket above as")
+        print("                              unreliable in bulk, not as a list of ids.")
     print(f"  of the commits, letterless: {len(letterless)}  {letterless}")
     print("     (invisible to the pre-2026-09-02 shape filter, which required a letter;")
     print("      one such sha was an orphan cited for 18 days and seen by no run)")
@@ -240,7 +274,6 @@ def main() -> int:
     print(f"  off-origin, ORPHAN     {len(orphan)}  {orphan}")
     for h in orphan:
         print(f"       CITATION IS WRONG: {h}  {subject(h)}")
-    print("  unresolvable           0   (a token that does not resolve is not a hash here)")
 
     # off_local is an alarm ONLY in post-push mode. In pre-push mode it is this
     # session's own unpushed commits and citing them is correct; the same number,
@@ -261,11 +294,28 @@ def main() -> int:
             "  Either the push did not land or the citation names a local-only commit."
         )
     failed = bool(orphan) or bool(alarm_local)
-    if not failed and published is None:
-        # Green WITHOUT the staleness gate is a different result from green WITH it, and
-        # a bare OK renders them identically. Say which one this was.
-        print("\n  OK -- but staleness NOT CHECKED (see above). No orphan and no")
-        print("  off-origin citation IN THIS CORPUS, which may not be the published one.")
+
+    # COVERAGE GAPS: conditions under which a green ending is NOT a reading of the
+    # citations. A bare OK renders `checked and clean` identically to `could not check`,
+    # which is the same defect as a definitional zero rendering like a counted one.
+    #
+    # Collected into a list rather than branched, because the two gaps are INDEPENDENT
+    # and co-occur -- a shallow clone with no network has both -- and an elif cascade
+    # would print the first and silently drop the second. That is the two-halves-one-
+    # label failure this same commit removes from the `not commits` line, so it is not
+    # shipped in the ending that reports it.
+    gaps = []
+    if published is None:
+        gaps.append(f"staleness NOT CHECKED -- {args.ref} may not be the published state")
+    if shallow:
+        gaps.append(f"the clone is SHALLOW -- {len(notcommits)} of {len(tokens)} tokens did"
+                    " not resolve here, and an absent sha is indistinguishable from an id")
+
+    if not failed and gaps:
+        print("\n  OK -- but this is NOT a reading of the citations. No orphan and no")
+        print("  off-origin citation WAS FOUND, under these gaps in coverage:")
+        for g in gaps:
+            print(f"    - {g}")
     elif not failed:
         print("\n  OK")
     else:
