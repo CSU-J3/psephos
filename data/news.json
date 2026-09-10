@@ -7688,5 +7688,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/gerrymander-foes-ask-supreme-court-to-block-gop-map-in-missouri",
     "title": "Gerrymander foes ask Supreme Court to block GOP map in Missouri"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100200,
+    "kind": "item",
+    "occurred_at": "2026-09-10T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/indiana-supreme-court-will-decide-winner-of-high-profile-disputed-election-after-gop-officials-threw-out-votes",
+    "title": "Indiana Supreme Court will decide winner of high-profile disputed election after GOP officials threw out votes"
   }
 ]
