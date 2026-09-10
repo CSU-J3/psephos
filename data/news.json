@@ -7698,5 +7698,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/indiana-supreme-court-will-decide-winner-of-high-profile-disputed-election-after-gop-officials-threw-out-votes",
     "title": "Indiana Supreme Court will decide winner of high-profile disputed election after GOP officials threw out votes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100517,
+    "kind": "item",
+    "occurred_at": "2026-09-10T13:46:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/reinstating-trumps-anti-mail-voting-rule-before-midterms-hinges-on-supreme-court-after-parties-make-their-case",
+    "title": "Supreme Court to decide on Trump mail voting order after parties make their case"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100516,
+    "kind": "item",
+    "occurred_at": "2026-09-10T14:16:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hoskins-last-ditch-effort-to-avoid-contempt-hearing-shot-down-by-federal-judge",
+    "title": "Hoskins’ last-ditch effort to avoid contempt hearing shot down by federal judge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100515,
+    "kind": "item",
+    "occurred_at": "2026-09-10T14:38:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-blocks-gerrymandered-missouri-map-that-federal-judge-revived",
+    "title": "Supreme Court blocks gerrymandered Missouri map for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100514,
+    "kind": "item",
+    "occurred_at": "2026-09-10T15:00:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-threatens-charges-against-state-officials-in-voter-records-fight",
+    "title": "DOJ threatens charges against state officials in voter records fight"
   }
 ]

@@ -6077,7 +6077,7 @@
     "date_terminated": "2026-06-22T00:00:00",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 248,
+    "entry_count": 249,
     "filed_at": "2025-09-30T00:00:00",
     "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "League of Women Voters",
@@ -19647,9 +19647,9 @@
     "date_terminated": null,
     "defendant": "Warner",
     "docket_number": "2:26-cv-00156",
-    "entry_count": 68,
+    "entry_count": 70,
     "filed_at": "2026-02-26T00:00:00",
-    "latest_entry_at": "2026-08-17T00:00:00",
+    "latest_entry_at": "2026-09-10T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
     "state": "West Virginia",
@@ -20076,6 +20076,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72335259/59/united-states-v-warner/",
         "title": "United States v. West Virginia: MOTION by United States of America for Entry of Judgment. Responses due by 8/20/2026. (Gardner, Christopher)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 100352,
+        "kind": "item",
+        "occurred_at": "2026-09-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/61/united-states-v-warner/",
+        "title": "United States v. West Virginia: NOTICE OF APPEAL WITH NO FEE REQUIRED by United States of America as to 56 Memorandum Opinion and Order. (Tucker, James)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 100353,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/62/united-states-v-warner/",
+        "title": "United States v. West Virginia: TRANSMITTAL OF NOTICE OF APPEAL TO 4CCA via APPEAL TRANSMITTAL SHEET re: 61 Notice of Appeal to the 4CCA. (cmb)"
       }
     ]
   },
@@ -23647,7 +23667,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 55,
+    "entry_count": 56,
     "filed_at": "2026-07-28T00:00:00",
     "latest_entry_at": "2026-09-08T00:00:00",
     "plaintiff": "United States of America",
@@ -23726,6 +23746,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/56/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION, for___relief, on behalf of Appellee Stephanie Thomas, FILED. Service date 09/08/2026 by ACMS. [Entered: 09/08/2026 03:13 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 100212,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/56/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION, for removal from XAC, or alternatively, for extension of time, on behalf of Appellee Stephanie Thomas, FILED. Service date 09/08/2026 by ACMS. [Entered: 09/08/2026 03:13 PM"
       }
     ]
   },
@@ -23787,7 +23817,7 @@
     "date_terminated": null,
     "defendant": "Griswold",
     "docket_number": "26-1326",
-    "entry_count": 11,
+    "entry_count": 18,
     "filed_at": "2026-08-18T00:00:00",
     "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "United States",
@@ -23806,6 +23836,26 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
         "title": "United States v. Colorado — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 100220,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74667007/4/united-states-v-griswold/",
+        "title": "United States v. Colorado: [11312239] Acknowledgment of transcript order filed by United States of America. Transcript ordered: No. Served on: 08/27/2026. Manner of Service: email. [26-1326] JTT [Entered: 08"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 100221,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74667007/5/united-states-v-griswold/",
+        "title": "United States v. Colorado: [11312252] Minute order filed - Notice due that record is complete by 08/31/2026 for Jeffrey P. Colwell, Clerk of Court (oclk). (Text Only - No Attachment) [26-1326] [Entered: 08/2"
       }
     ]
   },
