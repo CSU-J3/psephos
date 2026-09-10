@@ -7738,5 +7738,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-threatens-charges-against-state-officials-in-voter-records-fight",
     "title": "DOJ threatens charges against state officials in voter records fight"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100739,
+    "kind": "item",
+    "occurred_at": "2026-09-10T17:19:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-appeals-court-shoots-down-trump-administrations-bid-to-reinstate-anti-mail-voting-order",
+    "title": "Federal appeals court shoots down Trump administration’s bid to reinstate anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100738,
+    "kind": "item",
+    "occurred_at": "2026-09-10T17:54:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-contempt-hearing-missouris-top-election-official-concedes-redistricting-fight",
+    "title": "After contempt hearing, Missouri’s top election official concedes redistricting fight"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100737,
+    "kind": "item",
+    "occurred_at": "2026-09-10T18:07:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/top-gop-election-chiefs-call-on-supreme-court-to-halt-trumps-mail-voting-restrictions-for-midterms",
+    "title": "Top GOP election chiefs call on Supreme Court to halt Trump’s mail voting restrictions for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100736,
+    "kind": "item",
+    "occurred_at": "2026-09-10T18:51:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maga-crashes-out-over-missouri-gerrymander-loss",
+    "title": "MAGA crashes out over Missouri gerrymander loss"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100735,
+    "kind": "item",
+    "occurred_at": "2026-09-10T19:56:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouris-top-election-official-held-in-contempt-for-defying-courts-gerrymander-order",
+    "title": "Missouri’s top election official held in contempt for defying court’s gerrymander order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100734,
+    "kind": "item",
+    "occurred_at": "2026-09-10T19:57:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-assails-baseless-block-on-mail-voting-rule-in-final-plea-to-supreme-court",
+    "title": "Trump administration assails ‘baseless’ block on mail voting rule in final plea to Supreme Court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100733,
+    "kind": "item",
+    "occurred_at": "2026-09-10T20:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/civil-rights-group-and-city-of-denver-ask-court-to-block-any-plans-for-armed-federal-agents-at-polls-during-midterms",
+    "title": "Civil rights group and city of Denver ask court to block any plans for armed federal agents at polls during midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100732,
+    "kind": "item",
+    "occurred_at": "2026-09-10T20:38:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/indiana-supreme-court-declares-key-gop-redistricting-holdout-victor-in-high-profile-disputed-election",
+    "title": "Indiana Supreme Court declares key GOP redistricting holdout victor in high-profile disputed election"
   }
 ]
