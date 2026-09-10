@@ -161,18 +161,35 @@ jobs:
           npm --prefix "$RUNNER_TEMP/pw" install "playwright-core@${PLAYWRIGHT_VERSION}"
           node "$RUNNER_TEMP/pw/node_modules/playwright-core/cli.js" install --only-shell chromium
 
-      # GLOBBED, NEVER CONSTRUCTED. The revision is in the directory name
-      # (chromium_headless_shell-1243/...) and a hand-built path is a guess about a
-      # number the install chose. Exactly one match or the step fails: zero means the
-      # install did not land where this expects, and two means an ambiguity that would
-      # otherwise be resolved silently by whichever sorted first.
+      # GLOBBED, NEVER CONSTRUCTED, AND THE PATH IS THREE LEVELS DEEP. The full form is
+      #
+      #   ~/.cache/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell
+      #
+      # written out with no ellipsis, because the first version of this comment elided
+      # the middle level and the glob below then dropped exactly the level the ellipsis
+      # hid. The source for both names is the path table in the PINNED package --
+      # `playwright-core@1.63.0`, lib/coreBundle.js -- whose linux-x64 entry reads
+      # ["chrome-headless-shell-linux64", "chrome-headless-shell"]: platform directory,
+      # then binary. It is readable with an `npm install playwright-core@<pin>` and a
+      # grep, no browser download. A PIN BUMP RE-READS THAT TABLE BEFORE TOUCHING THE
+      # GLOB; both names are the install's to choose, so both carry a wildcard here,
+      # the same way the revision does.
+      #
+      # Exactly one match or the step fails. Two means an ambiguity that would
+      # otherwise be resolved silently by whichever sorted first. Zero means EITHER the
+      # install did not land, OR this expectation is wrong about where it lands -- and
+      # the first real zero was the expectation, not the install, so the listing below
+      # prints what is actually on disk rather than leaving the next reader to re-derive
+      # the layout.
       - name: Resolve the shell binary
         run: |
           shopt -s nullglob
-          matches=( "$HOME/.cache/ms-playwright"/chromium_headless_shell-*/chrome-headless-shell )
+          matches=( "$HOME/.cache/ms-playwright"/chromium_headless_shell-*/chrome-headless-shell-*/chrome-headless-shell )
           if [ "${#matches[@]}" -ne 1 ]; then
             echo "expected exactly one headless shell binary, found ${#matches[@]}:"
             printf '  %s\n' "${matches[@]}"
+            echo "what the install actually left under ~/.cache/ms-playwright:"
+            find "$HOME/.cache/ms-playwright" -maxdepth 3 -print 2>&1 | sed 's/^/  /'
             exit 1
           fi
           echo "resolved ${matches[0]}"
