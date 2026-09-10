@@ -7668,5 +7668,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/catastrophic-postal-workers-slam-trumps-mail-voting-restrictions-urge-supreme-court-to-uphold-block",
     "title": "‘Catastrophic’: Postal workers slam Trump’s mail voting restrictions, urge Supreme Court to uphold block"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99992,
+    "kind": "item",
+    "occurred_at": "2026-09-09T21:15:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-supreme-court-could-use-the-purcell-principle-to-save-trumps-attack-on-mail-voting-but-will-it",
+    "title": "The Supreme Court could use the ‘Purcell principle’ to save Trump’s attack on mail voting. But will it?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 99991,
+    "kind": "item",
+    "occurred_at": "2026-09-09T21:22:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gerrymander-foes-ask-supreme-court-to-block-gop-map-in-missouri",
+    "title": "Gerrymander foes ask Supreme Court to block GOP map in Missouri"
   }
 ]
