@@ -172,8 +172,15 @@ jobs:
       # ["chrome-headless-shell-linux64", "chrome-headless-shell"]: platform directory,
       # then binary. It is readable with an `npm install playwright-core@<pin>` and a
       # grep, no browser download. A PIN BUMP RE-READS THAT TABLE BEFORE TOUCHING THE
-      # GLOB; both names are the install's to choose, so both carry a wildcard here,
-      # the same way the revision does.
+      # GLOB. AND THE GLOB BELOW WILDCARDS THE REVISION AND THE PLATFORM DIRECTORY,
+      # WHILE THE BINARY NAME STAYS LITERAL. The revision is the install's to choose
+      # and the platform directory is the table's, so both of those are globbed; the
+      # binary is named by that same table, this pin fixes it, and a wildcard there
+      # would widen the match for nothing. This paragraph said the opposite for one
+      # commit -- that BOTH NAMES carry a wildcard -- which is a comment
+      # misdescribing the line beneath it, in the one step whose previous defect was
+      # a comment eliding a level. Read it against the `matches=(` line below rather
+      # than against what it meant to say.
       #
       # Exactly one match or the step fails. Two means an ambiguity that would
       # otherwise be resolved silently by whichever sorted first. Zero means EITHER the
