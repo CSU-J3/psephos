@@ -7818,5 +7818,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/indiana-supreme-court-declares-key-gop-redistricting-holdout-victor-in-high-profile-disputed-election",
     "title": "Indiana Supreme Court declares key GOP redistricting holdout victor in high-profile disputed election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 100946,
+    "kind": "item",
+    "occurred_at": "2026-09-10T23:03:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-dismisses-lawsuit-challenging-indianas-new-proof-of-citizenship-requirement",
+    "title": "Federal judge dismisses lawsuit challenging Indiana’s new proof of citizenship requirement"
   }
 ]
