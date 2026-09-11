@@ -7848,5 +7848,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/in-ominous-sign-usps-initially-rejected-florida-countys-mail-ballot-over-spacing-issue",
     "title": "In ominous sign, USPS initially rejected Florida county’s mail ballot over spacing issue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101632,
+    "kind": "item",
+    "occurred_at": "2026-09-11T16:37:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-in-texas-county-cant-swap-voting-maps-between-primary-and-general-election-state-supreme-court-says",
+    "title": "Republicans in Texas county can’t swap voting maps between primary and general election, state Supreme Court says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101630,
+    "kind": "item",
+    "occurred_at": "2026-09-11T16:58:48+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/11/missouri-congressional-map-election-officials-supreme-court-2026-denny-hoskins",
+    "title": "Supreme Court ends Missouri map uncertainty as election deadlines close in"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101631,
+    "kind": "item",
+    "occurred_at": "2026-09-11T17:45:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-latest-plan-to-rig-the-congressional-map-for-republicans-long-after-hes-gone",
+    "title": "Trump’s latest plan to rig the congressional map for Republicans long after he’s gone"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101633,
+    "kind": "item",
+    "occurred_at": "2026-09-11T19:44:14+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/stay-tuned",
+    "title": "Stay Tuned"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101629,
+    "kind": "item",
+    "occurred_at": "2026-09-11T21:02:39+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/09/11/milwaukee-august-election-audit-log-no-tampering-fraud",
+    "title": "Milwaukee audit logs show no evidence of election fraud, experts say"
   }
 ]
