@@ -7828,5 +7828,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-dismisses-lawsuit-challenging-indianas-new-proof-of-citizenship-requirement",
     "title": "Federal judge dismisses lawsuit challenging Indiana’s new proof of citizenship requirement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101399,
+    "kind": "item",
+    "occurred_at": "2026-09-11T15:15:13+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/north-carolina-supreme-court-election-2026",
+    "title": "They’ve Long Clashed on Voting Rights. Now They’re Facing Off for a Supreme Court Seat."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101398,
+    "kind": "item",
+    "occurred_at": "2026-09-11T15:34:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-ominous-sign-usps-initially-rejected-florida-countys-mail-ballot-over-spacing-issue",
+    "title": "In ominous sign, USPS initially rejected Florida county’s mail ballot over spacing issue"
   }
 ]
