@@ -7898,5 +7898,25 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/09/11/milwaukee-august-election-audit-log-no-tampering-fraud",
     "title": "Milwaukee audit logs show no evidence of election fraud, experts say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101841,
+    "kind": "item",
+    "occurred_at": "2026-09-11T21:47:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/postal-service-would-launch-mail-ballot-portal-this-week-where-is-it",
+    "title": "The U.S. Postal Service said it would launch its mail ballot portal this week. Where is it?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 101840,
+    "kind": "item",
+    "occurred_at": "2026-09-11T23:38:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/attorney-general-blanche-said-trumps-weaponization-fund-was-dead-now-doj-is-appealing",
+    "title": "Attorney General Blanche said Trump’s ‘weaponization fund’ was dead. Now DOJ is appealing"
   }
 ]
