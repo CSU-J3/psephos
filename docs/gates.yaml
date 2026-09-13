@@ -64,20 +64,36 @@
   status: active
   renders_as: "Cert window open -- closes ~Nov 12"
 
-- id: eo-blocked-per-reporting
-  claim: "a judge blocked an election executive order on Aug 16"
+# 14 DAYS, NOT THE B2 DEFAULT OF 90, because a pending emergency application can
+# change the answer on any day. The source is plaintiffs' counsel, and every order
+# it describes is linked as a court PDF. This entry and eo-14248-enjoined below
+# replace `eo-blocked-per-reporting` (C3, retired 2026-09-13): the date that line
+# carried, Aug 16, matches no docket event, and the Aug 11 injunction it described
+# was vacated Aug 26.
+- id: eo-14399-s3-enjoined
+  claim: "the USPS mail-ballot rule under EO 14399 section 3 is enjoined for the 2026 elections (D. Mass. preliminary injunction, Sep 4), with a Supreme Court stay application pending since Sep 6 and First Circuit stays denied Sep 10"
   kind: authored
-  grade: {source: C, info: 3}
-  source: "reporting, uncorroborated in this record"
-  asserted_on: 2026-08-16
-  # C3, so 30 days. THIS GOES GREY ON 2026-09-16 unless someone rechecks it, and
-  # check 3 fails the run on that date. Both are the design working. psephos
-  # records that a document published, not whether it operates -- the section says
-  # so in its own words -- and this is the claim that gap hangs on.
-  recheck_after: 2026-09-15
-  falsified_by: "an outcome field, or a tracker cited by name, saying whether either EO operates"
+  grade: {source: B, info: 2}
+  source: "Brennan Center case tracker, League of Women Voters of Massachusetts v. Trump, https://www.brennancenter.org/our-work/court-cases/league-women-voters-massachusetts-v-trump-march-2026-mail-voting-executive"
+  asserted_on: 2026-09-11
+  recheck_after: 2026-09-25
+  falsified_by: "a Supreme Court order granting the stay, or a First Circuit merits ruling"
   status: active
-  renders_as: "a judge blocked an election EO on Aug 16 per reporting"
+  renders_as: "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and a Supreme Court stay application has been pending since Sep 6"
+
+# 181 days from asserted_on, not the B2 default of 90, which would have fallen on
+# 2026-09-22. Set by the 2026-09-13 ruling; no reason for the longer interval is
+# recorded here.
+- id: eo-14248-enjoined
+  claim: "EO 14248's registration provisions are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
+  kind: authored
+  grade: {source: B, info: 2}
+  source: "PBS/AP and The Hill reporting of Jun 24, 2026 on Casper's ruling; Newsweek on Kollar-Kotelly's D.D.C. ruling"
+  asserted_on: 2026-06-24
+  recheck_after: 2026-12-22
+  falsified_by: "an appellate order vacating or staying either injunction"
+  status: active
+  renders_as: "the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
 
 - id: doj-demands-all-51
   claim: "the written voter-roll demands went to all 50 states and DC"

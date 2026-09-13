@@ -146,13 +146,24 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             when="Mar 25, 2025 · Mar 31, 2026"
             src={
               <>
-                <Grade grade="A1" dense /> Federal Register <Grade grade="C3" dense /> status from
-                reporting <span className="rk" data-gate="eo-blocked-per-reporting">recheck by Sep 15</span>
+                <Grade grade="A1" dense /> Federal Register{" "}
+                <Grade grade="B2" dense /> EO 14248 per PBS/AP, The Hill, Newsweek{" "}
+                <span className="rk">recheck by Dec 22</span>{" "}
+                <Grade grade="B2" dense /> EO 14399 per the Brennan Center case tracker{" "}
+                <span className="rk">recheck by Sep 25</span>
               </>
             }
           >
             <b>EO 14248 and EO 14399</b> were published. Whether either is operating today is not
-            in the record; a judge blocked an election EO on Aug 16 per reporting.
+            in the record. Per the sources below:{" "}
+            <span data-gate="eo-14248-enjoined">
+              {"the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"}
+            </span>
+            ;{" "}
+            <span data-gate="eo-14399-s3-enjoined">
+              {"section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and a Supreme Court stay application has been pending since Sep 6"}
+            </span>
+            .
           </Fact>
 
           <Fact
