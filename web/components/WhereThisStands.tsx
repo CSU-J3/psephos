@@ -301,7 +301,7 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             steps={[
               ["Published", "Mar 2025 · Mar 2026", true],
               ["Challenged in court", "enjoined, per the Brennan Center case tracker", true],
-              ["In force today", "not in force per tracker · not in the record", false],
+              ["In force today", "key provisions enjoined per tracker · rest not in the record", false],
             ]}
             note={
               <>
