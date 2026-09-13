@@ -49,7 +49,7 @@
   --c-litigation: oklch(0.62 0.19 24); /* DOJ in court */
   --c-legislation: oklch(0.62 0.17 295); /* bills, federal and state */
 
-  /* Two steps from --c-legislation, SAME HUE, for the state stage ramp: --leg-bright
+  /* Two derived values from --c-legislation, SAME HUE, for the state stage ramp: --leg-bright
      is one lightness step up (0.62 -> 0.75) at a slightly lower chroma (0.17 -> 0.15),
      and --leg-dim is not a step down at all but the same colour at 55% alpha. The hue
      is what all three share; chroma is not, and neither step is the other's mirror.
@@ -57,7 +57,11 @@
      that passed. They are declared HERE rather than in the page that uses them so a
      hue change moves all three together -- the whole point of the block. Only the
      three moving stages take the ramp; Introduced, Vetoed and Failed stay neutral.
-     See STAGE_STYLE in web/lib/statebill.ts, which names these. */
+     See STAGE_STYLE in web/lib/statebill.ts, which names these.
+     scripts/assert-encodings.mjs asserts key swatch === cell ink on /state-bills, but
+     both sides read these variables, so a VALUE change here passes there (measured
+     2026-09-13: --leg-bright set to a green, 33 PASS / 0 FAIL). What fails there is a
+     stage whose dot and cell stop naming the same value. */
   --leg-bright: oklch(0.75 0.15 295);
   --leg-dim: oklch(0.62 0.17 295 / 0.55);
 
@@ -624,6 +628,18 @@ textarea {
 .psteps li .sl { color: #d4d4d4; min-width: 170px; }
 .psteps li[data-done="false"] .sl { color: #8a8a8a; }
 .psteps li .sd { font: 11px var(--mono); color: #737373; }
+/* Below 640px the detail stacks under its label at full width; beside a 170px label
+   it had ~70px at 380 and ran to nine lines. Single column: the dot is absolutely
+   positioned, and a grid column assigned to it becomes its containing block, which
+   put it against the label.
+   This block sits AFTER the .psteps rules because equal-specificity rules resolve by
+   order: measured 2026-09-13, the same rules inside the earlier 640px block were
+   overridden and step 3 stayed at 9 lines at 380. Do not merge the two blocks. */
+@media (max-width: 640px) {
+  .psteps li { display: grid; grid-template-columns: minmax(0, 1fr); row-gap: 2px; align-items: baseline; }
+  .psteps li .sl { grid-column: 1; grid-row: 1; min-width: 0; }
+  .psteps li .sd { grid-column: 1; grid-row: 2; }
+}
 
 /* The emergency tab's shell. */
 .em { border: 1px solid #262626; border-radius: 8px; background: #121214; overflow: hidden; }
