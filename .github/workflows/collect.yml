@@ -40,6 +40,13 @@ on:
     # a fresh reading has broken the previous outer bound, both times LONGER and
     # both on the 06:17 slot. The n=16 reading above is left exactly as it was.
     #
+    # ONE MORE SAMPLE, 2026-09-13, recorded as a sample. The 09-13 06:17 slot's
+    # run started 11:54:52Z (run_started_at, run 34755670262) = 5h37m52s -- a NEW
+    # OUTER BOUND, past 5h08m40s by 29m12s, and again on the 06:17 slot. Its data
+    # commit (61b8517, 12:19:14Z) would read 6h02m14s; that is the other clock.
+    # Slot assigned by count: one scheduled run per slot from 09-09 18:17 through
+    # 09-13 12:17, none missing, and 11:54:52Z precedes the 12:17 slot.
+    #
     # THE CLOCK IS PART OF THE SAMPLE, and this is the third correction to these
     # lines rather than a new kind of mistake. These four were first read off the
     # DATA COMMIT timestamps -- 3h04m, 4h43m, 5h22m, 4h28m -- a different
