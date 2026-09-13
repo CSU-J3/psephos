@@ -7928,5 +7928,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/when-does-my-state-mail-ballots-to-voters",
     "title": "When does my state mail ballots to voters?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 102859,
+    "kind": "item",
+    "occurred_at": "2026-09-13T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-final-arguments-on-trumps-mail-voting-order-plus-a-huge-win-for-missouri-voters",
+    "title": "This week at Democracy Docket: Final arguments on Trump’s mail voting order — plus a huge win for Missouri voters"
   }
 ]
