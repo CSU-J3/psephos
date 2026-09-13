@@ -18,8 +18,12 @@
 # ENFORCEMENT is `web/scripts/assert-gates.mjs`, three checks, two entry points:
 #
 #   1. every `data-gate` id in the rendered section has an entry here
-#   2. every entry here with `renders_as` appears in the rendered section
+#   2. every entry here with `renders_as` has its id on a `data-gate` in the rendered
+#      section -- a join on gate ID. The `renders_as` text is not compared.
 #   3. every authored entry's `recheck_after` is not in the past
+#
+# `renders_as` documents the text the gated element renders, and nothing checks
+# it yet.
 #
 # 1 and 2 join against the DOM and are hand-run beside assert-encodings and
 # assert-layout. 3 needs no browser and runs in ci.yml. See that script's header.
@@ -62,7 +66,12 @@
   recheck_after: 2026-11-14
   falsified_by: "a cert petition docketed"
   status: active
-  renders_as: "Cert window open -- closes ~Nov 12"
+  # The gated element is the note's "the clock", which is what the approved mock
+  # renders. This line read "Cert window open -- closes ~Nov 12" from 367d714
+  # until 2026-09-13, which is the Path STEP's text. That step carries no
+  # data-gate, so the two never matched, and check 2 compares ids only, so
+  # nothing noticed.
+  renders_as: "the clock"
 
 # 14 DAYS, NOT THE B2 DEFAULT OF 90, because a pending emergency application can
 # change the answer on any day. The source is plaintiffs' counsel, and every order
@@ -81,16 +90,17 @@
   status: active
   renders_as: "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and a Supreme Court stay application has been pending since Sep 6"
 
-# 181 days from asserted_on, not the B2 default of 90, which would have fallen on
-# 2026-09-22. Set by the 2026-09-13 ruling; no reason for the longer interval is
-# recorded here.
+# asserted_on is the tracker's update date, per this file's own rule (the date
+# the SOURCE said it). The June reporting is older and serves as corroboration,
+# not as the assertion date. 90 days is the B2 default, kept because the falsifier
+# is an appellate order, which the tracker records.
 - id: eo-14248-enjoined
   claim: "EO 14248's registration provisions are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
   kind: authored
   grade: {source: B, info: 2}
-  source: "PBS/AP and The Hill reporting of Jun 24, 2026 on Casper's ruling; Newsweek on Kollar-Kotelly's D.D.C. ruling"
-  asserted_on: 2026-06-24
-  recheck_after: 2026-12-22
+  source: "Brennan Center case tracker, Sep 11, 2026 update (three courts blocked implementation of the first EO); corroborated by PBS/AP and The Hill reporting of Jun 24, 2026 on Casper's ruling and Newsweek on Kollar-Kotelly's D.D.C. ruling"
+  asserted_on: 2026-09-11
+  recheck_after: 2026-12-10
   falsified_by: "an appellate order vacating or staying either injunction"
   status: active
   renders_as: "the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"

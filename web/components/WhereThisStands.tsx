@@ -147,8 +147,8 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             src={
               <>
                 <Grade grade="A1" dense /> Federal Register{" "}
-                <Grade grade="B2" dense /> EO 14248 per PBS/AP, The Hill, Newsweek{" "}
-                <span className="rk">recheck by Dec 22</span>{" "}
+                <Grade grade="B2" dense /> EO 14248 per the Brennan Center case tracker{" "}
+                <span className="rk">recheck by Dec 10</span>{" "}
                 <Grade grade="B2" dense /> EO 14399 per the Brennan Center case tracker{" "}
                 <span className="rk">recheck by Sep 25</span>
               </>
@@ -300,16 +300,17 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             count="contested"
             steps={[
               ["Published", "Mar 2025 · Mar 2026", true],
-              ["Challenged in court", "per reporting", true],
-              ["In force today", "not in the record", false],
+              ["Challenged in court", "enjoined, per the Brennan Center case tracker", true],
+              ["In force today", "not in force per tracker · not in the record", false],
             ]}
             note={
               <>
-                psephos records that a document was published, not whether it operates. Closing
-                this row needs an outcome field, or a tracker cited by name.
+                psephos records that a document was published, not whether it operates. The
+                operating status here is the tracker&rsquo;s, not the record&rsquo;s; the row
+                closes on the record when the EO dockets are held.
               </>
             }
-            src={<><Grade grade="C3" dense /> gap in the record</>}
+            src={<><Grade grade="B2" dense /> Brennan Center case tracker · record holds no outcome</>}
           />
         </div>
         <Note>
