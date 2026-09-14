@@ -1,4 +1,7 @@
 name: collect
+# The slot label, on every run. github.event.schedule is the cron line that fired
+# (see ASSIGNMENT below); a dispatch has none.
+run-name: "collect ${{ github.event.schedule || 'dispatch' }}"
 
 on:
   schedule:
@@ -57,7 +60,8 @@ on:
     # OUTER BOUND, past 5h08m40s by 29m12s, and again on the 06:17 slot. Its data
     # commit (61b8517, 12:19:14Z) would read 6h02m14s; that is the other clock.
     # Slot assigned by count: one scheduled run per slot from 09-09 18:17 through
-    # 09-13 12:17, none missing, and 11:54:52Z precedes the 12:17 slot.
+    # 09-13 12:17, none missing, and 11:54:52Z precedes the 12:17 slot. (Counted
+    # era -- see ASSIGNMENT below.)
     #
     # THE CLOCK IS PART OF THE SAMPLE, and this is the third correction to these
     # lines rather than a new kind of mistake. These four were first read off the
@@ -88,11 +92,50 @@ on:
     #
     # The offset itself is unchanged and still fine: whatever produces the lag,
     # nothing downstream depends on the minute, for the reasons above.
-    - cron: "17 */6 * * *"   # every 6 hours (UTC), off the top of the hour
+    #
+    # ASSIGNMENT -- READ, NOT COUNTED, from the commit that split `17 */6` into
+    # the four lines below (2026-09-14). Each line is its own trigger, so
+    # github.event.schedule carries the string of the line that fired and every
+    # run names its own slot: in its run-name (`gh run list --json displayTitle`),
+    # which is written on every run including no-diff and red ones, and in its
+    # data commit subject when it commits. The subject alone would go missing on
+    # exactly the quiet runs.
+    #
+    # TWO ERAS, AND NOTHING RETROACTIVE IS FIXED. Through 2026-09-14 every slot
+    # assignment in this record rests on COUNTING one scheduled run per slot, and
+    # the spread's edges, 2h05m29s to 5h37m52s, were all measured in that counted
+    # era. After this commit the label is read. The two excluded runs above stay
+    # as history; the premise the counting carried is filed in docs/status.md.
+    #
+    # MISSED SLOTS ARE NOT INVISIBLE. 7 of 307 six-hour intervals (265 on `0 */6`,
+    # 42 on `17 */6`, through the 09-14 12:17 slot) held no scheduled run at all,
+    # a missed-slot rate near 2.3%, and none ever held two. Counted, an empty
+    # interval makes its neighbours unassignable; labelled, it is one absent label
+    # and the runs around it still name themselves.
+    #
+    # CONCURRENCY, set below at workflow level: `cancel-in-progress: false`
+    # keeps a queued slot rather than killing a running one, but GitHub holds only
+    # ONE pending run per group, so a third arrival cancels the pending second. A
+    # cancelled run still carries its label, so it reads as a labelled
+    # cancellation, which is recoverable; an empty interval is not, because it is
+    # what makes its neighbours unassignable.
+    - cron: "17 0 * * *"    # 00:17Z slot
+    - cron: "17 6 * * *"    # 06:17Z slot
+    - cron: "17 12 * * *"   # 12:17Z slot
+    - cron: "17 18 * * *"   # 18:17Z slot
   workflow_dispatch: {}
 
 permissions:
   contents: write
+
+# Serialize runs, so a late slot and an on-time one queue instead of racing on
+# `git push`. Pending-run cancellation is explained under CONCURRENCY above.
+# Measured before adding it: two scheduled runs have never overlapped in 300
+# (the three overlaps on record, 06-30 to 07-03, each paired a dispatch with a
+# scheduled run). It does not serialize against a human push racing the bot's.
+concurrency:
+  group: collect
+  cancel-in-progress: false
 
 jobs:
   collect:
@@ -160,6 +203,9 @@ jobs:
         run: python -m export.snapshots       # reads Turso; writes data/*.json for the view and for diffs
 
       - name: Commit data changes
+        env:
+          # The slot label, via env rather than inline in the script.
+          SLOT: ${{ github.event.schedule || 'dispatch' }}
         run: |
           git config user.name "psephos-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -178,6 +224,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "data: scheduled collection $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "data: scheduled collection $(date -u +%Y-%m-%dT%H:%MZ) (slot $SLOT)"
             git push
           fi
