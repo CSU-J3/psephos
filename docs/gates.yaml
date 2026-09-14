@@ -79,6 +79,13 @@
 # replace `eo-blocked-per-reporting` (C3, retired 2026-09-13): the date that line
 # carried, Aug 16, matches no docket event, and the Aug 11 injunction it described
 # was vacated Aug 26.
+#
+# THE FALSIFIER'S INSTRUMENT IS THE SUPREME COURT DOCKET, 26A305, read directly:
+# https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/26a305.html
+# The tracker is secondary; it lags the docket (last updated Sep 11 when read on
+# Sep 14). 26A305 replaced the withdrawn 26A297 on Sep 6. As of 2026-09-14 its only
+# order is Justice Jackson's Sep 6 scheduling order (responses due Sep 9), and the
+# applicants submitted a supplemental brief on Sep 14.
 - id: eo-14399-s3-enjoined
   claim: "the USPS mail-ballot rule under EO 14399 section 3 is enjoined for the 2026 elections (D. Mass. preliminary injunction, Sep 4), with a Supreme Court stay application pending since Sep 6 and First Circuit stays denied Sep 10"
   kind: authored
@@ -86,7 +93,7 @@
   source: "Brennan Center case tracker, League of Women Voters of Massachusetts v. Trump, https://www.brennancenter.org/our-work/court-cases/league-women-voters-massachusetts-v-trump-march-2026-mail-voting-executive"
   asserted_on: 2026-09-11
   recheck_after: 2026-09-25
-  falsified_by: "a Supreme Court order granting the stay, or a First Circuit merits ruling"
+  falsified_by: "a Supreme Court order granting the stay, or a First Circuit merits ruling; the instrument for the first is Supreme Court docket 26A305 (the stay application), read directly, with the tracker secondary"
   status: active
   renders_as: "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and a Supreme Court stay application has been pending since Sep 6"
 

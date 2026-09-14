@@ -16,9 +16,21 @@ on:
     # Against the slots this expression names (00:17 / 06:17 / 12:17 / 18:17Z),
     # the OBSERVED SPREAD is 2h05m to 5h04m across n=16 scheduled runs, 2026-09-04
     # to 09-08 -- every run since this expression took its current form at 58c6aca.
+    # THE FAR EDGE IS CENSORED by the exclusion rule below: a run more than 6h past
+    # its slot starts after the next slot fires, and when that next slot's own run
+    # is missing the two cannot be told apart, so the spread is a lower bound on the
+    # outer edge, not a measurement of it.
     # A seventeenth is deliberately excluded: 09-07 12:36:16Z is either the 12:17
     # slot 19m late or the 06:17 slot 6h19m late, and nothing in the run record
     # decides which.
+    # A SECOND IS EXCLUDED, 2026-09-14, on the same rule: 12:50:51Z (run
+    # 34845676455) is either the 06:17 slot 6h33m51s late or the 12:17 slot 33m51s
+    # late. Three runs covered the four slots from 09-13 18:17 to 09-14 12:17, one
+    # cron string serves every slot, and created_at equals run_started_at, so
+    # nothing assigns it. That morning dom-checks (5h42m05s) and audit (5h27m37s)
+    # both set new maxima for their lanes, which fits the 06:17 reading; recorded
+    # as a hint, not used. Its data commit, dd3af8c, landed 6m19s after the start:
+    # a new commit-lag floor, nine samples, 6m19s to 24m22s (docs/status.md).
     #
     # So a run is expected two to five HOURS after its slot, not minutes. That is
     # the durable part, and it matters to anyone timing a read against the next
