@@ -117,3 +117,41 @@ jobs:
       # runner's clock -- so the comparison is against when the record last moved.
       - name: assert-gates (expiry)
         run: node scripts/assert-gates.mjs --expiry-only
+
+  # Lints every workflow, including the expressions nothing else reads. A malformed
+  # `${{ }}` in collect.yml's run-name renders EMPTY at run time rather than failing,
+  # so the slot label would go blank on green runs; this is the first thing in the
+  # repo that parses those expressions before a scheduled run does. It does NOT catch
+  # a misspelt event property (`github.event.schedulee`): `github.event` is untyped
+  # to actionlint, which is why tests/test_collect_schedule.py pins that by regex.
+  #
+  # Pinned binary, checksum-verified, no marketplace action. The sha256 is the
+  # linux_amd64 line of the v1.7.12 release's own checksums file. shellcheck comes
+  # from the runner image and is NOT pinned, so a new image can add findings with
+  # no change here; the step prints its version so a red run says which one.
+  actionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      ACTIONLINT_VERSION: "1.7.12"
+      ACTIONLINT_SHA256: "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install actionlint
+        run: |
+          tarball="actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
+          curl -fsSL -o "$RUNNER_TEMP/$tarball" \
+            "https://github.com/rhysd/actionlint/releases/download/v${ACTIONLINT_VERSION}/$tarball"
+          echo "${ACTIONLINT_SHA256}  $RUNNER_TEMP/$tarball" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/$tarball" -C "$RUNNER_TEMP" actionlint
+          "$RUNNER_TEMP/actionlint" -version
+          if command -v shellcheck >/dev/null; then
+            shellcheck --version | head -2
+          else
+            echo "shellcheck not on PATH: run: scripts go unchecked"
+          fi
+
+      - name: actionlint
+        run: |
+          "$RUNNER_TEMP/actionlint" -color .github/workflows/*.yml
