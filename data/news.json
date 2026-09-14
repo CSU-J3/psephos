@@ -7948,5 +7948,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/mississippis-mail-ballot-receipt-deadline-affirmed-by-federal-appeals-court-after-pivotal-supreme-court-ruling",
     "title": "Mississippi’s mail ballot receipt deadline affirmed by federal appeals court after pivotal Supreme Court ruling"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103659,
+    "kind": "item",
+    "occurred_at": "2026-09-14T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/14/trump-dhs-ice-voting-mullin-midterm-election",
+    "title": "Homeland Security secretary steps to forefront of Trump’s election battles"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103660,
+    "kind": "item",
+    "occurred_at": "2026-09-14T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/14/delaware-beach-fenwick-island-corporate-voting-rights-aclu-court-battle",
+    "title": "Are hotels people too? In this Delaware town, local businesses can cast ballots."
   }
 ]
