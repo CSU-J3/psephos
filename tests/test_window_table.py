@@ -21,11 +21,15 @@ def _rows(*lines: str):
 
 
 def test_live_table_parses_and_every_duration_matches_its_endpoints():
-    rows = wt.parse((REPO / "docs" / "status.md").read_text(encoding="utf-8"))
+    text = (REPO / "docs" / "status.md").read_text(encoding="utf-8")
+    rows = wt.parse(text)
     assert rows, "the row pattern matched nothing; an empty table is not a pass"
-    problems, counts = wt.check(rows)
+    slots = wt.parse_slots(text)
+    assert slots, "the slot pattern matched nothing; an empty slot table is not a pass"
+    problems, counts = wt.check(rows, slots)
     assert problems == [], "\n".join(problems)
     assert counts["agree"] == counts["rows"]
+    assert all(q["outcome"] is not None for q in counts["qualifying"])
 
 
 def test_hours_dropped_across_midnight_fires():
@@ -62,12 +66,50 @@ def test_one_second_is_tolerated_two_are_not():
     assert len(wt.check(_rows(base.format("10m02s")))[0]) == 1
 
 
+SLOTS_HEAD = "  | slot (Z) | run | data commit | landed (Z) |\n  | --- | --- | --- | --- |\n"
+
+
+def _slots(*lines: str):
+    return wt.parse_slots(SLOTS_HEAD + "\n".join(lines) + "\n")
+
+
+# Window 09-10 17:00:00 -> 20:13:18 meets only the 12:17 slot (range 14:22:29-17:54:52);
+# 09-10 20:20:00 -> 09-11 00:00:00 meets only the 18:17 slot (range 20:22:29-23:54:52).
+QUAL = (
+    "  | `4abdd83` | 09-10 20:13:18 | fresh clone at `bbbbbbb`, 17:00:00 | **3h13m18s** | — | no |",
+    "  | `ccccccc` | 09-10 20:20:00 | prev push | **6m42s** | — | no |",
+    "  | `ddddddd` | 09-11 00:00:00 | prev push | **3h40m00s** | `eeeeeee` | **YES** |",
+)
+
+
 def test_prediction_band_is_read_off_the_recomputed_window():
-    rows = _rows(
-        "  | `4abdd83` | 09-10 20:13:18 | fresh clone at `bbbbbbb`, 17:00:00 | **3h13m18s** | — | no |",
-        "  | `ccccccc` | 09-10 20:20:00 | prev push | **6m42s** | — | no |",
-        "  | `ddddddd` | 09-11 00:00:00 | prev push | **3h40m00s** | `eeeeeee` | **YES** |",
+    slots = _slots(
+        "  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 16:35:29 |",
+        "  | 09-10 18:17 | `2` | `bbbbbbb` | 09-10 21:03:53 |",
     )
-    problems, counts = wt.check(rows)
+    problems, counts = wt.check(_rows(*QUAL), slots)
     assert problems == []
-    assert [(s, reb) for s, _, reb in counts["qualifying"]] == [("4abdd83", False), ("ddddddd", True)]
+    got = [(q["sha"], q["rebased"], q["outcome"]) for q in counts["qualifying"]]
+    assert got == [("4abdd83", False, "missed"), ("ddddddd", True, "caught")]
+    assert counts["outcomes"] == {"caught": 1, "missed": 1, "none": 0}
+    assert counts["qualifying"][0]["into_band"] == "13m18s"
+
+
+def test_slot_with_no_run_is_no_opportunity_not_a_miss():
+    rows = _rows(QUAL[0])
+    problems, counts = wt.check(rows, _slots("  | 09-10 12:17 | — | — | no run |"))
+    assert problems == [] and counts["qualifying"][0]["outcome"] == "none"
+    problems, counts = wt.check(rows, _slots("  | 09-10 12:17 | `1` | — | no commit |"))
+    assert problems == [] and counts["qualifying"][0]["outcome"] == "none"
+
+
+def test_qualifying_window_without_a_slot_row_refuses():
+    problems, counts = wt.check(_rows(QUAL[0]), {})
+    assert len(problems) == 1 and "cannot classify" in problems[0]
+    assert counts["qualifying"][0]["outcome"] is None
+
+
+def test_caught_must_agree_with_rebase():
+    # a landing inside the window on a row that says no rebase
+    problems, _ = wt.check(_rows(QUAL[0]), _slots("  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 17:10:00 |"))
+    assert len(problems) == 1 and "classified caught but rebase no" in problems[0]
