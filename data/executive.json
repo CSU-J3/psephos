@@ -1288,5 +1288,25 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/09/02/2026-18046/continuation-of-the-national-emergency-with-respect-to-foreign-interference-in-or-undermining-public",
     "title": "Continuation of the National Emergency With Respect to Foreign Interference in or Undermining Public Confidence in United States Elections"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 103986,
+    "kind": "item",
+    "occurred_at": "2026-09-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/15/2026-18798/agency-information-collection-activities-estep-manufacturer-registration-form",
+    "title": "Agency Information Collection Activities: ESTEP Manufacturer Registration Form"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 103987,
+    "kind": "item",
+    "occurred_at": "2026-09-15T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/15/2026-18797/agency-information-collection-activities-estep-application-for-testing",
+    "title": "Agency Information Collection Activities: ESTEP Application for Testing"
   }
 ]
