@@ -31,9 +31,16 @@ classified by what could have landed in it:
                 landing fell outside it;
   - none     -- no slot's landing range meets the window, or every slot that does
                 produced no run or no data commit.
-A slot's landing range is the slot plus the counted-era spread, 2h05m29s to 5h37m52s
-(`collect.yml`). Which slots meet a window is COMPUTED here. What each slot's run did is
-not in this repo's data -- it is the run record -- so it is READ once and written into
+TWO RANGES, AND THEY ANSWER DIFFERENT QUESTIONS (split 2026-09-15). The FIRE range is
+the slot plus the counted-era spread, 2h05m29s to 5h37m52s (`collect.yml`): when a
+slot's run STARTS, which answers whether a slot ran, or is absent rather than late. The
+LANDING range is the fire range plus commit lag, 6m19s to 24m22s: slot + 2h11m48s to
+slot + 6h02m14s, when a data commit can land. A window meets a rebase only by a COMMIT
+landing in it, so opportunity is classified on the LANDING range. Until the split this
+tool, and the record, used the fire range as a landing window: 6m19s early at the near
+edge, 24m22s early at the far. Which slots meet a window is COMPUTED here. What each
+slot's run did is not in this repo's data -- it is the run record -- so it is READ once
+and written into
 the slot table beside the window table; this tool requires a row for every slot that
 meets a qualifying window and refuses to classify without one. A `caught` sample whose
 row says no rebase, or a rebased sample that is not `caught`, is a mismatch.
@@ -69,8 +76,17 @@ PREDICTION_N = 4
 
 SLOT_HOURS = (0, 6, 12, 18)
 SLOT_MINUTE = 17
-LAND_NEAR = timedelta(hours=2, minutes=5, seconds=29)
-LAND_FAR = timedelta(hours=5, minutes=37, seconds=52)
+# Fire range: when a slot's run starts (run_started_at minus slot), counted era.
+FIRE_NEAR = timedelta(hours=2, minutes=5, seconds=29)
+FIRE_FAR = timedelta(hours=5, minutes=37, seconds=52)
+# Commit lag: data commit minus run start, nine samples.
+COMMIT_LAG_MIN = timedelta(minutes=6, seconds=19)
+COMMIT_LAG_MAX = timedelta(minutes=24, seconds=22)
+# Landing range: when a slot's data commit can land. Opportunity uses this one.
+LAND_NEAR = FIRE_NEAR + COMMIT_LAG_MIN   # 2h11m48s
+LAND_FAR = FIRE_FAR + COMMIT_LAG_MAX     # 6h02m14s
+FIRE = (FIRE_NEAR, FIRE_FAR)
+LANDING = (LAND_NEAR, LAND_FAR)
 
 SLOT_ROW = re.compile(
     r"^\s*\| (?P<slot>\d\d-\d\d (?:00|06|12|18):17) \| (?P<run>`\d+`|—) \| (?P<commit>`[0-9a-f]{7}`|—) \| "
@@ -137,23 +153,28 @@ def parse_slots(text: str) -> dict[datetime, datetime | None]:
     return out
 
 
-def slots_meeting(start: datetime, end: datetime) -> list[datetime]:
-    """Every slot whose landing range [slot+NEAR, slot+FAR] overlaps [start, end]."""
+def slots_meeting(start: datetime, end: datetime, rng: tuple[timedelta, timedelta] = LANDING) -> list[datetime]:
+    """Every slot whose range [slot+near, slot+far] overlaps [start, end].
+
+    `rng` defaults to the LANDING range, the one opportunity is about. Pass FIRE to ask
+    whose runs could have STARTED inside the window instead."""
+    near, far = rng
     found = []
-    day = (start - LAND_FAR).date()
+    day = (start - far).date()
     while True:
         for h in SLOT_HOURS:
             slot = datetime(day.year, day.month, day.day, h, SLOT_MINUTE, tzinfo=timezone.utc)
-            if slot + LAND_NEAR > end:
+            if slot + near > end:
                 return found
-            if slot + LAND_FAR >= start:
+            if slot + far >= start:
                 found.append(slot)
         day = day + timedelta(days=1)
 
 
-def classify(start: datetime, end: datetime, slots: dict) -> tuple[str | None, list[str]]:
+def classify(start: datetime, end: datetime, slots: dict,
+             rng: tuple[timedelta, timedelta] = LANDING) -> tuple[str | None, list[str]]:
     """caught / missed / none for one qualifying window, or (None, missing slots)."""
-    meeting = slots_meeting(start, end)
+    meeting = slots_meeting(start, end, rng)
     missing = [f"{s:%m-%d %H:%M}" for s in meeting if s not in slots]
     if missing:
         return None, missing

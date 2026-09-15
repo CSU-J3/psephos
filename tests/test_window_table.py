@@ -109,6 +109,27 @@ def test_qualifying_window_without_a_slot_row_refuses():
     assert counts["qualifying"][0]["outcome"] is None
 
 
+def test_landing_range_is_fire_range_plus_commit_lag():
+    assert wt._fmt(wt.LAND_NEAR) == "2h11m48s" and wt._fmt(wt.LAND_FAR) == "6h02m14s"
+    assert wt.LAND_NEAR - wt.FIRE_NEAR == wt.COMMIT_LAG_MIN
+    assert wt.LAND_FAR - wt.FIRE_FAR == wt.COMMIT_LAG_MAX
+
+
+def test_a_landing_between_the_two_near_edges_splits_the_ranges():
+    # Window 09-10 13:17:00 -> 14:26:00, i.e. slot+1h00m to slot+2h09m for the 12:17
+    # slot. A commit recorded at slot+2h08m sits between the fire near edge (2h05m29s)
+    # and the landing near edge (2h11m48s). Read as a fire range, the old behaviour, the
+    # slot meets the window and the commit is caught. Read as a landing range, the slot
+    # cannot have landed yet, so it does not meet the window: no opportunity.
+    from datetime import datetime, timezone
+    z = timezone.utc
+    start, end = datetime(2026, 9, 10, 13, 17, tzinfo=z), datetime(2026, 9, 10, 14, 26, tzinfo=z)
+    slots = _slots("  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 14:25:00 |")
+    assert wt.classify(start, end, slots, wt.FIRE) == ("caught", [])
+    assert wt.classify(start, end, slots, wt.LANDING) == ("none", [])
+    assert wt.classify(start, end, slots) == ("none", []), "classification must default to the landing range"
+
+
 def test_caught_must_agree_with_rebase():
     # a landing inside the window on a row that says no rebase
     problems, _ = wt.check(_rows(QUAL[0]), _slots("  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 17:10:00 |"))
