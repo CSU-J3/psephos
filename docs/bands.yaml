@@ -1,5 +1,10 @@
 # docs/bands.yaml -- the observed band edges, declared once.
 #
+# CONSEQUENCE FIRST: every declared range is NARROWER than the real one, so a `none`
+# (no-opportunity) classification can be wrong in the QUIET direction -- a real landing
+# may fall outside the range the tool checks -- while the refusal branch catches only the
+# LOUD case, a slot that meets the checked range and has no recorded row.
+#
 # WHY THIS EXISTS. The fire range and the commit-lag band were carried as literals in
 # tools/window_table.py, in collect.yml's comment and across docs/status.md, and every
 # move meant finding every copy. This is the one place an edge is written. The tool
@@ -7,11 +12,21 @@
 # fire far + commit far) and is never typed anywhere.
 #
 # Each edge carries its value, the sample count behind the band as of the move, what set
-# it, and the date it last moved. Durations are `XhYYmZZs` or `YmZZs`.
+# it, the date it last moved, which way it can be wrong (`error`), and how many of its
+# samples are UNCENSORED (`n_uncensored`) beside the total `n`. Durations are `XhYYmZZs`
+# or `YmZZs`.
 #
-# THESE BANDS ARE NOT CONVERGING. Three of the last seven commit-lag samples broke an
-# edge -- 61b8517 (24m22s, 09-13), dd3af8c (6m19s, 09-14) and a627ac3 (5m55s, 09-15,
-# held until P2 closes) -- and the fire range's far edge has moved three times since
+# DIRECTION OF ERROR. An observed near edge can only sit AT OR ABOVE the true near edge,
+# and an observed far edge AT OR BELOW the true far edge, so each declared band is a
+# SUBSET of the real range, never a superset, and the derived landing range inherits
+# that. Two causes stack on the fire edges -- sampling, and the counted era's censoring --
+# and one applies to the commit-lag edges: sampling only, since commit lag is measured
+# within a single run and never needs a slot assignment.
+#
+# THESE BANDS ARE NOT CONVERGING. At the twelfth commit-lag sample, three of the last
+# seven had broken an edge -- 61b8517 (24m22s, 09-13), dd3af8c (6m19s, 09-14) and a627ac3
+# (5m55s, 09-15, applied when P2 closed); with the thirteenth, 222a4d3 at 11m59s, it is two
+# of the last seven, 61b8517 having aged out of the seven -- and the fire range's far edge has moved three times since
 # 09-07 (4h42m to 5h04m25s, to 5h08m40s on 09-09, to 5h37m52s on 09-13). Every
 # classification tools.window_table makes is provisional on constants that are still
 # walking. Both fire edges are also CENSORED readings of the true spread: the counted
@@ -22,23 +37,31 @@
 fire:  # run_started_at minus the slot
   near:
     value: 2h05m29s
-    n: 38  # assignable counted-era runs on `17 */6`, 09-04 06:17Z to 09-14 12:17Z (40 less the 2 excluded)
+    n: 38  # counted era on `17 */6`, 09-04 06:17Z to 09-14 12:17Z: 40 runs less 2 excluded outright; 28 of the 40 are unassignable under the strict reading, so 38 is not a face-value count
+    n_uncensored: 4  # labelled era: 09-15 00:17Z, 06:17Z, 12:17Z, 18:17Z, each naming its own slot
+    error: "upper bound on the true near edge: sampling, plus censoring (09-07 12:36:16Z and 09-14 12:50:51Z could read 19m16s and 33m51s, below it)"
     set_by: "run 33989910962, the 09-05 18:17Z slot, started 20:22:29Z (first written into the record 2026-09-09)"
     moved: 2026-09-05
   far:
     value: 5h37m52s
-    n: 38
+    n: 38  # the same counted-era figure as the near edge, with the same caveat
+    n_uncensored: 4  # labelled era, all firing 3h00m22s to 5h23m27s, so none constrains this edge
+    error: "lower bound on the true far edge: sampling, plus censoring (the same two excluded runs could read 6h19m16s and 6h33m51s, above it)"
     set_by: "run 34755670262, the 09-13 06:17Z slot, started 11:54:52Z"
     moved: 2026-09-13
 
 commit_lag:  # data commit time minus run_started_at, committing runs only
   near:
-    value: 6m19s
-    n: 9
-    set_by: "dd3af8c, run 34845676455, started 12:50:51Z on 09-14"
-    moved: 2026-09-14
+    value: 5m55s
+    n: 13
+    n_uncensored: 13  # commit lag needs no slot assignment, so no sample is censored
+    error: "upper bound on the true minimum: sampling only"
+    set_by: "a627ac3, run 34964552275 (collect 17 6 * * *), started 11:40:27Z on 09-15; moved when P2 closed. Previous edge 6m19s, dd3af8c, 09-14"
+    moved: 2026-09-15
   far:
     value: 24m22s
-    n: 9
+    n: 13
+    n_uncensored: 13  # commit lag needs no slot assignment, so no sample is censored
+    error: "lower bound on the true maximum: sampling only"
     set_by: "61b8517, run 34755670262, started 11:54:52Z on 09-13"
     moved: 2026-09-13
