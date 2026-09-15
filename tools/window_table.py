@@ -32,13 +32,13 @@ classified by what could have landed in it:
   - none     -- no slot's landing range meets the window, or every slot that does
                 produced no run or no data commit.
 TWO RANGES, AND THEY ANSWER DIFFERENT QUESTIONS (split 2026-09-15). The FIRE range is
-the slot plus the counted-era spread, 2h05m29s to 5h37m52s (`collect.yml`): when a
-slot's run STARTS, which answers whether a slot ran, or is absent rather than late. The
-LANDING range is the fire range plus commit lag, 6m19s to 24m22s: slot + 2h11m48s to
-slot + 6h02m14s, when a data commit can land. A window meets a rebase only by a COMMIT
-landing in it, so opportunity is classified on the LANDING range. Until the split this
-tool, and the record, used the fire range as a landing window: 6m19s early at the near
-edge, 24m22s early at the far. Which slots meet a window is COMPUTED here. What each
+the slot plus the observed spread of run_started_at: when a slot's run STARTS, which
+answers whether a slot ran, or is absent rather than late. The LANDING range is the fire
+range plus the commit-lag band: when a data commit can land. A window meets a rebase only
+by a COMMIT landing in it, so opportunity is classified on the LANDING range. Until the
+split this tool, and the record, used the fire range as a landing window, early by the
+commit-lag band's two edges. Every edge is declared in docs/bands.yaml and none is
+written here. Which slots meet a window is COMPUTED here. What each
 slot's run did is not in this repo's data -- it is the run record -- so it is READ once
 and written into
 the slot table beside the window table; this tool requires a row for every slot that
@@ -76,17 +76,57 @@ PREDICTION_N = 4
 
 SLOT_HOURS = (0, 6, 12, 18)
 SLOT_MINUTE = 17
-# Fire range: when a slot's run starts (run_started_at minus slot), counted era.
-FIRE_NEAR = timedelta(hours=2, minutes=5, seconds=29)
-FIRE_FAR = timedelta(hours=5, minutes=37, seconds=52)
-# Commit lag: data commit minus run start, nine samples.
-COMMIT_LAG_MIN = timedelta(minutes=6, seconds=19)
-COMMIT_LAG_MAX = timedelta(minutes=24, seconds=22)
-# Landing range: when a slot's data commit can land. Opportunity uses this one.
-LAND_NEAR = FIRE_NEAR + COMMIT_LAG_MIN   # 2h11m48s
-LAND_FAR = FIRE_FAR + COMMIT_LAG_MAX     # 6h02m14s
-FIRE = (FIRE_NEAR, FIRE_FAR)
-LANDING = (LAND_NEAR, LAND_FAR)
+# THE BAND EDGES ARE NOT WRITTEN HERE. They are declared once, in docs/bands.yaml, each
+# with its sample count, what set it and when it last moved, and read at import. The
+# landing range is derived from them and typed nowhere. Moving an edge is an edit to that
+# file and never to this one.
+BANDS_PATH = REPO / "docs" / "bands.yaml"
+
+
+@dataclass(frozen=True)
+class Bands:
+    fire_near: timedelta
+    fire_far: timedelta
+    commit_near: timedelta
+    commit_far: timedelta
+
+    @property
+    def fire(self) -> tuple[timedelta, timedelta]:
+        return (self.fire_near, self.fire_far)
+
+    @property
+    def landing(self) -> tuple[timedelta, timedelta]:
+        # Derived, never declared: near = fire near + commit near, far = fire far + commit far.
+        return (self.fire_near + self.commit_near, self.fire_far + self.commit_far)
+
+
+def load_bands(path: Path = BANDS_PATH) -> Bands:
+    import yaml
+
+    doc = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+
+    def edge(band: str, end: str) -> timedelta:
+        raw = str(doc[band][end]["value"])
+        m = DURATION.match(raw.strip())
+        if not m:
+            raise ValueError(f"{path}: {band}.{end}.value {raw!r} is not a duration")
+        for field in ("n", "set_by", "moved"):
+            if field not in doc[band][end]:
+                raise ValueError(f"{path}: {band}.{end} carries no {field!r}")
+        return timedelta(hours=int(m["h"] or 0), minutes=int(m["m"]), seconds=int(m["s"]))
+
+    b = Bands(edge("fire", "near"), edge("fire", "far"), edge("commit_lag", "near"), edge("commit_lag", "far"))
+    if not (b.fire_near < b.fire_far and b.commit_near < b.commit_far):
+        raise ValueError(f"{path}: a band's near edge is not below its far edge")
+    return b
+
+
+BANDS = load_bands()
+FIRE_NEAR, FIRE_FAR = BANDS.fire
+COMMIT_LAG_MIN, COMMIT_LAG_MAX = BANDS.commit_near, BANDS.commit_far
+LAND_NEAR, LAND_FAR = BANDS.landing
+FIRE = BANDS.fire
+LANDING = BANDS.landing
 
 SLOT_ROW = re.compile(
     r"^\s*\| (?P<slot>\d\d-\d\d (?:00|06|12|18):17) \| (?P<run>`\d+`|—) \| (?P<commit>`[0-9a-f]{7}`|—) \| "
@@ -198,7 +238,8 @@ def window_start(rows: list[Row], i: int) -> datetime | None:
     return start - timedelta(days=1) if start > row.pushed else start
 
 
-def check(rows: list[Row], slots: dict | None = None) -> tuple[list[str], dict]:
+def check(rows: list[Row], slots: dict | None = None,
+          landing: tuple[timedelta, timedelta] = LANDING) -> tuple[list[str], dict]:
     slots = slots or {}
     problems: list[str] = []
     windows: dict[str, timedelta] = {}
@@ -234,7 +275,7 @@ def check(rows: list[Row], slots: dict | None = None) -> tuple[list[str], dict]:
     qualifying = []
     for r in tally[:PREDICTION_N]:
         w = windows[r.sha]
-        outcome, missing = classify(starts[r.sha], r.pushed, slots)
+        outcome, missing = classify(starts[r.sha], r.pushed, slots, landing)
         if outcome is None:
             problems.append(f"{r.sha}: qualifying, but no slot-table row for {', '.join(missing)}; cannot classify")
         elif (outcome == "caught") != r.rebased:
@@ -246,7 +287,7 @@ def check(rows: list[Row], slots: dict | None = None) -> tuple[list[str], dict]:
             "band_pct": 100 * (w - BAND_LO) / (BAND_HI - BAND_LO),
             "rebased": r.rebased,
             "outcome": outcome,
-            "slots": [f"{s:%m-%d %H:%M}" for s in slots_meeting(starts[r.sha], r.pushed)],
+            "slots": [f"{s:%m-%d %H:%M}" for s in slots_meeting(starts[r.sha], r.pushed, landing)],
         })
     counts = {
         "rows": len(rows),
@@ -264,13 +305,18 @@ def check(rows: list[Row], slots: dict | None = None) -> tuple[list[str], dict]:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--doc", default=str(REPO / "docs" / "status.md"))
+    ap.add_argument("--bands", default=str(BANDS_PATH))
     args = ap.parse_args(argv)
     text = Path(args.doc).read_text(encoding="utf-8")
     rows = parse(text)
     if not rows:
         print("no window table rows found -- the pattern matched nothing, which is not a pass")
         return 1
-    problems, c = check(rows, parse_slots(text))
+    bands = load_bands(Path(args.bands))
+    print(f"bands ({args.bands}): fire {_fmt(bands.fire[0])} to {_fmt(bands.fire[1])}, "
+          f"commit lag {_fmt(bands.commit_near)} to {_fmt(bands.commit_far)}, "
+          f"landing (derived) {_fmt(bands.landing[0])} to {_fmt(bands.landing[1])}")
+    problems, c = check(rows, parse_slots(text), bands.landing)
     print(f"rows {c['rows']}, opens {c['opens']}, follow-ons {c['follow_ons']}, "
           f"equal {c['equal']}, follow-ons rebased {c['follow_on_rebased']}, "
           f"model agrees {c['agree']} of {c['rows']}")

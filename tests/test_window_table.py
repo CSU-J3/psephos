@@ -73,8 +73,9 @@ def _slots(*lines: str):
     return wt.parse_slots(SLOTS_HEAD + "\n".join(lines) + "\n")
 
 
-# Window 09-10 17:00:00 -> 20:13:18 meets only the 12:17 slot (range 14:22:29-17:54:52);
-# 09-10 20:20:00 -> 09-11 00:00:00 meets only the 18:17 slot (range 20:22:29-23:54:52).
+# Window 09-10 17:00:00 -> 20:13:18 meets only the 12:17 slot's landing range, and
+# 09-10 20:20:00 -> 09-11 00:00:00 only the 18:17 slot's, under docs/bands.yaml as it
+# stood on 2026-09-15 (landing 2h11m48s to 6h02m14s, or 2h11m24s near once P2 closed).
 QUAL = (
     "  | `4abdd83` | 09-10 20:13:18 | fresh clone at `bbbbbbb`, 17:00:00 | **3h13m18s** | — | no |",
     "  | `ccccccc` | 09-10 20:20:00 | prev push | **6m42s** | — | no |",
@@ -109,22 +110,59 @@ def test_qualifying_window_without_a_slot_row_refuses():
     assert counts["qualifying"][0]["outcome"] is None
 
 
-def test_landing_range_is_fire_range_plus_commit_lag():
-    assert wt._fmt(wt.LAND_NEAR) == "2h11m48s" and wt._fmt(wt.LAND_FAR) == "6h02m14s"
-    assert wt.LAND_NEAR - wt.FIRE_NEAR == wt.COMMIT_LAG_MIN
-    assert wt.LAND_FAR - wt.FIRE_FAR == wt.COMMIT_LAG_MAX
+BANDS_YAML = """
+fire:
+  near: {{value: {fn}, n: 1, set_by: x, moved: 2026-01-01}}
+  far: {{value: {ff}, n: 1, set_by: x, moved: 2026-01-01}}
+commit_lag:
+  near: {{value: {cn}, n: 1, set_by: x, moved: 2026-01-01}}
+  far: {{value: {cf}, n: 1, set_by: x, moved: 2026-01-01}}
+"""
+
+
+def _bands(tmp_path, fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s"):
+    p = tmp_path / "bands.yaml"
+    p.write_text(BANDS_YAML.format(fn=fn, ff=ff, cn=cn, cf=cf), encoding="utf-8")
+    return wt.load_bands(p)
+
+
+def test_landing_range_is_derived_from_the_declared_bands():
+    # The live constants: derived, not typed.
+    assert wt.LAND_NEAR == wt.FIRE_NEAR + wt.COMMIT_LAG_MIN
+    assert wt.LAND_FAR == wt.FIRE_FAR + wt.COMMIT_LAG_MAX
+    assert wt.LANDING == wt.load_bands().landing
+
+
+def test_moving_a_declared_edge_moves_the_landing_range(tmp_path):
+    base = _bands(tmp_path)
+    assert wt._fmt(base.landing[0]) == "2h05m00s" and wt._fmt(base.landing[1]) == "5h20m00s"
+    moved = _bands(tmp_path, cn="4m30s")
+    assert wt._fmt(moved.landing[0]) == "2h04m30s"
+    assert moved.landing[1] == base.landing[1]
+
+
+def test_an_edge_without_provenance_is_refused(tmp_path):
+    p = tmp_path / "bands.yaml"
+    p.write_text(BANDS_YAML.format(fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s")
+                 .replace(", set_by: x", "", 1), encoding="utf-8")
+    import pytest
+    with pytest.raises(ValueError, match="set_by"):
+        wt.load_bands(p)
 
 
 def test_a_landing_between_the_two_near_edges_splits_the_ranges():
-    # Window 09-10 13:17:00 -> 14:26:00, i.e. slot+1h00m to slot+2h09m for the 12:17
-    # slot. A commit recorded at slot+2h08m sits between the fire near edge (2h05m29s)
-    # and the landing near edge (2h11m48s). Read as a fire range, the old behaviour, the
-    # slot meets the window and the commit is caught. Read as a landing range, the slot
-    # cannot have landed yet, so it does not meet the window: no opportunity.
+    # A commit recorded between the fire near edge and the landing near edge, placed off
+    # the DECLARED bands so this test survives an edge moving. Read as a fire range, the
+    # old behaviour, the slot meets the window and the commit is caught. Read as a
+    # landing range, the slot cannot have landed yet: no opportunity.
     from datetime import datetime, timezone
     z = timezone.utc
-    start, end = datetime(2026, 9, 10, 13, 17, tzinfo=z), datetime(2026, 9, 10, 14, 26, tzinfo=z)
-    slots = _slots("  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 14:25:00 |")
+    slot = datetime(2026, 9, 10, 12, 17, tzinfo=z)
+    between = slot + wt.FIRE_NEAR + (wt.LAND_NEAR - wt.FIRE_NEAR) / 2
+    between = between.replace(microsecond=0)
+    start, end = slot + (wt.FIRE_NEAR / 2), between + (wt.LAND_NEAR - wt.FIRE_NEAR) / 4
+    assert slot + wt.FIRE_NEAR < between < end < slot + wt.LAND_NEAR
+    slots = _slots(f"  | 09-10 12:17 | `1` | `aaaaaaa` | {between:%m-%d %H:%M:%S} |")
     assert wt.classify(start, end, slots, wt.FIRE) == ("caught", [])
     assert wt.classify(start, end, slots, wt.LANDING) == ("none", [])
     assert wt.classify(start, end, slots) == ("none", []), "classification must default to the landing range"

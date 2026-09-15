@@ -1,0 +1,44 @@
+# docs/bands.yaml -- the observed band edges, declared once.
+#
+# WHY THIS EXISTS. The fire range and the commit-lag band were carried as literals in
+# tools/window_table.py, in collect.yml's comment and across docs/status.md, and every
+# move meant finding every copy. This is the one place an edge is written. The tool
+# reads it; the landing range is DERIVED from it (near = fire near + commit near, far =
+# fire far + commit far) and is never typed anywhere.
+#
+# Each edge carries its value, the sample count behind the band as of the move, what set
+# it, and the date it last moved. Durations are `XhYYmZZs` or `YmZZs`.
+#
+# THESE BANDS ARE NOT CONVERGING. Three of the last seven commit-lag samples broke an
+# edge -- 61b8517 (24m22s, 09-13), dd3af8c (6m19s, 09-14) and a627ac3 (5m55s, 09-15,
+# held until P2 closes) -- and the fire range's far edge has moved three times since
+# 09-07 (4h42m to 5h04m25s, to 5h08m40s on 09-09, to 5h37m52s on 09-13). Every
+# classification tools.window_table makes is provisional on constants that are still
+# walking. Both fire edges are also CENSORED readings of the true spread: the counted
+# era's assignability rule excluded exactly the runs that could have extended either
+# end (09-07 12:36:16Z reads 19m16s or 6h19m16s; 09-14 12:50:51Z reads 33m51s or
+# 6h33m51s), so the near edge may sit too high and the far edge too low.
+
+fire:  # run_started_at minus the slot
+  near:
+    value: 2h05m29s
+    n: 38  # assignable counted-era runs on `17 */6`, 09-04 06:17Z to 09-14 12:17Z (40 less the 2 excluded)
+    set_by: "run 33989910962, the 09-05 18:17Z slot, started 20:22:29Z (first written into the record 2026-09-09)"
+    moved: 2026-09-05
+  far:
+    value: 5h37m52s
+    n: 38
+    set_by: "run 34755670262, the 09-13 06:17Z slot, started 11:54:52Z"
+    moved: 2026-09-13
+
+commit_lag:  # data commit time minus run_started_at, committing runs only
+  near:
+    value: 6m19s
+    n: 9
+    set_by: "dd3af8c, run 34845676455, started 12:50:51Z on 09-14"
+    moved: 2026-09-14
+  far:
+    value: 24m22s
+    n: 9
+    set_by: "61b8517, run 34755670262, started 11:54:52Z on 09-13"
+    moved: 2026-09-13
