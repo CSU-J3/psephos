@@ -29,9 +29,14 @@
 # assert-layout. 3 needs no browser and runs in ci.yml. See that script's header.
 #
 # `status: stale` IS AN ACKNOWLEDGEMENT, NOT A SUPPRESSION. It stops check 3
-# failing the run; it does NOT stop the chip rendering grey with its date. The
-# grey is the reader's signal and it is never silenced. What `stale` says is
-# "a human has seen that this is past due and has not yet rechecked it".
+# failing the run, and it changes nothing on the page by itself. A chip is fixed
+# text carrying its recheck date; nothing reads a date or a status at render time.
+# A stale gate renders grey only because its chip in WhereThisStands.tsx carries
+# the `rk stale` class, typed by hand when a person marks the gate stale, so the
+# class and this field must be kept in step by that person. The grey is the
+# reader's signal and it is never silenced. What `stale` says is "a human has seen
+# that this is past due and has not yet rechecked it". What fires ON the date is
+# check 3 (`--expiry-only` in ci.yml), on the gate id, at the next human push.
 #
 # AND DO NOT BACKDATE A RECHECK TO DODGE THE GREY. `doj-demands-all-51` below
 # ships grey on its first render, carrying an `asserted_on` from ~Sep 2025,

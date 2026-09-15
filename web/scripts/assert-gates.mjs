@@ -203,7 +203,7 @@ function checkExpiry(gates, today) {
     if (g.status === "stale") {
       check(
         true,
-        `${g.id} -- recheck ${g.recheck_after} PAST, acknowledged (status: stale, renders grey)`
+        `${g.id} -- recheck ${g.recheck_after} PAST, marked stale by hand (status: stale)`
       );
     } else if (g.status === "falsified") {
       check(true, `${g.id} -- recheck ${g.recheck_after} PAST, claim already falsified`);
