@@ -8098,5 +8098,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/alito-thomas-stand-by-trump-mail-voting-rule-the-rest-of-supreme-court-rejected",
     "title": "Alito, Thomas stand by Trump mail voting rule the rest of Supreme Court rejected"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104359,
+    "kind": "item",
+    "occurred_at": "2026-09-15T16:46:11+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/charges-dropped-against-american-samoans-punished-for-voting-in-alaska",
+    "title": "After a Yearslong Nightmare, Relief for American Samoans Punished for Voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104358,
+    "kind": "item",
+    "occurred_at": "2026-09-15T16:53:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-big-loss-for-republicans-trump-maga-attack-conservative-supreme-court-over-mail-voting-ruling",
+    "title": "‘A big loss for Republicans’: Trump, MAGA attack conservative Supreme Court over mail voting ruling"
   }
 ]
