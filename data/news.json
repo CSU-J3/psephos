@@ -8118,5 +8118,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/a-big-loss-for-republicans-trump-maga-attack-conservative-supreme-court-over-mail-voting-ruling",
     "title": "‘A big loss for Republicans’: Trump, MAGA attack conservative Supreme Court over mail voting ruling"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104573,
+    "kind": "item",
+    "occurred_at": "2026-09-15T17:56:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-supreme-court-rebuff-trumps-anti-mail-voting-rule-enters-next-fight-with-eyes-on-2028",
+    "title": "After Supreme Court rebuff, Trump’s anti-mail voting rule enters next fight with eyes on 2028"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104572,
+    "kind": "item",
+    "occurred_at": "2026-09-15T18:00:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kash-patel-suggests-fbi-agents-may-be-at-polls",
+    "title": "Kash Patel suggests FBI agents may be at polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104571,
+    "kind": "item",
+    "occurred_at": "2026-09-15T18:01:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/delaware-supreme-court-to-hear-gop-challenge-to-absentee-voting-rules",
+    "title": "Delaware Supreme Court to hear GOP challenge to absentee voting rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104570,
+    "kind": "item",
+    "occurred_at": "2026-09-15T18:22:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/despite-supreme-court-win-election-officials-say-trumps-attacks-damaged-faith-in-mail-voting",
+    "title": "Despite Supreme Court win, election officials say Trump’s attacks damaged faith in mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104569,
+    "kind": "item",
+    "occurred_at": "2026-09-15T19:54:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-partially-confirms-dhs-whistleblower-allegations-in-new-notice-to-federal-court",
+    "title": "DOJ partially confirms DHS whistleblower allegations in new notice to federal court"
   }
 ]
