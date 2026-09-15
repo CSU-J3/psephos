@@ -7968,5 +7968,135 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/09/14/delaware-beach-fenwick-island-corporate-voting-rights-aclu-court-battle",
     "title": "Are hotels people too? In this Delaware town, local businesses can cast ballots."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103922,
+    "kind": "item",
+    "occurred_at": "2026-09-14T15:57:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-offers-no-evidence-of-election-fraud-in-court-battle-over-mail-voting-restrictions",
+    "title": "Trump admin offers no evidence of election fraud in court battle over mail voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103921,
+    "kind": "item",
+    "occurred_at": "2026-09-14T16:15:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-asks-supreme-court-to-lift-second-order-against-trumps-mail-voting-restrictions",
+    "title": "DOJ asks Supreme Court to lift second order against Trump’s mail voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103920,
+    "kind": "item",
+    "occurred_at": "2026-09-14T17:06:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-voters-seek-80-million-in-damages-after-secretary-of-state-denny-hoskins-redistricting-debacle",
+    "title": "Missouri voters seek $80 million in damages after Secretary of State Denny Hoskins’ redistricting debacle"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103919,
+    "kind": "item",
+    "occurred_at": "2026-09-14T17:36:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/an-election-worker-tried-to-protect-mail-ballots-now-he-faces-prison-amid-trumps-push-for-voting-cases",
+    "title": "An election worker tried to protect mail ballots. Now he faces prison amid Trump’s push for voting cases"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103918,
+    "kind": "item",
+    "occurred_at": "2026-09-14T18:45:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/homeland-security-officers-are-illegally-accessing-state-voter-data-new-whistleblower-alleges",
+    "title": "Homeland Security officers are illegally accessing state voter data, new whistleblower alleges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103917,
+    "kind": "item",
+    "occurred_at": "2026-09-14T20:51:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democratic-senators-blast-trump-scheme-to-rig-the-election-by-illegally-accessing-voter-data-following-whistleblower-claims",
+    "title": "Democratic senators blast Trump scheme to ‘rig the election’ by illegally accessing voter data, following whistleblower claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103916,
+    "kind": "item",
+    "occurred_at": "2026-09-14T21:29:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/while-trump-fights-mail-voting-study-shows-democrats-in-vital-battleground-states-use-it-more-than-republicans",
+    "title": "While Trump fights mail voting, study shows Democrats in vital battleground states use it more than Republicans"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103915,
+    "kind": "item",
+    "occurred_at": "2026-09-14T23:47:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-rejects-trump-bid-to-revive-mail-voting-restrictions-ahead-of-midterms-in-huge-win-for-voters",
+    "title": "Supreme Court rejects Trump bid to revive mail voting restrictions ahead of midterms, in huge win for voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103912,
+    "kind": "item",
+    "occurred_at": "2026-09-15T00:45:05+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/15/trump-mail-voting-executive-order-supreme-court-decision-2026-election",
+    "title": "In blow to Trump, Supreme Court blocks mail ballot restrictions from taking effect in 2026"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 103935,
+    "kind": "item",
+    "occurred_at": "2026-09-15T00:50:32+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPQlRqRi05aEZTZTZydWw2UHBXZ0ZtdmliZlVrZFhRQWpHQWRRTEpZWUpwWFR2dEJTSnBFR0lPQU1fdzVvVXZUOWYtOGZHcWwzR3lxazUxbHVtSmVlTzdtWXlwcTZYQUlucmJfcWllMW9lUGVGYWRiQUlQUVVDNFljeTZ3dWxFd1U1MW0tVlBUejkwSjdwNFhUa000ZVY5WmhTeDYtUUlzMGo1OUNReUEtQTVfQnl6dlE?oc=5",
+    "title": "Supreme Court deals fatal blow to Trump’s mail ballot restrictions for 2026 - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103914,
+    "kind": "item",
+    "occurred_at": "2026-09-15T01:04:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-advocates-cheer-supreme-court-ruling-blocking-trump-mail-voting-attack",
+    "title": "Voting advocates cheer Supreme Court ruling blocking Trump mail voting attack"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103923,
+    "kind": "item",
+    "occurred_at": "2026-09-15T01:29:04+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/states-united-scotus-mail-voting",
+    "title": "STATEMENT: State Officials Stop USPS Mail Voting Rule from Impacting This Year’s Midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 103913,
+    "kind": "item",
+    "occurred_at": "2026-09-15T01:40:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alito-thomas-stand-by-trump-mail-voting-rule-the-rest-of-supreme-court-rejected",
+    "title": "Alito, Thomas stand by Trump mail voting rule the rest of Supreme Court rejected"
   }
 ]
