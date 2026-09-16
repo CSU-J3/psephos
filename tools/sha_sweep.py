@@ -103,7 +103,16 @@ import subprocess
 
 
 def git(*args: str) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(["git", *args], capture_output=True, text=True)
+    # DECODED AS UTF-8, NEVER AS THE CONSOLE CODEPAGE. `text=True` alone decodes with
+    # locale.getpreferredencoding(), which on this Windows box is cp1252 -- so every
+    # `git show origin/main:docs/status.md` was being read through the wrong codec, and
+    # the record's em dashes (E2 80 94) silently became a right quote under it. It only
+    # CRASHED on 2026-09-16, when the first curly quote entered the page: its 0x9d byte
+    # is undefined in cp1252, the reader thread raised, stdout came back None and the
+    # token regex died on it. The corpus is UTF-8 and this now says so.
+    return subprocess.run(
+        ["git", *args], capture_output=True, text=True, encoding="utf-8", errors="replace"
+    )
 
 
 def is_commit(token: str) -> bool:
