@@ -23,6 +23,13 @@
 # and one applies to the commit-lag edges: sampling only, since commit lag is measured
 # within a single run and never needs a slot assignment.
 #
+# AND THE SCHEME ASSUMES ONE CAUSE PER EDGE, WHICH ONE EDGE BREAKS. `wall_clock.far`
+# carries two causes pushing OPPOSITE WAYS -- sampling understates a maximum, the
+# `updatedAt` lag overstates every sample -- and the run record cannot separate them. It
+# is declared `bound: unsigned` and is the only edge in this file that cannot be signed.
+# Anything computed from it inherits that: `tools.window_table` prints a figure as signed
+# only when every input pushes the same way.
+#
 # THESE BANDS ARE NOT CONVERGING. At the twelfth commit-lag sample, three of the last
 # seven had broken an edge -- 61b8517 (24m22s, 09-13), dd3af8c (6m19s, 09-14) and a627ac3
 # (5m55s, 09-15, applied when P2 closed); with the thirteenth, 222a4d3 at 11m59s, it is two
@@ -40,6 +47,7 @@ fire:  # run_started_at minus the slot
     n: 38  # counted era on `17 */6`, 09-04 06:17Z to 09-14 12:17Z: 40 runs less 2 excluded outright; 28 of the 40 are unassignable under the strict reading, so 38 is not a face-value count
     n_uncensored: 4  # labelled era: 09-15 00:17Z, 06:17Z, 12:17Z, 18:17Z, each naming its own slot
     error: "upper bound on the true near edge: sampling, plus censoring (09-07 12:36:16Z and 09-14 12:50:51Z could read 19m16s and 33m51s, below it)"
+    bound: upper   # the observed value sits AT OR ABOVE the true one
     set_by: "run 33989910962, the 09-05 18:17Z slot, started 20:22:29Z (first written into the record 2026-09-09)"
     moved: 2026-09-05
   far:
@@ -47,6 +55,7 @@ fire:  # run_started_at minus the slot
     n: 38  # the same counted-era figure as the near edge, with the same caveat
     n_uncensored: 4  # labelled era, all firing 3h00m22s to 5h23m27s, so none constrains this edge
     error: "lower bound on the true far edge: sampling, plus censoring (the same two excluded runs could read 6h19m16s and 6h33m51s, above it)"
+    bound: lower   # the observed value sits AT OR BELOW the true one
     set_by: "run 34755670262, the 09-13 06:17Z slot, started 11:54:52Z"
     moved: 2026-09-13
 
@@ -56,6 +65,7 @@ commit_lag:  # data commit time minus run_started_at, committing runs only
     n: 13
     n_uncensored: 13  # commit lag needs no slot assignment, so no sample is censored
     error: "upper bound on the true minimum: sampling only"
+    bound: upper
     set_by: "a627ac3, run 34964552275 (collect 17 6 * * *), started 11:40:27Z on 09-15; moved when P2 closed. Previous edge 6m19s, dd3af8c, 09-14"
     moved: 2026-09-15
   far:
@@ -63,5 +73,42 @@ commit_lag:  # data commit time minus run_started_at, committing runs only
     n: 13
     n_uncensored: 13  # commit lag needs no slot assignment, so no sample is censored
     error: "lower bound on the true maximum: sampling only"
+    bound: lower
     set_by: "61b8517, run 34755670262, started 11:54:52Z on 09-13"
     moved: 2026-09-13
+
+wall_clock:  # updatedAt minus startedAt, scheduled runs only
+  # THE FIELD THIS BAND IS MEASURED ON IS NOT COMPLETION. `updatedAt` is the run's LAST
+  # UPDATE, which is at or after the moment it finished; nothing in the run record
+  # reports completion directly. So every sample here is a wall clock PLUS whatever lag
+  # that field carries, and the far edge inherits it -- see its `bound`.
+  measured_on: "updatedAt - startedAt"
+  updated_at_limit: "updatedAt is the record's last update, not completion, so every sample is an overstatement of unknown size"
+  near:
+    value: 5m06s
+    n: 47  # scheduled runs since `58c6aca` (2026-09-04 02:11Z), all `success`, no dispatches in the span
+    n_uncensored: 47  # wall clock needs no slot assignment, so BOTH fire-range exclusions are sampled here
+    error: "upper bound on the true minimum: sampling, plus the updatedAt lag, both pushing high"
+    bound: upper
+    set_by: "run 33989910962, the 09-05 18:17Z slot, started 20:22:29Z -- the same run that set the fire range's near edge"
+    sampled: 2026-09-05
+    first_declared: 2026-09-16
+    moved: 2026-09-05
+  far:
+    value: 32m27s
+    n: 47
+    n_uncensored: 47
+    error: "INDETERMINATE: sampling makes it a lower bound on the true maximum, the updatedAt lag makes it an overstatement, and the run record cannot separate them"
+    bound: unsigned   # the only unsignable edge in this file
+    set_by: "run 34122774777, the 09-07 12:17Z slot, started 12:36:16Z -- one of the two runs the fire range excludes, sampled here because wall clock needs no slot"
+    sampled: 2026-09-07
+    first_declared: 2026-09-16
+    moved: 2026-09-07
+
+# THE MIDDLE OF A RANGE IS DELIBERATELY UNPRICED, and this line exists so a later
+# session does not propose it again. A median fire lag would be the obvious third
+# number, and it fails this file's own standard three ways: it derives from the 41 rows
+# the file refuses to hold, it has no `set_by` a reader can open, and it moves on nearly
+# every sample -- off a set whose two tails are both censored. Declared edges are
+# extremes with provenance; a summary statistic is neither. Its value belongs in a
+# session report, dated, and not here.

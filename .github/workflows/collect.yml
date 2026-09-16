@@ -151,7 +151,23 @@ jobs:
     # (the four of 08-11 and the four of 08-12; the 08-10 dispatch at 14m38s is a
     # ninth point inside that range), longest run 31629075586, 08-12 18:43Z. That
     # spread is 3x, so a 2x spike off the observed maximum is ~33 minutes and a
-    # 30-minute bound would kill a healthy run. The 6-12 minute band this comment
+    # 30-minute bound would kill a healthy run.
+    #
+    # THE RATIO, STATED AND NOT DECIDED (read 2026-09-16, and timeout-minutes is
+    # unchanged). 45 was chosen above 2x an observed maximum of 16m42s across those 8
+    # runs -- 2.69x at the time. Against the band now declared in docs/bands.yaml,
+    # 5m06s to 32m27s across 47 scheduled runs since 58c6aca, it is 1.39x. Beside
+    # that: the 30-minute bound this comment considered and rejected would have KILLED
+    # run 34122774777 at 32m27s, a healthy success, so the reasoning for 45 over 30 has
+    # been borne out whichever way the 2x question goes.
+    #
+    # The counts differ on purpose. This comment says 8 scheduled runs; docs/status.md
+    # says 9 by including the 08-10 dispatch. Both are right for what they count, and
+    # the timeout keeps 8, because that is the population the bound was set against.
+    #
+    # Two readings stay open for a person, and neither is taken here: the 2x rule was
+    # the wrong frame, a timeout catching a HANG rather than scaling off the worst
+    # normal run -- or the rule holds and 45 is now under-provisioned. The 6-12 minute band this comment
     # carried until 08-13 was five runs from one sweep written as a range without
     # its sample size, and it was falsified at both ends within a day. Re-derive
     # from the same instrument before changing it --

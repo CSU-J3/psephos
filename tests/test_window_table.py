@@ -112,17 +112,21 @@ def test_qualifying_window_without_a_slot_row_refuses():
 
 BANDS_YAML = """
 fire:
-  near: {{value: {fn}, n: 1, set_by: x, moved: 2026-01-01}}
-  far: {{value: {ff}, n: 1, set_by: x, moved: 2026-01-01}}
+  near: {{value: {fn}, n: 1, set_by: x, moved: 2026-01-01, bound: upper}}
+  far: {{value: {ff}, n: 1, set_by: x, moved: 2026-01-01, bound: lower}}
 commit_lag:
-  near: {{value: {cn}, n: 1, set_by: x, moved: 2026-01-01}}
-  far: {{value: {cf}, n: 1, set_by: x, moved: 2026-01-01}}
+  near: {{value: {cn}, n: 1, set_by: x, moved: 2026-01-01, bound: upper}}
+  far: {{value: {cf}, n: 1, set_by: x, moved: 2026-01-01, bound: lower}}
+wall_clock:
+  near: {{value: {wn}, n: 1, set_by: x, moved: 2026-01-01, bound: upper}}
+  far: {{value: {wf}, n: 1, set_by: x, moved: 2026-01-01, bound: unsigned}}
 """
 
 
-def _bands(tmp_path, fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s"):
+def _bands(tmp_path, fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s",
+           wn="5m00s", wf="30m00s"):
     p = tmp_path / "bands.yaml"
-    p.write_text(BANDS_YAML.format(fn=fn, ff=ff, cn=cn, cf=cf), encoding="utf-8")
+    p.write_text(BANDS_YAML.format(fn=fn, ff=ff, cn=cn, cf=cf, wn=wn, wf=wf), encoding="utf-8")
     return wt.load_bands(p)
 
 
@@ -143,7 +147,8 @@ def test_moving_a_declared_edge_moves_the_landing_range(tmp_path):
 
 def test_an_edge_without_provenance_is_refused(tmp_path):
     p = tmp_path / "bands.yaml"
-    p.write_text(BANDS_YAML.format(fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s")
+    p.write_text(BANDS_YAML.format(fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s",
+                                   wn="5m00s", wf="30m00s")
                  .replace(", set_by: x", "", 1), encoding="utf-8")
     import pytest
     with pytest.raises(ValueError, match="set_by"):
@@ -185,3 +190,94 @@ def test_an_open_time_must_name_the_instrument_that_produced_it():
 
     tagged = untagged.replace("`bbbbbbb`,", "`bbbbbbb` (clone gone, not recoverable),")
     assert wt.check(_rows(tagged))[0] == []
+
+
+# --- the concurrency thresholds, and the signing rule --------------------------------
+
+
+def _fmt(td):
+    return wt._fmt(td)
+
+
+def test_thresholds_are_computed_at_the_declared_edges():
+    # Four ranges, nothing between them: the two fire edges against the two wall-clock
+    # extremes. These are the file's own numbers, so a moved edge moves this test -- which
+    # is the point: the figures are DERIVED, and nothing may type them anywhere else.
+    b = wt.load_bands()
+    got = {(t["threshold"], t["edge"]): (_fmt(t["low"]), _fmt(t["high"])) for t in wt.thresholds(b)}
+    assert got[("pending", "near")] == ("7h33m02s", "8h00m23s")
+    assert got[("pending", "far")] == ("11h05m25s", "11h32m46s")
+    assert got[("cancellation", "near")] == ("13h33m02s", "14h00m23s")
+    assert got[("cancellation", "far")] == ("17h05m25s", "17h32m46s")
+    # and each is the period plus the lag less the wall clock, not a typed constant
+    assert got[("cancellation", "far")][1] == _fmt(
+        wt.CANCEL_PERIOD + b.fire_far - b.wall_near
+    )
+
+
+def test_only_the_far_edge_high_end_is_signed():
+    signs = {(t["threshold"], t["edge"]): (t["low_sign"], t["high_sign"])
+             for t in wt.thresholds(wt.load_bands())}
+    # low ends inherit wall_clock.far, which is unsigned; the near-row high end pairs
+    # inputs that push opposite ways; only the far-row high end has both pushing low.
+    assert signs[("pending", "near")] == (None, None)
+    assert signs[("pending", "far")] == (None, "low")
+    assert signs[("cancellation", "near")] == (None, None)
+    assert signs[("cancellation", "far")] == (None, "low")
+
+
+def test_the_counterfactual_signs_one_more_figure():
+    # Computed, not asserted: remove the updatedAt limit, so the far wall-clock edge is
+    # an ordinary lower bound on a true maximum. The near-row low end becomes signed
+    # high; nothing else moves; one more figure is signed than in the file as declared.
+    b = wt.load_bands()
+    bounds = dict(b.bounds, **{"wall_clock.far": "lower"})
+    signs = {(t["threshold"], t["edge"]): (t["low_sign"], t["high_sign"])
+             for t in wt.thresholds(b, bounds)}
+    assert signs[("pending", "near")] == ("high", None)
+    assert signs[("pending", "far")] == (None, "low")
+    declared = sum(1 for t in wt.thresholds(b) for k in ("low_sign", "high_sign") if t[k])
+    counter = sum(1 for t in wt.thresholds(b, bounds) for k in ("low_sign", "high_sign") if t[k])
+    assert counter == declared + 2, "one more figure signed on each of the two thresholds"
+
+
+def test_flipping_a_declared_direction_moves_the_signs_as_the_rule_predicts():
+    # THE MUTATION TEST, run from a baseline the two tests above assert green. Each flip
+    # is one edge's declared direction; the expected pair is worked from the rule -- a
+    # positive term carries its direction through, the subtracted term flips it -- and
+    # not from the implementation.
+    b = wt.load_bands()
+
+    def signs(**over):
+        bounds = dict(b.bounds, **over)
+        return {(t["threshold"], t["edge"]): (t["low_sign"], t["high_sign"])
+                for t in wt.thresholds(b, bounds)}
+
+    # fire.near becomes a lower bound: the near-row high end now has both inputs low.
+    assert signs(**{"fire.near": "lower"})[("pending", "near")] == (None, "low")
+    # fire.far becomes an upper bound: the far-row high end loses its sign.
+    assert signs(**{"fire.far": "upper"})[("pending", "far")] == (None, None)
+    # wall_clock.near becomes a lower bound: subtracting an understatement reads high,
+    # so the near-row high end signs high and the far-row high end loses its sign.
+    flipped = signs(**{"wall_clock.near": "lower"})
+    assert flipped[("pending", "near")] == (None, "high")
+    assert flipped[("pending", "far")] == (None, None)
+    # wall_clock.far becomes an upper bound: the far-row low end signs low.
+    assert signs(**{"wall_clock.far": "upper"})[("pending", "far")] == ("low", "low")
+
+
+def test_a_missing_or_bad_bound_is_a_refusal(tmp_path):
+    # The directions are DECLARED. A file without them cannot be signed, and the loader
+    # says so rather than defaulting to a direction nobody wrote down.
+    src = (REPO / "docs" / "bands.yaml").read_text(encoding="utf-8")
+    # the FIELD, not the header sentence that names it: both lines carry the string
+    kept = [ln for ln in src.splitlines(True) if not ln.startswith("    bound: unsigned")]
+    assert len(kept) == len(src.splitlines(True)) - 1
+    broken = tmp_path / "bands.yaml"
+    broken.write_text("".join(kept), encoding="utf-8")
+    try:
+        wt.load_bands(broken)
+    except ValueError as e:
+        assert "bound" in str(e)
+    else:
+        raise AssertionError("a missing `bound` must refuse")

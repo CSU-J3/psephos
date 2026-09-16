@@ -55,7 +55,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -106,6 +106,13 @@ class Bands:
     fire_far: timedelta
     commit_near: timedelta
     commit_far: timedelta
+    wall_near: timedelta
+    wall_far: timedelta
+    # Each edge's declared direction of error, keyed "band.end": "upper" (the observed
+    # value sits at or above the true one), "lower" (at or below), or "unsigned" (the
+    # file cannot say -- wall_clock.far, where sampling and the updatedAt lag push
+    # opposite ways). Read from the file, never assumed here.
+    bounds: dict = field(default_factory=dict)
 
     @property
     def fire(self) -> tuple[timedelta, timedelta]:
@@ -132,10 +139,74 @@ def load_bands(path: Path = BANDS_PATH) -> Bands:
                 raise ValueError(f"{path}: {band}.{end} carries no {field!r}")
         return timedelta(hours=int(m["h"] or 0), minutes=int(m["m"]), seconds=int(m["s"]))
 
-    b = Bands(edge("fire", "near"), edge("fire", "far"), edge("commit_lag", "near"), edge("commit_lag", "far"))
-    if not (b.fire_near < b.fire_far and b.commit_near < b.commit_far):
+    def bound(band: str, end: str) -> str:
+        v = doc[band][end].get("bound")
+        if v not in ("upper", "lower", "unsigned"):
+            raise ValueError(
+                f"{path}: {band}.{end} carries no usable `bound` "
+                f"(upper / lower / unsigned), got {v!r}"
+            )
+        return v
+
+    b = Bands(
+        edge("fire", "near"), edge("fire", "far"),
+        edge("commit_lag", "near"), edge("commit_lag", "far"),
+        edge("wall_clock", "near"), edge("wall_clock", "far"),
+        {f"{band}.{end}": bound(band, end)
+         for band in ("fire", "commit_lag", "wall_clock") for end in ("near", "far")},
+    )
+    if not (b.fire_near < b.fire_far and b.commit_near < b.commit_far
+            and b.wall_near < b.wall_far):
         raise ValueError(f"{path}: a band's near edge is not below its far edge")
     return b
+
+
+# --- the concurrency thresholds, computed and signed ---------------------------------
+#
+# WHAT A THRESHOLD IS. `collect.yml` fires every 6h. A run that is still going when the
+# next one is DISPATCHED makes that next run wait pending; a run still going when the
+# one after it is dispatched makes GitHub cancel. Both are a race between one run's wall
+# clock and the NEXT run's own lag, so the formulas are:
+#
+#     pending      = 6h  + the next run's lag   - the earlier run's wall clock
+#     cancellation = 12h + the third run's lag  - the earlier run's wall clock
+#
+# PRICED AT THE DECLARED EDGES ONLY, four ranges and nothing between them: the two fire
+# edges against the two wall-clock extremes. The middle is unpriced on purpose -- see
+# the closing comment in docs/bands.yaml for why a median has no place in that file.
+PENDING_PERIOD = timedelta(hours=6)
+CANCEL_PERIOD = timedelta(hours=12)
+
+# SIGNING IS COMPUTED, NOT TYPED. A term entering POSITIVELY (the lag) carries its own
+# direction through: an upper bound makes the result read high, a lower bound low. The
+# SUBTRACTED term (the wall clock) flips both, because subtracting an overstatement
+# leaves the result low. A figure is signed only when both contributions agree; an
+# `unsigned` input makes its figure unsigned whatever the other input says.
+_PLUS = {"upper": "high", "lower": "low", "unsigned": None}
+_MINUS = {"upper": "low", "lower": "high", "unsigned": None}
+
+
+def sign(plus_bound: str, minus_bound: str) -> str | None:
+    a, b = _PLUS[plus_bound], _MINUS[minus_bound]
+    return a if a is not None and a == b else None
+
+
+def thresholds(bands: Bands, bounds: dict | None = None) -> list[dict]:
+    """The four ranges, each with the sign of each end. Pure: no I/O, no printing."""
+    bd = bounds if bounds is not None else bands.bounds
+    out = []
+    for name, period in (("pending", PENDING_PERIOD), ("cancellation", CANCEL_PERIOD)):
+        for end, lag in (("near", bands.fire_near), ("far", bands.fire_far)):
+            out.append({
+                "threshold": name,
+                "edge": end,
+                # low end: the biggest wall clock eats the most of the period
+                "low": period + lag - bands.wall_far,
+                "high": period + lag - bands.wall_near,
+                "low_sign": sign(bd[f"fire.{end}"], bd["wall_clock.far"]),
+                "high_sign": sign(bd[f"fire.{end}"], bd["wall_clock.near"]),
+            })
+    return out
 
 
 BANDS = load_bands()
@@ -340,6 +411,13 @@ def main(argv: list[str] | None = None) -> int:
     print(f"bands ({args.bands}): fire {_fmt(bands.fire[0])} to {_fmt(bands.fire[1])}, "
           f"commit lag {_fmt(bands.commit_near)} to {_fmt(bands.commit_far)}, "
           f"landing (derived) {_fmt(bands.landing[0])} to {_fmt(bands.landing[1])}")
+    print(f"wall clock {_fmt(bands.wall_near)} to {_fmt(bands.wall_far)} "
+          f"(bounds: {bands.bounds['wall_clock.near']}/{bands.bounds['wall_clock.far']})")
+    print("concurrency thresholds (computed at the declared edges; the middle is unpriced)")
+    for t in thresholds(bands):
+        print(f"  {t['threshold']:<12} {t['edge']:<4} fire edge: "
+              f"{_fmt(t['low'])} [{t['low_sign'] or 'unsigned'}] to "
+              f"{_fmt(t['high'])} [{t['high_sign'] or 'unsigned'}]")
     problems, c = check(rows, parse_slots(text), bands.landing)
     print(f"rows {c['rows']}, opens {c['opens']}, follow-ons {c['follow_ons']}, "
           f"equal {c['equal']}, follow-ons rebased {c['follow_on_rebased']}, "
