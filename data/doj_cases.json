@@ -272,10 +272,10 @@
   {
     "caption": "United States v. West Virginia",
     "category": "voter-data",
-    "court": "Southern District of West Virginia",
-    "court_id": "wvsd",
-    "docket_number": "2:26-cv-00156",
-    "notes": "Claims: Civil Rights Act of 1960 | Status: On 9/9/26, DOJ filed a notice that it will appeal the district court's dismissal. | Key decisions: District Court's 7/13/2026 dismissal.",
+    "court": "Fourth Circuit",
+    "court_id": "ca4",
+    "docket_number": "26-2262",
+    "notes": "Claims: Civil Rights Act of 1960 | Status: Briefing of appeal underway: DOJ to file opening brief by 10/26/26; State to file response by 11/25/26. | Key decisions: District Court's 7/13/2026 dismissal.",
     "state": "West Virginia"
   },
   {

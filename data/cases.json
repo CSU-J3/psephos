@@ -23067,7 +23067,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 79,
+    "entry_count": 81,
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-09-16T00:00:00",
     "plaintiff": "United States",
@@ -23247,9 +23247,9 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 38,
+    "entry_count": 39,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-11T00:00:00",
+    "latest_entry_at": "2026-09-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -23376,6 +23376,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108506529/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: RESPONSE filed by Appellant US to motion for summary disposition [6839372-2]. Served on 09/11/2026. [26-1783] CLERK'S NOTE: The ECF filer did not select the option that best descri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 105349,
+        "kind": "item",
+        "occurred_at": "2026-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108509363/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER entered by Julie Rikelman, Appellate Judge. This matter is before the court on the motion for summary disposition filed by a subset of the appellees. The motion for summary d"
       }
     ]
   },
@@ -24187,9 +24197,9 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 67,
+    "entry_count": 79,
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-09-15T00:00:00",
+    "latest_entry_at": "2026-09-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -24396,6 +24406,46 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74694778/13/united-states-of-america-v-aguilar-et-al/",
         "title": "United States v. Nevada: ORDER FILED. The unopposed motion (Docket Entry No. 6) to stay appellate proceedings is granted. The briefing schedule is vacated.\nAppellate proceedings other than mediation are st"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Kris Warner",
+    "case_id": "74793201",
+    "category": "voter-data",
+    "court": "Fourth Circuit",
+    "date_terminated": null,
+    "defendant": "Kris Warner",
+    "docket_number": "26-2262",
+    "entry_count": 1,
+    "filed_at": null,
+    "latest_entry_at": "2026-09-15T00:00:00",
+    "plaintiff": "United States",
+    "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
+    "state": "West Virginia",
+    "status": "pending",
+    "status_checked_at": "2026-09-16T21:18:14.462180+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 105361,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
+        "title": "United States v. West Virginia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 105362,
+        "kind": "item",
+        "occurred_at": "2026-09-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74793201/3/united-states-v-kris-warner/",
+        "title": "United States v. West Virginia: Briefing order filed"
       }
     ]
   }

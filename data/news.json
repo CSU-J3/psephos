@@ -8248,5 +8248,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-appellate-court-oks-republican-lawmakers-scheme-to-maintain-gop-control-of-elections-board",
     "title": "North Carolina appellate court OKs Republican lawmakers’ scheme to maintain GOP control of elections board"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105531,
+    "kind": "item",
+    "occurred_at": "2026-09-16T18:58:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-rejects-new-hampshires-bid-to-quickly-dismiss-dojs-voter-data-lawsuit",
+    "title": "Appeals court rejects New Hampshire’s bid to quickly dismiss DOJ’s voter data lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105530,
+    "kind": "item",
+    "occurred_at": "2026-09-16T19:03:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/virginia-ballot-initiative-seeks-to-finally-clarify-voting-rights-restoration-for-those-with-past-felony-convictions",
+    "title": "Virginia ballot initiative seeks to finally clarify voting rights restoration for those with past felony convictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105529,
+    "kind": "item",
+    "occurred_at": "2026-09-16T20:47:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/wisconsin-supreme-court-hears-challenges-to-pro-gop-congressional-gerrymander",
+    "title": "Wisconsin Supreme Court hears challenges to pro-GOP congressional gerrymander"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105528,
+    "kind": "item",
+    "occurred_at": "2026-09-16T21:13:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/watchdog-sues-usps-over-records-from-plan-to-restrict-mail-ballots",
+    "title": "Watchdog sues USPS over records from plan to restrict mail ballots"
   }
 ]

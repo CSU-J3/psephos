@@ -33460,6 +33460,16 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/MI/bill/SB0691/2025",
         "title": "MI SB0691: Referred To Committee On Election Integrity"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 105549,
+        "kind": "item",
+        "occurred_at": "2026-03-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/SB0691/2025",
+        "title": "MI SB0691: Passed Roll Call # 32 Yeas 15 Nays 18 Excused 4 Not Voting 0"
       }
     ],
     "title": "Elections: scheduling; August primary election date; eliminate, move primary election date to May, and add the February regular election date. Amends (See bill).",
