@@ -21,6 +21,23 @@
  * It was caught by section 7's check 2, three commits after it shipped, because the
  * earlier renders were looked at rather than compared against an expected structure.
  *
+ * AND IT CLICKS THE TABS, because for its whole life it measured ONE OF THREE PANELS
+ * while the record said otherwise. "Where this stands" renders three `role="tabpanel"`
+ * divs, two of them `hidden`, and a `display:none` subtree GENERATES NO BOXES: measured
+ * in chromium-1228, a 3000px element inside a hidden panel leaves
+ * `documentElement.scrollWidth` at 380 in a 380px viewport and reads 3000 with the same
+ * panel shown. So the overflow check below could not see anything behind a tab, at any
+ * width, and the 2026-09-14 03:17Z run was recorded as "the first Linux read of the
+ * stacked Path" when it never laid that Path out. All five Paths are in `wts-next`.
+ *
+ * THE OVERFLOW CHECK IS THE ONE THAT REPEATS PER TAB, and the rest deliberately do not.
+ * The zone and wire grids are never inside a panel. The board height and the font sweep
+ * stay DEFAULT-TAB ONLY: the sweep reads `getComputedStyle`, which resolves through
+ * `display:none` (measured -- a stack declared behind a hidden panel appears in the
+ * swept set), so clicking adds nothing to it, and the board is not in a panel either.
+ * Each width therefore ends by clicking back to `now`, so everything after this loop
+ * reads the tab the page actually serves.
+ *
  * DEPENDENCY, stated plainly: this needs `playwright-core` and a Chromium build,
  * and NEITHER is a dependency of this app -- adding a browser to web/'s dependency
  * tree is its own decision and has not been taken. Run it from a scratch install:
@@ -107,7 +124,37 @@ const page = await browser.newPage({ viewport: { width: 2542, height: 1400 } });
 await page.goto(URL, { waitUntil: "networkidle" });
 await page.waitForTimeout(1500);
 
+/* --- the tab controls ----------------------------------------------------- */
+//
+// PANELS ARE ADDRESSED THROUGH THE BUTTON THAT CONTROLS THEM, `aria-controls`, never a
+// class or an nth-child: that attribute is the component's own join between the two, and
+// it is what a reader of `WhereThisStands.tsx` will recognise.
+//
+// AND THEIR ABSENCE IS A FAILURE, NEVER A SKIP. A sweep that quietly stops clicking when
+// the markup moves is this file's own defect arriving by a new door: everything below
+// would go on passing, on one panel, exactly as it did before this loop existed.
+const TAB_IDS = ["now", "next", "em"];
+const tabsPresent = await page.evaluate(
+  (ids) => ids.every((id) => !!document.querySelector(`[role="tab"][aria-controls="wts-${id}"]`)),
+  TAB_IDS,
+);
+
+// waitForSelector on the panel's own `:not([hidden])`, never a fixed sleep. The swap is
+// a React state change, so the condition is observable, and a timeout would be a guess
+// in both directions.
+const showTab = async (id) => {
+  await page.click(`[role="tab"][aria-controls="wts-${id}"]`);
+  await page.waitForSelector(`#wts-${id}:not([hidden])`);
+};
+const overflows = () =>
+  page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
+
 console.log(`\nassert-layout against ${URL}`);
+
+// Asserted once, before the widths, rather than per width: it is a fact about the
+// markup, and repeating it twelve times would bury the reading it produces.
+console.log("\ntab controls");
+check("the three tab controls are present", tabsPresent, true);
 
 /* --- computed grid tracks at each width ---------------------------------- */
 console.log("\ngrid tracks (computed, not classes)");
@@ -146,7 +193,20 @@ for (const [w, zonesExp, wireExp, spanExp] of EXPECTED_ZONES) {
   // where it applies and NOT where it does not: stretching that cell in the five- or
   // one-column arrangement would be its own defect, and "auto" is the assertion there.
   check(`${w}px last wire cell span`, got.span, spanExp);
-  check(`${w}px no horizontal overflow`, got.overflow, false);
+  // LABELLED BY TAB, all three of them, so a red names the panel that overflowed and not
+  // the width alone. The default tab is asserted off the same read as the grids above it
+  // -- one evaluate, rather than a second that could land on a different frame.
+  check(`${w}px no horizontal overflow (tab now)`, got.overflow, false);
+  // Guarded on the assertion above rather than on a fresh query: if the controls are
+  // gone this run has already FAILED, and clicking a selector that matches nothing
+  // would replace that verdict with a timeout, twelve times over.
+  if (tabsPresent) {
+    for (const id of TAB_IDS.slice(1)) {
+      await showTab(id);
+      check(`${w}px no horizontal overflow (tab ${id})`, await overflows(), false);
+    }
+    await showTab("now");
+  }
 }
 
 /* --- board height is one value across every frame ------------------------ */

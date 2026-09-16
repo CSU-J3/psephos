@@ -218,3 +218,61 @@ list is the finding, and the collector is unchanged.
 | TX | SB827 | Relating to the audit of an election using an electronic voting system. |
 | TX | SB901 | Relating to the declaration of a candidate's ineligibility on the basis of filing an application for a place on the general primary election ballot or for nomination by convention with more than one political party. |
 | TX | SJR37 | Proposing a constitutional amendment clarifying that a voter must be a United States citizen. |
+
+## Closing note, 2026-09-16
+
+Two additions. Nothing above is reopened and nothing is fixed here. Code reads in this
+section are pinned to `c779f4d`, not to `0acff03` like the five findings above.
+
+### The 380px read
+
+**Read by Corey on 2026-09-15, against the deploy carrying `99cea6d`** (*fix(stands): path
+step details stack under their labels below 640px*, 2026-09-13). What it reports: on Tab 2,
+the Path's step details stack under their labels at the label's indent; step 3 of "The
+election executive orders operate unblocked" (`WhereThisStands.tsx:299,304`) wraps to three
+lines; nothing overflows horizontally. **380px is the width the read is given at** — the
+brief names it, and it agrees with `99cea6d`'s own measurement, which put step 3 at three
+lines at 380 where it had run to nine beside a 170px label.
+
+**This is the only read of that width the project has, and no lane supplies another.** Two
+reasons, and the second is stronger than the brief allowed.
+
+1. **380 is below the matrix floor.** `assert-layout.mjs`'s `EXPECTED_ZONES` (`:68-79`) runs
+   2542 down to 500 in twelve rows, both sides of each breakpoint pinned. 380 is 120px under
+   the lowest row, so no assertion in the lane is evaluated anywhere near it.
+2. **At the three widths where the stacked form does exist, the 03:17Z lane does not see it
+   at all — not for overflow, not for anything.** The brief put this as "overflow only";
+   it is less than that. All five `Path` instances sit in the `wts-next` panel
+   (`WhereThisStands.tsx:215-323`), which renders `hidden={tab !== "next"}` while the default
+   tab is `now` (`:75`, `:215`); `globals.css` carries no `.panel` rule and no `[hidden]`
+   override, so a hidden panel is `display:none` and generates no boxes; and
+   `assert-layout.mjs` contains no `click` — its only interaction with the page is the month
+   scrubber. So at 640, 639 and 500 (`:77-79`) the `no horizontal overflow` check (`:149`) is
+   measuring a page those steps are absent from.
+
+**What follows from both: the rules at `globals.css:638-642` — the second of the file's two
+`max-width: 640px` blocks, deliberately after the first — are asserted by nothing.** A person
+selecting Tab 2 at phone width is the only instrument that has ever looked at them, and this
+read is the one time that happened.
+
+### An instance of section 1, not a sixth finding
+
+Beside the stamp's zone: a concrete case a reader meets on the homepage.
+
+**A "Sep 16, 2026" bucket heads the last-7-days list, correctly.** The bands are UTC days
+generated from `now` rather than from the data — `BAND_DAYS = 7` (`timeline.ts:35`) and the
+loop at `timeline.ts:183-188` walks back from `dayKey(now)`, so the top band is always the
+current UTC day whether or not anything landed in it — and the header says so, "The last 7
+days · UTC days" (`page.tsx:337`). The collected stamp beside it (`page.tsx:265`) renders
+through `RotatingTime`, one frame of whose seven-zone rotation is `America/Denver`.
+
+**So a Denver reader between 18:00 and 23:59 MDT sees tomorrow's bucket above a stamp reading
+their own evening**, and the stamp cannot say otherwise: it is time-of-day only, with no date
+in any of the seven readings. That is the cost `DayTimeline.tsx:17-23` already states in its
+own words — "the top band opens at 00:00Z, which is 6 PM the previous evening in Denver" —
+arriving at the one place on the page where a UTC-dayed label and a zone-rotating stamp sit
+next to each other.
+
+**This is an instance of the item filed as section 1, not a new finding.** No invariant is
+violated, both renderers are explicit about their zone handling, and the ruling section 1
+owes — whether to write a `new Date()` invariant, and over what scope — is unchanged by it.

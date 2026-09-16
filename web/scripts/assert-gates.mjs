@@ -238,7 +238,7 @@ async function checkDom(gates, origin) {
     "C:/Users/meh/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe";
 
   const browser = await chromium.launch({ executablePath: exe });
-  let rendered;
+  let present;
   let status = null;
   try {
     const page = await browser.newPage();
@@ -248,7 +248,7 @@ async function checkDom(gates, origin) {
     // handled rather than asserted away.
     const response = await page.goto(origin, { waitUntil: "networkidle" });
     status = response === null ? null : response.status();
-    rendered = await page.evaluate(
+    present = await page.evaluate(
       ([sel, attr]) => {
         const root = document.querySelector(sel);
         if (!root) return null;
@@ -260,7 +260,7 @@ async function checkDom(gates, origin) {
     await browser.close();
   }
 
-  if (rendered === null) {
+  if (present === null) {
     // Not a FAIL: nothing was compared, and it must not read as "the join passed".
     //
     // AND IT REPORTS WHAT IT SAW, NEVER WHY. This message used to assert a cause it had
@@ -285,7 +285,13 @@ async function checkDom(gates, origin) {
     );
   }
 
-  const emitted = new Set(rendered);
+  // PRESENT, NOT RENDERED, and the labels below say so. This join is
+  // `querySelectorAll`, which returns an element inside a `hidden` panel exactly as it
+  // returns a visible one -- measured in chromium-1228 on a page of that shape. Four of
+  // the section's thirteen gates sit behind `wts-next` today, so a green join has never
+  // been evidence that a claim was on screen. Rendering is `assert-layout`'s question,
+  // and it could not answer it either until it learned to click the tabs.
+  const emitted = new Set(present);
   const registered = new Set(
     gates.filter((g) => g.renders_as !== undefined).map((g) => g.id)
   );
@@ -295,13 +301,13 @@ async function checkDom(gates, origin) {
 
   check(
     ungated.length === 0,
-    `every rendered ${GATE_ATTR} is registered (${emitted.size} on the page)`,
+    `every ${GATE_ATTR} present in the section is registered (${emitted.size} on the page)`,
     ungated.length ? `ungated claims: ${ungated.join(", ")}` : undefined
   );
   check(
     orphan.length === 0,
-    `every registered gate with \`renders_as\` is rendered (${registered.size} in the register)`,
-    orphan.length ? `registered but never rendered: ${orphan.join(", ")}` : undefined
+    `every registered gate with \`renders_as\` is present (${registered.size} in the register)`,
+    orphan.length ? `registered but never present: ${orphan.join(", ")}` : undefined
   );
 }
 
