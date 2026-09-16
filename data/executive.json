@@ -1308,5 +1308,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/09/15/2026-18797/agency-information-collection-activities-estep-application-for-testing",
     "title": "Agency Information Collection Activities: ESTEP Application for Testing"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 105048,
+    "kind": "item",
+    "occurred_at": "2026-09-16T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/16/2026-18949/registration-of-lawful-permanent-residence-for-children-born-to-foreign-government-employees-in-the",
+    "title": "Registration of Lawful Permanent Residence for Children Born to Foreign Government Employees in the United States; Correction"
   }
 ]

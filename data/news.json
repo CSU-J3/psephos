@@ -8188,5 +8188,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-republicans-ask-federal-court-to-block-future-redistricting-opposition",
     "title": "Missouri Republicans ask federal court to block future redistricting opposition"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105107,
+    "kind": "item",
+    "occurred_at": "2026-09-16T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/09/16/midterm-election-2026-whats-on-your-ballot-voter-guide",
+    "title": "A complete guide to everything on Michigan’s ballot this November"
   }
 ]
