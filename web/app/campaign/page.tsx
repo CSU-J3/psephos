@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCampaignMovement, getCampaignRows, getTrackerNotes } from "@/lib/db";
+import { getCampaignMovement, getCampaignRows, getRecordAnchor, getTrackerNotes } from "@/lib/db";
 import {
   buildCells,
   summarize,
@@ -93,8 +93,13 @@ export default async function CampaignPage({
     : null;
   const focus = one(sp.state)?.toUpperCase() ?? null;
 
-  const now = new Date();
-  const cells = buildCells(rows, now);
+  // The record's edge, not this machine's clock: the 60-day Quiet cut is a comparison
+  // against `cases.latest_entry_at`, so it is a question about the record. See the
+  // single-writer invariant in docs/status.md. With an empty record the epoch stands
+  // in and nothing reads as quiet, which under-claims rather than invents.
+  const anchorIso = await getRecordAnchor();
+  const anchor = anchorIso ? new Date(anchorIso) : new Date(0);
+  const cells = buildCells(rows, anchor);
   const s = summarize(cells);
   const homes = sectionByState(cells);
   const movement = latestMovement(movementRows);

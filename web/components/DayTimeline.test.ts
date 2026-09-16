@@ -46,7 +46,11 @@ function entry(over: Partial<FeedEntry> & Pick<FeedEntry, "id">): FeedEntry {
 
 const render = (rows: FeedEntry[]) =>
   renderToStaticMarkup(
-    createElement(DayTimeline, { timeline: buildTimeline(rows, NOW), now: NOW }),
+    createElement(DayTimeline, {
+      timeline: buildTimeline(rows, NOW),
+      anchor: NOW,
+      windowEnd: "12:00Z",
+    }),
   );
 
 const slugCase = (over: Partial<FeedEntry> = {}) =>

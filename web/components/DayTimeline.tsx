@@ -32,11 +32,18 @@ import { dayKey, type DayBand, type SeedRow, type Timeline } from "@/lib/timelin
  *  answer rather than replacing it. */
 const ROW_BUDGET = 10;
 
+// THE CAPTION SAYS "THE RECORD'S LAST 24 H", NOT "THE LAST 24 HOURS". The window is cut
+// at the record's edge now, so a caption promising the last 24 hours from the reader's
+// present would be false the moment collection stops. The EXACT instant is carried once,
+// in the legend beneath the page (SourceLegend), rather than threaded through four
+// components for a tooltip.
+const FRESH_CAPTION = "collected in the record's last 24 h";
+
 function FreshDot({ fresh }: { fresh: boolean }) {
   return fresh ? (
     <span
-      aria-label="collected in the last 24 hours"
-      title="collected in the last 24 hours"
+      aria-label={FRESH_CAPTION}
+      title={FRESH_CAPTION}
       className="mt-[7px] inline-block h-2 w-2 shrink-0 rounded-full bg-neutral-300"
     />
   ) : (
@@ -287,15 +294,23 @@ function Band({
 
 export function DayTimeline({
   timeline,
-  now,
+  anchor,
+  windowEnd,
 }: {
   timeline: Timeline;
-  now: Date;
+  /** The record's edge. NOT a clock: see the single-writer invariant. */
+  anchor: Date;
+  /** That edge as a label, e.g. "17:02Z", for the freshness dot's own caption. */
+  windowEnd: string | null;
 }) {
-  // The page already holds the clock and hands it to buildTimeline; take it from
+  // The page already holds the anchor and hands it to buildTimeline; take it from
   // there rather than reading one here, so the bands and this comparison cannot be
   // computed against two different instants.
-  const todayKey = dayKey(now.toISOString());
+  const todayKey = dayKey(anchor.toISOString());
+  // `windowEnd` is not read here: the dot's caption is static (see FRESH_CAPTION) and
+  // the exact instant is rendered once, in the legend. The prop is taken anyway so the
+  // component's signature says what it is anchored to, and so a future caption that
+  // wants the instant has it without another prop drill.
   // Newest days expand until the budget is spent, then the rest fold to one line
   // each. The fold is by position, not by age: a quiet week at the top leaves more
   // budget for the days that follow it.

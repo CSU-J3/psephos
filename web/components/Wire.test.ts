@@ -77,6 +77,9 @@ function render(rows: ActivityRow[], over: Partial<Parameters<typeof Wire>[0]> =
   return renderToStaticMarkup(
     createElement(Wire, {
       rows,
+      // The record's edge as the cards' window label -- fixed here, since what the
+      // tests assert is the figures, not the instant they were cut at.
+      windowEnd: "17:02Z",
       news: NEWS,
       litigation: LITIGATION,
       bills: BILLS,

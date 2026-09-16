@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  getRecordAnchor,
   getChannelActivity,
   getTimelineEntries,
   getBills,
@@ -25,7 +26,7 @@ import {
 import { relevanceScore } from "@/lib/relevance";
 import { Wire } from "@/components/Wire";
 import { billLabel } from "@/lib/bill";
-import { formatDate } from "@/lib/format";
+import { formatDate, windowEndLabel } from "@/lib/format";
 import { DayTimeline } from "@/components/DayTimeline";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
@@ -92,10 +93,18 @@ function buildChains(cases: Case[]) {
 }
 
 export default async function Home() {
+  // THE RECORD'S EDGE, READ FIRST AND READ ONCE. Every window on this page is cut at
+  // it, and the two cached queries below take it as an argument so that it enters their
+  // cache key -- the collector writing a row is what invalidates them now, not a timer.
+  // Two round trips rather than one, deliberately: the anchor has to be known before the
+  // queries it keys can be called. It is one aggregate over `items`, the cheapest read
+  // on the page.
+  const anchorIso = await getRecordAnchor();
+
   const [activity, entries, bills, cases, campaignRows, docketRows, executiveAll, stateBills, monthly, trackerNotes, rejectionEvidence] =
     await Promise.all([
-      getChannelActivity(),
-      getTimelineEntries(),
+      getChannelActivity(anchorIso),
+      getTimelineEntries(anchorIso),
       getBills(),
       getCases(),
       getCampaignRows(),
@@ -109,7 +118,12 @@ export default async function Home() {
       getRejectionEvidence(),
     ]);
 
-  const now = new Date();
+  // `anchor`, not `now`: the record's clock, per the single-writer invariant. Nothing
+  // on this page is anchored to the clock of the machine rendering it. With an empty
+  // record there is no anchor; the epoch stands in, every window over an empty record is
+  // empty anyway, and the header says "no collection recorded" rather than a date.
+  const anchor = anchorIso ? new Date(anchorIso) : new Date(0);
+  const windowEnd = windowEndLabel(anchorIso);
 
   // ONE QUERY FEEDS BOTH, because the timeline's set is a strict superset of the
   // news line's. getTimelineEntries returns everything dated in the band range plus
@@ -124,31 +138,34 @@ export default async function Home() {
   // It reads these rows rather than getNewsFeed for a second reason: getNewsFeed is
   // B2-only, which would make the grade sort a no-op and always lead with a tracker
   // item. These rows are every grade, with outlet promotion already applied.
-  const collectedSince = new Date(now.getTime() - 24 * 3_600_000).toISOString();
+  const collectedSince = new Date(anchor.getTime() - 24 * 3_600_000).toISOString();
   const newsToday = entries.filter(
     (e) => e.channel === "news" && e.fetched_at >= collectedSince,
   ) as NewsItem[];
   const collectedLast24h =
     activity.find((r) => r.channel === "news")?.day ?? newsToday.length;
 
-  // The header's collection time, read off the record. `now` still drives every
-  // window below -- those ARE questions about the present -- but the label is not a
-  // window, it is a claim about when collection last happened, and only the rows can
-  // answer that.
+  // The header's collection time, read off the record -- and now the same instant the
+  // windows are cut at. This comment used to say `now` still drives every window below,
+  // "those ARE questions about the present". The clock invariant (2026-09-16) answered
+  // that: a window compared against record data is a question about the RECORD, and one
+  // anchored to the renderer measures the renderer. `readCollectedAt(activity)` and
+  // `anchorIso` are the same value by construction -- MAX(fetched_at) -- read through
+  // two paths, so the label and the windows cannot disagree.
   const collectedAt = readCollectedAt(activity);
 
-  const timeline = buildTimeline(entries, now);
-  const news = readNews(newsToday, collectedLast24h, now);
+  const timeline = buildTimeline(entries, anchor);
+  const news = readNews(newsToday, collectedLast24h, anchor);
   const litigation = readLitigation(campaignRows);
-  const campaign = readCampaign(campaignRows, now);
-  const billsRead = readBills(bills, now);
+  const campaign = readCampaign(campaignRows, anchor);
+  const billsRead = readBills(bills, anchor);
   // The vehicle, for the fold's summary line. Read off the watchlist rather than off
   // billsRead.latest, which is only the vehicle by coincidence of S. 1383 holding the
   // most recent action -- the day another bill moves, latest stops being the vehicle
   // and the summary would silently drop the one flag this project exists to surface.
   const vehicleBill = bills.find((b) => b.is_vehicle === 1) ?? null;
-  const executive = readExecutive(executiveAll, now);
-  const stateBillsRead = readStateBills(stateBills, now);
+  const executive = readExecutive(executiveAll, anchor);
+  const stateBillsRead = readStateBills(stateBills, anchor);
 
   // --- the records chart -------------------------------------------------------
   // Every input is derived from rows, none is a literal. cumulativeFilings collapses
@@ -180,8 +197,8 @@ export default async function Home() {
     legislation: monthly.legislationActions,
     eos: eoTicks,
   };
-  const domain = boardDomain(boardInput, now);
-  const boardFrames = frames(domain, now);
+  const domain = boardDomain(boardInput, anchor);
+  const boardFrames = frames(domain, anchor);
 
   // --- the map's per-jurisdiction rows -------------------------------------------
   // Posture comes from buildCells, the SAME classifier /campaign renders, so the two
@@ -199,7 +216,7 @@ export default async function Home() {
   const rejectedSet = rejectedStates(rejectionRows);
   const rejectionSteps = cumulativeRejections(rejectionRows);
 
-  const cells = buildCells(campaignRows, now);
+  const cells = buildCells(campaignRows, anchor);
   const mapStates: MapState[] = cells.map((c) => {
     const rows = [c.live, ...c.predecessors, ...c.unlinked].filter(
       (r): r is NonNullable<typeof r> => r !== null,
@@ -294,7 +311,7 @@ export default async function Home() {
         </nav>
 
         {/* Exactly once, here, before the reader meets the vocabulary. */}
-        <SourceLegend />
+        <SourceLegend windowEnd={windowEnd} />
       </header>
 
       {/* The wire: the read and the strip merged into one row of five cells, a
@@ -303,6 +320,7 @@ export default async function Home() {
       <section className="mt-8">
         <Wire
           rows={activity}
+          windowEnd={windowEnd}
           news={news}
           litigation={litigation}
           bills={billsRead}
@@ -336,7 +354,7 @@ export default async function Home() {
             The last 7 days
             <span className="text-sm font-normal text-neutral-500">UTC days</span>
           </h2>
-          <DayTimeline timeline={timeline} now={now} />
+          <DayTimeline timeline={timeline} anchor={anchor} windowEnd={windowEnd} />
         </section>
 
         {/* Board -- state voter records: the chart, map, scrubber and detail panel.

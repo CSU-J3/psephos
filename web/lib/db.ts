@@ -259,13 +259,15 @@ function firstOrNull<T>(rows: Row[], map: (r: Row) => T): T | null {
 // counted here, so the two reconcile: this number is >= the sum over history cards,
 // and equal when no card is mixed.
 //
-// THAT RECONCILIATION HOLDS AT A SHARED INSTANT, AND THE TWO DO NOT SHARE ONE.
-// getChannelActivity and getFeed are cached separately and each computes `now`
-// INSIDE its own cached call -- deliberately, since an argument would put a moving
-// value in the cache key and the entry would never be hit. So the two 24h windows
-// can sit up to the 1h TTL apart, and an item near the boundary can be inside one
-// window and outside the other. Expect the strip's count and the feed's tagged
-// cards to agree to within that drift, not exactly. Same TTL on both is what keeps
+// THAT RECONCILIATION NOW HOLDS AT A SHARED INSTANT, and it did not until the clock
+// invariant landed (2026-09-16). Each of these used to compute `now` INSIDE its own
+// cached call, on the argument that an argument would put a moving value in the cache
+// key and the entry would never be hit. The argument was right about a WALL CLOCK and
+// wrong about the anchor that replaced it: the record's edge moves only when the record
+// moves, so passing it in is exactly the invalidation this cache wants -- the entry
+// lives until the collector writes, rather than until a timer expires. Both windows are
+// now cut at the same declared instant, so an item near the boundary is inside both or
+// outside both. Same TTL on both is what keeps
 // the drift bounded; it is not what makes them simultaneous.
 //
 // The date arithmetic is date-only via substr(...,1,10), which is what makes it
@@ -298,9 +300,40 @@ const HISTORY_SUM = `SUM(CASE WHEN fetched_at >= ?
 //
 // FREE, on the same argument HISTORY_SUM makes above: folded into the same GROUP BY
 // over the same index scan, no join and no second query.
+/**
+ * THE RECORD'S EDGE, and the only clock any rendered figure is anchored to.
+ *
+ * `MAX(fetched_at)` over `items` -- the same value `export/snapshots.py` derives
+ * `generated_at` from, read here rather than imported, because no route in this app
+ * reads a snapshot. NULL when nothing has ever been collected; the caller decides what
+ * to render then, and must not invent a date.
+ *
+ * DELIBERATELY NOT CACHED. It is the value every cached query is keyed on, so caching it
+ * would cap how fast the record's own movement can invalidate them -- the timer this
+ * unit exists to remove, reintroduced one level up. One aggregate over `items` per
+ * render is the price, and it is the cheapest read on the page.
+ */
+export async function getRecordAnchor(): Promise<string | null> {
+  const rs = await db.execute("SELECT MAX(fetched_at) AS anchor FROM items");
+  const v = rs.rows[0]?.anchor;
+  return typeof v === "string" ? v : null;
+}
+
+// `anchorIso` IS AN ARGUMENT AND THEREFORE PART OF THE CACHE KEY. Measured in the
+// installed next@15.5.19 (dist/server/web/spec-extension/unstable-cache.js:55,82): the
+// key is `cb.toString()` + keyParts + `JSON.stringify(args)`. Two consequences, one
+// designed and one free. Designed: a new anchor is a new key, so the collector writing
+// a row invalidates these entries. FREE, AND WORTH KNOWING BEFORE A REFACTOR DROPS IT:
+// `cb.toString()` is in the key too, so editing this function's body invalidates every
+// entry it ever wrote. Nobody designed that; it is why a stale entry has never survived
+// a deploy that changed the query, and why the `v3` keyPart below has never had to be
+// bumped for a shape change since.
 export const getChannelActivity = unstable_cache(
-  async (): Promise<ActivityRow[]> => {
-    const { day, week } = windowStarts(new Date());
+  async (anchorIso: string | null): Promise<ActivityRow[]> => {
+    // A NULL ANCHOR MEANS AN EMPTY RECORD, and then the bounds cannot matter: every
+    // count below is taken over a table with no rows. The epoch is used rather than a
+    // clock so that no branch of this function can invent a "collected today".
+    const { day, week } = windowStarts(anchorIso ? new Date(anchorIso) : new Date(0));
     const rs = await db.execute({
       sql: `SELECT channel,
                    COUNT(*) AS total,
@@ -816,8 +849,12 @@ function toAnchor(r: FeedRow): FeedAnchor | null {
 // at render time (lib/timeline.isFresh), which is what keeps the two instruments
 // independent: the query decides what is in the window, the flag decides what is new.
 export const getTimelineEntries = unstable_cache(
-  async (): Promise<FeedEntry[]> => {
-    const now = new Date();
+  async (anchorIso: string | null): Promise<FeedEntry[]> => {
+    // The anchor, never a clock: the band this query fetches and the band headers the
+    // page draws are now computed from ONE value. They used to be two `new Date()`
+    // calls up to the cache TTL apart, which across a UTC midnight drew a header for a
+    // day the query had not fetched.
+    const now = anchorIso ? new Date(anchorIso) : new Date(0);
     const { day } = windowStarts(now);
     const bandStart = new Date(now.getTime() - (BAND_DAYS - 1) * 86_400_000)
       .toISOString()

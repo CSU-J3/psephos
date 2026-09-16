@@ -63,10 +63,13 @@ function plural(n: number, one: string, many = `${one}s`) {
 function Cell({
   channel,
   row,
+  windowEnd,
   children,
 }: {
   channel: string;
   row: ActivityRow | undefined;
+  /** The record's edge as a label, e.g. "17:02Z", or null on an empty record. */
+  windowEnd: string | null;
   children: React.ReactNode;
 }) {
   const day = row?.day ?? 0;
@@ -110,8 +113,16 @@ function Cell({
         >
           +{day}
         </span>
+        {/* THE WINDOW SAYS WHERE IT ENDS. Both deltas are cut at the record's edge,
+            not at this machine's clock, so the label carries that instant in Z -- the
+            zone the record is written in. Without it a frozen record renders its last
+            full 24 hours forever and nothing on the card says the window stopped
+            moving. Delegating this to the header's rotating stamp was rejected: that
+            renders in the viewer's zone, and a Z-cut window captioned in MDT is the
+            zone class arriving somewhere new. */}
         <span className="text-[13px] text-neutral-500">
-          /{WINDOW_DAYS.day * 24}h &middot; +{week} /{WINDOW_DAYS.week}d
+          /{WINDOW_DAYS.day * 24}h{windowEnd ? ` to ${windowEnd}` : ""} &middot; +{week}{" "}
+          /{WINDOW_DAYS.week}d
         </span>
         <span className="ml-auto text-[13px] text-neutral-500">{total.toLocaleString()}</span>
       </div>
@@ -150,10 +161,13 @@ export function Wire({
   bills,
   executive,
   stateBills,
+  windowEnd,
   vehicle = null,
 }: {
   rows: ActivityRow[];
   news: NewsRead;
+  /** The record's edge as a label, e.g. "17:02Z". Every window here is cut at it. */
+  windowEnd: string | null;
   litigation: LitigationRead;
   bills: BillsRead;
   executive: ExecutiveRead;
@@ -257,7 +271,8 @@ export function Wire({
     news:
       news.collectedLast24h === 0 ? (
         <>
-          Nothing collected in the last 24 hours. The most recent story is dated{" "}
+          Nothing collected in the 24 h to {windowEnd ?? "the record's edge"}. The most
+          recent story is dated{" "}
           {formatDate(news.mostRecent?.occurred_at)}.
         </>
       ) : news.lead ? (
@@ -265,7 +280,8 @@ export function Wire({
           <span className="text-neutral-200">
             {news.datedInWindow} of {news.collectedLast24h}
           </span>{" "}
-          {plural(news.collectedLast24h, "story", "stories")} collected today{" "}
+          {plural(news.collectedLast24h, "story", "stories")} collected in the 24 h to{" "}
+          {windowEnd ?? "the record's edge"}{" "}
           {plural(news.datedInWindow, "is", "are")} dated in the last {news.windowDays}{" "}
           days. Best-graded:{" "}
           <a
@@ -280,7 +296,8 @@ export function Wire({
       ) : (
         <>
           {news.collectedLast24h} {plural(news.collectedLast24h, "story", "stories")}{" "}
-          collected today, none dated in the last {news.windowDays} days &mdash; the
+          collected in the 24 h to {windowEnd ?? "the record's edge"}, none dated in the
+          last {news.windowDays} days &mdash; the
           newest is dated {formatDate(news.mostRecent?.occurred_at)}.
         </>
       ),
@@ -324,7 +341,12 @@ export function Wire({
     // there, which also covers why the fifth cell spans the row in the two-column band.
     <div className="wire overflow-hidden rounded-lg border border-neutral-800 bg-neutral-800">
       {[...CHANNELS, ...extra].map((channel) => (
-        <Cell key={channel} channel={channel} row={byChannel.get(channel)}>
+        <Cell
+          key={channel}
+          channel={channel}
+          row={byChannel.get(channel)}
+          windowEnd={windowEnd}
+        >
           {clause[channel] ?? <>No reading for this channel.</>}
         </Cell>
       ))}

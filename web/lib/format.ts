@@ -53,3 +53,23 @@ export function formatDate(value: string | null | undefined): string {
   if (day === null) return "—"; // em dash for missing dates
   return fmt.format(new Date(day));
 }
+
+// THE ANCHOR, AS A LABEL: "17:02Z", the record's edge in the record's own zone.
+// NAMED windowEndLabel and not anchorLabel: `lib/feed.ts` already exports an
+// `anchorLabel`, which names a bill or a case an entry hangs off. Two different
+// senses of "anchor" in one read layer is a collision waiting for a wrong import.
+//
+// Z AND NOT A ROTATION, and that is the whole reason this is not delegated to
+// `RotatingTime`. That component renders one instant through seven zones, correctly --
+// but a window's label is a claim about where the window ENDS, and a Z-cut window
+// captioned in MDT invites the reader to subtract the wrong number. Every figure this
+// labels was cut at a UTC instant, so the label says so.
+//
+// Slices the ISO string rather than parsing it, the same rule `utcDay` takes above: the
+// value comes from `MAX(fetched_at)`, always UTC and always `+00:00`-suffixed, so a
+// parse would add a zone conversion that can only introduce error.
+export function windowEndLabel(iso: string | null | undefined): string | null {
+  if (!iso) return null;
+  const m = /^\d{4}-\d{2}-\d{2}T(\d{2}):(\d{2})/.exec(iso);
+  return m ? `${m[1]}:${m[2]}Z` : null;
+}

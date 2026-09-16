@@ -14,7 +14,7 @@ const REGISTER =
 // read as though it had been moved, which is why section 7 asserts the count in the
 // RENDERED DOM and not by grepping this file. One <div data-legend> is the marker
 // that assertion counts.
-export function SourceLegend() {
+export function SourceLegend({ windowEnd }: { windowEnd: string | null }) {
   return (
     <div
       data-legend
@@ -25,7 +25,7 @@ export function SourceLegend() {
           aria-hidden
           className="inline-block h-2 w-2 rounded-full bg-neutral-300"
         />
-        collected in the last 24 hours
+        collected in the 24 h to {windowEnd ?? "the record's edge"}
       </span>
       <span className="flex items-center gap-2">
         <span
