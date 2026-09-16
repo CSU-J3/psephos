@@ -7544,7 +7544,7 @@
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:35.043007+00:00",
+    "status_checked_at": "2026-09-16T05:01:00.243999+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -9464,7 +9464,7 @@
     "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
     "state": "Washington",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:38.726210+00:00",
+    "status_checked_at": "2026-09-16T05:01:04.094695+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -10144,7 +10144,7 @@
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:42.451662+00:00",
+    "status_checked_at": "2026-09-16T05:01:07.852411+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -11967,14 +11967,14 @@
     "date_terminated": null,
     "defendant": "Nago",
     "docket_number": "1:25-cv-00522",
-    "entry_count": 88,
+    "entry_count": 89,
     "filed_at": "2025-12-11T00:00:00",
-    "latest_entry_at": "2026-04-27T00:00:00",
+    "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
     "state": "Hawaii",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:46.095623+00:00",
+    "status_checked_at": "2026-09-16T05:01:12.183373+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -16844,7 +16844,7 @@
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:49.697138+00:00",
+    "status_checked_at": "2026-09-16T05:01:15.969919+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19274,7 +19274,7 @@
     "source_url": "https://www.courtlistener.com/docket/72334921/united-states-v-henderson/",
     "state": "Utah",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:53.277025+00:00",
+    "status_checked_at": "2026-09-16T05:01:19.812304+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19647,14 +19647,14 @@
     "date_terminated": null,
     "defendant": "Warner",
     "docket_number": "2:26-cv-00156",
-    "entry_count": 70,
+    "entry_count": 71,
     "filed_at": "2026-02-26T00:00:00",
-    "latest_entry_at": "2026-09-10T00:00:00",
+    "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:57.993449+00:00",
+    "status_checked_at": "2026-09-16T05:01:24.199537+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20106,6 +20106,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72335259/62/united-states-v-warner/",
         "title": "United States v. West Virginia: TRANSMITTAL OF NOTICE OF APPEAL TO 4CCA via APPEAL TRANSMITTAL SHEET re: 61 Notice of Appeal to the 4CCA. (cmb)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 104720,
+        "kind": "item",
+        "occurred_at": "2026-09-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72335259/63/united-states-v-warner/",
+        "title": "United States v. West Virginia: NOTICE OF APPELLATE CASE OPENING BY 4CCA re: 61 Notice of Appeal to the 4CCA in 4CCA Case No. 26-2262. Case Manager: A. Walker. (cmb)"
       }
     ]
   },
@@ -20644,7 +20654,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
     "state": "California",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:01.689464+00:00",
+    "status_checked_at": "2026-09-16T05:01:27.921082+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20854,7 +20864,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
     "state": "Oregon",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:05.285676+00:00",
+    "status_checked_at": "2026-09-16T05:01:31.841293+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21034,7 +21044,7 @@
     "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
     "state": "Idaho",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:09.842904+00:00",
+    "status_checked_at": "2026-09-16T05:01:36.129540+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21184,7 +21194,7 @@
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:13.454245+00:00",
+    "status_checked_at": "2026-09-16T05:01:41.078793+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21504,7 +21514,7 @@
     "source_url": "https://www.courtlistener.com/docket/73443024/united-states-of-america-v-fontes/",
     "state": "Arizona",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:17.165940+00:00",
+    "status_checked_at": "2026-09-16T05:01:44.861620+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21567,14 +21577,14 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 103,
+    "entry_count": 104,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-09-09T00:00:00",
+    "latest_entry_at": "2026-09-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:21.807198+00:00",
+    "status_checked_at": "2026-09-16T05:01:48.605597+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21787,14 +21797,14 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 111,
+    "entry_count": 114,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-09-09T00:00:00",
+    "latest_entry_at": "2026-09-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:25.435275+00:00",
+    "status_checked_at": "2026-09-16T05:01:52.338598+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22086,6 +22096,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73470017/00108504359/united-states-v-amore/",
         "title": "United States v. Rhode Island: ORDER directing Movant Electronic Privacy Information Center to file a conforming brief. Brief due 09/15/2026. [26-1665] (ALW) [Entered: 09/08/2026 02:14 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 104690,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island: PLEADING tendered: NINE (9) paper copies of reply brief [6841262-2] filed by Appellant US. [26-1665] (LEC) [Entered: 09/15/2026 09:49 AM]"
       }
     ]
   },
@@ -22097,14 +22117,14 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 106,
+    "entry_count": 110,
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-09-11T00:00:00",
+    "latest_entry_at": "2026-09-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:29.125171+00:00",
+    "status_checked_at": "2026-09-16T05:01:56.702934+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22447,14 +22467,14 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 98,
+    "entry_count": 101,
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-09-14T00:00:00",
+    "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:33.745015+00:00",
+    "status_checked_at": "2026-09-16T05:02:00.447050+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22834,7 +22854,7 @@
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:59.279137+00:00",
+    "status_checked_at": "2026-09-16T05:02:27.885692+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23047,14 +23067,14 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 76,
+    "entry_count": 77,
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:37.358072+00:00",
+    "status_checked_at": "2026-09-16T05:02:04.202126+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23227,14 +23247,14 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 36,
+    "entry_count": 38,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-09T00:00:00",
+    "latest_entry_at": "2026-09-11T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:40.961505+00:00",
+    "status_checked_at": "2026-09-16T05:02:08.042417+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23346,6 +23366,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108501850/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: ORDER granting motion to extend time to file brief filed by Appellees State of New Hampshire and David M. Scanlan. Brief due 10/02/2026 for appellees David M. Scanlan and State of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 104680,
+        "kind": "item",
+        "occurred_at": "2026-09-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108506529/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: RESPONSE filed by Appellant US to motion for summary disposition [6839372-2]. Served on 09/11/2026. [26-1783] CLERK'S NOTE: The ECF filer did not select the option that best descri"
       }
     ]
   },
@@ -23364,7 +23394,7 @@
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:44.895521+00:00",
+    "status_checked_at": "2026-09-16T05:02:12.106569+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23564,7 +23594,7 @@
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:48.453874+00:00",
+    "status_checked_at": "2026-09-16T05:02:15.837444+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23614,7 +23644,7 @@
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:52.050240+00:00",
+    "status_checked_at": "2026-09-16T05:02:19.583196+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23694,7 +23724,7 @@
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:27.814659+00:00",
+    "status_checked_at": "2026-09-16T05:00:51.838736+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23804,7 +23834,7 @@
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:31.395892+00:00",
+    "status_checked_at": "2026-09-16T05:00:55.837362+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23904,7 +23934,7 @@
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:05:55.629971+00:00",
+    "status_checked_at": "2026-09-16T05:02:24.139477+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23954,7 +23984,7 @@
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:23.255307+00:00",
+    "status_checked_at": "2026-09-16T05:00:48.112965+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23997,9 +24027,9 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 13,
+    "entry_count": 14,
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-08-26T00:00:00",
+    "latest_entry_at": "2026-09-10T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
@@ -24037,14 +24067,14 @@
     "date_terminated": null,
     "defendant": "Monica Evans",
     "docket_number": "26-5296",
-    "entry_count": 5,
+    "entry_count": 12,
     "filed_at": "2026-08-19T00:00:00",
-    "latest_entry_at": "2026-08-27T00:00:00",
+    "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671625/united-states-v-monica-evans/",
     "state": "DC",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:11.758078+00:00",
+    "status_checked_at": "2026-09-16T05:00:36.598095+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24097,9 +24127,9 @@
     "date_terminated": null,
     "defendant": "Lieutenant Governor and Secretary of State of New",
     "docket_number": "26-3085",
-    "entry_count": 21,
+    "entry_count": 26,
     "filed_at": "2026-08-20T00:00:00",
-    "latest_entry_at": "2026-09-04T00:00:00",
+    "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
@@ -24157,14 +24187,14 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 59,
+    "entry_count": 67,
     "filed_at": "2026-08-21T00:00:00",
     "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:15.916413+00:00",
+    "status_checked_at": "2026-09-16T05:00:40.359796+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24284,7 +24314,7 @@
     "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
     "state": "Nevada",
     "status": "pending",
-    "status_checked_at": "2026-09-15T05:04:19.630864+00:00",
+    "status_checked_at": "2026-09-16T05:00:44.102877+00:00",
     "superseded_by": null,
     "timeline": [
       {

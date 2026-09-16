@@ -8168,5 +8168,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-partially-confirms-dhs-whistleblower-allegations-in-new-notice-to-federal-court",
     "title": "DOJ partially confirms DHS whistleblower allegations in new notice to federal court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104885,
+    "kind": "item",
+    "occurred_at": "2026-09-15T23:31:25+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/09/15/paxton-noncitizen-voters-charged-secretary-of-state-refers-potential-noncitizen-voters",
+    "title": "Texas and federal officials announce charges against 7 related to noncitizen voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 104886,
+    "kind": "item",
+    "occurred_at": "2026-09-16T00:17:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-republicans-ask-federal-court-to-block-future-redistricting-opposition",
+    "title": "Missouri Republicans ask federal court to block future redistricting opposition"
   }
 ]
