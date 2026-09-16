@@ -14,6 +14,9 @@ WHAT IT CHECKS, per row:
     `prev push` or a `STALE OPEN` (whose window runs from the prior session's last push,
     which is the previous row), and the `, HH:MM:SS` time written in the opened-by cell
     for a fetch or a fresh clone. A time later than the push is the previous UTC day.
+    A row that writes a time must also NAME the instrument it came from, in
+    parentheses: the two reflogs that could have supplied it disagree by tens of
+    seconds and this tool cannot tell them apart.
   - the typed duration must equal push minus start to within one second.
   - landed-inside and rebase must agree (a landing iff YES), the model the table asserts.
 A row whose start cannot be derived from the row is itself a failure: an endpoint that
@@ -65,6 +68,20 @@ ROW = re.compile(
 )
 DURATION = re.compile(r"^(?:(?P<h>\d+)h)?(?P<m>\d+)m(?P<s>\d\d)s$")
 OPEN_TIME = re.compile(r", (?P<t>\d\d:\d\d:\d\d)$")
+
+# A WRITTEN OPEN TIME NAMES THE INSTRUMENT THAT PRODUCED IT, from 2026-09-16. Two
+# reflogs answer "when did the fetch land", and they disagree: the LOCAL branch's
+# `merge origin/main: Fast-forward` against `origin/main`'s `fetch origin:
+# fast-forward`: 5s apart on `dd3af8c`, 23s on `222a4d3`, 35s on `a558c8b` and
+# 11m54s on `bdf4a6c`, which is thirteen times that row's own window. All four rows
+# were written from the branch reflog, and nothing in the row said so -- so
+# the next session had a coin to flip, and a window typed from the other one would be
+# INTERNALLY CONSISTENT and pass every check below. This tool cannot tell them apart:
+# a reflog is clone-local and dies with the clone (the five 09-13 fresh-clone rows are
+# already unrecoverable for exactly that reason). So it enforces the one thing it can --
+# that the row DECLARES its source -- and the declaration is what a later reader audits
+# against, rather than re-deriving a figure whose instrument nobody wrote down.
+OPEN_SOURCES = ("branch reflog", "remote reflog", "clone gone, not recoverable")
 
 # The prediction, restated 2026-09-10: of the next four pushes whose window falls
 # between 3h and 6h, at least one meets a rebase. It counts from 4abdd83, the first
@@ -260,6 +277,13 @@ def check(rows: list[Row], slots: dict | None = None,
             problems.append(
                 f"{row.sha}: typed {row.typed}, endpoints give {_fmt(actual)} "
                 f"({start:%m-%d %H:%M:%S} -> {row.pushed:%m-%d %H:%M:%S})"
+            )
+        if OPEN_TIME.search(row.opened) and not any(
+            f"({src})" in row.opened for src in OPEN_SOURCES
+        ):
+            problems.append(
+                f"{row.sha}: the open time names no instrument -- add one of "
+                + ", ".join(f"({src})" for src in OPEN_SOURCES)
             )
         if (row.landed != "—") != row.rebased:
             problems.append(f"{row.sha}: landed {row.landed!r} but rebase {'YES' if row.rebased else 'no'}")

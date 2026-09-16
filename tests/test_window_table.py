@@ -34,7 +34,7 @@ def test_live_table_parses_and_every_duration_matches_its_endpoints():
 
 def test_hours_dropped_across_midnight_fires():
     rows = _rows(
-        "  | `aaaaaaa` | 09-14 20:59:39 | fresh clone at `bbbbbbb`, 20:50:00 | **9m39s** | — | no |",
+        "  | `aaaaaaa` | 09-14 20:59:39 | fresh clone at `bbbbbbb` (clone gone, not recoverable), 20:50:00 | **9m39s** | — | no |",
         "  | `ccccccc` | 09-15 00:25:06 | prev push | **25m27s** | — | no |",
     )
     problems, _ = wt.check(rows)
@@ -42,13 +42,13 @@ def test_hours_dropped_across_midnight_fires():
 
 
 def test_open_time_after_push_time_is_the_previous_day():
-    rows = _rows("  | `aaaaaaa` | 09-15 00:05:00 | fresh clone at `bbbbbbb`, 23:55:00 | **10m00s** | — | no |")
+    rows = _rows("  | `aaaaaaa` | 09-15 00:05:00 | fresh clone at `bbbbbbb` (clone gone, not recoverable), 23:55:00 | **10m00s** | — | no |")
     assert wt.check(rows)[0] == []
 
 
 def test_stale_open_runs_from_the_previous_row():
     rows = _rows(
-        "  | `aaaaaaa` | 09-08 18:38:14 | fresh clone at `bbbbbbb`, 18:30:00 | **8m14s** | — | no |",
+        "  | `aaaaaaa` | 09-08 18:38:14 | fresh clone at `bbbbbbb` (clone gone, not recoverable), 18:30:00 | **8m14s** | — | no |",
         "  | `ccccccc` | 09-09 17:43:28 | STALE OPEN — prior session's last push | **23h05m14s** | `ddddddd` | **YES** |",
     )
     assert wt.check(rows)[0] == []
@@ -61,7 +61,7 @@ def test_an_open_with_no_written_start_fails():
 
 
 def test_one_second_is_tolerated_two_are_not():
-    base = "  | `aaaaaaa` | 09-08 00:00:00 | fresh clone at `bbbbbbb`, 23:50:00 | **{}** | — | no |"
+    base = "  | `aaaaaaa` | 09-08 00:00:00 | fresh clone at `bbbbbbb` (clone gone, not recoverable), 23:50:00 | **{}** | — | no |"
     assert wt.check(_rows(base.format("10m01s")))[0] == []
     assert len(wt.check(_rows(base.format("10m02s")))[0]) == 1
 
@@ -77,7 +77,7 @@ def _slots(*lines: str):
 # 09-10 20:20:00 -> 09-11 00:00:00 only the 18:17 slot's, under docs/bands.yaml as it
 # stood on 2026-09-15 (landing 2h11m48s to 6h02m14s, or 2h11m24s near once P2 closed).
 QUAL = (
-    "  | `4abdd83` | 09-10 20:13:18 | fresh clone at `bbbbbbb`, 17:00:00 | **3h13m18s** | — | no |",
+    "  | `4abdd83` | 09-10 20:13:18 | fresh clone at `bbbbbbb` (clone gone, not recoverable), 17:00:00 | **3h13m18s** | — | no |",
     "  | `ccccccc` | 09-10 20:20:00 | prev push | **6m42s** | — | no |",
     "  | `ddddddd` | 09-11 00:00:00 | prev push | **3h40m00s** | `eeeeeee` | **YES** |",
 )
@@ -172,3 +172,16 @@ def test_caught_must_agree_with_rebase():
     # a landing inside the window on a row that says no rebase
     problems, _ = wt.check(_rows(QUAL[0]), _slots("  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 17:10:00 |"))
     assert len(problems) == 1 and "classified caught but rebase no" in problems[0]
+
+
+def test_an_open_time_must_name_the_instrument_that_produced_it():
+    # Two reflogs answer "when did the fetch land" and disagree by tens of seconds --
+    # 11m54s on `bdf4a6c`. The tool cannot tell them apart (a reflog is clone-local), so
+    # what it enforces is that the row SAYS which one, and an untagged time is a failure
+    # rather than a figure a later reader has to guess the provenance of.
+    untagged = "  | `aaaaaaa` | 09-15 00:05:00 | fresh clone at `bbbbbbb`, 23:55:00 | **10m00s** | — | no |"
+    problems, _ = wt.check(_rows(untagged))
+    assert len(problems) == 1 and "names no instrument" in problems[0]
+
+    tagged = untagged.replace("`bbbbbbb`,", "`bbbbbbb` (clone gone, not recoverable),")
+    assert wt.check(_rows(tagged))[0] == []
