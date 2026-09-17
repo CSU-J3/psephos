@@ -147,32 +147,47 @@ jobs:
     # each is ~2.8 hours. Without this the GitHub default of 360 minutes applies
     # and such a run collides with the next 6-hourly cron.
     #
-    # 45 and not 30. Measured wall clock is 5m42s-16m42s across 8 scheduled runs
-    # (the four of 08-11 and the four of 08-12; the 08-10 dispatch at 14m38s is a
-    # ninth point inside that range), longest run 31629075586, 08-12 18:43Z. That
-    # spread is 3x, so a 2x spike off the observed maximum is ~33 minutes and a
-    # 30-minute bound would kill a healthy run.
+    # 45 AND NOT 30, ORIGINALLY -- kept as history, because the arithmetic below is
+    # no longer the rule. Measured wall clock was 5m42s-16m42s across 8 scheduled
+    # runs (the four of 08-11 and the four of 08-12; the 08-10 dispatch at 14m38s is
+    # a ninth point inside that range), longest run 31629075586, 08-12 18:43Z, and
+    # the number was argued for as a 2x spike off that maximum. The conclusion held
+    # and the reasoning did not; the rule that replaced it is directly below.
     #
-    # THE RATIO, STATED AND NOT DECIDED (read 2026-09-16, and timeout-minutes is
-    # unchanged). 45 was chosen above 2x an observed maximum of 16m42s across those 8
-    # runs -- 2.69x at the time. Against the band now declared in docs/bands.yaml,
-    # 5m06s to 32m27s across 47 scheduled runs since 58c6aca, it is 1.39x. Beside
-    # that: the 30-minute bound this comment considered and rejected would have KILLED
-    # run 34122774777 at 32m27s, a healthy success, so the reasoning for 45 over 30 has
-    # been borne out whichever way the 2x question goes.
+    # THE RULE, RULED 2026-09-17: THE TIMEOUT IS A HANG DETECTOR, AND THE 2x
+    # MULTIPLIER IS RETIRED. It is not a scaling of the worst normal run. It stays
+    # above the observed maximum wall clock by a margin, and that is the whole of it.
+    # A HEALTHY RUN REACHING 45 IS A FINDING ABOUT THAT RUN -- something hung, or the
+    # work changed shape -- and is to be diagnosed, NOT answered by raising the
+    # number. Nothing downstream derives from the ratio, so there is no ratio to keep.
     #
-    # The counts differ on purpose. This comment says 8 scheduled runs; docs/status.md
-    # says 9 by including the 08-10 dispatch. Both are right for what they count, and
-    # the timeout keeps 8, because that is the population the bound was set against.
+    # The figures, recorded once so a later reader does not re-derive them: 45 minutes
+    # against an observed maximum wall clock of 32m27s across 47 scheduled runs since
+    # 58c6aca, read 2026-09-16 and declared in docs/bands.yaml as `wall_clock`. 45 was
+    # originally chosen above 2x a then-maximum of 16m42s across 8 runs.
     #
-    # Two readings stay open for a person, and neither is taken here: the 2x rule was
-    # the wrong frame, a timeout catching a HANG rather than scaling off the worst
-    # normal run -- or the rule holds and 45 is now under-provisioned. The 6-12 minute band this comment
-    # carried until 08-13 was five runs from one sweep written as a range without
-    # its sample size, and it was falsified at both ends within a day. Re-derive
-    # from the same instrument before changing it --
+    # AND NO MULTIPLIER WOULD HAVE HELD, which is why this is a rule change and not a
+    # preference. bands.yaml says in its own words that these bands are NOT
+    # converging; `wall_clock.far` is the one edge in that file that cannot even be
+    # SIGNED, because sampling understates a maximum while the `updatedAt` lag
+    # overstates every sample and the run record cannot separate them. A rule of the
+    # form `2x the far edge` would therefore have moved the timeout every time an
+    # unsignable number walked. The 30-minute bound this comment once considered and
+    # rejected would have KILLED run 34122774777 at 32m27s, a healthy success -- so
+    # the choice of 45 over 30 was right, and it was right for the hang-detector
+    # reason rather than for the arithmetic offered at the time.
+    #
+    # The counts differ on purpose. This comment says 8 scheduled runs for the
+    # original choice; docs/status.md says 9 by including the 08-10 dispatch. Both are
+    # right for what they count, and the original bound keeps 8, that being the
+    # population it was set against.
+    #
+    # Re-derive wall clock from the same instrument before touching this number --
     #   gh run list --workflow collect.yml --json databaseId,createdAt,startedAt,updatedAt
-    # across more than one day -- and re-check it before lengthening any ladder.
+    # across more than one day -- and re-check it before lengthening any ladder. The
+    # 6-12 minute band this comment carried until 08-13 was five runs from one sweep
+    # written as a range without its sample size, and it was falsified at both ends
+    # within a day.
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
