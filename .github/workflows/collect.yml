@@ -190,6 +190,16 @@ jobs:
     # within a day.
     timeout-minutes: 45
     steps:
+      # THE JOB'S OWN START, stamped before anything else runs. There is no context
+      # variable for it: `github.run_started_at` exists only on `workflow_run` events,
+      # and the REST API's `run_started_at` is not readable from inside the run without
+      # a call. This is the runner's wall clock, which is a legitimate read -- it dates
+      # a RUN, never a record row, and the single-writer clock rule is about the latter.
+      # It is the job start rather than the run start; for a single-job workflow the two
+      # differ by the queue, and nothing downstream reads this as a fire lag.
+      - name: Stamp the run's start
+        run: echo "RUN_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
@@ -258,3 +268,32 @@ jobs:
             git commit -m "data: scheduled collection $(date -u +%Y-%m-%dT%H:%MZ) (slot $SLOT)"
             git push
           fi
+
+      # THE HEARTBEAT, AND `if: always()` IS THE WHOLE POINT OF THE STEP.
+      #
+      # A row here says THIS RUN HAPPENED. Its absence for a slot is the only evidence
+      # the page has that a slot never fired, so the step must survive everything above
+      # it: a collector raising, the export dying, the push being rejected. Without
+      # `always()` a FAILED run would leave no row and read, from the page, exactly like
+      # a run that never started -- which is the one distinction this table exists to
+      # make. `conclusion` carries which of the two it was.
+      #
+      # WHY NOT INSIDE THE EXPORT, which does already run once per run: the export sits
+      # behind the collectors with no `if: always()` of its own, so a heartbeat written
+      # there inherits exactly the failure mode above. And why not inside a collector:
+      # six separate processes run in one step and no one of them knows the run's total,
+      # its conclusion, or that it finished. NO PROCESS SPANS THE RUN -- which is why
+      # this is the first table the WORKFLOW writes rather than a collector.
+      #
+      # `items_written` is read off the record rather than reported by the collectors:
+      # `items.fetched_at` is stamped at insert and never updated, so the run's items are
+      # exactly those stamped at or after RUN_STARTED_AT. One count, one place to be
+      # wrong, instead of six processes agreeing on a total through a file.
+      - name: Write the run heartbeat
+        if: always()
+        env:
+          SLOT: ${{ github.event.schedule || 'dispatch' }}
+          JOB_STATUS: ${{ job.status }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+        run: python -m scripts.write_heartbeat

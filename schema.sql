@@ -219,3 +219,28 @@ CREATE TABLE IF NOT EXISTS dedup_seen (
 );
 CREATE INDEX IF NOT EXISTS idx_dedup_url   ON dedup_seen(canonical_url);
 CREATE INDEX IF NOT EXISTS idx_dedup_title ON dedup_seen(title_norm);
+
+-- The run heartbeat: one row per collect.yml run, written at run END by a final
+-- workflow step, never by a collector. It is the only table in this schema the
+-- WORKFLOW writes rather than a collector, and the reason is that no process spans
+-- a run: collect.yml invokes six separate `python -m collectors.X` in one step, and
+-- no one of them knows the run's total. The step carries `if: always()`, so a failed
+-- run still leaves a row and a MISSED run is the only thing that leaves none.
+--
+-- WHY IT EXISTS. `MAX(fetched_at)` over items cannot answer "has collection stopped".
+-- fetched_at is written once on first insert and never updated (insert_ignore on
+-- UNIQUE(content_hash)), so a healthy run that collected nothing new leaves it exactly
+-- where a missed run would -- measured, 3 of 51 scheduled runs since 58c6aca committed
+-- nothing at all. The page compares against finished_at here instead.
+--
+-- NEVER EXPORTED. No snapshot carries it and tests/test_snapshot_staging does not
+-- reach it; the read layer queries it live.
+CREATE TABLE IF NOT EXISTS runs (
+    run_id        TEXT PRIMARY KEY,      -- GITHUB_RUN_ID; upserted, so a re-run replaces
+    slot          TEXT NOT NULL,         -- the cron string, or 'dispatch'
+    started_at    TEXT NOT NULL,         -- ISO 8601, job start
+    finished_at   TEXT NOT NULL,         -- ISO 8601, when this row was written
+    items_written INTEGER NOT NULL,      -- items whose fetched_at falls inside the run
+    conclusion    TEXT NOT NULL          -- job.status: success | failure | cancelled
+);
+CREATE INDEX IF NOT EXISTS idx_runs_finished ON runs(finished_at);
