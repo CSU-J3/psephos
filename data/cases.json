@@ -22487,9 +22487,9 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 101,
+    "entry_count": 103,
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-09-15T00:00:00",
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -23087,9 +23087,9 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 81,
+    "entry_count": 82,
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-16T00:00:00",
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -23667,9 +23667,9 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 23,
+    "entry_count": 32,
     "filed_at": "2026-07-27T00:00:00",
-    "latest_entry_at": "2026-08-18T00:00:00",
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
@@ -23736,6 +23736,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73678095/22/united-states-v-oliver/",
         "title": "United States v. New Mexico: [11308844] Minute order filed - the brief and appendix submitted by appellant is accepted for filing. The parties will be notified via separate docket entry if paper copies are req"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 106211,
+        "kind": "item",
+        "occurred_at": "2026-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/24/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11318591] Minute order filed - the brief submitted by appellee Maggie Toulouse Oliver is accepted for filing. The parties will be notified via separate docket entry if paper copie"
       }
     ]
   },
@@ -24217,9 +24227,9 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 79,
+    "entry_count": 84,
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-09-16T00:00:00",
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -24437,14 +24447,14 @@
     "date_terminated": null,
     "defendant": "Kris Warner",
     "docket_number": "26-2262",
-    "entry_count": 1,
+    "entry_count": 11,
     "filed_at": null,
-    "latest_entry_at": "2026-09-15T00:00:00",
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-16T21:18:14.462180+00:00",
+    "status_checked_at": "2026-09-17T21:22:41.064934+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24466,6 +24476,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74793201/3/united-states-v-kris-warner/",
         "title": "United States v. West Virginia: Briefing order filed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 106222,
+        "kind": "item",
+        "occurred_at": "2026-09-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74793201/3/united-states-v-kris-warner/",
+        "title": "United States v. West Virginia: BRIEFING ORDER filed.. No paper copies required unless case has been tentatively calendared or copies otherwise ordered. All filings must comply with Appendix Pagination & Brief Ci"
       }
     ]
   }

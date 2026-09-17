@@ -8338,5 +8338,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-voters-hit-top-election-official-with-second-lawsuit-over-gerrymandered-map",
     "title": "Missouri voters hit top election official with second lawsuit over gerrymandered map"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 106390,
+    "kind": "item",
+    "occurred_at": "2026-09-17T18:18:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-is-0-24-in-its-voter-roll-grab-after-vermont-demand-rejected",
+    "title": "DOJ is 0-24 in its voter roll grab after Vermont demand rejected"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 106388,
+    "kind": "item",
+    "occurred_at": "2026-09-17T19:21:47+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/09/17/election-legislation-trifecta-legislature-governor-race-midterms-2026",
+    "title": "Wisconsin election laws could change under a Republican or Democratic trifecta"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 106389,
+    "kind": "item",
+    "occurred_at": "2026-09-17T20:36:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republican-candidates-press-appeals-court-to-swap-missouri-voting-maps-despite-ballots-distributing-soon",
+    "title": "Republican candidates press appeals court to swap Missouri voting maps despite ballots distributing soon"
   }
 ]
