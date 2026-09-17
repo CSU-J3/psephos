@@ -8242,6 +8242,16 @@
   {
     "channel": "news",
     "grade": "B2",
+    "id": 106179,
+    "kind": "item",
+    "occurred_at": "2026-09-16T16:00:12+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-lost-funds",
+    "title": "New “Lost Funds” Tool Documents $177 Billion in Federal Funding Disrupted by Trump Administration Across All 50 States"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
     "id": 105317,
     "kind": "item",
     "occurred_at": "2026-09-16T16:38:30+00:00",
@@ -8308,5 +8318,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/exclusive-these-international-observers-have-monitored-us-elections-for-decades-this-time-the-trump-admin-didnt-invite-them",
     "title": "Exclusive: These international observers have monitored US elections for decades. This time, the Trump admin didn’t invite them"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 106178,
+    "kind": "item",
+    "occurred_at": "2026-09-17T16:17:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-redistricting-war",
+    "title": "Trump started a redistricting war. Now 1 in 10 Americans are in new House districts"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 106177,
+    "kind": "item",
+    "occurred_at": "2026-09-17T16:42:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-voters-hit-top-election-official-with-second-lawsuit-over-gerrymandered-map",
+    "title": "Missouri voters hit top election official with second lawsuit over gerrymandered map"
   }
 ]

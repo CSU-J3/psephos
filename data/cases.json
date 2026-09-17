@@ -7537,9 +7537,9 @@
     "date_terminated": null,
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 108,
+    "entry_count": 110,
     "filed_at": "2025-12-01T00:00:00",
-    "latest_entry_at": "2026-08-25T00:00:00",
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
@@ -7696,6 +7696,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/40/united-states-v-hanzas/",
         "title": "United States v. Vermont: PROPOSED RESPONSE in Opposition re 2 MOTION to Compel Production of Records Demanded Pursuant to The Civil Rights Act of 1960 filed by Vermont Alliance for Retired Americans, Richa"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 106007,
+        "kind": "item",
+        "occurred_at": "2026-01-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/39/united-states-v-hanzas/",
+        "title": "United States v. Vermont: MOTION to Dismiss for Failure to State a Claim filed by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews (Attachments: # 1 Memorandum in Support, # 2 Exhibi"
       },
       {
         "channel": "litigation",
@@ -8126,6 +8136,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/92/united-states-v-hanzas/",
         "title": "United States v. Vermont: RESPONSE re 83 ; 85 ; 86 ; 87 ; 88 ; 89 ; 90 NOTICE of Supplemental Authority re 39 PROPOSED MOTION to Dismiss for Failure to State a Claim by United States of America. (Bachand, J"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 106008,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/93/united-states-v-hanzas/",
+        "title": "United States v. Vermont: ORDER granting 37 Motion to Dismiss for Failure to State a Claim; granting 39 Motion to Dismiss for Failure to State a Claim; granting 44 Motion to Dismiss; denying 2 MOTION to Com"
       }
     ]
   },
