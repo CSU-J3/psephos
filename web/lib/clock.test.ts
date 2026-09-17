@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync, readdirSync, statSync } from "node:fs";
-import { join } from "node:path";
+import { join, sep } from "node:path";
 import { windowEndLabel } from "@/lib/format";
 
 // THE SINGLE-WRITER CLOCK INVARIANT, ENFORCED RATHER THAN DESCRIBED.
@@ -34,6 +34,27 @@ const CLOCK_READS: ReadonlyArray<readonly [RegExp, string]> = [
   [/new Date\(\s*\)/, "new Date()"],
   [/\bDate\.now\s*\(/, "Date.now()"],
 ];
+
+// THE EXEMPTION, AND IT IS A MECHANISM RATHER THAN A SENTENCE.
+//
+// The invariant always had a clause for a site that legitimately reads the clock, and
+// the clause was enforced by nothing: the check asserted an empty offender list, so any
+// exemption at all was a red, and the only way to take one was to weaken the test for
+// everybody. This names ONE function in ONE file and asserts it is the only one, so a
+// second exemption fails the suite instead of quietly joining the first.
+//
+// WHAT THE EXEMPT SITE IS ALLOWED TO DO, asserted below and not merely asked for: read
+// the clock ONCE, and compare it against `runs.finished_at` and the slot times derived
+// from it. It may not read `items`, `fetched_at` or `occurred_at` -- the moment a clock
+// read is compared against record data it is the drift the rule exists to stop.
+const EXEMPT = {
+  file: "lib/staleness.ts",
+  fn: "clockNowMs",
+  // Names that would mean the exempt site had reached record data. Asserted absent
+  // from the file, not from the function, because a helper beside it could carry the
+  // comparison just as easily.
+  forbidden: ["fetched_at", "occurred_at", "FROM items", "getRecordAnchor"],
+} as const;
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 const DIRS = ["app", "lib", "components"];
 
@@ -45,6 +66,12 @@ function sources(dir: string): string[] {
     else if (/\.(ts|tsx)$/.test(name) && !/\.test\.tsx?$/.test(name)) out.push(p);
   }
   return out;
+}
+
+// Paths are reported relative and forward-slashed, so an offender reads the same on
+// Windows and on the Linux runner. `join` is native; ROOT is not.
+function rel(file: string): string {
+  return file.slice(ROOT.length).split(sep).join("/");
 }
 
 // Comments are stripped before the search, because this rule is about what the code
@@ -62,14 +89,54 @@ describe("the clock invariant", () => {
       for (const file of sources(join(ROOT, dir))) {
         const src = code(readFileSync(file, "utf8"));
         for (const [re, label] of CLOCK_READS) {
-          if (re.test(src)) offenders.push(`${file.slice(ROOT.length)} (${label})`);
+          // Separators normalized: ROOT is forward-slashed but `join` is native, so an
+          // un-normalized slice reads `lib\\x.ts` on Windows and `lib/x.ts` on the
+          // Linux runner -- a test that would pass on one and fail on the other.
+          if (re.test(src)) offenders.push(`${rel(file)} (${label})`);
         }
       }
     }
     expect(
       offenders,
       "a bare wall-clock read in the read layer: anchor it to the record (see docs/status.md, one writer many readers)",
-    ).toEqual([]);
+    ).toEqual([`${EXEMPT.file} (Date.now())`]);
+  });
+
+  it("the exemption is one site, and the test is what says so", () => {
+    // The clause's mechanism. Three properties, each of which a future edit could
+    // break independently: the exempt file is the only one with a clock read (above),
+    // it holds exactly ONE, and that one sits inside the named function.
+    const src = code(readFileSync(join(ROOT, EXEMPT.file), "utf8"));
+    const hits = [...src.matchAll(/new Date\(\s*\)|\bDate\.now\s*\(/g)];
+    expect(hits, "the exempt file holds exactly one clock read").toHaveLength(1);
+
+    // Inside the named function: take the body from its declaration to the next
+    // top-level `export`, which is where the one read has to fall.
+    const start = src.indexOf(`export function ${EXEMPT.fn}(`);
+    expect(start, `${EXEMPT.fn} is not exported from ${EXEMPT.file}`).toBeGreaterThan(-1);
+    const after = src.indexOf("export ", start + 1);
+    const body = src.slice(start, after === -1 ? undefined : after);
+    expect(
+      body,
+      `the clock read must sit inside ${EXEMPT.fn}, not beside it`,
+    ).toMatch(/\bDate\.now\s*\(/);
+  });
+
+  it("the exempt site never compares the clock against record data", () => {
+    // The fence. A clock read is harmless until it meets a record stamp; these names
+    // are what that meeting would look like, and their absence is the exemption's
+    // scope rather than a style preference.
+    const raw = readFileSync(join(ROOT, EXEMPT.file), "utf8");
+    const src = code(raw);
+    for (const name of EXEMPT.forbidden) {
+      expect(
+        src,
+        `${EXEMPT.file} reads ${name}: the clock exemption may not touch record data`,
+      ).not.toContain(name);
+    }
+    // And it does compare against the heartbeat, so the exemption is spent on what it
+    // was granted for rather than sitting unused and available.
+    expect(raw).toContain("finishedAt");
   });
 
   it("the anchor is MAX(fetched_at) over items, with no window guard", () => {
