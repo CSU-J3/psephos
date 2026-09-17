@@ -96,6 +96,62 @@ def test_prediction_band_is_read_off_the_recomputed_window():
     assert counts["qualifying"][0]["into_band"] == "13m18s"
 
 
+# Two qualifying windows of DIFFERENT SHAPES, so the split has something to split.
+# `0000000` only exists to give `4abdd83` a previous push to open from.
+KINDS = (
+    "  | `0000000` | 09-10 17:00:00 | fresh clone at `zzzzzzz` (clone gone, not recoverable), 16:50:00 | **10m00s** | — | no |",
+    "  | `4abdd83` | 09-10 20:13:18 | prev push | **3h13m18s** | — | no |",
+    "  | `ddddddd` | 09-11 00:00:00 | STALE OPEN — prior session's last push | **3h46m42s** | `eeeeeee` | **YES** |",
+)
+
+KIND_SLOTS = (
+    "  | 09-10 12:17 | `1` | `aaaaaaa` | 09-10 16:35:29 |",
+    "  | 09-10 18:17 | `2` | `bbbbbbb` | 09-10 21:03:53 |",
+)
+
+
+def test_window_kind_names_all_four_shapes():
+    rows = _rows(
+        "  | `0000000` | 09-10 17:00:00 | fresh clone at `zzzzzzz` (clone gone, not recoverable), 16:50:00 | **10m00s** | — | no |",
+        "  | `1111111` | 09-10 17:10:00 | prev push | **10m00s** | — | no |",
+        "  | `2222222` | 09-10 17:20:00 | fetch + FF onto `yyyyyyy` (branch reflog), 17:15:00 | **5m00s** | — | no |",
+        "  | `3333333` | 09-10 20:00:00 | STALE OPEN — prior session's last push | **2h40m00s** | — | no |",
+    )
+    assert [r.kind for r in rows] == ["fresh clone", "prev push", "fetch", "stale open"]
+
+
+def test_the_tally_is_split_by_window_kind():
+    # The totals say one catch in two. They cannot say that the catch was a stale
+    # open, which is the whole question: every stale open in the live table before
+    # `e4f6ea6` ran 15h55m to 23h05m and rebased, so a shape that rebases whenever
+    # it appears would be carrying the prediction if the split lived only in prose.
+    problems, counts = wt.check(_rows(*KINDS), _slots(*KIND_SLOTS))
+    assert problems == []
+    assert counts["outcomes"] == {"caught": 1, "missed": 1, "none": 0}
+    assert counts["outcomes_by_kind"] == {
+        "prev push": {"caught": 0, "missed": 1, "none": 0},
+        "stale open": {"caught": 1, "missed": 0, "none": 0},
+    }
+
+
+def test_the_landing_position_is_reported_and_is_not_the_band_position():
+    # Two different questions about one sample. `ddddddd` sits 46m42s into the 3h
+    # band (25.9%) while its landing falls 50m35s into its own 3h46m42s window
+    # (22.3%). The live case is sharper: e4f6ea6's landing fell 4.9% in, so the
+    # window barely had to be open to catch it.
+    problems, counts = wt.check(_rows(*KINDS), _slots(*KIND_SLOTS))
+    assert problems == []
+    caught = counts["qualifying"][-1]
+    assert caught["outcome"] == "caught"
+    assert caught["landing_into"] == "50m35s"
+    assert round(caught["landing_pct"], 1) == 22.3
+    assert round(caught["band_pct"], 1) == 25.9
+    # a sample that caught nothing reports no position rather than a zero
+    missed = counts["qualifying"][0]
+    assert missed["outcome"] == "missed"
+    assert missed["landing_at"] is None and missed["landing_pct"] is None
+
+
 def test_slot_with_no_run_is_no_opportunity_not_a_miss():
     rows = _rows(QUAL[0])
     problems, counts = wt.check(rows, _slots("  | 09-10 12:17 | — | — | no run |"))
@@ -168,9 +224,11 @@ def test_a_landing_between_the_two_near_edges_splits_the_ranges():
     start, end = slot + (wt.FIRE_NEAR / 2), between + (wt.LAND_NEAR - wt.FIRE_NEAR) / 4
     assert slot + wt.FIRE_NEAR < between < end < slot + wt.LAND_NEAR
     slots = _slots(f"  | 09-10 12:17 | `1` | `aaaaaaa` | {between:%m-%d %H:%M:%S} |")
-    assert wt.classify(start, end, slots, wt.FIRE) == ("caught", [])
-    assert wt.classify(start, end, slots, wt.LANDING) == ("none", [])
-    assert wt.classify(start, end, slots) == ("none", []), "classification must default to the landing range"
+    # classify's third value is WHERE the catch landed -- `between` under the fire
+    # range, and nothing at all under the landing range, where there is no catch.
+    assert wt.classify(start, end, slots, wt.FIRE) == ("caught", [], between)
+    assert wt.classify(start, end, slots, wt.LANDING) == ("none", [], None)
+    assert wt.classify(start, end, slots) == ("none", [], None), "classification must default to the landing range"
 
 
 def test_caught_must_agree_with_rebase():

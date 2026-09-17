@@ -61,17 +61,17 @@ fire:  # run_started_at minus the slot
 
 commit_lag:  # data commit time minus run_started_at, committing runs only
   near:
-    value: 5m55s
-    n: 13
-    n_uncensored: 13  # commit lag needs no slot assignment, so no sample is censored
+    value: 5m38s
+    n: 14
+    n_uncensored: 14  # commit lag needs no slot assignment, so no sample is censored
     error: "upper bound on the true minimum: sampling only"
     bound: upper
-    set_by: "a627ac3, run 34964552275 (collect 17 6 * * *), started 11:40:27Z on 09-15; moved when P2 closed. Previous edge 6m19s, dd3af8c, 09-14"
-    moved: 2026-09-15
+    set_by: "fedde82, run 35151323003 (collect 17 18 * * *), started 21:15:13Z on 09-16. Previous edges 5m55s (a627ac3, 09-15) and 6m19s (dd3af8c, 09-14)"
+    moved: 2026-09-17
   far:
     value: 24m22s
-    n: 13
-    n_uncensored: 13  # commit lag needs no slot assignment, so no sample is censored
+    n: 14
+    n_uncensored: 14  # commit lag needs no slot assignment, so no sample is censored
     error: "lower bound on the true maximum: sampling only"
     bound: lower
     set_by: "61b8517, run 34755670262, started 11:54:52Z on 09-13"

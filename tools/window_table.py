@@ -235,6 +235,25 @@ class Row:
     def follow_on(self) -> bool:
         return self.opened == "prev push"
 
+    @property
+    def kind(self) -> str:
+        """Which of the four window shapes opened this row, per the status page.
+
+        The tally is split on this because the shapes are not interchangeable
+        evidence. Every stale open in the table before `e4f6ea6` ran 15h55m to
+        23h05m and spanned three or four landings, so none of them ever reached
+        the 3h-6h band -- the mixing this guards against had never once been
+        possible. It became possible on the first SHORT stale open, and a
+        category that rebases whenever it appears would be counted as evidence
+        about windows in general if the split were only in prose."""
+        if self.follow_on:
+            return "prev push"
+        if self.opened.startswith("STALE OPEN"):
+            return "stale open"
+        if "clone" in self.opened:
+            return "fresh clone"
+        return "fetch"
+
 
 def _ts(mmdd_hms: str) -> datetime:
     return datetime.strptime(f"{YEAR}-{mmdd_hms}", "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
@@ -300,18 +319,24 @@ def slots_meeting(start: datetime, end: datetime, rng: tuple[timedelta, timedelt
 
 
 def classify(start: datetime, end: datetime, slots: dict,
-             rng: tuple[timedelta, timedelta] = LANDING) -> tuple[str | None, list[str]]:
-    """caught / missed / none for one qualifying window, or (None, missing slots)."""
+             rng: tuple[timedelta, timedelta] = LANDING
+             ) -> tuple[str | None, list[str], datetime | None]:
+    """caught / missed / none for one qualifying window, or (None, missing slots).
+
+    The third value is WHERE the catch landed, returned so the caller can price it:
+    a landing in the first minutes of a long window is a catch the window barely
+    had to be open for, and `caught` alone cannot say so."""
     meeting = slots_meeting(start, end, rng)
     missing = [f"{s:%m-%d %H:%M}" for s in meeting if s not in slots]
     if missing:
-        return None, missing
+        return None, missing, None
     landings = [slots[s] for s in meeting if slots[s] is not None]
-    if any(start <= t <= end for t in landings):
-        return "caught", []
+    inside = [t for t in landings if start <= t <= end]
+    if inside:
+        return "caught", [], min(inside)
     if landings:
-        return "missed", []
-    return "none", []
+        return "missed", [], None
+    return "none", [], None
 
 
 def window_start(rows: list[Row], i: int) -> datetime | None:
@@ -370,20 +395,29 @@ def check(rows: list[Row], slots: dict | None = None,
     qualifying = []
     for r in tally[:PREDICTION_N]:
         w = windows[r.sha]
-        outcome, missing = classify(starts[r.sha], r.pushed, slots, landing)
+        outcome, missing, at = classify(starts[r.sha], r.pushed, slots, landing)
         if outcome is None:
             problems.append(f"{r.sha}: qualifying, but no slot-table row for {', '.join(missing)}; cannot classify")
         elif (outcome == "caught") != r.rebased:
             problems.append(f"{r.sha}: classified {outcome} but rebase {'YES' if r.rebased else 'no'}")
-        qualifying.append({
+        entry = {
             "sha": r.sha,
+            "kind": r.kind,
             "window": _fmt(w),
             "into_band": _fmt(w - BAND_LO),
             "band_pct": 100 * (w - BAND_LO) / (BAND_HI - BAND_LO),
             "rebased": r.rebased,
             "outcome": outcome,
             "slots": [f"{s:%m-%d %H:%M}" for s in slots_meeting(starts[r.sha], r.pushed, landing)],
-        })
+            "landing_at": at,
+            "landing_into": None,
+            "landing_pct": None,
+        }
+        if at is not None:
+            into = at - starts[r.sha]
+            entry["landing_into"] = _fmt(into)
+            entry["landing_pct"] = 100 * into / w
+        qualifying.append(entry)
     counts = {
         "rows": len(rows),
         "opens": len(rows) - len(follow),
@@ -393,6 +427,14 @@ def check(rows: list[Row], slots: dict | None = None,
         "agree": sum(1 for r in rows if (r.landed != "—") == r.rebased),
         "qualifying": qualifying,
         "outcomes": {k: sum(1 for q in qualifying if q["outcome"] == k) for k in ("caught", "missed", "none")},
+        # Split on window kind as well as totalled, because the shapes are not
+        # interchangeable evidence. See Row.kind.
+        "outcomes_by_kind": {
+            kind: {k: sum(1 for q in qualifying
+                          if q["kind"] == kind and q["outcome"] == k)
+                   for k in ("caught", "missed", "none")}
+            for kind in sorted({q["kind"] for q in qualifying})
+        },
     }
     return problems, counts
 
@@ -425,10 +467,17 @@ def main(argv: list[str] | None = None) -> int:
     q, o = c["qualifying"], c["outcomes"]
     print(f"prediction (from {PREDICTION_FROM}, windows 3h-6h, first {PREDICTION_N}): {len(q)} of {PREDICTION_N} read -- "
           f"opportunity caught {o['caught']}, opportunity missed {o['missed']}, no opportunity present {o['none']}")
+    for kind, o2 in c["outcomes_by_kind"].items():
+        n = o2["caught"] + o2["missed"] + o2["none"]
+        print(f"  by window kind -- {kind}: caught {o2['caught']}, missed {o2['missed']}, "
+              f"no opportunity {o2['none']} (n={n})")
     for s in q:
-        print(f"  {s['sha']} window {s['window']}, {s['into_band']} into the band ({s['band_pct']:.1f}%), "
-              f"{'rebased' if s['rebased'] else 'no rebase'}, slots meeting it: {', '.join(s['slots']) or 'none'} "
-              f"-> {s['outcome'] or 'UNCLASSIFIED'}")
+        print(f"  {s['sha']} [{s['kind']}] window {s['window']}, {s['into_band']} into the band "
+              f"({s['band_pct']:.1f}%), {'rebased' if s['rebased'] else 'no rebase'}, "
+              f"slots meeting it: {', '.join(s['slots']) or 'none'} -> {s['outcome'] or 'UNCLASSIFIED'}")
+        if s["landing_at"] is not None:
+            print(f"      landing {s['landing_at']:%m-%d %H:%M:%S}Z, {s['landing_into']} into the window "
+                  f"({s['landing_pct']:.1f}% of it)")
     for p in problems:
         print("MISMATCH", p)
     print("OK" if not problems else f"{len(problems)} problem(s)")
