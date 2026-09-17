@@ -147,6 +147,21 @@ def test_the_workflow_step_is_unconditional_and_last():
     )
 
 
+def test_the_run_status_fixture_is_dev_only():
+    """The fixture renders four states the live page cannot show, off fabricated rows.
+
+    It is a real route so it can be LOOKED AT -- the first draft lived under
+    `app/_fixture/`, and a leading underscore makes a Next folder private, which excludes
+    it from routing entirely and made the fixture 404. So the guard is what keeps it off
+    the deployed site, and a guard nothing asserts is a guard someone deletes.
+    """
+    src = (REPO / "web" / "app" / "fixture" / "run-status" / "page.tsx").read_text(
+        encoding="utf-8"
+    )
+    assert 'process.env.NODE_ENV === "production"' in src
+    assert "notFound()" in src
+
+
 def test_the_heartbeat_is_never_exported():
     """Never exported, by design: the page reads it live. If a snapshot ever carried it,
     tests/test_snapshot_staging would have to reach it and this line is the reminder."""

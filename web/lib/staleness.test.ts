@@ -6,6 +6,7 @@ import {
   missingSlots,
   slotLabel,
   slotsBetween,
+  durationLabel,
   stampLabel,
   type Heartbeat,
 } from "@/lib/staleness";
@@ -119,6 +120,14 @@ describe("labels", () => {
     expect(stampLabel("2026-01-01T00:00:00Z")).toBe("00:00Z");
     expect(stampLabel(null)).toBeNull();
     expect(stampLabel("not a date")).toBeNull();
+  });
+
+  it("durationLabel rounds to the minute, not the hour", () => {
+    // 6h10m19s must not render as "6h": a page figure that disagrees with the
+    // constant behind it gives a reader two numbers and no way to choose.
+    expect(durationLabel(HEARTBEAT_FAR_MS)).toBe("6h10m");
+    expect(durationLabel(6 * 3600_000)).toBe("6h");
+    expect(durationLabel(3600_000 + 5 * 60_000)).toBe("1h05m");
   });
 
   it("slotLabel renders month-day and time in Z", () => {

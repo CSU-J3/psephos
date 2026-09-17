@@ -4,6 +4,7 @@
 import { createClient } from "@libsql/client";
 import type { Row, Value } from "@libsql/client";
 import { unstable_cache } from "next/cache";
+import type { Heartbeat } from "@/lib/staleness";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
 import { FEED_WINDOW, HISTORY_AFTER_DAYS } from "@/lib/feed";
@@ -317,6 +318,49 @@ export async function getRecordAnchor(): Promise<string | null> {
   const rs = await db.execute("SELECT MAX(fetched_at) AS anchor FROM items");
   const v = rs.rows[0]?.anchor;
   return typeof v === "string" ? v : null;
+}
+
+/**
+ * The last few run heartbeats, newest first.
+ *
+ * THE ONE QUESTION THE ANCHOR CANNOT ANSWER. `getRecordAnchor` is MAX(fetched_at),
+ * and `fetched_at` is written once on first insert and never updated, so a run that
+ * collected nothing new leaves it exactly where a run that never happened would --
+ * measured 2026-09-17, three of 51 scheduled runs since `58c6aca` committed nothing at
+ * all. `runs` is written by collect.yml's final step under `if: always()`, so a row
+ * present means the run happened and a row absent for a slot means it did not.
+ *
+ * DELIBERATELY NOT CACHED, for the same reason `getRecordAnchor` is not: this is what
+ * the staleness element is keyed on, and a cached staleness reading is a timer.
+ * Bounded to a fortnight of slots, which is far more than the element reads and small
+ * enough that the query never grows with the table.
+ */
+export async function getHeartbeats(): Promise<Heartbeat[]> {
+  let rs;
+  try {
+    rs = await db.execute(
+      "SELECT slot, finished_at, items_written, conclusion FROM runs ORDER BY finished_at DESC LIMIT 60",
+    );
+  } catch (e) {
+    // THE TABLE ARRIVES ON THE NEXT COLLECT RUN, NOT ON THIS DEPLOY, and without this
+    // the whole homepage 500s until it does. `runs` is created by db.init_db(), which
+    // only the Python cron calls, so there is a window -- between merging this and the
+    // next scheduled run -- where the read layer queries a table that is not there yet.
+    // Measured against the live database on 2026-09-17: the page returned 500.
+    //
+    // NARROW ON PURPOSE. Only a missing table is swallowed; anything else rethrows. A
+    // bare catch here would turn a real outage into a permanently cheerful "no run has
+    // reported yet", which is the one lie this element must not tell.
+    const msg = e instanceof Error ? e.message : String(e);
+    if (!/no such table/i.test(msg)) throw e;
+    return [];
+  }
+  return rs.rows.map((r) => ({
+    slot: String(r.slot ?? ""),
+    finishedAt: String(r.finished_at ?? ""),
+    itemsWritten: Number(r.items_written ?? 0),
+    conclusion: String(r.conclusion ?? ""),
+  }));
 }
 
 // `anchorIso` IS AN ARGUMENT AND THEREFORE PART OF THE CACHE KEY. Measured in the

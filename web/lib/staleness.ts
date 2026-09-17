@@ -128,6 +128,22 @@ export function stampLabel(iso: string | null | undefined): string | null {
   return m ? `${m[1]}Z` : null;
 }
 
+/**
+ * `22219000` -> `6h10m`. Used to state the threshold where it is applied.
+ *
+ * ROUNDS TO THE MINUTE AND NOT TO THE HOUR. The first draft rendered
+ * `Math.round(ms / 3_600_000)`, which turns 6h10m19s into "6h" -- a figure on the page
+ * that disagrees with the constant behind it and understates the threshold by ten
+ * minutes. A reader checking the element against the record would have found the two
+ * numbers different and had no way to tell which was the real one.
+ */
+export function durationLabel(ms: number): string {
+  const total = Math.round(ms / 1000);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  return m ? `${h}h${String(m).padStart(2, "0")}m` : `${h}h`;
+}
+
 /** `2026-09-17T18:17:00.000Z` -> `09-17 18:17Z`, in the record's zone, by slice. */
 export function slotLabel(slot: Date): string {
   const iso = slot.toISOString();

@@ -12,6 +12,7 @@ import {
   getStateBills,
   getBoardMonthly,
   getTrackerNotes,
+  getHeartbeats,
 } from "@/lib/db";
 import type { Case, CaseRef, NewsItem } from "@/lib/db";
 import {
@@ -32,6 +33,8 @@ import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
 import { ExecutiveSection } from "@/components/ExecutiveSection";
 import { RotatingTime } from "@/components/RotatingTime";
+import { RunStatus } from "@/components/RunStatus";
+import { clockNowMs } from "@/lib/staleness";
 import { buildTimeline } from "@/lib/timeline";
 import {
   boardDomain,
@@ -124,6 +127,12 @@ export default async function Home() {
   // empty anyway, and the header says "no collection recorded" rather than a date.
   const anchor = anchorIso ? new Date(anchorIso) : new Date(0);
   const windowEnd = windowEndLabel(anchorIso);
+  // THE SCHEDULE, NOT THE RECORD, and the only place this page reads a clock.
+  // `clockNowMs` is the single exempt site `clock.test.ts` names; the value is
+  // compared against `runs.finished_at` and the slot times, never against a record
+  // stamp. Uncached, like the anchor: a cached staleness reading is a timer.
+  const heartbeats = await getHeartbeats();
+  const nowMs = clockNowMs();
 
   // ONE QUERY FEEDS BOTH, because the timeline's set is a strict superset of the
   // news line's. getTimelineEntries returns everything dated in the band range plus
@@ -292,6 +301,8 @@ export default async function Home() {
           The erosion of voting rights across five channels of pressure, federal and
           state.
         </p>
+
+        <RunStatus heartbeats={heartbeats} nowMs={nowMs} />
 
         <nav className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {NAV.map((t) => (
