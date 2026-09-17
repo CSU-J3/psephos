@@ -8288,5 +8288,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/watchdog-sues-usps-over-records-from-plan-to-restrict-mail-ballots",
     "title": "Watchdog sues USPS over records from plan to restrict mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105757,
+    "kind": "item",
+    "occurred_at": "2026-09-16T21:57:07+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/09/16/noncitizen-voter-department-homeland-security-pennsylvania-methodology",
+    "title": "Trump administration explains how it identified potential noncitizen voters, says it will provide list to Pennsylvania"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 105758,
+    "kind": "item",
+    "occurred_at": "2026-09-17T01:57:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/exclusive-these-international-observers-have-monitored-us-elections-for-decades-this-time-the-trump-admin-didnt-invite-them",
+    "title": "Exclusive: These international observers have monitored US elections for decades. This time, the Trump admin didn’t invite them"
   }
 ]
