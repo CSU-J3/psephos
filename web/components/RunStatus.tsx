@@ -95,13 +95,27 @@ export function RunStatus({
           {latest.conclusion !== "success" ? ` (${latest.conclusion})` : ""}.
         </>
       )}
-      {/* The threshold, stated where it is applied. A slot is named only once this has
-          passed, and the edge is a LOWER bound -- so the error runs toward naming a slot
-          whose very late run could still land, never toward missing one. */}
+      {/* WHAT A NAMED SLOT IS EVIDENCE OF, AND WHAT IT IS NOT -- the same move the
+          campaign grid makes for an unfilled cell ("no suit in this record, not that the
+          state complied"). The table distinguishes STOPPED from QUIET, which is what it
+          was built for. It does not distinguish DROPPED from KILLED: `if: always()` runs
+          on cancellation but GitHub can hard-kill a job past the grace period, so a
+          cancelled run leaves no row and reads exactly like a slot that never fired. Two
+          of 312 scheduled runs were cancelled, so this is a real case and not a
+          hypothetical. The page says what it knows.
+
+          The threshold sits here too, where it is applied. A slot is named only once
+          heartbeat_far has passed, and that edge is a LOWER bound -- so the error runs
+          toward naming a slot whose very late run could still land, never toward missing
+          one. */}
       {missing.length > 0 ? (
         <span className="text-neutral-600">
           {" "}
-          A slot is named {durationLabel(HEARTBEAT_FAR_MS)} after it fires.
+          A named slot means{" "}
+          <span className="text-neutral-500">no heartbeat in this record</span> — not
+          that the run was dropped: a cancelled job can be killed before the final step
+          writes its row, so a named slot says only that nothing reported. Slots are
+          named {durationLabel(HEARTBEAT_FAR_MS)} after they fire.
         </span>
       ) : null}
     </p>
