@@ -238,6 +238,17 @@ def main() -> int:
         text = shown.stdout
         print(f"  corpus: {args.ref}:{args.doc}")
         print("          post-push mode, the published state")
+        # THE PRE-PUSH BLIND SPOT, announced from 2026-09-17. This corpus is the document
+        # as PUBLISHED, so it CANNOT contain a citation that has not been pushed yet. A
+        # run in this mode before a push is answering about a file without the edit being
+        # checked, and reads OK over an orphan sitting on disk -- which is exactly how one
+        # reached origin on 2026-09-17. Measured: a dead sha planted uncommitted in
+        # docs/status.md reads 0 orphans here and 1 under --worktree, on the same file.
+        # It fires on DIVERGENCE and not on the mode: a post-push run over a clean tree
+        # prints nothing extra, because a line that is always there is never read.
+        if git("diff", "--quiet", args.ref, "--", args.doc).returncode != 0:
+            print(f"          ON-DISK {args.doc} DIFFERS FROM THIS CORPUS --")
+            print("          citations in it are NOT covered by this run; re-run --worktree")
         print("          off-origin-local is an ALARM here")
     tokens = sorted({t.strip().strip("\r") for t in re.findall(r"`([0-9a-f]{7,40})`", text)})
 
