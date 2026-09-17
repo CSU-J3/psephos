@@ -12,10 +12,28 @@ import { windowEndLabel } from "@/lib/format";
 // prohibited in the web layer while two live sites called it. The difference between
 // that entry and this file is that this one runs.
 //
-// WHAT IS ASSERTED IS THE ABSENCE OF A BARE `new Date()`, not the presence of an anchor.
-// `new Date(iso)` is a parse and is fine; `new Date(0)` is a constant and is fine; only
-// the no-argument form reads the machine's clock, and it is the one form that cannot be
-// anchored to anything.
+// WHAT IS ASSERTED IS THE ABSENCE OF A BARE WALL-CLOCK READ, not the presence of an
+// anchor. `new Date(iso)` is a parse and is fine; `new Date(0)` is a constant and is fine;
+// only the no-argument form reads the machine's clock, and it is the one form that cannot
+// be anchored to anything.
+//
+// TWO SPELLINGS, NOT ONE. This banned `new Date()` alone until 2026-09-17, and
+// `Date.now()` is the same read by another name -- it would have passed a green test
+// while doing exactly what the rule forbids. Neither spelling appears in the layer today
+// (grepped before the ban was widened, so this closes a hole rather than a breach), and
+// the list is what a reader extends when a third spelling turns up.
+//
+// OUT OF SCOPE, deliberately: `performance.now()`. It is a MONOTONIC counter measured
+// from an arbitrary origin, not a wall clock, so it cannot render a date and cannot drift
+// against the record. Banning it would be banning a stopwatch. Also absent and unbanned,
+// checked the same day: `new Date` without parentheses, a bare `Date()` call, and
+// `Intl.DateTimeFormat(...).format()` with no argument -- each of which DOES read the
+// clock. They are named here so the next reader knows the list is a list of what was
+// looked for, not a claim that these two are the only ways to ask a machine the time.
+const CLOCK_READS: ReadonlyArray<readonly [RegExp, string]> = [
+  [/new Date\(\s*\)/, "new Date()"],
+  [/\bDate\.now\s*\(/, "Date.now()"],
+];
 const ROOT = new URL("..", import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1");
 const DIRS = ["app", "lib", "components"];
 
@@ -43,12 +61,14 @@ describe("the clock invariant", () => {
     for (const dir of DIRS) {
       for (const file of sources(join(ROOT, dir))) {
         const src = code(readFileSync(file, "utf8"));
-        if (/new Date\(\s*\)/.test(src)) offenders.push(file.slice(ROOT.length));
+        for (const [re, label] of CLOCK_READS) {
+          if (re.test(src)) offenders.push(`${file.slice(ROOT.length)} (${label})`);
+        }
       }
     }
     expect(
       offenders,
-      "a bare new Date() in the read layer: anchor it to the record (see docs/status.md, one writer many readers)",
+      "a bare wall-clock read in the read layer: anchor it to the record (see docs/status.md, one writer many readers)",
     ).toEqual([]);
   });
 
