@@ -201,6 +201,43 @@ def test_moving_a_declared_edge_moves_the_landing_range(tmp_path):
     assert moved.landing[1] == base.landing[1]
 
 
+def test_heartbeat_far_is_derived_from_fire_far_and_wall_far():
+    # The third derived range, and the live constant is derived rather than typed.
+    b = wt.load_bands()
+    assert b.heartbeat_far == b.fire_far + b.wall_far
+
+
+def test_moving_wall_clock_far_moves_heartbeat_far_and_not_landing(tmp_path):
+    # THE WHOLE POINT OF THE THIRD RANGE, asserted as a mutation: the two far edges
+    # answer different questions, so an edge that belongs to one must not move the
+    # other. Before this, a staleness threshold could have been wired to landing_far
+    # and gone on agreeing with itself while measuring a data commit.
+    base = _bands(tmp_path)
+    assert wt._fmt(base.heartbeat_far) == "5h30m00s"   # 5h00m00s + 30m00s
+    assert wt._fmt(base.landing[1]) == "5h20m00s"      # 5h00m00s + 20m00s
+    moved = _bands(tmp_path, wf="45m00s")
+    assert wt._fmt(moved.heartbeat_far) == "5h45m00s"
+    assert moved.landing[1] == base.landing[1]
+
+
+def test_moving_commit_lag_far_moves_landing_and_not_heartbeat_far(tmp_path):
+    # The converse, because a mutation in one direction only proves half of it.
+    base = _bands(tmp_path)
+    moved = _bands(tmp_path, cf="35m00s")
+    assert wt._fmt(moved.landing[1]) == "5h35m00s"
+    assert moved.heartbeat_far == base.heartbeat_far
+
+
+def test_heartbeat_far_is_unsigned_while_wall_clock_far_is(tmp_path):
+    # It inherits the one edge bands.yaml cannot sign, and the sign is COMPUTED, so
+    # the day wall_clock.far becomes signable this reads `lower` with no edit.
+    b = _bands(tmp_path)
+    assert wt._hb_sign(b) == "unsigned"
+    import dataclasses
+    signed = dataclasses.replace(b, bounds={**b.bounds, "wall_clock.far": "lower"})
+    assert wt._hb_sign(signed) == "lower"
+
+
 def test_an_edge_without_provenance_is_refused(tmp_path):
     p = tmp_path / "bands.yaml"
     p.write_text(BANDS_YAML.format(fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s",

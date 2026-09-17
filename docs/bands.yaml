@@ -41,6 +41,25 @@
 # end (09-07 12:36:16Z reads 19m16s or 6h19m16s; 09-14 12:50:51Z reads 33m51s or
 # 6h33m51s), so the near edge may sit too high and the far edge too low.
 
+# TWO DERIVED FAR EDGES, AND THEY ARE NOT INTERCHANGEABLE (added 2026-09-17). Both are
+# computed in tools/window_table.py and typed nowhere. `landing_far` = fire.far +
+# commit_lag.far answers WHEN A DATA COMMIT LANDS, which happens mid-run. `heartbeat_far`
+# = fire.far + wall_clock.far answers WHEN THE RUN ENDS, which is when a heartbeat row is
+# written. The 09-13 06:17Z run, 34755670262, is why both exist: it set BOTH of
+# landing_far's inputs, so the largest observed slot-to-commit equals landing_far to the
+# second, while that same run's slot-to-run-end is 6h02m20s -- six seconds PAST
+# landing_far and eight seconds under heartbeat_far. A staleness check wired to
+# landing_far would have called that healthy run missed.
+#
+# THEIR BOUNDS DIFFER, which is the cost of measuring the right event. landing_far sums
+# two `lower` edges and is a clean lower bound. heartbeat_far sums fire.far (`lower`) with
+# wall_clock.far (`unsigned`), so it is UNSIGNED -- this file's rule applied, a figure
+# being signed only when every input pushes the same way. For the staleness use the
+# unsignable half is benign in the direction that matters: the updatedAt lag overstates
+# every wall-clock sample, pushing the edge later, away from calling a live run missed.
+# Sampling pushes the other way, and the run record cannot separate them, which is why
+# the figure is still not signed.
+
 fire:  # run_started_at minus the slot
   near:
     value: 2h05m29s

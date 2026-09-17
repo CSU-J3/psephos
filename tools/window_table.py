@@ -123,6 +123,31 @@ class Bands:
         # Derived, never declared: near = fire near + commit near, far = fire far + commit far.
         return (self.fire_near + self.commit_near, self.fire_far + self.commit_far)
 
+    @property
+    def heartbeat_far(self) -> timedelta:
+        """Slot -> the moment a run that fired has FINISHED. Derived, never declared.
+
+        TWO FAR EDGES, BECAUSE THEY ANSWER DIFFERENT QUESTIONS, and the difference is
+        not a rounding. `landing_far` is fire.far + commit_lag.far: when a DATA COMMIT
+        lands, which happens mid-run, before the export and the push are done. This is
+        fire.far + wall_clock.far: when the RUN ENDS. A heartbeat row is written at run
+        end, so it is the second one a staleness check must compare against.
+
+        The 09-13 06:17Z run is why both exist rather than one standing in for the
+        other. Run 34755670262 set BOTH of landing_far's inputs, so the largest observed
+        slot-to-commit is landing_far exactly, to the second -- and that same run's
+        slot-to-run-end is 6h02m20s, EIGHT SECONDS past the edge on today's figures and
+        six seconds past landing_far itself. A staleness threshold built on landing_far
+        would have declared that healthy run missed.
+
+        BOUND: it inherits wall_clock.far, the one edge docs/bands.yaml cannot sign, so
+        this figure is UNSIGNED where landing_far is a clean lower bound. That is this
+        file's own rule -- a figure is signed only when every input pushes the same way
+        -- and it is the price of measuring the right event. The direction is benign for
+        THIS use: the updatedAt lag overstates every wall-clock sample, which pushes the
+        edge later, away from declaring a live run missed."""
+        return self.fire_far + self.wall_far
+
 
 def load_bands(path: Path = BANDS_PATH) -> Bands:
     import yaml
@@ -184,6 +209,16 @@ CANCEL_PERIOD = timedelta(hours=12)
 # `unsigned` input makes its figure unsigned whatever the other input says.
 _PLUS = {"upper": "high", "lower": "low", "unsigned": None}
 _MINUS = {"upper": "low", "lower": "high", "unsigned": None}
+
+
+def _hb_sign(bands) -> str:
+    """heartbeat_far is a SUM of two far edges, so both contributions push the same way
+    only if both are declared the same way. fire.far is `lower`; wall_clock.far is
+    `unsigned`, so the sum is unsigned today. Computed rather than typed, so that a day
+    when wall_clock.far becomes signable moves this line without an edit."""
+    a = bands.bounds["fire.far"]
+    b = bands.bounds["wall_clock.far"]
+    return a if a == b else "unsigned"
 
 
 def sign(plus_bound: str, minus_bound: str) -> str | None:
@@ -453,6 +488,10 @@ def main(argv: list[str] | None = None) -> int:
     print(f"bands ({args.bands}): fire {_fmt(bands.fire[0])} to {_fmt(bands.fire[1])}, "
           f"commit lag {_fmt(bands.commit_near)} to {_fmt(bands.commit_far)}, "
           f"landing (derived) {_fmt(bands.landing[0])} to {_fmt(bands.landing[1])}")
+    # The third derived range, printed on its own line because it is not an interval:
+    # a staleness check needs only the far end, the near end being "a run that fired".
+    print(f"heartbeat far (derived, = fire.far + wall_clock.far) {_fmt(bands.heartbeat_far)}"
+          f"  [{_hb_sign(bands)}]  vs landing far {_fmt(bands.landing[1])} [lower]")
     print(f"wall clock {_fmt(bands.wall_near)} to {_fmt(bands.wall_far)} "
           f"(bounds: {bands.bounds['wall_clock.near']}/{bands.bounds['wall_clock.far']})")
     print("concurrency thresholds (computed at the declared edges; the middle is unpriced)")
