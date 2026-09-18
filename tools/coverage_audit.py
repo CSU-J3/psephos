@@ -94,6 +94,9 @@ historical imports with NULL dates and duplicated ids, which reads as dead cover
 from __future__ import annotations
 
 import re
+import textwrap
+from datetime import date
+from pathlib import Path
 
 import config
 import db
@@ -113,6 +116,133 @@ def unreconciled(rows, seeded) -> list:
     return [r for r in rows
             if (r["docket_number"], r["court"]) not in seeded
             and r["superseded_by"] is None]
+
+
+# --- the acknowledged-blocked register, section 1's exit-code filter ------------------
+#
+# AN ACKNOWLEDGEMENT, NOT A SUPPRESSION. The vocabulary is docs/gates.yaml's, whose
+# header states the same mechanism for a different check: "`status: stale` IS AN
+# ACKNOWLEDGEMENT, NOT A SUPPRESSION ... The grey is the reader's signal and it is never
+# silenced." Here an acknowledged row leaves the EXIT CODE and nothing else -- it still
+# prints in section 1, marked, carrying its condition. The report never gets quieter
+# than the record.
+
+# Repo-relative, matching tools.status_audit.IN_TRACKER: every entry point chdirs to
+# the repo root, and the tests do so explicitly.
+ACKS_PATH = "docs/audit-acks.yaml"
+
+ACK_REQUIRED = ("case_id", "docket_number", "court", "blocked_because",
+                "unblocked_when", "acknowledged_on", "review_by")
+ACK_OPTIONAL = ("successor", "note")
+
+# The CLOSED VOCABULARY for `unblocked_when`, as predicates over a `cases` row. A
+# condition nothing can evaluate is a comment, so prose is not accepted here. Every
+# predicate reads a column main() already SELECTs, so the register costs no extra query.
+ACK_CONDITIONS = {
+    "source_terminated": lambda r: (r["status"] or "").strip().lower() == "terminated",
+}
+
+
+def load_acks(path=None) -> list[dict]:
+    """Read and VALIDATE docs/audit-acks.yaml. Raises ValueError on any bad shape.
+
+    THE assert-gates.mjs:93 HAZARD, DESIGNED OUT RATHER THAN INHERITED. That script's
+    header records that a MISSPELLED `recheck_after` would let an expired claim pass,
+    because the check reads a named field and a typo makes it absent rather than wrong.
+    The same typo here would be worse: a misspelt `unblocked_when`, or a value outside
+    the vocabulary, would make an entry that can never lapse -- a permanent silencer
+    created by a slip. So nothing falls through inert: an unknown field, a missing
+    required field, and an unrecognised `unblocked_when` are each a hard refusal, and
+    the audit fails loudly rather than running with a register it half-understands.
+    """
+    import datetime
+    import yaml
+
+    path = Path(path) if path else Path(ACKS_PATH)
+    if not path.exists():
+        return []
+    doc = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+    if not isinstance(doc, list):
+        raise ValueError(f"{path}: expected a list of entries, got {type(doc).__name__}")
+    out = []
+    for i, e in enumerate(doc):
+        at = f"{path}: entry {i}"
+        if not isinstance(e, dict):
+            raise ValueError(f"{at}: expected a mapping")
+        unknown = set(e) - set(ACK_REQUIRED) - set(ACK_OPTIONAL)
+        if unknown:
+            raise ValueError(f"{at}: unknown field(s) {sorted(unknown)}")
+        missing = [f for f in ACK_REQUIRED if f not in e]
+        if missing:
+            raise ValueError(f"{at}: missing required field(s) {missing}")
+        if e["unblocked_when"] not in ACK_CONDITIONS:
+            raise ValueError(
+                f"{at}: unblocked_when {e['unblocked_when']!r} is not in the closed "
+                f"vocabulary {sorted(ACK_CONDITIONS)} -- an unrecognised value is "
+                f"refused rather than treated as never-firing")
+        for f in ("acknowledged_on", "review_by"):
+            if not isinstance(e[f], datetime.date):
+                raise ValueError(f"{at}: {f} must be a YAML date, got {e[f]!r}")
+        out.append(dict(e, case_id=str(e["case_id"])))
+    return out
+
+
+def ack_lapse(row, ack, today) -> str | None:
+    """Why this acknowledgement does not apply to this row, or None if it holds.
+
+    THREE WAYS TO LAPSE, checked in this order because they mean different things.
+
+    The CORROBORATOR check runs first, and it is the one P0 added. `court` and
+    `docket_number` are written straight off the seed (collectors/litigation.py:334), so
+    they FREEZE when a row stops being seeded and survive the un-seed that fires section
+    1. What they do not survive is a RE-SEED under a different spelling, which rewrites
+    both -- and an entry keyed on the old pair would then stop applying SILENTLY, since
+    a re-seeded row does not fire anyway. Drop it again later and the alarm returns with
+    no explanation. Matching on `case_id` and CHECKING the pair turns that silent lapse
+    into a loud one.
+
+    Then the CONDITION, which is the designed happy path: the block is over and the
+    alarm should be demanding the work again. Then the EXPIRY, the backstop for a
+    condition that never fires.
+    """
+    if (str(row["docket_number"]) != str(ack["docket_number"])
+            or str(row["court"]) != str(ack["court"])):
+        return (f"the row moved -- acknowledgement carries "
+                f"{ack['docket_number']} / {ack['court']}")
+    if ACK_CONDITIONS[ack["unblocked_when"]](row):
+        return f"condition fired -- {ack['unblocked_when']}"
+    if ack["review_by"] < today:
+        return f"expired -- review_by {ack['review_by']}"
+    return None
+
+
+def partition_alarm(alarm, acks, today):
+    """Split section 1's firing rows three ways. ONLY the first counts.
+
+    Returns (unacknowledged, blocked, lapsed); `blocked` and `lapsed` carry the entry,
+    and `lapsed` carries the reason, because a row that returns to the count has to say
+    why or the register becomes a thing that stops working quietly.
+    """
+    by_id = {a["case_id"]: a for a in acks}
+    unack, blocked, lapsed = [], [], []
+    for r in alarm:
+        ack = by_id.get(str(r["case_id"]))
+        if ack is None:
+            unack.append(r)
+            continue
+        why = ack_lapse(r, ack, today)
+        (lapsed.append((r, ack, why)) if why else blocked.append((r, ack)))
+    return unack, blocked, lapsed
+
+
+def dangling_acks(alarm, acks) -> list[dict]:
+    """Entries whose row is not firing at all -- linked, re-seeded, or gone.
+
+    Reported, never counted. An entry that outlives its row is the same rot the expiry
+    exists for, and it costs one set difference to say so.
+    """
+    firing = {str(r["case_id"]) for r in alarm}
+    return [a for a in acks if a["case_id"] not in firing]
 
 
 def unresolvable_refs(conn, held: set[str]) -> dict[str, list[tuple[str, str]]]:
@@ -282,16 +412,49 @@ def main(argv=None) -> int:
         artifact = load_tracker_seeds()
         unmapped = unclassified_courts(artifact)
         unbooted = unbootstrapped(conn)
+        acks = load_acks()
+        unack, blocked, lapsed = partition_alarm(alarm, acks, date.today())
+        dangling = dangling_acks(alarm, acks)
 
         print(f"coverage_audit: {len(rows)} cases, {len(seeded)} seed keys "
               f"(union of config seed_cases + the tracker artifact)\n")
 
-        print(f"  [1] RECONCILIATION ALARM -- unseeded and unlinked: {len(alarm)}  (expect 0)")
+        print(f"  [1] RECONCILIATION ALARM -- unseeded and unlinked: {len(unack)}  (expect 0)")
         print(f"      {len(unseeded)} row(s) match no seed; the alarm is the subset of those")
         print("      with superseded_by IS NULL, i.e. polled by nothing and linked to nothing.")
-        for r in alarm:
+        if acks:
+            # The count above is the UNACKNOWLEDGED subset, and saying so here is not
+            # decoration: a reader who sees 0 must be able to tell "nothing is wrong"
+            # from "one thing is wrong and a person has ruled it unactionable".
+            print(f"      {len(alarm)} row(s) fire; {len(blocked)} acknowledged-blocked and "
+                  f"excluded from the count, {len(lapsed)} lapsed and counted.")
+            print(f"      Register: {ACKS_PATH}. An acknowledgement, not a suppression --")
+            print("      every row below still prints.")
+        for r in unack:
             print(f"        FIRES  {r['case_id']:<10} {str(r['docket_number']):<16} "
                   f"{r['court']}  {r['caption'][:40]}")
+        for r, a in blocked:
+            print(f"        BLOCKED {r['case_id']:<9} {str(r['docket_number']):<16} "
+                  f"{r['court']}  {r['caption'][:40]}")
+            print(f"                 unblocks when: {a['unblocked_when']}   "
+                  f"acknowledged {a['acknowledged_on']}, review by {a['review_by']}")
+            # WRAPPED, NOT TRUNCATED. The reason is the whole content of an
+            # acknowledgement -- a reader deciding whether it still holds needs all of
+            # it, and a [:150] cut it mid-word inside "CourtListener" on the first
+            # entry. Truncating the one field that justifies the suppression is how a
+            # register starts being skimmed.
+            for line in textwrap.wrap(" ".join(str(a["blocked_because"]).split()),
+                                      width=92):
+                print(f"                 {line}")
+        for r, a, why in lapsed:
+            # A lapsed row is back in the count and says why, or the register becomes a
+            # thing that stops working quietly.
+            print(f"        LAPSED {r['case_id']:<10} {str(r['docket_number']):<16} "
+                  f"{r['court']}  {r['caption'][:40]}")
+            print(f"                 {why} -- counted again")
+        for a in dangling:
+            print(f"        STALE ACK {a['case_id']} is not firing; entry has outlived "
+                  f"its row (reported, not counted)")
         for r in unseeded:
             if r["superseded_by"] is not None:
                 print(f"        ok     {r['case_id']:<10} {str(r['docket_number']):<16} "
@@ -345,7 +508,10 @@ def main(argv=None) -> int:
             print(f"        FIRES  {r['case_id']:<10} {str(r['docket_number']):<16} "
                   f"{r['court']}  status={r['status']}")
 
-        return 1 if (alarm or drift or unmapped or unbooted) else 0
+        # `unack`, not `alarm`: an acknowledged-blocked row is out of the exit
+        # code and out of nothing else. A LAPSED entry is back in `unack` by way
+        # of partition_alarm, so the expiry and the condition both reach here.
+        return 1 if (unack or drift or unmapped or unbooted) else 0
     finally:
         conn.close()
 

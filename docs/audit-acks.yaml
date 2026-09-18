@@ -1,0 +1,79 @@
+# docs/audit-acks.yaml -- the acknowledged-blocked register for coverage_audit section 1.
+#
+# WHAT THIS IS FOR, AND THE ONE SENTENCE THAT KEEPS IT HONEST. An entry here says a section 1
+# row is a TRUE alarm for which there is NO CORRECT ACTION TODAY. Its first entry exists
+# because exactly that happened: the pair 72335259 -> 74793201 is real, the successor is
+# already held and polling, and `backfill_supersession`'s verify() refuses it because
+# CourtListener still reports the source pending. Nothing a person could do on 2026-09-18
+# would clear it. THIS REGISTER IS NOT FOR ALARMS NOBODY HAS GOTTEN TO -- an unlinked
+# pair a person simply has not run the backfill for belongs in the count, red, until they
+# run it.
+#
+# AN ACKNOWLEDGEMENT, NOT A SUPPRESSION -- the same mechanism docs/gates.yaml documents
+# for a different check, in the header line "`status: stale` IS AN ACKNOWLEDGEMENT, NOT A
+# SUPPRESSION". There, a stale gate stops check 3 failing the run and still renders grey,
+# and the header says the grey "is never silenced". Here: an acknowledged row is removed
+# from the EXIT CODE and from nothing else. It still prints in section 1, marked, carrying its
+# condition. The report never gets quieter than the record.
+#
+# TWO WAYS AN ENTRY LAPSES, and both put the row back in the count:
+#   1. `unblocked_when` fires -- the block is over, the work is now doable, so the alarm
+#      should be demanding it again. The litigation poll already checks this four times
+#      a day; nothing new watches it.
+#   2. `review_by` passes with the condition unfired -- the entry expires. A blocked row
+#      that outlives its reason RESURFACES rather than being filed away, which is the
+#      whole point of the date. It is a backstop, not a schedule.
+# A third, from P0: the corroborators stop matching the row. See below.
+#
+# WHY `case_id` IS THE KEY AND THE OTHER TWO ARE NOT. collectors/litigation.py:334 writes
+# `court` and `docket_number` STRAIGHT OFF THE SEED, never off the docket. So while a row
+# is seeded the pair is exact by construction -- and the moment it stops being seeded,
+# which is the event section 1 fires on, nothing writes those columns again and they FREEZE.
+# They survive the un-seed. What they do not survive is a RE-SEED under a different
+# spelling: upsert_case would rewrite both from the new seed, and an entry keyed on the
+# old pair would silently stop applying -- invisibly, because a seeded row does not fire
+# anyway. Drop it again later and the alarm returns with no explanation. That is the
+# reachable failure (tracker flip-flop), so `case_id` -- the primary key, CourtListener's
+# own docket id, the value both seed sources collapse onto -- is what an entry is matched
+# on, and `docket_number`/`court` are CHECKED CORROBORATORS. A mismatch does not silently
+# apply and does not silently drop: it LAPSES THE ENTRY LOUDLY, printing that the row
+# moved. A silent failure is converted into a visible one.
+#
+# FIELDS. All required except `successor` and `note`. The loader rejects an unknown field,
+# a missing one, and an unrecognised `unblocked_when`.
+#
+#   case_id          the match key. Stable: primary key, only ever rewritten by the
+#                    one-time scripts/rekey_slug_cases, which has no work left.
+#   docket_number    checked corroborator, never matched on.
+#   court            checked corroborator, never matched on.
+#   blocked_because  prose, for a human. Why no correct action exists.
+#   unblocked_when   CLOSED VOCABULARY, evaluated against the row. Not prose, because a
+#                    condition nothing can evaluate is a comment.
+#   successor        optional; the case_id this row should eventually link to.
+#   note             optional; anything a later reader needs to not re-derive.
+#   acknowledged_on  when a person ruled this blocked.
+#   review_by        the backstop date. Not when the block is expected to end.
+
+- case_id: "72335259"
+  docket_number: "2:26-cv-00156"
+  court: "Southern District of West Virginia"
+  blocked_because: >-
+    The pair 72335259 -> 74793201 cannot be asserted: scripts/backfill_supersession.py
+    verify() refuses a source whose status is not `terminated`, and CourtListener
+    reports this docket `pending` with a current status_checked_at. Adding the pair to
+    PAIRS today would be refused by the guard, correctly. No seeding, linking or
+    narrowing of section 1 clears it.
+  unblocked_when: source_terminated
+  successor: "74793201"
+  note: >-
+    The tracker's own note on the successor row cites a "District Court's 7/13/2026
+    dismissal" while CourtListener reports this source pending -- and the refresh IS
+    looking, status_checked_at being current. THAT DISAGREEMENT IS WHY A HUMAN RULING
+    WAS NEEDED: the record cannot decide between the two sources, and the guard
+    correctly believes the database. Same shape as Kentucky, which this project's
+    status doc records as refused for as long as the database said pending and passing
+    once the court's clock moved and the refresh read the flip. Cause of the section 1 red:
+    fedde82 (2026-09-16T21:20:51Z) rewrote data/doj_cases.json's West Virginia row from
+    this district docket to 26-2262 / Fourth Circuit, un-seeding this row.
+  acknowledged_on: 2026-09-18
+  review_by: 2026-11-17

@@ -42,6 +42,180 @@ def _row(case_id, docket, court, status="terminated", superseded_by=None, captio
                superseded_by=superseded_by, caption=caption)
 
 
+# --- the acknowledged-blocked register --------------------------------------
+#
+# EVERY MUTATION BELOW RUNS FROM AN ASSERTED-GREEN BASELINE, which is the point of the
+# first test and the reason the rest mean anything. A suppression test that never
+# establishes the suppressed state is asserting against nothing: it would pass equally
+# if the register did not work at all. So the baseline asserts 0 unacknowledged FIRST,
+# and each mutation then asserts that one changed thing puts the row back.
+
+from datetime import date, timedelta  # noqa: E402
+
+ACK_DAY = date(2026, 9, 18)
+TODAY = date(2026, 9, 20)          # after acknowledged_on, before review_by
+
+
+def _ack(**over):
+    base = dict(case_id="72335259", docket_number="2:26-cv-00156",
+                court="Southern District of West Virginia",
+                blocked_because="verify() refuses a non-terminated source",
+                unblocked_when="source_terminated",
+                acknowledged_on=ACK_DAY, review_by=date(2026, 11, 17))
+    return {**base, **over}
+
+
+def _blocked_row(**over):
+    # `pending` is the blocked state: the source has NOT terminated, so the pair cannot
+    # be asserted and the acknowledgement holds.
+    kw = {"status": "pending"}
+    kw.update(over)
+    return _row("72335259", "2:26-cv-00156", "Southern District of West Virginia", **kw)
+
+
+def test_baseline_an_acknowledged_row_leaves_the_count_and_still_prints():
+    """THE GREEN BASELINE every mutation below is measured against."""
+    alarm = [_blocked_row()]
+    unack, blocked, lapsed = ca.partition_alarm(alarm, [_ack()], TODAY)
+    assert (len(unack), len(blocked), len(lapsed)) == (0, 1, 0)
+    # It is out of the COUNT and out of nothing else -- the row is still in hand, with
+    # its entry, for section 1 to print. An acknowledgement, not a suppression.
+    assert blocked[0][0]["case_id"] == "72335259"
+    assert blocked[0][1]["unblocked_when"] == "source_terminated"
+
+
+def test_mutation_one_a_fired_condition_does_not_suppress():
+    """The designed happy path: the source terminates, the pair becomes assertable, and
+    the alarm must go back to demanding the work."""
+    alarm = [_blocked_row(status="terminated")]
+    unack, blocked, lapsed = ca.partition_alarm(alarm, [_ack()], TODAY)
+    assert (len(unack), len(blocked), len(lapsed)) == (0, 0, 1)
+    assert "condition fired" in lapsed[0][2]
+    # And a lapsed row reaches the exit code, which is the whole claim.
+    assert ca.partition_alarm(alarm, [_ack()], TODAY)[2]
+
+
+def test_mutation_two_an_expired_entry_does_not_suppress():
+    """review_by passes with the condition unfired. A blocked row that outlives its
+    reason RESURFACES rather than being filed away."""
+    alarm = [_blocked_row()]
+    expired = _ack(review_by=TODAY - timedelta(days=1))
+    unack, blocked, lapsed = ca.partition_alarm(alarm, [expired], TODAY)
+    assert (len(unack), len(blocked), len(lapsed)) == (0, 0, 1)
+    assert "expired" in lapsed[0][2]
+    # The boundary: review_by == today is NOT past due, matching assert-gates' `<`.
+    assert ca.partition_alarm(alarm, [_ack(review_by=TODAY)], TODAY)[1]
+
+
+def test_mutation_three_a_corroborator_mismatch_does_not_suppress():
+    """THE P0 MUTATION, and the one the review layer's premise would have missed.
+
+    `court`/`docket_number` freeze when a row is un-seeded, so they survive the rewrite
+    that fires section 1. What they do not survive is a RE-SEED under a different
+    spelling. An entry keyed on the old pair would then stop applying silently, because
+    a re-seeded row does not fire anyway -- and if the row is later dropped again the
+    alarm returns with no explanation. Matching on case_id and CHECKING the pair makes
+    that lapse loud instead.
+    """
+    moved = _row("72335259", "2:26-cv-156", "Southern District of West Virginia",
+                 status="pending")
+    unack, blocked, lapsed = ca.partition_alarm([moved], [_ack()], TODAY)
+    assert (len(unack), len(blocked), len(lapsed)) == (0, 0, 1)
+    assert "the row moved" in lapsed[0][2]
+    # Court alone is enough; the pair is checked together, like the seed join itself.
+    court_moved = _blocked_row()
+    court_moved["court"] = "District of West Virginia"
+    assert ca.partition_alarm([court_moved], [_ack()], TODAY)[2]
+
+
+def test_the_corroborator_check_runs_before_the_condition():
+    """Order matters: a moved row whose status also flipped reports that it MOVED, not
+    that the condition fired, because the entry may no longer be about this row at all
+    and 'condition fired' would assert something about a pair nobody has checked."""
+    both = _row("72335259", "2:26-cv-99999", "Southern District of West Virginia",
+                status="terminated")
+    why = ca.ack_lapse(both, _ack(), TODAY)
+    assert "the row moved" in why
+
+
+def test_an_unacknowledged_row_is_untouched_by_the_register():
+    """The register must not reach rows it does not name -- the failure that would make
+    it a blanket silencer rather than a per-row ruling."""
+    other = _row("99999999", "1:26-cv-00001", "District of Nowhere", status="pending")
+    unack, blocked, lapsed = ca.partition_alarm([other], [_ack()], TODAY)
+    assert [r["case_id"] for r in unack] == ["99999999"]
+    assert (blocked, lapsed) == ([], [])
+
+
+def test_an_entry_whose_row_stopped_firing_is_reported_not_counted():
+    """An entry that outlives its row is the same rot the expiry exists for."""
+    assert [a["case_id"] for a in ca.dangling_acks([], [_ack()])] == ["72335259"]
+    assert ca.dangling_acks([_blocked_row()], [_ack()]) == []
+
+
+# --- the loader refuses rather than falling through -------------------------
+
+def _write(tmp_path, body):
+    p = tmp_path / "acks.yaml"
+    p.write_text(body, encoding="utf-8")
+    return p
+
+
+BASE_ENTRY = """- case_id: "72335259"
+  docket_number: "2:26-cv-00156"
+  court: "Southern District of West Virginia"
+  blocked_because: "x"
+  unblocked_when: source_terminated
+  acknowledged_on: 2026-09-18
+  review_by: 2026-11-17
+"""
+
+
+def test_the_live_register_loads_and_carries_the_one_entry():
+    acks = ca.load_acks()
+    assert [a["case_id"] for a in acks] == ["72335259"]
+    a = acks[0]
+    assert a["unblocked_when"] == "source_terminated"
+    assert a["successor"] == "74793201"
+    assert isinstance(a["review_by"], date)
+
+
+def test_an_unrecognised_unblocked_when_is_refused_not_treated_as_never_firing(tmp_path):
+    """THE assert-gates.mjs:93 HAZARD, DESIGNED OUT. That script's header records that a
+    misspelled `recheck_after` would let an expired claim pass. The same slip here would
+    be worse: a value outside the vocabulary would make an entry that can NEVER lapse --
+    a permanent silencer created by a typo. It is a hard refusal instead."""
+    p = _write(tmp_path, BASE_ENTRY.replace("source_terminated", "source_termianted"))
+    with pytest.raises(ValueError, match="closed vocabulary"):
+        ca.load_acks(p)
+
+
+def test_an_unknown_field_is_refused(tmp_path):
+    p = _write(tmp_path, BASE_ENTRY + "  recheck_after: 2026-11-17\n")
+    with pytest.raises(ValueError, match="unknown field"):
+        ca.load_acks(p)
+
+
+def test_a_missing_required_field_is_refused(tmp_path):
+    p = _write(tmp_path, BASE_ENTRY.replace('  review_by: 2026-11-17\n', ""))
+    with pytest.raises(ValueError, match="missing required field"):
+        ca.load_acks(p)
+
+
+def test_a_quoted_date_is_refused(tmp_path):
+    """A string that looks like a date would compare against `today` as a string and
+    the expiry would silently stop working."""
+    p = _write(tmp_path, BASE_ENTRY.replace("review_by: 2026-11-17",
+                                            'review_by: "2026-11-17"'))
+    with pytest.raises(ValueError, match="must be a YAML date"):
+        ca.load_acks(p)
+
+
+def test_a_missing_register_is_empty_rather_than_an_error(tmp_path):
+    """No register is the ordinary state for a repo that has acknowledged nothing."""
+    assert ca.load_acks(tmp_path / "nope.yaml") == []
+
+
 # --- section 1, the reconciliation alarm ------------------------------------
 
 def test_alarm_silent_when_every_unseeded_row_is_linked():
