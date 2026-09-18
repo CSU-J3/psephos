@@ -8398,5 +8398,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/exclusive-senate-dems-demand-watchdog-probe-into-new-dhs-whistleblower-allegations",
     "title": "Exclusive: Senate Dems demand watchdog probe into new DHS whistleblower allegations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 107239,
+    "kind": "item",
+    "occurred_at": "2026-09-18T16:41:56+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/missouri-and-montana-measures-aim-to-protect-direct-democracy",
+    "title": "To Protect Direct Democracy, Two States Mull a New Approach: Name It As a Right"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 107240,
+    "kind": "item",
+    "occurred_at": "2026-09-18T19:06:14+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/lost-found",
+    "title": "Lost & Found"
   }
 ]

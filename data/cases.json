@@ -10167,9 +10167,9 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 174,
+    "entry_count": 175,
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-09-03T00:00:00",
+    "latest_entry_at": "2026-09-18T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -24474,7 +24474,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-17T21:22:41.064934+00:00",
+    "status_checked_at": "2026-09-18T20:55:59.687534+00:00",
     "superseded_by": null,
     "timeline": [
       {
