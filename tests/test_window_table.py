@@ -238,6 +238,87 @@ def test_heartbeat_far_is_unsigned_while_wall_clock_far_is(tmp_path):
     assert wt._hb_sign(signed) == "lower"
 
 
+def _ret(bands, **over):
+    """The live retirement block, overridable. `check_retirement` is pure, so every
+    clause below is exercised without Turso, `gh` or a clock."""
+    import dataclasses
+    base = {"min_samples": 20, "trail_bound": "1m00s"}
+    return dataclasses.replace(bands, retirement={**base, **over})
+
+
+def _samples(n, seconds=3.0):
+    from datetime import timedelta
+    return [{"run_id": str(i), "trail": timedelta(seconds=seconds)} for i in range(n)]
+
+
+def test_the_retirement_condition_is_read_from_the_file_not_typed_here():
+    # The live file carries it, and the two numbers the condition turns on come off
+    # that file rather than out of this module.
+    b = wt.load_bands()
+    assert b.retirement["min_samples"] == 20
+    assert b.retirement["trail_bound"] == "1m00s"
+    # And the edge it would re-sign is STILL unsigned -- the block is a question, not a
+    # switch, and nothing in the tool may flip it.
+    assert b.bounds["wall_clock.far"] == "unsigned"
+
+
+def test_too_few_samples_is_not_yet_rather_than_a_failure():
+    v = wt.check_retirement(_ret(wt.load_bands()), _samples(19))
+    assert (v["n"], v["need"], v["met"]) == (19, 20, False)
+    assert not v["negative"] and not v["over"]
+
+
+def test_the_condition_is_met_at_the_declared_count():
+    v = wt.check_retirement(_ret(wt.load_bands()), _samples(20))
+    assert v["met"] is True
+
+
+def test_one_negative_trail_voids_the_condition_however_large_n_is():
+    # THE CLAUSE THAT IS A REFUSAL AND NOT A TOLERANCE. updatedAt before finished_at
+    # falsifies the premise that updatedAt sits at or after completion, so the argument
+    # for signing collapses rather than narrows -- 500 good samples do not outvote it.
+    from datetime import timedelta
+    bad = _samples(500) + [{"run_id": "x", "trail": timedelta(seconds=-0.001)}]
+    v = wt.check_retirement(_ret(wt.load_bands()), bad)
+    assert v["met"] is False and len(v["negative"]) == 1
+
+
+def test_a_trail_over_the_bound_voids_it_and_is_reported_separately():
+    # Distinct from the negative case: this one says the lag MOVED, which is a real
+    # reading about GitHub rather than a refuted premise, so it counts in its own field.
+    from datetime import timedelta
+    over = _samples(20) + [{"run_id": "x", "trail": timedelta(seconds=61)}]
+    v = wt.check_retirement(_ret(wt.load_bands()), over)
+    assert v["met"] is False and len(v["over"]) == 1 and not v["negative"]
+    # 60s exactly is inside the bound; the clause is "within", not "under".
+    edge = _samples(20) + [{"run_id": "x", "trail": timedelta(seconds=60)}]
+    assert wt.check_retirement(_ret(wt.load_bands()), edge)["met"] is True
+
+
+def test_moving_the_declared_bound_moves_the_verdict_with_no_edit_here():
+    # The mutation that proves the number is read rather than baked in.
+    from datetime import timedelta
+    s = _samples(20) + [{"run_id": "x", "trail": timedelta(seconds=61)}]
+    assert wt.check_retirement(_ret(wt.load_bands()), s)["met"] is False
+    assert wt.check_retirement(_ret(wt.load_bands(), trail_bound="2m00s"), s)["met"] is True
+
+
+def test_an_empty_sample_list_is_never_met():
+    # Guards the degenerate read: `runs` empty, or no row inside the run list's window,
+    # must not present as a satisfied condition on a min_samples of 0.
+    assert wt.check_retirement(_ret(wt.load_bands(), min_samples=0), [])["met"] is False
+
+
+def test_the_trail_formatter_keeps_sub_second_precision():
+    # _fmt TRUNCATES to whole seconds, and on a seconds-scale quantity that is most of
+    # the figure: the first three trails render 0m03s/0m02s/0m02s through it, a range
+    # understating both ends of a true 2.811s-3.607s.
+    from datetime import timedelta
+    assert wt._fmt_trail(timedelta(seconds=3.60744)) == "3.607s"
+    assert wt._fmt(timedelta(seconds=3.60744)) == "0m03s"
+    assert wt._fmt_trail(None) == "-"
+
+
 def test_an_edge_without_provenance_is_refused(tmp_path):
     p = tmp_path / "bands.yaml"
     p.write_text(BANDS_YAML.format(fn="2h00m00s", ff="5h00m00s", cn="5m00s", cf="20m00s",

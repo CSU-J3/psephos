@@ -113,6 +113,10 @@ class Bands:
     # file cannot say -- wall_clock.far, where sampling and the updatedAt lag push
     # opposite ways). Read from the file, never assumed here.
     bounds: dict = field(default_factory=dict)
+    # wall_clock.far's retirement condition, read from the file and never typed here.
+    # It travels with the bands so check_retirement() can be exercised offline against a
+    # fabricated sample list -- the judgment is pure, only the join is not.
+    retirement: dict = field(default_factory=dict)
 
     @property
     def fire(self) -> tuple[timedelta, timedelta]:
@@ -179,11 +183,122 @@ def load_bands(path: Path = BANDS_PATH) -> Bands:
         edge("wall_clock", "near"), edge("wall_clock", "far"),
         {f"{band}.{end}": bound(band, end)
          for band in ("fire", "commit_lag", "wall_clock") for end in ("near", "far")},
+        dict(doc["wall_clock"]["far"].get("retirement") or {}),
     )
     if not (b.fire_near < b.fire_far and b.commit_near < b.commit_far
             and b.wall_near < b.wall_far):
         raise ValueError(f"{path}: a band's near edge is not below its far edge")
     return b
+
+
+# --- wall_clock.far's retirement condition, read rather than remembered ---------------
+#
+# WHY THIS IS IN THIS FILE. `docs/bands.yaml` declares wall_clock.far `unsigned` because
+# the updatedAt lag is an overstatement of unknown size. The `runs` table measures that
+# lag directly -- `updatedAt - finished_at`, where finished_at is written by collect.yml's
+# last step and is therefore at or before true completion -- so the unknown became a
+# bounded quantity the day the heartbeat shipped. The condition for re-signing the edge is
+# declared beside the edge; what lives here is the arithmetic that reads it.
+#
+# NOTHING HERE RE-SIGNS ANYTHING. check_retirement() returns a verdict; `bound` moves only
+# when a person edits bands.yaml. The point is that the condition reports its own state on
+# every invocation instead of waiting for someone to remember it was pending.
+
+
+def _fmt_trail(td) -> str:
+    """Seconds to 3dp. `_fmt` is built for hours and TRUNCATES to whole seconds, which on
+    a seconds-scale quantity is most of the figure: the first three trails are 3.607s,
+    2.811s and 2.995s, which _fmt renders `0m03s`, `0m02s`, `0m02s` -- a range of "2s to
+    3s" against a true 2.811s-3.607s, understating both ends. The figure first written
+    into docs/status.md was the opposite artifact, `round()` giving "4s, 3s, 3s". Neither
+    rendering is wrong about the bound; both are wrong about the samples."""
+    return "-" if td is None else f"{td.total_seconds():.3f}s"
+
+
+def check_retirement(bands: Bands, samples: list[dict]) -> dict:
+    """Pure: the declared condition applied to a sample list. No network, no clock.
+
+    A sample is {"run_id": str, "trail": timedelta}. The three clauses are separate
+    because they fail differently: too few samples is *not yet*, a trail over the bound
+    is *the lag moved*, and a NEGATIVE trail is *the premise is false* -- updatedAt would
+    no longer sit at or after completion, and the argument for signing collapses rather
+    than narrows. One negative sample voids the condition however large n has grown.
+    """
+    r = bands.retirement
+    need = int(r.get("min_samples") or 0)
+    m = DURATION.match(str(r.get("trail_bound") or "").strip())
+    bound = timedelta(hours=int(m["h"] or 0), minutes=int(m["m"]), seconds=int(m["s"])) if m else None
+    trails = [x["trail"] for x in samples]
+    negative = [x for x in samples if x["trail"] < timedelta(0)]
+    over = [x for x in samples if bound is not None and x["trail"] > bound]
+    return {
+        "n": len(samples),
+        "need": need,
+        "bound": bound,
+        "low": min(trails) if trails else None,
+        "high": max(trails) if trails else None,
+        "negative": negative,
+        "over": over,
+        "met": bool(samples) and len(samples) >= need and not negative and not over
+                and bound is not None,
+    }
+
+
+def trail_samples(limit: int = 100) -> tuple[list[dict], str | None]:
+    """Join `runs` (finished_at) against `gh run list` (updatedAt) on the run id.
+
+    Returns (samples, reason_unread). Either source being unavailable is an ORDINARY
+    outcome, not an error: this tool is otherwise offline and is run on machines with no
+    Turso credentials and no `gh`. It degrades to a printed reason rather than a stack.
+
+    SCOPED TO THE BAND'S OWN SAMPLING -- scheduled runs, conclusion success -- because a
+    figure that would re-sign wall_clock.far has to be measured on the same population
+    the edge was measured on. `runs.slot` carries the cron string, or 'dispatch'.
+
+    `encoding="utf-8"` and never `text=True`: on this box `text=True` decodes subprocess
+    output as cp1252, which is the decode defect on this page's falsified list.
+    """
+    import json
+    import subprocess
+
+    try:
+        import config
+        import db
+        config.load_env()
+        conn = db.connect()
+        try:
+            rows = conn.execute(
+                "SELECT run_id, finished_at FROM runs "
+                "WHERE slot != 'dispatch' AND conclusion = 'success'"
+            ).fetchall()
+        finally:
+            conn.close()
+    except Exception as e:                      # noqa: BLE001 -- any failure is "unread"
+        return [], f"no read of `runs` ({type(e).__name__})"
+    if not rows:
+        return [], "`runs` holds no scheduled successes yet"
+
+    try:
+        out = subprocess.run(
+            ["gh", "run", "list", "--workflow=collect.yml", f"--limit={limit}",
+             "--json", "databaseId,updatedAt"],
+            capture_output=True, encoding="utf-8", check=True,
+        ).stdout
+        seen = {str(r["databaseId"]): r["updatedAt"] for r in json.loads(out)}
+    except Exception as e:                      # noqa: BLE001
+        return [], f"no read of the run list ({type(e).__name__})"
+
+    samples = []
+    for run_id, finished in rows:
+        upd = seen.get(str(run_id))
+        if not upd:
+            continue                            # older than the run list's window
+        a = datetime.fromisoformat(str(upd).replace("Z", "+00:00"))
+        b = datetime.fromisoformat(str(finished).replace("Z", "+00:00"))
+        samples.append({"run_id": str(run_id), "trail": a - b})
+    if not samples:
+        return [], "no `runs` row falls inside the run list's window"
+    return samples, None
 
 
 # --- the concurrency thresholds, computed and signed ---------------------------------
@@ -499,6 +614,22 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  {t['threshold']:<12} {t['edge']:<4} fire edge: "
               f"{_fmt(t['low'])} [{t['low_sign'] or 'unsigned'}] to "
               f"{_fmt(t['high'])} [{t['high_sign'] or 'unsigned'}]")
+    # wall_clock.far's retirement condition, reported on every run so the pending
+    # question states its own progress instead of relying on anyone to recall it.
+    if bands.retirement:
+        v = check_retirement(bands, [])
+        samples, why = trail_samples()
+        if why:
+            print(f"wall_clock.far retirement: n>={v['need']} samples, trail within "
+                  f"{_fmt_trail(v['bound'])} -- NOT READ ({why})")
+        else:
+            v = check_retirement(bands, samples)
+            neg = f", {len(v['negative'])} NEGATIVE" if v["negative"] else ""
+            over = f", {len(v['over'])} over bound" if v["over"] else ""
+            print(f"wall_clock.far retirement: {v['n']} of {v['need']} samples, "
+                  f"trail {_fmt_trail(v['low'])} to {_fmt_trail(v['high'])} "
+                  f"(bound {_fmt_trail(v['bound'])}){neg}{over} -- "
+                  f"{'MET, re-sign it by hand' if v['met'] else 'not yet'}")
     problems, c = check(rows, parse_slots(text), bands.landing)
     print(f"rows {c['rows']}, opens {c['opens']}, follow-ons {c['follow_ons']}, "
           f"equal {c['equal']}, follow-ons rebased {c['follow_on_rebased']}, "

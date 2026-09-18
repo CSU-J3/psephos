@@ -123,6 +123,32 @@ wall_clock:  # updatedAt minus startedAt, scheduled runs only
     sampled: 2026-09-07
     first_declared: 2026-09-16
     moved: 2026-09-07
+    # THE CONDITION UNDER WHICH THIS EDGE BECOMES SIGNABLE, written 2026-09-18 beside the
+    # field it would change rather than left loose in docs/status.md. NOTHING IS RE-SIGNED
+    # HERE: `bound` above still reads `unsigned` and stays so until the condition below is
+    # met AND a person edits it. This block is a standing question, not a switch.
+    #
+    # WHAT MADE IT REACHABLE. `updated_at_limit` above is what cannot be signed -- an
+    # overstatement of UNKNOWN SIZE. The `runs` table now gives a SECOND CLOCK on the same
+    # interval: RUN_STARTED_AT, stamped by collect.yml's first step, to finished_at,
+    # written by its last. So `updatedAt - finished_at` MEASURES the lag rather than
+    # reasoning about it, and because finished_at is at or before true completion, that
+    # difference is an upper bound on it. Every scheduled run produces one sample free.
+    retirement:
+      min_samples: 20
+      trail_bound: 1m00s          # observed max 3.607s, so ~17x headroom: this catches a regime change in when GitHub stamps updatedAt, not noise
+      condition: "n >= 20 joined samples, every trail inside [0s, trail_bound], and no sample where updatedAt PRECEDES finished_at"
+      then: "re-sign this edge `bound: lower`. Sampling is then the only cause left and it understates a maximum, so the file's last unsigned figure retires -- and heartbeat_far signs with it, computed by tools/window_table.py's _hb_sign from these bounds with no edit to that file"
+      # NOT A TOLERANCE, A REFUSAL. A sample with updatedAt BEFORE finished_at would
+      # falsify the premise that updatedAt sits at or after completion; the lag would stop
+      # being an overstatement at all, and the argument for signing collapses rather than
+      # narrows. One such sample voids the condition however large n has grown.
+      zero_floor: "updatedAt < finished_at refutes the premise; it does not merely widen the range"
+      observed:
+        n: 3
+        trail: "2.811s to 3.607s"   # sub-second on purpose: whole-second renderings of these three read 2s-3s truncated or 3s-4s rounded, and neither is the measurement
+        by: "runs 35308445669, 35338247911, 35368215058 -- the first three heartbeats, all 2026-09-18"
+      checked_by: "python -m tools.window_table, which joins `runs` against `gh run list` and prints n, the trail range and whether the condition is met, on every invocation"
 
 # THE MIDDLE OF A RANGE IS DELIBERATELY UNPRICED, and this line exists so a later
 # session does not propose it again. A median fire lag would be the obvious third
