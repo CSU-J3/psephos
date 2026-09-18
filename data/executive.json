@@ -1292,6 +1292,16 @@
   {
     "channel": "executive",
     "grade": "A1",
+    "id": 106707,
+    "kind": "item",
+    "occurred_at": "2026-09-11T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/18/2026-19251/presidential-determination-on-major-drug-transit-or-major-illicit-drug-producing-countries-for",
+    "title": "Presidential Determination on Major Drug Transit or Major Illicit Drug Producing Countries for Fiscal Year 2027"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
     "id": 103986,
     "kind": "item",
     "occurred_at": "2026-09-15T00:00:00",
