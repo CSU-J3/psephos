@@ -8378,5 +8378,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/virginia-early-voting-starts-today-heres-what-were-watching",
     "title": "Virginia early voting starts today. Here’s what we’re watching."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 107024,
+    "kind": "item",
+    "occurred_at": "2026-09-18T14:31:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voting-groups-sue-to-prevent-trump-admin-from-sending-federal-agents-to-intimidate-voters",
+    "title": "Civil rights groups sue to prevent Trump admin from sending federal agents to intimidate voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 107023,
+    "kind": "item",
+    "occurred_at": "2026-09-18T14:52:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/exclusive-senate-dems-demand-watchdog-probe-into-new-dhs-whistleblower-allegations",
+    "title": "Exclusive: Senate Dems demand watchdog probe into new DHS whistleblower allegations"
   }
 ]

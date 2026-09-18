@@ -9477,7 +9477,7 @@
     "date_terminated": null,
     "defendant": "Hobbs",
     "docket_number": "3:25-cv-06078",
-    "entry_count": 128,
+    "entry_count": 129,
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
@@ -10146,6 +10146,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/93/united-states-v-hobbs/",
         "title": "United States v. Washington: NOTICE OF FILING OF OFFICIAL TRANSCRIPT of Motion Hearing held on 8/4/2026 before Judge Kymberly K. Evanson.Parties have seven (7) calendar days to file with the court a Notice of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 106855,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/95/united-states-v-hobbs/",
+        "title": "United States v. Washington: NOTICE of Supplemental Authority re 53 MOTION to Dismiss for Failure to State a Claim and Opposition to Plaintiff's Motion to Compel by Defendant Steve Hobbs (Attachments: # 1 Exhi"
       }
     ]
   },
