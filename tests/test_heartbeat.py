@@ -94,29 +94,58 @@ def test_items_written_counts_only_this_run(live):
 def test_a_Z_suffixed_start_counts_the_same_as_an_offset_one(live):
     """THE TRAP THE NORMALIZER EXISTS FOR, asserted rather than described.
 
-    The count is a STRING comparison. `common.now_iso()` renders `+00:00`; GitHub renders
-    `Z`; and lexically "Z" (0x5A) sorts above "." (0x2E), so an unnormalized `...:32Z`
-    compares GREATER than `...:32.123456+00:00` and silently drops every item written in
-    the run's first second. Measured on this fixture: the raw comparison reads 0 where
-    the normalized one reads 1.
+    The count is a STRING comparison. `common.now_iso()` renders `+00:00`; GitHub
+    renders `Z`; and lexically "Z" (0x5A) sorts above "." (0x2E), so an unnormalized
+    `...:32Z` compares GREATER than `...:32.123456+00:00` and silently drops every item
+    written in the run's first second.
+
+    BOTH STAMPS ARE LITERALS, AND THAT IS THE FIX RATHER THAN THE STYLE. This test was
+    written against `common.now_iso()` twice -- `start`, then the item -- with the Z
+    form built by replacing the offset on the first. That construction reproduces the
+    trap only when the two calls land in the SAME MICROSECOND, because the Z it builds
+    still carries `.123456` and the comparison only reaches the `Z`/`+` position when
+    every digit before it matches. Windows' clock granularity is ~15.6ms, so two
+    consecutive calls are identical 199 times in 200 and the trap fired on every local
+    run; Linux resolves to the microsecond, the stamps differ at the fractional digits,
+    and the raw comparison read 1. It failed on ci.yml's runner, green on the author's
+    machine, from 2026-09-17 until this commit.
+
+    The literals also reproduce the RIGHT shape. `collect.yml` sets RUN_STARTED_AT from
+    `date -u +%Y-%m-%dT%H:%M:%SZ` -- truncated to the second, no fraction at all -- so
+    the string the normalizer actually receives is `...:32Z`, never `...:32.123456Z`.
+    Against a second-truncated Z the comparison reaches the `Z` on the very next
+    character, which is why this now reads 0 on any clock.
     """
     wh = _writer()
     live.execute(
         "INSERT INTO sources (id, name, channel, kind, admiralty_source, admiralty_info) "
         "VALUES ('s','s','news','rss','A','1')"
     )
-    start = common.now_iso()
+    # The same instant in the two renderings: GitHub's, then an item stamped inside
+    # that run's first second.
+    z = "2026-09-18T19:20:32Z"
     live.execute(
         "INSERT INTO items (channel, source_id, source_url, title, fetched_at, "
         "admiralty_source, admiralty_info, content_hash) VALUES (?,?,?,?,?,?,?,?)",
-        ("news", "s", "u", "t", common.now_iso(), "A", "1", "h"),
+        ("news", "s", "u", "t", "2026-09-18T19:20:32.500000+00:00", "A", "1", "h"),
     )
-    z = start.replace("+00:00", "Z")
     raw = live.execute(
         "SELECT COUNT(*) FROM items WHERE fetched_at >= ?", (z,)
     ).fetchone()[0]
     assert raw == 0, "the trap has stopped reproducing; the normalizer's reason is stale"
     assert wh.build_row(live, "1", "s", z, "success")["items_written"] == 1
+
+
+def test_the_workflow_renders_run_started_at_truncated_to_the_second(live):
+    """The literal above is only the right literal while collect.yml renders that shape.
+
+    The test beside this one pins a trap against `...:32Z`. If the workflow ever gained
+    a fractional RUN_STARTED_AT the trap would still be real but this would no longer be
+    the string producing it, and the test would go on passing against a shape nothing
+    sends. Pinning the format string is what keeps the two joined.
+    """
+    text = (REPO / ".github" / "workflows" / "collect.yml").read_text(encoding="utf-8")
+    assert "RUN_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" in text
 
 
 def test_a_rerun_replaces_its_row_rather_than_adding_one(live):
