@@ -45,39 +45,6 @@ jobs:
       - name: pytest
         run: python -m pytest -q
 
-      # TEMPORARY, ADDED AND REMOVED IN ONE SESSION (2026-09-18). Delete with the row
-      # it reads; nothing else in this workflow takes a secret and this step is not a
-      # precedent for one doing so.
-      #
-      # THE QUESTION. `runs` was created by db.init_db() under collect.yml's WRITE
-      # token on 2026-09-18, after TURSO_READ_TOKEN was granted. audit.yml reads the
-      # database on that read-only token, so if a future audit section joins `runs` --
-      # the bootstrap alarm's natural neighbour -- it does so on a grant issued before
-      # the table existed. Turso tokens are database-scoped rather than table-scoped,
-      # so the expected answer is yes; this asks rather than reasons, because the last
-      # thing assumed about this token (that least privilege "cost no code change")
-      # was false and took a dead scheduled run to find out.
-      #
-      # A FAILED SELECT IS A FINDING, NOT A BUG TO FIX HERE. If this cannot read, the
-      # answer is a grant decision, not a code change, and it stops at reporting.
-      - name: audit token can read `runs` (temporary)
-        env:
-          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
-          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
-        run: |
-          python - <<'PY'
-          import config, db
-          config.load_env()
-          conn = db.connect()
-          row = conn.execute(
-              "SELECT run_id, slot, finished_at, items_written, conclusion "
-              "FROM runs ORDER BY finished_at DESC LIMIT 1"
-          ).fetchone()
-          conn.close()
-          print("read-only token read `runs`:", row)
-          assert row is not None, "runs is empty: this step was run too early"
-          PY
-
   web:
     runs-on: ubuntu-latest
     timeout-minutes: 10
