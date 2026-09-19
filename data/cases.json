@@ -7537,7 +7537,7 @@
     "date_terminated": null,
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 110,
+    "entry_count": 111,
     "filed_at": "2025-12-01T00:00:00",
     "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
@@ -8146,6 +8146,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/93/united-states-v-hanzas/",
         "title": "United States v. Vermont: ORDER granting 37 Motion to Dismiss for Failure to State a Claim; granting 39 Motion to Dismiss for Failure to State a Claim; granting 44 Motion to Dismiss; denying 2 MOTION to Com"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 107700,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/93/united-states-v-hanzas/",
+        "title": "United States v. Vermont: ORDER granting  37  Motion to Dismiss for Failure to State a Claim; granting  39  Motion to Dismiss for Failure to State a Claim; granting  44   Motion to Dismiss; denying  2   MOT"
       }
     ]
   },

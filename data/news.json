@@ -8428,5 +8428,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/top-doj-official-threatens-to-fire-prosecutors-who-refuse-to-pursue-voter-fraud-cases",
     "title": "Report: Top DOJ official threatens to fire prosecutors who refuse to pursue voter fraud cases"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 107870,
+    "kind": "item",
+    "occurred_at": "2026-09-19T15:16:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-lawsuit-prompts-south-dakota-to-fix-confusing-proof-of-citizenship-system",
+    "title": "Voting rights lawsuit prompts South Dakota to fix ‘confusing’ proof-of-citizenship system"
   }
 ]
