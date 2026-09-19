@@ -8438,5 +8438,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-lawsuit-prompts-south-dakota-to-fix-confusing-proof-of-citizenship-system",
     "title": "Voting rights lawsuit prompts South Dakota to fix ‘confusing’ proof-of-citizenship system"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 108080,
+    "kind": "item",
+    "occurred_at": "2026-09-19T19:40:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-issues-overseas-ballots-as-appeals-court-mulls-changing-states-congressional-map-yet-again",
+    "title": "Missouri issues overseas ballots as appeals court mulls changing state’s congressional map yet again"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 108079,
+    "kind": "item",
+    "occurred_at": "2026-09-19T20:18:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-enacts-new-election-safeguards-against-potential-trump-interference-in-midterms",
+    "title": "California enacts new election safeguards against potential Trump interference in midterms"
   }
 ]
