@@ -8418,5 +8418,15 @@
     "source_id": "states-united",
     "source_url": "https://statesunited.org/lost-found",
     "title": "Lost & Found"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 107453,
+    "kind": "item",
+    "occurred_at": "2026-09-18T22:20:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/top-doj-official-threatens-to-fire-prosecutors-who-refuse-to-pursue-voter-fraud-cases",
+    "title": "Report: Top DOJ official threatens to fire prosecutors who refuse to pursue voter fraud cases"
   }
 ]
