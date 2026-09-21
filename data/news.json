@@ -8498,5 +8498,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/09/21/trump-supreme-court-mail-ballot-midterm-election",
     "title": "Election officials played key role in Supreme Court mail ballot decision"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109667,
+    "kind": "item",
+    "occurred_at": "2026-09-21T14:55:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/fewer-democrats-say-they-will-vote-by-mail-after-trumps-failed-assault",
+    "title": "Fewer Democrats say they will vote by mail after Trump’s failed assault"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109666,
+    "kind": "item",
+    "occurred_at": "2026-09-21T15:29:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-ignored-court-by-continuing-work-on-voter-citizenship-lists-without-notice-democrats-allege",
+    "title": "DHS ignored court by continuing work on voter citizenship lists without notice, Democrats allege"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109665,
+    "kind": "item",
+    "occurred_at": "2026-09-21T17:17:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/senate-dems-call-for-new-california-probe-into-new-dhs-whistleblower-allegations",
+    "title": "Senate Dems call for California probe into new DHS whistleblower allegations"
   }
 ]

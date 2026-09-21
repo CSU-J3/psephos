@@ -23647,9 +23647,9 @@
     "date_terminated": null,
     "defendant": "Michael Adams",
     "docket_number": "26-5657",
-    "entry_count": 18,
+    "entry_count": 19,
     "filed_at": "2026-07-24T00:00:00",
-    "latest_entry_at": "2026-08-11T00:00:00",
+    "latest_entry_at": "2026-09-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
@@ -23686,6 +23686,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73674243/23/united-states-v-michael-adams/",
         "title": "United States v. Kentucky: TRANSCRIPT ORDER filed - transcript is unnecessary for appeal purposes. Filed by Mr. Andrew Braniff for USA. Certificate of Service: 08/06/2026. [26-5657] (AB) [Entered: 08/06/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 109478,
+        "kind": "item",
+        "occurred_at": "2026-09-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73674243/32/united-states-v-michael-adams/",
+        "title": "United States v. Kentucky: court order filed"
       }
     ]
   },
@@ -23917,9 +23927,9 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 57,
+    "entry_count": 58,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-09-10T00:00:00",
+    "latest_entry_at": "2026-09-18T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -24006,6 +24016,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/56/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION, for removal from XAC, or alternatively, for extension of time, on behalf of Appellee Stephanie Thomas, FILED. Service date 09/08/2026 by ACMS. [Entered: 09/08/2026 03:13 PM"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 109461,
+        "kind": "item",
+        "occurred_at": "2026-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/58/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: OPPOSITION, to Motion for___relief, at docket entry 56, on behalf of Appellant United States of America, FILED. Service date 09/18/2026 by ACMS. [Entered: 09/18/2026 05:31 PM]"
       }
     ]
   },
@@ -24277,9 +24297,9 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 85,
+    "entry_count": 87,
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-09-17T00:00:00",
+    "latest_entry_at": "2026-09-18T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -24396,6 +24416,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74687843/00805613388/united-states-v-steve-simon/",
         "title": "United States v. Minnesota: BRIEF FILED - APPELLEE BRIEF filed by NAACP and Cynthia Wilson, w/service 09/17/2026, Length: 12,727 words 10 COPIES OF PAPER BRIEFS (WITHOUT THE APPELLATE PDF FOOTER) FROM Nationa"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 109484,
+        "kind": "item",
+        "occurred_at": "2026-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74687843/00805614509/united-states-v-steve-simon/",
+        "title": "United States v. Minnesota: REPLY brief of United States of America submitted for review. The time for filing the subsequent brief (if any) does not begin to run until the brief has been approved and filed. T"
       }
     ]
   },
@@ -24514,7 +24544,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-20T20:50:07.695740+00:00",
+    "status_checked_at": "2026-09-21T18:16:06.908648+00:00",
     "superseded_by": null,
     "timeline": [
       {
