@@ -2181,6 +2181,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 109922,
+    "kind": "item",
+    "occurred_at": "2026-06-25T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQYnJpOUN3VUNtRjVPMHZCLWc1SUc0ZllwSktwUjR0N0M2UE5jN0FMNjdiTDJUSktQQm95QXhOMEtLaXhOdmdYSlRKN2k5ZmlPLW0tMEx2bnVfV3lzY0pUTGw1bHI3anQwWHZONmZfZTBwRGZ3RlMtVXZfVnF5SjBpVzN6XzR3ZS0teUtpRmRlUndaZF84Z0E?oc=5",
+    "title": "Judge blocks Trump order that would have let USPS refuse to deliver mail ballots - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 237,
     "kind": "item",
@@ -8528,5 +8538,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/senate-dems-call-for-new-california-probe-into-new-dhs-whistleblower-allegations",
     "title": "Senate Dems call for California probe into new DHS whistleblower allegations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109920,
+    "kind": "item",
+    "occurred_at": "2026-09-21T19:30:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/how-rogue-counties-could-help-trump-and-throw-the-midterms-into-chaos-after-election-day",
+    "title": "How rogue counties could help Trump and throw the midterms into chaos after Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109919,
+    "kind": "item",
+    "occurred_at": "2026-09-21T21:01:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ban-ice-from-polls-now-because-trump-admin-is-already-violating-law-and-intimidating-voters-civil-rights-groups-argue",
+    "title": "Ban ICE from polls now because Trump admin is already violating law and intimidating voters, civil rights groups argue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109918,
+    "kind": "item",
+    "occurred_at": "2026-09-21T21:26:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-created-a-law-enforcement-voter-integrity-checklist-new-filing-reveals-dems-want-to-see-it",
+    "title": "DHS created a ‘law enforcement voter integrity’ checklist, new filing reveals. Dems want to see it"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109917,
+    "kind": "item",
+    "occurred_at": "2026-09-21T21:38:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-again-ordered-to-use-gerrymandered-map-supreme-court-likely-to-decide",
+    "title": "Missouri again ordered to use gerrymandered map for midterms — Supreme Court likely to decide"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109916,
+    "kind": "item",
+    "occurred_at": "2026-09-21T21:38:22+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/21/16-charged-noncitizen-voting-michigan-wisconsin-texas-georgia",
+    "title": "Feds charge 16 people across the U.S. with noncitizen voting"
   }
 ]
