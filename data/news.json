@@ -8488,5 +8488,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/missouri-drops-gop-led-bid-to-rig-elections-by-excluding-undocumented-from-census-count",
     "title": "Missouri drops GOP-led bid to rig elections by excluding undocumented from census count"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 109456,
+    "kind": "item",
+    "occurred_at": "2026-09-21T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/21/trump-supreme-court-mail-ballot-midterm-election",
+    "title": "Election officials played key role in Supreme Court mail ballot decision"
   }
 ]
