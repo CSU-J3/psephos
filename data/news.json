@@ -8588,5 +8588,55 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/09/21/16-charged-noncitizen-voting-michigan-wisconsin-texas-georgia",
     "title": "Feds charge 16 people across the U.S. with noncitizen voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110572,
+    "kind": "item",
+    "occurred_at": "2026-09-22T12:54:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-referendum-backers-ask-8th-circuit-to-pause-ruling-requiring-gop-gerrymander-for-midterms",
+    "title": "Missouri referendum backers ask 8th Circuit to pause ruling requiring GOP gerrymander for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110571,
+    "kind": "item",
+    "occurred_at": "2026-09-22T14:23:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/delaware-absentee-ballot-law-greenlit-for-midterms",
+    "title": "Delaware absentee ballot law greenlit for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110573,
+    "kind": "item",
+    "occurred_at": "2026-09-22T15:05:11+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/frederick-county-immigration-enforcement-sheriff-chuck-jenkins",
+    "title": "“We’re Afraid on a Daily Basis”: How a Maryland Sheriff Targeted Immigrants Long Before ICE Raids Spiked"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110570,
+    "kind": "item",
+    "occurred_at": "2026-09-22T16:42:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-close-to-recruiting-1000-election-monitors-for-midterms-harmeet-dhillon-says",
+    "title": "DOJ close to recruiting 1,000 election monitors for midterms, Harmeet Dhillon says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110569,
+    "kind": "item",
+    "occurred_at": "2026-09-22T16:50:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/washington-state-hands-trump-doj-its-25th-straight-voter-roll-loss",
+    "title": "Washington state hands Trump DOJ its 25th straight voter roll loss"
   }
 ]

@@ -7550,6 +7550,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 110370,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
+        "title": "United States v. Vermont — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 8422,
         "kind": "item",
         "occurred_at": "2025-12-01T00:00:00",
@@ -9487,9 +9497,9 @@
     "date_terminated": null,
     "defendant": "Hobbs",
     "docket_number": "3:25-cv-06078",
-    "entry_count": 129,
+    "entry_count": 131,
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-09-17T00:00:00",
+    "latest_entry_at": "2026-09-22T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
     "state": "Washington",
@@ -10166,6 +10176,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/95/united-states-v-hobbs/",
         "title": "United States v. Washington: NOTICE of Supplemental Authority re 53 MOTION to Dismiss for Failure to State a Claim and Opposition to Plaintiff's Motion to Compel by Defendant Steve Hobbs (Attachments: # 1 Exhi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 110400,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/97/united-states-v-hobbs/",
+        "title": "United States v. Washington: JUDGMENT BY COURT. The Court GRANTS Defendants' motions to dismiss with prejudice and DENIES AS MOOT Plaintiff's motion to compel. (APH) (Entered: 09/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 110401,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/96/united-states-v-hobbs/",
+        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO DISMISS. The Court GRANTS the motions to dismiss (Dkt. Nos. 53, 62, 63 ) and DENIES AS MOOT the motion to compel (Dkt. No. 29 ). Signed by District Judge "
       }
     ]
   },
@@ -22517,7 +22547,7 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 103,
+    "entry_count": 107,
     "filed_at": "2026-06-15T00:00:00",
     "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "United States",
@@ -23670,6 +23700,16 @@
       {
         "channel": "litigation",
         "grade": "B2",
+        "id": 110353,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
+        "title": "United States v. Kentucky — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
         "id": 62339,
         "kind": "item",
         "occurred_at": "2026-07-24T00:00:00",
@@ -23731,6 +23771,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 87894,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
+        "title": "United States v. New Mexico — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 110363,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -24297,9 +24347,9 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 87,
+    "entry_count": 95,
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-09-18T00:00:00",
+    "latest_entry_at": "2026-09-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -24351,6 +24401,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 103724,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
+        "title": "United States v. Minnesota — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 110358,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -24426,6 +24486,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74687843/00805614509/united-states-v-steve-simon/",
         "title": "United States v. Minnesota: REPLY brief of United States of America submitted for review. The time for filing the subsequent brief (if any) does not begin to run until the brief has been approved and filed. T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 110359,
+        "kind": "item",
+        "occurred_at": "2026-09-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74687843/00805615323/united-states-v-steve-simon/",
+        "title": "United States v. Minnesota: BRIEF FILED - APPELLANT REPLY BRIEF filed by United States of America. w/service 09/21/2026, Length: 6,411 words 10 COPIES OF PAPER BRIEFS (WITHOUT THE APPELLATE PDF FOOTER) FROM U"
       }
     ]
   },
@@ -24544,7 +24614,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-21T18:16:06.908648+00:00",
+    "status_checked_at": "2026-09-22T17:02:00.311547+00:00",
     "superseded_by": null,
     "timeline": [
       {
