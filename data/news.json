@@ -8638,5 +8638,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/washington-state-hands-trump-doj-its-25th-straight-voter-roll-loss",
     "title": "Washington state hands Trump DOJ its 25th straight voter roll loss"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110806,
+    "kind": "item",
+    "occurred_at": "2026-09-22T17:41:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-mail-ballot-restrictions-will-cause-arbitrary-disenfranchisement-new-lawsuit-warns",
+    "title": "North Carolina mail ballot restrictions will cause ‘arbitrary disenfranchisement,’ new lawsuit warns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110805,
+    "kind": "item",
+    "occurred_at": "2026-09-22T18:18:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hypocritical-rnc-pushes-mail-voting-for-its-supporters-while-attacking-it-in-court",
+    "title": "‘Hypocritical’: RNC pushes mail voting for its supporters while attacking it in court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110804,
+    "kind": "item",
+    "occurred_at": "2026-09-22T18:24:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-election-workers-warned-switching-maps-this-late-is-practically-impossible-but-the-8th-circuit-ordered-it-anyway",
+    "title": "Missouri election workers warned switching maps this late is ‘practically impossible’ but the 8th Circuit ordered it anyway"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110803,
+    "kind": "item",
+    "occurred_at": "2026-09-22T19:08:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/exclusive-over-half-a-million-voters-registered-in-a-single-day-last-week",
+    "title": "Exclusive: Over half a million voters registered in a single day last week"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110802,
+    "kind": "item",
+    "occurred_at": "2026-09-22T20:41:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/is-doj-laying-the-groundwork-to-expand-the-powers-of-its-1000-election-monitors",
+    "title": "Is DOJ laying the groundwork to expand the powers of its 1,000 election monitors?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 110801,
+    "kind": "item",
+    "occurred_at": "2026-09-22T20:56:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-seizes-on-utah-ballot-dumping-case-to-attack-usps-court-rulings-push-trumps-anti-voting-agenda",
+    "title": "DOJ seizes on Utah ballot dumping case to attack USPS court rulings, push Trump’s anti-voting agenda"
   }
 ]
