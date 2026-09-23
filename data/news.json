@@ -8698,5 +8698,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-seizes-on-utah-ballot-dumping-case-to-attack-usps-court-rulings-push-trumps-anti-voting-agenda",
     "title": "DOJ seizes on Utah ballot dumping case to attack USPS court rulings, push Trump’s anti-voting agenda"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111024,
+    "kind": "item",
+    "occurred_at": "2026-09-22T22:50:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-sues-new-jersey-for-voter-records-again-after-earlier-case-was-tossed",
+    "title": "RNC sues New Jersey for voter records again after earlier case was tossed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111022,
+    "kind": "item",
+    "occurred_at": "2026-09-22T23:32:49+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/09/22/voter-registration-applications-unprocessed-dps-error",
+    "title": "Unknown number of Texas voter registrations went unprocessed due to DPS error"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111023,
+    "kind": "item",
+    "occurred_at": "2026-09-23T04:01:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/majority-of-americans-concerned-democracy-is-in-trouble-new-poll-shows",
+    "title": "Majority of Americans concerned democracy is in trouble, new poll shows"
   }
 ]

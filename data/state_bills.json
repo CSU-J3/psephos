@@ -45452,9 +45452,9 @@
   {
     "bill_number": "HJRW",
     "is_vehicle": false,
-    "last_action": "Joint Resolution Electronically Reproduced 06/16/2026",
-    "last_action_at": "2026-06-17T00:00:00",
-    "session": null,
+    "last_action": "Referred To Second Reading",
+    "last_action_at": "2026-09-22T00:00:00",
+    "session": "103rd Legislature",
     "state": "MI",
     "state_bill_id": "2153946",
     "status": "1",
@@ -45498,6 +45498,26 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/MI/bill/HJRW/2025",
         "title": "MI HJRW: Joint Resolution Electronically Reproduced 06/16/2026"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 111035,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HJRW/2025",
+        "title": "MI HJRW: Reported With Recommendation Without Amendment"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 111036,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HJRW/2025",
+        "title": "MI HJRW: Referred To Second Reading"
       }
     ],
     "title": "Elections: candidates; eligibility of an independent citizens redistricting commissioner to run for office; modify. Amends sec. 6, art. IV of the state constitution.",
