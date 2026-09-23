@@ -7537,9 +7537,9 @@
     "date_terminated": null,
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 111,
+    "entry_count": 112,
     "filed_at": "2025-12-01T00:00:00",
-    "latest_entry_at": "2026-09-17T00:00:00",
+    "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
@@ -8166,6 +8166,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/93/united-states-v-hanzas/",
         "title": "United States v. Vermont: ORDER granting  37  Motion to Dismiss for Failure to State a Claim; granting  39  Motion to Dismiss for Failure to State a Claim; granting  44   Motion to Dismiss; denying  2   MOT"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 111637,
+        "kind": "item",
+        "occurred_at": "2026-09-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/94/united-states-v-hanzas/",
+        "title": "United States v. Vermont: JUDGMENT - case is is DISMISSED pursuant to 93 Order. Signed by Deputy Clerk on 9/23/2026. (Attachments: # 1 Notice to Litigants (appeal period expires 11/23/2026)) (kp) (Entered: "
       }
     ]
   },
@@ -9511,6 +9521,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 98740,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
+        "title": "United States v. Washington — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 111639,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -23157,7 +23177,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 84,
+    "entry_count": 85,
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",
@@ -24067,9 +24087,9 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 61,
+    "entry_count": 62,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-09-22T00:00:00",
+    "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -24176,6 +24196,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/58/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: OPPOSITION, to Motion for removal from XAC, or alternatively, for extension of time, at docket entry 56, on behalf of Appellant United States of America, FILED. Service date 09/18/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 111537,
+        "kind": "item",
+        "occurred_at": "2026-09-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/61/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION ORDER, denying motion for removal from the XAC, granting a two week extension until 11/12/206, to file Appellee's brief at docket entry 56, on behalf of Appellee Stephanie T"
       }
     ]
   },
@@ -24411,6 +24441,16 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 104182,
+        "kind": "item",
+        "occurred_at": null,
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
+        "title": "United States v. New Jersey — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 111590,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",

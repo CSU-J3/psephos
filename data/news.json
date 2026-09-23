@@ -8768,5 +8768,75 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-delay-tactics-aim-to-advance-trumps-voter-suppression-schemes",
     "title": "DOJ delay tactics aim to advance Trump’s voter suppression schemes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111813,
+    "kind": "item",
+    "occurred_at": "2026-09-23T17:36:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-republicans-make-final-plea-to-supreme-court-to-revive-gerrymandered-map",
+    "title": "Missouri Republicans make final plea to Supreme Court to revive gerrymandered map"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111812,
+    "kind": "item",
+    "occurred_at": "2026-09-23T17:42:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/exclusive-eac-commissioner-communicated-with-cleta-mitchells-group-on-proof-of-citizenship-emails-show",
+    "title": "Exclusive: EAC commissioner communicated with Cleta Mitchell’s group on proof of citizenship, emails show"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111808,
+    "kind": "item",
+    "occurred_at": "2026-09-23T20:09:12+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/09/23/dps-error-backlogged-voter-registration-applications-county-election-officials",
+    "title": "Texas counties are receiving tens of thousands of unprocessed voter registration applications due to state error"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111811,
+    "kind": "item",
+    "occurred_at": "2026-09-23T20:18:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-wants-to-expand-purcell-giving-state-lawmakers-nearly-unchecked-power-over-elections",
+    "title": "In Missouri gerrymander fight, GOP wants to vastly expand Purcell — giving state lawmakers nearly unchecked power over elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111810,
+    "kind": "item",
+    "occurred_at": "2026-09-23T20:20:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/top-election-officials-prepare-to-prevent-and-prosecute-election-interference",
+    "title": "Top election officials prepare to prevent and prosecute election interference"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111809,
+    "kind": "item",
+    "occurred_at": "2026-09-23T20:35:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/scope-of-republicans-missouri-gerrymander-revealed-in-latest-briefs-to-supreme-court",
+    "title": "Scope of Republicans’ Missouri gerrymander revealed in latest briefs to Supreme Court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111814,
+    "kind": "item",
+    "occurred_at": "2026-09-23T21:11:03+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/announces-four-new-members-of-bipartisan-advisory-board",
+    "title": "States United Democracy Center Announces Four New Members of Bipartisan Advisory Board"
   }
 ]
