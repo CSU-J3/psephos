@@ -8728,5 +8728,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/majority-of-americans-concerned-democracy-is-in-trouble-new-poll-shows",
     "title": "Majority of Americans concerned democracy is in trouble, new poll shows"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111528,
+    "kind": "item",
+    "occurred_at": "2026-09-23T12:07:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-redistricting-fight-returns-to-u-s-supreme-court-after-8th-circuit-orders-gop-gerrymander-for-midterms",
+    "title": "Missouri redistricting fight returns to U.S. Supreme Court after 8th Circuit orders GOP gerrymander for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111527,
+    "kind": "item",
+    "occurred_at": "2026-09-23T15:46:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voters-mostly-republicans-are-losing-trust-in-usps-after-trumps-assault-on-mail-voting",
+    "title": "Voters, mostly Republicans, are losing trust in USPS after Trump’s assault on mail voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111526,
+    "kind": "item",
+    "occurred_at": "2026-09-23T16:00:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-will-use-passport-date-for-voter-citizenship-checks-court-filing-reveals",
+    "title": "Trump administration will use passport data for voter citizenship checks, court filing reveals"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 111525,
+    "kind": "item",
+    "occurred_at": "2026-09-23T16:43:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-delay-tactics-aim-to-advance-trumps-voter-suppression-schemes",
+    "title": "DOJ delay tactics aim to advance Trump’s voter suppression schemes"
   }
 ]
