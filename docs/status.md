@@ -101,6 +101,7 @@ One over-count is accepted and documented: a commit that lands but whose respons
    - **Mutation-checked red twice:** a footer hidden below `sm` failed only the six 390px footer-link visibility checks; a footer removed failed twelve count checks.
    - **Against the real build:** 38 PASS, with the lane's other three checks unchanged at 8, 33 and 77.
    - **OWED: the first SCHEDULED `dom-checks` run on a head carrying `1baa4e4`,** read for `assert-attribution` exit 0 with 38 PASS. That is the rule this lane has always been held to: a merge is not a run and a dispatch is not a schedule. **Record that run's id here when it lands;** the check counts as proven only then. The earliest slot is 03:17Z on 2026-09-25, landing hours later on this lane's observed lag.
+   - **A DISPATCH RAN FIRST, AND IT DOES NOT CLOSE THE LINE ABOVE.** Run `36045020427`, event `workflow_dispatch`, head `553b8cc`, started 2026-09-24T18:59:10Z. It went green: every step `success`, `assert-attribution` 38 PASS / 0 FAIL at 1280 and 390px on Linux, and the issue step skipped. It was spent under this lane's own rule, which holds that a dispatch exercises the setup a day earlier and cannot prove the schedule. **It is not the run to record in the line above.**
 5. **The first cap-signal sighting, whenever it comes.** Record the body verbatim with its run id, and correct `names_allowance_limit` against it.
 
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
