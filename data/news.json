@@ -8868,5 +8868,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/democrats-sue-trump-admin-to-keep-armed-agents-from-polls-during-midterms",
     "title": "Democrats sue Trump admin to keep armed agents from polls during midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112456,
+    "kind": "item",
+    "occurred_at": "2026-09-24T15:55:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pennsylvania-starts-voting-under-federal-scrutiny-heres-what-were-watching",
+    "title": "Pennsylvania starts voting under federal scrutiny. Here’s what we’re watching"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112455,
+    "kind": "item",
+    "occurred_at": "2026-09-24T16:03:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-republicans-dragged-out-the-battle-over-their-gerrymander-now-theyre-trying-to-blame-the-states-top-court",
+    "title": "Missouri Republicans dragged out the battle over their gerrymander. Now they’re trying to blame the state’s top court"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112454,
+    "kind": "item",
+    "occurred_at": "2026-09-24T16:36:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/24/midterm-2026-election-preparation-federal-interference",
+    "title": "Across the country, election officials are preparing for the possibility of federal intervention"
   }
 ]
