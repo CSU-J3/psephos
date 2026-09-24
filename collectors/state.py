@@ -42,7 +42,12 @@ import db
 
 SOURCE_ID = "legiscan"
 CHANNEL = "state"
-THROTTLE = 0.3  # courteous spacing; LegiScan caps by monthly volume, not a strict rate
+# ~1.6 req/s ceiling before latency, under the ~2 req/s sliding window LegiScan
+# enforces from 2026-10-01. 0.3 targeted ~3.3 req/s, over the window on a fast
+# upstream day. A window 429 still takes common._get's retry path, which is right:
+# the window moves. Every retry is a query against the monthly allowance, which is
+# why this spacing is set to stay under the window rather than lean on the retry.
+THROTTLE = 0.6
 
 
 def register_source(conn, base: str, gsource: str, ginfo: str) -> None:
