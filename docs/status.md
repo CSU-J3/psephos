@@ -182,9 +182,22 @@ The ledger keeps counting attempts anyway, which is the cautious way to be wrong
 
 - **`getMasterList`'s frequency is "1 hour"**, and "the Frequency is not how often data requests should happen, reflecting rather the minimum time resolution that could include changes in data. Requests that exceed these recommendations will be served unchanged cached data while still spending an API query operation. In practice most use cases can be satisfied with daily updates."
 - **psephos's 6-hourly poll does not exceed that.** So the 86% share reads as *unchanged data served from cache*, not as a frequency violation. The page's note and page 7 do not agree on this, and the design has to fit the measurement, not the note.
-- **The manual never mentions a Sunday 05:00 ET dataset refresh**, or any refresh time.
+- **The manual never mentions a Sunday 05:00 ET dataset refresh**, or any refresh time. **That figure is the LegiScan welcome email's, not the manual's.**
 - **`getSessionList`, called with no `state`, is one national query rated Daily**, and it carries `dataset_hash`, `sine_die`, `prefile` and `prior`. `getDatasetList` is rated Weekly and carries none of those three.
-- **The 98b §4 cadence design waits on Corey's rulings on §4c (freshness) and §6.3 (rotation)**, with these disagreements put to him first.
+- **THE CADENCE CHANGE IS A WASTE REDUCTION, NOT A FIX FOR A VIOLATION.** The manual rates `getMasterList` at 1 hour and calls daily updates sufficient for most uses, and the 6-hourly poll is inside both. What the change answers is the welcome email's best-practices clause: the 86% of September requests that found nothing new still spent the allowance. **A later reader should not read the cadence cut as psephos having been out of compliance with page 7; it was not.**
+- **98b §4 was revised 2026-09-24, after page 7, and NOTHING IS BUILT until Corey rules.** The revision is appended to the handoff:
+  - one daily state slot, 06:17Z;
+  - a daily national `getSessionList` in place of the weekly `getDatasetList` gate, with active meaning `sine_die = 0 AND prior = 0` or `prefile = 1`;
+  - Tue–Sat master lists for active states, by previous ET day, and adjourned states polled only on a moved `dataset_hash`;
+  - `unchanged_masterlists` as the cache-hit proxy;
+  - `runs_left` over daily slots;
+  - a revised close: October under 300, cache hits under 30%, zero 429s, one key, attribution proven by the scheduled `dom-checks` run.
+
+  **Three notes were put to the ruling rather than resolved:**
+
+  1. **`getSessionList` has no `dataset_date`**, which the revision asks to store (page 8 vs p25).
+  2. **"October under 300" holds only if the new cadence is live by about 2026-10-04.** The current cadence passes 300 on Oct 9, so a later deploy means reading it pro-rata from deploy, or for November.
+  3. **`zoneinfo` needs `tzdata` on this Windows workstation**, so the ET gate's tests would pass on Linux CI and fail locally unless the build adds it.
 
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
 
