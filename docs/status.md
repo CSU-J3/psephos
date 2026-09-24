@@ -199,6 +199,21 @@ The ledger keeps counting attempts anyway, which is the cautious way to be wrong
   2. **"October under 300" holds only if the new cadence is live by about 2026-10-04.** The current cadence passes 300 on Oct 9, so a later deploy means reading it pro-rata from deploy, or for November.
   3. **`zoneinfo` needs `tzdata` on this Windows workstation**, so the ET gate's tests would pass on Linux CI and fail locally unless the build adds it.
 
+  **RULED 2026-09-24** (§4c and §6.3 still open, still nothing built):
+
+  1. **`dataset_date` is dropped.** `hash_seen_at` stores our own observation time of the current hash, and there is no `getDatasetList`.
+  2. **October requests are judged pro-rata from the deploy date:** 36 a day before, 6 a day after, ±20%. **The API Status page's cache-hit share moves to November.** October reads the ledger's `unchanged_masterlists` share for post-deploy days only.
+     - For that share to have a denominator, the build adds a `masterlists` column beside `unchanged_masterlists`. Both are born at deploy, so October's values are post-deploy by construction.
+  3. **`tzdata` goes into `requirements.txt`** in the build's first commit, with no hard-coded offsets.
+
+  **Change: master lists are polled by SESSION ID.** Page 9 confirms `getMasterList&id=SESSION_ID` ("Invocation A") beside `state=`, which the manual itself marks "use with caution". The build therefore polls one master list per qualifying non-prior session, **so a concurrent special session is covered instead of documented as a gap.** The master-list count paid first becomes the number of sessions polled, known only after the day's `getSessionList`.
+
+  **A new note went to the ruling: the bare `getSessionList` names states only by `state_id`, and the manual publishes no id→abbreviation table.**
+  - Its own examples pin CA = 5 and MD = 20, which fit an alphabetical enumeration: TX 43, AZ 3 and so on.
+  - That is an inference from two points. The fixture's TX = 43 is hand-built, not a capture.
+  - **Recommended:** a one-time bootstrap of `getSessionList&state=XX` per watched state (9 queries, once).
+  - **Either way:** a zero-cost runtime tripwire. Every master list names its state in `session.state_id` and in each bill URL, and a mismatch refuses the session.
+
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
 
 **THE LANE, READ 2026-09-18.** Last green **09-16**, run `35082551558`, head `9c2a247`. First red **09-17**, run `35208425103`, head `55fd9fc`. Still red **09-18**, run `35331623611`, head `94385ab`. **Two failures, not more** — issue **#4** was opened on the first and carries **one comment**, the second appended by exact-title reuse, so the comment count is one less than the failure count and neither number is the age. Every run in the lane's life before 09-17 is `success` back to the 09-08 plumbing red that Unit C closed.
