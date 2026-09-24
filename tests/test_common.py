@@ -533,3 +533,101 @@ def test_degraded_429_falls_back_to_retry_then_runtimeerror(monkeypatch):
     assert not isinstance(ei.value, common.RateBudgetExhausted)
     assert fake.state["n"] == common.MAX_RETRIES
     assert "429" in str(ei.value) and "Too Many Requests" in str(ei.value)
+
+
+# --------------------------------------------------------------------------- #
+# on_attempt: per-attempt metering for a per-request quota (handoff 98)
+# --------------------------------------------------------------------------- #
+def _tally():
+    n = {"n": 0}
+    def hook():
+        n["n"] += 1
+    hook.n = n
+    return hook
+
+
+def test_on_attempt_counts_every_attempt_retries_included(monkeypatch):
+    """503, 503, 200 is three requests upstream, and a quota that bills per request
+    has to see three -- only this loop knows there were three."""
+    ok = _FakeResp(200, body={"ok": True})
+    fake = _seq_get([_FakeResp(503), _FakeResp(503), ok])
+    monkeypatch.setattr(common.requests, "get", fake)
+    monkeypatch.setattr(common.time, "sleep", lambda *a, **k: None)
+    hook = _tally()
+    assert common._get("https://x", on_attempt=hook) is ok
+    assert hook.n["n"] == fake.state["n"] == 3
+
+
+def test_on_attempt_counts_transport_failures_and_exhaustion(monkeypatch):
+    import requests
+    fake = _seq_get([requests.Timeout("t")] * common.MAX_RETRIES)
+    monkeypatch.setattr(common.requests, "get", fake)
+    monkeypatch.setattr(common.time, "sleep", lambda *a, **k: None)
+    hook = _tally()
+    with pytest.raises(RuntimeError):
+        common._get("https://x", on_attempt=hook)
+    assert hook.n["n"] == common.MAX_RETRIES
+
+
+def test_on_attempt_counts_a_non_retryable_status_once(monkeypatch):
+    fake = _seq_get([_FakeResp(400, text="bad")])
+    monkeypatch.setattr(common.requests, "get", fake)
+    hook = _tally()
+    with pytest.raises(common.HttpError):
+        common._get("https://x", on_attempt=hook)
+    assert hook.n["n"] == 1
+
+
+def test_on_attempt_counts_the_request_that_trips_a_cap(monkeypatch):
+    fake = _seq_get([_FakeResp(429, text="Rate limit exceeded: 10000/month.")])
+    monkeypatch.setattr(common.requests, "get", fake)
+    hook = _tally()
+    with pytest.raises(common.RateBudgetExhausted):
+        common._get("https://x", on_attempt=hook)
+    assert hook.n["n"] == 1
+
+
+def test_http_get_passes_on_attempt_through(monkeypatch):
+    fake = _seq_get([_FakeResp(502), _FakeResp(200, body={"ok": 1})])
+    monkeypatch.setattr(common.requests, "get", fake)
+    monkeypatch.setattr(common.time, "sleep", lambda *a, **k: None)
+    hook = _tally()
+    assert common.http_get("https://x", on_attempt=hook) == {"ok": 1}
+    assert hook.n["n"] == 2
+
+
+def test_a_faulty_hook_surfaces_rather_than_being_retried(monkeypatch):
+    """The hook is called outside the try: a bug in it must not be mistaken for a
+    transport failure and silently retried four times."""
+    fake = _seq_get([_FakeResp(200, body={})])
+    monkeypatch.setattr(common.requests, "get", fake)
+    def broken():
+        raise ValueError("meter bug")
+    with pytest.raises(ValueError, match="meter bug"):
+        common._get("https://x", on_attempt=broken)
+    assert fake.state["n"] == 0
+
+
+def test_retries_exhausted_carries_the_last_status_and_the_whole_body(monkeypatch):
+    """The message truncates at 500; the attribute does not, because a caller that
+    prints an unseen response verbatim needs all of it (collectors/state.py, A4)."""
+    body = "q" * 900
+    fake = _seq_get([_FakeResp(429, text=body) for _ in range(common.MAX_RETRIES)])
+    monkeypatch.setattr(common.requests, "get", fake)
+    monkeypatch.setattr(common.time, "sleep", lambda *a, **k: None)
+    with pytest.raises(common.RetriesExhausted) as ei:
+        common._get("https://x")
+    assert isinstance(ei.value, RuntimeError)
+    assert ei.value.status == 429 and ei.value.body == body
+    assert len(str(ei.value)) < 700
+
+
+def test_retries_exhausted_on_transport_carries_no_stale_body(monkeypatch):
+    import requests
+    fake = _seq_get([_FakeResp(503, text="upstream down"), requests.Timeout("t"),
+                     requests.Timeout("t"), requests.Timeout("t")])
+    monkeypatch.setattr(common.requests, "get", fake)
+    monkeypatch.setattr(common.time, "sleep", lambda *a, **k: None)
+    with pytest.raises(common.RetriesExhausted) as ei:
+        common._get("https://x")
+    assert ei.value.status is None and ei.value.body == ""

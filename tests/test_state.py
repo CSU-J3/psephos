@@ -56,7 +56,10 @@ def _patched(masterlist=None, getbill=None, calls=None):
     masterlist = MASTERLIST if masterlist is None else masterlist
     getbill = GETBILL if getbill is None else getbill
 
-    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0,
+             on_attempt=None):
+        if on_attempt is not None:
+            on_attempt()             # one attempt, as common._get would count it
         op = params["op"]
         if calls is not None:
             calls.append((op, params.get("id") or params.get("state")))
@@ -330,7 +333,8 @@ def test_getbill_budget_caps_and_resumes():
 def test_bad_state_isolated():
     conn = _env()
 
-    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0,
+             on_attempt=None):
         if params["op"] == "getMasterList" and params["state"] == "ZZ":
             return {"status": "ERROR", "alert": {"message": "Unknown state abbreviation"}}
         if params["op"] == "getMasterList":
@@ -449,7 +453,10 @@ OFFSETS = {"TX": 0, "GA": 100, "FL": 200}
 @contextmanager
 def _patched_states(getbill_fail: str | None = None):
     """Fake LegiScan for several states at once, each with its own bills."""
-    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0,
+             on_attempt=None):
+        if on_attempt is not None:
+            on_attempt()
         if params["op"] == "getMasterList":
             return _masterlist_for(OFFSETS[params["state"]])
         # Bill ids are 1700001 + the state's offset, so the range test has to be
@@ -567,7 +574,8 @@ def test_recover_fires_on_the_db_path_and_on_neither_http_path(monkeypatch):
     calls.clear()
     raw = _env()
 
-    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0,
+             on_attempt=None):
         return {"status": "ERROR", "alert": {"message": "Unknown state abbreviation"}}
 
     orig = common.http_get

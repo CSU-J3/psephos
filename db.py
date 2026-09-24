@@ -551,6 +551,27 @@ def upsert(conn, table: str, row: dict, pk: str) -> None:
     conn.execute(sql, [row[c] for c in cols])
 
 
+def increment(conn, table: str, pk: str, key, column: str, by: int, row: dict) -> None:
+    """INSERT a counter row, or ADD `by` to its `column` on conflict with `pk`.
+
+    Not `upsert`: upsert REPLACES on conflict, and a counter with more than one
+    writer (the cron and a local tool both spending one LegiScan allowance) has to
+    accumulate or the second writer erases the first. The sum happens in SQL, so
+    there is no read-modify-write window between writers. `row` carries the other
+    columns, which are replaced on conflict as upsert would; `column` must not be
+    in it."""
+    _require_writable(conn, f"increment on {table}")
+    cols = [pk, column, *row]
+    placeholders = ", ".join("?" for _ in cols)
+    updates = ", ".join([f"{column} = {table}.{column} + excluded.{column}",
+                         *(f"{c} = excluded.{c}" for c in row)])
+    sql = (
+        f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({placeholders}) "
+        f"ON CONFLICT({pk}) DO UPDATE SET {updates}"
+    )
+    conn.execute(sql, [key, by, *row.values()])
+
+
 def insert_ignore(conn, table: str, row: dict) -> bool:
     """INSERT OR IGNORE; return True if a new row was added.
 

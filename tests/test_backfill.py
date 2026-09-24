@@ -91,7 +91,8 @@ def test_backfill_populate_dimension_then_link():
         },
     }
 
-    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0,
+             on_attempt=None):
         assert params["op"] == "getMasterList"       # the backfill must never getBill
         return masterlist
 

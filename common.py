@@ -10,6 +10,7 @@ import hashlib
 import re
 import sys
 import time
+from collections.abc import Callable
 from datetime import datetime, timezone
 
 import requests
@@ -60,11 +61,31 @@ class RateBudgetExhausted(Exception):
     Distinct from a burst-rate 429 (transient, retried). Carries seconds until the
     window frees so the caller can report a reset and abort instead of retry-storming."""
 
-    def __init__(self, reset_seconds: float | None):
+    def __init__(self, reset_seconds: float | None, body: str = ""):
         self.reset_seconds = reset_seconds
+        # The 429's body, whole. _log_429 has already printed it; it rides here too so
+        # a caller can classify on it without re-parsing stderr.
+        self.body = body
         super().__init__(
             f"daily rate budget exhausted; resets in ~{reset_seconds:.0f}s"
             if reset_seconds is not None else "daily rate budget exhausted")
+
+
+class RetriesExhausted(RuntimeError):
+    """Every attempt in MAX_RETRIES failed. A RuntimeError, so every handler that
+    already catches this exhaustion as a per-item skip still does, and the message
+    is unchanged -- what the subclass adds is the LAST attempt's outcome as data.
+
+    `status` is the last attempt's HTTP status, or None when the last attempt was a
+    transport failure (the same last-attempt-wins rule the message follows). `body`
+    is that response's body WHOLE, where the message truncates it at 500 chars: a
+    caller that must print or classify the body verbatim (collectors/state.py, on
+    a response nobody has seen yet) needs the untruncated one."""
+
+    def __init__(self, message: str, status: int | None = None, body: str = ""):
+        self.status = status
+        self.body = body
+        super().__init__(message)
 
 
 def _get(
@@ -73,6 +94,7 @@ def _get(
     headers: dict | None = None,
     timeout: int = DEFAULT_TIMEOUT,
     throttle: float = 0.0,
+    on_attempt: Callable[[], None] | None = None,
 ) -> requests.Response:
     """GET with backoff on rate-limit / server errors, returning the raw Response.
 
@@ -81,6 +103,15 @@ def _get(
     present); raises `HttpError` IMMEDIATELY on any other error status, without
     sleeping or retrying, carrying the response body. See HttpError for why the
     two categories are separated and why the body has to survive the raise.
+
+    `on_attempt`, when given, is called once immediately before EVERY HTTP
+    attempt -- retries included, and whatever the attempt's outcome. It exists
+    for a caller whose upstream bills per request rather than per logical call
+    (LegiScan's monthly allowance; see collectors/state.py's UsageMeter): a
+    getBill that 503s twice and then succeeds is three queries against the
+    quota, and only this loop knows there were three. It is called outside the
+    try, so a fault in the callback surfaces rather than being retried as a
+    transport failure. None, the default, is no behaviour change at all.
     """
     if throttle:
         time.sleep(throttle)
@@ -96,6 +127,8 @@ def _get(
     last_status: int | None = None
     last_body = ""
     for attempt in range(MAX_RETRIES):
+        if on_attempt is not None:
+            on_attempt()
         try:
             resp = requests.get(url, params=params, headers=headers, timeout=timeout)
             if resp.status_code in RETRY_STATUS:
@@ -134,11 +167,11 @@ def _get(
                     # well clear, and a per-item skip keeps the run alive either way.
                     scope = _throttle_scope(resp)
                     if scope == "cap":
-                        raise RateBudgetExhausted(_reset_seconds(resp))
+                        raise RateBudgetExhausted(_reset_seconds(resp), resp.text)
                     if scope is None:
                         reset = _reset_seconds(resp)
                         if reset is not None and reset > MAX_RETRY_AFTER:
-                            raise RateBudgetExhausted(reset)
+                            raise RateBudgetExhausted(reset, resp.text)
                 last_exc, last_status, last_body = None, resp.status_code, resp.text
                 time.sleep(_retry_after(resp, attempt))
                 continue
@@ -175,8 +208,8 @@ def _get(
     # Measured cost: at the 2026-08-15 00:00Z run all nine LegiScan states failed
     # identically with "GET failed after 4 attempts: https://api.legiscan.com/",
     # about twenty minutes of a 30m15s run, and the log cannot say whether that
-    # was 429, 500 or 503. Not academic -- LegiScan's EDU tier carries a monthly
-    # cap that presents as a 429, so the log as written cannot separate "upstream
+    # was 429, 500 or 503. Not academic -- LegiScan's key carries a monthly
+    # cap that may present as a 429, so the log as written cannot separate "upstream
     # had a bad night" from "we are out of quota for the month", and "transient"
     # becomes a verdict on persistence with the cause never measured.
     # Same shape as HttpError's (status, then body at 500 chars); the prefix is
@@ -184,8 +217,9 @@ def _get(
     detail = ""
     if last_status is not None:
         detail = f" (last: HTTP {last_status}{f': {last_body[:500]}' if last_body else ''})"
-    raise RuntimeError(
-        f"GET failed after {MAX_RETRIES} attempts: {url}{detail}") from last_exc
+    raise RetriesExhausted(
+        f"GET failed after {MAX_RETRIES} attempts: {url}{detail}",
+        last_status, last_body if last_status is not None else "") from last_exc
 
 
 def http_get(
@@ -194,9 +228,11 @@ def http_get(
     headers: dict | None = None,
     timeout: int = DEFAULT_TIMEOUT,
     throttle: float = 0.0,
+    on_attempt: Callable[[], None] | None = None,
 ) -> dict:
-    """GET and parse a JSON body (the API collectors' path)."""
-    return _get(url, params, headers, timeout, throttle).json()
+    """GET and parse a JSON body (the API collectors' path). `on_attempt` is
+    passed through to `_get`; see there."""
+    return _get(url, params, headers, timeout, throttle, on_attempt).json()
 
 
 def http_get_text(
@@ -258,7 +294,7 @@ def _log_429(url: str, resp: requests.Response, sent: dict | None = None) -> Non
 # clear inside the retry ladder. Matched on PREFIXES rather than first letters,
 # which is load-bearing: "m" is ambiguous between min and month, and reading a
 # monthly cap as a burst is precisely the failure this classifier prevents --
-# also the shape LegiScan's EDU cap would take. DRF spells these out as
+# also the shape LegiScan's monthly cap may take. DRF spells these out as
 # second/minute/hour/day as readily as abbreviating them, so both must match.
 _BURST_UNITS = ("sec", "min", "hour")
 _CAP_UNITS = ("day", "week", "month", "year")

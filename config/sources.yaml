@@ -451,12 +451,25 @@ news:
 # row and stamps items.state_bill_id, exported as per-bill timelines in
 # data/state_bills.json. bill_id/case_id stay null. The change-hash pattern is
 # the whole game -- one getMasterList per state per run, then getBill ONLY on
-# election bills whose change_hash moved, so the free-tier 30k queries/month cap
-# is never at risk. See collectors/state.py and the state_seen table.
+# election bills whose change_hash moved. See collectors/state.py and the
+# state_seen table.
+#
+# THE ALLOWANCE IS 10,000 QUERIES A MONTH FROM 2026-10-01, down from 30,000, plus a
+# ~2 req/s sliding-window rate limit (LegiScan API Team email, 2026-09-23). Every
+# HTTP attempt counts, retries included. Spend is recorded in the Turso
+# `legiscan_usage` ledger -- by the collector AND by every tool that calls
+# LegiScan -- and the getBill budget is PRORATED from it each run, so an in-session
+# storm cannot spend the month in its first week. From 2026-11-01 the CC BY 4.0
+# attribution terms and the one-key rule are audited, and a key in violation is
+# permanently banned.
 state:
   api:
     base: https://api.legiscan.com/
     key_env: LEGISCAN_API_KEY          # free key: https://legiscan.com/legiscan
+  monthly_cap: 10000                  # LegiScan public tier from 2026-10-01 (email 2026-09-23)
+  cron_ceiling: 8000                  # cron's share; 1,500 reserved for tools/ad hoc, 500 slack
+                                      # for retries. Compared against the WHOLE month's ledger,
+                                      # tools' spend included, so the cron yields to them.
   states: [TX, GA, FL, AZ, WI, PA, MI, NC, OH]   # start focused; the change-hash
                                                  # pattern scales to all 50 if wanted
   terms:                              # word-boundary phrase filter (see election_match).
@@ -542,5 +555,7 @@ state:
     - voter approval                  # TX tax term of art: ad-valorem/bond tax-rate elections
     - proxy voting                    # precinct-committee / corporate proxy voting
     - cumulative voting               # HOA / corporate cumulative voting
-  max_getbill_per_run: 500        # budget guard; change-hash resumes next run if hit
+  max_getbill_per_run: 500        # unchanged; now an UPPER BOUND under the prorated allowance
+                                  # (collectors/state.py::run_budget). Change-hash resumes
+                                  # next run whichever limit binds.
   default_grade: { source: B, info: "2" }   # LegiScan is a maintained aggregator (spec's B2 tier)

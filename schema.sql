@@ -206,6 +206,18 @@ CREATE TABLE IF NOT EXISTS state_seen (
     updated_at  TEXT NOT NULL
 );
 
+-- LegiScan query ledger: every HTTP attempt against api.legiscan.com, by month.
+-- Attempts, not logical calls: a retried getBill is up to 4 queries upstream.
+-- Written by the state collector (in its per-state commit) and by every tool or
+-- script that calls LegiScan, additively. It is OUR count: the LegiScan API has no
+-- usage op (manual rev. 20250317), so the only upstream reading is the API status
+-- page. See collectors/state.py::UsageMeter and ledger_month for the clock.
+CREATE TABLE IF NOT EXISTS legiscan_usage (
+    month      TEXT PRIMARY KEY,   -- YYYY-MM, UTC calendar month (pending the status-page reading)
+    queries    INTEGER NOT NULL,
+    updated_at TEXT NOT NULL
+);
+
 -- Two-stage dedup bookkeeping for the news layer.
 -- Stage 1: canonical URL. Stage 2: content-hash plus normalized-title similarity.
 CREATE TABLE IF NOT EXISTS dedup_seen (
