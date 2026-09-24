@@ -79,12 +79,27 @@ One over-count is accepted and documented: a commit that lands but whose respons
 
 **OWED, in order:**
 
-1. **The first two production crons after the push:** read `legiscan_usage` by a direct Turso query, not a snapshot. Each run's `LegiScan queries this run: N` line should equal the ledger's growth. The table is created by the first run's `init_db`.
+1. ~~**The first two production crons after the push:** read `legiscan_usage` by a direct Turso query, not a snapshot. Each run's `LegiScan queries this run: N` line should equal the ledger's growth. The table is created by the first run's `init_db`.~~ **DISCHARGED 2026-09-24T18:31Z, on three runs rather than two, since three had landed by the time of the read.**
+
+   | Slot | Run | Opening `used` | Printed `queries this run` |
+   | --- | --- | --- | --- |
+   | 00:17Z | `35957849670` | 0 | 9 |
+   | 06:17Z | `35994419945` | 9 | 9 |
+   | 12:17Z | `36032420973` | 18 | 9 |
+
+   - **The direct Turso `SELECT`** returned one row, `2026-09` = **27**, with `updated_at` 17:14:53Z, inside the third run's window (17:10:21Z to 17:15:22Z). No other month exists.
+   - **Every figure agrees.** Each run's opening `used` is the previous run's total read back from Turso, and `runs_left` stepped 28, 27, 26 as `runs_left()` predicts.
+   - **The masterlist floor, observed:** every run was nine masterlists, zero getBills and zero retries.
 2. **The first October run** (the 2026-10-01 00:17Z slot) should print `ledger 2026-10: 0 of 8000 … 124 run(s) left`. Its share should be 64 with a getBill budget of 55, give or take the one-run overcount if a September run lands after 00:00Z.
 3. **D0.2, Corey at the browser.** Read the OneVote API Status page for current usage, **the reset clock**, and the tier label.
    - `ledger_month` assumes the UTC calendar month and is the one function to change if the page says otherwise.
    - If the label reads Public, **"EDU tier" goes on the falsified list** with the status page as the instrument. The phrase came from this file's own handoff-0d entry and a `common.py` comment. The comment was neutralised in `c55a666`; the manual itself says "Public service keys".
 4. **Part B, the CC BY 4.0 attribution, before 2026-11-01.** It is binary and irreversible, and it takes a visual checkpoint.
+   - **Repo side SHIPPED 2026-09-24 in `b64ce4e`:** `data/NOTICE.md` and the README line. `state_bills.json` is the only tracked LegiScan-derived file; both tool corpora are gitignored and have never been committed.
+   - **Web side built and AT THE VISUAL CHECKPOINT, uncommitted:** the line on `/state-bills` and on each state-bill page, a site-wide footer, and `web/scripts/assert-attribution.mjs` as a new `dom-checks` step.
+   - **Mutation-checked red twice:** a footer hidden below `sm` failed only the six 390px footer-link visibility checks; a footer removed failed twelve count checks.
+   - **Against the real build:** 38 PASS, with the lane's other three checks unchanged at 8, 33 and 77.
+   - **Owed after commit:** the first SCHEDULED `dom-checks` run on a head carrying it, the rule this lane has always been held to.
 5. **The first cap-signal sighting, whenever it comes.** Record the body verbatim with its run id, and correct `names_allowance_limit` against it.
 
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
