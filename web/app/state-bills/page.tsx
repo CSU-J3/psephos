@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getStateBills } from "@/lib/db";
+import { LegiScanAttribution } from "@/components/LegiScanAttribution";
 import { StateBillRow } from "@/components/StateBillRow";
 import { StateMatrix } from "@/components/StateMatrix";
 import {
@@ -53,9 +54,12 @@ export default async function StateBillsPage({
       <header className="mt-6">
         <h1 className="text-2xl font-semibold tracking-tight">State legislation</h1>
         <p className="mt-1 text-sm text-neutral-400">
-          {matrix.total} election bills across {matrix.rows.length} states,
-          subject-filtered via LegiScan. Every count below opens its list.
+          {matrix.total} election bills across {matrix.rows.length} states. Every count
+          below opens its list.
         </p>
+        {/* Replaces "subject-filtered via LegiScan": the attribution says the same
+            thing and is the licence term besides. See components/LegiScanAttribution. */}
+        <LegiScanAttribution className="mt-1" />
       </header>
 
       <h2 className="mt-9 mb-2 text-[0.8rem] font-semibold tracking-[0.08em] text-neutral-500 uppercase">

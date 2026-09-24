@@ -281,6 +281,24 @@ jobs:
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           exit "$rc"
 
+      # The LegiScan CC BY 4.0 attribution, rendered with both links on /, /state-bills
+      # and one state-bill page, at a desktop and a phone width. A licence term with a
+      # permanent-ban consequence from 2026-11-01, audited on an ongoing basis -- so a
+      # redesign that drops it must go red here the next morning, not be found by
+      # LegiScan. The script's header carries what it asserts and why the sentence is
+      # copied rather than imported. Handoff 98, Part B.
+      - name: assert-attribution
+        id: attribution
+        if: steps.preflight.outcome == 'success'
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set +e
+          node scripts/assert-attribution.mjs "$ORIGIN" 2>&1 | tee "$RUNNER_TEMP/attribution.out"
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
       # The delivery surface, on audit.yml's pattern: ONE standing issue, reused. A red
       # run comments on the open issue if there is one and opens it if there is not, so
       # a week of red runs is one issue with seven comments rather than seven issues
@@ -301,6 +319,7 @@ jobs:
           GATES_RC: ${{ steps.gates.outputs.rc }}
           ENCODINGS_RC: ${{ steps.encodings.outputs.rc }}
           LAYOUT_RC: ${{ steps.layout.outputs.rc }}
+          ATTRIBUTION_RC: ${{ steps.attribution.outputs.rc }}
         run: |
           # A step failing BEFORE the preflight -- install, build, browser, boot --
           # leaves PREFLIGHT as `skipped` and folds into the same state as a preflight
@@ -325,6 +344,9 @@ jobs:
             fi
             if [ -n "$LAYOUT_RC" ] && [ "$LAYOUT_RC" != "0" ]; then
               failed="${failed} \`assert-layout\` (exit ${LAYOUT_RC})"
+            fi
+            if [ -n "$ATTRIBUTION_RC" ] && [ "$ATTRIBUTION_RC" != "0" ]; then
+              failed="${failed} \`assert-attribution\` (exit ${ATTRIBUTION_RC})"
             fi
             HEADLINE="**PAGE FAILED** --${failed} against a page that rendered. The page disagrees with what it is asserted to render."
             ACTION="Fix the page."
@@ -378,16 +400,18 @@ jobs:
             verdict "assert-gates" "$GATES_RC"
             verdict "assert-encodings" "$ENCODINGS_RC"
             verdict "assert-layout" "$LAYOUT_RC"
+            verdict "assert-attribution" "$ATTRIBUTION_RC"
             echo
             echo "Exit codes: \`assert-gates\` is split -- 1 expiry, 2 DOM join, 3 could not run."
-            echo "\`assert-encodings\` and \`assert-layout\` have no exit 3: for those two, 1 covers"
-            echo "both a failed assertion and a throw mid-run. The preflight above removes the"
-            echo "dominant cause of the second, so PAGE FAILED is the most likely reading of a 1"
-            echo "from them and not a proven one."
+            echo "\`assert-encodings\`, \`assert-layout\` and \`assert-attribution\` have no exit 3: for"
+            echo "those three, 1 covers both a failed assertion and a throw mid-run. The preflight"
+            echo "above removes the dominant cause of the second, so PAGE FAILED is the most likely"
+            echo "reading of a 1 from them and not a proven one."
 
             capture "assert-gates" "$RUNNER_TEMP/gates.out" "$GATES_RC"
             capture "assert-encodings" "$RUNNER_TEMP/encodings.out" "$ENCODINGS_RC"
             capture "assert-layout" "$RUNNER_TEMP/layout.out" "$LAYOUT_RC"
+            capture "assert-attribution" "$RUNNER_TEMP/attribution.out" "$ATTRIBUTION_RC"
 
             if [ "$PREFLIGHT" != "success" ] && [ -s "$RUNNER_TEMP/server.log" ]; then
               echo

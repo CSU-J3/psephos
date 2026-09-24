@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getStateBill, getStateBillTimeline } from "@/lib/db";
 import { stateBillLabel, stateBillStatus } from "@/lib/statebill";
 import { formatDate } from "@/lib/format";
+import { LegiScanAttribution } from "@/components/LegiScanAttribution";
 import { Timeline } from "@/components/Timeline";
 
 // Live Turso per request, no build-time dependency -- same as the bill page.
@@ -62,6 +63,7 @@ export default async function StateBillPage({
             View on LegiScan ↗
           </a>
         )}
+        <LegiScanAttribution className="mt-3" />
       </header>
 
       <section className="mt-8">

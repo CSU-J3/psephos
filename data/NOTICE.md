@@ -15,3 +15,5 @@ Two LegiScan-derived working files are gitignored and have never been committed:
 ## Why this file exists
 
 LegiScan's API data is licensed under CC BY 4.0, and from 2026-11-01 LegiScan audits API keys against those terms. The license needs three things wherever the data is redistributed: credit to the creator, a link to the license, and a statement that the data was changed. This repository is public and the cron commits `state_bills.json` to it four times a day, so the notice travels with the file.
+
+The web view carries the same text on `/state-bills`, on each state-bill page, and in a site-wide footer. `web/scripts/assert-attribution.mjs`, a scheduled `dom-checks` step, asserts that it is still rendered with both links.
