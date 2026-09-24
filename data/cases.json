@@ -16937,9 +16937,9 @@
     "date_terminated": null,
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 232,
+    "entry_count": 233,
     "filed_at": "2026-01-23T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-09-24T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
@@ -17826,6 +17826,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/144/united-states-v-raffensperger/",
         "title": "United States v. Georgia: Response (Non-Motion)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 112517,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/145/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
       }
     ]
   },
@@ -23187,7 +23197,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 85,
+    "entry_count": 91,
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",

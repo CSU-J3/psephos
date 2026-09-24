@@ -8898,5 +8898,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/09/24/midterm-2026-election-preparation-federal-interference",
     "title": "Across the country, election officials are preparing for the possibility of federal intervention"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112722,
+    "kind": "item",
+    "occurred_at": "2026-09-24T17:12:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-supreme-court-orders-gop-sheriff-to-return-seized-ballots-affirms-states-power-over-local-law-enforcement",
+    "title": "California Supreme Court orders GOP sheriff to return seized ballots, affirms state’s power over local law enforcement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112721,
+    "kind": "item",
+    "occurred_at": "2026-09-24T19:00:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-attorney-general-vows-legal-consequences-for-gop-sheriff-who-seized-ballots",
+    "title": "California Attorney General vows ‘legal consequences’ for GOP sheriff who seized ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112720,
+    "kind": "item",
+    "occurred_at": "2026-09-24T19:44:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-trump-agents-election",
+    "title": "Democrats, voting advocates mobilize to stop Trump from sending federal agents to polls — or anywhere near them"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112719,
+    "kind": "item",
+    "occurred_at": "2026-09-24T20:19:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-rulings-shut-down-roadmap-for-rogue-law-enforcement-to-upend-midterms",
+    "title": "‘You won’t be seeing sheriffs unlawfully seizing ballots’: California rulings shut down roadmap for rogue law enforcement to upend midterms"
   }
 ]

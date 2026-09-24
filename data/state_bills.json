@@ -31186,7 +31186,7 @@
     "is_vehicle": false,
     "last_action": "Effective ",
     "last_action_at": "2026-03-20T00:00:00",
-    "session": null,
+    "session": "136th General Assembly",
     "state": "OH",
     "state_bill_id": "2046271",
     "status": "4",
@@ -45644,5 +45644,83 @@
     ],
     "title": "Constitutional Amendment/Early Voting",
     "url": "https://legiscan.com/NC/bill/H1240/2025"
+  },
+  {
+    "bill_number": "HB2802",
+    "is_vehicle": false,
+    "last_action": "Referred to Gaming Oversight",
+    "last_action_at": "2026-09-24T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "PA",
+    "state_bill_id": "2158911",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 112730,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB2802/2025",
+        "title": "PA HB2802: Referred to Gaming Oversight"
+      }
+    ],
+    "title": "In taxation by school districts, further providing for general tax authorization, for reimbu rsement and for disposition of income tax revenue and property tax reduction allocations and repealing provisions relating to school district options; in State funds formula, further providing for certification and calculation of minimum and maximum modifiers and repealing provisions relating to State property tax reduction allocation; providing for homeowner tax rebate; in tax relief in cities of the first class, further providing for tax relief and for supplemental senior citizen tax reduction; in school district choice and voter participation, repealing provisions relating to school district choice and further providing for voter participation; and, in senior citizens property tax and rent rebate assistance, further providing for property tax and rent rebate.",
+    "url": "https://legiscan.com/PA/bill/HB2802/2025"
+  },
+  {
+    "bill_number": "HB6414",
+    "is_vehicle": false,
+    "last_action": "Bill Electronically Reproduced 09/24/2026",
+    "last_action_at": "2026-09-29T00:00:00",
+    "session": "103rd Legislature",
+    "state": "MI",
+    "state_bill_id": "2158970",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 112731,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB6414/2025",
+        "title": "MI HB6414: Introduced By Representative Rep. Steve Carra"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 112732,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB6414/2025",
+        "title": "MI HB6414: Read A First Time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 112733,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB6414/2025",
+        "title": "MI HB6414: Referred To Committee On Election Integrity"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 112734,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/MI/bill/HB6414/2025",
+        "title": "MI HB6414: Bill Electronically Reproduced 09/24/2026"
+      }
+    ],
+    "title": "Elections: election officials; local clerks to investigate and report alleged violations of the election law by the secretary of state, bureau of elections, and the director of elections; authorize.",
+    "url": "https://legiscan.com/MI/bill/HB6414/2025"
   }
 ]
