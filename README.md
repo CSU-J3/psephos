@@ -16,6 +16,8 @@ Full build spec: [`docs/psephos.md`](docs/psephos.md).
 | Coercion + news | RSS feeds + Google News RSS | none |
 | State (phase 3) | LegiScan / OpenStates | free tier |
 
+State legislation data from the [LegiScan API](https://legiscan.com/legiscan) by LegiScan LLC, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Filtered to election-related bills and reformatted by psephos. See [`data/NOTICE.md`](data/NOTICE.md).
+
 ## Layout
 
 ```
