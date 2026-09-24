@@ -8,7 +8,7 @@ Last updated: 2026-09-24 (UTC).
 
 ## Owed right now
 
-### The Congress.gov key was disabled for a week and every run was green: INCIDENT, 2026-09-16 to reissue
+### The Congress.gov key was disabled for eight days and every run was green: INCIDENT 2026-09-16, key reissued 2026-09-24, recovery run owed
 
 **Bounds, read off the `collect.yml` logs.** The last good legislation poll was **2026-09-16T16:56:49Z** (run `35124888361`, `s1383-119 +0 actions`). The first `API_KEY_DISABLED` was **21:15:27Z** the same day (run `35151323003`). Every one of the six watched bills returned the same response on every run after that:
 
@@ -16,7 +16,7 @@ Last updated: 2026-09-24 (UTC).
 HTTP 403 for https://api.congress.gov/v3/bill/119/hr/22: {"error": {"code": "API_KEY_DISABLED", "message": "The api_key supplied has been disabled. Contact us for assistance: https://api.congress.gov:443"}}
 ```
 
-That held for **29 consecutive scheduled runs through 2026-09-23T21:27Z (run `35922602204`), all concluded `success`.** The legislation channel collected nothing for a week. The outage runs until Corey reissues the key.
+That held for **29 consecutive scheduled runs through 2026-09-23T21:27Z (run `35922602204`), all concluded `success`,** when D0 read it. **The final count is 33**, through the 09-24 18:17Z slot; see the reissue record below.
 
 **THE INSTRUMENT THAT CAUGHT IT WAS A PERSON READING LOGS FOR ANOTHER REASON, NOT THE AUDIT.** Handoff 98's D0 downloaded all 116 `collect.yml` logs from 08-24 onward to count LegiScan queries, and the parse surfaced the 403 lines. Nothing built to watch the record could have seen it:
 
@@ -36,6 +36,39 @@ That held for **29 consecutive scheduled runs through 2026-09-23T21:27Z (run `35
 - The 116 downloaded Actions logs had zero `api_key=` followed by 32+ characters, and zero raw copies. The collector sends the key in `params` and logs only the bare URL.
 
 The two extra on-disk copies are Corey's to clear before the new keys go in.
+
+**REISSUED 2026-09-24, psephos-only, and the recovery run is owed.**
+
+**Final length: 33 consecutive scheduled runs, all concluded `success`.** They run from `35151323003` (09-16, 21:15Z) to `36061708245`, the 18:17Z slot of 09-24. That last run started at 21:28Z, 68 minutes before the Actions secret changed. All four 09-24 runs printed six `API_KEY_DISABLED` lines each, counted from their logs.
+
+**The reissue reached the cron in two steps, not one:**
+
+1. The new key went into `psephos/.env`. It has a different sha256 prefix from the disabled key. A value scan of `Desktop/` finds it in **exactly one file**, `psephos/.env`: one key, held by this project alone.
+2. **The Actions secret did not move with it.** `gh secret list` showed `CONGRESS_API_KEY` last set **2026-06-29**, so every cron would have kept sending the disabled key. It was set from `.env` over stdin, never echoed, at **2026-09-24T22:36:39Z**.
+
+The lesson for any future rotation: **a key is reissued for the cron when the secret's timestamp moves, not when `.env` changes.** Read `gh secret list`, not the local file.
+
+**Local check before the secret was set.** One `collect_bill` for `s1383-119` ran into a throwaway SQLite database, with only `CONGRESS_API_KEY` loaded and no Turso. It made 5 HTTP requests (bill, actions, amendments ×2 pages, relatedbills), all answered, returning 44 actions and 392 relations.
+
+**The outage needs no backfill. The collector has no lookback window to fall short of.** `collectors/legislation.py:75-93` (`fetch_page_list`, at `b156fdb`, file unchanged since `5db92e1`) pages each watched bill's full `actions`, `amendments` and `relatedbills` lists on every run, with no date parameter at all. `insert_ignore` then deduplicates on `bill_actions`' `UNIQUE(bill_id, action_at, action_text)` (`schema.sql:83`) and `items.content_hash`. So the first run with a working key refetches every bill's complete history and inserts whatever moved during the outage. The evidence, read-only against Turso on 2026-09-24:
+
+- **The fetch is complete, not windowed.** The throwaway run's 44 `s1383-119` actions go back to 2025-04-09, the bill's first action. They are exactly the 44 Turso holds: 0 fetched-not-held, 0 held-not-fetched.
+- **Nothing has landed since.** All six bills' `bills.updated_at` stand at 2026-09-16T16:55Z, the last good run. There are 0 legislation items with `fetched_at` after 2026-09-16T21Z.
+
+**What the design does lose, stated so it is not mistaken for a gap:**
+
+- `bills.cosponsor_count` and `latest_action` are point-in-time snapshots that every run overwrites. Their values during the outage were never recorded, but no run records their history anyway.
+- Items for actions dated inside the gap will carry a `fetched_at` of the recovery run, not of the day they happened. `occurred_at` is the action date, so the timelines order them correctly.
+
+**OWED, and it closes the incident: the first `collect.yml` run after 22:36:39Z,** expected to be the 00:17Z slot of 2026-09-25. Read three things:
+
+1. All six legislation lines print `+N actions`, with no `ERROR`.
+2. All six `bills.updated_at` move past 2026-09-16, by a direct Turso query.
+3. Any action dated 2026-09-16 or later lands in `bill_actions` and `items`, with its run id recorded here.
+
+A run in which the bills simply had not moved is a pass on (1) and (2) with (3) empty, and that is still the close.
+
+**Residue of the disabled key, dead and Corey's to clear:** `registers-crosswalk/.env` and `Desktop/OldAPIkey.txt` still hold it, confirmed by value scan. registers-crosswalk needs its own new key under the one-key-per-project ruling.
 
 **Unit 99 is opened by this** (see *Open units*). Its job is to make a dead credential print `CREDENTIAL FAILURE <channel>` and have the 05:17Z audit open an issue on it. The line names the channel only, never anything about the key.
 
@@ -1488,7 +1521,7 @@ Three claims died to this reading — the 150–250K band, the ~88K/day drop der
 
 Pre-existing, not introduced by Part B, and not a licence matter.
 
-**OPENED 2026-09-23, NOT BUILT: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 29 green runs (see *The Congress.gov key was disabled for a week* in *Owed right now*).
+**OPENED 2026-09-23, NOT BUILT: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 33 green runs (see *The Congress.gov key was disabled for eight days* in *Owed right now*).
 
 **Scope:**
 
