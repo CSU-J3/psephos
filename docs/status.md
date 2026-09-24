@@ -2,11 +2,90 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-09-19 (UTC).
+Last updated: 2026-09-24 (UTC).
 
 ---
 
 ## Owed right now
+
+### The Congress.gov key was disabled for a week and every run was green: INCIDENT, 2026-09-16 to reissue
+
+**Bounds, read off the `collect.yml` logs.** The last good legislation poll was **2026-09-16T16:56:49Z** (run `35124888361`, `s1383-119 +0 actions`). The first `API_KEY_DISABLED` was **21:15:27Z** the same day (run `35151323003`). Every one of the six watched bills returned the same response on every run after that:
+
+```
+HTTP 403 for https://api.congress.gov/v3/bill/119/hr/22: {"error": {"code": "API_KEY_DISABLED", "message": "The api_key supplied has been disabled. Contact us for assistance: https://api.congress.gov:443"}}
+```
+
+That held for **29 consecutive scheduled runs through 2026-09-23T21:27Z (run `35922602204`), all concluded `success`.** The legislation channel collected nothing for a week. The outage runs until Corey reissues the key.
+
+**THE INSTRUMENT THAT CAUGHT IT WAS A PERSON READING LOGS FOR ANOTHER REASON, NOT THE AUDIT.** Handoff 98's D0 downloaded all 116 `collect.yml` logs from 08-24 onward to count LegiScan queries, and the parse surfaced the 403 lines. Nothing built to watch the record could have seen it:
+
+- The legislation collector catches the per-bill `HttpError`, prints `ERROR:` and exits 0. That exit-0 invariant is correct and stays.
+- `runs.items_written` sums every channel, so five live channels hide one dead one.
+- `audit.yml` reads Turso and never a log.
+- `data/bills.json` had not changed since 2026-09-09, so the snapshot of a stopped channel and a quiet one were byte-identical.
+
+**The key was shared, and the disable took out two projects.** The same value sat in `registers-crosswalk/.env`. That repo's `docs/operations.md` records its own OpenFEC attempt getting `403 API_KEY_DISABLED` around 2026-09-22. The cause of the disable is unknown and is not recoverable from either project's record.
+
+**The ruling (Corey, 2026-09-23): the reissue is one key per project.**
+
+**Leak check, run before the reissue, no evidence of a leak.** The key was loaded into a shell variable and never echoed. Results:
+
+- `git log --all -S` found zero hits in psephos and zero in each of the other 12 repos under `Desktop/projects`.
+- `rg -l -F` across those projects, ignores off, found the value only in two gitignored `.env` files (psephos and registers-crosswalk). Outside the projects directory it found a third copy, `Desktop/OldAPIkey.txt`, which despite its name holds the current key.
+- The 116 downloaded Actions logs had zero `api_key=` followed by 32+ characters, and zero raw copies. The collector sends the key in `params` and logs only the bare URL.
+
+The two extra on-disk copies are Corey's to clear before the new keys go in.
+
+**Unit 99 is opened by this** (see *Open units*). Its job is to make a dead credential print `CREDENTIAL FAILURE <channel>` and have the 05:17Z audit open an issue on it. The line names the channel only, never anything about the key.
+
+### LegiScan's October terms: Part A SHIPPED 2026-09-24, and five reads are owed
+
+**What changed upstream.** LegiScan API Team email, 2026-09-23 22:17Z:
+
+- **From 2026-10-01:** the key's allowance drops from 30,000 to **10,000 queries a month**, and a **~2 req/s sliding-window** rate limit starts.
+- **From 2026-11-01:** the **CC BY 4.0 attribution terms and the one-key rule are audited**, and a key in violation is permanently banned.
+
+**D0, read-only, 2026-09-23.** Covers all 116 scheduled `collect.yml` runs from 2026-08-24T00:31Z to 09-23T21:27Z.
+
+- **Spend:** 1,044 masterlists + 10 getBills = **1,054 logical calls**. Adding the 3 extra attempts on each of 63 retry-exhausted masterlists gives **~1,243 attempts worst case**. The heaviest run was 36 attempts, the heaviest clean one 12. September to date: 810 calls, ~864 attempts.
+- **The retry-exhausted runs:** seven, 08-28 to 09-07, each with all nine states failing after four attempts. **None printed an HTTP status**, and the code that would have shipped on 08-15, so the last attempt in each was a transport failure. Their median run time was 32.0 min against 11.3 min for clean runs, which fits 36 × 30s timeouts. **Zero LegiScan 429s in 30 days.**
+- **Verdict:** ~12.5% of the new allowance, nowhere near the 7,000 stop line, so Part A stayed a guard rather than a scope cut.
+- **No usage op:** the API manual (rev. 20250317) has none; the only upstream reading is the API status page. The ledger below is therefore **our count only**.
+- **One key:** `.env` and one Actions secret (`psephos` only, of every CSU-J3 repo). A second copy of the same value sat in `registers-crosswalk/.env`, and Corey removes it.
+
+**What shipped, four commits:**
+
+- **`bfa6e24` (A1):** `THROTTLE` 0.3 → 0.6.
+- **`c55a666` (A2 to A4):**
+  - The `legiscan_usage` ledger, counted per HTTP attempt through `common._get`'s new `on_attempt` hook.
+  - The ledger is written in each state's own commit. A failed state's count carries forward, and a final flush catches a run where nothing committed.
+  - The getBill budget is prorated from `cron_ceiling` 8,000 over the slots left in the month.
+  - The cap signal, tightened before commit to exactly two shapes: a 429 or 5xx that used every retry and whose last body names the limit, or a `status: ERROR` alert that names it. `names_allowance_limit` tests for "limit" with "month" or "query". **The real response has not been seen; it is confirmed on first sighting.**
+- **`332212c` (A5):** the three tools are gated on ledger headroom and ledger their own spend.
+- **`b18b033`:** 75 new tests, suite 437. Each commit is green on its own, checked in a scratch worktree.
+
+**An amendment to the handoff's skip rule, recorded as one.** A run whose prorated share cannot buy its masterlists plus one getBill also skips. Such a run stores nothing, since no hash, row or item is written without a getBill. Each one also lowers the next run's share: at share 8 mid-month, the handoff's rule alone spends 549 queries on 61 runs for zero bills. It fires only in an already-overspent month.
+
+**The unit's own adversarial review** ran five dimensions, with every finding put to a refuter. 10 of 15 findings survived, from three root causes, all fixed and each mutation-checked red:
+
+1. A failed getBill was not charged to the budget, so a getBill outage walked the whole changed backlog. Measured offline: 801 attempts against a budget of 128.
+2. The new ledger read left `_Conn._pending` set into `collect()`, which silently removed the stale-stream reopen from the first state and from the final flush.
+3. The tools ignored the cap signal.
+
+One over-count is accepted and documented: a commit that lands but whose response is lost re-flushes one state's attempts. It errs toward a smaller allowance, never a larger one.
+
+**Local live check, 2026-09-24T02:07Z.** The run went against real LegiScan into a throwaway SQLite database; Turso was never loaded. The ledger was seeded so the share came to 12. Result: 9 masterlists + 3 getBills + 0 retries = **12 printed = 12 ledger delta**, exit 0. It spent 12 real September queries that are in no production ledger.
+
+**OWED, in order:**
+
+1. **The first two production crons after the push:** read `legiscan_usage` by a direct Turso query, not a snapshot. Each run's `LegiScan queries this run: N` line should equal the ledger's growth. The table is created by the first run's `init_db`.
+2. **The first October run** (the 2026-10-01 00:17Z slot) should print `ledger 2026-10: 0 of 8000 … 124 run(s) left`. Its share should be 64 with a getBill budget of 55, give or take the one-run overcount if a September run lands after 00:00Z.
+3. **D0.2, Corey at the browser.** Read the OneVote API Status page for current usage, **the reset clock**, and the tier label.
+   - `ledger_month` assumes the UTC calendar month and is the one function to change if the page says otherwise.
+   - If the label reads Public, **"EDU tier" goes on the falsified list** with the status page as the instrument. The phrase came from this file's own handoff-0d entry and a `common.py` comment. The comment was neutralised in `c55a666`; the manual itself says "Public service keys".
+4. **Part B, the CC BY 4.0 attribution, before 2026-11-01.** It is binary and irreversible, and it takes a visual checkpoint.
+5. **The first cap-signal sighting, whenever it comes.** Record the body verbatim with its run id, and correct `names_allowance_limit` against it.
 
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
 
@@ -1384,6 +1463,23 @@ Three claims died to this reading — the 150–250K band, the ~88K/day drop der
 
 ## Open units, roughly in order
 
+**OPENED 2026-09-23, NOT BUILT: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 29 green runs (see *The Congress.gov key was disabled for a week* in *Owed right now*).
+
+**Scope:**
+
+1. When a credentialed channel's requests all return 401/403 in a run, or any body carries `API_KEY_DISABLED`, `API_KEY_INVALID` or `API_KEY_MISSING`, the collector prints `CREDENTIAL FAILURE <channel>` and still exits 0. The credentialed channels are legislation, litigation and state.
+2. The 05:17Z `audit.yml` opens an issue when that line appears in the latest collect run.
+3. It also opens one when a channel has written zero new items across the last 8 runs while its source reports activity.
+
+**The line names the channel only, never anything about the key**: no value, prefix, hash, source file or other holder. It would be the first thing to carry key information into a public surface.
+
+**Open before any plan:**
+
+- What "its source reports activity" can mean without the failing credential.
+- Whether 8 runs sits outside the healthy zero-item streaks. Legislation legitimately wrote nothing from 09-09 to 09-16.
+
+The working brief is `docs/handoffs/99-credential-failure-loud.md` (local).
+
 ~~**PROPOSED 2026-09-17, NOT QUEUED — the staleness element, and the P0 that priced it. Corey rules on P1–P4.**~~ **APPROVED AND SHIPPED THE SAME DAY in four steps — see the section above, which carries what the build found and what it still owes. The P0 below stands as read; the one figure it corrected after approval is the threshold's band, `heartbeat_far` rather than `landing_far`.** **The question:** the page cannot say *the record has stopped moving*, and the obvious anchor cannot answer it.
 
 **P0, READ 2026-09-17, read-only, and it settles the schema question first.** **`items.fetched_at` is written ONCE, on first insert, and never updated.** Four collectors write through `db.insert_ignore` — `INSERT OR IGNORE` against `UNIQUE(content_hash)` (`db.py:554`, `schema.sql:50`), which drops a re-encountered item whole; news uses a plain `INSERT` behind its own two-stage dedup (`collectors/news.py:203`). **`db.upsert` is never called on `items` and no UPDATE of `items` exists anywhere**, so `MAX(fetched_at)` moves only when a run writes a new row. **Three of 51 scheduled runs since `58c6aca` committed nothing** — `34042467377` (09-06 15:29:32Z), `34702574414` (09-12 15:33:13Z), `34768213052` (09-13 16:19:10Z), all `success`. `data/generated_at.json` IS `MAX(fetched_at)` (`export/snapshots.py:470`), written every run and staged by name since `aa9f1f6` (2026-09-08T17:42:29Z), with the commit gated on `git diff --cached --quiet` — **so for the two after that fix, no commit proves the anchor did not move**; the 09-06 run predates the anchor entering the export at all (`367d714`). **So candidate (a) is unbuildable on the anchor alone, measured rather than argued: two healthy runs left it exactly where a missed run would have.**
@@ -1601,6 +1697,13 @@ Cheaper is not worth doing, and nothing in handoff 18 touched the benefit side. 
 ## Standing invariants
 
 Things that have bitten before and will again.
+
+- **LEGISCAN IS 10,000 QUERIES A MONTH AND ~2 REQ/S FROM 2026-10-01, AND FROM 2026-11-01 ATTRIBUTION AND ONE KEY ARE BAN CONDITIONS.** The source is the LegiScan API Team email of 2026-09-23. It replaces the 30,000/month this project assumed until then.
+  - **Every HTTP attempt counts**, retries included.
+  - **The spend record is the Turso `legiscan_usage` table**, never a snapshot or a log grep. It is written by the collector in each state's commit and by every tool that calls LegiScan.
+  - **It is our count only.** There is no usage op, so the one upstream reading is the API status page, and a disagreement between the two is a finding.
+  - **Anything new that calls LegiScan passes a `UsageMeter` and a `tool_gate`**, or it spends an allowance the cron is prorating without telling it.
+  - **From 2026-11-01 a violation is a permanent ban, with no appeal.** That covers CC BY 4.0 attribution on every surface that shows LegiScan-derived data (the web pages and `data/state_bills.json` in a public repo), and exactly one key, held by this project alone.
 
 - **An instrument names the premise its answer depends on, refuses when that premise fails, and the refusal is recorded as a RESULT rather than as an absence.** Ruled 2026-09-10 on the third instance; the instances are in *Refused — the premise ledger*. **An answer computed against a failed premise is indistinguishable from a good one at the point of reading**: a citation audit against a stale ref prints OK, a watch on a slot that never fired prints a verdict, an edit assertion against a mangled search string prints success. The refusal is the only thing that separates them, so it has to be visible and it has to be written down — a check that quietly declines and a check that was never run leave the same trace.
 
