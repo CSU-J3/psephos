@@ -9,7 +9,14 @@ on nearly every dump even when nothing filter-relevant moved. Title/description 
 stable, so the stripped corpus diffs only when the upstream sessions actually change.
 
 One getMasterList per state (reuses collectors.state.get_masterlist, which handles the
-numeric-string-key iteration and the `session` skip). Nine queries.
+numeric-string-key iteration and the `session` skip). Nine queries, up to 36 with retries.
+
+GATED ON THE LEGISCAN LEDGER (handoff 98). Before any call it prints its declared worst
+case against the month's remaining headroom in the Turso `legiscan_usage` ledger and
+refuses (exit 1, nothing called) if it does not fit; every attempt it makes is written
+back to that ledger, success or failure. So it needs Turso -- see collectors.state.open_ledger.
+That ledger row is the ONE database write a tools/ file makes: it records spend against
+an external allowance the cron shares, which is not the same thing as mutating the record.
 
 Run from the repo root:  python -m tools.masterlist_corpus
 """
@@ -17,23 +24,37 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 
 import config
-from collectors.state import get_masterlist, THROTTLE
+from collectors.state import (THROTTLE, UsageMeter, cap_signal_body, get_masterlist,
+                              open_ledger, record_spend_or_warn, tool_gate)
 
 OUT = "data/masterlist_corpus.json"
 FIELDS = ("bill_id", "number", "title", "description")
 
 
-def build(base: str, key: str, states: list[str]) -> dict:
+def build(base: str, key: str, states: list[str], meter: UsageMeter | None = None) -> dict:
     """{state: [ {bill_id, number, title, description}, ... sorted by bill_id ]}."""
     corpus: dict[str, list[dict]] = {}
     for state in states:
-        master = get_masterlist(base, key, state, THROTTLE)
+        master = get_masterlist(base, key, state, THROTTLE, meter)
         bills = [{f: m.get(f) for f in FIELDS} for m in master if m.get("bill_id") is not None]
         bills.sort(key=lambda b: b["bill_id"])
         corpus[state] = bills
     return corpus
+
+
+def gated_build(conn, base: str, key: str, states: list[str], monthly_cap: int) -> dict | None:
+    """build(), admitted by the ledger and written back to it. None when refused."""
+    if not tool_gate(conn, len(states), monthly_cap, "masterlist_corpus"):
+        return None
+    meter = UsageMeter()
+    try:
+        return build(base, key, states, meter)
+    finally:
+        record_spend_or_warn(conn, meter, "masterlist_corpus")
+        print(f"  masterlist_corpus: {meter.run_total} LegiScan attempt(s) this run")
 
 
 def main() -> int:
@@ -43,7 +64,22 @@ def main() -> int:
     states = st.get("states", [])
     key = config.require_env(st["api"]["key_env"])
 
-    corpus = build(base, key, states)
+    conn = open_ledger("masterlist_corpus")
+    try:
+        corpus = gated_build(conn, base, key, states, st["monthly_cap"])
+    except Exception as exc:
+        # build() has no per-state handler, so any failure already stops it before
+        # the next call; this only says so plainly when the failure is the cap.
+        body = cap_signal_body(exc)
+        if body is None:
+            raise
+        print(f"  masterlist_corpus: LegiScan signalled its allowance is spent; stopped, "
+              f"no artifact written. Body verbatim:\n{body}", file=sys.stderr)
+        return 1
+    finally:
+        conn.close()
+    if corpus is None:
+        return 1
 
     # sorted keys + no wall-clock stamp -> byte-stable; a trailing newline for POSIX.
     with open(OUT, "w", encoding="utf-8") as fh:

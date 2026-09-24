@@ -7,10 +7,17 @@ candidate the 5b-b spike left open: the tool's own claim that a voting bill is
 related to a bill that isn't about voting. This dump is Part A; tools/sasts_join
 joins it offline against the dimension and the masterlist title snapshot.
 
-Input is data/state_bills.json (the committed snapshot, 455 bills) -- NOT Turso.
-Using the snapshot means this whole unit needs no database connection anywhere.
-One getBill per bill (reuses collectors.state.get_bill), ~455 queries once,
-against a 30k/month tier. Steady-state collection is untouched.
+Input is data/state_bills.json (the committed snapshot, 484 bills as of 2026-09-23),
+not a Turso read. One getBill per bill (reuses collectors.state.get_bill): ~484 queries,
+up to four times that with retries, against a 10,000/month allowance from 2026-10-01 --
+fine once, bad by accident.
+
+GATED ON THE LEGISCAN LEDGER (handoff 98). It used to need no database connection
+anywhere; it now needs Turso for exactly one table. Before any call it prints its
+declared worst case against the month's remaining headroom in `legiscan_usage` and
+refuses (exit 1, nothing called) if it does not fit, and every attempt it makes is
+written back to that ledger. That row is the one database write a tools/ file makes: it
+records spend against an allowance the cron shares, not a change to the record.
 
 Live sasts element shape, confirmed off the first probe (kept VERBATIM in the
 artifact, no field-name assumption):
@@ -29,22 +36,26 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from collections import Counter
 
 import config
-from collectors.state import get_bill, THROTTLE
+from collectors.state import (THROTTLE, AllowanceSpent, UsageMeter, cap_signal_body,
+                              get_bill, open_ledger, record_spend_or_warn, tool_gate)
 
 IN = "data/state_bills.json"
 OUT = "data/sasts_corpus.json"
 
 
 def load_ids(path: str = IN) -> list[str]:
-    """The 455 dimension ids -- state_bill_id is the LegiScan numeric bill_id as
-    text; kept as text here so the skipped list matches the input verbatim."""
+    """The dimension ids (455 at the probe, 484 on 2026-09-23) -- state_bill_id is
+    the LegiScan numeric bill_id as text; kept as text here so the skipped list
+    matches the input verbatim."""
     return [str(b["state_bill_id"]) for b in json.load(open(path, encoding="utf-8"))]
 
 
-def dump(base: str, key: str, ids: list[str], throttle: float) -> dict:
+def dump(base: str, key: str, ids: list[str], throttle: float,
+         meter: UsageMeter | None = None) -> dict:
     """getBill each id, keep only carriers (non-empty sasts). Per-bill try/except:
     an ERROR-status payload (get_bill raises) or a malformed/empty response is
     recorded in `skipped` and never sinks the run. Returns
@@ -53,8 +64,11 @@ def dump(base: str, key: str, ids: list[str], throttle: float) -> dict:
     skipped: list[str] = []
     for bid in ids:
         try:
-            bill = get_bill(base, key, bid, throttle)
-        except Exception:
+            bill = get_bill(base, key, bid, throttle, meter)
+        except Exception as exc:
+            body = cap_signal_body(exc)
+            if body is not None:
+                raise AllowanceSpent(body) from exc   # stop: every later call is wasted
             skipped.append(bid)
             continue
         if not bill or not bill.get("bill_id"):
@@ -103,6 +117,18 @@ def report(corpus: dict, total_ids: int) -> None:
     print(f"  artifact {size/1000:.1f} KB")
 
 
+def gated_dump(conn, base: str, key: str, ids: list[str], monthly_cap: int) -> dict | None:
+    """dump(), admitted by the ledger and written back to it. None when refused."""
+    if not tool_gate(conn, len(ids), monthly_cap, "sasts_dump"):
+        return None
+    meter = UsageMeter()
+    try:
+        return dump(base, key, ids, THROTTLE, meter)
+    finally:
+        record_spend_or_warn(conn, meter, "sasts_dump")
+        print(f"  sasts_dump: {meter.run_total} LegiScan attempt(s) this run")
+
+
 def main() -> int:
     config.load_env()
     st = config.load_sources()["state"]
@@ -110,7 +136,17 @@ def main() -> int:
     key = config.require_env(st["api"]["key_env"])
 
     ids = load_ids()
-    corpus = dump(base, key, ids, THROTTLE)
+    conn = open_ledger("sasts_dump")
+    try:
+        corpus = gated_dump(conn, base, key, ids, st["monthly_cap"])
+    except AllowanceSpent as exc:
+        print(f"  sasts_dump: {exc}; stopped, no artifact written. Body verbatim:\n"
+              f"{exc.body}", file=sys.stderr)
+        return 1
+    finally:
+        conn.close()
+    if corpus is None:
+        return 1
     write(corpus)
     report(corpus, len(ids))
     return 0
