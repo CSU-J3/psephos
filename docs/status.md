@@ -96,10 +96,11 @@ One over-count is accepted and documented: a commit that lands but whose respons
    - If the label reads Public, **"EDU tier" goes on the falsified list** with the status page as the instrument. The phrase came from this file's own handoff-0d entry and a `common.py` comment. The comment was neutralised in `c55a666`; the manual itself says "Public service keys".
 4. **Part B, the CC BY 4.0 attribution, before 2026-11-01.** It is binary and irreversible, and it takes a visual checkpoint.
    - **Repo side SHIPPED 2026-09-24 in `b64ce4e`:** `data/NOTICE.md` and the README line. `state_bills.json` is the only tracked LegiScan-derived file; both tool corpora are gitignored and have never been committed.
-   - **Web side built and AT THE VISUAL CHECKPOINT, uncommitted:** the line on `/state-bills` and on each state-bill page, a site-wide footer, and `web/scripts/assert-attribution.mjs` as a new `dom-checks` step.
+   - **Web side SHIPPED 2026-09-24 in `1baa4e4`, after Corey passed the visual checkpoint:** the line on `/state-bills` and on each state-bill page, a site-wide footer, and `web/scripts/assert-attribution.mjs` as a new `dom-checks` step.
+   - **The site is DARK-ONLY, and the light-theme screenshots in that checkpoint were a SPEC ERROR, not a finding.** `body` is hard-coded to `bg-neutral-950`, and nothing in `web/app/globals.css` or any component reads `prefers-color-scheme`. Every light frame was byte-identical to its dark twin: the same sha256 on all four pairs, `/state-bills` and `/state-bill/2153946` at 1440 and 390px. **"Light theme untested" is therefore NOT an open gap.** There is no light theme to test. A checkpoint brief asking for one was asking about a page that does not exist, and the frames it produced prove only that the emulated preference changes nothing.
    - **Mutation-checked red twice:** a footer hidden below `sm` failed only the six 390px footer-link visibility checks; a footer removed failed twelve count checks.
    - **Against the real build:** 38 PASS, with the lane's other three checks unchanged at 8, 33 and 77.
-   - **Owed after commit:** the first SCHEDULED `dom-checks` run on a head carrying it, the rule this lane has always been held to.
+   - **OWED: the first SCHEDULED `dom-checks` run on a head carrying `1baa4e4`,** read for `assert-attribution` exit 0 with 38 PASS. That is the rule this lane has always been held to: a merge is not a run and a dispatch is not a schedule. **Record that run's id here when it lands;** the check counts as proven only then. The earliest slot is 03:17Z on 2026-09-25, landing hours later on this lane's observed lag.
 5. **The first cap-signal sighting, whenever it comes.** Record the body verbatim with its run id, and correct `names_allowance_limit` against it.
 
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
@@ -1477,6 +1478,14 @@ Three claims died to this reading — the 150–250K band, the ~88K/day drop der
 **Re-read 2026-09-06 01:55Z (DB clock): still deferred, and both counts still read 1.** Bills with nonzero 30d cross-channel activity: **1** (`s1383-119`, **15** items on `fetched_at`, **7** on the `occurred_at` parallel). Bills carrying ≥1 news item: **1** (`s1383-119`, **98** items, up from 96 on 09-02 and 86 on 08-13). Dependency half unchanged: **0** items carry both a `bill_id` and a `case_id`. **The two keys moved in opposite directions between the 09-02 and 09-06 readings** — `fetched_at` held at 15 while `occurred_at` fell 8 → 7 — which is the ordinary consequence of a 30d window sliding over backdated RSS dates, not a signal about the bill. And the count that moved is not the count the condition is written against: **breadth is still one bill of six**, as it has been at every reading.
 
 ## Open units, roughly in order
+
+**BACKLOG, OPENED 2026-09-24, NOT FIXED: the `/state-bills` matrix clips a stage label mid-word at 390px, with nothing to show it scrolls.** Seen in the Part B checkpoint's 390px frame: the header row reads `INTRODUCED  ENGROSSED  ENROLLED  PASSE`, cut at the right edge. The matrix sits in its own `overflow-x-auto` box (`web/components/StateMatrix.tsx:120`, untouched since `10696c5`), so the page itself does not overflow: `scrollWidth` equals the viewport, and `assert-layout` stays green. The columns past PASSED are reachable only by a sideways swipe that nothing on the screen hints at. Options for later, none chosen:
+
+- a fade on the right edge;
+- shorter stage labels on mobile;
+- a pinned state column.
+
+Pre-existing, not introduced by Part B, and not a licence matter.
 
 **OPENED 2026-09-23, NOT BUILT: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 29 green runs (see *The Congress.gov key was disabled for a week* in *Owed right now*).
 
