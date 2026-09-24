@@ -1758,6 +1758,16 @@
         "source_id": "democracy-docket",
         "source_url": "https://www.democracydocket.com/news-alerts/ohio-asks-6th-circuit-to-lift-pause-on-new-voter-registration-restrictions",
         "title": "Ohio asks 6th Circuit to lift pause on new voter registration restrictions"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 112030,
+        "kind": "item",
+        "occurred_at": "2026-09-23T22:22:21+00:00",
+        "source_id": "democracy-docket",
+        "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-greenlights-ohio-gops-voter-registration-proof-of-citizenship-requirement-for-midterms",
+        "title": "Appeals court greenlights Ohio GOP’s voter registration proof of citizenship requirement for midterms"
       }
     ]
   },

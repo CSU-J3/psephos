@@ -8838,5 +8838,35 @@
     "source_id": "states-united",
     "source_url": "https://statesunited.org/announces-four-new-members-of-bipartisan-advisory-board",
     "title": "States United Democracy Center Announces Four New Members of Bipartisan Advisory Board"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 112030,
+    "kind": "item",
+    "occurred_at": "2026-09-23T22:22:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-greenlights-ohio-gops-voter-registration-proof-of-citizenship-requirement-for-midterms",
+    "title": "Appeals court greenlights Ohio GOP’s voter registration proof of citizenship requirement for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112029,
+    "kind": "item",
+    "occurred_at": "2026-09-23T23:25:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-final-plea-referendum-backers-ask-supreme-court-to-stop-missouri-from-changing-maps-after-voting-began",
+    "title": "In final plea, referendum backers ask Supreme Court to stop Missouri from changing maps after voting began"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112028,
+    "kind": "item",
+    "occurred_at": "2026-09-24T02:48:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-sue-trump-admin-to-keep-armed-agents-from-polls-during-midterms",
+    "title": "Democrats sue Trump admin to keep armed agents from polls during midterms"
   }
 ]
