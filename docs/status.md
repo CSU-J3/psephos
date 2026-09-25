@@ -2,7 +2,7 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-09-24 (UTC).
+Last updated: 2026-09-25 (UTC).
 
 ---
 
@@ -136,6 +136,77 @@ One over-count is accepted and documented: a commit that lands but whose respons
    - **OWED: the first SCHEDULED `dom-checks` run on a head carrying `1baa4e4`,** read for `assert-attribution` exit 0 with 38 PASS. That is the rule this lane has always been held to: a merge is not a run and a dispatch is not a schedule. **Record that run's id here when it lands;** the check counts as proven only then. The earliest slot is 03:17Z on 2026-09-25, landing hours later on this lane's observed lag.
    - **A DISPATCH RAN FIRST, AND IT DOES NOT CLOSE THE LINE ABOVE.** Run `36045020427`, event `workflow_dispatch`, head `553b8cc`, started 2026-09-24T18:59:10Z. It went green: every step `success`, `assert-attribution` 38 PASS / 0 FAIL at 1280 and 390px on Linux, and the issue step skipped. It was spent under this lane's own rule, which holds that a dispatch exercises the setup a day earlier and cannot prove the schedule. **It is not the run to record in the line above.**
 5. **The first cap-signal sighting, whenever it comes.** Record the body verbatim with its run id, and correct `names_allowance_limit` against it.
+
+**HANDOFF 98b §4, THE SESSION CADENCE: SHIPPED 2026-09-25, ruled by Corey 2026-09-24. The first production state run owes the read below.**
+
+**What changed.** The state collector now acts on the **06:17Z slot only**; the other three print `state: not this slot`. Each run it does, in order:
+
+1. **State-id bootstrap, one time:** a `getSessionList&state=XX` for each watched state not yet measured. The ids are stored in the new `state_sessions` table, printed once, and never typed into the code.
+2. **One national `getSessionList`.**
+3. **One `getMasterList&id=SESSION_ID` per non-prior session:**
+   - active sessions (`sine_die = 0` or `prefile = 1`) are polled on Tue–Sat, i.e. when the previous ET day was Mon–Fri, using `zoneinfo` backed by `tzdata`;
+   - adjourned sessions are polled only when their done-marker is stale.
+4. **The unchanged change-hash → `getBill` path.**
+
+Two things were also added:
+
+- a URL/`state_id` tripwire that refuses a session whose master list names another state;
+- `runs_left` over daily slots, and `masterlists` / `unchanged_masterlists` columns on `legiscan_usage` as the cache-hit proxy.
+
+**Commits:**
+
+- `3410cba` `tzdata`;
+- one `feat(state)` commit for the code;
+- one `test(state)` commit, giving 488 tests in all;
+- one docs commit.
+
+The handoff suggested four `feat` commits. They were landed as one because `main()` interleaves all four concerns, and a split would have left commits that do not run.
+
+**THE LIVE LOCAL CHECK, 2026-09-25T01:34Z** (real LegiScan, throwaway SQLite, Turso never loaded, share seeded to 30):
+
+- **The bootstrap MEASURED AZ 3, FL 9, GA 10, MI 22, NC 33, OH 35, PA 38, TX 43, WI 49**, exactly the alphabetical prediction. Recorded as `tests/fixtures/legiscan_state_ids_measured.json`, which the prediction test is held against.
+- **14 non-prior sessions across the nine states, special sessions included:**
+  - GA 2026 Special Session, with 3 election bills;
+  - FL's 4th, 5th and 6th specials;
+  - WI's May 2026 special.
+
+  **The old `state=` polling reached none of them.** It covered only LegiScan's "current" session per state.
+- **The budget arithmetic was exact:** 10 on sessions + 14 master lists + 6 getBills = the share of 30, which is what the run printed and the ledger's delta.
+
+**A live payload finding.** The national reply carries **`state_abbr`**, which page 8's example does not show. It agreed with all nine measured ids, one id per abbreviation across all 52 jurisdictions. It is now a free second tripwire in both session paths, alongside the ruled bootstrap and never in place of it.
+
+**The adversarial review of the build** (five dimensions, 22 agents) left 13 findings standing. All were fixed, and each fix was mutation-checked red:
+
+1. **The session writes had no handler.** A Turso error in the bootstrap or national upsert exited non-zero and cost the cycle its Export and Commit. They are now HTTP-first with one guarded write, and unchanged rows are skipped: live, 176 rows on the first store and **0** on the second.
+2. **An outage on the bootstrap day could outrun the 45-minute job.** It meant 19 full retry ladders, about 43 minutes. A transport or 5xx failure that exhausts every retry on a session call now stops that run's LegiScan calls.
+3. **A failed bootstrap write never printed the measured table.** It now always prints, and says if the ids were not stored.
+4. **A filter change never reached an adjourned session already marked done**, silently falsifying `CLAUDE.md`'s self-stamp rule.
+5. **Two ruled tests were missing:** two adjourned sessions where only one hash moved, and a concurrent special session end to end. Both are added, plus a DST case that rules out a fixed EST offset.
+
+**DEVIATIONS FROM THE RULED TABLE AND TEXT, flagged for Corey rather than buried:**
+
+- **(a) `state_sessions.masterlist_hash`**, the done-marker. Without it, a poll that failed or was cut short by the budget would read as done, and an adjourned session would go quiet with bills unfetched.
+- **(b) The marker carries a filter fingerprint** (`<dataset_hash>|<fingerprint>`). A change to the terms, the exclusions or `election_match`'s source re-polls each adjourned session once, about 14 master lists. That keeps a standing invariant true. It adds a trigger beside the ruled one and removes none.
+- **(c) The outage stop.**
+- **(d) The `state_abbr` cross-check.**
+- **(e) A national call that fails without an outage plans from the stored sessions.**
+
+**OWED, in order:**
+
+1. **THE FIRST PRODUCTION STATE RUN ON THIS CODE**, the 06:17Z slot of 2026-09-25, a Friday, landing a few hours late. Read from its log:
+   - the bootstrap table, **against the fixture**;
+   - `national getSessionList landed`;
+   - ~14 master lists: MI/NC/OH/PA active, and the 10 adjourned sessions on first sight;
+   - an exit of 0.
+
+   Then read by direct Turso query:
+   - `state_sessions`, holding ~176 rows for the nine states;
+   - `legiscan_usage.masterlists` / `unchanged_masterlists`, now non-zero;
+   - **the first special-session bills in `state_bills`**, GA's 2026 Special Session among them.
+
+   The 00:17Z, 12:17Z and 18:17Z runs should print `state: not this slot`.
+2. **October's target, set now that the deploy precedes Oct 1.** All of October is post-deploy, so the pro-rata target is **6/day × 31 = 186 ±20% (149–223)**, read on the API Status page on or after 2026-11-01. The cache-hit criterion for October is the ledger's `unchanged_masterlists` / `masterlists` for the month. The page's share, under 30%, is read for **November**, on or after 2026-12-01.
+3. **This build's local live checks spent 12 + 30 + 1 + 1 = 44 September queries on this key that the Turso ledger cannot see.** The Status page will count them. Subtract them before reconciling September.
 
 **THE API STATUS PAGE, READ BY COREY 2026-09-24, AND WHAT IT RECONCILES (handoff 98b §1).**
 

@@ -101,7 +101,15 @@ Before asserting any future pair, check the **circuit map**: a district's appeal
 Query the Federal Register API for documents from the configured agencies matching the configured terms. Write each to `items`, grade A1. Catches executive orders and rule changes that never touch Congress. A title-only relevance score surfaces the handful of on-topic EOs and rules among the agency-rule noise (scoring title+summary floods it with EAC abstracts).
 
 ### collectors/state.py  (live)
-LegiScan, subject-filtered for elections. One `getMasterList` per state per run, then `getBill` only on election bills whose `change_hash` moved — the budget gate that holds it under the free-tier cap (a `max_getbill_per_run` guard resumes next run if hit). State items reference a first-class `state_bills` dimension via `items.state_bill_id`, exported as per-bill timelines in `data/state_bills.json` (5b-a). State-level vehicle detection (5b-b) is closed as a free-tier limitation — see the limitations section.
+LegiScan, subject-filtered for elections. **Once a day, on the 06:17Z slot, by session** (handoff 98b, 2026-09-24).
+
+- **Sessions:** one national `getSessionList` classifies each watched state's non-prior sessions as active (`sine_die = 0` or `prefile = 1`) or adjourned. `state_id`s are measured once by a `getSessionList&state=XX` bootstrap and never hard-coded.
+- **Master lists:** one `getMasterList&id=SESSION_ID` per active session on Tue–Sat (previous ET day Mon–Fri). An adjourned session gets one only when its `dataset_hash` moved. Polling by session covers a special session beside the regular one. A URL tripwire refuses a session whose bill URLs name another state.
+- **Bills:** `getBill` only on election bills whose `change_hash` moved.
+- **Budget:** a prorated monthly budget from the `legiscan_usage` ledger bounds the work, and anything unfetched resumes next run.
+- **Why:** it is a waste cut, not a compliance fix. The manual rates `getMasterList` at 1 hour and calls daily sufficient; the old 6-hourly poll was inside both, but most requests found nothing new.
+
+State items reference a first-class `state_bills` dimension via `items.state_bill_id`, exported as per-bill timelines in `data/state_bills.json` (5b-a). State-level vehicle detection (5b-b) is closed as a free-tier limitation — see the limitations section.
 
 ### Per-item recovery: `db.recover`, never bare `rollback` (handoff 15)
 
