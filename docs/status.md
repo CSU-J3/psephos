@@ -183,13 +183,14 @@ The handoff suggested four `feat` commits. They were landed as one because `main
 4. **A filter change never reached an adjourned session already marked done**, silently falsifying `CLAUDE.md`'s self-stamp rule.
 5. **Two ruled tests were missing:** two adjourned sessions where only one hash moved, and a concurrent special session end to end. Both are added, plus a DST case that rules out a fixed EST offset.
 
-**DEVIATIONS FROM THE RULED TABLE AND TEXT, flagged for Corey rather than buried:**
+**RULINGS, ACCEPTED AS BUILT by Corey 2026-09-25.** These four were built beyond the 09-24 ruled text and flagged at push. They are now rulings, not proposals:
 
-- **(a) `state_sessions.masterlist_hash`**, the done-marker. Without it, a poll that failed or was cut short by the budget would read as done, and an adjourned session would go quiet with bills unfetched.
-- **(b) The marker carries a filter fingerprint** (`<dataset_hash>|<fingerprint>`). A change to the terms, the exclusions or `election_match`'s source re-polls each adjourned session once, about 14 master lists. That keeps a standing invariant true. It adds a trigger beside the ruled one and removes none.
-- **(c) The outage stop.**
-- **(d) The `state_abbr` cross-check.**
-- **(e) A national call that fails without an outage plans from the stored sessions.**
+- **(a) `state_sessions.masterlist_hash`, the done-marker.** It is set only when every changed bill was fetched. Otherwise a poll that failed or was cut short by the budget would read as done, and an adjourned session would go quiet with bills unfetched.
+- **(b) The done-marker carries a FILTER FINGERPRINT** (`<dataset_hash>|<fingerprint>`, over the terms, the exclusions and `election_match`'s source). A filter change re-polls each adjourned session **once**, about 14 master lists. This is what keeps `CLAUDE.md`'s self-stamp rule true for adjourned sessions.
+- **(c) The outage stop.** A transport or 5xx failure that exhausts every retry on a session call ends that run's LegiScan calls. That bounds a bootstrap-day outage inside the 45-minute job, and the change-hash gate resumes the next day.
+- **(d) The `state_abbr` cross-check.** It checks the measured id mapping on every `getSessionList`, beside the ruled bootstrap and never in place of it.
+
+**Built, and NOT in that acceptance:** (e) a national `getSessionList` that fails *without* an outage (an ERROR payload, say) plans from the sessions already stored. It stands as built. It is recorded here as the one un-ruled behaviour of the unit, so a later reader does not take the four above as the whole list.
 
 **OWED, in order:**
 
