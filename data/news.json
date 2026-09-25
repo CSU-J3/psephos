@@ -9008,5 +9008,95 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/jackson-blasts-supreme-court-decision-reviving-trump-voter-purge-database",
     "title": "Jackson blasts Supreme Court decision reviving Trump voter-purge database"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113652,
+    "kind": "item",
+    "occurred_at": "2026-09-25T17:15:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-local-prosecutors-who-fought-ice-are-ready-to-combat-federal-election-interference",
+    "title": "The local prosecutors who fought ICE are ready to combat federal election interference"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113651,
+    "kind": "item",
+    "occurred_at": "2026-09-25T18:47:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-supreme-court-is-letting-trump-use-a-faulty-database-for-purges-what-it-could-mean-for-voters",
+    "title": "The Supreme Court is letting Trump use a faulty database for purges. What it could mean for voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113647,
+    "kind": "item",
+    "occurred_at": "2026-09-25T19:17:05+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/25/supreme-court-ruling-save-system-trump-dhs-noncitizens-2026-election",
+    "title": "Supreme Court OKs use of federal citizenship tool to vet voters, but midterm impact will be limited"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113650,
+    "kind": "item",
+    "occurred_at": "2026-09-25T19:20:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-noncitizen-voter-claims-unravel-in-nevada-as-state-confirms-flagged-voters-are-citizens",
+    "title": "DHS noncitizen voter claims unravel in Nevada as state confirms flagged voters are citizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113646,
+    "kind": "item",
+    "occurred_at": "2026-09-25T19:42:35+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/09/25/victoria-bishop-recall-election-county-clerk-approved-language",
+    "title": "Effort to recall Antrim County Clerk gets go-ahead from state board"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113645,
+    "kind": "item",
+    "occurred_at": "2026-09-25T19:49:13+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/09/25/trump-department-of-justice-noncitizen-voting-2022-2024-elections",
+    "title": "Department of Justice charges more Pennsylvania residents with noncitizen voting amid crackdown"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113649,
+    "kind": "item",
+    "occurred_at": "2026-09-25T20:22:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-save-ruling-supreme-court-signals-path-to-weaken-key-protection-against-last-minute-purges",
+    "title": "In SAVE ruling, Supreme Court signals path to weaken key protection against last-minute purges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113653,
+    "kind": "item",
+    "occurred_at": "2026-09-25T20:46:07+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/watch-this",
+    "title": "Watch This"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113648,
+    "kind": "item",
+    "occurred_at": "2026-09-25T20:51:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/that-is-very-concerning-trump-admin-says-it-might-release-voter-eligibility-lists-before-midterms",
+    "title": "‘That is very concerning’: Trump admin says it might release voter eligibility lists before midterms"
   }
 ]
