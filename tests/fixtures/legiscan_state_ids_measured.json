@@ -1,0 +1,5 @@
+{
+  "_provenance": "MEASURED, not typed: the state_id LegiScan returned to getSessionList&state=XX for each watched state, one query each, in the handoff-98b live local check (collectors.state.main() against a throwaway SQLite db, Turso never loaded) at 2026-09-25T01:34Z. Every session in each reply carried the same state_id. The collector never reads this file -- it measures ids itself on its first run and stores them in state_sessions. This file exists only so tests/test_state_sessions.py can hold the alphabetical prediction against a measurement. When production's first run prints its own table, compare it with this; if LegiScan's answer ever changes, update this file AND the prediction's expectation from the measured value, never the reverse.",
+  "measured_at": "2026-09-25T01:34:28Z",
+  "ids": {"AZ": 3, "FL": 9, "GA": 10, "MI": 22, "NC": 33, "OH": 35, "PA": 38, "TX": 43, "WI": 49}
+}
