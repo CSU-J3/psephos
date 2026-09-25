@@ -215,7 +215,46 @@ CREATE TABLE IF NOT EXISTS state_seen (
 CREATE TABLE IF NOT EXISTS legiscan_usage (
     month      TEXT PRIMARY KEY,   -- YYYY-MM, UTC calendar month (pending the status-page reading)
     queries    INTEGER NOT NULL,
-    updated_at TEXT NOT NULL
+    updated_at TEXT NOT NULL,
+    -- The client-side cache-hit proxy (handoff 98b §4d): answered getMasterList
+    -- responses, and those that moved no stored change_hash. Born with the session
+    -- cadence, so a month's values count only from its deploy -- which is what makes
+    -- October's share a post-deploy figure by construction. The API Status page
+    -- stays the instrument of record.
+    masterlists           INTEGER NOT NULL DEFAULT 0,
+    unchanged_masterlists INTEGER NOT NULL DEFAULT 0
+);
+
+-- LegiScan sessions of the WATCHED states, from getSessionList (handoff 98b §4
+-- revised and rulings). One row per (state, session_id).
+--   state_id is MEASURED: the one-time getSessionList&state=XX bootstrap stores what
+--     LegiScan returns, because the manual documents sessions by state_id only and
+--     publishes no mapping. Never hard-coded. (The live reply also carries state_abbr,
+--     used as a cross-check on every national call.)
+--   hash_seen_at is OUR observation time of the current dataset_hash (getSessionList
+--     carries no dataset_date).
+--   masterlist_hash is the DONE-MARKER: "<dataset_hash>|<filter fingerprint>" as of
+--     the last master list this project FULLY processed for the session (every
+--     changed bill fetched). An adjourned session is polled only when it is stale --
+--     the dataset_hash moved, or the election filter did (collectors/state.py
+--     filter_fingerprint). Comparing against the freshly stored dataset_hash instead
+--     would mark a failed or budget-cut poll as done, and an adjourned session's
+--     dataset rarely moves again; leaving the filter out would strand newly-matching
+--     bills in every adjourned session after a term broadening.
+CREATE TABLE IF NOT EXISTS state_sessions (
+    state           TEXT NOT NULL,
+    session_id      INTEGER NOT NULL,
+    state_id        INTEGER NOT NULL,
+    sine_die        INTEGER NOT NULL,
+    prefile         INTEGER NOT NULL,
+    prior           INTEGER NOT NULL,
+    special         INTEGER NOT NULL,
+    session_name    TEXT,
+    dataset_hash    TEXT NOT NULL,
+    hash_seen_at    TEXT NOT NULL,
+    masterlist_hash TEXT,
+    updated_at      TEXT NOT NULL,
+    PRIMARY KEY (state, session_id)
 );
 
 -- Two-stage dedup bookkeeping for the news layer.

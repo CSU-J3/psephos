@@ -450,9 +450,11 @@ news:
 # State bills are first-class (5b-a): each getBill fills a state_bills dimension
 # row and stamps items.state_bill_id, exported as per-bill timelines in
 # data/state_bills.json. bill_id/case_id stay null. The change-hash pattern is
-# the whole game -- one getMasterList per state per run, then getBill ONLY on
-# election bills whose change_hash moved. See collectors/state.py and the
-# state_seen table.
+# the whole game -- getBill ONLY on election bills whose change_hash moved.
+# CADENCE (handoff 98b, 2026-09-24): once a day on the 06:17Z slot. One national
+# getSessionList; one getMasterList per non-prior SESSION, active sessions on
+# Tue-Sat (previous ET day Mon-Fri), adjourned ones only when their dataset_hash
+# moved. See collectors/state.py and the state_seen / state_sessions tables.
 #
 # THE ALLOWANCE IS 10,000 QUERIES A MONTH FROM 2026-10-01, down from 30,000, plus a
 # ~2 req/s sliding-window rate limit (LegiScan API Team email, 2026-09-23). Every

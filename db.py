@@ -343,6 +343,10 @@ _MIGRATIONS = [
     ("cases", "state", "TEXT"),
     ("items", "outlet", "TEXT"),
     ("cases", "date_terminated", "TEXT"),
+    # legiscan_usage predates the cache-hit proxy (handoff 98b §4d); the live Turso
+    # table was created 2026-09-24 with only month/queries/updated_at.
+    ("legiscan_usage", "masterlists", "INTEGER NOT NULL DEFAULT 0"),
+    ("legiscan_usage", "unchanged_masterlists", "INTEGER NOT NULL DEFAULT 0"),
 ]
 
 
@@ -551,25 +555,26 @@ def upsert(conn, table: str, row: dict, pk: str) -> None:
     conn.execute(sql, [row[c] for c in cols])
 
 
-def increment(conn, table: str, pk: str, key, column: str, by: int, row: dict) -> None:
-    """INSERT a counter row, or ADD `by` to its `column` on conflict with `pk`.
+def increment(conn, table: str, pk: str, key, counters: dict, row: dict) -> None:
+    """INSERT a counter row, or ADD each of `counters` ({column: by}) to it on
+    conflict with `pk`.
 
     Not `upsert`: upsert REPLACES on conflict, and a counter with more than one
     writer (the cron and a local tool both spending one LegiScan allowance) has to
     accumulate or the second writer erases the first. The sum happens in SQL, so
     there is no read-modify-write window between writers. `row` carries the other
-    columns, which are replaced on conflict as upsert would; `column` must not be
-    in it."""
+    columns, which are replaced on conflict as upsert would; no counter column may
+    be in it."""
     _require_writable(conn, f"increment on {table}")
-    cols = [pk, column, *row]
+    cols = [pk, *counters, *row]
     placeholders = ", ".join("?" for _ in cols)
-    updates = ", ".join([f"{column} = {table}.{column} + excluded.{column}",
+    updates = ", ".join([*(f"{c} = {table}.{c} + excluded.{c}" for c in counters),
                          *(f"{c} = excluded.{c}" for c in row)])
     sql = (
         f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({placeholders}) "
         f"ON CONFLICT({pk}) DO UPDATE SET {updates}"
     )
-    conn.execute(sql, [key, by, *row.values()])
+    conn.execute(sql, [key, *counters.values(), *row.values()])
 
 
 def insert_ignore(conn, table: str, row: dict) -> bool:

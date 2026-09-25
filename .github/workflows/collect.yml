@@ -229,6 +229,11 @@ jobs:
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
           LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          # The state collector runs on ONE slot a day (handoff 98b §4a) and reads the
+          # firing cron line from here; every other slot prints `state: not this slot`
+          # and exits 0. Same expression as the commit and heartbeat steps below. The
+          # other five collectors ignore it.
+          SLOT: ${{ github.event.schedule || 'dispatch' }}
         run: |
           python -m collectors.legislation
           python -m collectors.tracker_uw      # discover the full DOJ-suit list -> data/doj_cases.json

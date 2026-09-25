@@ -6,38 +6,52 @@ data/state_bills.json (parallel to bills/cases). bill_id/case_id stay null -- th
 state channel keys on state_bill_id. State-level vehicle detection (is_vehicle,
 via the getBill `sasts` array) is the deferred 5b-b follow-on; is_vehicle stays 0.
 
-The change-hash pattern is the whole game (the public tier is 10,000 queries a
-month from 2026-10-01, every HTTP attempt counted; off-season this spends ~10 a
-run, nine of them masterlists -- see "Monthly budget" below for what bounds the
-rest):
+ONE SLOT A DAY, BY SESSION (handoff 98b §4, ruled 2026-09-24). The channel runs on
+the 06:17Z collect.yml slot only; the other three print `state: not this slot`. A
+cadence cut for waste, not a compliance fix: the manual rates getMasterList at 1 hour
+and calls daily sufficient, and the old 6-hourly poll was inside both -- but 86% of
+September's requests found nothing new and still spent the allowance.
 
-  1. getMasterList(state) -- ONE query per state. Each bill carries a change_hash
-     (the gate signal) plus title/description (the election filter needs them) and
-     its LegiScan bill_id. NOT getMasterListRaw: the Raw variant omits
+  0. The state_id bootstrap, once: getSessionList&state=XX per watched state not yet
+     measured (nine on the first run after deploy). The manual's example session
+     names its state only by state_id and publishes no mapping, so the ids are
+     MEASURED and stored in state_sessions, never typed here; the table is printed
+     once. (The live reply also carries state_abbr, which checks the mapping on every
+     call -- see _abbr_conflicts.) A state whose bootstrap fails is polled by `state=`
+     meanwhile.
+  1. getSessionList, national and bare, once a day: sine_die / prefile / prior /
+     dataset_hash for every session of every watched state, into state_sessions.
+  2. Plan, per non-prior session: ACTIVE (sine_die = 0, or prefile = 1) sessions poll
+     when the previous ET day was Mon-Fri, so the Tue-Sat slots poll and Sun/Mon skip;
+     ADJOURNED sessions poll only when their dataset_hash has moved since the last
+     master list fully processed for them, and otherwise cost ZERO calls.
+  3. getMasterList&id=SESSION_ID per planned session -- "Invocation A" (page 9); the
+     `state=` form is "current session only (use with caution)". By id, a special
+     session beside the regular one is covered. Each list must pass the URL tripwire:
+     a session whose bill URLs (or session block) name another state is refused and
+     nothing is written for it. NOT getMasterListRaw: the Raw variant omits
      title/description, so the title-based filter would match nothing live.
-  2. Election filter on the raw title (phrase-aware; see election_match).
-  3. change-hash gate: compare each kept bill's change_hash to the stored value
-     (state_seen). Only bills whose hash MOVED (or are new) earn a getBill.
-  4. getBill(id) on those -- the full record including the `history` array. One
-     items row per history action (content_hash over bill_id + date + action;
-     insert_ignore dedups, so re-running never double-writes).
-  5. Store the new change_hash. A per-run getBill budget caps the work; the stored
-     hash means the next run resumes exactly where this one stopped, no loss.
+  4. Election filter on the raw title (phrase-aware; see election_match), then the
+     change-hash gate against state_seen: only bills whose hash MOVED (or are new)
+     earn a getBill -- the full record with its `history`, one items row per action
+     (content_hash dedup, so re-running never double-writes).
+  5. Store the new change_hash. The getBill budget caps the work; an unfetched bill
+     keeps no stored hash, so a later run resumes exactly where this one stopped.
 
 LegiScan calls are GET {base}?key={KEY}&op={OP}&...; success is {"status":"OK",...},
 failure is {"status":"ERROR","alert":{...}} -- an ERROR is treated as a skip (it
-surfaces through the per-state try/except in main), not a crash.
+surfaces through the per-target try/except in collect), not a crash.
 
 Monthly budget (handoff 98). Every HTTP attempt is counted by a UsageMeter hooked
 into common._get and written to the Turso `legiscan_usage` ledger in the same
-per-state commit as the data. Each run reads the month's ledger total and prorates
-what is left of `cron_ceiling` over the collect.yml slots left in the month
-(run_budget): masterlists are paid first, getBill gets the remainder up to
-`max_getbill_per_run`, and a run that cannot afford its masterlists plus one
-getBill skips the channel and exits 0. Nothing is lost by skipping: an unfetched
-bill has no stored hash, so the gate re-fetches it on the next run that can pay. If LegiScan itself says the
-allowance is spent (cap_signal_body), the run stops calling it for the rest of the
-run, prints the body once, and still exits 0.
+commit as the data, beside the cache-hit proxy (answered master lists, and those
+that moved no stored hash). Each run reads the month's ledger total and prorates
+what is left of `cron_ceiling` over the daily state slots left in the month
+(run_budget): the session calls and master lists are paid first, getBill gets the
+remainder up to `max_getbill_per_run`, and a run that cannot afford them plus one
+getBill skips its master lists and exits 0. Nothing is lost by skipping. If
+LegiScan itself says the allowance is spent (cap_signal_body), the run stops calling
+it for the rest of the run, prints the body once, and still exits 0.
 
 Run from the repo root:  python -m collectors.state
 """
@@ -46,11 +60,13 @@ from __future__ import annotations
 
 import calendar
 import json
+import os
 import re
 import sys
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from functools import lru_cache
+from zoneinfo import ZoneInfo
 
 import common
 import config
@@ -65,11 +81,21 @@ CHANNEL = "state"
 # why this spacing is set to stay under the window rather than lean on the retry.
 THROTTLE = 0.6
 
-# collect.yml's four cron lines (`17 0 * * *`, `17 6 ...`, `17 12 ...`, `17 18 ...`)
-# as (hour, minute) UTC. run_budget prorates over the slots left in the month, so
-# this has to agree with the workflow; tests/test_legiscan_budget.py reads collect.yml and
-# fails if the two drift apart.
-CRON_SLOTS = ((0, 17), (6, 17), (12, 17), (18, 17))
+# THE STATE COLLECTOR RUNS ON ONE SLOT A DAY (handoff 98b §4a). collect.yml fires
+# four times a day and passes the firing cron line as SLOT; every other slot skips
+# the channel. run_budget prorates over these slots only, so STATE_SLOTS has to agree
+# with STATE_SLOT, and STATE_SLOT has to be one of collect.yml's cron lines --
+# tests/test_legiscan_budget.py reads the workflow and fails if they drift apart.
+# 06:17Z is the brief's fallback: the manual names no refresh time (page 7, read
+# 2026-09-24), so there is no "first slot after LegiScan's refresh" to pick.
+STATE_SLOT = "17 6 * * *"
+STATE_SLOTS = ((6, 17),)
+
+# Active sessions poll when the PREVIOUS ET day was Mon-Fri, so the Tue-Sat slots poll
+# and Sun/Mon skip (handoff 98b §4c, ruled). The zone, not a fixed offset: 06:17Z is
+# 02:17 EDT or 01:17 EST, and the tests cross the 2026-11-01 change. tzdata supplies
+# the zone on Windows (requirements.txt).
+ET = ZoneInfo("America/New_York")
 
 
 def register_source(conn, base: str, gsource: str, ginfo: str) -> None:
@@ -285,30 +311,50 @@ class UsageMeter:
     (see cap_signal_body). It lives here because this object is the run's account
     of its dealings with LegiScan, and main() prints it once."""
 
+    COUNTERS = ("queries", "masterlists", "unchanged_masterlists")
+
     def __init__(self):
-        self.pending: dict[str, int] = {}
+        # month -> {counter: n}. A month is present only while something is owed, so
+        # `if meter.pending` still reads "is there anything to flush".
+        self.pending: dict[str, dict[str, int]] = {}
         self.run_total = 0
         self.cap_signal: str | None = None
 
-    def __call__(self) -> None:
+    def _bump(self, counter: str, n: int = 1) -> None:
         month = ledger_month(_now())
-        self.pending[month] = self.pending.get(month, 0) + 1
+        row = self.pending.setdefault(month, {c: 0 for c in self.COUNTERS})
+        row[counter] += n
+
+    def __call__(self) -> None:
+        self._bump("queries")
         self.run_total += 1
 
-    def flush(self, conn) -> dict[str, int]:
-        written = {m: n for m, n in self.pending.items() if n}
+    def masterlist(self, unchanged: bool) -> None:
+        """One ANSWERED getMasterList, and whether it moved no stored change_hash --
+        the client-side proxy for the API Status page's cache hits (handoff 98b §4d).
+        Not an HTTP attempt; those are counted by __call__."""
+        self._bump("masterlists")
+        if unchanged:
+            self._bump("unchanged_masterlists")
+
+    def pending_queries(self) -> int:
+        return sum(row["queries"] for row in self.pending.values())
+
+    def flush(self, conn) -> dict[str, dict[str, int]]:
+        written = {m: dict(row) for m, row in self.pending.items() if any(row.values())}
         stamp = common.now_iso()
-        for month, n in sorted(written.items()):
-            db.increment(conn, LEDGER_TABLE, "month", month, "queries", n,
-                         {"updated_at": stamp})
+        for month, row in sorted(written.items()):
+            db.increment(conn, LEDGER_TABLE, "month", month, row, {"updated_at": stamp})
         return written
 
-    def settle(self, written: dict[str, int]) -> None:
-        for month, n in written.items():
-            left = self.pending.get(month, 0) - n
-            if left > 0:
-                self.pending[month] = left
-            else:
+    def settle(self, written: dict[str, dict[str, int]]) -> None:
+        for month, row in written.items():
+            left = self.pending.get(month)
+            if left is None:
+                continue
+            for c, n in row.items():
+                left[c] = max(0, left[c] - n)
+            if not any(left.values()):
                 self.pending.pop(month, None)
 
 
@@ -340,7 +386,7 @@ def record_spend_or_warn(conn, meter: UsageMeter, what: str) -> None:
         except Exception as exc:
             db.recover(conn)
             if attempt == 2:
-                print(f"  {what}: ledger flush failed; {sum(meter.pending.values())} "
+                print(f"  {what}: ledger flush failed; {meter.pending_queries()} "
                       f"LegiScan attempt(s) are NOT in {LEDGER_TABLE}: {exc}",
                       file=sys.stderr)
 
@@ -378,40 +424,41 @@ class Budget:
 
 
 def runs_left(now: datetime) -> int:
-    """This run, plus every collect.yml slot still to come in now's UTC month.
+    """This run, plus every STATE slot (STATE_SLOTS, one a day) still to come in
+    now's UTC month -- not all four collect.yml slots, since the other three skip
+    the channel (handoff 98b, ceiling arithmetic revised).
 
-    Counted from the clock rather than from "which slot is this run", because a
-    scheduled run lands 2-6 hours after its slot and the clock cannot say which
-    slot it was dispatched for. `1 + slots strictly after now` is exact for a run
-    landing between its own slot and the next, over-counts by one for a previous
-    month's run landing after 00:00Z on the 1st (a smaller allowance, the safe
-    side), and under-counts by one only for a run landing more than six hours
-    late, which the ceiling check still bounds."""
+    Counted from the clock rather than from "which slot is this run". `1 + slots
+    strictly after now` is exact for a scheduled 06:17Z run, which lands 2-6 hours
+    after its slot and so always before the next day's. A dispatched run is extra
+    and uncounted, which the ceiling check still bounds."""
     now = now.astimezone(timezone.utc)
     last_day = calendar.monthrange(now.year, now.month)[1]
     later = sum(
         1
         for day in range(now.day, last_day + 1)
-        for hour, minute in CRON_SLOTS
+        for hour, minute in STATE_SLOTS
         if datetime(now.year, now.month, day, hour, minute, tzinfo=timezone.utc) > now
     )
     return 1 + later
 
 
-def run_budget(used: int, cron_ceiling: int, n_states: int, max_getbill: int,
-               now: datetime) -> Budget:
-    """Prorate the rest of the month's cron ceiling over the runs left in it.
+def run_budget(used: int, cron_ceiling: int, n_masterlists: int, max_getbill: int,
+               now: datetime, spent: int = 0) -> Budget:
+    """Prorate the rest of the month's cron ceiling over the state slots left in it.
 
-    allowance = floor((cron_ceiling - used) / runs_left). Masterlists are paid
-    first, because without them nothing is detected and getBill has nothing to
-    fetch; getBill gets `allowance - n_states`, capped by `max_getbill`, floored at
-    0. If the ceiling cannot cover even this run's masterlists, or this run's share
-    cannot buy them plus one getBill (the amendment below), skip the channel.
+    allowance = floor((cron_ceiling - used) / runs_left), where `used` is the ledger
+    as read at the start of the run. `spent` is what this run has already spent
+    before its master lists -- the day's getSessionList and, once, the state-id
+    bootstrap -- and `n_masterlists` is the number of SESSIONS it will poll, known
+    only after that getSessionList. Both are paid first, because without them
+    nothing is detected and getBill has nothing to fetch; getBill gets
+    `allowance - spent - n_masterlists`, capped by `max_getbill`, floored at 0.
 
-    PRORATION IS THE POINT. A flat per-run cap (500 x ~124 runs = 62,000) lets an
-    in-session storm spend the month in its first week and blind the channel for
-    the rest of it. Prorated, a storm is metered out over the month instead, and
-    a quiet run's unspent share rolls forward into every later run's allowance.
+    PRORATION IS THE POINT. A flat per-run cap lets an in-session storm spend the
+    month in its first week and blind the channel for the rest of it. Prorated, a
+    storm is metered out over the month, and a quiet run's unspent share rolls
+    forward into every later run's allowance.
 
     `used` is the whole month's ledger, tools included, so the cron yields to a
     tool run rather than the two together overrunning the ceiling. The allowance
@@ -420,20 +467,19 @@ def run_budget(used: int, cron_ceiling: int, n_states: int, max_getbill: int,
     it."""
     left = runs_left(now)
     allowance = max(0, (cron_ceiling - used) // left)
-    if used + n_states > cron_ceiling:
+    if used + spent + n_masterlists > cron_ceiling:
         skip = "ceiling"
-    elif allowance - n_states < 1:
+    elif n_masterlists and allowance - spent - n_masterlists < 1:
         # AMENDMENT TO THE HANDOFF'S RULE (review of this unit, 2026-09-23). A run whose
-        # share cannot buy one getBill spends its masterlists and STORES NOTHING: hashes,
-        # dimension rows and items are all written only after a getBill. Worse, each
-        # such run lowers the next run's share, so the channel spends ~9 a run for the
-        # rest of the month to learn nothing. Skipping instead lets the share accumulate
-        # until a run can afford at least one bill. Fires only in an already-overspent
-        # month: a normal one prorates to ~64 a run.
+        # share cannot buy one getBill spends its master lists and STORES NOTHING:
+        # hashes, dimension rows and items are all written only after a getBill.
+        # Worse, each such run lowers the next run's share, so the channel spends a run
+        # after run to learn nothing. Skipping instead lets the share accumulate until
+        # a run can afford at least one bill. Fires only in an already-overspent month.
         skip = "share"
     else:
         skip = None
-    getbill = 0 if skip else max(0, min(max_getbill, allowance - n_states))
+    getbill = 0 if skip else max(0, min(max_getbill, allowance - spent - n_masterlists))
     return Budget(ledger_month(now), used, left, allowance, getbill, skip)
 
 
@@ -574,14 +620,370 @@ def get_bill(base: str, key: str, bill_id, throttle: float,
     return data.get("bill") or {}
 
 
+def get_masterlist_session(base: str, key: str, session_id: int, throttle: float,
+                           meter: UsageMeter | None = None) -> tuple[list[dict], dict]:
+    """getMasterList by SESSION ID -- the manual's "Invocation A" (page 9), where
+    `state=` is Invocation B, "current" session only, "(use with caution)". Polling
+    by id is what covers a special session running beside the regular one (handoff
+    98b rulings). Returns the bills and the payload's own `session` block, which
+    carries `state_id` for the tripwire in collect()."""
+    data = _api(base, key, "getMasterList", {"id": session_id}, throttle, meter)
+    master = data.get("masterlist") or {}
+    block = master.get("session") if isinstance(master.get("session"), dict) else {}
+    return [v for k, v in master.items() if k != "session" and isinstance(v, dict)], block
+
+
+# --- sessions: the daily national gate (handoff 98b §4 revised, ruled) ------
+
+@dataclass(frozen=True)
+class Target:
+    """One getMasterList this run will make. `session_id` None is the `state=`
+    invocation: the first-run default for a state with no measured sessions, and
+    the shape every pre-session caller (tests, tools) still uses."""
+    state: str
+    session_id: int | None
+    why: str
+    done_marker: str | None = None   # what masterlist_hash becomes if fully processed
+
+    @property
+    def label(self) -> str:
+        return self.state if self.session_id is None else f"{self.state}/{self.session_id}"
+
+
+def measured_state_ids(conn, states: list[str]) -> dict[str, int]:
+    """{state: state_id} for the watched states whose id has been MEASURED, i.e.
+    stored in state_sessions by the bootstrap. A state holding two different ids is
+    left out and said so: two answers is not a measurement, and the URL tripwire in
+    collect() would refuse its sessions anyway."""
+    out: dict[str, int] = {}
+    for st in states:
+        ids = {r["state_id"] for r in conn.execute(
+            "SELECT DISTINCT state_id FROM state_sessions WHERE state = ?", (st,)).fetchall()}
+        if len(ids) == 1:
+            out[st] = ids.pop()
+        elif len(ids) > 1:
+            print(f"  {st:<3} state_sessions holds conflicting state_ids {sorted(ids)}; "
+                  f"left unmapped", file=sys.stderr)
+    return out
+
+
+def _flag(session: dict, name: str) -> int:
+    try:
+        return int(session.get(name) or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
+def _session_row(state: str, session: dict) -> dict:
+    return {
+        "state": state,
+        "session_id": int(session["session_id"]),
+        "state_id": int(session["state_id"]),
+        "sine_die": _flag(session, "sine_die"),
+        "prefile": _flag(session, "prefile"),
+        "prior": _flag(session, "prior"),
+        "special": _flag(session, "special"),
+        "session_name": session.get("session_name") or session.get("session_title"),
+        "dataset_hash": str(session.get("dataset_hash") or ""),
+    }
+
+
+def store_sessions(conn, rows: "list[tuple[str, dict]]", now_iso: str) -> int:
+    """Write getSessionList sessions for watched states into the OPEN transaction,
+    and return how many rows changed. The caller commits, or recovers.
+
+    ONE read of what is stored, then an upsert ONLY for a new or changed session.
+    The national reply carries every session a watched state ever had (176 rows for
+    the nine, on 2026-09-25), and upserting each daily would be ~350 Turso statements
+    for the handful that moved. `hash_seen_at` is OUR observation time of the
+    current dataset_hash, rewritten only when the hash changes; `updated_at` is the
+    last time anything about the row changed. `masterlist_hash` is never touched
+    here -- collect() owns it."""
+    states = sorted({st for st, _ in rows})
+    existing = {}
+    if states:
+        marks = ", ".join("?" for _ in states)
+        for r in conn.execute(
+                "SELECT state, session_id, state_id, sine_die, prefile, prior, special, "
+                f"session_name, dataset_hash, hash_seen_at FROM state_sessions "
+                f"WHERE state IN ({marks})", states).fetchall():
+            existing[(r["state"], r["session_id"])] = r
+    changed = 0
+    for st, session in rows:
+        new = _session_row(st, session)
+        old = existing.get((st, new["session_id"]))
+        if old is not None and all(old[k] == v for k, v in new.items()):
+            continue
+        seen = (old["hash_seen_at"] if old is not None and old["dataset_hash"] == new["dataset_hash"]
+                else now_iso)
+        db.upsert(conn, "state_sessions", {**new, "hash_seen_at": seen, "updated_at": now_iso},
+                  pk="state, session_id")
+        changed += 1
+    return changed
+
+
+def upsert_session(conn, state: str, session: dict, now_iso: str) -> None:
+    """One session through store_sessions (tests and single-row callers)."""
+    store_sessions(conn, [(state, session)], now_iso)
+
+
+def _is_outage(exc: BaseException) -> bool:
+    """A transport failure or a 5xx that outlasted every retry: LegiScan is not
+    answering, not saying no. On a SESSION call this stops the run's LegiScan calls
+    (see main) -- a bootstrap day under an outage would otherwise spend 19 full retry
+    ladders, ~43 minutes, against a 45-minute job. The change-hash gate resumes the
+    next day, so stopping loses nothing."""
+    return isinstance(exc, common.RetriesExhausted) and (exc.status is None or exc.status >= 500)
+
+
+def _abbr_conflicts(rows: "list[tuple[str, dict]]") -> "list[tuple[str, dict]]":
+    """The rows whose own `state_abbr` names a DIFFERENT state than the one they are
+    about to be filed under.
+
+    THE MANUAL'S EXAMPLE IS OUT OF DATE HERE. Page 8 shows a session with `state_id`
+    and no abbreviation, which is why the ids had to be bootstrapped. The LIVE reply
+    (2026-09-25) also carries `state_abbr`, `session_hash` and `name`, and state_abbr
+    agreed with all nine measured ids, one id per abbreviation across all 52
+    jurisdictions. So every getSessionList now checks the measured mapping for free,
+    the same refuse-don't-guess rule as the URL tripwire in collect(). A row with no
+    state_abbr is not a conflict: the field is undocumented and may go away."""
+    return [(st, x) for st, x in rows
+            if x.get("state_abbr") and str(x["state_abbr"]).upper() != st.upper()]
+
+
+def _write_sessions(conn, meter: UsageMeter, rows: "list[tuple[str, dict]]",
+                    what: str) -> bool:
+    """store_sessions + the meter's pending spend, in ONE guarded commit. Runs only
+    after the HTTP it follows, so no write is pending across a request. On any
+    failure the rows are discarded (db.recover, never a bare rollback) and the spend
+    stays pending for the next commit -- the same rule as collect()'s per-target
+    write path, and for the same reason: an unhandled Turso error here would exit
+    non-zero and cost the whole cycle its Export and Commit."""
+    try:
+        store_sessions(conn, rows, common.now_iso())
+        written = meter.flush(conn)
+        conn.commit()
+        meter.settle(written)
+        return True
+    except Exception as exc:
+        db.recover(conn)
+        print(f"  state: {what} write discarded after a failure: {exc}", file=sys.stderr)
+        return False
+
+
+def bootstrap_state_ids(conn, base: str, key: str, states: list[str], throttle: float,
+                        meter: UsageMeter) -> "tuple[dict[str, int], bool]":
+    """MEASURE the state_id of each watched state LegiScan has not yet told us about:
+    one getSessionList&state=XX each, once (nine on the first run after deploy, one
+    per state added later). The manual documents getSessionList naming states only
+    by state_id and publishes no mapping, so the ids come from LegiScan, never from
+    a table typed here (Corey, 2026-09-24). The live reply turned out to carry
+    state_abbr too; it cross-checks the measurement (_abbr_conflicts), it does not
+    replace it.
+
+    Every session a reply returns belongs to XX, so its state_id is XX's. A reply
+    naming zero or several ids is refused and nothing is stored for the state.
+    ALL the HTTP happens first; the replies are then written in one guarded commit.
+    The measured table is printed on this run whatever the write did -- the
+    measurement was paid for -- and says whether it was stored. Returns (the ids
+    that were STORED, whether an outage stopped it). Unstored ids are not returned,
+    so those states take the first-run default and are re-measured next run."""
+    measured: dict[str, int] = {}
+    replies: list[tuple[str, dict]] = []
+    queried = 0
+    outage = False
+    for st in states:
+        queried += 1
+        try:
+            data = _api(base, key, "getSessionList", {"state": st}, throttle, meter)
+        except Exception as exc:
+            body = cap_signal_body(exc)
+            if body is not None:
+                meter.cap_signal = body
+                break
+            print(f"  {st:<3} state_id bootstrap ERROR: {exc}", file=sys.stderr)
+            if _is_outage(exc):
+                outage = True
+                break
+            continue
+        sessions = [x for x in (data.get("sessions") or [])
+                    if isinstance(x, dict) and x.get("session_id") is not None]
+        ids = {x.get("state_id") for x in sessions}
+        if _abbr_conflicts([(st, x) for x in sessions]):
+            print(f"  {st:<3} state_id bootstrap refused: getSessionList&state={st} returned "
+                  f"sessions whose state_abbr names another state; nothing stored",
+                  file=sys.stderr)
+            continue
+        if len(ids) != 1 or None in ids:
+            print(f"  {st:<3} state_id bootstrap refused: getSessionList&state={st} named "
+                  f"{len(ids)} state_id value(s) across {len(sessions)} session(s); nothing "
+                  f"stored", file=sys.stderr)
+            continue
+        measured[st] = int(ids.pop())
+        replies += [(st, x) for x in sessions]
+    if not measured:
+        return {}, outage
+    stored = _write_sessions(conn, meter, replies, "state_id bootstrap")
+    print(f"state: state_id bootstrap, MEASURED from {queried} getSessionList&state= "
+          f"quer{'y' if queried == 1 else 'ies'} (printed once): "
+          f"{json.dumps(dict(sorted(measured.items())))}"
+          + ("" if stored else " -- NOT STORED (write failed); re-measured next run"))
+    return (measured if stored else {}), outage
+
+
+def refresh_sessions(conn, base: str, key: str, state_ids: dict[str, int], throttle: float,
+                     meter: UsageMeter) -> str:
+    """The day's ONE national getSessionList (no `state`: every session, rated Daily
+    on page 7), stored for the watched states' sessions in one guarded write.
+    Returns "landed", "failed" (plan from what state_sessions already holds), or
+    "outage" (stop calling LegiScan this run)."""
+    try:
+        data = _api(base, key, "getSessionList", {}, throttle, meter)
+    except Exception as exc:
+        body = cap_signal_body(exc)
+        if body is not None:
+            meter.cap_signal = body
+            return "failed"
+        print(f"  state: national getSessionList ERROR: {exc}", file=sys.stderr)
+        return "outage" if _is_outage(exc) else "failed"
+    by_id = {v: k for k, v in state_ids.items()}
+    rows = [(by_id[x.get("state_id")], x) for x in (data.get("sessions") or [])
+            if isinstance(x, dict) and x.get("session_id") is not None
+            and x.get("state_id") in by_id]
+    bad = _abbr_conflicts(rows)
+    if bad:
+        for st in sorted({st for st, _ in bad}):
+            named = sorted({str(x["state_abbr"]).upper() for s2, x in bad if s2 == st})
+            print(f"  {st:<3} REFUSED: the measured state_id {state_ids[st]} names {named} in "
+                  f"the national getSessionList; its sessions are not stored this run",
+                  file=sys.stderr)
+        refused = {st for st, _ in bad}
+        rows = [(st, x) for st, x in rows if st not in refused]
+    return "landed" if _write_sessions(conn, meter, rows, "national getSessionList") else "failed"
+
+
+def filter_fingerprint(terms, excludes) -> str:
+    """A short fingerprint of the election FILTER: its terms, its exclusions, and the
+    source of the functions that apply them.
+
+    WHY IT IS PART OF THE DONE-MARKER. An adjourned session is polled only when its
+    done-marker is stale, and a marker holding only the dataset_hash would never go
+    stale on a FILTER change: a broadened term would then never reach an adjourned
+    session already marked done, and CLAUDE.md's standing rule -- a term broadening
+    self-stamps on the next cron, no backfill -- would be silently false for most of
+    the watched states (the review of this unit, reproduced offline). With the
+    filter in the marker, any change to terms, exclusions or election_match re-polls
+    each adjourned session ONCE (~14 master lists), and the self-stamp holds.
+    Comment-only edits to those functions also move it; that costs the same ~14
+    queries once, which is cheaper than a rule a person has to remember."""
+    import hashlib
+    import inspect
+    src = "".join(inspect.getsource(f) for f in (_term_pattern, _exclude_pattern, election_match))
+    blob = json.dumps({"terms": sorted(terms), "excludes": sorted(excludes), "code": src})
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()[:12]
+
+
+def done_marker(dataset_hash: str | None, fingerprint: str) -> str:
+    """What masterlist_hash holds for a session fully processed at this dataset_hash
+    under this filter."""
+    return f"{dataset_hash or ''}|{fingerprint}"
+
+
+def session_active(sine_die: int, prefile: int, prior: int) -> bool:
+    """The ruled test: a session is active when it has not adjourned sine die and is
+    not a prior session, or when prefiling is open."""
+    return (sine_die == 0 and prior == 0) or prefile == 1
+
+
+def poll_day(now: datetime) -> bool:
+    """True when the PREVIOUS ET calendar day was Mon-Fri: the Tue-Sat slots poll
+    active sessions, Sun/Mon skip (a Sun slot follows Sat, a Mon slot follows Sun)."""
+    prev = now.astimezone(ET).date() - timedelta(days=1)
+    return prev.weekday() < 5
+
+
+def plan_targets(conn, states: list[str], now: datetime,
+                 fingerprint: str = "") -> tuple[list[Target], list[str]]:
+    """This run's master lists, and a line for everything deliberately not polled.
+
+    Per watched state, over its NON-PRIOR sessions only:
+      active    -> polled when poll_day(now) (Tue-Sat), one master list per session,
+                   so a special session beside the regular one is its own target;
+      adjourned -> polled only when its done-marker (masterlist_hash) is stale: the
+                   dataset_hash has moved since the last master list fully
+                   processed for it, or the election filter has (filter_fingerprint);
+      no stored sessions at all -> the first-run default: active, by `state=`.
+    """
+    targets: list[Target] = []
+    notes: list[str] = []
+    weekday = poll_day(now)
+    for st in states:
+        rows = conn.execute(
+            "SELECT session_id, sine_die, prefile, prior, dataset_hash, masterlist_hash "
+            "FROM state_sessions WHERE state = ? ORDER BY session_id", (st,)).fetchall()
+        if not rows:
+            if weekday:
+                targets.append(Target(st, None, "no measured sessions: active by default, state="))
+            else:
+                notes.append(f"{st}: no measured sessions, active by default; Sun/Mon slot, skip")
+            continue
+        current = [r for r in rows if r["prior"] == 0]
+        if not current:
+            notes.append(f"{st}: every stored session is prior; nothing to poll")
+            continue
+        for r in current:
+            sid = r["session_id"]
+            marker = done_marker(r["dataset_hash"], fingerprint)
+            if session_active(r["sine_die"], r["prefile"], r["prior"]):
+                if weekday:
+                    targets.append(Target(st, sid, "active", marker))
+                else:
+                    notes.append(f"{st}/{sid}: active; Sun/Mon slot, skip")
+            elif r["masterlist_hash"] != marker:
+                stored = r["masterlist_hash"] or ""
+                why = ("adjourned, dataset_hash moved"
+                       if stored.split("|")[0] != (r["dataset_hash"] or "")
+                       else "adjourned, election filter changed")
+                targets.append(Target(st, sid, why, marker))
+            else:
+                notes.append(f"{st}/{sid}: adjourned, dataset_hash unmoved; zero calls")
+    return targets, notes
+
+
+_URL_STATE = re.compile(r"legiscan\.com/([A-Za-z]{2})/", re.IGNORECASE)
+
+
+def url_states(master: list[dict]) -> set[str]:
+    """The state segments named by a master list's bill URLs."""
+    out = set()
+    for raw in master:
+        m = _URL_STATE.search(str(raw.get("url") or ""))
+        if m:
+            out.add(m.group(1).upper())
+    return out
+
+
 # --- collect ----------------------------------------------------------------
 
 def collect(conn, base: str, key: str, states: list[str], terms: list[str],
             grade: tuple[str, str], budget: int, throttle: float,
             excludes: "tuple[str, ...] | list[str]" = (),
-            meter: UsageMeter | None = None) -> dict:
-    """Poll each state on the change-hash pattern, write action items, return
-    per-state counts. Per-state try/except so one bad state doesn't sink the run;
+            meter: UsageMeter | None = None,
+            targets: "list[Target] | None" = None,
+            state_ids: "dict[str, int] | None" = None) -> dict:
+    """Poll each target on the change-hash pattern, write action items, return
+    per-target counts keyed by Target.label (the bare state for a `state=` target).
+
+    `targets` is the session plan from plan_targets(); without it every entry of
+    `states` is one `state=` target, which is what callers that predate sessions
+    pass. A SESSION target is fetched by id and must pass the URL tripwire: if any
+    of its bills' URLs names another state, or its session block's state_id differs
+    from the measured one, the session is refused and nothing is written for it.
+    A session target fully processed -- every changed bill fetched -- has its
+    `masterlist_hash` set to the dataset_hash it was planned at, in the same
+    commit, which is what lets an adjourned session go quiet until its hash moves.
+
+    Per-state try/except so one bad state doesn't sink the run; Per-state try/except so one bad state doesn't sink the run;
     per-bill try/except on getBill so one bad bill doesn't skip the rest of its
     state. `budget` caps getBill calls across the whole run -- an unfetched bill's
     hash is left unstored so the next run resumes it.
@@ -606,21 +1008,47 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
     stored hash, so the next run re-fetches it, and items dedup on content_hash."""
     gsource, ginfo = grade
     meter = meter if meter is not None else UsageMeter()
+    if targets is None:
+        targets = [Target(s, None, "state") for s in states]
+    state_ids = state_ids or {}
     results: dict[str, dict] = {}
     getbill_used = 0
-    for state in states:
+    for t in targets:
+        state = t.state
         counts = {"election_bills": 0, "changed": 0, "getbills": 0,
-                  "new_items": 0, "errors": 0, "error_msg": None, "skipped": None}
+                  "new_items": 0, "errors": 0, "error_msg": None, "skipped": None,
+                  "why": t.why}
         try:
-            master = get_masterlist(base, key, state, throttle, meter)
+            if t.session_id is None:
+                master, block = get_masterlist(base, key, state, throttle, meter), {}
+            else:
+                master, block = get_masterlist_session(base, key, t.session_id, throttle, meter)
         except Exception as exc:
             counts["error_msg"] = str(exc)
-            results[state] = counts
+            results[t.label] = counts
             body = cap_signal_body(exc)
             if body is not None:
                 meter.cap_signal = body
                 break
             continue
+
+        if t.session_id is not None:
+            # THE TRIPWIRE (Corey, 2026-09-24). The state_id -> state mapping is
+            # measured, but a wrong one would file a session's bills under the wrong
+            # state. A master list names its own state twice -- in its session block and
+            # in every bill URL -- so check both before writing anything. Free: it reads
+            # the response already paid for.
+            foreign = url_states(master) - {state.upper()}
+            want_id = state_ids.get(state)
+            got_id = block.get("state_id")
+            if foreign or (want_id is not None and got_id is not None and int(got_id) != want_id):
+                meter.masterlist(unchanged=False)
+                named = sorted(foreign) if foreign else f"state_id {got_id}"
+                counts["error_msg"] = (
+                    f"refused: session {t.session_id} was mapped to {state} (state_id "
+                    f"{want_id}) but its master list names {named}; nothing written")
+                results[t.label] = counts
+                continue
 
         # THE BATCH BOUNDARY IS THE STATE (handoff 81). Everything below writes to
         # the database, and none of it was guarded: the two handlers in this
@@ -640,6 +1068,8 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
         # Committing per state bounds the loss to one state. db.recover, never a
         # bare rollback: here `conn` IS the failure, and rollback() on a dead Hrana
         # stream raises and takes down the run this handler exists to keep alive.
+        capped_here = False
+        recorded = False
         try:
             for raw in master:
                 if not election_match(raw, terms, excludes):
@@ -671,6 +1101,7 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
                         # Stop fetching, but fall through to the commit below: the
                         # bills this state already fetched are good and stay.
                         meter.cap_signal = body
+                        capped_here = True
                         break
                     continue
                 counts["getbills"] += 1
@@ -692,12 +1123,27 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
                 new_hash = change_hash or bill.get("change_hash")
                 if new_hash:
                     remember_hash(conn, bill_id, new_hash)
+            # The cache-hit proxy: an answered master list that moved no stored hash.
+            meter.masterlist(unchanged=counts["changed"] == 0)
+            recorded = True
+            # A session is DONE only when every changed bill was fetched: no budget
+            # deferral, no bill error, no cap signal mid-list. Anything less leaves
+            # masterlist_hash alone, so an adjourned session is polled again next day
+            # rather than going quiet with bills unfetched.
+            if (t.session_id is not None and t.done_marker is not None and not capped_here
+                    and counts["errors"] == 0 and counts["getbills"] == counts["changed"]):
+                conn.execute(
+                    "UPDATE state_sessions SET masterlist_hash = ?, updated_at = ? "
+                    "WHERE state = ? AND session_id = ?",
+                    (t.done_marker, common.now_iso(), state, t.session_id))
             # The ledger rides in the state's own commit: same boundary as the data.
             written = meter.flush(conn)
             conn.commit()
             meter.settle(written)
         except Exception as exc:
             db.recover(conn)
+            if not recorded:
+                meter.masterlist(unchanged=False)
             # new_items is zeroed rather than reported: those rows were rolled back,
             # and a count claiming rows that no longer exist is the kind of plausible
             # wrong number this project keeps finding. The attempt counters stay --
@@ -707,16 +1153,17 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
             counts["new_items"] = 0
             counts["error_msg"] = f"batch discarded after a write failure: {exc}"
 
-        results[state] = counts
+        results[t.label] = counts
         if meter.cap_signal is not None:
             break
 
-    for state in states:
-        if state not in results:
-            results[state] = {"election_bills": 0, "changed": 0, "getbills": 0,
-                              "new_items": 0, "errors": 0, "error_msg": None,
-                              "skipped": "LegiScan signalled its allowance is spent "
-                                         "earlier in this run; no request made"}
+    for t in targets:
+        if t.label not in results:
+            results[t.label] = {"election_bills": 0, "changed": 0, "getbills": 0,
+                                "new_items": 0, "errors": 0, "error_msg": None,
+                                "why": t.why,
+                                "skipped": "LegiScan signalled its allowance is spent "
+                                           "earlier in this run; no request made"}
 
     # Whatever no state commit carried: failed masterlists after the last good
     # state, a discarded last state, or a run in which nothing committed at all.
@@ -729,6 +1176,13 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
 
 def main() -> int:
     config.load_env()
+    # THE SLOT GATE (handoff 98b §4a). collect.yml passes the firing cron line as SLOT;
+    # this channel runs on STATE_SLOT only. A dispatch ("dispatch") or a local run (no
+    # SLOT) is a deliberate request and runs -- the budget still applies to it.
+    slot = os.environ.get("SLOT", "").strip()
+    if slot and slot != "dispatch" and slot != STATE_SLOT:
+        print(f"state: not this slot ({slot}); the state collector runs on {STATE_SLOT} only")
+        return 0
     db.init_db()
     sources = config.load_sources()
     st = sources["state"]
@@ -743,55 +1197,101 @@ def main() -> int:
     key = config.require_env(st["api"]["key_env"])
 
     conn = db.connect()
+    meter = UsageMeter()
     try:
         register_source(conn, base, grade[0], grade[1])
         conn.commit()
+        if slot != STATE_SLOT:
+            print(f"state: no schedule slot ({slot or 'local run'}); running as requested")
 
         now = _now()
         used = ledger_used(conn, ledger_month(now))
+        state_ids = measured_state_ids(conn, states)
+        missing = [s for s in states if s not in state_ids]
         # End the read before any HTTP. _Conn marks itself _pending on EVERY statement,
         # reads included, and a pending connection refuses the one-shot stale-stream
-        # reopen -- so without this, a Hrana stream that expires during TX's masterlist
-        # (or during a long all-states-failing run) fails the first write instead of
-        # reopening. collect() used to start straight after a commit; this restores that.
+        # reopen -- so without this, a Hrana stream that expires during the first HTTP
+        # call fails the first write instead of reopening.
         conn.commit()
-        plan = run_budget(used, cron_ceiling, len(states), max_getbill, now)
-        print(f"  ledger {plan.month}: {plan.used} of {cron_ceiling} cron ceiling used "
-              f"({monthly_cap} monthly cap); {plan.runs_left} run(s) left incl. this one "
-              f"-> allowance {plan.allowance}, getBill budget {plan.getbill}")
-        if plan.skip:
-            # Exit 0 on purpose: nothing is wrong, and nothing is lost -- no hash is
-            # stored for a bill this run did not fetch, so the gate picks every one
-            # of them up on the next run that can pay (at the latest, the 1st).
-            if plan.skip == "ceiling":
-                print(f"state: monthly ceiling reached (used {plan.used} of {cron_ceiling}), "
-                      f"skipping")
-            else:
-                print(f"state: this run's prorated share ({plan.allowance}) cannot pay for "
-                      f"{len(states)} masterlists plus one getBill (used {plan.used} of "
-                      f"{cron_ceiling}, {plan.runs_left} run(s) left), skipping")
+
+        # The session calls are paid before anything else; if the ceiling cannot pay
+        # even for them, the run makes no request at all.
+        pre = run_budget(used, cron_ceiling, 0, max_getbill, now, spent=1 + len(missing))
+        if pre.skip == "ceiling":
+            print(f"state: monthly ceiling reached (used {used} of {cron_ceiling}), skipping")
             return 0
 
-        meter = UsageMeter()
-        results = collect(conn, base, key, states, terms, grade, plan.getbill, THROTTLE,
-                          excludes, meter=meter)
-        # collect() now commits per state, so this is a no-op tail rather than the
-        # run's only commit. Kept because it costs nothing and still closes any
-        # transaction a future edit opens between the last state and here.
+        outage = False
+        if missing:
+            stored_ids, outage = bootstrap_state_ids(conn, base, key, missing, THROTTLE, meter)
+            state_ids.update(stored_ids)
+        national = "not attempted"
+        if meter.cap_signal is None and not outage:
+            national = refresh_sessions(conn, base, key, state_ids, THROTTLE, meter)
+            outage = national == "outage"
+        if meter.cap_signal is not None or outage:
+            targets, notes = [], []
+        else:
+            targets, notes = plan_targets(conn, states, now,
+                                          filter_fingerprint(terms, excludes))
+        # plan_targets READS state_sessions after the last commit; end that read too,
+        # or collect() starts on a pending connection and loses the stale-stream
+        # reopen (the review finding test_main_ends_the_ledger_read_* pins).
         conn.commit()
+        for note in notes:
+            print(f"  {note}")
+
+        plan = run_budget(used, cron_ceiling, len(targets), max_getbill, now,
+                          spent=meter.run_total)
+        prev_et = (now.astimezone(ET).date() - timedelta(days=1)).strftime("%a")
+        print(f"  ledger {plan.month}: {plan.used} of {cron_ceiling} cron ceiling used "
+              f"({monthly_cap} monthly cap); {plan.runs_left} state slot(s) left incl. this "
+              f"one -> allowance {plan.allowance}; {meter.run_total} spent on sessions "
+              f"(national getSessionList {national}); "
+              f"{len(targets)} master list(s) planned (previous ET day {prev_et}); "
+              f"getBill budget {plan.getbill}")
+
+        results: dict[str, dict] = {}
+        if outage:
+            print("state: LegiScan is not answering the session calls (transport or 5xx "
+                  "after every retry); no master lists this run -- the change-hash gate "
+                  "resumes on the next state slot")
+        elif meter.cap_signal is None:
+            if plan.skip == "ceiling":
+                print(f"state: monthly ceiling reached (used {plan.used} of {cron_ceiling} "
+                      f"before master lists), skipping")
+                return 0
+            if plan.skip == "share":
+                # Exit 0 on purpose: nothing is lost -- no hash is stored for a bill
+                # this run did not fetch, so a later run that can pay picks it up.
+                print(f"state: this run's prorated share ({plan.allowance}) cannot pay for "
+                      f"{len(targets)} master list(s) plus one getBill after "
+                      f"{meter.run_total} spent on sessions (used {plan.used} of "
+                      f"{cron_ceiling}, {plan.runs_left} state slot(s) left), skipping")
+                return 0
+            if not targets:
+                print("state: no session to poll this slot")
+            else:
+                results = collect(conn, base, key, states, terms, grade, plan.getbill,
+                                  THROTTLE, excludes, meter=meter, targets=targets,
+                                  state_ids=state_ids)
+                # collect() commits per target, so this is a no-op tail that still
+                # closes any transaction a future edit opens after the last one.
+                conn.commit()
+
         total = 0
-        for state, c in results.items():
+        for label, c in results.items():
             if c["skipped"]:
-                print(f"  {state:<3} skipped: {c['skipped']}")
+                print(f"  {label:<10} skipped: {c['skipped']}")
                 continue
             if c["error_msg"]:
-                print(f"  {state:<3} ERROR: {c['error_msg']}", file=sys.stderr)
+                print(f"  {label:<10} ERROR: {c['error_msg']}", file=sys.stderr)
                 continue
             total += c["new_items"]
             extra = f", {c['errors']} bill error(s)" if c["errors"] else ""
-            print(f"  {state:<3} {c['election_bills']:>3} election bills, "
+            print(f"  {label:<10} {c['election_bills']:>3} election bills, "
                   f"{c['changed']:>3} changed, {c['getbills']:>3} getBill  "
-                  f"+{c['new_items']} items{extra}")
+                  f"+{c['new_items']} items{extra}  [{c.get('why', '')}]")
         print(f"  total: +{total} items")
         print(f"  LegiScan queries this run: {meter.run_total} HTTP attempt(s), "
               f"retries included")
@@ -802,6 +1302,10 @@ def main() -> int:
                   "skipped. Body verbatim:")
             print(meter.cap_signal)
     finally:
+        # Every attempt reaches the ledger, on every path out of this function,
+        # including the early returns above and a raise.
+        if meter.pending:
+            record_spend_or_warn(conn, meter, "state")
         conn.close()
     return 0
 

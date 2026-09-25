@@ -87,7 +87,7 @@ def _ledger(conn):
 
 
 def _seed(conn, month, n):
-    db.increment(conn, "legiscan_usage", "month", month, "queries", n,
+    db.increment(conn, "legiscan_usage", "month", month, {"queries": n},
                  {"updated_at": "2026-10-01T00:00:00+00:00"})
     conn.commit()
 
@@ -263,15 +263,17 @@ def test_increment_accumulates_across_writers():
 
 # --- proration ------------------------------------------------------------------
 
+# DAILY STATE SLOTS since handoff 98b: only the 06:17Z slot runs the channel, so
+# runs_left is 1 + the 06:17Z slots still to come in the month.
 @pytest.mark.parametrize("now, expected", [
-    (OCT_START, 124),                          # 00:17 slot's run, on time: 31*4
-    (utc(2026, 10, 1, 3, 0), 124),             # the same run landing ~3h late
-    (utc(2026, 10, 1, 0, 5), 125),             # Sep 30 18:17's run, landing after 00:00Z
-    (MID_OCT, 62),                             # 1 + Oct 16 18:17 + 15 days * 4
-    (utc(2026, 10, 31, 13, 0), 2),             # the 12:17 run; 18:17 still to come
-    (utc(2026, 10, 31, 19, 0), 1),             # the month's last slot
-    (utc(2026, 11, 1, 0, 20), 120),            # a 30-day month
-    (utc(2027, 2, 1, 0, 20), 112),             # February
+    (OCT_START, 32),                           # before Oct 1's 06:17Z: this + 31
+    (utc(2026, 10, 1, 3, 0), 32),              # still before it
+    (utc(2026, 10, 1, 10, 30), 31),            # Oct 1's own state run, landing ~4h late
+    (MID_OCT, 16),                             # 1 + Oct 17..31
+    (utc(2026, 10, 31, 5, 0), 2),              # Oct 31's slot still to come
+    (utc(2026, 10, 31, 13, 0), 1),             # the month's last state run
+    (utc(2026, 11, 1, 0, 20), 31),             # a 30-day month
+    (utc(2027, 2, 1, 0, 20), 29),              # February
 ])
 def test_runs_left(now, expected):
     assert state.runs_left(now) == expected
@@ -279,12 +281,19 @@ def test_runs_left(now, expected):
 
 def test_budget_at_month_start():
     b = state.run_budget(0, 8000, 9, 500, OCT_START)
-    assert (b.month, b.runs_left, b.allowance, b.getbill, b.skip) == ("2026-10", 124, 64, 55, None)
+    assert (b.month, b.runs_left, b.allowance, b.getbill, b.skip) == ("2026-10", 32, 250, 241, None)
 
 
 def test_budget_mid_month():
     b = state.run_budget(4000, 8000, 9, 500, MID_OCT)
-    assert (b.runs_left, b.allowance, b.getbill) == (62, 64, 55)
+    assert (b.runs_left, b.allowance, b.getbill) == (16, 250, 241)
+
+
+def test_the_session_calls_are_paid_before_getbill():
+    """`spent` is what the run paid before its master lists -- the day's
+    getSessionList, and once the nine-query bootstrap. It comes out of the share."""
+    b = state.run_budget(0, 8000, 9, 500, OCT_START, spent=10)
+    assert (b.allowance, b.getbill) == (250, 231)
 
 
 def test_budget_one_slot_before_rollover_hands_over_everything_left():
@@ -293,16 +302,16 @@ def test_budget_one_slot_before_rollover_hands_over_everything_left():
 
 
 def test_a_quiet_first_half_rolls_forward():
-    """Unspent share is not lost: a month that spent only masterlists until the
-    16th hands the second half roughly twice the per-run getBill of the first."""
-    quiet = state.run_budget(62 * 9, 8000, 9, 500, MID_OCT)
+    """Unspent share is not lost: a month that spent ~10 a day until the 16th hands
+    the second half roughly twice the per-run getBill of the first."""
+    quiet = state.run_budget(15 * 10, 8000, 9, 500, MID_OCT)
     assert quiet.getbill > 2 * state.run_budget(0, 8000, 9, 500, OCT_START).getbill - 9
 
 
 def test_storm_is_metered_not_front_loaded():
-    """The failure proration exists for: 500 changed bills on the 1st would, under
-    the old flat cap, spend 509 of the month in one run. Prorated, 55."""
-    assert state.run_budget(0, 8000, 9, 500, OCT_START).getbill == 55
+    """The failure proration exists for: 500 changed bills on the 1st would, under a
+    flat cap, spend 509 of the month in one run. Prorated over 32 daily slots, 241."""
+    assert state.run_budget(0, 8000, 9, 500, OCT_START).getbill == 241
 
 
 @pytest.mark.parametrize("used, skip, getbill", [
@@ -318,24 +327,30 @@ def test_skip_when_the_run_cannot_buy_a_single_bill(used, skip, getbill):
 
 
 def test_an_overspent_month_skips_rather_than_spending_masterlists_on_nothing():
-    """The review's case: share 8 at mid-month. The handoff's rule alone would run
-    61 masterlist-only runs (549 queries, zero bills); the amendment skips them, and
-    the share accumulates until a run can afford a bill."""
-    b = state.run_budget(7450, 8000, 9, 500, MID_OCT)
-    assert (b.allowance, b.skip, b.getbill) == (8, "share", 0)
-    later = state.run_budget(7450, 8000, 9, 500, utc(2026, 10, 25, 13, 0))
+    """The review's case: a share too small to buy a single bill at mid-month. The
+    handoff's rule alone would run master-list-only runs to the end of the month;
+    the amendment skips them, and the share accumulates until a run can afford one."""
+    b = state.run_budget(7850, 8000, 9, 500, MID_OCT)
+    assert (b.allowance, b.skip, b.getbill) == (9, "share", 0)
+    later = state.run_budget(7850, 8000, 9, 500, utc(2026, 10, 25, 13, 0))
     assert later.skip is None and later.getbill > 0
 
 
-def test_a_share_skip_makes_zero_calls_and_exits_0(monkeypatch, capsys, main_conn, clock):
-    _seed(main_conn, "2026-10", 7450)
+def test_a_share_skip_makes_no_master_list_calls_and_exits_0(monkeypatch, capsys, main_conn, clock):
+    """The share is judged AFTER the session calls, since only they say how many
+    master lists the run needs: 10 spent on sessions (9 bootstrap + 1 national), then
+    a share of 19 cannot buy 9 master lists and one bill, so none is requested."""
+    clock(utc(2026, 10, 31, 19, 0))
+    _seed(main_conn, "2026-10", 7981)
     calls = []
-    monkeypatch.setattr(common, "http_get", _fake_http(calls))
+    monkeypatch.setattr(common, "http_get", _legiscan(calls))
     assert state.main() == 0
-    assert calls == []
+    assert {op for op, _ in calls} == {"getSessionList"} and len(calls) == 10
     out = capsys.readouterr().out
-    assert ("state: this run's prorated share (8) cannot pay for 9 masterlists plus one "
-            "getBill (used 7450 of 8000, 62 run(s) left), skipping") in out
+    assert ("state: this run's prorated share (19) cannot pay for 9 master list(s) plus one "
+            "getBill after 10 spent on sessions (used 7981 of 8000, 1 state slot(s) left), "
+            "skipping") in out
+    assert _ledger(main_conn) == {"2026-10": 7991}             # the session calls, ledgered
 
 
 def test_getbill_budget_is_never_negative_and_never_over_the_cap():
@@ -348,6 +363,66 @@ def test_getbill_budget_is_never_negative_and_never_over_the_cap():
 
 
 # --- main(): ceiling, printing, exit 0 -----------------------------------------
+
+WATCHED = ["TX", "GA", "FL", "AZ", "WI", "PA", "MI", "NC", "OH"]   # config order
+# ARBITRARY ids, deliberately NOT LegiScan's alphabetical enumeration: the collector
+# must use what the bootstrap measured, so a test that passes here cannot be passing
+# because some code path typed the real table in. (The alphabetical prediction lives in
+# tests/test_state_sessions.py, against the MEASURED ids.)
+FAKE_ID = {st: 100 + i for i, st in enumerate(WATCHED)}
+SESSION_STATE = {9000 + i: st for i, st in enumerate(WATCHED)}
+
+
+def _sessions_for(st):
+    """One current regular session and one prior session per watched state."""
+    i = WATCHED.index(st)
+    return [
+        {"session_id": 9000 + i, "state_id": FAKE_ID[st], "year_start": 2026, "year_end": 2026,
+         "prefile": 0, "sine_die": 0, "prior": 0, "special": 0,
+         "session_name": f"{st} 2026 Regular Session", "dataset_hash": f"h-{st}"},
+        {"session_id": 8000 + i, "state_id": FAKE_ID[st], "year_start": 2025, "year_end": 2025,
+         "prefile": 0, "sine_die": 1, "prior": 1, "special": 0,
+         "session_name": f"{st} 2025 Regular Session", "dataset_hash": f"old-{st}"},
+    ]
+
+
+def _ml_for(st):
+    """The fixture master list, re-labelled as `st`'s: its bill URLs and session
+    block name `st`, so the tripwire passes. Same bill ids for every state, so the
+    change-hash gate makes them new only to the first state polled."""
+    m = json.loads(json.dumps(MASTERLIST))
+    for k, v in m["masterlist"].items():
+        if k == "session":
+            v["state_id"] = FAKE_ID[st]
+        elif isinstance(v, dict) and v.get("url"):
+            v["url"] = v["url"].replace("/TX/", f"/{st}/")
+    return m
+
+
+def _session_payload(st=None, sessions=None):
+    sessions = sessions or _sessions_for
+    rows = sessions(st) if st else [x for s in WATCHED for x in sessions(s)]
+    return {"status": "OK", "sessions": rows}
+
+
+def _legiscan(calls, masterlist=None, getbill=None, sessions=None):
+    """A common.http_get fake that knows every op main() now makes."""
+    def fake(url, params=None, headers=None, timeout=common.DEFAULT_TIMEOUT, throttle=0.0,
+             on_attempt=None):
+        if on_attempt is not None:
+            on_attempt()
+        op = params["op"]
+        calls.append((op, params.get("state") or params.get("id")))
+        if op == "getSessionList":
+            return _session_payload(params.get("state"), sessions)
+        if op == "getMasterList":
+            st = params.get("state") or SESSION_STATE.get(params.get("id"))
+            return masterlist(st) if masterlist else _ml_for(st)
+        if op == "getBill":
+            return getbill(params["id"]) if getbill else GETBILL
+        raise AssertionError(f"unexpected op {op}")
+    return fake
+
 
 class _NoClose:
     """main() closes its connection; the test still needs to read the ledger after."""
@@ -388,28 +463,37 @@ def test_ceiling_reached_makes_zero_calls_and_exits_0(monkeypatch, capsys, main_
 
 def test_main_prints_a_spend_line_that_matches_the_ledger(monkeypatch, capsys, main_conn):
     calls = []
-    monkeypatch.setattr(common, "http_get", _fake_http(calls))
+    monkeypatch.setattr(common, "http_get", _legiscan(calls))
     assert state.main() == 0
     out = capsys.readouterr().out
     n = len(calls)
-    # Nine masterlists; the fixture's two election bills are new only to the first
-    # state (every state serves the same ids), so two getBills.
-    assert n == 11
+    # 9 bootstrap getSessionList&state= + 1 national getSessionList + 9 master lists
+    # by session id; the fixture's two election bills are new only to the first state
+    # polled (every state serves the same ids), so two getBills.
+    assert n == 9 + 1 + 9 + 2
     assert f"LegiScan queries this run: {n} HTTP attempt(s)" in out
     assert _ledger(main_conn) == {"2026-10": n}
-    assert "ledger 2026-10: 0 of 8000 cron ceiling used (10000 monthly cap); 62 run(s)" in out
+    assert "ledger 2026-10: 0 of 8000 cron ceiling used (10000 monthly cap); 16 state slot(s)" in out
 
 
 def test_main_passes_the_prorated_budget_to_collect(monkeypatch, main_conn, clock):
+    """32 daily slots from Oct 1 00:20Z -> share 250; 10 spent on sessions and 9
+    master lists come first -> 231 for getBill. Every target is a SESSION."""
     clock(OCT_START)
     seen = {}
 
-    def spy(conn, base, key, states, terms, grade, budget, throttle, excludes=(), meter=None):
+    def spy(conn, base, key, states, terms, grade, budget, throttle, excludes=(), meter=None,
+            targets=None, state_ids=None):
         seen["budget"], seen["throttle"] = budget, throttle
+        seen["targets"] = [(t.state, t.session_id) for t in targets]
+        seen["state_ids"] = state_ids
         return {}
     monkeypatch.setattr(state, "collect", spy)
+    monkeypatch.setattr(common, "http_get", _legiscan([]))
     state.main()
-    assert seen == {"budget": 55, "throttle": state.THROTTLE}
+    assert (seen["budget"], seen["throttle"]) == (231, state.THROTTLE)
+    assert seen["targets"] == [(st, 9000 + i) for i, st in enumerate(WATCHED)]
+    assert seen["state_ids"] == FAKE_ID                        # measured, not typed
 
 
 # --- cap signal ---------------------------------------------------------------------
@@ -420,14 +504,14 @@ CAP_BODY = {"status": "ERROR", "alert": {"message": "Monthly query limit reached
 def test_a_monthly_error_on_a_masterlist_stops_the_run(monkeypatch, capsys, main_conn):
     calls = []
 
-    def by_state(st):
-        return CAP_BODY if st == "GA" else MASTERLIST
-    monkeypatch.setattr(common, "http_get", _fake_http(calls, by_state=by_state))
+    def masterlist(st):
+        return CAP_BODY if st == "GA" else _ml_for(st)
+    monkeypatch.setattr(common, "http_get", _legiscan(calls, masterlist=masterlist))
     assert state.main() == 0
     out = capsys.readouterr().out
-    states_called = [s for op, s in calls if op == "getMasterList"]
-    assert states_called == ["TX", "GA"]                   # nothing after GA
-    assert "  FL  skipped: LegiScan signalled its allowance is spent" in out
+    sessions_called = [s for op, s in calls if op == "getMasterList"]
+    assert sessions_called == [9000, 9001]                 # TX, then GA; nothing after
+    assert f"  {'FL/9002':<10} skipped: LegiScan signalled its allowance is spent" in out
     body = json.dumps(CAP_BODY, separators=(",", ":"))
     assert out.count(body) == 1                            # verbatim, once
     assert _ledger(main_conn) == {"2026-10": len(calls)}
@@ -579,14 +663,16 @@ def test_throttle_stays_under_the_two_per_second_window():
     assert state.THROTTLE >= 0.5
 
 
-def test_cron_slots_agree_with_collect_yml():
+def test_the_state_slot_is_a_collect_yml_cron_line():
+    """The channel runs on STATE_SLOT only, and runs_left prorates over STATE_SLOTS:
+    STATE_SLOT must be a line collect.yml actually fires, and STATE_SLOTS must be
+    that line's (hour, minute), or the budget prorates over slots that never run."""
     wf = yaml.safe_load(Path(".github/workflows/collect.yml").read_text(encoding="utf-8"))
     on = wf.get("on", wf.get(True))
-    slots = set()
-    for entry in on["schedule"]:
-        minute, hour, *_ = entry["cron"].split()
-        slots.add((int(hour), int(minute)))
-    assert slots == set(state.CRON_SLOTS)
+    crons = {entry["cron"] for entry in on["schedule"]}
+    assert state.STATE_SLOT in crons
+    minute, hour, *_ = state.STATE_SLOT.split()
+    assert state.STATE_SLOTS == ((int(hour), int(minute)),)
 
 
 def test_config_carries_the_october_terms():
@@ -669,8 +755,10 @@ def test_a_429_exhausted_on_a_named_limit_aborts_keeps_finished_bills_exits_0(
     first, second = _bill_ids()
 
     def route(p, n):
+        if p["op"] == "getSessionList":
+            return _Resp(200, body=_session_payload(p.get("state")))
         if p["op"] == "getMasterList":
-            return _Resp(200, body=MASTERLIST)
+            return _Resp(200, body=_ml_for(SESSION_STATE[p["id"]]))
         if p["id"] == first:
             return _Resp(200, body=GETBILL)
         return _Resp(429, text=LIMIT_BODY)
@@ -678,28 +766,30 @@ def test_a_429_exhausted_on_a_named_limit_aborts_keeps_finished_bills_exits_0(
     assert state.main() == 0
     out = capsys.readouterr().out
     assert calls.count(("getBill", second)) == common.MAX_RETRIES    # every retry used
-    assert [c for c in calls if c[0] == "getMasterList"] == [("getMasterList", "TX")]
+    assert [c for c in calls if c[0] == "getMasterList"] == [("getMasterList", 9000)]
     main_conn.rollback()
     assert state.seen_hash(main_conn, first) is not None             # finished bill committed
     assert state.seen_hash(main_conn, second) is None                # resumes next run
-    for st in ("GA", "FL", "AZ", "WI", "PA", "MI", "NC", "OH"):
-        assert f"  {st:<3} skipped: " in out
+    for i, st in enumerate(WATCHED[1:], start=1):
+        assert f"  {st + '/' + str(9000 + i):<10} skipped: " in out
     assert out.count(LIMIT_BODY) == 1                                # verbatim, once
-    assert _ledger(main_conn) == {"2026-10": 1 + 1 + common.MAX_RETRIES}
+    assert _ledger(main_conn) == {"2026-10": 9 + 1 + 1 + 1 + common.MAX_RETRIES}
 
 
 def test_a_429_exhausted_on_an_unrelated_body_skips_the_state_and_goes_on(
         monkeypatch, capsys, main_conn):
     def route(p, n):
-        if p["op"] == "getMasterList" and p["state"] == "TX":
+        if p["op"] == "getSessionList":
+            return _Resp(200, body=_session_payload(p.get("state")))
+        if p["op"] == "getMasterList" and p["id"] == 9000:
             return _Resp(429, text="Too Many Requests")
         return _Resp(200, body=EMPTY_ML)
     calls = _route(monkeypatch, route)
     assert state.main() == 0
     cap = capsys.readouterr()
-    assert calls.count(("getMasterList", "TX")) == common.MAX_RETRIES
-    assert len({c for c in calls if c[0] == "getMasterList"}) == 9   # every state tried
-    assert "TX  ERROR: GET failed after 4 attempts" in cap.err
+    assert calls.count(("getMasterList", 9000)) == common.MAX_RETRIES
+    assert len({c for c in calls if c[0] == "getMasterList"}) == 9   # every session tried
+    assert f"  {'TX/9000':<10} ERROR: GET failed after 4 attempts" in cap.err
     assert "Too Many Requests" in cap.err                            # the body is printed
     assert "skipped:" not in cap.out and "Body verbatim" not in cap.out
 
@@ -838,6 +928,7 @@ def test_main_ends_the_ledger_read_before_collect_starts(monkeypatch, clock):
         seen["pending"] = c._pending
         return {}
     monkeypatch.setattr(state, "collect", spy)
+    monkeypatch.setattr(common, "http_get", _legiscan([]))
     state.main()
     assert seen == {"pending": False}
 
