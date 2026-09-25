@@ -254,6 +254,24 @@ The ledger keeps counting attempts anyway, which is the cautious way to be wrong
   - **Why:** the scrub is confirmed, the spare is removed, and the exposure surface was this workstation and a model context, not a public one.
   - **The standing check instead:** each month, read the API Status page's request count against the `legiscan_usage` ledger.
   - **What counts as a finding:** spend the ledger cannot explain, after subtracting any logged local live checks, is the signal that would reopen rotation.
+  - **§6.3 CLOSED 2026-09-25: no exposure found on any surface checked.**
+    - **The "public" report was a misreading.** On 2026-09-25 a report reached this session that the key was on a public surface. The architect side withdrew it the same day as a misreading, not a finding; no public surface was ever identified. The ruling above stands unchanged.
+    - **Public Actions logs.** The repo is PUBLIC, so its logs are too. The check covered **all 354 retained `collect.yml` run logs**, 2026-06-29 to 09-24; `collect.yml` is the only workflow whose env holds `LEGISCAN_API_KEY`. Every count was zero:
+      - `key=` + 32 or more hex characters (the brief's pattern): **0 runs**;
+      - LegiScan's own `key=` (not `api_key=`): 0;
+      - Congress's `api_key=` + 32 or more alphanumeric: 0;
+      - a masked `key=***`: 0;
+      - any `api.legiscan.com/?` URL with a query string: 0;
+      - **any 32-character alphanumeric token at all:** the only tokens between 28 and 44 characters in those logs are 2,124 forty-character git shas.
+
+      Each pattern matched its synthetic positive control.
+    - **Git history, by hash prefix, never by value.** `git cat-file --batch-all-objects` streamed every object in each repo's store: packed, loose, unreachable, and commit messages. Every 32-character token was sha256-hashed against the key's 8-character prefix.
+      - **Scope:** 14 repos, which are psephos, the 12 other repos under `Desktop/projects`, and CBT. That comes to 30,034 objects and 17,425 tokens hashed.
+      - **Result:** **0 matches.**
+      - **Controls:** a throwaway repo with a synthetic token committed and then deleted matched 1; the same repo read 0 for the real prefix.
+      - **This is a NEW check.** The 12-repo git-history check recorded under the Congress.gov incident was for the *Congress* key, done by `git log -S` on the value, a method the secret-audit rule now forbids. **The LegiScan key had never been checked in history before this.**
+    - **Working trees:** `psephos/.env` is the only file holding the key (the §7 re-scan above).
+    - **What stays open:** the monthly Status-page-against-ledger read. It is how an exposure no scan can see would surface.
 - **GitHub code search is not a negative control.** It returned zero LegiScan hits for psephos, against 46 files that use it.
 
 **Page 7 of the manual, read 2026-09-24** (Revision 20250317, unchanged since D0; the verbatim table and field lists are in `docs/handoffs/98b-legiscan-cache-hits.md`, which is local-only, so the durable gist is here):
