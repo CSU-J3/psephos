@@ -8968,5 +8968,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/09/25/2026-election-how-to-vote-mail-ballots-voter-id",
     "title": "Everything you need to know about how to vote in Pennsylvania in 2026"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113432,
+    "kind": "item",
+    "occurred_at": "2026-09-25T14:50:59+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/prosecutor-and-sheriff-elections-in-november-2026-preview",
+    "title": "The 25 Sheriff and Prosecutor Races Set to Shape Criminal Justice and ICE Collaboration"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113429,
+    "kind": "item",
+    "occurred_at": "2026-09-25T14:53:12+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/25/trump-administration-charged-70-noncitizen-voting-stats",
+    "title": "Alleged noncitizen voters targeted by feds are from at least 18 different countries and are mostly green card holders"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113431,
+    "kind": "item",
+    "occurred_at": "2026-09-25T15:40:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-revives-dhs-use-of-flawed-immigration-database-for-voter-purges",
+    "title": "Supreme Court revives DHS use of flawed immigration database for voter purges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113430,
+    "kind": "item",
+    "occurred_at": "2026-09-25T16:39:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/jackson-blasts-supreme-court-decision-reviving-trump-voter-purge-database",
+    "title": "Jackson blasts Supreme Court decision reviving Trump voter-purge database"
   }
 ]
