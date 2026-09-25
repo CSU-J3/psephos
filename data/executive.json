@@ -1328,5 +1328,25 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/09/16/2026-18949/registration-of-lawful-permanent-residence-for-children-born-to-foreign-government-employees-in-the",
     "title": "Registration of Lawful Permanent Residence for Children Born to Foreign Government Employees in the United States; Correction"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 113120,
+    "kind": "item",
+    "occurred_at": "2026-09-25T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/25/2026-19693/implementing-the-safe-explosives-act",
+    "title": "Implementing the Safe Explosives Act"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 113121,
+    "kind": "item",
+    "occurred_at": "2026-09-25T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/25/2026-19642/department-of-justice-response-to-correspondence-requesting-rulemaking",
+    "title": "Department of Justice; Response to Correspondence Requesting Rulemaking"
   }
 ]

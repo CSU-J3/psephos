@@ -8958,5 +8958,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/09/24/dps-voter-registration-applications-error-paul-bettencourt-team",
     "title": "Key GOP lawmaker says state should have caught error that caused Texas voter registration backlog"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113181,
+    "kind": "item",
+    "occurred_at": "2026-09-25T10:00:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/09/25/2026-election-how-to-vote-mail-ballots-voter-id",
+    "title": "Everything you need to know about how to vote in Pennsylvania in 2026"
   }
 ]

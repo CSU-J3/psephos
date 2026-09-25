@@ -44456,6 +44456,120 @@
     "url": "https://legiscan.com/NC/bill/S818/2025"
   },
   {
+    "bill_number": "S0008",
+    "is_vehicle": false,
+    "last_action": "Laid on Table, companion bill(s) passed, see HB 1-D (Ch. 2026-229)",
+    "last_action_at": "2026-04-29T00:00:00",
+    "session": "2026 Fourth Special Session",
+    "state": "FL",
+    "state_bill_id": "2145948",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113193,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Filed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113194,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Referred to Rules"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113195,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: On Committee agenda-- Rules, 04/28/26, 2:00 pm, 110 Senate Building"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113196,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Introduced"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113197,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Favorable by- Rules; YEAS 14 NAYS 9"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113198,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Placed on Calendar, on 2nd reading"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113199,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Placed on Special Order Calendar, 04/29/26"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113200,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Read 2nd time"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113201,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Substituted HB 1-D"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113202,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/FL/bill/S0008/2026/X4",
+        "title": "FL S0008: Laid on Table, companion bill(s) passed, see HB 1-D (Ch. 2026-229)"
+      }
+    ],
+    "title": "Establishing the Congressional Districts of the State",
+    "url": "https://legiscan.com/FL/bill/S0008/2026/X4"
+  },
+  {
     "bill_number": "S994",
     "is_vehicle": false,
     "last_action": "Ref To Com On Rules and Operations of the Senate",
@@ -45568,6 +45682,138 @@
     "url": "https://legiscan.com/NC/bill/S1087/2025"
   },
   {
+    "bill_number": "HR11",
+    "is_vehicle": false,
+    "last_action": "House Second Readers",
+    "last_action_at": "2026-06-20T00:00:00",
+    "session": "2026 Special Session",
+    "state": "GA",
+    "state_bill_id": "2154068",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113184,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR11/2026/X1",
+        "title": "GA HR11: House Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113185,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR11/2026/X1",
+        "title": "GA HR11: House First Readers"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113186,
+        "kind": "item",
+        "occurred_at": "2026-06-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR11/2026/X1",
+        "title": "GA HR11: House Second Readers"
+      }
+    ],
+    "title": "Independent redistricting commission; provide for creation and establishment - CA",
+    "url": "https://legiscan.com/GA/bill/HR11/2026/X1"
+  },
+  {
+    "bill_number": "HR14",
+    "is_vehicle": false,
+    "last_action": "House Second Readers",
+    "last_action_at": "2026-06-20T00:00:00",
+    "session": "2026 Special Session",
+    "state": "GA",
+    "state_bill_id": "2154075",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113190,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR14/2026/X1",
+        "title": "GA HR14: House Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113191,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR14/2026/X1",
+        "title": "GA HR14: House First Readers"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113192,
+        "kind": "item",
+        "occurred_at": "2026-06-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR14/2026/X1",
+        "title": "GA HR14: House Second Readers"
+      }
+    ],
+    "title": "Mid-decade reapportionment or redistricting of congressional and legislative districts; prohibit - CA",
+    "url": "https://legiscan.com/GA/bill/HR14/2026/X1"
+  },
+  {
+    "bill_number": "HR13",
+    "is_vehicle": false,
+    "last_action": "House Second Readers",
+    "last_action_at": "2026-06-20T00:00:00",
+    "session": "2026 Special Session",
+    "state": "GA",
+    "state_bill_id": "2154077",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113187,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR13/2026/X1",
+        "title": "GA HR13: House Hopper"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113188,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR13/2026/X1",
+        "title": "GA HR13: House First Readers"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 113189,
+        "kind": "item",
+        "occurred_at": "2026-06-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/GA/bill/HR13/2026/X1",
+        "title": "GA HR13: House Second Readers"
+      }
+    ],
+    "title": "Racial minorities in legislative reapportionment and redistricting; protect - CA",
+    "url": "https://legiscan.com/GA/bill/HR13/2026/X1"
+  },
+  {
     "bill_number": "SB1054",
     "is_vehicle": false,
     "last_action": "Referred To Committee On Elections And Ethics",
@@ -45720,7 +45966,20 @@
         "title": "MI HB6414: Bill Electronically Reproduced 09/24/2026"
       }
     ],
-    "title": "Elections: election officials; local clerks to investigate and report alleged violations of the election law by the secretary of state, bureau of elections, and the director of elections; authorize.",
+    "title": "Elections: election officials; local clerks to investigate and report alleged violations of the election law by the secretary of state, bureau of elections, and the director of elections; authorize. Amends 1954 PA 116 (MCL 168.1 - 168.992) by adding sec. 29a.",
     "url": "https://legiscan.com/MI/bill/HB6414/2025"
+  },
+  {
+    "bill_number": "HR632",
+    "is_vehicle": false,
+    "last_action": null,
+    "last_action_at": null,
+    "session": "2025-2026 Regular Session",
+    "state": "PA",
+    "state_bill_id": "2159038",
+    "status": null,
+    "timeline": [],
+    "title": "Recognizing the week of October 5 through 9, 2026, as \"National Voter Education Week\" in Pennsylvania.",
+    "url": "https://legiscan.com/PA/bill/HR632/2025"
   }
 ]
