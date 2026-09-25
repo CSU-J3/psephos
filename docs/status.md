@@ -246,7 +246,13 @@ The ledger keeps counting attempts anyway, which is the cautious way to be wrong
 - **CBT holds no LegiScan key, data or spend.** HO 98 D0.3's CBT check is done, with zero found.
 - **The CBT subagent log scrub is confirmed from a fresh process, by the hash-prefix method.** Every 32-character alphanumeric token was sha256-hashed and compared with the key's 8-character prefix; the value was never loaded or matched. Across **all 90 JSONL files** under `~/.claude/projects/C--Users-meh-Desktop-CBT/`, **42 of them in `subagents/` directories**, it found **0 matches**. The positive control, `psephos/.env`, matched 1.
   - **The limit:** nothing this project may read names the scrubbed file, so this confirms "no file in the named directory holds the key", not that one particular file is present.
-- **`registers-crosswalk/.env` still holds the spare copy**, prefix `726a168f`, for Corey to remove.
+- ~~**`registers-crosswalk/.env` still holds the spare copy**, prefix `726a168f`, for Corey to remove.~~ **REMOVED, re-scanned 2026-09-25 under the §7 rule.**
+  - **Scope and method:** the five named repos only (psephos, CBT, Burgerreich-watch, glasshouse, registers-crosswalk), by variable name and by hash prefix.
+  - **Result:** `psephos/.env` is the only file holding `726a168f` (1 match, the positive control). `registers-crosswalk/.env`, both CBT `.env` files and glasshouse's `.env.example` all read 0.
+- **§6.3, RULED by Corey 2026-09-24: NO email to LegiScan, and no rotation.**
+  - **Why:** the scrub is confirmed, the spare is removed, and the exposure surface was this workstation and a model context, not a public one.
+  - **The standing check instead:** each month, read the API Status page's request count against the `legiscan_usage` ledger.
+  - **What counts as a finding:** spend the ledger cannot explain, after subtracting any logged local live checks, is the signal that would reopen rotation.
 - **GitHub code search is not a negative control.** It returned zero LegiScan hits for psephos, against 46 files that use it.
 
 **Page 7 of the manual, read 2026-09-24** (Revision 20250317, unchanged since D0; the verbatim table and field lists are in `docs/handoffs/98b-legiscan-cache-hits.md`, which is local-only, so the durable gist is here):
