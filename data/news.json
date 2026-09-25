@@ -8938,5 +8938,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/california-rulings-shut-down-roadmap-for-rogue-law-enforcement-to-upend-midterms",
     "title": "‘You won’t be seeing sheriffs unlawfully seizing ballots’: California rulings shut down roadmap for rogue law enforcement to upend midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112965,
+    "kind": "item",
+    "occurred_at": "2026-09-24T21:41:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-election-workers-scramble-after-registration-snafu-leaves-thousands-off-voter-rolls",
+    "title": "Texas election workers scramble after registration snafu leaves thousands of voters off rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 112964,
+    "kind": "item",
+    "occurred_at": "2026-09-24T22:54:19+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/09/24/dps-voter-registration-applications-error-paul-bettencourt-team",
+    "title": "Key GOP lawmaker says state should have caught error that caused Texas voter registration backlog"
   }
 ]
