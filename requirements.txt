@@ -4,6 +4,9 @@ PyYAML>=6.0
 python-dateutil>=2.9
 rapidfuzz>=3.9
 beautifulsoup4>=4.12    # UW tracker HTML parse (collectors/tracker_uw.py); stdlib html.parser backend, no lxml/binary dep
+tzdata>=2024.1          # zoneinfo's America/New_York for the state collector's ET weekday gate (handoff 98b).
+                        # Linux runners have a system zone database and Windows does not; without this the
+                        # DST tests pass in CI and fail on the workstation. No hard-coded UTC offsets instead.
 # Pinned EXACTLY, not a floating range: the persistence layer in db.py depends on
 # this client's row/cursor API surface (tuple rows wrapped for name access,
 # lastrowid, rowcount, executescript). The API can move between releases, and this
