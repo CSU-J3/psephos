@@ -1,0 +1,6 @@
+# Every text file is stored with LF line endings, whatever the writer produced.
+# Added 2026-09-26, after de86aca shipped web/components/StateBillRow.tsx with every
+# line flipped to CRLF by a Windows write. text=auto leaves files git detects as
+# binary alone; eol=lf also checks text out as LF on every machine, overriding
+# core.autocrlf. See docs/status.md, the .gitattributes unit.
+* text=auto eol=lf
