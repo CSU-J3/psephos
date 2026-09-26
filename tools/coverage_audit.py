@@ -1,5 +1,5 @@
-"""Six read-only coverage questions about `cases` and the tracker artifact, in one
-pass. Writes nothing.
+"""Seven read-only coverage questions about `cases`, the tracker artifact and
+`state_bills`, in one pass. Writes nothing.
 
 This is what survived the handoff 17 supersession-generator unit. That unit proposed a
 two-input pair detector behind a three-predicate cascade; it was measured (handoff 40-42)
@@ -10,16 +10,18 @@ behaviour, kept because it was measured on this exact corpus.
 
     python -m tools.coverage_audit
 
-Exit code is the ALARM in sections 1, 4, 5 and 6: 1 if any row is unreconciled, OR any
-row's `latest_entry_at` disagrees with its derivation, OR any tracker court fails to
-classify, OR any row was never polled and is linked to nothing. All four expect 0.
+Exit code is the ALARM in sections 1, 4, 5, 6 and 7: 1 if any row is unreconciled, OR
+any row's `latest_entry_at` disagrees with its derivation, OR any tracker court fails to
+classify, OR any row was never polled and is linked to nothing, OR any state bill carries
+a non-null status outside LegiScan's six. All five expect 0.
 Sections 2 and 3 are REPORTS and are expected to be non-empty -- 6 and 1 as of
 2026-09-07. Do not read a non-zero count there as a failure.
 
 (Section 4 was added 2026-08-14 and the exit code widened with it. It used to read
 "the ALARM in section 1 only", which is why this line is restated rather than left to
 be inferred from the code. Sections 5 and 6 were added 2026-09-07 with unit C and it
-widened again -- the same restatement, for the same reason.)
+widened again -- the same restatement, for the same reason. Section 7 was added
+2026-09-26 and it widened a third time.)
 
 DELIVERY IS THE POINT OF UNIT C, NOT DETECTION. Every alarm here was correct and
 available before it was read: section 1 read 6 for seventeen days, and tracker_uw's
@@ -109,6 +111,12 @@ from tools.status_audit import seeded_keys
 DISTRICT_DOCKET = re.compile(r"\b\d:\d{2}-[a-z]{2}-\d{4,5}\b", re.I)
 CIRCUIT_DOCKET = re.compile(r"\b\d{2}-\d{3,5}\b")
 DATE_LIKE = re.compile(r"\b\d{1,2}[-/]\d{1,2}[-/]\d{2,4}\b")
+
+# LegiScan's status codes that /state-bills puts on its ramp: Introduced, Engrossed,
+# Enrolled, Passed, Vetoed, Failed. Written out here rather than imported, because the
+# ramp's owner is web/lib/statebill.ts (STAGE_ORDER), which Python cannot import; section
+# 7 asserts every non-null status the collector stored is one of these.
+STATE_BILL_STATUSES = ("1", "2", "3", "4", "5", "6")
 
 
 def unreconciled(rows, seeded) -> list:
@@ -369,6 +377,28 @@ def unclassified_courts(seeds: list[dict]) -> list[dict]:
     return out
 
 
+def unmapped_state_statuses(rows) -> list:
+    """Section 7: state bills whose NON-NULL status is outside 1-6. ALARM, expect 0.
+
+    THE TRIPWIRE FOR THE ONE CASE STILL UNREACHABLE (ruled 2026-09-26). /state-bills
+    holds a bill with no stage the ramp knows in an `unstaged` column, keyed after PA
+    HR632 arrived with a null status on 2026-09-25. A NULL is keyed now: the page names
+    it, assert-encodings.mjs checks it, and it does not fire here. A NON-NULL code
+    outside 1-6 is different in kind -- LegiScan has given a status the page has no word
+    for -- and the page would absorb it quietly, relabelling the column's header from
+    "No status" to "No stage". That relabel is honest and it is silent, which is the
+    failure this file exists to turn into an exit code: a new upstream vocabulary that
+    nothing reads.
+
+    Section 5's shape, one layer over: a name the map does not know, arriving from
+    upstream, noticed only if something fails on it.
+
+    Pure, taking rows, for section 5's reason: the suite must never read live data.
+    `main()` does the SELECT, on whatever token audit.yml hands it (read-only)."""
+    return [r for r in rows
+            if r["status"] is not None and str(r["status"]) not in STATE_BILL_STATUSES]
+
+
 def unbootstrapped(conn) -> list:
     """Section 6: rows never bootstrapped and linked to nothing. ALARM, expect 0.
 
@@ -412,6 +442,10 @@ def main(argv=None) -> int:
         artifact = load_tracker_seeds()
         unmapped = unclassified_courts(artifact)
         unbooted = unbootstrapped(conn)
+        state_rows = conn.execute(
+            "SELECT state_bill_id, state, bill_number, status FROM state_bills "
+            "ORDER BY state_bill_id").fetchall()
+        off_vocab = unmapped_state_statuses(state_rows)
         acks = load_acks()
         unack, blocked, lapsed = partition_alarm(alarm, acks, date.today())
         dangling = dangling_acks(alarm, acks)
@@ -508,10 +542,23 @@ def main(argv=None) -> int:
             print(f"        FIRES  {r['case_id']:<10} {str(r['docket_number']):<16} "
                   f"{r['court']}  status={r['status']}")
 
+        print()
+        null_status = sum(1 for r in state_rows if r["status"] is None)
+        print(f"  [7] STATUS VOCABULARY ALARM -- state bills with a non-null status outside "
+              f"{STATE_BILL_STATUSES[0]}-{STATE_BILL_STATUSES[-1]}: {len(off_vocab)}  "
+              f"(expect 0)")
+        print(f"      {len(state_rows)} state bill(s) checked; {null_status} with a NULL "
+              f"status, which is keyed on /state-bills and does not fire.")
+        for r in off_vocab:
+            print(f"        FIRES  {r['state_bill_id']:<10} status={r['status']!r}  "
+                  f"{r['state']} {r['bill_number']}")
+            print("               a LegiScan status the page has no word for: name it in "
+                  "web/lib/statebill.ts and here, or rule it out")
+
         # `unack`, not `alarm`: an acknowledged-blocked row is out of the exit
         # code and out of nothing else. A LAPSED entry is back in `unack` by way
         # of partition_alarm, so the expiry and the condition both reach here.
-        return 1 if (unack or drift or unmapped or unbooted) else 0
+        return 1 if (unack or drift or unmapped or unbooted or off_vocab) else 0
     finally:
         conn.close()
 

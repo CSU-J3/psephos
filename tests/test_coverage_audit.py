@@ -526,3 +526,54 @@ def test_bootstrap_alarm_separates_the_two_clauses(cases_conn):
     _boot_case(cases_conn, "polled", synced="2026-09-01T00:00:00", superseded=None)
     _boot_case(cases_conn, "both", synced="2026-09-01T00:00:00", superseded="99")
     assert [r["case_id"] for r in ca.unbootstrapped(cases_conn)] == ["fires"]
+
+
+# --- section 7, the state-bill status vocabulary -----------------------------
+#
+# Section 5's pattern: synthetic rows, never the live table. The tripwire for the one
+# off-ramp case still unreachable on live data (ruled 2026-09-26): a NON-NULL status
+# the page has no word for. NULL is keyed on /state-bills and must stay silent here.
+
+
+def _sb(state_bill_id, status, state="PA", bill_number="HR1"):
+    return {"state_bill_id": state_bill_id, "state": state,
+            "bill_number": bill_number, "status": status}
+
+
+def test_status_alarm_fires_on_an_unmapped_code():
+    rows = [_sb("1", "4"), _sb("2", "9", state="TX", bill_number="SB9")]
+    out = ca.unmapped_state_statuses(rows)
+    assert [(r["state_bill_id"], r["status"]) for r in out] == [("2", "9")]
+
+
+def test_status_alarm_fires_on_codes_just_off_the_ramp():
+    # 0 is what LegiScan uses for "N/A"; the collector stores a 0 as NULL today
+    # (collectors/state.py), so a "0" arriving as a string means that mapping moved.
+    # 7 is the first code past Failed. Both must fire rather than be absorbed.
+    assert len(ca.unmapped_state_statuses([_sb("1", "0"), _sb("2", "7")])) == 2
+
+
+def test_status_alarm_is_silent_on_null():
+    # PA HR632's shape. Keyed on the page; not this section's subject.
+    assert ca.unmapped_state_statuses([_sb("2159038", None, bill_number="HR632")]) == []
+
+
+def test_status_alarm_is_silent_on_every_code_on_the_ramp():
+    rows = [_sb(str(i), code) for i, code in enumerate(ca.STATE_BILL_STATUSES)]
+    assert ca.unmapped_state_statuses(rows) == []
+
+
+def test_status_alarm_is_silent_on_an_empty_table():
+    assert ca.unmapped_state_statuses([]) == []
+
+
+def test_status_vocabulary_is_the_pages_ramp():
+    # The page's ramp lives in web/lib/statebill.ts, which Python cannot import. Read
+    # the literal out of the source so the two cannot drift apart unnoticed.
+    import re
+    from pathlib import Path
+    src = (Path(__file__).resolve().parents[1] / "web" / "lib" / "statebill.ts").read_text(
+        encoding="utf-8")
+    m = re.search(r"STAGE_ORDER: readonly StageCode\[\] = \[([^\]]*)\]", src)
+    assert m, "STAGE_ORDER literal not found in web/lib/statebill.ts"
+    assert tuple(re.findall(r'"([^"]+)"', m.group(1))) == ca.STATE_BILL_STATUSES

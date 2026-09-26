@@ -136,7 +136,7 @@ jobs:
             echo
             echo "Run: ${RUN_URL}"
             echo
-            echo "Exit code covers sections 1, 4, 5 and 6, all of which expect 0."
+            echo "Exit code covers sections 1, 4, 5, 6 and 7, all of which expect 0."
             echo "Sections 2 and 3 are reports and are expected non-empty -- a count"
             echo "there is not the failure. The FIRES lines below are."
             echo
