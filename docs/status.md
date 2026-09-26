@@ -2,13 +2,13 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-09-25 (UTC).
+Last updated: 2026-09-26 (UTC).
 
 ---
 
 ## Owed right now
 
-### The Congress.gov key was disabled for eight days and every run was green: INCIDENT 2026-09-16, key reissued 2026-09-24, recovery run owed
+### The Congress.gov key was disabled for eight days and every run was green: INCIDENT 2026-09-16, key reissued 2026-09-24, recovery READ 2026-09-26 and CLOSED
 
 **Bounds, read off the `collect.yml` logs.** The last good legislation poll was **2026-09-16T16:56:49Z** (run `35124888361`, `s1383-119 +0 actions`). The first `API_KEY_DISABLED` was **21:15:27Z** the same day (run `35151323003`). Every one of the six watched bills returned the same response on every run after that:
 
@@ -37,7 +37,7 @@ That held for **29 consecutive scheduled runs through 2026-09-23T21:27Z (run `35
 
 The two extra on-disk copies are Corey's to clear before the new keys go in.
 
-**REISSUED 2026-09-24, psephos-only, and the recovery run is owed.**
+**REISSUED 2026-09-24, psephos-only.** ~~The recovery run is owed.~~ **It was read 2026-09-26:** run `36096909704`, the 00:17Z slot of 2026-09-25. See DISCHARGED below.
 
 **Final length: 33 consecutive scheduled runs, all concluded `success`.** They run from `35151323003` (09-16, 21:15Z) to `36061708245`, the 18:17Z slot of 09-24. That last run started at 21:28Z, 68 minutes before the Actions secret changed. All four 09-24 runs printed six `API_KEY_DISABLED` lines each, counted from their logs.
 
@@ -60,19 +60,25 @@ The lesson for any future rotation: **a key is reissued for the cron when the se
 - `bills.cosponsor_count` and `latest_action` are point-in-time snapshots that every run overwrites. Their values during the outage were never recorded, but no run records their history anyway.
 - Items for actions dated inside the gap will carry a `fetched_at` of the recovery run, not of the day they happened. `occurred_at` is the action date, so the timelines order them correctly.
 
-**OWED, and it closes the incident: the first `collect.yml` run after 22:36:39Z,** expected to be the 00:17Z slot of 2026-09-25. Read three things:
+~~**OWED, and it closes the incident: the first `collect.yml` run after 22:36:39Z,** expected to be the 00:17Z slot of 2026-09-25. Read three things:~~
 
-1. All six legislation lines print `+N actions`, with no `ERROR`.
-2. All six `bills.updated_at` move past 2026-09-16, by a direct Turso query.
-3. Any action dated 2026-09-16 or later lands in `bill_actions` and `items`, with its run id recorded here.
+1. ~~All six legislation lines print `+N actions`, with no `ERROR`.~~
+2. ~~All six `bills.updated_at` move past 2026-09-16, by a direct Turso query.~~
+3. ~~Any action dated 2026-09-16 or later lands in `bill_actions` and `items`, with its run id recorded here.~~
 
-A run in which the bills simply had not moved is a pass on (1) and (2) with (3) empty, and that is still the close.
+~~A run in which the bills simply had not moved is a pass on (1) and (2) with (3) empty, and that is still the close.~~
+
+**DISCHARGED 2026-09-26: THE INCIDENT IS CLOSED, and it closed on the empty third read the line above allowed for.** The run is **`36096909704`**, the 00:17Z slot of 2026-09-25: event `schedule`, head `3362703`, started 05:02:47Z, `success`, data commit `e419c54`. No `collect.yml` run falls between it and `36061708245` (started 21:28:33Z on 09-24), and `gh secret list` still dates `CONGRESS_API_KEY` to 22:36:39Z. The three reads:
+
+1. **All six legislation lines print `+0 actions  +0 relations  +0 items`**, `hr22-119` through `s1383-119`, and the run's whole log holds **0 `ERROR` and 0 `API_KEY_DISABLED`**. The same grep on `36061708245` finds 6 of each, one 403 per bill, so the method would have caught a dead key. A `+0` line is a success line: `collectors/legislation.py` prints it only after `collect_bill` returns, and `common._get` never returns a response of 400 or more. A non-retryable status, the 403 `API_KEY_DISABLED` among them, raises `HttpError` on the first response; a 429 or 500/502/503/504 is retried and raises only if it outlasts all four attempts.
+2. **All six `bills.updated_at` sit past 2026-09-16**, by a direct Turso query on 2026-09-26. The column is overwritten every run, so the values the query returns are the 18:17Z run's (`36192046642`, 21:32:07Z to 21:32:32Z). The 00:17Z run's own success rests on its log lines, not on this column. All four 09-25 runs print six clean lines.
+3. **Empty.** `bill_actions` holds no row dated 2026-09-16 or later (73 rows, newest 2026-03-26), and no legislation item has a `fetched_at` after 2026-09-16T21Z. The run's `items_written` of 9 were all news. **Corroborated upstream:** each bill's `latest_action_at`, Congress.gov's own `latestAction` rewritten every run, equals its `MAX(bill_actions.action_at)` on all six bills. So the bills did not move during the outage, and nothing was missed.
 
 **Residue of the disabled key, dead and Corey's to clear:** `registers-crosswalk/.env` and `Desktop/OldAPIkey.txt` still hold it, confirmed by value scan. registers-crosswalk needs its own new key under the one-key-per-project ruling.
 
 **Unit 99 is opened by this** (see *Open units*). Its job is to make a dead credential print `CREDENTIAL FAILURE <channel>` and have the 05:17Z audit open an issue on it. The line names the channel only, never anything about the key.
 
-### LegiScan's October terms: Part A SHIPPED 2026-09-24, and five reads are owed
+### LegiScan's October terms: Part A SHIPPED 2026-09-24, Part B proven by its first scheduled run 2026-09-25, and the October reads are owed
 
 **What changed upstream.** LegiScan API Team email, 2026-09-23 22:17Z:
 
@@ -123,7 +129,11 @@ One over-count is accepted and documented: a commit that lands but whose respons
    - **The direct Turso `SELECT`** returned one row, `2026-09` = **27**, with `updated_at` 17:14:53Z, inside the third run's window (17:10:21Z to 17:15:22Z). No other month exists.
    - **Every figure agrees.** Each run's opening `used` is the previous run's total read back from Turso, and `runs_left` stepped 28, 27, 26 as `runs_left()` predicts.
    - **The masterlist floor, observed:** every run was nine masterlists, zero getBills and zero retries.
-2. **The first October run** (the 2026-10-01 00:17Z slot) should print `ledger 2026-10: 0 of 8000 … 124 run(s) left`. Its share should be 64 with a getBill budget of 55, give or take the one-run overcount if a September run lands after 00:00Z.
+2. ~~**The first October run** (the 2026-10-01 00:17Z slot) should print `ledger 2026-10: 0 of 8000 … 124 run(s) left`. Its share should be 64 with a getBill budget of 55, give or take the one-run overcount if a September run lands after 00:00Z.~~ **RESTATED 2026-09-26: stale since `778a049`,** which put the state collector on the 06:17Z slot alone and made `runs_left()` count daily state slots rather than all four cron slots. Under it the 00:17Z slot of 10-01 prints `state: not this slot (17 0 * * *)` and spends nothing. **The first October state run is the 06:17Z slot on Thursday 2026-10-01**, landing hours late. Its ledger line should read `ledger 2026-10: 0 of 8000 cron ceiling used (10000 monthly cap); 31 state slot(s) left incl. this one -> allowance 258; 1 spent on sessions (national getSessionList landed); N master list(s) planned (previous ET day Wed); getBill budget 257 − N`.
+   - **`runs_left()` at `778a049`** is 1 plus the 06:17Z slots strictly after the run's clock in its UTC month: 10-02 through 10-31 is 30, so **31**, for any landing time on 10-01 after the slot. `collectors/state.py` and `config/sources.yaml` are unchanged from `778a049` to `5bebd1b`, and the function returns 31 at 06:18Z, 11:47Z and 23:59Z.
+   - **Allowance** = (8000 − 0) // 31 = **258**.
+   - **getBill budget** = min(500, 258 − 1 − N), where 1 is the day's national `getSessionList` (the state-id bootstrap is done) and N the sessions planned. Thursday's previous ET day is Wednesday, so the active sessions are polled: four as of 09-25 (MI, NC, OH, PA), giving **253** if no adjourned session's hash moves. The 500 cap does not bind. `run_budget()` returns exactly these figures offline.
+   - **The caveat changes shape.** The October ledger opens at 0 unless something is charged to 2026-10 before the slot. That could be a dispatched run or a ledgered tool on 10-01, or the 09-30 06:17Z run landing after midnight, which needs a lag of 17h43m against the 5h29m58s this slot took on 09-25.
 3. ~~**D0.2, Corey at the browser.** Read the OneVote API Status page for current usage, **the reset clock**, and the tier label.~~ **READ 2026-09-24:** Public API, one key, 835 requests in September. The Actions secret is proven to be the same key; see *The API Status page, read by Corey 2026-09-24* at the end of this entry. **The reset clock is still unread:** "September" implies a calendar month, but UTC or ET is undetermined, so `ledger_month` stays UTC.
    - `ledger_month` assumes the UTC calendar month and is the one function to change if the page says otherwise.
    - ~~If the label reads Public, **"EDU tier" goes on the falsified list** with the status page as the instrument.~~ **It read Public; it is on the list.** The phrase came from this file's own handoff-0d entry and a `common.py` comment. The comment was neutralised in `c55a666`; the manual itself says "Public service keys".
@@ -133,11 +143,11 @@ One over-count is accepted and documented: a commit that lands but whose respons
    - **The site is DARK-ONLY, and the light-theme screenshots in that checkpoint were a SPEC ERROR, not a finding.** `body` is hard-coded to `bg-neutral-950`, and nothing in `web/app/globals.css` or any component reads `prefers-color-scheme`. Every light frame was byte-identical to its dark twin: the same sha256 on all four pairs, `/state-bills` and `/state-bill/2153946` at 1440 and 390px. **"Light theme untested" is therefore NOT an open gap.** There is no light theme to test. A checkpoint brief asking for one was asking about a page that does not exist, and the frames it produced prove only that the emulated preference changes nothing.
    - **Mutation-checked red twice:** a footer hidden below `sm` failed only the six 390px footer-link visibility checks; a footer removed failed twelve count checks.
    - **Against the real build:** 38 PASS, with the lane's other three checks unchanged at 8, 33 and 77.
-   - **OWED: the first SCHEDULED `dom-checks` run on a head carrying `1baa4e4`,** read for `assert-attribution` exit 0 with 38 PASS. That is the rule this lane has always been held to: a merge is not a run and a dispatch is not a schedule. **Record that run's id here when it lands;** the check counts as proven only then. The earliest slot is 03:17Z on 2026-09-25, landing hours later on this lane's observed lag.
+   - ~~**OWED: the first SCHEDULED `dom-checks` run on a head carrying `1baa4e4`,** read for `assert-attribution` exit 0 with 38 PASS. That is the rule this lane has always been held to: a merge is not a run and a dispatch is not a schedule. **Record that run's id here when it lands;** the check counts as proven only then. The earliest slot is 03:17Z on 2026-09-25, landing hours later on this lane's observed lag.~~ **PROVEN by run `36115258666`, the 03:17Z slot of 2026-09-25, read 2026-09-26.** Event `schedule`, head `e419c54`, started 08:52:06Z, a lag of **5h35m06s**. `git merge-base --is-ancestor 1baa4e4 e419c54` exits 0, and it exits 1 on the heads of all 15 earlier scheduled runs in the workflow's history. Every step concluded `success`, and the issue step was `skipped`. **`assert-attribution` read 38 PASS / 0 FAIL**, 19 at 1280 and 19 at 390px, across `/`, `/state-bills` and `/state-bill/2158970`, and ended `OK`. The step writes its `rc` to `GITHUB_OUTPUT` rather than the log. So exit 0 is read off the step's `success`: the step ends in `exit "$rc"` under `set +e`, which admits no other value. The lane's other three checks read 8, 33 and 77, unchanged. **The attribution check counts as proven from this run.**
    - **A DISPATCH RAN FIRST, AND IT DOES NOT CLOSE THE LINE ABOVE.** Run `36045020427`, event `workflow_dispatch`, head `553b8cc`, started 2026-09-24T18:59:10Z. It went green: every step `success`, `assert-attribution` 38 PASS / 0 FAIL at 1280 and 390px on Linux, and the issue step skipped. It was spent under this lane's own rule, which holds that a dispatch exercises the setup a day earlier and cannot prove the schedule. **It is not the run to record in the line above.**
 5. **The first cap-signal sighting, whenever it comes.** Record the body verbatim with its run id, and correct `names_allowance_limit` against it.
 
-**HANDOFF 98b §4, THE SESSION CADENCE: SHIPPED 2026-09-25, ruled by Corey 2026-09-24. The first production state run owes the read below.**
+**HANDOFF 98b §4, THE SESSION CADENCE: SHIPPED 2026-09-25, ruled by Corey 2026-09-24. Its first production state run (`36131273689`) was read 2026-09-26 and every prediction held; ruling (a)'s first production test, the 06:17Z run of 2026-09-26, is owed below.**
 
 **What changed.** The state collector now acts on the **06:17Z slot only**; the other three print `state: not this slot`. Each run it does, in order:
 
@@ -194,18 +204,37 @@ The handoff suggested four `feat` commits. They were landed as one because `main
 
 **OWED, in order:**
 
-1. **THE FIRST PRODUCTION STATE RUN ON THIS CODE**, the 06:17Z slot of 2026-09-25, a Friday, landing a few hours late. Read from its log:
-   - the bootstrap table, **against the fixture**;
-   - `national getSessionList landed`;
-   - ~14 master lists: MI/NC/OH/PA active, and the 10 adjourned sessions on first sight;
-   - an exit of 0.
+1. ~~**THE FIRST PRODUCTION STATE RUN ON THIS CODE**, the 06:17Z slot of 2026-09-25, a Friday, landing a few hours late. Read from its log:~~
+   - ~~the bootstrap table, **against the fixture**;~~
+   - ~~`national getSessionList landed`;~~
+   - ~~\~14 master lists: MI/NC/OH/PA active, and the 10 adjourned sessions on first sight;~~
+   - ~~an exit of 0.~~
 
-   Then read by direct Turso query:
-   - `state_sessions`, holding ~176 rows for the nine states;
-   - `legiscan_usage.masterlists` / `unchanged_masterlists`, now non-zero;
-   - **the first special-session bills in `state_bills`**, GA's 2026 Special Session among them.
+   ~~Then read by direct Turso query:~~
+   - ~~`state_sessions`, holding \~176 rows for the nine states;~~
+   - ~~`legiscan_usage.masterlists` / `unchanged_masterlists`, now non-zero;~~
+   - ~~**the first special-session bills in `state_bills`**, GA's 2026 Special Session among them.~~
 
-   The 00:17Z, 12:17Z and 18:17Z runs should print `state: not this slot`.
+   ~~The 00:17Z, 12:17Z and 18:17Z runs should print `state: not this slot`.~~
+
+   **DISCHARGED 2026-09-26: run `36131273689`, and every prediction held.** Event `schedule`, head `e419c54`, which carries `778a049`. It started 11:46:58Z, a lag of 5h29m58s, concluded `success`, and its data commit is `75fe002`. From its log:
+   - **The bootstrap table matches the fixture on all nine states:** `{"AZ": 3, "FL": 9, "GA": 10, "MI": 22, "NC": 33, "OH": 35, "PA": 38, "TX": 43, "WI": 49}`. Turso stores one distinct `state_id` per state, with the same values.
+   - **`national getSessionList landed`** prints inside the ledger line, not on a line of its own: `ledger 2026-09: 40 of 8000 cron ceiling used (10000 monthly cap); 6 state slot(s) left incl. this one -> allowance 1326; 10 spent on sessions (national getSessionList landed); 14 master list(s) planned (previous ET day Thu); getBill budget 500`.
+   - **Exactly 14 master lists:** the four active sessions (PA/2192, MI/2183, NC/2189, OH/2190) and the ten adjourned ones. Every adjourned session is labelled `dataset_hash moved`. **That label is not evidence that any dataset moved.** A session with no done-marker gets the same label (`collectors/state.py:942-946`), and none had a marker before this run.
+   - **Exit 0.** The `Run collectors` step, the job and the run all concluded `success`. The run printed `LegiScan queries this run: 31 HTTP attempt(s)`, which is 9 bootstrap + 1 national + 14 master lists + 7 getBills, with no retries. It wrote `+19 items`: GA/2268 +9 and FL/2259 +10.
+
+   **By direct Turso query, 2026-09-26:**
+   - **`state_sessions` holds 176 rows**, 14 of them with `prior = 0`. Every row was written inside this run, between 11:55:40Z and 11:57:59Z, and all 14 non-prior rows carry a `masterlist_hash`.
+   - **`legiscan_usage` for `2026-09` reads queries 71, masterlists 14, unchanged_masterlists 9**, with `updated_at` 11:57:59Z, inside the run. It reconciles exactly. The 09-24 18:17Z run (`36061708245`, old code) opened at 27 and spent 13. This run opened at 40 and spent 31. The 9 unchanged of 14 are the sessions without a changed bill.
+   - **The special-session bills:** GA `2026 Special Session` HR11 (`2154068`), HR13 (`2154077`) and HR14 (`2154075`), 3 items each; FL `2026 Fourth Special Session` S0008 (`2145948`), 10 items. `75fe002`'s `data/state_bills.json` gains all four, plus a fifth new bill, PA HR632 (below), and removes none: 486 → 491, which corroborates. `state_bills` reads **491**.
+
+   **The 00:17Z, 12:17Z and 18:17Z runs** (`36096909704`, `36165447874`, `36192046642`) each print `state: not this slot (<slot>); the state collector runs on 17 6 * * * only`. They spent nothing: the ledger read 40 before this run and 71 after, and it still reads 71.
+
+   **Two things the prediction did not name:**
+   - **A fifth new bill, PA HR632 (`2159038`),** a resolution recognising "National Voter Education Week". Its `status`, `last_action` and `last_action_at` are all NULL, and it has no items. Its hash is stored, so it is not re-fetched until the hash moves. **It makes a branch of `/state-bills` reachable that was declared unreachable**; see the next entry.
+   - **MI HB6414 (`2158970`) carries a future `last_action_at`:** 2026-09-29, beside a `last_action` of "Bill Electronically Reproduced 09/24/2026". The date predates this run, which changed only the bill's title. Noticed, not investigated.
+
+   **OWED, AND IT IS RULING (a)'S FIRST PRODUCTION TEST: the next state run**, the 06:17Z slot of Saturday 2026-09-26. Its previous ET day is Friday, so the four active sessions are polled. The ten adjourned sessions now carry done-markers, so each should print `<ST>/<sid>: adjourned, dataset_hash unmoved; zero calls` (`collectors/state.py:949`) unless its hash really moved. That makes the ledger line read `4 master list(s) planned`, give or take a moved hash.
 2. **October's target, set now that the deploy precedes Oct 1.** All of October is post-deploy, so the pro-rata target is **6/day × 31 = 186 ±20% (149–223)**, read on the API Status page on or after 2026-11-01. The cache-hit criterion for October is the ledger's `unchanged_masterlists` / `masterlists` for the month. The page's share, under 30%, is read for **November**, on or after 2026-12-01.
 3. **This build's local live checks spent 12 + 30 + 1 + 1 = 44 September queries on this key that the Turso ledger cannot see.** The Status page will count them. Subtract them before reconciling September.
 
@@ -309,6 +338,41 @@ The ledger keeps counting attempts anyway, which is the cautious way to be wrong
   - That is an inference from two points. The fixture's TX = 43 is hand-built, not a capture.
   - **Recommended:** a one-time bootstrap of `getSessionList&state=XX` per watched state (9 queries, once).
   - **Either way:** a zero-cost runtime tripwire. Every master list names its state in `session.state_id` and in each bill URL, and a mismatch refuses the session.
+
+### `/state-bills` reaches its unstaged branch: PA HR632 arrived with no status, and the next scheduled `dom-checks` run is expected to red. FINDING 2026-09-26, for a ruling
+
+**Measured 2026-09-26, locally, against a production build of `5bebd1b` plus uncommitted edits to the `eo-14399-s3-enjoined` gate (`docs/gates.yaml` and `web/components/WhereThisStands.tsx`), reading live Turso.** `assert-encodings` exits 1: 32 PASS, 1 FAIL. The failing check is on `/state-bills`:
+
+```
+FAIL  state-bills: unstaged sampled (unreachable by construction): 1  (expected 0)
+```
+
+**The cause is data, not code.** At `5bebd1b` exactly one bill in `data/state_bills.json` has a status outside 1–6: **PA HR632**, status null, which `75fe002` added (see the session-cadence read above). `stageOf` returns null for it (`web/lib/statebill.ts:124-128`), and two things follow:
+
+- **Its row in the `/state-bills?all=1` list carries `data-stage="unstaged"`** (`web/components/StateBillRow.tsx:49`). That row is the one element the failing check counts (`assert-encodings.mjs:578`, `:843`), in one of the three views the script sweeps (`:451-455`). HR632's null `last_action_at` keeps it out of "Latest movement", and the TX view leaves out PA, so it is counted once.
+- **The matrix's `unstaged` column renders too** (`hasUnstaged`, `statebill.ts:188`). Its header carries `data-unreachable` (`StateMatrix.tsx:140`). The script prints that marker (`:710-714`) and no check reads it, although the comment at `:706-709` says "the check further down turns [it] into a failure".
+
+The last scheduled `dom-checks` run, `36115258666`, read 33 PASS at 08:52Z on 09-25, before the state run that added HR632 landed at 11:57Z. The uncommitted edits render on `/` only.
+
+**This is the alarm doing what it was written to do.** `web/scripts/assert-encodings.mjs:839-842`: *"If either count ever moves off zero the branch has become reachable, the key owes it an entry, and the comment above owes a rewrite -- which is the alarm, not a nuisance."* Every comment that says live data never reaches the branch is false on today's data (491 rows, one null status):
+
+- `assert-encodings.mjs:440` ("all 484 rows are inside them"), `:708` and `:839`;
+- `statebill.ts:149`;
+- `StateMatrix.tsx:135`;
+- `StateMatrix.test.ts:13`;
+- `encodings.expected.mjs:92-93`;
+- `vitest.config.ts:13`.
+
+**Expected: the 09-26 03:17Z `dom-checks` run reds `assert-encodings` (exit 1, PAGE FAILED)** and opens or comments on the `dom-checks red` standing issue.
+- **Timing.** The run lands around 08:30Z on this lane's lag. That is before the 09-26 06:17Z state run could re-fetch HR632, and the lane's server reads Turso at request time.
+- **`assert-gates` may red in the same run.** It does unless `eo-14399-s3-enjoined`'s recheck has moved on `main` by the time the run starts. At `5bebd1b` that gate's `recheck_after` is 2026-09-25, and the 00:17Z data commit clocks `generated_at` to 09-26.
+- **What clears it.** Only a moved `change_hash` re-fetches HR632. The branch closes on its own if LegiScan fills in the status, and not otherwise.
+
+**For a ruling, not started.** The options as the code frames them:
+
+1. Let the red stand as the alarm working, until HR632's status arrives.
+2. Make the branch a claimed encoding. That takes a key entry for `unstaged` and `data-encoding` in place of `data-unreachable` on the header at `StateMatrix.tsx:140`. `unstaged` moves into the expected set in `encodings.expected.mjs`, and the script's by-name exclusions of it (`assert-encodings.mjs:781`, `:893`) are removed. The comments above are rewritten. It is a web change with a visual checkpoint.
+3. Keep statusless bills off the page. That drops a bill, which is the outcome `statebill.ts:148` says the column exists to prevent.
 
 ### `coverage_audit` §1 red since 2026-09-17, and the cause cannot be cleared by any correct action today
 
