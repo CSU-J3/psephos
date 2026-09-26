@@ -13,17 +13,16 @@
 // the grade-before-recency fold that keeps C3 items reachable, which is move 2's own
 // decision and was the one thing the deleted tests carried that was not mechanical.
 //
-// THIS FILE IS CRLF, AND THAT IS A FACT ABOUT IT RATHER THAN A RULE. It is the only
-// CRLF file under web/lib or web/components, 171 lines of it and no bare LF. The
-// repo is mixed and always has been; nothing enforces either ending here (no
-// .gitattributes, core.autocrlf false), and the 'feed.ts must stay CRLF' invariant
-// was RETIRED 2026-09-16, having had no verifier from the day it was written.
+// THIS FILE WAS CRLF UNTIL 48ca79d, AND NOTHING NOW LETS IT BE. It was the only CRLF
+// file under web/lib or web/components, 183 lines with no bare LF by the end. Nothing
+// enforced either ending, and the 'feed.ts must stay CRLF' invariant was RETIRED
+// 2026-09-16, having had no verifier from the day it was written. On 2026-09-26 the
+// root .gitattributes (`* text=auto eol=lf`) made every text file LF in the
+// repository, and 48ca79d converted this one, line endings only. .git-blame-ignore-revs
+// lists that commit, so blame run with it skips the conversion.
 //
-// THE HANDLING RULE THAT SURVIVES IT: a tool that rewrites this file writes it with
-// newline='' (or in bytes), so it does not renormalise what is here. The cost of
-// flipping it is a 171-line diff for a small change -- noise, not breakage, and the
-// standing catch for that is the diff-stat ratio, not an assertion on this file.
-// Nothing asserts any of this.
+// No handling rule survives: a tool may write this file with either line ending, and
+// `git add` stores it as LF.
 
 import { WINDOW_DAYS } from "@/lib/activity";
 import { daysBetween } from "@/lib/format";
