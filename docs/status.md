@@ -606,7 +606,7 @@ What production showed, read around 02:00Z on 09-26:
 **OWED:**
 1. ~~**The second pixel checkpoint.**~~ **PASSED 2026-09-26 (Corey).**
 2. ~~**Push the four commits together after Corey's word.**~~ **Pushed together with this entry, rebased over the cron's `6226b29`** (data only: `data/cases.json` and `data/generated_at.json`). A push cannot carry its own row, so the push reading -- its time, the rebase, the patch-ids across it -- is carried by the next unit's push.
-   - **`ci.yml` WENT RED ON THAT PUSH, the second breach of *Verify with the command CI runs* (Standing invariants; the first was `npx vitest`)**, run `36264690447` on `573d0ff`: `assert-casts` failed on 3 double casts (`as unknown as`) in `web/lib/dated.test.ts`, whose pin is 0. The unit's local checks were tsc, `pnpm test`, pytest and the DOM lane. They did not include `assert-casts`, which the previous unit's instrument list did run. The job stops at its first failing step, so every later step was run locally before the fix: tsc, `pnpm test`, `assert-gates --expiry-only`, and pytest and actionlint, which passed in the red run. **Fixed by typing the three fixtures in full**, after which `assert-casts` reads zero double casts, pushed as its own commit. **Instrument: run every `ci.yml` step locally before the push**, since the ritual's own `ci.yml` check comes after the push, when main is already red.
+   - **`ci.yml` WENT RED ON THAT PUSH, the second breach of *Verify with the command CI runs* (Standing invariants; the first was `npx vitest`)**, run `36264690447` on `573d0ff`: `assert-casts` failed on 3 double casts (`as unknown as`) in `web/lib/dated.test.ts`, whose pin is 0. The unit's local checks were tsc, `pnpm test`, pytest and the DOM lane. They did not include `assert-casts`, which the previous unit's instrument list did run. The job stops at its first failing step, so every later step was run locally before the fix: tsc, `pnpm test`, `assert-gates --expiry-only`, and pytest and actionlint, which passed in the red run. **Fixed by typing the three fixtures in full**, after which `assert-casts` reads zero double casts, pushed as its own commit. **Instrument: run every `ci.yml` step locally before the push**, since the ritual's own `ci.yml` check comes after the push, when main is already red. Since the same day that is one command, `python -m tools.ci_local` (*One CI entry point*, below).
 3. **The 09-27 and 09-28 SCHEDULED `dom-checks` runs.** Read for:
    - `assert-dated` exit 0 with HB6414 among the marked dates: the discovered `/state-bill/2158970` reading 2 dates after the clock and 2 marked, and `/state-bills` reading 1 and 1;
    - the homepage carrying the dated-after sentence, *"1 further item is dated after these seven days."* The run logs no page text, so this is read off the production homepage the same day, on the public alias, against the same Turso.
@@ -650,9 +650,68 @@ Opened on Corey's instruction after `de86aca`'s line-ending flip, built as he sp
 
 **Pushes and CI:**
 - `2909fc9` and `48ca79d` were pushed at 19:43:36Z, a `prev push` window of 25m29s from `b99f5b8`'s push at 19:18:07Z, with no rebase. `ci.yml` run `36267041240` on `48ca79d` read green on all three jobs.
-- `f1781e9` and this commit land together. Their push reading is owed to the next push.
+- `f1781e9` and `ade0a06` were pushed at 19:47:55Z, a `prev push` window of 4m19s from 19:43:36Z, with no rebase (read by the next push). `ci.yml` run `36267291928` on `ade0a06` read green on all three jobs. **The attribute's checkout half, seen working:** a fresh clone then made under this machine's system `core.autocrlf=true` checked out all 203 text files `i/lf w/lf`, where the pre-unit clone had them `w/crlf`.
 
 **FOUND ON THE WAY: THE WINDOW TABLE STOPPED AT `a95da6c` ON 2026-09-19.** *Standing invariants* carries a row per push. **21 session pushes since carry none**: from `9d344f7` (09-19 20:11:49Z) to `b99f5b8` (09-26 19:18:08Z), five of them this session's before this unit. Nothing on the page records the table being paused. The push times survive in GitHub's events feed for about 90 days. A first push's window opener lives only in the pushing clone's branch reflog, which ephemeral clones did not keep. **Not backfilled here; Corey's to scope.** The two pushes this unit makes are the 22nd and 23rd.
+
+### One CI entry point: `python -m tools.ci_local`. SHIPPED 2026-09-26
+
+Ruled by Corey after the second breach of *Verify with the command CI runs*: a ritual line listing CI's steps loses to the next step someone adds, which is how both breaches happened. So the list lives in one place.
+
+**The D0: `ci.yml`'s run lines for the python and web jobs, verbatim, at `ade0a06`.**
+
+| job | step | `run:` | working directory |
+| --- | --- | --- | --- |
+| python | Install dependencies | `python -m pip install --upgrade pip` then `pip install -r requirements-dev.txt` | root |
+| python | pytest | `python -m pytest -q` | root |
+| web | Install dependencies | `pnpm install --frozen-lockfile` | `web` (`defaults.run.working-directory`) |
+| web | vitest | `pnpm test` | `web` |
+| web | tsc | `npx tsc --noEmit` | `web` |
+| web | assert-casts | `node scripts/assert-casts.mjs` | `web` |
+| web | assert-gates (expiry) | `node scripts/assert-gates.mjs --expiry-only` | `web` |
+
+Besides the run steps, both jobs carry `uses:` steps: checkout, `setup-python` pinned to 3.12, `pnpm/action-setup` and `setup-node` pinned to 22. The third job, **actionlint**, downloads a pinned v1.7.12 Linux binary, checks its sha256 and lints `.github/workflows/*.yml`. That summary is not verbatim; the job is not mirrored.
+
+**Built:**
+- **`tools/ci_local.py`.** Its `MIRROR` lists every step of the two jobs in `ci.yml`'s order, each one of three kinds:
+  - **run**: pytest, `pnpm test`, tsc, `assert-casts` and `assert-gates --expiry-only`. Each runs its `run:` text verbatim under **`bash -e`**, in the job's working directory. That is the shell `ci.yml`'s steps get on ubuntu-latest; the step log reads `shell: /usr/bin/bash -e {0}`. On Windows the bash is Git's, and the command refuses rather than fall back to `cmd.exe` or to WSL's bash.
+  - **skipped, with the run text it excuses**: the two `Install dependencies` steps. They provision a fresh runner, and `pnpm install --frozen-lockfile` would rewrite `web/node_modules` under a working session. `pnpm test` still runs pnpm's dependency-status check, which is what the first breach turned on.
+  - **setup**: the `uses:` steps with their `with:` inputs. The developer's toolchain runs instead, and its versions are not compared.
+
+  The two jobs are independent, as in CI: a failing step ends its own job, marks that job's later steps "not reached", and the other job still runs. The command exits 0 only when every run step passed. `ci.yml` keeps its separate steps, so its log stays readable.
+- **actionlint stays CI-only.** It is the one CI job the command does not cover, declared in the file with its reason.
+- **`tests/test_ci_local.py`, 7 tests, run in the python job, so drift reds CI:**
+  - `MIRROR` equals `ci.yml`'s two jobs step for step: kind, name, run text, `with:` inputs and working directory, in order.
+  - Any key `MIRROR` does not model fails it. That covers a step's `if`, `env`, `shell`, `working-directory` or `continue-on-error`; a job's `env`, `strategy` or `defaults.run.shell`; and a workflow-level `env` or `defaults`.
+  - Every skip and setup gives its reason.
+  - Every `ci.yml` job is mirrored or declared CI-only.
+  - The mirrored jobs run in `ci.yml`'s own job order.
+  - A failing step ends its job and not the other.
+  - A multi-line step runs under `bash -e`, stopping and failing at its first failing line.
+  - Each step runs in its job's directory.
+
+**THE ADVERSARIAL REVIEW, 2026-09-26: 11 findings, 6 confirmed, 2 plausible, 3 refuted.** One reviewer and one refuter, run before the unit was committed. What the first build got wrong:
+- **HIGH: a multi-line step, copied verbatim as the test required, ran its first line only under `cmd.exe` and reported success.** `ci.yml` already uses `run: |` blocks. Probed: `echo first-line-ran` then `node -e "process.exit(9)"` returned exit 0. Fixed by running under `bash -e`, and pinned by a test that goes red with `cmd.exe` put back.
+- **The drift test compared run steps only.** A new `uses:` step, a step- or workflow-level working directory, and work added under a skipped step's unchanged name all passed it (confirmed, one each). So did `if`, `env`, `shell`, a matrix and `continue-on-error` (plausible, since some of those would make the local run stricter rather than looser). Fixed by mirroring every step and refusing every unmodeled key.
+- **The job-order test could not fail.** It sorted by the tuple it was checking against. It now reads `ci.yml`'s own job order.
+- **The D0 table was headed "verbatim" over a paraphrased actionlint row.** Fixed above.
+- **Left as stated, plausible: local tsc reads gitignored build output CI does not have.** `web/tsconfig.json` includes `next-env.d.ts` and `.next/types/**/*.ts`, which declare global `PageProps` and `LayoutProps`. No source uses them today. A page that did would pass locally and fail in CI. This is the same class as the toolchain versions: **local Node is v25.5.0, where `ci.yml` pins 22.** A local green is `ci.yml`'s commands passing on this machine's toolchain and working tree, not a copy of CI's runner, and the file's header says so.
+- **Refuted:**
+  - that skipping the python install drops CI's first-run check (an install into a populated interpreter only adds packages; the check came from the fresh runner);
+  - that it verifies the tree before the rebase (the ritual runs it beside `sha_sweep --worktree`, after the rebase);
+  - that it leaks the developer's environment (it is the same exposure as running pytest in the same shell).
+
+**Mutation proofs, 21, each on a scratch edit restored byte-for-byte, every one red:**
+- the 5 of the first build: a run line edited, a step added, a step renamed, a new job, the job working directory changed;
+- the review's 14: a step-level working directory, a step `shell`, a step `if`, `continue-on-error`, a new `uses:` step, workflow `defaults`, a job `defaults.run.shell`, a step `env`, a python matrix, work under a skipped name, a job `env`, `node-version` changed, `if: always()`, and the two jobs swapped;
+- the executor put back on `cmd.exe`;
+- `run_steps` no longer stopping a failed job.
+
+**End to end, under `bash -e`.** A clean run passes all five steps in about 34s: pytest 502, `pnpm test`, tsc, `assert-casts`, and `assert-gates` 6 PASS. **With this session's own breach reintroduced**, one double cast in `web/lib/dated.test.ts`, it exits 1 on `assert-casts`, with `assert-gates` "not reached".
+
+**The pre-push ritual now names the one command** (*Standing invariants*, *Verify with the command CI runs*): `python -m tools.ci_local`, beside `sha_sweep --worktree` and `issue_ref_guard`.
+
+**Push and CI:** this entry lands with the unit, and its push reading is owed to the next push.
 
 ### The eo-14399 gate carries the Supreme Court's Sep 14 order: FIXED 2026-09-26, and its pending clause was false on the page for twelve days
 
@@ -2529,7 +2588,7 @@ Things that have bitten before and will again.
 
   **One residual this invariant cannot cover:** the hashes inside already-pushed *commit messages* are not rewritten by a rebase and still name pre-rebase commits, and correcting them would mean rewriting history a second time. This page is the durable surface and is the one kept correct; a hash quoted out of a commit message from a rebased unit is not.
 - **And so do database NON-facts.** Before explaining an absence with an external request — a missing entry, an unrecorded ruling, a docket that looks quiet — query the table that should hold it. West Virginia's "no entry since 05-15" was a defect in psephos's own write path, not a gap at CourtListener, and a two-request protocol was scoped around it before anyone ran one `SELECT` over `case_entries`. Check what you hold before spending a request on what someone else holds.
-- **Verify with the command CI runs, not one that looks like it.** `npx vitest run` passed where `pnpm test` failed, because `npx` skips pnpm's dependency-status check — the configuration it green-lit was one where `pnpm install` exits 1. A test suite's existence is also not a gate's existence: `ls .github/workflows/` before claiming a branch is verified. **Its second breach, 2026-09-26, and the first was `npx vitest` above:** the dated-ahead unit ran tsc, `pnpm test` and pytest and never ran `assert-casts`, and `main` went red on three double casts in a test file (run `36264690447`). Both breaches were a step CI runs and the session did not. **So run every step it runs, before the push:** `ci.yml` is the list, read top to bottom, and its own check in the push ritual comes after the push.
+- **Verify with the command CI runs, not one that looks like it.** `npx vitest run` passed where `pnpm test` failed, because `npx` skips pnpm's dependency-status check — the configuration it green-lit was one where `pnpm install` exits 1. A test suite's existence is also not a gate's existence: `ls .github/workflows/` before claiming a branch is verified. **Its second breach, 2026-09-26, and the first was `npx vitest` above:** the dated-ahead unit ran tsc, `pnpm test` and pytest and never ran `assert-casts`, and `main` went red on three double casts in a test file (run `36264690447`). Both breaches were a step CI runs and the session did not. **So run every step it runs, before the push:** `ci.yml` is the list, read top to bottom, and its own check in the push ritual comes after the push. **Since 2026-09-26 the list lives in one command, `python -m tools.ci_local`:** it runs `ci.yml`'s python and web jobs' commands under `bash -e`, in `ci.yml`'s order, and `tests/test_ci_local.py` fails the moment those two jobs and the command's mirror of them diverge in any step or key. **Run it before every push**, beside `sha_sweep --worktree` and `issue_ref_guard`. actionlint is the one CI job it does not cover; it stays CI-only (*One CI entry point*).
 - **A derived column is a claim and needs its own check.** `cases.latest_entry_at` is `MAX(case_entries.entry_at)` by definition and stopped being it on 12 of 40 rows for three weeks, caught only when a feature built on top of it rendered a false positive. Building on a value is not verifying it. `python -m tools.coverage_audit` section 4 is the check; the exit code covers sections 1 and 4.
 - Absent cron commits are not failures. An empty-diff run commits nothing by design, so gaps in the 4/day schedule prove nothing without `gh run list`. Demonstrated 08-12: three of four runs committed nothing, all four `success`, all four with a refresh line in the log. "No commit" and "no run" are indistinguishable in the commit log, and that ambiguity is what let the litigation starvation sit for days.
 - LegiScan needs `getMasterList`, not `getMasterListRaw`. Raw omits `title`/`description`, so election filters silently match zero bills.
