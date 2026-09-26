@@ -9098,5 +9098,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/that-is-very-concerning-trump-admin-says-it-might-release-voter-eligibility-lists-before-midterms",
     "title": "‘That is very concerning’: Trump admin says it might release voter eligibility lists before midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113867,
+    "kind": "item",
+    "occurred_at": "2026-09-25T22:02:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-a-win-for-voters-supreme-court-blocks-missouris-gerrymandered-map-for-midterms",
+    "title": "In a win for voters, Supreme Court blocks Missouri’s gerrymandered map for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113866,
+    "kind": "item",
+    "occurred_at": "2026-09-26T00:23:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-smacks-down-denny-hoskins-for-creating-missouris-redistricting-mess",
+    "title": "Supreme Court smacks down Denny Hoskins for creating Missouri’s redistricting mess"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 113865,
+    "kind": "item",
+    "occurred_at": "2026-09-26T00:29:10+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/09/26/voter-registration-delay-backlog-online-dps-error",
+    "title": "Delayed voter applications highlight the difficulties of registering in Texas, experts say"
   }
 ]
