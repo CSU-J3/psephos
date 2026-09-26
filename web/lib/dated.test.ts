@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Bill, CampaignRow, ExecItem, NewsItem, StateBill, TimelineItem } from "@/lib/db";
+import type { Bill, CampaignRow, Case, ExecItem, NewsItem, StateBill, TimelineItem } from "@/lib/db";
 import type { FeedEntry } from "@/lib/feed";
 import type { MovementRow } from "@/lib/movement";
 import {
@@ -209,7 +209,11 @@ describe("the wire: every 'latest' skips a row dated ahead", () => {
         .mostRecent?.id,
     ).toBe(2);
 
-    const filing = (id: string, filed_at: string) => ({ case_id: id, filed_at, latest_entry_at: null } as unknown as CampaignRow);
+    const filing = (id: string, filed_at: string): CampaignRow => ({
+      case_id: id, state: "x", caption: "c", court: null, docket_number: null, status: null,
+      filed_at, latest_entry_at: null, status_checked_at: null, superseded_by: null,
+      source_url: null, entry_count: 0,
+    });
     expect(readLitigation([filing("a", AHEAD), filing("b", EARLIER)], CLOCK_DATE).latestFiling).toBe(EARLIER);
   });
 });
@@ -218,8 +222,11 @@ describe("the wire: every 'latest' skips a row dated ahead", () => {
 // helpers with these accessors, so the tests reach what the page does (adversarial
 // review, 2026-09-26: inline, the uses had no test at all).
 describe("the homepage: cases rail, watched bills, and the rejection count", () => {
-  const docket = (id: string, latest: string | null, filed: string | null) =>
-    ({ case_id: id, latest_entry_at: latest, filed_at: filed }) as unknown as import("@/lib/db").Case;
+  const docket = (id: string, latest: string | null, filed: string | null): Case => ({
+    case_id: id, caption: "c", court: null, docket_number: null, status: null, category: null,
+    filed_at: filed, latest_entry_at: latest, source_url: null, plaintiff: null, defendant: null,
+    superseded_by: null,
+  });
 
   it("rail: the first eight are dated up to the clock; one dated ahead is after the fold, uncut", () => {
     const cases = [
@@ -239,8 +246,11 @@ describe("the homepage: cases rail, watched bills, and the rejection count", () 
   });
 
   it("watched bills: one dated ahead moves after the rest, the rest keep their order", () => {
-    const bill = (id: string, latest: string | null, introduced: string | null) =>
-      ({ bill_id: id, latest_action_at: latest, introduced_at: introduced }) as unknown as Bill;
+    const bill = (id: string, latest: string | null, introduced: string | null): Bill => ({
+      bill_id: id, bill_type: "s", number: 1, congress: 119, short_title: null, title: null,
+      sponsor: null, status: null, is_vehicle: 0, latest_action: null, latest_action_at: latest,
+      introduced_at: introduced,
+    });
     const bills = [bill("s1383", AHEAD, null), bill("hr22", EARLIER, null), bill("s128", null, EARLIER)];
     expect(aheadLast(bills, billDate, CLOCK).map((b) => b.bill_id)).toEqual(["hr22", "s128", "s1383"]);
   });
