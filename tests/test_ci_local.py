@@ -16,9 +16,23 @@ directory, `if:`/`env:`/`shell:`/matrix keys, and work added under a skipped ste
 
 from pathlib import Path
 
+import pytest
 import yaml
 
-from tools.ci_local import CI_ONLY_JOBS, MIRROR, STEPS, Setup, Skip, Step, execute, run_steps
+from tools.ci_local import (
+    CI_ONLY_JOBS,
+    MIRROR,
+    STEPS,
+    Setup,
+    Skip,
+    Step,
+    execute,
+    next_types_warning,
+    pinned,
+    report,
+    run_steps,
+    version_warning,
+)
 
 CI_YML = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "ci.yml"
 MIRRORED = ("python", "web")
@@ -113,3 +127,44 @@ def test_a_multi_line_step_runs_under_bash_e_and_fails_like_ci():
 def test_the_steps_run_in_their_jobs_directory():
     assert execute(Step("t", "cwd", "test -f package.json", "web")) == 0
     assert execute(Step("t", "cwd", "test -f package.json", ".")) == 1
+
+
+# ci_local states its limits (ruled 2026-09-26): warnings, never failures.
+def test_the_pins_it_warns_against_are_ci_ymls():
+    jobs = _ci()["jobs"]
+    node = next(s for s in jobs["web"]["steps"] if s.get("uses", "").startswith("actions/setup-node"))
+    python = next(s for s in jobs["python"]["steps"] if s.get("uses", "").startswith("actions/setup-python"))
+    assert pinned("node") == str(node["with"]["node-version"])
+    assert pinned("python") == str(python["with"]["python-version"])
+
+
+@pytest.mark.parametrize(
+    "tool, pin, local, warns",
+    [
+        ("node", "22", "v25.5.0\n", True),  # this machine, 2026-09-26
+        ("node", "22", "v22.11.0\n", False),  # the pin names a major: any 22.x matches
+        ("python", "3.12", "Python 3.12.7\n", False),
+        ("python", "3.12", "Python 3.13.1\n", True),  # the pin names a minor
+        ("python", "3.12", "Python 3.1.2\n", True),
+        ("node", "22", "", True),  # unreadable: said, not guessed
+    ],
+)
+def test_a_version_off_the_pin_warns(tool, pin, local, warns):
+    warning = version_warning(tool, pin, local)
+    assert (warning is not None) is warns
+    if warns:
+        assert warning.startswith("WARNING:") and pin in warning
+
+
+def test_next_types_warns_only_when_it_exists(tmp_path):
+    assert next_types_warning(tmp_path) is None
+    (tmp_path / "web" / ".next" / "types").mkdir(parents=True)
+    assert "web/.next/types" in next_types_warning(tmp_path)
+
+
+def test_warnings_never_change_the_exit_code(capsys):
+    ok = [(Step("python", "pytest", "p", "."), 0)]
+    failed = [(Step("python", "pytest", "p", "."), 1)]
+    assert report(ok, ["WARNING: local node is 25.5.0; ci.yml pins node 22."]) == 0
+    assert "WARNING: local node is 25.5.0" in capsys.readouterr().out
+    assert report(failed, []) == 1
