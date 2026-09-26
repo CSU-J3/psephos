@@ -1,0 +1,11 @@
+# Commits git blame skips. GitHub reads this file by name. Locally, pass
+#   git blame --ignore-revs-file .git-blame-ignore-revs <path>
+# or set blame.ignoreRevsFile once. Each entry is a FULL 40-character sha: an
+# abbreviated one makes git blame fatal, and a sha a rebase has rewritten is
+# skipped silently, so an entry is written only after its commit is on origin.
+# A blank line changed only in an entry stays on it: blame has no content to match
+# it on. `git blame -w` moves those too.
+
+# chore: renormalize line endings to LF (endings only), 2026-09-26.
+# web/lib/feed.ts CRLF -> LF, tests/test_litigation.py mixed -> LF.
+48ca79d0a9bb7598e472e8d8741338623d1859bc
