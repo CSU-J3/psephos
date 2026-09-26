@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Case, CaseRef } from "@/lib/db";
-import { formatDate } from "@/lib/format";
+import { RecordDate } from "@/components/RecordDate";
+import type { RecordClock } from "@/lib/dated";
 
 // One litigation docket. `status` tracks where it stands and is always shown.
 //
@@ -14,11 +15,13 @@ import { formatDate } from "@/lib/format";
 // so the badge returns by itself the day a second kind of suit lands.
 export function CaseRow({
   c,
+  clock,
   showCategory = false,
   chain,
   compact = false,
 }: {
   c: Case;
+  clock: RecordClock;
   showCategory?: boolean;
   // The dockets this one continues into or from, resolved by the caller from rows
   // it already holds. Rendered OUTSIDE the card's Link -- an anchor cannot nest
@@ -65,7 +68,9 @@ export function CaseRow({
           <div className="mt-1 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-xs text-neutral-500">
             {c.court && <span className="font-mono">{c.court}</span>}
             {c.docket_number && <span className="font-mono">· {c.docket_number}</span>}
-            <span className="font-mono">→ {formatDate(c.latest_entry_at)}</span>
+            <span className="font-mono">
+              → <RecordDate value={c.latest_entry_at} clock={clock} />
+            </span>
           </div>
         </Link>
         {(successor || predecessor) && (
@@ -118,7 +123,8 @@ export function CaseRow({
           {c.docket_number && <span className="font-mono">{c.docket_number}</span>}
         </div>
         <div className="mt-1 text-xs text-neutral-500">
-          Filed {formatDate(c.filed_at)} · Updated {formatDate(c.latest_entry_at)}
+          Filed <RecordDate value={c.filed_at} clock={clock} /> · Updated{" "}
+          <RecordDate value={c.latest_entry_at} clock={clock} />
         </div>
       </Link>
       {(successor || predecessor) && (

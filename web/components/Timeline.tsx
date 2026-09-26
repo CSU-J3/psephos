@@ -1,5 +1,6 @@
 import type { TimelineItem } from "@/lib/db";
-import { formatDate } from "@/lib/format";
+import { DATE_COLUMN, RecordDate } from "@/components/RecordDate";
+import type { RecordClock } from "@/lib/dated";
 import { entryText, gradeOf, pagePrefix, sliceLedger } from "@/lib/ledger";
 import { Grade } from "./Grade";
 
@@ -23,7 +24,7 @@ const CHANNEL_ACCENT: Record<string, string> = {
 //
 // NO CLIENT JS. Expansion is a native <details>, so the page stays a server component
 // and every row is open to find-in-page and to a reader with scripting off.
-export function Timeline({ items }: { items: TimelineItem[] }) {
+export function Timeline({ items, clock }: { items: TimelineItem[]; clock: RecordClock }) {
   if (items.length === 0) {
     return <p className="text-sm text-neutral-500">No timeline items yet.</p>;
   }
@@ -41,7 +42,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
   // bill every row would repeat one word, which is noise dressed as metadata.
   const mixed = new Set(items.map((it) => it.channel)).size > 1;
 
-  const { head, rest } = sliceLedger(items);
+  const { head, rest, ahead } = sliceLedger(items, clock);
   const row = (it: TimelineItem) => {
     const text = entryText(it, prefix);
     return (
@@ -52,8 +53,12 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
               CHANNEL_ACCENT[it.channel] ?? "border-l-neutral-700"
             }`}
           >
-            <span className="w-[6.2rem] shrink-0 font-mono text-[0.72rem] text-neutral-600">
-              {formatDate(it.occurred_at)}
+            <span className={`${DATE_COLUMN} w-[6.2rem]`}>
+              <RecordDate
+                value={it.occurred_at}
+                clock={clock}
+                className="font-mono text-[0.72rem] text-neutral-600"
+              />
             </span>
             <Grade grade={gradeOf(it)} dense />
             {mixed && (
@@ -82,7 +87,7 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
   };
 
   return (
-    <>
+    <div data-recency-list="ledger">
       <ol className="border-t border-neutral-900">{head.map(row)}</ol>
       {rest.length > 0 && (
         // NO `group` CLASS ON THIS <details>, deliberately. Tailwind compiles
@@ -100,6 +105,10 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
           <ol>{rest.map(row)}</ol>
         </details>
       )}
-    </>
+      {/* DATED AHEAD OF THE RECORD'S CLOCK: after every entry dated up to it, the fold
+          included, and never folded -- a row dated ahead is never truncated away and
+          never heads the ledger (lib/ledger.ts#sliceLedger, ruled 2026-09-26). */}
+      {ahead.length > 0 && <ol data-dated-ahead-rows="">{ahead.map(row)}</ol>}
+    </div>
   );
 }

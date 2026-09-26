@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { getStateBills } from "@/lib/db";
+import { getRecordAnchor, getStateBills } from "@/lib/db";
+import { CountedList, RecordClockMark } from "@/components/RecordDate";
 import { LegiScanAttribution } from "@/components/LegiScanAttribution";
 import { StateBillRow } from "@/components/StateBillRow";
 import { StateMatrix } from "@/components/StateMatrix";
@@ -33,11 +34,13 @@ export default async function StateBillsPage({
   // A Promise on Next 15 -- the page is async anyway, so it just gets awaited.
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
-  const bills = await getStateBills();
+  // The record's clock, for the one rule every date on the page keeps: a bill dated
+  // ahead of it sorts after the bills dated up to it and carries the marker.
+  const [bills, clock] = await Promise.all([getStateBills(), getRecordAnchor()]);
   const { state, status, sort, listing } = parseStateBillParams(await searchParams);
 
   const matrix = buildMatrix(bills);
-  const movement = latestMovement(bills);
+  const movement = latestMovement(bills, clock);
   const rows = listing ? filterStateBills(bills, { state, status }) : [];
 
   // Grouping by state INSIDE one state is meaningless, so a state filter forces the
@@ -47,6 +50,7 @@ export default async function StateBillsPage({
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
+      <RecordClockMark iso={clock} />
       <Link href="/" className="text-sm text-neutral-400 hover:underline">
         ← psephos
       </Link>
@@ -73,11 +77,14 @@ export default async function StateBillsPage({
           ten most recent actions, any state
         </span>
       </h2>
-      <ul>
-        {movement.map((b) => (
-          <StateBillRow key={b.state_bill_id} bill={b} />
-        ))}
-      </ul>
+      {/* The heading counts the ten; a bill dated ahead of the record's clock sits below
+          a divider after them, marked, never cut (lib/statebill.ts#latestMovement). */}
+      <div data-recency-list="latest-movement">
+        <CountedList
+          rows={movement}
+          row={(b) => <StateBillRow key={b.state_bill_id} bill={b} clock={clock} />}
+        />
+      </div>
 
       <p className="mt-3">
         <Link
@@ -111,7 +118,7 @@ export default async function StateBillsPage({
               No bills match that filter.
             </p>
           ) : grouped ? (
-            groupByState(rows).map((group) => (
+            groupByState(rows, clock).map((group) => (
               <div key={group.state}>
                 <h4 className="sticky top-0 z-5 mt-4 border-b border-neutral-800 bg-neutral-950 pt-1.5 pb-1.5 text-[0.95rem] font-semibold">
                   {group.state}{" "}
@@ -119,17 +126,17 @@ export default async function StateBillsPage({
                     {group.bills.length}
                   </span>
                 </h4>
-                <ul>
+                <ul data-recency-list="state-group">
                   {group.bills.map((b) => (
-                    <StateBillRow key={b.state_bill_id} bill={b} />
+                    <StateBillRow key={b.state_bill_id} bill={b} clock={clock} />
                   ))}
                 </ul>
               </div>
             ))
           ) : (
-            <ul>
-              {sortByRecent(rows).map((b) => (
-                <StateBillRow key={b.state_bill_id} bill={b} />
+            <ul data-recency-list="list">
+              {sortByRecent(rows, clock).map((b) => (
+                <StateBillRow key={b.state_bill_id} bill={b} clock={clock} />
               ))}
             </ul>
           )}

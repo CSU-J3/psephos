@@ -3,7 +3,7 @@ import type { ActivityRow } from "@/lib/activity";
 import type { Bill } from "@/lib/db";
 import { CHANNELS, WINDOW_DAYS } from "@/lib/activity";
 import { billLabel } from "@/lib/bill";
-import { formatDate } from "@/lib/format";
+import { RecordDate } from "@/components/RecordDate";
 import type {
   BillsRead,
   ExecutiveRead,
@@ -156,6 +156,7 @@ function Cell({
 
 export function Wire({
   rows,
+  clock,
   news,
   litigation,
   bills,
@@ -165,6 +166,10 @@ export function Wire({
   vehicle = null,
 }: {
   rows: ActivityRow[];
+  /** The record's clock as its ISO string, for the dates the sentences carry. None of
+   *  them can be ahead of it -- every "latest" here skips such a row (lib/dated.ts) --
+   *  and they render through RecordDate so the assertion reads them all the same. */
+  clock: string | null;
   news: NewsRead;
   /** The record's edge as a label, e.g. "17:02Z". Every window here is cut at it. */
   windowEnd: string | null;
@@ -196,7 +201,9 @@ export function Wire({
             <>
               None of the {bills.total} watched {plural(bills.total, "bill")} has moved
               since{" "}
-              <span className="text-neutral-200">{formatDate(bills.latestActionAt)}</span>
+              <span className="text-neutral-200">
+                <RecordDate value={bills.latestActionAt} clock={clock} />
+              </span>
               .
             </>
           ) : (
@@ -206,7 +213,7 @@ export function Wire({
               </span>{" "}
               watched {plural(bills.total, "bill")} moved in the last {WINDOW_DAYS.week}{" "}
               days. Latest: {bills.latest?.short_title ?? bills.latest?.bill_id} (
-              {formatDate(bills.latestActionAt)}).
+              <RecordDate value={bills.latestActionAt} clock={clock} />).
             </>
           )}{" "}
           {vehicle && (
@@ -238,7 +245,7 @@ export function Wire({
           >
             {executive.latest.title}
           </a>{" "}
-          ({formatDate(executive.latest.occurred_at)}).
+          (<RecordDate value={executive.latest.occurred_at} clock={clock} />).
         </>
       ),
 
@@ -248,7 +255,10 @@ export function Wire({
       ) : (
         <>
           Latest filing{" "}
-          <span className="text-neutral-200">{formatDate(litigation.latestFiling)}</span>,{" "}
+          <span className="text-neutral-200">
+            <RecordDate value={litigation.latestFiling} clock={clock} />
+          </span>
+          ,{" "}
           {litigation.filedOnLatest.length}{" "}
           {plural(litigation.filedOnLatest.length, "case")}
           {litigation.filedOnLatest.length > 0 && (
@@ -273,7 +283,7 @@ export function Wire({
         <>
           Nothing collected in the 24 h to {windowEnd ?? "the record's edge"}. The most
           recent story is dated{" "}
-          {formatDate(news.mostRecent?.occurred_at)}.
+          <RecordDate value={news.mostRecent?.occurred_at} clock={clock} />.
         </>
       ) : news.lead ? (
         <>
@@ -291,14 +301,14 @@ export function Wire({
             {news.lead.title}
           </a>{" "}
           ({news.lead.admiralty_source}
-          {news.lead.admiralty_info}, {formatDate(news.lead.occurred_at)}).
+          {news.lead.admiralty_info}, <RecordDate value={news.lead.occurred_at} clock={clock} />).
         </>
       ) : (
         <>
           {news.collectedLast24h} {plural(news.collectedLast24h, "story", "stories")}{" "}
           collected in the 24 h to {windowEnd ?? "the record's edge"}, none dated in the
           last {news.windowDays} days &mdash; the
-          newest is dated {formatDate(news.mostRecent?.occurred_at)}.
+          newest is dated <RecordDate value={news.mostRecent?.occurred_at} clock={clock} />.
         </>
       ),
 
@@ -314,7 +324,7 @@ export function Wire({
           {stateBills.actedInWindow.length === 0 ? (
             <>
               none dated in the last {WINDOW_DAYS.week} days; latest action{" "}
-              {formatDate(stateBills.latestActionAt)}.
+              <RecordDate value={stateBills.latestActionAt} clock={clock} />.
             </>
           ) : (
             <>

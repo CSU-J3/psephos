@@ -11,9 +11,12 @@ import { ExecutiveList } from "./ExecutiveList";
 export function ExecutiveSection({
   relevant,
   all,
+  clock,
 }: {
   relevant: ExecItem[];
   all: ExecItem[];
+  /** The record's clock as its ISO string: a client component takes plain props. */
+  clock: string | null;
 }) {
   const [showAll, setShowAll] = useState(false);
   const items = showAll ? all : relevant;
@@ -35,7 +38,7 @@ export function ExecutiveSection({
           {showAll ? "Show relevant" : `Show all ${all.length}`}
         </button>
       </div>
-      <ExecutiveList items={items} />
+      <ExecutiveList items={items} clock={clock} />
     </div>
   );
 }

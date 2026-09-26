@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { DocketRow, Bill, StateBill } from "@/lib/db";
 import { Grade } from "@/components/Grade";
+import { RecordDate } from "@/components/RecordDate";
 import {
   dojFilings,
   relatedSuits,
@@ -58,8 +59,8 @@ function stamp(iso: string | null): string | null {
 }
 
 /** "Mar 26" from an ISO date. */
-function shortDate(iso: string | null): string | null {
-  if (iso === null || iso.length < 10) return null;
+function shortDate(iso: string | null | undefined): string | null {
+  if (!iso || iso.length < 10) return null;
   const month = MONTHS[Number(iso.slice(5, 7)) - 1];
   if (!month) return null;
   return `${month} ${Number(iso.slice(8, 10))}`;
@@ -80,7 +81,12 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
   const open = openSplit(doj);
   const wi = wisconsinOutcomes(stateBills);
   const stall = saveStallMonths(bills, collectedAt);
-  const quiet = shortDate(vehicleQuietSince(bills));
+  // A record date, so it renders through RecordDate with the short format the gate's
+  // renders_as uses. vehicleQuietSince skips an action dated ahead of the clock.
+  const quietAt = vehicleQuietSince(bills, collectedAt);
+  const quiet = quietAt ? (
+    <RecordDate value={quietAt} clock={collectedAt} format={shortDate} />
+  ) : null;
   const asOf = stamp(collectedAt);
 
   const counts = { now: 8, next: 5, em: 1 };
@@ -447,7 +453,7 @@ function Path({
   q: string;
   count: string;
   state?: React.ReactNode;
-  steps: ReadonlyArray<readonly [string, string, boolean]>;
+  steps: ReadonlyArray<readonly [string, React.ReactNode, boolean]>;
   note: React.ReactNode;
   src: React.ReactNode;
 }) {

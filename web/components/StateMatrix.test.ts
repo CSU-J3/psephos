@@ -145,7 +145,13 @@ const OFF_RAMP = bill({ state_bill_id: "hr632", state: "PA", status: null, last_
 // counts) and a list of rows (the ticks and chips).
 const page = (bills: StateBill[]) =>
   render(bills) +
-  bills.map((b) => renderToStaticMarkup(createElement(StateBillRow, { bill: b }))).join("");
+  bills
+    .map((b) =>
+      renderToStaticMarkup(
+        createElement(StateBillRow, { bill: b, clock: "2100-01-01T00:00:00+00:00" }),
+      ),
+    )
+    .join("");
 
 // The two sides of the join, read the way the script reads them. NAMED is every
 // data-encoding inside the one data-key block. CLAIMED is what record() claims: each key

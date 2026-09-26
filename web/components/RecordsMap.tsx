@@ -21,6 +21,7 @@ import {
   type Posture,
 } from "@/lib/board";
 import { RecordsBoard } from "@/components/RecordsBoard";
+import { RecordDate } from "@/components/RecordDate";
 import { BoardKey } from "@/components/SourceLegend";
 
 // The map, its scrubber and the detail panel. Receives rows as props from the server
@@ -83,6 +84,9 @@ function dotRadius(n: number, max: number): number {
   return 3 + Math.sqrt(n / Math.max(max, 1)) * 8.7; // 3 .. 11.7
 }
 
+// The panel's date text: the ISO day, as it has always read. RecordDate's `format`.
+const isoDay = (v: string | null | undefined): string | null => (v ? v.slice(0, 10) : null);
+
 export function RecordsMap({
   domain,
   filings,
@@ -93,6 +97,7 @@ export function RecordsMap({
   rejections,
   states,
   billsByStateMonth,
+  clock,
 }: {
   domain: Domain;
   filings: FilingStep[];
@@ -105,6 +110,9 @@ export function RecordsMap({
   states: MapState[];
   /** ab -> [{month, n}], for the per-frame running dot totals. */
   billsByStateMonth: Record<string, MonthCount[]>;
+  /** The record's clock (getRecordAnchor), for every source date the board and the
+   *  panel render (lib/dated.ts, ruled 2026-09-26). */
+  clock: string | null;
 }) {
   const [frameIndex, setFrameIndex] = useState(frames.length - 1);
   const [selected, setSelected] = useState<string | null>(null);
@@ -207,6 +215,7 @@ export function RecordsMap({
           eos={eos}
           rejections={rejections}
           frame={frame}
+          clock={clock}
         />
       </div>
 
@@ -399,7 +408,10 @@ export function RecordsMap({
                 {chosen.dockets.map((d) => (
                   <li key={d.caseId} className="text-xs text-neutral-400">
                     <span className="text-neutral-200">{d.court ?? "court unknown"}</span>{" "}
-                    {d.docket} · filed {d.filed?.slice(0, 10) ?? "—"} · {d.status}
+                    {/* A source date, so it takes the rule like every other: the text
+                        stays the ISO day this panel always printed. */}
+                    {d.docket} · filed{" "}
+                    <RecordDate value={d.filed} clock={clock} format={isoDay} /> · {d.status}
                     {d.entries !== null && <> · {d.entries} entries</>}
                     {d.supersededBy && <> · continued as {d.supersededBy}</>}
                     {d.continues.length > 0 && <> · continues {d.continues.join(", ")}</>}

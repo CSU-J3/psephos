@@ -11,6 +11,8 @@ import {
   type MovementRow,
 } from "@/lib/movement";
 
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00"; // after every fixture date: nothing is dated ahead
+
 // Constructed fixtures, never read from production -- the rule campaign.test.ts states
 // and the dormancy set kept demonstrating: a fixture copied from live data re-dates
 // itself and pins nothing. NOW is fixed for the same reason, since dormancy is
@@ -170,19 +172,19 @@ describe("latest movement", () => {
     const rows = Array.from({ length: 12 }, (_, i) =>
       mv({ id: i, occurred_at: `2026-08-${String(i + 1).padStart(2, "0")}T00:00:00` }),
     );
-    const top = latestMovement(rows);
+    const top = latestMovement(rows, FAR_CLOCK).recent;
     expect(top).toHaveLength(8);
     expect(top[0].id).toBe(11);
     expect(top[7].id).toBe(4);
   });
 
   it("stops short when there are fewer than the limit", () => {
-    expect(latestMovement([mv({ id: 1 }), mv({ id: 2 })])).toHaveLength(2);
+    expect(latestMovement([mv({ id: 1 }), mv({ id: 2 })], FAR_CLOCK).recent).toHaveLength(2);
   });
 
   it("honours an explicit limit", () => {
     const rows = [mv({ id: 1 }), mv({ id: 2 }), mv({ id: 3 })];
-    expect(latestMovement(rows, 2).map((r) => r.id)).toEqual([3, 2]);
+    expect(latestMovement(rows, FAR_CLOCK, 2).recent.map((r) => r.id)).toEqual([3, 2]);
   });
 
   // A docket walk writes a whole history at one timestamp and a collector run writes
@@ -194,7 +196,7 @@ describe("latest movement", () => {
       mv({ id: 9, occurred_at: same }),
       mv({ id: 7, occurred_at: same }),
     ];
-    expect(latestMovement(rows).map((r) => r.id)).toEqual([9, 7, 5]);
+    expect(latestMovement(rows, FAR_CLOCK).recent.map((r) => r.id)).toEqual([9, 7, 5]);
   });
 
   // Naive timestamps and bare dates both appear on this column; comparing the strings
@@ -204,16 +206,16 @@ describe("latest movement", () => {
       mv({ id: 1, occurred_at: "2026-08-28" }),
       mv({ id: 2, occurred_at: "2026-08-28T14:02:00" }),
     ];
-    expect(latestMovement(rows).map((r) => r.id)).toEqual([2, 1]);
+    expect(latestMovement(rows, FAR_CLOCK).recent.map((r) => r.id)).toEqual([2, 1]);
   });
 
   it("does not mutate the rows it was handed", () => {
     const rows = [mv({ id: 1, occurred_at: "2026-01-01" }), mv({ id: 2, occurred_at: "2026-09-01" })];
-    latestMovement(rows);
+    latestMovement(rows, FAR_CLOCK);
     expect(rows.map((r) => r.id)).toEqual([1, 2]);
   });
 
   it("is empty on no rows", () => {
-    expect(latestMovement([])).toEqual([]);
+    expect(latestMovement([], FAR_CLOCK)).toEqual({ recent: [], ahead: [] });
   });
 });

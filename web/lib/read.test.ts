@@ -15,6 +15,8 @@ import {
   windowStart,
 } from "@/lib/read";
 
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00"; // after every fixture date: nothing is dated ahead
+
 const NOW = new Date("2026-08-16T18:16:00Z");
 const iso = (d: Date) => d.toISOString();
 const daysAgo = (n: number, seconds = 0) =>
@@ -171,7 +173,7 @@ describe("readLitigation", () => {
       campaignRow({ case_id: "b", state: "Utah", filed_at: daysAgo(10) }),
       campaignRow({ case_id: "c", state: "Nevada", filed_at: daysAgo(10) }),
     ];
-    const r = readLitigation(rows);
+    const r = readLitigation(rows, new Date(FAR_CLOCK));
     expect(r.latestFiling).toBe(daysAgo(10));
     expect(r.filedOnLatest.map((x) => x.case_id).sort()).toEqual(["b", "c"]);
     expect(r.totalCases).toBe(3);
@@ -180,12 +182,12 @@ describe("readLitigation", () => {
   it("reports whether a docket has moved since that filing", () => {
     const moved = [campaignRow({ filed_at: daysAgo(10), latest_entry_at: daysAgo(2) })];
     const quiet = [campaignRow({ filed_at: daysAgo(10), latest_entry_at: daysAgo(20) })];
-    expect(readLitigation(moved).movedSinceFiling).toBe(true);
-    expect(readLitigation(quiet).movedSinceFiling).toBe(false);
+    expect(readLitigation(moved, new Date(FAR_CLOCK)).movedSinceFiling).toBe(true);
+    expect(readLitigation(quiet, new Date(FAR_CLOCK)).movedSinceFiling).toBe(false);
   });
 
   it("says nothing on an empty corpus without inventing a date", () => {
-    const r = readLitigation([]);
+    const r = readLitigation([], new Date(FAR_CLOCK));
     expect(r).toMatchObject({ latestFiling: null, movedSinceFiling: false, totalCases: 0 });
     expect(r.filedOnLatest).toEqual([]);
   });

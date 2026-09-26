@@ -331,6 +331,22 @@ textarea {
   line-height: 1;
   color: #737373;
 }
+/* An EO tick's label: its date (sr-only) and, for one dated after the record's clock,
+   the "dated ahead" marker, right-aligned to the tick and sitting just above it. The
+   marker is RecordDate's own; here it drops its leading gap (the sr-only date before
+   it takes no space) and takes the chips' ground. */
+.board-eo {
+  position: absolute;
+  white-space: nowrap;
+  line-height: 1;
+  transform: translate(calc(-100% + 1px), -100%);
+}
+.board-eo > [data-dated-ahead] {
+  margin-left: 0;
+  /* The chips' ground, so a series line crossing the right edge does not run through
+     the lettering. */
+  background: #1c1c1f;
+}
 /* Right-aligned to the rail, mirroring the textAnchor="end" this replaced. */
 .board-lbl.rail {
   transform: translate(-100%, -50%);

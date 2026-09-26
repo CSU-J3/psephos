@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { getNewsFeed, getNewsExcludedCount, type NewsItem } from "@/lib/db";
-import { formatDate } from "@/lib/format";
-import { groupByMonth, sourceRoster, UNDATED } from "@/lib/news";
+import { getNewsFeed, getNewsExcludedCount, getRecordAnchor, type NewsItem } from "@/lib/db";
+import { newsByClock, sourceRoster, UNDATED } from "@/lib/news";
+import { DATE_COLUMN, RecordClockMark, RecordDate } from "@/components/RecordDate";
 import { Grade } from "@/components/Grade";
 
 // Live Turso per request, no build-time dependency -- same as every other route.
@@ -14,10 +14,11 @@ export default async function NewsPage({
 }: {
   searchParams: Promise<{ source?: string }>; // Next 15: searchParams is a Promise
 }) {
-  const [{ source }, all, excluded] = await Promise.all([
+  const [{ source }, all, excluded, clock] = await Promise.all([
     searchParams,
     getNewsFeed(),
     getNewsExcludedCount(),
+    getRecordAnchor(),
   ]);
 
   // THE ROSTER IS BUILT FROM `all`, THE MONTHS FROM `items`. A roster computed over the
@@ -26,7 +27,8 @@ export default async function NewsPage({
   // nothing it would render empty and strand them completely.
   const roster = sourceRoster(all);
   const items = source ? all.filter((it) => it.source_id === source) : all;
-  const groups = groupByMonth(items);
+  // Rows dated ahead of the record's clock render after every month, never folded.
+  const { groups, ahead } = newsByClock(items, clock);
   const [open, ...folded] = groups;
 
   // ONE ROW FUNCTION FOR BOTH SIDES OF EVERY FOLD. Two copies would be two things to
@@ -39,8 +41,12 @@ export default async function NewsPage({
         key={it.id}
         className="flex items-baseline gap-2.5 border-b border-neutral-900 py-2 pl-0.5 pr-1 hover:bg-neutral-900/60"
       >
-        <span className="w-[6.2rem] shrink-0 font-mono text-[0.72rem] text-neutral-600">
-          {formatDate(it.occurred_at)}
+        <span className={`${DATE_COLUMN} w-[6.2rem]`}>
+          <RecordDate
+            value={it.occurred_at}
+            clock={clock}
+            className="font-mono text-[0.72rem] text-neutral-600"
+          />
         </span>
         {/* The exception chip, and the rule it is an exception to is stated in the
             subtitle. It is NOT unreachable: the feed filters on the SOURCE's grade and
@@ -140,20 +146,25 @@ export default async function NewsPage({
         </p>
       </header>
 
-      {groups.length === 0 ? (
+      <RecordClockMark iso={clock} />
+      {groups.length === 0 && ahead.length === 0 ? (
         <p className="mt-10 text-sm text-neutral-500">
           No reporting yet{source ? ` from ${source}` : ""}.
         </p>
       ) : (
-        <section className="mt-8">
-          <h2 className="mb-1 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
-            {monthLabel(open.month)}
-            <span className="text-sm font-normal text-neutral-500">
-              <span className="tabular-nums">{open.items.length}</span>{" "}
-              {plural(open.items.length)}
-            </span>
-          </h2>
-          <ul className="border-t border-neutral-900">{open.items.map(row)}</ul>
+        <section className="mt-8" data-recency-list="news-archive">
+          {open && (
+            <>
+              <h2 className="mb-1 flex items-baseline gap-2 text-lg font-semibold tracking-tight">
+                {monthLabel(open.month)}
+                <span className="text-sm font-normal text-neutral-500">
+                  <span className="tabular-nums">{open.items.length}</span>{" "}
+                  {plural(open.items.length)}
+                </span>
+              </h2>
+              <ul className="border-t border-neutral-900">{open.items.map(row)}</ul>
+            </>
+          )}
 
           {folded.map((g) => (
             // NO `group` CLASS HERE, the same hazard the ledger's fold documents:
@@ -175,6 +186,13 @@ export default async function NewsPage({
               <ul>{g.items.map(row)}</ul>
             </details>
           ))}
+
+          {/* After every month, open: each row carries its own "dated ahead" marker. */}
+          {ahead.length > 0 && (
+            <ul data-dated-ahead-rows="" className="mt-4 border-t border-neutral-900">
+              {ahead.map(row)}
+            </ul>
+          )}
         </section>
       )}
     </main>

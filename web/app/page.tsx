@@ -27,7 +27,9 @@ import {
 import { relevanceScore } from "@/lib/relevance";
 import { Wire } from "@/components/Wire";
 import { billLabel } from "@/lib/bill";
-import { formatDate, windowEndLabel } from "@/lib/format";
+import { windowEndLabel } from "@/lib/format";
+import { aheadLast, billDate, caseDate, foldByClock } from "@/lib/dated";
+import { RecordClockMark, RecordDate } from "@/components/RecordDate";
 import { DayTimeline } from "@/components/DayTimeline";
 import { BillRow } from "@/components/BillRow";
 import { CaseRow } from "@/components/CaseRow";
@@ -41,12 +43,13 @@ import {
   cumulativeFilings,
   frames,
   isEoNumbered,
+  monthsUpTo,
   OVERLAY_LABEL,
   POSTURE_LABEL,
 } from "@/lib/board";
 import { RecordsMap, type MapState } from "@/components/RecordsMap";
 import { buildCells, continuesOf, trackerStatus } from "@/lib/campaign";
-import { cumulativeRejections, rejectedStates, rejections } from "@/lib/outcomes";
+import { cumulativeRejections, rejectedStatesUpTo, rejections } from "@/lib/outcomes";
 import { tryResolveState } from "@/lib/map";
 import { SourceLegend } from "@/components/SourceLegend";
 import { WhereThisStands } from "@/components/WhereThisStands";
@@ -165,7 +168,7 @@ export default async function Home() {
 
   const timeline = buildTimeline(entries, anchor);
   const news = readNews(newsToday, collectedLast24h, anchor);
-  const litigation = readLitigation(campaignRows);
+  const litigation = readLitigation(campaignRows, anchor);
   const campaign = readCampaign(campaignRows, anchor);
   const billsRead = readBills(bills, anchor);
   // The vehicle, for the fold's summary line. Read off the watchlist rather than off
@@ -199,11 +202,14 @@ export default async function Home() {
       t: Date.parse(`${it.occurred_at!.slice(0, 10)}T00:00:00Z`),
       title: it.title,
     }));
+  // The two monthly series stop at the clock's month; see lib/board.ts#monthsUpTo.
+  const stateBillMonths = monthsUpTo(monthly.stateBillsFirstSeen, anchorIso);
+  const legislationMonths = monthsUpTo(monthly.legislationActions, anchorIso);
 
   const boardInput = {
     filings,
-    stateBills: monthly.stateBillsFirstSeen,
-    legislation: monthly.legislationActions,
+    stateBills: stateBillMonths,
+    legislation: legislationMonths,
     eos: eoTicks,
   };
   const domain = boardDomain(boardInput, anchor);
@@ -222,7 +228,11 @@ export default async function Home() {
   // three sentences a court writes at a disposition. Measured against a per-case
   // eyeball of all twenty terminated campaign dockets, this reproduces 18 exactly.
   const rejectionRows = rejections(rejectionEvidence.cases, rejectionEvidence.entries);
-  const rejectedSet = rejectedStates(rejectionRows);
+  // THE COUNT AGREES WITH THE MAP AND THE CHART. Both gate on visibleAt, whose last frame
+  // ends at the record's clock, so a rejection dated ahead of it paints nowhere; the
+  // sentence counted it anyway, one more than the teal the reader could see. Same
+  // predicate as every date surface (lib/dated.ts).
+  const rejectedSet = rejectedStatesUpTo(rejectionRows, anchorIso);
   const rejectionSteps = cumulativeRejections(rejectionRows);
 
   const cells = buildCells(campaignRows, anchor);
@@ -273,8 +283,15 @@ export default async function Home() {
   const relevant = executiveAll.filter((it) => relevanceScore(it.title) > 0);
 
   const chainFor = buildChains(cases);
-  const recentCases = cases.slice(0, RECENT_CASES);
-  const restCases = cases.slice(RECENT_CASES);
+  // DOCKETS DATED AHEAD OF THE RECORD'S CLOCK follow every docket dated up to it, after
+  // the fold, never folded: the rail's first eight are dated up to the clock (lib/dated.ts,
+  // ruled 2026-09-26). `cases` is already newest-first from the query.
+  const {
+    head: recentCases,
+    rest: restCases,
+    ahead: aheadCases,
+  } = foldByClock(cases, caseDate, anchorIso, RECENT_CASES);
+  const orderedBills = aheadLast(bills, billDate, anchorIso);
   // A DATA RULE, not a constant. All 46 rows read `voter-data` today, so the badge
   // is decoration and is hidden; it returns on its own the day a second kind of
   // suit lands, with no code change.
@@ -282,6 +299,7 @@ export default async function Home() {
 
   return (
     <main className="mx-auto max-w-[2200px] p-10">
+      <RecordClockMark iso={anchorIso} />
       <header>
         <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
           <h1 className="text-2xl font-semibold tracking-tight">psephos</h1>
@@ -331,6 +349,7 @@ export default async function Home() {
       <section className="mt-8">
         <Wire
           rows={activity}
+          clock={anchorIso}
           windowEnd={windowEnd}
           news={news}
           litigation={litigation}
@@ -381,12 +400,13 @@ export default async function Home() {
               domain={domain}
               filings={filings}
               rejections={rejectionSteps}
-              stateBillMonths={monthly.stateBillsFirstSeen}
-              legislation={monthly.legislationActions}
+              stateBillMonths={stateBillMonths}
+              legislation={legislationMonths}
               eos={eoTicks}
               frames={boardFrames}
               states={mapStates}
               billsByStateMonth={monthly.stateBillsByState}
+              clock={anchorIso}
             />
           </div>
 
@@ -492,12 +512,13 @@ export default async function Home() {
             {cases.length === 0 ? (
               <p className="text-sm text-neutral-500">No cases yet.</p>
             ) : (
-              <>
+              <div data-recency-list="cases-rail">
                 <ul className="rounded-lg border border-neutral-800 bg-neutral-900/40 py-1">
                   {recentCases.map((c) => (
                     <CaseRow
                       key={c.case_id}
                       c={c}
+                      clock={anchorIso}
                       showCategory={showCategory}
                       chain={chainFor(c)}
                       compact
@@ -520,6 +541,7 @@ export default async function Home() {
                         <CaseRow
                           key={c.case_id}
                           c={c}
+                          clock={anchorIso}
                           showCategory={showCategory}
                           chain={chainFor(c)}
                           compact
@@ -528,7 +550,24 @@ export default async function Home() {
                     </ul>
                   </details>
                 )}
-              </>
+                {aheadCases.length > 0 && (
+                  <ul
+                    data-dated-ahead-rows=""
+                    className="mt-2 rounded-lg border border-neutral-800 bg-neutral-900/40 py-1"
+                  >
+                    {aheadCases.map((c) => (
+                      <CaseRow
+                        key={c.case_id}
+                        c={c}
+                        clock={anchorIso}
+                        showCategory={showCategory}
+                        chain={chainFor(c)}
+                        compact
+                      />
+                    ))}
+                  </ul>
+                )}
+              </div>
             )}
           </section>
 
@@ -543,7 +582,11 @@ export default async function Home() {
               <span className="text-[14px] text-neutral-500">
                 {bills.length}
                 {billsRead.movedInWindow.length === 0 && billsRead.latestActionAt ? (
-                  <> · none moved since {formatDate(billsRead.latestActionAt)}</>
+                  <>
+                    {" "}
+                    · none moved since{" "}
+                    <RecordDate value={billsRead.latestActionAt} clock={anchorIso} />
+                  </>
                 ) : (
                   <> · {billsRead.movedInWindow.length} moved in 7 days</>
                 )}
@@ -567,9 +610,9 @@ export default async function Home() {
               {bills.length === 0 ? (
                 <p className="text-sm text-neutral-500">No bills yet.</p>
               ) : (
-                <ul className="space-y-3">
-                  {bills.map((b) => (
-                    <BillRow key={b.bill_id} bill={b} />
+                <ul data-recency-list="watched-bills" className="space-y-3">
+                  {orderedBills.map((b) => (
+                    <BillRow key={b.bill_id} bill={b} clock={anchorIso} />
                   ))}
                 </ul>
               )}
@@ -585,7 +628,12 @@ export default async function Home() {
               </span>
               <span className="text-[14px] text-neutral-500">
                 {executive.relevant} election-relevant of {executive.total}
-                {executive.latest && <> · latest {formatDate(executive.latest.occurred_at)}</>}
+                {executive.latest && (
+                  <>
+                    {" "}
+                    · latest <RecordDate value={executive.latest.occurred_at} clock={anchorIso} />
+                  </>
+                )}
               </span>
               <span className="ml-auto text-xs text-neutral-600 group-open:hidden">↓</span>
               <span className="ml-auto hidden text-xs text-neutral-600 group-open:inline">
@@ -593,7 +641,7 @@ export default async function Home() {
               </span>
             </summary>
             <div className="border-t border-neutral-800 px-3 py-3">
-              <ExecutiveSection relevant={relevant} all={executiveAll} />
+              <ExecutiveSection relevant={relevant} all={executiveAll} clock={anchorIso} />
             </div>
           </details>
         </div>

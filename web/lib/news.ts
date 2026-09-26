@@ -3,6 +3,7 @@
 // the same division `lib/ledger.ts` keeps with `Timeline.tsx`.
 
 import type { NewsItem } from "@/lib/db";
+import { splitByClock, type RecordClock } from "@/lib/dated";
 
 /** Rows filed under this key sort last, behind every real month. */
 export const UNDATED = "undated";
@@ -67,6 +68,29 @@ export function groupByMonth(items: readonly NewsItem[]): MonthGroup[] {
     if (b.month === UNDATED) return -1;
     return b.month.localeCompare(a.month);
   });
+}
+
+/**
+ * The page's two parts: month groups for the rows dated up to the record's clock, and
+ * the rows dated AHEAD of it, newest first, which the page renders after every month
+ * group and never folds. The archive opens its newest month and folds the rest; a row
+ * dated ahead in a later month would have become a new first group -- the only open one
+ * -- and folded the current month shut, so the rule's "sort after, never truncated
+ * away" (lib/dated.ts, ruled 2026-09-26) is a separate visible section rather than a
+ * month.
+ */
+export function newsByClock(
+  items: readonly NewsItem[],
+  clock: RecordClock,
+): { groups: MonthGroup[]; ahead: NewsItem[] } {
+  const { upTo, ahead } = splitByClock(items, (it) => it.occurred_at, clock);
+  return {
+    groups: groupByMonth(upTo),
+    ahead: [...ahead].sort(
+      (a, b) =>
+        (b.occurred_at ?? "").localeCompare(a.occurred_at ?? "") || b.id - a.id,
+    ),
+  };
 }
 
 export type SourceCount = { source_id: string; count: number };

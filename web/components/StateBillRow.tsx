@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { StateBill } from "@/lib/db";
-import { formatDate } from "@/lib/format";
+import { RecordDate } from "@/components/RecordDate";
+import type { RecordClock } from "@/lib/dated";
 import {
   STAGE_STYLE,
   UNSTAGED_ENCODING,
@@ -46,7 +47,7 @@ import {
 // claim, then checks the paint against what the key declares for that stage, which is
 // the only way to catch a row that says Passed and is painted like something else.
 // Colour alone cannot do it: stages 2 and 3 are painted identically.
-export function StateBillRow({ bill }: { bill: StateBill }) {
+export function StateBillRow({ bill, clock }: { bill: StateBill; clock: RecordClock }) {
   const stage = stageOf(bill);
   const style = stage ? STAGE_STYLE[stage] : UNSTAGED_STYLE;
   const status = stateBillStatus(bill.status) ?? UNSTAGED_LABEL;
@@ -90,7 +91,7 @@ export function StateBillRow({ bill }: { bill: StateBill }) {
         {bill.last_action && (
           <p className="mt-1 truncate text-[0.8rem] text-neutral-400">
             <span className="tabular-nums text-neutral-600">
-              {formatDate(bill.last_action_at)}
+              <RecordDate value={bill.last_action_at} clock={clock} />
             </span>
             {" — "}
             {bill.last_action}

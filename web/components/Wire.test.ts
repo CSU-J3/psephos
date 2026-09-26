@@ -77,6 +77,8 @@ function render(rows: ActivityRow[], over: Partial<Parameters<typeof Wire>[0]> =
   return renderToStaticMarkup(
     createElement(Wire, {
       rows,
+      // A far clock: nothing here is dated ahead. The rule is tested in lib/dated.test.ts.
+      clock: "2100-01-01T00:00:00+00:00",
       // The record's edge as the cards' window label -- fixed here, since what the
       // tests assert is the figures, not the instant they were cut at.
       windowEnd: "17:02Z",

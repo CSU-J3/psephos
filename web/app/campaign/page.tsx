@@ -22,6 +22,7 @@ import {
 import { StateCell } from "@/components/StateCell";
 import { Grade } from "@/components/Grade";
 import { formatDate } from "@/lib/format";
+import { CountedList, DATE_COLUMN, RecordClockMark, RecordDate } from "@/components/RecordDate";
 
 // Live Turso per request, same as every other route. force-dynamic is also what makes
 // the search params below free: every view is already a fresh render, so opening a
@@ -102,7 +103,7 @@ export default async function CampaignPage({
   const cells = buildCells(rows, anchor);
   const s = summarize(cells);
   const homes = sectionByState(cells);
-  const movement = latestMovement(movementRows);
+  const movement = latestMovement(movementRows, anchorIso);
   const codeOf = new Map(cells.map((c) => [c.name, c.code]));
 
   // ORDERING INSIDE A SECTION IS THE SECTION'S OWN, and each has a reason. Michigan
@@ -124,8 +125,45 @@ export default async function CampaignPage({
     return m;
   };
 
+  // One row function for both sides of the divider, so a row reads the same above it and
+  // below it. A movement row's state may belong to no section -- nine sued
+  // jurisdictions are simply live. Those rows keep the name and drop the affordance
+  // rather than linking somewhere invented.
+  const movementRow = (m: (typeof movement.recent)[number]) => {
+    const code = codeOf.get(m.state);
+    const key = code ? homes.get(code) : undefined;
+    return (
+      <li
+        key={m.id}
+        className="flex items-baseline gap-2.5 border-b border-[#161616] px-1 py-1.5"
+      >
+        <span className={`${DATE_COLUMN} min-w-[6.2rem]`}>
+          <RecordDate
+            value={m.occurred_at}
+            clock={anchorIso}
+            className="font-mono text-[0.72rem] text-neutral-600"
+          />
+        </span>
+        <span className="min-w-[6.4rem] text-[0.85rem] font-semibold">{m.state}</span>
+        <span className="min-w-0 flex-1 truncate text-[0.82rem] text-neutral-300">
+          {m.text}
+        </span>
+        <Grade grade={m.grade} />
+        {key && code && (
+          <Link
+            href={href(key, code)}
+            className="shrink-0 text-[0.68rem] whitespace-nowrap text-neutral-600 hover:text-neutral-300"
+          >
+            {SECTION_TITLE[key].toLowerCase()} ›
+          </Link>
+        )}
+      </li>
+    );
+  };
+
   return (
     <main className="mx-auto max-w-5xl px-6 py-12">
+      <RecordClockMark iso={anchorIso} />
       <Link href="/" className="text-sm text-neutral-400 hover:underline">
         ← psephos
       </Link>
@@ -177,38 +215,11 @@ export default async function CampaignPage({
           eight most recent docket entries, any state
         </span>
       </h2>
-      <ul>
-        {movement.map((m) => {
-          // A movement row's state may belong to no section -- nine sued jurisdictions
-          // are simply live. Those rows keep the name and drop the affordance rather
-          // than linking somewhere invented.
-          const code = codeOf.get(m.state);
-          const key = code ? homes.get(code) : undefined;
-          return (
-            <li
-              key={m.id}
-              className="flex items-baseline gap-2.5 border-b border-[#161616] px-1 py-1.5"
-            >
-              <span className="min-w-[6.2rem] font-mono text-[0.72rem] text-neutral-600">
-                {formatDate(m.occurred_at)}
-              </span>
-              <span className="min-w-[6.4rem] text-[0.85rem] font-semibold">{m.state}</span>
-              <span className="min-w-0 flex-1 truncate text-[0.82rem] text-neutral-300">
-                {m.text}
-              </span>
-              <Grade grade={m.grade} />
-              {key && code && (
-                <Link
-                  href={href(key, code)}
-                  className="shrink-0 text-[0.68rem] whitespace-nowrap text-neutral-600 hover:text-neutral-300"
-                >
-                  {SECTION_TITLE[key].toLowerCase()} ›
-                </Link>
-              )}
-            </li>
-          );
-        })}
-      </ul>
+      {/* The heading counts the eight; an entry dated ahead of the record's clock sits
+          below a divider after them, marked, never cut (lib/movement.ts#latestMovement). */}
+      <div data-recency-list="campaign-movement">
+        <CountedList rows={movement} row={movementRow} />
+      </div>
 
       {/* The four sections as one line each: title, count, and the roster of who is in
           it. The roster is read from membersOf -- the same function that builds the
@@ -299,7 +310,7 @@ export default async function CampaignPage({
                             {r.docket_number}
                           </Link>
                           <span className="text-[0.78rem] text-neutral-500">
-                            terminated {formatDate(r.latest_entry_at)}
+                            terminated <RecordDate value={r.latest_entry_at} clock={anchorIso} />
                           </span>
                           <span className="ml-auto text-[0.78rem] text-neutral-500">
                             live here:{" "}
@@ -330,7 +341,7 @@ export default async function CampaignPage({
                       </span>
                       <Grade grade={A1} />
                       <span className="ml-auto text-[0.78rem] text-neutral-500">
-                        last entry {formatDate(c.live?.latest_entry_at)}
+                        last entry <RecordDate value={c.live?.latest_entry_at} clock={anchorIso} />
                       </span>
                     </div>
                     {status && (

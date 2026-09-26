@@ -50,6 +50,8 @@ const legislation: MonthCount[] = [
   { month: "2025-10", n: 5 },
 ];
 const eos: EoTick[] = [{ date: "2025-08-01", t: day("2025-08-01"), title: "EO 14248: Something" }];
+// A far clock: nothing in these fixtures is dated ahead; that branch has its own test.
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00";
 
 const frameAt = (end: string, label = end): Frame => ({
   key: end.slice(0, 7),
@@ -72,6 +74,7 @@ function render(frame: Frame, rejections: FilingStep[] = []): string {
       eos,
       rejections,
       frame,
+      clock: FAR_CLOCK,
     }),
   );
 }
@@ -198,6 +201,7 @@ describe("RecordsBoard label layer", () => {
         eos,
         rejections: [],
         frame: frameAt("2026-12-31"),
+        clock: FAR_CLOCK,
       }),
     );
     const near = renderToStaticMarkup(
@@ -209,11 +213,64 @@ describe("RecordsBoard label layer", () => {
         rejections: [],
         eos,
         frame: frameAt("2026-12-31"),
+        clock: FAR_CLOCK,
       }),
     );
     expect(low).not.toContain("board-chip below");
     expect(near).toContain("below");
     expect(near).toContain("50 of 51");
+  });
+});
+
+// AN EO DATED AFTER THE RECORD'S CLOCK (ruled 2026-09-26). The tick is dashed; its date
+// and its "dated ahead" marker are HTML in the label layer, sized in CSS pixels. The
+// first build drew the marker as SVG <text> at fontSize 9 -- 5.8px where the chart
+// shares the board row, the exact defect this file's first test exists to keep out, and
+// it passed only because no fixture carried an ahead tick (adversarial review).
+describe("RecordsBoard: an EO dated ahead of the record's clock", () => {
+  const clock = "2025-12-20T11:29:34+00:00";
+  const both: EoTick[] = [
+    { date: "2025-08-01", t: day("2025-08-01"), title: "EO 14248: Something" },
+    { date: "2025-12-23", t: day("2025-12-23"), title: "EO 14399: Something else" },
+  ];
+  const markup = renderToStaticMarkup(
+    createElement(RecordsBoard, {
+      domain, filings, stateBills, legislation, eos: both, rejections: [],
+      frame: frameAt("2026-12-31"), clock,
+    }),
+  );
+  const svg = markup.slice(markup.indexOf("<svg"), markup.indexOf("</svg>"));
+  const labels = markup.slice(markup.indexOf('class="board-labels"'));
+
+  it("dashes the ahead tick and only that one", () => {
+    expect(count(svg, /stroke-dasharray="2 2"/g)).toBe(1);
+    expect(svg).toContain("2025-12-23 — EO 14399: Something else — dated ahead");
+  });
+
+  it("keeps every glyph out of the coordinate system", () => {
+    expect(svg).not.toContain("<text");
+    expect(svg).not.toContain("data-dated-ahead");
+    expect(svg).not.toContain("data-record-date");
+  });
+
+  it("gives every tick its date in the label layer, and the marker to the ahead one", () => {
+    expect(count(labels, /data-record-date="2025-08-01"/g)).toBe(1);
+    expect(labels).toMatch(
+      /<time[^>]*data-record-date="2025-12-23"[^>]*>[^<]*<\/time><span data-dated-ahead=""[^>]*>dated ahead<\/span>/,
+    );
+    expect(count(labels, /data-dated-ahead=""/g)).toBe(1);
+  });
+
+  it("labels no tick the frame has not reached", () => {
+    const early = renderToStaticMarkup(
+      createElement(RecordsBoard, {
+        domain, filings, stateBills, legislation, eos: both, rejections: [],
+        frame: frameAt("2025-09-01"), clock,
+      }),
+    );
+    const earlyLabels = early.slice(early.indexOf('class="board-labels"'));
+    expect(earlyLabels).toContain('data-record-date="2025-08-01"');
+    expect(earlyLabels).not.toContain('data-record-date="2025-12-23"');
   });
 });
 

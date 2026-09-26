@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getStateBill, getStateBillTimeline } from "@/lib/db";
+import { getRecordAnchor, getStateBill, getStateBillTimeline } from "@/lib/db";
 import { stateBillLabel, stateBillStatus } from "@/lib/statebill";
-import { formatDate } from "@/lib/format";
+import { RecordClockMark, RecordDate } from "@/components/RecordDate";
 import { LegiScanAttribution } from "@/components/LegiScanAttribution";
 import { Timeline } from "@/components/Timeline";
 
@@ -17,11 +17,12 @@ export default async function StateBillPage({
   const { id } = await params;
   const bill = await getStateBill(id);
   if (!bill) notFound();
-  const items = await getStateBillTimeline(id);
+  const [items, clock] = await Promise.all([getStateBillTimeline(id), getRecordAnchor()]);
   const status = stateBillStatus(bill.status);
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
+      <RecordClockMark iso={clock} />
       <Link href="/state-bills" className="text-sm text-neutral-400 hover:underline">
         ← State legislation
       </Link>
@@ -49,7 +50,9 @@ export default async function StateBillPage({
         )}
         {bill.last_action && (
           <p className="mt-2 text-sm text-neutral-300">
-            <span className="text-neutral-500">{formatDate(bill.last_action_at)} — </span>
+            <span className="text-neutral-500">
+              <RecordDate value={bill.last_action_at} clock={clock} /> —{" "}
+            </span>
             {bill.last_action}
           </p>
         )}
@@ -73,7 +76,7 @@ export default async function StateBillPage({
             <span className="tabular-nums">{items.length}</span> entries · each row expands
           </span>
         </h2>
-        <Timeline items={items} />
+        <Timeline items={items} clock={clock} />
       </section>
     </main>
   );

@@ -5,6 +5,7 @@
 // then thin enough that its correctness is visible on the page.
 
 import type { TimelineItem } from "@/lib/db";
+import { foldByClock, type RecordClock } from "@/lib/dated";
 
 /** The Admiralty grade as one comparable string, e.g. "A1". */
 export function gradeOf(it: Pick<TimelineItem, "admiralty_source" | "admiralty_info">): string {
@@ -149,10 +150,18 @@ function fold(s: string): string {
 export const SLICE_HEAD = 10;
 
 export type Slice = {
-  /** The latest `head` entries, newest first. */
+  /** The latest `head` entries dated up to the record's clock, newest first. */
   head: TimelineItem[];
   /** Everything older, still newest first. Empty when nothing is folded. */
   rest: TimelineItem[];
+  /**
+   * Entries dated AFTER the record's clock, newest first. They sort after every entry
+   * dated up to it -- after the fold too -- and they are never folded: a row dated ahead
+   * is never truncated away, and it never heads the ledger as its latest event (ruled
+   * 2026-09-26). MI HB6414's "Bill Electronically Reproduced 09/24/2026", dated 09-29,
+   * headed /state-bill/2158970 above its three 09-24 entries until then.
+   */
+  ahead: TimelineItem[];
 };
 
 /**
@@ -182,13 +191,14 @@ export type Slice = {
  */
 export function sliceLedger(
   items: readonly TimelineItem[],
+  clock: RecordClock,
   head: number = SLICE_HEAD,
 ): Slice {
   const ordered = [...items].sort(
     (a, b) =>
       (b.occurred_at ?? "").localeCompare(a.occurred_at ?? "") || b.id - a.id,
   );
-  return { head: ordered.slice(0, head), rest: ordered.slice(head) };
+  return foldByClock(ordered, (it) => it.occurred_at, clock, head);
 }
 
 export type Promotion = {

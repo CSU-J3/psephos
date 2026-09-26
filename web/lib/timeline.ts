@@ -14,10 +14,19 @@
 // `fetched_at`, against `dayKeyOf`, which reads `occurred_at`.
 
 import { isHistoryEntry, type FeedEntry } from "@/lib/feed";
+import { datedAhead } from "@/lib/dated";
 import { utcDay } from "@/lib/format";
 
 /** Collected within this many hours counts as fresh -- the filled dot. */
 export const FRESH_HOURS = 24;
+
+// THE CAPTION SAYS "THE RECORD'S LAST 24 H", NOT "THE LAST 24 HOURS". The window is cut
+// at the record's edge now, so a caption promising the last 24 hours from the reader's
+// present would be false the moment collection stops. The EXACT instant is carried once,
+// in the legend beneath the page (SourceLegend), rather than threaded through four
+// components for a tooltip. The fresh dot's label and the line under the bands both say
+// it, so one string names the one window (ruled 2026-09-26).
+export const FRESH_CAPTION = "collected in the record's last 24 h";
 
 /** Individually-rendered news rows per day before the rest fold into one line. */
 export const NEWS_ROWS_PER_DAY = 3;
@@ -28,9 +37,10 @@ export const NEWS_ROWS_PER_DAY = 3;
  * A fixed range rather than one derived from the data, because the alternative was
  * measured and is worse: the live 08-16 window carried unanchored items dated as far
  * back as 2025-06-04, and a data-derived range emits 400+ bands of which all but a
- * handful are empty. Items collected in the window but dated before the range are NOT
- * dropped -- they are reported in `olderThanWindow`, because a silent truncation reads
- * as "this is everything".
+ * handful are empty. Items collected in the record's last 24 h but dated before the
+ * range are NOT dropped -- they are reported in `olderThanWindow`, and items dated after
+ * the record's clock in `datedAfterWindow`, because a silent truncation reads as "this
+ * is everything".
  */
 export const BAND_DAYS = 7;
 
@@ -118,12 +128,52 @@ export type DayBand = {
 export type Timeline = {
   bands: DayBand[];
   /**
-   * Collected inside the window but dated before the band range. Surfaced, never
+   * Collected in the record's last 24 h but dated before the band range. Surfaced, never
    * dropped: on 2026-08-16 this is 11 unanchored news items dated back to 2025-06-04.
+   * The 24 h is not a choice made here: it is the only way an old-dated row reaches the
+   * page (lib/db.ts#getTimelineEntries' `fetched_at` clause), and the window the fresh
+   * dot already names. buildTimeline applies it too, so the count is what its sentence
+   * says whatever rows it is handed.
    */
   olderThanWindow: FeedEntry[];
+  /**
+   * Dated AFTER the record's clock, so after every band -- whenever collected. These rows
+   * reach the page through the query's date clause, which admits them whatever their
+   * collection time, so their sentence claims no collection window (ruled 2026-09-26).
+   * They used to fall into `olderThanWindow` and be counted as "dated before it": on
+   * 2026-09-26 that line read 2, and one was MI HB6414's item dated 2026-09-29.
+   */
+  datedAfterWindow: FeedEntry[];
   totalEntries: number;
 };
+
+/**
+ * The lines under the bands: what the page holds that has no band to sit on. TWO
+ * SENTENCES, NOT TWO CLAUSES, so neither qualifier carries into the other (ruled
+ * 2026-09-26). Each is omitted at zero; none, one or both are returned, in this order.
+ *
+ *   before  "2 further items collected in the record's last 24 h are dated before these
+ *            seven days."
+ *   after   "1 further item is dated after these seven days."
+ *
+ * The before sentence names its collection window because it has one. The after
+ * sentence names none because its rows have none: a row dated after the clock reaches
+ * the page whatever its collection time. The first build joined them as "... dated
+ * before it, and 1 is dated after it", and the second clause inherited "collected in
+ * this window", which is false of a row collected a week earlier.
+ *
+ * Singular and plural are separate strings on purpose: the line once read "1 further
+ * item collected in this window are dated before it", a plural verb hard-coded beside a
+ * noun that was not.
+ */
+export function furtherLines(before: number, after: number): string[] {
+  const n = (k: number) => `${k} further ${k === 1 ? "item" : "items"}`;
+  const verb = (k: number) => (k === 1 ? "is" : "are");
+  const lines: string[] = [];
+  if (before > 0) lines.push(`${n(before)} ${FRESH_CAPTION} ${verb(before)} dated before these seven days.`);
+  if (after > 0) lines.push(`${n(after)} ${verb(after)} dated after these seven days.`);
+  return lines;
+}
 
 /** The anchor an entry groups on, or null when it has none. */
 function anchorId(e: FeedEntry): string | null {
@@ -189,10 +239,26 @@ export function buildTimeline(
 
   const placed = new Map<string, FeedEntry[]>();
   const olderThanWindow: FeedEntry[] = [];
+  const datedAfterWindow: FeedEntry[] = [];
   for (const e of dated) {
     const k = dayKeyOf(e);
     if (!inRange.has(k)) {
-      olderThanWindow.push(e);
+      // AFTER THE CLOCK IS NOT BEFORE THE WINDOW. The band keys are the anchor's day and
+      // the days before it, so a key outside them is either older than the first band or
+      // later than the clock -- and only the first is "dated before". The comparison is
+      // lib/dated.ts's, by UTC day, the same one every date surface makes.
+      //
+      // EACH LIST COUNTS WHAT ITS SENTENCE SAYS (ruled 2026-09-26). A row dated after
+      // the clock is counted whenever it was collected: the query's date clause admits
+      // it regardless. A row dated before the bands is counted only if it was collected
+      // in the record's last 24 h -- the query's `fetched_at` clause, the only way such
+      // a row reaches the page, and the window the fresh dot names. Applied here as well
+      // as in SQL, so a row handed in from anywhere else cannot make "collected in the
+      // record's last 24 h" false. An adversarial review found the first build's after
+      // clause claiming a collection window its rows need not share, and the build then
+      // narrowed the count to the words; the ruling changed the words instead.
+      if (datedAhead(k, now)) datedAfterWindow.push(e);
+      else if (isFresh(e, now)) olderThanWindow.push(e);
       continue;
     }
     const list = placed.get(k);
@@ -267,5 +333,5 @@ export function buildTimeline(
     };
   });
 
-  return { bands, olderThanWindow, totalEntries: rows.length };
+  return { bands, olderThanWindow, datedAfterWindow, totalEntries: rows.length };
 }

@@ -23,6 +23,7 @@ import type { Bill, CampaignRow, ExecItem, NewsItem, StateBill } from "@/lib/db"
 import type { ActivityRow } from "@/lib/activity";
 import { buildCells, summarize, type CampaignSummary } from "@/lib/campaign";
 import { relevanceScore } from "@/lib/relevance";
+import { datedAhead, newestUpTo } from "@/lib/dated";
 
 /** The read's window, in days. Shared so the tests and the components cannot drift. */
 export const READ_WINDOW_DAYS = 7;
@@ -38,10 +39,17 @@ function inWindow(value: string | null, now: Date, days = READ_WINDOW_DAYS): boo
   if (!value) return false;
   const t = Date.parse(value);
   if (Number.isNaN(t)) return false;
-  // Inclusive at the far edge, exclusive of the future.
-  return t >= windowStart(now, days).getTime() && t <= now.getTime();
+  // Inclusive at the far edge, exclusive of anything dated ahead of the record's clock.
+  // The upper bound is lib/dated.ts's predicate, by UTC day -- the same one every date
+  // surface uses -- so "in the window" and "dated ahead" can never both hold for a row.
+  return t >= windowStart(now, days).getTime() && !datedAhead(value, now);
 }
 
+// THE GENERIC MAXIMUM, for OUR clock's readings only -- `readCollectedAt` over
+// `last_fetch`. Every source date on this page goes through lib/dated.ts's `newestUpTo`
+// instead, which skips a row dated ahead of the record's clock: one meaning of "latest"
+// across every surface (ruled 2026-09-26). A collection time cannot be ahead of the
+// record; it IS the record's clock.
 function newest<T>(rows: readonly T[], at: (row: T) => string | null): T | null {
   let best: T | null = null;
   let bestT = -Infinity;
@@ -131,7 +139,7 @@ export function readNews(
     datedInWindow: windowed.length,
     collectedLast24h,
     lead,
-    mostRecent: newest(items, (i) => i.occurred_at),
+    mostRecent: newestUpTo(items, (i) => i.occurred_at, now),
     windowDays: READ_WINDOW_DAYS,
   };
 }
@@ -149,14 +157,13 @@ export type LitigationRead = {
 };
 
 /**
- * Takes no `now`. The reading is relative to the record -- latest filing, what shares
- * it, whether anything moved after it -- and none of that consults the clock. The other
- * five take a `now` because they window against it; a sixth parameter here purely for
- * signature symmetry would misdescribe what the function reads. Add it when something
- * needs it.
+ * Takes the record's clock, and only for one thing: a filing dated ahead of it is not
+ * the latest filing (lib/dated.ts, ruled 2026-09-26). The rest of the reading --
+ * what shares that filing, whether anything moved after it -- windows against nothing.
+ * It took no `now` until that rule needed one.
  */
-export function readLitigation(rows: readonly CampaignRow[]): LitigationRead {
-  const latest = newest(rows, (r) => r.filed_at);
+export function readLitigation(rows: readonly CampaignRow[], clock: Date): LitigationRead {
+  const latest = newestUpTo(rows, (r) => r.filed_at, clock);
   const latestFiling = latest?.filed_at ?? null;
   const filedAtT = latestFiling ? Date.parse(latestFiling) : NaN;
 
@@ -204,7 +211,7 @@ export type BillsRead = {
 };
 
 export function readBills(bills: readonly Bill[], now: Date): BillsRead {
-  const latest = newest(bills, (b) => b.latest_action_at);
+  const latest = newestUpTo(bills, (b) => b.latest_action_at, now);
   return {
     total: bills.length,
     movedInWindow: bills.filter((b) => inWindow(b.latest_action_at, now)),
@@ -232,7 +239,7 @@ export function readExecutive(items: readonly ExecItem[], now: Date): ExecutiveR
   // Title-only, per the settled decision: scoring title+summary floods the lens with
   // EAC abstracts. relevanceScore is imported rather than reimplemented.
   const relevant = items.filter((i) => relevanceScore(i.title) > 0);
-  const latest = newest(relevant, (i) => i.occurred_at);
+  const latest = newestUpTo(relevant, (i) => i.occurred_at, now);
   return {
     relevant: relevant.length,
     total: items.length,
@@ -265,7 +272,7 @@ export type StateBillsRead = {
  * the sentence is complete without it.
  */
 export function readStateBills(bills: readonly StateBill[], now: Date): StateBillsRead {
-  const latest = newest(bills, (b) => b.last_action_at);
+  const latest = newestUpTo(bills, (b) => b.last_action_at, now);
   return {
     bills: bills.length,
     states: new Set(bills.map((b) => b.state)).size,

@@ -1,6 +1,7 @@
 import type { CampaignRow, Bill, StateBill } from "@/lib/db";
 import { isCircuit } from "@/lib/campaign";
 import { utcDay } from "@/lib/format";
+import { datedAhead, type RecordClock } from "@/lib/dated";
 
 // Derivations for the "Where this stands" section. Every figure the section states
 // is computed here from rows the page already fetched; nothing in this file holds a
@@ -187,15 +188,17 @@ export const SAVE_SENATE_COMPANION = "s128-119";
  * recent action of the watchlist; the day any other watched bill moves, the figure
  * silently changes subject. That is a defect this repo has already shipped once --
  * see the Vehicle badge entry in the falsified list. */
-export function vehicleQuietSince(bills: readonly Bill[]): string | null {
+export function vehicleQuietSince(bills: readonly Bill[], clock: RecordClock): string | null {
   const vehicles = bills.filter((b) => b.is_vehicle === 1);
   if (vehicles.length === 0) return null;
   // Newest action among the vehicles, so more than one flagged bill cannot silently
-  // hide the others behind whichever the query happened to order first.
+  // hide the others behind whichever the query happened to order first. An action dated
+  // ahead of the record's clock is skipped: one meaning of "latest" (lib/dated.ts).
   let newest: string | null = null;
   for (const v of vehicles) {
     const at = v.latest_action_at;
-    if (at !== null && (newest === null || at > newest)) newest = at;
+    if (at === null || datedAhead(at, clock)) continue;
+    if (newest === null || at > newest) newest = at;
   }
   return newest;
 }

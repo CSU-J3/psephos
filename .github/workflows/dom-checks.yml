@@ -237,8 +237,8 @@ jobs:
             curl -fsS --retry 30 --retry-delay 1 --retry-connrefused -o /dev/null "${ORIGIN}${route}"
           done
 
-      # The three checks. Each runs whenever the PAGE RENDERED, not merely when the
-      # step before it passed, so one comment carries all three verdicts instead of
+      # The checks. Each runs whenever the PAGE RENDERED, not merely when the
+      # step before it passed, so one comment carries every verdict instead of
       # stopping at the first red. Specifying `if:` replaces the implicit success()
       # condition, which is what allows a later check to run after an earlier one fails.
       #
@@ -299,6 +299,25 @@ jobs:
           echo "rc=$rc" >> "$GITHUB_OUTPUT"
           exit "$rc"
 
+      # Every source date on every page is marked "dated ahead" exactly when it is after
+      # the page's own clock, and no recency list puts such a row before one dated up to
+      # it or folds it away. It reads `data-record-date` and `data-record-clock`, never the text, and every
+      # date surface renders through RecordDate, so there is no exemption list. A date
+      # rendered around the component is invisible to it; the script's header says which
+      # tests cover that. Ruled 2026-09-26, when LegiScan dated MI HB6414's reproduction
+      # 2026-09-29 and the row headed "Latest movement" three days early.
+      - name: assert-dated
+        id: dated
+        if: steps.preflight.outcome == 'success'
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+        run: |
+          set +e
+          node scripts/assert-dated.mjs "$ORIGIN" 2>&1 | tee "$RUNNER_TEMP/dated.out"
+          rc=${PIPESTATUS[0]}
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+          exit "$rc"
+
       # The delivery surface, on audit.yml's pattern: ONE standing issue, reused. A red
       # run comments on the open issue if there is one and opens it if there is not, so
       # a week of red runs is one issue with seven comments rather than seven issues
@@ -320,6 +339,7 @@ jobs:
           ENCODINGS_RC: ${{ steps.encodings.outputs.rc }}
           LAYOUT_RC: ${{ steps.layout.outputs.rc }}
           ATTRIBUTION_RC: ${{ steps.attribution.outputs.rc }}
+          DATED_RC: ${{ steps.dated.outputs.rc }}
         run: |
           # A step failing BEFORE the preflight -- install, build, browser, boot --
           # leaves PREFLIGHT as `skipped` and folds into the same state as a preflight
@@ -347,6 +367,9 @@ jobs:
             fi
             if [ -n "$ATTRIBUTION_RC" ] && [ "$ATTRIBUTION_RC" != "0" ]; then
               failed="${failed} \`assert-attribution\` (exit ${ATTRIBUTION_RC})"
+            fi
+            if [ -n "$DATED_RC" ] && [ "$DATED_RC" != "0" ]; then
+              failed="${failed} \`assert-dated\` (exit ${DATED_RC})"
             fi
             HEADLINE="**PAGE FAILED** --${failed} against a page that rendered. The page disagrees with what it is asserted to render."
             ACTION="Fix the page."
@@ -401,10 +424,11 @@ jobs:
             verdict "assert-encodings" "$ENCODINGS_RC"
             verdict "assert-layout" "$LAYOUT_RC"
             verdict "assert-attribution" "$ATTRIBUTION_RC"
+            verdict "assert-dated" "$DATED_RC"
             echo
             echo "Exit codes: \`assert-gates\` is split -- 1 expiry, 2 DOM join, 3 could not run."
-            echo "\`assert-encodings\`, \`assert-layout\` and \`assert-attribution\` have no exit 3: for"
-            echo "those three, 1 covers both a failed assertion and a throw mid-run. The preflight"
+            echo "\`assert-encodings\`, \`assert-layout\`, \`assert-attribution\` and \`assert-dated\` have no exit 3:"
+            echo "for those four, 1 covers both a failed assertion and a throw mid-run. The preflight"
             echo "above removes the dominant cause of the second, so PAGE FAILED is the most likely"
             echo "reading of a 1 from them and not a proven one."
 
@@ -412,6 +436,7 @@ jobs:
             capture "assert-encodings" "$RUNNER_TEMP/encodings.out" "$ENCODINGS_RC"
             capture "assert-layout" "$RUNNER_TEMP/layout.out" "$LAYOUT_RC"
             capture "assert-attribution" "$RUNNER_TEMP/attribution.out" "$ATTRIBUTION_RC"
+            capture "assert-dated" "$RUNNER_TEMP/dated.out" "$DATED_RC"
 
             if [ "$PREFLIGHT" != "success" ] && [ -s "$RUNNER_TEMP/server.log" ]; then
               echo

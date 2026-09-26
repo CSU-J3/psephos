@@ -26,7 +26,11 @@ export type FilingStep = {
 export type MonthCount = { month: string; n: number };
 
 /** An executive order on the axis. A MARKER, not a series: it gets no scale. */
-export type EoTick = { date: string; t: number; title: string };
+export type EoTick = {
+  date: string;
+  t: number;
+  title: string;
+};
 
 export type Frame = {
   key: string; // YYYY-MM
@@ -116,6 +120,19 @@ export function bucketByMonth(dates: readonly (string | null)[]): MonthCount[] {
     m.set(k, (m.get(k) ?? 0) + 1);
   }
   return [...m.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([month, n]) => ({ month, n }));
+}
+
+/**
+ * A monthly series cut at the record clock's month. A month after it holds only rows
+ * dated ahead of the clock (lib/dated.ts), and it has no place on an axis that ENDS at
+ * the clock: `xOf` clamps it to zero width at the right edge, the clip hides it, and it
+ * still counted in `monthlyMax`, rescaling every bar that did draw. The rows themselves
+ * stay on their own lists, marked "dated ahead"; the chart draws up to its edge.
+ */
+export function monthsUpTo(series: readonly MonthCount[], clock: string | null): MonthCount[] {
+  if (!clock) return [...series];
+  const edge = clock.slice(0, 7);
+  return series.filter((m) => m.month <= edge);
 }
 
 /** The below-axis scale: the window's own maximum across both monthly series. */

@@ -26,6 +26,8 @@
 // ruling against the United States, or a withdrawal, or a forum problem. That is a
 // question three narrow patterns can answer; "what happened in this docket" is not.
 
+import { datedAhead, type RecordClock } from "@/lib/dated";
+
 /** One docket entry, as the join hands it over. */
 export type DocketEntry = {
   case_id: string;
@@ -152,6 +154,16 @@ export function rejections(
  *  demand. Nothing in today's data has two, and the map cell is per state either way. */
 export function rejectedStates(rows: readonly Rejection[]): Set<string> {
   return new Set(rows.map((r) => r.state));
+}
+
+/**
+ * The same set, less any rejection dated after the record's clock (lib/dated.ts, ruled
+ * 2026-09-26). The map and the chart gate on `visibleAt`, whose last frame ends at the
+ * clock, so a rejection dated ahead paints nowhere; the homepage's count must not count
+ * it either, or the sentence says one more than the teal a reader can see.
+ */
+export function rejectedStatesUpTo(rows: readonly Rejection[], clock: RecordClock): Set<string> {
+  return rejectedStates(rows.filter((r) => !datedAhead(r.rejected_at, clock)));
 }
 
 /**

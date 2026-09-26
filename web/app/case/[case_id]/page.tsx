@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCase, getCaseTimeline, getCaseRef, getPredecessorRef } from "@/lib/db";
-import { formatDate } from "@/lib/format";
+import { getCase, getCaseTimeline, getCaseRef, getPredecessorRef, getRecordAnchor } from "@/lib/db";
+import { RecordClockMark, RecordDate } from "@/components/RecordDate";
 import { gradeOf, promoteStatus } from "@/lib/ledger";
 import { Grade } from "@/components/Grade";
 import { Timeline } from "@/components/Timeline";
@@ -17,7 +17,7 @@ export default async function CasePage({
   const { case_id } = await params;
   const c = await getCase(case_id);
   if (!c) notFound();
-  const items = await getCaseTimeline(case_id);
+  const [items, clock] = await Promise.all([getCaseTimeline(case_id), getRecordAnchor()]);
   // The tracker's reading of the case is a standing fact, not an event, so it sits in
   // the header rather than dated into the docket -- where, on 29 of 52 cases, it also
   // repeated itself up to five times. See lib/ledger.promoteStatus.
@@ -29,6 +29,7 @@ export default async function CasePage({
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
+      <RecordClockMark iso={clock} />
       <Link href="/" className="text-sm text-neutral-400 hover:underline">
         ← psephos
       </Link>
@@ -59,7 +60,8 @@ export default async function CasePage({
           )}
         </div>
         <div className="mt-1 text-xs text-neutral-500">
-          Filed {formatDate(c.filed_at)} · Updated {formatDate(c.latest_entry_at)}
+          Filed <RecordDate value={c.filed_at} clock={clock} /> · Updated{" "}
+          <RecordDate value={c.latest_entry_at} clock={clock} />
         </div>
         {c.source_url && (
           <a
@@ -114,7 +116,7 @@ export default async function CasePage({
             <span className="tabular-nums">{ledger.length}</span> entries · each row expands
           </span>
         </h2>
-        <Timeline items={ledger} />
+        <Timeline items={ledger} clock={clock} />
       </section>
     </main>
   );

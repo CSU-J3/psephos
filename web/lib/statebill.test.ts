@@ -12,6 +12,8 @@ import {
   stageOf,
 } from "@/lib/statebill";
 
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00"; // after every fixture date: nothing is dated ahead
+
 // Fixtures are CONSTRUCTED, never read from production -- the same rule campaign.test.ts
 // states and for the same reason. The live shape of this page moves every cron: the state
 // bill dimension went 179 -> 455 -> 484 inside two months, so a suite seeded from a
@@ -134,7 +136,7 @@ describe("sortByRecent / latestMovement", () => {
       bill({ state_bill_id: "a", state: "TX", last_action_at: "2025-01-05" }),
       bill({ state_bill_id: "b", state: "TX", last_action_at: "2026-08-30" }),
       bill({ state_bill_id: "c", state: "TX", last_action_at: "2025-06-11" }),
-    ]);
+    ], FAR_CLOCK);
     expect(rows.map((b) => b.state_bill_id)).toEqual(["b", "c", "a"]);
   });
 
@@ -144,7 +146,7 @@ describe("sortByRecent / latestMovement", () => {
       bill({ state_bill_id: "3", state: "TX", bill_number: "HB9", last_action_at: same }),
       bill({ state_bill_id: "1", state: "AZ", bill_number: "SB2", last_action_at: same }),
       bill({ state_bill_id: "2", state: "TX", bill_number: "HB1", last_action_at: same }),
-    ]);
+    ], FAR_CLOCK);
     expect(rows.map((b) => b.state_bill_id)).toEqual(["1", "2", "3"]);
   });
 
@@ -152,7 +154,7 @@ describe("sortByRecent / latestMovement", () => {
     const rows = sortByRecent([
       bill({ state_bill_id: "none", state: "TX", last_action_at: null }),
       bill({ state_bill_id: "dated", state: "TX", last_action_at: "2025-01-01" }),
-    ]);
+    ], FAR_CLOCK);
     expect(rows.map((b) => b.state_bill_id)).toEqual(["dated", "none"]);
   });
 
@@ -162,7 +164,7 @@ describe("sortByRecent / latestMovement", () => {
     const rows = sortByRecent([
       bill({ state_bill_id: "date", state: "TX", last_action_at: "2026-08-30" }),
       bill({ state_bill_id: "stamp", state: "TX", last_action_at: "2026-08-30T14:02:00" }),
-    ]);
+    ], FAR_CLOCK);
     expect(rows.map((b) => b.state_bill_id)).toEqual(["stamp", "date"]);
   });
 
@@ -171,7 +173,7 @@ describe("sortByRecent / latestMovement", () => {
       bill({ state_bill_id: "a", state: "TX", last_action_at: "2025-01-01" }),
       bill({ state_bill_id: "b", state: "TX", last_action_at: "2026-01-01" }),
     ];
-    sortByRecent(input);
+    sortByRecent(input, FAR_CLOCK);
     expect(input.map((b) => b.state_bill_id)).toEqual(["a", "b"]);
   });
 
@@ -184,12 +186,12 @@ describe("sortByRecent / latestMovement", () => {
         last_action_at: `2026-08-${String(i + 1).padStart(2, "0")}`,
       }),
     );
-    const top = latestMovement(many);
+    const top = latestMovement(many, FAR_CLOCK).recent;
     expect(top).toHaveLength(10);
     expect(top[0].state_bill_id).toBe("24");
     expect(top[9].state_bill_id).toBe("15");
-    expect(latestMovement(many.slice(0, 3))).toHaveLength(3);
-    expect(latestMovement(many, 2).map((b) => b.state_bill_id)).toEqual(["24", "23"]);
+    expect(latestMovement(many.slice(0, 3), FAR_CLOCK).recent).toHaveLength(3);
+    expect(latestMovement(many, FAR_CLOCK, 2).recent.map((b) => b.state_bill_id)).toEqual(["24", "23"]);
   });
 });
 
@@ -237,14 +239,14 @@ describe("groupByState", () => {
       bill({ state_bill_id: "1", state: "TX", last_action_at: "2025-01-01" }),
       bill({ state_bill_id: "2", state: "AZ", last_action_at: "2025-05-05" }),
       bill({ state_bill_id: "3", state: "TX", last_action_at: "2026-02-02" }),
-    ]);
+    ], FAR_CLOCK);
     expect(groups.map((g) => g.state)).toEqual(["AZ", "TX"]);
     expect(groups[1].bills.map((b) => b.state_bill_id)).toEqual(["3", "1"]);
     expect(groups.reduce((a, g) => a + g.bills.length, 0)).toBe(3);
   });
 
   it("is empty on no bills", () => {
-    expect(groupByState([])).toEqual([]);
+    expect(groupByState([], FAR_CLOCK)).toEqual([]);
   });
 });
 

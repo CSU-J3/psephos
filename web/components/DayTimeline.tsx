@@ -1,8 +1,16 @@
 import Link from "next/link";
 import { Grade } from "@/components/Grade";
 import { anchorLabel, entryLink, type FeedEntry } from "@/lib/feed";
-import { formatDate } from "@/lib/format";
-import { dayKey, type DayBand, type SeedRow, type Timeline } from "@/lib/timeline";
+import { RecordDate } from "@/components/RecordDate";
+import {
+  dayKey,
+  FRESH_CAPTION,
+  furtherLines,
+  isFresh,
+  type DayBand,
+  type SeedRow,
+  type Timeline,
+} from "@/lib/timeline";
 
 // Every channel on one axis, ordered by the date things happened, with a date rail
 // down the left.
@@ -32,12 +40,8 @@ import { dayKey, type DayBand, type SeedRow, type Timeline } from "@/lib/timelin
  *  answer rather than replacing it. */
 const ROW_BUDGET = 10;
 
-// THE CAPTION SAYS "THE RECORD'S LAST 24 H", NOT "THE LAST 24 HOURS". The window is cut
-// at the record's edge now, so a caption promising the last 24 hours from the reader's
-// present would be false the moment collection stops. The EXACT instant is carried once,
-// in the legend beneath the page (SourceLegend), rather than threaded through four
-// components for a tooltip.
-const FRESH_CAPTION = "collected in the record's last 24 h";
+// The dot's caption is lib/timeline.ts's FRESH_CAPTION, shared with the line under the
+// bands, which names the same window; the reasoning for its words is there.
 
 function FreshDot({ fresh }: { fresh: boolean }) {
   return fresh ? (
@@ -136,12 +140,20 @@ function EntryLine({ e, fresh }: { e: FeedEntry; fresh: boolean }) {
   );
 }
 
-function SeedLine({ s }: { s: SeedRow }) {
+function SeedLine({ s, anchor }: { s: SeedRow; anchor: Date }) {
   const link = entryLink(s.sample);
+  // The two ends are source dates, so they render through RecordDate like every other.
+  // A seed is back-history by definition (collected long after it was dated), so neither
+  // end can be ahead of the clock -- but the rule does not take exemptions.
   const span =
-    s.firstOccurredAt && s.lastOccurredAt
-      ? `${formatDate(s.firstOccurredAt)} – ${formatDate(s.lastOccurredAt)}`
-      : "dates unknown";
+    s.firstOccurredAt && s.lastOccurredAt ? (
+      <>
+        <RecordDate value={s.firstOccurredAt} clock={anchor} /> –{" "}
+        <RecordDate value={s.lastOccurredAt} clock={anchor} />
+      </>
+    ) : (
+      "dates unknown"
+    );
   return (
     <li className="flex gap-3">
       {/* Hollow and dashed: added to the record, dated earlier. Its own line, never
@@ -172,10 +184,12 @@ function Band({
   band,
   collapsed,
   isToday,
+  anchor,
 }: {
   band: DayBand;
   collapsed: boolean;
   isToday: boolean;
+  anchor: Date;
 }) {
   const rowCount =
     band.cases.length + band.news.shown.length + band.other.length + band.seeds.length;
@@ -183,7 +197,12 @@ function Band({
   return (
     <li className="flex gap-4 border-t border-neutral-900 py-3 first:border-t-0">
       <div className="w-24 shrink-0">
-        <div className="text-[15px] tabular-nums text-neutral-400">{formatDate(band.day)}</div>
+        {/* A band is dated by its rows, all inside the window and so never ahead of the
+            clock; it still renders through RecordDate so the live assertion reads every
+            date on the page with no exemption list (ruled 2026-09-26). */}
+        <div className="text-[15px] tabular-nums text-neutral-400">
+          <RecordDate value={band.day} clock={anchor} />
+        </div>
         {/* "collected", never "today". The band is grouped on occurred_at and this
             flag is computed from fetched_at, so it fires on any band holding
             something read in the last 24 hours -- which on this page means bands
@@ -261,8 +280,12 @@ function Band({
               </Row>
             ))}
 
+            {/* EACH ROW'S OWN DOT, from its own fetched_at (ruled 2026-09-26). These took
+                the band's hasFresh until then, so a row collected days earlier carried the
+                "collected in the record's last 24 h" dot whenever anything else on its band
+                had been -- MI HB6414's 09-29 item, collected 09-24, would have on 09-29. */}
             {band.news.shown.map((e) => (
-              <EntryLine key={e.id} e={e} fresh={band.hasFresh} />
+              <EntryLine key={e.id} e={e} fresh={isFresh(e, anchor)} />
             ))}
 
             {band.news.foldedCount > 0 && (
@@ -279,11 +302,11 @@ function Band({
             )}
 
             {band.other.map((e) => (
-              <EntryLine key={e.id} e={e} fresh={band.hasFresh} />
+              <EntryLine key={e.id} e={e} fresh={isFresh(e, anchor)} />
             ))}
 
             {band.seeds.map((s) => (
-              <SeedLine key={s.key} s={s} />
+              <SeedLine key={s.key} s={s} anchor={anchor} />
             ))}
           </ul>
         )}
@@ -324,6 +347,11 @@ export function DayTimeline({
     return over;
   });
 
+  const further = furtherLines(
+    timeline.olderThanWindow.length,
+    timeline.datedAfterWindow.length,
+  );
+
   return (
     <div>
       <ul>
@@ -333,17 +361,20 @@ export function DayTimeline({
             band={b}
             collapsed={collapsed[i]}
             isToday={b.day === todayKey}
+            anchor={anchor}
           />
         ))}
       </ul>
-      {timeline.olderThanWindow.length > 0 && (
-        // No silent caps. These were collected inside the window but are dated before
-        // the band range, so they have no day to sit on and must still be visible.
-        <p className="mt-3 text-xs text-neutral-600">
-          {timeline.olderThanWindow.length} further{" "}
-          {timeline.olderThanWindow.length === 1 ? "item" : "items"} collected in this
-          window are dated before it.
-        </p>
+      {further.length > 0 && (
+        // No silent caps. These have no band to sit on: collected in the record's last
+        // 24 h and dated before the band range, or dated after the record's clock. Two
+        // sentences, one each (lib/timeline.ts#furtherLines, ruled 2026-09-26) -- a row
+        // dated after the clock was counted as "before it" until that day.
+        <div className="mt-3 space-y-0.5 text-xs text-neutral-600" data-further-line="">
+          {further.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
       )}
     </div>
   );

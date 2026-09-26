@@ -1,6 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
+import { RecordDate } from "@/components/RecordDate";
+import { datedAhead } from "@/lib/dated";
 import {
   clipWidth,
   monthlyMax,
@@ -168,6 +170,7 @@ export function RecordsBoard({
   eos,
   rejections,
   frame,
+  clock,
 }: {
   domain: Domain;
   filings: FilingStep[];
@@ -179,6 +182,8 @@ export function RecordsBoard({
    *  comparable by eye rather than merely adjacent. */
   rejections: FilingStep[];
   frame: Frame;
+  /** The record's clock (getRecordAnchor): an EO dated after it is dashed and marked. */
+  clock: string | null;
 }) {
   const x = (t: number) => PAD_L + xOf(t, domain, PLOT);
   const clipW = clipWidth(frame, domain, PLOT);
@@ -356,19 +361,27 @@ export function RecordsBoard({
           {/* They get no scale. An EO has no magnitude to plot, so plotting one would be
               inventing a quantity; the tick says only "one happened, here". */}
           <g clipPath="url(#board-frame)">
-            {eos.map((e) => (
-              <line
-                key={`${e.date}-${e.title.slice(0, 12)}`}
-                x1={x(e.t)}
-                y1={AXIS_Y - 7}
-                x2={x(e.t)}
-                y2={AXIS_Y + 7}
-                stroke="var(--c-executive)"
-                strokeWidth={1.5}
-              >
-                <title>{`${e.date} — ${e.title}`}</title>
-              </line>
-            ))}
+            {/* AN ORDER DATED AHEAD OF THE RECORD'S CLOCK keeps its clamped place at the
+                right edge -- the axis ends at the clock -- and is drawn dashed
+                (lib/dated.ts, ruled 2026-09-26). Its date and its "dated ahead" marker
+                are HTML in the label layer below, like every other glyph on this board. */}
+            {eos.map((e) => {
+              const ahead = datedAhead(e.date, clock);
+              return (
+                <line
+                  key={`${e.date}-${e.title.slice(0, 12)}`}
+                  x1={x(e.t)}
+                  y1={AXIS_Y - 7}
+                  x2={x(e.t)}
+                  y2={AXIS_Y + 7}
+                  stroke="var(--c-executive)"
+                  strokeWidth={1.5}
+                  strokeDasharray={ahead ? "2 2" : undefined}
+                >
+                  <title>{`${e.date} — ${e.title}${ahead ? " — dated ahead" : ""}`}</title>
+                </line>
+              );
+            })}
           </g>
 
           {/* --- quarterly ticks: THE RULES ONLY; their labels are HTML ------------- */}
@@ -445,6 +458,25 @@ export function RecordsBoard({
               {i + 1}
             </span>
           ))}
+
+          {/* EVERY EO TICK'S DATE, for machines and screen readers, and the "dated ahead"
+              marker for one after the record's clock (ruled 2026-09-26). The date is
+              sr-only -- the tick's own <title> is what a pointer reads -- and the marker is
+              the one visible glyph, sized in CSS pixels here rather than in user units
+              in the SVG: at fontSize 9 there it rendered 5.8px where the chart shares
+              the board row (adversarial review, 2026-09-26). GATED ON THE FRAME, as the
+              tick is by the clip rect: a tick past the scrubber has no label either. */}
+          {eos
+            .filter((e) => x(e.t) <= PAD_L + clipW)
+            .map((e) => (
+              <span
+                key={`${e.date}-${e.title.slice(0, 12)}`}
+                className="board-eo"
+                style={{ left: pctX(x(e.t)), top: pctY(AXIS_Y - 9) }}
+              >
+                <RecordDate value={e.date} clock={clock} className="sr-only" />
+              </span>
+            ))}
 
           {/* The one load-bearing numeral, bound to the frame's own last step. */}
           <span

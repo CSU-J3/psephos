@@ -15,6 +15,8 @@ import {
   type DocketLike,
 } from "@/lib/stands";
 
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00"; // after every fixture date: nothing is dated ahead
+
 // Fixtures are CONSTRUCTED, on the same rule campaign.test.ts states: a membership
 // read from production goes stale by build time and teaches the suite to be ignored.
 // Every row below is shaped like the real thing and owned by the test.
@@ -176,7 +178,7 @@ describe("the vehicle trap: a timeline is newer than the last legislative action
         { occurred_at: "2026-09-02T20:27:07+00:00", kind: "news" },
       ],
     };
-    expect(vehicleQuietSince([withTimeline])).toBe("2026-03-26T00:00:00");
+    expect(vehicleQuietSince([withTimeline], FAR_CLOCK)).toBe("2026-03-26T00:00:00");
   });
 
   it("reads the VEHICLE, not whichever bill holds the newest action", () => {
@@ -187,16 +189,16 @@ describe("the vehicle trap: a timeline is newer than the last legislative action
       is_vehicle: 0,
       latest_action_at: "2026-08-01T00:00:00",
     });
-    expect(vehicleQuietSince([newerNonVehicle, vehicle])).toBe("2026-03-26T00:00:00");
+    expect(vehicleQuietSince([newerNonVehicle, vehicle], FAR_CLOCK)).toBe("2026-03-26T00:00:00");
   });
 
   it("is null when nothing on the watchlist is flagged a vehicle", () => {
-    expect(vehicleQuietSince([bill({ bill_id: "hr22-119" })])).toBeNull();
+    expect(vehicleQuietSince([bill({ bill_id: "hr22-119" })], FAR_CLOCK)).toBeNull();
   });
 
   it("takes the newest when more than one bill is flagged", () => {
     const second = bill({ bill_id: "s2-119", is_vehicle: 1, latest_action_at: "2026-05-01T00:00:00" });
-    expect(vehicleQuietSince([vehicle, second])).toBe("2026-05-01T00:00:00");
+    expect(vehicleQuietSince([vehicle, second], FAR_CLOCK)).toBe("2026-05-01T00:00:00");
   });
 });
 

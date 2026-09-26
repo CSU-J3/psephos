@@ -41,7 +41,10 @@ function bill(over: Partial<StateBill> & Pick<StateBill, "state_bill_id" | "stat
   };
 }
 
-const render = (b: StateBill) => renderToStaticMarkup(createElement(StateBillRow, { bill: b }));
+// A far clock: nothing in these fixtures is dated ahead; the rule has its own tests.
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00";
+const render = (b: StateBill) =>
+  renderToStaticMarkup(createElement(StateBillRow, { bill: b, clock: FAR_CLOCK }));
 
 describe("StateBillRow — the Vehicle badge", () => {
   it("paints nothing on an ordinary bill", () => {

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import type { Bill } from "@/lib/db";
-import { formatDate } from "@/lib/format";
+import { RecordDate } from "@/components/RecordDate";
+import type { RecordClock } from "@/lib/dated";
 import { billLabel } from "@/lib/bill";
 
 // One watched bill with its latest action. The `is_vehicle` flag is surfaced
 // loudly: an unrelated bill carrying voting provisions (S. 1383) is the whole
 // point of the project, the maneuver a plain bill tracker misses.
-export function BillRow({ bill }: { bill: Bill }) {
+export function BillRow({ bill, clock }: { bill: Bill; clock: RecordClock }) {
   return (
     <li>
       <Link
@@ -32,7 +33,9 @@ export function BillRow({ bill }: { bill: Bill }) {
       </div>
       {bill.latest_action && (
         <p className="mt-2 text-sm text-neutral-300">
-          <span className="text-neutral-500">{formatDate(bill.latest_action_at)} — </span>
+          <span className="text-neutral-500">
+            <RecordDate value={bill.latest_action_at} clock={clock} /> —{" "}
+          </span>
           {bill.latest_action}
         </p>
       )}

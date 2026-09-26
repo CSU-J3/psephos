@@ -9,6 +9,8 @@ import {
   SLICE_HEAD,
 } from "@/lib/ledger";
 
+const FAR_CLOCK = "2100-01-01T00:00:00+00:00"; // after every fixture date: nothing is dated ahead
+
 // Fixtures, not live rows. Three of the six cases these assertions cover cannot be
 // reached by any page a reader can visit -- see the "unreachable" describe blocks --
 // and the reachable ones are pinned here anyway because the rules are derivations,
@@ -354,7 +356,7 @@ describe("sliceLedger", () => {
   };
 
   it("puts the newest first, from input in no particular order", () => {
-    const { head } = sliceLedger(shuffled(days(5)));
+    const { head } = sliceLedger(shuffled(days(5)), FAR_CLOCK);
     expect(head.map((r) => r.id)).toEqual([5, 4, 3, 2, 1]);
   });
 
@@ -365,21 +367,21 @@ describe("sliceLedger", () => {
     // zone behind UTC, a Date.parse implementation puts the naive Feb row on top.
     const naive = row(1, "2026-02-01T00:00:00", "litigation");
     const suffixed = row(2, "2026-02-01T06:00:00+00:00", "news");
-    const { head } = sliceLedger([naive, suffixed]);
+    const { head } = sliceLedger([naive, suffixed], FAR_CLOCK);
     expect(head.map((r) => r.id)).toEqual([2, 1]);
   });
 
   it("breaks a tie on id, newest id first", () => {
     const a = row(7, "2026-03-01T00:00:00");
     const b = row(9, "2026-03-01T00:00:00");
-    const { head } = sliceLedger([a, b]);
+    const { head } = sliceLedger([a, b], FAR_CLOCK);
     expect(head.map((r) => r.id)).toEqual([9, 7]);
   });
 
   it("shows everything and offers no fold at exactly the boundary", () => {
     // 403 of the 542 pages in production sit at or under 10, so this is the common
     // render rather than the edge one. /state-bill/2032448 is exactly 10.
-    const { head, rest } = sliceLedger(shuffled(days(10)));
+    const { head, rest } = sliceLedger(shuffled(days(10)), FAR_CLOCK);
     expect(head).toHaveLength(10);
     expect(rest).toEqual([]);
   });
@@ -387,14 +389,14 @@ describe("sliceLedger", () => {
   it("folds exactly one entry at 11", () => {
     // Reachable: 2 cases (73544809, 73582123) and 5 state bills sit at exactly 11, so
     // the singular label draws on a real page rather than only in this file.
-    const { head, rest } = sliceLedger(shuffled(days(11)));
+    const { head, rest } = sliceLedger(shuffled(days(11)), FAR_CLOCK);
     expect(head).toHaveLength(10);
     expect(rest.map((r) => r.id)).toEqual([1]);
   });
 
   it("folds the remainder on a long docket, losing nothing", () => {
     const all = days(43);
-    const { head, rest } = sliceLedger(shuffled(all));
+    const { head, rest } = sliceLedger(shuffled(all), FAR_CLOCK);
     expect(head).toHaveLength(10);
     expect(rest).toHaveLength(33);
     // The partition is total and ordered: head ++ rest is the whole list, newest-first.
@@ -412,14 +414,14 @@ describe("sliceLedger", () => {
       row(3, "2026-02-03T00:00:00", "legislation"),
       row(4, "2026-02-04T00:00:00+00:00", "news"),
     ];
-    const { head } = sliceLedger(shuffled(rows));
+    const { head } = sliceLedger(shuffled(rows), FAR_CLOCK);
     expect(head.map((r) => [r.id, r.channel])).toEqual([
       [4, "news"], [3, "legislation"], [2, "news"], [1, "legislation"],
     ]);
   });
 
   it("leaves an empty timeline empty, with no fold", () => {
-    const { head, rest } = sliceLedger([]);
+    const { head, rest } = sliceLedger([], FAR_CLOCK);
     expect(head).toEqual([]);
     expect(rest).toEqual([]);
   });
@@ -430,12 +432,12 @@ describe("sliceLedger", () => {
     // under them would not throw, it would quietly change what those two computed.
     const rows = shuffled(days(4));
     const before = rows.map((r) => r.id);
-    sliceLedger(rows);
+    sliceLedger(rows, FAR_CLOCK);
     expect(rows.map((r) => r.id)).toEqual(before);
   });
 
   it("takes a custom head size, so the constant is not baked into the split", () => {
-    const { head, rest } = sliceLedger(days(5), 2);
+    const { head, rest } = sliceLedger(days(5), FAR_CLOCK, 2);
     expect(head.map((r) => r.id)).toEqual([5, 4]);
     expect(rest.map((r) => r.id)).toEqual([3, 2, 1]);
   });

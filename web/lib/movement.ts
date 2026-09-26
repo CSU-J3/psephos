@@ -1,4 +1,5 @@
 import type { Cell } from "@/lib/campaign";
+import { recentAndAhead, type RecordClock } from "@/lib/dated";
 
 // The view-layer derivations /campaign needs and lib/campaign.ts does not own: which
 // section a grid cell opens, who belongs to each section, and which docket entries are
@@ -113,8 +114,20 @@ export type MovementRow = {
 // last would place them in the list as though their position meant something. 68 of
 // the 2,079 campaign litigation items carry no date, and "most recent" is a claim none
 // of them can support.
-export function latestMovement(rows: readonly MovementRow[], limit = 8): MovementRow[] {
-  return [...rows]
-    .sort((a, b) => b.occurred_at.localeCompare(a.occurred_at) || b.id - a.id)
-    .slice(0, limit);
+//
+// AN ENTRY DATED AHEAD OF THE RECORD'S CLOCK comes back in `ahead`, rendered below a
+// divider after the eight, marked, and never cut by the limit: the heading's "eight most
+// recent docket entries" stays true of the eight (lib/dated.ts, ruled 2026-09-26).
+export function latestMovement(
+  rows: readonly MovementRow[],
+  clock: RecordClock,
+  limit = 8,
+): { recent: MovementRow[]; ahead: MovementRow[] } {
+  return recentAndAhead(
+    rows,
+    (a, b) => b.occurred_at.localeCompare(a.occurred_at) || b.id - a.id,
+    (r) => r.occurred_at,
+    clock,
+    limit,
+  );
 }

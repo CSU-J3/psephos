@@ -1,4 +1,5 @@
 import type { StateBill } from "@/lib/db";
+import { orderByClock, recentAndAhead, type RecordClock } from "@/lib/dated";
 
 // "TX HB 1234" style label. Shared by StateBillRow and the detail page so the
 // label reads identically in both, exactly like billLabel.
@@ -268,14 +269,27 @@ function byRecency(a: StateBill, b: StateBill): number {
   );
 }
 
-export function sortByRecent(bills: readonly StateBill[]): StateBill[] {
-  return [...bills].sort(byRecency);
+// A BILL DATED AHEAD OF THE RECORD'S CLOCK SORTS AFTER EVERY BILL DATED UP TO IT, in
+// every list on this page, and carries the "dated ahead" marker (lib/dated.ts, ruled
+// 2026-09-26). The lexical comparator alone put MI HB6414 -- last action dated
+// 2026-09-29, collected 09-24 -- at the top of every recency list, "Latest movement"
+// included, because "2026-09-29" outsorts every real date.
+export function sortByRecent(bills: readonly StateBill[], clock: RecordClock): StateBill[] {
+  return orderByClock(bills, byRecency, (b) => b.last_action_at, clock);
 }
 
 // The ten most recent last-actions across every state -- the page's answer to "what
-// moved", which the matrix cannot give because a count carries no date.
-export function latestMovement(bills: readonly StateBill[], limit = 10): StateBill[] {
-  return sortByRecent(bills).slice(0, limit);
+// moved", which the matrix cannot give because a count carries no date. The ten are
+// dated up to the record's clock, and the heading's "ten most recent actions" is true
+// of them alone. A bill dated ahead comes back in `ahead`, rendered below a divider
+// after the ten, marked, and never cut (ruled 2026-09-26). So the list never OPENS
+// with one, never loses one, and never counts one among its ten.
+export function latestMovement(
+  bills: readonly StateBill[],
+  clock: RecordClock,
+  limit = 10,
+): { recent: StateBill[]; ahead: StateBill[] } {
+  return recentAndAhead(bills, byRecency, (b) => b.last_action_at, clock, limit);
 }
 
 export type StateBillFilters = { state?: string | null; status?: string | null };
@@ -292,8 +306,9 @@ export function filterStateBills(
 export type StateGroup = { state: string; bills: StateBill[] };
 
 // Grouped for the `?sort=state` view: states alphabetical, bills recent-first inside
-// each. Same comparator as the flat list, so the two orderings cannot drift.
-export function groupByState(bills: readonly StateBill[]): StateGroup[] {
+// each, bills dated ahead of the clock last inside each. Same ordering as the flat list,
+// so the two cannot drift.
+export function groupByState(bills: readonly StateBill[], clock: RecordClock): StateGroup[] {
   const byState = new Map<string, StateBill[]>();
   for (const b of bills) {
     const group = byState.get(b.state);
@@ -302,7 +317,7 @@ export function groupByState(bills: readonly StateBill[]): StateGroup[] {
   }
   return [...byState.entries()]
     .sort((a, b) => a[0].localeCompare(b[0]))
-    .map(([state, group]) => ({ state, bills: group.sort(byRecency) }));
+    .map(([state, group]) => ({ state, bills: sortByRecent(group, clock) }));
 }
 
 // --- the URL is the state ---------------------------------------------------

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getBill, getBillTimeline } from "@/lib/db";
+import { getBill, getBillTimeline, getRecordAnchor } from "@/lib/db";
 import { billLabel } from "@/lib/bill";
-import { formatDate } from "@/lib/format";
+import { RecordClockMark, RecordDate } from "@/components/RecordDate";
 import { Timeline } from "@/components/Timeline";
 
 // Live Turso per request, no build-time dependency -- same as home.
@@ -16,10 +16,11 @@ export default async function BillPage({
   const { bill_id } = await params;
   const bill = await getBill(bill_id);
   if (!bill) notFound();
-  const items = await getBillTimeline(bill_id);
+  const [items, clock] = await Promise.all([getBillTimeline(bill_id), getRecordAnchor()]);
 
   return (
     <main className="mx-auto max-w-4xl px-6 py-12">
+      <RecordClockMark iso={clock} />
       <Link href="/" className="text-sm text-neutral-400 hover:underline">
         ← psephos
       </Link>
@@ -45,7 +46,7 @@ export default async function BillPage({
         {bill.latest_action && (
           <p className="mt-2 text-sm text-neutral-300">
             <span className="text-neutral-500">
-              {formatDate(bill.latest_action_at)} —{" "}
+              <RecordDate value={bill.latest_action_at} clock={clock} /> —{" "}
             </span>
             {bill.latest_action}
           </p>
@@ -59,7 +60,7 @@ export default async function BillPage({
             <span className="tabular-nums">{items.length}</span> entries · each row expands
           </span>
         </h2>
-        <Timeline items={items} />
+        <Timeline items={items} clock={clock} />
       </section>
     </main>
   );
