@@ -78,12 +78,14 @@
   # nothing noticed.
   renders_as: "the clock"
 
-# 14 DAYS, NOT THE B2 DEFAULT OF 90, because a pending emergency application can
-# change the answer on any day. The source is plaintiffs' counsel, and every order
-# it describes is linked as a court PDF. This entry and eo-14248-enjoined below
-# replace `eo-blocked-per-reporting` (C3, retired 2026-09-13): the date that line
-# carried, Aug 16, matches no docket event, and the Aug 11 injunction it described
-# was vacated Aug 26.
+# 14 DAYS, NOT THE B2 DEFAULT OF 90, FROM 2026-09-13 TO 09-26, set while 26A305 was
+# believed pending, because a pending emergency application can change the answer on
+# any day. It was in fact pending only from Sep 6 until its denial on Sep 14; see READ
+# AGAIN below. The source was then the Brennan Center tracker, whose authors are
+# plaintiffs' counsel, and every order it describes is linked as a court PDF. This
+# entry and eo-14248-enjoined below replace `eo-blocked-per-reporting` (C3, retired
+# 2026-09-13): the date that line carried, Aug 16, matches no docket event, and the
+# Aug 11 injunction it described was vacated Aug 26.
 #
 # THE FALSIFIER'S INSTRUMENT IS THE SUPREME COURT DOCKET, 26A305, read directly:
 # https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/26a305.html
@@ -91,16 +93,52 @@
 # Sep 14). 26A305 replaced the withdrawn 26A297 on Sep 6. As of 2026-09-14 its only
 # order is Justice Jackson's Sep 6 scheduling order (responses due Sep 9), and the
 # applicants submitted a supplemental brief on Sep 14.
+#
+# READ AGAIN 2026-09-26: THE APPLICATION WAS DENIED ON SEP 14, the same day as the
+# reading above, in the two entries after the supplemental brief that it did not see
+# ("referred to the Court", then the order). The Court's words: "Application
+# (26A305) for stay presented to Justice Jackson and by her referred to the Court is
+# denied. The Government is unlikely to succeed on the merits of its challenge to
+# the District Court's preliminary injunction. And the equitable factors applicable
+# for obtaining emergency relief from this Court do not favor a stay." Justice
+# Kavanaugh concurring; Justice Alito, joined by Justice Thomas, dissenting. The
+# order: https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf
+# So the rendered clause "a Supreme Court stay application has been pending since
+# Sep 6" was false on the page from Sep 14 until the commit that rewrote this entry,
+# while the core claim held throughout. For the Supreme Court application the
+# falsifier named only a GRANT (its other event was a First Circuit merits ruling); a
+# clause saying something is pending is falsified by any disposition at all.
+# "Through the Nov. 3 election" is plaintiffs' counsel's phrase (the ACLU and
+# Brennan Center releases of Sep 14), not the Court's, and the order names no date.
+# "For the 2026 elections" rests on Justice Kavanaugh's concurrence and on the First
+# Circuit's Sep 10 order, fn. 4: the injunction does not stop the Postal Service
+# "continuing with the Final Rule's implementation for elections after November 2026".
+#
+# THE FIRST CIRCUIT has four appeals from the Sep 4 injunction, 26-2029 to 26-2032,
+# consolidated Sep 14. Read on 26-2029's RECAP copy (CourtListener docket 74755121,
+# last updated Sep 22): no merits ruling, no briefing schedule, no argument date.
+# RECAP lags PACER, so an entry after Sep 22 would not show there.
+#
+# THE RECHECK, 2026-10-15, is set by the 09-26 brief rather than by a grade default,
+# and Corey may move it. With no emergency application pending, what can change the
+# answer is an order vacating, staying or modifying the Sep 4 injunction: from the
+# D. Mass. court itself (1:26-cv-11549, 1:26-cv-13917), which vacated its own Aug 11
+# injunction on Aug 26; from the First Circuit on the consolidated appeals, a merits
+# ruling among them; or from the Supreme Court on a new application. A new
+# application takes a NEW docket number, as 26A305 did after 26A297, so 26A305's own
+# page would not show one: the recheck also searches the Court's docket for both
+# captions this litigation has used there, United States Postal Service v.
+# California and Trump v. California (the earlier stay; Aug 24 per the tracker).
 - id: eo-14399-s3-enjoined
-  claim: "the USPS mail-ballot rule under EO 14399 section 3 is enjoined for the 2026 elections (D. Mass. preliminary injunction, Sep 4), with a Supreme Court stay application pending since Sep 6 and First Circuit stays denied Sep 10"
+  claim: "the USPS mail-ballot rule under EO 14399 section 3 is enjoined for the 2026 elections (D. Mass. preliminary injunction, Sep 4), with First Circuit stays denied Sep 10 and a Supreme Court stay denied Sep 14"
   kind: authored
-  grade: {source: B, info: 2}
-  source: "Brennan Center case tracker, League of Women Voters of Massachusetts v. Trump, https://www.brennancenter.org/our-work/court-cases/league-women-voters-massachusetts-v-trump-march-2026-mail-voting-executive"
-  asserted_on: 2026-09-11
-  recheck_after: 2026-09-25
-  falsified_by: "a Supreme Court order granting the stay, or a First Circuit merits ruling; the instrument for the first is Supreme Court docket 26A305 (the stay application), read directly, with the tracker secondary"
+  grade: {source: A, info: 1}
+  source: "Supreme Court of the United States, order of Sep 14, 2026 denying the application for stay, United States Postal Service v. California, No. 26A305, https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf"
+  asserted_on: 2026-09-14
+  recheck_after: 2026-10-15
+  falsified_by: "an order vacating, staying or modifying the Sep 4 injunction: by the D. Mass. court, by the First Circuit (Nos. 26-2029 to 26-2032, consolidated; a merits ruling vacating it among them), or a further Supreme Court order; the instruments are Supreme Court docket 26A305 and First Circuit docket 26-2029, read directly, with the D. Mass. docket and the tracker secondary"
   status: active
-  renders_as: "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and a Supreme Court stay application has been pending since Sep 6"
+  renders_as: "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied a stay on Sep 14"
 
 # asserted_on is the tracker's update date, per this file's own rule (the date
 # the SOURCE said it). The June reporting is older and serves as corroboration,

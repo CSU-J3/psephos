@@ -149,8 +149,8 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                 <Grade grade="A1" dense /> Federal Register{" "}
                 <Grade grade="B2" dense /> EO 14248 per the Brennan Center case tracker{" "}
                 <span className="rk">recheck by Dec 10</span>{" "}
-                <Grade grade="B2" dense /> EO 14399 per the Brennan Center case tracker{" "}
-                <span className="rk">recheck by Sep 25</span>
+                <Grade grade="A1" dense /> EO 14399 per Supreme Court docket 26A305{" "}
+                <span className="rk">recheck by Oct 15</span>
               </>
             }
           >
@@ -161,7 +161,7 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             </span>
             ;{" "}
             <span data-gate="eo-14399-s3-enjoined">
-              {"section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and a Supreme Court stay application has been pending since Sep 6"}
+              {"section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied a stay on Sep 14"}
             </span>
             .
           </Fact>
