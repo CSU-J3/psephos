@@ -7,14 +7,15 @@ import { resolve } from "node:path";
 // classification and dormancy arithmetic live. Those are pure functions over
 // constructed rows, so a plain node environment is all they need.
 //
-// ONE COMPONENT IS INCLUDED, AND THE EXCEPTION IS THE ORIGINAL RULE APPLIED RATHER THAN
-// RELAXED. "Visible on the page" is a claim about what a render actually exercises, and
-// StateMatrix's seventh column falsifies it: that column draws only when a bill carries
-// a stage code the ramp does not know, and live data has never held one -- 484 rows, all
-// of them 1-6. So the branch is dead code until the day something upstream changes, at
-// which point it executes for the first time in production with nobody watching. Testing
-// it is not a step toward component testing in general; it is the only branch here that
-// no render can reach.
+// COMPONENTS ARE INCLUDED ONLY WHERE A RENDER CANNOT SHOW WHAT IS TESTED, AND EACH ARGUES
+// ITS EXCEPTION IN ITS OWN HEADER. That is the original rule applied rather than relaxed:
+// "visible on the page" is a claim about what a render actually exercises. StateMatrix
+// was the first to falsify it. Its seventh column draws only when a bill carries no
+// stage the ramp knows. Through 484 rows none did, so the branch was dead code that would
+// first execute in production with nobody watching -- and it did, when the state run
+// 36131273689 wrote PA HR632 with a null status on 2026-09-25. It is keyed now, but it is
+// still data-conditional: any one render of live data shows the column or does not,
+// never both. Testing such branches is not a step toward component testing in general.
 //
 // It still needs no jsdom: renderToStaticMarkup ships in react-dom, already a dependency,
 // and markup is all an assertion about which columns exist requires. Keep it that way --

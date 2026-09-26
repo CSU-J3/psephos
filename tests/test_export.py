@@ -493,6 +493,34 @@ def test_state_bills_json_stable_despite_moving_updated_at():
     assert b"2026-07-02" not in b2
 
 
+def test_a_status_less_state_bill_with_no_items_exports_with_status_null():
+    """THE PREMISE OF A STATED EXCEPTION. assert-encodings.mjs's off-ramp witness counts
+    bills whose status is outside 1-6 in data/state_bills.json, an exception to the
+    standing invariant that database facts come from direct Turso queries (ruled
+    2026-09-26). It holds only because build_state_bills is a full-table export: one
+    object per state_bills row, whether or not any item hangs on it. PA HR632 is the
+    live shape -- status, last_action and last_action_at NULL, no items. If this export
+    ever went item-driven, or coerced a null status into a code on the ramp ('1', say),
+    the witness would count 0 on a page that owes the key entry, and nothing else would
+    notice. (A dropped key would not hide it: offRampCount reads a missing status as off
+    the ramp. The `"status" in` assertion pins the ruling's "exports, with status null",
+    the export's shape rather than the witness's premise.)"""
+    conn = _conn()
+    _state_bill(conn, "2159038", state="PA", bill_number="HR632")     # status left NULL
+    _state_bill(conn, "1700001", state="TX", bill_number="SB100")
+    conn.execute("UPDATE state_bills SET status = '1' WHERE state_bill_id = '1700001'")
+    conn.commit()
+
+    sb = snapshots.build_state_bills(conn)
+    hr632 = next(b for b in sb if b["state_bill_id"] == "2159038")
+    assert "status" in hr632 and hr632["status"] is None     # exported, as null, not dropped
+    assert hr632["timeline"] == []                            # with no items at all
+    out = Path(tempfile.mkdtemp()) / "s.json"
+    snapshots.write_json(str(out), sb)
+    written = json.loads(out.read_text(encoding="utf-8"))
+    assert [b["status"] for b in written if b["state_bill_id"] == "2159038"] == [None]
+
+
 # --------------------------------------------------------------------------- #
 # build_news -- the B2 feed (handoff 49)
 # --------------------------------------------------------------------------- #

@@ -104,6 +104,45 @@ export const STAGE_STYLE: Record<StageCode, StageStyle> = {
   "6": { dot: "#525252", tick: "#404040", cell: "#525252", chip: "#525252", bold: false },
 };
 
+// THE SEVENTH ENCODING, OFF THE RAMP: a bill LegiScan has given no status, or a status
+// code the ramp does not know. It was declared unreachable, and it was reached on
+// 2026-09-25, when the state run 36131273689 wrote PA HR632 with a null status: the
+// first such row on the page. It is now KEYED like the six stages rather than declared, so
+// assert-encodings.mjs checks its paint against the key instead of counting it as an
+// alarm (encodings.expected.mjs carries it as a conditional row, owed whenever the data
+// snapshot holds such a bill).
+//
+// ONE NEUTRAL GREY ON ALL FOUR SURFACES -- dot, cell, tick and chip. Grey because the
+// record holds no stage to colour; #737373 because it is the chip grey an off-ramp row
+// already fell back to. In the MATRIX it differs from Introduced's #a3a3a3 dot and cell
+// -- a count here is not a second Introduced -- and from Failed's #525252. `dot === cell`
+// holds for the same reason it holds on the ramp: the key's swatch is a sample of the ink.
+//
+// ON THE LIST THE TICK IS DASHED, AND THAT IS THE WHOLE OF WHAT KEEPS THE ROW FROM READING
+// AS INTRODUCED. Introduced paints no tick and a #737373 chip, so a status-less row with no
+// tick carried exactly Introduced's paint, told apart only by the chip's words. Ruled
+// 2026-09-26: a dashed left rule in the same grey, the chip unchanged. Dashed is a line
+// style, not a colour, so the swatch and the tick stay one grey. StateBillRow draws it,
+// and assert-encodings.mjs checks the rendered rule is dashed on every row claiming it.
+//
+// THE LABEL SAYS ONLY WHAT THE RECORD HOLDS (unstagedHeader, below). When every bill in
+// the column has a null status it reads "No status"; if an unmapped code is among them it
+// reads "No stage", because that bill HAS a status -- one the ramp does not know, which
+// its row's chip shows raw (stateBillStatus). Neither says "pending" or "new", which
+// would be a reading of why the status is missing.
+export const UNSTAGED_ENCODING = "unstaged";
+export const UNSTAGED_LABEL = "No status";
+export const UNSTAGED_LABEL_MIXED = "No stage";
+export const UNSTAGED_STYLE: StageStyle = {
+  dot: "#737373",
+  tick: "#737373",
+  cell: "#737373",
+  chip: "#737373",
+  bold: false,
+};
+// The one line style on the ramp that is not solid. Paired with UNSTAGED_STYLE.tick.
+export const UNSTAGED_TICK_STYLE = "dashed";
+
 // The join vocabulary, DERIVED FROM THE DISPLAY VOCABULARY so it cannot become a third
 // one. scripts/assert-encodings.mjs reads these off `data-encoding` in the matrix key
 // and off `data-stage` on every painted surface, then joins the two sets. Nothing
@@ -139,20 +178,35 @@ export type Matrix = {
   rows: MatrixRow[];
   stageTotals: number[];
   unstagedTotal: number;
+  unstagedNull: number; // the part of unstagedTotal with no status at all
   total: number;
   hasUnstaged: boolean;
 };
 
+// The unstaged header's words, from what the column actually holds. See UNSTAGED_STYLE's
+// comment: "No status" is true only when every bill in the column has none.
+export function unstagedHeader(m: Pick<Matrix, "unstagedTotal" | "unstagedNull">): {
+  label: string;
+  title: string;
+} {
+  return m.unstagedNull === m.unstagedTotal
+    ? { label: UNSTAGED_LABEL, title: "LegiScan has given these bills no status yet" }
+    : {
+        label: UNSTAGED_LABEL_MIXED,
+        title: "LegiScan has given these bills no status, or a status code this page does not map",
+      };
+}
+
 // State x stage counts, plus every margin the table shows.
 //
-// `unstaged` EXISTS SO NOTHING CAN VANISH. Live data carries no null or unmapped
-// status today (484 rows, all 1-6), so the column renders nowhere -- `hasUnstaged` is
-// the gate. But the whole argument of this page is that its totals are complete, and
-// if a stage code ever arrives that this file does not know, the alternatives are a
-// row total that silently exceeds the sum of its own cells, or a bill dropped off the
-// page entirely. Both of those look exactly like clean data. A column that appears
-// only when it has something in it does not, and it costs nothing while the data
-// stays clean.
+// `unstaged` EXISTS SO NOTHING CAN VANISH. `hasUnstaged` is the gate: the column renders
+// only while some bill carries a null or unmapped status. Through 484 rows none did; on
+// 2026-09-25 the state run 36131273689 wrote PA HR632 with a null status, and the column
+// rendered for the first time. The whole argument of this page is that its totals are
+// complete, and without the column the alternatives are a row total that silently
+// exceeds the sum of its own cells, or a bill dropped off the page entirely. Both of
+// those look exactly like clean data. A column that appears only when it has something
+// in it does not, and it costs nothing while the data stays clean.
 //
 // The invariant that buys, asserted in the tests: cells + unstaged == total, on every
 // row and on the totals row.
@@ -160,6 +214,7 @@ export function buildMatrix(bills: readonly StateBill[]): Matrix {
   const byState = new Map<string, MatrixRow>();
   const stageTotals = STAGE_ORDER.map(() => 0);
   let unstagedTotal = 0;
+  let unstagedNull = 0;
 
   for (const b of bills) {
     let row = byState.get(b.state);
@@ -171,6 +226,7 @@ export function buildMatrix(bills: readonly StateBill[]): Matrix {
     if (stage === null) {
       row.unstaged += 1;
       unstagedTotal += 1;
+      if (!b.status) unstagedNull += 1;
     } else {
       const i = STAGE_ORDER.indexOf(stage);
       row.cells[i] += 1;
@@ -184,6 +240,7 @@ export function buildMatrix(bills: readonly StateBill[]): Matrix {
     rows,
     stageTotals,
     unstagedTotal,
+    unstagedNull,
     total: bills.length,
     hasUnstaged: unstagedTotal > 0,
   };

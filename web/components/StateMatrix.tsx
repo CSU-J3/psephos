@@ -3,7 +3,10 @@ import {
   STAGE_ORDER,
   STAGE_STYLE,
   STATUS_LABELS,
+  UNSTAGED_ENCODING,
+  UNSTAGED_STYLE,
   stageEncoding,
+  unstagedHeader,
   type Matrix,
   type StageCode,
 } from "@/lib/statebill";
@@ -131,18 +134,31 @@ export function StateMatrix({ matrix }: { matrix: Matrix }) {
             {STAGE_ORDER.map((code) => (
               <StageHeader key={code} code={code} className={th} />
             ))}
-            {/* DECLARED, NOT CLAIMED. This header carries `data-unreachable` and
-                deliberately NOT `data-encoding`: live data has never contained a bill
-                outside stages 1-6, so the script cannot sample this column and must not
-                pretend it did. The branch is pinned by StateMatrix.test.ts instead.
-                Same shape as `data-unpainted` on the board's key. */}
+            {/* KEYED, LIKE THE SIX STAGES. This header carried `data-unreachable` and no
+                `data-encoding` while live data held no bill outside stages 1-6. On
+                2026-09-25 the state run 36131273689 wrote PA HR632 with a null status and
+                the branch was reached; on 2026-09-26 assert-encodings.mjs failed on it,
+                as it was written to. It is now a key entry: the script checks the
+                column's counts and the off-ramp rows against the paint declared here. It
+                still renders only while such a bill exists, which is why
+                encodings.expected.mjs carries it as a conditional row. The words come
+                from what the column holds (unstagedHeader). */}
             {matrix.hasUnstaged && (
-              <th className={th} scope="col" data-unreachable="unstaged">
+              <th
+                className={th}
+                scope="col"
+                title={unstagedHeader(matrix).title}
+                data-encoding={UNSTAGED_ENCODING}
+                data-paint-dot={UNSTAGED_STYLE.dot}
+                data-paint-cell={UNSTAGED_STYLE.cell}
+                data-paint-tick={UNSTAGED_STYLE.tick ?? "none"}
+                data-paint-chip={UNSTAGED_STYLE.chip}
+              >
                 <span
                   className="mr-1 inline-block size-1.5 rounded-full align-[1px]"
-                  style={{ background: "#404040" }}
+                  style={{ background: UNSTAGED_STYLE.dot }}
                 />
-                Unstaged
+                {unstagedHeader(matrix).label}
               </th>
             )}
             <th className={`${th} border-l border-neutral-800`} scope="col">
@@ -175,13 +191,22 @@ export function StateMatrix({ matrix }: { matrix: Matrix }) {
               {matrix.hasUnstaged && (
                 <td className={td}>
                   {/* No status param exists that selects these -- the count is a
-                      disclosure, not a filter, so it stays unlinked at any value. */}
-                  <span
-                    className={CELL}
-                    style={{ color: row.unstaged ? "#a3a3a3" : "#2e2e2e" }}
-                  >
-                    {row.unstaged || "·"}
-                  </span>
+                      disclosure, not a filter, so it stays unlinked at any value. A
+                      non-zero count CLAIMS the encoding, exactly as a stage count does;
+                      a zero is the same `data-zero` middot as everywhere else. */}
+                  {row.unstaged === 0 ? (
+                    <span className={`${CELL} text-[#2e2e2e]`} aria-label="none" data-zero="">
+                      ·
+                    </span>
+                  ) : (
+                    <span
+                      className={CELL}
+                      style={{ color: UNSTAGED_STYLE.cell }}
+                      data-stage={UNSTAGED_ENCODING}
+                    >
+                      {row.unstaged}
+                    </span>
+                  )}
                 </td>
               )}
               <td className={`${td} border-l border-neutral-800`}>

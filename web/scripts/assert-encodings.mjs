@@ -74,10 +74,39 @@
  */
 
 import { createRequire } from "node:module";
-import { pathToFileURL } from "node:url";
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { offRampCount, reconcileSets } from "./reconcile.mjs";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require("playwright-core");
+
+// THE WITNESS FOR THE ONE CONDITIONAL ROW, read before the browser opens. The snapshot
+// export/snapshots.py writes from Turso, never read by web code -- see offRampCount in
+// reconcile.mjs for why that independence is the point and what its one limit is. The
+// override exists for the same reason ENCODINGS_EXPECTED's does: red-proofs against a
+// scratch copy, never against the tracked file.
+const REPO = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
+const STATE_BILLS_PATH = process.env.STATE_BILLS_PATH ?? resolve(REPO, "data", "state_bills.json");
+// The record's clock as of the export: export/snapshots.py writes generated_at.json in the
+// same run, off the same connection, as state_bills.json. It is MAX(items.fetched_at), a
+// LOWER bound on when the export ran -- a state run that writes no items does not move it.
+// Printed beside the witness so a disagreement with the page can be read against the lag.
+const GENERATED_AT_PATH = process.env.GENERATED_AT_PATH ?? resolve(REPO, "data", "generated_at.json");
+let offRamp = null;
+let offRampError = null;
+try {
+  offRamp = offRampCount(JSON.parse(readFileSync(STATE_BILLS_PATH, "utf8")));
+} catch (e) {
+  offRampError = `${STATE_BILLS_PATH}: ${e.message}`;
+}
+let snapshotAt = "unreadable";
+try {
+  snapshotAt = JSON.parse(readFileSync(GENERATED_AT_PATH, "utf8")).generated_at ?? "null";
+} catch {
+  // Context only: the witness itself does not depend on it.
+}
 
 const ORIGIN = new URL(process.argv[2] ?? "http://localhost:3001").origin;
 const BOARD_URL = ORIGIN + "/";
@@ -100,7 +129,9 @@ const EXE =
 const FRAME_FRACTIONS = [1, 0.78, 0.6, 0.35, 0.12];
 
 let failures = 0;
-const check = (name, actual, expected) => {
+// `detail` prints under a FAIL only: context a reader needs to act on that failure and
+// would be noise beside a pass.
+const check = (name, actual, expected, detail) => {
   const ok = JSON.stringify(actual) === JSON.stringify(expected);
   if (!ok) failures++;
   console.log(
@@ -110,7 +141,8 @@ const check = (name, actual, expected) => {
       name +
       ": " +
       JSON.stringify(actual) +
-      (ok ? "" : "  (expected " + JSON.stringify(expected) + ")"),
+      (ok ? "" : "  (expected " + JSON.stringify(expected) + ")") +
+      (!ok && detail ? "\n        " + detail : ""),
   );
 };
 
@@ -435,19 +467,23 @@ const postureWording = await page.evaluate(() => {
 // vocabulary and would fail against all six declared colours if claimed. Both are
 // counted and printed, so an exclusion that starts swallowing real marks is visible.
 //
-// TWO BRANCHES ARE UNREACHABLE ON LIVE DATA AND THIS SCRIPT DOES NOT CLAIM THEM:
+// ONE BRANCH IS UNREACHABLE ON LIVE DATA AND THIS SCRIPT DOES NOT CLAIM IT:
 //
-//   unstaged column   draws only for a bill outside stages 1-6, and all 484 rows are
-//                     inside them. The header carries `data-unreachable`, not
-//                     `data-encoding`, so it never enters the join. That branch is
-//                     pinned by components/StateMatrix.test.ts instead.
-//   Vehicle badge     draws only for is_vehicle = 1, and that is 0 across all 484.
-//                     Pinned by NOTHING. Stated here so it is a known gap rather than
-//                     a discovered one.
+//   Vehicle badge     draws only for is_vehicle = 1, and that is 0 on every row.
+//                     Pinned by components/StateBillRow.test.ts (since 82487df).
 //
-// Both are asserted to be absent rather than silently skipped: if either ever becomes
-// reachable, the check below fails and forces this comment to be re-read. That is the
-// point -- an unreachable branch that quietly becomes reachable is how a key goes stale.
+// It is asserted to be absent rather than silently skipped: if it ever becomes reachable,
+// the check below fails and forces this comment to be re-read. That is the point -- an
+// unreachable branch that quietly becomes reachable is how a key goes stale.
+//
+// THERE WERE TWO, AND THE OTHER ONE FIRED. The unstaged column and the off-ramp row
+// were declared unreachable through 484 rows, their header carrying `data-unreachable`
+// instead of `data-encoding`. On 2026-09-25 the state run 36131273689 wrote PA HR632
+// with a null status and the branch was reached; on 2026-09-26 this check failed on it,
+// exactly as this paragraph said it would. The ruling was the one the check prescribed:
+// the key owes it an entry. So `unstaged` is now keyed like the six stages and joined
+// like them, and encodings.expected.mjs carries it as a CONDITIONAL row -- expected
+// whenever the render shows it or the snapshot's witness says the data holds one.
 const STATE_VIEWS = [
   ["default", "/state-bills"],
   ["one state", "/state-bills?state=TX"],
@@ -470,8 +506,9 @@ const sbBySurface = { dot: new Set(), cell: new Set(), tick: new Set(), chip: ne
 let sbNamed = [];
 let sbDeclared = {}; // reported, not asserted -- see the ramp note below
 let sbKeyCount = null;
-let sbUnreachable = [];
 let sbUnstagedSampled = 0;
+let sbOffRampRows = null; // off-ramp bill rows in the ?all=1 view: the page's own count
+const sbUnstagedTickStyles = [];
 let sbVehicleSampled = 0;
 
 for (const [label, path] of STATE_VIEWS) {
@@ -569,13 +606,22 @@ for (const [label, path] of STATE_VIEWS) {
       declared,
       named: [...new Set(heads.map((h) => h.getAttribute("data-encoding")))].sort(),
       keyCount: keyBlocks.length,
-      unreachable: [...document.querySelectorAll("[data-unreachable]")].map((e) =>
-        e.getAttribute("data-unreachable"),
-      ),
       zeros: document.querySelectorAll("[data-zero]").length,
-      // The two branches this script states it cannot reach, counted so that becoming
-      // reachable is an alarm rather than a silent change of what the sweep covers.
+      // The conditional encoding, counted and printed so a reader can see whether this
+      // render showed it. It is printed beside the snapshot's witness, which is what
+      // decides whether it was owed.
       unstagedSampled: document.querySelectorAll('[data-stage="unstaged"]').length,
+      // The page's count of off-ramp bills: rows in the #list section, which under ?all=1
+      // lists every bill exactly once. Scoped to #list because "Latest movement" renders
+      // on every view too, and a recently-moved off-ramp bill would otherwise count twice.
+      // The tick-style sweep below stays unscoped: a movement row for such a bill must be
+      // dashed as well, so every row is checked.
+      offRampRows: document.querySelectorAll('#list li > a[data-stage="unstaged"]').length,
+      unstagedTickStyles: [...document.querySelectorAll('li > a[data-stage="unstaged"]')].map(
+        (a) => getComputedStyle(a).borderLeftStyle,
+      ),
+      // The branch this script states it cannot reach, counted so that becoming reachable
+      // is an alarm rather than a silent change of what the sweep covers.
       vehicleSampled: [...document.querySelectorAll("li > a[data-stage] span")].filter(
         (e) => e.textContent.trim() === "Vehicle",
       ).length,
@@ -588,8 +634,9 @@ for (const [label, path] of STATE_VIEWS) {
   sbNamed = r.named;
   sbDeclared = r.declared;
   sbKeyCount = r.keyCount;
-  sbUnreachable = r.unreachable;
   sbUnstagedSampled += r.unstagedSampled;
+  if (path.endsWith("?all=1")) sbOffRampRows = r.offRampRows;
+  sbUnstagedTickStyles.push(...r.unstagedTickStyles);
   sbVehicleSampled += r.vehicleSampled;
   sbMismatch.push(...r.mismatch);
   sbUnknown.push(...r.unknown);
@@ -703,15 +750,14 @@ console.log("views swept: " + JSON.stringify(sbPerView));
 console.log("claimed: " + JSON.stringify([...sbClaimed].sort()));
 console.log("verified: " + JSON.stringify([...sbEmitted].sort()));
 console.log("named:   " + JSON.stringify(sbNamed));
-// EMPTY IS THE EXPECTED READING, and it does not mean "nothing was declared". The
-// unstaged header only renders when a bill is outside stages 1-6, so on live data there
-// is no [data-unreachable] element in the DOM at all. A non-empty list here means the
-// branch became reachable, which the check further down turns into a failure.
-console.log(
-  "unreachable markers in the DOM: " +
-    JSON.stringify(sbUnreachable) +
-    (sbUnreachable.length === 0 ? "  (none rendered -- branch not reached, as expected)" : ""),
-);
+// TWO NUMBERS, AND ONLY ONE OF THEM IS ABOUT THE DATA. The render's count says what the
+// page showed; the witness says what the snapshot holds. A render cannot tell clean data
+// from a branch it dropped, so this line never reads a zero mark count as "no off-ramp
+// bill" -- that is the witness's to say.
+const witnessLine =
+  `page: ${sbOffRampRows ?? "?"} off-ramp bill(s) in ?all=1's list; ` +
+  `snapshot (the witness): ${offRamp === null ? "UNREADABLE" : offRamp}, generated_at ${snapshotAt}`;
+console.log("unstaged marks sampled: " + sbUnstagedSampled + "; " + witnessLine);
 for (const surface of SURFACES) {
   console.log("  " + surface.padEnd(5) + " paints: " + JSON.stringify([...sbBySurface[surface]].sort()));
 }
@@ -774,11 +820,12 @@ check("state-bills: paint disagreeing with the key", sbMismatch.slice(0, 6), [])
 
 // CLAIMED, not verified -- see record(). A stage the page paints and the key omits must
 // reach this line even though nothing could check its colour against a key entry that
-// does not exist. "unstaged" is excluded here and counted on its own below: it is the
-// declared-unreachable branch, not an encoding the key owes an entry.
+// does not exist. NOTHING IS EXCLUDED BY NAME ANY MORE. "unstaged" was, as the
+// declared-unreachable branch, until the key took an entry for it (the branch was reached
+// on 2026-09-25, PA HR632); it is held to this check like every stage.
 check(
   "state-bills: emitted but not named",
-  [...sbClaimed].sort().filter((e) => e !== "unstaged" && !sbNamedSet.has(e)),
+  [...sbClaimed].sort().filter((e) => !sbNamedSet.has(e)),
   [],
 );
 
@@ -815,6 +862,27 @@ for (const surface of ["tick", "chip"]) {
   );
 }
 
+// AND `cell` FOR THE ONE ENCODING WHERE IT IS NOT VACUOUS. The six stages are exempt from
+// a cell check because the matrix draws their columns on every view. `unstaged` is the
+// reverse: its header renders only when some row holds a non-zero count, so a keyed
+// `unstaged` with no claimed count means the column's cells stopped claiming -- which
+// the key's own dot would otherwise hide, since a key dot is itself a claim (record()).
+check(
+  "state-bills: unstaged, when keyed, painted on cell",
+  sbNamed.includes("unstaged") && !sbBySurface.cell.has("unstaged") ? ["unstaged"] : [],
+  [],
+);
+
+// THE LINE STYLE THE COLOUR CHECKS CANNOT SEE. `paint disagreeing with the key` compares
+// colours, and an off-ramp row's tick is Introduced's chip grey on a rule Introduced does
+// not draw -- what separates the two rows is that the rule is DASHED (ruled 2026-09-26).
+// A class or a restyle that rendered it solid would pass every colour check here.
+check(
+  "state-bills: every off-ramp row's tick is dashed",
+  sbUnstagedTickStyles.filter((s) => s !== "dashed"),
+  [],
+);
+
 // THE RULING, ASSERTED. A key whose swatch is merely NEAR the colour it explains is one
 // the reader has to squint past, and it drifts one stage at a time because each step
 // looks close enough on its own.
@@ -836,12 +904,17 @@ check(
 // present is the failure that opened this file.
 check("state-bills: data-key blocks", sbKeyCount, 1);
 
-// THE STATED BOUNDARY, ASSERTED RATHER THAN ASSUMED. Both branches are unpaintable on
-// live data, so the sweep cannot have sampled them and must not imply it did. If either
-// count ever moves off zero the branch has become reachable, the key owes it an entry,
-// and the comment above owes a rewrite -- which is the alarm, not a nuisance.
-check("state-bills: unstaged sampled (unreachable by construction)", sbUnstagedSampled, 0);
-check("state-bills: vehicle badges sampled (unreachable, and pinned by no test)", sbVehicleSampled, 0);
+// THE STATED BOUNDARY, ASSERTED RATHER THAN ASSUMED. The Vehicle badge is unpaintable on
+// live data, so the sweep cannot have sampled it and must not imply it did. If this count
+// ever moves off zero the branch has become reachable, the key owes it an entry, and the
+// comment above owes a rewrite -- which is the alarm, not a nuisance.
+//
+// IT FIRED ONCE, FOR THE OTHER BRANCH. A matching check on `unstaged` stood here until the
+// key took the entry this comment prescribed. The branch was reached on 2026-09-25, when
+// the state run 36131273689 wrote PA HR632 with a null status, and on 2026-09-26 the
+// check read `state-bills: unstaged sampled (unreachable by construction): 1`. It retired
+// with the keying: `unstaged` is joined above and reconciled below like a stage.
+check("state-bills: vehicle badges sampled (unreachable on live data; pinned by StateBillRow.test.ts)", sbVehicleSampled, 0);
 
 // --- THE THIRD SIDE: reconciliation against the expected set ----------------------
 //
@@ -854,7 +927,10 @@ check("state-bills: vehicle badges sampled (unreachable, and pinned by no test)"
 // cannot see.
 //
 // `encodings.expected.mjs` is written by hand from the spec and derived from no render,
-// so it is the side the page cannot vote on. Reconciliation is FOUR DIRECTIONS per route
+// so it is the side the page cannot vote on. ONE QUALIFICATION: a conditional row's
+// presence is decided at run time, by the render OR by a witness counted from the data
+// snapshot -- and it is the witness, not the render, that keeps the page from voting on
+// that row (see reconcile.mjs). Reconciliation is FOUR DIRECTIONS per route
 // rather than a set equality, because the four mean four different things and a reader
 // needs to know which one fired:
 //
@@ -870,28 +946,46 @@ check("state-bills: vehicle badges sampled (unreachable, and pinned by no test)"
 // If the ruling is "deliberate", the fixture is edited IN THE SAME COMMIT as the paint —
 // the precedent the milestone-marker row set, where paint, key row and expected row
 // landed together and the join moved 9→10 with nothing red in between.
-const reconcile = (label, expectedRows, emittedSet, namedList) => {
-  const exp = expectedRows.map((r) => r.encoding).sort();
-  const expSet = new Set(exp);
-  const em = [...emittedSet].sort();
-  const nm = [...new Set(namedList)].sort();
-  console.log(`\n${label}: expected ${exp.length}, emitted ${em.length}, named ${nm.length}`);
-  check(`${label}: emitted but not expected`, em.filter((e) => !expSet.has(e)), []);
-  check(`${label}: expected but not emitted`, exp.filter((e) => !emittedSet.has(e)), []);
-  check(`${label}: named but not expected`, nm.filter((e) => !expSet.has(e)), []);
-  check(`${label}: expected but not named`, exp.filter((e) => !nm.includes(e)), []);
+//
+// THE ARITHMETIC IS scripts/reconcile.mjs, pure, so components/StateMatrix.test.ts can
+// run it on rendered markup without a browser. A row carrying `when` is CONDITIONAL:
+// expected when the render emits it or names it, or when the witness says the data holds
+// one, and then held to all four directions. A conditional row that none of the three
+// calls for is printed, never failed.
+const reconcile = (label, expectedRows, emittedSet, namedList, witnessed = [], detail) => {
+  const r = reconcileSets(expectedRows, emittedSet, namedList, witnessed);
+  console.log(
+    `\n${label}: expected ${r.expected.length}, emitted ${r.emitted.length}, named ${r.named.length}` +
+      (r.conditionalAbsent.length ? `  (conditional, not called for: ${JSON.stringify(r.conditionalAbsent)})` : ""),
+  );
+  check(`${label}: emitted but not expected`, r.emittedNotExpected, []);
+  check(`${label}: expected but not emitted`, r.expectedNotEmitted, [], detail);
+  check(`${label}: named but not expected`, r.namedNotExpected, []);
+  check(`${label}: expected but not named`, r.expectedNotNamed, [], detail);
 };
 
 console.log("\nreconciliation against the expected set (the side the page cannot vote on)");
 reconcile("board", EXPECTED.board, emitted, named);
-// `unstaged` is a claim rather than an encoding — the declared-unreachable branch, which
-// the fixture states is deliberately absent. Excluded here on the same grounds the
-// emitted-but-not-named check above excludes it, and by name rather than by fallthrough.
+// NO NAME IS FILTERED OUT OF EITHER SIDE. `unstaged` was, as the declared-unreachable
+// branch, until the key took an entry for it (reached 2026-09-25, PA HR632); it is now a
+// conditional row of the fixture, and the snapshot's witness decides whether it is owed.
+// An unreadable snapshot is a failure, not a pass: without the witness this row would be
+// back to the page voting on itself.
+check("state-bills: the off-ramp witness was read", offRampError, null);
+// WHEN THE PAGE AND THE WITNESS DISAGREE, the expected-side failure lines carry both
+// counts and the snapshot's generated_at. That is the only failure the witness can add,
+// and it has two readings: the page dropped the branch, or the snapshot trails a status
+// filled in since. generated_at settles that one way only, being a lower bound on the
+// export: later than the state run rules out the lag reading; earlier leaves both open,
+// and only the bill's live status in Turso decides -- which this lane cannot read.
+const disagree = (sbOffRampRows ?? 0) > 0 !== (offRamp ?? 0) > 0;
 reconcile(
   "state-bills",
   EXPECTED.stateBills,
-  new Set([...sbClaimed].filter((e) => e !== "unstaged")),
+  sbClaimed,
   sbNamed,
+  offRamp > 0 ? ["unstaged"] : [],
+  disagree ? `page and witness disagree -- ${witnessLine}` : undefined,
 );
 
 console.log(failures === 0 ? "\nOK" : "\n" + failures + " FAILED");

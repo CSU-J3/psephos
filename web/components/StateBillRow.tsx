@@ -3,6 +3,10 @@ import type { StateBill } from "@/lib/db";
 import { formatDate } from "@/lib/format";
 import {
   STAGE_STYLE,
+  UNSTAGED_ENCODING,
+  UNSTAGED_LABEL,
+  UNSTAGED_STYLE,
+  UNSTAGED_TICK_STYLE,
   stageEncoding,
   stageOf,
   stateBillLabel,
@@ -21,11 +25,19 @@ import {
 // not (see STAGE_STYLE).
 //
 // The amber Vehicle badge stays wired for 5b-b. Nothing is flagged today -- is_vehicle
-// is 0 across all 484 rows -- and it is kept because the column exists and a state
-// vehicle is the one thing on this page that would deserve to interrupt the ramp.
-// BECAUSE it is unpaintable on live data, assert-encodings.mjs cannot sample it and
-// says so rather than certifying a set it never reached. Unlike the matrix's unstaged
-// column, this branch is pinned by no test at all -- a stated gap, not a covered one.
+// is 0 on every row -- and it is kept because the column exists and a state vehicle is
+// the one thing on this page that would deserve to interrupt the ramp. BECAUSE it is
+// unpaintable on live data, assert-encodings.mjs cannot sample it and says so rather
+// than certifying a set it never reached; StateBillRow.test.ts pins it instead (since
+// 82487df).
+//
+// A ROW OFF THE RAMP -- no status, or a code the ramp does not know -- claims the
+// `unstaged` encoding, paints a DASHED tick in the key's grey, and carries a chip in the
+// same grey: the raw code if there is one, and "No status" if LegiScan has given none.
+// That branch was declared unreachable and was reached on 2026-09-25 (PA HR632, state run
+// 36131273689). Until it was keyed, a null-status row painted no chip at all, which the
+// key had no entry to explain. The tick is dashed because Introduced paints no tick and
+// the same chip grey: without it the two rows carried identical paint (ruled 2026-09-26).
 // No sponsor field: state bills carry none.
 //
 // TWO ATTRIBUTES EXIST FOR THE ENCODINGS JOIN, and they are not decoration. `data-stage`
@@ -36,8 +48,8 @@ import {
 // Colour alone cannot do it: stages 2 and 3 are painted identically.
 export function StateBillRow({ bill }: { bill: StateBill }) {
   const stage = stageOf(bill);
-  const style = stage ? STAGE_STYLE[stage] : null;
-  const status = stateBillStatus(bill.status);
+  const style = stage ? STAGE_STYLE[stage] : UNSTAGED_STYLE;
+  const status = stateBillStatus(bill.status) ?? UNSTAGED_LABEL;
   const failed = stage === "6";
 
   return (
@@ -45,8 +57,11 @@ export function StateBillRow({ bill }: { bill: StateBill }) {
       <Link
         href={`/state-bill/${bill.state_bill_id}`}
         className="block border-b border-[#1c1c1c] border-l-2 py-2 pr-3 pl-3.5 transition-colors hover:bg-neutral-900"
-        style={{ borderLeftColor: style?.tick ?? "transparent" }}
-        data-stage={stage ? stageEncoding(stage) : "unstaged"}
+        style={{
+          borderLeftColor: style.tick ?? "transparent",
+          ...(stage ? {} : { borderLeftStyle: UNSTAGED_TICK_STYLE }),
+        }}
+        data-stage={stage ? stageEncoding(stage) : UNSTAGED_ENCODING}
       >
         <div className="flex items-baseline gap-2.5">
           <span className="shrink-0 font-mono text-[0.8rem] whitespace-nowrap text-neutral-500">
@@ -64,15 +79,13 @@ export function StateBillRow({ bill }: { bill: StateBill }) {
               Vehicle
             </span>
           )}
-          {status && (
-            <span
-              className="shrink-0 text-[0.72rem] whitespace-nowrap"
-              style={{ color: style?.chip ?? "#737373", fontWeight: style?.bold ? 600 : 400 }}
-              data-chip=""
-            >
-              {status}
-            </span>
-          )}
+          <span
+            className="shrink-0 text-[0.72rem] whitespace-nowrap"
+            style={{ color: style.chip, fontWeight: style.bold ? 600 : 400 }}
+            data-chip=""
+          >
+            {status}
+          </span>
         </div>
         {bill.last_action && (
           <p className="mt-1 truncate text-[0.8rem] text-neutral-400">

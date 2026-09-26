@@ -3,14 +3,18 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import type { StateBill } from "@/lib/db";
 import { StateBillRow } from "@/components/StateBillRow";
-import { STAGE_STYLE } from "@/lib/statebill";
+import { STAGE_STYLE, UNSTAGED_LABEL, UNSTAGED_STYLE } from "@/lib/statebill";
 
-// THE SECOND BRANCH LIVE DATA CANNOT REACH, and until this file existed it was pinned by
-// nothing at all -- docs/status.md carried it as a stated gap while the matrix's unstaged
-// column next to it had a test. `is_vehicle` is 0 across all 484 rows, so the amber badge
-// draws on no page anyone can visit, and assert-encodings.mjs says so explicitly rather
-// than certifying a set it never reached. That leaves exactly one place the branch can be
+// THE BRANCH LIVE DATA CANNOT REACH, and until this file existed it was pinned by nothing
+// at all -- docs/status.md carried it as a stated gap while the matrix's unstaged column
+// next to it had a test. `is_vehicle` is 0 on every row, so the amber badge draws on no
+// page anyone can visit, and assert-encodings.mjs says so explicitly rather than
+// certifying a set it never reached. That leaves exactly one place the branch can be
 // exercised: a render with a fixture that live data does not supply.
+//
+// It used to be the second such branch. The first, a row with no stage, was reached on
+// 2026-09-25 (PA HR632, state run 36131273689) and is now keyed; its tests are at the
+// foot of this file.
 //
 // It matters more than an unused branch usually would. 5b-b -- state-level vehicle
 // detection -- is CLOSED as a free-tier limitation, not abandoned: LegiScan's `sasts`
@@ -92,5 +96,49 @@ describe("StateBillRow — the Vehicle badge", () => {
       const html = render(bill({ state_bill_id: "1", state: "TX", is_vehicle: v }));
       expect(html).not.toContain("Vehicle");
     }
+  });
+});
+
+// A ROW WITH NO STAGE. PA HR632 is the live case: status, last_action and last_action_at
+// all NULL. Before it was keyed, such a row claimed `unstaged` and painted no chip at
+// all, so the one mark it carried was one the key had no entry for.
+describe("StateBillRow — a status-less row", () => {
+  const hr632 = () =>
+    render(bill({ state_bill_id: "2159038", state: "PA", status: null, last_action: null, last_action_at: null }));
+
+  it("claims the unstaged encoding", () => {
+    expect(hr632()).toContain('data-stage="unstaged"');
+  });
+
+  it("paints a chip saying what the record holds, in the key's declared chip grey", () => {
+    const chip = /<span[^>]*data-chip=""[^>]*>([^<]*)<\/span>/.exec(hr632());
+    expect(chip?.[1]).toBe(UNSTAGED_LABEL);
+    expect(chip?.[0]).toContain(`color:${UNSTAGED_STYLE.chip}`);
+  });
+
+  // RULED 2026-09-26. With no tick and Introduced's chip grey the row carried exactly
+  // Introduced's paint; the dashed rule is what separates them, in the key's one grey.
+  it("paints a dashed tick in the key's grey, the one thing Introduced does not draw", () => {
+    expect(UNSTAGED_STYLE.tick).toBe(UNSTAGED_STYLE.dot);
+    expect(hr632()).toContain(`border-left-color:${UNSTAGED_STYLE.tick}`);
+    expect(hr632()).toContain("border-left-style:dashed");
+    const introduced = render(bill({ state_bill_id: "1", state: "TX", status: "1" }));
+    expect(introduced).toContain("border-left-color:transparent");
+    expect(introduced).not.toContain("dashed");
+  });
+
+  it("draws the dashed rule for an unmapped code too, and never on a staged row", () => {
+    expect(render(bill({ state_bill_id: "1", state: "TX", status: "9" }))).toContain("border-left-style:dashed");
+    for (const status of ["1", "2", "3", "4", "5", "6"]) {
+      expect(render(bill({ state_bill_id: "1", state: "TX", status }))).not.toContain("dashed");
+    }
+  });
+
+  // An unmapped code is off the ramp too, but it IS a status: the chip shows it raw
+  // rather than saying there is none.
+  it("shows an unmapped code raw on the chip, still claiming unstaged", () => {
+    const html = render(bill({ state_bill_id: "1", state: "TX", status: "9" }));
+    expect(html).toContain('data-stage="unstaged"');
+    expect(/<span[^>]*data-chip=""[^>]*>([^<]*)<\/span>/.exec(html)?.[1]).toBe("9");
   });
 });

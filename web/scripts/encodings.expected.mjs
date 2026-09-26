@@ -22,8 +22,9 @@
  * atomically with nothing red in between.
  *
  * PROVENANCE IS PART OF THE ROW. `paint` is where the mark is drawn, `key` is where it
- * is named, `since` is the commit that introduced it. All line numbers are pinned to
- * `b468644` and WILL drift — they are a starting point for a reader, never an assertion;
+ * is named, `since` is the commit that introduced it. Line numbers are pinned per row, to
+ * `b468644` unless the row says otherwise, and WILL drift — they are a starting point for
+ * a reader, never an assertion;
  * nothing in the script reads them. The `since` hashes are the durable half and are all
  * ancestors of origin/main.
  *
@@ -71,7 +72,7 @@ export const BOARD = [
 ];
 
 /**
- * `/state-bills` — six stage encodings, one per rung of the ramp.
+ * `/state-bills` — six stage encodings, one per rung of the ramp, and `unstaged` off it.
  *
  * `paint` here is where a MARK claims a stage (`data-stage`), which is a different
  * attribute from the `data-encoding` the key header carries; both are listed because
@@ -84,17 +85,23 @@ export const STATE_BILLS = [
   { encoding: "stage-enrolled", paint: "StateMatrix.tsx:72 / StateBillRow.tsx:49", key: "StateMatrix.tsx:90", since: "10696c5" },
   { encoding: "stage-vetoed", paint: "StateMatrix.tsx:72 / StateBillRow.tsx:49", key: "StateMatrix.tsx:90", since: "10696c5" },
   { encoding: "stage-failed", paint: "StateMatrix.tsx:72 / StateBillRow.tsx:49", key: "StateMatrix.tsx:90", since: "10696c5" },
+  // THE ONE CONDITIONAL ROW. `unstaged` was listed in NOT_ENCODINGS -- absent by design,
+  // "paint that by design never appears" -- until it was keyed. The branch was reached on
+  // 2026-09-25, when the state run 36131273689 wrote PA HR632 with a null status. The key
+  // now names it and this row expects it, but ONLY WHILE SUCH A BILL EXISTS: its key entry
+  // and its marks render only then. `when` makes it owed whenever the render shows either
+  // OR the data snapshot's witness counts such a bill, and holds it to all four
+  // directions there -- the witness is what stops the page voting on this row
+  // (scripts/reconcile.mjs). Line numbers are as of the commit that keyed it; `since` is
+  // the mechanism's commit, on the same rule as the six rows above.
+  {
+    encoding: "unstaged",
+    paint: "StateMatrix.tsx:205 / StateBillRow.tsx:64",
+    key: "StateMatrix.tsx:151",
+    since: "10696c5",
+    when: "a bill carries no status, or a status code the ramp does not know",
+  },
 ];
-
-/**
- * `unstaged` is deliberately ABSENT from the list above, and its absence is a claim.
- *
- * It is what a row claims when its status is outside the ramp, and live data has never
- * held one — 484 rows, all in 1–6. It is therefore not an encoding the key owes an
- * entry, and the script already excludes it from the emitted side by name. Listing it
- * here would make the reconciliation demand paint that by design never appears.
- */
-export const NOT_ENCODINGS = ["unstaged"];
 
 export const EXPECTED = { board: BOARD, stateBills: STATE_BILLS };
 
