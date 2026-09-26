@@ -45972,13 +45972,24 @@
   {
     "bill_number": "HR632",
     "is_vehicle": false,
-    "last_action": null,
-    "last_action_at": null,
+    "last_action": "Referred to State Government",
+    "last_action_at": "2026-09-25T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2159038",
-    "status": null,
-    "timeline": [],
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 114085,
+        "kind": "item",
+        "occurred_at": "2026-09-25T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HR632/2025",
+        "title": "PA HR632: Referred to State Government"
+      }
+    ],
     "title": "Recognizing the week of October 5 through 9, 2026, as \"National Voter Education Week\" in Pennsylvania.",
     "url": "https://legiscan.com/PA/bill/HR632/2025"
   }
