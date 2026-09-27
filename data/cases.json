@@ -21310,6 +21310,3136 @@
     ]
   },
   {
+    "caption": "DSCC v. TRUMP",
+    "case_id": "73131864",
+    "category": "executive-order",
+    "court": "D.D.C.",
+    "date_terminated": null,
+    "defendant": "TRUMP",
+    "docket_number": "1:26-cv-01114",
+    "entry_count": 0,
+    "filed_at": "2026-04-01T00:00:00",
+    "latest_entry_at": null,
+    "plaintiff": "DSCC",
+    "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-09-27T17:06:39.199408+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 115240,
+        "kind": "item",
+        "occurred_at": "2026-04-01T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump — executive-order"
+      }
+    ]
+  },
+  {
+    "caption": "League of Women Voters of Massachusetts v. Trump",
+    "case_id": "73133197",
+    "category": "executive-order",
+    "court": "D. Mass.",
+    "date_terminated": null,
+    "defendant": "Trump",
+    "docket_number": "1:26-cv-11549",
+    "entry_count": 363,
+    "filed_at": "2026-04-02T00:00:00",
+    "latest_entry_at": "2026-09-25T00:00:00",
+    "plaintiff": "League of Women Voters of Massachusetts",
+    "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-09-27T17:01:05.135413+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 114933,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114934,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/1/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: COMPLAINT against All Defendants Filing fee: $ 405, receipt number AMADC-11651844 (Fee Status: Filing Fee paid), filed by Association of Americans Resident Overseas, Delta Sigma Th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114935,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/3/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: ELECTRONIC NOTICE of Case Assignment. Judge Indira Talwani assigned to case. If the trial Judge issues an Order of Reference of any matter in this case to a Magistrate Judge, the m"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114936,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/18/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Joint MOTION for a Briefing and Hearing Schedule and for Additional Pages by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Ed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114937,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/19/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Transfer Case to District of Columbia. by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114938,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/20/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 19 MOTION to Transfer Case to District of Columbia. filed by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McRe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114939,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/24/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ORDER entered. See attached. (SEC) (Entered: 04/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114940,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/25/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: granting in part and reserving in part the parties' Joint Motion for a Briefing and Hearing Schedule and for Additional Pages [ 18 ]. Plaint"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115099,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115113,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114941,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/44/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Intervene by State of Missouri, State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Montana, State of Nebraska, State of O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114942,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/45/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 44 MOTION to Intervene filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Mont"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114943,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/46/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Transfer Case to D.D.C. by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of Nebras"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114944,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/47/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 46 MOTION to Transfer Case to D.D.C. filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114945,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/54/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: JOINT STATEMENT of counsel in response to order (ECF 24). (Schlossberg, Suzanne) (Entered: 04/21/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114946,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/57/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ORDER entered. See attached. (SEC) (Entered: 04/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114947,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/58/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER terminating as moot 18 Joint MOTION for a Briefing and Hearing Schedule and for Additional Pages. (SEC) (Entered: 04/22/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115119,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Miscellaneous Relief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115120,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order AND ~Util - Terminate Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114948,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/67/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER. Plaintiffs and Defendants shall file responses to the Proposed Intervenors' [ 44 ] Motion to Intervene on or before noon on April 27, 2026. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114949,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/70/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File by Society for the Rule of Law. (Attachments: # 1 Exhibit)(Bernstein, Inga) (Entered: 04/23/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114950,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/73/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Preliminary Injunction by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Voters Lot"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114951,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/74/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 73 MOTION for Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Educatio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114952,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/75/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AFFIDAVIT in Support re 73 MOTION for Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115117,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114953,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/79/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: RESPONSE to Motion re 44 MOTION to Intervene filed by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115116,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order AND ~Util - Add and Terminate Attorneys AND ~Util - Terminate Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114954,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/85/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 46 MOTION to Transfer Case to D.D.C., 19 MOTION to Transfer Case to District of Columbia. filed by Association of Americans Resident Overseas, Delta Sig"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114955,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/86/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 44 MOTION to Intervene filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, Lea"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114956,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/87/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting 70 unopposed Motion for Leave to File Brief as Amicus Curiae of the Society for the Rule of Law; Counsel using the Electronic Case F"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115115,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114957,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/98/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM AND ORDER entered.Finding that Defendants have not met their burden to show that transfer to the U.S. District Court for the District of Columbia w"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114958,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/99/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 44 MOTION to Intervene filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115118,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114959,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/101/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER terminating proposed Intervenors' Motion to Transfer[ 46 ]. See Mem. & Order 2-3 n.2[ 98 ].(MAP) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114960,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/105/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Notice of Supplemental Authorities re 44 MOTION to Intervene (Attachments: # 1 Exhibit DDC Minute Order)(Prior, Ian) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115124,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115125,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order AND ~Util - Terminate Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114961,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/106/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered. Applicants State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Mo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115127,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114962,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/109/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Amicus by Becky Close, Mark Coakley, Ethan Compton, Kristin Connelly, Matt Crane, Daryl Daugs, Jilline Dobratz, Sharon Dubois, Sharon Dubois, Eileen Giesbr"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114963,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/115/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Brief as Amici Curiae by EXPO of Wisconsin, Inc, Jaleyce Oraedu, Jasmine Oreadu, Aharon Shelef, Wisconsin Democracy Campaign. (Attachments: # 1 Exhibit BRI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114964,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/116/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 109 MOTION for Leave to File Amicus Brief ; Counsel using the Electronic Case Filing System should now file the document for which l"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114965,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/117/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 115 MOTION for Leave to File Amicus Brief; Counsel using the Electronic Case Filing System should now file the document for which le"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114966,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/123/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AMICUS BRIEF filed by EXPO of Wisconsin, Inc, Jaleyce Oraedu, Jasmine Oreadu, Aharon Shelef, Wisconsin Democracy Campaign . (Attachments: # 1 Exhibit Luedtke v. Yunker, No. 2025CV1"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115129,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115130,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114967,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/124/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, St"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114968,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/125/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 124 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and OPPOSITION 73 MOTION for Preliminary Injunction filed by State of Alabama, State of Florida, State o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114969,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/126/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Dismiss by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social Security Administration, David S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114970,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/127/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: EXHIBIT re 126 MOTION to Dismiss by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social Security Administ"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114971,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/128/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 126 MOTION to Dismiss and OPPOSITION 73 California Plaintiffs' Motion for Summary Judgment and the LWVMA Plaintiffs' Motion for Preliminary Injunction (Com"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114972,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/135/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Consent MOTION for Leave to File an amicus brief in support of Defendants motion to dismiss by Federation for American Immigration Reform. (Attachments: # 1 Amicus Brief, # 2 Propo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115122,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114973,
+        "kind": "item",
+        "occurred_at": "2026-05-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/136/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AMICUS BRIEF filed by Center for Election Innovation and Research and Current and Former State and Local Election Officials (leave to file granted by order dated May 6, 2026). (Bat"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114974,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/139/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 73 MOTION for Preliminary Injunction, 126 MOTION to Dismiss, 124 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by Association of Americans Resident Over"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114975,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/140/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Second AFFIDAVIT of Sophia Lin Lakin in Support re 73 MOTION for Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., Leagu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114976,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/141/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 135 Consent MOTION for Leave to File an Amicus Brief in Support of Defendants Motion to Dismiss ; Counsel using the Electronic Case "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114977,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/142/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AMICUS BRIEF filed by Federation for American Immigration Reform in support of Defendants' Motion to Dismiss. (O'Brien, Matthew) (Entered: 05/18/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115134,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114978,
+        "kind": "item",
+        "occurred_at": "2026-05-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/144/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: ELECTRONIC NOTICE of Hearing. Motion Hearing set for 6/2/2026 10:00 AM in Courtroom 9 (In person only) before Judge Indira Talwani. (GAM) (Entered: 05/21/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114979,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/145/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 124 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114980,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/146/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: DECLARATION (Ex. 1 to Defs.' Reply in Support of Motion to Dismiss - Supplemental Mayhew Declaration (May 22, 2026)) by Frank J Bisignano, Department of Homeland Security, Joseph B"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114981,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/147/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 126 MOTION to Dismiss filed by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114982,
+        "kind": "item",
+        "occurred_at": "2026-05-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/148/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Notice of Supplemental Authorities re 73 MOTION for Preliminary Injunction, 126 MOTION to Dismiss (Attachments: # 1 Ex. 1 - Opinion in DSCC v. Trump (D.D.C. May 28, 2026))(Pezzi, S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114983,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/150/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: on April 22, 2026, court consolidated League of Women Voters of Massachusetts, et al. v. Donald J. Trump, et al., 26-cv-11549, and State of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115106,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114984,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/153/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion hearing held on 6/2/2026 in 1:26-cv-11549-IT League of Women Voters of Massachusetts et al v. Trum"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114985,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/155/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Transcript of Motion Hearing held on June 2, 2026, before Judge Indira Talwani. The Transcript may be purchased through the Court Reporter, viewed at the public terminal, or viewed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114986,
+        "kind": "item",
+        "occurred_at": "2026-06-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/158/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Sur-Reply by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Voters Lo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114987,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/159/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 158 MOTION for Leave to File Sur-Reply; Counsel using the Electronic Case Filing System should now file the document for which leave"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114988,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/160/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: SUR-REPLY to Motion re 73 MOTION for Preliminary Injunction, 126 MOTION to Dismiss, 124 MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM filed by Association of Americans Resident Ov"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115128,
+        "kind": "item",
+        "occurred_at": "2026-06-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114989,
+        "kind": "item",
+        "occurred_at": "2026-06-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/161/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Sur-Reply (or Response to Plaintiffs' Sur-Reply) by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, M"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114990,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/162/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 161 MOTION for Leave to File Sur-Reply (or Response to Plaintiffs' Sur-Reply) ; Counsel using the Electronic Case Filing System shou"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114991,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/163/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Response by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Amber F McReynolds, Markwayne Mullin, Social Security Administration, David Steiner, Ronald A Strom"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115133,
+        "kind": "item",
+        "occurred_at": "2026-06-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114992,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/166/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered. For all of the above reasons, the court GRANTS Defendants’ and Intervenor States’ motions to dismiss Plaintiff Organizations’ comp"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114993,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/167/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered. If the D.C. Injunction is stayed pending appeal, or USPS promulgates a final rule implementing Section 3 of the EO, Plaintiff Orga"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114994,
+        "kind": "item",
+        "occurred_at": "2026-07-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/170/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Second MOTION for Preliminary Injunction by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Vot"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114995,
+        "kind": "item",
+        "occurred_at": "2026-07-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/171/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 170 Second MOTION for Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114996,
+        "kind": "item",
+        "occurred_at": "2026-07-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/172/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AFFIDAVIT in Support re 170 Second MOTION for Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114997,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/173/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: Defendants and Intervenor-Defendants shall file their response to Plaintiffs’ renewed Motion for a Preliminary Injunction [ 170 ] no later t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114998,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/174/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: ELECTRONIC NOTICE Setting Hearing on Motion 170 Second MOTION for Preliminary Injunction: Motion Hearing set for 8/7/2026 10:00 AM in Courtroom 9 (In person only) before Judge Indi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115101,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Notice Setting or Resetting Hearing on Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115114,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order AND ~Util - Set Motion and R&R Deadlines/Hearings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 114999,
+        "kind": "item",
+        "occurred_at": "2026-07-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/175/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered.For the foregoing reasons, the court supplements its June 18, 2026 Memorandum and Order [Doc. No. 166 ] and orders further that, as"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115000,
+        "kind": "item",
+        "occurred_at": "2026-07-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/176/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 170 Second MOTION for Preliminary Injunction filed by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynol"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115001,
+        "kind": "item",
+        "occurred_at": "2026-07-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/177/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Opposition re 170 Second MOTION for Preliminary Injunction filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, St"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115002,
+        "kind": "item",
+        "occurred_at": "2026-07-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/178/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Notice of Supplemental Authorities re 170 Second MOTION for Preliminary Injunction (Attachments: # 1 Judgment of the United States Court of Appeals for the District of Columbia)(Al"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115003,
+        "kind": "item",
+        "occurred_at": "2026-08-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/179/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 170 Second MOTION for Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Educ"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115004,
+        "kind": "item",
+        "occurred_at": "2026-08-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/180/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion Hearing held on 8/7/2026 re 170 Second MOTION for Preliminary Injunction filed by Association of A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115105,
+        "kind": "item",
+        "occurred_at": "2026-08-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115005,
+        "kind": "item",
+        "occurred_at": "2026-08-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/181/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Transcript of Motion Hearing held on August 7, 2026, before Judge Indira Talwani. The Transcript may be purchased through the Court Reporter, viewed at the public terminal, or view"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115006,
+        "kind": "item",
+        "occurred_at": "2026-08-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/183/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered.For the foregoing reasons, the court GRANTS Plaintiff Organizations’ Renewed Motion for a Preliminary Injunction [Doc. No. 170 ].Th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115007,
+        "kind": "item",
+        "occurred_at": "2026-08-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/184/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: SEE attached NOTICE of Scheduling Conference, with attached PROPOSED ORDER TEMPLATE. When filing the required Joint Statement, counsel must attach a second, separate, proposed sche"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115008,
+        "kind": "item",
+        "occurred_at": "2026-08-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/185/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE OF APPEAL as to 183 Memorandum & ORDER,,,,,, by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115009,
+        "kind": "item",
+        "occurred_at": "2026-08-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/186/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 185 Notice of Appeal. (MAP) (Entered: 08/19/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115010,
+        "kind": "item",
+        "occurred_at": "2026-08-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/187/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: USCA Case Number 26-1944 for 185 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115011,
+        "kind": "item",
+        "occurred_at": "2026-08-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/189/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Emergency MOTION to Enforce Judgment (Preliminary Injunction) and for Expedited Briefing by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115012,
+        "kind": "item",
+        "occurred_at": "2026-08-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/190/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 189 Emergency MOTION to Enforce Judgment (Preliminary Injunction) and for Expedited Briefing filed by Association of Americans Resident Overseas, Delta Sig"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115013,
+        "kind": "item",
+        "occurred_at": "2026-08-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/191/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AFFIDAVIT in Support re 189 Emergency MOTION to Enforce Judgment (Preliminary Injunction) and for Expedited Briefing filed by Association of Americans Resident Overseas, Delta Sigm"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115014,
+        "kind": "item",
+        "occurred_at": "2026-08-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/192/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Response by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Amber F McReynolds, Markwayne Mullin, Social Security Administration, David Steiner, Ronald A Strom"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115015,
+        "kind": "item",
+        "occurred_at": "2026-08-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/193/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered. On August 11, 2026, the court entered a preliminary injunction to prevent irreparable harm to Plaintiff Organizations and their memb"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115103,
+        "kind": "item",
+        "occurred_at": "2026-08-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115016,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/194/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: RECEIPT: Receipt # 100016387 for monies received on 8/17/2026 in amount of $ 100.00, re: 183 Memorandum & ORDER, (LBO) (Entered: 08/24/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115017,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/195/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Opposition re 189 Emergency MOTION to Enforce Judgment (Preliminary Injunction) and for Expedited Briefing filed by State of Florida, State of Indiana, State of Kansas, State of Lo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115018,
+        "kind": "item",
+        "occurred_at": "2026-08-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/196/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Reconsideration re 183 Memorandum & ORDER,,,,,,, MOTION to Stay, MOTION to Vacate by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Am"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115019,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 189 Emergency MOTION to Enforce Judgment (Preliminary Injunction) and for Expedited Briefing filed by Frank J Bisignano, Department of Homeland Security"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115020,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/198/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Voters Lotte E. Scharfman Memorial Ed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115021,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/199/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Opposition re 196 MOTION for Reconsideration re 183 Memorandum & ORDER,,,,,, MOTION to Stay MOTION to Vacate filed by Association of Americans Resident Overseas, Delta Sigma Theta "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115022,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/200/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Assented to MOTION for Leave to File Supplemental Complaint by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115023,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/201/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered. For the foregoing reasons, the court finds that Defendants violated the court's Preliminary Injunction but imposes no remedy other"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115024,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/202/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting Plaintiffs' Assented-to Motion for Leave to File a Supplemental Complaint [ 200 ] on Wednesday, August 26, 2026. Counsel using the E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115025,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/203/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 196 MOTION for Reconsideration re 183 Memorandum & ORDER,,,,,, MOTION to Stay MOTION to Vacate filed by Frank J Bisignano, Department of Homeland Security, Jos"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115132,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115026,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/204/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered. In sum, the court finds that, in light of the Supreme Court's decision in Trump v. California, Plaintiff Organizations are not lik"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115027,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/205/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: SUPPLEMENTAL COMPLAINT against All Defendants, filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115028,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/206/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Emergency MOTION for Temporary Restraining Order and Preliminary Injunction by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115029,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/207/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Soro"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115030,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/208/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: DECLARATION re 207 Memorandum in Support of Motion, by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115031,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/209/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Joint MOTION for Extension of Time to File Initial Scheduling Conference Materials by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115032,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/210/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing the parties' Joint Motion for Extension of Time [ 209 ]. The September 3, 2026 scheduling conference is cancelled and will be reset "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115033,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/212/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ORDER entered. See attached. BRIEFING ORDER DEADLINES:Defendants' separate or combined Opposition to the pending request for a temporary restraining order and"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115121,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Extension of Time"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115034,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/213/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File as Amicus Curiae by Society for the Rule of Law. (Attachments: # 1 Supplement Brief)(Bernstein, Inga) (Entered: 08/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115035,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/214/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction filed by Frank J Bisignano, Department of Homeland Security, Joseph B. E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115036,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/215/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Opposition re 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115037,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/216/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowed 213 MOTION for Leave to File as Amicus Curiae Brief. Counsel using the Electronic Case Filing System should now file the document for"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115038,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/217/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Granted by Society for the Rule of Law.(Bernstein, Inga)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115039,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/218/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ORDER entered granting in part [ 206 ]  Motion for TRO in case 1:26-cv-11549-IT; granting in part [ 3 ]  Motion for TRO in case 1:26-cv-13917-IT. See attached"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115112,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115040,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/221/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE OF APPEAL as to 218 Order on Motion for TRO,,, by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Soc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115041,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/222/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE OF APPEAL as to 218 Order on Motion for TRO,,, by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Mont"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115042,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/223/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 221 Notice of Appeal. (MAP) (Entered: 08/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115043,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/224/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 222 Notice of Appeal. (MAP) (Entered: 08/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115044,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/225/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: USCA Case Number 26-1988 for 221 Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, De"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115045,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/226/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: USCA Case Number 26-1989 for 222 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115046,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/227/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social Security Administration, David Steiner, Ron"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115047,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/228/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Stay re 218 Order on Motion for TRO,,, Pending Appeal by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne M"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115048,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/229/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 228 MOTION to Stay re 218 Order on Motion for TRO,,, Pending Appeal filed by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T K"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115049,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/230/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Stay Pending Appeal by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of Nebraska, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115050,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/231/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Support re 230 MOTION to Stay Pending Appeal filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, St"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115051,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/232/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Voters Lotte E. Scharfman Memorial Ed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115052,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/233/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Excess Pages by Frank J Bisignano, Department of Homeland Security, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social Security Administration, Davi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115053,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/234/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Opposition re 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115054,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/235/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction filed by Frank J Bisignano, Department of Homeland Security, Joseph B. E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115055,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/236/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Assented to MOTION for Leave to File Reply Brief of Ten Pages by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115056,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/237/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting nunc pro tunc Defendants’ Unopposed Motion for Leave to File Five Excess Pages [ 233 ]. Counsel using the Electronic Case Filing Sys"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115057,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/239/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 236 Assented to MOTION for Leave to File Reply Brief of Ten Pages. Counsel using the Electronic Case Filing System should now file t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115058,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/242/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: On August 21, 2026, the United States Postal Service (“USPS”) issued a Final Rule concerning mail-in ballots, see USPS, Ballot Mail for Fede"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115059,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/244/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Amicus Brief by Brandon Michael Hayes. (Attachments: # 1 Proposed Amicus Brief, # 2 Proposed order)(MAP) (Entered: 08/31/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115060,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/248/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Amicus Curiae Brief in Support of Plaintiffs' Motion for Preliminary Injunction by National Security Leaders for America. (Attachments: # 1 Proposed Amicus"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115061,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/249/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Supplemental Record on Appeal transmitted to US Court of Appeals re 221 Notice of Appeal, 222 Notice of Appeal, 185 Notice of Appeal, Documents included: ECF No. 242. (MAP) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115062,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/250/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: REPLY to Response to 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction filed by Association of Americans Resident Overseas, Delta Sigma Theta Sorority"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115063,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/251/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: DECLARATION re 250 Reply to Response to Motion, for Preliminary Injunction by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115108,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115109,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion to Stay AND Order on Motion to Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115110,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Excess Pages"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115111,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115064,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/252/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Assented to MOTION for Leave to File Brief as Amicus Curiae by Lawyers for the Rule of Law. (Attachments: # 1 Proposed Brief, # 2 Proposed Order)(Miner, Tracy) (Entered: 09/01/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115065,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/255/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Leave to File Brief as Amici Curiae in Support of Plaintiffs (Unopposed) by Arizona Students' Association, City of Madison, Wisconsin, League of United Latin American Ci"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115066,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/257/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MEMORANDUM in Opposition re 206 Emergency MOTION for Temporary Restraining Order and Preliminary Injunction (Leave to File Five Excess Pages Granted on Aug. 31) filed by Frank J Bi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115067,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/262/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 252 Assented to MOTION for Leave to File Brief as Amicus Curiae. Counsel using the Electronic Case Filing System should now file the"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115068,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/263/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 255 MOTION for Leave to File Brief as Amici Curiae. Counsel using the Electronic Case Filing System should now file the document for"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115069,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/265/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE by Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Voters Lotte E. Scharfman Memorial Ed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115104,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115102,
+        "kind": "item",
+        "occurred_at": "2026-09-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115070,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/272/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 248 MOTION for Leave to File Amicus Curiae Brief. Counsel using the Electronic Case Filing System should now file the document for w"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115071,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/276/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: AMICUS BRIEF filed by National Security Leaders for America in Support of Plaintiffs' Motion for Preliminary Injunction. (Pilipovskiy, Yevgeniy) (Entered: 09/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115072,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/279/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion Hearing held on 9/3/2026 re: ( 3 in 1:26-cv-13917-IT) Emergency MOTION for Temporary Restraining O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115073,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/281/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying Motion for Leave to File Brief of Amicus Curiae Brandon Michael Hayes [ 244 ]. (MAP) (Entered: 09/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115074,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/282/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Copy re 281 Electronic Order mailed to Brandon Michael Hayes on September 3, 2026. (MAP) (Entered: 09/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115098,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115100,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115075,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/283/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Transcript of Motion Hearing held on September 3, 2026, before Judge Indira Talwani. The Transcript may be purchased through the Court Reporter, viewed at the public terminal, or v"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115076,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/285/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: MEMORANDUM AND ORDER GRANTING PLAINTIFFS' MOTIONS FOR A PRELIMINARY INJUNCTION Associated Cases: 1:26-cv-11549-IT, 1:26-cv-13917-IT (MAP) (Entered: 09/04/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115077,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/286/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE OF APPEAL as to 285 Memorandum & ORDER by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Derek T Kan, Amber F McReynolds, Markwayne Mullin, Social Secu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115078,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/287/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: NOTICE OF APPEAL as to 285 Memorandum & ORDER by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, Sta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115081,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/290/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: USCA Judgment as to 185 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115082,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/291/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MANDATE of USCA as to 185 Notice of Appeal filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115079,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/288/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 286 Notice of Appeal.(MAP) (Entered: 09/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115080,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/289/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 287 Notice of Appeal. (MAP) (Entered: 09/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115083,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/292/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: USCA Case Number 26-2029 for 286 Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, De"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115084,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/293/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: USCA Case Number 26-2030 for 287 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115085,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/296/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: ORDER of USCA as to 286 Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, Derek T Kan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115086,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/297/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Reconsideration re 281 Electronic Order on Motion for Leave to File Brief of Amicus Curiae by Brandon Michael Hayes.(MAP) (Entered: 09/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115087,
+        "kind": "item",
+        "occurred_at": "2026-09-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/298/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION to Intervene by Emanuel McCray. (Attachments: # 1 Exhibit 1, # 2 Exhibit 2, # 3 Exhibit 3, # 4 Exhibit 4, # 5 Exhibit 5, # 6 Exhibit 6, # 7 Exhibit 7, # 8 Exhibit 8, # 9 Exh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115088,
+        "kind": "item",
+        "occurred_at": "2026-09-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/299/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: denying non-party Brandon Michael Hayes’ Motion for Reconsideration of Order Denying Leave to File Brief as Amicus Curiae [ 297 ] as moot wh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115131,
+        "kind": "item",
+        "occurred_at": "2026-09-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Reconsideration"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115089,
+        "kind": "item",
+        "occurred_at": "2026-09-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/300/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Copy re 299 Electronic Order mailed to Brandon Michael Hayes on September 14, 2026. (MAP) (Entered: 09/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115090,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/302/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying Emanuel McCray’s Motion to Intervene and Dismiss with Prejudice [ 298 ]. McCray’s request to intervene as of right is DENIED where Mc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115091,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/303/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Copy re 302 Electronic Order mailed to Emanuel McCray on September 17, 2026. (MAP) (Entered: 09/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115092,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/304/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Clarification and Correction of Order Regarding Movant's Capacity and Amicus Participation by Brandon Michael Hayes.(MAP) (Entered: 09/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115126,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115093,
+        "kind": "item",
+        "occurred_at": "2026-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/305/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying non-party Brandon Michael Hayes' Motion for Clarification [ 304 ] where the matter is moot. (MAP) (Entered: 09/18/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115123,
+        "kind": "item",
+        "occurred_at": "2026-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Clarification"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115094,
+        "kind": "item",
+        "occurred_at": "2026-09-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/306/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Copy re 305 Electronic Order mailed to Brandon Michael Hayes on September 21, 2026. (MAP) (Entered: 09/21/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115095,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/307/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MOTION for Reconsideration of Order Denying Clarification As Moot by Brandon Michael Hayes.(MAP) (Entered: 09/24/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115096,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/308/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying movant Brandon Michael Hayes' Motion for Reconsideration of Order Denying Clarification as Moot [[307]]. (MAP)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115107,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Reconsideration"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115097,
+        "kind": "item",
+        "occurred_at": "2026-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/309/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: Copy re [308] Electronic Order mailed to Brandon Michael Hayes on September 25, 2026. (MAP)"
+      }
+    ]
+  },
+  {
+    "caption": "State of California v. Trump",
+    "case_id": "73141063",
+    "category": "executive-order",
+    "court": "D. Mass.",
+    "date_terminated": "2026-07-07T00:00:00",
+    "defendant": "Trump",
+    "docket_number": "1:26-cv-11581",
+    "entry_count": 240,
+    "filed_at": "2026-04-03T00:00:00",
+    "latest_entry_at": "2026-08-27T00:00:00",
+    "plaintiff": "State of California",
+    "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+    "state": null,
+    "status": "terminated",
+    "status_checked_at": "2026-09-27T17:04:15.418996+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 115135,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115136,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/1/state-of-california-v-trump/",
+        "title": "State of California v. Trump: COMPLAINT for Declaratory and Injunctive Relief against All Defendants Filing fee: $ 405, receipt number AMADC-11655463 (Fee Status: Filing Fee paid), filed by Commonwealth of Mass"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115137,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/2/state-of-california-v-trump/",
+        "title": "State of California v. Trump: ELECTRONIC NOTICE of Case Assignment. Judge Indira Talwani assigned to case. If the trial Judge issues an Order of Reference of any matter in this case to a Magistrate Judge, the m"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115226,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115138,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/31/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting Motion to Withdraw Motion for Leave to Appear [ 26 ]. The Motion for Leave to Appear Pro Hace Vice for Admission of Brian Bilford, L"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115227,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion to Withdraw"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115139,
+        "kind": "item",
+        "occurred_at": "2026-04-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/37/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Joint MOTION for Dispositive Motion Briefing Schedule and Hearing Date, or in the Alternative, a Preliminary Injunction Motion Briefing Schedule and Hearing Date by Commonwealth of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115140,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/38/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: allowing the parties' Joint Motion for Dispositive Motion Briefing Schedule and Hearing Date [Doc. No. 37 ]. (SEC) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115141,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/39/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: SCHEDULING ORDER entered. See attached. (SEC)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115142,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/40/state-of-california-v-trump/",
+        "title": "State of California v. Trump: ELECTRONIC NOTICE Setting Hearing on Motion: Summary Judgment Motion Hearing set for 6/2/2026 10:00 AM in Courtroom 9 (In person only) before Judge Indira Talwani. (SEC) (Entered: "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115229,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Notice Setting or Resetting Hearing on Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115230,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Miscellaneous Relief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115143,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/55/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION to Transfer Case to District of Columbia. by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman, Daniel Tangherlin"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115144,
+        "kind": "item",
+        "occurred_at": "2026-04-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/56/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re [55] MOTION to Transfer Case to District of Columbia. filed by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steine"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115145,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/63/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ORDER entered. See attached. (SEC)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115146,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/64/state-of-california-v-trump/",
+        "title": "State of California v. Trump: AMENDED COMPLAINT against All Plaintiffs, filed by State of Washington.(Sepe, Cristina)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115147,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/65/state-of-california-v-trump/",
+        "title": "State of California v. Trump: AMENDED COMPLAINT against All Defendants, filed by State of Washington.(Sepe, Cristina)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115234,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for Leave to Appear AND Order on Motion for "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115148,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/73/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION to Intervene by State of Alabama, State of Alabama, State of Missouri, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Montana, State of Ne"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115149,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/74/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re [73] MOTION to Intervene filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Mo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115150,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/75/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION to Transfer Case to D.D.C. by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of Nebras"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115151,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/76/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re [75] MOTION to Transfer Case to D.D.C. filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missour"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115152,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/85/state-of-california-v-trump/",
+        "title": "State of California v. Trump: JOINT STATEMENT of counsel in response to order dated April 17, 2026. (Arslanian, Vanessa)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115153,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/86/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Opposition re [55] MOTION to Transfer Case to District of Columbia. filed by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115154,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/88/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ORDER entered. See attached. (SEC)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115155,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/91/state-of-california-v-trump/",
+        "title": "State of California v. Trump: NOTICE by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of California, State of Colorado, State of Connecticu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115156,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/97/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION for Summary Judgment -- Plaintiff States' Motion for Summary Judgment, Declaratory Relief, and Permanent Injunction by Commonwealth of Massachusetts, Commonwealth of Virgini"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115157,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/98/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER. Plaintiffs and Defendants shall file responses to the Proposed Intervenors' [ 73 ] Motion to Intervene on or before noon on April 27, 2026. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115158,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/100/state-of-california-v-trump/",
+        "title": "State of California v. Trump: DECLARATION re [97] MOTION for Summary Judgment -- Plaintiff States' Motion for Summary Judgment, Declaratory Relief, and Permanent Injunction by Commonwealth of Massachusetts, Com"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115159,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/102/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION for Leave to File by Society for the Rule of Law. (Attachments: # (1) Exhibit)(Bernstein, Inga)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115160,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/103/state-of-california-v-trump/",
+        "title": "State of California v. Trump: DECLARATION re [97] MOTION for Summary Judgment -- Plaintiff States' Motion for Summary Judgment, Declaratory Relief, and Permanent Injunction -- Declaration of Michael S. Cohen in"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115161,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/104/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Request for Judicial Notice in Support of Plaintiff States' Motion for Summary Judgment, Declaratory Relief, and Permanent Injunction by Commonwealth of Massachusetts, Commonwealth"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115162,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/105/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Statement of Material Facts L.R. 56.1 re [97] MOTION for Summary Judgment -- Plaintiff States' Motion for Summary Judgment, Declaratory Relief, and Permanent Injunction filed by Co"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115163,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/106/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re [97] MOTION for Summary Judgment -- Plaintiff States' Motion for Summary Judgment, Declaratory Relief, and Permanent Injunction filed by Commonwealth of Ma"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115231,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115164,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/109/state-of-california-v-trump/",
+        "title": "State of California v. Trump: RESPONSE to Motion re [73] MOTION to Intervene filed by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman, Daniel Tanghe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115228,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order AND ~Util - Terminate Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115165,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/113/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Opposition re [73] MOTION to Intervene filed by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of California, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115166,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/116/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting 102 unopposed Motion for Leave to File Brief as Amicus Curiae of the Society for the Rule of Law; Counsel using the Electronic Case "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115235,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115167,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/126/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: MEMORANDUM AND ORDER entered. Finding that Defendants have not met their burden to show that transfer to the U.S. District Court for the District of Columbia "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115168,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/127/state-of-california-v-trump/",
+        "title": "State of California v. Trump: REPLY to Response to [73] MOTION to Intervene filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115219,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115169,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/131/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER terminating proposed Intervenors' Motion to Transfer[ 75 ]. See Mem. & Order 2-3 n.2[ 126 ]. (MAP) (Entered: 04/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115170,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/134/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION for Leave to File Amici Curiae Brief by Local Election Officials and Local Governments. (Attachments: # (1) Exhibit Proposed Amicus Brief)(Miller, Jonathan)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115171,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/135/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Notice of Supplemental Authorities re [73] MOTION to Intervene (Attachments: # (1) Exhibit DDC Minute Order)(Prior, Ian)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115220,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115222,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order AND ~Util - Terminate Motions"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115172,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/137/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered allowing 134 MOTION for Leave to File Amici Curiae Brief ; Counsel using the Electronic Case Filing System should now file the docume"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115173,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/140/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: Applicants' Motion to Intervene [Doc No. [73]] is DENIED, but Applicants may participate as amicus curiae. Where Applicants have been granted leave to interve"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115174,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/141/state-of-california-v-trump/",
+        "title": "State of California v. Trump: NOTICE OF APPEAL as to [140] Order on Motion to Intervene,, by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115175,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/143/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re [141] Notice of Appeal. (MAP)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115176,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/144/state-of-california-v-trump/",
+        "title": "State of California v. Trump: USCA Case Number 26-1506 for 141 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115223,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115225,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115221,
+        "kind": "item",
+        "occurred_at": "2026-05-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115177,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/154/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION to Dismiss by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tolino, Donald J Trump,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115178,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/156/state-of-california-v-trump/",
+        "title": "State of California v. Trump: EXHIBIT re [154] MOTION to Dismiss by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tolino"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115179,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/157/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re [154] MOTION to Dismiss and OPPOSITION [97] California Plaintiffs' Motion for Summary Judgment and the LWVMA Plaintiffs' Motion for a Preliminary Injunctio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115232,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115180,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/160/state-of-california-v-trump/",
+        "title": "State of California v. Trump: This document has been STRICKEN from the record pursuant to Electronic Order [#171]. Proposed Document(s) submitted by Raphael Kalikstein. Document received: Proposed Amicus Brief."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115181,
+        "kind": "item",
+        "occurred_at": "2026-05-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/162/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Consent MOTION for Leave to File in support of Defendants motion to dismiss by Federation for American Immigration Reform. (Attachments: # (1) Amicus Brief, # (2) Proposed Order)(O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115182,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/163/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Opposition re [154] MOTION to Dismiss and REPLY in Support of Plaintiff States' Motion for Summary Judgment re [97] filed by Commonwealth of Massachusetts, Commonwealth of Virginia"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115183,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/164/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER allowing 162 Motion for Leave to File Amicus Curiae Brief; Counsel using the Electronic Case Filing System should now file the document for w"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115184,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/165/state-of-california-v-trump/",
+        "title": "State of California v. Trump: AMICUS BRIEF filed by Federation for American Immigration Reform in support of Defendants' Motion to Dismiss. (O'Brien, Matthew)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115224,
+        "kind": "item",
+        "occurred_at": "2026-05-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115185,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/166/state-of-california-v-trump/",
+        "title": "State of California v. Trump: DECLARATION (Ex. 1 to Defs.' Reply in Support of Motion to Dismiss - Supplemental Mayhew Declaration (May 22, 2026)) by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115186,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/167/state-of-california-v-trump/",
+        "title": "State of California v. Trump: REPLY to Response to [154] MOTION to Dismiss filed by Frank Bisignano, Todd Blanche, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tol"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115187,
+        "kind": "item",
+        "occurred_at": "2026-05-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/168/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Notice of Supplemental Authorities re [154] MOTION to Dismiss (Attachments: # (1) Ex. 1 - Opinion in DSCC v. Trump (D.D.C. May 28, 2026))(Pezzi, Stephen)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115188,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/171/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER striking Raphael Kalikstein's Amicus Brief in Support of Defendant [ 160 ] and attachments [[160-1, 160-2]] as filed without leave of court. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115189,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/172/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Copy re 171 Electronic Order mailed to Raphael Kalikstein on June 1, 2026. (MAP) (Entered: 06/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115190,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/173/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: on April 22, 2026, court consolidated League of Women Voters of Massachusetts, et al. v. Donald J. Trump, et al., 26-cv-11549, and State of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115233,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115191,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/178/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion hearing held on 6/2/2026 in 1:26-cv-11549-IT League of Women Voters of Massachusetts et al v. Trum"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115192,
+        "kind": "item",
+        "occurred_at": "2026-06-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/179/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: the court previously denied Applicant States’ Motion to Intervene [ 73 ] in this action (but allowed them to participate as amici curiae). S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115218,
+        "kind": "item",
+        "occurred_at": "2026-06-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115193,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/181/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Transcript of Motion Hearing held on June 2, 2026, before Judge Indira Talwani. The Transcript may be purchased through the Court Reporter, viewed at the public terminal, or viewed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115194,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/184/state-of-california-v-trump/",
+        "title": "State of California v. Trump: USCA Judgment as to [141] Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115195,
+        "kind": "item",
+        "occurred_at": "2026-06-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/185/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MANDATE of USCA as to [141] Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115196,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/190/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered. For all of the above reasons, the court GRANTS Defendants’ and Intervenor States’ motions to dismiss Plaintiff Organizations’ comp"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115197,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/191/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: MEMORANDUM AND ORDER entered. Accordingly, it is hereby ORDERED and DECLARED that Sections 2 and 3 of the EO are legally void as they are ultra vires and unco"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115198,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/192/state-of-california-v-trump/",
+        "title": "State of California v. Trump: NOTICE OF APPEAL as to 191 Memorandum & ORDER,,,,,,,,,,,,,,,,,,,,,, by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115199,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/193/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION to Stay re 191 Memorandum & ORDER,,,,,,,,,,,,,,,,,,,,,, by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Ronald Stroman, Dan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115200,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/194/state-of-california-v-trump/",
+        "title": "State of California v. Trump: EXHIBIT re 193 MOTION to Stay re 191 Memorandum & ORDER,,,,,,,,,,,,,,,,,,,,,, by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin, David Steiner, Rona"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115201,
+        "kind": "item",
+        "occurred_at": "2026-07-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/195/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re 193 MOTION to Stay re 191 Memorandum & ORDER,,,,,,,,,,,,,,,,,,,,,, filed by Frank Bisignano, Todd Blanche, Derek T Kan, Amber McReynolds, Markwayne Mullin,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115202,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/196/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 192 Notice of Appeal. (MAP) (Entered: 07/02/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115203,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/197/state-of-california-v-trump/",
+        "title": "State of California v. Trump: USCA Case Number 26-1774 for 192 Notice of Appeal, filed by Markwayne Mullin, Amber McReynolds, United States Department of Justice, David Steiner, Ronald Stroman, Derek T Kan, Uni"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115204,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/199/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Proposed Document(s) submitted by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of California, State of Color"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115205,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/200/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Opposition re 193 MOTION to Stay re 191 Memorandum & ORDER,,,,,,,,,,,,,,,,,,,,,, filed by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapir"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115206,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/201/state-of-california-v-trump/",
+        "title": "State of California v. Trump: NOTICE OF APPEAL as to 191 Memorandum & ORDER,,,,,,,,,,,,,,,,,,,,,, by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115207,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/202/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION to Stay by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of Nebraska, State of Oklaho"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115208,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/203/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MEMORANDUM in Support re 202 MOTION to Stay filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115209,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/204/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 201 Notice of Appeal (MAP) (Entered: 07/06/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115210,
+        "kind": "item",
+        "occurred_at": "2026-07-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/205/state-of-california-v-trump/",
+        "title": "State of California v. Trump: USCA Case Number 26-1779 for 201 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115211,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/206/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Opposition re 202 MOTION to Stay filed by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of California, State "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115212,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/207/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: FINAL JUDGMENT entered. (MAP) (Entered: 07/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115213,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/208/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Judge Indira Talwani: MEMORANDUM & ORDER entered. Having failed to meet their burden to show that circumstances justify a stay pending appeal, Defendants’ and Intervenor-Defendants"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115214,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/209/state-of-california-v-trump/",
+        "title": "State of California v. Trump: Supplemental Record on Appeal transmitted to US Court of Appeals re 201 Notice of Appeal, 192 Notice of Appeal Documents included: ECF Nos. 207 and 208. (MAP) (Entered: 07/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115215,
+        "kind": "item",
+        "occurred_at": "2026-07-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/211/state-of-california-v-trump/",
+        "title": "State of California v. Trump: ORDER of USCA as to 201 Notice of Appeal and 192 Notice of Appeal filed by Markwayne Mullin, Amber McReynolds, United States Department of Justice, David Steiner, Ronald Stroman, D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115216,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/213/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION for Leave to File as Amicus Curiae by Society for the Rule of Law. (Attachments: # 1 Supplement Brief)(Bernstein, Inga) (Entered: 08/27/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115217,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73141063/214/state-of-california-v-trump/",
+        "title": "State of California v. Trump: MOTION for Leave to File Granted by Society for the Rule of Law.(Bernstein, Inga)"
+      }
+    ]
+  },
+  {
+    "caption": "NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE v. DONALD J. TRUMP",
+    "case_id": "73143746",
+    "category": "executive-order",
+    "court": "D.D.C.",
+    "date_terminated": null,
+    "defendant": "DONALD J. TRUMP",
+    "docket_number": "1:26-cv-01151",
+    "entry_count": 0,
+    "filed_at": "2026-04-03T00:00:00",
+    "latest_entry_at": null,
+    "plaintiff": "NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE",
+    "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-09-27T17:06:34.903610+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 115239,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump — executive-order"
+      }
+    ]
+  },
+  {
     "caption": "Common Cause v. U.S. Department of Justice",
     "case_id": "73218916",
     "category": "voter-data",
@@ -23190,6 +26320,36 @@
     ]
   },
   {
+    "caption": "State of California v. Trump",
+    "case_id": "73568304",
+    "category": "executive-order",
+    "court": "First Circuit",
+    "date_terminated": null,
+    "defendant": "Trump",
+    "docket_number": "26-1774",
+    "entry_count": 0,
+    "filed_at": "2026-07-02T00:00:00",
+    "latest_entry_at": null,
+    "plaintiff": "State of California",
+    "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-09-27T17:06:30.541022+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 115238,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.) — executive-order"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Secretary Commonwealth of Pennsylvania",
     "case_id": "73582123",
     "category": "voter-data",
@@ -24790,6 +27950,66 @@
     ]
   },
   {
+    "caption": "State of California v. United States Postal Service",
+    "case_id": "74701505",
+    "category": "executive-order",
+    "court": "D. Mass.",
+    "date_terminated": null,
+    "defendant": "United States Postal Service",
+    "docket_number": "1:26-cv-13917",
+    "entry_count": 0,
+    "filed_at": "2026-08-26T00:00:00",
+    "latest_entry_at": null,
+    "plaintiff": "State of California",
+    "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-09-27T17:06:19.972032+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 115236,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service — executive-order"
+      }
+    ]
+  },
+  {
+    "caption": "League of Women Voters of Massachusetts v. Trump",
+    "case_id": "74755121",
+    "category": "executive-order",
+    "court": "First Circuit",
+    "date_terminated": null,
+    "defendant": "Trump",
+    "docket_number": "26-2029",
+    "entry_count": 0,
+    "filed_at": "2026-09-04T00:00:00",
+    "latest_entry_at": null,
+    "plaintiff": "League of Women Voters of Massachusetts",
+    "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-09-27T17:06:25.215083+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 115237,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.) — executive-order"
+      }
+    ]
+  },
+  {
     "caption": "United States v. Kris Warner",
     "case_id": "74793201",
     "category": "voter-data",
@@ -24804,7 +28024,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-26T16:29:04.499195+00:00",
+    "status_checked_at": "2026-09-27T17:09:27.060603+00:00",
     "superseded_by": null,
     "timeline": [
       {
