@@ -497,6 +497,13 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
         "SELECT case_id, source_url FROM cases WHERE docket_number = ? AND court = ?",
         (dn, seed.get("court")),
     ).fetchone()
+    # END THE READ BEFORE ANY HTTP (2026-09-27, the state.py precedent). db._Conn marks
+    # itself pending on EVERY statement, reads included, and a pending connection
+    # refuses the one-shot stale-stream reopen -- so a Hrana stream that expired during
+    # the resolve would fail the first write below instead of reopening. A commit with
+    # only reads pending is a no-op on both backends; the quiet-docket path already
+    # makes one every run.
+    conn.commit()
     docket = None
     if existing and str(existing["case_id"]).isdigit():
         case_id = str(existing["case_id"])
@@ -565,6 +572,12 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
             mode = "full-walk"
             _pages = [0]
             poll = lambda: poll_entries(base, headers, case_id, since=None, page_counter=_pages)
+
+    # The mark and history reads above are ended before the poll, for the reason given
+    # at the reuse lookup: a full walk is the longest idle stretch this collector has
+    # (1:26-cv-11549 is 19 pages, over a minute at PAGE_THROTTLE), and a stream that
+    # expires inside it must still reopen at the first write.
+    conn.commit()
 
     # On failure skip the case with nothing half-written and the mark unmoved.
     try:

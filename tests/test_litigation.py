@@ -1323,3 +1323,44 @@ def test_an_unpinned_seed_still_resolves_strictly(tmp_path, monkeypatch):
     lit.collect_case(conn, "base", {}, seed, [], [], 10)
     assert seen == {"resolve": 1, "fetch": 0}
     conn.close()
+
+
+# --------------------------------------------------------------------------- #
+# Reads end before HTTP (2026-09-27, the state.py precedent)
+# --------------------------------------------------------------------------- #
+def test_collect_case_ends_its_reads_before_every_http_call(tmp_path, monkeypatch):
+    """A pending connection refuses the one-shot stale-stream reopen (db._Conn), so a
+    Hrana stream that expired during a long walk would fail the first write instead of
+    reopening. collect_case reads -- the reuse lookup, the mark, the history count -- and
+    must end those reads before it goes to the network, as state.main does
+    (test_legiscan_budget.py::test_main_ends_the_ledger_read_before_collect_starts).
+    Driven through a pinned seed's bind and full walk, then its next run's poll."""
+    import sqlite3
+    path = str(tmp_path / "p.db")
+    db.init_db(path)
+    conn = db._Conn(sqlite3.connect(path))
+    seen = []
+
+    def fake_fetch(base, headers, cl_id):
+        seen.append(("fetch", conn._pending))
+        return {"id": int(cl_id), "absolute_url": "/docket/73133197/x/", "date_filed": "2026-04-02",
+                "date_terminated": None, "case_name": "League of Women Voters of Massachusetts v. Trump"}
+
+    def fake_poll(base, headers, cid, since=None, page_counter=None):
+        seen.append(("poll", conn._pending))
+        if page_counter is not None:
+            page_counter[0] += 1
+        return ([], "2026-09-27T00:00:00Z")
+
+    monkeypatch.setattr(lit, "fetch_docket", fake_fetch)
+    monkeypatch.setattr(lit, "poll_entries", fake_poll)
+    seed = {"caption": "League of Women Voters of Massachusetts v. Trump", "docket_number": "1:26-cv-11549",
+            "court": "D. Mass.", "court_id": "mad", "category": "executive-order", "order": "EO 14399",
+            "case_id": "73133197", "notes": "n"}
+    r = lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
+    assert r["resolved"] and r.get("mode") == "full-walk"
+    assert seen == [("fetch", False), ("poll", False)]
+    seen.clear()
+    r = lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
+    assert r.get("mode") == "incremental"
+    assert seen == [("poll", False)]
