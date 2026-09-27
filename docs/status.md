@@ -8,7 +8,7 @@ Last updated: 2026-09-27 (UTC).
 
 ## Owed right now
 
-### The EO 14399 dockets: RULED 2026-09-26; tabs 1 and 2 and the rail PASSED the pixel checkpoint; the web half and the eo-14399 rewording PUSHED and READ on production; the seeds, with 26-1774, land with this entry, in the window
+### The EO 14399 dockets: RULED 2026-09-26; tabs 1 and 2 and the rail PASSED the pixel checkpoint; the web half and the eo-14399 rewording PUSHED and READ on production; the seeds, with 26-1774, PUSHED in the window, BOUND by the first walking run and READ on production; the second walk, the audit and the 09-28 lane run owed
 
 **What it is.** Challenges to the election executive orders become a third counted class in the litigation channel, beside DOJ's filings and the related suits. Corey ruled the plan on 2026-09-26, and at the pixel checkpoint the same day passed tabs 1 and 2 and ruled on the membership test and the rail marker. The rail, re-shot to that ruling, passed at a second checkpoint the same day, and the web half landed in `40c5009` (records `86d59ea`). The seeds land in a later commit, after the web commit is live on production and read there, because the page reads Turso live: a seed that landed first would render inside the related-suits clause, under its three hand-named captions.
 
@@ -170,7 +170,7 @@ Last updated: 2026-09-27 (UTC).
    - every figure is unmoved and the related-suits clause keeps its three captions, there being no seeds yet;
    - `ci.yml`'s `assert-gates (expiry)` step exits 0, reading no record file.
    The push reading itself is carried by the next push.
-4. **The seed commit LANDS WITH THIS ENTRY, pushed in the window;** its push reading is carried by the next push. It carries the seven seeds with `category: executive-order`, their `order`, no `state` and pinned ids, the seventh being **26-1774** (ruled), plus the order check and the two guards above. It adds the seeds to the 14399 gates' `record_instruments`: 74755121, 73133197 and 74701505 to the rule's, and 73568304 and 73141063 to the stay's. Each list gets a `record_instruments_due` of 2026-09-28, the day after the second walking run, so pending ends on the record's clock. `eo-challenges` gains `names_order: EO 14399`. The window is the one above: after the 06:17Z run completes and before the 12:17Z run starts.
+4. ~~**The seed commit, pushed in the window.**~~ **PUSHED 2026-09-27 inside the ruled window; the push reading closes this item.** It carries the seven seeds with `category: executive-order`, their `order`, no `state` and pinned ids, the seventh being **26-1774** (ruled), plus the order check and the two guards above. It adds the seeds to the 14399 gates' `record_instruments`: 74755121, 73133197 and 74701505 to the rule's, and 73568304 and 73141063 to the stay's. Each list gets a `record_instruments_due` of 2026-09-28, the day after the second walking run, so pending ends on the record's clock. `eo-challenges` gains `names_order: EO 14399`. The window is the one above: after the 06:17Z run completes and before the 12:17Z run starts.
    - **What else it carries, from the seed review (2026-09-27, 18 findings confirmed):**
      - **`collect_case` ends its reads before any HTTP,** the `state.py` precedent. A pending connection refuses the stale-stream reopen, and the seeds bring this collector's longest idle stretch: 1:26-cv-11549's 19-page walk, over a minute. A test spies on `_pending` at every network call of a pinned seed's bind, walk and next poll; with the two commits removed it goes red.
      - **More guards in `tests/test_eo_class_seeds.py`:**
@@ -184,10 +184,41 @@ Last updated: 2026-09-27 (UTC).
      - **The walk order puts the largest walk last.**
      - **Stale prose fixed:** the Oregon seed's "only pinned seed", and the seed counts in `coverage_audit`'s and `status_audit`'s docstrings.
    - **The pins were checked offline before the push,** each against a text fetched by that id: the five trial dockets' RECAP complaints carry their case numbers in their headers (73133197 1:26-cv-11549, 73141063 1:26-cv-11581, 74701505 1:26-cv-13917, 73143746 1:26-cv-01151, 73131864 1:26-cv-01114). CourtListener's docket search returned 74755121 for ca1 26-2029 and 73568304 for ca1 26-1774. Nothing in the collector compares a fetched docket to its seed yet; that guard is a later unit.
+   - **The push:** `54b09c4` (collector), `9f8e78b` (seeds) and `3636718` (records) at 12:14:45Z, in a window of 10h10m41s from `71af6e4`'s push.
+     - **Two data commits landed inside it:** `75583ca` (the 00:17Z slot) and `4ce65e4` (the 06:17Z slot). The three were rebased over them, and `git patch-id --stable` read identical before and after.
+     - **It sits in the ruled window:** 7m05s after the 06:17Z-slot run `36317428084` completed (12:07:40Z), and before the 12:17Z-slot run was created (16:57:44Z).
+     - **The checks:** `ci.yml` run `36318342824` read green on all three jobs, and `sha_sweep` passed on a fresh clone.
 5. **Both walking runs complete, then the next `audit.yml` run reads §6 green with the new seeds walked, and §1 reconciling them.** The walks' own witness is §6, plus a full-walk line for each of the five deferred in run 1: in run 2, or in the 00:17Z run for any deferred again. `litigation.main` exits 0 on a deferred or failed walk, so the lines are the evidence, not the exit.
-6. **Production, seeded:** tab 1's sentence reads **5**, the five district seeds (26-2029 is held and not counted, ruling (c)), and the rail marks all **7** seeded rows, 26-2029 and the June 25 order's appeal included: **7 marks beside a count of 5**, by design (Corey, 2026-09-26). Open *The other N dockets* before counting marks, since any of the seven outside the eight most recently moved sits in that fold. **After run 1's data commit, read the seven rows' `caption` and `source_url` in `data/cases.json`** against their seeds: 73143746 must read *National Association for the Advancement of Colored People v. Donald J. Trump* and 73131864 *DSCC v. Trump*. Check 4 proves a bind, not that the right docket was bound.
-7. **The list fields' check (check 4) reads every listed docket held, with 0 pending, from run 1's data commit on.** That proves the seven bound; it cannot prove they were walked (item 5 does). The lists: `eo-14399-usps-rule-enjoined` (74755121, 73133197, 74701505) and `eo-14399-s2-3-stayed` (73568304, 73141063). The check must find every docket **the list field** names held. Those are the held instruments among the dockets `falsified_by` names. 26A305 and 26-2030 to 26-2032 are named there too but not held, by ruling (c), and are read directly; the check does not look for them.
-8. **When this unit closes, unit 99 opens:** D0 and plan, then stop (*Open units*).
+   - **Run 1, READ 2026-09-27:** `collect.yml` run `36335148183`, the 12:17Z slot, was created 16:57:44Z on head `3636718`. It concluded `success`, with data commit `a4e2f68`.
+     - **It walked two:** 1:26-cv-11549 (73133197) took 19 requests, for 363 entries and +201 A1 items; 1:26-cv-11581 (73141063) took 12, for 240 entries and +100 A1 items.
+     - **Why 31 requests fit a budget of 30:** the budget is checked before each walk, not during one. 11581 started with 11 left and spent 12.
+     - **The other five each printed `full-walk deferred (request budget spent; walks next run)`,** in seed order: 13917, 26-2029, 26-1774, 01151, 01114.
+     - **The log shows no stream error and no resolve error.**
+   - **Owed:**
+     - **run 2 (the 18:17Z slot),** expected to walk the five in that order, at about 10, 4, 4, 2 and 13 requests;
+     - **then the 05:17Z `audit.yml` run of 2026-09-28.**
+6. ~~**Production, seeded.**~~ **READ 2026-09-27: it passes, and the two D.D.C. captions read in CourtListener's capitals (item 9).** The conditions: tab 1's sentence reads **5**, the five district seeds (26-2029 is held and not counted, ruling (c)), and the rail marks all **7** seeded rows, 26-2029 and the June 25 order's appeal included: **7 marks beside a count of 5**, by design (Corey, 2026-09-26). Open *The other N dockets* before counting marks, since any of the seven outside the eight most recently moved sits in that fold. **After run 1's data commit, read the seven rows' `caption` and `source_url` in `data/cases.json`** against their seeds: 73143746 must read *National Association for the Advancement of Colored People v. Donald J. Trump* and 73131864 *DSCC v. Trump*. Check 4 proves a bind, not that the right docket was bound.
+   - **The read:** production on the public alias at 17:17Z and again at 19:27Z, both on record clock 2026-09-27T17:06:39Z, run 1's data.
+     - `eo-challenges` renders *"The record holds 5 challenges to the mail-ballot executive order, counted apart from DOJ's filings and the related suits"*, and `eo-challenges-held` renders *"5 challenges to the mail-ballot order held in the record"*.
+     - **The rendered HTML carries 7 `data-class-mark="eo-challenge"` elements,** all served, the fold included.
+     - **The raw response carries 14,** because the RSC payload in its script tags repeats each one. Count the rendered elements, never the raw string. The unit's own figures script counts the raw string, so it reads 14.
+     - **Against the 02:05Z read (the rewording's), only those three moved,** from 0, 0 and 0. The related-suits clause still names its three captions, *League of Women Voters v. DHS, its D.C. Circuit appeal, and Common Cause v. DOJ*.
+   - **The captions, read in `a4e2f68`'s `data/cases.json`:** 60 rows, 7 of them `executive-order`. Each is bound to its pinned id, and each `source_url` is the CourtListener docket URL on that id.
+     - **Three captions match their seeds exactly:** the three D. Mass. rows.
+     - **Four read CourtListener's `case_name` instead,** because a fresh resolve writes it over the provisional caption:
+       - the two First Circuit rows drop the seeds' "(1st Cir.)" suffix, and the rail prints *First Circuit · 26-2029* and *First Circuit · 26-1774* beside them;
+       - the two D.D.C. rows are in capitals: 73143746 reads *NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE v. DONALD J. TRUMP*, and 73131864 reads *DSCC v. TRUMP*.
+     - **All four are the right dockets:** court and docket number match their seeds, the words are the seeds' own, and each URL slug carries them. The D.D.C. pair is not in the casing this item expected; the fix is item 9.
+7. ~~**The list fields' check (check 4) reads every listed docket held, with 0 pending, from run 1's data commit on.**~~ **READ 2026-09-27 on `a4e2f68`: every listed docket held, 0 pending.** `node scripts/assert-gates.mjs --expiry-only` printed "eo-14399-usps-rule-enjoined -- 3 of 3 listed dockets held" and "eo-14399-s2-3-stayed -- 2 of 2 listed dockets held", then 9 PASS / 0 FAIL, and exited 0. The lane's scheduled reading of it is item 8. That proves the seven bound; it cannot prove they were walked (item 5 does). The lists: `eo-14399-usps-rule-enjoined` (74755121, 73133197, 74701505) and `eo-14399-s2-3-stayed` (73568304, 73141063). The check must find every docket **the list field** names held. Those are the held instruments among the dockets `falsified_by` names. 26A305 and 26-2030 to 26-2032 are named there too but not held, by ruling (c), and are read directly; the check does not look for them.
+8. **The 09-28 SCHEDULED `dom-checks` run, the first on a head with the class populated** (added 2026-09-27, Corey). Read for:
+   - `assert-gates` green, with `eo-challenges` and `eo-challenges-held` both reading 5;
+   - check 4 at 3 of 3 and 2 of 2;
+   - every `data-gate-ref` resolving;
+   - `assert-encodings`, `assert-layout`, `assert-attribution` and `assert-dated` all exiting 0.
+
+   Recorded with run 2's walks and the 05:17Z audit, before the unit closes. The 09-27 run cannot stand in for it: its head `75583ca` and its record clock (05:34:35Z) both predate run 1's binds. A dispatch does not count.
+9. **At close, the two D.D.C. captions** (ruled 2026-09-27, Corey, queued and not built). If CourtListener still renders 73143746 and 73131864 in capitals when this unit closes, those two seeds get a display caption as seed data. **Never title-case in code:** NAACP, DSCC and USPS would break.
+10. **When this unit closes, unit 99 opens:** D0 and plan, then stop (*Open units*).
 
 ### Renew the CourtListener EDU membership before 2027-02-09: OWED BY COREY, dated 2026-09-26
 
@@ -795,11 +826,22 @@ What production showed, read around 02:00Z on 09-26:
 1. ~~**The second pixel checkpoint.**~~ **PASSED 2026-09-26 (Corey).**
 2. ~~**Push the four commits together after Corey's word.**~~ **Pushed together with this entry, rebased over the cron's `6226b29`** (data only: `data/cases.json` and `data/generated_at.json`). A push cannot carry its own row, so the push reading -- its time, the rebase, the patch-ids across it -- is carried by the next unit's push.
    - **`ci.yml` WENT RED ON THAT PUSH, the second breach of *Verify with the command CI runs* (Standing invariants; the first was `npx vitest`)**, run `36264690447` on `573d0ff`: `assert-casts` failed on 3 double casts (`as unknown as`) in `web/lib/dated.test.ts`, whose pin is 0. The unit's local checks were tsc, `pnpm test`, pytest and the DOM lane. They did not include `assert-casts`, which the previous unit's instrument list did run. The job stops at its first failing step, so every later step was run locally before the fix: tsc, `pnpm test`, `assert-gates --expiry-only`, and pytest and actionlint, which passed in the red run. **Fixed by typing the three fixtures in full**, after which `assert-casts` reads zero double casts, pushed as its own commit. **Instrument: run every `ci.yml` step locally before the push**, since the ritual's own `ci.yml` check comes after the push, when main is already red. Since the same day that is one command, `python -m tools.ci_local` (*One CI entry point*, below).
-3. **The 09-27 and 09-28 SCHEDULED `dom-checks` runs.** Read for:
+3. **The 09-27 and 09-28 SCHEDULED `dom-checks` runs. 09-27 READ 2026-09-27: it passes, with the homepage read the same day. 09-28 owed.** Read for:
    - `assert-dated` exit 0 with HB6414 among the marked dates: the discovered `/state-bill/2158970` reading 2 dates after the clock and 2 marked, and `/state-bills` reading 1 and 1;
    - the homepage carrying the dated-after sentence, *"1 further item is dated after these seven days."* The run logs no page text, so this is read off the production homepage the same day, on the public alias, against the same Turso.
 
    These are the only scheduled readings of the branch HB6414 exercises. A dispatch does not count.
+   - **09-27, READ:** run `36308961998`, event `schedule`, head `75583ca`, started 09:18:43Z.
+     - **The lag was 6h01m43s,** the longest of the lane's 18 scheduled runs; the previous longest was 5h43m20s (09-21, `35580864792`).
+     - **Every step concluded `success`,** and the issue step was `skipped`.
+     - **`assert-dated` ended `OK`, which is exit 0.** Its `rc` goes to `GITHUB_OUTPUT`, and the step's `exit "$rc"` under `set +e` admits no other value with `success`.
+     - **The counts, on the page's clock 2026-09-27T05:34:35Z:**
+       - the discovered `/state-bill/2158970` (MI HB6414, by `75583ca`'s `data/state_bills.json`): 5 dates, **2 after the clock, 2 marked**;
+       - `/state-bills`: 11 dates, **1 and 1**;
+       - `/state-bills?all=1` and its `sort=state` view: 502 dates, 2 and 2;
+       - every other route: 0 and 0;
+       - the sweep: 7 after the clock, 7 marked.
+   - **The homepage, READ the same day:** on the public alias at 19:27:46Z, on record clock 2026-09-27T17:06:39Z, it renders *"1 further item is dated after these seven days."* once in its body. The page does not name the item.
 4. **The first SCHEDULED `dom-checks` run with the record's clock on 2026-09-29** (that day's 03:17Z slot, which starts after the day's first data commit on this lane's lag). **It is the first live test of the per-row fresh dot, so it is recorded even though nothing reds.** Read for:
    - HB6414's item `112734` sitting on the Sep 29 band with **no fresh dot**, since it was collected 2026-09-24;
    - **no marker** on it, its date now being the clock's own day;
