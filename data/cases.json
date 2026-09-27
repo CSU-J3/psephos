@@ -21317,9 +21317,9 @@
     "date_terminated": null,
     "defendant": "TRUMP",
     "docket_number": "1:26-cv-01114",
-    "entry_count": 0,
+    "entry_count": 250,
     "filed_at": "2026-04-01T00:00:00",
-    "latest_entry_at": null,
+    "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "DSCC",
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
@@ -21336,6 +21336,1166 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
         "title": "DSCC v. Trump — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115576,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/14/dscc-v-trump/",
+        "title": "DSCC v. Trump: SEALED MOTION FOR LEAVE TO FILE DOCUMENT UNDER SEAL filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER (Th"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115577,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/15/dscc-v-trump/",
+        "title": "DSCC v. Trump: ORDER ESTABLISHING PROCEDURES FOR CIVIL CASES ASSIGNED TO JUDGE COLLEEN KOLLAR-KOTELLY. Signed by Judge Colleen Kollar-Kotelly on 04/02/2026. (lcckk1) (Entered: 04/02/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115579,
+        "kind": "item",
+        "occurred_at": "2026-04-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/19/dscc-v-trump/",
+        "title": "DSCC v. Trump: SEALED DOCUMENT - Notice filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. re 1 Complaint,,,. (This docu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115578,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/18/dscc-v-trump/",
+        "title": "DSCC v. Trump: ORDER directing the parties in Case Nos. 26-1114 and 26-1132 to MEET AND CONFER to discuss whether the two cases should be consolidated, setting deadlines, and addressing other pre"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115580,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/23/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION to Reassign Case Objection to Notice of Related Case by FRANK J. BISIGNANO, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESIDENT, HOWARD LUTNICK, MARKWAYNE MULLI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115581,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/25/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE TO ORDER OF THE COURT re 18 Order, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Madduri, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115582,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/26/dscc-v-trump/",
+        "title": "DSCC v. Trump: ORDER granting (23) Motion to Reassign Case in case 1:26-cv-01114-CKK; granting (16) Motion to Reassign Case in case 1:26-cv-01132-CKK. Signed by Judge Colleen Kollar-Kotelly on 4/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115583,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/27/dscc-v-trump/",
+        "title": "DSCC v. Trump: ORDER CONSOLIDATING CASES. Signed by Judge Carl J. Nichols on 4/9/2026. (lccjn1) (Entered: 04/09/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115584,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/28/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Filing Opposition to LULAC Plaintiffs' Motion for Expedited Discovery by FRANK J. BISIGNANO, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESIDENT, HOWARD LUTN"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115668,
+        "kind": "item",
+        "occurred_at": "2026-04-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: Case randomly reassigned to Judge Carl J. Nichols pursuant to 26 Order dated 4/8/2026. Judge Colleen Kollar-Kotelly is no longer assigned to the case. (ztnr)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115585,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/29/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Preliminary Injunction by LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE, ARIZONA STUDENTS' ASSOCIATION. (Lang, Danielle) (Entered: 04/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115586,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/34/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Madduri, Lalitha) (Entere"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115587,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/36/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 17 Motion to Expedite filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. . (Baldwin, Ann"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115588,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/37/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Preliminary Injunction by NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE, COMMON CAUSE, COMMON CAUSE EDUCATION FUND, BLACK VOTERS MATTER FUND, INC., BVM CAPA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115669,
+        "kind": "item",
+        "occurred_at": "2026-04-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of the 36 Motion to Expedite Discovery, and the entire record herein, it is hereby ORDERED that the motion is DENIED WITHOUT PREJUDICE. In the even"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115589,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/48/dscc-v-trump/",
+        "title": "DSCC v. Trump: STANDING ORDER. Signed by Judge Carl J. Nichols on 4/14/2026. (lccjn1) (Entered: 04/14/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115671,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: Cases Consolidated. The following cases have been consolidated with this case: 26cv1132, 26cv1151 pursuant to 27 Order filed 4/9/2026. From this date forward, all pleadings shall b"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115590,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/50/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Brief as Amicus Curiae of The Society For the Rule of Law by Society For The Rule of Law. (Attachments: # 1 Exhibit Proposed Amicus Brief,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115591,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/52/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Proposed Order by Society For The Rule of Law re 50 Unopposed MOTION for Leave to File Amicus Brief as Amicus Curiae of The Society For the Rule of Law (Bernstein, Richar"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115592,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/53/dscc-v-trump/",
+        "title": "DSCC v. Trump: MEMORANDUM re 29 MOTION for Preliminary Injunction by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. (Attachments: # 1 Index o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115593,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/54/dscc-v-trump/",
+        "title": "DSCC v. Trump: MEMORANDUM re 37 MOTION for Preliminary Injunction by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASS"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115594,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/55/dscc-v-trump/",
+        "title": "DSCC v. Trump: MEMORANDUM re 34 MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachme"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115662,
+        "kind": "item",
+        "occurred_at": "2026-04-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that the Society for the Rule of Law's 50 Motion for Leave to File Amicus Brief is GRANTED. So ORDERED by Judge Carl J. Nichols on 4/17/2026. (lc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115595,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/77/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION to Intervene by STATE OF MISSOURI, STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MONTANA, STATE OF NEBRASKA, STATE OF O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115688,
+        "kind": "item",
+        "occurred_at": "2026-04-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that Plaintiffs and the United States shall file responses to the States' 77 Motion to Intervene on or before April 24, 2026; the States shall fi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115596,
+        "kind": "item",
+        "occurred_at": "2026-04-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/84/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Proposed Order by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE re 53 Memorandum,,,,,, (Lang, Danielle) (Entered: 04"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115597,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/86/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Leave to File One Combined Brief in Opposition to Plaintiffs' Motions for a Preliminary Injunction and in Support of Defendants' Motions to Dismiss by FRANK J. BISIGNANO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115681,
+        "kind": "item",
+        "occurred_at": "2026-04-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of Defendants' 86 motion for leave to file one combined brief, the Court hereby ORDERS the NAACP Plaintiffs to file an opposition on or before Apri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115598,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/87/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 86 MOTION for Leave to File One Combined Brief in Opposition to Plaintiffs' Motions for a Preliminary Injunction and in Support of Defendants' Motions to Dismiss filed "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115599,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/88/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115600,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/89/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. (Baldwin, Anna) (Entered: 04/24/202"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115601,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/90/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASSOCIATION F"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115602,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/92/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by Wisconsin Democracy Campaign, Inc., EXPO of Wisconsin, Inc., Jaleyce Oraedu, Jasmine Oraedu, Aharon Shelef. (Attachments: # 1 Exhibit Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115603,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/95/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # 1 T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115665,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: Order on Motion for Leave to File AND Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115667,
+        "kind": "item",
+        "occurred_at": "2026-04-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of Defendants' 86 motion for leave to file one combined brief, and the entire record herein, it is hereby ORDERED that Defendants' motion is GRANTE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115604,
+        "kind": "item",
+        "occurred_at": "2026-04-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/96/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by EXPO of Wisconsin, Inc., Jaleyce Oraedu, Jasmine Oraedu, Aharon Shelef, Wisconsin Democracy Campaign, Inc.. (Attachments: # 1 Exhibit Corre"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115605,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/97/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Briefin Support of Plaintiffs by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of Propo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115606,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/98/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 77 Motion to Intervene,, filed by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, STA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115607,
+        "kind": "item",
+        "occurred_at": "2026-04-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/100/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Hearing re 34 MOTION for Preliminary Injunction, 55 Memorandum,,, by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115608,
+        "kind": "item",
+        "occurred_at": "2026-04-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/101/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Joinder by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF C"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115626,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/141/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION to Dismiss by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, STATE OF MONTANA, STATE OF NEBRASKA, STATE OF OKL"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115674,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of the States' 77 Motion to Intervene, it is hereby ORDERED that the motion is GRANTED IN PART AND DENIED IN PART. The Court concludes that the Mov"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115682,
+        "kind": "item",
+        "occurred_at": "2026-04-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: Order on Motion for Hearing AND Order on Motion for Leave to File Amicus Brief AND Order on Motion for Leave to File Amicus Brief AND Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115609,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/104/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by AMERICA'S FUTURE, CITIZENS UNITED. (Attachments: # 1 Exhibit Proposed Amicus Brief)(Olson, William) (Entered: 05/01/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115610,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/105/dscc-v-trump/",
+        "title": "DSCC v. Trump: Memorandum in opposition to re 34 MOTION for Preliminary Injunction, 37 MOTION for Preliminary Injunction, 29 MOTION for Preliminary Injunction filed by STATE OF ALABAMA, STATE OF "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115611,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/106/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION to Dismiss by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESIDENT, DEREK KAN, HOWARD"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115612,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/107/dscc-v-trump/",
+        "title": "DSCC v. Trump: Memorandum in opposition to re 34 MOTION for Preliminary Injunction, 37 MOTION for Preliminary Injunction, 29 MOTION for Preliminary Injunction filed by FRANK J. BISIGNANO, BOARD O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115613,
+        "kind": "item",
+        "occurred_at": "2026-05-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/108/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION to Intervene by EMANUEL MCCRAY. (Attachments: # 1 Exhibit A, # 2 Exhibit B, # 3 Pro Se Consent to E-Noticing Form)(znmw) (Entered: 05/04/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115666,
+        "kind": "item",
+        "occurred_at": "2026-05-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon review of Federal Defendants' 107 Memorandum in opposition to Plaintiffs' motions for preliminary injunction, it appears that the Memorandum is not double-spaced"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115614,
+        "kind": "item",
+        "occurred_at": "2026-05-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/117/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Filing of Revised Memorandum of Law in Response to the Court's Order of May 4, 2026 by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115615,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/120/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Briefin support of Defendants' Motion to Dismiss by FEDERATION FOR AMERICAN IMMIGRATION REFORM. (Attachments: # 1 Amicus Brief, # 2 Propos"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115616,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/121/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 29 Motion for Preliminary Injunction filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115617,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/122/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 34 Motion for Preliminary Injunction filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHAR"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115618,
+        "kind": "item",
+        "occurred_at": "2026-05-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/123/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 37 Motion for Preliminary Injunction filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDU"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115675,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: Order on Motion for Leave to File Amicus Brief AND Order on Motion for Leave to File Amicus Brief"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115677,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that the 104 Motion for Leave to File Amicus Brief by America's Future, Citizens United is GRANTED; and it is further ORDERED that the 120 Motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115689,
+        "kind": "item",
+        "occurred_at": "2026-05-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that the 108 Motion to Intervene is DENIED. So ORDERED by Judge Carl J. Nichols on 5/11/2026. (lccjn1)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115619,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/131/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Filing of Supplemental Exhibit by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER re 34 Motion for Pre"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115664,
+        "kind": "item",
+        "occurred_at": "2026-05-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: Minute Entry for proceedings held before Judge Carl J. Nichols: Preliminary Injunction held on 5/14/2026. Motions Taken Under Advisement. Further Order and Opinion to be issued by "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115620,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/132/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 106 MOTION to Dismiss, 77 MOTION to Intervene in Opposition to Motions to Dismiss filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115621,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/133/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 106 MOTION to Dismiss, 77 MOTION to Intervene Motion to Dismiss filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115622,
+        "kind": "item",
+        "occurred_at": "2026-05-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/134/dscc-v-trump/",
+        "title": "DSCC v. Trump: RESPONSE re 106 MOTION to Dismiss, 77 MOTION to Intervene Motion to Dismiss filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAU"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115623,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/138/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Excess Pages by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF TH"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115624,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/139/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 106 Motion to Dismiss,, filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115625,
+        "kind": "item",
+        "occurred_at": "2026-05-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/140/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 141 Motion to Intervene,, filed by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, ST"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115684,
+        "kind": "item",
+        "occurred_at": "2026-05-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that the 138 unopposed motion for leave to file one combined reply brief and for additional pages is GRANTED. Federal Defendants may file one com"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115627,
+        "kind": "item",
+        "occurred_at": "2026-05-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/143/dscc-v-trump/",
+        "title": "DSCC v. Trump: MEMORANDUM OPINION. Signed by Judge Carl J. Nichols on 5/28/2026. (lccjn1) (Entered: 05/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115628,
+        "kind": "item",
+        "occurred_at": "2026-05-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/144/dscc-v-trump/",
+        "title": "DSCC v. Trump: ORDER denying 29 Motion for Preliminary Injunction; denying 34 Motion for Preliminary Injunction; denying 37 Motion for Preliminary Injunction. Signed by Judge Carl J. Nichols on 5"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115629,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/146/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE OF INTERLOCUTORY APPEAL TO DC CIRCUIT COURT as to 144 Order on Motion for Preliminary Injunction,, 143 Memorandum & Opinion by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCR"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115663,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: .Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115678,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: ENTERED IN ERROR.....MINUTE ENTRY. In light of footnote 1 in the government's 145 Notice of Case Developments, the Court makes clear that while it expected the government to notify"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115679,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE. In light of footnote 1 in the government's 145 Notice of Case Developments, the Court makes clear that while it expected the government to notify the Court of any material "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115690,
+        "kind": "item",
+        "occurred_at": "2026-06-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE. In light of footnote 1 in the government's 145 Notice of Case Developments, the Court makes clear that while it expected the government to notify the Court of any material "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115630,
+        "kind": "item",
+        "occurred_at": "2026-06-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/147/dscc-v-trump/",
+        "title": "DSCC v. Trump: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals fee was paid re 146 Notice of Appeal to DC "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115631,
+        "kind": "item",
+        "occurred_at": "2026-06-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/148/dscc-v-trump/",
+        "title": "DSCC v. Trump: TRANSCRIPT OF PRELIMINARY INJUNCTION PROCEEDINGS before Judge Carl J. Nichols, held on May 14, 2026. Page Numbers: 1-133. Date of Issuance: June 3, 2026. Court Reporter: Lorraine H"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115680,
+        "kind": "item",
+        "occurred_at": "2026-06-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: USCA Case Number 26-5193 for 146 Notice of Appeal to DC Circuit Court, filed by DEMOCRATIC NATIONAL COMMITTEE, HAKEEM S. JEFFRIES, DSCC, DEMOCRATIC GOVERNORS ASSOCIATION, DCCC, CHA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115632,
+        "kind": "item",
+        "occurred_at": "2026-06-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/154/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE OF SUPPLEMENTAL AUTHORITY by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE (Attachments: # 1 Exhibit 1 - Memorandum Opi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115633,
+        "kind": "item",
+        "occurred_at": "2026-07-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/158/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE OF SUPPLEMENTAL AUTHORITY by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESIDENT, DE"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115634,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/162/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Supplemental Complaint by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115635,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/163/dscc-v-trump/",
+        "title": "DSCC v. Trump: Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # 1 M"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115636,
+        "kind": "item",
+        "occurred_at": "2026-08-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/164/dscc-v-trump/",
+        "title": "DSCC v. Trump: Consent MOTION for Leave to File a Supplemental Complaint by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE, CITY OF MADISON, W"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115637,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/166/dscc-v-trump/",
+        "title": "DSCC v. Trump: Consent MOTION for Leave to File Supplemental Complaint by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115661,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. In the Democratic Party Plaintiffs' 163 Renewed Motion for Preliminary Injunction, Plaintiffs state that the motion for a preliminary injunction is opposed but do not"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115638,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/168/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Brief by SOCIETY FOR THE RULE OF LAW. (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Text of Proposed Order)(Temple, Nancy) (Entered"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115691,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of the 165 Joint Status Report, it is hereby ORDERED that any additional motions for preliminary relief shall be filed on or before August 28, 2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115639,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/169/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Recent Development by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESIDENT, DEREK "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115640,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/171/dscc-v-trump/",
+        "title": "DSCC v. Trump: Second MOTION for Preliminary Injunction by ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONSIN, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE, TRAVIS "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115641,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/172/dscc-v-trump/",
+        "title": "DSCC v. Trump: Second MOTION for Preliminary Injunction by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASSOCIATION F"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115643,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/175/dscc-v-trump/",
+        "title": "DSCC v. Trump: SUPPLEMENTAL COMPLAINT against All Defendants filed by DCCC, DSCC, HAKEEM S. JEFFRIES, DEMOCRATIC NATIONAL COMMITTEE, DEMOCRATIC GOVERNORS ASSOCIATION, CHARLES E. SCHUMER.(znmw) (E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115644,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/176/dscc-v-trump/",
+        "title": "DSCC v. Trump: SUPPLEMENTAL COMPLAINT against All Defendants filed by TRAVIS COUNTY, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONSIN, TRAVIS CO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115645,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/177/dscc-v-trump/",
+        "title": "DSCC v. Trump: SUPPLEMENTAL COMPLAINT against All Defendants filed by COMMON CAUSE EDUCATION FUND, COMMON CAUSE, BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., NATIONAL AS"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115683,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that the Society for the Rule of Law's 168 Unopposed Motion for Leave to File Amicus Brief is GRANTED. So ORDERED by Judge Carl J. Nichols on 8/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115685,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of the NAACP Plaintiffs' 166 Consent Motion for Leave to File a Supplemental Complaint, the Court finds that just terms exist for the Complaint to "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115686,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of the LULAC Plaintiffs' 164 Consent Motion for Leave to File a Supplemental Complaint, the Court finds that just terms exist for the Complaint to "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115687,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of the Democratic Party Plaintiffs' 162 Unopposed Motion for Leave to File a Supplemental Complaint, the Court finds that just terms exist for the "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115642,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/174/dscc-v-trump/",
+        "title": "DSCC v. Trump: NOTICE of Developments Relevant to LULAC Plaintiffs' Second Motion for Preliminary Injunction by ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONSIN, LEAGUE OF UNITED LATIN A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115646,
+        "kind": "item",
+        "occurred_at": "2026-09-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/179/dscc-v-trump/",
+        "title": "DSCC v. Trump: MOTION for Order Requiring Material Updates by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115647,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/181/dscc-v-trump/",
+        "title": "DSCC v. Trump: Consent MOTION for Leave to File Amicus Brief by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of Proposed Order)(Freen"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115648,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/182/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION to Expedite re 163 Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115649,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/183/dscc-v-trump/",
+        "title": "DSCC v. Trump: Memorandum in opposition to re 172 Second MOTION for Preliminary Injunction, 171 Second MOTION for Preliminary Injunction, 163 Second MOTION for Preliminary Injunction filed by STA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115650,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/184/dscc-v-trump/",
+        "title": "DSCC v. Trump: Memorandum in opposition to re 172 Second MOTION for Preliminary Injunction, 171 Second MOTION for Preliminary Injunction, 163 Second MOTION for Preliminary Injunction filed by FRA"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115676,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. It is hereby ORDERED that the 181 Consent Motion for Leave to File Amici Curiae Brief by State and Local Election Officials and the Center for Election Innovation and"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115651,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/185/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Supplemental Declarations in Support of Their Second Motion for Preliminary Injunction by ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONS"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115652,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/186/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 171 Motion for Preliminary Injunction,, filed by ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONSIN, LEAGUE OF UNITED LATIN AMERICAN CITIZEN"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115653,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/187/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 172 Motion for Preliminary Injunction, filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE E"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115654,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/188/dscc-v-trump/",
+        "title": "DSCC v. Trump: Unopposed MOTION to Supplement the Record re 163 Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115655,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/189/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 163 Motion for Preliminary Injunction,, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, C"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115672,
+        "kind": "item",
+        "occurred_at": "2026-09-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of Democratic Party Plaintiffs' 188 Unopposed Motion to Supplement the Renewed Preliminary Injunction Record, it is hereby ORDERED that the Motion "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115673,
+        "kind": "item",
+        "occurred_at": "2026-09-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. Upon consideration of LULAC Plaintiffs' 185 Unopposed Motion for Leave to File Supplemental Declarations, it is hereby ORDERED that the Motion is GRANTED; and it is f"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115656,
+        "kind": "item",
+        "occurred_at": "2026-09-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/192/dscc-v-trump/",
+        "title": "DSCC v. Trump: MEMORANDUM OPINION. Signed by Judge Carl J. Nichols on 9/13/2026. (lccjn1) (Entered: 09/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115657,
+        "kind": "item",
+        "occurred_at": "2026-09-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/193/dscc-v-trump/",
+        "title": "DSCC v. Trump: ORDER granting in part and denying in part 163 Motion for Preliminary Injunction; granting 171 Motion for Preliminary Injunction; granting 172 Motion for Preliminary Injunction. Si"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115658,
+        "kind": "item",
+        "occurred_at": "2026-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/195/dscc-v-trump/",
+        "title": "DSCC v. Trump: Memorandum in opposition to re 179 MOTION for Order Requiring Material Updates filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JO"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115670,
+        "kind": "item",
+        "occurred_at": "2026-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: MINUTE ORDER. In light of the Court's 192 Opinion and 193 Order, it is hereby ORDERED that the 182 Unopposed Motion to Expedite is DENIED AS MOOT. So ORDERED by Judge Carl J. Nicho"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115660,
+        "kind": "item",
+        "occurred_at": "2026-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/198/dscc-v-trump/",
+        "title": "DSCC v. Trump: MANDATE of USCA as to 146 Notice of Appeal to DC Circuit Court, filed by DEMOCRATIC NATIONAL COMMITTEE, HAKEEM S. JEFFRIES, DSCC, DEMOCRATIC GOVERNORS ASSOCIATION, DCCC, CHARLES E."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115659,
+        "kind": "item",
+        "occurred_at": "2026-09-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/197/dscc-v-trump/",
+        "title": "DSCC v. Trump: REPLY to opposition to motion re 179 Motion for Order, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER."
       }
     ]
   },
@@ -24417,9 +25577,9 @@
     "date_terminated": null,
     "defendant": "DONALD J. TRUMP",
     "docket_number": "1:26-cv-01151",
-    "entry_count": 0,
+    "entry_count": 31,
     "filed_at": "2026-04-03T00:00:00",
-    "latest_entry_at": null,
+    "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE",
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
@@ -24436,6 +25596,106 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
         "title": "National Association for the Advancement of Colored People v. Donald J. Trump — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115571,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: Payment of Fee- Complaint/Petition"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115573,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: Payment for 1 Complaint,,,. ($405; Receipt number ADCDC-12340928). (Freedman, John)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115574,
+        "kind": "item",
+        "occurred_at": "2026-04-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: Payment of Fee - Complaint/Petition"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115565,
+        "kind": "item",
+        "occurred_at": "2026-04-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/4/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: ORDER ESTABLISHING PROCEDURESFOR CIVIL CASES ASSIGNED TO JUDGE COLLEEN KOLLAR-KOTELLY. Signed by Judge Colleen Kollar-Kotelly on 4/6/2026. (lcckk3) (Entered: 04/06/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115566,
+        "kind": "item",
+        "occurred_at": "2026-04-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/6/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: ORDER granting (23) Motion to Reassign Case in case 1:26-cv-01114-CKK; granting (16) Motion to Reassign Case in case 1:26-cv-01132-CKK. Signed by Judge Colleen Kollar-Kotelly on 4/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115567,
+        "kind": "item",
+        "occurred_at": "2026-04-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/10/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: ORDER CONSOLIDATING CASES. Signed by Judge Carl J. Nichols on 4/9/2026. (zkh) (Entered: 04/13/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115572,
+        "kind": "item",
+        "occurred_at": "2026-04-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: Cases Consolidated. This case has been consolidated with case 26cv1114 pursuant to 10 Order filed 4/10/2026. From this date forward, all pleadings shall be filed ONLY in the lead c"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115568,
+        "kind": "item",
+        "occurred_at": "2026-04-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/13/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: MOTION to Intervene by STATE OF MISSOURI, STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MONTANA, STATE OF NEBRASKA, STATE OF O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115569,
+        "kind": "item",
+        "occurred_at": "2026-04-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/14/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: MOTION for Leave to File Amicus Briefin Support of Plaintiffs by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of Propo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115570,
+        "kind": "item",
+        "occurred_at": "2026-05-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73143746/18/national-association-for-the-advancement-of-colored-people-v-donald-j/",
+        "title": "National Association for the Advancement of Colored People v. Donald J. Trump: Unopposed MOTION for Leave to File Amicus Briefin support of Defendants' Motion to Dismiss by FEDERATION FOR AMERICAN IMMIGRATION REFORM. (Attachments: # 1 Amicus Brief, # 2 Propos"
       }
     ]
   },
@@ -26327,9 +27587,9 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "26-1774",
-    "entry_count": 0,
+    "entry_count": 63,
     "filed_at": "2026-07-02T00:00:00",
-    "latest_entry_at": null,
+    "latest_entry_at": "2026-09-21T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
@@ -26346,6 +27606,196 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
         "title": "State of California v. Trump (1st Cir.) — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115545,
+        "kind": "item",
+        "occurred_at": "2026-07-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108470623/1/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): CIVIL CASE docketed. Notice of appeal (doc. #192) filed by Appellants Frank J. Bisignano, Todd Blanche, Derek T. Kan, Amber McReynolds, Markwayne Mullin, SSA, David Steiner, Ronald"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115546,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108472573/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): EMERGENCY MOTION to stay injunction pending appeal filed by Appellants Frank J. Bisignano, Todd Blanche, DHS, Derek T. Kan, Amber McReynolds, Markwayne Mullin, SSA, David Steiner, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115547,
+        "kind": "item",
+        "occurred_at": "2026-07-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108472709/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): SUPPLEMENTAL record filed. Docket entries: 207 (final judgment) and 208 (memorandum and order). [26-1774, 26-1779] (GRC) [Entered: 07/07/2026 04:17 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115548,
+        "kind": "item",
+        "occurred_at": "2026-07-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108473138/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): ORDER entered: Before the court are the two above-captioned appeals from the same district court proceeding. These two appeals are hereby consolidated for purposes of pre-briefing "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115549,
+        "kind": "item",
+        "occurred_at": "2026-07-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108474369/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): EMERGENCY MOTION to stayfiled by Not Parties State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115550,
+        "kind": "item",
+        "occurred_at": "2026-07-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108475233/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): RESPONSE filed by Appellees State of California, Commonwealth of Massachusetts, State of Nevada, State of Washington, State of Arizona, State of Colorado, State of Connecticut, Sta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115551,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108476145/1/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) The Society for Rule of Law. Served on 07/14/2026. [26-1774, 26-1779] (RDB) [Entered: 07/14/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115552,
+        "kind": "item",
+        "occurred_at": "2026-07-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108476173/1/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) Bipartisan Former Governors. Served on 07/14/2026. [26-1774, 26-1779] (MPF) [Entered: 07/14/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115553,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108476475/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): REPLY filed by Not Parties State of Alabama, State of Missouri, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Montana, State of Nebraska, State "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115554,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108476487/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): REPLY filed by Appellants Frank J. Bisignano, Todd Blanche, DHS, Derek T. Kan, Amber McReynolds, Markwayne Mullin, SSA, David Steiner, Ronald Stroman, Daniel Mark Tangherlini, Dona"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115555,
+        "kind": "item",
+        "occurred_at": "2026-07-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108478281/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): TRANSCRIPT report/order form filed by Appellants State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, Sta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115556,
+        "kind": "item",
+        "occurred_at": "2026-07-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108479170/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): COURTESY Copies of motion [6825929-2] filed by Amicus Curiae Society for Rule of Law Institute . [26-1774, 26-1779] (GRC) [Entered: 07/21/2026 09:57 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115557,
+        "kind": "item",
+        "occurred_at": "2026-07-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108481937/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): ORDER entered by Gustavo A. Gelpi, Jr., Appellate Judge; Julie Rikelman, Appellate Judge, and Joshua D. Dunlap, Appellate Judge, concurring in part and dissenting in part. The fede"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115558,
+        "kind": "item",
+        "occurred_at": "2026-07-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108481940/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): AMICUS CURIAE BRIEF filed by The Society for Rule of Law in support of Appellee. Served on 07/13/2026. Nine paper copies identical to that of the electronically filed brief must be"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115559,
+        "kind": "item",
+        "occurred_at": "2026-07-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108481943/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): AMICUS CURIAE BRIEF filed by Bipartisan Former Governors 26-1774, 26-1779 in support of Appellee. Served on 07/03/2026. Nine paper copies identical to that of the electronically fi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115560,
+        "kind": "item",
+        "occurred_at": "2026-08-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108487318/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): ORDER entered: Upon consideration, the notice of withdrawal of appearance of attorney James W. Grayson is construed as a motion to withdraw Attorney Grayson as counsel for Appellee"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115561,
+        "kind": "item",
+        "occurred_at": "2026-08-12T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108490777/1/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): BRIEFING schedule set. Brief and appendix due 09/21/2026 for appellants Frank J. Bisignano, Todd Blanche, Derek T. Kan, Amber McReynolds, Markwayne Mullin, Social Security Administ"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115562,
+        "kind": "item",
+        "occurred_at": "2026-09-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108508354/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): JOINT MOTION to extend time to file brief and appendix filed by Appellants Frank J. Bisignano, Todd Blanche, DHS, Derek T. Kan, Amber McReynolds, Markwayne Mullin, SSA, David Stein"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115563,
+        "kind": "item",
+        "occurred_at": "2026-09-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108511535/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): ORDER granting motion to extend time to file brief and appendix filed by Appellants USPS, DHS, United States Department of Justice, SSA, Donald J. Trump, Todd Blanche, Frank J. Bis"
       }
     ]
   },
@@ -27957,9 +29407,9 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 0,
+    "entry_count": 195,
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": null,
+    "latest_entry_at": "2026-09-17T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
@@ -27976,6 +29426,726 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115451,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/1/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: COMPLAINT against All Defendants Filing fee: $ 405, receipt number AMADC-11984865 (Fee Status: Filing Fee paid), filed by Commonwealth of Massachusetts, Commonwealth of Virginia, D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115452,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/2/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: ELECTRONIC NOTICE of Case Assignment. Judge Indira Talwani assigned to case. If the trial Judge issues an Order of Reference of any matter in this case to a Magistrate Judge, the m"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115453,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/3/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay by Commonwealth of Massachusetts, Commonwealth of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115454,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/4/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: AFFIDAVIT in Support re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay filed by Commonwealth o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115455,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/5/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MEMORANDUM in Support re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay filed by Commonwealth "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115456,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/6/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Leave to File Excess Pages (Unopposed) by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of Califor"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115457,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/7/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ORDER entered. See attached. BRIEFING ORDER DEADLINES:Defendants' separate or combined Opposition to the pending request for a temporary restraining order and"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115458,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/9/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER granting Plaintiffs' Unopposed Motion for Leave to File Excess Pages [ 6 ]. Plaintiff is granted leave, nunc pro tunc, to file an oversized b"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115521,
+        "kind": "item",
+        "occurred_at": "2026-08-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Excess Pages"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115459,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/17/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MEMORANDUM in Opposition re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay filed by Derek Kan,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115460,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/31/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ORDER entered granting in part [ 206 ] Motion for TRO in case 1:26-cv-11549-IT; granting in part [ 3 ] Motion for TRO in case 1:26-cv-13917-IT. See attached M"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115461,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/32/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION to Intervene by State of Missouri, State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Montana, State of Nebraska, State of T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115462,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/33/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MEMORANDUM in Support re 32 MOTION to Intervene filed by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Mont"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115507,
+        "kind": "item",
+        "occurred_at": "2026-08-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115463,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/40/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Assented to MOTION for Leave to File Brief as Amicus Curiae of the Society for the Rule of Law by Society for the Rule of Law. (Attachments: # 1 Amicus Brief for Society for the Ru"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115464,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/42/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: NOTICE OF APPEAL as to 31 Order on Motion for TRO,,, by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tulino, United States Postal Service. F"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115465,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/50/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER: Applicants State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115466,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/55/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 42 Notice of Appeal. (MAP) (Entered: 08/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115467,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/56/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: USCA Case Number 26-1987 for 42 Notice of Appeal, filed by Amber McReynolds, Daniel Tangherlini, David Steiner, Doug Tulino, Ronald Stroman, United States Postal Service, Derek Kan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115468,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/57/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: NOTICE by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tulino, United States Postal Service of Compliance with the Court's Aug. 27, 2026 Ord"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115469,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/58/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION to Stay re 31 Order on Motion for TRO,,, Pending Appeal by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tulino, United States Postal "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115470,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/59/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MEMORANDUM in Support re 58 MOTION to Stay re 31 Order on Motion for TRO,,, Pending Appeal filed by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115520,
+        "kind": "item",
+        "occurred_at": "2026-08-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion to Intervene"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115471,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/60/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: NOTICE OF APPEAL as to 31 Order on Motion for TRO,,, by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Monta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115472,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/61/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION to Stay re 31 Order on Motion for TRO,,, by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115473,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/62/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: NOTICE by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of California, State of Colorado, State of Connecticu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115474,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/63/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Leave to File Excess Pages by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tulino, United States Postal Service.(Polito, Michael)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115475,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/64/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Opposition re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay filed by State of Alabama, State "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115476,
+        "kind": "item",
+        "occurred_at": "2026-08-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/65/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MEMORANDUM in Opposition re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay filed by Derek Kan,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115477,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/68/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: USCA Case Number 26-1991 for 60 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115478,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/69/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 60 Notice of Appeal. (MAP) (Entered: 08/31/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115479,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/70/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER granting nunc pro tunc Defendants’ Unopposed Motion for Leave to File Five Excess Pages [ 63 ]. Counsel using the Electronic Case Filing Syst"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115480,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/71/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 40 Assented to MOTION for Leave to File Brief as Amicus Curiae of the Society for the Rule of Law. Counsel using the Electronic Case"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115481,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/72/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER DENYING Defendants’ and Intervenor-Defendants’ Motions to Stay Pending Appeal [ 58 ], [ 61 ]. See Elec. Order [ 242 ] in League of Women Vote"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115482,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/83/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Leave to File Amicus Curiae Brief in Support of Plaintiffs' Motion for Preliminary Injunction by National Security Leaders for America. (Attachments: # 1 Proposed Amicus"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115483,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/91/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Supplemental Record on Appeal transmitted to US Court of Appeals re 60 Notice of Appeal, 42 Notice of Appeal, Documents included: ECF No. 72. (MAP) (Entered: 08/31/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115484,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/99/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Leave to File Excess Pages (Unopposed) by Commonwealth of Massachusetts, Commonwealth of Virginia, District of Columbia, Josh Shapiro, State of Arizona, State of Califor"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115485,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/100/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: DECLARATION re 4 Affidavit in Support of Motion,,,,,, -- Plaintiff States' Supplemental Table of Declarations by Commonwealth of Massachusetts, Commonwealth of Virginia, District o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115486,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/103/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: REPLY to Response to 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay -- Reply in Support of Pla"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115513,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115514,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115515,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Excess Pages"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115516,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion to Stay AND Order on Motion to Stay"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115487,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/109/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Leave to File Brief as Amici Curiae in Support of Plaintiffs (Unopposed) by Arizona Students' Association, City of Madison, Wisconsin, League of United Latin American Ci"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115488,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/110/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MEMORANDUM in Opposition re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay (Leave to File Five"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115489,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/115/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: DECLARATION re 3 Emergency MOTION for Temporary Restraining Order, Emergency Stay, Expedited Briefing, Preliminary Injunction, and Section 705 Stay -- Declaration of Michael S. Coh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115490,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/118/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 109 MOTION for Leave to File Brief as Amici Curiae. Counsel using the Electronic Case Filing System should now file the document for"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115508,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115509,
+        "kind": "item",
+        "occurred_at": "2026-09-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115522,
+        "kind": "item",
+        "occurred_at": "2026-09-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115491,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/139/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 83 MOTION for Leave to File Amicus Curiae Brief. Counsel using the Electronic Case Filing System should now file the document for wh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115492,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/140/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowed nunc pro tunc 99 MOTION for Leave to File Excess Pages (Unopposed). (MAP) (Entered: 09/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115493,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/144/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: AMICUS BRIEF filed by National Security Leaders for America in Support of Plaintiffs' Motion for Preliminary Injunction. (Pilipovskiy, Yevgeniy) (Entered: 09/03/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115494,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/149/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion Hearing held on 9/3/2026 re: ( 3 in 1:26-cv-13917-IT) Emergency MOTION for Temporary Restraining O"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115510,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Excess Pages"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115511,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Document"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115512,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115517,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115495,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/154/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Transcript of Motion Hearing held on September 3, 2026, before Judge Indira Talwani. The Transcript may be purchased through the Court Reporter, viewed at the public terminal, or v"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115496,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/156/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: MEMORANDUM AND ORDER GRANTING PLAINTIFFS' MOTIONS FOR A PRELIMINARY INJUNCTION Associated Cases: 1:26-cv-11549-IT, 1:26-cv-13917-IT (MAP) (Entered: 09/04/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115497,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/158/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: NOTICE OF APPEAL as to 156 Memorandum & ORDER by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Doug Tulino, United States Postal Service. Fee Stat"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115498,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/159/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: NOTICE OF APPEAL as to 156 Memorandum & ORDER by State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, Sta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115499,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/160/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 158 Notice of Appeal. (MAP) (Entered: 09/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115500,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/161/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Certified and Transmitted Abbreviated Electronic Record on Appeal to US Court of Appeals re 159 Notice of Appeal. (MAP) (Entered: 09/07/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115501,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/162/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: USCA Case Number 26-2031 for 158 Notice of Appeal, filed by Amber McReynolds, Daniel Tangherlini, David Steiner, Doug Tulino, Ronald Stroman, United States Postal Service, Derek Ka"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115502,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/163/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: USCA Case Number 26-2032 for 159 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115503,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/168/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: ORDER of USCA as to 159 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115504,
+        "kind": "item",
+        "occurred_at": "2026-09-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/171/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION to Intervene by Emanuel McCray. (Attachments: # 1 Exhibit 1, # 2 Exhibit 2, # 3 Exhibit 3, # 4 Exhibit 4, # 5 Exhibit 5, # 6 Exhibit 6, # 7 Exhibit 7, # 8 Exhibit 8, # 9 Exh"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115518,
+        "kind": "item",
+        "occurred_at": "2026-09-11T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115505,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/172/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER denying Emanuel McCray’s Motion to Intervene and Dismiss with Prejudice [ 171 ]. McCray’s request to intervene as of right is DENIED where Mc"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115506,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/173/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Copy re 172 Electronic Order mailed to Emanuel McCray on September 17, 2026. (MAP) (Entered: 09/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115519,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion to Intervene"
       }
     ]
   },
@@ -27987,9 +30157,9 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "26-2029",
-    "entry_count": 0,
+    "entry_count": 63,
     "filed_at": "2026-09-04T00:00:00",
-    "latest_entry_at": null,
+    "latest_entry_at": "2026-09-21T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
@@ -28006,6 +30176,206 @@
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.) — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115524,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503546/1/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): CIVIL CASE docketed. Notice of appeal (doc. #286) filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, Joseph B. Edlow, Derek T. Kan, Amb"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115525,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503547/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): CIVIL CASE docketed. Notice of appeal (doc. #286) filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, Joseph B. Edlow, Derek T. Kan, Amb"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115526,
+        "kind": "item",
+        "occurred_at": "2026-09-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503581/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): EMERGENCY MOTION to stay preliminary injunction filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, DHS, Joseph B. Edlow, Derek T. Kan, "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115527,
+        "kind": "item",
+        "occurred_at": "2026-09-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503614/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER entered: The court is in receipt of the federal defendants-appellants’ Emergency Motion for Stay Pending Appeal which seeks a stay pending appeal of the District Court’s Sept"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115528,
+        "kind": "item",
+        "occurred_at": "2026-09-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503657/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION to stayfiled by Not Parties State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of Nebraska"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115529,
+        "kind": "item",
+        "occurred_at": "2026-09-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503662/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER entered: The court is in receipt of the Intervenor States’ motion for stay pending appeal which seeks a stay of the District Court’s September 4, 2026, preliminary injunction"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115530,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503772/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION for leave to file amicus curiae brief in opposition to motion for stay filed by Movant(s) League of United Latin American Citizens, Secure Families Initiative, Arizona Stude"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115531,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503794/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION for leave to file amicus curiae brief in opposition to emergency motion for stay pending appeal and supporting Appellees filed by Movant(s) The Society for Rule of Law Insti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115532,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503877/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION for leave to file oversized Response of No More than 6,500 (Unopposed) filed by Appellees Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., Leagu"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115533,
+        "kind": "item",
+        "occurred_at": "2026-09-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108503883/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): RESPONSE filed by Appellees Association of Americans Resident Overseas, Delta Sigma Theta Sorority, Inc., League of Women Voters Education Fund, League of Women Voters Lotte E. Sch"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115534,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108504100/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER granting motion for leave to file oversized response filed by Appellees League of Women Voters of Massachusetts, League of Women Voters Education Fund, League of Women Voters"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115535,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108504447/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): AMICUS CURIAE BRIEF in opposition to Federal Defendants’ emergency motion for stay pending appeal tendered by National Security Leaders for America. [26-2029]. CLERK'S NOTE: Docket"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115536,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108504599/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): REPLY filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, DHS, Joseph B. Edlow, Derek T. Kan, Amber McReynolds, Markwayne Mullin, SSA, D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115537,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108504648/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): REPLY filed by Appellants State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of Nebraska, State o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115538,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108505918/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER entered by Gustavo A. Gelpí, Jr., Appellate Judge; Julie Rikelman, Appellate Judge; and Seth Robert Aframe, Appellate Judge: The motions for a stay are denied. The USPS's req"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115539,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108506706/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION for leave to file amicus curiae brief filed by Movant Brandon Michael Hayes. Served on 09/08/2026. [26-2029] (ATC) [Entered: 09/11/2026 04:07 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115540,
+        "kind": "item",
+        "occurred_at": "2026-09-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108508286/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER entered by Gustavo A. Gelpí, Jr., Appellate Judge; Julie Rikelman, Appellate Judge and Seth Robert Aframe, Appellate Judge: These are four appeals from a preliminary injuncti"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115541,
+        "kind": "item",
+        "occurred_at": "2026-09-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108508292/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): AMICI CURIAE BRIEF in opposition to motion for stay filed by Amici Curiae Arizona Students' Association, League of United Latin American Citizens, Dyana Limon-Mercado, Madison, WI,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115542,
+        "kind": "item",
+        "occurred_at": "2026-09-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108508295/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): AMICUS CURIAE BRIEF in opposition to emergency motion for stay pending appeal and supporting Appellees filed by Amicus Curiae Society for Rule of Law Institute in 26-2029, 26-2031,"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 115543,
+        "kind": "item",
+        "occurred_at": "2026-09-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108511069/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): TRANSCRIPT report/order form filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, DHS, Joseph B. Edlow, Derek T. Kan, Amber McReynolds, M"
       }
     ]
   },

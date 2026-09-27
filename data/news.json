@@ -9158,5 +9158,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-the-supreme-court-boosted-trumps-voter-suppression-legacy-media-shrugged",
     "title": "This week at Democracy Docket: The Supreme Court boosted Trump’s voter suppression. Legacy media shrugged"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 115892,
+    "kind": "item",
+    "occurred_at": "2026-09-27T17:14:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/fine-with-me-gop-senate-candidate-mike-collins-backs-federal-troops-at-polls",
+    "title": "‘Fine with me’: GOP Senate candidate Mike Collins backs federal troops at polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 115891,
+    "kind": "item",
+    "occurred_at": "2026-09-27T19:36:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-slams-supreme-court-for-rejecting-missouri-gerrymander",
+    "title": "Trump slams Supreme Court for rejecting Missouri gerrymander"
   }
 ]
