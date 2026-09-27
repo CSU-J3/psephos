@@ -113,7 +113,8 @@ def load_cases(path: str = IN_CASES) -> list[dict]:
 
 def seeded_keys(tracker_path: str = IN_TRACKER) -> set[tuple[str, str]]:
     """(docket_number, court) for every seed `litigation.main()` iterates: the config
-    seed_cases plus the tracker artifact. 2 + 32 = 34."""
+    seed_cases plus the tracker artifact. The count moves; coverage_audit's header
+    prints it live."""
     seeds = list(config.load_sources()["litigation"].get("seed_cases", []))
     seeds += json.load(open(tracker_path, encoding="utf-8"))
     return {(s.get("docket_number"), s.get("court")) for s in seeds}

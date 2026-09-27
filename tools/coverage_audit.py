@@ -43,15 +43,16 @@ unlinked terminated rows. One join against a cascade of three predicates, a rege
 a corpus decision. Redundant against a cheaper instrument.
 
 THE ORDERING TRAP (handoff 26 section 3, shipped as a bug once). The seed set is the
-UNION of both sources: config/sources.yaml -> litigation.seed_cases (8) plus
-data/doj_cases.json (32) = 40, which is the list `litigation.main()` actually
-iterates. (Those were 2 and 34 when this paragraph was written; the config side
-grew and the prose did not, until unit C read the tool's own output line and found
-it disagreeing with the file it sits in.)
+UNION of both sources: config/sources.yaml -> litigation.seed_cases plus
+data/doj_cases.json, which is the list `litigation.main()` actually iterates. The
+tool's header line prints the live seed-key count; read it there. (This paragraph
+carried the figures twice -- 2 + 34, then 8 + 32 = 40 -- and both went stale as the
+config side grew, the second when the EO 14399 seeds landed on 2026-09-27.)
 
 Against the ARTIFACT ALONE the numbers change and both are easy to misquote:
 8 rows read unseeded rather than 6, and the ALARM reads 2 rather than 0 -- the two
-extras being the config seeds, which are polled every run. 8 is the unseeded count and
+extras being the config seeds, which are polled every run. (Counts as of unit C; the
+config seeds have grown since, so re-read them rather than quoting these.) 8 is the unseeded count and
 2 is the alarm count; they are different questions and neither is the other. Reuse
 `status_audit.seeded_keys` rather than rebuilding the join, so there is one definition
 to be wrong in.

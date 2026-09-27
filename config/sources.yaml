@@ -237,8 +237,9 @@ litigation:
   # (footnote 1: Common Cause and LWV). The tracker's own main table -- the ~31 DOJ
   # voter-data suits, incl. the California/Weber row (ca9 / 26-1232) -- is supplied by
   # collectors.tracker_uw as data/doj_cases.json and loaded by litigation.main(). Clean
-  # split, no overlap: config seed_cases = the footnoted related suits, artifact = the
-  # tracker table. (Weber was dropped here; it is the tracker's California row now.)
+  # split, no overlap: config seed_cases = the footnoted related suits and the two roles
+  # added below it, artifact = the tracker table. (Weber was dropped here; it is the
+  # tracker's California row now.)
   #
   # SECOND ROLE, added 2026-08-14, with its exit condition: config may also carry a
   # CIRCUIT SUCCESSOR THE TRACKER DEMONSTRABLY TRAILS. Each such entry names its
@@ -370,7 +371,8 @@ litigation:
         which names it in its 2026-03-03 CASE OPENED entry. Tracker records the
         District Court's 1/15/26 dismissal. Seeded 2026-08-16; permanent, because the
         artifact carries this state at its circuit docket and never at this one.
-    # PINNED, and the only pinned seed. CourtListener holds TWO records for this
+    # PINNED; the first pinned seed (the EO 14399 challenges below pin theirs too,
+    # 2026-09-27). CourtListener holds TWO records for this
     # docket number in `ord`, so the exact-match resolve can never return one and
     # correctly refuses to bind. The pin is per-seed and carries its evidence; the
     # refusal stays exactly as strict everywhere else, because a global relaxation
@@ -407,6 +409,116 @@ litigation:
         which names it in its 2026-06-04 CASE OPENED entry. Tracker records the
         District Court's 4/28/26 dismissal, and separately that the 9th Circuit stayed
         this appeal on 6/22/26 pending CA and OR. Seeded 2026-08-16; permanent.
+
+    # --- challenges to the election executive orders (the third role) -------------
+    # THIRD ROLE, added 2026-09-27 (docs/status.md, *The EO 14399 dockets*): suits whose
+    # operative complaint seeks relief against an election executive order, or against
+    # agency action the complaint pleads was taken under one. The UW tracker carries
+    # none of them. `category: executive-order` is the class mark the page reads
+    # (web/lib/stands.ts, isEoChallenge), and `order` names the order each challenges.
+    # tests/test_eo_class_seeds.py holds every mark to the order the page's two
+    # sentences name (docs/gates.yaml, `names_order`), so a 14248 docket seeded later
+    # forces them to widen. No `state`, which the same test enforces: these sue the
+    # President and federal agencies, and stay off the /campaign grid.
+    #
+    # EACH PINS ITS COURTLISTENER ID, checked offline against a text fetched by that id:
+    # the five trial dockets' RECAP complaints carry their case numbers in their page
+    # headers, and CourtListener's own docket search returned 26-2029 as 74755121 and
+    # 26-1774 as 73568304. Each court string is appellate exactly when its docket number
+    # is an appeal's (the test's court guard).
+    #
+    # THE NOTES RENDER VERBATIM on each docket's page (write_b2_item makes them the B2
+    # subject line), so they state docket facts only; this page's bookkeeping sits in
+    # these comments. A note edited after its first bind writes a second B2 row.
+    #
+    # THE ORDER IS THE WALK PLAN. The 30-request full-walk budget is checked before each
+    # walk, never during one. The first run walks 1:26-cv-11549 (19 pages) and
+    # 1:26-cv-11581 (12) and defers the rest; all seven bind on it. The second walks
+    # 1:26-cv-13917 (10), 26-2029 (4), 26-1774 (4) and 1:26-cv-01151 (2), then
+    # 1:26-cv-01114 (13) from a budget of 10: the largest walk goes last, where the four
+    # ahead of it would have to grow by ten pages together to defer it.
+    - caption: League of Women Voters of Massachusetts v. Trump
+      docket_number: 1:26-cv-11549
+      court: D. Mass.
+      court_id: mad
+      category: executive-order
+      order: EO 14399
+      case_id: "73133197"
+      notes: >-
+        Private plaintiffs ask the court to declare EO 14399 unlawful and enjoin its
+        implementation. The Sep 4 preliminary injunction against the Postal Service's
+        final rule issued here jointly with 1:26-cv-13917.
+    - caption: State of California v. Trump
+      docket_number: 1:26-cv-11581
+      court: D. Mass.
+      court_id: mad
+      category: executive-order
+      order: EO 14399
+      case_id: "73141063"
+      notes: >-
+        23 States and the District of Columbia. The June 25 order (final judgment Jul 7)
+        declared sections 2 and 3 of EO 14399 void and enjoined implementing them for
+        the plaintiff States; the Supreme Court stayed that injunction on Aug 24
+        (No. 26A124).
+    - caption: State of California v. United States Postal Service
+      docket_number: 1:26-cv-13917
+      court: D. Mass.
+      court_id: mad
+      category: executive-order
+      order: EO 14399
+      case_id: "74701505"
+      notes: >-
+        States challenge the Postal Service's final rule, which the complaint pleads was
+        adopted under section 3 of EO 14399. Preliminary injunction Sep 4, jointly with
+        1:26-cv-11549.
+    # Held and not counted in eo-challenges (ruling (c)); 26-2030 to 26-2032 are carried
+    # on this lead, per the 26-5301 consolidation precedent.
+    - caption: League of Women Voters of Massachusetts v. Trump (1st Cir.)
+      docket_number: 26-2029
+      court: First Circuit
+      court_id: ca1
+      category: executive-order
+      order: EO 14399
+      case_id: "74755121"
+      notes: >-
+        Lead of the four First Circuit appeals from the Sep 4 preliminary injunction in
+        1:26-cv-11549 and 1:26-cv-13917, consolidated Sep 14 as 26-2029 to 26-2032; the
+        other three are followed through this docket.
+    # Held and not counted; 26-1779 is carried on this lead (the 26-5301 precedent,
+    # ruled 2026-09-27 in 26-1779's place).
+    - caption: State of California v. Trump (1st Cir.)
+      docket_number: 26-1774
+      court: First Circuit
+      court_id: ca1
+      category: executive-order
+      order: EO 14399
+      case_id: "73568304"
+      notes: >-
+        The federal defendants' appeal of the June 25 order in 1:26-cv-11581,
+        consolidated Jul 8 with the intervening States' appeal 26-1779, which is
+        followed through this docket. The Supreme Court's Aug 24 stay (No. 26A124) came
+        on this appeal.
+    - caption: National Association for the Advancement of Colored People v. Donald J. Trump
+      docket_number: 1:26-cv-01151
+      court: D.D.C.
+      court_id: dcd
+      category: executive-order
+      order: EO 14399
+      case_id: "73143746"
+      notes: >-
+        Asks the court to declare sections 2(a), 3(b), 4(a) and 4(c) of EO 14399 ultra
+        vires and void.
+    - caption: DSCC v. Trump
+      docket_number: 1:26-cv-01114
+      court: D.D.C.
+      court_id: dcd
+      category: executive-order
+      order: EO 14399
+      case_id: "73131864"
+      notes: >-
+        Asks the court to declare sections 2(a), 3(b), 4(a) and 4(c) of EO 14399 ultra
+        vires and void. The D.C. Circuit issued a decision in the case on Jul 28
+        (2026 WL 2168617).
 
 # ===========================================================================
 # CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)

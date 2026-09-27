@@ -188,11 +188,10 @@
 # entry names the Postal Service's rule. The old id stays as an alias, and the records
 # in docs/status.md keep it as written.
 #
-# `record_instruments` IS EMPTY UNTIL THE SEED COMMIT. The held dockets among those this
-# claim's falsified_by names -- 26-2029 (74755121), 1:26-cv-11549 (73133197),
-# 1:26-cv-13917 (74701505) -- are seeded by that commit, which adds them here with a
-# `record_instruments_due`; check 4 counts a pinned seed as pending until it binds, and
-# no later than that date.
+# `record_instruments` IS FILLED BY THE SEED COMMIT (2026-09-27): the held dockets among
+# those this claim's falsified_by names -- 26-2029 (74755121), 1:26-cv-11549 (73133197),
+# 1:26-cv-13917 (74701505). Check 4 counts each as pending until it binds, and no later
+# than `record_instruments_due`, the day after the second walking run.
 - id: eo-14399-usps-rule-enjoined
   aliases: [eo-14399-s3-enjoined]
   claim: "the Postal Service's final rule implementing EO 14399 section 3 is enjoined in its mandatory provisions for elections through Nov 3, 2026 (D. Mass. preliminary injunction, Sep 4), with First Circuit stays denied Sep 10 and a Supreme Court stay denied Sep 14"
@@ -203,7 +202,8 @@
   recheck_after: 2026-10-15
   falsified_by: "an order vacating, staying or modifying the Sep 4 injunction: by the D. Mass. court, by the First Circuit (Nos. 26-2029 to 26-2032, consolidated; a merits ruling vacating it among them), or a further Supreme Court order; the instruments are Supreme Court docket 26A305 and First Circuit docket 26-2029, read directly, with the D. Mass. docket and the tracker secondary"
   status: active
-  record_instruments: []
+  record_instruments: [74755121, 73133197, 74701505]
+  record_instruments_due: 2026-09-28
   renders_as: "the Postal Service's final rule implementing section 3 of EO 14399 is enjoined in its mandatory provisions for elections through Nov 3, 2026, by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied one on Sep 14"
 
 # THE STAY OF THE INJUNCTION AGAINST SECTIONS 2 AND 3, split from the entry above on
@@ -214,8 +214,9 @@
 # certiorari be denied, this stay shall terminate automatically." Nothing on the First
 # Circuit's schedule can end it soon: on Sep 21 it moved the appellants' brief in
 # 26-1774 and 26-1779 to Nov 20, 2026, and that date is the recheck.
-# `record_instruments` is empty until the seed commit, which adds 26-1774 (73568304)
-# and 1:26-cv-11581 (73141063), the held dockets among those its falsified_by names.
+# `record_instruments` is filled by the seed commit (2026-09-27): 26-1774 (73568304) and
+# 1:26-cv-11581 (73141063), the held dockets among those its falsified_by names, due by
+# the day after the second walking run.
 - id: eo-14399-s2-3-stayed
   claim: "the D. Mass. injunction against implementing sections 2 and 3 of EO 14399 (1:26-cv-11581, final judgment of Jul 7; for the plaintiff States, for elections through Nov 3, 2026) has been stayed by the Supreme Court since Aug 24, pending the First Circuit appeal and any certiorari petition"
   kind: authored
@@ -225,7 +226,8 @@
   recheck_after: 2026-11-20
   falsified_by: "a Supreme Court order vacating or modifying the stay, or its end on its own terms: the First Circuit's disposition of No. 26-1774 (consolidated with 26-1779) and then a denial of certiorari, no timely petition, or the Court's judgment sent down; or an order vacating or modifying the Jul 7 injunction itself, by the D. Mass. court (1:26-cv-11581) or by a First Circuit mandate; the instruments are Supreme Court docket 26A124 and First Circuit docket 26-1774, read directly, with the D. Mass. docket secondary"
   status: active
-  record_instruments: []
+  record_instruments: [73568304, 73141063]
+  record_instruments_due: 2026-09-28
   renders_as: "an earlier D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"
 
 # asserted_on is the tracker's update date, per this file's own rule (the date
@@ -346,10 +348,17 @@
 # THE ORDER IS NAMED IN WORDS, "the mail-ballot executive order", because a derived
 # entry may hold no digit outside a placeholder. Every docket seeded into the class
 # seeks relief against EO 14399 or against agency action pleaded as taken under it
-# (the USPS Rule); the check that keeps that true, and forces this sentence to widen
-# the day a 14248 docket is seeded, lands with the seeds.
+# (the USPS Rule); tests/test_eo_class_seeds.py keeps that true, and forces this
+# sentence and its tab-2 twin, eo-challenges-held, to widen the day a 14248 docket is
+# seeded.
+#
+# `names_order` is the order the sentence's words mean, carried beside them because the
+# words may hold no digit. Both sentences that count eoLawsuits carry it, the test holds
+# them equal, and it holds every seed and held row marked `executive-order` to it
+# (Corey's ruling (a), 2026-09-26).
 - id: eo-challenges
   kind: derived
+  names_order: EO 14399
   produced_by: "web/lib/stands.ts#eoLawsuits"
   renders_as: "The record holds {n} challenges to the mail-ballot executive order, counted apart from DOJ's filings and the related suits"
 
@@ -357,6 +366,7 @@
 # id with two texts is two claims that nothing compares.
 - id: eo-challenges-held
   kind: derived
+  names_order: EO 14399
   produced_by: "web/lib/stands.ts#eoLawsuits"
   renders_as: "{n} challenges to the mail-ballot order held in the record"
 
