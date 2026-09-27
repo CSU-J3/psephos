@@ -162,8 +162,10 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                 <Grade grade="A1" dense /> Federal Register{" "}
                 <Grade grade="B2" dense /> EO 14248 per the Brennan Center case tracker{" "}
                 <span className="rk">recheck by Dec 10</span>{" "}
-                <Grade grade="A1" dense /> EO 14399 per Supreme Court docket 26A305{" "}
-                <span className="rk">recheck by Oct 15</span>
+                <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule per Supreme Court docket 26A305{" "}
+                <span className="rk">recheck by Oct 15</span>{" "}
+                <Grade grade="A1" dense /> EO 14399&rsquo;s §§2-3 injunction per Supreme Court docket 26A124{" "}
+                <span className="rk">recheck by Nov 20</span>
               </>
             }
           >
@@ -173,8 +175,12 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
               {"the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"}
             </span>
             ;{" "}
-            <span data-gate="eo-14399-s3-enjoined">
-              {"section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied a stay on Sep 14"}
+            <span data-gate="eo-14399-usps-rule-enjoined">
+              {"the Postal Service's final rule implementing section 3 of EO 14399 is enjoined in its mandatory provisions for elections through Nov 3, 2026, by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied one on Sep 14"}
+            </span>
+            ;{" "}
+            <span data-gate="eo-14399-s2-3-stayed">
+              {"an earlier D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"}
             </span>
             .
           </Fact>
@@ -325,27 +331,32 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                   mail-ballot order held in the record
                 </span>,
                 // DONE REGARDLESS OF THE COUNT. The step is about both orders, and both were
-                // challenged: an injunction needs a suit, and tab 1's two gated claims say
-                // both are enjoined. The count is what the record holds of one order's
+                // challenged: an injunction needs a suit, and tab 1's gated claims record
+                // injunctions against 14248's provisions, against the USPS rule implementing
+                // 14399, and against 14399's own §§2-3 (that one stayed). The count is what
+                // the record holds of one order's
                 // challenges, and at 0 -- the window between this deploy and the seeds'
                 // first walk -- an undone step would have read "not challenged".
                 true,
               ],
               [
                 "In force today",
-                // POINTERS, NOT CLAIMS. Each half names a provision and sends the reader
-                // to the gated claim on the first tab; it states no status of its own, so
+                // POINTERS, NOT CLAIMS. Each part names a provision and sends the reader
+                // to its gated claim on the first tab; it states no status of its own, so
                 // there is no second text to fall out of step with the register.
                 // `data-gate-ref` is checked by assert-gates: every ref must name an
                 // authored gate that is registered, not falsified, and on the page.
                 <>
-                  see the first tab for{" "}
-                  <span data-gate-ref="eo-14399-s3-enjoined">§3 of 14399</span> and{" "}
-                  <span data-gate-ref="eo-14248-enjoined">14248&rsquo;s registration rules</span>{" "}
+                  see the first tab for 14399&rsquo;s{" "}
+                  <span data-gate-ref="eo-14399-usps-rule-enjoined">USPS rule</span> and{" "}
+                  <span data-gate-ref="eo-14399-s2-3-stayed">§§2-3 themselves</span>, and for{" "}
+                  <span data-gate-ref="eo-14248-enjoined">14248&rsquo;s registration provisions</span>{" "}
                   · the rest not in the record
                 </>,
-                // Not done, on the same two gated claims: parts of both orders are enjoined,
-                // so neither operates unblocked. Unchanged from before the pointers.
+                // Not done, on the gated claims: 14248's registration provisions are
+                // enjoined, and so are the mandatory provisions of the USPS rule implementing
+                // 14399 (the injunction against 14399's own §§2-3 is stayed), so neither order
+                // operates unblocked.
                 false,
               ],
             ]}

@@ -15,12 +15,19 @@
 #               the rot this file exists to end: 25, 12 and 46 all rotted in this
 #               repo while looking maintained, because they were written down.
 #
-# ENFORCEMENT is `web/scripts/assert-gates.mjs`, three checks, two entry points:
+# ENFORCEMENT is `web/scripts/assert-gates.mjs`, four checks, two entry points:
 #
 #   1. every `data-gate` id in the rendered section has an entry here
 #   2. every entry here with `renders_as` has its id on a `data-gate` in the rendered
 #      section -- a join on gate ID. The `renders_as` text is not compared.
 #   3. every authored entry's `recheck_after` is not in the past
+#   4. every docket an authored entry lists in `record_instruments` is held in
+#      data/cases.json, or is a pinned seed not yet bound while the record's clock
+#      is on or before the entry's `record_instruments_due` (2026-09-27)
+#
+# `aliases` carries the ids an entry was known by before a rename; the checks that
+# resolve ids resolve an alias to its entry. Records in docs/status.md keep the id
+# they were written with.
 #
 # Beside 1 and 2, a `data-gate-ref` is a POINTER to an authored entry, for text that
 # names a claim without restating it (tab 2's "In force today"). It has no entry of
@@ -31,7 +38,8 @@
 # it yet.
 #
 # 1 and 2 join against the DOM and are hand-run beside assert-encodings and
-# assert-layout. 3 needs no browser and runs in ci.yml. See that script's header.
+# assert-layout. 3 and 4 need no browser and run in ci.yml (`--expiry-only`); the full
+# run in the DOM lane executes all four. See that script's header.
 #
 # `status: stale` IS AN ACKNOWLEDGEMENT, NOT A SUPPRESSION. It stops check 3
 # failing the run, and it changes nothing on the page by itself. A chip is fixed
@@ -133,17 +141,92 @@
 # application takes a NEW docket number, as 26A305 did after 26A297, so 26A305's own
 # page would not show one: the recheck also searches the Court's docket for both
 # captions this litigation has used there, United States Postal Service v.
-# California and Trump v. California (the earlier stay; Aug 24 per the tracker).
-- id: eo-14399-s3-enjoined
-  claim: "the USPS mail-ballot rule under EO 14399 section 3 is enjoined for the 2026 elections (D. Mass. preliminary injunction, Sep 4), with First Circuit stays denied Sep 10 and a Supreme Court stay denied Sep 14"
+# California and Trump v. California (the earlier stay, No. 26A124; see below).
+#
+# READ AGAIN 2026-09-27, IN THE COURTS' OWN WORDS, AND THE RENDERED CLAUSE WAS
+# IMPRECISE. It read "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for
+# the 2026 elections by a D. Mass. preliminary injunction of Sep 4", making the order's
+# section and the Postal Service's rule one thing, by apposition. The orders keep them
+# apart, and the Supreme Court's Aug 24 stay reaches section 3 itself:
+#   - The Sep 4 order (1:26-cv-11549 ECF 285, with 1:26-cv-13917) "stays and
+#     preliminarily enjoins the implementation or enforcement of the following sections
+#     of the Final Rule as to elections occurring before or on November 3, 2026", seven
+#     DMM 705.24 provisions, most "to the extent" they are mandatory. EO 14399 does not
+#     appear in its decree. Its own summary: "prohibiting the United States Postal Service
+#     ('USPS') from implementing mandatory sections of its final rule".
+#   - The injunction against the order's sections is 1:26-cv-11581's: the June 25
+#     memorandum and order (ECF 191, p. 34), "ENJOINED from implementing or giving
+#     effect to Sections 2 and 3 of the EO with respect to the November 3, 2026 or any
+#     earlier federal election in the Plaintiff States"; entered as final judgment Jul 7
+#     (ECF 207), whose paragraphs 2.A-2.D restate that relief section by section.
+#   - The Supreme Court stayed that injunction on Aug 24 in No. 26A124, Trump v.
+#     California (lower court: First Circuit No. 26-1774): "The injunction entered by the
+#     United States District Court for the District of Massachusetts in case No.
+#     1:26-cv-11581 is stayed pending the disposition of the appeal in the United States
+#     Court of Appeals for the First Circuit and disposition of a petition for a writ of
+#     certiorari". Its per curiam keeps the section and the rule apart in terms: "Section
+#     3 orders the Postal Service to initiate the process of proposing a rule that might
+#     bind the States in the future. It is not a proposed rule, let alone a final rule."
+#     The intervening States' application, No. 26A139, Alabama v. California (First
+#     Circuit Nos. 26-1774 and 26-1779), was denied as moot the same day.
+# So the claim now names the rule, and a second gate, eo-14399-s2-3-stayed, carries the
+# stay of the injunction against the order's sections 2 and 3. "For the 2026
+# elections" became the decree's "elections through Nov 3, 2026". Read by one reader
+# per order, an adversarial refuter per reading and three independent judges (all
+# three: imprecise), then against the files by hand.
+#
+# "MANDATORY" IS THE COURT'S OWN WORD for what it enjoined (Corey's condition, 2026-09-27:
+# the phrase stays only if the Sep 4 order or the Final Rule calls the listed sections
+# mandatory). ECF 285 p. 2: "the court GRANTS a preliminary injunction prohibiting the
+# United States Postal Service ('USPS') from implementing mandatory sections of its final
+# rule". p. 46: "enjoining the Final Rule's mandatory provisions". The decree, p. 48,
+# qualifies four of its seven items "to the extent that the section makes ...
+# mandatory"; the other three (DMM 705.24.5.1, the first two sentences of 705.24.5.2,
+# 705.24.5.3(a)-(c)) carry no qualifier and fall inside what pp. 2 and 46 call mandatory.
+#
+# RENAMED 2026-09-27 from eo-14399-s3-enjoined, which named the order's section; the
+# entry names the Postal Service's rule. The old id stays as an alias, and the records
+# in docs/status.md keep it as written.
+#
+# `record_instruments` IS EMPTY UNTIL THE SEED COMMIT. The held dockets among those this
+# claim's falsified_by names -- 26-2029 (74755121), 1:26-cv-11549 (73133197),
+# 1:26-cv-13917 (74701505) -- are seeded by that commit, which adds them here with a
+# `record_instruments_due`; check 4 counts a pinned seed as pending until it binds, and
+# no later than that date.
+- id: eo-14399-usps-rule-enjoined
+  aliases: [eo-14399-s3-enjoined]
+  claim: "the Postal Service's final rule implementing EO 14399 section 3 is enjoined in its mandatory provisions for elections through Nov 3, 2026 (D. Mass. preliminary injunction, Sep 4), with First Circuit stays denied Sep 10 and a Supreme Court stay denied Sep 14"
   kind: authored
   grade: {source: A, info: 1}
-  source: "Supreme Court of the United States, order of Sep 14, 2026 denying the application for stay, United States Postal Service v. California, No. 26A305, https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf"
+  source: "Supreme Court of the United States, order of Sep 14, 2026 denying the application for stay, United States Postal Service v. California, No. 26A305, https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf; the injunction's terms per the D. Mass. memorandum and order of Sep 4, 2026 (1:26-cv-11549 ECF 285, with 1:26-cv-13917), Part V"
   asserted_on: 2026-09-14
   recheck_after: 2026-10-15
   falsified_by: "an order vacating, staying or modifying the Sep 4 injunction: by the D. Mass. court, by the First Circuit (Nos. 26-2029 to 26-2032, consolidated; a merits ruling vacating it among them), or a further Supreme Court order; the instruments are Supreme Court docket 26A305 and First Circuit docket 26-2029, read directly, with the D. Mass. docket and the tracker secondary"
   status: active
-  renders_as: "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied a stay on Sep 14"
+  record_instruments: []
+  renders_as: "the Postal Service's final rule implementing section 3 of EO 14399 is enjoined in its mandatory provisions for elections through Nov 3, 2026, by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied one on Sep 14"
+
+# THE STAY OF THE INJUNCTION AGAINST SECTIONS 2 AND 3, split from the entry above on
+# 2026-09-27 when the early read found the rendered clause running the two together.
+# A1: the Supreme Court's own order. It lasts "pending the disposition of the appeal in
+# the United States Court of Appeals for the First Circuit and disposition of a petition
+# for a writ of certiorari in this Court, if such a writ is timely sought. Should
+# certiorari be denied, this stay shall terminate automatically." Nothing on the First
+# Circuit's schedule can end it soon: on Sep 21 it moved the appellants' brief in
+# 26-1774 and 26-1779 to Nov 20, 2026, and that date is the recheck.
+# `record_instruments` is empty until the seed commit, which adds 26-1774 (73568304)
+# and 1:26-cv-11581 (73141063), the held dockets among those its falsified_by names.
+- id: eo-14399-s2-3-stayed
+  claim: "the D. Mass. injunction against implementing sections 2 and 3 of EO 14399 (1:26-cv-11581, final judgment of Jul 7; for the plaintiff States, for elections through Nov 3, 2026) has been stayed by the Supreme Court since Aug 24, pending the First Circuit appeal and any certiorari petition"
+  kind: authored
+  grade: {source: A, info: 1}
+  source: "Supreme Court of the United States, order of Aug 24, 2026 granting the application for stay, Trump v. California, No. 26A124, https://www.supremecourt.gov/opinions/25pdf/26a124_hgci.pdf"
+  asserted_on: 2026-08-24
+  recheck_after: 2026-11-20
+  falsified_by: "a Supreme Court order vacating or modifying the stay, or its end on its own terms: the First Circuit's disposition of No. 26-1774 (consolidated with 26-1779) and then a denial of certiorari, no timely petition, or the Court's judgment sent down; or an order vacating or modifying the Jul 7 injunction itself, by the D. Mass. court (1:26-cv-11581) or by a First Circuit mandate; the instruments are Supreme Court docket 26A124 and First Circuit docket 26-1774, read directly, with the D. Mass. docket secondary"
+  status: active
+  record_instruments: []
+  renders_as: "an earlier D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"
 
 # asserted_on is the tracker's update date, per this file's own rule (the date
 # the SOURCE said it). The June reporting is older and serves as corroboration,

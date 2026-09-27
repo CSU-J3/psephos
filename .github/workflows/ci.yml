@@ -97,10 +97,14 @@ jobs:
       - name: assert-casts
         run: node scripts/assert-casts.mjs
 
-      # The expiry half of the gate register, and only that half. Checks 1 and 2 of
-      # assert-gates join against a rendered DOM and need playwright plus a running
-      # server, which is what keeps assert-encodings and assert-layout out of this
-      # workflow; check 3 needs a YAML file and a date string, so it runs here.
+      # The expiry and held halves of the gate register, checks 3 and 4. Checks 1 and
+      # 2 of assert-gates join against a rendered DOM and need playwright plus a
+      # running server, which is what keeps assert-encodings and assert-layout out of
+      # this workflow; check 3 needs a YAML file and a date string, and check 4
+      # (2026-09-27) reads data/cases.json and config/sources.yaml when an authored
+      # claim lists record_instruments, so both run here. Exit 1 is expiry, exit 4 a
+      # listed docket neither held nor a pinned seed inside its due date. The step
+      # keeps its name, which tools/ci_local.py mirrors and tests/test_ci_local.py pins.
       #
       # It is the half worth automating. An authored claim expires SILENTLY -- the
       # page keeps rendering it, correctly formatted, sourced and graded, long after

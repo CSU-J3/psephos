@@ -2,7 +2,8 @@ name: dom-checks
 
 # The DOM lane: the three checks that need a browser AND a running server, which is
 # precisely why they have never run anywhere but a developer's machine. `assert-gates`
-# (checks 1 and 2), `assert-encodings` and `assert-layout` are correct, available and
+# (checks 1 and 2 need the browser; the full run here also executes 3 and 4),
+# `assert-encodings` and `assert-layout` are correct, available and
 # unrun on any schedule -- the same shape unit C found in the coverage alarms, one
 # layer out.
 #
@@ -17,6 +18,9 @@ name: dom-checks
 # secrets: the lane would be structurally red on every fork PR, forever.
 #
 # `assert-gates --expiry-only` STAYS IN ci.yml and is deliberately not duplicated here.
+# The full run below still executes checks 3 and 4 beside the DOM join, so an expired
+# claim or an unheld listed docket also reaches this lane's issue, where ci.yml, which
+# a GITHUB_TOKEN data commit does not trigger, would stay silent.
 # It needs a YAML file and a date string, it gates every push today, and folding it
 # into a lane that can fail on a browser download would let a playwright install take
 # down the one gate check that currently works.
@@ -326,7 +330,8 @@ jobs:
       #
       # WHAT IS NEW HERE IS THE FIRST LINE. Exit 2 and exit 3 need OPPOSITE actions --
       # fix the page versus fix the harness -- and one label over two causes is this
-      # project's recurring defect. So the state is decided before anything is printed,
+      # project's recurring defect. Exits 1 and 4 need a third: fix the register or the
+      # seeds (2026-09-27). So the state is decided before anything is printed,
       # and it is the first sentence a reader meets, not something buried under a fence.
       - name: Raise or update the standing issue
         if: failure()
@@ -353,7 +358,7 @@ jobs:
             ACTION="Fix the harness: this lane's install, build, browser resolve, server boot or preflight. The page is not implicated, and no diagnosis of it exists in this comment."
           elif [ "$GATES_RC" = "3" ]; then
             HEADLINE="**CANNOT RUN** -- \`assert-gates\` could not perform its check (exit 3) against a page that DID render. This is a broken instrument, not a failing page."
-            ACTION="Fix the instrument or its inputs: \`docs/gates.yaml\`, \`data/generated_at.json\`, or the playwright install. The captured output names what it could not do."
+            ACTION="Fix the instrument or its inputs: \`docs/gates.yaml\`, \`data/generated_at.json\`, \`data/cases.json\`, \`config/sources.yaml\`, or the playwright install. The captured output names what it could not do."
           else
             failed=""
             if [ -n "$GATES_RC" ] && [ "$GATES_RC" != "0" ]; then
@@ -379,6 +384,27 @@ jobs:
             # same error this whole first line exists to prevent.
             if [ -n "$ENCODINGS_RC" ] && [ "$ENCODINGS_RC" != "0" ]; then
               ACTION="${ACTION} Or the fixture, if the set really did move: a reconciliation failure in \`assert-encodings\` is a question rather than a verdict, and a deliberate ruling is spent by editing \`encodings.expected.mjs\` in the same commit as the paint."
+            fi
+            # EXITS 1 AND 4 ARE THE REGISTER'S, NOT THE PAGE'S. 1 is an authored claim
+            # past its recheck date; 4 a docket a claim lists in record_instruments that
+            # is neither held nor a pinned seed inside its due date. When assert-gates is
+            # the only red check, the headline says so; beside a page failure, the
+            # register's action is appended to the page's. A DOM-join failure can sit
+            # under either code (precedence: expiry, held, DOM), so the captured output
+            # is the reading.
+            REGISTER=""
+            if [ "$GATES_RC" = "1" ]; then
+              REGISTER="\`assert-gates\` exit 1: an authored claim in \`docs/gates.yaml\` is past its \`recheck_after\` on the record's clock. Recheck it and move \`asserted_on\`/\`recheck_after\`, or set \`status: stale\`."
+            elif [ "$GATES_RC" = "4" ]; then
+              REGISTER="\`assert-gates\` exit 4: a docket in a \`record_instruments\` list is neither held in \`data/cases.json\` nor a pinned seed in \`config/sources.yaml\` inside its due date. Restore the seed or the row, or edit the list, and check whether the docket was re-keyed or dropped."
+            fi
+            if [ -n "$REGISTER" ]; then
+              if [ "$failed" = " \`assert-gates\` (exit ${GATES_RC})" ]; then
+                HEADLINE="**REGISTER FAILED** -- \`assert-gates\` (exit ${GATES_RC}) against a page that rendered. The page is not implicated by this code; read the captured output for a DOM-join failure under it."
+                ACTION="${REGISTER}"
+              else
+                ACTION="${ACTION} ${REGISTER}"
+              fi
             fi
           fi
 
@@ -426,7 +452,7 @@ jobs:
             verdict "assert-attribution" "$ATTRIBUTION_RC"
             verdict "assert-dated" "$DATED_RC"
             echo
-            echo "Exit codes: \`assert-gates\` is split -- 1 expiry, 2 DOM join, 3 could not run."
+            echo "Exit codes: \`assert-gates\` is split -- 1 expiry, 2 DOM join, 3 could not run, 4 a listed docket not held."
             echo "\`assert-encodings\`, \`assert-layout\`, \`assert-attribution\` and \`assert-dated\` have no exit 3:"
             echo "for those four, 1 covers both a failed assertion and a throw mid-run. The preflight"
             echo "above removes the dominant cause of the second, so PAGE FAILED is the most likely"

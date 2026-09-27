@@ -2,20 +2,51 @@
  * Asserts that EVERY CLAIM THE "WHERE THIS STANDS" SECTION MAKES IS REGISTERED,
  * AND THAT NO REGISTERED CLAIM HAS QUIETLY EXPIRED.
  *
- *   node scripts/assert-gates.mjs [origin]      # all three checks; needs a server
- *   node scripts/assert-gates.mjs --expiry-only # check 3 alone; no browser, no server
+ *   node scripts/assert-gates.mjs [origin]      # all four checks; needs a server
+ *   node scripts/assert-gates.mjs --expiry-only # checks 3 and 4; no browser, no server
  *
- * Exit code is the alarm, and it is SPLIT so a red run says which half failed:
+ * Exit code is the alarm, and it is SPLIT so a red run says which check failed -- the
+ * highest in precedence (expiry, then held, then DOM); the FAIL lines give the rest:
  *
  *   0  every requested check passed
  *   1  EXPIRY failed -- an authored claim is past its recheck date
  *   2  DOM JOIN failed -- an ungated claim, a gate the page never renders, or a
  *      `data-gate-ref` pointer with nothing valid to point at
  *   3  the check could not run -- missing file, unreadable schema, bad usage
+ *   4  HELD failed -- a docket an authored claim lists in `record_instruments` is
+ *      neither held in data/cases.json nor a pinned seed awaiting its bind
+ *
+ * CHECK 4, HELD INSTRUMENTS (2026-09-27). An authored claim may list, in
+ * `record_instruments`, the held dockets among those its `falsified_by` names. A
+ * listed docket must be held -- a row in data/cases.json -- or be PENDING: a seed in
+ * config/sources.yaml pinned to that id, not yet bound, while the record's clock is
+ * on or before the entry's `record_instruments_due`. Pending is what keeps a seed
+ * commit's own push green -- its dockets bind on the next collect run, not on the push
+ * -- and the due date is what ends it, so a seed that never binds turns this check red
+ * instead of passing forever.
+ *
+ * IT WITNESSES THE BIND, NEVER THE WALK. The collector writes a seed's row before it
+ * decides whether to walk or defer (collectors/litigation.py), and data/cases.json
+ * carries every row with no entries_synced_at, so a seed stops being pending at the
+ * first data commit after it binds, walked or not. The walk is coverage_audit section
+ * 6's reading. A pin the collector BYPASSED -- a held row for the seed's docket number
+ * and court under another id, which the collector reuses without fetching the pin --
+ * is missing at once. The failure this exists for is the `rekey_slug_cases` shape: a
+ * docket re-keyed or dropped while a claim still sends its recheck there.
+ *
+ * ALIASES (2026-09-27). An entry may carry `aliases`, the ids it was known by before
+ * a rename. Every check that resolves an id -- the DOM join's `data-gate` and
+ * `data-gate-ref` -- resolves an alias to its entry, so a page or a record still
+ * naming the old id is not an ungated claim. An alias that collides with an id or with
+ * another alias is a malformed register (exit 3).
  *
  * 3 is deliberately not 1. A check that could not run is not a check that passed
  * and is not a claim that failed; collapsing those is how a broken instrument
  * reads as a clean bill of health.
+ *
+ * CHECK 4 RIDES THE SAME ENTRY POINT AS CHECK 3: it needs data/cases.json and
+ * config/sources.yaml, both committed, and no browser. It reads neither when every
+ * list is empty.
  *
  * WHY TWO ENTRY POINTS, and this is the shape recon section 7 settled on. Checks 1
  * and 2 join against the rendered DOM, so they need `playwright-core`, a Chromium
@@ -57,6 +88,8 @@ const REPO = resolve(HERE, "..", "..");
 const GATES_PATH = process.env.GATES_PATH ?? resolve(REPO, "docs", "gates.yaml");
 const GENERATED_AT_PATH =
   process.env.GENERATED_AT_PATH ?? resolve(REPO, "data", "generated_at.json");
+const CASES_PATH = process.env.CASES_PATH ?? resolve(REPO, "data", "cases.json");
+const SOURCES_PATH = process.env.SOURCES_PATH ?? resolve(REPO, "config", "sources.yaml");
 
 /** The attributes D4's component must carry: one on the section root, one on each
  *  element making a registered claim. Named here so both sides read one string. */
@@ -73,6 +106,7 @@ const EXIT_OK = 0;
 const EXIT_EXPIRY = 1;
 const EXIT_DOM = 2;
 const EXIT_CANNOT_RUN = 3;
+const EXIT_HELD = 4;
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -149,6 +183,24 @@ function loadGates() {
         problems.push(`${at}: \`grade\` must be {source: <letter>, info: <number>}`);
     }
 
+    if (g.aliases !== undefined &&
+        (!Array.isArray(g.aliases) || g.aliases.some((a) => typeof a !== "string" || !a)))
+      problems.push(`${at}: \`aliases\` must be a list of non-empty strings`);
+
+    if (g.record_instruments !== undefined) {
+      if (g.kind !== "authored")
+        problems.push(`${at}: \`record_instruments\` belongs on an authored claim`);
+      else if (!Array.isArray(g.record_instruments) ||
+               g.record_instruments.some((c) => !/^\d+$/.test(String(c))))
+        problems.push(`${at}: \`record_instruments\` must be a list of CourtListener docket ids`);
+    }
+    if (g.record_instruments_due !== undefined) {
+      if (!Array.isArray(g.record_instruments))
+        problems.push(`${at}: \`record_instruments_due\` without \`record_instruments\``);
+      else if (typeof g.record_instruments_due !== "string" || !ISO_DATE.test(g.record_instruments_due))
+        problems.push(`${at}: \`record_instruments_due\` must be a YYYY-MM-DD STRING`);
+    }
+
     if (g.kind === "derived") {
       if (typeof g.produced_by !== "string" || !g.produced_by)
         problems.push(`${at}: missing string \`produced_by\``);
@@ -163,9 +215,28 @@ function loadGates() {
         );
     }
   }
+  // An alias may not shadow an id or another alias: two entries answering to one name
+  // is a join that resolves either way depending on order.
+  for (const g of doc) {
+    if (!g || !Array.isArray(g.aliases)) continue;
+    for (const a of g.aliases) {
+      const owners = doc.filter((h) => h && (h.id === a || (Array.isArray(h.aliases) && h.aliases.includes(a))));
+      if (owners.length > 1) problems.push(`alias ${a} (on ${g.id}) is also ${owners.filter((h) => h !== g).map((h) => h.id).join(", ")}'s`);
+    }
+  }
   if (problems.length)
     cannotRun(`${GATES_PATH} is malformed:\n        ${problems.join("\n        ")}`);
   return doc;
+}
+
+/** Every name an entry answers to -- its id and its aliases -- mapped to its id. */
+function namesOf(gates) {
+  const names = new Map();
+  for (const g of gates) {
+    names.set(g.id, g.id);
+    for (const a of Array.isArray(g.aliases) ? g.aliases : []) if (!names.has(a)) names.set(a, g.id);
+  }
+  return names;
 }
 
 /** The record's own clock, as a YYYY-MM-DD string. */
@@ -305,10 +376,17 @@ async function checkDom(gates, origin) {
   // PRESENT, NOT RENDERED, and the labels below say so. This join is
   // `querySelectorAll`, which returns an element inside a `hidden` panel exactly as it
   // returns a visible one -- measured in chromium-1228 on a page of that shape. Five of
-  // the section's fifteen gates sit behind `wts-next` as of 2026-09-26, so a green join has never
+  // the section's sixteen gates sit behind `wts-next` as of 2026-09-27, so a green join has never
   // been evidence that a claim was on screen. Rendering is `assert-layout`'s question,
   // and it could not answer it either until it learned to click the tabs.
-  const emitted = new Set(present);
+  // Resolved through aliases: a page still carrying an entry's former id is joined to
+  // the entry, and said so, rather than reported as an ungated claim.
+  const names = namesOf(gates);
+  const canonical = (id) => names.get(id) ?? id;
+  const viaAlias = [...new Set([...present, ...refs])].filter((id) => names.has(id) && names.get(id) !== id);
+  if (viaAlias.length)
+    console.log(`INFO  resolved through an alias: ${viaAlias.map((id) => `${id} -> ${names.get(id)}`).join(", ")}`);
+  const emitted = new Set(present.map(canonical));
   const registered = new Set(
     gates.filter((g) => g.renders_as !== undefined).map((g) => g.id)
   );
@@ -341,18 +419,94 @@ async function checkDom(gates, origin) {
   // register itself has retracted.
   const byId = new Map(gates.map((g) => [g.id, g]));
   const badRefs = [];
-  for (const id of new Set(refs)) {
+  for (const raw of new Set(refs)) {
+    const id = canonical(raw);
+    const label = raw === id ? raw : `${raw} (alias of ${id})`;
     const g = byId.get(id);
-    if (!g) badRefs.push(`${id}: not in the register`);
-    else if (g.kind !== "authored") badRefs.push(`${id}: ${g.kind}, not authored`);
-    else if (g.status === "falsified") badRefs.push(`${id}: falsified`);
-    else if (!emitted.has(id)) badRefs.push(`${id}: no ${GATE_ATTR} for it in the section`);
+    if (!g) badRefs.push(`${raw}: not in the register`);
+    else if (g.kind !== "authored") badRefs.push(`${label}: ${g.kind}, not authored`);
+    else if (g.status === "falsified") badRefs.push(`${label}: falsified`);
+    else if (!emitted.has(id)) badRefs.push(`${label}: no ${GATE_ATTR} for it in the section`);
   }
   check(
     badRefs.length === 0,
     `every ${GATE_REF_ATTR} points at a registered, unfalsified authored gate present in the section (${refs.length} on the page)`,
     badRefs.length ? badRefs.join("; ") : undefined
   );
+}
+
+// --- check 4: held instruments ---------------------------------------------------
+
+/** config/sources.yaml's seeds that pin a CourtListener id, keyed by that id. Returns
+ *  a string, not a Map, when the file cannot be read: see checkHeld. */
+function pinnedSeeds() {
+  if (!existsSync(SOURCES_PATH)) return `no sources file at ${SOURCES_PATH}`;
+  let doc;
+  try {
+    doc = require("yaml").parse(readFileSync(SOURCES_PATH, "utf8"));
+  } catch (e) {
+    return `${SOURCES_PATH} is not valid YAML: ${e.message}`;
+  }
+  const seeds = doc?.litigation?.seed_cases;
+  if (!Array.isArray(seeds)) return `${SOURCES_PATH} has no litigation.seed_cases list`;
+  return new Map(
+    seeds.filter((s) => s?.case_id !== undefined && s?.case_id !== null).map((s) => [String(s.case_id), s])
+  );
+}
+
+/** Check 4. Returns a cannot-run message instead of exiting, so a record-file problem
+ *  is reported AFTER the DOM join rather than instead of it. */
+function checkHeld(gates, today) {
+  console.log(`\n--- held instruments, against ${CASES_PATH} ---`);
+  // An empty list names nothing to hold, and reads no file: the rewording push ships
+  // both 14399 lists empty.
+  const listed = gates.filter((g) => Array.isArray(g.record_instruments) && g.record_instruments.length > 0);
+  if (listed.length === 0) {
+    check(true, "no authored claim lists a record instrument yet");
+    return null;
+  }
+  if (!existsSync(CASES_PATH))
+    return `no ${CASES_PATH} -- the export writes it each run; run \`python -m export.snapshots\``;
+  let rows;
+  try {
+    rows = JSON.parse(readFileSync(CASES_PATH, "utf8"));
+  } catch (e) {
+    return `${CASES_PATH} is not valid JSON: ${e.message}`;
+  }
+  if (!Array.isArray(rows)) return `${CASES_PATH} must be a list of cases`;
+  const seeds = pinnedSeeds();
+  if (typeof seeds === "string") return seeds;
+  const held = new Set(rows.map((r) => String(r?.case_id)));
+  for (const g of listed) {
+    const due = g.record_instruments_due ?? null;
+    const ids = g.record_instruments.map(String);
+    const missing = [];
+    const pending = [];
+    for (const c of ids) {
+      if (held.has(c)) continue;
+      const seed = seeds.get(c);
+      if (!seed) {
+        missing.push(`${c} (neither held nor a pinned seed)`);
+        continue;
+      }
+      // The collector's reuse path: a held row for this seed's docket and court under
+      // another id is used as found, and the pin is never fetched.
+      const other = rows.find(
+        (r) => r?.docket_number === seed.docket_number && r?.court === seed.court && String(r?.case_id) !== c
+      );
+      if (other) missing.push(`${c} (its seed's docket is held as ${other.case_id}; the pin was bypassed)`);
+      else if (due !== null && today > due) missing.push(`${c} (pinned, never bound, due ${due})`);
+      else pending.push(c);
+    }
+    const nHeld = ids.length - missing.length - pending.length;
+    check(
+      missing.length === 0,
+      `${g.id} -- ${nHeld} of ${ids.length} listed dockets held` +
+        (pending.length ? `; ${pending.length} seeded, not yet bound${due ? ` (due ${due})` : ""}: ${pending.join(", ")}` : ""),
+      missing.length ? missing.join("; ") : undefined
+    );
+  }
+  return null;
 }
 
 // --- main -------------------------------------------------------------------------
@@ -369,14 +523,23 @@ const nAuthored = gates.filter((g) => g.kind === "authored").length;
 const nDerived = gates.filter((g) => g.kind === "derived").length;
 console.log(`gates: ${gates.length} (${nAuthored} authored, ${nDerived} derived) from ${GATES_PATH}`);
 
-checkExpiry(gates, loadGeneratedAt());
+const today = loadGeneratedAt();
+checkExpiry(gates, today);
 const expiryFailed = fail > 0;
+
+const beforeHeld = fail;
+const heldCannot = checkHeld(gates, today);
+const heldFailed = fail > beforeHeld;
 
 if (!expiryOnly) {
   await checkDom(gates, origin);
 }
+if (heldCannot) cannotRun(`check 4: ${heldCannot}`);
 
 console.log(`\n${pass} PASS / ${fail} FAIL`);
-// Expiry wins the exit code when both halves fail: it is the half that runs
-// unattended, so it is the half a red CI run is most likely to be about.
-process.exit(fail === 0 ? EXIT_OK : expiryFailed ? EXIT_EXPIRY : EXIT_DOM);
+// Expiry wins the exit code when several checks fail: it is the half that runs
+// unattended, so it is the half a red CI run is most likely to be about. Held comes
+// next, for the same reason -- it runs in ci.yml too -- and the DOM join last.
+process.exit(
+  fail === 0 ? EXIT_OK : expiryFailed ? EXIT_EXPIRY : heldFailed ? EXIT_HELD : EXIT_DOM
+);
