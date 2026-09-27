@@ -22,6 +22,11 @@
 #      section -- a join on gate ID. The `renders_as` text is not compared.
 #   3. every authored entry's `recheck_after` is not in the past
 #
+# Beside 1 and 2, a `data-gate-ref` is a POINTER to an authored entry, for text that
+# names a claim without restating it (tab 2's "In force today"). It has no entry of
+# its own; the join fails a pointer whose target is unregistered, derived,
+# falsified, or absent from the section.
+#
 # `renders_as` documents the text the gated element renders, and nothing checks
 # it yet.
 #
@@ -142,8 +147,23 @@
 
 # asserted_on is the tracker's update date, per this file's own rule (the date
 # the SOURCE said it). The June reporting is older and serves as corroboration,
-# not as the assertion date. 90 days is the B2 default, kept because the falsifier
-# is an appellate order, which the tracker records.
+# not as the assertion date. 90 days is the B2 default.
+#
+# THE FALSIFIER NAMES ALL THREE COURTS' INJUNCTIONS, since 2026-09-26. It read
+# "an appellate order vacating or staying either injunction" -- two, where the claim
+# counts three, and appellate orders only, where the 14399 entry above has already
+# shown a district court vacating its own injunction (Aug 26). The three, and their
+# citations, are as three complaints give them, read 2026-09-26 off RECAP: NAACP v.
+# Trump (D.D.C. 1:26-cv-01151) para. 2 and California v. USPS (D. Mass. 1:26-cv-13917)
+# para. 94, both EO 14399 suits, and Common Cause v. DOJ (D.D.C. 1:26-cv-01352), a
+# related suit, para. 65. The docket numbers come from further paragraphs of the same
+# complaints, read the same day: LULAC's trial docket No. 1:25-cv-0946 (DSCC para. 3;
+# LWV v. DHS, ECF 61, para. 211); its appeals D.C. Cir. 25-5476 from 808 F. Supp. 3d 29
+# (California v. Trump, 1:26-cv-11581, para. 111) and 26-5098 from 818 F. Supp. 3d 34
+# (California v. USPS para. 94); Washington's appeal 9th Cir. 26-1429 (para. 94); and
+# California v. Trump's appeal 1st Cir. 25-1726 from its 2025 preliminary injunction,
+# 786 F. Supp. 3d 359 (1:26-cv-11581 para. 111, DSCC para. 130). No trial-court docket
+# number is written for the D. Mass. suit: no complaint read gives one.
 - id: eo-14248-enjoined
   claim: "EO 14248's registration provisions are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
   kind: authored
@@ -151,7 +171,7 @@
   source: "Brennan Center case tracker, Sep 11, 2026 update (three courts blocked implementation of the first EO); corroborated by PBS/AP and The Hill reporting of Jun 24, 2026 on Casper's ruling and Newsweek on Kollar-Kotelly's D.D.C. ruling"
   asserted_on: 2026-09-11
   recheck_after: 2026-12-10
-  falsified_by: "an appellate order vacating or staying either injunction"
+  falsified_by: "an order vacating, staying or narrowing any of the three injunctions the claim counts, by the court that issued it or on appeal: LULAC v. Executive Office of the President (D.D.C., No. 1:25-cv-0946; cited as 808 F. Supp. 3d 29 of Oct 31, 2025, appealed as D.C. Cir. No. 25-5476, and as 818 F. Supp. 3d 34, appealed as D.C. Cir. No. 26-5098, and as 2026 WL 252420); Washington v. Trump (W.D. Wash., No. 2:25-cv-00602; cited as 2026 WL 73866 of Jan 9, 2026 and as 814 F. Supp. 3d 1173; appeal 9th Cir. No. 26-1429); California v. Trump (D. Mass., the states' 2025 suit; the 2025 preliminary injunction, 786 F. Supp. 3d 359, appealed as 1st Cir. No. 25-1726, and the permanent injunction of Jun 24, 2026, 2026 WL 1826535)"
   status: active
   renders_as: "the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
 
@@ -220,13 +240,42 @@
   produced_by: "web/lib/stands.ts#openSplit"
   renders_as: "{open} of DOJ's dockets remain open -- {district} district, {circuit} on appeal"
 
-# The complement, named rather than dropped. These suits stay in the record and
-# leave the DOJ count; a reader who tries to reconcile the map against the sentence
-# should find the difference stated instead of having to discover it.
+# Named rather than dropped: dockets neither filed by the United States nor marked as
+# EO challenges (relatedSuits takes both exclusions; see THE THREE SETS in stands.ts).
+# It was the complement of DOJ's filings until the class below existed. These suits
+# stay in the record and leave the DOJ count; a reader who tries to reconcile the map
+# against the sentence should find the difference stated, in this clause and the
+# class's below, instead of having to discover it.
 - id: related-suits
   kind: derived
   produced_by: "web/lib/stands.ts#relatedSuits"
   renders_as: "{n} related suits by civil-society plaintiffs against federal agencies, none of them DOJ filings"
+
+# THE THIRD SET: suits whose operative complaint seeks relief against an election
+# executive order, or against agency action the complaint pleads was taken under one
+# (Corey, 2026-09-26), marked `category: executive-order` on the seed. Counted in
+# neither figure above, and the sentence says so in its own words.
+#
+# LAWSUITS, NOT DOCKETS. The count is the class's trial-court dockets. One held lead
+# appeal stands for four consolidated ones, so an appeals figure would state a number
+# the record does not hold (Corey, 2026-09-26).
+#
+# THE ORDER IS NAMED IN WORDS, "the mail-ballot executive order", because a derived
+# entry may hold no digit outside a placeholder. Every docket seeded into the class
+# seeks relief against EO 14399 or against agency action pleaded as taken under it
+# (the USPS Rule); the check that keeps that true, and forces this sentence to widen
+# the day a 14248 docket is seeded, lands with the seeds.
+- id: eo-challenges
+  kind: derived
+  produced_by: "web/lib/stands.ts#eoLawsuits"
+  renders_as: "The record holds {n} challenges to the mail-ballot executive order, counted apart from DOJ's filings and the related suits"
+
+# The same figure on tab 2's "Challenged in court" step. Its own entry, because one
+# id with two texts is two claims that nothing compares.
+- id: eo-challenges-held
+  kind: derived
+  produced_by: "web/lib/stands.ts#eoLawsuits"
+  renders_as: "{n} challenges to the mail-ballot order held in the record"
 
 - id: wi-outcomes
   kind: derived

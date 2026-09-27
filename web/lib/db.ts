@@ -1139,7 +1139,9 @@ export async function getRejectionEvidence(): Promise<{
  *
  * `state` is nullable here, which is the whole point: League of Women Voters v. DHS,
  * its D.C. Circuit appeal, and Common Cause v. DOJ are suits against federal agencies
- * and name no state. */
+ * and name no state. Neither does a docket the seed marks as a challenge to an
+ * election executive order (`category: executive-order`); the section decides that class before it reads `plaintiff`
+ * (lib/stands.ts, THE THREE SETS). */
 export type DocketRow = {
   case_id: string;
   state: string | null;
@@ -1148,6 +1150,7 @@ export type DocketRow = {
   status: string | null;
   superseded_by: string | null;
   plaintiff: string | null;
+  category: string | null;
 };
 
 function toDocketRow(r: Row): DocketRow {
@@ -1162,14 +1165,15 @@ function toDocketRow(r: Row): DocketRow {
     status: asTextOrNull(r.status),
     superseded_by: asTextOrNull(r.superseded_by),
     plaintiff: asTextOrNull(r.plaintiff),
+    category: asTextOrNull(r.category),
   };
 }
 
 /** Every docket in `cases`, stateless ones included. The section splits them by
- *  plaintiff; nothing here decides that. */
+ *  category and plaintiff; nothing here decides that. */
 export async function getDocketRows(): Promise<DocketRow[]> {
   const rs = await db.execute(
-    `SELECT case_id, state, caption, court, status, superseded_by, plaintiff
+    `SELECT case_id, state, caption, court, status, superseded_by, plaintiff, category
      FROM cases
      ORDER BY state, case_id`,
   );

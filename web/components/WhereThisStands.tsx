@@ -7,6 +7,7 @@ import { RecordDate } from "@/components/RecordDate";
 import {
   dojFilings,
   relatedSuits,
+  eoLawsuits,
   docketTotals,
   openSplit,
   wisconsinOutcomes,
@@ -24,11 +25,16 @@ import {
 // gate the page never renders both fail.
 //
 // THE DOCKET FIGURES ARE DOJ-SCOPED, and the scope is in the words as well as the
-// filter. `cases` holds 52 dockets; three are suits by civil-society plaintiffs
-// against federal agencies -- one of them against DOJ itself -- so a sentence opening
-// "DOJ has sued" counts the 49 DOJ filed and names the other three in their own
-// clause. See lib/stands.ts#isDojFiling for why the scope is read off `plaintiff`
-// rather than inherited from the campaign query's state filter.
+// filter. `cases` held 52 dockets when this was written; three are suits by
+// civil-society plaintiffs against federal agencies -- one of them against DOJ itself
+// -- so a sentence opening "DOJ has sued" counts the 49 DOJ filed and names the other
+// three in their own clause. See lib/stands.ts#isDojFiling for why the scope is read
+// off `plaintiff` rather than inherited from the campaign query's state filter.
+//
+// A THIRD SET, the challenges to the mail-ballot executive order, is counted in a
+// sentence of its own and in neither of the other two. Its lawsuits are counted, not
+// its dockets: one held lead appeal stands for four consolidated ones. See THE THREE
+// SETS in lib/stands.ts.
 //
 // THE MOCK IS NOT THIS FILE'S EQUAL. `docs/design/psephos-where-this-stands-mock-v1.html`
 // is the approved spec and it renders 52/29/23 and 31 open, drawn before the scope was
@@ -77,6 +83,7 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
 
   const doj = dojFilings(docketRows);
   const related = relatedSuits(docketRows);
+  const eoSuits = eoLawsuits(docketRows);
   const totals = docketTotals(doj);
   const open = openSplit(doj);
   const wi = wisconsinOutcomes(stateBills);
@@ -196,8 +203,13 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
               {related.length} related suits by civil-society plaintiffs against federal agencies
             </span>{" "}
             — League of Women Voters v. DHS, its D.C. Circuit appeal, and Common Cause v. DOJ —
-            none of them DOJ filings, and none counted above. The written demands went to all 50
-            states and DC.
+            none of them DOJ filings, and none counted above.{" "}
+            <span data-gate="eo-challenges">
+              The record holds {eoSuits.length}{" "}
+              {eoSuits.length === 1 ? "challenge" : "challenges"} to the mail-ballot executive
+              order, counted apart from DOJ&rsquo;s filings and the related suits
+            </span>
+            . The written demands went to all 50 states and DC.
           </Fact>
 
           <Fact when="through Jul 27, 2026" src={<><Grade grade="A1" dense /> LegiScan · WI <span className="gate">derived</span></>}>
@@ -306,17 +318,49 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             count="contested"
             steps={[
               ["Published", "Mar 2025 · Mar 2026", true],
-              ["Challenged in court", "enjoined, per the Brennan Center case tracker", true],
-              ["In force today", "§3 of 14399 and 14248's registration rules enjoined per tracker · the rest not in the record", false],
+              [
+                "Challenged in court",
+                <span data-gate="eo-challenges-held">
+                  {eoSuits.length} {eoSuits.length === 1 ? "challenge" : "challenges"} to the
+                  mail-ballot order held in the record
+                </span>,
+                // DONE REGARDLESS OF THE COUNT. The step is about both orders, and both were
+                // challenged: an injunction needs a suit, and tab 1's two gated claims say
+                // both are enjoined. The count is what the record holds of one order's
+                // challenges, and at 0 -- the window between this deploy and the seeds'
+                // first walk -- an undone step would have read "not challenged".
+                true,
+              ],
+              [
+                "In force today",
+                // POINTERS, NOT CLAIMS. Each half names a provision and sends the reader
+                // to the gated claim on the first tab; it states no status of its own, so
+                // there is no second text to fall out of step with the register.
+                // `data-gate-ref` is checked by assert-gates: every ref must name an
+                // authored gate that is registered, not falsified, and on the page.
+                <>
+                  see the first tab for{" "}
+                  <span data-gate-ref="eo-14399-s3-enjoined">§3 of 14399</span> and{" "}
+                  <span data-gate-ref="eo-14248-enjoined">14248&rsquo;s registration rules</span>{" "}
+                  · the rest not in the record
+                </>,
+                // Not done, on the same two gated claims: parts of both orders are enjoined,
+                // so neither operates unblocked. Unchanged from before the pointers.
+                false,
+              ],
             ]}
             note={
               <>
-                psephos records that a document was published, not whether it operates. The
-                operating status here is the tracker&rsquo;s, not the record&rsquo;s; the row
-                closes on the record when the EO dockets are held.
+                psephos records that a document was published and which challenges to it the
+                record holds, not whether it operates. Holding a docket puts the suit on the
+                record, not its outcome: operating status stays with the graded claims on the
+                first tab, each carrying the date it must be rechecked by.
               </>
             }
-            src={<><Grade grade="B2" dense /> Brennan Center case tracker · record holds no outcome</>}
+            // Short on purpose: `.pnote .src` is a non-wrapping inline-flex, and a long
+            // text run in it collapses into a narrow column at 390px. Where operating
+            // status comes from is said in the note above.
+            src={<><Grade grade="A1" dense /> CourtListener · <span className="gate">derived</span></>}
           />
         </div>
         <Note>

@@ -6,6 +6,10 @@ import {
   isDojFiling,
   dojFilings,
   relatedSuits,
+  isEoChallenge,
+  eoChallenges,
+  eoLawsuits,
+  EO_CHALLENGE,
   stateOutcomes,
   wisconsinOutcomes,
   monthsSince,
@@ -36,6 +40,7 @@ function caseRow(over: Partial<Row> & Pick<Row, "case_id">): Row {
     status: "pending",
     superseded_by: null,
     plaintiff: "United States",
+    category: "voter-data",
     ...over,
   };
 }
@@ -118,6 +123,96 @@ describe("DOJ scope is read off the plaintiff column, not inherited from a state
     ];
     expect(relatedSuits(rows).map((r) => r.case_id)).toEqual(["71499795", "73218916", "73544809"]);
     expect(dojFilings(rows).map((r) => r.case_id)).toEqual(["doj-1"]);
+  });
+});
+
+// --- THE THREE SETS: disjoint and covering ------------------------------------------
+
+describe("every docket lands in exactly one of the three sets", () => {
+  // Shaped like the class as seeded: trial-court suits in two districts, and the one
+  // lead appeal that stands for four consolidated. The case ids are the real
+  // CourtListener ids; the rows are constructed. Courts use the abbreviated spellings
+  // the config seeds carry ("D.D.C.", "Second Circuit"), not the tracker's long form,
+  // so a classifier keyed on the long form ("District of ...") fails here and not in
+  // production.
+  const eo = (over: Partial<Row> & Pick<Row, "case_id">) =>
+    caseRow({ state: null, category: EO_CHALLENGE, plaintiff: "League of Women Voters of Massachusetts", ...over });
+  const rows: Row[] = [
+    caseRow({ case_id: "doj-1", state: "Oregon" }),
+    caseRow({ case_id: "doj-2", state: "Maine", plaintiff: "United States of America" }),
+    caseRow({ case_id: "doj-stateless", state: null }),
+    caseRow({ case_id: "71499795", state: null, court: "D.D.C.", plaintiff: "League of Women Voters" }),
+    caseRow({ case_id: "73218916", state: null, court: "D.D.C.", plaintiff: "Common Cause" }),
+    eo({ case_id: "73133197", court: "D. Mass." }),
+    eo({ case_id: "74701505", court: "D. Mass.", plaintiff: "State of California" }),
+    eo({ case_id: "73143746", court: "D.D.C.", plaintiff: "NAACP" }),
+    eo({ case_id: "74755121", court: "First Circuit", plaintiff: "League of Women Voters of Massachusetts" }),
+    // THE PREFIX HAZARD. The Supreme Court captions this litigation United States Postal
+    // Service v. California, and the plaintiff test is a prefix. Not proposed for
+    // seeding; here because the day it is, the class must win.
+    eo({ case_id: "scotus", court: "Supreme Court", plaintiff: "United States Postal Service" }),
+  ];
+
+  it("partitions: each row in exactly one set, and every row in some set", () => {
+    const sets = [dojFilings(rows), relatedSuits(rows), eoChallenges(rows)];
+    for (const r of rows) {
+      const hits = sets.filter((s) => s.includes(r)).length;
+      expect(hits, r.case_id).toBe(1);
+    }
+    expect(sets.reduce((n, s) => n + s.length, 0)).toBe(rows.length);
+  });
+
+  it("puts each row in the set its fixture says", () => {
+    expect(dojFilings(rows).map((r) => r.case_id)).toEqual(["doj-1", "doj-2", "doj-stateless"]);
+    expect(relatedSuits(rows).map((r) => r.case_id)).toEqual(["71499795", "73218916"]);
+    expect(eoChallenges(rows).map((r) => r.case_id)).toEqual([
+      "73133197",
+      "74701505",
+      "73143746",
+      "74755121",
+      "scotus",
+    ]);
+  });
+
+  it("decides the class before the plaintiff prefix", () => {
+    const usps = rows.find((r) => r.case_id === "scotus")!;
+    // The prefix alone would call it DOJ's. That is the reading the class must beat.
+    expect(isDojFiling(usps)).toBe(true);
+    expect(isEoChallenge(usps)).toBe(true);
+    expect(dojFilings([usps])).toHaveLength(0);
+  });
+
+  it("keeps an EO challenge out of the related suits, which were the complement of DOJ", () => {
+    // The defect the positive definition closes: under `!isDojFiling` every seeded
+    // challenge joined a clause that names three captions.
+    const naive = rows.filter((r) => !isDojFiling(r)).map((r) => r.case_id);
+    expect(naive).toContain("73133197");
+    expect(relatedSuits(rows).map((r) => r.case_id)).not.toContain("73133197");
+  });
+
+  it("counts lawsuits, not dockets: no appeal and no Supreme Court docket", () => {
+    expect(eoLawsuits(rows).map((r) => r.case_id)).toEqual(["73133197", "74701505", "73143746"]);
+  });
+
+  it("reads the class only off category, never off a caption or a missing state", () => {
+    // A stateless civil-society suit is a related suit unless its seed marks it.
+    const unmarked = caseRow({ case_id: "u", state: null, plaintiff: "NAACP", category: "voter-data" });
+    const nullCategory = caseRow({ case_id: "n", state: null, plaintiff: "NAACP", category: null });
+    expect(isEoChallenge(unmarked)).toBe(false);
+    expect(isEoChallenge(nullCategory)).toBe(false);
+    expect(relatedSuits([unmarked, nullCategory])).toHaveLength(2);
+  });
+
+  it("changes no figure while nothing is seeded, the state the web commit ships into", () => {
+    // Today's shape: no row carries the mark. Every set must then read exactly what the
+    // pre-class definitions read, so the deploy moves no number on the page before the
+    // seeds land. Written against the OLD definitions, spelled out.
+    const today = rows.filter((r) => r.category !== EO_CHALLENGE);
+    const oldDoj = today.filter((r) => (r.plaintiff ?? "").startsWith("United States"));
+    const oldRelated = today.filter((r) => !(r.plaintiff ?? "").startsWith("United States"));
+    expect(dojFilings(today)).toEqual(oldDoj);
+    expect(relatedSuits(today)).toEqual(oldRelated);
+    expect(eoLawsuits(today)).toHaveLength(0);
   });
 });
 

@@ -9,7 +9,8 @@
  *
  *   0  every requested check passed
  *   1  EXPIRY failed -- an authored claim is past its recheck date
- *   2  DOM JOIN failed -- an ungated claim, or a gate the page never renders
+ *   2  DOM JOIN failed -- an ungated claim, a gate the page never renders, or a
+ *      `data-gate-ref` pointer with nothing valid to point at
  *   3  the check could not run -- missing file, unreadable schema, bad usage
  *
  * 3 is deliberately not 1. A check that could not run is not a check that passed
@@ -61,6 +62,12 @@ const GENERATED_AT_PATH =
  *  element making a registered claim. Named here so both sides read one string. */
 const SECTION_SELECTOR = '[data-section="where-this-stands"]';
 const GATE_ATTR = "data-gate";
+/** A POINTER to a gated claim, for text that names a claim without restating it --
+ *  tab 2's "In force today" step names two provisions and sends the reader to their
+ *  gated claims on tab 1. It carries no `renders_as` and no register entry of its
+ *  own, which is the point: one entry per claim, and no second wording of it that
+ *  nothing compares. What is checked is that the pointer has a target. */
+const GATE_REF_ATTR = "data-gate-ref";
 
 const EXIT_OK = 0;
 const EXIT_EXPIRY = 1;
@@ -239,6 +246,7 @@ async function checkDom(gates, origin) {
 
   const browser = await chromium.launch({ executablePath: exe });
   let present;
+  let refs = [];
   let status = null;
   try {
     const page = await browser.newPage();
@@ -256,6 +264,15 @@ async function checkDom(gates, origin) {
       },
       [SECTION_SELECTOR, GATE_ATTR]
     );
+    refs =
+      (await page.evaluate(
+        ([sel, attr]) => {
+          const root = document.querySelector(sel);
+          if (!root) return null;
+          return [...root.querySelectorAll(`[${attr}]`)].map((el) => el.getAttribute(attr));
+        },
+        [SECTION_SELECTOR, GATE_REF_ATTR]
+      )) ?? [];
   } finally {
     await browser.close();
   }
@@ -287,8 +304,8 @@ async function checkDom(gates, origin) {
 
   // PRESENT, NOT RENDERED, and the labels below say so. This join is
   // `querySelectorAll`, which returns an element inside a `hidden` panel exactly as it
-  // returns a visible one -- measured in chromium-1228 on a page of that shape. Four of
-  // the section's thirteen gates sit behind `wts-next` today, so a green join has never
+  // returns a visible one -- measured in chromium-1228 on a page of that shape. Five of
+  // the section's fifteen gates sit behind `wts-next` as of 2026-09-26, so a green join has never
   // been evidence that a claim was on screen. Rendering is `assert-layout`'s question,
   // and it could not answer it either until it learned to click the tabs.
   const emitted = new Set(present);
@@ -308,6 +325,33 @@ async function checkDom(gates, origin) {
     orphan.length === 0,
     `every registered gate with \`renders_as\` is present (${registered.size} in the register)`,
     orphan.length ? `registered but never present: ${orphan.join(", ")}` : undefined
+  );
+
+  // POINTERS. A ref must name an AUTHORED gate -- a derived figure is rendered where
+  // it is used, never pointed at -- that is registered, NOT FALSIFIED, and itself
+  // present in the section, so the reader sent to it finds it. It does NOT check WHERE
+  // in the section: the pointer's words "the first tab" are the component's, and a
+  // target moved to another tab would pass here.
+  //
+  // NOT FALSIFIED RATHER THAN ACTIVE, deliberately. `stale` is a human's
+  // acknowledgement that a claim is past due (docs/gates.yaml's header), and the claim
+  // still renders, grey. Failing the pointer on `stale` would make that acknowledgement
+  // cost a second edit on another tab, which is pressure against acknowledging at all.
+  // A falsified claim is different: the pointer would send a reader to something the
+  // register itself has retracted.
+  const byId = new Map(gates.map((g) => [g.id, g]));
+  const badRefs = [];
+  for (const id of new Set(refs)) {
+    const g = byId.get(id);
+    if (!g) badRefs.push(`${id}: not in the register`);
+    else if (g.kind !== "authored") badRefs.push(`${id}: ${g.kind}, not authored`);
+    else if (g.status === "falsified") badRefs.push(`${id}: falsified`);
+    else if (!emitted.has(id)) badRefs.push(`${id}: no ${GATE_ATTR} for it in the section`);
+  }
+  check(
+    badRefs.length === 0,
+    `every ${GATE_REF_ATTR} points at a registered, unfalsified authored gate present in the section (${refs.length} on the page)`,
+    badRefs.length ? badRefs.join("; ") : undefined
   );
 }
 

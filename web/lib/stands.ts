@@ -19,14 +19,75 @@ import { datedAhead, type RecordClock } from "@/lib/dated";
 // caller's decision and a visible one; see the scope note on docketTotals.
 
 /** The minimum a docket must carry to be counted. Structural rather than a named
- *  import so both `DocketRow` and `CampaignRow` satisfy it without either becoming a
- *  dependency of this file. */
+ *  import so both `DocketRow` (the section) and `Case` (the rail's class mark) satisfy it
+ *  without either becoming a dependency of this file. `CampaignRow` does not: it
+ *  carries neither `plaintiff` nor `category`. */
 export type DocketLike = {
   court: string | null;
   status: string | null;
   superseded_by: string | null;
   plaintiff: string | null;
+  category: string | null;
 };
+
+// --- THE THREE SETS ------------------------------------------------------------------
+//
+// Every docket the section reads lands in exactly one of three sets, and a test
+// holds them disjoint and covering:
+//
+//   eoChallenges  -- dockets the SEED marks `category: executive-order`, after
+//                    reading the operative complaint against the test: does it seek
+//                    relief against an election executive order, or against agency
+//                    action the complaint pleads was taken under one? (Corey,
+//                    2026-09-26)
+//   dojFilings    -- suits the United States filed, minus the class above.
+//   relatedSuits  -- everything else, a suit that passes the test but is not yet
+//                    marked included: LWV v. DHS and its appeal pass under EO 14248
+//                    and sit here until that order's dockets are seeded.
+//
+// THE MARK MEANS "A CHALLENGE", and only because the seed commit is the only writer of
+// it: `category` is a topic vocabulary in schema.sql, and a DOJ-filed suit tagged
+// `executive-order` would leave DOJ's count and be called a challenge. None exists.
+//
+// THE CLASS IS DECIDED FIRST, AND ON THE SEED'S MARK, NOT ON A CAPTION. Its
+// membership test is read off each operative complaint, once, when the docket is seeded
+// (docs/status.md carries the paragraph that decided each), and it cannot be
+// re-derived from any column: the defendants are the President in most of these suits
+// and the Postal Service in one, and neither name marks a challenge. And it must run
+// before the plaintiff test, because that test is a prefix: the Supreme Court's own
+// docket captions this litigation United States Postal Service v. California, and
+// "United States Postal Service" starts with "United States". (CourtListener's case
+// name for that docket reads "Postal Service v. California", and it is not seeded; the
+// order is for the day a caption like it arrives.)
+
+/** The `cases.category` value that marks the class. In the schema's vocabulary
+ *  (schema.sql) since the table was written; the seed commit is its first user. */
+export const EO_CHALLENGE = "executive-order";
+
+/** A suit whose operative complaint seeks relief against an election executive order,
+ *  or against agency action the complaint pleads was taken under one. */
+export function isEoChallenge(row: DocketLike): boolean {
+  return row.category === EO_CHALLENGE;
+}
+
+/** The class's dockets, appeals included. */
+export function eoChallenges<T extends DocketLike>(rows: readonly T[]): T[] {
+  return rows.filter(isEoChallenge);
+}
+
+/** The class's LAWSUITS: its trial-court dockets. An appeal continues a suit rather
+ *  than being one, so the sentence that counts challenges counts these. One held lead
+ *  appeal stands for four consolidated ones (26-2029 for 26-2029 to 26-2032, the
+ *  26-5301 precedent), so an appeals figure beside it would state a number the record
+ *  does not hold. A Supreme Court docket is not a lawsuit either, and is excluded by
+ *  name for the day one is seeded. */
+export function eoLawsuits<T extends DocketLike>(rows: readonly T[]): T[] {
+  return eoChallenges(rows).filter((r) => !isAppellate(r.court));
+}
+
+function isAppellate(court: string | null): boolean {
+  return isCircuit(court) || /\bSupreme Court\b/i.test(court ?? "");
+}
 
 /** Suits the United States FILED, which is the only population a sentence beginning
  *  "DOJ has sued" may count.
@@ -46,17 +107,24 @@ export function isDojFiling(row: DocketLike): boolean {
   return (row.plaintiff ?? "").startsWith("United States");
 }
 
-/** The dockets DOJ filed. */
+/** The dockets DOJ filed. The class is excluded first; see THE THREE SETS. */
 export function dojFilings<T extends DocketLike>(rows: readonly T[]): T[] {
-  return rows.filter(isDojFiling);
+  return rows.filter((r) => !isEoChallenge(r) && isDojFiling(r));
 }
 
-/** The dockets DOJ did NOT file: suits brought by civil-society plaintiffs against
- *  federal agencies. They stay in the record and leave the DOJ count -- the section
- *  names them in their own clause rather than dropping them, because a reader who
- *  counts the map and the sentence should be able to reconcile the difference. */
+/** Suits brought by civil-society plaintiffs against federal agencies: dockets neither
+ *  filed by the United States nor marked on the seed as an EO challenge. A suit can
+ *  pass the class test and still sit here until its seed is marked -- LWV v. DHS does,
+ *  under EO 14248 (docs/status.md, the 14248 unit). They stay in the record and
+ *  leave the DOJ count -- the section names them in their own clause rather than
+ *  dropping them, because a reader who counts the map and the sentence should be able
+ *  to reconcile the difference.
+ *
+ *  NAMED BY BOTH EXCLUSIONS, not as the complement of one. It was `!isDojFiling` until
+ *  the class existed, and under that definition every EO challenge seeded would have
+ *  joined this count, under a clause that names its three captions. */
 export function relatedSuits<T extends DocketLike>(rows: readonly T[]): T[] {
-  return rows.filter((r) => !isDojFiling(r));
+  return rows.filter((r) => !isEoChallenge(r) && !isDojFiling(r));
 }
 
 export type DocketTotals = {

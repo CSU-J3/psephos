@@ -293,8 +293,10 @@ export default async function Home() {
   } = foldByClock(cases, caseDate, anchorIso, RECENT_CASES);
   const orderedBills = aheadLast(bills, billDate, anchorIso);
   // A DATA RULE, not a constant. All 46 rows read `voter-data` today, so the badge
-  // is decoration and is hidden; it returns on its own the day a second kind of
-  // suit lands, with no code change.
+  // is decoration and is hidden. It feeds only CaseRow's FULL card, which no page
+  // renders as of 2026-09-26 (the rail's compact row ignores it), so it does NOT
+  // return on its own when a second kind of suit lands; the rail marks the EO class
+  // with its own mark (components/CaseRow.tsx).
   const showCategory = new Set(cases.map((c) => c.category)).size > 1;
 
   return (
