@@ -9031,6 +9031,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 116347,
+    "kind": "item",
+    "occurred_at": "2026-09-25T19:17:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNRU1xUDZRSXAwbGhsZWZRSm05TUJJLWh2VDZERmxXM2RyTmdiTnllejc2OXhiN21JSHJ0Y2szcWJKeUJXTzRSU2JHTTItakRTUkpHd0dPM09rem1ZbXRSaXJNR3FweUl0RlpUX0hZcjRNNTQ0X0xpQzN2MWNyRnpCQVNCMEVrRE4yX19SWENvYk9hWHY0Ti1EajBOZk84dEVHOWxIV0RQS09wYzNwcERHSmktN3A?oc=5",
+    "title": "Why the Supreme Court’s latest pro-Trump ruling is unlikely to affect the 2026 election - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 113647,
     "kind": "item",
@@ -9178,5 +9188,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-slams-supreme-court-for-rejecting-missouri-gerrymander",
     "title": "Trump slams Supreme Court for rejecting Missouri gerrymander"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116345,
+    "kind": "item",
+    "occurred_at": "2026-09-28T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/09/28/monae-johnson-terrence-davis-south-dakota-secretary-of-state",
+    "title": "Monae Johnson questioned vote-counting machines. Running elections changed her mind."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116346,
+    "kind": "item",
+    "occurred_at": "2026-09-28T09:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-could-take-up-these-critical-election-cases-as-new-term-begins",
+    "title": "Supreme Court could take up these critical election cases as new term begins"
   }
 ]
