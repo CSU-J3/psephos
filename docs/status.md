@@ -8,6 +8,112 @@ Last updated: 2026-09-28 (UTC).
 
 ## Owed right now
 
+### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILDING
+
+**What it is.** The Congress.gov key sat disabled for 33 green runs, and nothing noticed (see *The Congress.gov key was disabled for eight days*). Corey's scope, widened 2026-09-26: a dead credential, and a budget or cap that cuts a run short, both fail loudly. That includes the status-refresh path that catches the daily cap and returns 0.
+
+**The D0, read 2026-09-28 at `3b5e133`.**
+- **How it was read:** five readers, one surface each (legislation, litigation, state, delivery, signal), plus a completeness critic. No API calls, no `.env`, and public documentation only on the web.
+- **Two inline Turso reads,** read-only: the zero-item streaks, and `bill_actions` and `bills`.
+- **Four consequential claims re-read by hand:** the empty-URL fallback, the discarded refresh result, the silent getBill deferral, and `dom-checks`' `if:`.
+- **Credential-failure shapes:**
+  - **Congress.gov, observed:** HTTP 403 `{"error":{"code":"API_KEY_DISABLED",...}}`.
+  - **api.data.gov's published codes,** read 2026-09-28 from its developer manual, *General Web Service Error Codes*:
+    - `API_KEY_MISSING`, `API_KEY_INVALID`, `API_KEY_DISABLED`, `API_KEY_UNAUTHORIZED` and `API_KEY_UNVERIFIED`, all 403;
+    - `HTTPS_REQUIRED` 400, `OVER_RATE_LIMIT` 429 and `NOT_FOUND` 404.
+    - The observed DISABLED message differs from the manual's wording for the same code, so the code is what gets matched, never the message.
+  - **CourtListener: a dead-token body was never captured.** An anonymous request gets `401 Unauthorized` (v4.3 change log). A single-docket 403 has no support in the repo or the docs.
+  - **LegiScan documents failure only as `status: ERROR` with an optional alert,** with no HTTP status and no key wording. Its own client treats any HTTP status of 400 or more as a transport failure.
+  - **A missing secret is `config.require_env` → `SystemExit` exit 1,** which today ends the `bash -e` step and every later channel.
+- **Healthy zero-new-item streaks, measured** over 354 scheduled runs from 2026-06-29, as the longest streak and then the zero-item runs:
+  - legislation: **354, all of history**; 354;
+  - state: **131** (Aug 5 – Sep 8); 343;
+  - executive: 75; 341;
+  - litigation: 10, channel-level (B2 items mask A1 gaps); 215;
+  - news: 3; 32.
+
+  **The brief's 8 was wrong for every credentialed channel.**
+- **A premise correction:** the brief said legislation "legitimately wrote nothing from 09-09 to 09-16". It has written nothing since its bootstrap on 2026-06-28: 73 items, one per `bill_actions` row. The six watched bills last acted 2026-03-26.
+- **"Its source reports activity":**
+  - **legislation has no usable key-independent signal:** news anchoring is vehicle inference on s1383, and it counts stalling coverage;
+  - **litigation has a partial one:** the UW tracker's `seed-cases` items, in 59% of 8-run windows, blind to the EO dockets and the config seeds;
+  - **state has none.**
+  - **Receipts answer the question directly:** `bills.updated_at` stood frozen for the whole Congress.gov outage, and `cases.status_checked_at` freezes under a dead token or a skipped refresh.
+- **The paths, 25 in all, at `3b5e133`.**
+  - **Credential:**
+    - legislation's per-bill 403 (`legislation.py:237`);
+    - litigation's resolve, poll and refresh handlers (`:526/589/737`);
+    - state's national `getSessionList` fanning out on a dead key (`state.py:840-848, 1026-1033`);
+    - a missing secret's exit 1;
+    - a malformed token's transport ladder, which never sees a 401.
+  - **Budget and cap:**
+    - litigation's seed-loop daily-cap abort (`:776-783`, the refresh skipped) and its refresh-pass abort, whose result `main` discarded (`:810`);
+    - the walk deferral and the refresh count cap;
+    - the `/hour` retry ladder and unbudgeted incremental pagination;
+    - state's ceiling, share and cap-signal skips, and **its silent getBill deferral (`:1086-1087`)**;
+    - legislation and executive swallowing `RateBudgetExhausted` per item.
+  - **Silent, non-credential:**
+    - a state OK reply missing `masterlist` or `bill` (the done-marker set, the actions never written);
+    - an empty 200 under throttle;
+    - litigation's mislabelled `poll_failed` and non-binding resolve tags;
+    - news fetch failures and non-feed bodies;
+    - a legislation 2xx missing `bill`, which NULLs the row and still stamps `updated_at`.
+  - **RED with no issue:** a Turso quota block shared with CBT, a `tracker_uw` layout change, unguarded setup, a raising `db.recover`, the export, a push race, an install failure. Some of these leave no `runs` row, as does a missed 06:17Z slot.
+  - **The empty-URL fallback and `dom-checks`' `if:`,** both shipped as R1 (the section below).
+  - **Stale comments:** `collect.yml:258-259` (gitignore), `db.py:78-79` (30 minutes, not 45) and `state.py:432-433` (a 2-6h lag, against 7h31m). Not ruled.
+
+**RULINGS (Corey, 2026-09-28).**
+- **R1:** the empty-URL path ships first, as its own small unit. Shipped: see the section below.
+- **R2:**
+  - **Credential failures:** every api.data.gov code that says the key itself cannot be used trips the credential line. That is the five `API_KEY_*` codes above, checked against the published list. So does any 401 or 403 whose body is not recognised, quoted in the line.
+  - **`OVER_RATE_LIMIT` is a cut-short,** not a credential failure.
+- **R3:** a state run with no OK replies at all is loud, as its own class ("no OK replies"). It is not labelled a credential failure unless LegiScan's reply names the key. LegiScan's alert text is quoted when there is one.
+- **R4:** state stops on the first credential-class reply instead of fanning out.
+- **R5:** a missing secret: that channel prints its line and skips, the other channels run, the data commit happens as usual, and a final step turns the run red. The empty Turso URL is the exception: nothing runs (R1).
+- **R6: skipping means work owed this run left undone, with nothing guaranteeing the next run picks it up.**
+  - **The skips:**
+    - the litigation daily-cap abort;
+    - the refresh pass's cap-abort, which `litigation.main` must stop discarding;
+    - Congress.gov `OVER_RATE_LIMIT`;
+    - any item deferred on more consecutive runs than its channel's rotation allows.
+  - **Planned deferrals are not skips:** proration, the walk deferral and the refresh rotation. But every one prints a line, and state's silent getBill deferral gains one.
+- **R7:** delivery through Turso. Each collect run writes its per-run row (channel, class, evidence line), which also serves as state's receipt.
+- **R8:** one standing issue for the collect lane, reused by exact title (the title is proposed below).
+  - Each red run comments with channel, class and evidence line.
+  - A person closes it against the first clean run.
+  - Commit bodies say "issue N", never a close keyword before the number.
+- **R9: receipts replace the zero-item check.** Legislation reads `bills.updated_at`, litigation `cases.status_checked_at`, and state the per-run table.
+  - Each threshold is a count of missed expected slots.
+  - It is accepted only if it stays silent across that channel's whole recorded history and would have caught the 2026-09-16 Congress.gov outage within one day.
+- **R10:** every red collect run comments on the standing issue.
+- **R11:**
+  - **The `dom-checks` `if:` fix ships with R1.** Shipped.
+  - **The cap-abort flag and state's deferral line are R6.**
+  - **The refresh cap:**
+    - **Confirmed:** the pass takes the oldest `status_checked_at` first. `due_for_status_refresh` orders never-checked first, then oldest-checked (`litigation.py:632-651`), and the cap takes the head, so a capped row is the oldest on the next run and none starves.
+    - **The cap is not raised in this unit.**
+    - **A WATCH: 37 pending rows against a cap of 40 at `d0133a4`, headroom 3.** The EO 14248 unit must price it before it seeds.
+
+**THE BUILD, to those rulings.**
+- **The lines.** Each is a literal prefix plus the channel. An evidence suffix is scrubbed of the channel's key value and truncated.
+  - `CREDENTIAL FAILURE <channel>`: R2; R3 when LegiScan's reply names the key; R5 as `<VAR> is not set`.
+  - `NO OK REPLIES state`: R3, with the alert quoted.
+  - `RUN CUT SHORT <channel>: <reason>`: the R6 skips.
+  - `DEFERRED <channel>: <what>`: planned deferrals, printed and not loud.
+- **The table.** `channel_runs(run_id, channel, class, evidence, written_at)`, one row per class the channel met in the run. A channel that reached its source writes `ok`, so state's latest `ok` row is its receipt (R7). It is a new table, so it needs no ALTER.
+- **The verdict.** A final `collect.yml` step, `if: always()`, reads this run's rows and the receipts. It turns the run red on any loud row, a breached receipt, or an earlier failed step. Then an issue step, `if: failure()`, comments on the standing issue with each channel, class and evidence line (R8, R10). `collect.yml` gains `issues: write`.
+  - **Proposed title: `collect red`,** beside `dom-checks red` and `coverage_audit red`.
+- **Receipt thresholds (R9)** are validated on reconstructed history before they are set:
+  - legislation and state from every retained `collect.yml` log;
+  - litigation from `data/cases.json`'s `status_checked_at` across its commits.
+
+  A threshold that fires outside a recorded incident, or misses the 09-16 outage by more than a day, is not set.
+
+**OWED:**
+1. **The build, then its tests,** each driven by a planted fixture: the verbatim `API_KEY_DISABLED` body; the other four key codes; an unrecognised 403; `OVER_RATE_LIMIT`; a missing secret; a LegiScan ERROR naming and not naming the key; no OK replies; the daily-cap abort; the refresh abort.
+2. **The threshold validation on history,** recorded with its figures.
+3. **The first SCHEDULED collect run on the built head,** which is green with a row per credentialed channel. And a planted red on a throwaway branch that comments on the standing issue, with a dispatch standing in only for that one proof.
+
 ### Two CI holes closed: an empty or local Turso URL fails the collect run, and every dom-checks check reports after a red. RULED and SHIPPED 2026-09-28
 
 **What these are.** Two defects found by unit 99's D0 (paths 23 and 24; see *Open units*). Corey ruled both to ship first, on their own, the same day (R1, and the `dom-checks` half of R11).
@@ -2557,6 +2663,8 @@ Three claims died to this reading — the 150–250K band, the ~88K/day drop der
 
 Pre-existing, not introduced by Part B, and not a licence matter.
 
+**PROPOSED 2026-09-28, NOT QUEUED — the legislation watch list. Corey scopes it.** The channel's six watched bills (H.R. 22, S. 128, S. 3752, H.R. 7296, H.R. 7300 and S. 1383) have not moved since 2026-03-26. The channel has written no item since its bootstrap on 2026-06-28, 354 scheduled runs (unit 99's D0). Whether the watch list covers what the channel is for, five weeks before the 2026-11-03 election, is Corey's to scope.
+
 **OPENED 2026-09-28, NOT BUILT: display captions.** Carried forward from the EO 14399 unit's item 9, which closed with CourtListener still returning three D.D.C. captions in capitals. Those are 73143746, 73131864 and 73134260, and the last shares its caption with LULAC's 2025 EO 14248 suit (1:25-cv-00946).
 - **The shape, ruled 2026-09-27 (Corey):**
   - storage keeps CourtListener's caption verbatim, and the collector never rewrites it;
@@ -2585,7 +2693,7 @@ Pre-existing, not introduced by Part B, and not a licence matter.
 - **The class sentence must widen.** It names the mail-ballot order, and the order check that lands with the 14399 seeds fails on a 14248 row by design (that unit's ruling (a)).
 - **Opens as D0 and plan when Corey calls it.** Not scheduled, and after unit 99 unless he orders otherwise.
 
-**OPENED 2026-09-23, NOT BUILT: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 33 green runs (see *The Congress.gov key was disabled for eight days* in *Owed right now*).
+**Unit 99 was READ and RULED 2026-09-28 and is now in *Owed right now*; the entry below is its opening record.** **OPENED 2026-09-23: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 33 green runs (see *The Congress.gov key was disabled for eight days* in *Owed right now*).
 
 **Scope:**
 
