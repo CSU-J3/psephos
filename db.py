@@ -311,11 +311,50 @@ def recover(conn) -> None:
         conn.rollback()
 
 
+# A remote database URL starts with one of these. A libsql connection to a `file:`
+# URL is local, yet it is still a `_Conn`, so `backend()` cannot tell the two apart;
+# only the URL can.
+REMOTE_URL_SCHEMES = ("libsql://", "https://", "wss://")
+
+# THE CI FLAG (R1, Corey, 2026-09-28). `collect.yml` sets it for the whole job. With it
+# set, the local fallback is refused at the first database call any step makes -- every
+# collector's init_db(), the export, the heartbeat -- so a run whose URL secret is empty
+# or local fails before any channel runs, commits nothing and spends nothing. Without
+# the guard such a run went GREEN: six channels against a throwaway file, snapshots built
+# from it committed over the real ones, and on the state slot real LegiScan queries that
+# the Turso ledger never saw. The check reads the environment and makes NO network call:
+# a preflight step that connected would be the unguarded connection collect.yml records
+# losing three cycles to a Turso 502 on 08-06/07.
+REQUIRE_REMOTE_ENV = "PSEPHOS_REQUIRE_REMOTE"
+
+
+def require_remote_url(what: str = "this run") -> None:
+    """Raise unless TURSO_DATABASE_URL names a remote database. The companion of
+    `require_remote(conn)` for the moment before any connection exists. The message
+    names the variable and never its value."""
+    url = (os.environ.get("TURSO_DATABASE_URL") or "").strip()
+    if not url:
+        fault = "TURSO_DATABASE_URL is empty or unset"
+    elif not url.lower().startswith(REMOTE_URL_SCHEMES):
+        fault = ("TURSO_DATABASE_URL is not a remote URL (it must start with "
+                 + ", ".join(REMOTE_URL_SCHEMES) + ")")
+    else:
+        return
+    raise RuntimeError(
+        f"{what} requires the remote Turso database, but {fault}. Refusing the local "
+        f"SQLite fallback before any channel runs: nothing is fetched, written or "
+        f"committed. Check the TURSO_DATABASE_URL Actions secret."
+    )
+
+
 def _remote_url(path: str | None) -> str | None:
     """The Turso URL to use, or None to use local SQLite. An explicit path always
-    means local (tests/dev); otherwise honor TURSO_DATABASE_URL if present."""
+    means local (tests/dev); otherwise honor TURSO_DATABASE_URL if present. Under the
+    CI flag an absent or local URL raises instead of falling back."""
     if path is not None:
         return None
+    if os.environ.get(REQUIRE_REMOTE_ENV) == "1":
+        require_remote_url(f"this run ({REQUIRE_REMOTE_ENV}=1)")
     return os.environ.get("TURSO_DATABASE_URL") or None
 
 

@@ -189,6 +189,13 @@ jobs:
     # written as a range without its sample size, and it was falsified at both ends
     # within a day.
     timeout-minutes: 45
+    # NO LOCAL FALLBACK IN CI (R1, Corey, 2026-09-28). With this set, db refuses an empty
+    # or local TURSO_DATABASE_URL at the first database call any step makes, so the job
+    # fails before any channel runs, commits nothing and spends nothing. Without it an
+    # empty URL secret ran all six channels GREEN against a throwaway SQLite file and
+    # committed snapshots built from it. See db.REQUIRE_REMOTE_ENV.
+    env:
+      PSEPHOS_REQUIRE_REMOTE: "1"
     steps:
       # THE JOB'S OWN START, stamped before anything else runs. There is no context
       # variable for it: `github.run_started_at` exists only on `workflow_run` events,

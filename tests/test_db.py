@@ -788,3 +788,59 @@ def test_write_helpers_pass_on_an_enforcing_connection(tmp_path):
 
     assert conn.execute("SELECT COUNT(*) FROM t").fetchone()[0] == 2
     conn.close()
+
+
+# --------------------------------------------------------------------------- #
+# R1: under the CI flag, no local fallback (2026-09-28)
+# --------------------------------------------------------------------------- #
+@pytest.mark.parametrize("url", ["", "   ", "file:data/psephos.db", "data/psephos.db",
+                                 "http://127.0.0.1:8080", ":memory:"])
+def test_the_ci_flag_refuses_an_empty_or_local_url_before_touching_anything(
+        monkeypatch, tmp_path, url):
+    """Every entry point's first database call is init_db() or connect(), and both
+    resolve the URL through _remote_url. Under the flag an empty or local URL raises
+    there -- before a local file exists and before any request -- and the message names
+    the variable, never its value."""
+    monkeypatch.setenv("PSEPHOS_REQUIRE_REMOTE", "1")
+    monkeypatch.setenv("TURSO_DATABASE_URL", url)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(db, "DB_PATH", str(tmp_path / "data" / "psephos.db"))
+    for call in (db.init_db, db.connect):
+        with pytest.raises(RuntimeError, match="requires the remote Turso database") as exc:
+            call()
+        assert "TURSO_DATABASE_URL" in str(exc.value)
+        if url.strip():
+            assert url.strip() not in str(exc.value)
+    assert not (tmp_path / "data").exists()
+
+
+@pytest.mark.parametrize("url", ["libsql://example-db.turso.io", "https://example-db.turso.io",
+                                 "wss://example-db.turso.io", "LIBSQL://EXAMPLE"])
+def test_the_ci_flag_passes_a_remote_url(monkeypatch, url):
+    monkeypatch.setenv("PSEPHOS_REQUIRE_REMOTE", "1")
+    monkeypatch.setenv("TURSO_DATABASE_URL", url)
+    assert db._remote_url(None) == url
+
+
+def test_without_the_flag_the_fallback_is_unchanged(monkeypatch):
+    """Local dev and the tests keep the fallback; only a job that sets the flag loses it."""
+    monkeypatch.delenv("PSEPHOS_REQUIRE_REMOTE", raising=False)
+    monkeypatch.setenv("TURSO_DATABASE_URL", "")
+    assert db._remote_url(None) is None
+    assert db._remote_url("x.db") is None          # an explicit path is always local
+
+
+def test_an_explicit_path_stays_local_even_under_the_flag(monkeypatch):
+    """Tests and offline tools pass a path and asked for local on purpose."""
+    monkeypatch.setenv("PSEPHOS_REQUIRE_REMOTE", "1")
+    monkeypatch.setenv("TURSO_DATABASE_URL", "")
+    assert db._remote_url("x.db") is None
+
+
+def test_collect_yml_sets_the_flag_for_the_whole_job():
+    """The flag must sit at job level, so the export and heartbeat steps carry it too,
+    not only the collectors step."""
+    import yaml
+    wf = yaml.safe_load((Path(__file__).resolve().parent.parent / ".github" / "workflows"
+                         / "collect.yml").read_text(encoding="utf-8"))
+    assert wf["jobs"]["collect"]["env"]["PSEPHOS_REQUIRE_REMOTE"] == "1"
