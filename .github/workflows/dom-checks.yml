@@ -243,15 +243,20 @@ jobs:
 
       # The checks. Each runs whenever the PAGE RENDERED, not merely when the
       # step before it passed, so one comment carries every verdict instead of
-      # stopping at the first red. Specifying `if:` replaces the implicit success()
-      # condition, which is what allows a later check to run after an earlier one fails.
+      # stopping at the first red. GitHub applies an implicit `success()` to any `if:`
+      # that names no status function ("A default status check of success() is applied
+      # unless you include one of these functions"), so a bare
+      # `steps.preflight.outcome == 'success'` was ANDed with success() and a red check
+      # skipped every check after it. This comment claimed the opposite until
+      # 2026-09-28. `!cancelled()` is the status function that keeps a later check
+      # running after an earlier one fails, and still stops on a cancelled run.
       #
       # `${PIPESTATUS[0]}`, not the pipeline's status: tee exits 0 whatever the script
       # did, and a red check reporting success is the trap audit.yml records for its
       # own pipe and docs/status.md records for piping a tool to `head`.
       - name: assert-gates
         id: gates
-        if: steps.preflight.outcome == 'success'
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
         run: |
@@ -263,7 +268,7 @@ jobs:
 
       - name: assert-encodings
         id: encodings
-        if: steps.preflight.outcome == 'success'
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
         run: |
@@ -275,7 +280,7 @@ jobs:
 
       - name: assert-layout
         id: layout
-        if: steps.preflight.outcome == 'success'
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
         run: |
@@ -293,7 +298,7 @@ jobs:
       # copied rather than imported. Handoff 98, Part B.
       - name: assert-attribution
         id: attribution
-        if: steps.preflight.outcome == 'success'
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
         run: |
@@ -312,7 +317,7 @@ jobs:
       # 2026-09-29 and the row headed "Latest movement" three days early.
       - name: assert-dated
         id: dated
-        if: steps.preflight.outcome == 'success'
+        if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
         run: |
