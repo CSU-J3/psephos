@@ -433,9 +433,10 @@ litigation:
     # two D. Mass. suits consolidated for limited purposes on Apr 22 (11549, 11581) each
     # keep a seed. The 26-5301 precedent decides only which APPEAL dockets get rows.
     # 1:26-cv-01132 was seeded on a finding, after the other seven had bound and walked:
-    # its caption is the same as LULAC's 2025 EO 14248 suit (1:25-cv-00946), and the
-    # enumeration of seeds had stopped at the related-case notice instead of following
-    # 01114's consolidation notice, which names it (docs/status.md, *The EO 14399 dockets*).
+    # its caption is the same as LULAC's 2025 EO 14248 suit (1:25-cv-00946, cited as
+    # 1:25-cv-0946 in gates.yaml), hence the seed's "(2026)", and the enumeration of
+    # seeds had stopped at the related-case notice instead of following 01114's
+    # consolidation notice, which names it (docs/status.md, *The EO 14399 dockets*).
     #
     # THE NOTES RENDER VERBATIM on each docket's page (write_b2_item makes them the B2
     # subject line), so they state docket facts only; this page's bookkeeping sits in
@@ -531,7 +532,7 @@ litigation:
         Asks the court to declare sections 2(a), 3(b), 4(a) and 4(c) of EO 14399 ultra
         vires and void. The D.C. Circuit issued a decision in the case on Jul 28
         (2026 WL 2168617).
-    - caption: League of United Latin American Citizens v. Executive Office of the President
+    - caption: League of United Latin American Citizens v. Executive Office of the President (2026)
       docket_number: 1:26-cv-01132
       court: D.D.C.
       court_id: dcd
@@ -539,10 +540,13 @@ litigation:
       order: EO 14399
       case_id: "73134260"
       notes: >-
-        Asks the court to declare sections 2(a), 3(b)(iii) and 3(b)(iv) of EO 14399
-        unconstitutional or otherwise unlawful, and to enjoin their implementation.
-        Consolidated with 1:26-cv-01114 by an order of Apr 9; since Apr 14 its pleadings
-        are filed in that docket.
+        The Apr 2 complaint asks the court to declare sections 2(a), 3(b)(iii) and
+        3(b)(iv) of EO 14399 unconstitutional or otherwise unlawful and to enjoin their
+        implementation. The Aug 28 supplemental complaint, docketed as the operative
+        complaint, asks it to set aside and enjoin the Postal Service's final rule, which
+        it pleads EO 14399 instructed. Consolidated with 1:26-cv-01114 by an order of
+        Apr 9; a clerk's notice of Apr 14 directs that all pleadings be filed only in
+        that docket.
 
 # ===========================================================================
 # CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)
