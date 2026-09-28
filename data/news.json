@@ -9208,5 +9208,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-could-take-up-these-critical-election-cases-as-new-term-begins",
     "title": "Supreme Court could take up these critical election cases as new term begins"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116744,
+    "kind": "item",
+    "occurred_at": "2026-09-28T16:04:18+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/los-angeles-city-attorney-election-roy-mckinney-feldstein-soto",
+    "title": "The Most Overlooked But Wide-Reaching Office on the Los Angeles Ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116743,
+    "kind": "item",
+    "occurred_at": "2026-09-28T17:40:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-strikes-down-trumps-bid-to-cut-states-anti-terror-funds-unless-they-impose-new-voting-restrictions",
+    "title": "Judge strikes down Trump’s bid to cut states’ anti-terror funds unless they impose new voting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116742,
+    "kind": "item",
+    "occurred_at": "2026-09-28T17:55:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-was-ordered-to-give-30-days-notice-before-releasing-citizenship-lists-it-might-not-comply",
+    "title": "Trump admin was ordered to give 30 days notice before releasing citizenship lists. It might not comply"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116741,
+    "kind": "item",
+    "occurred_at": "2026-09-28T18:13:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/report-trump-wanted-all-mail-ballots-sent-by-certified-mail",
+    "title": "Report: Trump wanted all mail ballots sent by certified mail"
   }
 ]

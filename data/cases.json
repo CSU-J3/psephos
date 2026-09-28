@@ -10237,9 +10237,9 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 177,
+    "entry_count": 180,
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-09-25T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -10996,6 +10996,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/100/united-states-v-albence/",
         "title": "United States v. Delaware: ORAL ORDER: Oral argument for the pending motions (D.I. 3, 33, 36, and 39 ) is now rescheduled for 9/29/2026, at 11:00 AM in Courtroom 6A. Ordered by Judge Richard G. Andrews on 9/"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116433,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/104/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Hearing re 100 Oral Order, Set Hearings, Terminate Deadlines MOTION FOR EXEMPTION OF INDIVIDUALS FROM THE DISTRICT OF DELAWARES MAY 17, 2024 STANDING ORDER ON PERSONAL D"
       }
     ]
   },
@@ -26317,9 +26327,9 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 105,
+    "entry_count": 106,
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-09-18T00:00:00",
+    "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -28847,9 +28857,9 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 73,
+    "entry_count": 74,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-09-08T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
@@ -28946,6 +28956,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73682036/73/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States of America v. Board Of Elections of the State of New York: MOTION ORDER, referring motion for leave to file an amicus curiae brief to the panel that will determine the merits of this appeal, at docket entry 71, on behalf of Movant Project "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116355,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/74/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Liberty Legal Foundation, FILED. Service date 09/28/2026 by ACMS. [Entered: 09/28/2026 08:37 AM]"
       }
     ]
   },
@@ -28957,9 +28977,9 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 62,
+    "entry_count": 66,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-09-23T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -29076,6 +29096,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/61/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION ORDER, denying motion for removal from the XAC, granting a two week extension until 11/12/206, to file Appellee's brief at docket entry 56, on behalf of Appellee Stephanie T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116353,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/65/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Liberty Legal Foundation, FILED. Service date 09/28/2026 by ACMS. [Entered: 09/28/2026 08:40 AM]"
       }
     ]
   },
@@ -29087,9 +29117,9 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 22,
+    "entry_count": 23,
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-09-08T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -29126,6 +29156,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/3/united-states-v-steven-koski/",
         "title": "United States v. Virginia: BRIEFING ORDER filed. No paper copies required unless case has been tentatively calendared or copies otherwise ordered. All filings must comply with Appendix Pagination & Brief Cit"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116570,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/27/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: Court order filed"
       }
     ]
   },
@@ -29287,9 +29327,9 @@
     "date_terminated": null,
     "defendant": "Lieutenant Governor and Secretary of State of New",
     "docket_number": "26-3085",
-    "entry_count": 30,
+    "entry_count": 32,
     "filed_at": "2026-08-20T00:00:00",
-    "latest_entry_at": "2026-09-22T00:00:00",
+    "latest_entry_at": "2026-09-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
@@ -29346,6 +29386,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74676722/4/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
         "title": "United States v. New Jersey: ORDER (Clerk) The District Court granted the League of Women Voters of New Jersey, Latino Action Network, Maungsai Somboon, Make the Road New Jersey, Jamie Y. Ding, Danielle Litwak"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116522,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74676722/40/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
+        "title": "United States v. New Jersey: ECF FILER: Motion filed by Appellee Lieutenant Governor and Secretary of State of New Jersey for Extension of Time to file Answering Brief until/for 11/27/2026. Certificate of Serv"
       }
     ]
   },
@@ -29627,9 +29677,9 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 195,
+    "entry_count": 196,
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": "2026-09-17T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
