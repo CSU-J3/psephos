@@ -39,6 +39,11 @@ import sys
 import common
 import config
 import db
+# The scrub's primitives live in scrub.py, the ONE scrub every issue body and every
+# evidence line passes through (unit 99, 2026-09-28). Re-exported here under the names
+# the collectors and tests have always used.
+from scrub import (CREDENTIAL_ENV, MIN_SECRET_LEN, REDACTED, env_secrets,  # noqa: F401
+                   replace_all as _replace_all, strip_queries)
 
 OK = "ok"
 CREDENTIAL = "credential failure"
@@ -62,61 +67,11 @@ PREFIX = {
 
 TABLE = "channel_runs"
 EVIDENCE_MAX = 300
-REDACTED = "[redacted]"
-
 # Every secret any channel in this process has handed to RunSignals. `safe()` scrubs them
 # from lines printed OUTSIDE this module -- the per-item ERROR and skip lines that predate
 # unit 99 and print an exception's text, which carries the response body: a server that
 # echoed the key would otherwise put it in the public log (found by unit 99's tests).
 _SECRETS: set[str] = set()
-# A value shorter than this is never treated as a secret: real keys run 32 to 40
-# characters, and scrubbing a short one would redact ordinary text -- a test's key "k"
-# turned every "skipped" in later output into "s[redacted]ipped" before this guard.
-MIN_SECRET_LEN = 8
-
-
-# Every credential a collect run carries, by variable name (unit 99, ruling 2a). The
-# collectors step hands all five to every collector process, so each channel scrubs every
-# one, not only its own key: an error from one source that echoed another's key, or a
-# database error naming the Turso URL, still stays out of the evidence, the issue comment
-# and the log. Pinned against config/sources.yaml's key_env names by a test.
-CREDENTIAL_ENV = ("CONGRESS_API_KEY", "COURTLISTENER_TOKEN", "LEGISCAN_API_KEY",
-                  "TURSO_DATABASE_URL", "TURSO_AUTH_TOKEN")
-
-# A URL's query string -- and fragment -- is dropped from evidence whatever it carries
-# (ruling 2a): the key rides there on Congress.gov (`api_key=`) and LegiScan (`key=`), and
-# a server that echoes the request URL would put it into a body the evidence quotes.
-_URL_QUERY = re.compile(r"(\b[A-Za-z][A-Za-z0-9+.-]*://[^\s?#\"'<>]*)[?#][^\s\"'<>]*")
-
-
-def env_secrets() -> tuple[str, ...]:
-    """Every credential value in this process's environment, plus the database URL's bare
-    host, which a libsql error can name on its own. Held in memory and compared by
-    str.replace only: nothing here prints a value or puts one on a command line."""
-    out = []
-    for name in CREDENTIAL_ENV:
-        v = (os.environ.get(name) or "").strip()
-        if not v:
-            continue
-        out.append(v)
-        if name == "TURSO_DATABASE_URL":
-            out.append(v.split("://", 1)[-1].split("/", 1)[0].split("?", 1)[0])
-    return tuple(s for s in dict.fromkeys(out) if len(s) >= MIN_SECRET_LEN)
-
-
-def strip_queries(text: str) -> str:
-    """`text` with every URL's query string and fragment removed; the rest of the URL
-    stays, so the evidence still says which endpoint answered."""
-    return _URL_QUERY.sub(r"\1", text)
-
-
-def _replace_all(text: str, secrets) -> str:
-    # Longest first: the Turso URL contains its host, and replacing the host first would
-    # leave the URL's scheme and path around a redaction instead of one clean mark.
-    for s in sorted({s for s in secrets if s and len(s) >= MIN_SECRET_LEN}, key=len,
-                    reverse=True):
-        text = text.replace(s, REDACTED)
-    return text
 
 
 def safe(text) -> str:

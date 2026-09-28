@@ -325,6 +325,12 @@ jobs:
           TITLE: collect red
           SLOT: ${{ github.event.schedule || 'dispatch' }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          # The run's credentials, for the scrub below and nothing else.
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          COURTLISTENER_TOKEN: ${{ secrets.COURTLISTENER_TOKEN }}
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         run: |
           body="$RUNNER_TEMP/collect-verdict.md"
           if [ ! -s "$body" ]; then
@@ -337,6 +343,13 @@ jobs:
               echo "install or setup leaves it nothing to run on). See the run's steps."
             } > "$body"
           fi
+          # SCRUBBED BEFORE IT IS POSTED (unit 99, 2026-09-28). Actions masks secrets in the
+          # run log, not in what a step sends to the Issues API. tools/scrub_issue_body.py
+          # runs scrub.py -- the one scrub every lane uses -- over the body with this step's
+          # credentials from its env: each value replaced, every URL's query string dropped.
+          # By path, not `-m`, so it runs from any working directory on the runner's python3.
+          # tests/test_issue_body_scrub.py fails a posting step that skips it.
+          python3 "$GITHUB_WORKSPACE/tools/scrub_issue_body.py" "$body"
           # Exact-title match, not the search ranking: `gh issue list --search` is fuzzy.
           num=$(gh issue list --state open --limit 100 --json number,title \
                   --jq "[.[] | select(.title == \"${TITLE}\")] | first | .number // empty")

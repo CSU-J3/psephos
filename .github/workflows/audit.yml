@@ -128,6 +128,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TITLE: coverage_audit red
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          # The run's credentials, for the scrub below and nothing else.
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
         run: |
           {
             echo "cc @CSU-J3"
@@ -155,6 +158,13 @@ jobs:
             fi
             echo '```'
           } > issue-body.md
+          # SCRUBBED BEFORE IT IS POSTED (unit 99, 2026-09-28). Actions masks secrets in the
+          # run log, not in what a step sends to the Issues API. tools/scrub_issue_body.py
+          # runs scrub.py -- the one scrub every lane uses -- over the body with this step's
+          # credentials from its env: each value replaced, every URL's query string dropped.
+          # By path, not `-m`, so it runs from any working directory on the runner's python3.
+          # tests/test_issue_body_scrub.py fails a posting step that skips it.
+          python3 "$GITHUB_WORKSPACE/tools/scrub_issue_body.py" issue-body.md
 
           # Exact-title match, not the search ranking: `gh issue list --search` is
           # fuzzy and would happily return a different issue whose body mentions the
