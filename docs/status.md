@@ -8,6 +8,48 @@ Last updated: 2026-09-28 (UTC).
 
 ## Owed right now
 
+### Two CI holes closed: an empty or local Turso URL fails the collect run, and every dom-checks check reports after a red. RULED and SHIPPED 2026-09-28
+
+**What these are.** Two defects found by unit 99's D0 (paths 23 and 24; see *Open units*). Corey ruled both to ship first, on their own, the same day (R1, and the `dom-checks` half of R11).
+
+**1a. An empty or local `TURSO_DATABASE_URL` no longer runs the collect job green.**
+- **The defect (read in code, never observed):** `db._remote_url` returned `None` for an empty URL, and no collector, the export or the heartbeat called `db.require_remote`.
+  - All six channels ran against a throwaway SQLite file, and the export built `data/*.json` from it. Commit then pushed those over the real snapshots, and nothing reached Turso.
+  - On the 06:17Z slot, state would read a zero ledger and spend real LegiScan queries that were never ledgered.
+- **The fix:**
+  - `collect.yml` sets `PSEPHOS_REQUIRE_REMOTE: "1"` at job level.
+  - With it set, `db._remote_url` calls the new `db.require_remote_url`, which raises unless the URL starts with `libsql://`, `https://` or `wss://`.
+  - That is the first database call every step makes (each collector's `init_db()`, the export, the heartbeat). So the job fails before any channel runs: nothing is fetched, written or committed, and no local file is created.
+  - The message names the variable, never its value.
+- **Why a URL check and not a preflight `require_remote(conn)` step:**
+  - A preflight connection is the unguarded connection this workflow records losing three cycles to a Turso 502 on 08-06/07, and the URL check makes no network call.
+  - `require_remote(conn)` passes a libsql connection to a `file:` URL, because `backend()` reports any `_Conn` as `turso`. Only the URL can tell them apart.
+- **Tests (`tests/test_db.py`), 12 cases:**
+  - under the flag, an empty, blank, `file:`, bare-path, `http://127.0.0.1` or `:memory:` URL raises from both `init_db` and `connect`, with no local file created;
+  - a remote URL passes;
+  - without the flag, and for an explicit path, the fallback is unchanged;
+  - `collect.yml` carries the flag at job level.
+  - **With the guard removed, all six refusal cases went red.**
+- **The proof, 2026-09-28, on the job's entry point:** `python -m collectors.legislation` (the collectors step's first line), run with the flag, an empty URL, and HTTP routed through an unreachable proxy.
+  - **It exits 1** with the traceback ending at `legislation.py:211` (`db.init_db()`) → `db._remote_url` → `db.require_remote_url`. That is before `require_env` at `:215` and before any request: no stdout, and no proxy or HTTP trace.
+  - **The same holds for a `file:` URL.**
+  - **`python -m export.snapshots` and `python -m scripts.write_heartbeat` both exit 1** under the flag.
+  - **`data/psephos.db`'s mtime was unchanged.**
+  - **Positive control:** with the real URL (scheme `libsql`), the flag resolves it.
+- **What it does not do:** such a run is red, and the heartbeat refuses too, so no `runs` row records it. Delivering red runs to an issue is unit 99's R10.
+
+**1b. Every `dom-checks` check reports, whatever the checks before it did.**
+- **The defect:** the lane's comment said "Specifying `if:` replaces the implicit success() condition". GitHub applies `success()` to any `if:` that names no status function, so each check's bare `if: steps.preflight.outcome == 'success'` was ANDed with it. A red check skipped every check after it, and "one comment carries every verdict" did not hold.
+- **The fix:** all five checks now read `if: ${{ !cancelled() && steps.preflight.outcome == 'success' }}`, and the comment says what GitHub does.
+- **The proof, a planted red on a throwaway branch, dispatched twice.** The branch moved `cert-window-nov-12`'s `recheck_after` into the past. For the proof only, its issue step also required `main`, so no planted red touched the standing issue. It was deleted afterwards.
+  - **Before the fix,** run `36466345768`: `assert-gates` failed (13 PASS / 1 FAIL, "cert-window-nov-12 -- recheck 2026-09-01 PAST"), and **`assert-encodings`, `assert-layout`, `assert-attribution` and `assert-dated` were all skipped.** That confirms the D0's reading on GitHub itself.
+  - **With the fix,** run `36466535622`: `assert-gates` failed the same way, and **all four later checks ran and reported:** encodings 35/0, layout 77/0, attribution 38/0, dated 74/0.
+
+**OWED:**
+1. **The first SCHEDULED `collect.yml` run on a head carrying the flag is green.** The flag must pass a healthy run, and the Actions secret's scheme cannot be read from here. If that run goes red with "TURSO_DATABASE_URL is not a remote URL", the secret's scheme is the cause, and the fix is the allow-list, not the flag.
+2. **The first SCHEDULED `dom-checks` run on the new head is green.** The fix shows only on a red, so a green run proves only that the new condition runs the checks at all.
+
+
 ### The EO 14399 dockets: CLOSED 2026-09-28. Eight dockets seeded, bound and walked (six suits counted, two lead appeals marked); a sixth suit seeded on a finding; the D.D.C. injunction on the USPS rule carried by its own gate; every owed read landed green
 
 **What it is.** Challenges to the election executive orders become a third counted class in the litigation channel, beside DOJ's filings and the related suits. Corey ruled the plan on 2026-09-26, and at the pixel checkpoint the same day passed tabs 1 and 2 and ruled on the membership test and the rail marker. The rail, re-shot to that ruling, passed at a second checkpoint the same day, and the web half landed in `40c5009` (records `86d59ea`). The seeds land in a later commit, after the web commit is live on production and read there, because the page reads Turso live: a seed that landed first would render inside the related-suits clause, under its three hand-named captions.
@@ -3050,6 +3092,7 @@ The companion to the list below, and the difference is the whole point: a falsif
 
 Spans sessions, not just the current one. Kept because the pattern matters more than the individual errors: every one was a confident claim about read cost or repo state, and every one died to a single command or a single chart. Every entry is a claim made in review or in a handoff, with **one exception — the collected label, below**, which was a claim the *shipped page* made to its readers. It is filed here rather than only in a section because that is what it was: a confident statement of fact, held for sixteen days, that died to a single comparison. **The "one exception" has been more than one for some time, and saying so is cheaper than maintaining the count.** Besides the collected label there are now two entries that falsify nothing: the **CRLF near-miss**, filed because a watch condition got its first live test and held, and the **2026-09-09 positive entry**, filed because a transcription error could not propagate and the reason it could not is reusable. Both announce themselves in their own first words. The rule still describes the overwhelming majority — an entry here is normally something someone asserted, not something the code did — but it is a description now rather than an invariant, and the exceptions are the ones worth reading twice. **Attribution follows the author, not the messenger, ruled 2026-09-10.** A claim written by the review layer is filed as the review layer's even when it reached this page through Corey relaying it, the form the pin-brief and two-outcome entries already use; a claim with two authors names both. Re-attribution is a correction like any other and is marked in place rather than done silently — two entries carry that mark, the cron count and the `docs/gates.yaml` reading.
 
+- **"Specifying `if:` replaces the implicit success() condition, which is what allows a later check to run after an earlier one fails."** This page, in `dom-checks.yml`'s comment on its checks, from the lane's build until 2026-09-28. **GitHub applies `success()` to any `if:` that names no status function**, so a red check skipped every check after it. A planted red confirmed it (run `36466345768`: four checks skipped after `assert-gates` failed). It went unnoticed because the lane had never gone red. **Instrument: plant a red on a throwaway branch before trusting a workflow condition that only matters on failure.**
 - **"Every district suit that passes: 1:26-cv-11549, 1:26-cv-11581, 1:26-cv-13917, 1:26-cv-01151 (*NAACP v. Donald J. Trump*) and 1:26-cv-01114 (*DSCC v. Trump*)."** Ruling (c) of *The EO 14399 dockets*, 2026-09-26, against both sides. The ruling turned a rule into a five-item list, and the D0 that fed it followed NAACP's related-case notice to DSCC and stopped there. **DSCC's own docket names a sixth:** its consolidation notice of Apr 14 lists "26cv1132, 26cv1151", and 1:26-cv-01132 is *LULAC v. Executive Office of the President* (2026), an EO 14399 suit that passes the test. It was seeded 2026-09-28 (ruling A). Its caption matches LULAC's 2025 EO 14248 suit, cited throughout the unit, which likely hid it. **Instrument: follow related-case and consolidation notices to closure before enumerating seeds.**
 - **"section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections."** The shipped page, tab 1 of *Where this stands*, gate `eo-14399-s3-enjoined` (now `eo-14399-usps-rule-enjoined`), from its first render after `cb09416` (committed 2026-09-13T20:00:27Z) to the push that carries this entry. Filed as the collected label is: a claim the page made to its readers. **It ran two objects together, and was imprecise from the day it was written.**
   - **The object:** the Sep 4 injunction enjoins the Postal Service's final rule, not the order's section.
