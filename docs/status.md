@@ -8,7 +8,7 @@ Last updated: 2026-09-28 (UTC).
 
 ## Owed right now
 
-### The EO 14399 dockets: RULED 2026-09-26; tabs 1 and 2 and the rail PASSED the pixel checkpoint; the web half and the eo-14399 rewording PUSHED and READ on production; the seeds, with 26-1774, PUSHED, BOUND and WALKED; a sixth suit SEEDED on a finding; the D.D.C. injunction's gate PASSED its pixel checkpoint and lands with this entry; the sixth suit's walk, the 05:17Z audit and the 09-28 lane run owed
+### The EO 14399 dockets: CLOSED 2026-09-28. Eight dockets seeded, bound and walked (six suits counted, two lead appeals marked); a sixth suit seeded on a finding; the D.D.C. injunction on the USPS rule carried by its own gate; every owed read landed green
 
 **What it is.** Challenges to the election executive orders become a third counted class in the litigation channel, beside DOJ's filings and the related suits. Corey ruled the plan on 2026-09-26, and at the pixel checkpoint the same day passed tabs 1 and 2 and ruled on the membership test and the rail marker. The rail, re-shot to that ruling, passed at a second checkpoint the same day, and the web half landed in `40c5009` (records `86d59ea`). The seeds land in a later commit, after the web commit is live on production and read there, because the page reads Turso live: a seed that landed first would render inside the related-suits clause, under its three hand-named captions.
 
@@ -275,10 +275,22 @@ Last updated: 2026-09-28 (UTC).
      - **The log shows no stream error, no resolve error and no 429.**
    - **Owed:**
      - ~~**run 2 (the 18:17Z slot),** expected to walk the five in that order, at about 10, 4, 4, 2 and 13 requests;~~ **READ above.**
-     - **the 00:17Z-slot run of 2026-09-28, which binds and walks 1:26-cv-01132** (seeded after run 2; see the finding above);
-     - **then the 05:17Z `audit.yml` run of 2026-09-28,** reading §6 green with all eight walked and §1 reconciling the eight. If 01132's run lands after the audit, the audit reads it unbound and the next day's reading carries it.
-     - **Owed, after 01132 binds:** tab 1's sentence and tab 2's step read **6**, and the rail marks **8** (read on production).
+     - ~~**the 00:17Z-slot run of 2026-09-28, which binds and walks 1:26-cv-01132**~~ **READ 2026-09-28, below.**
+     - ~~**then the 05:17Z `audit.yml` run of 2026-09-28**~~ **READ 2026-09-28, below.**
+     - ~~**Owed, after 01132 binds:** 6 and 8 on production~~ **READ 2026-09-28, below.**
      - ~~**If the 18:17Z run is never created, that is not a seed failure**~~ **Did not apply: run 2 ran in its slot.** (Ruled 2026-09-27, Corey.) The 00:17Z run walks the five before the 05:17Z audit reads §6. Record the missing slot as a lane event with its times, and read the walks from whichever run performs them.
+   - **Run 3, READ 2026-09-28:** `collect.yml` run `36382172981`, the 00:17Z slot, was created 05:30:05Z on head `385ca31`, with every step `success` and data commit `c6afa7b` (05:42Z).
+     - **It bound and walked 1:26-cv-01132 (73134260) alone:** 3 requests, 44 entries, +19 A1 items.
+     - **Its status refresh checked 27 rows,** with 0 changed and 0 failed. The log shows no stream error, no resolve error and no 429.
+     - **`c6afa7b`'s `data/cases.json` holds 61 rows, 8 of them `executive-order`.** 01132 bound as CourtListener's *LEAGUE OF UNITED LATIN AMERICAN CITIZENS v. EXECUTIVE OFFICE OF THE PRESIDENT* (item 9).
+   - **The audit, READ 2026-09-28:** `audit.yml` run `36417546299` (#21), scheduled, started 11:45:19Z on head `c6afa7b`. `coverage_audit` concluded `success`, and the issue step was `skipped`.
+     - **§1 reads 0** over 61 cases and 47 seed keys. The 14 rows that match no seed are the same 14 as before: 13 linked by `superseded_by`, and 72335259 acknowledged-blocked. None of the eight class rows is among them, so all eight reconcile.
+     - **§6 reads 0, with all eight walked.** §4, §5 and §7 read 0. §2 lists 19 references and §3 one; both are reports.
+   - **Production, READ 2026-09-28 at 17:43:45Z** on record clock 13:57:50Z:
+     - `eo-challenges` renders *"The record holds 6 challenges to the mail-ballot executive order, ..."*, and `eo-challenges-held` renders *"6 challenges to the mail-ballot order held in the record"*.
+     - **8 `data-class-mark` elements render** (16 in the raw response, the RSC payload doubling them).
+     - **Both USPS-rule clauses render, D.D.C.'s first,** with all four pointers on tab 2.
+     - **The related-suits clause still reads 3.**
 6. ~~**Production, seeded.**~~ **READ 2026-09-27: it passes, and the two D.D.C. captions read in CourtListener's capitals (item 9).** The conditions: tab 1's sentence reads **5**, the five district seeds (26-2029 is held and not counted, ruling (c)), and the rail marks all **7** seeded rows, 26-2029 and the June 25 order's appeal included: **7 marks beside a count of 5**, by design (Corey, 2026-09-26). Open *The other N dockets* before counting marks, since any of the seven outside the eight most recently moved sits in that fold. **After run 1's data commit, read the seven rows' `caption` and `source_url` in `data/cases.json`** against their seeds: 73143746 must read *National Association for the Advancement of Colored People v. Donald J. Trump* and 73131864 *DSCC v. Trump*. Check 4 proves a bind, not that the right docket was bound.
    - **The read:** production on the public alias at 17:17Z and again at 19:27Z, both on record clock 2026-09-27T17:06:39Z, run 1's data.
      - `eo-challenges` renders *"The record holds 5 challenges to the mail-ballot executive order, counted apart from DOJ's filings and the related suits"*, and `eo-challenges-held` renders *"5 challenges to the mail-ballot order held in the record"*.
@@ -292,14 +304,19 @@ Last updated: 2026-09-28 (UTC).
        - the two D.D.C. rows are in capitals: 73143746 reads *NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE v. DONALD J. TRUMP*, and 73131864 reads *DSCC v. TRUMP*.
      - **All four are the right dockets:** court and docket number match their seeds, the words are the seeds' own, and each URL slug carries them. The D.D.C. pair is not in the casing this item expected; the fix is item 9.
 7. ~~**The list fields' check (check 4) reads every listed docket held, with 0 pending, from run 1's data commit on.**~~ **READ 2026-09-27 on `a4e2f68`: every listed docket held, 0 pending.** `node scripts/assert-gates.mjs --expiry-only` printed "eo-14399-usps-rule-enjoined -- 3 of 3 listed dockets held" and "eo-14399-s2-3-stayed -- 2 of 2 listed dockets held", then 9 PASS / 0 FAIL, and exited 0. The lane's scheduled reading of it is item 8. That proves the seven bound; it cannot prove they were walked (item 5 does). The lists: `eo-14399-usps-rule-enjoined` (74755121, 73133197, 74701505) and `eo-14399-s2-3-stayed` (73568304, 73141063). The check must find every docket **the list field** names held. Those are the held instruments among the dockets `falsified_by` names. 26A305 and 26-2030 to 26-2032 are named there too but not held, by ruling (c), and are read directly; the check does not look for them.
-8. **The 09-28 SCHEDULED `dom-checks` run, the first on a head with the class populated** (added 2026-09-27, Corey). Read for:
+8. ~~**The 09-28 SCHEDULED `dom-checks` run, the first on a head with the class populated**~~ **READ 2026-09-28: it passes** (added 2026-09-27, Corey). Read for:
    - `assert-gates` green, with `eo-challenges` and `eo-challenges-held` both reading 5, or 6 if 01132 has bound by then;
    - check 4 at 3 of 3 and 2 of 2, plus 1 of 1 for `eo-14399-usps-rule-enjoined-ddc` if item 10 is pushed before the run, and `assert-gates` then at 14 PASS (the local lane read 14/0 on 2026-09-28);
    - every `data-gate-ref` resolving;
    - `assert-encodings`, `assert-layout`, `assert-attribution` and `assert-dated` all exiting 0.
 
    Recorded with run 2's walks and the 05:17Z audit, before the unit closes. The 09-27 run cannot stand in for it: its head `75583ca` and its record clock (05:34:35Z) both predate run 1's binds. A dispatch does not count.
-9. **The D.D.C. captions: recorded, not built** (queued 2026-09-27 by Corey; its shape ruled the same day). At close, read whether CourtListener still renders 73143746, 73131864 and, once bound, 73134260 in capitals. If it does, the fix is carried forward: **a later unit builds it and opens with the display-truth ruling below, not this unit's close** (confirmed 2026-09-27, Corey). Its shape:
+   - **The read:** run `36406109335` (#22), event `schedule`, head `c6afa7b`, started 09:51:16Z. Every step concluded `success`, and the issue step was `skipped`.
+     - **`assert-gates` 14/0,** over 17 gates (7 authored). Check 4 printed 1 of 1, 3 of 3 and 2 of 2, and all 4 pointers resolved.
+     - **`assert-encodings` 35/0, `assert-layout` 77/0, `assert-attribution` 38/0, `assert-dated` 74/0,** each ending `OK`.
+     - **The join checks gate ids, not the figures they render,** so the 6 of item 5 was read on production.
+     - **The head carries `abaccfd`,** so this run was also the D.D.C. gate's first scheduled reading.
+9. ~~**The D.D.C. captions**~~ **READ AT CLOSE 2026-09-28 and CARRIED FORWARD** to its own unit (*Open units*, *display captions*). CourtListener's `case_name`, read 17:44Z, still reads in capitals for all three: 73143746 *NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE v. DONALD J. TRUMP*, 73131864 *DSCC v. TRUMP*, and 73134260 *LEAGUE OF UNITED LATIN AMERICAN CITIZENS v. EXECUTIVE OFFICE OF THE PRESIDENT*. What follows is the record as it stood (queued 2026-09-27 by Corey; its shape ruled the same day). At close, read whether CourtListener still renders 73143746, 73131864 and, once bound, 73134260 in capitals. If it does, the fix is carried forward: **a later unit builds it and opens with the display-truth ruling below, not this unit's close** (confirmed 2026-09-27, Corey). Its shape:
    - **Storage keeps CourtListener's caption verbatim.** The collector never rewrites the stored `caption`.
    - **The fix is a display field on the case row.** It is written from the seed, and only where a seed sets one. The page prefers it when present and ignores it otherwise.
    - **Never title-case in code:** NAACP, DSCC and USPS would break.
@@ -316,8 +333,15 @@ Last updated: 2026-09-28 (UTC).
     - **Two variants of the source chips at the checkpoint; the working tree carries B.**
       - **A** is the chips as they were. There a badge can end a line apart from its label: B2 did at 390 before this unit, and an A1 does at 1440 once the fourth chip is added.
       - **B** groups each source's badge, label and recheck chip into one flex item, so a badge always starts its label's line. It also keeps the docket number 1:26-cv-01114 on one line.
+    - **The push:** `abaccfd` (the gate and the page) and `385ca31` (records) at 01:08:25Z, in a window of 52m12s from `316a15a`'s push, with no data commit inside it and so no rebase.
+      - **The checks:** `ci_local` was green, `ci.yml` run `36364825546` was green on all three jobs, the `gh api` read-backs matched, and `sha_sweep` passed on a fresh clone.
+      - **Production at 01:09:20Z** rendered both clauses, D.D.C.'s first, and all four pointers.
     - **The draft was reviewed adversarially before the checkpoint,** against the saved court texts. The review moved section 3 out of the D.D.C. span, gave the D. Mass. span its own subject, restored the courts' "denied", named each USPS chip's court, and corrected this record's TRO-appeal reading.
-11. **When this unit closes, unit 99 opens:** D0 and plan, then stop (*Open units*).
+11. ~~**When this unit closes, unit 99 opens**~~ **This unit CLOSED 2026-09-28, and unit 99 opens: D0 and plan, then stop** (*Open units*).
+12. **Observation, not an alarm (Corey, 2026-09-28): lane start times have drifted later each day since 09-26.**
+    - **`dom-checks`:** the scheduled runs started 08:38:37Z (09-26), 09:18:43Z (09-27) and 09:51:16Z (09-28). Those are lags of 5h21m37s, 6h01m43s and 6h34m16s past the 03:17Z slot, each the longest of the lane's scheduled runs to date.
+    - **`collect.yml`'s 06:17Z slot:** its run was created 11:20:12Z (09-26), 11:58:07Z (09-27) and 13:48:01Z (09-28), a lag of 7h31m01s. Its data commit landed at 14:01Z. That run started after the 12:17Z slot had fired, and the 12:17Z-slot run had not been created by 17:42Z.
+    - **Nothing failed.** The dated-ahead unit's item 4 needs the 09-29 lane run to start after that day's first data commit. On 09-28 it did, starting 09:51Z against a 05:42Z commit.
 
 ### Renew the CourtListener EDU membership before 2027-02-09: OWED BY COREY, dated 2026-09-26
 
@@ -925,7 +949,7 @@ What production showed, read around 02:00Z on 09-26:
 1. ~~**The second pixel checkpoint.**~~ **PASSED 2026-09-26 (Corey).**
 2. ~~**Push the four commits together after Corey's word.**~~ **Pushed together with this entry, rebased over the cron's `6226b29`** (data only: `data/cases.json` and `data/generated_at.json`). A push cannot carry its own row, so the push reading -- its time, the rebase, the patch-ids across it -- is carried by the next unit's push.
    - **`ci.yml` WENT RED ON THAT PUSH, the second breach of *Verify with the command CI runs* (Standing invariants; the first was `npx vitest`)**, run `36264690447` on `573d0ff`: `assert-casts` failed on 3 double casts (`as unknown as`) in `web/lib/dated.test.ts`, whose pin is 0. The unit's local checks were tsc, `pnpm test`, pytest and the DOM lane. They did not include `assert-casts`, which the previous unit's instrument list did run. The job stops at its first failing step, so every later step was run locally before the fix: tsc, `pnpm test`, `assert-gates --expiry-only`, and pytest and actionlint, which passed in the red run. **Fixed by typing the three fixtures in full**, after which `assert-casts` reads zero double casts, pushed as its own commit. **Instrument: run every `ci.yml` step locally before the push**, since the ritual's own `ci.yml` check comes after the push, when main is already red. Since the same day that is one command, `python -m tools.ci_local` (*One CI entry point*, below).
-3. **The 09-27 and 09-28 SCHEDULED `dom-checks` runs. 09-27 READ 2026-09-27: it passes, with the homepage read the same day. 09-28 owed.** Read for:
+3. ~~**The 09-27 and 09-28 SCHEDULED `dom-checks` runs.**~~ **BOTH READ: they pass, each with the homepage read the same day.** Read for:
    - `assert-dated` exit 0 with HB6414 among the marked dates: the discovered `/state-bill/2158970` reading 2 dates after the clock and 2 marked, and `/state-bills` reading 1 and 1;
    - the homepage carrying the dated-after sentence, *"1 further item is dated after these seven days."* The run logs no page text, so this is read off the production homepage the same day, on the public alias, against the same Turso.
 
@@ -941,6 +965,10 @@ What production showed, read around 02:00Z on 09-26:
        - every other route: 0 and 0;
        - the sweep: 7 after the clock, 7 marked.
    - **The homepage, READ the same day:** on the public alias at 19:27:46Z, on record clock 2026-09-27T17:06:39Z, it renders *"1 further item is dated after these seven days."* once in its body. The page does not name the item.
+   - **09-28, READ:** run `36406109335`, event `schedule`, head `c6afa7b`, started 09:51:16Z, a lag of 6h34m16s, the longest yet (see the EO 14399 unit's item 12).
+     - **Every step concluded `success`,** and `assert-dated` ended `OK`.
+     - **The counts, on the page's clock 2026-09-28T05:40:34Z:** `/state-bill/2158970` (MI HB6414) 5 dates, **2 after the clock, 2 marked**; `/state-bills` **1 and 1**; the sweep 7 and 7.
+   - **The homepage, READ 2026-09-28** at 17:43:45Z, on record clock 13:57:50Z: it renders *"1 further item is dated after these seven days."* once in its body.
 4. **The first SCHEDULED `dom-checks` run with the record's clock on 2026-09-29** (that day's 03:17Z slot, which starts after the day's first data commit on this lane's lag). **It is the first live test of the per-row fresh dot, so it is recorded even though nothing reds.** Read for:
    - HB6414's item `112734` sitting on the Sep 29 band with **no fresh dot**, since it was collected 2026-09-24;
    - **no marker** on it, its date now being the clock's own day;
@@ -2487,6 +2515,15 @@ Three claims died to this reading — the 150–250K band, the ~88K/day drop der
 
 Pre-existing, not introduced by Part B, and not a licence matter.
 
+**OPENED 2026-09-28, NOT BUILT: display captions.** Carried forward from the EO 14399 unit's item 9, which closed with CourtListener still returning three D.D.C. captions in capitals. Those are 73143746, 73131864 and 73134260, and the last shares its caption with LULAC's 2025 EO 14248 suit (1:25-cv-00946).
+- **The shape, ruled 2026-09-27 (Corey):**
+  - storage keeps CourtListener's caption verbatim, and the collector never rewrites it;
+  - the fix is a display field on the case row, written from the seed only where a seed sets one;
+  - the page prefers that field when present and ignores it otherwise;
+  - never title-case in code, since NAACP, DSCC and USPS would break.
+- **It opens with a ruling** on one source of display truth for captions, with the override as its only exception. The seeds' `caption` is not the page's source even at bind, as the two First Circuit rows showed. The ruling must also disambiguate the two LULAC captions once the 14248 unit seeds the 2025 case.
+- **Opens as D0 and plan when Corey calls it.**
+
 **PROPOSED 2026-09-28, NOT QUEUED — a gate that flags itself for recheck. For Corey's scoping after unit 99.** When a docket in a gate's `record_instruments` gains an order or a notice of appeal after the gate's last reading, the gate flags itself for recheck. Then a ruling that reaches the record within hours also reaches the gate.
 - **The case that prompts it:** the D.D.C. injunction of Sep 13 sat on 01114's docket, which the collector began walking on 2026-09-27. Nothing connected that entry to the claim about the rule until a hand-read found it.
 - **What it would and would not catch.** It catches an order or appeal on a docket already listed: from now on, an appeal from ECF 193 on 73131864. It would NOT have caught the case that prompts it, since 01114 was on no gate's list until 2026-09-28. An order on an unlisted docket needs something else.
@@ -2518,7 +2555,7 @@ Pre-existing, not introduced by Part B, and not a licence matter.
 
 **The line names the channel only, never anything about the key**: no value, prefix, hash, source file or other holder. It would be the first thing to carry key information into a public surface.
 
-**Unit 99 opens when the EO 14399 unit closes: D0 and plan, then stop** (Corey, 2026-09-26).
+**Unit 99 OPENS 2026-09-28, the EO 14399 unit having closed: D0 and plan, then stop** (Corey, 2026-09-26 and 09-28). Scope as widened: a dead credential, and a budget or cap that cuts a run short, both fail loudly. That includes the status-refresh path that catches the daily cap and returns 0.
 
 **Open before any plan:**
 
@@ -3023,9 +3060,9 @@ Spans sessions, not just the current one. Kept because the pattern matters more 
 - **"Taking the related-suits clause from three captions to two."** The review layer, 2026-09-26, in the ruling that set the membership test at the pixel checkpoint. **It goes from three to one.** LWV v. DHS's district row, 71499795, is terminated with `superseded_by` 73544809, its D.C. Circuit appeal (26-5243). The two rows are one suit, and they move to the class together, as this unit already puts a class suit's appeal in the class (26-2029). That leaves *Common Cause v. DOJ* alone. Ruled "one" at the rail checkpoint the same day. **Instrument: read the related rows and their `superseded_by` before counting captions.**
 - **26-1779 as "a separate appeal from the June 25 order in 1:26-cv-11581, carrying its own rulings".** The review layer, 2026-09-26, in the rail-checkpoint ruling, on the ground that the 26-5301 precedent covers only appeals consolidated behind a lead. **The First Circuit consolidated it behind 26-1774 on Jul 8**, and Corey ruled 26-1774 the seed on 2026-09-27 (the 26-5301 precedent). **The stay granted on Aug 24 was No. 26A124, whose docket lists First Circuit case number "(26-1774)" alone**, the federal defendants' appeal. The intervening States' application, No. 26A139 ("(26-1774; 26-1779)"), was denied as moot the same day. 26-1779 is the intervening States' appeal of the same order, consolidated with 26-1774 on Jul 8 "for purposes of pre-briefing motions, briefing, and any oral argument", and its First Circuit rulings since are joint orders. California v. USPS ¶100 cites 26-1779 for the stay, which is the likeliest source. **Instrument: read an appeal's docket for consolidation before applying the lead precedent.** Read here: the Supreme Court's docket pages for 26A124 and 26A139, and both First Circuit dockets on CourtListener (73568304, 73577455), 2026-09-27.
   - **This entry was itself overstated when first pushed, in `86d59ea`.** The same brief wrote "the Supreme Court's Aug 24 order on 26-1779's stay application" beside "the Aug 24 stay", and both phrases are literally true: the one per curiam granted 26A124 and denied 26A139 ("(26-1774; 26-1779)") as moot. That the stay came on 26-1779's application was implied by putting them side by side, not stated. This page filed it as a stated claim, false outright. Mine, 2026-09-27, written before 26A139's docket was read. **Instrument: read every application a per curiam disposes of, not only the one it grants.**
-- **"D.D.C.'s only *NAACP v. USPS* is 1:20-cv-02295, the 2020 mail-delay suit."** This page, 2026-09-26, in the D0 of *The EO 14399 dockets* and in the falsified entry just below, which declared the 09-13 proposal's caption wrong. Filed against the review side at Corey's direction (2026-09-28).
-  - **The D0 did search the caption:** a D.D.C. RECAP search for `caseName:(NAACP AND Postal)`, in `eo14399_d0_read.py`. It found 1:20-cv-02295 and judged it by its filing year. The brief of 2026-09-28 says the entry was written "without searching for a docket by that name"; the D0's scripts show the search ran.
-  - **What it did not do was read the docket's 2026 entries.** They held Judge Sullivan's Jul 1 order enforcing the 2020 settlement, which enjoined the USPS from implementing the EO 14399 proposed rule. The D.C. Circuit stayed it on Jul 17 (26-5257; see the finding in *The EO 14399 dockets*). The D0's own readers had listed "Whether NAACP v. USPS (D.D.C.) holds its own injunction" as an open question.
+- **"Without searching for a docket by that name."** The review layer, 2026-09-28, in the brief that ruled the D.D.C. gate, describing the D0's dismissal in the entry below. **The D0 had searched.** `eo14399_d0_read.py` ran a D.D.C. RECAP search for `caseName:(NAACP AND Postal)`, and `eo14399_d0_read2.py` a broader one; the D0's plan records what they found. **Instrument: read what the D0 recorded of its own searches before characterizing them.**
+- **"D.D.C.'s only *NAACP v. USPS* is 1:20-cv-02295, the 2020 mail-delay suit."** This page's D0 of *The EO 14399 dockets*, 2026-09-26, and the falsified entry below, which declared the 09-13 proposal's caption wrong on it. `eo14399_d0_read.py`'s D.D.C. RECAP search for `caseName:(NAACP AND Postal)` found 1:20-cv-02295 and dismissed it by its filing year, without reading its 2026 entries.
+  - **Among those entries was the Jul 1 injunction against the proposed rule:** Judge Sullivan's order enforcing the 2020 settlement enjoined the USPS from implementing the EO 14399 proposed rule. The D.C. Circuit stayed it on Jul 17 (26-5257; see the finding in *The EO 14399 dockets*). The D0's own readers had listed "Whether NAACP v. USPS (D.D.C.) holds its own injunction" as an open question.
   - **The correction below still stands:** 1:20-cv-02295 is outside the class, because its operative complaint predates the order. But "the 2020 mail-delay suit" understated a docket that carried a 2026 injunction on the rule.
   - **Instrument: search a caption before declaring it absent, and read a found docket's recent entries before dismissing it by its filing year.**
 - **"NAACP v. USPS (D.D.C.)."** This page's 2026-09-13 proposal to seed the EO 14399 dockets, repeated by the review layer in the 2026-09-26 brief that opened the unit. **The 2026 case is *National Association for the Advancement of Colored People v. Donald J. Trump*, 1:26-cv-01151.** D.D.C.'s only *NAACP v. USPS* is 1:20-cv-02295, the 2020 mail-delay suit. The 2026 complaint names USPS and its Board of Governors among the defendants, which is presumably how the name formed. **Instrument: the unit's D0 CourtListener read, 2026-09-26**, 32 GET requests through the collector's request code.
