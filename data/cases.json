@@ -6077,9 +6077,9 @@
     "date_terminated": "2026-06-22T00:00:00",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 254,
+    "entry_count": 255,
     "filed_at": "2025-09-30T00:00:00",
-    "latest_entry_at": "2026-09-23T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
     "state": null,
@@ -10237,7 +10237,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 180,
+    "entry_count": 181,
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
@@ -11006,6 +11006,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/104/united-states-v-albence/",
         "title": "United States v. Delaware: MOTION for Hearing re 100 Oral Order, Set Hearings, Terminate Deadlines MOTION FOR EXEMPTION OF INDIVIDUALS FROM THE DISTRICT OF DELAWARES MAY 17, 2024 STANDING ORDER ON PERSONAL D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116768,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/105/united-states-v-albence/",
+        "title": "United States v. Delaware: Order"
       }
     ]
   },
@@ -29117,7 +29127,7 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 23,
+    "entry_count": 24,
     "filed_at": "2026-07-29T00:00:00",
     "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
@@ -29166,6 +29176,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/27/united-states-v-steven-koski/",
         "title": "United States v. Virginia: Court order filed"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 116792,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/29/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: Order filed"
       }
     ]
   },
@@ -29227,9 +29247,9 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 18,
+    "entry_count": 20,
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-09-22T00:00:00",
+    "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",

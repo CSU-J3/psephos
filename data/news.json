@@ -9248,5 +9248,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/report-trump-wanted-all-mail-ballots-sent-by-certified-mail",
     "title": "Report: Trump wanted all mail ballots sent by certified mail"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116964,
+    "kind": "item",
+    "occurred_at": "2026-09-28T21:19:19+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/09/28/maricopa-county-suspected-noncitizen-voters-investigation-results-save-heap-mitchell",
+    "title": "Maricopa County investigated 60 suspected noncitizen voters. 52 are citizens, 8 are not."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116965,
+    "kind": "item",
+    "occurred_at": "2026-09-28T22:09:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-election-board-asks-for-trump-admin-to-help-go-after-states-voting-machines",
+    "title": "Georgia election board asks for Trump admin to help go after state’s voting machines"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 116963,
+    "kind": "item",
+    "occurred_at": "2026-09-28T22:59:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/09/28/how-to-vote-general-election-2026-early-absentee-ballot-id",
+    "title": "Everything you need to know about voting in Michigan in 2026"
   }
 ]
