@@ -158,14 +158,31 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
           <Fact
             when="Mar 25, 2025 · Mar 31, 2026"
             src={
+              // ONE SPAN PER SOURCE. `.fact .src` is a wrapping flex row, so a bare badge,
+              // label and chip wrap as three items, and a badge could end a line with its
+              // label on the next. Each span is one flex item whose content flows inline, so
+              // a badge always starts its label's line.
               <>
-                <Grade grade="A1" dense /> Federal Register{" "}
-                <Grade grade="B2" dense /> EO 14248 per the Brennan Center case tracker{" "}
-                <span className="rk">recheck by Dec 10</span>{" "}
-                <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule per Supreme Court docket 26A305{" "}
-                <span className="rk">recheck by Oct 15</span>{" "}
-                <Grade grade="A1" dense /> EO 14399&rsquo;s §§2-3 injunction per Supreme Court docket 26A124{" "}
-                <span className="rk">recheck by Nov 20</span>
+                <span>
+                  <Grade grade="A1" dense /> Federal Register
+                </span>
+                <span>
+                  <Grade grade="B2" dense /> EO 14248 per the Brennan Center case tracker{" "}
+                  <span className="rk">recheck by Dec 10</span>
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule in D.D.C. per docket{" "}
+                  <span className="whitespace-nowrap">1:26-cv-01114</span>{" "}
+                  <span className="rk">recheck by Oct 15</span>
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule in D. Mass. per Supreme Court docket 26A305{" "}
+                  <span className="rk">recheck by Oct 15</span>
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> EO 14399&rsquo;s §§2-3 injunction per Supreme Court docket 26A124{" "}
+                  <span className="rk">recheck by Nov 20</span>
+                </span>
               </>
             }
           >
@@ -175,8 +192,21 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
               {"the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"}
             </span>
             ;{" "}
+            {/* ONE SENTENCE, TWO ORDERS, ONE GATE EACH (Corey, 2026-09-28): the D.D.C.
+                injunction of Sep 13 first, since it is the broader (the whole rule, no end
+                date), then the D. Mass. injunction of Sep 4. Each span is a clause with its
+                own subject; only "the rule" in the second leans on the first, so retiring
+                either span means rewriting the other's `renders_as`. The D.D.C. span keeps
+                section 3 out: ECF 193's decree names no section, and its fn. 1 denies the
+                motion as to section 3. No transient procedural state ("no appeal on the
+                docket") on the page: that lives in the entry's comment and recheck, in
+                docs/gates.yaml. */}
+            <span data-gate="eo-14399-usps-rule-enjoined-ddc">
+              {"the Postal Service is preliminarily enjoined from implementing and enforcing the ballot-mail rule it issued on Aug 21 at EO 14399's direction, in full and with no end date, by a D.D.C. order of Sep 13"}
+            </span>
+            ,{" and "}
             <span data-gate="eo-14399-usps-rule-enjoined">
-              {"the Postal Service's final rule implementing section 3 of EO 14399 is enjoined in its mandatory provisions for elections through Nov 3, 2026, by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied one on Sep 14"}
+              {"a D. Mass. preliminary injunction of Sep 4 enjoins the rule's mandatory provisions for elections through Nov 3, 2026; the First Circuit denied stays of it on Sep 10, and the Supreme Court denied one on Sep 14"}
             </span>
             ;{" "}
             <span data-gate="eo-14399-s2-3-stayed">
@@ -333,30 +363,32 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                 // DONE REGARDLESS OF THE COUNT. The step is about both orders, and both were
                 // challenged: an injunction needs a suit, and tab 1's gated claims record
                 // injunctions against 14248's provisions, against the USPS rule implementing
-                // 14399, and against 14399's own §§2-3 (that one stayed). The count is what
-                // the record holds of one order's
-                // challenges, and at 0 -- the window between this deploy and the seeds'
-                // first walk -- an undone step would have read "not challenged".
+                // 14399 (two, D.D.C.'s and D. Mass.'s), and against 14399's own §§2-3 (that
+                // one stayed). The count is what the record holds of one order's challenges,
+                // and at 0 -- the window between this deploy and the seeds' first walk -- an
+                // undone step would have read "not challenged".
                 true,
               ],
               [
                 "In force today",
-                // POINTERS, NOT CLAIMS. Each part names a provision and sends the reader
-                // to its gated claim on the first tab; it states no status of its own, so
+                // POINTERS, NOT CLAIMS. Each part names a provision, or for the USPS rule
+                // the court whose order it points at, and sends the reader to its gated claim
+                // on the first tab; it states no status of its own, so
                 // there is no second text to fall out of step with the register.
                 // `data-gate-ref` is checked by assert-gates: every ref must name an
                 // authored gate that is registered, not falsified, and on the page.
                 <>
-                  see the first tab for 14399&rsquo;s{" "}
-                  <span data-gate-ref="eo-14399-usps-rule-enjoined">USPS rule</span> and{" "}
+                  see the first tab for 14399&rsquo;s USPS rule (
+                  <span data-gate-ref="eo-14399-usps-rule-enjoined-ddc">D.D.C.</span> and{" "}
+                  <span data-gate-ref="eo-14399-usps-rule-enjoined">D. Mass.</span>) and{" "}
                   <span data-gate-ref="eo-14399-s2-3-stayed">§§2-3 themselves</span>, and for{" "}
                   <span data-gate-ref="eo-14248-enjoined">14248&rsquo;s registration provisions</span>{" "}
                   · the rest not in the record
                 </>,
                 // Not done, on the gated claims: 14248's registration provisions are
-                // enjoined, and so are the mandatory provisions of the USPS rule implementing
-                // 14399 (the injunction against 14399's own §§2-3 is stayed), so neither order
-                // operates unblocked.
+                // enjoined, and so is the USPS rule implementing 14399, in full by D.D.C. and
+                // in its mandatory provisions by D. Mass. (the injunction against 14399's own
+                // §§2-3 is stayed), so neither order operates unblocked.
                 false,
               ],
             ]}

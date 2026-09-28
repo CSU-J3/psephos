@@ -376,7 +376,7 @@ async function checkDom(gates, origin) {
   // PRESENT, NOT RENDERED, and the labels below say so. This join is
   // `querySelectorAll`, which returns an element inside a `hidden` panel exactly as it
   // returns a visible one -- measured in chromium-1228 on a page of that shape. Five of
-  // the section's sixteen gates sit behind `wts-next` as of 2026-09-27, so a green join has never
+  // the section's seventeen gates sit behind `wts-next` as of 2026-09-28, so a green join has never
   // been evidence that a claim was on screen. Rendering is `assert-layout`'s question,
   // and it could not answer it either until it learned to click the tabs.
   // Resolved through aliases: a page still carrying an entry's former id is joined to

@@ -23,7 +23,7 @@
 #   3. every authored entry's `recheck_after` is not in the past
 #   4. every docket an authored entry lists in `record_instruments` is held in
 #      data/cases.json, or is a pinned seed not yet bound while the record's clock
-#      is on or before the entry's `record_instruments_due` (2026-09-27)
+#      is on or before the entry's `record_instruments_due` (2026-09-28)
 #
 # `aliases` carries the ids an entry was known by before a rename; the checks that
 # resolve ids resolve an alias to its entry. Records in docs/status.md keep the id
@@ -90,6 +90,63 @@
   # data-gate, so the two never matched, and check 2 compares ids only, so
   # nothing noticed.
   renders_as: "the clock"
+
+# THE D.D.C. INJUNCTION OF SEP 13, ADDED 2026-09-28 on a finding (docs/status.md, *The
+# EO 14399 dockets*): a second court's order on the rule, broader than the D. Mass. one
+# below, sat unread on a docket the unit was about to seed. Judge Nichols's order in the
+# three consolidated D.D.C. suits (1:26-cv-01114 ECF 193, captioned in 01114, 01132 and
+# 01151): "ORDERED that the United States Postal Service is preliminarily enjoined from
+# implementing and enforcing the Final Rule it published on August 21, see Ballot Mail
+# for Federal Elections, 91 Fed. Reg. 54,966 (Aug. 26, 2026)." It grants the LULAC
+# (ECF 171) and NAACP (ECF 172) renewed motions and DSCC's (ECF 163) in part; fn. 1: "The
+# Court denies only the portion of the Motion that seeks to preliminarily enjoin Section
+# 3 of the Executive Order." The memorandum opinion (ECF 192), Part D, holds the scope to
+# CASA: "Enjoining Federal Defendants from enforcing the Rule, in its entirety, is
+# therefore a 'party-specific' remedy consistent with CASA's command", the plaintiff
+# organizations having members who vote by mail in essentially all fifty states. The
+# decree names no end date and no election, so it is broader than the D. Mass. order on
+# both axes, and the page renders it first (Corey, 2026-09-28).
+#
+# THE FALSIFIER'S INSTRUMENT IS THE D.D.C. DOCKET, 1:26-cv-01114 (CourtListener
+# 73131864), read directly: an appeal is noticed there first, and a stay pending appeal is
+# sought there first. As read 2026-09-28 (RECAP, which lags PACER), its last entry is a
+# Sep 23 minute order admitting counsel pro hac vice, its last party filing the
+# government's Sep 22 notice of a State Department records notice, and it carries NO
+# NOTICE OF APPEAL FROM ECF 193. Its one notice of appeal, ECF 146 of Jun 1, is the
+# appeal from the May 28 denial that became 26-5193 (affirmed Jul 28, mandate Sep 18).
+# The government's 60-day window (FRAP 4(a)(1)(B)) runs to Nov 12. That is transient
+# procedural state, so it lives here and in the recheck, never on the page.
+#
+# THE RECHECK, 2026-10-15, ruled 2026-09-28 (Corey) rather than defaulted: mid-window,
+# 19 days before the election, and the same day as the D. Mass. entry below, so one
+# reading covers both orders on the rule. THE NEXT RECHECK IS NOV 12, the close of the
+# government's appeal window.
+#
+# THE RENDERED SPAN KEEPS SECTION 3 OUT. The decree names no section of the order, and
+# its fn. 1 denies the motion as to section 3. So the span says the rule was issued "at
+# EO 14399's direction", which cannot be read as section 3 enjoined.
+#
+# "AT EO 14399'S DIRECTION" TRACES TO THIS GATE'S OWN SOURCE, ECF 192 (Corey's ruling 1b,
+# 2026-09-28: the phrase sits inside the gated span, so it must). The memorandum opinion's
+# background, p. 2: "Section 3 of the Executive Order directed the United States Postal
+# Service to initiate a proposed rulemaking". P. 3: "On June 2, 2026, the Postal Service
+# issued a Notice of Proposed Rulemaking as directed by the Executive Order, see Ballot
+# Mail for Federal Elections, 91 Fed. Reg. 32,915 (June 2, 2026), and after receiving more
+# than 200,000 comments, it published a Final Rule on August 21, see Ballot Mail for
+# Federal Elections, 91 Fed. Reg. 54,966 (Aug. 26, 2026)". And p. 3 again, of the court's
+# first ruling: "a final rule as required by Section 3 of the Executive Order". The Final
+# Rule's own preamble was not needed and was not read.
+- id: eo-14399-usps-rule-enjoined-ddc
+  claim: "the Postal Service is preliminarily enjoined from implementing and enforcing its Final Rule of Aug 21 (Ballot Mail for Federal Elections, 91 Fed. Reg. 54,966), in full and with no end date (D.D.C. order of Sep 13 in the three consolidated suits, 1:26-cv-01114 ECF 193)"
+  kind: authored
+  grade: {source: A, info: 1}
+  source: "United States District Court for the District of Columbia, order of Sep 13, 2026 granting preliminary injunctions, DSCC v. Trump, No. 1:26-cv-01114 (CJN), ECF 193, with League of United Latin American Citizens v. Executive Office of the President, No. 1:26-cv-01132, and NAACP v. Trump, No. 1:26-cv-01151; its memorandum opinion is ECF 192, whose pp. 2-3 carry the rule's issuance at EO 14399's direction"
+  asserted_on: 2026-09-13
+  recheck_after: 2026-10-15
+  falsified_by: "an order staying, vacating or modifying the Sep 13 injunction (1:26-cv-01114 ECF 193), by the D.D.C. court, the D.C. Circuit or the Supreme Court, or a D.C. Circuit ruling on an appeal from it; the instrument is the D.D.C. docket 1:26-cv-01114, read directly"
+  status: active
+  record_instruments: [73131864]
+  renders_as: "the Postal Service is preliminarily enjoined from implementing and enforcing the ballot-mail rule it issued on Aug 21 at EO 14399's direction, in full and with no end date, by a D.D.C. order of Sep 13"
 
 # 14 DAYS, NOT THE B2 DEFAULT OF 90, FROM 2026-09-13 TO 09-26, set while 26A305 was
 # believed pending, because a pending emergency application can change the answer on
@@ -188,6 +245,14 @@
 # entry names the Postal Service's rule. The old id stays as an alias, and the records
 # in docs/status.md keep it as written.
 #
+# ONE ORDER PER GATE (Corey, 2026-09-28). This entry carries the D. Mass. order of Sep 4
+# alone, and its falsifier that order and its appeals only. The D.D.C. order of Sep 13 is
+# eo-14399-usps-rule-enjoined-ddc above; neither order falsifies or supports the other's
+# entry. The page renders the two as one sentence of two clauses, D.D.C.'s first. This
+# entry's clause has its own subject, but its "the rule" takes its antecedent from the
+# D.D.C. clause, so retiring either span means rewriting the other's `renders_as`. It
+# keeps the courts' word: both "denied" the stay applications.
+#
 # `record_instruments` IS FILLED BY THE SEED COMMIT (2026-09-27): the held dockets among
 # those this claim's falsified_by names -- 26-2029 (74755121), 1:26-cv-11549 (73133197),
 # 1:26-cv-13917 (74701505). Check 4 counts each as pending until it binds, and no later
@@ -200,11 +265,11 @@
   source: "Supreme Court of the United States, order of Sep 14, 2026 denying the application for stay, United States Postal Service v. California, No. 26A305, https://www.supremecourt.gov/opinions/25pdf/26a305_4g15.pdf; the injunction's terms per the D. Mass. memorandum and order of Sep 4, 2026 (1:26-cv-11549 ECF 285, with 1:26-cv-13917), Part V"
   asserted_on: 2026-09-14
   recheck_after: 2026-10-15
-  falsified_by: "an order vacating, staying or modifying the Sep 4 injunction: by the D. Mass. court, by the First Circuit (Nos. 26-2029 to 26-2032, consolidated; a merits ruling vacating it among them), or a further Supreme Court order; the instruments are Supreme Court docket 26A305 and First Circuit docket 26-2029, read directly, with the D. Mass. docket and the tracker secondary"
+  falsified_by: "an order vacating, staying or modifying the Sep 4 injunction: by the D. Mass. court, by the First Circuit (Nos. 26-2029 to 26-2032, consolidated; a merits ruling vacating it among them), or a further Supreme Court order on it; the instruments are Supreme Court docket 26A305 and First Circuit docket 26-2029, read directly, with the D. Mass. docket and the tracker secondary"
   status: active
   record_instruments: [74755121, 73133197, 74701505]
   record_instruments_due: 2026-09-28
-  renders_as: "the Postal Service's final rule implementing section 3 of EO 14399 is enjoined in its mandatory provisions for elections through Nov 3, 2026, by a D. Mass. preliminary injunction of Sep 4; the First Circuit denied stays on Sep 10, and the Supreme Court denied one on Sep 14"
+  renders_as: "a D. Mass. preliminary injunction of Sep 4 enjoins the rule's mandatory provisions for elections through Nov 3, 2026; the First Circuit denied stays of it on Sep 10, and the Supreme Court denied one on Sep 14"
 
 # THE STAY OF THE INJUNCTION AGAINST SECTIONS 2 AND 3, split from the entry above on
 # 2026-09-27 when the early read found the rendered clause running the two together.
