@@ -70,3 +70,24 @@ def allow_network():
         yield
     finally:
         requests.adapters.HTTPAdapter.send = _blocked_send
+
+
+@pytest.fixture(autouse=True)
+def _fresh_secret_registry():
+    """run_signals keeps a process-wide registry of the run's secrets, which is right for
+    one collector process and wrong across a test session: one test's fixture key would
+    be scrubbed from every later test's output. Clear it around each test."""
+    import run_signals
+    run_signals._SECRETS.clear()
+    yield
+    run_signals._SECRETS.clear()
+
+
+@pytest.fixture(autouse=True)
+def _no_inherited_run_identity(monkeypatch):
+    """ci.yml runs this suite on Actions, where the runner sets GITHUB_RUN_ID and
+    GITHUB_RUN_ATTEMPT -- the latter 2 on a re-run, which makes run_signals.run_id()
+    append `.2` and every row keyed on a pinned id miss (43 unit 99 tests went red that
+    way, measured 2026-09-28). A test that wants a run identity sets it itself."""
+    monkeypatch.delenv("GITHUB_RUN_ID", raising=False)
+    monkeypatch.delenv("GITHUB_RUN_ATTEMPT", raising=False)

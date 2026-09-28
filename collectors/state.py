@@ -71,6 +71,7 @@ from zoneinfo import ZoneInfo
 import common
 import config
 import db
+import run_signals
 
 SOURCE_ID = "legiscan"
 CHANNEL = "state"
@@ -319,6 +320,28 @@ class UsageMeter:
         self.pending: dict[str, dict[str, int]] = {}
         self.run_total = 0
         self.cap_signal: str | None = None
+        # Unit 99 (Corey, 2026-09-28). A reply that names the key: R4 stops the run on
+        # it exactly as on a cap signal. ok_replies counts status=OK replies (R3: a run
+        # that made requests and got none is loud); first_failure is the first failed
+        # reply's alert or error text, quoted in that line; deferred_bills counts changed
+        # bills the getBill budget left for a later run (R6: printed, not loud).
+        self.credential_signal: str | None = None
+        # An HTTP 401 or 403 that does NOT name the key, arriving BEFORE any OK reply.
+        # LegiScan documents neither status, but a dead key refuses the run's first call,
+        # so R4's purpose -- no fan-out on a dead key -- stops the run on it too, and R3
+        # keeps the credential label for a reply that names the key: this one is quoted
+        # as NO OK REPLIES. After an OK reply a 403 stays per-item, as cap_signal_body's
+        # design has it; stopping there would let one bill's standing 403 end every run.
+        self.refused_signal: str | None = None
+        self.ok_replies = 0
+        self.first_failure: str | None = None
+        self.deferred_bills = 0
+
+    def stopped(self) -> bool:
+        """Has LegiScan said to stop calling it this run: the allowance is spent, or the
+        key was refused, or the run's first replies were a bare 401/403."""
+        return (self.cap_signal is not None or self.credential_signal is not None
+                or self.refused_signal is not None)
 
     def _bump(self, counter: str, n: int = 1) -> None:
         month = ledger_month(_now())
@@ -594,10 +617,83 @@ def _api(base: str, key: str, op: str, params: dict, throttle: float,
     every HTTP attempt the call makes; pass one wherever the spend should reach
     the ledger, which is everywhere outside a test."""
     query = {"key": key, "op": op, **params}
-    data = common.http_get(base, params=query, throttle=throttle, on_attempt=meter)
+    try:
+        data = common.http_get(base, params=query, throttle=throttle, on_attempt=meter)
+    except Exception as exc:
+        if meter is not None and meter.first_failure is None:
+            meter.first_failure = _failure_text(exc)
+        raise
     if data.get("status") != "OK":
-        raise LegiScanError(op, data)
+        err = LegiScanError(op, data)
+        if meter is not None and meter.first_failure is None:
+            meter.first_failure = err.alert_message or err.body
+        raise err
+    if meter is not None:
+        meter.ok_replies += 1
     return data
+
+
+def _failure_text(exc: BaseException) -> str:
+    """A failed call's text for the no-OK-replies line: the status and body when there
+    was a response, else the message. Never a URL with its query string -- the key rides
+    in the query -- and never the chained `__cause__`, whose urllib3 text can carry it."""
+    if isinstance(exc, common.HttpError):
+        return f"HTTP {exc.status_code} {exc.body}"
+    if isinstance(exc, common.RetriesExhausted):
+        return f"HTTP {exc.status} {exc.body}" if exc.status is not None \
+            else "no response after every retry (transport)"
+    if isinstance(exc, common.RateBudgetExhausted):
+        return f"HTTP 429 {exc.body}"
+    return type(exc).__name__
+
+
+# Words that, beside "key", say a reply refused the key itself. LegiScan's dead-key reply
+# has never been seen and must not be provoked (handoff 99, P0.1), so this is a predicate,
+# CONFIRMED ON FIRST SIGHTING like names_allowance_limit: the first body that trips it, or
+# should have, is recorded verbatim in docs/status.md and this is corrected against it.
+_KEY_REFUSAL = ("invalid", "disabled", "suspend", "revok", "expired", "banned", "missing",
+                "unknown", "not valid", "inactive", "unauthori", "denied")
+
+
+def names_the_key(text: str) -> bool:
+    """Does this reply text name the API key as the thing refused? R3 (Corey,
+    2026-09-28): state labels a failure a credential failure ONLY when LegiScan's reply
+    names the key."""
+    t = (text or "").casefold()
+    # `key` as a word (or `apikey`), not a substring: an HTML error page's
+    # `<meta name="keywords">` beside "not found ... missing" must not stop the run.
+    return (re.search(r"\b(api)?key\b", t) is not None
+            and any(w in t for w in _KEY_REFUSAL))
+
+
+def credential_signal_text(exc: BaseException) -> str | None:
+    """The reply text to quote if `exc` is LegiScan refusing the key, else None: a
+    status=ERROR alert, or a 4xx body, that names the key. Checked AFTER
+    cap_signal_body, so an allowance body is never read as a key refusal."""
+    if isinstance(exc, LegiScanError):
+        return exc.alert_message if names_the_key(exc.alert_message) else None
+    if isinstance(exc, common.HttpError) and 400 <= exc.status_code < 500:
+        return exc.body if names_the_key(exc.body) else None
+    return None
+
+
+def stop_on(meter: UsageMeter, exc: BaseException) -> bool:
+    """Record a stop signal on the meter if `exc` carries one, and say so. The cap
+    first (its handling predates unit 99), then the key (R4: stop on the first
+    credential-class reply instead of fanning out)."""
+    body = cap_signal_body(exc)
+    if body is not None:
+        meter.cap_signal = body
+        return True
+    cred = credential_signal_text(exc)
+    if cred is not None:
+        meter.credential_signal = cred
+        return True
+    if (isinstance(exc, common.HttpError) and exc.status_code in (401, 403)
+            and not meter.ok_replies):
+        meter.refused_signal = f"HTTP {exc.status_code} {exc.body}"
+        return True
+    return False
 
 
 def get_masterlist(base: str, key: str, state: str, throttle: float,
@@ -797,11 +893,9 @@ def bootstrap_state_ids(conn, base: str, key: str, states: list[str], throttle: 
         try:
             data = _api(base, key, "getSessionList", {"state": st}, throttle, meter)
         except Exception as exc:
-            body = cap_signal_body(exc)
-            if body is not None:
-                meter.cap_signal = body
+            if stop_on(meter, exc):
                 break
-            print(f"  {st:<3} state_id bootstrap ERROR: {exc}", file=sys.stderr)
+            print(f"  {st:<3} state_id bootstrap ERROR: {run_signals.safe(exc)}", file=sys.stderr)
             if _is_outage(exc):
                 outage = True
                 break
@@ -840,11 +934,10 @@ def refresh_sessions(conn, base: str, key: str, state_ids: dict[str, int], throt
     try:
         data = _api(base, key, "getSessionList", {}, throttle, meter)
     except Exception as exc:
-        body = cap_signal_body(exc)
-        if body is not None:
-            meter.cap_signal = body
+        if stop_on(meter, exc):
             return "failed"
-        print(f"  state: national getSessionList ERROR: {exc}", file=sys.stderr)
+        print(f"  state: national getSessionList ERROR: {run_signals.safe(exc)}",
+              file=sys.stderr)
         return "outage" if _is_outage(exc) else "failed"
     by_id = {v: k for k, v in state_ids.items()}
     rows = [(by_id[x.get("state_id")], x) for x in (data.get("sessions") or [])
@@ -1017,7 +1110,7 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
         state = t.state
         counts = {"election_bills": 0, "changed": 0, "getbills": 0,
                   "new_items": 0, "errors": 0, "error_msg": None, "skipped": None,
-                  "why": t.why}
+                  "deferred": 0, "why": t.why}
         try:
             if t.session_id is None:
                 master, block = get_masterlist(base, key, state, throttle, meter), {}
@@ -1026,9 +1119,7 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
         except Exception as exc:
             counts["error_msg"] = str(exc)
             results[t.label] = counts
-            body = cap_signal_body(exc)
-            if body is not None:
-                meter.cap_signal = body
+            if stop_on(meter, exc):
                 break
             continue
 
@@ -1084,7 +1175,11 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
                     continue
                 counts["changed"] += 1
                 if getbill_used >= budget:
-                    continue  # budget exhausted; leave hash unstored, resume next run
+                    # budget exhausted; leave hash unstored, resume next run. Counted so
+                    # the deferral prints a line (R6): it used to be a silent continue.
+                    counts["deferred"] += 1
+                    meter.deferred_bills += 1
+                    continue
                 # Charged BEFORE the call, succeed or fail. The budget is the monthly
                 # spend guard now, and a failed getBill spends up to MAX_RETRIES queries:
                 # charging only successes let a getBill-side outage walk the whole
@@ -1096,11 +1191,9 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
                     bill = get_bill(base, key, bill_id, throttle, meter)
                 except Exception as exc:
                     counts["errors"] += 1
-                    body = cap_signal_body(exc)
-                    if body is not None:
+                    if stop_on(meter, exc):
                         # Stop fetching, but fall through to the commit below: the
                         # bills this state already fetched are good and stay.
-                        meter.cap_signal = body
                         capped_here = True
                         break
                     continue
@@ -1154,16 +1247,22 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
             counts["error_msg"] = f"batch discarded after a write failure: {exc}"
 
         results[t.label] = counts
-        if meter.cap_signal is not None:
+        if meter.stopped():
             break
 
     for t in targets:
         if t.label not in results:
+            if meter.credential_signal is not None:
+                why_skipped = "LegiScan refused the key earlier in this run; no request made"
+            elif meter.refused_signal is not None:
+                why_skipped = ("LegiScan refused this run's first request (HTTP 401/403); "
+                               "no request made")
+            else:
+                why_skipped = ("LegiScan signalled its allowance is spent earlier in this "
+                               "run; no request made")
             results[t.label] = {"election_bills": 0, "changed": 0, "getbills": 0,
                                 "new_items": 0, "errors": 0, "error_msg": None,
-                                "why": t.why,
-                                "skipped": "LegiScan signalled its allowance is spent "
-                                           "earlier in this run; no request made"}
+                                "deferred": 0, "why": t.why, "skipped": why_skipped}
 
     # Whatever no state commit carried: failed masterlists after the last good
     # state, a discarded last state, or a run in which nothing committed at all.
@@ -1194,7 +1293,20 @@ def main() -> int:
     monthly_cap = st["monthly_cap"]
     cron_ceiling = st["cron_ceiling"]
     grade = config.grade(st.get("default_grade"))
-    key = config.require_env(st["api"]["key_env"])
+    key_env = st["api"]["key_env"]
+    key = run_signals.secret(key_env)
+    sig = run_signals.RunSignals("state", secrets=(key,))
+    if not key:
+        # R5 (Corey, 2026-09-28): skip this channel and print its line; the verdict step
+        # turns the run red. Reached only on the state slot, a dispatch or a local run --
+        # the slot gate above returns first on the other three slots, as before.
+        sig.note(run_signals.MISSING, f"{key_env} is not set")
+        conn = db.connect()
+        try:
+            sig.flush(conn)
+        finally:
+            conn.close()
+        return 0
 
     conn = db.connect()
     meter = UsageMeter()
@@ -1219,6 +1331,8 @@ def main() -> int:
         pre = run_budget(used, cron_ceiling, 0, max_getbill, now, spent=1 + len(missing))
         if pre.skip == "ceiling":
             print(f"state: monthly ceiling reached (used {used} of {cron_ceiling}), skipping")
+            sig.note(run_signals.DEFERRED, f"monthly ceiling reached (used {used} of "
+                                           f"{cron_ceiling}); no request made this run")
             return 0
 
         outage = False
@@ -1226,10 +1340,10 @@ def main() -> int:
             stored_ids, outage = bootstrap_state_ids(conn, base, key, missing, THROTTLE, meter)
             state_ids.update(stored_ids)
         national = "not attempted"
-        if meter.cap_signal is None and not outage:
+        if not meter.stopped() and not outage:
             national = refresh_sessions(conn, base, key, state_ids, THROTTLE, meter)
             outage = national == "outage"
-        if meter.cap_signal is not None or outage:
+        if meter.stopped() or outage:
             targets, notes = [], []
         else:
             targets, notes = plan_targets(conn, states, now,
@@ -1256,10 +1370,12 @@ def main() -> int:
             print("state: LegiScan is not answering the session calls (transport or 5xx "
                   "after every retry); no master lists this run -- the change-hash gate "
                   "resumes on the next state slot")
-        elif meter.cap_signal is None:
+        elif not meter.stopped():
             if plan.skip == "ceiling":
                 print(f"state: monthly ceiling reached (used {plan.used} of {cron_ceiling} "
                       f"before master lists), skipping")
+                sig.note(run_signals.DEFERRED, f"monthly ceiling reached (used {plan.used} "
+                                               f"of {cron_ceiling}) before master lists")
                 return 0
             if plan.skip == "share":
                 # Exit 0 on purpose: nothing is lost -- no hash is stored for a bill
@@ -1268,6 +1384,8 @@ def main() -> int:
                       f"{len(targets)} master list(s) plus one getBill after "
                       f"{meter.run_total} spent on sessions (used {plan.used} of "
                       f"{cron_ceiling}, {plan.runs_left} state slot(s) left), skipping")
+                sig.note(run_signals.DEFERRED, f"prorated share ({plan.allowance}) cannot pay "
+                                               f"for {len(targets)} master list(s); skipped")
                 return 0
             if not targets:
                 print("state: no session to poll this slot")
@@ -1285,10 +1403,12 @@ def main() -> int:
                 print(f"  {label:<10} skipped: {c['skipped']}")
                 continue
             if c["error_msg"]:
-                print(f"  {label:<10} ERROR: {c['error_msg']}", file=sys.stderr)
+                print(f"  {label:<10} ERROR: {run_signals.safe(c['error_msg'])}", file=sys.stderr)
                 continue
             total += c["new_items"]
             extra = f", {c['errors']} bill error(s)" if c["errors"] else ""
+            if c.get("deferred"):
+                extra += f", {c['deferred']} deferred (getBill budget spent)"
             print(f"  {label:<10} {c['election_bills']:>3} election bills, "
                   f"{c['changed']:>3} changed, {c['getbills']:>3} getBill  "
                   f"+{c['new_items']} items{extra}  [{c.get('why', '')}]")
@@ -1299,15 +1419,52 @@ def main() -> int:
             # Printed ONCE, verbatim. Nobody has seen this response yet; the first
             # one is how it gets classified, so it must arrive unedited.
             print("state: LegiScan signalled its allowance is spent; remaining states "
-                  "skipped. Body verbatim:")
-            print(meter.cap_signal)
+                  "skipped. Body verbatim, but for the key:")
+            # Verbatim as received (A4), except the key: run_signals.safe() replaces only
+            # a registered secret, so the body stays classifiable on first sighting.
+            print(run_signals.safe(meter.cap_signal))
     finally:
         # Every attempt reaches the ledger, on every path out of this function,
         # including the early returns above and a raise.
         if meter.pending:
             record_spend_or_warn(conn, meter, "state")
+        # And every path writes its channel_runs rows (R7): the receipt and the loud
+        # classes. Guarded inside flush(), so it cannot mask a raise already on its way.
+        signal_outcome(sig, meter, key)
+        sig.flush(conn)
         conn.close()
     return 0
+
+
+def signal_outcome(sig: "run_signals.RunSignals", meter: UsageMeter, key: str) -> None:
+    """The run's loud classes from the meter, noted once each (unit 99).
+
+    R4's stop and R3's label: a reply naming the key is a credential failure, its alert
+    quoted. R3: a run that made requests and got no OK reply at all is loud as its own
+    class, quoting the first failure. R6: LegiScan saying the allowance is spent cuts the
+    run short (the remaining sessions are left undone and the next run is capped too);
+    the getBill budget's deferral is planned and prints a line. `reached` carries the OK
+    replies into the `ok` row that is state's receipt.
+
+    One event, one class: when the allowance signal was the first failure, it is the
+    cut-short line and not also a NO OK REPLIES line re-quoting the body (A4 prints it
+    once). A 401/403 that does not name the key, before any OK reply, stops the run like
+    the key (R4) and is quoted as what it is: NO OK REPLIES."""
+    secrets = (key,)
+    if meter.credential_signal is not None:
+        sig.note(run_signals.CREDENTIAL, run_signals.quote(meter.credential_signal, secrets))
+    elif meter.cap_signal is None and meter.run_total and not meter.ok_replies:
+        sig.note(run_signals.NO_OK, run_signals.quote(meter.first_failure or "no reply", secrets)
+                 if meter.first_failure else "no reply")
+    if meter.cap_signal is not None:
+        # The body itself is printed ONCE, verbatim, by main() just above (A4); the line
+        # points at it rather than printing it a second time.
+        sig.note(run_signals.CUT, "LegiScan signalled its allowance is spent; remaining "
+                                  "sessions skipped (its body is printed verbatim above)")
+    if meter.deferred_bills:
+        sig.note(run_signals.DEFERRED, f"{meter.deferred_bills} changed bill(s) deferred, "
+                                       f"getBill budget spent; they resume next state run")
+    sig.reached(meter.ok_replies)
 
 
 if __name__ == "__main__":

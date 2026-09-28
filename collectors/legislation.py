@@ -20,6 +20,7 @@ import sys
 import common
 import config
 import db
+import run_signals
 
 SOURCE_ID = "congress-gov"
 CHANNEL = "legislation"
@@ -206,13 +207,74 @@ def collect_bill(conn, base: str, key: str, throttle: float, entry: dict,
     return counts
 
 
+# api.data.gov's key codes (its developer manual, *General Web Service Error Codes*, read
+# 2026-09-28): every one is HTTP 403 and says the key itself cannot be used. R2 (Corey,
+# 2026-09-28): each trips the credential line, matched on the parsed `error.code` and never
+# the message -- the observed API_KEY_DISABLED message differs from the manual's wording.
+KEY_CODES = frozenset({"API_KEY_MISSING", "API_KEY_INVALID", "API_KEY_DISABLED",
+                       "API_KEY_UNAUTHORIZED", "API_KEY_UNVERIFIED"})
+# A throttle, not a credential failure (R2): a cut-short (R6).
+RATE_CODE = "OVER_RATE_LIMIT"
+
+
+def error_code(body: str) -> str | None:
+    """api.data.gov's `error.code`, or None when the body is not its JSON error shape."""
+    try:
+        data = json.loads(body or "")
+    except ValueError:
+        return None
+    err = data.get("error") if isinstance(data, dict) else None
+    code = err.get("code") if isinstance(err, dict) else None
+    return code if isinstance(code, str) else None
+
+
+def classify(exc: BaseException, key: str) -> tuple[str, str] | None:
+    """(class, evidence) for a failure unit 99 makes loud, else None (a per-bill skip).
+
+    R2: a key code, or ANY 401/403 whose body is not recognised (quoted), is a credential
+    failure. OVER_RATE_LIMIT -- on a 429 however it surfaces -- and a spent cap are
+    cut-shorts. The evidence never carries the key: quote() scrubs it."""
+    if isinstance(exc, common.RateBudgetExhausted):
+        code = error_code(exc.body)
+        return run_signals.CUT, f"{code or 'rate cap'} ({exc}); remaining bills skipped"
+    status = getattr(exc, "status", None) if isinstance(exc, common.RetriesExhausted) \
+        else getattr(exc, "status_code", None)
+    body = getattr(exc, "body", "") or ""
+    # Code first, whatever the status: the manual lists every key code as a 403, but the
+    # code is what says the key cannot be used, so a key code on a 400 or a retried 5xx
+    # body is a credential failure too.
+    code = error_code(body)
+    if code in KEY_CODES:
+        return run_signals.CREDENTIAL, f"{code} (HTTP {status})"
+    if isinstance(exc, common.HttpError) and exc.status_code in (401, 403):
+        return run_signals.CREDENTIAL, (f"HTTP {exc.status_code} "
+                                        f"{run_signals.quote(exc.body, (key,))}")
+    if status == 429 or code == RATE_CODE:
+        return run_signals.CUT, f"{error_code(body) or 'HTTP 429'}; remaining bills skipped"
+    return None
+
+
 def main() -> int:
     config.load_env()
     db.init_db()
     sources = config.load_sources()
     leg = sources["legislation"]
     base = leg["api"]["base"].rstrip("/")
-    key = config.require_env(leg["api"]["key_env"])
+    key_env = leg["api"]["key_env"]
+    key = run_signals.secret(key_env)
+    sig = run_signals.RunSignals("legislation", secrets=(key,))
+    if not key:
+        # R5 (Corey, 2026-09-28): a missing secret skips THIS channel and prints its line;
+        # the other channels run, the data commit happens, and the verdict step turns the
+        # run red. Formerly config.require_env's SystemExit, which ended the `bash -e` step
+        # and cost all six channels plus the export and the commit.
+        sig.note(run_signals.MISSING, f"{key_env} is not set")
+        conn = db.connect()
+        try:
+            sig.flush(conn)
+        finally:
+            conn.close()
+        return 0
     rate = leg["api"].get("rate_limit_per_hour")
     throttle = (3600.0 / rate) if rate else 0.0
     gsource, ginfo = config.grade(leg.get("default_grade"))
@@ -228,6 +290,7 @@ def main() -> int:
             try:
                 counts = collect_bill(conn, base, key, throttle, entry, gsource, ginfo, vehicle_ids, watch_ids)
                 conn.commit()
+                sig.reached()
                 print(
                     f"  {counts['bill_id']:<12} "
                     f"+{counts['new_actions']} actions  "
@@ -236,7 +299,15 @@ def main() -> int:
                 )
             except Exception as exc:  # one bad bill shouldn't sink the run
                 db.recover(conn)      # not rollback(): a dead Hrana stream makes rollback raise
-                print(f"  {entry['bill_id']:<12} ERROR: {exc}", file=sys.stderr)
+                print(f"  {entry['bill_id']:<12} ERROR: {run_signals.safe(exc)}", file=sys.stderr)
+                loud = classify(exc, key)
+                if loud is not None:
+                    sig.note(*loud)
+                    if loud[0] == run_signals.CUT:
+                        # R6: the rate window is shared across the key, so every later
+                        # bill would spend a request on a spent window. Stop here.
+                        break
+        sig.flush(conn)
     finally:
         conn.close()
     return 0

@@ -295,3 +295,27 @@ CREATE TABLE IF NOT EXISTS runs (
     conclusion    TEXT NOT NULL          -- job.status: success | failure | cancelled
 );
 CREATE INDEX IF NOT EXISTS idx_runs_finished ON runs(finished_at);
+
+-- channel_runs: one row per class a credentialed channel met in one collect run
+-- (unit 99, Corey, 2026-09-28). Written by the collector (run_signals.RunSignals.flush),
+-- read by the run's final step (tools/collect_verdict.py), which turns the run red on a
+-- loud class and comments on the standing `collect red` issue.
+--
+-- class is one of: ok | credential failure | missing secret | no OK replies | cut short |
+-- deferred | unreached. `ok` means the channel reached its source this run, and the latest
+-- state `ok` row is state's receipt (R7, R9). `unreached` means it ran to its end, met no
+-- other class and got no OK reply, so every run that ends leaves a row and a missing one
+-- means a collector that died. evidence is the printed line's suffix, already scrubbed of
+-- the channel's secret values; '' when the line has none.
+--
+-- A NEW TABLE, so no _MIGRATIONS entry (that list is for ALTERs on existing tables).
+-- NEVER EXPORTED: the verdict reads it live, like `runs`.
+CREATE TABLE IF NOT EXISTS channel_runs (
+    run_id     TEXT NOT NULL,            -- GITHUB_RUN_ID ('.N' from a re-run's 2nd attempt), or 'local'
+    channel    TEXT NOT NULL,            -- legislation | litigation | state
+    class      TEXT NOT NULL,
+    evidence   TEXT NOT NULL,
+    written_at TEXT NOT NULL,            -- ISO 8601
+    PRIMARY KEY (run_id, channel, class)
+);
+CREATE INDEX IF NOT EXISTS idx_channel_runs_channel ON channel_runs(channel, class, written_at);

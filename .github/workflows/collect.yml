@@ -127,6 +127,9 @@ on:
 
 permissions:
   contents: write
+  # issues:write because the collect lane's delivery surface is a standing issue,
+  # `collect red` (unit 99, R8): every red run comments on it (R10).
+  issues: write
 
 # Serialize runs, so a late slot and an on-time one queue instead of racing on
 # `git push`. Pending-run cancellation is explained under CONCURRENCY above.
@@ -279,6 +282,70 @@ jobs:
           else
             git commit -m "data: scheduled collection $(date -u +%Y-%m-%dT%H:%MZ) (slot $SLOT)"
             git push
+          fi
+
+      # THE VERDICT (unit 99, Corey, 2026-09-28). The collectors keep their exit 0; they
+      # write one `channel_runs` row per class they met, and this step reads them with the
+      # three receipts and turns the run red when a channel failed loudly: a credential
+      # failure, a missing secret, no OK replies, a run cut short, an expected channel with
+      # no row at all, a stale receipt, a deferral past its rotation, or an earlier step
+      # that failed. `if: always()` so a red earlier step still gets its verdict and its
+      # comment; BEFORE the heartbeat, so the runs row's conclusion records a red verdict.
+      - name: Verdict
+        id: verdict
+        if: always()
+        env:
+          SLOT: ${{ github.event.schedule || 'dispatch' }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+        run: python -m tools.collect_verdict
+
+      # THE STANDING ISSUE (unit 99, R8 and R10), BEFORE the heartbeat, which stays the
+      # run's last step (tests/test_heartbeat.py): this step never changes the job's
+      # status, so the heartbeat still records the red. Every red run comments on one issue,
+      # `collect red`, reused by exact title, with each channel, class and evidence line
+      # from the verdict. A person closes it against the first clean run. Uses no
+      # database, so it reports even the run the empty-URL guard stopped before any
+      # channel ran.
+      #
+      # KEYED ON THE VERDICT'S OUTCOME, NOT `failure()`. A cancelled run -- the 45-minute
+      # timeout is the hang detector, and it cancels -- keeps the job status `cancelled`,
+      # where `failure()` is false, so the verdict would go red on it and nothing would
+      # comment. The verdict runs on every path (`always()`) and exits 1 on every red,
+      # an earlier failed or cancelled step included, so its outcome is the whole test.
+      # GH_REPO because `gh` otherwise finds the repo from the checkout, and a run whose
+      # checkout failed is exactly one that has to comment.
+      - name: Raise or update the standing issue
+        if: ${{ always() && steps.verdict.outcome == 'failure' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TITLE: collect red
+          SLOT: ${{ github.event.schedule || 'dispatch' }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          body="$RUNNER_TEMP/collect-verdict.md"
+          if [ ! -s "$body" ]; then
+            {
+              echo "cc @CSU-J3"
+              echo
+              echo "**collect red** -- run [${GITHUB_RUN_ID}](${RUN_URL}), slot \`${SLOT}\`"
+              echo
+              echo "The verdict wrote no body: it crashed before writing one (a failed"
+              echo "install or setup leaves it nothing to run on). See the run's steps."
+            } > "$body"
+          fi
+          # Exact-title match, not the search ranking: `gh issue list --search` is fuzzy.
+          num=$(gh issue list --state open --limit 100 --json number,title \
+                  --jq "[.[] | select(.title == \"${TITLE}\")] | first | .number // empty")
+          if [ -n "$num" ]; then
+            echo "commenting on the standing issue ${num}"
+            gh issue comment "$num" --body-file "$body"
+          else
+            echo "opening the standing issue"
+            gh issue create --title "$TITLE" --body-file "$body"
           fi
 
       # THE HEARTBEAT, AND `if: always()` IS THE WHOLE POINT OF THE STEP.

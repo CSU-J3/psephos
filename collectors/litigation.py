@@ -31,6 +31,7 @@ from pathlib import Path
 import common
 import config
 import db
+import run_signals
 
 CHANNEL = "litigation"
 API_SOURCE_ID = "courtlistener"   # A1 docket records
@@ -524,9 +525,10 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
             docket = (fetch_docket(base, headers, pinned) if pinned
                       else resolve_docket(base, headers, dn, court_id))
         except RuntimeError as exc:
-            print(f"  {caption} ({dn}/{court_id}): resolve failed, skipped -- {exc}", file=sys.stderr)
+            print(f"  {caption} ({dn}/{court_id}): resolve failed, skipped -- "
+                  f"{run_signals.safe(exc)}", file=sys.stderr)
             return {"caption": caption, "resolved": False, "new_entries": 0,
-                    "new_items": 0, "resolve_failed": True}
+                    "new_items": 0, "resolve_failed": True, "error": exc}
         if not docket:
             return {"caption": caption, "resolved": False, "new_entries": 0, "new_items": 0}
         case_id = str(docket["id"])
@@ -588,8 +590,10 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
                                    # which would crash instead of letting main() abort cleanly.
     except Exception as exc:
         db.recover(conn)           # recover not rollback: a dead stream makes rollback raise
-        print(f"  {caption} (docket {case_id}): poll failed, skipped -- {exc}", file=sys.stderr)
-        return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0, "poll_failed": True}
+        print(f"  {caption} (docket {case_id}): poll failed, skipped -- "
+              f"{run_signals.safe(exc)}", file=sys.stderr)
+        return {"caption": caption, "resolved": True, "new_entries": 0, "new_items": 0,
+                "poll_failed": True, "error": exc}
     if mode == "full-walk":
         walk_requests = _pages[0]
 
@@ -676,7 +680,8 @@ def refresh_status(conn, base: str, headers: dict, stale_before: str, cap: int) 
     skipped = [r for r in rows if not str(r["case_id"]).isdigit()]
     due = [r for r in rows if str(r["case_id"]).isdigit()]
     counts = {"due": len(due), "skipped": len(skipped), "checked": 0,
-              "changed": 0, "failed": 0, "capped": False, "aborted": False}
+              "changed": 0, "failed": 0, "capped": False, "aborted": False,
+              "errors": []}
 
     print(f"litigation: status refresh, {len(due)} row(s) due "
           f"({len(skipped)} skipped, non-numeric case_id)")
@@ -684,6 +689,7 @@ def refresh_status(conn, base: str, headers: dict, stale_before: str, cap: int) 
         counts["capped"] = True
         print(f"  capped at {cap}/{len(due)}; the rest are the freshest and resume next run")
         due = due[:cap]
+    counts["taken"] = len(due)   # this pass's work, the denominator the abort line prints
 
     for row in due:
         case_id, caption = str(row["case_id"]), row["caption"]
@@ -739,12 +745,45 @@ def refresh_status(conn, base: str, headers: dict, stale_before: str, cap: int) 
             # would take down the pass this handler exists to keep alive (handoff 15).
             db.recover(conn)
             counts["failed"] += 1
+            counts["errors"].append(exc)
             print(f"  {caption[:46]} (docket {case_id}): status refresh failed, "
-                  f"skipped -- {exc}", file=sys.stderr)
+                  f"skipped -- {run_signals.safe(exc)}", file=sys.stderr)
 
     print(f"  status refresh: {counts['checked']} checked, {counts['changed']} changed, "
           f"{counts['skipped']} skipped, {counts['failed']} failed")
     return counts
+
+
+class AuthTally:
+    """CourtListener's answers this run, for unit 99's credential line.
+
+    A dead token has never been captured (the D0 searched the repo and the docs); an
+    anonymous request gets 401 (CourtListener's v4.3 change log). So: any 401 is a
+    credential failure, its body quoted, and a 403 is one only when EVERY request this
+    run was refused -- a lone 403 among good replies stays a per-docket skip."""
+
+    def __init__(self):
+        self.ok = 0
+        self.first_401: common.HttpError | None = None
+        self.n_403 = 0
+        self.first_403: common.HttpError | None = None
+
+    def failed(self, exc) -> None:
+        if isinstance(exc, common.HttpError):
+            if exc.status_code == 401 and self.first_401 is None:
+                self.first_401 = exc
+            elif exc.status_code == 403:
+                self.n_403 += 1
+                if self.first_403 is None:
+                    self.first_403 = exc
+
+    def verdict(self, secrets) -> str | None:
+        if self.first_401 is not None:
+            return f"HTTP 401 {run_signals.quote(self.first_401.body, secrets)}"
+        if self.n_403 and not self.ok:
+            return (f"every request refused, HTTP 403 x{self.n_403} "
+                    f"{run_signals.quote(self.first_403.body, secrets)}")
+        return None
 
 
 def main() -> int:
@@ -753,8 +792,21 @@ def main() -> int:
     sources = config.load_sources()
     lit = sources["litigation"]
     base = lit["api"]["base"].rstrip("/")
-    token = config.require_env(lit["api"]["key_env"])
+    key_env = lit["api"]["key_env"]
+    token = run_signals.secret(key_env)
+    sig = run_signals.RunSignals("litigation", secrets=(token,))
+    if not token:
+        # R5 (Corey, 2026-09-28): skip this channel, print its line; the rest of the run
+        # goes on and the verdict step turns it red.
+        sig.note(run_signals.MISSING, f"{key_env} is not set")
+        conn = db.connect()
+        try:
+            sig.flush(conn)
+        finally:
+            conn.close()
+        return 0
     headers = {"Authorization": f"Token {token}", "User-Agent": USER_AGENT}
+    auth = AuthTally()
     types = lit.get("substantive_entry_types", [])
     excludes = lit.get("excluded_entry_phrases", [])
     bootstrap_requests = lit.get("max_bootstrap_requests_per_run", 30)
@@ -770,7 +822,8 @@ def main() -> int:
         print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
               f"tracker case(s) from {TRACKER_ARTIFACT}  (full-walk req budget {bootstrap_requests})")
         cap_hit = False
-        for seed in config_seeds + tracker_seeds:
+        seeds = config_seeds + tracker_seeds
+        for i, seed in enumerate(seeds):
             try:
                 r = collect_case(conn, base, headers, seed, types, excludes, bootstrap_requests)
             except common.RateBudgetExhausted as exc:
@@ -779,10 +832,21 @@ def main() -> int:
                 # dockets keep their NULL mark and retry next run.
                 print(f"litigation: daily cap hit ({exc}); aborting run. Un-probed dockets "
                       f"keep their NULL mark and retry next run.", file=sys.stderr)
+                # R6 (Corey, 2026-09-28): a skip. The window is rolling and the loop order
+                # fixed, so nothing guarantees the next run reaches the same tail.
+                sig.note(run_signals.CUT, f"daily cap hit ({exc}); {len(seeds) - i} of "
+                                          f"{len(seeds)} seeds unpolled, status refresh skipped")
                 cap_hit = True
                 break
             bootstrap_requests -= r.get("walk_requests", 0)   # only full walks draw the budget
+            if r.get("error") is not None:
+                auth.failed(r["error"])
+            elif r.get("resolved") and not r.get("deferred"):
+                auth.ok += 1
             if r.get("deferred"):
+                # A planned deferral (R6): printed, never loud.
+                sig.note(run_signals.DEFERRED, "full walk deferred, request budget spent; "
+                                               "walks next run")
                 tag = "full-walk deferred (request budget spent; walks next run)"
             elif r.get("resolved"):
                 win = "bootstrap" if r.get("since") is None else f"since={r.get('since')}"
@@ -807,7 +871,20 @@ def main() -> int:
             stale_before = (datetime.now(timezone.utc)
                             - timedelta(hours=refresh_hours)).isoformat()
             try:
-                refresh_status(conn, base, headers, stale_before, refresh_cap)
+                # BOUND, not discarded (R6, R11): the cap-abort flag used to be computed
+                # here and thrown away, so a refresh the daily cap cut short exited 0.
+                refreshed = refresh_status(conn, base, headers, stale_before, refresh_cap)
+                auth.ok += refreshed["checked"]
+                for exc in refreshed["errors"]:
+                    auth.failed(exc)
+                if refreshed["aborted"]:
+                    sig.note(run_signals.CUT, f"status refresh aborted, daily cap hit; "
+                                              f"{refreshed['checked']}/{refreshed['taken']} checked"
+                                              + (f" ({refreshed['due']} due, capped at "
+                                                 f"{refresh_cap})" if refreshed["capped"] else ""))
+                elif refreshed["capped"]:
+                    sig.note(run_signals.DEFERRED, f"status refresh capped at {refresh_cap} of "
+                                                   f"{refreshed['due']} due; the rest resume next run")
             except Exception as exc:
                 # Exit-0 invariant. The collectors run as sequential lines in one `-e`
                 # step, so a raise here costs export and the data commit for the WHOLE
@@ -820,8 +897,13 @@ def main() -> int:
                 # a missing status_checked_at if the migration hasn't applied, and a dead
                 # Hrana stream on that query, the failure family handoff 15 closed
                 # everywhere else in this file.
-                print(f"litigation: status refresh pass failed, skipped -- {exc}",
-                      file=sys.stderr)
+                print(f"litigation: status refresh pass failed, skipped -- "
+                      f"{run_signals.safe(exc)}", file=sys.stderr)
+        credential = auth.verdict((token,))
+        if credential is not None:
+            sig.note(run_signals.CREDENTIAL, credential)
+        sig.reached(auth.ok)
+        sig.flush(conn)
     finally:
         conn.close()
     return 0
