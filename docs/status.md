@@ -8,7 +8,7 @@ Last updated: 2026-09-28 (UTC).
 
 ## Owed right now
 
-### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILDING
+### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILT, REVIEWED and SHIPPED the same day; the first scheduled run on the build is owed, and one R6 clause waits on a ruling
 
 **What it is.** The Congress.gov key sat disabled for 33 green runs, and nothing noticed (see *The Congress.gov key was disabled for eight days*). Corey's scope, widened 2026-09-26: a dead credential, and a budget or cap that cuts a run short, both fail loudly. That includes the status-refresh path that catches the daily cap and returns 0.
 
@@ -94,25 +94,122 @@ Last updated: 2026-09-28 (UTC).
     - **The cap is not raised in this unit.**
     - **A WATCH: 37 pending rows against a cap of 40 at `d0133a4`, headroom 3.** The EO 14248 unit must price it before it seeds.
 
-**THE BUILD, to those rulings.**
-- **The lines.** Each is a literal prefix plus the channel. An evidence suffix is scrubbed of the channel's key value and truncated.
-  - `CREDENTIAL FAILURE <channel>`: R2; R3 when LegiScan's reply names the key; R5 as `<VAR> is not set`.
-  - `NO OK REPLIES state`: R3, with the alert quoted.
-  - `RUN CUT SHORT <channel>: <reason>`: the R6 skips.
-  - `DEFERRED <channel>: <what>`: planned deferrals, printed and not loud.
-- **The table.** `channel_runs(run_id, channel, class, evidence, written_at)`, one row per class the channel met in the run. A channel that reached its source writes `ok`, so state's latest `ok` row is its receipt (R7). It is a new table, so it needs no ALTER.
-- **The verdict.** A final `collect.yml` step, `if: always()`, reads this run's rows and the receipts. It turns the run red on any loud row, a breached receipt, or an earlier failed step. Then an issue step, `if: failure()`, comments on the standing issue with each channel, class and evidence line (R8, R10). `collect.yml` gains `issues: write`.
-  - **Proposed title: `collect red`,** beside `dom-checks red` and `coverage_audit red`.
-- **Receipt thresholds (R9)** are validated on reconstructed history before they are set:
-  - legislation and state from every retained `collect.yml` log;
-  - litigation from `data/cases.json`'s `status_checked_at` across its commits.
+**THE BUILD, landed in `be8fcd0`.**
+- **The lines.** Each is a literal prefix and the channel. An evidence suffix is scrubbed of the channel's key value and truncated at 300 characters.
+  - `CREDENTIAL FAILURE <channel>`: R2; R3 when LegiScan's reply names the key; R5 as `<VAR> is not set`, whose row carries its own class, `missing secret`.
+  - `NO OK REPLIES state`: R3, quoting the first failure. A bare 401 or 403 on the run's first call also lands here: it stops the run (R4's purpose, no fan-out on a dead key), and it does not name the key, so R3 withholds the credential label.
+  - `RUN CUT SHORT <channel>: <reason>`: the R6 skips, plus LegiScan's allowance signal (see the decisions below).
+  - `DEFERRED <channel>: <what>`: planned deferrals, quiet. Every distinct one prints, and state's getBill deferral, silent before, is one of them.
+- **The table.** `channel_runs(run_id, channel, class, evidence, written_at)`, one row per class the channel met in the run.
+  - A channel that reached its source writes `ok`, and state's latest `ok` row is its receipt (R7).
+  - A channel that ran to its end, met no class and got no OK reply writes `unreached`. So a missing row always means a collector that died.
+  - `run_id` is GitHub's run id, with `.N` from a re-run's second attempt.
+  - It is a new table, so it needs no ALTER. It is never exported.
+- **The verdict:** `tools/collect_verdict.py`, a final `collect.yml` step with `if: always()`, before the heartbeat. It turns the run red on:
+  - a loud row;
+  - an expected channel with no row (`unrecorded`);
+  - a stale receipt;
+  - a pending docket past its refresh rotation;
+  - an earlier step that failed or was cancelled.
+- **Delivery.** The verdict writes its body to `$RUNNER_TEMP`, and the issue step comments on the standing issue `collect red` or opens it (R8, R10).
+  - The issue step keys on the Verdict's outcome, `always() && steps.verdict.outcome == 'failure'`, so a run the 45-minute timeout cancels comments too.
+  - The body opens with `cc @CSU-J3`, as the audit and dom-checks lanes do.
+  - `collect.yml` gains `issues: write`.
+- **The receipt thresholds (R9), measured 2026-09-28.** The sources: all 368 retained `collect.yml` logs, 2026-06-29T17:13:14Z to 2026-09-28T13:48:01Z, and `data/cases.json` across its commits.
+  - **legislation: more than 3 missed scheduled runs.**
+    - The longest healthy gap is 3 (2026-08-06/07, the Turso 502). The others are single runs (06-29, 07-06, 07-18, 07-31), each a failed or cancelled job.
+    - On the 09-16 outage it fires at the 4th failing run, 2026-09-17T16:59:21Z, which is 19h44m08s after the first (2026-09-16T21:15:13Z).
+    - "More than 4" would have taken 1d0h03m38s, outside R9's one day.
+  - **litigation: more than 4.**
+    - The receipt moved in 99 of 187 expected runs, since the refresh pass is pinned to one slot a day.
+    - The longest healthy gap is 4 (08-11), then gaps of 3 daily through 08-18.
+  - **state: more than 1 missed state slot, counted by the clock.**
+    - A slot counts as missed at 06:17Z plus a 12h far edge. The lane's lag reached 7h31m on 2026-09-28.
+    - 89 days had a state run, and every one had an OK reply. The one day without a run, 07-08, had every run red.
+    - One missed day is tolerated because GitHub drops about one slot in forty. A dead key is loud on the state run itself, so this receipt is the backstop for state not running at all.
+  - **Counted: scheduled runs only.** A dispatch is not an expected slot, and neither is an earlier attempt of the same run (the review's must-fix, below).
+- **The refresh rotation (R6, litigation):** a pending docket not status-checked for over 20h + 24h.
+  - The pass takes the oldest first and runs once a day on the 20h gate, so a capped row is first in line at the next pass.
+  - History, from 122 snapshot commits since 2026-08-10: the oldest pending check reached 24.5h once (08-19, under the old 24h gate), and at most 19.9h since.
+- **State's receipt includes its own ceiling.**
+  - A state run that the ledger's monthly ceiling stopped before any request writes `DEFERRED state: monthly ceiling reached ...`, and that counts as its receipt.
+  - Proration is planned (R6). Without this, a month that reached the ceiling would read red four times a day until it rolled over.
+- **Decisions the rulings did not name, recorded so they can be overruled:**
+  - **Litigation's credential line:** any 401, its body quoted; a 403 only when every request that run was refused.
+    - R2 is ruled for Congress.gov. For CourtListener, a lone 403 among OK replies stays a per-docket skip.
+    - The reason: the D0 found no support for a dead token answering 403, and a sealed docket is the likelier cause.
+  - **LegiScan's allowance signal is a cut-short, and the monthly-ceiling skip is a planned deferral.** The allowance signal leaves this run's sessions undone and caps the next runs too, which is R6's definition of a skip. The ceiling is proration.
+  - **Executive and news write no rows.** R7's per-run row serves the verdict's classes, and only the three credentialed channels can meet them.
+  - **Older lines print through `run_signals.safe()`,** which redacts the run's keys and changes nothing else. These are legislation's ERROR line, litigation's four skip lines, and state's bootstrap, national and per-target ERROR lines and its cap-body print. The cap body keeps A4's rule, printed once and verbatim, except for the key.
+- **Tests:** 167 in four files, `tests/test_unit99_*.py`: legislation 36, litigation 19, state 52, verdict 60. Full suite: 717.
+  - **They pass with `GITHUB_RUN_ATTEMPT=2` set.** `tests/conftest.py` clears both run variables and the secret registry around every test.
+  - **The test writers found:**
+    - five paths where an echoed key would have reached the log through the older lines;
+    - a second planned deferral that went unprinted behind the first;
+    - a registry that redacted short strings: a test key "k" turned "skipped" into "s[redacted]ipped". A value under 8 characters is now never treated as a secret.
+- **Mutations: 28, every one caught.** Each is a one-line break of the build and every one turned a test red. They cover:
+  - each loud class and each threshold;
+  - the dispatch and re-run exclusions and the ceiling receipt;
+  - the redaction paths and the `unreached` row;
+  - the issue step's condition and the mention;
+  - the R1 flag.
 
-  A threshold that fires outside a recorded incident, or misses the 09-16 outage by more than a day, is not set.
+**THE REVIEW, 2026-09-28.** Three lenses: the rulings, Actions semantics, and regressions. Key safety was reviewed inline in the main session, as secret-related work never goes through subagents. Everything it found is fixed, or recorded above as a decision or below as a consequence, except the rotation clause (next).
+- **Must-fix: the receipts counted dispatches** and an earlier attempt of the same run. Two dispatches inside litigation's day-long receipt read 5 and turned a healthy channel red. The count now takes scheduled runs only.
+- **A channel whose every request failed quietly wrote no row,** and the verdict read it as `unrecorded`. That was red at once, where R9 hands the case to the receipt. It now writes `unreached`.
+- **A cancelled run, such as the 45-minute timeout, went red with no comment,** because `failure()` is false on it. The issue step now keys on the Verdict's outcome and names its repository.
+- **The body lacked the `cc @CSU-J3` line** the sibling lanes open with.
+- **43 unit 99 tests went red with `GITHUB_RUN_ATTEMPT=2`,** which a `ci.yml` re-run sets.
+- **When the allowance signal was state's first reply,** its body printed a second time inside a NO OK REPLIES line. One event is now one class.
+- **The ledger ceiling left state with no receipt** (see above).
+- **Smaller fixes:**
+  - a bare LegiScan 401/403 fanned out to all nine master lists;
+  - `key` matched inside "keywords";
+  - a key code outside a 401/403 was a quiet skip;
+  - `flush()` could raise through a failing `recover()`;
+  - the refresh-abort row's denominator disagreed with its own log line.
+- **Key safety, inline.**
+  - No new path puts a key in the log, a row, the body or the issue.
+  - **One path put the Turso URL there:** the verdict's read-failure body quoted the exception's text, and an issue is not masked the way the log is. The body now carries the exception type only, and the log line is scrubbed of the URL, its host and the token.
+  - **Older than this unit, and unchanged:** `RetriesExhausted` chains the `requests` error, whose URL carries the key. It shows only in a traceback, and no unit 99 path raises one.
+
+**FOR COREY, recorded and not queued: R6's rotation clause for state's getBill queue and litigation's walk.**
+- **What R6 says:** "any item deferred on more consecutive runs than its channel's rotation allows" is loud.
+- **Where it applies cleanly:** litigation's refresh has a rotation, oldest first, and carries the check above.
+- **Where it has no figure:** the other two queues have no rotation. State takes changed bills in master-list order, and litigation walks seeds in seed order, so neither has a figure for "allows". A tail item can starve in principle under steady churn at the head. The build prints every deferral as a quiet line and checks neither queue.
+- **What was tried:** a channel-level stand-in, three consecutive state runs with a getBill deferral. The review showed it going red daily through a proration storm, which R6 names as planned, so it was removed.
+- **Options:**
+  - (a) give each queue a rotation, oldest-deferred first, and fire on an item deferred past one full rotation;
+  - (b) record each deferred item with a run count and fire at a fixed N;
+  - (c) leave the walk to `coverage_audit` §6, which already alarms daily on a never-walked docket, and state to the receipts.
+- **Recommendation:** (c) for the walk and (a) for state. (a) is a change to the collector, not a line, so it is a unit of its own.
+
+**THE PROOF, 2026-09-28: a planted red on a throwaway branch, dispatched twice.**
+- **The branch's `collect.yml`:**
+  - it planted one `missing secret` row for legislation and ran no collector;
+  - export, commit and heartbeat were off;
+  - every secret except `GITHUB_TOKEN` was blank;
+  - the database was local SQLite on the runner;
+  - it used its own concurrency group and a proof title.
+
+  Nothing reached production, and no scheduled slot could queue behind it.
+- **Run `36476117030`:** Verdict `failure`. It listed legislation `missing secret`, plus litigation and state `unrecorded`, since neither ran. The issue step opened issue 5, *collect red (proof 2026-09-28)*, whose body opens with the mention and carries the channel, class and evidence table.
+- **Run `36476310609`:** Verdict `failure`. The issue step found issue 5 by its exact title and commented on it instead of opening another.
+- **Afterwards:** issue 5 was closed by hand, and the branch was deleted.
+
+**Consequences for other readers.**
+- **`runs.conclusion` changes meaning.** It now records `failure` for a run the verdict turned red, even when every collector completed.
+  - `tools/window_table.py` samples the wall-clock band on `conclusion = 'success'`, so such runs leave its sample.
+  - The homepage prints the conclusion in brackets beside "Collection is current".
+- **A red that happens only in the heartbeat step gets no comment,** because it comes after the issue step. The heartbeat stays last.
 
 **OWED:**
-1. **The build, then its tests,** each driven by a planted fixture: the verbatim `API_KEY_DISABLED` body; the other four key codes; an unrecognised 403; `OVER_RATE_LIMIT`; a missing secret; a LegiScan ERROR naming and not naming the key; no OK replies; the daily-cap abort; the refresh abort.
-2. **The threshold validation on history,** recorded with its figures.
-3. **The first SCHEDULED collect run on the built head,** which is green with a row per credentialed channel. And a planted red on a throwaway branch that comments on the standing issue, with a dispatch standing in only for that one proof.
+1. **The first SCHEDULED collect run on a head carrying `be8fcd0`.**
+   - It should be green, with a `channel_runs` row for legislation and litigation, and for state if it is the 06:17Z slot.
+   - The issue step should be `skipped`.
+   - If it goes red, the comment on `collect red` names the channel, class and evidence. Read that before anything else.
+2. **The first 06:17Z state slot on the build writes `state ok`,** state's first receipt. Until then, the state receipt has nothing to read and stays silent.
+3. **The rotation ruling above.**
 
 ### Two CI holes closed: an empty or local Turso URL fails the collect run, and every dom-checks check reports after a red. RULED and SHIPPED 2026-09-28
 
@@ -152,7 +249,10 @@ Last updated: 2026-09-28 (UTC).
   - **With the fix,** run `36466535622`: `assert-gates` failed the same way, and **all four later checks ran and reported:** encodings 35/0, layout 77/0, attribution 38/0, dated 74/0.
 
 **OWED:**
-1. **The first SCHEDULED `collect.yml` run on a head carrying the flag is green.** The flag must pass a healthy run, and the Actions secret's scheme cannot be read from here. If that run goes red with "TURSO_DATABASE_URL is not a remote URL", the secret's scheme is the cause, and the fix is the allow-list, not the flag.
+1. ~~**The first SCHEDULED `collect.yml` run on a head carrying the flag is green.** The flag must pass a healthy run, and the Actions secret's scheme cannot be read from here. If that run goes red with "TURSO_DATABASE_URL is not a remote URL", the secret's scheme is the cause, and the fix is the allow-list, not the flag.~~ **PROVEN by run `36473853125`,** the 12:17Z slot of 2026-09-28.
+   - Event `schedule`, head `8aed5b9`, created 19:40:24Z, a lag of 7h23m24s. Conclusion `success`.
+   - `git merge-base --is-ancestor 62b7acc 8aed5b9` exits 0. It exits 1 on the heads of the five scheduled runs before it.
+   - The Actions secret's URL passed the allow-list.
 2. **The first SCHEDULED `dom-checks` run on the new head is green.** The fix shows only on a red, so a green run proves only that the new condition runs the checks at all.
 
 
@@ -566,7 +666,7 @@ The lesson for any future rotation: **a key is reissued for the cron when the se
 
 **Residue of the disabled key, dead and Corey's to clear:** `registers-crosswalk/.env` and `Desktop/OldAPIkey.txt` still hold it, confirmed by value scan. registers-crosswalk needs its own new key under the one-key-per-project ruling.
 
-**Unit 99 is opened by this** (see *Open units*). Its job is to make a dead credential print `CREDENTIAL FAILURE <channel>` and have the 05:17Z audit open an issue on it. The line names the channel only, never anything about the key.
+**Unit 99 is opened by this** (see *Open units*). Its job is to make a dead credential print `CREDENTIAL FAILURE <channel>` and have the 05:17Z audit open an issue on it. The line names the channel only, never anything about the key. **As built (2026-09-28), the delivery is the collect run's own:** its Verdict step turns the run red and comments on the standing `collect red` issue; the audit is not involved (*Unit 99*, in *Owed right now*).
 
 ### LegiScan's October terms: Part A SHIPPED 2026-09-24, Part B proven by its first scheduled run 2026-09-25, and the October reads are owed
 
@@ -2693,7 +2793,7 @@ Pre-existing, not introduced by Part B, and not a licence matter.
 - **The class sentence must widen.** It names the mail-ballot order, and the order check that lands with the 14399 seeds fails on a 14248 row by design (that unit's ruling (a)).
 - **Opens as D0 and plan when Corey calls it.** Not scheduled, and after unit 99 unless he orders otherwise.
 
-**Unit 99 was READ and RULED 2026-09-28 and is now in *Owed right now*; the entry below is its opening record.** **OPENED 2026-09-23: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 33 green runs (see *The Congress.gov key was disabled for eight days* in *Owed right now*).
+**Unit 99 was READ, RULED, BUILT and SHIPPED 2026-09-28 and is now in *Owed right now*; the entry below is its opening record, and its scope was superseded by the rulings there.** **OPENED 2026-09-23: unit 99, a dead credential fails loudly.** Opened on Corey's instruction after handoff 98's Part A landed, because the Congress.gov key sat disabled for 33 green runs (see *The Congress.gov key was disabled for eight days* in *Owed right now*).
 
 **Scope:**
 
