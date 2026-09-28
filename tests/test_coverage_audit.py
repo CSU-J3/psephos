@@ -577,3 +577,113 @@ def test_status_vocabulary_is_the_pages_ramp():
     m = re.search(r"STAGE_ORDER: readonly StageCode\[\] = \[([^\]]*)\]", src)
     assert m, "STAGE_ORDER literal not found in web/lib/statebill.ts"
     assert tuple(re.findall(r'"([^"]+)"', m.group(1))) == ca.STATE_BILL_STATUSES
+
+
+# --- section 8, the dead-lane alarm (unit 99, ruling 2b) --------------------------------
+
+from datetime import datetime, timezone  # noqa: E402
+
+NOW8 = datetime(2026, 9, 29, 10, 0, tzinfo=timezone.utc)
+
+
+def test_the_dead_lane_bound_is_the_measured_one():
+    """Silent across the 368 retained collect runs only if it exceeds their longest gap
+    between row-writing runs, 23h06m58s (2026-08-06/07, the Turso 502)."""
+    assert ca.COLLECT_SILENCE_MAX_HOURS == 24
+    assert ca.COLLECT_SILENCE_MAX_HOURS * 3600 > 23 * 3600 + 6 * 60 + 58
+
+
+@pytest.mark.parametrize("newest, dead", [
+    ("2026-09-29T04:00:00+00:00", False),              # 6h: a normal read
+    ("2026-09-28T10:00:01.5+00:00", False),            # just inside the bound
+    ("2026-09-28T10:00:00+00:00", False),              # exactly the bound: not over it
+    ("2026-09-28T09:59:59+00:00", True),               # over it
+    ("2026-09-27T10:00:00Z", True),                    # a `Z` stamp reads the same
+    (None, True),                                      # no row at all
+    ("2026-09-29T10:00:30+00:00", False),              # 30s ahead: ordinary runner skew
+    ("2026-09-29T11:00:00+00:00", False),              # an hour ahead: still tolerated
+    ("2026-09-29T11:00:01+00:00", True),               # further: a broken writer clock
+    ("2027-09-29T10:00:00+00:00", True),               # a year ahead must not silence it
+])
+def test_the_dead_lane_alarm_fires_only_past_the_bound_or_on_no_row(newest, dead):
+    assert ca.lane_dead(ca.collect_silence_hours(newest, NOW8)) is dead
+
+
+def _audit_db(tmp_path, with_table=True):
+    import sqlite3
+    c = sqlite3.connect(tmp_path / "a.db")
+    if with_table:
+        c.execute("CREATE TABLE channel_runs (run_id TEXT, channel TEXT, class TEXT, "
+                  "evidence TEXT, written_at TEXT)")
+    return c
+
+
+def test_newest_channel_row_reads_the_max_and_survives_a_missing_table(tmp_path):
+    c = _audit_db(tmp_path, with_table=False)
+    assert ca.newest_channel_row(c) is None           # before the first unit 99 run
+    c.execute("CREATE TABLE channel_runs (run_id TEXT, channel TEXT, class TEXT, "
+              "evidence TEXT, written_at TEXT)")
+    assert ca.newest_channel_row(c) is None           # a table with no row
+    for i, at in enumerate(("2026-09-28T01:10:00+00:00", "2026-09-28T19:48:00+00:00",
+                            "2026-09-28T13:55:00+00:00")):
+        c.execute("INSERT INTO channel_runs VALUES (?, 'legislation', 'ok', '6 OK replies', ?)",
+                  (str(i), at))
+    assert ca.newest_channel_row(c) == "2026-09-28T19:48:00+00:00"
+    # A local run's rows are not the collect lane, however new.
+    for rid in ("local", "local.2"):
+        c.execute("INSERT INTO channel_runs VALUES (?, 'litigation', 'ok', '1 OK reply', "
+                  "'2026-09-28T23:00:00+00:00')", (rid,))
+    assert ca.newest_channel_row(c) == "2026-09-28T19:48:00+00:00"
+    c.execute("DELETE FROM channel_runs WHERE run_id NOT LIKE 'local%'")
+    assert ca.newest_channel_row(c) is None               # only local rows: no lane row
+    c.close()
+
+
+def test_newest_channel_row_raises_anything_but_a_missing_table():
+    class Broken:
+        def execute(self, *a, **k):
+            raise RuntimeError("stream not found")
+    with pytest.raises(RuntimeError):
+        ca.newest_channel_row(Broken())
+
+
+@pytest.mark.parametrize("newest, exit_code", [("fresh", 0), ("stale", 1), (None, 1),
+                                                ("ahead", 1), ("skew", 0)])
+def test_section_8_reaches_the_exit_code(tmp_path, monkeypatch, capsys, newest, exit_code):
+    """main() offline: every other section empty and silent, so the exit code is
+    section 8's alone. config.load_env and db.connect are replaced, so nothing here can
+    reach the remote."""
+    import db as dbmod
+    path = str(tmp_path / "m.db")
+    dbmod.init_db(path)
+    conn = dbmod.connect(path)
+    now = datetime.now(timezone.utc)
+    from datetime import timedelta
+    at = {"fresh": now.isoformat(),
+          "stale": (now.replace(microsecond=0) - timedelta(hours=25)).isoformat(),
+          "ahead": (now + timedelta(hours=3)).isoformat(),
+          "skew": (now + timedelta(seconds=40)).isoformat()}.get(newest)
+    if at:
+        conn.execute("INSERT INTO channel_runs (run_id, channel, class, evidence, written_at) "
+                     "VALUES ('1', 'legislation', 'ok', '6 OK replies', ?)", (at,))
+        conn.commit()
+    conn.close()
+    monkeypatch.setattr(ca.config, "load_env", lambda *a, **k: None)
+    real_connect = dbmod.connect
+    monkeypatch.setattr(ca.db, "connect", lambda *a, **k: real_connect(path))
+    monkeypatch.setattr(ca, "seeded_keys", lambda *a, **k: set())
+    monkeypatch.setattr(ca, "load_tracker_seeds", lambda *a, **k: [])
+    monkeypatch.setattr(ca, "load_acks", lambda *a, **k: [])
+    assert ca.main() == exit_code
+    out = capsys.readouterr().out
+    assert f"[8] DEAD-LANE ALARM -- no collect run has written a channel_runs row for over " \
+           f"24h: {exit_code}  (expect 0)" in out
+    if newest is None:
+        assert "FIRES  channel_runs holds no collect-run row" in out
+    elif newest == "stale":
+        assert "FIRES  collect has written nothing for over 25h00m" in out
+    elif newest == "ahead":
+        assert "AHEAD of now: a writer clock is wrong" in out
+        assert "-" not in out.split("newest collect-run row")[1].split("ago")[0].split(", ")[1]
+    elif newest == "skew":
+        assert ", 0h00m ago." in out

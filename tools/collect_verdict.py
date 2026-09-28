@@ -62,11 +62,23 @@ RECEIPT_MISSED_MAX = {"legislation": 3, "litigation": 4, "state": 1}
 # A state slot counts as missed once this long past 06:17Z has gone by without a receipt:
 # the lane's slot-to-commit lag reached 7h31m on 2026-09-28, and 12h leaves room.
 STATE_SLOT_FAR_EDGE_HOURS = 12
-# State's receipt is its latest `ok` row, or a run that its OWN ledger ceiling stopped
-# before any request: proration is a planned deferral (R6), and at the ceiling every state
-# slot takes that path until the month rolls over, so without this the receipt would go
-# stale and the lane red four times a day for the rest of the month.
-STATE_CEILING_EVIDENCE = "monthly ceiling reached"
+# State's receipt is its latest `ok` row and nothing else: it moves only when LegiScan
+# answers (ruling 1b, Corey, 2026-09-28). A slot is EXCUSED from the missed-slot count by
+# the `deferred` class: some state run between that slot and the next wrote `deferred`
+# and no loud class. That run is the one its own ledger ceiling stopped before any request
+# (proration, planned under R6), so a month at the ceiling stays quiet.
+#  * Not a loud run: a share or mid-run ceiling deferral that follows a FAILED national
+#    call also writes `deferred` with no `ok`, and its NO OK REPLIES makes it a miss.
+#  * Any state run in the window, since channel_runs carries no slot: the slot's own, a
+#    dispatch or a local one. Harmless: the ledger only grows within a month, so a run
+#    that met the ceiling in the window means the slot's own run would have too.
+#  * The slot's whole day, not its 12h far edge: a ceiling run landing late still excuses
+#    its own slot rather than the next one's.
+# Excused slots reset the count, as the old receipt did: RECEIPT_MISSED_MAX means misses
+# IN A ROW, and two drops a fortnight apart in a ceiling month are not a dead lane.
+# THE LIMIT, recorded: once the ceiling is hit, a key that dies mid-month is not seen
+# until the next month's first state run, since no request is made to find out.
+STATE_EXCUSED_CLASS = run_signals.DEFERRED
 
 # R6: a pending docket whose status was last read longer ago than the refresh period plus
 # this has outlived the refresh rotation. The pass takes the oldest first (40 a run, 37
@@ -77,9 +89,11 @@ STATE_CEILING_EVIDENCE = "monthly ceiling reached"
 REFRESH_ROTATION_HOURS = 24
 # State's getBill deferral and litigation's walk deferral print a DEFERRED line and are
 # not checked here: neither queue has a rotation (both take items in list order, not
-# oldest-deferred first), so "more runs than its rotation allows" has no figure. Recorded
-# for a ruling in docs/status.md, Unit 99; a channel-level stand-in went red daily through
-# a proration storm, which R6 names as planned.
+# oldest-deferred first), so "more runs than its rotation allows" has no figure. RULED
+# 2026-09-28 (1a, docs/status.md, Unit 99): the walk stays with coverage_audit section 6,
+# and state's getBill queue goes oldest-deferred-first as its own unit before January
+# 2027, after which this check gets a figure. A channel-level stand-in went red daily
+# through a proration storm, which R6 names as planned.
 
 FINDING_ORDER = ("job", "unrecorded", run_signals.MISSING, run_signals.CREDENTIAL,
                  run_signals.NO_OK, run_signals.CUT, "receipt stale", "rotation")
@@ -129,17 +143,37 @@ def missed_slots(conn, receipt: str, started_at: str, slot_filter: str | None,
     return n
 
 
-def state_slots_missed(receipt: datetime, now: datetime) -> int:
+def state_slots_due(receipt: datetime, now: datetime) -> list[datetime]:
     """State slots (06:17Z daily) after the receipt whose far edge has passed. By the
     clock, not by run rows: a slot GitHub never fired leaves no row but is still missed."""
     slot = receipt.replace(hour=6, minute=17, second=0, microsecond=0)
     if slot <= receipt:
         slot += timedelta(days=1)
-    n = 0
+    out = []
     while slot + timedelta(hours=STATE_SLOT_FAR_EDGE_HOURS) <= now:
-        n += 1
+        out.append(slot)
         slot += timedelta(days=1)
-    return n
+    return out
+
+
+def state_slots_missed(receipt: datetime, now: datetime) -> int:
+    return len(state_slots_due(receipt, now))
+
+
+def state_slot_excused(conn, slot: datetime) -> bool:
+    """Did a state run between this slot and the next write the excused class and no loud
+    class (see STATE_EXCUSED_CLASS)?"""
+    lo = slot.astimezone(timezone.utc).isoformat()
+    hi = (slot + timedelta(days=1)).astimezone(timezone.utc).isoformat()
+    loud = tuple(sorted(run_signals.LOUD))
+    marks = ",".join("?" * len(loud))
+    row = conn.execute(
+        "SELECT COUNT(*) FROM channel_runs d WHERE d.channel = 'state' AND d.class = ? "
+        "AND d.written_at >= ? AND d.written_at < ? AND NOT EXISTS ("
+        "SELECT 1 FROM channel_runs l WHERE l.run_id = d.run_id AND l.channel = 'state' "
+        f"AND l.class IN ({marks}))",
+        (STATE_EXCUSED_CLASS, lo, hi, *loud)).fetchone()
+    return bool(row[0])
 
 
 def receipt_findings(conn, started_at: str, slot: str, now: datetime | None = None,
@@ -161,13 +195,19 @@ def receipt_findings(conn, started_at: str, slot: str, now: datetime | None = No
                         f"cases.status_checked_at last moved {lit}; {n} scheduled runs "
                         f"since without it"))
     st = conn.execute("SELECT MAX(written_at) FROM channel_runs WHERE channel = 'state' "
-                      "AND (class = 'ok' OR (class = 'deferred' AND evidence LIKE ?))",
-                      (STATE_CEILING_EVIDENCE + "%",)).fetchone()[0]
+                      "AND class = 'ok'").fetchone()[0]
     if st:
-        n = state_slots_missed(datetime.fromisoformat(normalize(st)), now)
+        due = state_slots_due(datetime.fromisoformat(normalize(st)), now)
+        flags = [state_slot_excused(conn, s) for s in due]
+        excused = sum(flags)
+        # Misses IN A ROW: an excused slot resets the count, as the old receipt did.
+        last = max((i for i, f in enumerate(flags) if f), default=-1)
+        n = len(flags) - (last + 1)
         if n > RECEIPT_MISSED_MAX["state"]:
             out.append(("state", "receipt stale",
-                        f"last OK reply from LegiScan {st}; {n} state slots since without one"))
+                        f"last OK reply from LegiScan {st}; {n} state slots in a row without "
+                        f"one" + (f" (and {excused} excused since it: a planned deferral, "
+                                  f"the ledger ceiling)" if excused else "")))
     return out
 
 
@@ -209,24 +249,27 @@ def verdict(conn, rid: str, slot: str, started_at: str, job_status: str,
     return sorted(findings, key=lambda f: (order.get(f[1], 99), f[0]))
 
 
+def scrubbed(findings) -> list[tuple[str, str, str]]:
+    """Every evidence line scrubbed again, here, of every credential in this step's
+    environment and every URL's query string (ruling 2a). Actions masks secrets in the
+    run log, not in text a step sends to the Issues API, so the comment cannot lean on the
+    mask. The rows were scrubbed when the collectors wrote them; this holds for a row any
+    other writer left, and for the verdict's own findings."""
+    secrets = run_signals.env_secrets()
+    return [(ch, cls, run_signals.scrub(ev or "", secrets)) for ch, cls, ev in findings]
+
+
 def body(findings, rid: str, slot: str, run_url: str) -> str:
     # The mention first, as the audit and dom-checks lanes open theirs: it notifies
     # whatever the watch status, where a bot comment alone reaches only watchers.
     lines = ["cc @CSU-J3", "",
              f"**collect red** -- run [{rid}]({run_url}), slot `{slot or 'dispatch'}`", "",
              "| channel | class | evidence |", "|---|---|---|"]
-    for ch, cls, ev in findings:
-        ev = (ev or "").replace("|", "\\|")
+    for ch, cls, ev in scrubbed(findings):
+        ev = ev.replace("|", "\\|")
         lines.append(f"| {ch} | {cls} | {ev} |")
     lines += ["", "A person closes this issue against the first clean run (unit 99, R8)."]
     return "\n".join(lines) + "\n"
-
-
-def _turso_secrets() -> tuple[str, ...]:
-    """The database URL, its host alone, and the token: what a libsql error could echo."""
-    url = os.environ.get("TURSO_DATABASE_URL") or ""
-    host = url.split("://", 1)[-1].split("/", 1)[0].split("?", 1)[0]
-    return tuple(s for s in (url, host, os.environ.get("TURSO_AUTH_TOKEN") or "") if s)
 
 
 def main(argv=None) -> int:
@@ -249,11 +292,12 @@ def main(argv=None) -> int:
         except Exception as exc:
             # The type only, in the body: it goes to an issue, which GitHub does not mask,
             # and a libsql error can name the database URL, itself a secret here. The
-            # message goes to the log, scrubbed of both Turso values.
+            # message goes to the log, scrubbed of every credential in the environment.
             findings = [("job", "job", f"the verdict could not read the database: "
                                        f"{type(exc).__name__}")]
             print(f"collect verdict: database read failed -- "
-                  f"{run_signals.scrub(str(exc), _turso_secrets())}", file=sys.stderr)
+                  f"{run_signals.scrub(str(exc), run_signals.env_secrets())}",
+                  file=sys.stderr)
         finally:
             conn.close()
     if not findings:
@@ -264,7 +308,7 @@ def main(argv=None) -> int:
     with open(out, "w", encoding="utf-8", newline="") as fh:
         fh.write(text)
     print("collect verdict: RED")
-    for ch, cls, ev in findings:
+    for ch, cls, ev in scrubbed(findings):
         print(f"  {ch}: {cls}: {ev}")
     return 1
 

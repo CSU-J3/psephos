@@ -75,13 +75,54 @@ _SECRETS: set[str] = set()
 MIN_SECRET_LEN = 8
 
 
+# Every credential a collect run carries, by variable name (unit 99, ruling 2a). The
+# collectors step hands all five to every collector process, so each channel scrubs every
+# one, not only its own key: an error from one source that echoed another's key, or a
+# database error naming the Turso URL, still stays out of the evidence, the issue comment
+# and the log. Pinned against config/sources.yaml's key_env names by a test.
+CREDENTIAL_ENV = ("CONGRESS_API_KEY", "COURTLISTENER_TOKEN", "LEGISCAN_API_KEY",
+                  "TURSO_DATABASE_URL", "TURSO_AUTH_TOKEN")
+
+# A URL's query string -- and fragment -- is dropped from evidence whatever it carries
+# (ruling 2a): the key rides there on Congress.gov (`api_key=`) and LegiScan (`key=`), and
+# a server that echoes the request URL would put it into a body the evidence quotes.
+_URL_QUERY = re.compile(r"(\b[A-Za-z][A-Za-z0-9+.-]*://[^\s?#\"'<>]*)[?#][^\s\"'<>]*")
+
+
+def env_secrets() -> tuple[str, ...]:
+    """Every credential value in this process's environment, plus the database URL's bare
+    host, which a libsql error can name on its own. Held in memory and compared by
+    str.replace only: nothing here prints a value or puts one on a command line."""
+    out = []
+    for name in CREDENTIAL_ENV:
+        v = (os.environ.get(name) or "").strip()
+        if not v:
+            continue
+        out.append(v)
+        if name == "TURSO_DATABASE_URL":
+            out.append(v.split("://", 1)[-1].split("/", 1)[0].split("?", 1)[0])
+    return tuple(s for s in dict.fromkeys(out) if len(s) >= MIN_SECRET_LEN)
+
+
+def strip_queries(text: str) -> str:
+    """`text` with every URL's query string and fragment removed; the rest of the URL
+    stays, so the evidence still says which endpoint answered."""
+    return _URL_QUERY.sub(r"\1", text)
+
+
+def _replace_all(text: str, secrets) -> str:
+    # Longest first: the Turso URL contains its host, and replacing the host first would
+    # leave the URL's scheme and path around a redaction instead of one clean mark.
+    for s in sorted({s for s in secrets if s and len(s) >= MIN_SECRET_LEN}, key=len,
+                    reverse=True):
+        text = text.replace(s, REDACTED)
+    return text
+
+
 def safe(text) -> str:
     """`text` with every registered secret replaced, and nothing else changed -- no
     truncation, no whitespace folding -- so an existing line keeps its shape."""
-    out = str(text)
-    for s in _SECRETS:
-        out = out.replace(s, REDACTED)
-    return out
+    return _replace_all(str(text), _SECRETS)
 
 
 def run_id() -> str:
@@ -105,13 +146,14 @@ def secret(name: str) -> str:
 
 
 def scrub(text: str, secrets=()) -> str:
-    """Evidence fit to print: every non-empty secret value replaced, whitespace
-    collapsed, truncated. Replacement, not a check: a Python str.replace puts no value on
-    any command line, which is the secret-audit rule's reason for doing it in-process."""
-    out = str(text or "")
-    for s in secrets:
-        if s and len(s) >= MIN_SECRET_LEN:
-            out = out.replace(s, REDACTED)
+    """Evidence fit to print: every URL's query string dropped, every non-empty secret
+    value replaced, whitespace collapsed, truncated -- in that order. Queries first,
+    because a redacted URL is no longer a URL: replacing the Turso URL first left its
+    `?authToken=` behind for the query rule to miss (the ruling-2a test found it).
+    Truncation last, so it can leave no key's prefix behind. Replacement, not a check: a
+    Python str.replace puts no value on any command line, which is the secret-audit rule's
+    reason for doing it in-process."""
+    out = _replace_all(strip_queries(str(text or "")), secrets)
     out = re.sub(r"\s+", " ", out).strip()
     if len(out) > EVIDENCE_MAX:
         out = out[: EVIDENCE_MAX - 3] + "..."
@@ -135,7 +177,8 @@ class RunSignals:
 
     def __init__(self, channel: str, secrets=()):
         self.channel = channel
-        self.secrets = tuple(s for s in secrets if s)
+        # The channel's own key, and every credential the run carries (CREDENTIAL_ENV).
+        self.secrets = tuple(dict.fromkeys(s for s in (*secrets, *env_secrets()) if s))
         _SECRETS.update(s for s in self.secrets if len(s) >= MIN_SECRET_LEN)
         self.notes: dict[str, str] = {}
         self.counts: dict[str, int] = {}

@@ -594,3 +594,54 @@ def test_an_echoed_key_never_appears_anywhere_in_the_output(run, where):
     rc, out, err = run(Fake(route=route), seeded=where != "bootstrap")
     assert rc == 0
     assert FIXTURE_KEY not in out and FIXTURE_KEY not in err
+
+
+# --- ruling 1b: which state runs write `deferred` with no `ok` ---------------------------
+# The verdict excuses a slot by the `deferred` class (collect_verdict.STATE_EXCUSED_CLASS)
+# only when the run that wrote it was not loud. These two drive the real main() to pin
+# the two runs that write `deferred` with no `ok`: the ceiling pre-check, quiet and
+# excused; and a deferral after a FAILED national call, loud and not excused (the review
+# of the second rulings found the second; the first build's comment said it could not
+# happen).
+
+from tools import collect_verdict as cv  # noqa: E402
+
+NATIONAL_ERROR = {"status": "ERROR", "alert": {"message": "Service temporarily unavailable"}}
+
+
+def _seed_ledger(conn, used):
+    conn.execute("INSERT INTO legiscan_usage (month, queries, updated_at) VALUES (?, ?, ?)",
+                 (state.ledger_month(FRI), used, "2026-10-16T00:00:00+00:00"))
+    conn.commit()
+
+
+def _in_fridays_slot(conn):
+    """written_at is the wall clock; place this run's rows where a late 06:17Z run on FRI
+    would land, and return that slot."""
+    conn.execute("UPDATE channel_runs SET written_at = '2026-10-16T13:00:00+00:00'")
+    conn.commit()
+    return datetime(2026, 10, 16, 6, 17, tzinfo=timezone.utc)
+
+
+def test_the_ceiling_precheck_writes_deferred_alone_and_its_slot_is_excused(run):
+    _seed_ledger(run.conn, 8000)                      # config's cron_ceiling
+    fake = Fake()
+    rc, out, err = run(fake)
+    assert rc == 0
+    assert fake.calls == []                           # no request made to find out
+    assert _rows(run.conn) == {
+        "deferred": "monthly ceiling reached (used 8000 of 8000); no request made this run"}
+    assert cv.state_slot_excused(run.conn, _in_fridays_slot(run.conn))
+
+
+def test_a_deferral_after_a_failed_national_call_is_loud_and_excuses_nothing(run):
+    _seed_ledger(run.conn, 7998)                      # the pre-check passes, the plan does not
+    fake = Fake(route=lambda op, arg, p: NATIONAL_ERROR if op == "getSessionList" else None)
+    rc, out, err = run(fake)
+    assert rc == 0
+    rows = _rows(run.conn)
+    assert "ok" not in rows
+    assert rows["deferred"].startswith(
+        "monthly ceiling reached (used 7998 of 8000) before master lists")
+    assert rows["no OK replies"] == '"Service temporarily unavailable"'
+    assert not cv.state_slot_excused(run.conn, _in_fridays_slot(run.conn))

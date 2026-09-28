@@ -1,5 +1,5 @@
-"""Seven read-only coverage questions about `cases`, the tracker artifact and
-`state_bills`, in one pass. Writes nothing.
+"""Eight read-only coverage questions about `cases`, the tracker artifact,
+`state_bills` and the collect lane's `channel_runs`, in one pass. Writes nothing.
 
 This is what survived the handoff 17 supersession-generator unit. That unit proposed a
 two-input pair detector behind a three-predicate cascade; it was measured (handoff 40-42)
@@ -10,10 +10,11 @@ behaviour, kept because it was measured on this exact corpus.
 
     python -m tools.coverage_audit
 
-Exit code is the ALARM in sections 1, 4, 5, 6 and 7: 1 if any row is unreconciled, OR
+Exit code is the ALARM in sections 1, 4, 5, 6, 7 and 8: 1 if any row is unreconciled, OR
 any row's `latest_entry_at` disagrees with its derivation, OR any tracker court fails to
 classify, OR any row was never polled and is linked to nothing, OR any state bill carries
-a non-null status outside LegiScan's six. All five expect 0.
+a non-null status outside LegiScan's six, OR no collect run has written a `channel_runs`
+row for longer than the lane ever went quiet in its history. All six expect 0.
 Sections 2 and 3 are REPORTS and are expected to be non-empty -- 6 and 1 as of
 2026-09-07. Do not read a non-zero count there as a failure.
 
@@ -21,7 +22,7 @@ Sections 2 and 3 are REPORTS and are expected to be non-empty -- 6 and 1 as of
 "the ALARM in section 1 only", which is why this line is restated rather than left to
 be inferred from the code. Sections 5 and 6 were added 2026-09-07 with unit C and it
 widened again -- the same restatement, for the same reason. Section 7 was added
-2026-09-26 and it widened a third time.)
+2026-09-26 and it widened a third time; section 8 on 2026-09-28, a fourth.)
 
 DELIVERY IS THE POINT OF UNIT C, NOT DETECTION. Every alarm here was correct and
 available before it was read: section 1 read 6 for seventeen days, and tracker_uw's
@@ -93,12 +94,50 @@ The shape IS reachable if it ever needs building: CourtListener carries 2,548 SC
 dockets filed since 2026-01-01 with clean `docket_number` and `date_filed`. INSTRUMENT
 NOTE -- query them with `date_filed__gte`. An unfiltered `order_by=-date_filed` returns
 historical imports with NULL dates and duplicated ids, which reads as dead coverage.
+
+--- section 8, the dead-lane alarm (unit 99, ruling 2b) ------------------------
+A collect run that never happens cannot report itself: collect.yml's Verdict step and
+heartbeat are steps OF the run. Read 2026-09-28, nothing outside collect.yml alarmed
+when collect stopped: the homepage's run-status element turns "missing" after 6h10m but
+tells no one, dom-checks renders it daily and asserts nothing on it, and no section here
+read freshness. Worse, a stopped collect freezes data/generated_at.json, which disarms
+dom-checks' gate-expiry checks, since they compare against it.
+
+So this section reads the newest `channel_runs` row a collect.yml run wrote -- every
+run whose legislation gets past its database connection writes one -- and fires when it
+is older than COLLECT_SILENCE_MAX_HOURS, or when there is no such row or no table. A
+LOCAL run's rows (run_id 'local', e.g. a seed proved against Turso from a workstation)
+are not the collect lane and are not counted: the likeliest time for one is while
+someone debugs a broken lane, which is exactly when this must not go quiet. A row
+stamped more than an hour AHEAD of now fires too: only a broken writer clock makes one,
+and it would otherwise hold the alarm off until 24h past its stamp.
+
+The bound is MEASURED, not chosen (ruling 2b: accepted only if it stays silent across
+the history the receipts were checked against). Over the 368 retained collect.yml runs,
+2026-06-29 to 2026-09-28, 361 would have written a row. Of the seven that would not,
+four died at the schema step (the 07-31 read block and the three 08-06/07 Turso 502s),
+two died inside legislation's first bill on a dead Hrana stream (the handoff-15 rollback
+crash db.recover now absorbs, so 361 is a floor), and one, the first dispatch, was
+cancelled. The longest gap between two row-writing runs is 23h06m58s, 2026-08-06T13:30Z
+to 2026-08-07T12:37Z, the 502 incident; the longest with no incident is 16h08m26s
+(2026-09-14/15, slots GitHub never fired). 24h stays silent at every gap, at the 21 real
+scheduled audit read times (the oldest row any would have seen, reconstructed from the
+collect logs, was 6h13m) and at daily reads replayed over the whole history. It fires at
+the first audit read after the lane has been quiet a full day: about 24h to 50h after
+the last row, with one dropped audit slot adding a day.
+
+NOT THE 2026-09-09 REFUSAL AGAIN (docs/status.md, *THE CHANNEL AGE ALARM IS REFUSED*).
+That refused a per-channel age alarm on `items.fetched_at`, which measures how often
+upstream produces events, and it refused for margin: its least-silent bounds sat 1.03x and
+1.09x over the second-largest gap. This reads the per-run receipt that entry named and
+left unbuilt, and on the same test reads 1.43x (23h06m58s over 16h08m26s). The
+`fetched_at` refusal stands.
 """
 from __future__ import annotations
 
 import re
 import textwrap
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import config
@@ -426,6 +465,46 @@ def unbootstrapped(conn) -> list:
     ).fetchall()
 
 
+# Section 8's bound, in hours; see the section's header above for the measurement.
+COLLECT_SILENCE_MAX_HOURS = 24
+
+
+def newest_channel_row(conn) -> str | None:
+    """The newest `channel_runs.written_at` a collect.yml run wrote, or None when there is
+    no such row or no table yet (created by the first collect run on the unit 99 build).
+    Either None is a lane that has not written, and section 8 fires on it. A local run's
+    rows (run_id 'local', or 'local.N') are not the lane and are skipped; GitHub's run ids
+    are numeric."""
+    try:
+        return conn.execute("SELECT MAX(written_at) FROM channel_runs "
+                            "WHERE run_id NOT LIKE 'local%'").fetchone()[0]
+    except Exception as exc:  # noqa: BLE001 -- only the missing table is expected
+        if "no such table" in str(exc).lower():
+            return None
+        raise
+
+
+def collect_silence_hours(newest: str | None, now: datetime) -> float | None:
+    """Hours since the newest row was written, None when there is no row. Pure, taking
+    the value, for section 5's reason: the suite must never read live data."""
+    if not newest:
+        return None
+    at = datetime.fromisoformat(str(newest).strip().replace("Z", "+00:00"))
+    return (now - at.astimezone(timezone.utc)).total_seconds() / 3600
+
+
+# A newest row stamped further ahead of now than this is a broken writer clock, not a
+# live lane: ordinary skew between runners is seconds.
+COLLECT_FUTURE_TOLERANCE_HOURS = 1
+
+
+def lane_dead(hours: float | None) -> bool:
+    """Section 8: ALARM, expect False. No row at all, none for longer than the bound, or
+    a newest row stamped in the future."""
+    return (hours is None or hours > COLLECT_SILENCE_MAX_HOURS
+            or hours < -COLLECT_FUTURE_TOLERANCE_HOURS)
+
+
 def main(argv=None) -> int:
     config.load_env()
     seeded = seeded_keys()
@@ -447,6 +526,9 @@ def main(argv=None) -> int:
             "SELECT state_bill_id, state, bill_number, status FROM state_bills "
             "ORDER BY state_bill_id").fetchall()
         off_vocab = unmapped_state_statuses(state_rows)
+        newest = newest_channel_row(conn)
+        silence = collect_silence_hours(newest, datetime.now(timezone.utc))
+        dead = lane_dead(silence)
         acks = load_acks()
         unack, blocked, lapsed = partition_alarm(alarm, acks, date.today())
         dangling = dangling_acks(alarm, acks)
@@ -556,10 +638,28 @@ def main(argv=None) -> int:
             print("               a LegiScan status the page has no word for: name it in "
                   "web/lib/statebill.ts and here, or rule it out")
 
+        print()
+        print(f"  [8] DEAD-LANE ALARM -- no collect run has written a channel_runs row for "
+              f"over {COLLECT_SILENCE_MAX_HOURS}h: {int(dead)}  (expect 0)")
+        if newest is None:
+            print("        FIRES  channel_runs holds no collect-run row: no collect run on the "
+                  "unit 99 build has reached its collectors")
+        else:
+            h, m = divmod(max(0, int(silence * 60)), 60)
+            print(f"      newest collect-run row {newest}, {h}h{m:02d}m ago. The bound is the "
+                  f"lane's longest gap in 368 runs, 23h07m, rounded up.")
+            if silence < -COLLECT_FUTURE_TOLERANCE_HOURS:
+                ah, am = divmod(int(-silence * 60), 60)
+                print(f"        FIRES  the newest row is stamped {ah}h{am:02d}m AHEAD of now: "
+                      f"a writer clock is wrong, and the row would hold this alarm off")
+            elif dead:
+                print(f"        FIRES  collect has written nothing for over {h}h{m:02d}m: read "
+                      f"the collect.yml runs page -- disabled, not firing, or dying at setup")
+
         # `unack`, not `alarm`: an acknowledged-blocked row is out of the exit
         # code and out of nothing else. A LAPSED entry is back in `unack` by way
         # of partition_alarm, so the expiry and the condition both reach here.
-        return 1 if (unack or drift or unmapped or unbooted or off_vocab) else 0
+        return 1 if (unack or drift or unmapped or unbooted or off_vocab or dead) else 0
     finally:
         conn.close()
 

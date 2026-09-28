@@ -149,7 +149,9 @@ def test_evidence_is_scrubbed_of_every_secret_value(capsys):
                             f"url=https://x.invalid/?api_key={KEY}&again={KEY}")
     out = capsys.readouterr().out
     assert KEY not in out and TOKEN not in out
-    assert out.count(rs.REDACTED) == 3
+    # The body's token redacted; the URL's query string dropped whole (ruling 2a).
+    assert out == ('CREDENTIAL FAILURE litigation: {"detail": "Invalid token [redacted]"} '
+                   'url=https://x.invalid/\n')
     assert KEY not in sig.notes[rs.CREDENTIAL] and TOKEN not in sig.notes[rs.CREDENTIAL]
 
 
@@ -456,8 +458,8 @@ def test_state_receipt_fires_by_the_clock_when_two_far_edges_have_passed(live, n
     got = cv.receipt_findings(live, now.isoformat(), cv.STATE_SLOT, now)
     if missed > 1:
         assert got == [("state", "receipt stale",
-                        f"last OK reply from LegiScan {receipt}; {missed} state slots "
-                        f"since without one")]
+                        f"last OK reply from LegiScan {receipt}; {missed} state slots in a "
+                        f"row without one")]
     else:
         assert got == []
 
@@ -501,27 +503,82 @@ def test_a_proration_storm_of_getbill_deferrals_stays_quiet(live):
     assert not hasattr(cv, "STATE_DEFER_RUNS_MAX")
 
 
-def test_a_state_run_its_own_ledger_ceiling_stopped_is_a_receipt(live):
-    """At the monthly ceiling every state slot returns before any request, by design
-    (proration, R6). Its DEFERRED row keeps the receipt fresh; any other deferral does not."""
-    now = datetime(2026, 9, 26, 12, 0, tzinfo=UTC)
+CEILING = "monthly ceiling reached (used 8000 of 8000); no request made this run"
+
+
+def test_the_ceiling_does_not_move_the_receipt_but_excuses_its_slots(live):
+    """Ruling 1b: the receipt moves only when LegiScan answers. A state slot whose run
+    wrote `deferred` -- only a ceiling-stopped run writes it without `ok` -- is excused,
+    so a month at the ceiling stays quiet; a slot with no state row at all is not."""
     _channel_row(live, "old-ok", "state", rs.OK, "18 OK replies", "2026-09-20T10:00:00+00:00")
-    _channel_row(live, "s-share", "state", rs.DEFERRED,
-                 "prorated share (4) cannot pay for 9 master list(s); skipped",
-                 "2026-09-25T10:00:00+00:00")
+    for day in range(21, 26):                  # five ceiling days, 09-21 .. 09-25
+        _channel_row(live, f"ceiling-{day}", "state", rs.DEFERRED, CEILING,
+                     f"2026-09-{day:02d}T13:00:00+00:00")
     live.commit()
-    assert _kinds(cv.receipt_findings(live, now.isoformat(), cv.STATE_SLOT, now)) == [
-        ("state", "receipt stale")]
-    _channel_row(live, "s-ceiling", "state", rs.DEFERRED,
-                 "monthly ceiling reached (used 8000 of 8000); no request made this run",
-                 "2026-09-25T10:00:00+00:00")
-    live.commit()
+    # 09-26 12:00: five slots due, all excused.
+    now = datetime(2026, 9, 26, 12, 0, tzinfo=UTC)
     assert cv.receipt_findings(live, now.isoformat(), cv.STATE_SLOT, now) == []
+    # 09-27 12:00: the 09-26 slot passed its far edge with no state row -- one unexcused.
+    now = datetime(2026, 9, 27, 12, 0, tzinfo=UTC)
+    assert cv.receipt_findings(live, now.isoformat(), cv.STATE_SLOT, now) == []
+    # 09-27 19:00: the 09-27 slot too -- two unexcused, and the receipt still names the
+    # last OK reply.
+    now = datetime(2026, 9, 27, 19, 0, tzinfo=UTC)
+    assert cv.receipt_findings(live, now.isoformat(), cv.STATE_SLOT, now) == [
+        ("state", "receipt stale",
+         "last OK reply from LegiScan 2026-09-20T10:00:00+00:00; 2 state slots in a row "
+         "without one (and 5 excused since it: a planned deferral, the ledger ceiling)")]
 
 
-def test_the_ceiling_evidence_the_receipt_reads_is_the_one_state_writes():
-    src = (REPO / "collectors" / "state.py").read_text(encoding="utf-8")
-    assert f'sig.note(run_signals.DEFERRED, f"{cv.STATE_CEILING_EVIDENCE} (used ' in src
+def test_drops_apart_in_a_ceiling_month_stay_quiet(live):
+    """The review's case: the receipt stays at the last OK for the whole ceiling month, so
+    counting every unexcused slot since it would sum two dropped slots a week apart and go
+    red until the month ended. Misses count IN A ROW: an excused slot resets them."""
+    _channel_row(live, "old-ok", "state", rs.OK, "18 OK replies", "2026-09-04T13:30:00+00:00")
+    for day in range(5, 25):
+        if day in (10, 20):                    # GitHub never fired these two slots
+            continue
+        _channel_row(live, f"ceiling-{day}", "state", rs.DEFERRED, CEILING,
+                     f"2026-09-{day:02d}T13:30:00+00:00")
+    live.commit()
+    for day in (11, 21, 24):
+        now = datetime(2026, 9, day, 19, 0, tzinfo=UTC)
+        assert cv.receipt_findings(live, now.isoformat(), cv.STATE_SLOT, now) == [], day
+
+
+def test_a_deferral_excuses_the_slot_whose_day_it_lands_in(live):
+    """A slot's window is its whole day, 06:17Z to the next 06:17Z: a ceiling run landing
+    late (here 12h43m, past the 12h far edge) still excuses its own slot."""
+    s21 = datetime(2026, 9, 21, 6, 17, tzinfo=UTC)
+    _channel_row(live, "before", "state", rs.DEFERRED, CEILING, "2026-09-21T06:16:59+00:00")
+    live.commit()
+    assert not cv.state_slot_excused(live, s21)                     # the 09-20 slot's
+    _channel_row(live, "late", "state", rs.DEFERRED, CEILING, "2026-09-21T19:00:00+00:00")
+    live.commit()
+    assert cv.state_slot_excused(live, s21)
+    assert not cv.state_slot_excused(live, s21 + timedelta(days=1))
+    _channel_row(live, "next", "state", rs.DEFERRED, CEILING, "2026-09-22T06:17:00+00:00")
+    live.commit()
+    assert cv.state_slot_excused(live, s21 + timedelta(days=1))
+
+
+@pytest.mark.parametrize("loud", sorted(rs.LOUD))
+def test_a_loud_runs_deferral_excuses_nothing(live, loud):
+    """A share or mid-run ceiling deferral after a FAILED national call writes `deferred`
+    with no `ok`, and NO OK REPLIES beside it (tests/test_unit99_state.py drives that run).
+    That slot is a miss, not a planned deferral."""
+    s21 = datetime(2026, 9, 21, 6, 17, tzinfo=UTC)
+    _channel_row(live, "failed-national", "state", rs.DEFERRED,
+                 "monthly ceiling reached (used 7998 of 8000) before master lists",
+                 "2026-09-21T13:00:00+00:00")
+    _channel_row(live, "failed-national", "state", loud, "evidence",
+                 "2026-09-21T13:00:00+00:00")
+    live.commit()
+    assert not cv.state_slot_excused(live, s21)
+    _channel_row(live, "a-quiet-run", "state", rs.DEFERRED, CEILING,
+                 "2026-09-21T14:00:00+00:00")
+    live.commit()
+    assert cv.state_slot_excused(live, s21)
 
 
 # --- body() and main() ------------------------------------------------------------------
