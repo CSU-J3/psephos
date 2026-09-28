@@ -8,7 +8,7 @@ Last updated: 2026-09-28 (UTC).
 
 ## Owed right now
 
-### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILT, REVIEWED and SHIPPED the same day; the second rulings RULED the same day, the ceiling, secrets in the comment and a dead lane BUILT and R6's state rotation QUEUED as its own unit; four owed reads before it closes
+### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILT, REVIEWED and SHIPPED the same day; the second rulings RULED the same day, the ceiling, secrets in the comment and a dead lane BUILT and R6's state rotation QUEUED as its own unit; the third brief's one scrub for every issue body BUILT the same day; it closes when its four reads land and that scrub is pushed
 
 **What it is.** The Congress.gov key sat disabled for 33 green runs, and nothing noticed (see *The Congress.gov key was disabled for eight days*). Corey's scope, widened 2026-09-26: a dead credential, and a budget or cap that cuts a run short, both fail loudly. That includes the status-refresh path that catches the daily cap and returns 0.
 
@@ -148,18 +148,19 @@ Last updated: 2026-09-28 (UTC).
   - **A bare 401 or 403 on state's first call stops the run as `NO OK REPLIES state`** (the line under *The lines*, above). That is R4's purpose, no fan-out on a dead key, and the reply does not name the key, so R3 withholds the credential label.
   - **Executive and news write no rows, for this unit.** R7's per-run row serves the verdict's classes, and only the three credentialed channels can meet them. **PROPOSED, NOT QUEUED (1c):** they get receipts too, the Federal Register answering and at least one news feed answering, because going blind silently does not depend on having a key.
   - **Older lines print through `run_signals.safe()`,** which redacts the run's keys and changes nothing else. These are legislation's ERROR line, litigation's four skip lines, and state's bootstrap, national and per-target ERROR lines and its cap-body print. The cap body keeps A4's rule, printed once and verbatim, except for the key.
-- **Tests:** 287 in five files, `tests/test_unit99_*.py`: legislation 36, litigation 19, state 54, verdict 65, secrets 113 (2a, below). Section 8 adds 18 to `tests/test_coverage_audit.py` (2b). Full suite: 855. (The first build shipped with 167 in four files and a suite of 717.)
+- **Tests:** 287 in five files, `tests/test_unit99_*.py`: legislation 36, litigation 19, state 54, verdict 65, secrets 113 (2a, below). Section 8 adds 18 to `tests/test_coverage_audit.py` (2b), and the one scrub 18 in `tests/test_issue_body_scrub.py`. Full suite: 873. (The first build shipped with 167 in four files and a suite of 717.)
   - **They pass with `GITHUB_RUN_ATTEMPT=2` set.** `tests/conftest.py` clears both run variables and the secret registry around every test.
   - **The test writers found:**
     - five paths where an echoed key would have reached the log through the older lines;
     - a second planned deferral that went unprinted behind the first;
     - a registry that redacted short strings: a test key "k" turned "skipped" into "s[redacted]ipped". A value under 8 characters is now never treated as a secret.
-- **Mutations: 44, every one caught.** Each is a one-line break of the build and every one turned a test red. They cover:
+- **Mutations: 50, every one caught.** Each is a one-line break of the build and every one turned a test red. They cover:
   - each loud class and each threshold;
   - the dispatch and re-run exclusions, and ruling 1b's ceiling excuse (not a receipt, excused by class);
   - 2a's scrub of every credential, the database host, query stripping, its order, and the verdict's re-scrub;
   - 2b's section 8: the bound, no row, a missing table, local rows, a future stamp, and the exit code;
   - the review's fixes to 1b: misses in a row, the slot's whole day, and no excuse for a loud run;
+  - the one scrub: each lane posting unscrubbed, collect's step without the database URL, the body's order reversed, and the tool accepting a missing file;
   - the redaction paths and the `unreached` row;
   - the issue step's condition and the mention;
   - the R1 flag.
@@ -227,9 +228,41 @@ Last updated: 2026-09-28 (UTC).
   - **A newest row stamped more than an hour ahead of now fires too.** Only a broken writer clock makes one, and it would otherwise hold the alarm off until 24h past its stamp.
   - **Detection:** at the first audit read after the lane has been quiet a full day, so about 24h to 50h after the last row. One dropped audit slot adds a day.
   - **Read against production today (SELECT only):** §8 fires "channel_runs holds no row". The table is created by the first collect run on the unit 99 build, due before the next audit read.
-- **FINDING, recorded for Corey and not built: the audit and dom-checks issue bodies are 2a's exposure on the sibling lanes.** `audit.yml` posts `coverage_audit`'s whole output, tracebacks included, into its issue. dom-checks reads live Turso as well.
-  - `db.py`'s own messages never name the database URL, and the seven Hrana failures in the mined logs carry none. libsql's native error text is the only path.
-  - Proposed: pass both bodies through the same scrub before `gh issue`.
+- **The sibling lanes' issue bodies were 2a's exposure. Found here and recorded, then RULED and BUILT (next).** `audit.yml` posts `coverage_audit`'s whole output, tracebacks included. dom-checks posts its check captures and, when the page never rendered, the Next.js server's log, and that server reads live Turso. `db.py`'s own messages never name the database URL, and the seven Hrana failures in the mined logs carry none, so libsql's native error text is the path.
+
+**ONE SCRUB FOR EVERY ISSUE BODY: RULED (Corey, 2026-09-28, the third brief) and BUILT the same day.**
+- **The scrub is `scrub.py`, one module, standard library only.** It does three things, in order:
+  - drops every URL's query string and fragment;
+  - replaces every credential the run carries (`CREDENTIAL_ENV`, read from the step's env) and the Turso URL's bare host, longest first;
+  - leaves the layout alone.
+
+  `run_signals` now takes its primitives from it, so the `channel_runs` evidence and every issue body go through one scrub, not two copies. Standard library only because dom-checks has no setup-python: the scrub runs on the runner's own `python3`.
+- **Every step that comments on or opens an issue runs it** on the file it is about to hand to `gh --body-file`: `python3 "$GITHUB_WORKSPACE/tools/scrub_issue_body.py" FILE`.
+  - That covers collect's standing-issue step, audit's and dom-checks'.
+  - It is invoked by path, not `-m`, because dom-checks runs its steps from `web/`.
+  - Each step gets its run's credentials in its env, for the scrub and nothing else: collect all five; audit and dom-checks the database URL and the read token, as `TURSO_AUTH_TOKEN`.
+  - A missing body file exits 1, so the step's `bash -e` stops before `gh`, and an unscrubbed body is never posted.
+- **`tests/test_issue_body_scrub.py`, two halves.**
+  - **Structural.** It fails any step in any workflow that posts an issue or PR comment, or posts through `gh api`, unless the step:
+    - uses `--body-file`;
+    - scrubs that same file before the first post;
+    - carries every credential its workflow maps from secrets.
+
+    It also finds all three lanes as posters, so it cannot pass vacuously, and synthetic workflows show it failing each way.
+  - **Functional.** It runs each lane's REAL issue-step script from its workflow under bash, with a stand-in `gh` that captures the posted body. FAKE credentials are planted where each lane's raw output could carry them:
+    - the audit's traceback, with a libsql error naming the database URL, its host, and the URL with the read token as a query;
+    - dom-checks' server log and all five check captures, under CANNOT RUN and under PAGE FAILED;
+    - a collect verdict body, and collect's no-body fallback.
+
+    The posted body keeps its layout and holds no planted value and no query string, on both the create and the comment path.
+  - **Positive control:** the same scripts with the scrub line removed post the database host and the keyed queries.
+  - It runs here under Git Bash and in CI on Linux; it is skipped only where there is no POSIX bash.
+- **The planted-value test for collect** (`tests/test_unit99_secrets.py`, 2a) is unchanged and still passes through the moved primitives.
+
+**The gate register's clock (the third brief, section 2), recorded beside the register.** `docs/gates.yaml`'s header now says it:
+- checks 3 and 4 read the record's clock, `data/generated_at.json`, which only collect's data commit moves;
+- when collect stops, that clock freezes, and no `recheck_after` or `record_instruments_due` comes due again, in `ci.yml` or the DOM lane;
+- nothing in the register can notice; `coverage_audit` §8 is what alarms on it.
 
 **THE SECOND REVIEW, 2026-09-28, of 1b, 2b and these records.** Three lenses (conformance, break-it, records), each finding re-checked by a skeptic told to refute it; key handling stayed inline. All 20 findings held, and all are fixed above:
 - the first cut of 1b summed unexcused slots across a ceiling month instead of counting them in a row;
@@ -257,14 +290,14 @@ Last updated: 2026-09-28 (UTC).
   - The homepage prints the conclusion in brackets beside "Collection is current".
 - **A red that happens only in the heartbeat step gets no comment,** because it comes after the issue step. The heartbeat stays last.
 
-**OWED, before unit 99 closes (ruling 3's three reads, and one the §8 build adds):**
+**OWED, before unit 99 closes. It closes when all four read as expected and the one scrub is pushed (the third brief, section 3):**
 1. **(a) The first SCHEDULED collect run on a head carrying `5eb1701`:** green, and no comment on `collect red`. That is the 18:17Z slot of 2026-09-28, lately created about seven hours late.
    - It should write a `channel_runs` row for legislation and litigation.
    - The issue step should be `skipped`.
    - If it goes red, the comment names the channel, class and evidence. Read that first.
 2. **(b) The first 06:17Z state run writes `state ok`,** state's first receipt: the 2026-09-29 slot.
 3. **(c) The 2026-09-29 scheduled dom-checks run on the new head is green.** It is also the dated-ahead transition read.
-4. **Owed by the §8 build, not by ruling 3: the next scheduled `coverage_audit` run reads §8 at 0,** once the table exists.
+4. **The 2026-09-29 scheduled `coverage_audit` run reads §8 at 0,** once the table exists. The audit lane has started later each day (09:55Z, 10:35Z and 11:45Z on 09-26 to 09-28), so this lands around 12:00-13:00Z.
 
 ### Two CI holes closed: an empty or local Turso URL fails the collect run, and every dom-checks check reports after a red. RULED and SHIPPED 2026-09-28
 

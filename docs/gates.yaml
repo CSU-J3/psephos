@@ -51,6 +51,16 @@
 # that this is past due and has not yet rechecked it". What fires ON the date is
 # check 3 (`--expiry-only` in ci.yml), on the gate id, at the next human push.
 #
+# THE EXPIRY CHECKS ARE ONLY AS LIVE AS THE COLLECT LANE (Corey, 2026-09-28). Checks 3
+# and 4 read the RECORD's clock, `data/generated_at.json` -- MAX(items.fetched_at),
+# which only collect.yml's data commit moves -- never the wall clock. When collect stops
+# running, that clock freezes: no `recheck_after` and no `record_instruments_due` comes
+# due again, in ci.yml or in the DOM lane, and a claim the world has moved past keeps
+# reading current. Nothing in this file or its checks can notice that. What alarms on it
+# is `coverage_audit` section 8, the dead-lane alarm (tools/coverage_audit.py, run daily
+# by audit.yml): it fires when no collect run has written a `channel_runs` row for over
+# 24h, and its issue is the signal that these dates have stopped moving.
+#
 # AND DO NOT BACKDATE A RECHECK TO DODGE THE GREY. `doj-demands-all-51` below
 # ships grey on its first render, carrying an `asserted_on` from ~Sep 2025,
 # because that is when the reporting behind it was published. Moving the date
