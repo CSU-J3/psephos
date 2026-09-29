@@ -10237,7 +10237,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 181,
+    "entry_count": 183,
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
@@ -11016,6 +11016,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/105/united-states-v-albence/",
         "title": "United States v. Delaware: Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 117436,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/104/united-states-v-albence/",
+        "title": "United States v. Delaware: MOTION for Exemption of Individuals from Standing Order on Personal Devices - filed by Bethany Jennings, Gemma Lowery. (Attachments: # 1 Proposed Order)(Billion, Mark) Modified on "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 117437,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/105/united-states-v-albence/",
+        "title": "United States v. Delaware: SO ORDERED Granting 104 MOTION for Exemption of Individuals from Standing Order on Personal Devices. Signed by Judge Richard G. Andrews on 9/28/2026. (aas) (Entered: 09/28/2026)"
       }
     ]
   },
@@ -28867,7 +28887,7 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 74,
+    "entry_count": 75,
     "filed_at": "2026-07-28T00:00:00",
     "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States of America",
@@ -28976,6 +28996,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73682036/74/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States of America v. Board Of Elections of the State of New York: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Liberty Legal Foundation, FILED. Service date 09/28/2026 by ACMS. [Entered: 09/28/2026 08:37 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 117418,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/75/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: DEFECTIVE DOCUMENT, Motion for leave to file as Amicus, at docket entry 74, on behalf of Movant Liberty Legal Foundation, FILED. [Entered: 09/28/2026 12:51 PM]"
       }
     ]
   },

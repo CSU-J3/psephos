@@ -9288,5 +9288,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-responds-to-dnc-lawsuit-offers-no-records-on-ballot-seizure-plans",
     "title": "Trump DOJ responds to DNC lawsuit, offers no records on ballot seizure plans"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117634,
+    "kind": "item",
+    "occurred_at": "2026-09-29T16:09:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nearly-half-of-americans-dont-want-ice-at-polls-survey-shows",
+    "title": "Nearly half of Americans don’t want ICE at polls, survey shows"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117633,
+    "kind": "item",
+    "occurred_at": "2026-09-29T17:01:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-kurt-olsen-leaves-doj-after-failing-to-find-evidence-of-stolen-election",
+    "title": "Election denier Kurt Olsen leaves DOJ after failing to find evidence of stolen election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117632,
+    "kind": "item",
+    "occurred_at": "2026-09-29T17:47:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-greenlights-challenge-to-louisiana-anti-voting-law-citing-discrimination-claims",
+    "title": "Judge greenlights challenge to Louisiana anti-voting law, citing discrimination claims"
   }
 ]
