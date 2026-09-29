@@ -2,11 +2,15 @@
  * Asserts that EVERY CLAIM THE "WHERE THIS STANDS" SECTION MAKES IS REGISTERED,
  * AND THAT NO REGISTERED CLAIM HAS QUIETLY EXPIRED.
  *
- *   node scripts/assert-gates.mjs [origin]      # all four checks; needs a server
- *   node scripts/assert-gates.mjs --expiry-only # checks 3 and 4; no browser, no server
+ *   node scripts/assert-gates.mjs [origin]      # all five checks; needs a server
+ *   node scripts/assert-gates.mjs --expiry-only # checks 3, 4 and 5; no browser, no server
+ *
+ * (`--expiry-only` is older than checks 4 and 5 and kept for ci.yml's sake: it means "the
+ * half that needs no browser".)
  *
  * Exit code is the alarm, and it is SPLIT so a red run says which check failed -- the
- * highest in precedence (expiry, then held, then DOM); the FAIL lines give the rest:
+ * highest in precedence (expiry, then held, then coverage, then DOM); the FAIL lines
+ * give the rest:
  *
  *   0  every requested check passed
  *   1  EXPIRY failed -- an authored claim is past its recheck date
@@ -15,6 +19,53 @@
  *   3  the check could not run -- missing file, unreadable schema, bad usage
  *   4  HELD failed -- a docket an authored claim lists in `record_instruments` is
  *      neither held in data/cases.json nor a pinned seed awaiting its bind
+ *   5  COVERAGE failed -- a class docket on no active or stale claim's list with no valid
+ *      reason, a listed docket still carrying a reason, a reason on a seed outside the
+ *      class, or an empty class; the FAIL lines say which, and each carries its own fix
+ *
+ * CHECK 5, COVERAGE (Corey, 2026-09-29). Check 4 confirms that a LISTED docket is held;
+ * it reads none of its orders (the recheck flags, tools/recheck_flags.py and
+ * coverage_audit section 9, report order-like entries above a listed docket's reading).
+ * Neither could have caught the case that prompted this check, 1:26-cv-01114, whose
+ * Sep 13 injunction sat unread on a docket no gate listed until a hand-read found it.
+ * So every docket of the class -- `category: executive-order`, on a seed or a held
+ * row -- must be on some active or stale authored claim's `record_instruments`, or carry
+ * a reason on its seed in config/sources.yaml, `gate_coverage`, in a closed vocabulary:
+ *
+ *   consolidated    -- `into` a class docket that is itself listed (reasons do not
+ *                      chain; a member cannot clear before its lead is read), with the
+ *                      `record` that says so: a case_id (the member or its lead), the
+ *                      entry's filing date and a quote of its text. Checked against that
+ *                      docket's timeline in data/cases.json once it is held; pending
+ *                      until then. THE QUOTE'S WINDOW: the timeline holds only entries
+ *                      the collector promoted (is_substantive), each titled
+ *                      "caption: " plus the first 180 characters of its description
+ *                      (collectors/litigation.py). So the quote must come from that
+ *                      window; case and runs of whitespace are ignored.
+ *   no-claim-order  -- `read_through`, the day a person last read the docket's orders and
+ *                      found none bearing on a claim, on or before the record's clock
+ *                      plus a day.
+ *
+ * Both carry `ruled`: who decided, and when. A listed docket carrying a reason fails
+ * ("remove the reason"), and so does a reason on a seed outside the class. There is NO
+ * GRACE PERIOD: at a seed commit the docket is not yet held and nothing can see its
+ * orders, so the rule requires the written outcome of a person reading them. What the
+ * machine verifies is that a dated, attributed reading was written, not that it
+ * happened. The recheck flags watch LISTED dockets only, above each one's reading: a
+ * docket cleared by a reason is read by nothing here after the reason is written, and a
+ * consolidated member only as far as its orders land on its listed lead. A shape error
+ * in a reason is exit 3, like any malformed register.
+ *
+ * THE CLASS IS THE EXECUTIVE-ORDER DOCKETS ONLY (ruled). The voter-data rows' page
+ * figures are derived gates, read from the record every render; scoping them in would
+ * turn 53 rows red to be cleared by 53 stamps.
+ *
+ * READINGS (2026-09-29). An authored claim with `record_instruments` carries
+ * `record_read`, one item per listed docket and no other, each with `docket`, `read_on`,
+ * `through_entry_id` (MAX(case_entries.id) held at the reading), `through_entry_at` and
+ * `verdicts` (entry id -> operative | noise | missed). The loader refuses any other shape
+ * (exit 3). tools/recheck_flags.py reads the watermark; nothing here compares it with
+ * the record, since data/cases.json carries no entry ids.
  *
  * CHECK 4, HELD INSTRUMENTS (2026-09-27). An authored claim may list, in
  * `record_instruments`, the held dockets among those its `falsified_by` names. A
@@ -107,6 +158,19 @@ const EXIT_EXPIRY = 1;
 const EXIT_DOM = 2;
 const EXIT_CANNOT_RUN = 3;
 const EXIT_HELD = 4;
+const EXIT_COVERAGE = 5;
+
+/** The class check 5 covers (ruled 2026-09-29): read off `category` alone, as the page
+ *  reads it (web/lib/stands.ts isEoChallenge). */
+const COVERAGE_CLASS = new Set(["executive-order"]);
+/** Each reason kind's exact keys. A key outside them is a malformed register. */
+const COVERAGE_KEYS = {
+  consolidated: ["unlisted", "into", "record", "ruled"],
+  "no-claim-order": ["unlisted", "read_through", "ruled"],
+};
+const COVERAGE_RECORD_KEYS = ["case_id", "entry_at", "quote"];
+const READING_KEYS = ["docket", "read_on", "through_entry_id", "through_entry_at", "verdicts"];
+const VERDICTS = new Set(["operative", "noise", "missed"]);
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -193,6 +257,44 @@ function loadGates() {
       else if (!Array.isArray(g.record_instruments) ||
                g.record_instruments.some((c) => !/^\d+$/.test(String(c))))
         problems.push(`${at}: \`record_instruments\` must be a list of CourtListener docket ids`);
+    }
+    if (g.record_read !== undefined || Array.isArray(g.record_instruments)) {
+      const listed = Array.isArray(g.record_instruments) ? g.record_instruments.map(String) : [];
+      const rr = g.record_read;
+      if (rr === undefined) {
+        if (listed.length) problems.push(`${at}: lists ${listed.join(", ")} and carries no \`record_read\``);
+      } else if (!Array.isArray(rr)) {
+        problems.push(`${at}: \`record_read\` must be a list`);
+      } else {
+        const seenDockets = new Map();
+        for (const [j, r] of rr.entries()) {
+          const rat = `${at}: record_read[${j}]`;
+          if (!r || typeof r !== "object" || Array.isArray(r)) {
+            problems.push(`${rat}: not a mapping`);
+            continue;
+          }
+          const extra = Object.keys(r).filter((k) => !READING_KEYS.includes(k));
+          if (extra.length) problems.push(`${rat}: unknown keys ${extra.join(", ")}`);
+          const d = String(r.docket ?? "");
+          seenDockets.set(d, (seenDockets.get(d) ?? 0) + 1);
+          if (!listed.includes(d)) problems.push(`${rat}: docket ${d} is not in \`record_instruments\``);
+          for (const f of ["read_on", "through_entry_at"])
+            if (typeof r[f] !== "string" || !ISO_DATE.test(r[f]))
+              problems.push(`${rat}: \`${f}\` must be a YYYY-MM-DD STRING`);
+          if (!Number.isInteger(r.through_entry_id) || r.through_entry_id < 0)
+            problems.push(`${rat}: \`through_entry_id\` must be a non-negative integer`);
+          const v = r.verdicts ?? {};
+          if (!v || typeof v !== "object" || Array.isArray(v))
+            problems.push(`${rat}: \`verdicts\` must map entry ids to a verdict`);
+          else
+            for (const [k, val] of Object.entries(v))
+              if (!/^\d+$/.test(k) || !VERDICTS.has(val))
+                problems.push(`${rat}: verdict ${k}: ${JSON.stringify(val)} (operative | noise | missed)`);
+        }
+        for (const d of listed)
+          if ((seenDockets.get(d) ?? 0) !== 1)
+            problems.push(`${at}: listed docket ${d} has ${seenDockets.get(d) ?? 0} readings in \`record_read\` (expect 1)`);
+      }
     }
     if (g.record_instruments_due !== undefined) {
       if (!Array.isArray(g.record_instruments))
@@ -509,6 +611,161 @@ function checkHeld(gates, today) {
   return null;
 }
 
+// --- check 5: coverage -----------------------------------------------------------
+
+/** The day after an ISO date, as an ISO date. From the date given, never the wall
+ *  clock: `new Date(ms)` of a computed instant reads no clock. */
+function nextDay(iso) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d) + 86400000).toISOString().slice(0, 10);
+}
+
+/** Every recorded reason's SHAPE, on every seed. Shape errors are a malformed register
+ *  (exit 3), returned as one message; what a well-formed reason claims is check 5's. */
+function coverageShapeProblems(seeds) {
+  const problems = [];
+  for (const s of seeds) {
+    const gc = s?.gate_coverage;
+    if (gc === undefined) continue;
+    const at = `seed ${s?.case_id ?? s?.docket_number}`;
+    if (!gc || typeof gc !== "object" || Array.isArray(gc)) {
+      problems.push(`${at}: \`gate_coverage\` must be a mapping`);
+      continue;
+    }
+    const keys = COVERAGE_KEYS[gc.unlisted];
+    if (!keys) {
+      problems.push(`${at}: \`gate_coverage.unlisted\` must be ${Object.keys(COVERAGE_KEYS).join(" or ")}, got ${JSON.stringify(gc.unlisted)}`);
+      continue;
+    }
+    const have = Object.keys(gc);
+    const extra = have.filter((k) => !keys.includes(k));
+    const missing = keys.filter((k) => !have.includes(k));
+    if (extra.length) problems.push(`${at}: \`gate_coverage\` (${gc.unlisted}) does not take ${extra.join(", ")}`);
+    if (missing.length) problems.push(`${at}: \`gate_coverage\` (${gc.unlisted}) needs ${missing.join(", ")}`);
+    if (typeof gc.ruled !== "string" || !gc.ruled.trim()) problems.push(`${at}: \`gate_coverage.ruled\` must say who ruled, and when`);
+    if (gc.unlisted === "consolidated") {
+      if (!/^\d+$/.test(String(gc.into ?? ""))) problems.push(`${at}: \`gate_coverage.into\` must be a CourtListener docket id`);
+      const rec = gc.record;
+      if (!rec || typeof rec !== "object" || Array.isArray(rec)) {
+        problems.push(`${at}: \`gate_coverage.record\` must be a mapping`);
+      } else {
+        const rx = Object.keys(rec).filter((k) => !COVERAGE_RECORD_KEYS.includes(k));
+        const rm = COVERAGE_RECORD_KEYS.filter((k) => !(k in rec));
+        if (rx.length || rm.length)
+          problems.push(`${at}: \`gate_coverage.record\` takes exactly ${COVERAGE_RECORD_KEYS.join(", ")}`);
+        if (!/^\d+$/.test(String(rec.case_id ?? ""))) problems.push(`${at}: \`gate_coverage.record.case_id\` must be a docket id`);
+        if (typeof rec.entry_at !== "string" || !ISO_DATE.test(rec.entry_at))
+          problems.push(`${at}: \`gate_coverage.record.entry_at\` must be a YYYY-MM-DD STRING`);
+        if (typeof rec.quote !== "string" || rec.quote.trim().length < 12)
+          problems.push(`${at}: \`gate_coverage.record.quote\` must quote the entry, not gesture at it`);
+      }
+    }
+    if (gc.unlisted === "no-claim-order" && (typeof gc.read_through !== "string" || !ISO_DATE.test(gc.read_through)))
+      problems.push(`${at}: \`gate_coverage.read_through\` must be a YYYY-MM-DD STRING`);
+  }
+  return problems;
+}
+
+/** Check 5. Returns a cannot-run message instead of exiting, as check 4 does. */
+function checkCoverage(gates, today) {
+  console.log(`\n--- coverage, the executive-order class against the gates' lists ---`);
+  if (!existsSync(SOURCES_PATH)) return `no sources file at ${SOURCES_PATH}`;
+  let doc;
+  try {
+    doc = require("yaml").parse(readFileSync(SOURCES_PATH, "utf8"));
+  } catch (e) {
+    return `${SOURCES_PATH} is not valid YAML: ${e.message}`;
+  }
+  const seeds = doc?.litigation?.seed_cases;
+  if (!Array.isArray(seeds)) return `${SOURCES_PATH} has no litigation.seed_cases list`;
+  const shape = coverageShapeProblems(seeds);
+  if (shape.length) return `${SOURCES_PATH} is malformed:\n        ${shape.join("\n        ")}`;
+  if (!existsSync(CASES_PATH))
+    return `no ${CASES_PATH} -- the export writes it each run; run \`python -m export.snapshots\``;
+  let rows;
+  try {
+    rows = JSON.parse(readFileSync(CASES_PATH, "utf8"));
+  } catch (e) {
+    return `${CASES_PATH} is not valid JSON: ${e.message}`;
+  }
+  if (!Array.isArray(rows)) return `${CASES_PATH} must be a list of cases`;
+
+  const heldById = new Map(rows.map((r) => [String(r?.case_id), r]));
+  // The class: every seed marked, and every held row marked (a row the collector holds
+  // under a mark its seed no longer carries is still on the page).
+  const cls = new Map();
+  for (const s of seeds)
+    if (COVERAGE_CLASS.has(s?.category) && s?.case_id !== undefined && s?.case_id !== null)
+      cls.set(String(s.case_id), { docket: s.docket_number, seed: s });
+  for (const r of rows)
+    if (COVERAGE_CLASS.has(r?.category) && !cls.has(String(r.case_id)))
+      cls.set(String(r.case_id), { docket: r.docket_number, seed: null });
+  // Active or stale, never falsified: a retracted claim reads nothing.
+  const listed = new Map();
+  for (const g of gates)
+    if (g.kind === "authored" && g.status !== "falsified" && Array.isArray(g.record_instruments))
+      for (const c of g.record_instruments.map(String)) listed.set(c, [...(listed.get(c) ?? []), g.id]);
+
+  for (const s of seeds)
+    if (s?.gate_coverage !== undefined && !COVERAGE_CLASS.has(s?.category))
+      check(false, `seed ${s.case_id ?? s.docket_number} ${s.docket_number} -- carries a coverage reason outside the class`,
+        `\`gate_coverage\` is read on ${[...COVERAGE_CLASS].join(", ")} seeds only; remove it`);
+
+  check(cls.size > 0, `the class holds at least one docket (${cls.size})`);
+  for (const [c, { docket, seed }] of [...cls].sort()) {
+    const reason = seed?.gate_coverage;
+    const label = `${c} ${docket}`;
+    if (listed.has(c)) {
+      check(!reason, `${label} -- listed on ${listed.get(c).join(", ")}`,
+        reason ? "it also carries a coverage reason on its seed: a listed docket needs none; remove the reason" : undefined);
+      continue;
+    }
+    if (!reason) {
+      check(false, `${label} -- on no gate's record_instruments and carries no recorded reason`,
+        "Read its orders. Then list it on the gate its orders bear on (that gate's falsifier names it; " +
+          "an order bearing on no claim means a new gate), or record why not in `gate_coverage` on its seed.");
+      continue;
+    }
+    if (reason.unlisted === "no-claim-order") {
+      const limit = nextDay(today);
+      check(reason.read_through <= limit,
+        `${label} -- read through ${reason.read_through}, no order bearing on a claim (${reason.ruled})`,
+        reason.read_through > limit ? `read_through is after the record's clock ${today} plus a day` : undefined);
+      continue;
+    }
+    // consolidated
+    const into = String(reason.into);
+    const rec = reason.record;
+    const recId = String(rec.case_id);
+    if (into === c) check(false, `${label} -- consolidated into itself`);
+    else if (!cls.has(into)) check(false, `${label} -- consolidated into ${into}, which is not a class docket`);
+    else if (!listed.has(into))
+      check(false, `${label} -- consolidated into ${into}, which is on no gate's list`,
+        "Reasons do not chain: read the lead's orders and list it first.");
+    else if (recId !== c && recId !== into)
+      check(false, `${label} -- its record names ${recId}, neither it nor its lead ${into}`);
+    else if (!heldById.has(recId))
+      check(true, `${label} -- consolidated into ${into} (listed on ${listed.get(into).join(", ")}); ` +
+        `its record on ${recId} is PENDING, not yet held`);
+    else {
+      const squash = (s) => String(s ?? "").toLowerCase().replace(/\s+/g, " ").trim();
+      const quote = squash(rec.quote);
+      const onDate = (heldById.get(recId).timeline ?? []).filter(
+        (t) => String(t?.occurred_at ?? "").slice(0, 10) === rec.entry_at);
+      const hit = onDate.find((t) => squash(t?.title).includes(quote));
+      check(Boolean(hit),
+        `${label} -- consolidated into ${into} (listed on ${listed.get(into).join(", ")})` +
+          (hit ? `; on the record as item ${hit.id}, ${rec.entry_at}` : ""),
+        hit ? undefined
+          : onDate.length === 0
+            ? `${recId}'s timeline holds no item dated ${rec.entry_at}`
+            : `none of ${recId}'s ${onDate.length} timeline item(s) dated ${rec.entry_at} carries the quote ` +
+              `"${rec.quote}" in its title (the caption plus the first 180 characters of a promoted entry)`);
+    }
+  }
+  return null;
+}
+
 // --- main -------------------------------------------------------------------------
 
 const argv = process.argv.slice(2);
@@ -531,15 +788,25 @@ const beforeHeld = fail;
 const heldCannot = checkHeld(gates, today);
 const heldFailed = fail > beforeHeld;
 
+const beforeCoverage = fail;
+const coverageCannot = checkCoverage(gates, today);
+const coverageFailed = fail > beforeCoverage;
+
 if (!expiryOnly) {
   await checkDom(gates, origin);
 }
 if (heldCannot) cannotRun(`check 4: ${heldCannot}`);
+if (coverageCannot) cannotRun(`check 5: ${coverageCannot}`);
 
 console.log(`\n${pass} PASS / ${fail} FAIL`);
 // Expiry wins the exit code when several checks fail: it is the half that runs
 // unattended, so it is the half a red CI run is most likely to be about. Held comes
-// next, for the same reason -- it runs in ci.yml too -- and the DOM join last.
+// next, for the same reason -- it runs in ci.yml too -- then coverage, which runs there
+// as well, and the DOM join last.
 process.exit(
-  fail === 0 ? EXIT_OK : expiryFailed ? EXIT_EXPIRY : heldFailed ? EXIT_HELD : EXIT_DOM
+  fail === 0 ? EXIT_OK
+    : expiryFailed ? EXIT_EXPIRY
+    : heldFailed ? EXIT_HELD
+    : coverageFailed ? EXIT_COVERAGE
+    : EXIT_DOM
 );

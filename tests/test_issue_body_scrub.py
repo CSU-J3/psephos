@@ -229,10 +229,23 @@ def _bash() -> str | None:
 needs_bash = pytest.mark.skipif(_bash() is None, reason="no POSIX bash on this machine")
 
 
-def _posting_step(workflow: str) -> dict:
+FLAG_STEP = "Comment new recheck flags on their standing issue"
+FAULT_STEP = "Report a recheck-flags run that could not run"
+# Every posting step a functional case below runs, by workflow; the first is the default.
+# A workflow not listed must hold exactly one. A new poster fails here until it is named
+# here and given a case: the one-poster tripwire, kept as a registry since audit.yml
+# gained its flag steps (2026-09-29).
+POSTERS = {"audit.yml": ("Raise or update the standing issue", FLAG_STEP, FAULT_STEP)}
+
+
+def _posting_step(workflow: str, name: str | None = None) -> dict:
     wf = _load(WORKFLOWS / workflow)
     steps = [s for _, _, s in _steps(wf) if POSTING.search(s.get("run") or "")]
-    assert len(steps) == 1, workflow
+    if workflow in POSTERS:
+        assert sorted(s.get("name") for s in steps) == sorted(POSTERS[workflow]), workflow
+        name = name or POSTERS[workflow][0]
+        steps = [s for s in steps if s.get("name") == name]
+    assert len(steps) == 1, (workflow, name)
     return steps[0]
 
 
@@ -286,14 +299,28 @@ def _shims(bin_dir: Path) -> None:
     (bin_dir / "python3").write_bytes(
         b"#!/usr/bin/env bash\n"
         + f'exec "{Path(sys.executable).as_posix()}" "$@"\n'.encode("utf-8"))
-    for f in ("gh", "python3"):
+    # `python -m tools.recheck_flags` would read the database: the stand-in writes the
+    # planted body (FLAGS_PLANT, or nothing) to its --comment-body path instead.
+    (bin_dir / "python").write_bytes(
+        b"#!/usr/bin/env bash\n"
+        b'if [ "$1 $2" = "-m tools.recheck_flags" ]; then\n'
+        b'  while [ $# -gt 0 ]; do\n'
+        b'    if [ "$1" = "--comment-body" ]; then\n'
+        b'      if [ -n "$FLAGS_PLANT" ]; then cp "$FLAGS_PLANT" "$2"; else : > "$2"; fi\n'
+        b'    fi\n'
+        b'    shift\n'
+        b'  done\n'
+        b'  exit 0\n'
+        b'fi\n'
+        + f'exec "{Path(sys.executable).as_posix()}" "$@"\n'.encode("utf-8"))
+    for f in ("gh", "python3", "python"):
         (bin_dir / f).chmod(0o755)
 
 
 def _run_step(tmp_path: Path, workflow: str, overrides: dict, *, drop_scrub=False,
-              list_num: str = "") -> tuple[str, str]:
+              list_num: str = "", step_name: str | None = None) -> tuple[str, str]:
     """The workflow's real posting script under bash; returns (posted body, gh command)."""
-    step = _posting_step(workflow)
+    step = _posting_step(workflow, step_name)
     script = step["run"]
     if drop_scrub:                                   # the positive control
         script = "\n".join(ln for ln in script.splitlines()
@@ -419,3 +446,98 @@ def test_positive_control_without_the_scrub_the_planted_values_are_posted(
     posted, _ = _run_step(tmp_path, workflow, overrides, drop_scrub=True)
     assert TURSO_HOST in posted
     assert any(m in posted for m in QUERY_MARKS)
+
+
+# --- the recheck flags' step (audit.yml, 2026-09-29) ---------------------------------------
+
+def _plant_flags(tmp_path: Path) -> Path:
+    """What the flag tool's body could carry at worst: docket text quoting a URL with a
+    key in its query, and a libsql error line."""
+    body = tmp_path / "flags-plant.md"
+    body.write_text(
+        "cc @CSU-J3\n\n**Recheck flag** -- 1 new order-like entry\n\n"
+        "| entry | filed | gate | docket | text |\n|---|---|---|---|---|\n"
+        "| 93145 | 2026-09-29 | `g` | 71499795 | ORDER see " + " ".join(KEYED_URLS) + " |\n\n"
+        + _libsql_traceback(FAKE["TURSO_DATABASE_URL"], FAKE_SECRET["TURSO_READ_TOKEN"])
+        + "\n<!-- recheck-flags: 93145 -->\n", encoding="utf-8")
+    return body
+
+
+@needs_bash
+def test_the_flag_steps_body_is_scrubbed_before_it_is_posted(tmp_path):
+    step = _posting_step("audit.yml", FLAG_STEP)
+    plant = _plant_flags(tmp_path)
+    posted, cmd = _run_step(tmp_path, "audit.yml", {"FLAGS_PLANT": plant.as_posix()},
+                            step_name=FLAG_STEP)
+    assert cmd == "issue create"
+    assert posted.startswith("cc @CSU-J3") and "<!-- recheck-flags: 93145 -->" in posted
+    for needle in _needles(step):
+        assert needle not in posted
+    for mark in QUERY_MARKS:
+        assert mark not in posted
+    posted2, cmd2 = _run_step(tmp_path, "audit.yml", {"FLAGS_PLANT": plant.as_posix()},
+                              step_name=FLAG_STEP, list_num="7")
+    assert cmd2 == "issue comment" and posted2 == posted
+    # The positive control: without the scrub line the planted host is posted.
+    raw, _ = _run_step(tmp_path, "audit.yml", {"FLAGS_PLANT": plant.as_posix()},
+                       step_name=FLAG_STEP, drop_scrub=True)
+    assert TURSO_HOST in raw
+
+
+@needs_bash
+def test_the_flag_step_posts_nothing_when_there_are_no_new_flags(tmp_path):
+    step = _posting_step("audit.yml", FLAG_STEP)
+    for d in ("work", "runner_temp"):
+        (tmp_path / d).mkdir()
+    _shims(tmp_path / "bin")
+    capture = tmp_path / "posted.md"
+    script = tmp_path / "step.sh"
+    script.write_bytes(step["run"].encode("utf-8"))
+    env = _env_for(step, tmp_path / "runner_temp", capture, tmp_path / "bin", {"FLAGS_PLANT": ""})
+    r = subprocess.run([_bash(), "--noprofile", "--norc", "-eo", "pipefail", script.as_posix()],
+                       cwd=tmp_path / "work", env=env, capture_output=True, text=True, timeout=120)
+    assert r.returncode == 0, (r.stdout, r.stderr)
+    assert "no new recheck flags" in r.stdout
+    assert not capture.exists()
+
+
+def test_the_flag_steps_can_never_turn_the_audit_red():
+    for name in (FLAG_STEP, FAULT_STEP):
+        step = _posting_step("audit.yml", name)
+        assert step.get("continue-on-error") is True, name
+        assert "!cancelled()" in str(step.get("if")), name
+        assert 0 < int(step.get("timeout-minutes", 0)) <= 3, name   # a hang is a step failure
+        assert "fail" not in step["env"]["TITLE"].lower(), name
+    wf = _load(WORKFLOWS / "audit.yml")
+    job = wf["jobs"]["audit"]
+    assert int(job["timeout-minutes"]) >= 2 * 3 + 5                # both bounds fit the job
+    assert wf.get("concurrency", {}).get("group") == "audit"
+    assert "steps.flags.outcome == 'failure'" in str(_posting_step("audit.yml", FAULT_STEP)["if"])
+
+
+def test_markers_are_read_only_from_the_workflows_bot():
+    run = _posting_step("audit.yml", FLAG_STEP)["run"]
+    assert "select(.title == env.TITLE) | select(bot)" in run
+    assert '"app/github-actions", "github-actions", "github-actions[bot]"' in run
+    assert run.count("select(bot)") == 3                           # the issue, its body, comments
+
+
+@needs_bash
+def test_the_fault_steps_body_is_scrubbed_before_it_is_posted(tmp_path):
+    step = _posting_step("audit.yml", FAULT_STEP)
+    (tmp_path / "work").mkdir()
+    (tmp_path / "work" / "flags.out").write_text(
+        "Traceback (most recent call last):\n"
+        + _libsql_traceback(FAKE["TURSO_DATABASE_URL"], FAKE_SECRET["TURSO_READ_TOKEN"]),
+        encoding="utf-8")
+    posted, cmd = _run_step(tmp_path, "audit.yml", {}, step_name=FAULT_STEP)
+    assert cmd == "issue create"
+    assert posted.startswith("cc @CSU-J3") and "could not run" in posted
+    for needle in _needles(step):
+        assert needle not in posted
+    for mark in QUERY_MARKS:
+        assert mark not in posted
+    posted2, cmd2 = _run_step(tmp_path, "audit.yml", {}, step_name=FAULT_STEP, list_num="7")
+    assert cmd2 == "issue comment" and posted2 == posted
+    raw, _ = _run_step(tmp_path, "audit.yml", {}, step_name=FAULT_STEP, drop_scrub=True)
+    assert TURSO_HOST in raw

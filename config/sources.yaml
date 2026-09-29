@@ -552,6 +552,20 @@ litigation:
       notes: >-
         Asks the court to declare sections 2(a), 3(b), 4(a) and 4(c) of EO 14399 ultra
         vires and void.
+      # COVERAGE (assert-gates check 5): on no gate's list, and why (Corey, 2026-09-29).
+      # Consolidated with 1:26-cv-01114 by the order of Apr 9; the clerk's notice of Apr 14
+      # on the lead is the entry that ties member to lead. As read 2026-09-29, this docket
+      # has carried procedural orders only since; ECF 193, the injunction, sits on the
+      # lead, which is listed. Nothing watches this member after the reason is written:
+      # the recheck flags read listed dockets, so an order entered here alone is unseen.
+      gate_coverage:
+        unlisted: consolidated
+        into: "73131864"
+        record:
+          case_id: "73131864"
+          entry_at: "2026-04-14"
+          quote: "The following cases have been consolidated with this case: 26cv1132, 26cv1151"
+        ruled: "Corey, 2026-09-29"
     - caption: DSCC v. Trump
       docket_number: 1:26-cv-01114
       court: D.D.C.
@@ -578,6 +592,20 @@ litigation:
         it pleads EO 14399 instructed. Consolidated with 1:26-cv-01114 by an order of
         Apr 9; a clerk's notice of Apr 14 directs that all pleadings be filed only in
         that docket.
+      # COVERAGE (assert-gates check 5): on no gate's list, and why (Corey, 2026-09-29).
+      # Consolidated with 1:26-cv-01114 by the order of Apr 9; the clerk's notice of Apr 14
+      # on the lead is the entry that ties member to lead. As read 2026-09-29, this docket
+      # has carried procedural orders only since; ECF 193, the injunction, sits on the
+      # lead, which is listed. Nothing watches this member after the reason is written:
+      # the recheck flags read listed dockets, so an order entered here alone is unseen.
+      gate_coverage:
+        unlisted: consolidated
+        into: "73131864"
+        record:
+          case_id: "73131864"
+          entry_at: "2026-04-14"
+          quote: "The following cases have been consolidated with this case: 26cv1132, 26cv1151"
+        ruled: "Corey, 2026-09-29"
 
 # ===========================================================================
 # CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)

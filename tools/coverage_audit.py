@@ -1,5 +1,6 @@
-"""Eight read-only coverage questions about `cases`, the tracker artifact,
-`state_bills` and the collect lane's `channel_runs`, in one pass. Writes nothing.
+"""Nine read-only coverage questions about `cases`, the tracker artifact,
+`state_bills`, the collect lane's `channel_runs` and the gate register's readings, in
+one pass. Writes nothing.
 
 This is what survived the handoff 17 supersession-generator unit. That unit proposed a
 two-input pair detector behind a three-predicate cascade; it was measured (handoff 40-42)
@@ -16,7 +17,11 @@ classify, OR any row was never polled and is linked to nothing, OR any state bil
 a non-null status outside LegiScan's six, OR no collect run has written a `channel_runs`
 row for longer than the lane ever went quiet in its history. All six expect 0.
 Sections 2 and 3 are REPORTS and are expected to be non-empty -- 6 and 1 as of
-2026-09-07. Do not read a non-zero count there as a failure.
+2026-09-07. Do not read a non-zero count there as a failure. Section 9 is a REPORT too,
+by ruling (Corey, 2026-09-29): recheck flags, order-like entries on a gate-listed docket
+above its last reading (tools/recheck_flags.py), with the naive count beside them. It
+stays out of the exit code until its measurement clears the ruled bar; audit.yml
+delivers its flags as comments on a standing issue that never turns a run red.
 
 (Section 4 was added 2026-08-14 and the exit code widened with it. It used to read
 "the ALARM in section 1 only", which is why this line is restated rather than left to
@@ -144,6 +149,7 @@ import config
 import db
 from collectors.litigation import load_tracker_seeds
 from collectors.tracker_uw import COURT_IDS
+from tools import recheck_flags
 from tools.status_audit import seeded_keys
 
 # Year-dash forms only. District: 1:25-cv-03934. Circuit: 26-2684. The {3,5} tail is
@@ -655,6 +661,20 @@ def main(argv=None) -> int:
             elif dead:
                 print(f"        FIRES  collect has written nothing for over {h}h{m:02d}m: read "
                       f"the collect.yml runs page -- disabled, not firing, or dying at setup")
+
+        # A REPORT, NOT AN ALARM, and its failures stay out of the exit code with it:
+        # a register the flags cannot read is assert-gates' to fail (exit 3, in ci.yml),
+        # and this line says so rather than taking the six alarms and two reports above
+        # down with it.
+        print()
+        try:
+            gates = recheck_flags.load_gates()
+            for line in recheck_flags.report_lines(recheck_flags.compute(conn, gates),
+                                                   recheck_flags.tally(gates)):
+                print(line)
+        except Exception as exc:  # noqa: BLE001 -- reported, never raised
+            print(f"  [9] RECHECK FLAGS -- CANNOT RUN: {type(exc).__name__}: "
+                  f"{' '.join(str(exc).split())[:300]}")
 
         # `unack`, not `alarm`: an acknowledged-blocked row is out of the exit
         # code and out of nothing else. A LAPSED entry is back in `unack` by way

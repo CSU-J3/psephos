@@ -15,7 +15,7 @@
 #               the rot this file exists to end: 25, 12 and 46 all rotted in this
 #               repo while looking maintained, because they were written down.
 #
-# ENFORCEMENT is `web/scripts/assert-gates.mjs`, four checks, two entry points:
+# ENFORCEMENT is `web/scripts/assert-gates.mjs`, five checks, two entry points:
 #
 #   1. every `data-gate` id in the rendered section has an entry here
 #   2. every entry here with `renders_as` has its id on a `data-gate` in the rendered
@@ -24,6 +24,33 @@
 #   4. every docket an authored entry lists in `record_instruments` is held in
 #      data/cases.json, or is a pinned seed not yet bound while the record's clock
 #      is on or before the entry's `record_instruments_due` (2026-09-28)
+#   5. COVERAGE (2026-09-29): every docket of the executive-order class is on some
+#      active or stale authored entry's `record_instruments`, or carries a recorded
+#      reason on its seed in config/sources.yaml (`gate_coverage`) -- consolidated
+#      into a listed lead, quoting the notice that says so, or read through a date
+#      with no order bearing on any claim. No grace: a seed commit is red until
+#      someone has read its orders.
+#
+# READINGS (2026-09-29). An entry with `record_instruments` carries `record_read`, one
+# item per listed docket and no other:
+#
+#   - docket: "73131864"         # the listed docket
+#     read_on: 2026-09-29        # the day a person read it against the claim
+#     through_entry_id: 92619    # MAX(case_entries.id) held at that reading
+#     through_entry_at: 2026-09-23   # its latest filing date then, a human cross-check
+#     verdicts: {}               # entry id -> operative | noise | missed, for the
+#                                # flags since the reading before
+#
+# An order-like entry above the watermark is a RECHECK FLAG (tools/recheck_flags.py):
+# coverage_audit section 9 reports it daily and audit.yml comments it on a standing
+# issue, worded as a flag and never turning a run red. The watermark is an id, not a
+# date: filing dates carry no time and RECAP backfills late. A person moves it through
+# the normal commit gate; `python -m tools.recheck_flags --fragment` prints the held
+# record to fill in. VERDICTS ACCUMULATE: a reading keeps every verdict given on its
+# docket, and a moved reading adds the new ones, so the measurement's tally is the
+# whole period's. Nothing writes a reading automatically. The flags watch LISTED
+# dockets only: a docket cleared by a check-5 reason is read by nothing here, and a
+# consolidated member only as far as its orders land on its listed lead.
 #
 # `aliases` carries the ids an entry was known by before a rename; the checks that
 # resolve ids resolve an alias to its entry. Records in docs/status.md keep the id
@@ -38,8 +65,9 @@
 # it yet.
 #
 # 1 and 2 join against the DOM and are hand-run beside assert-encodings and
-# assert-layout. 3 and 4 need no browser and run in ci.yml (`--expiry-only`); the full
-# run in the DOM lane executes all four. See that script's header.
+# assert-layout. 3, 4 and 5 need no browser and run in ci.yml (`--expiry-only`, a name
+# older than checks 4 and 5); the full run in the DOM lane executes all five. See that
+# script's header.
 #
 # `status: stale` IS AN ACKNOWLEDGEMENT, NOT A SUPPRESSION. It stops check 3
 # failing the run, and it changes nothing on the page by itself. A chip is fixed
@@ -146,6 +174,24 @@
 # Federal Elections, 91 Fed. Reg. 54,966 (Aug. 26, 2026)". And p. 3 again, of the court's
 # first ruling: "a final rule as required by Section 3 of the Executive Order". The Final
 # Rule's own preamble was not needed and was not read.
+# THE FIRST READINGS (2026-09-29), on this entry and the three others that list dockets.
+# CLASS DOCKETS: each watermark is the MAX(id) the gate-coverage D0's dump held for the
+# docket (taken 18:13Z). The D0 labelled its window (entries filed 2026-09-15..09-28, 251
+# rows) row by row; for the class history before it (1,218 rows) it labelled every row
+# the order-like test flags (99, 18 of them short forms whose content is only in the PDF)
+# and checked 50 known operatives. So every row under a class watermark that the test
+# could raise was labelled; the rest were screened by the test, not read.
+# THE SAVE-SYSTEM DOCKETS were read against the stay's claim the same day, and the dump
+# held only their window rows. 26-5243 (73544809): the stay reading covered its order-like
+# entries through the Supreme Court's letter, 91411. 1:25-cv-03501 (71499795): it covered
+# the Jun 22 opinion and order (ECF 111, 112) and the Jul 8 stay denial (ECF 123, 124),
+# id 20446, and NOT the Jul 18 and Jul 20 minute orders on the 128 Motion to Enforce
+# Judgment or Texas's Aug 21 notices of appeal; so its watermark is 20446, and those flag
+# (review of this build, 2026-09-29: the first draft set it at the dump's 93133 and called
+# them read).
+# A watermark is where flags are measured from, not proof that everything under it was
+# read. No verdicts yet: the D0's labels were in-sample, and the measurement is the
+# verdicts given on flags from here on.
 - id: eo-14399-usps-rule-enjoined-ddc
   claim: "the Postal Service is preliminarily enjoined from implementing and enforcing its Final Rule of Aug 21 (Ballot Mail for Federal Elections, 91 Fed. Reg. 54,966), in full and with no end date (D.D.C. order of Sep 13 in the three consolidated suits, 1:26-cv-01114 ECF 193)"
   kind: authored
@@ -156,6 +202,12 @@
   falsified_by: "an order staying, vacating or modifying the Sep 13 injunction (1:26-cv-01114 ECF 193), by the D.D.C. court, the D.C. Circuit or the Supreme Court, or a D.C. Circuit ruling on an appeal from it; the instrument is the D.D.C. docket 1:26-cv-01114, read directly"
   status: active
   record_instruments: [73131864]
+  record_read:
+    - docket: "73131864"
+      read_on: 2026-09-29
+      through_entry_id: 92619
+      through_entry_at: 2026-09-23
+      verdicts: {}
   renders_as: "The Postal Service is preliminarily enjoined from implementing and enforcing the ballot-mail rule it issued on Aug 21 at EO 14399's direction, in full and with no end date, by a D.D.C. order of Sep 13"
 
 # 14 DAYS, NOT THE B2 DEFAULT OF 90, FROM 2026-09-13 TO 09-26, set while 26A305 was
@@ -279,6 +331,22 @@
   status: active
   record_instruments: [74755121, 73133197, 74701505]
   record_instruments_due: 2026-09-28
+  record_read:
+    - docket: "74755121"
+      read_on: 2026-09-29
+      through_entry_id: 92275
+      through_entry_at: 2026-09-21
+      verdicts: {}
+    - docket: "73133197"
+      read_on: 2026-09-29
+      through_entry_id: 91777
+      through_entry_at: 2026-09-25
+      verdicts: {}
+    - docket: "74701505"
+      read_on: 2026-09-29
+      through_entry_id: 92672
+      through_entry_at: 2026-09-28
+      verdicts: {}
   renders_as: "A D. Mass. preliminary injunction of Sep 4 enjoins the mandatory provisions of the Postal Service's ballot-mail rule for elections through Nov 3, 2026; the First Circuit denied stays of it on Sep 10, and the Supreme Court denied one on Sep 14"
 
 # THE STAY OF THE INJUNCTION AGAINST SECTIONS 2 AND 3, split from the entry above on
@@ -303,6 +371,17 @@
   status: active
   record_instruments: [73568304, 73141063]
   record_instruments_due: 2026-09-28
+  record_read:
+    - docket: "73568304"
+      read_on: 2026-09-29
+      through_entry_id: 92338
+      through_entry_at: 2026-09-21
+      verdicts: {}
+    - docket: "73141063"
+      read_on: 2026-09-29
+      through_entry_id: 92017
+      through_entry_at: 2026-08-27
+      verdicts: {}
   renders_as: "A D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"
 
 # READ 2026-09-29 IN THE COURTS' OWN WORDS, AND REWRITTEN TO NAME THE SECTIONS EACH
@@ -490,6 +569,17 @@
   falsified_by: "a Supreme Court order vacating or modifying the stay, or its end on its own terms: the D.C. Circuit's disposition of 26-5243 (with 26-5301) and then no timely certiorari petition, a denial of certiorari, or, after a grant, the Court's judgment sent down; or an order vacating or modifying the Jun 22 order itself, by the D.D.C. (1:25-cv-03501) or by a D.C. Circuit mandate. The instruments are D.C. Circuit docket 26-5243 and Supreme Court docket 26A308, read directly, and a search of the Court's docket for the caption, since a certiorari petition takes a new number"
   status: active
   record_instruments: [73544809, 71499795]
+  record_read:
+    - docket: "73544809"
+      read_on: 2026-09-29
+      through_entry_id: 91411
+      through_entry_at: 2026-09-25
+      verdicts: {}
+    - docket: "71499795"
+      read_on: 2026-09-29
+      through_entry_id: 20446
+      through_entry_at: 2026-07-08
+      verdicts: {}
   renders_as: "The D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"
 
 # RULED 2026-09-29 (Corey): what the per curiam says of the NVRA, its own entry and its own

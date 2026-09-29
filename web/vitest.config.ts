@@ -26,7 +26,9 @@ import { resolve } from "node:path";
 export default defineConfig({
   test: {
     environment: "node",
-    include: ["lib/**/*.test.ts", "components/**/*.test.ts"],
+    // scripts/: assert-gates' checks, run as ci.yml runs them, on mutated copies of the
+    // real files (scripts/assert-gates.test.ts).
+    include: ["lib/**/*.test.ts", "components/**/*.test.ts", "scripts/**/*.test.ts"],
   },
   // VITEST'S TRANSFORM ONLY, and it must be set here rather than in tsconfig. tsconfig
   // says `jsx: "preserve"`, which is correct and must stay: it hands raw JSX to Next's

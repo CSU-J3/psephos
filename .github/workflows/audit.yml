@@ -65,10 +65,19 @@ permissions:
   contents: read
   issues: write
 
+# One run at a time (2026-09-29): a dispatch and a lagged scheduled run queue rather than
+# race the flag step's read-the-markers-then-post, or both open a standing issue. Harmless
+# to the audit, which is read-only and idempotent.
+concurrency:
+  group: audit
+  cancel-in-progress: false
+
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    # 15, not 10, since the flag steps (2026-09-29): each is bounded at 3 minutes below, so
+    # a hang in one becomes a step failure its continue-on-error absorbs, not a job timeout.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -178,4 +187,112 @@ jobs:
           else
             echo "opening the standing issue"
             gh issue create --title "$TITLE" --body-file issue-body.md
+          fi
+
+      # RECHECK FLAGS (Corey, 2026-09-29): an order-like entry on a docket a gate lists,
+      # above that docket's last reading (tools/recheck_flags.py; coverage_audit section 9
+      # reports the same flags). From day one each reaches Corey as a comment on its own
+      # standing issue, titled and worded as a flag rather than a failure, so flags reach
+      # him through the election window. His verdicts on those comments are the
+      # measurement the alarm bar will be judged on.
+      #
+      # NEVER RED. `continue-on-error`, and it runs whatever the audit's verdict: a flag is
+      # a prompt to read, and a run that turned red on one would teach its reader to
+      # ignore red. A step that CANNOT run still shows as an annotated step in the run.
+      #
+      # NEW FLAGS ONLY. Every comment ends with a marker naming the entry ids it posts;
+      # this step reads the open issue's body and comments (`gh issue view`, a read) and
+      # the tool posts only ids no marker names. A flag stays on the record until a person
+      # moves the gate's reading past it; closing the issue makes the next run open a new
+      # one with every flag still above a watermark.
+      - name: Comment new recheck flags on their standing issue
+        id: flags
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: recheck flags
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          # The read-only token, for the tool's read; both, for the scrub below.
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
+        run: |
+          set -o pipefail
+          # The workflow's own bot opened the issue and wrote the markers; anyone else's
+          # issue or comment is not read, so an invisible marker in a stranger's comment
+          # cannot hide a flag, nor a look-alike issue capture them. gh names the bot
+          # "app/github-actions" on an issue and "github-actions" on a comment (read off
+          # this repo's issues, 2026-09-29); exact matches, no regex escapes to mangle.
+          num=$(gh issue list --state open --limit 100 --json number,title,author \
+                  --jq 'def bot: (.author.login // "") as $l | ["app/github-actions", "github-actions", "github-actions[bot]"] | any(. == $l); [.[] | select(.title == env.TITLE) | select(bot)] | first | .number // empty')
+          : > flags-posted.txt
+          if [ -n "$num" ]; then
+            gh issue view "$num" --json author,body,comments --jq '
+              def bot: (.author.login // "") as $l | ["app/github-actions", "github-actions", "github-actions[bot]"] | any(. == $l);
+              (select(bot) | .body), (.comments[] | select(bot) | .body)' > flags-posted.txt
+          fi
+          # tee: what the tool said reaches the fault step below if this one fails.
+          python -m tools.recheck_flags --comment-body flags-body.md \
+            --posted flags-posted.txt --run-url "$RUN_URL" 2>&1 | tee flags.out
+          if [ ! -s flags-body.md ]; then
+            echo "no new recheck flags"
+            exit 0
+          fi
+          # Scrubbed before it is posted, as every issue body is (unit 99, 2026-09-28).
+          python3 "$GITHUB_WORKSPACE/tools/scrub_issue_body.py" flags-body.md
+          if [ -n "$num" ]; then
+            echo "commenting on existing issue #${num}"
+            gh issue comment "$num" --body-file flags-body.md
+          else
+            echo "opening the standing issue"
+            gh issue create --title "$TITLE" --body-file flags-body.md
+          fi
+
+      # A FLAG LANE THAT CANNOT RUN SAYS SO (review of this build, 2026-09-29). The step
+      # above can only fail on breakage -- a malformed reading, a database or token error,
+      # gh, the scrub -- never on a flag, and continue-on-error keeps that breakage off the
+      # run's status. Without this step a dead lane would go quiet through the election
+      # window, the shape unit 99's dead-lane alarm exists against. So the failure reaches
+      # the same standing issue, worded as a lane fault, still never red.
+      - name: Report a recheck-flags run that could not run
+        if: ${{ !cancelled() && steps.flags.outcome == 'failure' }}
+        continue-on-error: true
+        timeout-minutes: 3
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: recheck flags
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          # The run's credentials, for the scrub below and nothing else.
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_READ_TOKEN }}
+        run: |
+          {
+            echo "cc @CSU-J3"
+            echo
+            echo "**Recheck flags could not run** in this audit, so no flag was checked or posted."
+            echo "A fault in the flag lane, not a flag; it does not turn the run red."
+            echo
+            echo "Run: ${RUN_URL}"
+            echo
+            echo '```'
+            if [ -s flags.out ]; then
+              tail -n 40 flags.out
+            else
+              echo "(the flag tool wrote nothing -- see the run log linked above)"
+            fi
+            echo '```'
+          } > flags-fault.md
+          python3 "$GITHUB_WORKSPACE/tools/scrub_issue_body.py" flags-fault.md
+          # The workflow's own bot opened the issue and wrote the markers; anyone else's
+          # issue or comment is not read, so an invisible marker in a stranger's comment
+          # cannot hide a flag, nor a look-alike issue capture them. gh names the bot
+          # "app/github-actions" on an issue and "github-actions" on a comment (read off
+          # this repo's issues, 2026-09-29); exact matches, no regex escapes to mangle.
+          num=$(gh issue list --state open --limit 100 --json number,title,author \
+                  --jq 'def bot: (.author.login // "") as $l | ["app/github-actions", "github-actions", "github-actions[bot]"] | any(. == $l); [.[] | select(.title == env.TITLE) | select(bot)] | first | .number // empty')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file flags-fault.md
+          else
+            gh issue create --title "$TITLE" --body-file flags-fault.md
           fi
