@@ -2,13 +2,52 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-09-28 (UTC).
+Last updated: 2026-09-29 (UTC).
 
 ---
 
 ## Owed right now
 
-### The SAVE-system stay READ 2026-09-29 and a gated sentence PROPOSED; gate coverage and recheck flags RULED, to build after Corey's word; the legislation watch list gets a text test
+### The SAVE gate RULED and applied, EO 14248's three orders READ and its gate rewritten, 2026-09-29; the page HELD at the checkpoint for Corey's word; S. 5271 and H.R. 9368 JOIN the watch list
+
+**Corey's rulings, 2026-09-29 (second brief).** (1) `dhs-save-system-stayed` as proposed, its text ending at the stay; the NVRA part its own gate and sentence directly after, attributed to the Court, falsified by a decision in No. 25-1017; tab 1's lead and tab 2's "the rest" except the provision, each pointing at the gate; tab 2's path retitled "DOJ's voter-roll suits reach the Supreme Court". (2) `eo-14248-enjoined` read in the three courts' own words and rewritten to name the sections each enjoins, in the same push; no interim wording; stop if any order is stayed, narrowed or vacated. (3) Frames of tab 1 and tab 2 at 1440 and 390, then stop before committing the page. (4) S. 5271 and H.R. 9368 join the watch list; H.R. 7265 and H.R. 7182 owed; H.R. 4889 a scope question.
+
+**(1) APPLIED, uncommitted, for the checkpoint.**
+- **`dhs-save-system-stayed`** renders "...has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition". Its falsifier loses the NVRA clause, which moved.
+- **`dhs-save-stay-nvra-limit`**, new, A1, asserted 2026-09-25: "The Court said the NVRA's 90-day bar on systematic voter-roll removals limits the stay's potential impact, and that individualized inquiries are permitted under federal law in that period" (slip op. 6 and n. 2). Falsified by a decision in No. 25-1017; retired with the stay's gate if that falls.
+- **Its recheck, 2026-12-09, from No. 25-1017's schedule**, read off the Court's docket 2026-09-29: certiorari granted Jun 29, 2026; respondents' merits briefs due Oct 13; set for argument Dec 8, 2026. The day after argument is the first on which a decision can exist.
+- **Not on the record's clock:** the 90-day period the sentence speaks of, for the Nov 3 general election, began Aug 5 and ends with it. After Nov 3 the Court's words stay true as what it said but describe a closed period. Corey may prefer a Nov 4 recheck for that reason.
+- **The page:** tab 1's lead reads "Whether either operates in full today is not in the record. The sources below give where parts of each stand, [the SAVE-system changes EO 14248 prompted] among them. For EO 14248: ..."; "Separately," introduces the stay after EO 14248's clause, and the NVRA sentence follows the stay; "For EO 14399:" restarts the list, so no other gate's text changes case. Tab 2's step reads "... · the rest not in the record, apart from [the SAVE-system changes 14248 prompted], also on the first tab". The NVRA sentence has its own chip (recheck Dec 9).
+
+**(2) EO 14248'S THREE ORDERS, READ 2026-09-29: NOTHING STAYED OR VACATED; ONE NARROWING CANDIDATE, put to Corey at the checkpoint rather than decided.** Read off RECAP inline: 32 CourtListener API requests and 14 public-storage downloads; three readers and three skeptics then read the saved texts, with no credentials in reach. The skeptics checked 132 quotes and found 131 verbatim (the one miss dropped a footnote marker). The dockets, none yet held in the record:
+- **D.D.C.,** *LULAC v. Executive Office of the President*, 1:25-cv-00946 (CourtListener 69823792; closed Mar 31, 2026). **2(a)** enjoined in full by ECF 217 (Oct 31, 2025), with ECF 218 p. 77 saying the injunction "shall run only in favor of the named Plaintiffs, and only they may enforce it". **2(d) and 3(d)** enjoined in full by ECF 235 (Jan 30, 2026), restated in the final judgment, ECF 256. Only a Privacy Act declaration for 2(b) and 3(a), and the SAVE and Numident request held moot. Judgment for defendants on 4(a), 7(a) and 7(b) as unripe.
+- **W.D. Wash.,** *Washington v. Trump*, 2:25-cv-00602 (69845185), ECF 126 (Jan 9, 2026), a permanent injunction on partial summary judgment. **2(a) and 4(b)** enjoined in full ("total injunction"). **4(a) and 7(b)** "against Plaintiffs". The Attorney General may not "enforce" (meaning "compel") 2 U.S.C. 7 or 3 U.S.C. 1 against their timely ballots: the **7(a)** relief, as to Washington and Oregon only. 2(d) was dismissed for standing and 4(d) dropped by the plaintiffs; **3(d) is still on cross-motions**, fully briefed May 15 and undecided on the docket as read.
+- **D. Mass.,** *California v. Trump*, 1:25-cv-10810 (69841778). ECF 190 of Jun 24, 2026 itself "PERMANENTLY ENJOINS", so "since Jun 24" held; ECF 194 of Jul 13 is the judgment. **2(a) and 3(d)** in full. **4(a)** as to the plaintiff States except Wisconsin. **7(a) and 7(b)** as to thirteen Ballot Receipt States. 2(d) left by stipulation in Dec 2025, not by a narrowing order.
+- **The appeals:** D.C. Cir. 25-5476, consolidated with 25-5478, 26-5099, 26-5102 and 26-5182; appellants' briefs are due Oct 14 and no stay was sought. 9th Cir. 26-1429 has been held since May 6 pending the district court; that is a stay of the APPEAL, not the injunction. 1st Cir. 26-2038, from the D. Mass. judgment, has appellants' brief due Nov 9. 25-1726, from D. Mass.'s 2025 preliminary injunction, is still set for argument Dec 9. No Supreme Court application appears in any of them.
+- **FOR COREY, the one narrowing candidate:** D. Mass.'s judgment of Jul 13 (ECF 194) restates the Jun 24 decree (ECF 190) in narrower words. ECF 190 enjoins "Defendants, except President Trump, from taking any action to implement or enforce" each section. ECF 194 binds only the official each section directs (the EAC for 2(a), 4(a) and 7(b); the Secretary of Defense for 3(d); the Attorney General for 7(a)) from "implementing" it, or otherwise doing the conduct named. The sections and States are the same, and it is the same court entering final judgment at the parties' joint request. The claim is written from ECF 194. If Corey rules it a narrowing, it is a gate finding.
+- ***Watson v. RNC*, No. 24-1260,** flagged by ECF 190 n. 13 as pending on the Election Day statutes behind 7(a) and 7(b), was decided Jun 29, 2026: "Judgment REVERSED and case REMANDED", 5-4, per the Court's docket; the opinion itself was not read. It modified none of these injunctions.
+- **RECAP lags PACER:** the listings end between Jul 10 (W.D. Wash., the widest gap at 81 days, where a ruling on 3(d) would change that court's list) and Sep 28 (1st Cir.).
+
+**The rewrite** (uncommitted, for the checkpoint) is A1 from the three decrees, asserted 2026-07-13, recheck 2026-10-26. It renders section by section: 2(a) in all three courts; 3(d) in D.D.C. and D. Mass.; 2(d) in D.D.C.; 4(b) in W.D. Wash.; and 4(a), 7(a) and 7(b) "only as to plaintiff States, in W.D. Wash. and D. Mass.". Each section carries a gloss of what it does, in the order's own terms. The falsifier names every docket above and adds a W.D. Wash. order on 3(d). Tab 2's pointer becomes "the enjoined parts of 14248".
+
+**What the read corrected:**
+- **"Registration provisions" was wrong both ways.** Enjoined sections 4(b) and 7(a)-(b) are not registration provisions, and registration provisions 2(b) and 3(a) are enjoined nowhere.
+- **The falsifier's 26-5098 is a pro se movant's appeal from the denial of intervention,** summarily affirmed Jul 2 and cut from the consolidation. The appeals from the Jan 30 order and the final judgment are 26-5099, 26-5102 and 26-5182. California v. USPS para. 94, where the number came from, was wrong.
+- **The D. Mass. docket number,** which no complaint gave, is 1:25-cv-10810; its appeal from the judgment is 26-2038.
+
+**(3) CHECKPOINT:** frames of tab 1 and tab 2 at 1440 and 390 with (1) and (2) applied, and `assert-gates` run on the result; see the report of 2026-09-29. **Nothing in (1) or (2) is committed until Corey's word.**
+
+**(4) THE WATCH LIST, APPLIED 2026-09-29:** `config/sources.yaml` gains **S. 5271** and **H.R. 9368**, with the text test and each bill's deciding provision beside them (HAVA sec. 303A(a)(1)(A), verified verbatim in both printed texts).
+- **No `short_title` on either:** `collectors/news.py` merges every watchlist short title into `subject_terms`, and a subject term routes movement-term news to the vehicle, S. 1383. "Voter ID Act" would have attached photo-ID reporting to the SAVE vehicle, so both bills are matched by number only.
+- **OWED:** H.R. 7265 and H.R. 7182, each decided when its reported text is printed.
+- **FOR COREY, a scope question:** H.R. 4889's exclusion turns on whether vote dilution through districting is in scope. If it is, the test gains a clause rather than an exception.
+
+**OWED:**
+1. Corey's word on the page: tab 1, tab 2, the three gates.
+2. After it, gate coverage (check 5) and recheck flags, as ruled in the entry below.
+3. The first October state run (06:17Z, 10-01), as armed.
+
+### The SAVE-system stay READ 2026-09-29 and a gated sentence PROPOSED (RULED the same day, see the entry above); gate coverage and recheck flags RULED, to build after Corey's word; the legislation watch list gets a text test
 
 **Corey's rulings, 2026-09-29.** (1) Read the Supreme Court's stay in 26A308 now, list every page claim it reaches, propose a gated A1 sentence and shoot it. (2) Gate coverage approved as designed. (3) Recheck flags approved, with one change. (4) The legislation watch list gets a text-based membership test. Order: 1, then 4's read, then stop for Corey on both; 2 and 3 build after his word.
 
@@ -2929,7 +2968,7 @@ Pre-existing, not introduced by Part B, and not a licence matter.
 
 **PROPOSED 2026-09-28, NOT QUEUED (unit 99, ruling 1c): receipts for executive and news.** Their receipts would be the Federal Register answering and at least one news feed answering. Going blind silently does not depend on having a key, and today neither channel writes a `channel_runs` row.
 
-**PROPOSED 2026-09-28, NOT QUEUED — the legislation watch list. Corey scopes it.** *(2026-09-29: the D0 read, a text test drafted and applied to nine bills, and a proposed list are in *Owed right now*, under the SAVE-system stay.)* The channel's six watched bills (H.R. 22, S. 128, S. 3752, H.R. 7296, H.R. 7300 and S. 1383) have not moved since 2026-03-26. The channel has written no item since its bootstrap on 2026-06-28, 354 scheduled runs (unit 99's D0). Whether the watch list covers what the channel is for, five weeks before the 2026-11-03 election, is Corey's to scope.
+**PROPOSED 2026-09-28, NOT QUEUED — the legislation watch list. Corey scopes it.** *(2026-09-29: the D0 read, a text test drafted and applied to nine bills, and a proposed list are in *Owed right now*, under the SAVE-system stay. S. 5271 and H.R. 9368 joined on Corey's word the same day.)* The channel's six watched bills (H.R. 22, S. 128, S. 3752, H.R. 7296, H.R. 7300 and S. 1383) have not moved since 2026-03-26. The channel has written no item since its bootstrap on 2026-06-28, 354 scheduled runs (unit 99's D0). Whether the watch list covers what the channel is for, five weeks before the 2026-11-03 election, is Corey's to scope.
 
 **OPENED 2026-09-28, NOT BUILT: display captions.** Carried forward from the EO 14399 unit's item 9, which closed with CourtListener still returning three D.D.C. captions in capitals. Those are 73143746, 73131864 and 73134260, and the last shares its caption with LULAC's 2025 EO 14248 suit (1:25-cv-00946).
 - **The shape, ruled 2026-09-27 (Corey):**
@@ -2948,7 +2987,7 @@ Pre-existing, not introduced by Part B, and not a licence matter.
 **PROPOSED 2026-09-27, NOT QUEUED — visible corrections. Corey scopes it.** When a gated claim is corrected rather than rechecked, the page shows a dated "corrected" note carrying the prior wording, from a field on the register entry. The first case is `eo-14399-usps-rule-enjoined`, whose clause read "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections" from `cb09416` until the rewording of 2026-09-27; the register records it only in a comment, and the page shows nothing.
 
 **OPENED 2026-09-26, NOT BUILT: the EO 14248 dockets.** Opened by the checkpoint ruling on the EO 14399 unit's membership test, which placed LWV v. DHS in the class under EO 14248 while ruling (d) of that unit kept 14248 out of it.
-- **The candidates, as the EO 14399 complaints cite them, none of them yet read on CourtListener:**
+- **The candidates, as the EO 14399 complaints cite them.** *(Read on CourtListener 2026-09-29 for `eo-14248-enjoined`, in *Owed right now*: D.D.C. 69823792, W.D. Wash. 69845185, D. Mass. 1:25-cv-10810 = 69841778; the appeals from the Jan 30 order are 26-5099, 26-5102 and 26-5182, not 26-5098.)*
   - *LULAC v. Executive Office of the President*, D.D.C. 1:25-cv-0946 (NAACP's complaint cites it with 25-0952 and 25-0955). Appeals D.C. Cir. 25-5476, from 808 F. Supp. 3d 29, and 26-5098, from 818 F. Supp. 3d 34.
   - *Washington v. Trump*, W.D. Wash. 2:25-cv-00602, appeal 9th Cir. 26-1429.
   - *California v. Trump*, D. Mass., the states' 2025 suit, permanently enjoined Jun 24, 2026. Appeal 1st Cir. 25-1726, from its 2025 preliminary injunction (786 F. Supp. 3d 359). Its district docket number is not in any complaint read.

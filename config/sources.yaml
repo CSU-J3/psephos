@@ -67,6 +67,37 @@ legislation:
       number: 1383
       is_vehicle: true
       watch_reason: Unrelated bill used as the vehicle; voting provisions passed House 218-213 as an amendment (Feb 11 2026).
+    # MEMBERSHIP IS A TEXT TEST (Corey, 2026-09-29): a bill joins if its TEXT would change
+    # who can register or vote, what proof voters must show, or how ballots are cast or
+    # counted -- read from the bill text, not its title. The six above predate the test.
+    # Each entry below carries the provision that decided it, quoted from its latest
+    # printed text (Congress.gov, read 2026-09-29). Owed, not yet decided: H.R. 7265 and
+    # H.R. 7182, each on its reported text when printed. H.R. 4889 (redistricting) is out
+    # pending a scope question, whether vote dilution through districting is in scope,
+    # left to Corey; if it is, the test gains a clause rather than an exception.
+    #
+    # NO short_title ON THESE. collectors/news.py merges every watchlist short_title into
+    # subject_terms, and a subject term routes movement-term news to the VEHICLE bill
+    # (S. 1383) at C3: "Voter ID Act" would attach photo-ID reporting to the SAVE vehicle.
+    # These bills are matched by number only.
+    #
+    # S. 5271, new HAVA sec. 303A(a)(1)(A): "the appropriate State or local election
+    # official may not provide a ballot for an election for Federal office to an
+    # individual who desires to vote in person unless the individual presents to the
+    # official a valid physical photo identification." Also sec. 303A(a)(2)(A) for ballots
+    # cast other than in person, and a 3-day cure for provisional ballots.
+    - bill_id: s5271-119
+      congress: 119
+      type: s
+      number: 5271
+      watch_reason: Photo ID to vote in federal elections (new HAVA sec. 303A); cloture on the motion to proceed failed 52-46 (Aug 8 2026).
+    # H.R. 9368, the Voter ID Act, the same sec. 303A(a)(1)(A) words in the committee's
+    # reported text.
+    - bill_id: hr9368-119
+      congress: 119
+      type: hr
+      number: 9368
+      watch_reason: Voter ID Act; photo ID to vote in federal elections (new HAVA sec. 303A); on the Union Calendar (Jul 15 2026).
   # Formal parliamentary phrases. These match bill_actions text precisely but almost
   # never appear in news headlines/summaries (verified: 0 of 539 live items).
   procedural_terms:
