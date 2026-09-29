@@ -9278,5 +9278,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/michigan/2026/09/28/how-to-vote-general-election-2026-early-absentee-ballot-id",
     "title": "Everything you need to know about voting in Michigan in 2026"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117183,
+    "kind": "item",
+    "occurred_at": "2026-09-29T00:26:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-responds-to-dnc-lawsuit-offers-no-records-on-ballot-seizure-plans",
+    "title": "Trump DOJ responds to DNC lawsuit, offers no records on ballot seizure plans"
   }
 ]
