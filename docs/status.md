@@ -8,6 +8,67 @@ Last updated: 2026-09-29 (UTC).
 
 ## Owed right now
 
+### Gate coverage (check 5) and the recheck flags: BUILT and SHIPPED 2026-09-29 on Corey's word; the first flag is live; the first scheduled readings are owed
+
+**Corey's word, 2026-09-29:** the layout frames pass; commit the split, then build (2) and (3) as approved that day. Stop only for a genuine finding, and report the first scheduled audit and dom-checks readings after the push. The rulings are in the entry below this one's neighbour, *The SAVE-system stay READ*, (2) and (3).
+
+**(2) CHECK 5, GATE COVERAGE,** in `web/scripts/assert-gates.mjs`, exit code 5, beside check 4.
+- **The class:** every seed or held row with `category: executive-order`.
+- **Covered:** listed on some active or stale authored gate's `record_instruments`, or carrying a reason in `gate_coverage` on its seed.
+- **`consolidated`:** `into` a listed class lead, plus a `record` (case_id, entry_at, quote) that must appear on the held timeline on that date, or is pending until held.
+- **`no-claim-order`:** `read_through`, on or before the record's clock plus a day.
+- **Both kinds** carry `ruled`.
+- **Failures:** a listed docket carrying a reason, a reason outside the class, and an uncovered docket all fail. There is no grace. A malformed reason is exit 3.
+- **Where it runs:** in ci.yml's `--expiry-only` run (now checks 3, 4 and 5), and in the DOM lane, whose issue step maps exit 5.
+- **The commit carries the two reasons:** 1:26-cv-01132 and 1:26-cv-01151, consolidated into 01114 and found on its timeline as item 115671, the clerk's notice of Apr 14.
+- **Measured:** without them the check exits 5 on exactly those two, which is the D0's seed-commit case.
+- **Tests:** `web/scripts/assert-gates.test.ts` (vitest, the web job) runs the script on mutated copies of the real files. There are 21 cases, and each planted fault fails with its own code.
+
+**(3) THE RECHECK FLAGS,** `tools/recheck_flags.py` (read-only).
+- **The test:** the D0's V4, ported verbatim. `tests/test_recheck_flags.py` pins it to the D0's measurement on its labelled window, committed as a fixture: 15 flags, 8 true, 7 false, 0 missed, against the naive test's 51 flags and 1 miss.
+- **The watermark:** each gate with `record_instruments` now carries `record_read`, one reading per listed docket (read_on, through_entry_id, through_entry_at, verdicts). assert-gates refuses any other shape (exit 3). A flag is an order-like entry above the watermark.
+- **The first readings are the D0's:** each class watermark is the MAX(id) of its dump of 2026-09-29, 18:13Z. Every row under it that the test could raise was labelled; the rest were screened, not read.
+  - 71499795's watermark is 20446 (the Jul 8 stay denial), the last entry the stay reading covered. The review caught the first draft setting it at the dump's 93133 and calling unread orders read.
+  - No verdicts yet: the D0's labels were in-sample, and the measurement starts with the verdicts given on flags.
+- **Verdicts accumulate:** a moved reading keeps its docket's earlier verdicts, and `--fragment` carries them forward, so the tally is the period's.
+- **A watermark above the held record** is named in the report, not silent.
+- **Report:** `coverage_audit` section 9 prints the flags daily, with the naive count beside them and the verdict tally against the ruled bar. It stays out of the exit code even when it cannot run.
+- **Delivery:** audit.yml's new step comments new flags on a standing issue titled "recheck flags".
+  - It is worded as a flag, scrubbed like every issue body, and marks the entry ids it posts so no flag posts twice.
+  - It trusts only issues and markers the workflow's bot wrote, since an invisible marker in a stranger's comment could otherwise hide a flag.
+  - It is bounded at 3 minutes and carries `continue-on-error`, so it never turns the run red.
+  - A second step reports on the same issue if the flag step itself cannot run, so a dead lane is not silent.
+  - Runs are serialised by a concurrency group.
+- **Helper:** `python -m tools.recheck_flags --fragment` prints a reading to fill in.
+
+**THE REVIEW, before commit:** four reviewers over the diff, each finding sent to a skeptic. Of 30 findings, 24 were confirmed and all were fixed in this build. They were:
+- tests that could not fail: the quote comparison, the notice-of-appeal exemption, the watermark's boundary, a positive twin;
+- verdicts that could not accumulate;
+- an unbounded, unserialised, spoofable and silently dying flag step;
+- comments that still counted checks 3 and 4;
+- a provenance comment that overstated what was read.
+A local check also caught a jq regex escape that Git Bash mangled; the bot filter now uses exact matches.
+
+**THE FIRST FLAGS: six on 71499795, the D.D.C. SAVE-system suit (1:25-cv-03501), above its honest watermark.**
+- 57258 and 67589: the Jul 18 and Jul 20 minute orders on the plaintiffs' 128 Motion to Enforce Judgment. On Jul 20 the court DEFERRED ruling, pending the Eleventh Circuit's review of the N.D. Fla. order in *Florida v. DHS*, and ordered weekly status reports.
+- 67651: its short form.
+- 86725 and 86794: Texas's notices of appeal of Aug 21, the appeal consolidated as 26-5301.
+- **93145, filed Sep 29, "Order on Motion to Enforce Judgment", found by the first live run (inline).**
+- **Unreadable:** a short form with no readable twin, its content only in the PDF. The CourtListener entry has no number, no document and no text, and RECAP's September listing holds no motion to enforce.
+- **What the docket shows around it:**
+  - DHS's notice of Sep 14 (ECF 146) disclosed that DHS queried SSA data over the SAVE API connection for law-enforcement investigations. The plaintiffs said this raised "serious questions about Defendants' compliance with the Court's vacatur order" (ECF 147) and pressed eight factual questions (ECF 148).
+  - A separate N.D. Fla. order of Jul 7, 2026 (*Florida v. DHS*) had reopened SSA data for four States' SAVE queries.
+- **Not a stop:** `dhs-save-system-stayed`'s falsifier is an order vacating or modifying the Jun 22 order itself, or the Supreme Court's stay, and a district order on enforcement is neither on its face. It is what the flag exists for: it will be the first comment on the standing issue, for Corey's verdict.
+- **Spend:** 1 CourtListener request, 3 public downloads.
+
+**OWED:**
+1. The first scheduled dom-checks run after the push (03:17Z Sep 30, 9:17 PM MDT Sep 29) reads check 5 in the DOM lane.
+2. The first scheduled audit after the push (05:17Z Sep 30, 11:17 PM MDT Sep 29) prints section 9 and posts the first flag comment.
+3. Corey's verdicts on the six flags, 93145 first, and the reading that moves 71499795's watermark past them.
+4. Before the EO 14248 unit seeds:
+   - the order-like test widened to Ninth Circuit, W.D. Wash. and D.C. Circuit forms, and re-tested;
+   - a `superseded` reason kind for LWV v. DHS's district row.
+
 ### The SAVE gate RULED and applied, EO 14248's three orders READ and its gate rewritten, 2026-09-29; the page PASSED at the checkpoint and SHIPPED the same day; S. 5271 and H.R. 9368 JOIN the watch list
 
 **Corey's word on the checkpoint, 2026-09-29: the frames pass, subject to (c), and the page ships for accuracy.**
@@ -53,7 +114,7 @@ Last updated: 2026-09-29 (UTC).
 
 **OWED:**
 1. ~~Corey's word on the page~~: given 2026-09-29, and the page shipped.
-2. Gate coverage (check 5) and recheck flags, as ruled in the entry below.
+2. Gate coverage (check 5) and recheck flags, as ruled in the entry below: BUILT and SHIPPED 2026-09-29; see the entry above this one.
 3. The first October state run (06:17Z, 10-01), as armed.
 4. **The executive-order fact's layout: OPENED, BUILT and SHIPPED 2026-09-29, Corey passing its frames.** Split tab 1's executive-order fact into one fact per order, one gated claim per line instead of semicolon-joined clauses. The order's name then sits in the fact's heading, and the lead-in that doubles it ("For EO 14248: three courts have permanently enjoined parts of EO 14248") goes away. `renders_as` stays self-contained for each gate. Frames at 1440 and 390, then stop.
    - **As built:** one fact per order, EO 14248 (Mar 25, 2025) and EO 14399 (Mar 31, 2026), each with its own chips and one gated claim per line (`ul.claims`).
@@ -88,9 +149,9 @@ Last updated: 2026-09-29 (UTC).
 - **An audit before the frames** (one reader against the saved court texts) caught the first draft saying the system "may run" (no court said it; the Court stayed an order), dropping the Court's "potential" and its turn to individualized inquiries, a falsifier that let an affirmance end a stay that runs through certiorari, and bare "SAVE" beside the SAVE Act. All corrected above.
 - **Left for Corey:** `eo-14248-enjoined`'s wording (read the three decrees, or an interim "parts of EO 14248 are enjoined"); the voter-roll path's title; whether the NVRA clause stays on the page.
 
-**(2) GATE COVERAGE, RULED 2026-09-29: approved as designed; builds after Corey's word on (1) and (4).** Check 5 in `web/scripts/assert-gates.mjs` beside check 4. `gate_coverage` reasons on the seeds in `config/sources.yaml`: "consolidated" names a listed lead and quotes the notice, checked against the record once held; "no claim order" carries who ruled and a read-through date. No grace period. The class is the executive-order dockets only. The commit adding check 5 carries the reasons for 01132 and 01151.
+**(2) GATE COVERAGE, RULED 2026-09-29: approved as designed; builds after Corey's word on (1) and (4). (BUILT 2026-09-29: *Gate coverage (check 5) and the recheck flags*, above.)** Check 5 in `web/scripts/assert-gates.mjs` beside check 4. `gate_coverage` reasons on the seeds in `config/sources.yaml`: "consolidated" names a listed lead and quotes the notice, checked against the record once held; "no claim order" carries who ruled and a read-through date. No grace period. The class is the executive-order dockets only. The commit adding check 5 carries the reasons for 01132 and 01151.
 
-**(3) RECHECK FLAGS, RULED 2026-09-29: approved with one change; builds after Corey's word on (1) and (4).** Approved: the proposed order-like test; per-docket watermarks on `case_entries.id` with the reader's verdicts; the daily `coverage_audit` report line with the naive count beside it; the alarm bar (no missed operative order across the period, at most a third of flags false, the period running to at least 2026-11-12 and 30 verdicts). **The change:** from day one, a flag on a gate-listed docket also comments on a standing issue, titled and worded as a flag rather than a failure and never turning a run red, so flags reach Corey during the election window; his verdicts on those comments are the measurement. Ninth Circuit and other courts' forms are added and re-tested before any EO 14248 docket seeds. **A test case already on the record:** the D.C. Circuit's Sep 4 per curiam stay denial in 26-5243 (88677).
+**(3) RECHECK FLAGS, RULED 2026-09-29: approved with one change; builds after Corey's word on (1) and (4). (BUILT 2026-09-29, the same entry.)** Approved: the proposed order-like test; per-docket watermarks on `case_entries.id` with the reader's verdicts; the daily `coverage_audit` report line with the naive count beside it; the alarm bar (no missed operative order across the period, at most a third of flags false, the period running to at least 2026-11-12 and 30 verdicts). **The change:** from day one, a flag on a gate-listed docket also comments on a standing issue, titled and worded as a flag rather than a failure and never turning a run red, so flags reach Corey during the election window; his verdicts on those comments are the measurement. Ninth Circuit and other courts' forms are added and re-tested before any EO 14248 docket seeds. **A test case already on the record:** the D.C. Circuit's Sep 4 per curiam stay denial in 26-5243 (88677).
 
 **(4) THE LEGISLATION WATCH LIST.**
 - **S. 1383, the SAVE America Act vehicle, is watched and has not moved since 2026-03-26** ("Considered by Senate (Message from the House considered)").
@@ -106,7 +167,7 @@ Last updated: 2026-09-29 (UTC).
 
 **OWED:**
 1. Corey's word on (1)'s proposal and (4)'s list.
-2. (2) and (3) built after his word.
+2. ~~(2) and (3) built after his word~~: built 2026-09-29.
 3. Thursday's first October state run (the 06:17Z slot of 10-01): the ledger line opens `ledger 2026-10: 0 of 8000 ... 31 state slot(s) left incl. this one -> allowance 258`, and state writes its `ok` row.
 
 ### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILT, REVIEWED and SHIPPED the same day; the second rulings RULED the same day, the ceiling, secrets in the comment and a dead lane BUILT and R6's state rotation QUEUED as its own unit; the third brief's one scrub for every issue body BUILT the same day; CLOSED 2026-09-29 on its four owed reads
