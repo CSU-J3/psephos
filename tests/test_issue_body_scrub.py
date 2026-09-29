@@ -518,7 +518,7 @@ def test_the_flag_steps_can_never_turn_the_audit_red():
 def test_markers_are_read_only_from_the_workflows_bot():
     run = _posting_step("audit.yml", FLAG_STEP)["run"]
     assert "select(.title == env.TITLE) | select(bot)" in run
-    assert '"app/github-actions", "github-actions", "github-actions[bot]"' in run
+    assert 'IN("app/github-actions", "github-actions", "github-actions[bot]")' in run
     assert run.count("select(bot)") == 3                           # the issue, its body, comments
 
 

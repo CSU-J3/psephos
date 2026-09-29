@@ -223,13 +223,14 @@ jobs:
           # issue or comment is not read, so an invisible marker in a stranger's comment
           # cannot hide a flag, nor a look-alike issue capture them. gh names the bot
           # "app/github-actions" on an issue and "github-actions" on a comment (read off
-          # this repo's issues, 2026-09-29); exact matches, no regex escapes to mangle.
+          # this repo's issues, 2026-09-29); exact matches, no regex escapes to mangle
+          # and no jq variable for shellcheck to read as a shell one (SC2016).
           num=$(gh issue list --state open --limit 100 --json number,title,author \
-                  --jq 'def bot: (.author.login // "") as $l | ["app/github-actions", "github-actions", "github-actions[bot]"] | any(. == $l); [.[] | select(.title == env.TITLE) | select(bot)] | first | .number // empty')
+                  --jq 'def bot: (.author.login // "") | IN("app/github-actions", "github-actions", "github-actions[bot]"); [.[] | select(.title == env.TITLE) | select(bot)] | first | .number // empty')
           : > flags-posted.txt
           if [ -n "$num" ]; then
             gh issue view "$num" --json author,body,comments --jq '
-              def bot: (.author.login // "") as $l | ["app/github-actions", "github-actions", "github-actions[bot]"] | any(. == $l);
+              def bot: (.author.login // "") | IN("app/github-actions", "github-actions", "github-actions[bot]");
               (select(bot) | .body), (.comments[] | select(bot) | .body)' > flags-posted.txt
           fi
           # tee: what the tool said reaches the fault step below if this one fails.
@@ -288,9 +289,10 @@ jobs:
           # issue or comment is not read, so an invisible marker in a stranger's comment
           # cannot hide a flag, nor a look-alike issue capture them. gh names the bot
           # "app/github-actions" on an issue and "github-actions" on a comment (read off
-          # this repo's issues, 2026-09-29); exact matches, no regex escapes to mangle.
+          # this repo's issues, 2026-09-29); exact matches, no regex escapes to mangle
+          # and no jq variable for shellcheck to read as a shell one (SC2016).
           num=$(gh issue list --state open --limit 100 --json number,title,author \
-                  --jq 'def bot: (.author.login // "") as $l | ["app/github-actions", "github-actions", "github-actions[bot]"] | any(. == $l); [.[] | select(.title == env.TITLE) | select(bot)] | first | .number // empty')
+                  --jq 'def bot: (.author.login // "") | IN("app/github-actions", "github-actions", "github-actions[bot]"); [.[] | select(.title == env.TITLE) | select(bot)] | first | .number // empty')
           if [ -n "$num" ]; then
             gh issue comment "$num" --body-file flags-fault.md
           else
