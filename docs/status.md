@@ -8,7 +8,7 @@ Last updated: 2026-09-28 (UTC).
 
 ## Owed right now
 
-### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILT, REVIEWED and SHIPPED the same day; the second rulings RULED the same day, the ceiling, secrets in the comment and a dead lane BUILT and R6's state rotation QUEUED as its own unit; the third brief's one scrub for every issue body BUILT the same day; it closes when its four reads land and that scrub is pushed
+### Unit 99: a dead credential, and a run cut short, fail loudly. D0 READ and RULED 2026-09-28 (R1-R11); R1 SHIPPED the same day, the rest BUILT, REVIEWED and SHIPPED the same day; the second rulings RULED the same day, the ceiling, secrets in the comment and a dead lane BUILT and R6's state rotation QUEUED as its own unit; the third brief's one scrub for every issue body BUILT the same day; CLOSED 2026-09-29 on its four owed reads
 
 **What it is.** The Congress.gov key sat disabled for 33 green runs, and nothing noticed (see *The Congress.gov key was disabled for eight days*). Corey's scope, widened 2026-09-26: a dead credential, and a budget or cap that cuts a run short, both fail loudly. That includes the status-refresh path that catches the daily cap and returns 0.
 
@@ -290,14 +290,27 @@ Last updated: 2026-09-28 (UTC).
   - The homepage prints the conclusion in brackets beside "Collection is current".
 - **A red that happens only in the heartbeat step gets no comment,** because it comes after the issue step. The heartbeat stays last.
 
-**OWED, before unit 99 closes. It closes when all four read as expected and the one scrub is pushed (the third brief, section 3):**
-1. **(a) The first SCHEDULED collect run on a head carrying `5eb1701`:** green, and no comment on `collect red`. That is the 18:17Z slot of 2026-09-28, lately created about seven hours late.
-   - It should write a `channel_runs` row for legislation and litigation.
-   - The issue step should be `skipped`.
-   - If it goes red, the comment names the channel, class and evidence. Read that first.
-2. **(b) The first 06:17Z state run writes `state ok`,** state's first receipt: the 2026-09-29 slot.
-3. **(c) The 2026-09-29 scheduled dom-checks run on the new head is green.** It is also the dated-ahead transition read.
-4. **The 2026-09-29 scheduled `coverage_audit` run reads §8 at 0,** once the table exists. The audit lane has started later each day (09:55Z, 10:35Z and 11:45Z on 09-26 to 09-28), so this lands around 12:00-13:00Z.
+**THE FOUR OWED READS, all READ 2026-09-29, and all as expected. With the one scrub pushed on 2026-09-28 (`77dc9c4`), unit 99 is CLOSED (the third brief, section 3).**
+1. ~~**(a) The first SCHEDULED collect run on a head carrying `5eb1701`:** green, and no comment on `collect red`.~~ **READ: run `36496885030`,** the 18:17Z slot of 2026-09-28.
+   - Head `77dc9c4`, which carries `5eb1701` and the one scrub. Created 23:14:02Z, a lag of 4h57m02s. Conclusion `success`.
+   - Verdict `success`: `collect verdict: clean (legislation, litigation recorded, receipts fresh)`. No `CREDENTIAL FAILURE`, `NO OK REPLIES`, `RUN CUT SHORT` or `DEFERRED` line, and state printed `not this slot`.
+   - The issue step was `skipped`, and no `collect red` issue exists. The only issue carrying that title is the closed proof, issue 5.
+   - `channel_runs` (Turso, SELECT only): `legislation ok` "6 OK replies" and `litigation ok` "48 OK replies". Its `runs` row reads `success`, 7 items.
+   - **The first collect run on the unit 99 build, so `channel_runs` exists in production from here.**
+2. ~~**(b) The first 06:17Z state run writes `state ok`.**~~ **READ: run `36570523752`,** the 06:17Z slot of 2026-09-29.
+   - Head `6fa6da5`. Created 12:47:47Z, a lag of 6h30m47s. Conclusion `success`.
+   - Verdict: `clean (legislation, litigation, state recorded, receipts fresh)`, and the issue step was `skipped`.
+   - `channel_runs`: `state ok` "7 OK replies" at 13:00:49Z, **state's first receipt**, beside `legislation ok` "6 OK replies" and `litigation ok` "57 OK replies".
+3. ~~**(c) The 2026-09-29 scheduled dom-checks run on the new head is green.**~~ **READ: run `36552049014`,** the 03:17Z slot of 2026-09-29.
+   - Head `6fa6da5`, which carries `aa7d9e3` (the `if:` fix) and `77dc9c4` (the scrub). Created 09:53:13Z, a lag of 6h36m13s.
+   - Every step concluded `success`, and the issue step was `skipped`. Gates read 14 PASS / 0 FAIL on the record's clock 2026-09-29; across the run, 238 PASS lines and no FAIL; every check ended `OK`.
+   - **The dated-ahead transition read** is recorded in that unit's item 4 (*Rows dated after the record's clock*).
+4. ~~**The 2026-09-29 scheduled `coverage_audit` run reads §8 at 0.**~~ **READ: run `36561538856`,** created 11:24:25Z, a lag of 6h07m25s. Head `6fa6da5`, conclusion `success`, issue step `skipped`.
+   - `[8] DEAD-LANE ALARM ... : 0  (expect 0)`, with the newest collect-run row at 2026-09-29T05:55:52Z, 5h28m before the read.
+   - §1, §4, §5, §6 and §7 read 0; §2 reads 19 and §3 reads 1, as reports.
+   - **§8's first scheduled read, and its first against a table that exists.**
+
+**WHAT STAYS OPEN AFTER THE CLOSE, each already recorded where it lives:** the state getBill rotation unit (*Open units*, before January 2027); receipts for executive and news (proposed); the EO 14248 unit's pricing of the 37-of-40 refresh headroom.
 
 ### Two CI holes closed: an empty or local Turso URL fails the collect run, and every dom-checks check reports after a red. RULED and SHIPPED 2026-09-28
 
@@ -341,7 +354,7 @@ Last updated: 2026-09-28 (UTC).
    - Event `schedule`, head `8aed5b9`, created 19:40:24Z, a lag of 7h23m24s. Conclusion `success`.
    - `git merge-base --is-ancestor 62b7acc 8aed5b9` exits 0. It exits 1 on the heads of the five scheduled runs before it.
    - The Actions secret's URL passed the allow-list.
-2. **The first SCHEDULED `dom-checks` run on the new head is green.** The fix shows only on a red, so a green run proves only that the new condition runs the checks at all.
+2. ~~**The first SCHEDULED `dom-checks` run on the new head is green.**~~ **READ 2026-09-29: run `36552049014`,** the 03:17Z slot. Head `6fa6da5` carries `aa7d9e3`, and every step concluded `success`. The fix shows only on a red, so this green proves only that the new condition runs the checks at all, which is what was owed.
 
 
 ### The EO 14399 dockets: CLOSED 2026-09-28. Eight dockets seeded, bound and walked (six suits counted, two lead appeals marked); a sixth suit seeded on a finding; the D.D.C. injunction on the USPS rule carried by its own gate; every owed read landed green
@@ -1312,6 +1325,18 @@ What production showed, read around 02:00Z on 09-26:
    - and, beside it, `/state-bills`' Latest movement opening with HB6414, unmarked and with no divider, and `assert-dated` reading 0 dates after the clock, a green that could not have exercised the marker.
 
    The run gives the counts; the band row, its dot and the sentence are read off the production homepage.
+
+   **READ 2026-09-29, and every part as predicted.**
+   - **The run:** `36552049014`, event `schedule`, head `6fa6da5`, created 09:53:13Z (a lag of 6h36m13s). Every step concluded `success`.
+     - `assert-dated` ran on the page's clock 2026-09-29T05:57:41Z and read **0 dates after the clock, 0 marked**, on every route.
+     - That included `/` (100 dates), `/state-bills` (10), `/state-bills?all=1` and its `sort=state` view (501 each), and `/news` (929).
+     - It is the green that could not have exercised the marker, as predicted.
+   - **The production homepage,** read at 17:41:06Z on the public alias, on record clock 2026-09-29T13:00:17Z:
+     - the HB6414 row ("MI HB6414: Bill Electronically Reproduced 09/24/2026") sits under the 2026-09-29 band;
+     - it carries **no fresh dot**: its dot span has no fill, where the 13 rows collected in the last 24h carry `rounded-full bg-neutral-300`;
+     - it carries **no marker**, and the page holds no `data-record-ahead` at all;
+     - **the dated-after sentence is gone**: "further item(s) dated after" occurs 0 times.
+   - **`/state-bills`' Latest movement** opens with **MI HB6414, dated 2026-09-29**, then PA HB280 (09-28), PA HR632 (09-25) and PA HB2802 (09-24). It is unmarked, and the list holds no divider.
 5. **Not built and not ruled:** the plan's optional `coverage_audit` report section, counting items after the anchor by channel and source. It would be a report rather than an alarm, because the MI and Federal Register patterns make a non-zero count legitimate.
 
 ### Line endings are enforced: `.gitattributes` and one renormalize. OPENED and SHIPPED 2026-09-26
@@ -3169,6 +3194,10 @@ Things that have bitten before and will again.
 - Database facts come from direct Turso queries, never from JSON snapshots. Snapshots are a lagging derivative and can produce false greens. This applies to the orphan alarm, the supersession invariant, and anything else asserting a row's state. **One stated exception, ruled 2026-09-26: the off-ramp witness in `assert-encodings.mjs`** (`offRampCount`, `web/scripts/reconcile.mjs`). It counts bills whose status is outside 1–6 in `data/state_bills.json` to decide whether `/state-bills` owes its `unstaged` key entry.
   - **Why the snapshot is acceptable here.** `build_state_bills` is `SELECT * FROM state_bills`, a full-table export with each row's raw `status`. A bill with a null status and no items still exports; `tests/test_export.py` pins that. The Python path is independent of the web classifier it checks, which is why it was chosen: a count taken through the page's own code (`stageOf`, `getStateBills`) would let the page vote on its own expected set. A direct Turso read would be independent too. It was not used because the lane's check steps carry no credentials: `dom-checks.yml` gives them to Build and Start alone.
   - **Considered and declined, ruled by Corey 2026-09-26:** give the check steps `TURSO_READ_TOKEN` and count directly. That would retire both this exception and the lag. It is declined because a render check holding database credentials widens the lane's credential surface, to save a lag the next data commit clears.
+  - **The exception, made 2026-09-28 (unit 99, the one scrub):** each issue-posting step now carries its run's credentials, because redaction requires the values it removes.
+    - In dom-checks that is *Raise or update the standing issue*, holding the database URL and the read token as `TURSO_AUTH_TOKEN`. Audit's issue step holds the same pair, and collect's holds all five.
+    - The step runs standard-library Python (`tools/scrub_issue_body.py`, which scrubs the body file in place) and `gh` only, and makes no other network call.
+    - The check steps still carry none, and the 09-26 ruling stands for them.
   - **The cost is the lag window** between a state run's write and its data commit. Inside it the witness can red falsely or green falsely. When the page and the witness disagree, the failure line prints both counts and the snapshot's `generated_at`.
   - **Nothing else inherits this exception.** See *`/state-bills` reaches its unstaged branch* in *Owed right now*.
 - A data commit dates the export, not the collection. `git show --stat` on a data commit bounds when a snapshot changed; `fetched_at` is the only instrument for when a row was collected. Seeds are proved by a local run before they are committed, and their timelines always reach `data/cases.json` in the next scheduled run, so a snapshot diff will attribute every seed's walk to a cron that did not do it.
