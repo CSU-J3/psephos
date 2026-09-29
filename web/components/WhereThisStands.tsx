@@ -155,8 +155,13 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             jurisdictions that use it.
           </Fact>
 
+          {/* ONE FACT PER ORDER, ONE GATED CLAIM PER LINE (Corey, 2026-09-29). The order's
+              name is the fact's heading, so no lead-in doubles it, and each line's
+              `renders_as` is a sentence that stands alone: retiring a line never means
+              rewriting its neighbour. Each line ends in a period outside its span,
+              except where its text already ends on one ("D. Mass."). */}
           <Fact
-            when="Mar 25, 2025 · Mar 31, 2026"
+            when="Mar 25, 2025"
             src={
               // ONE SPAN PER SOURCE. `.fact .src` is a wrapping flex row, so a bare badge,
               // label and chip wrap as three items, and a badge could end a line with its
@@ -171,19 +176,6 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                   <span className="rk">recheck by Oct 26</span>
                 </span>
                 <span>
-                  <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule in D.D.C. per docket{" "}
-                  <span className="whitespace-nowrap">1:26-cv-01114</span>{" "}
-                  <span className="rk">recheck by Oct 15</span>
-                </span>
-                <span>
-                  <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule in D. Mass. per Supreme Court docket 26A305{" "}
-                  <span className="rk">recheck by Oct 15</span>
-                </span>
-                <span>
-                  <Grade grade="A1" dense /> EO 14399&rsquo;s §§2-3 injunction per Supreme Court docket 26A124{" "}
-                  <span className="rk">recheck by Nov 20</span>
-                </span>
-                <span>
                   <Grade grade="A1" dense /> DHS&rsquo;s SAVE system per Supreme Court docket 26A308{" "}
                   <span className="rk">recheck by Oct 26</span>
                 </span>
@@ -194,48 +186,82 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
               </>
             }
           >
-            <b>EO 14248 and EO 14399</b> were published. Whether either operates in full today is
-            not in the record. The sources below give where parts of each stand,{" "}
-            <span data-gate-ref="dhs-save-system-stayed">the SAVE-system changes EO 14248 prompted</span>{" "}
-            among them. For EO 14248:{" "}
-            <span data-gate="eo-14248-enjoined">
-              {"three courts have permanently enjoined parts of EO 14248 (D.D.C. from Oct 31, 2025, W.D. Wash. from Jan 9, 2026, D. Mass. from Jun 24, 2026): section 2(a), proof of citizenship on the federal mail registration form, in all three; section 3(d), the same and proof of eligibility in the voter's State on the post card form for military and overseas voters, in D.D.C. and D. Mass.; section 2(d), citizenship checks before agencies offer the registration form, in D.D.C.; section 4(b), new voting-system standards, in W.D. Wash.; and sections 4(a), 7(a) and 7(b), which tie federal election funds to proof of citizenship and to an Election Day ballot-receipt deadline and direct that deadline's enforcement, only as to plaintiff States, in W.D. Wash. and D. Mass."}
-            </span>
-            {/* No period here: the clause above ends on "D. Mass.", whose abbreviation
-                point ends the sentence. Add one if its `renders_as` stops ending so. */}
-            {" "}Separately,{" "}
-            <span data-gate="dhs-save-system-stayed">
-              {"the D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"}
-            </span>
-            .{" "}
-            {/* ITS OWN SENTENCE, ATTRIBUTED (Corey, 2026-09-29): what the Court said of the
-                NVRA, directly after the stay it qualifies. "For EO 14399:" restarts the list
-                after it, so the 14399 clauses keep their lower-case openings. */}
-            <span data-gate="dhs-save-stay-nvra-limit">
-              {"The Court said the NVRA's 90-day bar on systematic voter-roll removals limits the stay's potential impact, and that individualized inquiries are permitted under federal law in that period"}
-            </span>
-            . For EO 14399:{" "}
-            {/* ONE SENTENCE, TWO ORDERS, ONE GATE EACH (Corey, 2026-09-28): the D.D.C.
-                injunction of Sep 13 first, since it is the broader (the whole rule, no end
-                date), then the D. Mass. injunction of Sep 4. Each span is a clause with its
-                own subject; only "the rule" in the second leans on the first, so retiring
-                either span means rewriting the other's `renders_as`. The D.D.C. span keeps
-                section 3 out: ECF 193's decree names no section, and its fn. 1 denies the
-                motion as to section 3. No transient procedural state ("no appeal on the
-                docket") on the page: that lives in the entry's comment and recheck, in
-                docs/gates.yaml. */}
-            <span data-gate="eo-14399-usps-rule-enjoined-ddc">
-              {"the Postal Service is preliminarily enjoined from implementing and enforcing the ballot-mail rule it issued on Aug 21 at EO 14399's direction, in full and with no end date, by a D.D.C. order of Sep 13"}
-            </span>
-            ,{" and "}
-            <span data-gate="eo-14399-usps-rule-enjoined">
-              {"a D. Mass. preliminary injunction of Sep 4 enjoins the rule's mandatory provisions for elections through Nov 3, 2026; the First Circuit denied stays of it on Sep 10, and the Supreme Court denied one on Sep 14"}
-            </span>
-            ;{" "}
-            <span data-gate="eo-14399-s2-3-stayed">
-              {"an earlier D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"}
-            </span>
-            .
+            <b>EO 14248</b> was published. Whether it operates in full today is not in the
+            record. The sources below give where parts of it stand,{" "}
+            <span data-gate-ref="dhs-save-system-stayed">the SAVE-system changes it prompted</span>{" "}
+            among them:
+            <ul className="claims">
+              <li>
+                <span data-gate="eo-14248-enjoined">
+                  {"Three courts have permanently enjoined parts of EO 14248 (D.D.C. from Oct 31, 2025, W.D. Wash. from Jan 9, 2026, D. Mass. from Jun 24, 2026): section 2(a), proof of citizenship on the federal mail registration form, in all three; section 3(d), the same and proof of eligibility in the voter's State on the post card form for military and overseas voters, in D.D.C. and D. Mass.; section 2(d), citizenship checks before agencies offer the registration form, in D.D.C.; section 4(b), new voting-system standards, in W.D. Wash.; and sections 4(a), 7(a) and 7(b), which tie federal election funds to proof of citizenship and to an Election Day ballot-receipt deadline and direct that deadline's enforcement, only as to plaintiff States, in W.D. Wash. and D. Mass."}
+                </span>
+              </li>
+              <li>
+                <span data-gate="dhs-save-system-stayed">
+                  {"The D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"}
+                </span>
+                .
+              </li>
+              <li>
+                <span data-gate="dhs-save-stay-nvra-limit">
+                  {"In staying the D.D.C. order that vacated DHS's modified SAVE system, the Supreme Court said the NVRA's 90-day bar on systematic voter-roll removals limits the stay's potential impact, and that individualized inquiries are permitted under federal law in that period"}
+                </span>
+                .
+              </li>
+            </ul>
+          </Fact>
+
+          <Fact
+            when="Mar 31, 2026"
+            src={
+              <>
+                <span>
+                  <Grade grade="A1" dense /> Federal Register
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> the USPS rule in D.D.C. per docket{" "}
+                  <span className="whitespace-nowrap">1:26-cv-01114</span>{" "}
+                  <span className="rk">recheck by Oct 15</span>
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> the USPS rule in D. Mass. per Supreme Court docket 26A305{" "}
+                  <span className="rk">recheck by Oct 15</span>
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> the §§2-3 injunction per Supreme Court docket 26A124{" "}
+                  <span className="rk">recheck by Nov 20</span>
+                </span>
+              </>
+            }
+          >
+            {/* The D.D.C. injunction first, the broader (the whole rule, no end date), then
+                D. Mass.'s; then the stayed injunction against the order's own sections. The
+                D.D.C. line keeps section 3 out: ECF 193's decree names no section, and its
+                fn. 1 denies the motion as to section 3. No transient procedural state ("no
+                appeal on the docket") on the page: that lives in each entry's comment and
+                recheck, in docs/gates.yaml. */}
+            <b>EO 14399</b> was published. Whether it operates in full today is not in the
+            record. The sources below give where parts of it stand:
+            <ul className="claims">
+              <li>
+                <span data-gate="eo-14399-usps-rule-enjoined-ddc">
+                  {"The Postal Service is preliminarily enjoined from implementing and enforcing the ballot-mail rule it issued on Aug 21 at EO 14399's direction, in full and with no end date, by a D.D.C. order of Sep 13"}
+                </span>
+                .
+              </li>
+              <li>
+                <span data-gate="eo-14399-usps-rule-enjoined">
+                  {"A D. Mass. preliminary injunction of Sep 4 enjoins the mandatory provisions of the Postal Service's ballot-mail rule for elections through Nov 3, 2026; the First Circuit denied stays of it on Sep 10, and the Supreme Court denied one on Sep 14"}
+                </span>
+                .
+              </li>
+              <li>
+                <span data-gate="eo-14399-s2-3-stayed">
+                  {"A D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"}
+                </span>
+                .
+              </li>
+            </ul>
           </Fact>
 
           <Fact

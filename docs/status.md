@@ -55,7 +55,10 @@ Last updated: 2026-09-29 (UTC).
 1. ~~Corey's word on the page~~: given 2026-09-29, and the page shipped.
 2. Gate coverage (check 5) and recheck flags, as ruled in the entry below.
 3. The first October state run (06:17Z, 10-01), as armed.
-4. **OPENED 2026-09-29, the next small unit: the executive-order fact's layout.** Split tab 1's executive-order fact into one fact per order, one gated claim per line instead of semicolon-joined clauses. The order's name then sits in the fact's heading, and the lead-in that doubles it ("For EO 14248: three courts have permanently enjoined parts of EO 14248") goes away. `renders_as` stays self-contained for each gate. Frames at 1440 and 390, then stop.
+4. **The executive-order fact's layout: OPENED, BUILT and SHIPPED 2026-09-29, Corey passing its frames.** Split tab 1's executive-order fact into one fact per order, one gated claim per line instead of semicolon-joined clauses. The order's name then sits in the fact's heading, and the lead-in that doubles it ("For EO 14248: three courts have permanently enjoined parts of EO 14248") goes away. `renders_as` stays self-contained for each gate. Frames at 1440 and 390, then stop.
+   - **As built:** one fact per order, EO 14248 (Mar 25, 2025) and EO 14399 (Mar 31, 2026), each with its own chips and one gated claim per line (`ul.claims`).
+   - **Six `renders_as` rewritten to stand alone as lines.** Each gains a capital. The NVRA line opens "In staying the D.D.C. order that vacated DHS's modified SAVE system, the Supreme Court said...". The D. Mass. rule line says "the mandatory provisions of the Postal Service's ballot-mail rule" rather than "the rule's". The sections 2-3 line drops "earlier".
+   - **EO 14248's heading keeps its phrase and its pointer** ("the SAVE-system changes it prompted", pointing at `dhs-save-system-stayed`), although the stay's line sits directly below it (Corey, 2026-09-29). It tells a reader why a DHS system sits under this order, and the pointer check fails if the stay line ever leaves.
 
 ### The SAVE-system stay READ 2026-09-29 and a gated sentence PROPOSED (RULED the same day, see the entry above); gate coverage and recheck flags RULED, to build after Corey's word; the legislation watch list gets a text test
 

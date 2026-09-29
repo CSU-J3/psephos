@@ -589,6 +589,11 @@ textarea {
 .fact .when { font: 11px var(--mono); color: #a3a3a3; line-height: 1.5; }
 .fact .what { font-size: 13px; line-height: 1.55; color: #d4d4d4; }
 .fact .what b { color: #fafafa; font-weight: 500; }
+/* One gated claim per line, under the fact's heading: a hanging marker, so a wrapped
+   line aligns with its own text rather than the marker. */
+.fact .what .claims { list-style: none; margin: 6px 0 0; padding: 0; }
+.fact .what .claims li { position: relative; padding-left: 14px; margin-top: 5px; }
+.fact .what .claims li::before { content: "\2013"; position: absolute; left: 0; color: #737373; }
 .fact .src {
   margin-top: 6px;
   font-size: 11px;
