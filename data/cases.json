@@ -6077,9 +6077,9 @@
     "date_terminated": "2026-06-22T00:00:00",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 255,
+    "entry_count": 256,
     "filed_at": "2025-09-30T00:00:00",
-    "latest_entry_at": "2026-09-28T00:00:00",
+    "latest_entry_at": "2026-09-29T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
     "state": null,
@@ -7526,6 +7526,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: USCA Case Number 26-5301 for 141 Notice of Appeal to DC Circuit Court, filed by STATE OF TEXAS. (mg)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 117656,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Enforce Judgment"
       }
     ]
   },
@@ -10237,9 +10247,9 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 183,
+    "entry_count": 184,
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-09-28T00:00:00",
+    "latest_entry_at": "2026-09-29T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -11036,6 +11046,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/105/united-states-v-albence/",
         "title": "United States v. Delaware: SO ORDERED Granting 104 MOTION for Exemption of Individuals from Standing Order on Personal Devices. Signed by Judge Richard G. Andrews on 9/28/2026. (aas) (Entered: 09/28/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 117677,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: Motion Hearing"
       }
     ]
   },

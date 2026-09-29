@@ -292,6 +292,80 @@
     ]
   },
   {
+    "bill_id": "hr9368-119",
+    "bill_type": "hr",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Placed on the Union Calendar, Calendar No. 653.",
+    "latest_action_at": "2026-07-15T00:00:00",
+    "number": 9368,
+    "short_title": null,
+    "sponsor": "Rep. Steil, Bryan [R-WI-1]",
+    "status": "Placed on the Union Calendar, Calendar No. 653.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117652,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+        "title": "hr9368-119: Referred to the House Committee on House Administration."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117653,
+        "kind": "item",
+        "occurred_at": "2026-06-18T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+        "title": "hr9368-119: Introduced in House"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117650,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+        "title": "hr9368-119: Ordered to be Reported (Amended) by the Yeas and Nays: 8 - 4."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117651,
+        "kind": "item",
+        "occurred_at": "2026-06-24T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+        "title": "hr9368-119: Committee Consideration and Mark-up Session Held"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117648,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+        "title": "hr9368-119: Placed on the Union Calendar, Calendar No. 653."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117649,
+        "kind": "item",
+        "occurred_at": "2026-07-15T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/9368",
+        "title": "hr9368-119: Reported (Amended) by the Committee on House Administration. H. Rept. 119-750."
+      }
+    ]
+  },
+  {
     "bill_id": "s128-119",
     "bill_type": "s",
     "congress": 119,
@@ -1812,6 +1886,80 @@
         "source_id": "congress-gov",
         "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/3752",
         "title": "s3752-119: Introduced in Senate"
+      }
+    ]
+  },
+  {
+    "bill_id": "s5271-119",
+    "bill_type": "s",
+    "congress": 119,
+    "is_vehicle": false,
+    "latest_action": "Cloture on the motion to proceed to the measure not invoked in Senate by Yea-Nay Vote. 52 - 46. Record Vote Number: 231.",
+    "latest_action_at": "2026-08-08T00:00:00",
+    "number": 5271,
+    "short_title": null,
+    "sponsor": "Sen. Husted, Jon [R-OH]",
+    "status": "Cloture on the motion to proceed to the measure not invoked in Senate by Yea-Nay Vote. 52 - 46. Record Vote Number: 231.",
+    "timeline": [
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117646,
+        "kind": "item",
+        "occurred_at": "2026-08-05T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/5271",
+        "title": "s5271-119: Introduced in the Senate. Read the first time. Placed on Senate Legislative Calendar under Read the First Time."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117647,
+        "kind": "item",
+        "occurred_at": "2026-08-05T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/5271",
+        "title": "s5271-119: Introduced in Senate"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117645,
+        "kind": "item",
+        "occurred_at": "2026-08-06T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/5271",
+        "title": "s5271-119: Read the second time. Placed on Senate Legislative Calendar under General Orders. Calendar No. 547."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117642,
+        "kind": "item",
+        "occurred_at": "2026-08-08T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/5271",
+        "title": "s5271-119: Cloture on the motion to proceed to the measure not invoked in Senate by Yea-Nay Vote. 52 - 46. Record Vote Number: 231."
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117643,
+        "kind": "item",
+        "occurred_at": "2026-08-08T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/5271",
+        "title": "s5271-119: Cloture motion on the motion to proceed to the measure presented in Senate. (CR S4556)"
+      },
+      {
+        "channel": "legislation",
+        "grade": "A1",
+        "id": 117644,
+        "kind": "item",
+        "occurred_at": "2026-08-08T00:00:00",
+        "source_id": "congress-gov",
+        "source_url": "https://www.congress.gov/bill/119th-congress/senate-bill/5271",
+        "title": "s5271-119: Motion to proceed to consideration of measure made in Senate. (CR S4556)"
       }
     ]
   }

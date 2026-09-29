@@ -9318,5 +9318,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-greenlights-challenge-to-louisiana-anti-voting-law-citing-discrimination-claims",
     "title": "Judge greenlights challenge to Louisiana anti-voting law, citing discrimination claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117904,
+    "kind": "item",
+    "occurred_at": "2026-09-29T18:29:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-advocates-keep-fighting-north-carolina-mail-ballot-restrictions-with-midterms-underway",
+    "title": "Voting advocates keep fighting North Carolina mail ballot restrictions with midterms underway"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117903,
+    "kind": "item",
+    "occurred_at": "2026-09-29T19:30:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-trained-wisconsin-election-observers-to-target-voting-machines-in-pivotal-swing-state",
+    "title": "GOP trained Wisconsin election observers to target voting machines in pivotal swing state"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 117902,
+    "kind": "item",
+    "occurred_at": "2026-09-29T21:04:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/could-trump-take-over-voting-by-declaring-a-national-emergency",
+    "title": "Could Trump take over voting by declaring a ‘national emergency’?"
   }
 ]
