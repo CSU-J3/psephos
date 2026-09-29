@@ -8642,8 +8642,8 @@
   {
     "bill_number": "HB280",
     "is_vehicle": false,
-    "last_action": "Laid on the table",
-    "last_action_at": "2025-05-13T00:00:00",
+    "last_action": "Re-committed to Appropriations",
+    "last_action_at": "2026-09-28T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "1934235",
@@ -8688,6 +8688,36 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HB280/2025",
         "title": "PA HB280: Laid on the table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 117409,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB280/2025",
+        "title": "PA HB280: Removed from table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 117410,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB280/2025",
+        "title": "PA HB280: Second consideration"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 117411,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB280/2025",
+        "title": "PA HB280: Re-committed to Appropriations"
       }
     ],
     "title": "In preliminary provisions, further providing for definitions; in qualifications of electors, furth er providing for qualifications of electors at primaries; in party organization, further providing for only enrolled electors to vote at primaries or hold party offices; in nomination of candidates, further providing for candidates to be nominated and party officers to be elected at primaries and providing for procedure for unenrolled electors to cast primary ballots; in preparation for and conduct of primaries and elections, further providing for manner of applying to vote, persons entitled to vote, voter's certificates, entries to be made in district register, numbered lists of voters and challenges; in voting by qualified absentee electors, further providing for applications for official absentee ballots; in voting by qualified mail-in electors, further providing for applications for official mail-in ballots; in returns of primaries and elections, further providing for computation of returns by county board, certification and issuance of certificates of election; and, in penalties, further providing for election officers refusing to permit elector to vote in proper party at primaries and repealing provisions relating to elector voting ballot of wrong party at primary.",
