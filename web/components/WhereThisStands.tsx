@@ -167,8 +167,8 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                   <Grade grade="A1" dense /> Federal Register
                 </span>
                 <span>
-                  <Grade grade="B2" dense /> EO 14248 per the Brennan Center case tracker{" "}
-                  <span className="rk">recheck by Dec 10</span>
+                  <Grade grade="A1" dense /> EO 14248 per the D.D.C., W.D. Wash. and D. Mass. dockets{" "}
+                  <span className="rk">recheck by Oct 26</span>
                 </span>
                 <span>
                   <Grade grade="A1" dense /> EO 14399&rsquo;s USPS rule in D.D.C. per docket{" "}
@@ -183,15 +183,38 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                   <Grade grade="A1" dense /> EO 14399&rsquo;s §§2-3 injunction per Supreme Court docket 26A124{" "}
                   <span className="rk">recheck by Nov 20</span>
                 </span>
+                <span>
+                  <Grade grade="A1" dense /> DHS&rsquo;s SAVE system per Supreme Court docket 26A308{" "}
+                  <span className="rk">recheck by Oct 26</span>
+                </span>
+                <span>
+                  <Grade grade="A1" dense /> the NVRA&rsquo;s limit per Supreme Court docket 26A308{" "}
+                  <span className="rk">recheck by Nov 4</span>
+                </span>
               </>
             }
           >
-            <b>EO 14248 and EO 14399</b> were published. Whether either is operating today is not
-            in the record. Per the sources below:{" "}
+            <b>EO 14248 and EO 14399</b> were published. Whether either operates in full today is
+            not in the record. The sources below give where parts of each stand,{" "}
+            <span data-gate-ref="dhs-save-system-stayed">the SAVE-system changes EO 14248 prompted</span>{" "}
+            among them. For EO 14248:{" "}
             <span data-gate="eo-14248-enjoined">
-              {"the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"}
+              {"three courts have permanently enjoined parts of EO 14248 (D.D.C. from Oct 31, 2025, W.D. Wash. from Jan 9, 2026, D. Mass. from Jun 24, 2026): section 2(a), proof of citizenship on the federal mail registration form, in all three; section 3(d), the same and proof of eligibility in the voter's State on the post card form for military and overseas voters, in D.D.C. and D. Mass.; section 2(d), citizenship checks before agencies offer the registration form, in D.D.C.; section 4(b), new voting-system standards, in W.D. Wash.; and sections 4(a), 7(a) and 7(b), which tie federal election funds to proof of citizenship and to an Election Day ballot-receipt deadline and direct that deadline's enforcement, only as to plaintiff States, in W.D. Wash. and D. Mass."}
             </span>
-            ;{" "}
+            {/* No period here: the clause above ends on "D. Mass.", whose abbreviation
+                point ends the sentence. Add one if its `renders_as` stops ending so. */}
+            {" "}Separately,{" "}
+            <span data-gate="dhs-save-system-stayed">
+              {"the D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"}
+            </span>
+            .{" "}
+            {/* ITS OWN SENTENCE, ATTRIBUTED (Corey, 2026-09-29): what the Court said of the
+                NVRA, directly after the stay it qualifies. "For EO 14399:" restarts the list
+                after it, so the 14399 clauses keep their lower-case openings. */}
+            <span data-gate="dhs-save-stay-nvra-limit">
+              {"The Court said the NVRA's 90-day bar on systematic voter-roll removals limits the stay's potential impact, and that individualized inquiries are permitted under federal law in that period"}
+            </span>
+            . For EO 14399:{" "}
             {/* ONE SENTENCE, TWO ORDERS, ONE GATE EACH (Corey, 2026-09-28): the D.D.C.
                 injunction of Sep 13 first, since it is the broader (the whole rule, no end
                 date), then the D. Mass. injunction of Sep 4. Each span is a clause with its
@@ -238,7 +261,9 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             <span data-gate="related-suits">
               {related.length} related suits by civil-society plaintiffs against federal agencies
             </span>{" "}
-            — League of Women Voters v. DHS, its D.C. Circuit appeal, and Common Cause v. DOJ —
+            — League of Women Voters v. DHS (the suit behind{" "}
+            <span data-gate-ref="dhs-save-system-stayed">the SAVE-system stay</span> above), its
+            D.C. Circuit appeal, and Common Cause v. DOJ —
             none of them DOJ filings, and none counted above.{" "}
             <span data-gate="eo-challenges">
               The record holds {eoSuits.length}{" "}
@@ -309,7 +334,7 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
             src={<><Grade grade="A1" dense /> s1383-119 · is_vehicle</>}
           />
           <Path
-            q="The voter-roll fight reaches the Supreme Court"
+            q="DOJ's voter-roll suits reach the Supreme Court"
             count="2 of 5"
             state={<>clock running</>}
             steps={[
@@ -382,11 +407,13 @@ export function WhereThisStands({ docketRows, bills, stateBills, collectedAt }: 
                   <span data-gate-ref="eo-14399-usps-rule-enjoined-ddc">D.D.C.</span> and{" "}
                   <span data-gate-ref="eo-14399-usps-rule-enjoined">D. Mass.</span>) and{" "}
                   <span data-gate-ref="eo-14399-s2-3-stayed">§§2-3 themselves</span>, and for{" "}
-                  <span data-gate-ref="eo-14248-enjoined">14248&rsquo;s registration provisions</span>{" "}
-                  · the rest not in the record
+                  <span data-gate-ref="eo-14248-enjoined">the enjoined parts of 14248</span>{" "}
+                  · the rest not in the record, apart from{" "}
+                  <span data-gate-ref="dhs-save-system-stayed">the SAVE-system changes 14248 prompted</span>,
+                  also on the first tab
                 </>,
-                // Not done, on the gated claims: 14248's registration provisions are
-                // enjoined, and so is the USPS rule implementing 14399, in full by D.D.C. and
+                // Not done, on the gated claims: parts of 14248 are enjoined, section by
+                // section, and so is the USPS rule implementing 14399, in full by D.D.C. and
                 // in its mandatory provisions by D. Mass. (the injunction against 14399's own
                 // §§2-3 is stayed), so neither order operates unblocked.
                 false,

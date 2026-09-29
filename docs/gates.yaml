@@ -305,35 +305,231 @@
   record_instruments_due: 2026-09-28
   renders_as: "an earlier D. Mass. injunction against sections 2 and 3 of EO 14399 themselves, for the plaintiff States, has been stayed by the Supreme Court since Aug 24, pending appeal"
 
-# asserted_on is the tracker's update date, per this file's own rule (the date
-# the SOURCE said it). The June reporting is older and serves as corroboration,
-# not as the assertion date. 90 days is the B2 default.
+# READ 2026-09-29 IN THE COURTS' OWN WORDS, AND REWRITTEN TO NAME THE SECTIONS EACH
+# ENJOINS (Corey's ruling of the same day: no interim wording). Until then this entry was
+# B2, from the Brennan Center tracker's Sep 11 update, and read "EO 14248's registration
+# provisions are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026".
+# Read off RECAP: the three district dockets and their four appeal dockets, 32
+# CourtListener API requests and 14 public-storage downloads.
 #
-# THE FALSIFIER NAMES ALL THREE COURTS' INJUNCTIONS, since 2026-09-26. It read
-# "an appellate order vacating or staying either injunction" -- two, where the claim
-# counts three, and appellate orders only, where the 14399 entry above has already
-# shown a district court vacating its own injunction (Aug 26). The three, and their
-# citations, are as three complaints give them, read 2026-09-26 off RECAP: NAACP v.
-# Trump (D.D.C. 1:26-cv-01151) para. 2 and California v. USPS (D. Mass. 1:26-cv-13917)
-# para. 94, both EO 14399 suits, and Common Cause v. DOJ (D.D.C. 1:26-cv-01352), a
-# related suit, para. 65. The docket numbers come from further paragraphs of the same
-# complaints, read the same day: LULAC's trial docket No. 1:25-cv-0946 (DSCC para. 3;
-# LWV v. DHS, ECF 61, para. 211); its appeals D.C. Cir. 25-5476 from 808 F. Supp. 3d 29
-# (California v. Trump, 1:26-cv-11581, para. 111) and 26-5098 from 818 F. Supp. 3d 34
-# (California v. USPS para. 94); Washington's appeal 9th Cir. 26-1429 (para. 94); and
-# California v. Trump's appeal 1st Cir. 25-1726 from its 2025 preliminary injunction,
-# 786 F. Supp. 3d 359 (1:26-cv-11581 para. 111, DSCC para. 130). No trial-court docket
-# number is written for the D. Mass. suit: no complaint read gives one.
+# D.D.C., LULAC v. Executive Office of the President, 1:25-cv-00946 (consolidated with
+# 25-cv-0952 and 25-cv-0955; CourtListener 69823792; closed, jurisdiction to enforce kept):
+#   - ECF 217, Oct 31, 2025 (Rule 54(b) final judgment on the 2(a) claims): the EAC, its
+#     Commissioners and Executive Director "are PERMANENTLY ENJOINED from taking any action
+#     to implement or give effect to Section 2(a) of Executive Order No. 14,248". Its
+#     opinion, ECF 218 p. 77: the injunction "shall run only in favor of the named
+#     Plaintiffs, and only they may enforce it", while enjoining 2(a) "in full" (p. 76).
+#   - ECF 235, Jan 30, 2026, restated in the FINAL JUDGMENT, ECF 256, Mar 31, 2026: 2(d)
+#     (DOD, VA, Interior, SBA and their heads) and 3(d) (DOD, FVAP and their heads)
+#     "PERMANENTLY ENJOINED from taking any action to implement or give effect to" each,
+#     both also declared to violate the separation of powers; ECF 236 pp. 67, 85: the
+#     injunctions reach those defendants "throughout the Nation" / "anywhere in the Nation".
+#   - NOT enjoined there: 2(b) and 3(a) carry only a declaration that the Privacy Act must
+#     be followed (ECF 256 paras. 4-5), and the request to enjoin the SAVE and Numident
+#     changes was held MOOT (para. 6c); judgment for defendants on 4(a), 7(a) and 7(b),
+#     dismissed without prejudice as unripe (para. 6a).
+# W.D. Wash., Washington v. Trump, 2:25-cv-00602 (CourtListener 69845185), ECF 126, Jan 9,
+# 2026, a permanent injunction on partial summary judgment, not a final judgment:
+#   - the EAC Defendants "permanently enjoined from taking any action to implement or give
+#     effect to EO § 2(a)" and the same for "EO § 4(b)", both a "total injunction" (pp.
+#     71-72); "from taking any action against Plaintiffs" to implement 4(a) and 7(b); and
+#     the Attorney General from any action to "enforce" 2 U.S.C. 7 or 3 U.S.C. 1 "in a
+#     manner that would prevent Plaintiffs from counting otherwise valid votes", "enforce"
+#     meaning "compel" (decree para. (3)(e); fn. 82 confines it to 7(a)'s compulsive uses).
+#   - 2(d) dismissed for want of standing; the plaintiffs dropped 4(d) (ECF 135, Apr 14);
+#     3(d) is still being litigated, on cross-motions for summary judgment fully briefed
+#     May 15, 2026 and undecided on the docket as read.
+# D. Mass., California v. Trump, 1:25-cv-10810 (CourtListener 69841778): ECF 190, the
+# memorandum and order of Jun 24, 2026, itself says "The Court PERMANENTLY ENJOINS" (pp.
+# 58-59), so "since Jun 24" holds; ECF 194 of Jul 13, 2026 is the JUDGMENT AND ORDER OF
+# PERMANENT INJUNCTION, entered on the parties' stipulation, with the same conduct and
+# States and one defendant named per section:
+#   - 2(a) (the EAC) and 3(d) (the Secretary of Defense), a "total injunction" (ECF 190
+#     p. 57); 4(a) "against the Plaintiff States, except Wisconsin"; 7(a) (the Attorney
+#     General) and 7(b) (the EAC) as to the thirteen Ballot Receipt States only.
+#   - 2(d), in the 2025 preliminary injunction, ended by the parties' stipulated dismissal
+#     (ECF 160/175, Dec 2025), not by an order narrowing an injunction.
+#   - ECF 194 REPLACES ECF 190, AND IS NOT A NARROWING (Corey, 2026-09-29): the final
+#     judgment, entered at both sides' request, is the decree this claim rests on. Their
+#     operative words, side by side:
+#       ECF 190 (Jun 24, pp. 58-59): "The Court PERMANENTLY ENJOINS Defendants, except
+#         President Trump, from taking any action to implement or enforce" 2(a) and 3(d),
+#         and "from implementing or enforcing" 4(a), 7(a) and 7(b), each "or otherwise"
+#         doing the conduct named.
+#       ECF 194 (Jul 13, pp. 2-3): "Defendants, their officers, agents, servants, and
+#         employees, other than the President, are hereby permanently enjoined as
+#         follows", each paragraph binding the official its section directs -- the EAC
+#         for 2(a), 4(a) and 7(b), the Secretary of Defense for 3(d), the Attorney General
+#         for 7(a) -- from "implementing" that section, "or otherwise" doing the same
+#         conduct, for the same States.
+#     THE DIFFERENCE BEARS ON 7(a), which directs the Attorney General to "take all
+#     necessary action to enforce 2 U.S.C. 7 and 3 U.S.C. 1": ECF 190 barred every
+#     defendant but the President from "implementing or enforcing" it; ECF 194 bars the
+#     Attorney General from "implementing Section 7(a) ... or otherwise taking any actions
+#     to enforce a ballot receipt deadline of Election Day against those States".
+#
+# WATSON v. RNC, No. 24-1260, which ECF 190 n. 13 flagged as pending on the Election Day
+# statutes behind 7(a) and 7(b), was decided Jun 29, 2026: "Judgment REVERSED and case
+# REMANDED", 5-4 (the Court's docket, read 2026-09-29; the opinion itself not read). It
+# modified none of these injunctions. Its date falls between ECF 190 and W.D. Wash.'s
+# plaintiffs' notice of supplemental authority of Jul 7 (ECF 143, unavailable on RECAP).
+#
+# NOTHING STAYED, NARROWED OR VACATED, on every docket as read 2026-09-29: no stay motion
+# on any of the three district dockets or four appeal dockets, and no Supreme Court
+# application in any of them. The Ninth Circuit's order of May 6, 2026 in 26-1429 stays
+# the APPEAL ("Appellate proceedings are stayed until resolution of district court
+# proceedings"), not the injunction. RECAP lags PACER: an entry after the listings' last
+# (D.D.C. Sep 15; D.C. Cir. Sep 22; W.D. Wash. Jul 10; 9th Cir. Sep 10; D. Mass. Sep 25;
+# 1st Cir. Sep 28) would not show. W.D. Wash. is the widest gap, 81 days, and a ruling on
+# 3(d) there would change that court's list.
+#
+# CORRECTIONS THE READ MADE.
+#   - "Registration provisions" was too narrow and too broad at once: W.D. Wash. and
+#     D. Mass. also enjoin 4(b) (voting-system standards) and 7(a)-(b) (the ballot-receipt
+#     deadline), which are not registration provisions, and no court enjoins 2(b) or 3(a),
+#     which are.
+#   - The falsifier's D.C. Circuit numbers: 26-5098 is NOT an appeal from the Jan 30 order.
+#     It is a pro se movant's appeal from the denial of his motion to intervene (ECF 252),
+#     summarily affirmed Jul 2, 2026 and cut from the consolidation. The appeals from ECF
+#     217 are 25-5476 (the government) and 25-5478 (the RNC); from ECF 235 and the final
+#     judgment, 26-5099 and 26-5182 (the government) and 26-5102 (the RNC); all five are
+#     consolidated under 25-5476. California v. USPS para. 94, the source of "26-5098", was
+#     wrong. 818 F. Supp. 3d 34 is cited elsewhere as the Jan 30 opinion (2026 WL 252420).
+#   - The D. Mass. suit's trial docket, which no complaint read gave, is 1:25-cv-10810,
+#     and its appeal from the judgment is 1st Cir. 26-2038 (docketed Sep 9, 2026).
+#
+# asserted_on is the latest decree's date, ECF 194 of Jul 13, 2026. RECHECK Oct 26, with
+# dhs-save-system-stayed and before the election: nothing on these dockets is scheduled
+# to rule before then. The D.C. Circuit's appellants' briefs are due Oct 14, 2026, the
+# First Circuit's in 26-2038 Nov 9; 25-1726, the appeal from D. Mass.'s 2025 preliminary
+# injunction, is still set for argument Dec 9, 2026; 26-1429 is held; the W.D. Wash.
+# cross-motions on 3(d) can be decided on any day. No docket here is held in the record
+# (the EO 14248 unit has not seeded them), so there are no record_instruments.
 - id: eo-14248-enjoined
-  claim: "EO 14248's registration provisions are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
+  claim: "three federal district courts have permanently enjoined parts of EO 14248, each naming the sections in its decree: D.D.C. (LULAC v. Executive Office of the President, 1:25-cv-00946) section 2(a) (ECF 217, Oct 31, 2025) and sections 2(d) and 3(d) (ECF 235, Jan 30, 2026; final judgment ECF 256, Mar 31, 2026), each in full; W.D. Wash. (Washington v. Trump, 2:25-cv-00602, ECF 126, Jan 9, 2026) sections 2(a) and 4(b) in full, and sections 4(a) and 7(b) and compulsive enforcement of an Election Day ballot-receipt deadline under section 7(a) as to Washington and Oregon; D. Mass. (California v. Trump, 1:25-cv-10810; ruled and enjoined Jun 24, 2026, ECF 190; judgment and order of permanent injunction Jul 13, 2026, ECF 194, which binds the official each section directs) sections 2(a) and 3(d) in full, section 4(a) as to the plaintiff States except Wisconsin, and sections 7(a) and 7(b) as to thirteen of them"
   kind: authored
-  grade: {source: B, info: 2}
-  source: "Brennan Center case tracker, Sep 11, 2026 update (three courts blocked implementation of the first EO); corroborated by PBS/AP and The Hill reporting of Jun 24, 2026 on Casper's ruling and Newsweek on Kollar-Kotelly's D.D.C. ruling"
-  asserted_on: 2026-09-11
-  recheck_after: 2026-12-10
-  falsified_by: "an order vacating, staying or narrowing any of the three injunctions the claim counts, by the court that issued it or on appeal: LULAC v. Executive Office of the President (D.D.C., No. 1:25-cv-0946; cited as 808 F. Supp. 3d 29 of Oct 31, 2025, appealed as D.C. Cir. No. 25-5476, and as 818 F. Supp. 3d 34, appealed as D.C. Cir. No. 26-5098, and as 2026 WL 252420); Washington v. Trump (W.D. Wash., No. 2:25-cv-00602; cited as 2026 WL 73866 of Jan 9, 2026 and as 814 F. Supp. 3d 1173; appeal 9th Cir. No. 26-1429); California v. Trump (D. Mass., the states' 2025 suit; the 2025 preliminary injunction, 786 F. Supp. 3d 359, appealed as 1st Cir. No. 25-1726, and the permanent injunction of Jun 24, 2026, 2026 WL 1826535)"
+  grade: {source: A, info: 1}
+  source: "the three decrees, read on RECAP 2026-09-29: United States District Court for the District of Columbia, League of United Latin American Citizens v. Executive Office of the President, No. 1:25-cv-00946 (CKK), ECF 217 (order of Oct 31, 2025), ECF 235 (order of Jan 30, 2026) and ECF 256 (final judgment of Mar 31, 2026); United States District Court for the Western District of Washington, State of Washington v. Trump, No. 2:25-cv-00602 (JHC), ECF 126 (order of Jan 9, 2026); United States District Court for the District of Massachusetts, State of California v. Trump, No. 1:25-cv-10810 (DJC), ECF 190 (memorandum and order of Jun 24, 2026) and ECF 194 (judgment and order of permanent injunction of Jul 13, 2026). A stated limit: RECAP holds W.D. Wash. entries only through Jul 10, 2026, so that court's column is as of that date"
+  asserted_on: 2026-07-13
+  recheck_after: 2026-10-26
+  falsified_by: "an order staying, vacating or modifying any of these injunctions, by the court that entered it, on appeal or by the Supreme Court; or a further W.D. Wash. order on section 3(d), on cross-motions pending since May 15, 2026, which would change that court's list. The instruments, read directly: D.C. Circuit 25-5476 (consolidated with 25-5478, 26-5099, 26-5102 and 26-5182); W.D. Wash. 2:25-cv-00602 and Ninth Circuit 26-1429 (held since May 6, 2026 pending the district court); First Circuit 26-2038, the appeal from the D. Mass. judgment, and 25-1726, the appeal from its 2025 preliminary injunction; and a search of the Supreme Court's docket by each caption"
   status: active
-  renders_as: "the registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026"
+  renders_as: "three courts have permanently enjoined parts of EO 14248 (D.D.C. from Oct 31, 2025, W.D. Wash. from Jan 9, 2026, D. Mass. from Jun 24, 2026): section 2(a), proof of citizenship on the federal mail registration form, in all three; section 3(d), the same and proof of eligibility in the voter's State on the post card form for military and overseas voters, in D.D.C. and D. Mass.; section 2(d), citizenship checks before agencies offer the registration form, in D.D.C.; section 4(b), new voting-system standards, in W.D. Wash.; and sections 4(a), 7(a) and 7(b), which tie federal election funds to proof of citizenship and to an Election Day ballot-receipt deadline and direct that deadline's enforcement, only as to plaintiff States, in W.D. Wash. and D. Mass."
+
+# RULED 2026-09-29 (Corey): the Supreme Court's stay in the SAVE-system suit, read in the
+# courts' own words the same day, proposed, and approved with changes: this entry as
+# proposed, its text ending at the stay; what the Court said of the NVRA is its own entry
+# and sentence, dhs-save-stay-nvra-limit, directly after. SAVE here is DHS's Systematic
+# Alien Verification for Entitlements system, not the SAVE Act (the legislation,
+# save-stall-months below).
+#
+# THE ORDER STAYED. The D.D.C. order of Jun 22 (1:25-cv-03501 ECF 112) "vacates and sets
+# aside" DHS's Oct 2025 SAVE system-of-records notice (90 Fed. Reg. 48,948), SSA's Nov
+# 2025 notice for its master files (90 Fed. Reg. 50,879), and "the SAVE 'modified system'
+# described in" the DHS notice. The per curiam's account of the modification (p. 1): "it
+# incorporated checks against additional records--including social security numbers
+# (SSNs)--maintained by SSA. Second, it allowed state and local authorities to conduct
+# bulk searches of multiple individuals at once"; ECF 111 p. 2 adds the records of
+# natural-born citizens.
+#
+# THE STAY. Over a dissent by Justice Jackson, joined by Justices Sotomayor and Kagan:
+# "The June 22, 2026 order ... is stayed pending the disposition of appeal to the United
+# States Court of Appeals for the District of Columbia and disposition of a petition for
+# a writ of certiorari, if such a writ is timely sought. Should certiorari be denied, this
+# stay shall terminate automatically. In the event certiorari is granted, the stay shall
+# terminate upon the sending down of the judgment of this Court." The Court stayed an
+# ORDER; it authorized nothing, so the page does not say the system "may run".
+#
+# THE NVRA is dhs-save-stay-nvra-limit's, below: its quotes and its falsifier moved there
+# when it became its own entry, so a decision in No. 25-1017 no longer falsifies this one.
+#
+# EO 14248. The per curiam cites the order's direction to DHS "to put new systems in
+# place" and to SSA "to make its records available to DHS for that purpose" by Federal
+# Register page (90 Fed. Reg. 14006, 14007). psephos's mapping to sections, corroborated
+# by ECF 111 p. 8: section 2(b)(i) and section 3(a) (which says "to all State and local
+# election officials", where the per curiam says "to DHS").
+#
+# THE RECORD. 26-5243 (73544809, consolidated with Texas's 26-5301) carries the Clerk of
+# the Supreme Court's letter of Sep 25 (case_entries 91411: "application for stay was
+# granted"), and the D.C. Circuit's own per curiam order of Sep 4 denying a stay pending
+# appeal (88677). The D.D.C. row 71499795 is terminated and superseded by 26-5243; its
+# latest entry (Sep 28) is a notice of supplemental authority, not an order.
+#
+# THE POINTER'S WORDS, SOURCED (Corey, 2026-09-29). The page points at this entry as "the
+# SAVE-system changes EO 14248 prompted". Two primary documents tie the changes to the order:
+#   - DHS's own notice of the modified system, 90 Fed. Reg. 48,948 (Oct 31, 2025), after
+#     naming Executive Orders 14159 and 14248 and quoting 14248: "Pursuant to these
+#     Executive Orders, DHS personnel must timely provide verification of U.S.
+#     citizenship ... To respond to these requirements, USCIS has incorporated a feature
+#     to allow SAVE user agencies to create a SAVE case using a full or partial Social
+#     Security number". The notice names TWO orders, so "prompted" claims a cause, not the
+#     only one. It also attributes to 14159 a sentence that is 14248's section 2(b)(i)
+#     ("without the requirement of the payment of a fee, access to appropriate systems
+#     for verifying the citizenship or immigration status of individuals registering to
+#     vote or who are already registered").
+#   - The per curiam, slip op. 1: "Last year, the Federal Government expanded SAVE's
+#     scope. In March 2025, President Trump signed an Executive Order directing DHS to put
+#     new systems in place ... Exec. Order No. 14248 ... The Executive Order also directed
+#     the Social Security Administration (SSA) to make its records available to DHS for
+#     that purpose. ... Two months later, DHS launched a modified SAVE program." The Court
+#     ties them by sequence and purpose; the dissent says it outright (Jackson, J.,
+#     dissenting, slip op. 2: "To comply with the Executive Order, DHS and SSA agreed to
+#     overhaul SAVE").
+#
+# RECHECK Oct 26, a month and before the election: 26-5243's Clerk's order of Sep 14
+# deferred the briefing schedule, so no merits ruling is due before Nov 3. The recheck
+# reads both dockets and searches the Court's docket for a certiorari petition under the
+# caption, since a petition takes a new number (the 26A297/26A305 lesson below).
+- id: dhs-save-system-stayed
+  claim: "the D.D.C. order of Jun 22, 2026 (1:25-cv-03501 ECF 112) vacating DHS's modified SAVE system -- which added Social Security records, including natural-born citizens' records, and bulk searches -- and the DHS and SSA notices behind it, is stayed by the Supreme Court pending the D.C. Circuit appeal (26-5243, consolidated with 26-5301) and the disposition of any timely certiorari petition (DHS v. League of Women Voters, No. 26A308, per curiam, Sep 25, 2026)"
+  kind: authored
+  grade: {source: A, info: 1}
+  source: "Supreme Court of the United States, per curiam of Sep 25, 2026 granting the application for stay, Department of Homeland Security v. League of Women Voters, No. 26A308, 609 U.S. ___, over a dissent by Justice Jackson, joined by Justices Sotomayor and Kagan; the order stayed is League of Women Voters v. DHS, No. 1:25-cv-03501 (SLS) (D.D.C.), ECF 112 of Jun 22, 2026, with its memorandum opinion ECF 111; the D.C. Circuit docket 26-5243 carries the Clerk of the Supreme Court's letter of Sep 25; the changes' tie to EO 14248, for the page's pointer, is DHS's notice at 90 Fed. Reg. 48,948 (Oct 31, 2025) and the per curiam, slip op. 1"
+  asserted_on: 2026-09-25
+  recheck_after: 2026-10-26
+  falsified_by: "a Supreme Court order vacating or modifying the stay, or its end on its own terms: the D.C. Circuit's disposition of 26-5243 (with 26-5301) and then no timely certiorari petition, a denial of certiorari, or, after a grant, the Court's judgment sent down; or an order vacating or modifying the Jun 22 order itself, by the D.D.C. (1:25-cv-03501) or by a D.C. Circuit mandate. The instruments are D.C. Circuit docket 26-5243 and Supreme Court docket 26A308, read directly, and a search of the Court's docket for the caption, since a certiorari petition takes a new number"
+  status: active
+  record_instruments: [73544809, 71499795]
+  renders_as: "the D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"
+
+# RULED 2026-09-29 (Corey): what the per curiam says of the NVRA, its own entry and its own
+# sentence, directly after the stay's, attributed to the Court. The per curiam (slip op. 6)
+# quotes 52 U.S.C. 20507(c)(2)(A) -- "[a] State shall complete, not later than 90 days
+# prior to the date of a primary or general election for Federal office, any program the
+# purpose of which is to systematically remove the names of ineligible voters from the
+# official lists of eligible voters" -- and says: "To be sure, that moratorium limits the
+# potential impact of staying the District Court's order in this case. Still, all agree
+# that the order prevents the Federal Government from using the modified SAVE program to
+# conduct individualized inquiries, which are permitted under federal law during this
+# period." Its fn. 2: "We will consider the scope of this provision in Republican National
+# Committee v. Mi Familia Vota, et al., No. 25-1017, which asks whether the NVRA prohibits
+# States from implementing programs within 90 days of federal elections to cancel the
+# registrations of voters who are not U.S. citizens." So a decision there can change what
+# the moratorium covers, and with it the limit the Court described.
+#
+# RECHECK Nov 4 (Corey, 2026-09-29): the sentence describes the window before this
+# election. The 90-day period it speaks of, for the Nov 3, 2026 general election, began
+# Aug 5 and ends with that election; the Court's words stay true as what it said, but a
+# reader after Nov 3 reads a period that has closed. The recheck decides what the
+# sentence says then. It was first proposed as Dec 9, from No. 25-1017's schedule.
+#
+# No. 25-1017 STAYS ITS FALSIFIER. Its docket, read 2026-09-29: certiorari granted Jun 29,
+# 2026; respondents' merits briefs due Oct 13; SET FOR ARGUMENT Tuesday, Dec 8, 2026. A
+# decision in an argued case comes after argument; a dismissal before it would show on
+# the same docket.
+#
+# THE SENTENCE RIDES ON THE STAY. It describes the stay's impact, so it is retired with
+# dhs-save-system-stayed if that entry is falsified, whatever 25-1017 does.
+- id: dhs-save-stay-nvra-limit
+  claim: "the Supreme Court's per curiam of Sep 25, 2026 in No. 26A308 says the NVRA's 90-day moratorium on programs that systematically remove ineligible voters from the rolls (52 U.S.C. 20507(c)(2)(A)) \"limits the potential impact of staying the District Court's order\", and that the stayed order prevents \"individualized inquiries, which are permitted under federal law during this period\""
+  kind: authored
+  grade: {source: A, info: 1}
+  source: "Supreme Court of the United States, per curiam of Sep 25, 2026 granting the application for stay, Department of Homeland Security v. League of Women Voters, No. 26A308, 609 U.S. ___, slip op. 6 and n. 2"
+  asserted_on: 2026-09-25
+  recheck_after: 2026-11-04
+  falsified_by: "a decision in Republican National Committee v. Mi Familia Vota, No. 25-1017 (certiorari granted Jun 29, 2026; set for argument Dec 8, 2026), where the per curiam's fn. 2 says the Court will consider the provision's scope; the instrument is the Supreme Court's docket for No. 25-1017, read directly. Retired with dhs-save-system-stayed if that entry is falsified"
+  status: active
+  renders_as: "The Court said the NVRA's 90-day bar on systematic voter-roll removals limits the stay's potential impact, and that individualized inquiries are permitted under federal law in that period"
 
 - id: doj-demands-all-51
   claim: "the written voter-roll demands went to all 50 states and DC"
