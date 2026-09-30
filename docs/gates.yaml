@@ -193,20 +193,24 @@
 # A watermark is where flags are measured from, not proof that everything under it was
 # read. The D0's labels were in-sample; the measurement is the verdicts given on flags.
 #
-# 71499795'S FIRST SIX FLAGS, VERDICTS BY COREY (2026-09-29). THE WATERMARK STAYS AT 20446
-# until the first scheduled audit has posted these six on the standing issue -- the
-# delivery's first proof, which Corey expects of that run -- and then moves to 93145:
+# 71499795'S FIRST SIX FLAGS, VERDICTS BY COREY (2026-09-29). THE WATERMARK STAYED AT 20446
+# until the first scheduled audit posted them on the standing issue -- the delivery's first
+# proof -- and then moved to 93145 (Corey approved the hold 2026-09-30). That audit, run
+# 36707068687 at 11:12Z on 2026-09-30, opened issue 7 with these six and a seventh, 93225:
 #   57258  Jul 18 minute order on the 128 Motion to Enforce Judgment       operative
 #   67589  Jul 20 minute order deferring that ruling (N.D. Fla. appeal)    operative
 #   67651  the Jul 20 order held a second time, under its short form       duplicate
 #   86725  Texas's notice of appeal, Aug 21 (26-5301)                      operative
 #   86794  the same notice held twice (one docket entry, #141, two rows)    duplicate
 #   93145  "Order on Motion to Enforce Judgment", Sep 29                   operative
+#   93225  the same Sep 29 order's text, held as its own row               duplicate
 # The naive test counted 21 above that watermark where the order-like test flagged these
 # six. Corey ruled 93145 "unread, open until its text is read"; its text reached
 # CourtListener the same evening as a separate row (see dhs-save-system-stayed's comment),
-# read at 23:39Z, so the verdict is given. That row will arrive as a new entry above 93145
-# and flag; it is the later row of the twin, a duplicate, recorded when the reading moves. The later row of a twin is the
+# read at 23:39Z, so the verdict is given. That row arrived as 93225 (CourtListener 479868690)
+# and flagged; it is the later row of the twin, a duplicate by Corey's later-row rule
+# (2026-09-30), recorded as the reading moved. It stays above the watermark, marked
+# recorded; the posting step never posts an id twice. The later row of a twin is the
 # duplicate, as Corey ruled the pairs. Each pair is ONE docket entry held as two rows,
 # under its short and its full description (case_entries is unique on the description), not
 # a notice docketed twice. The test stays pinned during the measurement; the
@@ -553,7 +557,7 @@
 # appeal (88677). The D.D.C. row 71499795 is terminated and superseded by 26-5243. Its
 # latest held entry (Sep 29, the short form 93145) is the minute order applying the stay,
 # below; the Sep 28 notice of supplemental authority precedes it, and the order's text row
-# (CourtListener 479868690) has not yet arrived as its own entry.
+# (CourtListener 479868690) arrived as its own entry, 93225, on 2026-09-30.
 #
 # THE DISTRICT COURT APPLIED THE STAY, 2026-09-29 (read 23:39Z off CourtListener, RECAP
 # entry 479868690; the held short form is 93145). Minute order: "While the stay remains in
@@ -626,9 +630,9 @@
       through_entry_at: 2026-09-25
       verdicts: {}
     - docket: "71499795"
-      read_on: 2026-09-29
-      through_entry_id: 20446
-      through_entry_at: 2026-07-08
+      read_on: 2026-09-30
+      through_entry_id: 93145
+      through_entry_at: 2026-09-29
       verdicts:
         57258: operative
         67589: operative
@@ -636,6 +640,7 @@
         86725: operative
         86794: duplicate
         93145: operative
+        93225: duplicate
   renders_as: "The D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"
 
 # RULED 2026-09-29 (Corey): what the per curiam says of the NVRA, its own entry and its own

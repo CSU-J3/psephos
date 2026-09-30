@@ -337,7 +337,18 @@ Last updated: 2026-09-30 (UTC).
 - **26-5301 is not held.** It is carried on its lead 26-5243 (73544809) per the 26-5301 precedent, so it is not added to the gate's list.
 - **93145, READ.** At 22:42Z, the previous brief's fetch, CourtListener held only the short form (479853687, our 93145). The text row, 479868690, was created on CourtListener at 23:31:22Z, before this brief arrived, and the first read after the brief, at 23:39Z, held it. The minute order says: "While the stay remains in effect, the Court therefore cannot grant the requested relief compelling compliance with this Court's June 22, 2026, Order. Accordingly, the Court DENIES the Plaintiffs' 128 Motion to Enforce Summary Judgment Order without prejudice to renewal should the judgment become enforceable in light of further appellate proceedings." It also VACATES the Jul 20 weekly-status order. **It applies the stay and changes neither the Jun 22 order's effect nor the stay's reach, so no stop.** Corey need not buy it through PACER.
 - **The text row will arrive as a new entry above 93145 and flag.** It is the later row of the twin: a duplicate.
-- **The watermark stays at 20446, verdicts recorded, until the first scheduled audit has posted the six on the standing issue.** *(APPROVED by Corey, 2026-09-30.)* Corey expects that run to post them, and it is the delivery's first proof. Then the reading moves to 93145.
+- **The watermark stayed at 20446, verdicts recorded, until the first scheduled audit posted the six.** *(APPROVED by Corey, 2026-09-30.)*
+  - **That audit is run 36707068687, 11:12Z on 2026-09-30, head `74f3093`.** It went green and opened standing issue 7, "recheck flags", with seven flags.
+    - The body is the bot's own, and its marker holds the seven ids.
+    - The six were each marked `[verdict recorded: ...]`.
+    - The seventh is 93225, the Sep 29 order's text (CourtListener 479868690), held as its own row, as predicted.
+  - **Delivery is proven on real flags.**
+  - **The reading moved to 93145 (read 2026-09-30).**
+    - 93225 is recorded `duplicate` by Corey's later-row rule.
+    - Under the new reading, 71499795 has 2 entries above the watermark and 1 flag, 93225, marked duplicate. The other is #149's re-description, not order-like.
+    - The tally is 7 verdicts: 4 operative, 0 noise, 0 missed, 3 duplicate, 0 unread.
+    - `coverage_audit` exits 0, all alarms 0.
+- **The first scheduled dom-checks after the gates push:** run 36698132294, 09:45Z on 2026-09-30, head `74f3093`. Green: preflight, assert-gates (checks 1-5), encodings, layout, attribution and dated all passed, and the issue step was skipped.
 - **The measurement so far:** 6 verdicts, 4 operative, 0 noise, 0 missed, 2 duplicate, 0 unread.
 - **The test stays pinned.** The duplicates are evidence for its revision at the period's end.
 
