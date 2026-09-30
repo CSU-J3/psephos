@@ -669,8 +669,9 @@ def main(argv=None) -> int:
         print()
         try:
             gates = recheck_flags.load_gates()
-            for line in recheck_flags.report_lines(recheck_flags.compute(conn, gates),
-                                                   recheck_flags.tally(gates)):
+            seeds = recheck_flags.load_seeds()
+            for line in recheck_flags.report_lines(recheck_flags.compute(conn, gates, seeds),
+                                                   recheck_flags.tally(gates, seeds)):
                 print(line)
         except Exception as exc:  # noqa: BLE001 -- reported, never raised
             print(f"  [9] RECHECK FLAGS -- CANNOT RUN: {type(exc).__name__}: "

@@ -1,5 +1,6 @@
-"""Recheck flags: order-like docket entries on a gate-listed docket that arrived after a
-person last read that docket against the claim. Read-only. Writes nothing to the database
+"""Recheck flags: order-like docket entries on a watched docket -- one a gate lists, above
+its last reading, or one cleared by a no-claim-order reason, filed after its read-through
+date. Read-only. Writes nothing to the database
 and nothing to the register.
 
     python -m tools.recheck_flags                          # the report, as section 9 prints it
@@ -49,9 +50,22 @@ ANY EO 14248 docket seeds, whatever its court; the forms above are the D0's note
 is known not to match, not the boundary of the rule. The collector's own `is_substantive`
 matches substrings ("recorder", "border") and is not reused here.
 
-IT WATCHES LISTED DOCKETS ONLY, as ruled. A docket that passes assert-gates check 5 by a
-recorded reason is read by nothing here; a consolidated member is watched only as far as
-its orders land on its listed lead.
+WHAT IT WATCHES. Every docket a gate lists, from its reading's id watermark. And, since
+Corey's ruling of 2026-09-29, every docket that passes assert-gates check 5 by a
+NO-CLAIM-ORDER reason, from that reason's `read_through` date: the date works as its
+watermark, so an order-like entry FILED after it flags as a listed docket's would, and the
+flag says the reason needs re-ruling. (A date, not an id, as ruled: such a docket has no
+reading to carry an id. An entry filed on or before the date but ingested later does not
+flag.) A consolidated member is watched only through its listed lead.
+
+THE VERDICT CLASSES (ruled 2026-09-29): operative (a flag that bears on a claim, "true");
+noise (a flag that does not, "false"); missed (an operative entry the test did not flag);
+duplicate (the same order or notice held as a second row -- one docket entry under its
+short and its full description, the later row of the pair -- its own class, not false);
+unread (open until its text is read: the report lists every unread verdict whatever the
+watermark, and the fragment re-offers it). A no-claim-order docket's verdicts ride on its
+reason, `gate_coverage.verdicts` on the seed, since it has no reading. The test stays pinned during the
+measurement; the duplicate count is evidence for its revision at the period's end.
 
 THE MEASUREMENT. Every flag gets a verdict at its recheck -- operative or noise -- and
 the reader skims the unflagged entries since the watermark and records any operative one
@@ -76,7 +90,8 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 GATES_PATH = ROOT / "docs" / "gates.yaml"
 
-VERDICTS = ("operative", "noise", "missed")
+VERDICTS = ("operative", "noise", "missed", "duplicate", "unread")
+SLOT = "operative | noise | duplicate | unread"   # a fragment's placeholder, to be edited
 READING_KEYS = {"docket", "read_on", "through_entry_id", "through_entry_at", "verdicts"}
 # The ruled bar, restated where the report prints it.
 PERIOD_END = "2026-11-12"
@@ -310,13 +325,39 @@ def readings(gates: list[dict]) -> list[dict]:
     return out
 
 
-def tally(gates: list[dict]) -> collections.Counter:
-    """The measurement so far: verdicts recorded on every reading of every gate."""
+def reason_readings(seeds: list[dict]) -> list[dict]:
+    """One row per docket cleared by a no-claim-order reason: watched from its read-through
+    date (Corey, 2026-09-29)."""
+    out = []
+    for s in seeds or []:
+        gc = s.get("gate_coverage") if isinstance(s, dict) else None
+        if isinstance(gc, dict) and gc.get("unlisted") == "no-claim-order" and s.get("case_id"):
+            d = _iso(gc.get("read_through"))
+            if d:
+                v = gc.get("verdicts") or {}
+                out.append({"gate": "gate_coverage: no-claim-order", "docket": str(s["case_id"]),
+                            "read_on": d, "through_entry_id": None, "through_entry_at": d,
+                            "verdicts": {int(k): x for k, x in v.items()} if isinstance(v, dict) else {},
+                            "reason": True, "ruled": gc.get("ruled")})
+    return out
+
+
+def load_seeds(path: Path | None = None) -> list[dict]:
+    doc = yaml.safe_load((path or ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
+    return (doc.get("litigation") or {}).get("seed_cases") or []
+
+
+def tally(gates: list[dict], seeds: list[dict] | None = None) -> collections.Counter:
+    """The measurement so far: verdicts recorded on every reading of every gate, and on
+    every no-claim-order reason."""
     c = collections.Counter()
     for g in gates:
         for r in (g.get("record_read") or []) if isinstance(g, dict) else []:
             for v in (r.get("verdicts") or {}).values():
                 c[v] += 1
+    for r in reason_readings(seeds or []):
+        for v in r["verdicts"].values():
+            c[v] += 1
     return c
 
 
@@ -345,7 +386,10 @@ def flags(read: list[dict], rows_by_docket: dict[str, list[dict]]) -> list[dict]
     out = []
     for r in read:
         rows = rows_by_docket.get(r["docket"], [])
-        above = [x for x in rows if x["id"] > r["through_entry_id"]]
+        if r.get("reason"):   # a no-claim-order docket: entries FILED after the date
+            above = [x for x in rows if (x["entry_at"] or "")[:10] > r["through_entry_at"]]
+        else:
+            above = [x for x in rows if x["id"] > r["through_entry_id"]]
         flagged = []
         for x in above:
             kind = classify(x, rows)
@@ -359,7 +403,7 @@ def flags(read: list[dict], rows_by_docket: dict[str, list[dict]]) -> list[dict]
                     # A watermark above everything held suppresses every flag on the
                     # docket, and a hand-edited number can be a typo or a paste from
                     # another docket: say so rather than stay quiet.
-                    "ahead": r["through_entry_id"] > (max_id or 0)})
+                    "ahead": (not r.get("reason")) and r["through_entry_id"] > (max_id or 0)})
     return out
 
 
@@ -367,26 +411,45 @@ def report_lines(result: list[dict], counts: collections.Counter) -> list[str]:
     """Section 9's body, as coverage_audit prints it."""
     nflag = sum(len(r["flagged"]) for r in result)
     nnaive = sum(r["naive"] for r in result)
-    lines = [f"  [9] RECHECK FLAGS -- order-like entries above a gate's last reading: {nflag} "
-             f"on {sum(1 for r in result if r['flagged'])} of {len(result)} listed docket(s)  "
-             f"(a report, not an alarm; the naive count beside it: {nnaive})"]
+    nlisted = sum(1 for r in result if not r.get("reason"))
+    lines = [f"  [9] RECHECK FLAGS -- order-like entries on watched dockets: {nflag} on "
+             f"{sum(1 for r in result if r['flagged'])} of {len(result)} ({nlisted} listed, "
+             f"above a gate's reading; {len(result) - nlisted} by no-claim-order read-through "
+             f"date)  (a report, not an alarm; the naive count beside it: {nnaive})"]
     got = sum(counts.values())
     lines.append(f"      verdicts so far: {got} ({counts['operative']} operative, "
-                 f"{counts['noise']} noise, {counts['missed']} missed). The ruled bar, not yet in "
-                 f"force: 0 missed and at most 1/3 noise, over {VERDICTS_NEEDED}+ verdicts and "
-                 f"through {PERIOD_END}.")
+                 f"{counts['noise']} noise, {counts['missed']} missed, {counts['duplicate']} "
+                 f"duplicate, {counts['unread']} unread). The ruled bar, not yet in force: 0 "
+                 f"missed and at most 1/3 noise, over {VERDICTS_NEEDED}+ verdicts and through "
+                 f"{PERIOD_END}.")
+    # UNREAD IS OPEN (ruled 2026-09-29), whatever the watermark: every one prints.
     for r in result:
-        lines.append(f"      {r['gate']} / {r['docket']}: read {r['read_on']} through id "
-                     f"{r['through_entry_id']} ({r['through_entry_at']}); held max id "
-                     f"{r['max_id']}; {r['above']} above, {len(r['flagged'])} flagged, "
-                     f"{r['naive']} naive")
+        for k, v in sorted((r.get("verdicts") or {}).items()):
+            if v == "unread":
+                lines.append(f"      UNREAD, STILL OPEN: {k} on {r['docket']} ({r['gate']}) -- "
+                             f"give a verdict once its text is read")
+    for r in result:
+        if r.get("reason"):
+            lines.append(f"      {r['gate']} / {r['docket']}: read through {r['through_entry_at']} "
+                         f"({r.get('ruled')}); watched by filing date; {r['above']} filed after, "
+                         f"{len(r['flagged'])} flagged, {r['naive']} naive")
+        else:
+            lines.append(f"      {r['gate']} / {r['docket']}: read {r['read_on']} through id "
+                         f"{r['through_entry_id']} ({r['through_entry_at']}); held max id "
+                         f"{r['max_id']}; {r['above']} above, {len(r['flagged'])} flagged, "
+                         f"{r['naive']} naive")
+        if r.get("reason") and r["flagged"]:
+            lines.append("        THE NO-CLAIM-ORDER REASON NEEDS RE-RULING: an order-like entry "
+                         "was filed after its read-through date")
         if r.get("ahead"):
             lines.append(f"        WATERMARK AHEAD OF THE RECORD: through id {r['through_entry_id']} > "
                          f"held max {r['max_id']}; no entry on this docket can flag until it is fixed")
         for x in r["flagged"]:
             tag = "UNREADABLE " if x["kind"] == "unreadable" else ""
+            given = r.get("verdicts", {}).get(x["id"])
             lines.append(f"        FLAG {tag}{x['id']:<7} {(x['entry_at'] or '')[:10]}  "
-                         f"{' '.join((x['description'] or '').split())[:120]}")
+                         f"{' '.join((x['description'] or '').split())[:120]}"
+                         + (f"  [verdict: {given}]" if given else ""))
     return lines
 
 
@@ -405,23 +468,45 @@ def comment_body(result: list[dict], already: set[int], run_url: str = "") -> st
     if not new:
         return None
     ids = sorted({x["id"] for _, x in new})
+    where = []
+    if any(not r.get("reason") for r, _ in new):
+        where.append("on a docket a gate lists, above its last reading")
+    if any(r.get("reason") for r, _ in new):
+        where.append("on a docket cleared by a no-claim-order reason, filed after its "
+                     "read-through date")
     out = ["cc @CSU-J3", "",
            f"**Recheck flag** -- {len(ids)} new order-like "
-           f"{'entry' if len(ids) == 1 else 'entries'} on a docket a gate lists, above "
-           "its last reading. A flag asks for a read; it is not a failure, and it never "
-           "turns a run red.", ""]
+           f"{'entry' if len(ids) == 1 else 'entries'} {' and '.join(where)}. A flag asks for "
+           "a read; it is not a failure, and it never turns a run red.", ""]
     if run_url:
         out += [f"Run: {run_url}", ""]
+    reasons = sorted({r["docket"] for r, _ in new if r.get("reason")})
+    if reasons:
+        out += [f"**The no-claim-order reason on {', '.join(reasons)} needs re-ruling:** an "
+                "order-like entry was filed after its read-through date. Read it, then list the "
+                "docket on the gate it bears on or record a new read-through date.", ""]
     out += ["| entry | filed | gate | docket | text |", "|---|---|---|---|---|"]
+    pending = 0
     for r, x in new:
         text = " ".join((x["description"] or "").split()).replace("|", "/")[:220]
         tag = " (short form: content only in the PDF)" if x["kind"] == "unreadable" else ""
+        given = (r.get("verdicts") or {}).get(x["id"])
+        if given:
+            tag += f" **[verdict recorded: {given}]**"
+        else:
+            pending += 1
         out.append(f"| {x['id']} | {(x['entry_at'] or '')[:10]} | `{r['gate']}` | "
                    f"[{r['docket']}]({COURTLISTENER_DOCKET.format(r['docket'])}) | {text}{tag} |")
-    out += ["", "Reply with a verdict per entry -- **operative** or **noise** -- and any "
-            "operative entry the flags missed. The verdicts are the measurement: they go on "
-            "the gate's `record_read` when its reading moves, beside those already given "
-            "(`python -m tools.recheck_flags --fragment`).", "", f"<!-- recheck-flags: {','.join(map(str, ids))} -->"]
+    if pending:
+        out += ["", "Reply with a verdict per entry not marked recorded -- **operative**, "
+                "**noise**, **duplicate** (the same order or notice held as a second row) or "
+                "**unread** (open until its text is read) -- and any operative entry the flags "
+                "missed. The verdicts are the measurement: they go on the gate's `record_read` "
+                "when its reading moves, or on the no-claim-order reason's `verdicts`, beside "
+                "those already given (`python -m tools.recheck_flags --fragment`)."]
+    else:
+        out += ["", "Every entry above already carries a recorded verdict; nothing is asked."]
+    out += ["", f"<!-- recheck-flags: {','.join(map(str, ids))} -->"]
     return "\n".join(out) + "\n"
 
 
@@ -434,6 +519,21 @@ def fragment(result: list[dict]) -> str:
            f"entry as missed, then replace the gate's record_read item. The verdicts it "
            f"already carries are kept: they accumulate."]
     for r in result:
+        if r.get("reason"):
+            out.append(f"# {r['docket']}: cleared by a no-claim-order reason read through "
+                       f"{r['through_entry_at']}. "
+                       + (f"{len(r['flagged'])} flag(s) filed after it: re-rule the reason "
+                          f"(list the docket, or a new read_through on its seed), and record "
+                          f"each flag's verdict on the reason:"
+                          if r["flagged"] else "Nothing filed after it flags."))
+            if r["flagged"]:
+                prior = r.get("verdicts") or {}
+                out.append("#   gate_coverage.verdicts:")
+                out += [f"#     {k}: {v}" for k, v in sorted(prior.items())]
+                out += [f"#     {x['id']}: {SLOT}    # {(x['entry_at'] or '')[:10]} "
+                        f"{' '.join((x['description'] or '').split())[:70]}"
+                        for x in r["flagged"] if x["id"] not in prior]
+            continue
         out += [f"# {r['gate']}", f"  - docket: \"{r['docket']}\"",
                 "    read_on: YYYY-MM-DD",
                 f"    through_entry_id: {r['max_id'] if r['max_id'] is not None else 0}",
@@ -442,19 +542,21 @@ def fragment(result: list[dict]) -> str:
         new = [x for x in r["flagged"] if x["id"] not in prior]
         if prior or new:
             out.append("    verdicts:")
-            out += [f"      {k}: {v}" for k, v in sorted(prior.items())]
-            out += [f"      {x['id']}: operative | noise    # {(x['entry_at'] or '')[:10]} "
+            out += [f"      {k}: {v}" + ("    # STILL OPEN: replace once its text is read"
+                                             if v == "unread" else "")
+                    for k, v in sorted(prior.items())]
+            out += [f"      {x['id']}: {SLOT}    # {(x['entry_at'] or '')[:10]} "
                     f"{' '.join((x['description'] or '').split())[:80]}" for x in new]
         else:
             out.append("    verdicts: {}")
     return "\n".join(out) + "\n"
 
 
-def compute(conn, gates: list[dict]) -> list[dict]:
+def compute(conn, gates: list[dict], seeds: list[dict] | None = None) -> list[dict]:
     problems = reading_problems(gates)
     if problems:
         raise ValueError("docs/gates.yaml record_read is malformed: " + "; ".join(problems))
-    read = readings(gates)
+    read = readings(gates) + reason_readings(load_seeds() if seeds is None else seeds)
     return flags(read, fetch_rows(conn, sorted({r["docket"] for r in read})))
 
 
@@ -491,7 +593,7 @@ def main(argv=None) -> int:
             target.write_bytes(body.encode("utf-8"))
             print(f"recheck_flags: {len(posted_ids(body))} new flag(s) written to {target}")
     else:
-        print("\n".join(report_lines(result, tally(gates))))
+        print("\n".join(report_lines(result, tally(gates, load_seeds()))))
     return 0
 
 

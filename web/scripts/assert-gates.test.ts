@@ -224,6 +224,34 @@ describe("check 5 fails every planted gap with exit 5", () => {
   });
 });
 
+describe("the ruled verdict classes", () => {
+  it("accepts duplicate and unread beside operative, noise and missed", () => {
+    const { code, out } = run({
+      gates: (g) => {
+        (gate(g, "eo-14399-s2-3-stayed").record_read as Array<Record<string, unknown>>)[0].verdicts =
+          { 1: "operative", 2: "noise", 3: "missed", 4: "duplicate", 5: "unread" };
+      },
+    });
+    expect(code, out).toBe(0);
+  });
+});
+
+describe("a no-claim-order reason may carry its flags' verdicts", () => {
+  const withVerdicts = (v: Record<string, unknown>) => (s: Seed[]) => {
+    s.push(newSeed({ gate_coverage: { unlisted: "no-claim-order", read_through: "2026-09-29",
+      ruled: "test", verdicts: v } }));
+  };
+  it("accepts the ruled classes", () => {
+    const { code, out } = run({ clock: "2026-09-29", seeds: withVerdicts({ 950: "operative", 951: "duplicate" }) });
+    expect(code, out).toBe(0);
+  });
+  it("refuses a verdict outside them, exit 3", () => {
+    const { code, out } = run({ clock: "2026-09-29", seeds: withVerdicts({ 950: "maybe" }) });
+    expect(code, out).toBe(3);
+    expect(out).toMatch(/gate_coverage.verdicts` 950: "maybe"/);
+  });
+});
+
 describe("a malformed reason or reading is a malformed register: exit 3", () => {
   const cases: Array<[string, Parameters<typeof run>[0], RegExp]> = [
     ["a reason outside the vocabulary",

@@ -44,17 +44,19 @@
  *                      window; case and runs of whitespace are ignored.
  *   no-claim-order  -- `read_through`, the day a person last read the docket's orders and
  *                      found none bearing on a claim, on or before the record's clock
- *                      plus a day.
+ *                      plus a day. WATCHED FROM THAT DATE (Corey, 2026-09-29): the recheck
+ *                      flags treat it as the docket's watermark, and an order-like entry
+ *                      filed after it flags, saying the reason needs re-ruling.
  *
  * Both carry `ruled`: who decided, and when. A listed docket carrying a reason fails
  * ("remove the reason"), and so does a reason on a seed outside the class. There is NO
  * GRACE PERIOD: at a seed commit the docket is not yet held and nothing can see its
  * orders, so the rule requires the written outcome of a person reading them. What the
  * machine verifies is that a dated, attributed reading was written, not that it
- * happened. The recheck flags watch LISTED dockets only, above each one's reading: a
- * docket cleared by a reason is read by nothing here after the reason is written, and a
- * consolidated member only as far as its orders land on its listed lead. A shape error
- * in a reason is exit 3, like any malformed register.
+ * happened. The recheck flags are the backstop: they watch every listed docket above its
+ * reading, and every no-claim-order docket from its read-through date. A consolidated
+ * member is watched only as far as its orders land on its listed lead. A shape error in a
+ * reason is exit 3, like any malformed register.
  *
  * THE CLASS IS THE EXECUTIVE-ORDER DOCKETS ONLY (ruled). The voter-data rows' page
  * figures are derived gates, read from the record every render; scoping them in would
@@ -63,7 +65,8 @@
  * READINGS (2026-09-29). An authored claim with `record_instruments` carries
  * `record_read`, one item per listed docket and no other, each with `docket`, `read_on`,
  * `through_entry_id` (MAX(case_entries.id) held at the reading), `through_entry_at` and
- * `verdicts` (entry id -> operative | noise | missed). The loader refuses any other shape
+ * `verdicts` (entry id -> operative | noise | missed | duplicate | unread, the classes
+ * ruled 2026-09-29). The loader refuses any other shape
  * (exit 3). tools/recheck_flags.py reads the watermark; nothing here compares it with
  * the record, since data/cases.json carries no entry ids.
  *
@@ -169,8 +172,11 @@ const COVERAGE_KEYS = {
   "no-claim-order": ["unlisted", "read_through", "ruled"],
 };
 const COVERAGE_RECORD_KEYS = ["case_id", "entry_at", "quote"];
+/** Keys a reason kind MAY carry beside its required ones: a no-claim-order docket's verdicts
+ *  on its recheck flags, since it has no reading to carry them (2026-09-29). */
+const COVERAGE_OPTIONAL = { "no-claim-order": ["verdicts"] };
 const READING_KEYS = ["docket", "read_on", "through_entry_id", "through_entry_at", "verdicts"];
-const VERDICTS = new Set(["operative", "noise", "missed"]);
+const VERDICTS = new Set(["operative", "noise", "missed", "duplicate", "unread"]);
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -289,7 +295,7 @@ function loadGates() {
           else
             for (const [k, val] of Object.entries(v))
               if (!/^\d+$/.test(k) || !VERDICTS.has(val))
-                problems.push(`${rat}: verdict ${k}: ${JSON.stringify(val)} (operative | noise | missed)`);
+                problems.push(`${rat}: verdict ${k}: ${JSON.stringify(val)} (operative | noise | missed | duplicate | unread)`);
         }
         for (const d of listed)
           if ((seenDockets.get(d) ?? 0) !== 1)
@@ -638,7 +644,8 @@ function coverageShapeProblems(seeds) {
       continue;
     }
     const have = Object.keys(gc);
-    const extra = have.filter((k) => !keys.includes(k));
+    const optional = COVERAGE_OPTIONAL[gc.unlisted] ?? [];
+    const extra = have.filter((k) => !keys.includes(k) && !optional.includes(k));
     const missing = keys.filter((k) => !have.includes(k));
     if (extra.length) problems.push(`${at}: \`gate_coverage\` (${gc.unlisted}) does not take ${extra.join(", ")}`);
     if (missing.length) problems.push(`${at}: \`gate_coverage\` (${gc.unlisted}) needs ${missing.join(", ")}`);
@@ -662,6 +669,15 @@ function coverageShapeProblems(seeds) {
     }
     if (gc.unlisted === "no-claim-order" && (typeof gc.read_through !== "string" || !ISO_DATE.test(gc.read_through)))
       problems.push(`${at}: \`gate_coverage.read_through\` must be a YYYY-MM-DD STRING`);
+    if (gc.verdicts !== undefined) {
+      const v = gc.verdicts;
+      if (!v || typeof v !== "object" || Array.isArray(v))
+        problems.push(`${at}: \`gate_coverage.verdicts\` must map entry ids to a verdict`);
+      else
+        for (const [k, val] of Object.entries(v))
+          if (!/^\d+$/.test(k) || !VERDICTS.has(val))
+            problems.push(`${at}: \`gate_coverage.verdicts\` ${k}: ${JSON.stringify(val)} (operative | noise | missed | duplicate | unread)`);
+    }
   }
   return problems;
 }

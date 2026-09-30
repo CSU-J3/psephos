@@ -14,6 +14,7 @@ from __future__ import annotations
 import collections
 import copy
 import json
+import sqlite3
 from pathlib import Path
 
 import pytest
@@ -227,6 +228,17 @@ def test_the_comment_is_worded_as_a_flag_and_posts_only_what_is_new():
     assert rf.posted_ids(again) == {14}
 
 
+def test_a_recorded_verdict_shows_in_the_comment_and_is_not_asked_again():
+    result = _result([12, 13])
+    result[0]["verdicts"] = {12: "duplicate"}
+    body = rf.comment_body(result, set())
+    assert "[verdict recorded: duplicate]" in body and "not marked recorded" in body
+    result[0]["verdicts"] = {12: "duplicate", 13: "operative"}
+    body = rf.comment_body(result, set())
+    assert "nothing is asked" in body and "Reply with" not in body
+    assert rf.posted_ids(body) == {12, 13}       # still posted: the delivery proof
+
+
 def test_an_unreadable_flag_says_its_content_is_only_in_the_pdf():
     body = rf.comment_body(_result([12], kind="unreadable"), set())
     assert "content only in the PDF" in body
@@ -246,3 +258,106 @@ def test_verdicts_accumulate_when_a_reading_moves():
     frag = rf.fragment(result)
     assert "      7: operative" in frag and "      12: noise" in frag
     assert "12: operative | noise" not in frag and "13: operative | noise" in frag
+
+
+# --- the no-claim-order watch (Corey, 2026-09-29) ------------------------------------------
+
+def _ncl_seed(read_through="2026-09-20", case_id="555"):
+    return {"case_id": case_id, "category": "executive-order",
+            "gate_coverage": {"unlisted": "no-claim-order", "read_through": read_through,
+                              "ruled": "test, 2026-09-20"}}
+
+
+def test_a_no_claim_order_docket_is_watched_from_its_read_through_date():
+    [r] = rf.reason_readings([_ncl_seed(), {"case_id": "1", "category": "voter-data"},
+                              {"case_id": "2", "gate_coverage": {  # dated, so only its kind excludes it
+                                  "unlisted": "consolidated", "into": "3", "read_through": "2026-09-20"}}])
+    assert r["docket"] == "555" and r["reason"] is True and r["through_entry_at"] == "2026-09-20"
+    rows = {"555": [
+        {"id": 900, "case_id": "555", "entry_at": "2026-09-19",   # read before the date
+         "description": "ORDER granting preliminary injunction", "document_url": None},
+        {"id": 901, "case_id": "555", "entry_at": "2026-09-20",   # filed ON the date: read
+         "description": "ORDER denying stay", "document_url": None},
+        {"id": 950, "case_id": "555", "entry_at": "2026-09-25",   # the planted order after it
+         "description": "MEMORANDUM OPINION AND ORDER vacating the rule", "document_url": None},
+        {"id": 951, "case_id": "555", "entry_at": "2026-09-26",
+         "description": "MINUTE ORDER granting pro hac vice", "document_url": None},
+    ]}
+    [res] = rf.flags([r], rows)
+    assert [x["id"] for x in res["flagged"]] == [950]
+    assert res["above"] == 2 and res["ahead"] is False
+    lines = rf.report_lines([res], collections.Counter())
+    assert any("NEEDS RE-RULING" in ln for ln in lines)
+    body = rf.comment_body([res], set())
+    assert "no-claim-order reason on 555 needs re-ruling" in body and rf.posted_ids(body) == {950}
+    assert "re-rule the reason" in rf.fragment([res])
+
+
+def _conn(rows):
+    """An in-memory connection shaped like db.connect()'s: case_entries, rows by name."""
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    conn.execute("CREATE TABLE case_entries (id INTEGER, case_id TEXT, entry_at TEXT, "
+                 "description TEXT, document_url TEXT)")
+    conn.executemany("INSERT INTO case_entries VALUES (?,?,?,?,?)", rows)
+    return conn
+
+
+def test_compute_joins_a_no_claim_order_docket_to_the_listed_ones():
+    """The production path -- coverage_audit section 9 and audit.yml's comment step both go
+    through compute() -- not only the pure pieces."""
+    conn = _conn([(900, "555", "2026-09-19", "ORDER granting stay", None),
+                  (950, "555", "2026-09-25", "MEMORANDUM OPINION AND ORDER vacating the rule", None)])
+    res = rf.compute(conn, rf.load_gates(), seeds=[_ncl_seed()])
+    reason = [r for r in res if r.get("reason")]
+    assert [(r["docket"], [x["id"] for x in r["flagged"]]) for r in reason] == [("555", [950])]
+    assert len(res) == len(rf.readings(rf.load_gates())) + 1
+
+
+def test_load_seeds_reads_the_litigation_seeds(tmp_path):
+    p = tmp_path / "sources.yaml"
+    p.write_text("litigation:\n  seed_cases:\n    - case_id: '555'\n      gate_coverage:\n"
+                 "        unlisted: no-claim-order\n        read_through: '2026-09-20'\n"
+                 "        ruled: test\n", encoding="utf-8")
+    [s] = rf.load_seeds(p)
+    assert s["case_id"] == "555" and rf.reason_readings([s])[0]["through_entry_at"] == "2026-09-20"
+
+
+def test_a_no_claim_order_reasons_verdicts_ride_on_it_and_count():
+    seed = _ncl_seed()
+    seed["gate_coverage"]["verdicts"] = {950: "operative", 951: "noise"}
+    [r] = rf.reason_readings([seed])
+    assert r["verdicts"] == {950: "operative", 951: "noise"}
+    assert rf.tally([], [seed]) == collections.Counter(operative=1, noise=1)
+    frag = rf.fragment([{**r, "held": 2, "max_id": 952, "max_entry_at": "2026-09-27", "above": 3,
+                         "naive": 1, "ahead": False, "flagged": [
+                             {"id": 950, "entry_at": "2026-09-25", "description": "ORDER", "kind": "flag"},
+                             {"id": 952, "entry_at": "2026-09-27", "description": "ORDER", "kind": "flag"}]}])
+    assert "#     950: operative" in frag and f"#     952: {rf.SLOT}" in frag
+
+
+def test_unread_stays_open_after_the_reading_moves_past_it():
+    moved = [{**_reading(through=200, verdicts={101: "unread", 102: "noise"}),
+              "held": 5, "max_id": 200, "max_entry_at": "2026-09-30", "above": 0, "naive": 0,
+              "ahead": False, "flagged": []}]
+    lines = rf.report_lines(moved, collections.Counter(unread=1, noise=1))
+    assert any("UNREAD, STILL OPEN: 101" in ln for ln in lines)
+    assert not any("STILL OPEN: 102" in ln for ln in lines)
+    assert "101: unread    # STILL OPEN" in rf.fragment(moved)
+
+
+@pytest.mark.parametrize("verdict", ["operative", "noise", "missed", "duplicate", "unread"])
+def test_the_ruled_verdict_classes_are_accepted(verdict):
+    gates = copy.deepcopy(rf.load_gates())
+    g = next(g for g in gates if g.get("record_instruments"))
+    g["record_read"][0]["verdicts"] = {1: verdict}
+    assert rf.reading_problems(gates) == []
+    assert rf.tally(gates)[verdict] >= 1
+
+
+def test_a_flag_already_given_a_verdict_shows_it_in_the_report():
+    result = _result([12, 13])
+    result[0]["verdicts"] = {12: "duplicate"}
+    lines = rf.report_lines(result, collections.Counter(duplicate=1))
+    assert any("FLAG 12" in ln and "[verdict: duplicate]" in ln for ln in lines)
+    assert any("FLAG 13" in ln and "verdict:" not in ln for ln in lines)
