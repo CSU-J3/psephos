@@ -48,7 +48,8 @@ Last updated: 2026-09-30 (UTC).
   - It reads the marker on every path, including a database that will not open.
   - The step exits 0 when it gives up, so the Verdict is what turns the run red, and the standing issue carries that line.
 - **Tested with a planted concurrent push.**
-  - `tests/test_data_commit.py` runs the step's real script from `collect.yml`, in a shallow clone of a local bare origin, after a second clone has pushed: 15 cases. The positive control is a bare push that the race rejects.
+  - `tests/test_data_commit.py` runs the step's real script from `collect.yml`, in a shallow clone of a local bare origin, after a second clone has pushed. It holds 16 cases: 12 run the step, one is the positive control (a bare push that the race rejects), and three read the Verdict's side. `434dff6`'s body says 15, a miscount.
+  - ci.yml ran all of them on Linux: run `36769160610`, 1,069 passed, none skipped, actionlint green.
   - Two more in `tests/test_unit99_verdict.py` read the marker with the database up.
 - **An adversarial review confirmed nine findings and refuted none. All nine are fixed:**
   - the re-export dropped this run's tracker artifact, and pushed green without it, or pushed nothing when the artifact was the whole delta (found by both lenses);
@@ -59,7 +60,7 @@ Last updated: 2026-09-30 (UTC).
 - **A mutation sweep of the reviewers' ten mutants killed all ten.** The unmutated control passed.
 - **The process fix stands beside it:** my pushes are gated on an empty in-flight list, not printed beside one.
 
-**Issue 6 gets a comment with this push**, naming:
+**Issue 6 was commented at 20:08:43Z, after the push and CI green**, naming:
 - the lost run and its cause;
 - the two clean scheduled runs since:
   - `36715079799`, the 06:17Z slot, started 12:29:39Z, landed `a18bc36`;
