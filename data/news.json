@@ -9418,5 +9418,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/a-few-hundred-noncitizen-votes-are-a-national-scandal-but-when-states-reject-hundreds-of-thousands-of-ballots-from-eligible-voters-its-business-as-usual",
     "title": "A few noncitizen votes are a scandal. But thousands of rejected ballots are business as usual"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118811,
+    "kind": "item",
+    "occurred_at": "2026-09-30T18:18:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/south-carolina-voters-with-disabilities-lose-key-mail-voting-challenge",
+    "title": "South Carolina voters with disabilities lose key mail voting challenge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118810,
+    "kind": "item",
+    "occurred_at": "2026-09-30T19:26:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-lawyer-seeks-to-disenfranchise-albino-unicorn-overseas-voters",
+    "title": "GOP lawyer seeks to disenfranchise ‘albino unicorn’ overseas voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118809,
+    "kind": "item",
+    "occurred_at": "2026-09-30T19:38:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voting-group-prepares-hundreds-of-volunteers-to-monitor-texas-voting",
+    "title": "Pro-voting group prepares hundreds of volunteers to monitor Texas voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118808,
+    "kind": "item",
+    "occurred_at": "2026-09-30T20:14:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/some-tennesseans-get-ready-to-cast-votes-in-state-legislature-race-with-no-names-on-the-ballot",
+    "title": "Some Tennesseans get ready to cast votes in state legislature race with no names on the ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118807,
+    "kind": "item",
+    "occurred_at": "2026-09-30T21:00:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-now-0-26-after-judge-rejects-demand-for-georgia-voter-rolls",
+    "title": "DOJ now 0-26 after judge rejects demand for Georgia voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118806,
+    "kind": "item",
+    "occurred_at": "2026-09-30T21:32:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-hired-them-to-prove-election-conspiracies-they-all-left-without-proving-anything",
+    "title": "Trump hired them to prove election conspiracies. They all left without proving anything"
   }
 ]

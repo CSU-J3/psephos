@@ -17007,9 +17007,9 @@
     "date_terminated": null,
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 233,
+    "entry_count": 235,
     "filed_at": "2026-01-23T00:00:00",
-    "latest_entry_at": "2026-09-24T00:00:00",
+    "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
@@ -17906,6 +17906,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/145/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 118610,
+        "kind": "item",
+        "occurred_at": "2026-09-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/146/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: ORDER. It is ORDERED that Defendant Raffensperger and Intervenor-Defendant's BVMF's Motions to Dismiss (Docs. 16, 23 ) are GRANTED IN PART as set forth in this Order. Intervenor-De"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 118611,
+        "kind": "item",
+        "occurred_at": "2026-09-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/147/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: CLERK'S JUDGMENT. It is Ordered and Adjudged that the action be, and the same hereby is, dismissed. (ltt)--Please refer to http://www.ca11.uscourts.gov to obtain an appeals jurisdi"
       }
     ]
   },
