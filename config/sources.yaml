@@ -222,6 +222,17 @@ litigation:
                                        # see 0 -- a checkable standing invariant instead of a moving
                                        # target. Cost is firing every 24h instead of every ~30h: one
                                        # extra pass every few days, 24 requests each.
+  max_backfill_requests_per_run: 80    # the CourtListener id backfill (R1, Corey 2026-09-30,
+                                       # ruling 6): one full walk per docket, ~345 requests for
+                                       # all 61, gate-listed dockets first (76, so the first run
+                                       # takes them all), spread over ~5 runs. 80 x PAGE_THROTTLE is
+                                       # 4.3 min of sleep; with the measured 0.4-0.7s round trip
+                                       # (litigation.py's PAGE_THROTTLE note) about 5-5.5 min a run,
+                                       # inside both 20/min and 1,000/hour. Not 120: the longest
+                                       # recorded collect run is 32m27s (docs/bands.yaml) against
+                                       # the job's 45-minute timeout, and 120 left ~4 min of it.
+                                       # A failed or empty walk ends the run's walk. Walked dockets
+                                       # are not walked again (cl_backfill): nothing once done.
   max_status_refresh_per_run: 40       # ceiling on refresh requests per run. The refresh set is
                                        # NON-terminated rows only (24 today, 33 before the 08-10 pass
                                        # flipped nine) -- `terminated` is absorbing on the court's

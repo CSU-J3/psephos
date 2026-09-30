@@ -47,6 +47,10 @@ CREATE TABLE IF NOT EXISTS items (
     outlet           TEXT,
     content_hash     TEXT NOT NULL,          -- sha256 of canonical content, for dedup
     raw_json         TEXT,                   -- original payload, kept for traceability
+    -- The CourtListener docket-entry object an A1 item presents (R1, Corey 2026-09-30):
+    -- set when the item is written from a polled entry, or when the id backfill ties
+    -- the item's row to its object. NULL on every other channel and on B2 items.
+    cl_entry_id      INTEGER,
     UNIQUE(content_hash)
 );
 CREATE INDEX IF NOT EXISTS idx_items_channel  ON items(channel);
@@ -54,6 +58,7 @@ CREATE INDEX IF NOT EXISTS idx_items_occurred ON items(occurred_at);
 CREATE INDEX IF NOT EXISTS idx_items_bill     ON items(bill_id);
 CREATE INDEX IF NOT EXISTS idx_items_case     ON items(case_id);
 CREATE INDEX IF NOT EXISTS idx_items_state_bill ON items(state_bill_id);
+CREATE INDEX IF NOT EXISTS idx_items_cl_entry ON items(cl_entry_id);
 
 -- Watched federal bills and their vehicles.
 CREATE TABLE IF NOT EXISTS bills (
@@ -169,13 +174,101 @@ CREATE TABLE IF NOT EXISTS cases (
     updated_at      TEXT
 );
 
+-- Every text a docket entry has been served with, one row each: the revision log (R1,
+-- Corey 2026-09-30). A re-described entry adds a row and keeps the old one, and every
+-- row keeps its id -- recheck-flag watermarks and verdicts in docs/gates.yaml point at
+-- these ids. Which rows are ONE entry is `cl_entries`' job, below.
 CREATE TABLE IF NOT EXISTS case_entries (
     id           INTEGER PRIMARY KEY AUTOINCREMENT,
     case_id      TEXT NOT NULL REFERENCES cases(case_id),
     entry_at     TEXT,
     description  TEXT,
     document_url TEXT,
+    cl_entry_id  INTEGER,                    -- the CourtListener docket-entry id this text was
+                                             -- served on. Written on every row since 2026-09-30,
+                                             -- and on older rows by the id backfill walk; NULL
+                                             -- on a row nothing has tied to an entry yet.
+    seen_at      TEXT,                       -- when psephos first held this text. Exact since
+                                             -- 2026-09-30; NULL on older rows (their items'
+                                             -- fetched_at and the id order bound it).
     UNIQUE(case_id, entry_at, description)
+);
+CREATE INDEX IF NOT EXISTS idx_case_entries_cl ON case_entries(cl_entry_id);
+
+-- One row per CourtListener docket-entry object (R1, Corey 2026-09-30): the entry, with
+-- its text and date as mutable fields. `current_row` is the case_entries row holding the
+-- text upstream serves now. Written by collectors/cl_objects.py: the poll path for every
+-- entry a poll serves, and the id backfill walk for the rows held before ids were kept.
+-- A NEW TABLE, so no _MIGRATIONS entry.
+CREATE TABLE IF NOT EXISTS cl_entries (
+    cl_entry_id   INTEGER PRIMARY KEY,       -- CourtListener's docket-entry id
+    case_id       TEXT NOT NULL REFERENCES cases(case_id),
+    entry_number  INTEGER,
+    entry_at      TEXT,                      -- the date upstream serves now
+    description   TEXT,                      -- the text upstream serves now, derived as
+                                             -- write_entries derives it
+    current_row   INTEGER REFERENCES case_entries(id),  -- the row holding that text, or the
+                                             -- newest row it has when the walk finds its
+                                             -- text unheld (reported stale); NULL when the
+                                             -- text is another object's row on the same day
+                                             -- (held apart) or psephos never held it
+    held          INTEGER NOT NULL DEFAULT 1,  -- 0: seen by the id backfill walk only
+    first_seen_at TEXT,                      -- when psephos first HELD its text: now for a
+                                             -- new text; a legacy row's seen_at or item
+                                             -- fetched_at; NULL when neither exists (step c
+                                             -- bounds it by the id order). Never the walk's time.
+    updated_at    TEXT,                      -- when psephos last saw its text or date move,
+                                             -- on the same evidence rule
+    date_modified TEXT,                      -- CourtListener's, as last served
+    time_filed    TEXT,                      -- CourtListener's; with date_created and
+    date_created  TEXT,                      -- desc_source ('entry' | 'document'), the tier-2
+    desc_source   TEXT,                      -- fingerprint the D0 found on 3 of 3 pairs
+    twin_of       INTEGER REFERENCES cl_entries(cl_entry_id),  -- tier 2: a second object for
+                                             -- the same minute entry. psephos's assertion,
+                                             -- never upstream's: set by a checked rule or a
+                                             -- person, named in twin_rule, reversible
+    twin_rule     TEXT,
+    twin_at       TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_cl_entries_case ON cl_entries(case_id);
+
+-- The id backfill walk's receipt, one row per docket walked (R1 step b, ruling 6). A
+-- docket with a row here is not walked again. The counts are its report: what the walk
+-- attached by exact text, by the safe normalization and by document number, and what it
+-- left unattached, never held, stale or held apart.
+CREATE TABLE IF NOT EXISTS cl_backfill (
+    case_id      TEXT PRIMARY KEY REFERENCES cases(case_id),
+    walked_at    TEXT NOT NULL,
+    requests     INTEGER NOT NULL,
+    rows         INTEGER NOT NULL,
+    objects      INTEGER NOT NULL,
+    exact        INTEGER NOT NULL,
+    adopted      INTEGER NOT NULL,
+    token        INTEGER NOT NULL,
+    token_shared INTEGER NOT NULL,
+    unattached   INTEGER NOT NULL,
+    never_held   INTEGER NOT NULL,
+    stale        INTEGER NOT NULL,
+    apart        INTEGER NOT NULL
+);
+
+-- The id backfill's failed walks, one row per docket until it walks (then deleted). What
+-- moves a docket that fails every time behind the healthy ones (backfill_due), and what
+-- makes it loud after litigation.BACKFILL_LOUD_AFTER failures (a CUT naming the docket).
+CREATE TABLE IF NOT EXISTS cl_backfill_attempts (
+    case_id    TEXT PRIMARY KEY REFERENCES cases(case_id),
+    failures   INTEGER NOT NULL DEFAULT 0,
+    last_error TEXT,
+    last_at    TEXT
+);
+
+-- CourtListener requests per UTC day, so the id backfill is reported against the rest of
+-- the day's litigation spend (ruling 6). Attempts, retries included: see litigation.Spend.
+CREATE TABLE IF NOT EXISTS cl_usage (
+    day        TEXT PRIMARY KEY,
+    requests   INTEGER NOT NULL DEFAULT 0,
+    backfill   INTEGER NOT NULL DEFAULT 0,
+    updated_at TEXT
 );
 
 -- State bills promoted to first-class, parallel to `bills`. PK is the LegiScan

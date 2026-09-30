@@ -8,7 +8,112 @@ Last updated: 2026-09-30 (UTC).
 
 ## Owed right now
 
-### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30, NOT QUEUED; the calls are Corey's
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), c to e owed
+
+**Corey's rulings on the seven calls, 2026-09-30.**
+1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
+2. **Survivor text: the hybrid.** Latest text for tier 1, the long form for tier 2.
+   - A clerk's FILED IN ERROR replaces the original on the page. The original stays in its row.
+   - Any flag or item that treated the entry as operative is re-read.
+3. **Tier 2.** The same-run rule for the 256 pairs; the other 23 go to a person.
+   - A reader checks a random 20 of the 256 before the rule is relied on, and the result is recorded.
+   - Every rule-made link is recorded as psephos's assertion, names its rule, and is reversible.
+   - The DSCC pair (92515/92572) is not linked.
+4. **Timing: build now.** The flag test stays on rows until the measurement period ends (2026-11-12). The `duplicate` verdict class already counts what the object layer would suppress.
+5. **Page notice.** A dated note on each surface whose figure moves, saying duplicate court-entry rows were merged, with the before and after. Not silent, and not only a commit message.
+6. **Backfill.** CourtListener entry ids for every docket (about 345 requests), gate-listed dockets first, spread across runs, reported against the day's other litigation spend.
+7. **Scope: litigation.**
+   - State's re-dated row (AZ SB1470) is recorded for the state getBill unit, below.
+   - The 89 tracker-note repeats are to be read far enough to say whether any reaches a public figure; if one does, it joins this unit.
+
+**Build order:**
+- (a) the entry id on every new row, plus the safe normalization;
+- (b) the id backfill;
+- (c) the object table's tier-2 links;
+- (d) surfaces read objects, with every public figure recorded before and after at the switch;
+- (e) the notes, a visual checkpoint at 1440 and 390, then **stop for Corey's word before the switch reaches production.**
+
+**Steps a and b, BUILT.** In `collectors/cl_objects.py` and `collectors/litigation.py`, schema and migrations.
+- **Every row the poll writes carries the CourtListener docket-entry id it was served on,** plus `seen_at`.
+- **`cl_entries` is the object table.** One row per CourtListener object, text and date mutable, `current_row` pointing at the row that holds its current text.
+- **The poll's order.** This object's own exact row first; then its own same-day rows by the stamp/whitespace rule; then a row nobody owns (exact text); then another object's row. That last case is *held apart*: the object is recorded, and no row or item is written.
+- **An unknown entry adopts a pre-id row by stamp or whitespace only when the row carries the entry's own document number,** and no other entry in the batch serves that number that day.
+  - The first review found why on real data. 88676/88680 on 73544809 are TWO CourtListener objects: 477057380 and 477084921, one text stamped and one not, neither with a document number.
+  - Adopting by text alone handed the older object's row to the newer one.
+  - So the D0's "109 cleared, 0 wrong" holds at the group level, not the object level: 9 of the 109 were tier-2 pairs.
+- **The walk** (`backfill_walk`, `backfill_docket`) is one full walk per docket.
+  - Order: gate-listed first, then live dockets, then superseded ones.
+  - Budget: `max_backfill_requests_per_run: 80`, charged from a meter that counts attempts. The first run takes all 8 gate-listed dockets (~76 requests); the rest need about four more. Not 120: the longest recorded collect run is 32m27s against the 45-minute timeout.
+  - It attaches by exact text, then the safe normalization, then document number when exactly one upstream object carries it.
+  - It writes ids, objects and item links only: **never a row or an item.**
+  - A receipt per docket (`cl_backfill`) keeps a walked docket from being walked again.
+  - **A failed walk writes nothing and is recorded** (`cl_backfill_attempts`). The docket moves behind the ones that have not failed. After 3 failures it notes CUT, naming the docket.
+  - **What ends a run's walk is evidence about the upstream, not one docket:** two failures in a row (5xx, timeout, an empty walk), a 401, the same 4xx twice running, or the daily cap (CUT). A lone 404 costs that docket only.
+  - **An empty page past a cursor is a failure, not the docket's end.** Otherwise a throttle could receipt a walk with its tail missing, for good.
+  - Dockets left, failed ones included, note DEFERRED with why the walk stopped. A walk's 401 reaches the credential verdict.
+  - `cl_usage` is the day's request ledger: "N requests this run, M of them the backfill; the day so far".
+- **Object clocks come from what psephos held.** That is a row's `seen_at` or its item's `fetched_at`, never the walk's time. NULL where there is neither, for step (c) to bound by the id order.
+- **The walk also records the tier-2 fingerprint.** `time_filed`, `date_created`, and whether the text came from the entry or its document. The reader check will use it.
+- **Nothing a page, `data/*.json`, the audit or the recheck flags reads changes.**
+  - Items are still one per text, as before.
+  - `latest_entry_at` keeps its definition (MAX over every row) until the switch. Nevada moves there, with its note.
+  - The export names its columns, so the new ones do not reach the snapshot.
+
+**The dry run** (local SQLite copy of the 00:38Z dump, 14 inline CourtListener requests, no Turso writes):
+- **71499795:** 256 rows became 239 objects. Every row was attached: 237 by exact text and 19 by the safe normalization or document number. That leaves the D0's 18 tier-1 extras.
+  - Each of the 19 lands on the object its document number names. On 73544809 the same holds for 6 of 6.
+  - #131 (65827/67566) and #141 (86725/86794) are one object each.
+  - The Jul 20 pair (67589/67651) is two objects, 471527695 and 471517786, as tier 2 predicts. The short one's text comes from its document and it carries `time_filed` 17:47:07.
+  - **18689/20446 is one object whose text upstream serves now is 18689's**, the earlier row. The plan's offline default, highest id, would have picked the wrong one; the walk is what decides it.
+  - 1 never held: the Sep 29 text order, 479868690, not held at the dump.
+  - 1 stale: #149's re-description, not yet polled at the dump.
+- **73544809:** 45 rows became 39 objects, all attached, the leading-zero pairs by document number.
+
+**Two reviews before commit:**
+- The first confirmed 30 findings, all fixed:
+  - the cross-object stamp adoption above;
+  - a known entry's stamp losing to a twin's row;
+  - failed walks costing nothing against the budget, so an outage would try all 61 dockets;
+  - an empty 200 receipted as a finished walk forever;
+  - unguarded recovers breaking exit 0;
+  - the walk running after a refresh cap-abort;
+  - a meter counting calls not attempts;
+  - fifteen test gaps, including a migration test that could not fail.
+- **The second confirmed 24 findings, all fixed.** None changed the design; they were gaps the first round's fixes opened or left:
+  - a re-stamped tier-2 pair could swap rows in the walk. Fixed: step 2 adopts only when exactly one served object's text reaches the row;
+  - an object could never take its own earlier tokenless text once a poll had inserted the new one;
+  - one always-failing docket would stall the whole queue;
+  - an empty page past a cursor was receipted as a finished walk;
+  - 401s walked every docket;
+  - `left` hid failed dockets;
+  - the ledger in `finally` could commit a half-finished walk;
+  - a held-apart object's clock depended on which path saw it first;
+  - eleven test gaps.
+- **A mutation check of the fixes against the tests:** 24 mutants, all killed once three tests were added for the three that survived.
+
+**Ruling 7's read, the tracker notes: they reach a public figure, so B2 joins this unit.**
+- The Wire's litigation total is `COUNT(*) FROM items GROUP BY channel` (`web/lib/db.ts` getChannelActivity). It counts every B2 note item, so all 89 repeats are in it.
+- They are also in `data/cases.json`'s case timelines.
+- Their fold (`case_id`, 'b2-subject', notes mutable) comes with step (d).
+
+**For the state getBill unit, recorded here (ruling 7).**
+- AZ SB1470 (2094523) holds "Senate JUDE Committee action: Held" twice: item 6153 dated Feb 19 (fetched 07-01) and 69778 dated Feb 18 (fetched 08-05). The master list's last_action_at agrees with Feb 18.
+- The state hash includes the date, so a LegiScan re-date inserts a second item.
+- MI SB0691's 105549 is undetermined.
+- The 24 MI rows dated after the date in their own text are exposed, none duplicated yet.
+
+**Owed in this unit:**
+- The walk, over about five scheduled runs, and its receipts read.
+- Step (c):
+  - legacy `seen_at`/object clocks bounded by the id order;
+  - the 256 pairs mapped to objects;
+  - the reader check of a random 20;
+  - the 23 laid out for Corey;
+  - the DSCC exclusion recorded;
+  - a reversible link script.
+- Then (d) and (e), held for Corey's word.
+
+### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
 **Corey's rulings, 2026-09-30.**
 - **(1) The watermark hold is APPROVED.** 71499795 stays at 20446, the Jul 8 memorandum opinion on the motion to stay (ECF 123), until the 2026-09-30 05:17Z scheduled audit posts, which proves delivery on real flags; then it moves to 93145. A seventh flag from the Sep 29 order's text, arriving as its own row, is a duplicate by the later-row rule.

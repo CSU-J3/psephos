@@ -22,16 +22,20 @@ Run from the repo root:  python -m collectors.litigation
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+import yaml
+
 import common
 import config
 import db
 import run_signals
+from collectors import cl_objects
 
 CHANNEL = "litigation"
 API_SOURCE_ID = "courtlistener"   # A1 docket records
@@ -72,6 +76,31 @@ EMPTY_RETRIES = 5     # retries for an unexpectedly empty page before giving up
 # request count. (`omit=recap_documents__plain_text` is CourtListener's own changelog
 # example for nested omission.)
 ENTRY_OMIT = "recap_documents__plain_text"
+
+GATES_PATH = Path("docs/gates.yaml")
+
+
+class Spend:
+    """CourtListener requests this run, so the id backfill can be reported against the
+    rest of the day's litigation spend (Corey, 2026-09-30, ruling 6).
+
+    Counts ATTEMPTS: `hit` is passed to common.http_get as `on_attempt`, which fires
+    before every HTTP attempt, retries on a 429, a 5xx or a transport failure included.
+    Those are the requests CourtListener sees, and an outage is exactly when calls and
+    attempts part company (a failed page is one call and four attempts)."""
+
+    def __init__(self):
+        self.total = 0
+        self.backfill = 0
+        self.walking = False
+
+    def hit(self) -> None:
+        self.total += 1
+        if self.walking:
+            self.backfill += 1
+
+
+SPEND = Spend()
 
 
 def slugify(text: str) -> str:
@@ -124,7 +153,7 @@ def resolve_docket(base: str, headers: dict, docket_number: str, court_id: str) 
     data = common.http_get(
         f"{base}/dockets/",
         params={"docket_number": docket_number, "court": court_id},
-        headers=headers, throttle=PAGE_THROTTLE,
+        headers=headers, throttle=PAGE_THROTTLE, on_attempt=SPEND.hit,
     )
     results = data.get("results") or []
     if len(results) != 1:
@@ -153,7 +182,8 @@ def fetch_docket(base: str, headers: dict, cl_id: str) -> dict:
     source_url only when a docket is present, and a row with a NULL status renders
     as ACTIVE on /campaign -- which is precisely wrong for a terminated predecessor.
     One request buys the same fidelity a normal resolve has."""
-    return common.http_get(f"{base}/dockets/{cl_id}/", headers=headers, throttle=PAGE_THROTTLE)
+    return common.http_get(f"{base}/dockets/{cl_id}/", headers=headers, throttle=PAGE_THROTTLE,
+                           on_attempt=SPEND.hit)
 
 
 def _fetch_page(url: str, params: dict | None, headers: dict,
@@ -173,10 +203,12 @@ def _fetch_page(url: str, params: dict | None, headers: dict,
     still anomalous), and full bootstrap walks keep it too.
     """
     if not retry_empty:
-        return common.http_get(url, params=params, headers=headers, throttle=PAGE_THROTTLE)
+        return common.http_get(url, params=params, headers=headers, throttle=PAGE_THROTTLE,
+                               on_attempt=SPEND.hit)
     data = {}
     for attempt in range(EMPTY_RETRIES):
-        data = common.http_get(url, params=params, headers=headers, throttle=PAGE_THROTTLE)
+        data = common.http_get(url, params=params, headers=headers, throttle=PAGE_THROTTLE,
+                               on_attempt=SPEND.hit)
         if data.get("results"):
             return data
         time.sleep(PAGE_THROTTLE * (attempt + 1) + 1)
@@ -212,10 +244,11 @@ def poll_entries(base: str, headers: dict, docket_id: str,
     minute entries, which a `__gt` filter drops. date_modified is "new to me since I
     last looked" and also catches edits to entries we already hold.
 
-    Caveat (latent, NOT fixed here): content_hash(case_id, entry_at, desc) keys an A1
-    item on its description, so a *modified* description now surfaces as a SECOND item
-    rather than updating the first. Incremental polling makes that live; note it, don't
-    fix it in this change.
+    A *modified* description still inserts a second `case_entries` row and a second A1
+    item, because both are keyed on the text (R1 keeps every text it has seen). Since
+    2026-09-30 each row carries the CourtListener entry id it was served on, so the object
+    table (`cl_entries`, collectors/cl_objects.py) knows the two are one entry. The D0 is
+    docs/status.md, "Duplicate rows at the source".
 
     On a rate-limit failure mid-pagination it raises, so the caller writes nothing for
     the case (no half-seeded table) and the mark does not move. Returns the max
@@ -236,9 +269,16 @@ def poll_entries(base: str, headers: dict, docket_id: str,
         data = _fetch_page(url, params, headers, retry_empty=(since is None or not first))
         if page_counter is not None:
             page_counter[0] += 1
+        results = data.get("results") or []
+        if since is None and not first and not results:
+            # Past a `next` cursor there is always more; an empty page there, after
+            # _fetch_page's retries, is a throttle, not the docket's end. Returning what
+            # came before would hand a full walk -- and the id backfill's one-time
+            # receipt -- a docket with its tail missing.
+            raise RuntimeError(f"empty page past a cursor on docket {docket_id} "
+                               f"(rate-limited?)")
         first = False
         params = None  # the `next` URL carries its own query string
-        results = data.get("results") or []
         out.extend(results)
         for e in results:
             dm = e.get("date_modified")
@@ -429,36 +469,72 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
     2026-08-14, 12 of 40 rows had drifted, always behind, up to 83 days; West
     Virginia read 2026-05-15 while holding an entry from 2026-08-06. Repaired once by
     scripts/repair_latest_entry.py and alarmed by tools/coverage_audit section 4."""
-    counts = {"new_entries": 0, "new_items": 0}
+    counts = {"new_entries": 0, "new_items": 0, "adopted": 0, "cosmetic": 0,
+              "revised": 0, "apart": 0}
+    now = common.now_iso()
+    # (day, document number) pairs more than one entry in this batch serves: no stamp or
+    # spacing adoption on them (cl_objects.resolve_polled).
+    served: dict = {}
     for e in entries:
-        entry_at = common.to_iso(e.get("date_filed"))
-        docs = e.get("recap_documents") or []
+        d = cl_objects.derive(e)
+        if d is not None and e.get("id") is not None:
+            key = (d[0], cl_objects.doc_token(d[2]))
+            if key[1] is not None:
+                # Distinct ids: a window can serve one entry twice across a page boundary.
+                served.setdefault(key, set()).add(e["id"])
+    shared = frozenset(k for k, ids in served.items() if len(ids) > 1)
+    for e in entries:
         # Document-only entries have an empty entry-level description; the PACER text
         # then lives on the document (e.g. "Order on Motion for Briefing Schedule").
-        # Fall back to it so the record is complete and such orders still classify.
-        desc = (e.get("description") or "").strip()
-        if not desc and docs:
-            desc = (docs[0].get("description") or docs[0].get("short_description") or "").strip()
-        if not desc:
+        # cl_objects.derive falls back to it so the record is complete and such orders
+        # still classify.
+        d = cl_objects.derive(e)
+        if d is None:
             continue
-        doc_url = None
-        if docs and docs[0].get("absolute_url"):
-            doc_url = CL_BASE_WEB + docs[0]["absolute_url"]
-        if db.insert_ignore(conn, "case_entries", {
-            "case_id": case_id, "entry_at": entry_at, "description": desc, "document_url": doc_url,
-        }):
-            counts["new_entries"] += 1
-        if is_substantive(desc, types, excludes):
+        entry_at, desc, doc_url = d
+        cl_id = e.get("id")
+        if cl_id is None:
+            # No CourtListener id: the pre-R1 path, kept for any caller that has none.
+            if db.insert_ignore(conn, "case_entries", {
+                "case_id": case_id, "entry_at": entry_at, "description": desc,
+                "document_url": doc_url, "seen_at": now,
+            }):
+                counts["new_entries"] += 1
+            text_at, text = entry_at, desc
+        else:
+            # R1 (Corey, 2026-09-30): the row carries the entry id it was served on, and
+            # a stamp or spacing re-render lands on the row already held rather than
+            # making a new one. cl_objects.resolve_polled holds the rules.
+            row_id, how = cl_objects.resolve_polled(conn, case_id, cl_id, entry_at, desc,
+                                                    doc_url, now, shared)
+            if how == "inserted":
+                counts["new_entries"] += 1
+            elif how.startswith("adopted"):
+                counts["adopted"] += 1
+            elif how == "cosmetic":
+                counts["cosmetic"] += 1
+            elif how == "apart":
+                counts["apart"] += 1
+            if cl_objects.record_object(conn, case_id, e, entry_at, desc, row_id, how, now):
+                counts["revised"] += 1
+            if row_id is None:
+                continue   # held apart: another object's row carries this text today
+            # The item follows the ROW's text, which a cosmetic or adopted match keeps.
+            r = conn.execute("SELECT entry_at, description FROM case_entries WHERE id = ?",
+                             (row_id,)).fetchone()
+            text_at, text = r["entry_at"], r["description"]
+        if is_substantive(text, types, excludes):
             if db.insert_ignore(conn, "items", {
                 "channel": CHANNEL, "source_id": API_SOURCE_ID,
                 "source_url": doc_url or source_url or CL_BASE_WEB,
-                "title": f"{caption}: {desc[:180]}", "summary": desc,
-                "occurred_at": entry_at, "fetched_at": common.now_iso(),
+                "title": f"{caption}: {text[:180]}", "summary": text,
+                "occurred_at": text_at, "fetched_at": now,
                 "admiralty_source": "A", "admiralty_info": "1", "confidence": None,
                 "bill_id": None, "case_id": case_id,
-                "content_hash": common.content_hash(case_id, entry_at, desc),
-                "raw_json": json.dumps({k: e.get(k) for k in ("entry_number", "date_filed", "description")},
+                "content_hash": common.content_hash(case_id, text_at, text),
+                "raw_json": json.dumps({k: e.get(k) for k in ("id", "entry_number", "date_filed", "description")},
                                        separators=(",", ":")),
+                "cl_entry_id": cl_id,
             }):
                 counts["new_items"] += 1
     # Recompute from the table, gated on having inserted something: insert_ignore
@@ -622,6 +698,192 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
             "walk_requests": walk_requests, **counts}
 
 
+def gate_listed_dockets(path: Path = GATES_PATH) -> set[str]:
+    """The dockets an authored, unfalsified gate lists in `record_instruments`: the
+    backfill walks these first (ruling 6), since their watermarks and verdicts point at
+    rows. A missing or unreadable register is not an error -- the walk still runs, in
+    case_id order."""
+    try:
+        gates = yaml.safe_load(path.read_text(encoding="utf-8")) or []
+    except (OSError, yaml.YAMLError):
+        return set()
+    return {str(c) for g in gates
+            if g.get("kind") == "authored" and g.get("status") != "falsified"
+            for c in (g.get("record_instruments") or [])}
+
+
+BACKFILL_LOUD_AFTER = 3   # failed walks of one docket before main() notes it CUT
+
+
+def backfill_due(conn, listed: set[str]) -> list[tuple[str, int]]:
+    """(case_id, held rows) for every docket the id backfill has not walked that holds a
+    row without an id.
+
+    Order: gate-listed first; within that, dockets that have never failed a walk before
+    ones that have (cl_backfill_attempts), then live before superseded, then fewest
+    failures, then case_id. A docket that fails every time therefore moves behind the
+    ones that do not, instead of heading the queue and ending every run's walk at itself.
+
+    A docket is walked once. What a walk leaves unattached stays unattached until a
+    person or a later unit ties it; re-walking would find the same answer."""
+    rows = conn.execute(
+        """SELECT c.case_id, c.superseded_by, COUNT(e.id) AS n,
+                  SUM(e.cl_entry_id IS NULL) AS bare, COALESCE(a.failures, 0) AS failures
+             FROM cases c JOIN case_entries e ON e.case_id = c.case_id
+             LEFT JOIN cl_backfill_attempts a ON a.case_id = c.case_id
+            WHERE c.case_id NOT IN (SELECT case_id FROM cl_backfill)
+            GROUP BY c.case_id, c.superseded_by, a.failures""").fetchall()
+    due = [r for r in rows if str(r["case_id"]).isdigit() and r["bare"]]
+    due.sort(key=lambda r: (str(r["case_id"]) not in listed, r["failures"] > 0,
+                            r["superseded_by"] is not None, r["failures"], str(r["case_id"])))
+    return [(str(r["case_id"]), int(r["n"])) for r in due]
+
+
+def _walk_failed(conn, case_id: str, why: str) -> None:
+    """One more failed walk on the docket's record (cl_backfill_attempts), committed now:
+    it is what moves the docket behind the healthy ones next run."""
+    db.increment(conn, "cl_backfill_attempts", "case_id", case_id, {"failures": 1},
+                 {"last_error": why[:300], "last_at": common.now_iso()})
+    conn.commit()
+
+
+def backfill_walk(conn, base: str, headers: dict, budget: int, listed: set[str]) -> dict:
+    """The CourtListener id backfill (R1 step b, Corey 2026-09-30, ruling 6): one full
+    walk per docket, up to `budget` requests a run, attaching entry ids to held rows.
+
+    A docket is walked only if its estimated pages (held rows / 20, the measured page
+    size) fit what is left; the walk stops at the first that does not, so gate-listed
+    dockets finish before any other starts. A docket bigger than a whole run's budget
+    starts on a fresh run.
+
+    A failed walk writes nothing for its docket, records the failure, and the docket is
+    walked again on a later run, behind the dockets that have not failed. What ends the
+    run's walk is evidence that the UPSTREAM is failing, not one docket: two systemic
+    failures in a row (retries spent on a 5xx or a timeout, a persistent empty page, a
+    docket served empty), a 401, the same 4xx twice running, or the daily cap. A lone
+    4xx or a lone systemic failure costs that docket only. Nothing here moves
+    `entries_synced_at`."""
+    out = {"walked": 0, "requests": 0, "left": 0, "failed": 0, "stopped": None,
+           "daily_cap": False, "errors": [], "stuck": [], "attached": 0, "unattached": 0,
+           "never_held": 0, "stale": 0, "apart": 0}
+    due = backfill_due(conn, listed)
+    conn.commit()
+    left = budget
+    streak = 0            # systemic failures in a row this run
+    last_4xx = None       # the previous docket's 4xx status, if it had one
+    for case_id, n in due:
+        est = max(1, math.ceil(n / 20))
+        if est > left and left < budget:
+            out["stopped"] = f"next docket {case_id} needs ~{est} request(s), {left} left"
+            break
+        pages = [0]
+        before = SPEND.backfill
+        SPEND.walking = True
+        try:
+            entries, _ = poll_entries(base, headers, case_id, since=None, page_counter=pages)
+        except common.RateBudgetExhausted as exc:
+            out["daily_cap"] = True
+            out["stopped"] = f"daily cap hit on {case_id} ({run_signals.safe(exc)})"
+            break
+        except Exception as exc:
+            out["failed"] += 1
+            why = run_signals.safe(exc)
+            print(f"  backfill {case_id}: walk failed, walks again later -- {why}",
+                  file=sys.stderr)
+            status = exc.status_code if isinstance(exc, common.HttpError) else None
+            _walk_failed(conn, case_id, why)
+            if status is not None and 400 <= status < 500:
+                # A 4xx is one docket's (gone, sealed) unless it is the credential or it
+                # repeats: a 401 is always the token, and the same refusal twice running
+                # is the query or the account, not two dockets.
+                out["errors"].append(exc)
+                if status == 401 or status == last_4xx:
+                    out["stopped"] = f"walk of {case_id} refused, HTTP {status} ({why})"
+                    break
+                last_4xx = status
+                continue
+            streak += 1
+            if streak >= 2:
+                out["stopped"] = f"walk of {case_id} failed, the second in a row ({why})"
+                break
+            continue
+        finally:
+            SPEND.walking = False
+            spent = SPEND.backfill - before
+            left -= spent
+            out["requests"] += spent
+        if n and not any(cl_objects.derive(e) and e.get("id") is not None for e in entries):
+            # Nothing served for a docket that holds rows: a throttle's empty 200, or a
+            # docket upstream now serves empty. A receipt would end its backfill for good.
+            out["failed"] += 1
+            print(f"  backfill {case_id}: walk served no entries over {n} held row(s), "
+                  f"walks again later", file=sys.stderr)
+            _walk_failed(conn, case_id, f"served no entries over {n} held row(s)")
+            streak += 1
+            if streak >= 2:
+                out["stopped"] = (f"walk of {case_id} served no entries, the second failure "
+                                  f"in a row")
+                break
+            continue
+        try:
+            c = cl_objects.backfill_docket(conn, case_id, entries, common.now_iso())
+            conn.execute(
+                "INSERT INTO cl_backfill (case_id, walked_at, requests, rows, objects, exact, "
+                "adopted, token, token_shared, unattached, never_held, stale, apart) "
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                (case_id, common.now_iso(), spent, n, c["objects"], c["exact"],
+                 c["adopted"], c["token"], c["token_shared"], c["unattached"],
+                 c["never_held"], c["stale"], c["apart"]))
+            conn.execute("DELETE FROM cl_backfill_attempts WHERE case_id = ?", (case_id,))
+            conn.commit()
+        except Exception as exc:
+            # recover() may itself raise on a dead remote; that ends the walk in main()'s
+            # guarded handler rather than walking on into writes that cannot land.
+            db.recover(conn)
+            out["failed"] += 1
+            print(f"  backfill {case_id}: write failed, walks again later -- "
+                  f"{run_signals.safe(exc)}", file=sys.stderr)
+            continue
+        streak, last_4xx = 0, None
+        out["walked"] += 1
+        out["attached"] += c["exact"] + c["adopted"] + c["token"]
+        for k in ("unattached", "never_held", "stale", "apart"):
+            out[k] += c[k]
+        print(f"  backfill {case_id}{' (gate-listed)' if case_id in listed else ''}: "
+              f"{spent}req  {c['objects']} objects over {n} rows  attached "
+              f"{c['exact']} exact + {c['adopted']} adopted + {c['token']} token  "
+              f"unattached {c['unattached']}  never held {c['never_held']}  "
+              f"stale {c['stale']}  apart {c['apart']}")
+    # Every docket this run did not receipt is still due, the failed ones included.
+    out["left"] = len(due) - out["walked"]
+    out["stuck"] = [(r["case_id"], r["failures"], r["last_error"]) for r in conn.execute(
+        "SELECT case_id, failures, last_error FROM cl_backfill_attempts "
+        "WHERE failures >= ? ORDER BY case_id", (BACKFILL_LOUD_AFTER,)).fetchall()]
+    conn.commit()
+    return out
+
+
+def _recover_quietly(conn) -> None:
+    """db.recover, which can itself raise on a dead remote, where a raise would turn the
+    collector's exit 0 into a lost cycle (run_signals.flush guards its own the same way)."""
+    try:
+        db.recover(conn)
+    except Exception:
+        pass
+
+
+def record_spend(conn) -> str:
+    """Add this run's requests to today's ledger row and say where the day stands."""
+    day = datetime.now(timezone.utc).date().isoformat()
+    db.increment(conn, "cl_usage", "day", day,
+                 {"requests": SPEND.total, "backfill": SPEND.backfill},
+                 {"updated_at": common.now_iso()})
+    conn.commit()
+    r = conn.execute("SELECT requests, backfill FROM cl_usage WHERE day = ?", (day,)).fetchone()
+    return (f"litigation: {SPEND.total} CourtListener request(s) this run, {SPEND.backfill} "
+            f"of them the id backfill; {day} so far {r['requests']}, backfill {r['backfill']}")
+
+
 def load_tracker_seeds(path: str = TRACKER_ARTIFACT) -> list[dict]:
     """The DOJ-suit seeds discovered by collectors.tracker_uw, if the artifact
     exists. Each entry already matches the collect_case seed contract (caption,
@@ -695,7 +957,8 @@ def refresh_status(conn, base: str, headers: dict, stale_before: str, cap: int) 
         case_id, caption = str(row["case_id"]), row["caption"]
         try:
             docket = common.http_get(f"{base}/dockets/{case_id}/",
-                                     headers=headers, throttle=PAGE_THROTTLE)
+                                     headers=headers, throttle=PAGE_THROTTLE,
+                                     on_attempt=SPEND.hit)
             live = case_status(docket)
             live_terminated = common.to_iso(docket.get("date_terminated"))
             now = common.now_iso()
@@ -812,6 +1075,7 @@ def main() -> int:
     bootstrap_requests = lit.get("max_bootstrap_requests_per_run", 30)
     refresh_hours = lit.get("status_refresh_hours", 24)
     refresh_cap = lit.get("max_status_refresh_per_run", 40)
+    backfill_budget = lit.get("max_backfill_requests_per_run", 0)
 
     conn = db.connect()
     try:
@@ -822,6 +1086,7 @@ def main() -> int:
         print(f"litigation: {len(config_seeds)} config seed(s) + {len(tracker_seeds)} "
               f"tracker case(s) from {TRACKER_ARTIFACT}  (full-walk req budget {bootstrap_requests})")
         cap_hit = False
+        refresh_aborted = False
         seeds = config_seeds + tracker_seeds
         for i, seed in enumerate(seeds):
             try:
@@ -874,6 +1139,7 @@ def main() -> int:
                 # BOUND, not discarded (R6, R11): the cap-abort flag used to be computed
                 # here and thrown away, so a refresh the daily cap cut short exited 0.
                 refreshed = refresh_status(conn, base, headers, stale_before, refresh_cap)
+                refresh_aborted = refreshed["aborted"]
                 auth.ok += refreshed["checked"]
                 for exc in refreshed["errors"]:
                     auth.failed(exc)
@@ -899,12 +1165,62 @@ def main() -> int:
                 # everywhere else in this file.
                 print(f"litigation: status refresh pass failed, skipped -- "
                       f"{run_signals.safe(exc)}", file=sys.stderr)
+        # The id backfill (R1 step b) runs last, on its own budget, and never costs the
+        # run: polling and the status refresh have already committed. Skipped when the
+        # seed loop OR the refresh hit the daily cap, for the reason the refresh is.
+        if backfill_budget > 0 and (cap_hit or refresh_aborted):
+            print("litigation: id backfill skipped (daily cap already hit this run)",
+                  file=sys.stderr)
+        elif backfill_budget > 0:
+            try:
+                listed = gate_listed_dockets()
+                print(f"litigation: id backfill, budget {backfill_budget} request(s)")
+                walked = backfill_walk(conn, base, headers, backfill_budget, listed)
+                print(f"  id backfill: {walked['walked']} docket(s) walked, "
+                      f"{walked['failed']} failed, {walked['requests']} request(s), "
+                      f"{walked['attached']} row(s) attached, {walked['unattached']} "
+                      f"unattached, {walked['left']} docket(s) left"
+                      + (f"; stopped: {walked['stopped']}" if walked["stopped"] else ""))
+                for exc in walked["errors"]:
+                    auth.failed(exc)
+                if walked["daily_cap"]:
+                    sig.note(run_signals.CUT, f"id backfill stopped, daily cap hit; "
+                                              f"{walked['left']} docket(s) left")
+                for case_id, failures, why in walked["stuck"]:
+                    # Nothing guarantees a later run gets past it: R6's cut short.
+                    sig.note(run_signals.CUT, f"id backfill: docket {case_id} has failed "
+                                              f"{failures} walks, last: {why}")
+                if walked["left"]:
+                    # R6: a planned deferral prints its line, with why the walk stopped.
+                    sig.note(run_signals.DEFERRED,
+                             f"id backfill: {walked['left']} docket(s) left"
+                             + (f", {walked['failed']} failed" if walked["failed"] else "")
+                             + (f"; stopped: {walked['stopped']}" if walked["stopped"]
+                                else "") + "; walks next run")
+            except Exception as exc:
+                _recover_quietly(conn)
+                print(f"litigation: id backfill failed, skipped -- {run_signals.safe(exc)}",
+                      file=sys.stderr)
         credential = auth.verdict((token,))
         if credential is not None:
             sig.note(run_signals.CREDENTIAL, credential)
         sig.reached(auth.ok)
         sig.flush(conn)
+    except BaseException:
+        # A raise can leave a write open (a walk between its ids and its receipt, a case
+        # between upsert_case and its B2 item). The ledger's commit below would land it,
+        # where a bare close() used to throw it away; discard it first. Every phase has
+        # already committed its own finished work.
+        _recover_quietly(conn)
+        raise
     finally:
+        # The day's ledger, in `finally` so a run that raised still records what it spent.
+        try:
+            print(record_spend(conn))
+        except Exception as exc:
+            _recover_quietly(conn)
+            print(f"litigation: request ledger not written -- {run_signals.safe(exc)}",
+                  file=sys.stderr)
         conn.close()
     return 0
 

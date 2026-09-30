@@ -144,7 +144,7 @@ def test_a_401_on_a_poll_prints_one_credential_line_with_the_body_quoted(
     dbp = _env(monkeypatch, tmp_path, seeds=[_seed(1)])
     seen_headers = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         seen_headers.append(headers)
         if url.endswith("/docket-entries/"):
             raise common.HttpError(401, url, BODY_401)
@@ -175,7 +175,7 @@ def test_every_request_refused_403_is_a_credential_failure(tmp_path, monkeypatch
     dbp = _env(monkeypatch, tmp_path, seeds=[_seed(1), _seed(2)])
     calls = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         body = BODY_403 if len(calls) == 1 else '{"detail":"second body, not quoted"}'
         raise common.HttpError(403, url, body)
@@ -201,7 +201,7 @@ def test_403s_from_the_refresh_pass_count_toward_the_credential_verdict(
     dbp = _env(monkeypatch, tmp_path)                     # no seeds: only the refresh runs
     _plant_pending(dbp, ["100", "200"])
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         raise common.HttpError(403, url, BODY_403)
 
     monkeypatch.setattr(common, "http_get", fake_get)
@@ -223,7 +223,7 @@ def test_a_lone_403_among_ok_replies_is_a_per_docket_skip_not_a_credential_line(
     records its receipt instead."""
     dbp = _env(monkeypatch, tmp_path, seeds=[_seed(0), _seed(1), _seed(2)])
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         if url.endswith("/docket-entries/"):
             return ONE_ENTRY
         if params["docket_number"] == "1:25-cv-00001":
@@ -251,7 +251,7 @@ def test_the_seed_loop_cap_prints_run_cut_short_with_the_unpolled_count(
     skipped, which the code must then actually do."""
     dbp = _env(monkeypatch, tmp_path, seeds=[_seed(0), _seed(1), _seed(2)])
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         if url.endswith("/docket-entries/"):
             if params and params.get("docket") == "101":
                 raise common.RateBudgetExhausted(41134)
@@ -286,7 +286,7 @@ def test_a_refresh_aborted_on_the_cap_is_no_longer_discarded(tmp_path, monkeypat
     _plant_pending(dbp, ["100", "200", "300"])
     calls = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         if len(calls) > 1:
             raise common.RateBudgetExhausted(46)
@@ -313,7 +313,7 @@ def test_a_refresh_both_capped_and_aborted_reports_the_abort(tmp_path, monkeypat
     _plant_pending(dbp, ["100", "200", "300"])
     calls = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         if len(calls) > 1:
             raise common.RateBudgetExhausted(46)
@@ -343,7 +343,7 @@ def test_a_capped_refresh_prints_deferred_and_is_not_loud(tmp_path, monkeypatch,
     _plant_pending(dbp, ["100", "200", "300"])
     calls = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         return {"id": url.rstrip("/").split("/")[-1], "date_terminated": None}
 
@@ -372,7 +372,7 @@ def test_a_walk_deferral_prints_deferred_once_and_is_not_loud(tmp_path, monkeypa
                max_bootstrap_requests_per_run=0)
     calls = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         if url.endswith("/docket-entries/"):
             raise AssertionError("a deferred walk must not poll")
@@ -435,7 +435,7 @@ def test_a_token_echoed_in_a_401_body_is_redacted_from_the_line_and_the_row(
     dbp = _env(monkeypatch, tmp_path, seeds=[_seed(1)])
     body = f'{{"detail":"Invalid token {TOKEN}.",  "hint":"check\\n  the header"}}'
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         if url.endswith("/docket-entries/"):
             raise common.HttpError(401, url, body)
         return _search_hit(params)
@@ -461,7 +461,7 @@ def test_an_echoed_token_never_reaches_stderr_through_the_skip_line(
     a strict xfail; it passes now and stays as a guard."""
     _env(monkeypatch, tmp_path, seeds=[_seed(1)])
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         if url.endswith("/docket-entries/"):
             raise common.HttpError(401, url, f'{{"detail":"Invalid token {TOKEN}."}}')
         return _search_hit(params)

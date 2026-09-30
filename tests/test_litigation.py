@@ -405,7 +405,7 @@ def test_incremental_empty_window_is_one_request(monkeypatch):
     every quiet docket."""
     n = {"c": 0}
 
-    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0):
+    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0, on_attempt=None):
         n["c"] += 1
         return {"results": [], "next": None}
 
@@ -425,7 +425,7 @@ def test_bootstrap_empty_middle_page_still_retries(monkeypatch):
     ]
     n = {"c": 0}
 
-    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0):
+    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0, on_attempt=None):
         d = seq[n["c"]]
         n["c"] += 1
         return d
@@ -562,7 +562,7 @@ def test_full_walk_request_budget_defers_when_spent(tmp_path, monkeypatch):
     # test still passes while spending ~87s in retry backoff against a live DNS lookup.
     refreshed = []
 
-    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake_get(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         refreshed.append(url)
         return {"id": url.rstrip("/").split("/")[-1], "date_terminated": None}
 
@@ -622,7 +622,7 @@ def test_probe_one_request_sets_mark_to_page_minimum(tmp_path, monkeypatch):
             "court": "District of X", "court_id": "xxd", "category": "voter-data", "notes": "n"}
     n = {"c": 0}
 
-    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0):
+    def fake_http_get(url, params=None, headers=None, timeout=30, throttle=0.0, on_attempt=None):
         n["c"] += 1
         assert params.get("order_by") == "-date_modified,-id"   # descending probe
         return {"results": [
@@ -791,7 +791,7 @@ def _refresh_db(tmp_path, rows):
 
 
 def _fake_get(recorder, date_terminated=None):
-    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         recorder.append(url)
         return {"id": url.rstrip("/").split("/")[-1], "date_terminated": date_terminated}
     return fake
@@ -1003,7 +1003,7 @@ def test_refresh_rate_budget_breaks_cleanly_mid_pass(tmp_path, monkeypatch):
     ])
     calls = []
 
-    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         if len(calls) > 1:
             raise common.RateBudgetExhausted(46)
@@ -1031,7 +1031,7 @@ def test_refresh_failure_is_isolated_to_the_row(tmp_path, monkeypatch):
     ])
     calls = []
 
-    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         calls.append(url)
         if "100" in url:
             raise RuntimeError("GET failed after 4 attempts")
@@ -1064,7 +1064,7 @@ def test_main_returns_zero_when_the_refresh_hits_the_cap(tmp_path, monkeypatch):
     seed.commit()
     seed.close()
 
-    def fake(url, params=None, headers=None, timeout=None, throttle=0.0):
+    def fake(url, params=None, headers=None, timeout=None, throttle=0.0, on_attempt=None):
         raise common.RateBudgetExhausted(46)
 
     monkeypatch.setattr(common, "http_get", fake)

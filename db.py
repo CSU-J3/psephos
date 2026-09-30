@@ -386,6 +386,12 @@ _MIGRATIONS = [
     # table was created 2026-09-24 with only month/queries/updated_at.
     ("legiscan_usage", "masterlists", "INTEGER NOT NULL DEFAULT 0"),
     ("legiscan_usage", "unchanged_masterlists", "INTEGER NOT NULL DEFAULT 0"),
+    # R1 (Corey, 2026-09-30): the CourtListener entry id on rows and items, and when a
+    # row's text was first held. schema.sql indexes both cl_entry_id columns, so these
+    # land before its executescript, as items.state_bill_id did.
+    ("case_entries", "cl_entry_id", "INTEGER"),
+    ("case_entries", "seen_at", "TEXT"),
+    ("items", "cl_entry_id", "INTEGER"),
 ]
 
 
