@@ -2,11 +2,151 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-09-29 (UTC).
+Last updated: 2026-09-30 (UTC).
 
 ---
 
 ## Owed right now
+
+### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30, NOT QUEUED; the calls are Corey's
+
+**Corey's rulings, 2026-09-30.**
+- **(1) The watermark hold is APPROVED.** 71499795 stays at 20446, the Jul 8 memorandum opinion on the motion to stay (ECF 123), until the 2026-09-30 05:17Z scheduled audit posts, which proves delivery on real flags; then it moves to 93145. A seventh flag from the Sep 29 order's text, arriving as its own row, is a duplicate by the later-row rule.
+- **(2) A D0 and plan for duplicate rows, then stop.** Whether a changed upstream description updates a row or keeps history is an editorial call.
+- **A later brief the same day asked the plan to carry:**
+  - identity by upstream id, with whitespace normalization counted apart;
+  - a revisions-table option;
+  - the one-time merge (survivor, fetched_at, watermarks and verdicts);
+  - every public figure the merge moves, and whether the page says why.
+
+**How it was read.** One read-only Turso dump (2026-09-30T00:38Z) and 3 CourtListener requests, both inline. Then two rounds of readers over the dump and the code, each reading checked by a skeptic. The skeptics' corrections are the figures below. The scratch record is `dup_d0/d0_results.md` and `plan_inputs.md`.
+
+**THE D0.**
+- **Identity today:**
+  - `case_entries` is unique on (case_id, entry_at, description), and its A1 item hashes the same triple, so a changed description inserts a new row and a new item. The collector's own caveat at `collectors/litigation.py` ~215 says so.
+  - CourtListener's docket-entry id, date_modified and recap document id arrive on every poll, and none is stored per entry. date_modified survives only as each docket's maximum (`cases.entries_synced_at`), and entry_number only in A1 items' raw_json.
+  - State hashes (bill, raw date, text), legislation (bill, date, text) and executive the Federal Register document number.
+- **Litigation: two mechanisms.**
+  - **Tier 1, one CourtListener entry re-served with a changed description:**
+    - 308 groups, 320 extra rows, 33 dockets, by the document-number token with leading zeros stripped; 283 groups arrived in different runs.
+    - That each is one object is shown directly for one group only: entry #131 is object 471479890, held as 65827 and 67566. The other 307 rest on arrival timing until a re-walk returns their ids.
+    - By kind, over the 305 groups found before the leading-zero fix: 127 cosmetic re-renders (an "(Entered: ...)" stamp, spacing, case, punctuation), 110 short form to full text, 41 prefix or containment, 18 clerk rewrites that change meaning, 6 that differ in date (3 re-dates of one entry, and 3 of the 4 collisions below) and 3 removal edits.
+    - 4 groups look like two different entries sharing a document number, written in one call, which a token merge would wrongly fuse.
+  - **Tier 2, mostly two CourtListener objects for one entry:** a short form (inferred to come from RSS) and a docket-report full text.
+    - The strict twin rule finds 279 pairs. That is a floor: recall is 63 to 69 of 120 tokened truth pairs, and other rules give 233 to 330.
+    - The 256 same-run pairs imply two objects. Of the other 23, 9 have the shape of one object gaining a stamp and a URL, which only the walk's ids can settle.
+    - For the two-object pairs no upstream field links them. In the 3 sampled, entry ids and document ids differ, and `recap_sequence_number` links 2, misses the third and collides with numbered entry #131.
+  - **Combined:** 599 extra rows (9.1% of 6,593) on 45 dockets, and 247 duplicate A1 items (8.8% of 2,805) on 34 dockets. Separately, 89 duplicate B2 tracker-note items on 36 cases, inferred to be one per notes edit (the notes text was not dumped); at least 2 (97387, 97401) are probably artifacts of the slug re-key.
+- **Other channels:**
+  - State has 1 confirmed re-dated duplicate, AZ SB1470 (items 6153 and 69778, Feb 19 and Feb 18), and 1 undetermined, MI SB0691 105549. 24 MI rows dated after the date in their own text (18 "Electronically Reproduced", 6 "Reported Favorably") are exposed, none duplicated yet.
+  - Legislation has 0 duplicates; about 9 identical-text Congress.gov twins are inferred silently collapsed by its key.
+  - Executive has 0 duplicates, but an upstream edit is never written back.
+- **What a duplicate does:**
+  - **Shows twice:** /case timelines and the top-10 fold, data/cases.json timelines, /campaign Latest movement (4 of 8 at the dump were two Delaware entries held twice), and the homepage 7-day bands.
+  - **Inflates:** the map's and /case's entry counts and the Wire's litigation total and deltas.
+  - **Moves a date:** Nevada 72026664's latest_entry_at reads Aug 24 from stale re-dated rows where upstream now says Aug 20.
+  - **Outcomes:** survivor choice decides Nevada's rejection, which matches only the enriched text.
+  - **Recheck flags:** each row flags alone. The 71499795 watermark row, 20446, is itself the later row of 18689.
+  - **Moves the clock:** a re-insert carries a new fetched_at, so when it is the newest row it moves the record clock, generated_at and every window edge, and it counts in the heartbeat's "wrote N items".
+  - **Untouched:** check 5.
+
+**THE PLAN.**
+- **(a) Identity by upstream id, with the text a mutable field.**
+  - **Litigation:** key each row by CourtListener's docket-entry id, storing the recap document id as a field (docs[0] switched from main document to attachment once). It merges tier 1 and keeps the 4 collisions apart. It cannot merge the same-run tier-2 pairs, two objects in all 3 sampled. Those need a twin link psephos asserts, with its rule and date recorded, as `cases.superseded_by` is asserted. Up to 9 cross-run tier-2 pairs have the one-object shape and may merge on the entry id once the walk returns ids.
+  - **State:** no upstream id exists. Reconcile each getBill history against stored actions on (bill, chamber, text, occurrence order), with the date mutable, at no extra LegiScan cost. Keeping same-date actions in two chambers apart would still need the 3,915 state items re-keyed, since the hash omits chamber.
+  - **Legislation:** no id either. Reconcile the same way. Keying on actionCode, plus the committee for repeated referral lines (4 of the ~9 sit inside H.R. 7300's multi-committee referral), would un-collapse the ~9, at the cost of re-keying 85 items.
+  - **Executive:** already keyed on the document number; change insert-ignore to an upsert on change.
+  - **Normalization, a separate and smaller measure:**
+
+    | step | rows it clears alone |
+    |---|---|
+    | whitespace collapse | 1 |
+    | casefold | 1 |
+    | punctuation | 1 |
+    | the one-sided Entered stamp | 94 |
+    | all four, inside identity | 169 |
+
+    - A safe version needs no upstream id and no re-walk: an insert-time match of a stamped text to its one unstamped same-day twin, plus whitespace collapse. It clears 109 rows with 0 wrong merges in the dump.
+    - A table-wide normalized UNIQUE key would clear 210 but wrongly fuse 24 distinct entries, mostly same-day appellate filings that differ only in the stamp's time.
+- **(b) The revisions-table option.**
+  - **R1, revisions in place:**
+    - `case_entries` stays the revision log, every row and id unchanged. It gains cl_entry_id, seen_at, superseded_by (the revision that replaced it) and a cosmetic flag.
+    - A new `cl_entries` holds one row per CourtListener object: its current revision, first seen, revised at, date_modified, and twin_of with the rule that asserted it.
+    - The page shows one entry per object with its latest text, and the row expands to its earlier descriptions with when each was seen.
+    - Migrated seen_at is exact for 2,805 rows, pinned to one run by the id clock for 3,213, and within 2-4 runs for 575.
+    - There is no table rebuild unless the collision rule below is to drop the constraint, and no watermark, verdict id or check-5 record changes; the pinned flag test sees what it sees today.
+    - **Its main hazard:** keeping UNIQUE(case_id, entry_at, description) lets an identical same-day text from a second object land on another object's row. It needs a rule: skip, store apart, or rebuild to drop the constraint.
+    - **Two more gaps:** a return to an earlier text moves the current revision back with no new id, so superseded_by chains both ways and a write-once seen_at cannot record the return. And in 9 tier-1 groups the latest text fails is_substantive while an earlier row holds the A1 item; the write path covers only the opposite flip.
+  - **R2, one row per object with earlier texts moved to `case_entry_revisions`:**
+    - It needs a rebuild to drop the UNIQUE constraint and moves 320 rows.
+    - It takes one verdict row out of `case_entries`: 86725 if the object row keeps its highest id (18689 leaves too, and the watermark row stays), or 86794 and the watermark row 20446 if it keeps its first id. Revisions that keep their legacy ids keep the watermark number valid, but the readings then need a revision key.
+- **Backfill of CourtListener ids** takes a re-walk: about 345 requests for all 61 dockets (~18 minutes at 3.2 s), 205 for the 42 not superseded, 76 for the 8 gate-listed. It is optional, but some of R1 depends on it. Ids arrive free on every later poll. Without the walk, the 1,100 legacy rows with no URL get no `cl_entries` row, so no tier-2 twin link can be set on any legacy pair, and a re-described legacy object duplicates as it does today. Each tier-1 group's current row falls back to the highest id.
+- **(c) The one-time merge.**
+  - **Survivor text:**
+    - Tier 1 takes the highest-id text, presumed upstream's current until the re-walk confirms it (the offline default only).
+    - Tier 2 takes the long form. Latest-by-id there is API response order, and would retitle 91 items to short forms, among them the Jul 20 minute order (67589).
+    - The DSCC pair on 73131864 (92515 and 92572) is probably a false tier-2 edge. The long form would keep the notice text but delete item 115663 as if it were the same entry, so that edge should be dropped, not merged.
+    - The row: under R1 nothing is deleted. A deleting merge that keeps the lowest id must rewrite the survivor's key and item hash in every group, or the next re-serve re-inserts the duplicate.
+  - **fetched_at:** the survivor keeps the group's earliest fetched_at (first seen), and a new updated_at carries the latest. The merge moves neither the record clock (held by a news item, 22:21:22Z) nor any docket-day fresh dot. Fresh litigation items go 7 to 5.
+  - **Watermarks and verdicts:**
+    - Under R1: no change.
+    - Under a deleting merge that keeps the lowest id: 20446 vanishes (keep the number; re-pointing it to 18689 would re-flag ECF 124), and under T1+T2 91777 and 92017 go too. Keeping the highest id keeps every watermark row.
+    - The verdict pairs meet on one surviving row: 86725 and 86794, and under T1+T2 also 67589 and 67651. Under T1+T2 with the lowest id, 57258's verdict is left on a deleted row and 57249 posts as a new flag.
+    - Re-keying verdicts makes duplicate YAML keys, which assert-gates rejects (exit 3). The tally moves only if gates.yaml is edited.
+  - **Timing:** after the 2026-09-30 05:17Z audit posts, per the approved hold. The measurement period runs to 2026-11-12: a deleting merge changes what the pinned test sees mid-period (71499795's flags 6 to 5 or 4), and R1 does not.
+  - **Also:**
+    - Nevada's latest_entry_at must be rewritten by the merge (Aug 24 to Aug 20), or coverage_audit section 4 alarms.
+    - B2 notes merge on (case_id, 'b2-subject') keeping the first. Keeping the last leaves all 36 survivors undated, 34 of them where an earlier copy is dated; keeping the first leaves only the 2 all-undated groups.
+    - AZ SB1470's 6153 becomes a revision of 69778.
+- **(d) Public figures, before to after (T1 / T1+T2):**
+
+  | figure | before | after T1 | after T1+T2 |
+  |---|---|---|---|
+  | docket entries, total (on no page) | 6,593 | 6,273 | 5,994 |
+  | map "· N entries" | 50 dockets, sum 4,952 | 29 change, 4,667 | 36 change, 4,474 |
+  | New York 71457474 on the map | 230 | 125 | 125 |
+  | /case headers (ledger sum) | 2,805 | 27 pages change, 2,684 | 34 pages change, 2,558 |
+  | New York /case header | 86 | 48 | 48 |
+  | Wire litigation total | 2,955 | 2,834 | 2,708 (2,619 with B2) |
+  | Wire +24h | 7 | 5 | 5 |
+  | Wire +7d | 594 | 588 | 553 (551 with B2 kept first) |
+  | homepage 7-day band litigation rows | 23 | 21 | 20 (headers unchanged) |
+  | rejected states | 19 | 19 | 19 (18 if survivors kept their own text) |
+  | Nevada latest_entry_at | Aug 24 | Aug 20 | Aug 20 (rail rank 38 to 40) |
+  | /state-bill/2094523 | 6 | 5 | 5 (newest Feb 19 to Feb 18) |
+  | 71499795 flags (naive) | 6 (21) | 5 (19) | 4 (16) (unchanged under R1) |
+
+  - **Item figures** assume each group keeps one item even where its surviving text fails is_substantive. Re-derived from the surviving text, T1 reads 2,675 on the ledgers and 2,825 on the Wire. T1+T2 reads 2,505 and 2,655 under the literal latest text, and was not measured under the hybrid rule.
+
+  - **Latest movement:** two duplicate Delaware rows leave, and New York 116355 and Connecticut 116353 enter.
+  - **Unchanged:** the record clock, generated_at, the board and check 5. So are the coverage alarms, provided the merge rewrites Nevada's latest_entry_at: section 4 fires otherwise. Sections 1, 5, 7 and 8 read no case_entries and were not replayed.
+  - **Whether the page says why a count fell:**
+    1. silent;
+    2. a dated Wire line ("Sep 30: 247 items that held one docket entry twice were merged; the total read 2,955");
+    3. a per-docket or map line ("· 125 entries (230 before Sep 30)");
+    4. a "corrected" note, widening the visible-corrections proposal to counts;
+    5. status.md only;
+    6. a standing definition line ("entries: distinct docket entries; an entry CourtListener re-describes is held once");
+    7. a one-time data commit that says why (precedent 2a2111f, c26be20, bd4d577), exported and committed before the next cron so the drop does not land under the scheduled-collection message.
+  - **Conventions that bear on it:**
+    - CLAUDE.md: say what is true now; corrections belong in status.md.
+    - psephos.md: when two sources conflict, record both and flag the conflict. A re-description is CourtListener disagreeing with itself, which bears on update versus history.
+    - "No silent caps."
+    - The dated-ahead rule: a dated line takes the record's clock or a hand-authored date.
+
+**FOR COREY:**
+1. Update in place, or keep history (R1 or R2).
+2. The survivor text, including whether a clerk's strike (FILED IN ERROR) replaces the original on the page.
+3. Tier-2 links: by rule for at most the 256 same-run pairs, with the 23 others and the ambiguous ones (147 short rows) to a person. Under R1 none can be set without the re-walk (item 6).
+4. Timing against the measurement period.
+5. The page notice.
+6. Whether to spend the re-walk.
+7. Channel scope: state reconciliation, the legislation key, the executive upsert, B2.
+
+**Recommended, not ruled (mine):**
+- R1: no rebuild unless the collision rule drops the constraint, nothing deleted, the pinned test undisturbed, every text kept, as psephos.md's "record both" asks.
+- The hybrid survivor text.
+- The safe normalization measure first, as the smallest step.
 
 ### The first recheck flags: VERDICTS RULED 2026-09-29, the Sep 29 order READ (it applies the stay), and no-claim-order dockets WATCHED from their read-through date
 
@@ -27,7 +167,7 @@ Last updated: 2026-09-29 (UTC).
 - **26-5301 is not held.** It is carried on its lead 26-5243 (73544809) per the 26-5301 precedent, so it is not added to the gate's list.
 - **93145, READ.** At 22:42Z, the previous brief's fetch, CourtListener held only the short form (479853687, our 93145). The text row, 479868690, was created on CourtListener at 23:31:22Z, before this brief arrived, and the first read after the brief, at 23:39Z, held it. The minute order says: "While the stay remains in effect, the Court therefore cannot grant the requested relief compelling compliance with this Court's June 22, 2026, Order. Accordingly, the Court DENIES the Plaintiffs' 128 Motion to Enforce Summary Judgment Order without prejudice to renewal should the judgment become enforceable in light of further appellate proceedings." It also VACATES the Jul 20 weekly-status order. **It applies the stay and changes neither the Jun 22 order's effect nor the stay's reach, so no stop.** Corey need not buy it through PACER.
 - **The text row will arrive as a new entry above 93145 and flag.** It is the later row of the twin: a duplicate.
-- **The watermark stays at 20446, verdicts recorded, until the first scheduled audit has posted the six on the standing issue.** Corey expects that run to post them, and it is the delivery's first proof. Then the reading moves to 93145.
+- **The watermark stays at 20446, verdicts recorded, until the first scheduled audit has posted the six on the standing issue.** *(APPROVED by Corey, 2026-09-30.)* Corey expects that run to post them, and it is the delivery's first proof. Then the reading moves to 93145.
 - **The measurement so far:** 6 verdicts, 4 operative, 0 noise, 0 missed, 2 duplicate, 0 unread.
 - **The test stays pinned.** The duplicates are evidence for its revision at the period's end.
 
