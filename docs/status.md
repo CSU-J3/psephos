@@ -167,8 +167,25 @@ Last updated: 2026-09-30 (UTC).
   - Nothing was lost but one cycle's snapshot commit: Turso holds every write, and the next run exports and commits as usual.
   - The push is now gated on the in-flight list, not printed beside it. Issue 6 is Corey's to close.
 
+**The second walk: the 06:17Z slot's run 36715079799, started 12:29Z, head `0872934`, green.**
+- **16 more dockets for 79 requests, every row attached.** None unattached, never held or stale; 37 dockets left.
+- The data commit landed (`a18bc36`), the fold sweep found nothing to do, and the day's ledger read 288 requests, 155 of them the backfill.
+- **Five entries held apart, the first**, on three dockets:
+  - 72023578 (Hawaii) #13 beside #12;
+  - 72193752 (N.D. Ga.) #66 and #67 beside #65;
+  - 72336804 (Oklahoma) #11 and #12 beside #10.
+- **Every one is a distinct docket entry with its own number**, whose text and day equal a sibling's: a proposed summons, repeated notices of appearance, repeated pro hac vice motions.
+  - The old key, unique on (case, date, text), absorbed them.
+  - So `record_entries` counts them, and those dockets' entry counts RISE at the switch by what psephos was missing (Oklahoma 22 to 24).
+  - The switch's notes say "counted apart" for a rise, never "merged".
+  - None of the five is substantive, so none would be an item.
+  - **Put to Corey at the checkpoint.**
+- **The seen-time backfill is APPLIED**: 12:54Z 2026-09-30, 6,593 rows.
+  - The dry run on Turso matched the D0 exactly: 2,805 exact from an item, 3,213 pinned to one run, and 456 + 112 + 7 = 575 in a range of 2-4 runs.
+  - A re-run finds none left.
+
 **Owed in this unit:**
-- The walk, over about four more scheduled runs, and its receipts read.
+- The walk, over about three more scheduled runs, and its receipts read.
 - Step (c):
   - legacy `seen_at`/object clocks bounded by the id order;
   - the 256 pairs mapped to objects;
