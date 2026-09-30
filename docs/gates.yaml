@@ -38,8 +38,8 @@
 #     read_on: 2026-09-29        # the day a person read it against the claim
 #     through_entry_id: 92619    # MAX(case_entries.id) held at that reading
 #     through_entry_at: 2026-09-23   # its latest filing date then, a human cross-check
-#     verdicts: {}               # entry id -> operative | noise | missed, for the
-#                                # flags since the reading before
+#     verdicts: {}               # entry id -> operative | noise | missed |
+#                                # duplicate | unread (the classes ruled 2026-09-29)
 #
 # An order-like entry above the watermark is a RECHECK FLAG (tools/recheck_flags.py):
 # coverage_audit section 9 reports it daily and audit.yml comments it on a standing
@@ -48,9 +48,10 @@
 # the normal commit gate; `python -m tools.recheck_flags --fragment` prints the held
 # record to fill in. VERDICTS ACCUMULATE: a reading keeps every verdict given on its
 # docket, and a moved reading adds the new ones, so the measurement's tally is the
-# whole period's. Nothing writes a reading automatically. The flags watch LISTED
-# dockets only: a docket cleared by a check-5 reason is read by nothing here, and a
-# consolidated member only as far as its orders land on its listed lead.
+# whole period's. Nothing writes a reading automatically. The flags watch every LISTED
+# docket, and (Corey, 2026-09-29) every docket cleared by a check-5 no-claim-order reason
+# from its read-through date, a flag there saying the reason needs re-ruling; a
+# consolidated member is watched only as far as its orders land on its listed lead.
 #
 # `aliases` carries the ids an entry was known by before a rename; the checks that
 # resolve ids resolve an alias to its entry. Records in docs/status.md keep the id
@@ -190,8 +191,26 @@
 # (review of this build, 2026-09-29: the first draft set it at the dump's 93133 and called
 # them read).
 # A watermark is where flags are measured from, not proof that everything under it was
-# read. No verdicts yet: the D0's labels were in-sample, and the measurement is the
-# verdicts given on flags from here on.
+# read. The D0's labels were in-sample; the measurement is the verdicts given on flags.
+#
+# 71499795'S FIRST SIX FLAGS, VERDICTS BY COREY (2026-09-29). THE WATERMARK STAYS AT 20446
+# until the first scheduled audit has posted these six on the standing issue -- the
+# delivery's first proof, which Corey expects of that run -- and then moves to 93145:
+#   57258  Jul 18 minute order on the 128 Motion to Enforce Judgment       operative
+#   67589  Jul 20 minute order deferring that ruling (N.D. Fla. appeal)    operative
+#   67651  the Jul 20 order held a second time, under its short form       duplicate
+#   86725  Texas's notice of appeal, Aug 21 (26-5301)                      operative
+#   86794  the same notice held twice (one docket entry, #141, two rows)    duplicate
+#   93145  "Order on Motion to Enforce Judgment", Sep 29                   operative
+# The naive test counted 21 above that watermark where the order-like test flagged these
+# six. Corey ruled 93145 "unread, open until its text is read"; its text reached
+# CourtListener the same evening as a separate row (see dhs-save-system-stayed's comment),
+# read at 23:39Z, so the verdict is given. That row will arrive as a new entry above 93145
+# and flag; it is the later row of the twin, a duplicate, recorded when the reading moves. The later row of a twin is the
+# duplicate, as Corey ruled the pairs. Each pair is ONE docket entry held as two rows,
+# under its short and its full description (case_entries is unique on the description), not
+# a notice docketed twice. The test stays pinned during the measurement; the
+# duplicates are evidence for its revision at the period's end.
 - id: eo-14399-usps-rule-enjoined-ddc
   claim: "the Postal Service is preliminarily enjoined from implementing and enforcing its Final Rule of Aug 21 (Ballot Mail for Federal Elections, 91 Fed. Reg. 54,966), in full and with no end date (D.D.C. order of Sep 13 in the three consolidated suits, 1:26-cv-01114 ECF 193)"
   kind: authored
@@ -531,8 +550,39 @@
 # THE RECORD. 26-5243 (73544809, consolidated with Texas's 26-5301) carries the Clerk of
 # the Supreme Court's letter of Sep 25 (case_entries 91411: "application for stay was
 # granted"), and the D.C. Circuit's own per curiam order of Sep 4 denying a stay pending
-# appeal (88677). The D.D.C. row 71499795 is terminated and superseded by 26-5243; its
-# latest entry (Sep 28) is a notice of supplemental authority, not an order.
+# appeal (88677). The D.D.C. row 71499795 is terminated and superseded by 26-5243. Its
+# latest held entry (Sep 29, the short form 93145) is the minute order applying the stay,
+# below; the Sep 28 notice of supplemental authority precedes it, and the order's text row
+# (CourtListener 479868690) has not yet arrived as its own entry.
+#
+# THE DISTRICT COURT APPLIED THE STAY, 2026-09-29 (read 23:39Z off CourtListener, RECAP
+# entry 479868690; the held short form is 93145). Minute order: "While the stay remains in
+# effect, the Court therefore cannot grant the requested relief compelling compliance with
+# this Court's June 22, 2026, Order. Accordingly, the Court DENIES the Plaintiffs' 128
+# Motion to Enforce Summary Judgment Order without prejudice to renewal should the
+# judgment become enforceable in light of further appellate proceedings." It also VACATES
+# the Jul 20 minute order that required weekly status reports on Florida v. DHS. It
+# changes neither the Jun 22 order's effect nor the stay's reach: it applies the stay.
+#
+# A SECOND COURT'S ORDER ON THE SAME SYSTEM (Corey, 2026-09-29: recorded here; seeding it
+# is a later scope question). Florida v. DHS, No. 3:24-cv-509 (N.D. Fla.), an order of
+# Jul 7, 2026 -- "the Florida Order" -- under which SSA reopened its API connection to DHS
+# USCIS "solely for the four Plaintiff States subject to the Florida Order of July 7,
+# 2026" and made NUMIDENT records available for SAVE requests "solely with respect to
+# Florida, Ohio, Iowa, and Indiana" (the government's Jul 10 filings in 1:25-cv-03501,
+# ECF 126 and its Steffensen declaration, as quoted in its Sep 14 notice, ECF 146). ECF
+# 146 quotes the connection sentence to qualify it: "accurate at that time", but DHS's
+# later law-enforcement queries of SSA data appear to have used the connection for a
+# purpose "not 'solely for the four Plaintiff States subject to the Florida Order of July
+# 7, 2026'" -- queries the government says were not SAVE requests and fall outside the
+# vacatur. The
+# League plaintiffs moved to intervene to appeal it (N.D. Fla. ECF 49, Jul 9), the court
+# granted intervention (the D.D.C.'s Jul 20 minute order), and the appeal is Florida v.
+# League of Women Voters, No. 26-12533 (11th Cir.), where briefing on a jurisdictional
+# question closed Sep 16 (ECF 148 in 1:25-cv-03501). Read only through the D.D.C.
+# docket; neither the Florida order nor the Eleventh Circuit docket has been read.
+# 26-5301, Texas's appeal from the Jun 22 order, is not held: it is carried on its lead
+# 26-5243 (73544809), per the 26-5301 precedent, so it is not added to the list.
 #
 # THE POINTER'S WORDS, SOURCED (Corey, 2026-09-29). The page points at this entry as "the
 # SAVE-system changes EO 14248 prompted". Two primary documents tie the changes to the order:
@@ -579,7 +629,13 @@
       read_on: 2026-09-29
       through_entry_id: 20446
       through_entry_at: 2026-07-08
-      verdicts: {}
+      verdicts:
+        57258: operative
+        67589: operative
+        67651: duplicate
+        86725: operative
+        86794: duplicate
+        93145: operative
   renders_as: "The D.D.C. order of Jun 22 vacating DHS's modified SAVE system (Systematic Alien Verification for Entitlements, not the SAVE Act), which added Social Security records and bulk searches to its citizenship checks, has been stayed by the Supreme Court since Sep 25, pending appeal and any certiorari petition"
 
 # RULED 2026-09-29 (Corey): what the per curiam says of the NVRA, its own entry and its own

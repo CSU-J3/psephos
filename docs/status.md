@@ -8,6 +8,59 @@ Last updated: 2026-09-29 (UTC).
 
 ## Owed right now
 
+### The first recheck flags: VERDICTS RULED 2026-09-29, the Sep 29 order READ (it applies the stay), and no-claim-order dockets WATCHED from their read-through date
+
+**Corey's rulings, 2026-09-29 (third brief).**
+
+**(1) VERDICTS on the first six flags, all on 1:25-cv-03501 (71499795). The naive count beside them is 21.**
+
+| entry | what | verdict |
+|---|---|---|
+| 57258 | Jul 18 minute order on the 128 Motion to Enforce the Jun 22 vacatur | operative ("true"). No change to `dhs-save-system-stayed`: it predates the stay |
+| 67589 | Jul 20 minute order deferring that ruling pending the Eleventh Circuit's review of N.D. Fla.'s *Florida v. DHS* order | operative. No change to the claim |
+| 67651 | the Jul 20 order's short form | **duplicate**: its own class, not false |
+| 86725 | Texas's notice of appeal, Aug 21 (26-5301) | operative |
+| 86794 | the same notice held twice (one docket entry, #141) | duplicate |
+| 93145 | "Order on Motion to Enforce Judgment", Sep 29 | ruled **unread**, then read the same evening: operative |
+
+- **The twin (86725 and 86794):** both rows point at CourtListener entry 141, one notice held as two rows under its short and full descriptions. The Jul 20 pair is the same shape. Corey ruled "the second recorded as a duplicate", matching his Jul 20 pair, so the later row of a twin is the duplicate.
+- **26-5301 is not held.** It is carried on its lead 26-5243 (73544809) per the 26-5301 precedent, so it is not added to the gate's list.
+- **93145, READ.** At 22:42Z, the previous brief's fetch, CourtListener held only the short form (479853687, our 93145). The text row, 479868690, was created on CourtListener at 23:31:22Z, before this brief arrived, and the first read after the brief, at 23:39Z, held it. The minute order says: "While the stay remains in effect, the Court therefore cannot grant the requested relief compelling compliance with this Court's June 22, 2026, Order. Accordingly, the Court DENIES the Plaintiffs' 128 Motion to Enforce Summary Judgment Order without prejudice to renewal should the judgment become enforceable in light of further appellate proceedings." It also VACATES the Jul 20 weekly-status order. **It applies the stay and changes neither the Jun 22 order's effect nor the stay's reach, so no stop.** Corey need not buy it through PACER.
+- **The text row will arrive as a new entry above 93145 and flag.** It is the later row of the twin: a duplicate.
+- **The watermark stays at 20446, verdicts recorded, until the first scheduled audit has posted the six on the standing issue.** Corey expects that run to post them, and it is the delivery's first proof. Then the reading moves to 93145.
+- **The measurement so far:** 6 verdicts, 4 operative, 0 noise, 0 missed, 2 duplicate, 0 unread.
+- **The test stays pinned.** The duplicates are evidence for its revision at the period's end.
+
+**`dhs-save-system-stayed`'s comment records** the D.D.C.'s Sep 29 order, and the second court's order on the same system, as read through the D.D.C. docket only:
+- *Florida v. DHS*, No. 3:24-cv-509 (N.D. Fla.), order of Jul 7, 2026. The government's Jul 10 filings say SSA reopened its API connection "solely for the four Plaintiff States" and made NUMIDENT records available for SAVE requests for Florida, Ohio, Iowa and Indiana. Its Sep 14 notice (ECF 146) qualifies the first: DHS's later law-enforcement queries of SSA data used the connection for other purposes, which it says were not SAVE requests.
+- Its appeal is *Florida v. League of Women Voters*, No. 26-12533 (11th Cir.). The League plaintiffs intervened to bring it, and briefing on a jurisdictional question closed Sep 16.
+- Seeding either is a later scope question.
+
+**The new verdict classes** are `duplicate` and `unread`, beside operative, noise and missed, in `tools/recheck_flags.py` and in assert-gates' reading validation.
+- **Unread stays open:** the report lists every unread verdict whatever the watermark, and `--fragment` re-offers it.
+- **A recorded verdict** shows beside its flag in the report and in the standing-issue comment, which asks only for the verdicts not yet given.
+
+**(2) NO-CLAIM-ORDER DOCKETS ARE WATCHED, BUILT 2026-09-29.** A docket cleared by a check-5 no-claim-order reason is watched from its `read_through` date, which serves as its watermark. An order-like entry FILED after that date flags as a listed docket's would. The report, the standing-issue comment and `--fragment` say the reason needs re-ruling.
+- **A date, not an id, as ruled.** Such a docket has no reading to carry an id, so an entry filed on or before the date but ingested later does not flag.
+- **Consolidated members** stay watched through their lead.
+- **Tested** with a planted order after a read-through date, through `compute()` on a connection shaped like the database's; there is no such docket yet.
+- **Its flags' verdicts** ride on the reason (`gate_coverage.verdicts`, optional, validated by assert-gates), since it has no reading, and they count in the tally.
+- **The review, before commit:** two reviewers raised 13 findings; 9 were confirmed and fixed. They were:
+  - the watch untested on its production path;
+  - unread not kept open;
+  - reason verdicts with nowhere to live;
+  - a comment that would re-ask for recorded verdicts;
+  - four record corrections: the stay entry's stale "latest entry", twins "docketed again", the session-open claim, and ECF 146's own qualification.
+- **assert-gates' header, the register's and CLAUDE.md** say so.
+
+**RECORDED, FROM THE PUSH BEFORE:** ci.yml went red on `3e03537` and `e9b8511` for about four minutes (2026-09-29T23:19:55Z to the fix's push at 23:24:11Z). actionlint's shellcheck read a jq variable in the flag steps' single-quoted filter as SC2016. The fix, `f3f4e2f`, uses IN(...), checked against this repo's issues with gh; ci.yml was green on it at 23:25:04Z.
+
+**OWED:**
+1. **Tonight's first scheduled dom-checks.** Its slot is 03:17Z; it has lately started around 09:30-10:30Z (3:30-4:30 AM MDT). It reads check 5 in the DOM lane.
+2. **Tonight's first scheduled audit.** Its slot is 05:17Z; it has lately started around 11:00-12:00Z (5:00-6:00 AM MDT). It should print section 9 and post the six flags, and perhaps the Sep 29 text row, if the 00:17Z collection has taken it.
+3. **After that audit,** move 71499795's reading to 93145, and record the text row as a duplicate once it is held.
+4. Thursday's first October state run, as armed.
+
 ### Gate coverage (check 5) and the recheck flags: BUILT and SHIPPED 2026-09-29 on Corey's word; the first flag is live; the first scheduled readings are owed
 
 **Corey's word, 2026-09-29:** the layout frames pass; commit the split, then build (2) and (3) as approved that day. Stop only for a genuine finding, and report the first scheduled audit and dom-checks readings after the push. The rulings are in the entry below this one's neighbour, *The SAVE-system stay READ*, (2) and (3).
