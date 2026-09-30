@@ -13,7 +13,13 @@ reads this run's `channel_runs` rows (written by the credentialed collectors thr
     slots than its threshold -- legislation `bills.updated_at`, litigation
     `cases.status_checked_at`, state its latest `ok` row;
   * a planned deferral outlived its channel's rotation (R6);
-  * an earlier step of the job failed (R10: every red collect run comments).
+  * an earlier step of the job failed (R10: every red collect run comments);
+  * the data commit did not reach origin: the commit step writes
+    `$RUNNER_TEMP/data-commit-not-pushed` first, retries a raced push, and clears the
+    marker only when a push lands or nothing is left to push, so a step that gives up or
+    dies mid-repair leaves it. It is named here as its own finding, with the evidence line
+    "data commit not pushed" (Corey, 2026-09-30, after the 00:17Z slot's commit was lost
+    to a human push and the verdict named only the step).
 
 It writes the comment body -- channel, class and evidence line per finding -- to
 `$RUNNER_TEMP/collect-verdict.md`, which the issue step posts to the standing
@@ -95,7 +101,10 @@ REFRESH_ROTATION_HOURS = 24
 # 2027, after which this check gets a figure. A channel-level stand-in went red daily
 # through a proration storm, which R6 names as planned.
 
-FINDING_ORDER = ("job", "unrecorded", run_signals.MISSING, run_signals.CREDENTIAL,
+# The commit step's marker (collect.yml, "Commit data changes"); read from RUNNER_TEMP.
+DATA_COMMIT_MARKER = "data-commit-not-pushed"
+
+FINDING_ORDER = ("job", "commit", "unrecorded", run_signals.MISSING, run_signals.CREDENTIAL,
                  run_signals.NO_OK, run_signals.CUT, "receipt stale", "rotation")
 
 
@@ -226,13 +235,28 @@ def rotation_findings(conn, now: datetime) -> list[tuple[str, str, str]]:
     return out
 
 
+def data_commit_finding(runner_temp: str | None) -> list[tuple[str, str, str]]:
+    """The commit step's marker, as a finding: its own line, never folded into a generic
+    failed step. Its text begins "data commit not pushed"."""
+    path = os.path.join(runner_temp or ".", DATA_COMMIT_MARKER)
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read().strip() or "data commit not pushed"
+    if not text.startswith("data commit not pushed"):
+        text = f"data commit not pushed: {text}"
+    return [("data", "commit", text)]
+
+
 def verdict(conn, rid: str, slot: str, started_at: str, job_status: str,
-            now: datetime | None = None) -> list[tuple[str, str, str]]:
+            now: datetime | None = None,
+            runner_temp: str | None = None) -> list[tuple[str, str, str]]:
     """Every finding, as (channel, class, evidence). The run is red when this is non-empty."""
     now = now or datetime.now(timezone.utc)
     findings: list[tuple[str, str, str]] = []
     if job_status and job_status != "success":
         findings.append(("job", "job", f"an earlier step ended `{job_status}`"))
+    findings += data_commit_finding(runner_temp)
     rows = this_run_rows(conn, rid)
     seen = {r[0] for r in rows}
     for ch in expected_channels(slot):
@@ -280,21 +304,23 @@ def main(argv=None) -> int:
                            or datetime.now(timezone.utc).isoformat())
     job_status = os.environ.get("JOB_STATUS") or "unknown"
     run_url = os.environ.get("RUN_URL") or ""
-    out = os.path.join(os.environ.get("RUNNER_TEMP") or ".", "collect-verdict.md")
+    runner_temp = os.environ.get("RUNNER_TEMP")
+    out = os.path.join(runner_temp or ".", "collect-verdict.md")
     try:
         conn = db.connect()
     except Exception as exc:
         findings = [("job", "job", f"the verdict could not open the database: "
-                                   f"{type(exc).__name__}")]
+                                   f"{type(exc).__name__}")] + data_commit_finding(runner_temp)
     else:
         try:
-            findings = verdict(conn, rid, slot, started_at, job_status)
+            findings = verdict(conn, rid, slot, started_at, job_status,
+                               runner_temp=runner_temp)
         except Exception as exc:
             # The type only, in the body: it goes to an issue, which GitHub does not mask,
             # and a libsql error can name the database URL, itself a secret here. The
             # message goes to the log, scrubbed of every credential in the environment.
             findings = [("job", "job", f"the verdict could not read the database: "
-                                       f"{type(exc).__name__}")]
+                                       f"{type(exc).__name__}")] + data_commit_finding(runner_temp)
             print(f"collect verdict: database read failed -- "
                   f"{run_signals.scrub(str(exc), run_signals.env_secrets())}",
                   file=sys.stderr)

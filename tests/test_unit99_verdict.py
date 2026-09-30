@@ -644,6 +644,32 @@ def test_main_exits_1_and_writes_the_body_to_runner_temp_when_red(main_env, caps
     assert "collect verdict: RED" in capsys.readouterr().out
 
 
+LOST_COMMIT = ("data commit not pushed: the push was rejected 3 time(s); last repair: rebased "
+               "onto a commit that touched nothing under data/; git said: ! [rejected] main -> "
+               "main (fetch first)")
+
+
+def test_the_verdict_names_a_lost_data_commit_on_an_otherwise_clean_run(live, tmp_path):
+    """The commit step exits 0 when it gives up, so the job status reads `success`; the
+    marker alone is what turns the run red (Corey, 2026-09-30)."""
+    _fresh(live, with_state=True)
+    assert cv.verdict(live, RID, cv.STATE_SLOT, STARTED, "success", NOW,
+                      runner_temp=str(tmp_path)) == []
+    (tmp_path / cv.DATA_COMMIT_MARKER).write_text(LOST_COMMIT + "\n", encoding="utf-8")
+    assert cv.verdict(live, RID, cv.STATE_SLOT, STARTED, "success", NOW,
+                      runner_temp=str(tmp_path)) == [("data", "commit", LOST_COMMIT)]
+
+
+def test_main_is_red_on_a_lost_data_commit_with_the_database_up(main_env, capsys):
+    """main() hands verdict() the step's RUNNER_TEMP: read anywhere else, the marker is
+    missed and a run that lost its commit goes green with no comment."""
+    _, out = main_env
+    (out.parent / cv.DATA_COMMIT_MARKER).write_text(LOST_COMMIT + "\n", encoding="utf-8")
+    assert cv.main() == 1
+    assert f"| data | commit | {LOST_COMMIT} |" in out.read_text(encoding="utf-8")
+    assert "collect verdict: RED" in capsys.readouterr().out
+
+
 def test_main_still_writes_a_body_and_exits_1_when_the_database_will_not_open(
         main_env, monkeypatch, capsys):
     """The run the empty-URL guard stopped still gets its comment. Only the exception's

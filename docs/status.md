@@ -8,6 +8,67 @@ Last updated: 2026-09-30 (UTC).
 
 ## Owed right now
 
+### The lost 00:17Z data commit: READ 2026-09-30; the commit step's retry BUILT, REVIEWED and SHIPPED the same day, in the commit that lands this entry; issue 6 left for Corey
+
+**What happened (Corey's (a)).**
+- **The run:** `collect.yml` run `36674320722`, the 00:17Z slot (`17 0 * * *`), created and started 05:38:13Z on head `d9cf702`.
+- **The cause:** I pushed `f3c0e5a` at 05:39:24Z, inside the run's window.
+- **The mechanism: a rejected non-fast-forward push, not a cancellation.**
+  - At 05:54:14Z "Commit data changes" ran a bare `git push`, refused with `! [rejected] main -> main (fetch first)`.
+  - The step had no retry, so it failed, and the data commit never reached origin.
+- **The run went red, not green, and commented, but never named the loss.**
+  - The Verdict read one finding, `job | job | an earlier step ended failure`.
+  - The issue step opened standing issue 6, `collect red`, at 05:54:18Z.
+  - That line names a failed step, not a lost commit: the unit 99 gap Corey's brief names.
+
+**What the loss reached (Corey's (c)).**
+- **Pages anchor on the live Turso clock, so no page read the Sep 29 clock.**
+  - Every route takes its as-of from `getRecordAnchor`, a live `MAX(fetched_at)` over Turso `items`.
+  - No route reads a snapshot. `web/lib/stands.ts` names the file only in a comment.
+- **The committed snapshot clock read Sep 29 about 6h49m longer than it should have.**
+  - `data/generated_at.json` stayed at `b85e785`'s value (committed 22:26:10Z Sep 29, clock 22:21:22Z) until `a18bc36` at 12:43:02Z.
+  - The lost commit would have landed near 05:54Z.
+- **So the loss reached only the check lanes' snapshot readers:** `assert-gates`' expiry checks and `assert-encodings`' witness.
+  - Three runs read the stale clock:
+    - ci `36676001405` (05:59:52Z, `74f3093`);
+    - dom-checks `36698132294` (09:45:27Z, "against the record's clock 2026-09-29");
+    - ci `36708089928` (11:21:58Z, `0872934`).
+  - All three were green, and no result could have changed: the earliest active `recheck_after` is 2026-10-15. The one 2025 date is the demand-letter gate, shipped stale by design and expired against either clock.
+- **Turso lost nothing.** Every collector write had committed before the step. The next run (`36715079799`) exported and committed as usual.
+
+**The fix (Corey's (b)): the commit step retries a raced push, and a push that still fails turns the run red by name.**
+- **Three pushes, on the branch the run checked out.** After each of the first two rejections it fetches, then:
+  - origin has not moved: the rejection was not a race, and nothing is repaired;
+  - the raced commits touch nothing under `data/`: the data commit is rebased onto them, with no export re-run;
+  - they touch `data/`: the data commit is dropped and the export re-run over them. This run's `data/doj_cases.json` is carried across and wins, since the export does not write it (`collectors.tracker_uw` does, a step earlier).
+- **The marker is the default.**
+  - `$RUNNER_TEMP/data-commit-not-pushed` is written first, and cleared only by a landed push or by nothing left to push.
+  - So a step that dies under `-e`, or is cancelled mid-repair, still leaves it.
+- **The Verdict names it as its own line:** `data | commit | data commit not pushed: the push was rejected N time(s); last repair: …; git said: …`.
+  - It reads the marker on every path, including a database that will not open.
+  - The step exits 0 when it gives up, so the Verdict is what turns the run red, and the standing issue carries that line.
+- **Tested with a planted concurrent push.**
+  - `tests/test_data_commit.py` runs the step's real script from `collect.yml`, in a shallow clone of a local bare origin, after a second clone has pushed: 15 cases. The positive control is a bare push that the race rejects.
+  - Two more in `tests/test_unit99_verdict.py` read the marker with the database up.
+- **An adversarial review confirmed nine findings and refuted none. All nine are fixed:**
+  - the re-export dropped this run's tracker artifact, and pushed green without it, or pushed nothing when the artifact was the whole delta (found by both lenses);
+  - a step dying mid-repair left no marker, the `36674320722` symptom again;
+  - the retry assumed main, while the push targets the checked-out branch;
+  - a repair ran after the third push and was never pushed, and the evidence line blamed a race when origin had not moved, dropping git's reason (two findings);
+  - three test findings: the Verdict's normal path, a failed re-export, and the production export command with its credentials plus the two clean exits.
+- **A mutation sweep of the reviewers' ten mutants killed all ten.** The unmutated control passed.
+- **The process fix stands beside it:** my pushes are gated on an empty in-flight list, not printed beside one.
+
+**Issue 6 gets a comment with this push**, naming:
+- the lost run and its cause;
+- the two clean scheduled runs since:
+  - `36715079799`, the 06:17Z slot, started 12:29:39Z, landed `a18bc36`;
+  - `36755373315`, the 12:17Z slot, started 17:59:44Z, landed `5b1f184`.
+
+It stays open for Corey to close.
+
+**Owed:** the first scheduled run on this head should print `data commit pushed (attempt 1)` and read green. A raced push in production stays unproven until one happens; until then the tests are its evidence.
+
 ### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), c to e owed
 
 **Corey's rulings on the seven calls, 2026-09-30.**
@@ -165,7 +226,7 @@ Last updated: 2026-09-30 (UTC).
   - I pushed `f3c0e5a` at 05:39:24Z while the run was in flight. The in-flight check printed `collect`, and my command did not stop on it.
   - The run's bare `git push` was rejected (fetch first). The verdict went RED on "an earlier step ended failure" alone, and the run commented on standing issue 6.
   - Nothing was lost but one cycle's snapshot commit: Turso holds every write, and the next run exports and commits as usual.
-  - The push is now gated on the in-flight list, not printed beside it. Issue 6 is Corey's to close.
+  - The push is now gated on the in-flight list, not printed beside it, and the commit step now retries a raced push (the entry above). Issue 6 is Corey's to close.
 
 **The second walk: the 06:17Z slot's run 36715079799, started 12:29Z, head `0872934`, green.**
 - **16 more dockets for 79 requests, every row attached.** None unattached, never held or stale; 37 dockets left.

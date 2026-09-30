@@ -135,7 +135,8 @@ permissions:
 # `git push`. Pending-run cancellation is explained under CONCURRENCY above.
 # Measured before adding it: two scheduled runs have never overlapped in 300
 # (the three overlaps on record, 06-30 to 07-03, each paired a dispatch with a
-# scheduled run). It does not serialize against a human push racing the bot's.
+# scheduled run). It does not serialize against a human push racing the bot's; the
+# data commit step retries a raced push instead (see it, below).
 concurrency:
   group: collect
   cancel-in-progress: false
@@ -258,31 +259,125 @@ jobs:
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         run: python -m export.snapshots       # reads Turso; writes data/*.json for the view and for diffs
 
+      # THE DATA COMMIT, AND A RACED PUSH (Corey, 2026-09-30). The concurrency group
+      # serializes collect runs, not a human push, and on 2026-09-30 one landed while the
+      # 00:17Z slot's run (36674320722) was collecting: its bare `git push` was rejected
+      # (fetch first), the step failed, and the verdict went red naming only "an earlier
+      # step ended failure" -- never the lost commit. So a rejected push is fetched and
+      # retried, three pushes in all, on the branch the run checked out:
+      #   * origin has not moved: the rejection was not a race, and nothing is repaired;
+      #   * the commits it raced touch nothing under data/ (a docs or code commit): the data
+      #     commit is rebased onto them, and needs no export re-run;
+      #   * they touch data/: the data commit is dropped and the export re-run on top of
+      #     them, so the snapshot is written against the files as they stand. The export
+      #     does not write data/doj_cases.json (collectors.tracker_uw does, a step earlier),
+      #     so this run's copy is carried across and wins over the raced one.
+      # No repair follows the third push, since nothing would push it.
+      # THE MARKER IS THE DEFAULT. $RUNNER_TEMP/data-commit-not-pushed is written before
+      # anything else and cleared only by a landed push or by nothing left to push, so a
+      # step that dies under -e or is cancelled mid-repair still leaves it. The Verdict
+      # turns the run red on it with the evidence line "data commit not pushed", git's own
+      # rejection line included; the step exits 0 when it gives up, so the Verdict is what
+      # names it. tests/test_data_commit.py plants the concurrent push. DATA_EXPORT exists
+      # for that test; the run uses the default.
       - name: Commit data changes
         env:
           # The slot label, via env rather than inline in the script.
           SLOT: ${{ github.event.schedule || 'dispatch' }}
+          # For the export re-run, when a raced commit touched data/.
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
         run: |
           git config user.name "psephos-bot"
           git config user.email "actions@users.noreply.github.com"
-          # Stage only the text snapshots explicitly. NOT `git add data/`: data/psephos.db
-          # is not in .gitignore, so a glob add could start committing the binary.
-          # Every new snapshot must be added here by name or it is written each run
-          # and never committed -- silent, since the export prints it either way.
-          # THIS WARNING WAS CORRECT AND UNHEEDED: data/generated_at.json was added
-          # to the export and not to this line, so it was rewritten every cron and
-          # committed by none of them, leaving the tracked copy frozen at a
-          # hand-seeded 2026-09-07 -- which is the clock assert-gates.mjs compares
-          # `recheck_after` against, and the date the page shows readers as its
-          # as-of. A prose warning cannot fail. tests/test_snapshot_staging.py now
-          # joins this line to the export's own *_PATH constants and does.
-          git add data/bills.json data/cases.json data/executive.json data/state_bills.json data/news.json data/doj_cases.json data/generated_at.json
-          if git diff --cached --quiet; then
-            echo "No changes."
+          stage() {
+            # Stage only the text snapshots explicitly. NOT `git add data/`: data/psephos.db
+            # is not in .gitignore, so a glob add could start committing the binary.
+            # Every new snapshot must be added here by name or it is written each run
+            # and never committed -- silent, since the export prints it either way.
+            # THIS WARNING WAS CORRECT AND UNHEEDED: data/generated_at.json was added
+            # to the export and not to this line, so it was rewritten every cron and
+            # committed by none of them, leaving the tracked copy frozen at a
+            # hand-seeded 2026-09-07 -- which is the clock assert-gates.mjs compares
+            # `recheck_after` against, and the date the page shows readers as its
+            # as-of. A prose warning cannot fail. tests/test_snapshot_staging.py now
+            # joins this line to the export's own *_PATH constants and does.
+            git add data/bills.json data/cases.json data/executive.json data/state_bills.json data/news.json data/doj_cases.json data/generated_at.json
+          }
+          marker="$RUNNER_TEMP/data-commit-not-pushed"
+          echo "data commit not pushed: the step ended before a push landed" > "$marker"
+          # An array, not a bare expansion: shellcheck (actionlint) refuses unquoted words.
+          if [ -n "${DATA_EXPORT:-}" ]; then
+            read -r -a export_cmd <<< "$DATA_EXPORT"
           else
-            git commit -m "data: scheduled collection $(date -u +%Y-%m-%dT%H:%MZ) (slot $SLOT)"
-            git push
+            export_cmd=(python -m export.snapshots)
           fi
+          stage
+          if git diff --cached --quiet; then
+            rm -f "$marker"
+            echo "No changes."
+            exit 0
+          fi
+          # This run's tracker artifact, kept only when the run moved it, so a re-export over
+          # a raced commit can put it back.
+          scrape="$RUNNER_TEMP/doj_cases.run.json"
+          rm -f "$scrape"
+          if ! git diff --cached --quiet -- data/doj_cases.json; then
+            cp data/doj_cases.json "$scrape"
+          fi
+          # The branch the bare push targets: main on the schedule, the branch dispatched on.
+          branch="$(git symbolic-ref --short -q HEAD || echo main)"
+          msg="data: scheduled collection $(date -u +%Y-%m-%dT%H:%MZ) (slot $SLOT)"
+          git commit -m "$msg"
+          err="$RUNNER_TEMP/data-commit-push.err"
+          last=""
+          said=""
+          for attempt in 1 2 3; do
+            if git push 2> "$err"; then
+              cat "$err" >&2
+              rm -f "$marker"
+              echo "data commit pushed (attempt $attempt)"
+              exit 0
+            fi
+            cat "$err" >&2
+            said="$( { grep -m1 '^ ! ' "$err" || grep -m1 -E '^(fatal|error|remote):' "$err" || true; } | sed -e 's/^ *//' -e 's/  */ /g')"
+            if [ "$attempt" = 3 ]; then
+              break
+            fi
+            echo "data commit: push rejected (attempt $attempt); fetching what it raced"
+            if ! git fetch origin "$branch"; then
+              last="the fetch failed"
+              continue
+            fi
+            if [ "$(git rev-parse "origin/$branch")" = "$(git rev-parse HEAD~1)" ]; then
+              last="none, origin had not moved, so the rejection was not a race"
+              continue
+            fi
+            if git diff --quiet HEAD~1 "origin/$branch" -- data/ && git rebase "origin/$branch"; then
+              last="rebased onto a commit that touched nothing under data/"
+              continue
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "data commit: the raced commit touched data/; re-running the export on top of it"
+            git reset --hard "origin/$branch"
+            if ! "${export_cmd[@]}"; then
+              last="the export re-run failed"
+              break
+            fi
+            if [ -f "$scrape" ]; then
+              cp "$scrape" data/doj_cases.json
+            fi
+            stage
+            if git diff --cached --quiet; then
+              rm -f "$marker"
+              echo "No changes after the re-export."
+              exit 0
+            fi
+            git commit -m "$msg"
+            last="re-exported on top of a commit that touched data/"
+          done
+          echo "data commit not pushed: the push was rejected $attempt time(s); last repair: ${last:-none tried}; git said: ${said:-nothing}" | tee "$marker"
+          exit 0
 
       # THE VERDICT (unit 99, Corey, 2026-09-28). The collectors keep their exit 0; they
       # write one `channel_runs` row per class they met, and this step reads them with the
