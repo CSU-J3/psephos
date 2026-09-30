@@ -149,8 +149,26 @@ Last updated: 2026-09-30 (UTC).
 - On the dump it reproduces the D0's figures exactly: 2,805 exact, 3,213 pinned to one run, 575 in a range of 2-4.
 - To be applied after the next collect run adds the column.
 
+**The first live walk: the 00:17Z slot's run 36674320722, started 05:38Z, head `d9cf702`.**
+- **All 8 gate-listed dockets walked in one run, for 76 requests** (the estimate). Every row was attached: none unattached, never held, stale or held apart.
+  - 71499795: 258 rows, 239 entries (237 exact, 2 by the safe normalization, 17 by document number).
+  - 73544809: 45 rows, 39 entries (39 exact, 5 by normalization, 1 by document number).
+  - The six EO dockets: rows equal entries (1,175), with no tier-1 duplicates. Their D0 duplicate items are all tier-2 pairs.
+- **What the run also showed:**
+  - 53 dockets left; the stop was noted as a quiet DEFERRED.
+  - The fold sweep refolded 53 cases, and none is left unfolded.
+  - The day's ledger reads 152 requests, 76 of them the backfill.
+- **Turso afterwards** (SELECT only):
+  - 99 of 2,956 litigation items are folded into another: the 89 B2 repeats and 10 A1.
+  - `record_entries` reads 6,570 against 6,595 rows, the 25 tier-1 extras on the two walked dockets that had any.
+- **That run's data commit failed, and the fault is mine.**
+  - I pushed `f3c0e5a` at 05:39:24Z while the run was in flight. The in-flight check printed `collect`, and my command did not stop on it.
+  - The run's bare `git push` was rejected (fetch first). The verdict went RED on "an earlier step ended failure" alone, and the run commented on standing issue 6.
+  - Nothing was lost but one cycle's snapshot commit: Turso holds every write, and the next run exports and commits as usual.
+  - The push is now gated on the in-flight list, not printed beside it. Issue 6 is Corey's to close.
+
 **Owed in this unit:**
-- The walk, over about five scheduled runs, and its receipts read.
+- The walk, over about four more scheduled runs, and its receipts read.
 - Step (c):
   - legacy `seen_at`/object clocks bounded by the id order;
   - the 256 pairs mapped to objects;
