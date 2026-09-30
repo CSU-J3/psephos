@@ -68,7 +68,26 @@ Last updated: 2026-09-30 (UTC).
 
 It stays open for Corey to close.
 
-**Owed:** the first scheduled run on this head should print `data commit pushed (attempt 1)` and read green. A raced push in production stays unproven until one happens; until then the tests are its evidence.
+~~**Owed:** the first scheduled run on this head should print `data commit pushed (attempt 1)` and read green.~~ **READ 2026-09-30.**
+- The run: 36784151642, the 18:17Z slot, started 22:11:58Z on `4233a11`.
+- Its commit step printed `data commit pushed (attempt 1)` at 22:23:06Z, landing `fd299cd`.
+- The Verdict read `collect verdict: clean`, and the run is green.
+- Its walk is read on its own, under R1 below.
+
+**One raced push, STAGED on Corey's ruling (2026-09-30): the commit that lands this paragraph.**
+- **The plan.** It is pushed into the 00:17Z slot's run of 2026-10-01, never the 06:17Z state slot, once that run's collectors have started and before its commit step.
+- **Expected:**
+  - the step's push rejected;
+  - a fetch, and a rebase with no export re-run, since this commit touches nothing under `data/`;
+  - `data commit pushed (attempt 2)`, and the run green.
+- **If it goes red**, the evidence line should read `data commit not pushed`, with git's reason.
+- **The pusher is a session script, not the repo.** It picks the run by its label (`collect 17 0 * * *`), pushes this commit's sha and nothing else, and refuses on any other state.
+  - It was reviewed twice before arming, with seven confirmed defects in each round, then passed every case of an integrated run against a scratch origin with the real commit step. That run found two small defects more (a leaked temp file and a self-contradicting refusal message). All sixteen are fixed.
+- **The outcome is recorded here, with its times, as the production proof.**
+- **That run carries two readings, kept apart:**
+  - the walk's end, from its collectors' log;
+  - the race, from its commit step and the Verdict.
+- A red on the push is not a walk problem: the walk's writes reach Turso before the commit step runs.
 
 ### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), c to e owed
 
@@ -246,8 +265,22 @@ It stays open for Corey to close.
   - The dry run on Turso matched the D0 exactly: 2,805 exact from an item, 3,213 pinned to one run, and 456 + 112 + 7 = 575 in a range of 2-4 runs.
   - A re-run finds none left.
 
+**The third walk: the 18:17Z slot's run 36784151642, started 22:11:58Z, head `4233a11`, green.** Read from its "Run collectors" log, apart from the commit step's reading (the entry above).
+- **10 more dockets for 77 requests, 1,559 rows attached, none unattached; 6 dockets left.** The walk stopped on the budget: the next docket, 72055344, needs about 8 requests and 3 were left.
+- The day's ledger read 539 CourtListener requests on 2026-09-30, 310 of them the backfill. Turso holds 55 walk receipts.
+- **Two classes appear for the first time, never held (7) and stale (4), and six more entries are held apart.** All of them sit on six superseded, terminated district dockets that no run polls: 71453026 (PA), 71453646 (NH), 71980724 (MD), 71982149 (NM), 72021508 (CO, superseded into 74667007) and 72026664 (NV, into 74694778).
+  - **Never held** (`cl_objects`: an entry the walk was served that psephos holds no row for, recorded `held = 0` and never shown): post-termination appeal housekeeping filed after each docket's last poll. They are two clerk's correction notices on PA, a USCA case number on MD, a transcript order form, a notice that the record is complete and a USCA order on NM, and a record-complete letter on CO. None is substantive.
+  - **Stale** (an entry whose current upstream text matches none of its rows): 1 on PA, 3 on NV. The new text would land on the next poll that serves it, and no poll serves these dockets.
+  - **Apart**: 3 on PA, 2 on NH, 1 on NV. Their entry counts rise at the switch, as the second walk's do.
+- **(b), answered: `link_entry_twins --sample` reads its "any docket unwalked" check from Turso, never from a snapshot.**
+  - `unwalked()` (`scripts/link_entry_twins.py:177`) reads the walk's receipts, `SELECT case_id FROM cl_backfill`.
+  - The same-run docket list comes from `plan()`, which reads `case_entries`, `items` and `cl_entries`.
+  - `--sample` refuses a local database (`db.require_remote`). The only file it reads is `config/entry_links.yaml`, nothing under `data/`.
+  - So a lost data commit can neither block nor skew the draw, and no landed data commit is needed first.
+- **The dry link plan after this walk** (Turso, read after the run): 290 strict-B edges, 204 to link, 18 for a person, 67 unattached, 1 refused (DSCC), and **5 dockets holding a same-run pair not yet walked**. So the sample waits (c). It is drawn only when the walk's own line shows no same-run docket left, whatever the race does.
+
 **Owed in this unit:**
-- The walk, over about three more scheduled runs, and its receipts read.
+- The walk's last 6 dockets, expected on the 00:17Z slot's run of 2026-10-01, and its receipts read.
 - Step (c):
   - legacy `seen_at`/object clocks bounded by the id order;
   - the 256 pairs mapped to objects;
