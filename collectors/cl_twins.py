@@ -91,19 +91,38 @@ def edges_for_day(rows: list[dict]) -> list[tuple[int, int, str]]:
 
 
 def strict_b(rows: list[dict]) -> tuple[list[tuple[int, int, str]], list[int]]:
-    """The rule over rows (id, case_id, entry_at, description, document_url): the edges it
-    keeps, and the short rows it leaves ambiguous (a candidate twin, but not unique)."""
+    """The rule over rows (id, case_id, entry_at, description, document_url, and
+    cl_entry_id when known): the edges it keeps, and the short rows it leaves ambiguous
+    (a candidate twin, but not unique).
+
+    UNIQUENESS IS BY ENTRY, not by row. Two rows of one CourtListener object are one entry
+    re-described (tier 1), so they are never an edge, and they are not two rival partners:
+    a ruled pair must not drop out of the rule because one side later gained a revision
+    row (a FILED IN ERROR on the long form, say). A row no object claims is its own entry,
+    which is every row on the D0's dump -- so on it this is the D0's rule exactly: 279
+    edges."""
     days = collections.defaultdict(list)
     for r in rows:
         days[(r["case_id"], r["entry_at"])].append(r)
     tokenless = {r["id"] for r in rows if not r.get("document_url")}
+    ent = {r["id"]: (r.get("cl_entry_id") if r.get("cl_entry_id") is not None else ("row", r["id"]))
+           for r in rows}
     t2 = [e for day in days.values() for e in edges_for_day(day)
-          if e[0] in tokenless or e[1] in tokenless]
-    deg = collections.Counter()
+          if (e[0] in tokenless or e[1] in tokenless) and ent[e[0]] != ent[e[1]]]
+    partners: dict = collections.defaultdict(set)
     for a, b, _ in t2:
-        deg[a] += 1
-        deg[b] += 1
-    kept = [(a, b, k) for a, b, k in t2 if deg[a] == 1 and deg[b] == 1]
+        partners[ent[a]].add(ent[b])
+        partners[ent[b]].add(ent[a])
+    by_pair: dict = {}
+    for a, b, k in t2:
+        if len(partners[ent[a]]) == 1 and len(partners[ent[b]]) == 1:
+            key = frozenset((ent[a], ent[b]))
+            # One edge per pair of entries; a short-form edge first, so the short side is
+            # known (link_entry_twins._root), then the lowest row ids.
+            rank = (k not in ("short_long", "type_only"), min(a, b), max(a, b))
+            if key not in by_pair or rank < by_pair[key][0]:
+                by_pair[key] = (rank, (a, b, k))
+    kept = sorted(e for _, e in by_pair.values())
     amb = sorted({a for a, b, k in t2 if k in ("short_long", "type_only")}
                  - {a for a, b, k in kept if k in ("short_long", "type_only")})
     return kept, amb

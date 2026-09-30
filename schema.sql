@@ -51,6 +51,15 @@ CREATE TABLE IF NOT EXISTS items (
     -- set when the item is written from a polled entry, or when the id backfill ties
     -- the item's row to its object. NULL on every other channel and on B2 items.
     cl_entry_id      INTEGER,
+    -- The fold (R1 step d, collectors/cl_fold.py): how a page reads items as ENTRIES. No
+    -- reader before the switch selects these. merged_into names the item that presents
+    -- this one's entry (NULL: this item presents one); display_* are the presenting
+    -- item's survivor title, text and date; updated_at is the group's latest fetched_at.
+    merged_into      INTEGER,
+    display_title    TEXT,
+    display_summary  TEXT,
+    display_at       TEXT,
+    updated_at       TEXT,
     UNIQUE(content_hash)
 );
 CREATE INDEX IF NOT EXISTS idx_items_channel  ON items(channel);
@@ -231,6 +240,40 @@ CREATE TABLE IF NOT EXISTS cl_entries (
     twin_at       TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_cl_entries_case ON cl_entries(case_id);
+
+-- THE SWITCH'S TWO READS (R1 step d, Corey 2026-09-30). Defined here so the collector,
+-- the export, the audit and the web read ONE definition; nothing reads them before the
+-- switch. Dropped and recreated on every init, so an edit here always takes.
+--
+-- record_items: items as entries. A folded item (merged_into) drops out; the item that
+-- presents an entry carries its survivor title, text and date (collectors/cl_fold.py).
+-- fetched_at is the presenting item's own, the entry's first-seen time.
+DROP VIEW IF EXISTS record_items;
+CREATE VIEW record_items AS
+SELECT id, channel, source_id, source_url,
+       COALESCE(display_title, title) AS title,
+       COALESCE(display_summary, summary) AS summary,
+       COALESCE(display_at, occurred_at) AS occurred_at,
+       fetched_at, admiralty_source, admiralty_info, confidence, bill_id, case_id,
+       state_bill_id, outlet, content_hash, raw_json, cl_entry_id, updated_at
+  FROM items
+ WHERE merged_into IS NULL;
+
+-- record_entries: one row per docket entry psephos holds. An entry is a held CourtListener
+-- object that is not a tier-2 twin (its current text and date), or a row no object claims
+-- (each such row is its own entry until something ties it). Page counts, latest_entry_at
+-- and the outcomes read this, not case_entries.
+DROP VIEW IF EXISTS record_entries;
+CREATE VIEW record_entries AS
+SELECT o.case_id, COALESCE(o.entry_at, e.entry_at) AS entry_at,
+       COALESCE(e.description, o.description) AS description,
+       o.cl_entry_id, o.current_row AS row_id
+  FROM cl_entries o LEFT JOIN case_entries e ON e.id = o.current_row
+ WHERE o.held = 1 AND o.twin_of IS NULL
+UNION ALL
+SELECT e.case_id, e.entry_at, e.description, NULL AS cl_entry_id, e.id AS row_id
+  FROM case_entries e
+ WHERE e.cl_entry_id IS NULL;
 
 -- The id backfill walk's receipt, one row per docket walked (R1 step b, ruling 6). A
 -- docket with a row here is not walked again. The counts are its report: what the walk

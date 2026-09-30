@@ -392,6 +392,12 @@ _MIGRATIONS = [
     ("case_entries", "cl_entry_id", "INTEGER"),
     ("case_entries", "seen_at", "TEXT"),
     ("items", "cl_entry_id", "INTEGER"),
+    # R1 step d's fold (collectors/cl_fold.py): no reader before the switch selects these.
+    ("items", "merged_into", "INTEGER"),
+    ("items", "display_title", "TEXT"),
+    ("items", "display_summary", "TEXT"),
+    ("items", "display_at", "TEXT"),
+    ("items", "updated_at", "TEXT"),
 ]
 
 

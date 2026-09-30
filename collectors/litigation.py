@@ -35,7 +35,7 @@ import common
 import config
 import db
 import run_signals
-from collectors import cl_objects
+from collectors import cl_fold, cl_objects
 
 CHANNEL = "litigation"
 API_SOURCE_ID = "courtlistener"   # A1 docket records
@@ -565,8 +565,10 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
     if not (dn and court_id):
         case_id = slugify(caption)
         filed_at = upsert_case(conn, case_id, seed, None)
-        write_b2_item(conn, case_id, seed, filed_at, None)
+        noted = write_b2_item(conn, case_id, seed, filed_at, None)
         conn.commit()
+        if noted:
+            cl_fold.refold_quietly(conn, case_id)
         return {"caption": caption, "resolved": False, "new_entries": 0, "new_items": 0}
 
     # Reuse a persisted resolution; only hit the API for unknown cases.
@@ -612,8 +614,10 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
 
     # Persist resolution + B2 subject first (so resolution survives a later poll failure).
     filed_at = upsert_case(conn, case_id, seed, docket)
-    write_b2_item(conn, case_id, seed, filed_at, source_url)
+    noted = write_b2_item(conn, case_id, seed, filed_at, source_url)
     conn.commit()
+    if noted:
+        cl_fold.refold_quietly(conn, case_id)  # a notes edit: the subject shows its latest
 
     # The stored high-water mark and last-seen filing date (both NULL on a fresh row;
     # upsert_case never writes entries_synced_at, so a fresh resolve reads NULL here).
@@ -684,6 +688,10 @@ def collect_case(conn, base: str, headers: dict, seed: dict,
             conn.execute("UPDATE cases SET entries_synced_at = ? WHERE case_id = ?",
                          (new_mark, case_id))
         conn.commit()
+        # The fold (R1 step d), after the commit and in its own transaction: which item
+        # presents each entry, when something that decides it moved.
+        if any(counts[k] for k in ("new_entries", "new_items", "adopted", "revised", "apart")):
+            cl_fold.refold_quietly(conn, case_id)
     except Exception:
         # recover() over rollback() keeps the invariant AND survives a dead stream:
         # reopening abandons the open transaction, so neither the entries nor the
@@ -836,6 +844,7 @@ def backfill_walk(conn, base: str, headers: dict, budget: int, listed: set[str])
                  c["never_held"], c["stale"], c["apart"]))
             conn.execute("DELETE FROM cl_backfill_attempts WHERE case_id = ?", (case_id,))
             conn.commit()
+            cl_fold.refold_quietly(conn, case_id)   # its own transaction, after the receipt
         except Exception as exc:
             # recover() may itself raise on a dead remote; that ends the walk in main()'s
             # guarded handler rather than walking on into writes that cannot land.
@@ -1201,6 +1210,19 @@ def main() -> int:
                 _recover_quietly(conn)
                 print(f"litigation: id backfill failed, skipped -- {run_signals.safe(exc)}",
                       file=sys.stderr)
+        # The fold sweep: any case holding an item a refold has not reached (a refold that
+        # failed, or items from before the fold). Each refolds in its own transaction.
+        try:
+            swept = cl_fold.unfolded(conn)
+            conn.commit()
+            for case_id in swept:
+                cl_fold.refold_quietly(conn, case_id)
+            if swept:
+                print(f"litigation: fold sweep refolded {len(swept)} case(s)")
+        except Exception as exc:
+            _recover_quietly(conn)
+            print(f"litigation: fold sweep failed, skipped -- {run_signals.safe(exc)}",
+                  file=sys.stderr)
         credential = auth.verdict((token,))
         if credential is not None:
             sig.note(run_signals.CREDENTIAL, credential)

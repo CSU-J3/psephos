@@ -119,6 +119,30 @@ Last updated: 2026-09-30 (UTC).
 - The DSCC pair (92515/92572) is refused in that config, as ruled.
 - **On the two dry-run dockets:** every tier-2 pair is two objects. 16 are same-run. 4 go to a person, among them 88676/88680 (`long_twin_eq`, cross-run).
 
+**Step (d)'s data layer, BUILT 2026-09-30.** Invisible: nothing reads it until the switch.
+- **The fold** (`collectors/cl_fold.py`) says which item presents each entry. It uses five new `items` columns: `merged_into`, `display_title`, `display_summary`, `display_at`, `updated_at`.
+  - The presenting item is the earliest fetched, so `fetched_at` is the entry's first-seen time (ruling c).
+  - Its text is the entry's current text (ruling 2's hybrid): the latest for tier 1, where a FILED IN ERROR replaces the original; the long form for a linked tier-2 pair.
+  - Its date follows the object (Nevada), and `updated_at` is the group's latest.
+  - B2 notes fold per case to their newest notes.
+- **When it runs.**
+  - The collector refolds a case after any write that moves its entries, in its own transaction after the write commits. A failed fold can never take the entries or the mark with it.
+  - A sweep each run refolds any case holding an item no refold has reached.
+  - `scripts/refold_entries.py` does the lot, dry-run by default.
+- **The switch's two reads are views in `schema.sql`**, one definition for the web, the export, the audit and the collector:
+  - `record_items`: items as entries, folded items out, survivor text in;
+  - `record_entries`: held entries that aren't tier-2 twins, plus rows no object claims.
+- **The fold review confirmed 8 findings.** Seven are fixed:
+  - the fold follows a twin chain to its end, and the link script refuses to make one;
+  - the fold runs outside the write it follows;
+  - the slug B2 path refolds;
+  - the rule is unique by entry, so a ruled pair survives a revision row on its long form;
+  - refused and asserted pairs match by entry;
+  - the reader's check is drawn only after every relevant docket is walked, from a pool its seed redraws after `--apply`, and `--apply` needs an explicit pass;
+  - the remote guards on `--unlink --apply`, `--sample` and `--person`.
+- A mutation check killed all its mutants once two tests were added.
+- **The eighth finding is recorded, not changed.** A B2 subject shows its newest inserted notes: the rule the notes panel (`getTrackerNotes`, MAX(id)) already uses. So notes that revert to an earlier text keep showing the newer text, and **docket 73682036 carries two live seeds** (the config 26-2060 seed and the tracker's New York row), so its subject shows whichever was edited last. **Which one it should present is a question for Corey at the checkpoint.**
+
 **Owed in this unit:**
 - The walk, over about five scheduled runs, and its receipts read.
 - Step (c):
