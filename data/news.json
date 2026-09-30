@@ -9348,5 +9348,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/could-trump-take-over-voting-by-declaring-a-national-emergency",
     "title": "Could Trump take over voting by declaring a ‘national emergency’?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118123,
+    "kind": "item",
+    "occurred_at": "2026-09-29T22:25:58+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/09/29/house-passes-open-primaries-bill",
+    "title": "Bill to allow unaffiliated voters to vote in Pennsylvania primaries passes state House"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118122,
+    "kind": "item",
+    "occurred_at": "2026-09-29T23:17:15+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/09/29/absentee-ballot-delays-missed-deadline-antrim-presque-isle-counties",
+    "title": "Voters in multiple Michigan counties still don’t have absentee ballots after clerks miss mailing deadline"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118124,
+    "kind": "item",
+    "occurred_at": "2026-09-30T00:11:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/wisconsin-supreme-court-agrees-to-hear-case-on-expanded-voting-hours-during-election-day-disruptions",
+    "title": "Wisconsin Supreme Court agrees to hear case on expanded voting hours during Election Day disruptions"
   }
 ]

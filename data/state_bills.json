@@ -8642,12 +8642,12 @@
   {
     "bill_number": "HB280",
     "is_vehicle": false,
-    "last_action": "Re-committed to Appropriations",
-    "last_action_at": "2026-09-28T00:00:00",
+    "last_action": "Third consideration and final passage (115-88)",
+    "last_action_at": "2026-09-29T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "1934235",
-    "status": "1",
+    "status": "2",
     "timeline": [
       {
         "channel": "state",
@@ -8718,6 +8718,26 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HB280/2025",
         "title": "PA HB280: Re-committed to Appropriations"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 118355,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB280/2025",
+        "title": "PA HB280: Re-reported as committed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 118356,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB280/2025",
+        "title": "PA HB280: Third consideration and final passage (115-88)"
       }
     ],
     "title": "In preliminary provisions, further providing for definitions; in qualifications of electors, furth er providing for qualifications of electors at primaries; in party organization, further providing for only enrolled electors to vote at primaries or hold party offices; in nomination of candidates, further providing for candidates to be nominated and party officers to be elected at primaries and providing for procedure for unenrolled electors to cast primary ballots; in preparation for and conduct of primaries and elections, further providing for manner of applying to vote, persons entitled to vote, voter's certificates, entries to be made in district register, numbered lists of voters and challenges; in voting by qualified absentee electors, further providing for applications for official absentee ballots; in voting by qualified mail-in electors, further providing for applications for official mail-in ballots; in returns of primaries and elections, further providing for computation of returns by county board, certification and issuance of certificates of election; and, in penalties, further providing for election officers refusing to permit elector to vote in proper party at primaries and repealing provisions relating to elector voting ballot of wrong party at primary.",
@@ -45376,8 +45396,8 @@
   {
     "bill_number": "HB2542",
     "is_vehicle": false,
-    "last_action": "Laid on the table",
-    "last_action_at": "2026-09-08T00:00:00",
+    "last_action": "Removed from table",
+    "last_action_at": "2026-09-29T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2151791",
@@ -45442,6 +45462,16 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
         "title": "PA HB2542: Laid on the table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 118363,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
+        "title": "PA HB2542: Removed from table"
       }
     ],
     "title": "In returns of primaries and elections, further providing for appeals to court from decisions of th e county board and for Secretary of the Commonwealth to tabulate, compute and canvass returns; and, in recounts and contests, further providing for entry and effect of decision and providing for appeal.",

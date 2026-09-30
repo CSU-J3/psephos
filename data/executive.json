@@ -1348,5 +1348,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/09/25/2026-19642/department-of-justice-response-to-correspondence-requesting-rulemaking",
     "title": "Department of Justice; Response to Correspondence Requesting Rulemaking"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 118263,
+    "kind": "item",
+    "occurred_at": "2026-09-30T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/09/30/2026-20016/us-citizenship-and-immigration-services-employment-based-immigrant-visa-fifth-preference-eb-5-fee",
+    "title": "U.S. Citizenship and Immigration Services Employment-Based Immigrant Visa, Fifth Preference (EB-5) Fee Rule"
   }
 ]
