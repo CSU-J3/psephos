@@ -144,9 +144,13 @@ class RunClock:
     def __init__(self, fetched: list[str], item_row_times: dict[int, str]):
         ts = sorted(_ts(f) for f in fetched)
         self.starts = [ts[0]] if ts else []
+        self.ends = []
         for a, b in zip(ts, ts[1:]):
             if (b - a).total_seconds() > RUN_GAP_SECONDS:
+                self.ends.append(a)
                 self.starts.append(b)
+        if ts:
+            self.ends.append(ts[-1])
         self.ib = sorted(item_row_times)
         self.ib_run = {i: self.run_of(_ts(item_row_times[i])) for i in self.ib}
 

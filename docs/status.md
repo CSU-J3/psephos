@@ -143,6 +143,12 @@ Last updated: 2026-09-30 (UTC).
 - A mutation check killed all its mutants once two tests were added.
 - **The eighth finding is recorded, not changed.** A B2 subject shows its newest inserted notes: the rule the notes panel (`getTrackerNotes`, MAX(id)) already uses. So notes that revert to an earlier text keep showing the newer text, and **docket 73682036 carries two live seeds** (the config 26-2060 seed and the tracker's New York row), so its subject shows whichever was edited last. **Which one it should present is a question for Corey at the checkpoint.**
 
+**When each earlier text was seen (the ledger will show it):** `scripts/backfill_seen_at.py`, dry-run by default, plus a new `case_entries.seen_by` column.
+- A pre-R1 row whose text has an item takes the item's fetched_at: exact.
+- Any other row is bounded by the runs its id falls between. seen_at is the earliest run's start and seen_by the latest run's end.
+- On the dump it reproduces the D0's figures exactly: 2,805 exact, 3,213 pinned to one run, 575 in a range of 2-4.
+- To be applied after the next collect run adds the column.
+
 **Owed in this unit:**
 - The walk, over about five scheduled runs, and its receipts read.
 - Step (c):

@@ -198,8 +198,12 @@ CREATE TABLE IF NOT EXISTS case_entries (
                                              -- and on older rows by the id backfill walk; NULL
                                              -- on a row nothing has tied to an entry yet.
     seen_at      TEXT,                       -- when psephos first held this text. Exact since
-                                             -- 2026-09-30; NULL on older rows (their items'
-                                             -- fetched_at and the id order bound it).
+                                             -- 2026-09-30. On an older row, its item's
+                                             -- fetched_at, or the start of the earliest run
+                                             -- it can have been held in (scripts/backfill_seen_at)
+    seen_by      TEXT,                       -- NULL when seen_at is exact; else the end of the
+                                             -- latest run it can have been held in: the row was
+                                             -- first held between seen_at and seen_by
     UNIQUE(case_id, entry_at, description)
 );
 CREATE INDEX IF NOT EXISTS idx_case_entries_cl ON case_entries(cl_entry_id);

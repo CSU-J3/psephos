@@ -391,6 +391,7 @@ _MIGRATIONS = [
     # land before its executescript, as items.state_bill_id did.
     ("case_entries", "cl_entry_id", "INTEGER"),
     ("case_entries", "seen_at", "TEXT"),
+    ("case_entries", "seen_by", "TEXT"),
     ("items", "cl_entry_id", "INTEGER"),
     # R1 step d's fold (collectors/cl_fold.py): no reader before the switch selects these.
     ("items", "merged_into", "INTEGER"),
