@@ -15,6 +15,8 @@ import {
   getHeartbeats,
 } from "@/lib/db";
 import type { Case, CaseRef, NewsItem } from "@/lib/db";
+import { MergeNote } from "@/components/MergeNote";
+import { entriesNote, mapNote } from "@/lib/merge-notes";
 import {
   readBills,
   readCampaign,
@@ -261,6 +263,7 @@ export default async function Home() {
         // court record -- a missing figure was the honest form until the query
         // existed. It does now.
         entries: r.entry_count,
+        entriesNote: entriesNote(r.case_id),
         // TWO DIRECTIONS, AND THEY BELONG ON DIFFERENT ROWS. `superseded_by` is set
         // on the dead row pointing FORWARD, so "continued as" renders on the
         // predecessor. "continues" is the reverse and belongs on the row being
@@ -410,6 +413,11 @@ export default async function Home() {
               billsByStateMonth={monthly.stateBillsByState}
               clock={anchorIso}
             />
+            {mapNote() && (
+              <p className="mt-2 px-1">
+                <MergeNote text={mapNote()} />
+              </p>
+            )}
           </div>
 
           <Link

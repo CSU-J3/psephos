@@ -1,0 +1,11 @@
+{
+ "cases": {},
+ "clock": null,
+ "map": {
+  "dockets_changed": 0,
+  "entries": [0, 0]
+ },
+ "on": null,
+ "why": "duplicate court-entry rows were merged",
+ "wire": {}
+}

@@ -8,6 +8,7 @@ import type { Heartbeat } from "@/lib/staleness";
 import { windowStarts, toCells } from "@/lib/activity";
 import type { ActivityRow } from "@/lib/activity";
 import { FEED_WINDOW, HISTORY_AFTER_DAYS } from "@/lib/feed";
+import { earlierTexts, type EarlierText, type HistoryRow } from "@/lib/entries";
 import { BAND_DAYS } from "@/lib/timeline";
 import type { FeedAnchor, FeedEntry } from "@/lib/feed";
 import type { MovementRow } from "@/lib/movement";
@@ -86,6 +87,9 @@ export type TimelineItem = {
   occurred_at: string | null;
   admiralty_source: string;
   admiralty_info: string;
+  /** A docket entry's other texts, beside when each was first held (R1). Set on /case
+   *  only; undefined for an entry never re-described. */
+  earlier?: EarlierText[];
 };
 
 export type ExecItem = {
@@ -281,8 +285,9 @@ function firstOrNull<T>(rows: Row[], map: (r: Row) => T): T | null {
 // they cost: EXPLAIN QUERY PLAN reads `SCAN items USING INDEX idx_items_channel`
 // with this column present, verified against production 2026-08-16 before it was
 // written. If that ever stops being true, this is the column to drop.
-const HISTORY_SUM = `SUM(CASE WHEN fetched_at >= ?
-             AND julianday(substr(fetched_at,1,10)) - julianday(substr(occurred_at,1,10)) > ?
+const HISTORY_SUM = `SUM(CASE WHEN fetched_at >= ? AND merged_into IS NULL
+             AND julianday(substr(fetched_at,1,10))
+                 - julianday(substr(COALESCE(display_at, occurred_at),1,10)) > ?
             THEN 1 ELSE 0 END)`;
 
 // `MAX(fetched_at)` RIDES THIS SCAN AND IS DELIBERATELY UNGUARDED -- no CASE WHEN,
@@ -379,10 +384,15 @@ export const getChannelActivity = unstable_cache(
     // clock so that no branch of this function can invent a "collected today".
     const { day, week } = windowStarts(anchorIso ? new Date(anchorIso) : new Date(0));
     const rs = await db.execute({
+      // ENTRIES, NOT ROWS (R1, Corey 2026-09-30): an item folded into another
+      // (merged_into) is a second presentation of one docket entry, so the three counts
+      // skip it. last_fetch does not -- it answers when the record last moved, and a
+      // re-described entry is the record moving. The fold touches only litigation, so
+      // every other channel counts exactly as it did.
       sql: `SELECT channel,
-                   COUNT(*) AS total,
-                   SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS day,
-                   SUM(CASE WHEN fetched_at >= ? THEN 1 ELSE 0 END) AS week,
+                   SUM(CASE WHEN merged_into IS NULL THEN 1 ELSE 0 END) AS total,
+                   SUM(CASE WHEN fetched_at >= ? AND merged_into IS NULL THEN 1 ELSE 0 END) AS day,
+                   SUM(CASE WHEN fetched_at >= ? AND merged_into IS NULL THEN 1 ELSE 0 END) AS week,
                    ${HISTORY_SUM} AS day_history,
                    MAX(fetched_at) AS last_fetch
             FROM items
@@ -414,7 +424,7 @@ export const getChannelActivity = unstable_cache(
   // recorded" on a system that is collecting perfectly well -- an alarm firing on a
   // cache miss rather than on the record. Without the bump that state persists for up
   // to the TTL after a deploy.
-  ["channel-activity", "v3"],
+  ["channel-activity", "v4"],
   { revalidate: 3600 },
 );
 
@@ -495,17 +505,50 @@ export async function getPredecessorRef(caseId: string): Promise<CaseRef | null>
   return firstOrNull(rs.rows, toCaseRef);
 }
 
-// One case's items in date order: docket entries (A1) interleaved with the
-// tracker framing (B2). No news join on the litigation side.
+// One case's ENTRIES in date order: docket entries (A1) interleaved with the tracker
+// framing (B2). No news join on the litigation side.
+//
+// record_items, not items (R1, Corey 2026-09-30): one row per docket entry, carrying its
+// survivor text and its date now; a re-described entry's other texts ride along as
+// `earlier`, each beside when psephos first held it (lib/entries.ts).
 export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
-  const rs = await db.execute({
-    sql: `SELECT id, channel, title, summary, source_url, occurred_at,
-                 admiralty_source, admiralty_info
-          FROM items WHERE case_id = ?
-          ORDER BY occurred_at, id`,
-    args: [caseId],
+  const [rs, hist] = await Promise.all([
+    db.execute({
+      sql: `SELECT id, channel, title, summary, source_url, occurred_at,
+                   admiralty_source, admiralty_info, cl_entry_id
+            FROM record_items WHERE case_id = ?
+            ORDER BY occurred_at, id`,
+      args: [caseId],
+    }),
+    db.execute({
+      sql: `SELECT o.cl_entry_id, o.twin_of, e.id, e.entry_at, e.description,
+                   e.seen_at, e.seen_by
+            FROM cl_entries o JOIN case_entries e ON e.cl_entry_id = o.cl_entry_id
+            WHERE o.case_id = ?
+            ORDER BY e.id`,
+      args: [caseId],
+    }),
+  ]);
+  const history: HistoryRow[] = hist.rows.map((r) => ({
+    cl_entry_id: asNumber(r.cl_entry_id),
+    twin_of: r.twin_of == null ? null : asNumber(r.twin_of),
+    id: asNumber(r.id),
+    entry_at: asTextOrNull(r.entry_at),
+    description: asTextOrNull(r.description),
+    seen_at: asTextOrNull(r.seen_at),
+    seen_by: asTextOrNull(r.seen_by),
+  }));
+  const earlier = earlierTexts(
+    history,
+    rs.rows.map((r) => ({
+      cl_entry_id: r.cl_entry_id == null ? null : asNumber(r.cl_entry_id),
+      summary: asTextOrNull(r.summary),
+    })),
+  );
+  return rs.rows.map((r, i) => {
+    const it = toTimelineItem(r);
+    return earlier[i] ? { ...it, earlier: earlier[i] } : it;
   });
-  return rs.rows.map(toTimelineItem);
 }
 
 // All state bills, grouped-render order: by state, then most-recently-acted first.
@@ -935,7 +978,7 @@ export const getTimelineEntries = unstable_cache(
                    b.is_vehicle AS b_is_vehicle,
                    sb.state AS sb_state, sb.bill_number AS sb_bill_number,
                    sb.title AS sb_title
-            FROM items i
+            FROM record_items i
             LEFT JOIN cases c ON c.case_id = i.case_id
             LEFT JOIN cases s ON s.case_id = c.superseded_by
             LEFT JOIN bills b ON b.bill_id = i.bill_id
@@ -964,7 +1007,7 @@ export const getTimelineEntries = unstable_cache(
   // A NEW KEY, not a bump of "activity-feed": the window predicate changed, so v2
   // rows are a different set rather than a different shape, and unstable_cache
   // entries outlive a deploy.
-  ["timeline-entries", "v1"],
+  ["timeline-entries", "v2"],
   { revalidate: 3600 },
 )
 
@@ -1008,10 +1051,13 @@ export type CampaignRow = {
   status_checked_at: string | null;
   superseded_by: string | null;
   source_url: string | null;
-  /** RAW docket length from case_entries, NOT the count of promoted items. The map
-   *  panel shipped with `entries: null` on every docket line because this row had no
-   *  count at all, and inventing one would have been a false claim about a court
-   *  record. See export/snapshots.py's entry_count for the same distinction. */
+  /** The docket's ENTRIES (record_entries, R1 2026-09-30): one per CourtListener entry
+   *  psephos holds, however many texts it was served with, plus each row no entry claims.
+   *  Not the count of promoted items. It was the raw case_entries row count until the
+   *  switch, which counted a re-described entry once per text. The map panel shipped with
+   *  `entries: null` on every docket line because this row had no count at all, and
+   *  inventing one would have been a false claim about a court record. See
+   *  export/snapshots.py's entry_count for the same distinction. */
   entry_count: number;
 };
 
@@ -1097,14 +1143,14 @@ export async function getRejectionEvidence(): Promise<{
   const rs = await db.execute(
     `SELECT c.case_id, c.state, c.date_terminated, e.entry_at, e.description
        FROM cases c
-       JOIN case_entries e ON e.case_id = c.case_id
+       JOIN record_entries e ON e.case_id = c.case_id
       WHERE c.status = 'terminated'
         AND c.state IS NOT NULL
         AND c.date_terminated IS NOT NULL
         AND date(substr(e.entry_at, 1, 10))
             BETWEEN date(substr(c.date_terminated, 1, 10), '-1 day')
                 AND date(substr(c.date_terminated, 1, 10), '+1 day')
-      ORDER BY c.case_id, e.entry_at, e.id`,
+      ORDER BY c.case_id, e.entry_at, e.row_id`,
   );
   const cases = new Map<string, TerminatedCase>();
   const entries: DocketEntry[] = [];
@@ -1187,7 +1233,7 @@ export async function getCampaignRows(): Promise<CampaignRow[]> {
     // result out to one row per docket entry (4,594 of them) to recover 46 integers.
     `SELECT case_id, state, caption, court, docket_number, status, filed_at,
             latest_entry_at, status_checked_at, superseded_by, source_url,
-            (SELECT COUNT(*) FROM case_entries e WHERE e.case_id = cases.case_id)
+            (SELECT COUNT(*) FROM record_entries e WHERE e.case_id = cases.case_id)
               AS entry_count
      FROM cases
      WHERE state IS NOT NULL
@@ -1219,7 +1265,7 @@ export async function getCampaignMovement(): Promise<MovementRow[]> {
     `SELECT i.id, i.case_id, c.state, i.occurred_at,
             COALESCE(i.summary, i.title) AS text,
             i.admiralty_source || i.admiralty_info AS grade
-       FROM items i
+       FROM record_items i
        JOIN cases c ON c.case_id = i.case_id
       WHERE c.state IS NOT NULL
         AND i.channel = 'litigation'

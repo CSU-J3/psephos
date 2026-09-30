@@ -377,7 +377,7 @@ def derived_drift(conn) -> list:
     for r in conn.execute(
         "SELECT c.case_id, c.court, c.docket_number, c.latest_entry_at AS stored, "
         "       MAX(e.entry_at) AS derived "
-        "FROM cases c LEFT JOIN case_entries e ON e.case_id = c.case_id "
+        "FROM cases c LEFT JOIN record_entries e ON e.case_id = c.case_id "
         "GROUP BY c.case_id ORDER BY c.case_id"
     ).fetchall():
         if r["stored"] != r["derived"]:

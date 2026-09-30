@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ActivityRow } from "@/lib/activity";
 import type { Bill } from "@/lib/db";
+import { MergeNote } from "@/components/MergeNote";
+import { wireNote } from "@/lib/merge-notes";
 import { CHANNELS, WINDOW_DAYS } from "@/lib/activity";
 import { billLabel } from "@/lib/bill";
 import { RecordDate } from "@/components/RecordDate";
@@ -126,6 +128,13 @@ function Cell({
         </span>
         <span className="ml-auto text-[13px] text-neutral-500">{total.toLocaleString()}</span>
       </div>
+      {/* R1's switch (Corey 2026-09-30): the counts are entries now; where that moved
+          one, the cell says so, dated, with the before and after. */}
+      {wireNote(channel) && (
+        <p className="mt-1.5">
+          <MergeNote text={wireNote(channel)} />
+        </p>
+      )}
 
       <p className="mt-[9px] text-[13px] leading-[18px] text-neutral-400">
         {children}

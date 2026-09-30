@@ -57,9 +57,9 @@ SELECT c.case_id,
        c.status,
        c.latest_entry_at            AS stored,
        MAX(e.entry_at)              AS derived,
-       COUNT(e.id)                  AS n_entries
+       COUNT(e.case_id)             AS n_entries
 FROM cases c
-LEFT JOIN case_entries e ON e.case_id = c.case_id
+LEFT JOIN record_entries e ON e.case_id = c.case_id
 GROUP BY c.case_id
 """
 
@@ -120,7 +120,7 @@ def apply_repair(conn, rows: list[dict]) -> int:
     for r in rows:
         conn.execute(
             "UPDATE cases SET latest_entry_at = "
-            "(SELECT MAX(entry_at) FROM case_entries WHERE case_id = ?) WHERE case_id = ?",
+            "(SELECT MAX(entry_at) FROM record_entries WHERE case_id = ?) WHERE case_id = ?",
             (r["case_id"], r["case_id"]),
         )
     return sum(

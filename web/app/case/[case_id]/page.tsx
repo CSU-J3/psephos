@@ -5,6 +5,8 @@ import { RecordClockMark, RecordDate } from "@/components/RecordDate";
 import { gradeOf, promoteStatus } from "@/lib/ledger";
 import { Grade } from "@/components/Grade";
 import { Timeline } from "@/components/Timeline";
+import { MergeNote } from "@/components/MergeNote";
+import { latestNote, ledgerNote } from "@/lib/merge-notes";
 
 // Live Turso per request, no build-time dependency -- same as home.
 export const dynamic = "force-dynamic";
@@ -62,6 +64,7 @@ export default async function CasePage({
         <div className="mt-1 text-xs text-neutral-500">
           Filed <RecordDate value={c.filed_at} clock={clock} /> · Updated{" "}
           <RecordDate value={c.latest_entry_at} clock={clock} />
+          <MergeNote text={latestNote(case_id)} className="mt-0.5 block" />
         </div>
         {c.source_url && (
           <a
@@ -116,6 +119,11 @@ export default async function CasePage({
             <span className="tabular-nums">{ledger.length}</span> entries · each row expands
           </span>
         </h2>
+        {ledgerNote(case_id) && (
+          <p className="-mt-2 mb-3">
+            <MergeNote text={ledgerNote(case_id)} />
+          </p>
+        )}
         <Timeline items={ledger} clock={clock} />
       </section>
     </main>

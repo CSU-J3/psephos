@@ -121,6 +121,18 @@ def refold_case(conn, case_id: str) -> dict:
             "merged": sum(1 for v in want.values() if v[0] is not None)}
 
 
+LATEST_SQL = ("UPDATE cases SET latest_entry_at = "
+              "(SELECT MAX(entry_at) FROM record_entries WHERE case_id = ?) WHERE case_id = ?")
+
+
+def recompute_latest(conn, case_id: str) -> None:
+    """cases.latest_entry_at from ENTRIES (the switch, R1): MAX over record_entries, so a
+    re-dated entry counts at its date now and the stale row it left behind does not
+    (Nevada 72026664: 2026-08-24 on the rows, 2026-08-20 on the entry). One definition
+    with tools/coverage_audit section 4 and scripts/repair_latest_entry."""
+    conn.execute(LATEST_SQL, (case_id, case_id))
+
+
 def refold_quietly(conn, case_id: str) -> dict | None:
     """refold_case in ITS OWN transaction, for the collector's write paths: call it after
     the write it follows has committed. Never inside that write: an error that ends a

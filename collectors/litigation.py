@@ -537,18 +537,14 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
                 "cl_entry_id": cl_id,
             }):
                 counts["new_items"] += 1
-    # Recompute from the table, gated on having inserted something: insert_ignore
-    # returns False on a duplicate, so zero new rows means case_entries did not change
-    # and neither can its MAX. That makes the write necessary-and-sufficient rather
-    # than a no-op UPDATE on all 34 dockets every run. It also self-heals -- a row that
-    # drifted before this change corrects itself on its next non-empty poll, which is
-    # why the repair script is one-time rather than scheduled.
-    if counts["new_entries"]:
-        conn.execute(
-            "UPDATE cases SET latest_entry_at = "
-            "(SELECT MAX(entry_at) FROM case_entries WHERE case_id = ?) WHERE case_id = ?",
-            (case_id, case_id),
-        )
+    # Recompute from the ENTRIES (record_entries, the switch), gated on something that
+    # can move them: a new row, an entry adopting a row, a revision (a re-date moves its
+    # entry's date), or an entry held apart. Zero of those means the MAX cannot have
+    # moved, so the write stays necessary-and-sufficient rather than a no-op UPDATE on
+    # every docket every run. It also self-heals -- a row that drifted corrects itself on
+    # its next such poll, which is why the repair script is one-time, not scheduled.
+    if any(counts[k] for k in ("new_entries", "adopted", "revised", "apart")):
+        cl_fold.recompute_latest(conn, case_id)
     return counts
 
 
@@ -843,6 +839,9 @@ def backfill_walk(conn, base: str, headers: dict, budget: int, listed: set[str])
                  c["adopted"], c["token"], c["token_shared"], c["unattached"],
                  c["never_held"], c["stale"], c["apart"]))
             conn.execute("DELETE FROM cl_backfill_attempts WHERE case_id = ?", (case_id,))
+            # The walk ties stale rows to their entries, which can move the docket's date
+            # (Nevada). Same transaction as the ids that move it.
+            cl_fold.recompute_latest(conn, case_id)
             conn.commit()
             cl_fold.refold_quietly(conn, case_id)   # its own transaction, after the receipt
         except Exception as exc:

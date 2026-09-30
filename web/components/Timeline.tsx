@@ -2,6 +2,7 @@ import type { TimelineItem } from "@/lib/db";
 import { DATE_COLUMN, RecordDate } from "@/components/RecordDate";
 import type { RecordClock } from "@/lib/dated";
 import { entryText, gradeOf, pagePrefix, sliceLedger } from "@/lib/ledger";
+import { seenLabel } from "@/lib/entries";
 import { Grade } from "./Grade";
 
 // Left-border tint by channel so action vs reporting reads at a glance; the Grade
@@ -80,6 +81,28 @@ export function Timeline({ items, clock }: { items: TimelineItem[]; clock: Recor
             >
               source ↗
             </a>
+            {/* EVERY TEXT THE ENTRY WAS SERVED WITH (R1, Corey 2026-09-30): the row shows
+                the survivor; the court's earlier descriptions stay on the record beside
+                when psephos first held each. A second CourtListener record for the same
+                minute entry (tier 2) is marked as that, not as an earlier text. */}
+            {it.earlier && it.earlier.length > 0 && (
+              <div data-earlier-texts="" className="mt-2 border-l border-neutral-800 pl-2.5 text-[0.75rem] text-neutral-500">
+                <p className="text-[0.66rem] uppercase tracking-wide text-neutral-600">
+                  {it.earlier.length === 1 ? "Also on the docket as" : "Also on the docket as, earliest first"}
+                </p>
+                <ul>
+                  {it.earlier.map((e, i) => (
+                    <li key={i} className="mt-1">
+                      <span className="text-neutral-400">{e.text}</span>{" "}
+                      <span className="whitespace-nowrap text-[0.68rem] text-neutral-600">
+                        ({e.twin ? "a second CourtListener record, " : ""}
+                        {seenLabel(e)})
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </details>
       </li>

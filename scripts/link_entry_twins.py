@@ -232,6 +232,7 @@ def main(argv=None) -> int:
             db.require_remote(conn, "unlinking a tier-2 twin")
             conn.execute("UPDATE cl_entries SET twin_of = NULL, twin_rule = NULL, twin_at = NULL "
                          "WHERE cl_entry_id = ?", (cl_id,))
+            cl_fold.recompute_latest(conn, o["case_id"])
             conn.commit()
             cl_fold.refold_quietly(conn, o["case_id"])   # the two entries present apart again
             print("  cleared, refolded, committed")
@@ -314,6 +315,8 @@ def main(argv=None) -> int:
                 "AND ? NOT IN (SELECT twin_of FROM cl_entries WHERE twin_of IS NOT NULL)",
                 (x["entry"], x["by"], now, x["twin"], x["entry"], x["twin"]))
             n += cur.rowcount
+        for case in sorted({x["case_id"] for x in p["link"]}):
+            cl_fold.recompute_latest(conn, case)    # a twin leaves record_entries
         conn.commit()
         for case in sorted({x["case_id"] for x in p["link"]}):
             cl_fold.refold_quietly(conn, case)      # the pair now presents as one entry

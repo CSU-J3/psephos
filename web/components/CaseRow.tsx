@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Case, CaseRef } from "@/lib/db";
 import { RecordDate } from "@/components/RecordDate";
+import { MergeNote } from "@/components/MergeNote";
+import { latestNote } from "@/lib/merge-notes";
 import type { RecordClock } from "@/lib/dated";
 import { isEoChallenge } from "@/lib/stands";
 
@@ -113,6 +115,7 @@ export function CaseRow({
             <span className="font-mono">
               → <RecordDate value={c.latest_entry_at} clock={clock} />
             </span>
+            <MergeNote text={latestNote(c.case_id)} className="basis-full" />
           </div>
         </Link>
         {(successor || predecessor) && (
@@ -167,6 +170,7 @@ export function CaseRow({
         <div className="mt-1 text-xs text-neutral-500">
           Filed <RecordDate value={c.filed_at} clock={clock} /> · Updated{" "}
           <RecordDate value={c.latest_entry_at} clock={clock} />
+          <MergeNote text={latestNote(c.case_id)} className="mt-0.5 block" />
         </div>
       </Link>
       {(successor || predecessor) && (

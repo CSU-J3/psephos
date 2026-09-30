@@ -326,6 +326,10 @@ def drift_conn(tmp_path):
     c.execute("CREATE TABLE cases (case_id TEXT, court TEXT, docket_number TEXT,"
               " latest_entry_at TEXT)")
     c.execute("CREATE TABLE case_entries (id INTEGER PRIMARY KEY, case_id TEXT, entry_at TEXT)")
+    # Section 4 derives from record_entries since the R1 switch; on rows no entry claims
+    # it is exactly the rows, which is all this fixture holds. The real view, with
+    # entries, is exercised below (test_derived_drift_follows_the_entry_not_the_stale_row).
+    c.execute("CREATE VIEW record_entries AS SELECT case_id, entry_at FROM case_entries")
     yield c
     c.close()
 
@@ -687,3 +691,26 @@ def test_section_8_reaches_the_exit_code(tmp_path, monkeypatch, capsys, newest, 
         assert "-" not in out.split("newest collect-run row")[1].split("ago")[0].split(", ")[1]
     elif newest == "skew":
         assert ", 0h00m ago." in out
+
+
+def test_derived_drift_follows_the_entry_not_the_stale_row(tmp_path):
+    """Nevada 72026664 on the real schema: the court re-dated an entry from Aug 24 to Aug
+    20. The stale Aug 24 row stays (R1 keeps every row), so MAX over the rows reads Aug 24
+    while the entry reads Aug 20. The column follows the entry, and section 4 agrees."""
+    import db
+    from collectors import litigation as lit
+    dbp = str(tmp_path / "n.db")
+    db.init_db(dbp)
+    conn = db.connect(dbp)
+    conn.execute("INSERT INTO sources (id, name, channel, kind, admiralty_source, admiralty_info)"
+                 " VALUES ('courtlistener', 'CL', 'litigation', 'api', 'A', '1')")
+    conn.execute("INSERT INTO cases (case_id, caption, status) VALUES ('72026664', 'c', 'terminated')")
+    e = {"id": 9, "description": "USCA Order Time Schedule", "recap_documents": []}
+    lit.write_entries(conn, "72026664", "c", None, [{**e, "date_filed": "2026-08-24"}], [], [])
+    lit.write_entries(conn, "72026664", "c", None, [{**e, "date_filed": "2026-08-20"}], [], [])
+    conn.commit()
+    assert conn.execute("SELECT MAX(entry_at) FROM case_entries").fetchone()[0] == "2026-08-24T00:00:00"
+    assert conn.execute("SELECT latest_entry_at FROM cases").fetchone()[0] == "2026-08-20T00:00:00"
+    assert ca.derived_drift(conn) == []
+    conn.execute("UPDATE cases SET latest_entry_at = '2026-08-24T00:00:00'")   # the old rule
+    assert [r["case_id"] for r in ca.derived_drift(conn)] == ["72026664"]

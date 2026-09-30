@@ -316,14 +316,14 @@ def test_an_entry_with_no_id_takes_the_old_path(tmp_path):
     assert conn.execute("SELECT COUNT(*) FROM cl_entries").fetchone()[0] == 0
 
 
-def test_latest_entry_at_keeps_its_definition_until_the_switch(tmp_path):
-    """MAX over every row, re-dated ones included: Nevada's column moves at the switch,
-    with its note, not when the id lands."""
+def test_latest_entry_at_follows_the_entry_after_the_switch(tmp_path):
+    """MAX over record_entries (the switch): the entry the court re-dated counts at its
+    date now, and the stale row it left does not. Nevada reads Aug 20, not Aug 24."""
     conn = _db(tmp_path)
     _write(conn, [_e(9, "USCA Order", day="2026-08-24")])
     _write(conn, [_e(9, "USCA Order", day="2026-08-20")])
     got = conn.execute("SELECT latest_entry_at FROM cases").fetchone()[0]
-    assert got == "2026-08-24T00:00:00"
+    assert got == "2026-08-20T00:00:00"
 
 
 def test_migrations_add_the_columns_to_a_legacy_database(tmp_path):

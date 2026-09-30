@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { MergeNote } from "@/components/MergeNote";
 import {
   CALLOUTS,
   CALLOUT_ABS,
@@ -70,6 +71,8 @@ export type MapState = {
     filed: string | null;
     status: string | null;
     entries: number | null;
+    /** R1's switch: the entry count before, dated, where it moved (lib/merge-notes). */
+    entriesNote: string | null;
     supersededBy: string | null;
     /** Dockets this row CONTINUES. Plural: a successor may absorb more than one. */
     continues: string[];
@@ -413,6 +416,12 @@ export function RecordsMap({
                     {d.docket} · filed{" "}
                     <RecordDate value={d.filed} clock={clock} format={isoDay} /> · {d.status}
                     {d.entries !== null && <> · {d.entries} entries</>}
+                    {d.entriesNote && (
+                      <>
+                        {" "}
+                        <MergeNote text={`(${d.entriesNote})`} />
+                      </>
+                    )}
                     {d.supersededBy && <> · continued as {d.supersededBy}</>}
                     {d.continues.length > 0 && <> · continues {d.continues.join(", ")}</>}
                   </li>

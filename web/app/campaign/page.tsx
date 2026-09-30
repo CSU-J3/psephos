@@ -21,6 +21,8 @@ import {
 } from "@/lib/movement";
 import { StateCell } from "@/components/StateCell";
 import { Grade } from "@/components/Grade";
+import { MergeNote } from "@/components/MergeNote";
+import { latestNote } from "@/lib/merge-notes";
 import { formatDate } from "@/lib/format";
 import { CountedList, DATE_COLUMN, RecordClockMark, RecordDate } from "@/components/RecordDate";
 
@@ -311,6 +313,7 @@ export default async function CampaignPage({
                           </Link>
                           <span className="text-[0.78rem] text-neutral-500">
                             terminated <RecordDate value={r.latest_entry_at} clock={anchorIso} />
+                            <MergeNote text={latestNote(r.case_id)} className="block" />
                           </span>
                           <span className="ml-auto text-[0.78rem] text-neutral-500">
                             live here:{" "}
@@ -342,6 +345,7 @@ export default async function CampaignPage({
                       <Grade grade={A1} />
                       <span className="ml-auto text-[0.78rem] text-neutral-500">
                         last entry <RecordDate value={c.live?.latest_entry_at} clock={anchorIso} />
+                        <MergeNote text={latestNote(c.live?.case_id ?? "")} className="block" />
                       </span>
                     </div>
                     {status && (
