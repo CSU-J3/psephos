@@ -102,6 +102,23 @@ Last updated: 2026-09-30 (UTC).
 - MI SB0691's 105549 is undetermined.
 - The 24 MI rows dated after the date in their own text are exposed, none duplicated yet.
 
+**Step (c)'s tooling, BUILT 2026-09-30 (inert until the walk finishes and the check is read):**
+- `collectors/cl_twins.py` is the D0's strict-B rule. It uses recheck_flags' pinned helpers, not copies of them.
+  - On the 00:38Z dump it reproduces the D0 exactly: 279 edges, the same set as `ident.json`; 147 ambiguous short rows; 173 runs; and 256 same-run, 12 cross-run and 11 undetermined. The last two are the 23 that go to a person.
+- `scripts/link_entry_twins.py` maps each pair's rows to their objects and classifies it:
+  - one object: tier 1, no link;
+  - a row still without an id: waits;
+  - refused;
+  - same-run: the rule links it;
+  - otherwise: waits for a person.
+- **Its safeguards:**
+  - `--apply` refuses while `config/entry_links.yaml` records no reader's check.
+  - `--sample 20` writes the random 20, with a recorded seed.
+  - `--person` writes the pairs that wait for a person.
+  - `--unlink` reverses a link.
+- The DSCC pair (92515/92572) is refused in that config, as ruled.
+- **On the two dry-run dockets:** every tier-2 pair is two objects. 16 are same-run. 4 go to a person, among them 88676/88680 (`long_twin_eq`, cross-run).
+
 **Owed in this unit:**
 - The walk, over about five scheduled runs, and its receipts read.
 - Step (c):

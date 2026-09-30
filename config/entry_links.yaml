@@ -1,0 +1,32 @@
+# Tier-2 links: two CourtListener objects that describe one minute entry (R1, Corey's
+# rulings of 2026-09-30, ruling 3; docs/status.md, "Duplicate rows, R1").
+#
+# No upstream field links them, so every link is PSEPHOS'S ASSERTION, recorded on the
+# object (`cl_entries.twin_of`, `twin_rule`, `twin_at`), naming what made it, and
+# reversible (`python -m scripts.link_entry_twins --unlink <cl_entry_id>`).
+#
+# `rule` makes the links for pairs held in the same collector run (collectors/cl_twins.py,
+# the D0's strict-B: 256 same-run pairs at the D0). Pairs held in different runs, or whose
+# run cannot be told, go to a person and are linked only when listed under `asserted`.
+#
+# Rows are named by case_entries id: rows and ids are kept (R1), so a row id names the
+# same text for good, where a CourtListener id is known only after the id backfill.
+rule: same-run strict-B v1
+
+# The reader's check of a random 20 of the rule's pairs, recorded before the rule is
+# relied on. link_entry_twins --apply refuses while this is empty.
+checked: null
+
+# Pairs never linked, whatever the rule says.
+refused:
+  - rows: [92515, 92572]
+    docket: "73131864"
+    why: >-
+      A notice of interlocutory appeal and an '.Order' short form on one day. The strict
+      rule pairs them on type alone ('type_only'), and the D0's verifier read 92572 as
+      probably belonging to minute entry 92595. Linking would fold the notice's item into
+      another entry's.
+    ruled: "Corey, 2026-09-30"
+
+# Pairs a person read and linked. Each: rows: [short, long], ruled: "<who>, <date>".
+asserted: []
