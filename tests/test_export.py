@@ -296,8 +296,9 @@ def test_cases_json_carries_the_termination_date():
 
 
 def test_entry_count_is_the_raw_docket_and_differs_from_the_timeline():
-    """entry_count counts case_entries; the timeline is built from items, the
-    PROMOTED subset. The inequality is the whole point of the key, so the fixture
+    """entry_count counts the docket's ENTRIES (record_entries: here, rows no CourtListener
+    entry claims, one entry each); the timeline is built from record_items, the PROMOTED
+    subset. The inequality is the whole point of the key, so the fixture
     makes them differ on purpose: 5 raw entries, 2 of them promoted.
 
     A fixture where the two coincided would pass while proving nothing, so this was
@@ -666,3 +667,35 @@ def test_the_predicate_and_its_complement_partition_the_channel(tmp_path):
     assert (inc, exc) == (2, 1)          # promoted + direct in; the aggregate out
     assert inc + exc == len(rows)        # a partition, not two overlapping filters
     conn.close()
+
+
+def test_a_re_described_entry_counts_once_and_times_once_and_says_why(tmp_path, monkeypatch):
+    """The R1 switch: an entry the court re-described is two case_entries rows and two
+    items, one entry. entry_count counts it once, the timeline carries it once with its
+    survivor text, and a case the switch moved carries the dated record of it (Corey's
+    ruling 5: not silent, and not only a commit message)."""
+    import json
+    from collectors import cl_fold
+    from collectors import litigation as lit
+    conn = _conn()
+    _case(conn, "71499795", state=None)
+    e = {"id": 475375313, "date_filed": "2026-08-21", "recap_documents": []}
+    lit.write_entries(conn, "71499795", "c", None, [{**e, "description": "Notice of Appeal"}],
+                      ["notice of appeal"], [])
+    lit.write_entries(conn, "71499795", "c", None,
+                      [{**e, "description": "NOTICE OF APPEAL TO DC CIRCUIT COURT"}], ["notice of appeal"], [])
+    conn.commit()
+    cl_fold.refold_case(conn, "71499795")
+    conn.commit()
+    figures = tmp_path / "entry-merge.json"
+    figures.write_text(json.dumps({"on": None, "why": "w", "cases": {}}), encoding="utf-8")
+    monkeypatch.setattr(snapshots, "MERGE_FIGURES", str(figures))
+    c = snapshots.build_cases(conn)[0]
+    assert conn.execute("SELECT COUNT(*) FROM case_entries").fetchone()[0] == 2
+    assert c["entry_count"] == 1
+    assert [t["title"] for t in c["timeline"]] == ["c: NOTICE OF APPEAL TO DC CIRCUIT COURT"]
+    assert "merged" not in c                       # no date yet: before the switch
+    figures.write_text(json.dumps({"on": "2026-10-02", "why": "w", "cases": {
+        "71499795": {"entries": [2, 1], "timeline": [2, 1]}}}), encoding="utf-8")
+    c = snapshots.build_cases(conn)[0]
+    assert c["merged"] == {"on": "2026-10-02", "why": "w", "entries": [2, 1], "timeline": [2, 1]}

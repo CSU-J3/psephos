@@ -3,6 +3,7 @@ import { DATE_COLUMN, RecordDate } from "@/components/RecordDate";
 import type { RecordClock } from "@/lib/dated";
 import { entryText, gradeOf, pagePrefix, sliceLedger } from "@/lib/ledger";
 import { seenLabel } from "@/lib/entries";
+import { utcDay } from "@/lib/format";
 import { Grade } from "./Grade";
 
 // Left-border tint by channel so action vs reporting reads at a glance; the Grade
@@ -96,6 +97,13 @@ export function Timeline({ items, clock }: { items: TimelineItem[]; clock: Recor
                       <span className="text-neutral-400">{e.text}</span>{" "}
                       <span className="whitespace-nowrap text-[0.68rem] text-neutral-600">
                         ({e.twin ? "a second CourtListener record, " : ""}
+                        {/* A RE-DATE IS THE CHANGE, so its old date is shown: two rows with
+                            one text differ only there (Nevada 72026664, Aug 24 to Aug 20). */}
+                        {e.entry_at && utcDay(e.entry_at) !== utcDay(it.occurred_at) && (
+                          <>
+                            dated <RecordDate value={e.entry_at} clock={clock} />,{" "}
+                          </>
+                        )}
                         {seenLabel(e)})
                       </span>
                     </li>

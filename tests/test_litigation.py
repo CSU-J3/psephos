@@ -216,7 +216,9 @@ def test_latest_entry_at_cannot_move_backwards_on_a_backfilled_window(tmp_path):
 
 def test_latest_entry_at_equals_the_table_max_after_a_non_empty_poll(tmp_path):
     """The invariant itself, stated forwards: after any poll that inserted anything,
-    the column equals MAX(case_entries.entry_at). Exercised with an out-of-order batch
+    the column equals MAX(record_entries.entry_at) -- which, for rows no CourtListener
+    entry claims (this fixture's), is MAX(case_entries.entry_at). The id-bearing case,
+    where the two diverge, is test_latest_entry_at_follows_a_re_dated_entry below. Exercised with an out-of-order batch
     so a max is genuinely computed rather than the last row's value being read off.
 
     The duplicate re-poll below asserts only that the value is unchanged. It does NOT
@@ -1364,3 +1366,24 @@ def test_collect_case_ends_its_reads_before_every_http_call(tmp_path, monkeypatc
     r = lit.collect_case(conn, "base", {}, seed, [], [], bootstrap_requests=30)
     assert r.get("mode") == "incremental"
     assert seen == [("poll", False)]
+
+
+def test_latest_entry_at_follows_a_re_dated_entry(tmp_path):
+    """With ids, the column follows the ENTRY: the court re-dates the latest entry from
+    07-04 to 06-30, the old row stays (R1 keeps every row), and the column reads 06-30
+    while MAX over the rows still reads 07-04."""
+    conn = _entries_db(tmp_path)
+    types, excludes = ["order"], []
+    batch = [
+        {"id": 1, "date_filed": "2026-03-01", "description": "ORDER one"},
+        {"id": 3, "date_filed": "2026-07-04", "description": "ORDER three"},
+        {"id": 2, "date_filed": "2026-05-02", "description": "ORDER two"},
+    ]
+    lit.write_entries(conn, "X", "c", None, batch, types, excludes)
+    conn.commit()
+    lit.write_entries(conn, "X", "c", None,
+                      [{"id": 3, "date_filed": "2026-06-30", "description": "ORDER three"}], types, excludes)
+    conn.commit()
+    stored = conn.execute("SELECT latest_entry_at FROM cases WHERE case_id = 'X'").fetchone()[0]
+    assert stored == "2026-06-30T00:00:00"
+    assert conn.execute("SELECT MAX(entry_at) FROM case_entries").fetchone()[0] == "2026-07-04T00:00:00"

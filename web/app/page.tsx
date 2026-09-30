@@ -16,7 +16,7 @@ import {
 } from "@/lib/db";
 import type { Case, CaseRef, NewsItem } from "@/lib/db";
 import { MergeNote } from "@/components/MergeNote";
-import { entriesNote, mapNote } from "@/lib/merge-notes";
+import { entriesNote, mapNote, rejectedNote } from "@/lib/merge-notes";
 import {
   readBills,
   readCampaign,
@@ -475,6 +475,11 @@ export default async function Home() {
                 <span className="text-neutral-500">
                   — derived from the docket at each disposition, not a field in the record
                 </span>
+              </p>
+            )}
+            {rejectedNote() && (
+              <p className="mt-0.5">
+                <MergeNote text={rejectedNote()} />
               </p>
             )}
             <p className="mt-1 text-sm text-neutral-400">

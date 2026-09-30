@@ -153,7 +153,10 @@ CREATE TABLE IF NOT EXISTS cases (
                                              -- filled once by scripts/backfill_case_state.py.
     plaintiff       TEXT,
     defendant       TEXT,
-    latest_entry_at TEXT,                    -- DERIVED: MAX(case_entries.entry_at) for this case.
+    latest_entry_at TEXT,                    -- DERIVED: MAX(record_entries.entry_at) for this case
+                                             -- (the latest ENTRY at its date now; MAX over the rows
+                                             -- until the R1 switch). Also recomputed by the id
+                                             -- backfill walk and link_entry_twins.
                                              -- Recomputed by `write_entries` in
                                              -- collectors/litigation.py, the only path that
                                              -- inserts into case_entries. It is NOT assigned from

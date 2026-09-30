@@ -305,6 +305,10 @@ def main(argv=None) -> int:
             print(f"\n  REFUSED: {why} (ruling 3; config/entry_links.yaml).")
             return 2
         db.require_remote(conn, "linking tier-2 twins")
+        cases = sorted({x["case_id"] for x in p["link"]})
+        count = lambda c: conn.execute("SELECT COUNT(*) FROM record_entries WHERE case_id = ?",
+                                       (c,)).fetchone()[0]  # noqa: E731
+        before = {c: count(c) for c in cases}
         now = common.now_iso()
         n = 0
         for x in p["link"]:
@@ -321,6 +325,10 @@ def main(argv=None) -> int:
         for case in sorted({x["case_id"] for x in p["link"]}):
             cl_fold.refold_quietly(conn, case)      # the pair now presents as one entry
         print(f"\n  linked {n} of {len(p['link'])}, refolded, committed")
+        # A link after the switch moves a docket's public count: the before and after
+        # its dated note needs (ruling 5), printed for the record.
+        for c in cases:
+            print(f"  {c}: {before[c]} entries before, {count(c)} after")
         return 0
     finally:
         conn.close()

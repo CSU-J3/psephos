@@ -452,11 +452,12 @@ def write_entries(conn, case_id: str, caption: str, source_url: str | None,
     Single transaction at the call site -- caller commits on success only.
 
     `cases.latest_entry_at` is DERIVED, not assigned: it equals
-    MAX(case_entries.entry_at) for the case, and it is recomputed at the bottom of
-    this function. This is the ONLY code path that inserts into `case_entries`, and
-    `collect_case` is its only caller, so all three poll modes -- incremental, probe
-    and full-walk -- reach the recompute by construction rather than by enumeration.
-    Keep it that way: a second insert site would need its own recompute.
+    MAX(record_entries.entry_at) for the case -- the latest ENTRY at its date now, since the
+    R1 switch -- and it is recomputed at the bottom of this function. This is the ONLY code
+    path that inserts into `case_entries`, and `collect_case` is its only caller, so all
+    three poll modes reach the recompute by construction. The other paths that change what
+    record_entries holds recompute too, through cl_fold.recompute_latest: the id backfill
+    walk and link_entry_twins' link and unlink. A new such path needs its own.
 
     Why derived rather than assigned from this batch (the defect this replaces).
     The line here used to be `UPDATE cases SET latest_entry_at = <max date_filed in

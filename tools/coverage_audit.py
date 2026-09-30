@@ -355,7 +355,8 @@ def cert_watch(rows) -> list:
 
 def derived_drift(conn) -> list:
     """Section 4: rows where `cases.latest_entry_at` disagrees with its own derivation,
-    MAX(case_entries.entry_at). An ALARM, expected 0.
+    MAX(record_entries.entry_at) -- the latest ENTRY, at its date now, since the R1 switch
+    (a re-dated entry's stale row no longer counts). An ALARM, expected 0.
 
     A derived column acquired 12 disagreements silently and nothing noticed for three
     weeks. `write_entries` assigned the max date_filed of the POLLED BATCH, correct
@@ -605,7 +606,7 @@ def main(argv=None) -> int:
             print(f"        {r['case_id']:<10} {str(r['docket_number']):<16} "
                   f"{r['court']}  {r['caption'][:40]}")
 
-        print(f"\n  [4] DERIVED-COLUMN ALARM -- latest_entry_at != MAX(case_entries.entry_at): "
+        print(f"\n  [4] DERIVED-COLUMN ALARM -- latest_entry_at != MAX(record_entries.entry_at): "
               f"{len(drift)}  (expect 0)")
         for r in drift:
             print(f"        FIRES  {r['case_id']:<10} {str(r['docket_number']):<16} "

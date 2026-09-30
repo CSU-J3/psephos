@@ -521,8 +521,8 @@ export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
       args: [caseId],
     }),
     db.execute({
-      sql: `SELECT o.cl_entry_id, o.twin_of, e.id, e.entry_at, e.description,
-                   e.seen_at, e.seen_by
+      sql: `SELECT o.cl_entry_id, o.twin_of, o.current_row, e.id, e.entry_at,
+                   e.description, e.seen_at, e.seen_by
             FROM cl_entries o JOIN case_entries e ON e.cl_entry_id = o.cl_entry_id
             WHERE o.case_id = ?
             ORDER BY e.id`,
@@ -532,6 +532,7 @@ export async function getCaseTimeline(caseId: string): Promise<TimelineItem[]> {
   const history: HistoryRow[] = hist.rows.map((r) => ({
     cl_entry_id: asNumber(r.cl_entry_id),
     twin_of: r.twin_of == null ? null : asNumber(r.twin_of),
+    current_row: r.current_row == null ? null : asNumber(r.current_row),
     id: asNumber(r.id),
     entry_at: asTextOrNull(r.entry_at),
     description: asTextOrNull(r.description),

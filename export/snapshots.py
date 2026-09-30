@@ -62,6 +62,11 @@ NEWS_PATH = "data/news.json"
 # say so in their own words instead of substituting a clock -- the same rule
 # `readCollectedAt` follows in the read layer.
 GENERATED_AT_PATH = "data/generated_at.json"
+# The R1 switch's figures (tools/merge_notes.py): the pages' dated notes read it, and so
+# does build_cases, so the archive says why a case's counts fell (Corey's ruling 5: not
+# silent, and not only a commit message). Constant after the switch, so the snapshot
+# stays byte-stable on an unchanged record.
+MERGE_FIGURES = "web/lib/entry-merge.json"   # read, not exported: not a *_PATH
 
 # A cluster node needs at least this many members; a lone anchor match stays a
 # standalone item (a 1-member "cluster" would add nothing and only obscure it).
@@ -310,8 +315,24 @@ def build_cases(conn) -> list[dict]:
                 "SELECT COUNT(*) FROM record_entries WHERE case_id = ?", (c["case_id"],)
             ).fetchall()[0][0],
             "timeline": entries,
+            **_merged(c["case_id"]),
         })
     return out
+
+
+def _merge_figures() -> dict:
+    p = Path(MERGE_FIGURES)
+    return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+
+
+def _merged(case_id: str) -> dict:
+    """{"merged": {on, why, and the case's before/after pairs}} for a case the R1 switch
+    moved, else {}. Absent before the switch (the figures file carries no date)."""
+    m = _merge_figures()
+    moved = (m.get("cases") or {}).get(case_id) if m.get("on") else None
+    if not moved:
+        return {}
+    return {"merged": {"on": m["on"], "why": m["why"], **moved}}
 
 
 def build_executive(conn) -> list[dict]:

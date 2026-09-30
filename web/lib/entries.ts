@@ -13,6 +13,8 @@ import { formatDate, utcDay } from "@/lib/format";
 export type HistoryRow = {
   cl_entry_id: number;
   twin_of: number | null;
+  /** The object's current row (cl_entries.current_row): the text the entry shows. */
+  current_row: number | null;
   id: number;
   entry_at: string | null;
   description: string | null;
@@ -63,13 +65,14 @@ export function earlierTexts(
     const entry = entryOf(it.cl_entry_id, twinOf);
     const rows = byEntry.get(entry);
     if (!rows) return undefined;
-    let skipped = false;
+    // THE SURVIVOR IS A ROW, NOT A TEXT: the entry's own current row, the one the fold
+    // took the shown text from (collectors/cl_fold.py). Matching by text would leave out
+    // the wrong row when the court re-dated an entry without changing its words -- the
+    // Nevada shape, two rows with one text -- and list the current row as "earlier".
+    const current = rows.find((r) => r.cl_entry_id === entry)?.current_row ?? null;
     const out: EarlierText[] = [];
     for (const r of rows) {
-      if (!skipped && r.description === it.summary && r.cl_entry_id === entry) {
-        skipped = true; // the survivor: already the row's own text
-        continue;
-      }
+      if (current != null && r.id === current) continue;
       if (!r.description) continue;
       out.push({
         text: r.description,

@@ -1,6 +1,8 @@
 """One-time repair: reset `cases.latest_entry_at` to its derivation (handoff 55/56).
 
-`latest_entry_at` is DERIVED -- it equals MAX(case_entries.entry_at) for the case.
+`latest_entry_at` is DERIVED -- it equals MAX(record_entries.entry_at) for the case (MAX over
+case_entries until the R1 switch, 2026-10; the switch runs this once to move every docket
+whose latest ENTRY is not its latest row, Nevada 72026664's re-dated entry among them).
 Between 2026-07-22 and 2026-08-14 it was not. `write_entries` assigned it the max
 `date_filed` of the POLLED BATCH, which was correct while every poll was a full walk
 and the batch was the docket, and became wrong the moment polling went incremental
@@ -149,7 +151,7 @@ def main(argv=None) -> int:
     try:
         total = conn.execute("SELECT COUNT(*) FROM cases").fetchone()[0]
         rows, fixed = run(conn, apply)
-        print(f"  {len(rows)} of {total} row(s) disagree with MAX(case_entries.entry_at).")
+        print(f"  {len(rows)} of {total} row(s) disagree with MAX(record_entries.entry_at).")
         print("  `stored` is what cases.latest_entry_at holds; `derived` is what the table")
         print("  says it should be. A positive drift means the column is BEHIND the docket.\n")
         if rows:
