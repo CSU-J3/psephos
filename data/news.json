@@ -9378,5 +9378,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/wisconsin-supreme-court-agrees-to-hear-case-on-expanded-voting-hours-during-election-day-disruptions",
     "title": "Wisconsin Supreme Court agrees to hear case on expanded voting hours during Election Day disruptions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118583,
+    "kind": "item",
+    "occurred_at": "2026-09-30T14:27:06+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/what-voters-deserve-from-ai",
+    "title": "What Voters Deserve From AI: Democracy Works and States United on Closing the Gap"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118582,
+    "kind": "item",
+    "occurred_at": "2026-09-30T16:46:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-has-failed-to-provide-records-to-prove-trumps-allegations-of-noncitizen-voting-watchdog-says",
+    "title": "DHS failed to provide records supporting Trump’s allegations of noncitizen voting, watchdog says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118581,
+    "kind": "item",
+    "occurred_at": "2026-09-30T17:00:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-voter-id-bill-falls-short-in-senate",
+    "title": "GOP voter ID bill falls short in Senate"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 118580,
+    "kind": "item",
+    "occurred_at": "2026-09-30T17:30:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-few-hundred-noncitizen-votes-are-a-national-scandal-but-when-states-reject-hundreds-of-thousands-of-ballots-from-eligible-voters-its-business-as-usual",
+    "title": "A few noncitizen votes are a scandal. But thousands of rejected ballots are business as usual"
   }
 ]

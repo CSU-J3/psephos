@@ -7557,9 +7557,9 @@
     "date_terminated": "2026-09-23T00:00:00",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 112,
+    "entry_count": 113,
     "filed_at": "2025-12-01T00:00:00",
-    "latest_entry_at": "2026-09-23T00:00:00",
+    "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
@@ -28917,9 +28917,9 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 75,
+    "entry_count": 83,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-09-28T00:00:00",
+    "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
@@ -29036,6 +29036,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73682036/75/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States of America v. Board Of Elections of the State of New York: DEFECTIVE DOCUMENT, Motion for leave to file as Amicus, at docket entry 74, on behalf of Movant Liberty Legal Foundation, FILED. [Entered: 09/28/2026 12:51 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 118369,
+        "kind": "item",
+        "occurred_at": "2026-09-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/83/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States of America v. Board Of Elections of the State of New York: STRIKE ORDER, striking  Motion for leave to file as Amicus at entry number 74 from the docket, FILED. [Entered: 09/30/2026 09:50 AM]"
       }
     ]
   },
