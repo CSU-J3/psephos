@@ -1471,7 +1471,7 @@ The lesson for any future rotation: **a key is reissued for the cron when the se
 
 **Unit 99 is opened by this** (see *Open units*). Its job is to make a dead credential print `CREDENTIAL FAILURE <channel>` and have the 05:17Z audit open an issue on it. The line names the channel only, never anything about the key. **As built (2026-09-28), the delivery is the collect run's own:** its Verdict step turns the run red and comments on the standing `collect red` issue; the audit is not involved (*Unit 99*, in *Owed right now*).
 
-### LegiScan's October terms: Part A SHIPPED 2026-09-24, Part B proven by its first scheduled run 2026-09-25, and the October reads are owed
+### LegiScan's October terms: Part A SHIPPED 2026-09-24, Part B proven by its first scheduled run 2026-09-25, the first October state run READ 2026-10-01 (every figure held), and the other October reads are owed
 
 **What changed upstream.** LegiScan API Team email, 2026-09-23 22:17Z:
 
@@ -1527,6 +1527,11 @@ One over-count is accepted and documented: a commit that lands but whose respons
    - **Allowance** = (8000 − 0) // 31 = **258**.
    - **getBill budget** = min(500, 258 − 1 − N), where 1 is the day's national `getSessionList` (the state-id bootstrap is done) and N the sessions planned. Thursday's previous ET day is Wednesday, so the active sessions are polled: four as of 09-25 (MI, NC, OH, PA), giving **253** if no adjourned session's hash moves. The 500 cap does not bind. `run_budget()` returns exactly these figures offline.
    - **The caveat changes shape.** The October ledger opens at 0 unless something is charged to 2026-10 before the slot. That could be a dispatched run or a ledgered tool on 10-01, or the 09-30 06:17Z run landing after midnight, which needs a lag of 17h43m against the 5h29m58s this slot took on 09-25.
+   - **READ 2026-10-01: every figure held, to the request.** Run `36866356408`, the 06:17Z slot, created 13:06:58Z on `a9cb759` (6h50m after its slot), green. It printed `ledger 2026-10: 0 of 8000 cron ceiling used (10000 monthly cap); 31 state slot(s) left incl. this one -> allowance 258; 1 spent on sessions (national getSessionList landed); 4 master list(s) planned (previous ET day Wed); getBill budget 253`.
+     - **The four master lists** were the four active sessions: PA/2192, MI/2183, NC/2189 and OH/2190. PA had 1 changed bill and took 1 getBill, for +0 items; the other three changed nothing.
+     - **All 10 adjourned sessions** printed `dataset_hash unmoved; zero calls`. So N = 4 and the budget read 253, as predicted.
+     - **6 LegiScan requests in all:** the session list, four master lists and one getBill. Nothing was charged to 2026-10 before the slot, so the ledger opened at 0.
+     - Its data commit pushed on attempt 1 (`9e135f9`), and the Verdict read clean, with legislation, litigation and state recorded.
 3. ~~**D0.2, Corey at the browser.** Read the OneVote API Status page for current usage, **the reset clock**, and the tier label.~~ **READ 2026-09-24:** Public API, one key, 835 requests in September. The Actions secret is proven to be the same key; see *The API Status page, read by Corey 2026-09-24* at the end of this entry. **The reset clock is still unread:** "September" implies a calendar month, but UTC or ET is undetermined, so `ledger_month` stays UTC.
    - `ledger_month` assumes the UTC calendar month and is the one function to change if the page says otherwise.
    - ~~If the label reads Public, **"EDU tier" goes on the falsified list** with the status page as the instrument.~~ **It read Public; it is on the list.** The phrase came from this file's own handoff-0d entry and a `common.py` comment. The comment was neutralised in `c55a666`; the manual itself says "Public service keys".
