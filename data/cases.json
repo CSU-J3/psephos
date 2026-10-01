@@ -17007,7 +17007,7 @@
     "date_terminated": null,
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 235,
+    "entry_count": 237,
     "filed_at": "2026-01-23T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -21414,7 +21414,7 @@
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:35:01.757703+00:00",
+    "status_checked_at": "2026-10-01T13:17:50.487138+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -22604,7 +22604,7 @@
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:43.792607+00:00",
+    "status_checked_at": "2026-10-01T13:17:29.961993+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25894,7 +25894,7 @@
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:58.327511+00:00",
+    "status_checked_at": "2026-10-01T13:17:46.687009+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27904,7 +27904,7 @@
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:54.884491+00:00",
+    "status_checked_at": "2026-10-01T13:17:42.240712+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28807,9 +28807,9 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 53,
+    "entry_count": 63,
     "filed_at": "2026-07-27T00:00:00",
-    "latest_entry_at": "2026-09-23T00:00:00",
+    "latest_entry_at": "2026-09-25T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
@@ -28926,6 +28926,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73678095/45/united-states-v-oliver/",
         "title": "United States v. New Mexico: [11320986] Minute order filed - the amicus brief submitted by Democratic National Committee is accepted for filing. The parties will be notified via separate docket entry if paper "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 119100,
+        "kind": "item",
+        "occurred_at": "2026-09-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/64/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11321292] Minute order filed - the amicus curiae brief submitted by David Becker, Gregory Friel, Bradley Heard, Brian Heffernan, Robert Kengle, Timothy Lambert, Justin Levitt, Ste"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 119099,
+        "kind": "item",
+        "occurred_at": "2026-09-24T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/63/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11321288] Minute order filed - the amicus curiae brief submitted by Orville Vernon Burton, J. Morgan Kousser and James Peyton McCrary is accepted for filing. The parties will be n"
       }
     ]
   },
@@ -28937,7 +28957,7 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 83,
+    "entry_count": 85,
     "filed_at": "2026-07-28T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States of America",
@@ -29077,9 +29097,9 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 66,
+    "entry_count": 68,
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-09-28T00:00:00",
+    "latest_entry_at": "2026-09-29T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -29206,6 +29226,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/65/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Liberty Legal Foundation, FILED. Service date 09/28/2026 by ACMS. [Entered: 09/28/2026 08:40 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 119048,
+        "kind": "item",
+        "occurred_at": "2026-09-28T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/66/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION ORDER, referring motion for leave to file an amicus curiae brief to the panel that will determine the merits of the appeal, on behalf of Movant Liberty Legal Foundation, FIL"
       }
     ]
   },
@@ -29337,14 +29367,14 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 20,
+    "entry_count": 24,
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-09-28T00:00:00",
+    "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:40.359737+00:00",
+    "status_checked_at": "2026-10-01T13:17:26.246441+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29444,7 +29474,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:36.855679+00:00",
+    "status_checked_at": "2026-10-01T13:17:22.333359+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29794,7 +29824,7 @@
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:47.212038+00:00",
+    "status_checked_at": "2026-10-01T13:17:34.531381+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30544,7 +30574,7 @@
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:34:50.768379+00:00",
+    "status_checked_at": "2026-10-01T13:17:38.492784+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30774,7 +30804,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-09-30T12:35:05.236158+00:00",
+    "status_checked_at": "2026-10-01T13:17:54.350732+00:00",
     "superseded_by": null,
     "timeline": [
       {
