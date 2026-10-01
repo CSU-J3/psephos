@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), the walk COMPLETE 2026-10-01; c to e owed
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), the walk COMPLETE 2026-10-01; the reader's check FAILED its bar, c HELD for Corey
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -313,13 +313,33 @@ It stays open for Corey to close.
   - **The rule-linkable set is 266, not the D0's 256.** The person set is the D0's 23 exactly.
   - The sample of 20 is drawn from the 266, per Corey's brief ("from the final rule-linkable set after the 13 remaining dockets are walked").
 
+**The reader's check, READ 2026-10-01: FAIL on the bar set before the read. Step (c) is HELD for Corey.** In full, with every pair: `docs/findings/r1-reader-check-2026-10-01.md`.
+- **The draw:** 20 from the rule's 266 (seed 20260930, walks through 06:13:55Z), with each pair's same-docket neighbours dumped from Turso.
+- **The readers:** three independent ones per pair, each with one lens: identity, alternative match (the refused DSCC pair's failure mode), and clocks. They read the dumps only.
+- **The bar, set before the read:** a pair passes when all three read one minute entry and none names a better match.
+- **The result:**
+  - 18 of 20 pass unanimously.
+  - n=3 (rows 13595/13771, N.D. Ga.) and n=8 (rows 5419/5457, D.N.H.) are read yes, yes, uncertain. The uncertain comes from the clocks lens: the two objects were created 25.7 hours and 33 days apart, not minutes apart in one load.
+  - **None of the 20 was shown to be two entries, and no reader named a better match.**
+- **Recorded as `result: fail`** in `config/entry_links.yaml`, so `--apply` refuses (checked: "no reader's check recorded as a pass"). No tier-2 link is written.
+- **The finding, measured after the read (Turso, read-only):**
+  - **For 63 of the 266 pairs, "same-run" holds only because the docket's bootstrap load first held both rows.** That load fetched the whole docket at once, so for these pairs the run says nothing about how the two objects relate, and the rule rests on text and type alone.
+  - n=3 and n=8 are both among them. So are n=9, n=17 and n=19, which passed.
+  - The other 203 were first held together by a later poll, whose window bounds when the two appeared upstream: the premise the rule was built on.
+  - The minutes-apart signature the clocks lens leaned on describes only 60 of the 266 (15 minutes or less). 5 of the 18 passing pairs were 8 to 146 hours apart.
+- **For Corey: is the rule relied on, and for which pairs?**
+  - (a) Rule the 20 a pass, since none was shown false, and link all 266.
+  - (b) **Recommended.** Treat the 63 bootstrap-only pairs as pairs "whose run cannot be told", which `config/entry_links.yaml` already sends to a person. Link the 203 after a fresh 20 drawn from them passes. Give the 63 to three-lens readers and lay their reads out for a ruling. This applies the rule's own text, not a new rule. It needs a classification change in `scripts/link_entry_twins.py` (bootstrap-only pairs become undetermined) and a new draw.
+  - (c) Rely on the clocks instead: link only pairs created within some bound of each other. That is a new rule, and the passing far-apart pairs say the gap is not what separates them.
+- **The 23 pairs for a person are laid out in full** in the findings file: 12 cross-run and 11 undetermined, each with both rows' texts and both objects' clocks. Pair 23 is 71499795's Sep 29 text row (93225), which `docs/gates.yaml` already records as a duplicate by the later-row rule.
+
 **Owed in this unit:**
 - ~~The walk's last 6 dockets, and its receipts read.~~ **DONE 2026-10-01, above.**
 - Step (c):
   - legacy `seen_at`/object clocks bounded by the id order;
-  - the 256 pairs mapped to objects;
-  - the reader check of a random 20;
-  - the 23 laid out for Corey;
+  - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
+  - ~~the reader check of a random 20~~ **READ, FAIL, held for Corey (above);**
+  - ~~the 23 laid out for Corey~~ **LAID OUT in the findings file;**
   - the DSCC exclusion recorded;
   - a reversible link script.
 - Then (d) and (e), held for Corey's word.

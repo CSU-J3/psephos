@@ -14,8 +14,27 @@
 rule: same-run strict-B v1
 
 # The reader's check of a random 20 of the rule's pairs, recorded before the rule is
-# relied on. link_entry_twins --apply refuses while this is empty.
-checked: null
+# relied on. link_entry_twins --apply refuses unless `result` is pass.
+#
+# 2026-10-01: FAIL on the bar set before the read, and held for Corey. 18 of the 20 were
+# read as one minute entry by all three readers. n=3 (rows 13595/13771) and n=8 (rows
+# 5419/5457) were read yes by the identity and alternative-match lenses and uncertain by
+# the clocks lens. None of the 20 was shown to be two entries, and no reader named a better
+# match. docs/findings/r1-reader-check-2026-10-01.md has the reads, and the measurement
+# that followed: for 63 of the 266 pairs the rule's same-run condition holds only because
+# the docket's bootstrap load first held both rows, so for those it tells nothing.
+checked:
+  seed: 20260930
+  pool: 266
+  pairs: [[91808, 92003], [91481, 91750], [13595, 13771], [15563, 15564], [92121, 92193],
+          [91564, 91734], [272, 294], [5419, 5457], [13982, 14001], [91909, 91995],
+          [91607, 91731], [280, 288], [5400, 5461], [92085, 92208], [6809, 6842],
+          [7817, 7847], [85278, 85325], [6767, 6834], [85413, 85415], [17878, 17942]]
+  walks_through: "2026-10-01T06:13:55.897859+00:00"
+  result: fail
+  bar: "pass = all three readers read one minute entry and none names a better match (set before the read)"
+  read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_51856ac1-7b7)"
+  on: "2026-10-01"
 
 # Pairs never linked, whatever the rule says.
 refused:
