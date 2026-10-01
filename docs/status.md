@@ -8,7 +8,7 @@ Last updated: 2026-09-30 (UTC).
 
 ## Owed right now
 
-### The lost 00:17Z data commit: READ 2026-09-30; the commit step's retry BUILT, REVIEWED and SHIPPED the same day, in the commit that lands this entry; issue 6 left for Corey
+### The lost 00:17Z data commit: READ 2026-09-30; the commit step's retry BUILT, REVIEWED and SHIPPED the same day, and PROVEN in production 2026-10-01 by one staged race; issue 6 left for Corey
 
 **What happened (Corey's (a)).**
 - **The run:** `collect.yml` run `36674320722`, the 00:17Z slot (`17 0 * * *`), created and started 05:38:13Z on head `d9cf702`.
@@ -74,7 +74,7 @@ It stays open for Corey to close.
 - The Verdict read `collect verdict: clean`, and the run is green.
 - Its walk is read on its own, under R1 below.
 
-**One raced push, STAGED on Corey's ruling (2026-09-30): the commit that lands this paragraph.**
+**One raced push, STAGED on Corey's ruling (2026-09-30), `a26760e`, and the race PROVEN 2026-10-01 (below).**
 - **The plan.** It is pushed into the 00:17Z slot's run of 2026-10-01, never the 06:17Z state slot, once that run's collectors have started and before its commit step.
 - **Expected:**
   - the step's push rejected;
@@ -89,7 +89,23 @@ It stays open for Corey to close.
   - the race, from its commit step and the Verdict.
 - A red on the push is not a walk problem: the walk's writes reach Turso before the commit step runs.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), c to e owed
+**THE PRODUCTION PROOF, READ 2026-10-01: the race went exactly as ruled, and the run is green.** Its walk is read on its own, under R1 below.
+- **The run:** 36822695308, labelled `collect 17 0 * * *`, created and started 06:02:19Z on `fd299cd`. That is 5h45m after its slot, so it was still created before 06:17Z.
+- **The push:**
+  - The script saw the run at 06:02:24Z, found its collectors in progress (started 06:02:27Z) and its commit step pending at 06:02:46Z.
+  - It pushed `a26760e` alone at 06:02:47Z; it was on origin at 06:02:50Z (`fd299cd..a26760e`).
+  - So the race landed about 16m31s before the commit step began, inside the run's window.
+- **The commit step (06:19:21Z to 06:19:23Z), in its own lines:**
+  - the data commit `5daf15a` was made on `fd299cd`;
+  - 06:19:22Z: `! [rejected] main -> main (fetch first)`, then `data commit: push rejected (attempt 1); fetching what it raced`;
+  - the fetch read `fd299cd..a26760e`, then `Rebasing (1/1)` and `Successfully rebased and updated refs/heads/main.`;
+  - 06:19:23Z: `a26760e..34a012b`, then `data commit pushed (attempt 2)`.
+- **No export re-run.** The step printed no re-export line of its own; the one line in the log that names it is the runner's echo of the step's script. `a26760e` touches nothing under `data/`, so the rebase path was the right one.
+- **The Verdict:** `collect verdict: clean (legislation, litigation recorded, receipts fresh)` at 06:19:25Z. The standing-issue step was skipped, and the run concluded `success` at 06:19:33Z.
+- **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
+- **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
+
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), the walk COMPLETE 2026-10-01; c to e owed
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -265,7 +281,12 @@ It stays open for Corey to close.
   - The dry run on Turso matched the D0 exactly: 2,805 exact from an item, 3,213 pinned to one run, and 456 + 112 + 7 = 575 in a range of 2-4 runs.
   - A re-run finds none left.
 
-**The third walk: the 18:17Z slot's run 36784151642, started 22:11:58Z, head `4233a11`, green.** Read from its "Run collectors" log, apart from the commit step's reading (the entry above).
+**The third walk: the 12:17Z slot's run 36755373315, started 17:59:44Z, head `4abcbe5`, green.** This walk was left out of this file until 2026-10-01: the walk below was headed "the third" when it was the fourth.
+- 21 more dockets for 78 requests, 1,356 rows attached, none unattached; 16 dockets left. The walk stopped on the budget: the next docket, 71453026, needs about 10 requests and 2 were left.
+- No entry was never held or stale. Four entries were held apart: 3 on 71452580 and 1 on 73686333.
+- The day's ledger then read 414 requests, 233 of them the backfill.
+
+**The fourth walk: the 18:17Z slot's run 36784151642, started 22:11:58Z, head `4233a11`, green.** Read from its "Run collectors" log, apart from the commit step's reading (the entry above).
 - **10 more dockets for 77 requests, 1,559 rows attached, none unattached; 6 dockets left.** The walk stopped on the budget: the next docket, 72055344, needs about 8 requests and 3 were left.
 - The day's ledger read 539 CourtListener requests on 2026-09-30, 310 of them the backfill. Turso holds 55 walk receipts.
 - **Two classes appear for the first time, never held (7) and stale (4), and six more entries are held apart.** All of them sit on six superseded, terminated district dockets that no run polls: 71453026 (PA), 71453646 (NH), 71980724 (MD), 71982149 (NM), 72021508 (CO, superseded into 74667007) and 72026664 (NV, into 74694778).
@@ -279,8 +300,21 @@ It stays open for Corey to close.
   - So a lost data commit can neither block nor skew the draw, and no landed data commit is needed first.
 - **The dry link plan after this walk** (Turso, read after the run): 290 strict-B edges, 204 to link, 18 for a person, 67 unattached, 1 refused (DSCC), and **5 dockets holding a same-run pair not yet walked**. So the sample waits (c). It is drawn only when the walk's own line shows no same-run docket left, whatever the race does.
 
+**The fifth walk, the last: the 00:17Z slot's run 36822695308, started 06:02:19Z, head `fd299cd`, green.** It is the run the staged race was pushed into; that reading is in the entry above, and this one is from its "Run collectors" log alone.
+- **The last 6 dockets for 39 requests, 747 rows attached, none unattached: `0 docket(s) left`.**
+- Three more entries were never held, all USCA case-number entries on superseded, terminated district dockets: 72055344 (into 74671625), 72156765 (VA) and 72334676 (KY).
+- **The walk, whole:** 8 + 16 + 21 + 10 + 6 = 61 dockets for 76 + 79 + 78 + 77 + 39 = 349 requests, against the ruling's estimate of about 345. Five runs, none failed, none cut short.
+- **Turso afterwards** (SELECT only):
+  - 61 walk receipts, one for every docket in `cases`;
+  - all 6,606 `case_entries` rows carry a CourtListener entry id;
+  - 6,303 objects held, and 10 never held (all on superseded district dockets, none shown).
+- **(c) is met.** The dry link plan no longer prints a "docket(s) holding a same-run pair not yet walked" line.
+  - It reads: 290 strict-B edges, **266 to link, 23 for a person**, 1 refused (DSCC), none unattached.
+  - **The rule-linkable set is 266, not the D0's 256.** The person set is the D0's 23 exactly.
+  - The sample of 20 is drawn from the 266, per Corey's brief ("from the final rule-linkable set after the 13 remaining dockets are walked").
+
 **Owed in this unit:**
-- The walk's last 6 dockets, expected on the 00:17Z slot's run of 2026-10-01, and its receipts read.
+- ~~The walk's last 6 dockets, and its receipts read.~~ **DONE 2026-10-01, above.**
 - Step (c):
   - legacy `seen_at`/object clocks bounded by the id order;
   - the 256 pairs mapped to objects;
