@@ -9498,5 +9498,75 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-judge-dismisses-challenge-to-strict-florida-voter-registration-law-as-manufactured-by-meddlers",
     "title": "Trump judge dismisses challenge to strict Florida voter registration law as ‘manufactured by meddlers’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119809,
+    "kind": "item",
+    "occurred_at": "2026-10-01T18:32:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dod-tells-senator-it-has-no-plan-for-troops-at-polls-but-she-has-no-idea-what-trump-will-do",
+    "title": "DOD tells senator it has ‘no plan’ for troops at polls. But she has ‘no idea what Trump will do’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119808,
+    "kind": "item",
+    "occurred_at": "2026-10-01T19:18:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-quietly-changed-overseas-voter-form-at-11th-hour-to-disenfranchise-democrats-lawsuit-says",
+    "title": "Trump admin quietly changed overseas voter form at 11th hour to disenfranchise Democrats, lawsuit says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119807,
+    "kind": "item",
+    "occurred_at": "2026-10-01T19:31:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-removes-resources-to-help-us-citizens-born-abroad-vote",
+    "title": "Exclusive: Trump administration removes resources to help U.S. citizens born abroad vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119806,
+    "kind": "item",
+    "occurred_at": "2026-10-01T20:53:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-jersey-gop-operative-pardoned-by-trump-accused-of-scheming-to-purge-democratic-voters",
+    "title": "New Jersey GOP operative, pardoned by Trump, accused of scheming to purge Democratic voters ahead of midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119805,
+    "kind": "item",
+    "occurred_at": "2026-10-01T20:54:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-controlled-georgia-election-board-asks-doj-to-declare-states-voting-machines-illegal",
+    "title": "GOP-controlled Georgia election board asks DOJ to declare state’s voting machines illegal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119804,
+    "kind": "item",
+    "occurred_at": "2026-10-01T21:18:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-court-dismisses-lawsuit-seeking-to-block-fulton-county-absentee-ballot-drop-off-policy",
+    "title": "Georgia court dismisses lawsuit seeking to block Fulton County absentee ballot drop-off policy"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 119803,
+    "kind": "item",
+    "occurred_at": "2026-10-01T21:34:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-mailboxes-overflow-with-voter-registration-warnings-after-state-cut-a-deal-with-trumps-doj",
+    "title": "North Carolina mailboxes overflow with voter registration warnings after state cut a deal with Trump’s DOJ"
   }
 ]

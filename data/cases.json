@@ -10267,7 +10267,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 185,
+    "entry_count": 187,
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-10-01T00:00:00",
     "plaintiff": "United States",
@@ -11076,6 +11076,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
         "title": "United States v. Delaware: Motion Hearing"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 119607,
+        "kind": "item",
+        "occurred_at": "2026-09-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
+        "title": "United States v. Delaware: Minute Entry for proceedings held before Judge Richard G. Andrews - Motion Hearing held on 9/29/2026. Local counsel present for Plaintiff: D. Steinberg. Local counsel present for D"
       }
     ]
   },
