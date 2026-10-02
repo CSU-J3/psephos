@@ -359,7 +359,7 @@ It stays open for Corey to close.
 **Owed in this unit:**
 - ~~The walk's last 6 dockets, and its receipts read.~~ **DONE 2026-10-01, above.**
 - Step (c), tier 1, ruled 2026-10-02 to ship ahead of tier 2:
-  - legacy object clocks bounded by the id order. Every row has its `seen_at` (0 without, read 2026-10-02), and 1,621 held objects still have no `first_seen_at`.
+  - ~~legacy object clocks bounded by the id order~~ **APPLIED 2026-10-02T21:47:34Z.** `scripts/backfill_seen_at.py` gained an objects pass. Every row already had its `seen_at`, and the 1,621 held objects the first two walks left without a clock took their rows' earliest and latest: 1,616 from rows they own, and 5 held apart from the row holding their text. A re-run finds none. Nothing reads an object's clock before the switch.
 - Step (c), tier 2:
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**

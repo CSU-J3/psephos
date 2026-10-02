@@ -72,3 +72,45 @@ def test_apply_writes_once_and_runs_against_turso_only(tmp_path, monkeypatch):
     assert tuple(c.execute("SELECT seen_at, seen_by FROM case_entries WHERE id = 10").fetchone()) == \
         ("2026-07-20T10:00:00Z", None)
     assert B.plan(c) == []                                            # idempotent
+
+
+def _obj(conn, cl_id, desc=None, first=None, held=1):
+    conn.execute("INSERT INTO cl_entries (cl_entry_id, case_id, entry_at, description, held, "
+                 "first_seen_at, updated_at) VALUES (?, ?, '2026-07-20T00:00:00', ?, ?, ?, ?)",
+                 (cl_id, CASE, desc, held, first, first))
+
+
+def test_an_object_takes_its_rows_clock_and_a_held_apart_one_its_texts_row(tmp_path, monkeypatch):
+    """Step (c) for tier 1 (2026-10-02): the walk left NULL the clock of an object whose rows
+    had no evidence yet. Two seen_at formats, compared as times: '...59Z' is earlier than
+    '...59.5+00:00', and string order puts it after ('Z' sorts above '.')."""
+    conn = _db(tmp_path)
+    _row(conn, 10, "ORDER, first text", seen_at="2026-07-07T19:45:59Z")
+    _row(conn, 11, "ORDER, re-described", seen_at="2026-07-07T19:45:59.500000+00:00")
+    _row(conn, 12, "ORDER, a third text", seen_at="2026-07-09T08:00:00+00:00")
+    conn.execute("UPDATE case_entries SET cl_entry_id = 501 WHERE id IN (10, 11, 12)")
+    _obj(conn, 501)                                          # owns three rows
+    _obj(conn, 502, desc="ORDER, first text")                # held apart: 10 holds its text
+    _obj(conn, 503, desc="never held anywhere")              # no evidence: left NULL
+    _obj(conn, 504, first="2026-07-01T00:00:00Z")            # already has a clock
+    _obj(conn, 505, held=0)                                  # seen by the walk only
+    conn.commit()
+    got = {oid: (first, last, basis) for oid, first, last, basis in B.plan_objects(conn)[0]}
+    assert got == {501: ("2026-07-07T19:45:59Z", "2026-07-09T08:00:00+00:00", "own rows"),
+                   502: ("2026-07-07T19:45:59Z", "2026-07-07T19:45:59Z",
+                         "the row holding its text")}
+    assert min(["2026-07-07T19:45:59Z", "2026-07-07T19:45:59.500000+00:00"]) != "2026-07-07T19:45:59Z"
+    assert B.plan_objects(conn)[1] == 1
+    conn.close()
+    real = db.connect
+    monkeypatch.setattr(B.config, "load_env", lambda *a, **k: None)
+    monkeypatch.setattr(B.db, "connect", lambda *a, **k: real(str(tmp_path / "s.db")))
+    monkeypatch.setattr(B.db, "require_remote", lambda *a, **k: None)
+    assert B.main(["--apply"]) == 0
+    c = real(str(tmp_path / "s.db"))
+    clocks = {r[0]: (r[1], r[2]) for r in c.execute(
+        "SELECT cl_entry_id, first_seen_at, updated_at FROM cl_entries").fetchall()}
+    assert clocks[501] == ("2026-07-07T19:45:59Z", "2026-07-09T08:00:00+00:00")
+    assert clocks[503] == (None, None) and clocks[504] == ("2026-07-01T00:00:00Z",) * 2
+    assert clocks[505] == (None, None)
+    assert B.plan_objects(c) == ([], 1)                       # idempotent: only 503 is left
