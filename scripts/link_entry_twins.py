@@ -10,8 +10,11 @@ What it does, in order:
        two objects    -> a candidate
   3. A same-run candidate is linked by the rule, unless config/entry_links.yaml refuses it.
      A cross-run or undetermined one waits for a person and is linked only when listed
-     under `asserted` there. A candidate that would make a chain (its short side is already
-     another pair's entry, or two candidates share an object) waits for a person too.
+     under `asserted` there. So does a 'first-load' one: same-run, but in a run the
+     docket's first load may have been, which fetched the whole docket at once and so says
+     nothing about the pair (cl_twins.pair_relation; Corey, 2026-10-02). A candidate that
+     would make a chain (its short side is already another pair's entry, or two candidates
+     share an object) waits for a person too.
   4. The long-form object is the entry; the short form's `twin_of` names it (ruling 2's
      hybrid: the long form survives a tier-2 pair). The pair's items then fold as one entry.
 
@@ -21,8 +24,12 @@ the 256 and the result is recorded"):
     come from the pairs the rule will link. It draws from EVERY same-run two-object pair,
     linked or not, sorted by row ids, so the recorded seed redraws the same 20 after --apply.
     It prints the `checked` stub to record in config/entry_links.yaml.
-  * --apply refuses unless `checked.result` is "pass", the seed redraws the recorded pairs
-    from the current pool, and no docket has been walked since the check.
+  * --sample all reads the whole pool in place of a draw: Corey's ruling of 2026-10-02 for
+    the 7 later-poll pairs, too few to draw 20 from. Its `checked` stub is `full: true`
+    with no seed, and names every pair in row order.
+  * --apply refuses unless `checked.result` is "pass", the check still describes the pool
+    (a full read names every pair in it; a sample is what its seed redraws), and no docket
+    has been walked since the check.
 
 Refusals otherwise: an existing link is never overwritten; `asserted` entries that match
 no pair the rule sees now refuse --apply (something moved under a person's ruling);
@@ -33,6 +40,7 @@ or the person's list, runs against Turso only.
 Usage (repo root):
     python -m scripts.link_entry_twins                    # dry run: counts and the plan
     python -m scripts.link_entry_twins --sample 20 OUT.json [--seed N]
+    python -m scripts.link_entry_twins --sample all OUT.json   # the whole pool, no draw
     python -m scripts.link_entry_twins --person OUT.json  # the pairs that wait for a person
     python -m scripts.link_entry_twins --apply            # link, refold, commit
     python -m scripts.link_entry_twins --unlink CL_ENTRY_ID [--apply]
@@ -77,6 +85,9 @@ def plan(conn, links: dict) -> dict:
         "SELECT id, case_id, entry_at, description, document_url, cl_entry_id "
         "FROM case_entries ORDER BY id").fetchall()]
     byid = {r["id"]: r for r in rows}
+    first_row: dict = {}                 # each docket's lowest id: its first load wrote it
+    for r in rows:
+        first_row.setdefault(r["case_id"], r["id"])
     # The four channels the D0 dated runs by (news was not dumped), so the rule's 256
     # same-run pairs are the D0's own.
     fetched = [r["fetched_at"] for r in conn.execute(
@@ -104,6 +115,9 @@ def plan(conn, links: dict) -> dict:
     asserted = links.get("asserted") or []
     asserted_objs = {obj_key(p["rows"]): p.get("ruled") for p in asserted if obj_key(p["rows"])}
 
+    def relation(a, b):
+        return tw.pair_relation(clock, first_row[byid[a]["case_id"]], a, b)
+
     kept, amb = tw.strict_b(rows)
     out = {"edges": len(kept), "ambiguous_short": len(amb), "one_object": [], "unattached": [],
            "refused": [], "link": [], "person": [], "would_chain": [], "linked_already": [],
@@ -112,7 +126,7 @@ def plan(conn, links: dict) -> dict:
     for a, b, kind in kept:
         ra, rb = byid[a], byid[b]
         pair = {"rows": [a, b], "kind": kind, "case_id": ra["case_id"], "entry_at": ra["entry_at"],
-                "relation": clock.relation(a, b),
+                "relation": relation(a, b),
                 "objects": [ra["cl_entry_id"], rb["cl_entry_id"]],
                 "texts": [ra["description"], rb["description"]]}
         key = obj_key((a, b))
@@ -158,7 +172,7 @@ def plan(conn, links: dict) -> dict:
     out["ruled_missing"] = [p for p in asserted if obj_key(p["rows"]) not in seen_objs]
     out["objects"] = objects
     out["same_run_cases"] = sorted({byid[a]["case_id"] for a, b, _ in kept
-                                    if clock.relation(a, b) == "same-run"})
+                                    if relation(a, b) == "same-run"})
     return out
 
 
@@ -172,6 +186,15 @@ def sample_pool(p: dict, rule: str) -> list[dict]:
 
 def draw(pool: list[dict], n: int, seed: int) -> list[list[int]]:
     return [sorted(x["rows"]) for x in random.Random(seed).sample(pool, min(n, len(pool)))]
+
+
+def covers(pool: list[dict], chk: dict) -> bool:
+    """Whether a recorded check still describes the rule's pool: a full read names every
+    pair in it, in row order; a sample is what its seed redraws from it."""
+    pairs = [sorted(x) for x in chk.get("pairs") or []]
+    if chk.get("full"):
+        return [sorted(x["rows"]) for x in pool] == pairs
+    return draw(pool, len(pairs), chk.get("seed", DEFAULT_SEED)) == pairs
 
 
 def unwalked(conn, cases: list[str]) -> list[str]:
@@ -229,11 +252,13 @@ def main(argv=None) -> int:
                 print("\n  REFUSED: the sample waits for every docket holding a same-run pair "
                       "to be walked, so it is drawn from the pairs --apply would link.")
                 return 2
-            n = int(argv[argv.index("--sample") + 1])
+            arg = argv[argv.index("--sample") + 1]
             path = Path(argv[argv.index("--sample") + 2])
-            seed = int(argv[argv.index("--seed") + 1]) if "--seed" in argv else DEFAULT_SEED
+            full = arg == "all"
+            seed = None if full else (int(argv[argv.index("--seed") + 1]) if "--seed" in argv
+                                      else DEFAULT_SEED)
             pool = sample_pool(p, rule)
-            picked = draw(pool, n, seed)
+            picked = [sorted(x["rows"]) for x in pool] if full else draw(pool, int(arg), seed)
             by_rows = {tuple(sorted(x["rows"])): x for x in pool}
             pairs = []
             for rows_ in picked:
@@ -243,9 +268,12 @@ def main(argv=None) -> int:
             through = conn.execute("SELECT MAX(walked_at) FROM cl_backfill").fetchone()[0]
             stub = {"seed": seed, "pool": len(pool), "pairs": picked,
                     "walks_through": through, "result": None, "read_by": None, "on": None}
+            if full:
+                stub = {"full": True, **stub}
             path.write_text(json.dumps({"checked_stub": stub, "pairs": pairs}, indent=1,
                                        ensure_ascii=False), encoding="utf-8")
-            print(f"  sample of {len(picked)} from {len(pool)} (seed {seed}) -> {path}")
+            print(f"  {'all' if full else f'sample of {len(picked)} from'} {len(pool)} "
+                  f"({'no draw' if full else f'seed {seed}'}) -> {path}")
             print("  record in config/entry_links.yaml as `checked:` with result pass|fail:")
             print("  " + json.dumps(stub))
         if "--person" in argv:
@@ -265,9 +293,9 @@ def main(argv=None) -> int:
         why = None
         if chk.get("result") != "pass":
             why = "no reader's check recorded as a pass"
-        elif draw(sample_pool(p, rule), len(chk.get("pairs") or []), chk.get("seed", DEFAULT_SEED)) \
-                != [sorted(x) for x in chk.get("pairs") or []]:
-            why = "the recorded seed no longer draws the recorded pairs from the rule's pool"
+        elif not covers(sample_pool(p, rule), chk):
+            why = ("the recorded pairs are no longer the rule's whole pool" if chk.get("full")
+                   else "the recorded seed no longer draws the recorded pairs from the rule's pool")
         elif through and chk.get("walks_through") and through > chk["walks_through"]:
             why = "a docket was walked after the check; draw and read it again"
         elif p["ruled_missing"]:

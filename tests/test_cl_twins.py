@@ -9,6 +9,7 @@ same-run / 12 cross-run / 11 undetermined (docs/status.md). The dump is not in t
 these tests pin the rule's shapes."""
 from __future__ import annotations
 
+import json
 import os
 import sys
 
@@ -65,7 +66,13 @@ def test_the_run_clock_brackets_rows_without_items():
 # --------------------------------------------------------------------------- #
 # The link script
 # --------------------------------------------------------------------------- #
+FIRST = ("COMPLAINT for declaratory and injunctive relief against all defendants, filed by "
+         "the plaintiffs")
+
+
 def _db(tmp_path):
+    """The docket's first load is row 0, a run before the pairs below: so a same-run pair
+    in those tests is a later poll's, the kind the rule links (ruling 1a, 2026-10-02)."""
     dbp = str(tmp_path / "t.db")
     db.init_db(dbp)
     conn = db.connect(dbp)
@@ -73,19 +80,25 @@ def _db(tmp_path):
                  " VALUES ('courtlistener', 'CL', 'litigation', 'api', 'A', '1')")
     conn.execute("INSERT INTO cases (case_id, caption, status) VALUES ('71499795', 'c', 'pending')")
     conn.commit()
+    _hold(conn, 0, FIRST, 100, fetched="2026-07-19T10:00:00Z", day="2026-07-01T00:00:00")
     return conn
 
 
-def _hold(conn, rid, desc, cl_id, fetched="2026-07-20T19:31:18Z", day=DAY):
+def _hold(conn, rid, desc, cl_id, fetched="2026-07-20T19:31:18Z", day=DAY, case="71499795"):
     conn.execute("INSERT INTO case_entries (id, case_id, entry_at, description, cl_entry_id) "
-                 "VALUES (?, '71499795', ?, ?, ?)", (rid, day, desc, cl_id))
+                 "VALUES (?, ?, ?, ?, ?)", (rid, case, day, desc, cl_id))
     conn.execute("INSERT INTO items (channel, source_id, source_url, title, summary, occurred_at, "
                  "fetched_at, admiralty_source, admiralty_info, case_id, content_hash, cl_entry_id) "
-                 "VALUES ('litigation', 'courtlistener', 'u', ?, ?, ?, ?, 'A', '1', '71499795', ?, ?)",
-                 (f"c: {desc}", desc, day, fetched, common.content_hash("71499795", day, desc), cl_id))
+                 "VALUES ('litigation', 'courtlistener', 'u', ?, ?, ?, ?, 'A', '1', ?, ?, ?)",
+                 (f"c: {desc}", desc, day, fetched, case, common.content_hash(case, day, desc), cl_id))
     if cl_id is not None:
         conn.execute("INSERT OR IGNORE INTO cl_entries (cl_entry_id, case_id, entry_at, description, "
-                     "current_row, held) VALUES (?, '71499795', ?, ?, ?, 1)", (cl_id, day, desc, rid))
+                     "current_row, held) VALUES (?, ?, ?, ?, ?, 1)", (cl_id, case, day, desc, rid))
+    conn.commit()
+
+
+def _docket(conn, case="72000000"):
+    conn.execute("INSERT INTO cases (case_id, caption, status) VALUES (?, 'c', 'pending')", (case,))
     conn.commit()
 
 
@@ -188,7 +201,8 @@ def test_apply_links_the_short_form_to_the_long_and_unlink_reverses_it(tmp_path,
     assert (o["twin_of"], o["twin_rule"]) == (102, tw.RULE) and o["twin_at"]
     assert c.execute("SELECT twin_of FROM cl_entries WHERE cl_entry_id = 102").fetchone()[0] is None
     # The pair now presents as one entry, and the recorded seed still draws the same 20.
-    assert c.execute("SELECT COUNT(*) FROM items WHERE merged_into IS NULL").fetchone()[0] == 1
+    presenting = "SELECT COUNT(*) FROM items WHERE merged_into IS NULL AND occurred_at = ?"
+    assert c.execute(presenting, (DAY,)).fetchone()[0] == 1
     p = L.plan(c, LINKS)
     assert L.draw(L.sample_pool(p, tw.RULE), len(chk["pairs"]), chk["seed"]) == chk["pairs"]
     c.close()
@@ -197,7 +211,7 @@ def test_apply_links_the_short_form_to_the_long_and_unlink_reverses_it(tmp_path,
     c = get()
     assert tuple(c.execute("SELECT twin_of, twin_rule, twin_at FROM cl_entries "
                            "WHERE cl_entry_id = 101").fetchone()) == (None, None, None)
-    assert c.execute("SELECT COUNT(*) FROM items WHERE merged_into IS NULL").fetchone()[0] == 2
+    assert c.execute(presenting, (DAY,)).fetchone()[0] == 2
 
 
 def test_the_sample_waits_for_the_walk(tmp_path, monkeypatch):
@@ -285,3 +299,89 @@ def test_a_pair_is_unique_by_entry_when_the_long_forms_revision_also_pairs(tmp_p
     _hold(conn, 3, LONG + " Modified on 9/30/2026 (nms)", 102, fetched="2026-07-20T19:31:40Z")
     p = L.plan(conn, LINKS)
     assert len(p["link"]) == 1 and p["link"][0]["objects"] == [101, 102]
+
+
+# --------------------------------------------------------------------------- #
+# The first load (Corey, 2026-10-02, ruling 1a)
+# --------------------------------------------------------------------------- #
+def test_a_same_run_pair_its_dockets_first_load_held_waits_for_a_person(tmp_path):
+    """The first load fetched the whole docket at once, so its run says nothing about how a
+    pair's two objects relate. Rows 11 and 12 are docket 72000000's first rows."""
+    conn = _db(tmp_path)
+    _docket(conn)
+    _hold(conn, 11, SHORT, 111, case="72000000")
+    _hold(conn, 12, LONG, 112, case="72000000")
+    p = L.plan(conn, LINKS)
+    assert p["link"] == []
+    assert [(x["rows"], x["relation"]) for x in p["person"]] == [([11, 12], "first-load")]
+    assert p["same_run_cases"] == []          # a first-load pair is not the rule's to link
+
+
+def test_a_first_load_whose_opening_row_the_clock_cannot_pin_still_counts(tmp_path):
+    """The first load's opening row carries no item, so the clock brackets it across the run
+    before and its own: the pair's run may be the first load's, and the run cannot tell.
+    Five dockets held 39 such pairs on 2026-10-02, which a pinned-row test missed."""
+    conn = _db(tmp_path)                      # row 0 pins the run before (2026-07-19)
+    _docket(conn)
+    conn.execute("INSERT INTO case_entries (id, case_id, entry_at, description) "
+                 "VALUES (10, '72000000', '2026-06-01T00:00:00', 'Summons issued as to all defendants')")
+    conn.commit()
+    _hold(conn, 11, SHORT, 111, case="72000000")
+    _hold(conn, 12, LONG, 112, case="72000000")
+    assert tw.RunClock(["2026-07-19T10:00:00Z", "2026-07-20T19:31:18Z"],
+                       {0: "2026-07-19T10:00:00Z", 11: "2026-07-20T19:31:18Z"}).bracket(10) == (0, 1)
+    p = L.plan(conn, LINKS)
+    assert [(x["rows"], x["relation"]) for x in p["person"]] == [([11, 12], "first-load")]
+
+
+def test_a_later_polls_same_run_pair_on_the_same_docket_is_the_rules(tmp_path):
+    conn = _db(tmp_path)
+    _docket(conn)
+    _hold(conn, 11, FIRST, 111, case="72000000", day="2026-06-01T00:00:00")     # the first load
+    _hold(conn, 21, SHORT, 121, case="72000000", fetched="2026-07-21T19:31:18Z")
+    _hold(conn, 22, LONG, 122, case="72000000", fetched="2026-07-21T19:31:18Z")
+    p = L.plan(conn, LINKS)
+    assert [(x["rows"], x["relation"]) for x in p["link"]] == [([21, 22], "same-run")]
+    assert p["same_run_cases"] == ["72000000"]
+
+
+def _full_check(conn):
+    pool = L.sample_pool(L.plan(conn, LINKS), tw.RULE)
+    return {"full": True, "seed": None, "pool": len(pool), "pairs": [sorted(x["rows"]) for x in pool],
+            "walks_through": conn.execute("SELECT MAX(walked_at) FROM cl_backfill").fetchone()[0],
+            "result": "pass", "read_by": "reader", "on": "2026-10-02"}
+
+
+def test_sample_all_names_the_whole_pool_with_no_seed(tmp_path, monkeypatch):
+    conn = _db(tmp_path)
+    _hold(conn, 1, SHORT, 101)
+    _hold(conn, 2, LONG, 102)
+    _walked(conn)
+    conn.close()
+    _env(tmp_path, monkeypatch, LINKS)
+    out = tmp_path / "all.json"
+    assert L.main(["--sample", "all", str(out)]) == 0
+    stub = json.loads(out.read_text(encoding="utf-8"))["checked_stub"]
+    assert (stub["full"], stub["seed"], stub["pool"], stub["pairs"]) == (True, None, 1, [[1, 2]])
+
+
+def test_a_full_read_links_its_pool_and_refuses_once_the_pool_grows(tmp_path, monkeypatch):
+    """Ruling 1b: the 7 later-poll pairs are read in full in place of a draw. A pair the rule
+    meets after the read is one the read never covered, so --apply refuses until it is read."""
+    conn = _db(tmp_path)
+    _hold(conn, 1, SHORT, 101)
+    _hold(conn, 2, LONG, 102)
+    _walked(conn)
+    chk = _full_check(conn)
+    _hold(conn, 7, SHORT, 107, day="2026-07-23T00:00:00", fetched="2026-07-23T10:00:00Z")
+    _hold(conn, 8, LONG, 108, day="2026-07-23T00:00:00", fetched="2026-07-23T10:00:05Z")
+    grown = _full_check(conn)
+    conn.close()
+    get = _env(tmp_path, monkeypatch, {**LINKS, "checked": chk})
+    assert L.main(["--apply"]) == 2
+    assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 0
+    get = _env(tmp_path, monkeypatch, {**LINKS, "checked": grown})
+    assert grown["pairs"] == [[1, 2], [7, 8]]
+    assert L.main(["--apply"]) == 0
+    assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 2
+    assert L.main(["--apply"]) == 0               # and the full read still covers its pool after

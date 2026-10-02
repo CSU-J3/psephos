@@ -18,7 +18,9 @@ THE RULE IS THE D0'S STRICT-B, ported from dup_d0/work2_ab/ident.py and kept to 
     once stamps and clerk annotations are stripped;
 an edge must touch a text with no document URL (a tokened pair is tier 1, one object), and
 it is kept only when unique at both ends. Pairs the D0 found in the SAME collector run are
-what the rule links; the rest go to a person.
+what the rule links; the rest go to a person. So do same-run pairs the docket's FIRST LOAD
+held (pair_relation, Corey 2026-10-02): that load fetched the whole docket at once, so the
+run says nothing about them.
 
 It reads recheck_flags' pinned helpers rather than copying them: the flag test is frozen
 until the measurement period ends (2026-11-12), and one definition is what keeps this rule
@@ -173,3 +175,25 @@ class RunClock:
         if ha < lb or hb < la:
             return "cross-run"
         return "undetermined"
+
+
+def pair_relation(clock: RunClock, first_row: int, a: int, b: int) -> str:
+    """The pair's relation as the rule reads it: RunClock.relation, except that a same-run
+    pair the docket's FIRST LOAD may have held is 'first-load' and waits for a person (Corey,
+    2026-10-02, ruling 1a). first_row is the docket's lowest case_entries id.
+
+    The rule links a same-run pair because a later poll's window bounds when its two objects
+    appeared upstream. A docket's first load fetched the whole docket at once, with no
+    earlier poll to bound anything, so there the run tells nothing. The first load wrote the
+    docket's lowest-id row (ids are one AUTOINCREMENT, written in run order), so a pair whose
+    run lies inside that row's run bracket may have been held by it.
+
+    Classify by the run, never by a stamp's string: seen_at is not one value per run, and
+    comparing it as text counted 63 of the 266 pairs where the run reads 259
+    (docs/findings/r1-first-load-2026-10-02.md)."""
+    rel = clock.relation(a, b)
+    if rel == "same-run":
+        lo, hi = clock.bracket(first_row)
+        if lo <= clock.bracket(a)[0] <= hi:
+            return "first-load"
+    return rel
