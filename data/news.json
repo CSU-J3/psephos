@@ -9588,5 +9588,55 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/wisconsin-sheriff-races-immigration-sauk-winnebago",
     "title": "In Wisconsin, Two Sheriff Races Test the Future of Local ICE Cooperation"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120469,
+    "kind": "item",
+    "occurred_at": "2026-10-02T14:45:05+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/02/hundreds-elections-jurisdictions-not-using-government-domains",
+    "title": "Hundreds of Wisconsin election offices not using cybersecurity best practices"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120472,
+    "kind": "item",
+    "occurred_at": "2026-10-02T15:28:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-postal-service-is-slowing-delivery-will-your-mail-ballot-be-affected",
+    "title": "The Postal Service is slowing delivery. Will your mail ballot be affected?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120471,
+    "kind": "item",
+    "occurred_at": "2026-10-02T16:39:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/americans-overwhelmingly-support-pro-voting-policies-national-survey-finds",
+    "title": "Americans overwhelmingly support pro-voting policies, national survey finds"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120468,
+    "kind": "item",
+    "occurred_at": "2026-10-02T16:45:16+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/10/02/wayne-county-ballot-misprint-belleville-library-van-buren-sumpter",
+    "title": "Thousands of Wayne County voters to get new ballots after printing error"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120470,
+    "kind": "item",
+    "occurred_at": "2026-10-02T17:47:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-upholds-tennessees-gop-gerrymander-saying-lawmakers-deserve-presumption-of-good-faith",
+    "title": "Court upholds Tennessee’s GOP gerrymander, saying lawmakers deserve ‘presumption of good faith’"
   }
 ]
