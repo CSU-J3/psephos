@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02: the first-load test BUILT, the rule's 7 READ and LINKED, the person pairs READ but for a second batch of 239, PRICED and HELD for Corey; tier 1 to the switch NEXT
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02: the first-load test BUILT, the rule's 7 READ and LINKED, the person pairs READ but for a second batch of 239, PRICED and HELD for Corey; tier 1's switch BUILT on a local branch, at the CHECKPOINT and HELD for Corey's word
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -354,7 +354,61 @@ It stays open for Corey to close.
     - It holds on 14 of the 51 pairs read, all unanimous, none split, and excludes the DSCC pair.
     - It would settle 49 of the 239, leaving 570 reads (about 47.4 million tokens).
     - The evidence is thin: 14 for 14 bounds its miss rate at about 19%, and it has met one known negative.
-- **3: tier 1 to the switch.** Next, below.
+- **3: tier 1 to the switch: BUILT and at the CHECKPOINT** (below).
+
+**The switch, at the checkpoint 2026-10-02: BUILT on the local branch `r1-switch`, and HELD for Corey's word.**
+- **It was built on 2026-09-30 and never recorded here.** The branch held two commits for the checkpoint:
+  - the switch itself: pages, the export and the collector read entries, and `tools/merge_notes.py` writes the dated notes;
+  - the fixes from that build's review, thirteen findings.
+  
+  This entry is the first to name it.
+- **Rebased onto main 2026-10-02 without a conflict, and one commit added: the notes as dated moves.** Its three commits are local, so this file names them by branch and subject until the merge puts them on origin.
+  - `tools/merge_notes.py` reads every figure three ways from one state of the record: rows, tier 1, and objects. It writes the merge (rows to tier 1) and the link move (tier 1 to objects), each dated.
+  - It checks its objects reading against `record_items` and `record_entries`, and refuses the snapshot where they disagree.
+  - The Wire's windows are cut where the page cuts them.
+  - Each note gives one dated sentence per move, on its own line, and `data/cases.json` carries `entry_moves`.
+  - **The frames found three defects, all fixed:**
+    - a docket whose count only rose was told rows were merged (Oklahoma);
+    - the figures file's pair types failed tsc once the file held figures;
+    - two Wire tests would have failed the day the figures were committed.
+  - pytest 1,087; vitest 534 with the placeholder and with the checkpoint's figures; tsc clean both ways.
+- **The branch stays local.** Pushing `main` deploys the web, and the cron runs whatever main carries, so the switch reaches production only when the branch is merged on Corey's word.
+- **The figures, read from Turso at the record's clock 2026-10-02T17:57:54Z.** Both moves are dated Oct 2 for the frames, and are re-read and re-dated at the switch.
+
+  | figure | rows | after the merge | after the 7 links |
+  |---|---|---|---|
+  | Wire litigation total | 2,976 | 2,760 | 2,755 |
+  | Wire +24h / +7d | 14 / 598 | 7 / 589 | 7 / 589 |
+  | "already older than 7 days" clause | 2 | 0 | 0 |
+  | map entries, campaign dockets | 5,032 | 4,757 (33 dockets change; 15 counted apart) | 4,754 (3 dockets) |
+  | rejected states | 20 | 20 | 20 |
+  | cases whose figures move | | 47 | 4 |
+  | `latest_entry_at` | | Nevada 72026664, Aug 24 to Aug 20 | |
+
+- **The checkpoint**, from a local production build (`pnpm build`, then `pnpm start` on 3001) reading Turso:
+  - **frames at 1440 and 390, sent to Corey:**
+    - the Wire's litigation cell;
+    - the map with New York (merged, 230 to 125) and Oklahoma (counted apart, 22 to 24);
+    - the rail's Nevada row;
+    - the /case pages of New York, LWV v. DHS (the merge, then the links), and Nevada;
+  - **the DOM lanes against that build:** gates 26/0, encodings 35, layout 77, attribution 38, dated 74;
+  - **no horizontal overflow** on any framed page except /campaign at 390 (402px). Production shows the same 402px from the same element, the "continued elsewhere ›" link, so it predates the switch.
+  - **Nevada's dates read Aug 24 in the frames, beside a note saying Aug 20 after.** `latest_entry_at` is a stored column, rewritten by `scripts/repair_latest_entry.py --apply` at the switch.
+- **For Corey at the checkpoint:**
+  1. The frames.
+  2. **Pair 23 (93145/93225) shows twice on LWV's ledger, Sep 29.** Ruled to stay the duplicate `docs/gates.yaml` records, it is not linked. Listing it under `asserted` would fold it, with its own dated note.
+  3. **The homepage's 7-day feed loses 9 litigation rows (30 to 21), and /campaign's Latest movement swaps one row.** Neither shows a count, so neither carries a note.
+     - Each row that leaves is an entry's second text, or an edit to a tracker note.
+     - A re-described entry now presents by its first-seen item, so an edit no longer reads as a fresh row.
+  4. **15 entries are counted apart at the merge.** Each is a CourtListener entry whose text and day were another entry's row. The notes say "counted apart", never "merged".
+  5. **Docket 73682036 carries two live tracker seeds,** so its subject shows whichever was edited last (the fold review's eighth finding).
+  6. **The /campaign overflow at 390, which predates the switch:** its own unit?
+- **At Corey's word, the switch is, in order:**
+  1. re-read the figures with `python -m tools.merge_notes --on <the day>` and commit them on the branch, before anything moves `latest_entry_at`;
+  2. merge the branch into main and push;
+  3. `python -m scripts.repair_latest_entry --apply`;
+  4. export once by hand and commit it, with a message naming the switch, before the next cron's data commit;
+  5. read the live pages against the recorded figures.
 
 **Owed in this unit:**
 - ~~The walk's last 6 dockets, and its receipts read.~~ **DONE 2026-10-01, above.**
@@ -367,7 +421,7 @@ It stays open for Corey to close.
   - the second batch of 239: priced, held for Corey;
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
-- Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word before the switch reaches production.
+- ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390~~ **BUILT on `r1-switch`; frames at 1440 and 390 SENT 2026-10-02 (above).** Corey's word before the switch reaches production, then its five steps.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
