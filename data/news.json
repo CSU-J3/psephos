@@ -9568,5 +9568,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-mailboxes-overflow-with-voter-registration-warnings-after-state-cut-a-deal-with-trumps-doj",
     "title": "North Carolina mailboxes overflow with voter registration warnings after state cut a deal with Trump’s DOJ"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120027,
+    "kind": "item",
+    "occurred_at": "2026-10-01T22:47:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/01/records-show-dps-knew-of-problems-with-texas-online-voter-registration-as-early-as-march",
+    "title": "Records show DPS knew of problems with Texas’ online  voter registration portal as early as March"
   }
 ]
