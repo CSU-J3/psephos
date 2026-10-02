@@ -9638,5 +9638,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/court-upholds-tennessees-gop-gerrymander-saying-lawmakers-deserve-presumption-of-good-faith",
     "title": "Court upholds Tennessee’s GOP gerrymander, saying lawmakers deserve ‘presumption of good faith’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120696,
+    "kind": "item",
+    "occurred_at": "2026-10-02T19:41:02+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/taken-for-granted",
+    "title": "Taken for Granted"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120695,
+    "kind": "item",
+    "occurred_at": "2026-10-02T19:44:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/hegseth-urges-military-to-vote-as-trump-administration-makes-it-harder-for-them-to-cast-ballots",
+    "title": "Hegseth urges military to vote as Trump administration makes it harder for them to cast ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120694,
+    "kind": "item",
+    "occurred_at": "2026-10-02T20:48:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/usps-pushes-back-measures-that-ensure-mail-ballots-arrive-on-ti",
+    "title": "USPS pushes back measures that ensure mail ballots arrive on time"
   }
 ]
