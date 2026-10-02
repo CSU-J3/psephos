@@ -9578,5 +9578,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/10/01/records-show-dps-knew-of-problems-with-texas-online-voter-registration-as-early-as-march",
     "title": "Records show DPS knew of problems with Texas’ online  voter registration portal as early as March"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120249,
+    "kind": "item",
+    "occurred_at": "2026-10-02T12:10:19+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/wisconsin-sheriff-races-immigration-sauk-winnebago",
+    "title": "In Wisconsin, Two Sheriff Races Test the Future of Local ICE Cooperation"
   }
 ]
