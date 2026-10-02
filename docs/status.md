@@ -2,7 +2,7 @@
 
 Living doc. Belongs at `docs/status.md`, **tracked** (`docs/handoffs/` is ignored via `~/.gitignore_global`, so nothing durable goes there). Update it at the end of a session, not the start.
 
-Last updated: 2026-09-30 (UTC).
+Last updated: 2026-10-02 (UTC).
 
 ---
 
@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT (ids on every row, the id backfill), the walk COMPLETE 2026-10-01; the reader's check FAILED its bar, c HELD for Corey
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02: the first-load test BUILT, the rule's 7 READ and LINKED, the person pairs READ but for a second batch of 239, PRICED and HELD for Corey; tier 1 to the switch NEXT
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -322,27 +322,52 @@ It stays open for Corey to close.
   - n=3 (rows 13595/13771, N.D. Ga.) and n=8 (rows 5419/5457, D.N.H.) are read yes, yes, uncertain. The uncertain comes from the clocks lens: the two objects were created 25.7 hours and 33 days apart, not minutes apart in one load.
   - **None of the 20 was shown to be two entries, and no reader named a better match.**
 - **Recorded as `result: fail`** in `config/entry_links.yaml`, so `--apply` refuses (checked: "no reader's check recorded as a pass"). No tier-2 link is written.
-- **The finding, measured after the read (Turso, read-only):**
-  - **For 63 of the 266 pairs, "same-run" holds only because the docket's bootstrap load first held both rows.** That load fetched the whole docket at once, so for these pairs the run says nothing about how the two objects relate, and the rule rests on text and type alone.
-  - n=3 and n=8 are both among them. So are n=9, n=17 and n=19, which passed.
-  - The other 203 were first held together by a later poll, whose window bounds when the two appeared upstream: the premise the rule was built on.
+- **The finding, measured after the read (Turso, read-only), and CORRECTED 2026-10-02:**
+  - **For 259 of the 266 pairs, "same-run" holds only because the docket's first load held both rows.** That load fetched the whole docket at once, so for these pairs the run says nothing about how the two objects relate, and the rule rests on text and type alone. **All 20 of the sample are among them.**
+  - The other 7 were first held together by a later poll, whose window bounds when the two appeared upstream: the premise the rule was built on.
+  - **This read 63 and 203 on 2026-10-01**, a comparison of `seen_at` strings that undercounts. The entry below has the measurement, and the falsified list has the error.
   - The minutes-apart signature the clocks lens leaned on describes only 60 of the 266 (15 minutes or less). 5 of the 18 passing pairs were 8 to 146 hours apart.
-- **For Corey: is the rule relied on, and for which pairs?**
+- **Put to Corey: is the rule relied on, and for which pairs?** RULED (b) 2026-10-02, then re-ruled the same day on the corrected count (below).
   - (a) Rule the 20 a pass, since none was shown false, and link all 266.
   - (b) **Recommended.** Treat the 63 bootstrap-only pairs as pairs "whose run cannot be told", which `config/entry_links.yaml` already sends to a person. Link the 203 after a fresh 20 drawn from them passes. Give the 63 to three-lens readers and lay their reads out for a ruling. This applies the rule's own text, not a new rule. It needs a classification change in `scripts/link_entry_twins.py` (bootstrap-only pairs become undetermined) and a new draw.
   - (c) Rely on the clocks instead: link only pairs created within some bound of each other. That is a new rule, and the passing far-apart pairs say the gap is not what separates them.
 - **The 23 pairs for a person are laid out in full** in the findings file: 12 cross-run and 11 undetermined, each with both rows' texts and both objects' clocks. Pair 23 is 71499795's Sep 29 text row (93225), which `docs/gates.yaml` already records as a duplicate by the later-row rule.
 
+**Corey's rulings of 2026-10-02, the correction they met, and where (c) stands.** In full, with every read: `docs/findings/r1-first-load-2026-10-02.md`.
+- **Ruled first: option (b)**, on the 63/203 split.
+  - The person pairs go to three-lens readers first. A unanimous pass is a candidate link. A pair any reader shows to be two entries, or matched better, is not linked. Any other goes to Corey with its reads.
+  - Corey reads five candidates drawn at random before any is linked.
+  - Pair 23 stays the duplicate `docs/gates.yaml` records.
+- **Coding that reclassification found the 63 was 259** (above, and the falsified list). It was held and re-ruled the same day:
+  - **1a, BUILT** (`9ef67e2`). `cl_twins.pair_relation` names a same-run pair whose run may be its docket's first load `first-load`, and `plan()` sends it to a person. The dry run reads link 7, person 283, refused 1.
+  - **1b, READ, PASSED and LINKED.** The rule's 7 later-poll pairs were read in full in place of a draw (`--sample all`, recorded `full: true`): 21 of 21 reads yes, none naming a better match.
+    - `--apply` linked 7 of 7 at 21:37:08Z. `record_entries` went 6,366 to 6,359, and folded litigation items 216 to 221.
+    - Nothing reads either until the switch, and the 7 get their own dated note when it ships.
+  - **1c.** The 2026-10-01 20 count as reads of themselves: 18 candidates, and n=3 and n=8 to the split list.
+  - **The first batch of person pairs, READ:** the 23 laid out plus 93146/93298 (Albence, Sep 29), which arrived since. 19 candidates, 4 for Corey (pairs 4, 5, 15 and 22), none not linked. Pair 23 passed all three readers and stays outside the outcome, as ruled.
+  - **So far: 37 candidates and 6 split pairs, of 283.** No reader has shown a pair to be two entries. Nothing is listed under `asserted`, and Corey's five wait for the second batch.
+- **1d and 2: the second batch, PRICED and HELD for Corey.** 239 first-load pairs, 717 reads.
+  - The first batch cost 5,982,479 tokens and 18m03s for 72 reads. At that rate the second is about 59.6 million tokens and three hours.
+  - At the 2026-10-01 run's rate (70,388 tokens a read, likely a lower reasoning effort) it is about 50.5 million tokens and 34 minutes.
+  - About 62,000 to 65,000 tokens of every read is the reader's starting context, so the price is set by how many readers run, not by what they read.
+  - **One cheaper discriminator measured, D1: CourtListener created the two objects within 15 minutes.**
+    - It holds on 14 of the 51 pairs read, all unanimous, none split, and excludes the DSCC pair.
+    - It would settle 49 of the 239, leaving 570 reads (about 47.4 million tokens).
+    - The evidence is thin: 14 for 14 bounds its miss rate at about 19%, and it has met one known negative.
+- **3: tier 1 to the switch.** Next, below.
+
 **Owed in this unit:**
 - ~~The walk's last 6 dockets, and its receipts read.~~ **DONE 2026-10-01, above.**
-- Step (c):
-  - legacy `seen_at`/object clocks bounded by the id order;
+- Step (c), tier 1, ruled 2026-10-02 to ship ahead of tier 2:
+  - legacy object clocks bounded by the id order. Every row has its `seen_at` (0 without, read 2026-10-02), and 1,621 held objects still have no `first_seen_at`.
+- Step (c), tier 2:
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
-  - ~~the reader check of a random 20~~ **READ, FAIL, held for Corey (above);**
-  - ~~the 23 laid out for Corey~~ **LAID OUT in the findings file;**
-  - the DSCC exclusion recorded;
-  - a reversible link script.
-- Then (d) and (e), held for Corey's word.
+  - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
+  - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
+  - the second batch of 239: priced, held for Corey;
+  - ~~the DSCC exclusion recorded;~~ **in `refused`;**
+  - ~~a reversible link script.~~ **`--unlink`.**
+- Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word before the switch reaches production.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
@@ -4129,6 +4154,11 @@ The companion to the list below, and the difference is the whole point: a falsif
 
 Spans sessions, not just the current one. Kept because the pattern matters more than the individual errors: every one was a confident claim about read cost or repo state, and every one died to a single command or a single chart. Every entry is a claim made in review or in a handoff, with **one exception — the collected label, below**, which was a claim the *shipped page* made to its readers. It is filed here rather than only in a section because that is what it was: a confident statement of fact, held for sixteen days, that died to a single comparison. **The "one exception" has been more than one for some time, and saying so is cheaper than maintaining the count.** Besides the collected label there are now two entries that falsify nothing: the **CRLF near-miss**, filed because a watch condition got its first live test and held, and the **2026-09-09 positive entry**, filed because a transcription error could not propagate and the reason it could not is reusable. Both announce themselves in their own first words. The rule still describes the overwhelming majority — an entry here is normally something someone asserted, not something the code did — but it is a description now rather than an invariant, and the exceptions are the ones worth reading twice. **Attribution follows the author, not the messenger, ruled 2026-09-10.** A claim written by the review layer is filed as the review layer's even when it reached this page through Corey relaying it, the form the pin-brief and two-outcome entries already use; a claim with two authors names both. Re-attribution is a correction like any other and is marked in place rather than done silently — two entries carry that mark, the cron count and the `docs/gates.yaml` reading.
 
+- **"For 63 of the 266 pairs, 'same-run' holds only because the docket's bootstrap load first held both rows", and "the other 203 were first held together by a later poll".** Mine, 2026-10-01, in `docs/findings/r1-reader-check-2026-10-01.md`, `config/entry_links.yaml` and this page's R1 entry. It was put to Corey as option (b), which he ruled on 2026-10-02 on those figures.
+  - **It is 259 and 7.** By the rule's own run clock, 259 of the 266 were first held by their docket's first load. Id blocks read the same 259. All 20 of the 2026-10-01 sample are among them, and none of the 7.
+  - **The measure compared `seen_at` strings.** A pre-R1 row with an A1 item carries its item's own `fetched_at`, seconds apart from its neighbours inside one run; one without carries its run's start. So the strings matched only for two item-less rows pinned to the first run: 63 pairs.
+  - **Found by the step it was to drive.** Coding the reclassification against the run clock rather than the stamps, the two disagreed on 196 pairs, and the id blocks settled which was right.
+  - **Instrument: classify by the run, never by a stamp's string.** A stamp bounds a run; it does not name one. Same family as the session-open entry below, where a clock reading stood in for the event it bounded.
 - **"The registration provisions of EO 14248 are enjoined by three courts, permanently in D. Mass. since Jun 24, 2026."** The shipped page, tab 1 of *Where this stands*, gate `eo-14248-enjoined` (B2, from the Brennan Center tracker). It ran from its first render after `cb09416` (committed 2026-09-13T20:00:27Z) to the push that carries this entry. Filed as the collected label is: a claim the page made to its readers. **It was wrong in both directions.**
   - **Too broad:** the courts also enjoin sections 4(b) (voting-system standards) and 7(a)-(b) (the Election Day ballot-receipt deadline), which are not registration provisions.
   - **Too narrow:** sections 2(b) and 3(a), which are registration provisions, are enjoined by no court. D.D.C. entered only a Privacy Act declaration for them and held the request against the SAVE and Numident changes moot.

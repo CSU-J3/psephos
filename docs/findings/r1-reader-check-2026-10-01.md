@@ -2,6 +2,11 @@
 
 **Status: FAIL on the bar set before the read, held for Corey.** `config/entry_links.yaml` records it, so `link_entry_twins --apply` refuses and no tier-2 link has been written.
 
+**Corrected 2026-10-02: the 63 below is wrong.** It came from comparing `seen_at` strings, which undercounts.
+- By the rule's own run clock, 259 of the 266 were first held by their docket's first load, and 7 by a later poll.
+- All 20 of this sample are among the 259. The "same-run only at bootstrap" column below is the string test's.
+- See `docs/findings/r1-first-load-2026-10-02.md`.
+
 ## What was read
 
 - **The pool:** the rule's 266 linkable pairs, after the id walk completed on 2026-10-01. That is 10 more than the D0's 256, all among rows the D0 held: the rule classifies D0-era rows differently once every row carries its object.

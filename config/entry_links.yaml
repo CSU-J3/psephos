@@ -5,36 +5,61 @@
 # object (`cl_entries.twin_of`, `twin_rule`, `twin_at`), naming what made it, and
 # reversible (`python -m scripts.link_entry_twins --unlink <cl_entry_id>`).
 #
-# `rule` makes the links for pairs held in the same collector run (collectors/cl_twins.py,
-# the D0's strict-B: 256 same-run pairs at the D0). Pairs held in different runs, or whose
-# run cannot be told, go to a person and are linked only when listed under `asserted`.
+# `rule` makes the links for pairs a LATER POLL held in one collector run
+# (collectors/cl_twins.py, the D0's strict-B). Pairs held in different runs, pairs whose
+# run cannot be told, and pairs the docket's first load may have held (Corey, 2026-10-02:
+# that load fetched the whole docket at once, so its run tells nothing) go to a person and
+# are linked only when listed under `asserted`.
 #
 # Rows are named by case_entries id: rows and ids are kept (R1), so a row id names the
 # same text for good, where a CourtListener id is known only after the id backfill.
 rule: same-run strict-B v1
 
-# The reader's check of a random 20 of the rule's pairs, recorded before the rule is
-# relied on. link_entry_twins --apply refuses unless `result` is pass.
+# The reader's check of the rule's pairs, recorded before the rule is relied on.
+# link_entry_twins --apply refuses unless `result` is pass and the check still describes
+# the rule's pool: a full read names every pair in it, a sample is what its seed redraws.
 #
-# 2026-10-01: FAIL on the bar set before the read, and held for Corey. 18 of the 20 were
-# read as one minute entry by all three readers. n=3 (rows 13595/13771) and n=8 (rows
-# 5419/5457) were read yes by the identity and alternative-match lenses and uncertain by
-# the clocks lens. None of the 20 was shown to be two entries, and no reader named a better
-# match. docs/findings/r1-reader-check-2026-10-01.md has the reads, and the measurement
-# that followed: for 63 of the 266 pairs the rule's same-run condition holds only because
-# the docket's bootstrap load first held both rows, so for those it tells nothing.
+# 2026-10-02: a FULL READ of the rule's 7 pairs, PASS (Corey's rulings of 2026-10-02, 1a
+# and 1b). The first-load test leaves the rule the 7 pairs a later poll held, too few to
+# draw 20 from, so all 7 were read by three independent readers each, one lens per reader,
+# the 2026-10-01 lens prompts word for word. All 21 reads were yes and none named a better
+# match. docs/findings/r1-first-load-2026-10-02.md has the reads.
 checked:
-  seed: 20260930
-  pool: 266
-  pairs: [[91808, 92003], [91481, 91750], [13595, 13771], [15563, 15564], [92121, 92193],
-          [91564, 91734], [272, 294], [5419, 5457], [13982, 14001], [91909, 91995],
-          [91607, 91731], [280, 288], [5400, 5461], [92085, 92208], [6809, 6842],
-          [7817, 7847], [85278, 85325], [6767, 6834], [85413, 85415], [17878, 17942]]
+  full: true
+  seed: null
+  pool: 7
+  pairs: [[5677, 5689], [12886, 12894], [17161, 17167], [57249, 57258], [67589, 67651],
+          [77471, 77602], [87130, 87131]]
   walks_through: "2026-10-01T06:13:55.897859+00:00"
-  result: fail
-  bar: "pass = all three readers read one minute entry and none names a better match (set before the read)"
-  read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_51856ac1-7b7)"
-  on: "2026-10-01"
+  result: pass
+  bar: "pass = all three readers read one minute entry and none names a better match (set before the 2026-10-01 read)"
+  read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_6461b558-288)"
+  on: "2026-10-02"
+
+# Earlier checks, kept as the record. The script reads only `checked`.
+#
+# 2026-10-01: FAIL on the bar set before the read. 18 of the 20 were read as one minute
+# entry by all three readers. n=3 (rows 13595/13771) and n=8 (rows 5419/5457) were read
+# yes by the identity and alternative-match lenses and uncertain by the clocks lens. None
+# of the 20 was shown to be two entries, and no reader named a better match.
+# docs/findings/r1-reader-check-2026-10-01.md has the reads. The measurement that followed
+# said 63 of the 266 pairs were same-run only because the docket's first load held both
+# rows; it compared seen_at strings and undercounts. By the run clock it is 259, all 20 of
+# this sample among them (docs/findings/r1-first-load-2026-10-02.md). Corey ruled on
+# 2026-10-02 that these 20 count as reads of themselves under the same bar: the 18 are
+# candidates for a person's link, and n=3 and n=8 go to his split list.
+checks_before:
+  - seed: 20260930
+    pool: 266
+    pairs: [[91808, 92003], [91481, 91750], [13595, 13771], [15563, 15564], [92121, 92193],
+            [91564, 91734], [272, 294], [5419, 5457], [13982, 14001], [91909, 91995],
+            [91607, 91731], [280, 288], [5400, 5461], [92085, 92208], [6809, 6842],
+            [7817, 7847], [85278, 85325], [6767, 6834], [85413, 85415], [17878, 17942]]
+    walks_through: "2026-10-01T06:13:55.897859+00:00"
+    result: fail
+    bar: "pass = all three readers read one minute entry and none names a better match (set before the read)"
+    read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_51856ac1-7b7)"
+    on: "2026-10-01"
 
 # Pairs never linked, whatever the rule says.
 refused:
