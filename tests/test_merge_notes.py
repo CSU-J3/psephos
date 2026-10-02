@@ -1,5 +1,7 @@
-"""tools/merge_notes.py: every public figure the R1 switch moves, rows against entries,
-read from one state of the record (Corey's rulings 5 and d, 2026-09-30)."""
+"""tools/merge_notes.py: every public figure the R1 switch moves, read from one state of the
+record (Corey's rulings 5 and d, 2026-09-30) as dated moves: the merge of duplicate rows
+(rows -> tier 1), then any tier-2 links (tier 1 -> objects), each with its own note (Corey,
+2026-10-02)."""
 from __future__ import annotations
 
 import os
@@ -48,12 +50,18 @@ def test_the_figures_pair_rows_with_entries(tmp_path, monkeypatch):
     conn.commit()
     f = M.figures(conn, on="2026-10-02")
     assert f["on"] == "2026-10-02" and f["clock"] == "2026-08-26T00:00:00+00:00"
-    w = f["wire"]["litigation"]
-    # The first poll sits exactly on the +24h edge (the anchor less a day), which counts.
-    assert (w["total"], w["day"], w["week"], w["tracker_notes"]) == ([2, 1], [2, 1], [2, 1], 0)
-    assert f["map"] == {"entries": [2, 1], "dockets_changed": 1, "apart": 0}
-    assert f["cases"]["72026664"] == {"entries": [2, 1], "ledger": [2, 1], "timeline": [2, 1],
-                                     "latest_entry_at": ["2026-08-24T00:00:00", "2026-08-20T00:00:00"]}
+    assert [m["kind"] for m in f["moves"]] == ["merge"] and f["unfolded"] == []   # no link
+    m = f["moves"][0]
+    w = m["wire"]["litigation"]
+    # The first poll sits exactly on the +24h edge. The page compares the stamp as a string
+    # with the edge as lib/activity.windowStarts writes it, in milliseconds
+    # ("2026-08-25T00:00:00.000+00:00"), and a stamp with no fraction sorts before it: so on
+    # the page it is outside the 24 hours, and so here. The entry presents by that first
+    # poll, its earliest fetch, so the merge takes the 24-hour count from 1 to 0.
+    assert (w["total"], w["day"], w["week"], w["tracker_notes"]) == ([2, 1], [1, 0], [2, 1], 0)
+    assert m["map"] == {"entries": [2, 1], "dockets_changed": 1, "apart": 0}
+    assert m["cases"]["72026664"] == {"entries": [2, 1], "ledger": [2, 1], "timeline": [2, 1],
+                                      "latest_entry_at": ["2026-08-24T00:00:00", "2026-08-20T00:00:00"]}
 
 
 def test_tracker_note_repeats_are_counted_as_their_own_share(tmp_path, monkeypatch):
@@ -65,9 +73,9 @@ def test_tracker_note_repeats_are_counted_as_their_own_share(tmp_path, monkeypat
     lit.write_b2_item(conn, "72026664", {**seed, "notes": "second"}, None, None)
     conn.commit()
     cl_fold.refold_quietly(conn, "72026664")
-    f = M.figures(conn)
-    assert f["map"]["dockets_changed"] == 0 and f["wire"]["litigation"]["total"] == [2, 1]
-    assert f["wire"]["litigation"]["tracker_notes"] == 1
+    m = M.figures(conn)["moves"][0]
+    assert m["map"]["dockets_changed"] == 0 and m["wire"]["litigation"]["total"] == [2, 1]
+    assert m["wire"]["litigation"]["tracker_notes"] == 1
 
 
 def test_an_entry_held_apart_is_recorded_as_a_rise_not_hidden(tmp_path, monkeypatch):
@@ -75,9 +83,9 @@ def test_an_entry_held_apart_is_recorded_as_a_rise_not_hidden(tmp_path, monkeypa
     _poll(conn, monkeypatch, "2026-08-25T00:00:00+00:00",
           [{"id": 1, "date_filed": "2026-08-24", "description": "CORRECTING ENTRY", "recap_documents": []},
            {"id": 2, "date_filed": "2026-08-24", "description": "CORRECTING ENTRY", "recap_documents": []}])
-    f = M.figures(conn)
-    assert f["cases"]["72026664"]["entries"] == [1, 2] and f["cases"]["72026664"]["apart"] == 1
-    assert f["map"]["apart"] == 1
+    m = M.figures(conn)["moves"][0]
+    assert m["cases"]["72026664"]["entries"] == [1, 2] and m["cases"]["72026664"]["apart"] == 1
+    assert m["map"]["apart"] == 1
 
 
 def test_the_older_than_7_days_clause_is_recorded_both_ways(tmp_path, monkeypatch):
@@ -88,7 +96,7 @@ def test_the_older_than_7_days_clause_is_recorded_both_ways(tmp_path, monkeypatc
           [{"id": 5, "date_filed": "2026-06-01", "description": "ORDER old", "recap_documents": []}])
     _poll(conn, monkeypatch, "2026-09-30T00:00:00+00:00",
           [{"id": 5, "date_filed": "2026-06-01", "description": "ORDER old, re-described", "recap_documents": []}])
-    assert M.figures(conn)["wire"]["litigation"]["history"] == [1, 0]
+    assert M.figures(conn)["moves"][0]["wire"]["litigation"]["history"] == [1, 0]
 
 
 def test_a_clerks_strike_moves_the_rejected_outcome_and_it_is_recorded(tmp_path, monkeypatch):
@@ -98,8 +106,7 @@ def test_a_clerks_strike_moves_the_rejected_outcome_and_it_is_recorded(tmp_path,
           [{**e, "description": "ORDER granting Motions to Dismiss. This case is dismissed."}])
     _poll(conn, monkeypatch, "2026-08-22T00:00:00+00:00",
           [{**e, "description": "***FILED IN ERROR*** Document removed from the docket."}])
-    f = M.figures(conn)
-    assert f["rejected"] == {"count": [1, 0], "states": {"Nevada": ["2026-08-20", None]}}
+    assert M.figures(conn)["moves"][0]["rejected"] == {"count": [1, 0], "states": {"Nevada": ["2026-08-20", None]}}
 
 
 def test_the_ported_outcome_patterns_are_the_webs_own():
@@ -123,3 +130,37 @@ def test_the_snapshot_is_refused_while_the_walk_or_the_rule_links_are_unfinished
                  "VALUES ('72026664', '2026-08-20T00:00:00', 'legacy row, never walked')")
     conn.commit()
     assert any("not yet walked" in w for w in M.incomplete(conn))
+
+
+def test_a_tier2_link_is_its_own_dated_move_after_the_merge(tmp_path, monkeypatch):
+    """Two CourtListener objects for one minute entry, linked: tier 1 counts them apart, so
+    the merge move does not touch them, and the link move takes them from two to one."""
+    conn = _db(tmp_path)
+    _poll(conn, monkeypatch, "2026-09-25T12:00:00.500000+00:00",
+          [{"id": 1, "date_filed": "2026-09-25", "description": "Order on Motion to Stay", "recap_documents": []},
+           {"id": 2, "date_filed": "2026-09-25", "recap_documents": [],
+            "description": "MINUTE ORDER granting the 40 Motion to Stay pending appeal. Signed by Judge X."}])
+    conn.execute("UPDATE cl_entries SET twin_of = 2, twin_rule = 'r' WHERE cl_entry_id = 1")
+    conn.commit()
+    cl_fold.refold_quietly(conn, "72026664")
+    f = M.figures(conn, on="2026-10-03")
+    assert f["unfolded"] == [] and [m["kind"] for m in f["moves"]] == ["merge", "link"]
+    merge, link = f["moves"]
+    assert merge["cases"] == {} and merge["map"]["dockets_changed"] == 0
+    assert merge["wire"]["litigation"]["total"] == [2, 2]
+    assert (link["on"], link["links"], link["why"]) == ("2026-10-03", 1, M.WHY_LINK)
+    assert link["wire"]["litigation"]["total"] == [2, 1]
+    assert link["map"] == {"entries": [2, 1], "dockets_changed": 1}
+    assert link["cases"]["72026664"] == {"entries": [2, 1], "ledger": [2, 1], "timeline": [2, 1]}
+
+
+def test_a_case_the_fold_has_not_reached_refuses_the_snapshot(tmp_path, monkeypatch):
+    """Its record_items still lists every row's item, so a note written now would state an
+    'after' the page does not show."""
+    conn = _db(tmp_path)
+    e = {"id": 9, "date_filed": "2026-08-24", "recap_documents": []}
+    monkeypatch.setattr(common, "now_iso", lambda: "2026-08-25T00:00:00.5+00:00")
+    lit.write_entries(conn, "72026664", "c", None, [{**e, "description": "ORDER one"}], ["order"], [])
+    lit.write_entries(conn, "72026664", "c", None, [{**e, "description": "ORDER one, re-described"}], ["order"], [])
+    conn.commit()                                       # written, and never refolded
+    assert M.figures(conn)["unfolded"] == ["72026664"]

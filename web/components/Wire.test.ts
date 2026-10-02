@@ -243,14 +243,19 @@ describe("Wire — the history clause", () => {
     expect(render(walked)).toContain("174 of them already older than 7 days");
   });
 
+  // The clause's own words, "of them already older than": the litigation cell can also carry
+  // the R1 switch's dated note (lib/merge-notes.ts), which reports this clause's before and
+  // after as "already older than 7 days when collected N before, M after" -- read from the
+  // committed figures file, so a bare "already older than" would count the note the day
+  // the figures are written.
   it("draws the clause only on the channel that walked", () => {
     const html = render(walked);
-    expect([...html.matchAll(/already older than/g)]).toHaveLength(1);
+    expect([...html.matchAll(/of them already older than/g)]).toHaveLength(1);
   });
 
   it("stays silent when nothing was backdated", () => {
     // Zero is information for the delta and noise here: a "0 already older" clause on
     // every quiet cell, five cells wide, says nothing a reader can use.
-    expect(render(full)).not.toContain("already older than");
+    expect(render(full)).not.toContain("of them already older than");
   });
 });

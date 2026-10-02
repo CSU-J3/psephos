@@ -419,7 +419,7 @@ export function RecordsMap({
                     {d.entriesNote && (
                       <>
                         {" "}
-                        <MergeNote text={`(${d.entriesNote})`} />
+                        <MergeNote text={`(${d.entriesNote})`} inline />
                       </>
                     )}
                     {d.supersededBy && <> · continued as {d.supersededBy}</>}

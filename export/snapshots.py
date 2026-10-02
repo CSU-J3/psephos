@@ -326,13 +326,16 @@ def _merge_figures() -> dict:
 
 
 def _merged(case_id: str) -> dict:
-    """{"merged": {on, why, and the case's before/after pairs}} for a case the R1 switch
-    moved, else {}. Absent before the switch (the figures file carries no date)."""
+    """{"entry_moves": [{on, kind, why, and the case's before/after pairs}, ...]} for a case
+    the R1 switch moved, one per move that moved it -- the merge of duplicate rows, then
+    any tier-2 links, each dated (Corey, 2026-10-02) -- else {}. Absent before the switch
+    (the figures file carries no date)."""
     m = _merge_figures()
-    moved = (m.get("cases") or {}).get(case_id) if m.get("on") else None
-    if not moved:
+    if not m.get("on"):
         return {}
-    return {"merged": {"on": m["on"], "why": m["why"], **moved}}
+    moves = [{"on": mv["on"], "kind": mv["kind"], "why": mv["why"], **mv["cases"][case_id]}
+             for mv in m.get("moves") or [] if case_id in (mv.get("cases") or {})]
+    return {"entry_moves": moves} if moves else {}
 
 
 def build_executive(conn) -> list[dict]:

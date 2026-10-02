@@ -688,14 +688,19 @@ def test_a_re_described_entry_counts_once_and_times_once_and_says_why(tmp_path, 
     cl_fold.refold_case(conn, "71499795")
     conn.commit()
     figures = tmp_path / "entry-merge.json"
-    figures.write_text(json.dumps({"on": None, "why": "w", "cases": {}}), encoding="utf-8")
+    figures.write_text(json.dumps({"on": None, "moves": []}), encoding="utf-8")
     monkeypatch.setattr(snapshots, "MERGE_FIGURES", str(figures))
     c = snapshots.build_cases(conn)[0]
     assert conn.execute("SELECT COUNT(*) FROM case_entries").fetchone()[0] == 2
     assert c["entry_count"] == 1
     assert [t["title"] for t in c["timeline"]] == ["c: NOTICE OF APPEAL TO DC CIRCUIT COURT"]
-    assert "merged" not in c                       # no date yet: before the switch
-    figures.write_text(json.dumps({"on": "2026-10-02", "why": "w", "cases": {
-        "71499795": {"entries": [2, 1], "timeline": [2, 1]}}}), encoding="utf-8")
+    assert "entry_moves" not in c                  # no date yet: before the switch
+    figures.write_text(json.dumps({"on": "2026-10-02", "moves": [
+        {"on": "2026-10-02", "kind": "merge", "why": "w",
+         "cases": {"71499795": {"entries": [2, 1], "timeline": [2, 1]}}},
+        {"on": "2026-10-02", "kind": "link", "why": "l", "cases": {"other": {"entries": [3, 2]}}}]}),
+        encoding="utf-8")
     c = snapshots.build_cases(conn)[0]
-    assert c["merged"] == {"on": "2026-10-02", "why": "w", "entries": [2, 1], "timeline": [2, 1]}
+    # One record per move that moved THIS case: the link move named another docket only.
+    assert c["entry_moves"] == [{"on": "2026-10-02", "kind": "merge", "why": "w",
+                                 "entries": [2, 1], "timeline": [2, 1]}]
