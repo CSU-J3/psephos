@@ -22,6 +22,17 @@ what the rule links; the rest go to a person. So do same-run pairs the docket's 
 held (pair_relation, Corey 2026-10-02): that load fetched the whole docket at once, so the
 run says nothing about them.
 
+A KNOWN DEFECT, recorded beside the rule and not a change to it (Corey, 2026-10-03). "A
+longer one" is decided by length alone: the rule reads rows, which carry no desc_source. So a
+RECAP document's description over 60 characters (an order's description joined with "AND",
+say) is taken for a long form, and the rule pairs two RECAP descriptions while the docket
+text, the long form such a short one belongs to, goes unpaired. The blind batch of 2026-10-03
+held five such pairs among its 276, and all five failed the readers: 2 not linked, 3 split
+(docs/findings/r1-blind-batch-2026-10-03.md). In each, the rule's own tests had already turned
+the docket text away. In three (D.N.H.) it opens "ENDORSED ORDER", which recheck_flags.HEAD
+does not take for an order head. In two it paraphrases the motion, so words of the short form
+are missing from it.
+
 It reads recheck_flags' pinned helpers rather than copying them: the flag test is frozen
 until the measurement period ends (2026-11-12), and one definition is what keeps this rule
 and the D0's figures the same rule.
