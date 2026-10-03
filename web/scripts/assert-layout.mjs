@@ -295,6 +295,19 @@ if (fonts.portals > 0) {
   check("exactly two computed font stacks", fonts.stacks.length, 2);
 }
 
+/* --- /campaign at 390 does not scroll sideways (queued by Corey 2026-10-02) -- */
+//
+// EVERY OVERFLOW CHECK ABOVE READS THE HOMEPAGE, and /campaign's Latest movement rows
+// outran a 390px viewport by 12px: the date and state columns' minimums, the grade and
+// the unshrinkable section link. Production and a local build both showed it, and no lane
+// looked. One page at the one width that failed. LAST, because it navigates away from the
+// page every check above reads. `URL` here is this script's address, so the constructor
+// is reached through globalThis.
+console.log("\n/campaign at 390");
+await page.setViewportSize({ width: 390, height: 900 });
+await page.goto(new globalThis.URL("/campaign", URL).href, { waitUntil: "networkidle" });
+check("390px /campaign no horizontal overflow", await overflows(), false);
+
 await browser.close();
 console.log(`\n${failures === 0 ? "OK" : failures + " FAILED"}`);
 process.exit(failures === 0 ? 0 : 1);

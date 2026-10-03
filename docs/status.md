@@ -428,7 +428,11 @@ It stays open for Corey to close.
 - **An edited tracker note shows "updated" on its existing row, from `updated_at`** (ruled 2026-10-02). Since the switch, an edit folds into the case's one subject, which keeps its first-seen time, so it no longer surfaces as a fresh row.
 - **A later tier-2 link batch must APPEND its own move to `web/lib/entry-merge.json`, recorded when it links.** `tools/merge_notes.py` re-reads every move from scratch, so re-running it would rewrite the switch's recorded figures. The person list's candidates are the first such batch.
 - **Docket 73682036's subject:** Corey's pick (above).
-- **The /campaign overflow at 390:** queued, its own unit.
+- ~~**The /campaign overflow at 390:** queued, its own unit.~~ **FIXED 2026-10-03.**
+  - Below `sm`, a Latest movement row wraps and its section link takes its own right-aligned line. Before the fix, the date and state columns' minimums, the grade and the unshrinkable link outran a 390px column by 12px.
+  - `web/scripts/assert-layout.mjs` now checks /campaign at 390 for sideways scroll; every overflow check before it read only the homepage.
+  - Positive control: the new check FAILS against production before the fix (overflow true), its only failure.
+  - Against a local build with the fix every lane passes: gates 26, encodings 35, layout 78 (77 before, plus this), attribution 38, dated 74. Frames at 390 and 1440 show the link on its own line at 390, and the rows unchanged at 1440.
 
 **Owed in this unit:**
 - ~~The walk's last 6 dockets, and its receipts read.~~ **DONE 2026-10-01, above.**

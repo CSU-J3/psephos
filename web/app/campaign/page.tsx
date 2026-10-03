@@ -135,9 +135,14 @@ export default async function CampaignPage({
     const code = codeOf.get(m.state);
     const key = code ? homes.get(code) : undefined;
     return (
+      // BELOW sm THE ROW WRAPS, and the section link takes its own line. At 390 the date
+      // and state columns' minimums, the grade and the unshrinkable link outran the column
+      // by 12px (measured 2026-10-02, production and local alike), and the page scrolled
+      // sideways. The rail marker set the precedent: beside the row from 640px, its own
+      // line below.
       <li
         key={m.id}
-        className="flex items-baseline gap-2.5 border-b border-[#161616] px-1 py-1.5"
+        className="flex flex-wrap items-baseline gap-x-2.5 border-b border-[#161616] px-1 py-1.5 sm:flex-nowrap"
       >
         <span className={`${DATE_COLUMN} min-w-[6.2rem]`}>
           <RecordDate
@@ -154,7 +159,7 @@ export default async function CampaignPage({
         {key && code && (
           <Link
             href={href(key, code)}
-            className="shrink-0 text-[0.68rem] whitespace-nowrap text-neutral-600 hover:text-neutral-300"
+            className="shrink-0 text-[0.68rem] whitespace-nowrap text-neutral-600 hover:text-neutral-300 max-sm:basis-full max-sm:text-right"
           >
             {SECTION_TITLE[key].toLowerCase()} ›
           </Link>
