@@ -9668,5 +9668,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/usps-pushes-back-measures-that-ensure-mail-ballots-arrive-on-ti",
     "title": "USPS pushes back measures that ensure mail ballots arrive on time"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120916,
+    "kind": "item",
+    "occurred_at": "2026-10-02T22:28:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-bid-to-scrap-kansas-mail-ballot-grace-period-fails-again",
+    "title": "GOP bid to scrap Kansas mail ballot grace period fails again"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 120915,
+    "kind": "item",
+    "occurred_at": "2026-10-03T00:53:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/tarrant-county-voters-sue-to-block-gop-polling-site-cuts-targeting-minority-voters",
+    "title": "Tarrant County voters sue to block GOP polling site cuts targeting minority communities"
   }
 ]
