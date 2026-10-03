@@ -238,7 +238,7 @@ It stays open for Corey to close.
   - the reader's check is drawn only after every relevant docket is walked, from a pool its seed redraws after `--apply`, and `--apply` needs an explicit pass;
   - the remote guards on `--unlink --apply`, `--sample` and `--person`.
 - A mutation check killed all its mutants once two tests were added.
-- **The eighth finding is recorded, not changed.** A B2 subject shows its newest inserted notes: the rule the notes panel (`getTrackerNotes`, MAX(id)) already uses. So notes that revert to an earlier text keep showing the newer text, and **docket 73682036 carries two live seeds** (the config 26-2060 seed and the tracker's New York row), so its subject shows whichever was edited last. **Which one it should present is a question for Corey at the checkpoint.**
+- **The eighth finding is recorded, not changed.** A B2 subject shows its newest inserted notes: the rule the notes panel (`getTrackerNotes`, MAX(id)) already uses. So notes that revert to an earlier text keep showing the newer text, and **docket 73682036 carries two live seeds** (the config 26-2060 seed and the tracker's New York row), so its subject shows whichever was edited last. **Which one it should present is a question for Corey at the checkpoint.** **Ruled 2026-10-03: the config seed is retired and the tracker presents** (the R1 entry, "Docket 73682036").
 
 **When each earlier text was seen (the ledger will show it):** `scripts/backfill_seen_at.py`, dry-run by default, plus a new `case_entries.seen_by` column.
 - A pre-R1 row whose text has an item takes the item's fetched_at: exact.
@@ -412,7 +412,7 @@ It stays open for Corey to close.
      - on the map, New York's district docket 125 entries ("230 before, 125 after"), Oklahoma 24 ("counted apart; 22 before, 24 after"), New Hampshire's district docket 184 ("1 pair ... was linked; 185 before, 184 after"), and the panel note;
      - the rail's Nevada row "→ Aug 20, 2026" with its note;
      - /case New York 48 entries, LWV v. DHS 134 (the merge 145 to 139, then "5 pairs ... were linked", 139 to 134), and Nevada 67, "Updated Aug 20, 2026".
-- **Docket 73682036, its two live tracker seeds, for Corey's pick.** Both write a B2 subject to this one docket, the Second Circuit appeal 26-2060 of the N.D.N.Y. dismissal.
+- **Docket 73682036, its two live tracker seeds: RULED 2026-10-03, the config seed RETIRED** (below). Both wrote a B2 subject to this one docket, the Second Circuit appeal 26-2060 of the N.D.N.Y. dismissal.
   - **The config seed** (`config/sources.yaml`, seed_cases): "United States of America v. Board Of Elections of the State of New York".
     - Notes: "Second Circuit appeal of the N.D.N.Y. dismissal in 1:25-cv-01338 (case_id 71457474, terminated). Noticed 2026-07-23 ... Seeded here 2026-08-14 because the UW tracker still lists the district docket; remove when it rewrites the New York row."
     - Item 77850, first held 2026-08-15T00:32Z.
@@ -423,11 +423,18 @@ It stays open for Corey to close.
     - The subject presents by its first copy (77850) and shows its latest notes. Since 09-08 those have been the tracker's, and they will stay the tracker's while only its notes change.
     - Connecticut's twin seed (26-2064) is not in this state: UW still lists the D. Conn. district docket, so that seed's condition is unmet.
   - **For Corey: the rule.** The config seed's own text supplies one: remove it now that UW carries the appeal, and the tracker presents. The alternative: a hand seed outranks the tracker on a docket both name. Either way the other is recorded as a second source.
+  - **Ruled (Corey, 2026-10-03): the seed's own condition governs.** The config seed is retired, the tracker presents, and the seed's text is kept as a second source. `config/sources.yaml` moves it from `seed_cases` to `retired_seeds`, a list nothing reads, with its condition, the date the condition was met, and this ruling.
+    - **The condition was met on 2026-09-08 and missed until 2026-10-02.** The tracker's New York row has named 26-2060 since the data commit `ed4bfd2` (21:21Z). Nothing reads a seed's written removal condition, so no one saw it until the two seeds were laid out for Corey's pick.
+    - **What it changes:** the next collect run reads 15 config seeds, not 16, and polls 73682036 once. The 2026-10-02 22:10Z run polled it twice, by the config seed at 22:12:46Z and by the tracker's row at 22:15:10Z.
+    - **What it does not change: the page.** The subject already shows the tracker's title and notes, from its latest copy (item 98732, held 2026-09-08). That copy is folded onto the config seed's first copy (77850, held 2026-08-15), which keeps the subject's first-seen time and its date, Jul 28, the day the Second Circuit docketed the appeal. The retired seed writes nothing, so no edit to its text can put it back in front.
 
 **What the switch leaves owed:**
 - **An edited tracker note shows "updated" on its existing row, from `updated_at`** (ruled 2026-10-02). Since the switch, an edit folds into the case's one subject, which keeps its first-seen time, so it no longer surfaces as a fresh row.
 - **A later tier-2 link batch must APPEND its own move to `web/lib/entry-merge.json`, recorded when it links.** `tools/merge_notes.py` re-reads every move from scratch, so re-running it would rewrite the switch's recorded figures. The person list's candidates are the first such batch.
-- **Docket 73682036's subject:** Corey's pick (above).
+- ~~**Docket 73682036's subject:** Corey's pick (above).~~ **RULED 2026-10-03: the config seed retired** (above).
+- **A coverage_audit report line listing every hand seed whose written removal condition is met, wherever a machine can check the condition** (Corey, 2026-10-03). New York's condition was met for 24 days before anyone read it.
+  - Today one live seed carries such a condition: Connecticut's 26-2064, "remove when it rewrites the Connecticut row". The tracker's Connecticut row still names the district docket, 3:26-cv-00021, so it is unmet.
+  - The conditions are prose in each seed's notes. A machine can check one only once it is stated as a field.
 - ~~**The /campaign overflow at 390:** queued, its own unit.~~ **FIXED 2026-10-03.**
   - Below `sm`, a Latest movement row wraps and its section link takes its own right-aligned line. Before the fix, the date and state columns' minimums, the grade and the unshrinkable link outran a 390px column by 12px.
   - `web/scripts/assert-layout.mjs` now checks /campaign at 390 for sideways scroll; every overflow check before it read only the homepage.

@@ -354,7 +354,10 @@ litigation:
     # one: VA and NM carry the identical "DOJ filed a notice that it will appeal"
     # sentence AFTER their rewrite, so it is a narrative log, not a state machine.
     # That is why the justification here rests on the skipped-contemporaries
-    # comparison instead. Remove these two entries once UW rewrites the rows.
+    # comparison instead. Remove each entry once UW rewrites its row. New York's row
+    # was rewritten to 26-2060 by 2026-09-08, and its seed was retired on 2026-10-03
+    # (`retired_seeds`, after this list). Connecticut's row still names the district
+    # docket, so its seed stays.
     - caption: United States of America v. Thomas
       docket_number: 26-2064
       court: Second Circuit         # UW's spelling, verbatim -- see the join-key note above
@@ -366,17 +369,6 @@ litigation:
         72110170, terminated). Noticed 2026-07-23, docketed 2026-07-28. Seeded here
         2026-08-14 because the UW tracker still lists the district docket; remove when
         it rewrites the Connecticut row.
-    - caption: United States of America v. Board Of Elections of the State of New York
-      docket_number: 26-2060
-      court: Second Circuit
-      court_id: ca2
-      category: voter-data
-      state: New York
-      notes: >-
-        Second Circuit appeal of the N.D.N.Y. dismissal in 1:25-cv-01338 (case_id
-        71457474, terminated). Noticed 2026-07-23, transmitted to the court of appeals
-        07-27, docketed 2026-07-28. Seeded here 2026-08-14 because the UW tracker still
-        lists the district docket; remove when it rewrites the New York row.
 
     # --- district ORIGINALS behind circuit rows we hold (the FIRST role) ------
     # THE OPPOSITE DIRECTION FROM THE TWO ABOVE, and the difference decides whether
@@ -617,6 +609,32 @@ litigation:
           entry_at: "2026-04-14"
           quote: "The following cases have been consolidated with this case: 26cv1132, 26cv1151"
         ruled: "Corey, 2026-09-29"
+
+  # RETIRED SEEDS: kept as a second source, never polled. Nothing reads this list. A seed
+  # retires when its own written removal condition is met; its text stays here, and the
+  # B2 items it wrote stay in the record, where the case's one tracker subject folds them
+  # (collectors/cl_fold.py).
+  retired_seeds:
+    - caption: United States of America v. Board Of Elections of the State of New York
+      docket_number: 26-2060
+      court: Second Circuit
+      court_id: ca2
+      category: voter-data
+      state: New York
+      notes: >-
+        Second Circuit appeal of the N.D.N.Y. dismissal in 1:25-cv-01338 (case_id
+        71457474, terminated). Noticed 2026-07-23, transmitted to the court of appeals
+        07-27, docketed 2026-07-28. Seeded here 2026-08-14 because the UW tracker still
+        lists the district docket; remove when it rewrites the New York row.
+      condition: "remove when it rewrites the New York row"
+      condition_met: >-
+        2026-09-08: data/doj_cases.json's New York row names 26-2060 (Second Circuit)
+        from data commit ed4bfd2, 21:21Z. It was missed until 2026-10-02, when the two
+        seeds were laid out for Corey's pick. From 2026-09-08 until the retirement both
+        seeds polled 73682036 every run, and each wrote a copy of its tracker subject.
+      retired: >-
+        Corey, 2026-10-03: the seed's own condition governs; the tracker presents, and
+        this seed's text is kept as a second source.
 
 # ===========================================================================
 # CHANNEL 4: ADMINISTRATIVE COERCION + NEWS  (RSS + Google News)
