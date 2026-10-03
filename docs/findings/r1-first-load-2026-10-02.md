@@ -135,6 +135,7 @@
 - **Corey's split list so far: 6**, laid out below.
 - **No reader of any batch has shown a pair to be two entries or named a better match.**
 - **Pair 23 is outside the outcome**, as ruled: it stays the duplicate `docs/gates.yaml` records. Its three readers passed it.
+  - **Found 2026-10-03: these reads are not independent of that verdict.** The workflow harness handed each reader Corey's brief, which said 93225 stays the duplicate, and two of the three cited it (`r1-batching-control-2026-10-03.md`). No other pair of this batch was named in the brief.
 - **Pair 24 arrived after 2026-10-01.** United States v. Albence (D. Del., 71984384), 2026-09-29, cross-run: the RECAP document object "Motion Hearing" against the clerk's minute entry for that day's motion hearing, which CourtListener created on Oct 1. It is not the refused DSCC pair, which the plan files under `refused` before the person list.
 
 **How the first batch was read.** The same three lenses and bar. The brief above the lens prompts says these are pairs the rule does not link. Each reader read one file, its pair plus every object on that docket from the day before to the day after, dumped from Turso the way the 2026-10-01 check dumped its 20.

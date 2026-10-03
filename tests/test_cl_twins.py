@@ -283,11 +283,12 @@ def test_unlink_apply_runs_against_turso_only(tmp_path, monkeypatch):
     assert get().execute("SELECT twin_of FROM cl_entries WHERE cl_entry_id = 101").fetchone()[0] == 102
 
 
-def test_the_committed_config_refuses_the_dscc_pair_and_is_unchecked():
+def test_the_committed_config_refuses_the_dscc_pair_and_pair_22():
     links = L.load_links()
     assert links["rule"] == tw.RULE
-    assert [sorted(p["rows"]) for p in links["refused"]] == [[92515, 92572]]
+    assert [sorted(p["rows"]) for p in links["refused"]] == [[92515, 92572], [91090, 91356]]
     assert links["refused"][0]["ruled"].startswith("Corey, 2026-09-30")
+    assert links["refused"][1]["ruled"].startswith("Corey, 2026-10-03")   # its text changed
 
 
 def test_a_pair_is_unique_by_entry_when_the_long_forms_revision_also_pairs(tmp_path):

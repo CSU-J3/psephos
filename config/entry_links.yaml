@@ -71,6 +71,17 @@ refused:
       probably belonging to minute entry 92595. Linking would fold the notice's item into
       another entry's.
     ruled: "Corey, 2026-09-30"
+  - rows: [91090, 91356]
+    docket: "73582123"
+    why: >-
+      Pair 22 of the person list. The link would fold numbered entry #54 (object
+      479305491) into an unnumbered object (479082481) whose text changed at least once.
+      CourtListener created that object at 2026-09-23T16:23:19Z, before #54 was entered
+      ("[Entered: 09/23/2026 01:43 PM]") and, read in Eastern time, about a minute after
+      #51 was. psephos first held it at 21:28Z, after all four of that day's extensions,
+      so it never saw the object's first text.
+      docs/findings/r1-batching-control-2026-10-03.md.
+    ruled: "Corey, 2026-10-03"
 
 # Pairs a person read and linked. Each: rows: [short, long], ruled: "<who>, <date>".
 asserted:
@@ -79,5 +90,8 @@ asserted:
   # 479868690). Corey's 2026-09-29 verdict already reads 93225 as the duplicate of 93145
   # (docs/gates.yaml), and all three readers passed it on 2026-10-02
   # (docs/findings/r1-first-load-2026-10-02.md). Linked beside the rule's 7.
+  # Found 2026-10-03: those reads are not independent of the verdict. The workflow
+  # harness handed each reader Corey's brief, which said 93225 stays the duplicate, and
+  # two of the three cited it (docs/findings/r1-batching-control-2026-10-03.md).
   - rows: [93145, 93225]
     ruled: "Corey, 2026-10-02 (the 2026-09-29 duplicate verdict, and three passing reads)"

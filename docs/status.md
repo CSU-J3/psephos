@@ -345,7 +345,7 @@ It stays open for Corey to close.
     - Nothing reads either until the switch, and the 7 get their own dated note when it ships.
   - **1c.** The 2026-10-01 20 count as reads of themselves: 18 candidates, and n=3 and n=8 to the split list.
   - **The first batch of person pairs, READ:** the 23 laid out plus 93146/93298 (Albence, Sep 29), which arrived since. 19 candidates, 4 for Corey (pairs 4, 5, 15 and 22), none not linked. Pair 23 passed all three readers and stays outside the outcome, as ruled.
-  - **So far: 37 candidates and 6 split pairs, of 283.** No reader has shown a pair to be two entries. Nothing is listed under `asserted`, and Corey's five wait for the second batch.
+  - **So far: 37 candidates and 6 split pairs, of 283.** No reader has shown a pair to be two entries. Nothing is listed under `asserted`, and Corey's five wait for the second batch. (As of 2026-10-02. Since then pair 23 is asserted and linked, and pair 22, one of the 6, is refused: below.)
 - **1d and 2: the second batch, PRICED and HELD for Corey.** 239 first-load pairs, 717 reads.
   - The first batch cost 5,982,479 tokens and 18m03s for 72 reads. At that rate the second is about 59.6 million tokens and three hours.
   - At the 2026-10-01 run's rate (70,388 tokens a read, likely a lower reasoning effort) it is about 50.5 million tokens and 34 minutes.
@@ -449,7 +449,7 @@ It stays open for Corey to close.
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
   - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
-  - the second batch of 239: batched readers calibrated, and the calibration FAILED its bar (below), so the 239 are not read;
+  - the second batch of 239: batched readers calibrated, and the calibration FAILED its bar (below), so the 239 are not read; the batching control READ 2026-10-03, 1 of 6 changed, HELD for Corey (below);
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
 - ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word~~ **SHIPPED 2026-10-03T00:49:15Z, all five steps run and the live pages read (above).**
@@ -461,14 +461,35 @@ It stays open for Corey to close.
     - All 45 unanimous passes reproduced, and 4 of the 6 splits.
     - Person pair 4 (8868/8873) went from a split to unanimous: its clocks reader read the same 43 minutes as one entry.
     - Person pair 22 (91090/91356) went from a split to not linked. Its readers found that the unnumbered object was created 80 minutes before #54, whose text it carries, about a minute after #51, so its text has moved at least once. The clocks reader named #51 as a better match "on clocks only".
-    - The DSCC control was read no by all three readers.
+    - The DSCC control was read no by all three readers. Every reader's task describes its failure mode, so that catch is not blind (found 2026-10-03, below).
   - **Corey's bar was every pass and every split, so the batch stops** (ruling 2b).
-    - No one-pair re-read was taken, so batching's share of the two moves is not measured.
+    - ~~No one-pair re-read was taken, so batching's share of the two moves is not measured.~~ **Measured by the control (below).**
   - **The price, measured.**
     - Each reader loads 34,547 tokens before its pairs, against about 64,700 before the trim.
     - The calibration cost 1,340,664 tokens and 14m22s for 18 readers.
     - The 239 batched would be about 6.16 million tokens and 65 minutes, under the 10 million ceiling.
   - D1 stays a recorded measurement. Corey's five wait for the batch.
+- **The batching control: READ 2026-10-03. Exactly 1 of the 6 splits changed, so by the rule the reads are laid out (c); HELD for Corey.** In full: `docs/findings/r1-batching-control-2026-10-03.md`.
+  - **The rule, stated before the read (Corey, 2026-10-03):**
+    - a. If 2 or more change, adopt batching for the 239, with every split to Corey and his random check grown to ten.
+    - b. If all 6 reproduce, do not batch; stop with the price of single-pair reads.
+    - c. If exactly 1 changes, stop with the reads laid out.
+  - **The read.** The 6 splits were re-read one pair a reader, with the trimmed readers and the calibration's prompts and bar: 18 readers, 714,359 tokens, 6m58s.
+  - **The result.** Person pair 4 read unanimous, as it did batched. The other five reproduced their splits.
+    - Pair 22 read split alone, where batched it read not linked.
+    - Batched and alone agree on five of the six. On none did the batched read make a pair look clearer than the read alone.
+  - **A finding: every reader since the 2026-10-02 person list was handed Corey's brief.** The workflow harness hands every reader the user request that triggered the run, verbatim. Where the brief named a pair's verdict or finding, that pair's read was not blind.
+    - **This control's readers were handed the rule and pair 22's finding.** Pair 22's identity reader wrote "the same signature as pair 22". Had an unprimed re-read moved pair 22, 2 would have changed, and the branch would be a.
+    - **Pair 23's three passing reads of 2026-10-02 were handed "Pair 23 (93225) stays the duplicate"**, and two of the three cited it. Its link stands on Corey's 2026-09-29 verdict, and its reads are not independent of that verdict.
+    - **The calibration's DSCC control is described in every reader's task**, by design since 2026-10-01.
+    - **The calibration's FAIL stands:** no brief it was handed named pair 4 or pair 22. The 2026-10-01 sample's 60 readers were handed no brief.
+  - **Pair 22 stays unlinked, recorded either way.** `config/entry_links.yaml` lists it under `refused` (Corey, 2026-10-03), with its finding. The dry run now reads refused 2, linked already 8, person 281.
+  - **The price of the 239 read one pair a reader, at the control's rate:** 717 reads, about 28.5 million tokens and 2.5 hours. Batched, about 6.16 million tokens and 65 minutes.
+  - **For Corey:**
+    - the 239's method;
+    - whether pair 22's branch-deciding read is taken again, unprimed;
+    - whether pair 23's link wants its reads re-weighed;
+    - how a read is launched so that no reader is handed a brief naming a pair's verdict. Whether readers launched other than by a workflow get the same relay is unmeasured.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

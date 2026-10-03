@@ -14,6 +14,7 @@
   - A two-reader pilot measured the trim before the calibration ran.
 - **What each reader saw:** the same dump as before for every pair: the pair, its rows (now with `seen_by`), and every object on its docket from the day before to the day after.
 - **The control:** the refused DSCC pair (92515/92572) rode along as a known negative, outside the 51.
+- **Found 2026-10-03: each reader was also handed Corey's brief.** The workflow harness relays it to every reader, and it named pair 23 as linked. See `r1-batching-control-2026-10-03.md`.
 
 ## The result
 
@@ -22,7 +23,7 @@
 | recorded unanimous passes | 45 | 45 |
 | recorded splits | 6 | 4 |
 
-**The control:** the DSCC pair, read identity no, alternative no (better match 465858909), clocks no (better match 465858909). All three readers caught the known negative.
+**The control:** the DSCC pair, read identity no, alternative no (better match 465858909), clocks no (better match 465858909). All three readers caught the known negative. **Not blind (found 2026-10-03):** every reader's task describes this pair's failure mode, so the catch shows the readers apply that description (`r1-batching-control-2026-10-03.md`).
 
 ### The two differences
 
@@ -57,7 +58,9 @@
   - So its text has moved at least once.
   - Its clocks reader's "better match" (#51) is, in its own words, "a fit on clocks only", "not a proposal to link it to #51".
 - **Neither difference is a unanimous pass lost or a false pass gained on the control.**
-- No one-pair re-read was taken, so how much of the movement is batching and how much is a borderline verdict re-read is not measured.
+- ~~No one-pair re-read was taken, so how much of the movement is batching and how much is a borderline verdict re-read is not measured.~~ **Measured 2026-10-03 by the control** (`r1-batching-control-2026-10-03.md`):
+  - Read alone, pair 4 read unanimous too, so its move is not batching's.
+  - Pair 22 read split alone, on a read whose brief named its finding.
 
 ## The price, measured (2c, 2d)
 
