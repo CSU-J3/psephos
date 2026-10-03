@@ -15,6 +15,12 @@
 # same text for good, where a CourtListener id is known only after the id backfill.
 rule: same-run strict-B v1
 
+# Nothing is applied until Corey sends his line on his ten, the class and the two
+# individual splits. Then what he rules is applied together with the read links below, in
+# one move with its own dated note (Corey's rulings of 2026-10-03, R1 plans and splits,
+# ruling 5). link_entry_twins --apply refuses while `hold` is set.
+hold: "until Corey's line on his ten, the class of 13 and the two individual splits (R1 plans and splits, ruling 5)"
+
 # The reader's check of the rule's pairs, recorded before the rule is relied on.
 # link_entry_twins --apply refuses unless `result` is pass and the check still describes
 # the rule's pool: a full read names every pair in it, a sample is what its seed redraws.
@@ -115,3 +121,28 @@ asserted:
   # either way.
   - rows: [93145, 93225]
     ruled: "Corey, 2026-10-02 (the 2026-09-29 duplicate verdict, and three passing reads)"
+
+# Links the rule did not propose, each carrying a passing BLIND read (Corey's rulings of
+# 2026-10-03, R1 plans and splits, ruling 4). Each: rows: [twin, root]; kind: the rule's
+# own kind when the rule makes the pair, else plan; read: the run record in docs/reads/
+# that passed it, and the link's label there. --apply links one only when that run passed
+# tools/reader_launch.py's check under the stored launcher and read the link unanimous.
+read_links:
+  # Ruling 1: the three plans of 2026-10-03 failed as plans under the bar set first, each
+  # passing one link of two. Their unanimous halves are linked as pairs, since each passed
+  # exactly as a batch pair would (docs/findings/r1-three-object-plans-2026-10-03.md).
+  - rows: [279, 320]
+    kind: plan
+    read: docs/reads/2026-10-03-three-object-plans.json
+    label: "279>320"
+    ruled: "Corey, 2026-10-03 (R1 plans and splits, ruling 1)"
+  - rows: [15575, 15566]
+    kind: plan
+    read: docs/reads/2026-10-03-three-object-plans.json
+    label: "15575>15566"
+    ruled: "Corey, 2026-10-03 (R1 plans and splits, ruling 1)"
+  - rows: [7146, 7137]
+    kind: plan
+    read: docs/reads/2026-10-03-three-object-plans.json
+    label: "7146>7137"
+    ruled: "Corey, 2026-10-03 (R1 plans and splits, ruling 1)"

@@ -85,6 +85,7 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 - **15567/15575 and 279/282:** the pair's long form is itself a RECAP document's description, over 60 characters. The better match is the order's docket text.
 - **7137/7143:** the better match is a second short form, created 79 seconds before the docket text. The pair's short form has no filing time and was created about 36 hours after the docket text.
 - **All three were then planned as entries of three objects and read blind** (R1 after the blind batch, ruling 3): in each, the timed description joins the docket text unanimously, and the late short form splits (`r1-three-object-plans-2026-10-03.md`).
+- **Ruled 2026-10-03 (R1 plans and splits, rulings 1 and 2):** the three failed as plans. Their unanimous halves are linked as pairs, held until Corey's line. 282>320 and 15567>15566 join the class of the splits, and 7143>7137 stays unlinked.
 
 ### Split: to Corey's split list (16)
 
@@ -113,6 +114,7 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 - In fourteen of them, identity and alternative match read yes.
 - The sixteenth, 93146/93298, has a timed short form. Its long form has no filing time and was created two days later.
 - **Laid out for Corey's ruling** (R1 after the blind batch, ruling 2): the 14 whose only dissent is the clocks reader as one class, the other 2 one by one (`r1-splits-2026-10-03.md`).
+- **Ruled 2026-10-03 (R1 plans and splits, rulings 2 and 3):** 5392/5456, 5401/5477 and 5402/5424 left the class and were re-planned at their docket text (`r1-dnh-replans-2026-10-03.md`). Two plan links joined it, making 13.
 
 ### Unanimous (251): candidates, held
 

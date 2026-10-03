@@ -1,0 +1,567 @@
+{
+ "run": "2026-10-03 D.N.H. re-plans (R1 plans and splits, ruling 3)",
+ "channel": "Agent tool",
+ "checked_at": "2026-10-03T21:43:51Z",
+ "launcher": {
+  "path": "tools/reader_launcher.txt",
+  "sha256": "b6f45a4c297513486268ddf37994f4145b6eff87454b1ce97544c869d4ae8fbf"
+ },
+ "ok": true,
+ "readers": [
+  {
+   "pair": "plan 5392/5456",
+   "lens": "identity",
+   "file": "5c749f2e246d.json",
+   "file_sha256": "5c749f2e246dc9b85b2a5688154bfbe0b998994a468b38140cd5c526269c77c2",
+   "expected_start_sha256": "d25e012da428bb7920cd2a5edefea686518cf7b532a834b12881939498aff89c",
+   "transcripts": [
+    "agent-ac7c23adb42e06e36.jsonl"
+   ],
+   "start_sha256": "d25e012da428bb7920cd2a5edefea686518cf7b532a834b12881939498aff89c",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "336 of 336",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form is five 'Order on Motion to Appear Pro Hac Vice' clauses joined by AND. CM/ECF writes that kind of short description for one docket entry that rules on several motions at once. The long form is one ENDORSED ORDER by Magistrate Judge Johnstone granting exactly five pro hac vice motions: 7 Frost, 8 Fox, 9 Dodge, 10 McKusick and 11 Mocine-McQueen. Both are orders, both rule on motions to appear pro hac vice, both cover five motions, and both are dated 2026-01-06. CourtListener created the two objects 3.5 minutes apart (07:16:58 and 07:20:29 PST). The short form names nothing the long form does not do. No other object in the window fits five pro hac vice orders: 23 is a 01/05 order granting a motion to intervene, 24-27 are notices of appearance, and 451325118 is a single-clause short form that cannot account for five motions."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The short form is a single 'Order on Motion to Appear Pro Hac Vice', which reads as one order on one motion. The long form is one endorsed order granting five pro hac vice motions (7-11). CM/ECF would give that entry five AND-joined clauses, and this pair's own window holds exactly such an object: 449342056, five clauses, created 07:16:58 PST on 01/06, 3.5 minutes before the long form. The twin (451325118) was created on 2026-01-23, 17 days after the entry date, not minutes apart. The type matches and the short form names nothing the long form does not do, so it may be a later, cut-down copy of the same unnumbered entry from another source. But it covers one motion, not five, so it does not describe exactly the event the long form records. The record also cannot rule out a separate same-day order on a single pro hac vice motion that CourtListener holds only in short form. The evidence does not settle it, so the verdict is uncertain, leaning no. No better match is named: no window object is a single-motion pro hac vice order (23 is a 01/05 order on a motion to intervene, 24-27 are notices of appearance), and 449342056 is another short form of the same five-motion order, not a different minute entry."
+    }
+   ],
+   "tokens": 55193
+  },
+  {
+   "pair": "plan 5392/5456",
+   "lens": "alternative",
+   "file": "5c749f2e246d.json",
+   "file_sha256": "5c749f2e246dc9b85b2a5688154bfbe0b998994a468b38140cd5c526269c77c2",
+   "expected_start_sha256": "c67e53b6e0b94c5446d8dac3552efbc6ea48f17c9f9cdcb7a05c934106ed5b49",
+   "transcripts": [
+    "agent-a7f7e38293fa2f215.jsonl"
+   ],
+   "start_sha256": "c67e53b6e0b94c5446d8dac3552efbc6ea48f17c9f9cdcb7a05c934106ed5b49",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "336 of 336",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked every object in the window (1/5 to 1/7). #23 449274218 is an order granting the Motion to Intervene, dated 1/5: a different motion type on a different day. #24 449400615, #25 449416717 and #26 449416680 are 1/6 notices of attorney appearance by Fox, Frost and McKusick. #27 449476695 is a 1/7 notice by Dodge. These are notices, not orders. 451325118 is another unnumbered object holding only the short text 'Order on Motion to Appear Pro Hac Vice', created 1/23. It has no long text and is not a separate order, and with one event it cannot fit a five-event short form better than the long form does. No numbered entry in the window is an order on a pro hac vice motion. The long form 449342288 is the unnumbered ENDORSED ORDER granting pro hac vice motions 7, 8, 9, 10 and 11. The short form names five 'Order on Motion to Appear Pro Hac Vice' events, one for each of those five motions. Both are dated 1/6, the short form has time_filed 09:36:20, and the two were created at 07:16:58 and 07:20:29 (-08:00), 3.5 minutes apart. The long form is the only entry in the window the short form can describe."
+    },
+    {
+     "n": 2,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "This pair has the same window. Its numbered entries are #23 (a 1/5 order on the Motion to Intervene) and #24 to #27 (notices of attorney appearance). None of them is an order on a pro hac vice motion. The only order of any kind dated 1/6 is the long form 449342288, the endorsed order granting pro hac vice motions 7 to 11. The window holds one other unnumbered object that fits the type, 449342056. It names five 'Order on Motion to Appear Pro Hac Vice' events, matching the five motions granted, has time_filed 09:36:20, and was created 3.5 minutes before the long form. That makes it the endorsed order's own short twin, the same minute entry, not a different entry, so I do not name it as better_match. Every other 1/6 entry was captured the same day with a time stamp, about 15 to 40 minutes after its time_filed (reading time_filed as Eastern), and no second pro hac vice order appears. The window therefore offers no other minute entry this short form could belong to. Two points fall outside this lens and are left to the other readers. First, this short form names one pro hac vice event, while the long form granted five and 449342056 already carries all five. Second, it was created 1/23, 17 days later, with no time_filed. Both weaken how well it fits, but neither points to any other entry in the window."
+    }
+   ],
+   "tokens": 80070
+  },
+  {
+   "pair": "plan 5392/5456",
+   "lens": "clocks",
+   "file": "5c749f2e246d.json",
+   "file_sha256": "5c749f2e246dc9b85b2a5688154bfbe0b998994a468b38140cd5c526269c77c2",
+   "expected_start_sha256": "9d6c52191d49f50e0aa4160b5cc370930c9d2e194a751aa75754e62b7b6b4eb7",
+   "transcripts": [
+    "agent-a128c117faa1a6eb5.jsonl"
+   ],
+   "start_sha256": "9d6c52191d49f50e0aa4160b5cc370930c9d2e194a751aa75754e62b7b6b4eb7",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "336 of 336",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The clocks fit one entry seen twice. Short form 449342056: entry_number null, time_filed 09:36:20, date_created 2026-01-06T07:16:58.111861-08:00, desc_source document, twin_of null. Long form 449342288: entry_number null, time_filed null, date_created 2026-01-06T07:20:29.645725-08:00, desc_source entry, twin_of null. They were created 3 min 31.5 s apart on the same day. They are also the only two objects in the window created that morning; the next ones are entry 24 at 12:19:47 PT and entries 25 and 26 at 13:20:08-09 PT. Reading time_filed as court-local Eastern time, 09:36:20 is about 40-44 min before the two creation stamps (10:16:58 and 10:20:29 ET). That is the same lag the numbered entries show between time_filed and date_created (entries 24-27: 14-38 min). Both objects are unnumbered, which fits an unnumbered endorsed order. The numbered run has no gap (23 on 01/05, 24-26 on 01/06, 27 on 01/07), so no numbered filing is missing its number. The shape is the expected split: one object from a RECAP document, one from the docket text. The short form repeats 'Order on Motion to Appear Pro Hac Vice' five times, joined by AND, which matches the five motions (7-11) the long form grants. No other long form competes. The only other pro hac vice object, 451325118, is itself a document short form created 2026-01-23. The remaining long forms are of other types with other clocks: entry 23 grants a motion to intervene on 01/05, and entries 24-27 are notices of appearance. Relation first-load, with identical seen_at and seen_by, adds nothing either way."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The clocks do not support this link. Short form 451325118: entry_number null, time_filed null, date_created 2026-01-23T09:19:26.359736-08:00, desc_source document, twin_of null. Long form 449342288: entry_number null, time_filed null, date_created 2026-01-06T07:20:29.645725-08:00, desc_source entry, twin_of null. They were created about 17 days 2 h apart, not minutes. Neither has a time_filed to tie it to the order's moment; the order's only filed time in this window (09:36:20) is on a different object. In this pair's own window, another object already matches the long form within minutes: 449342056 (document, unnumbered, time_filed 09:36:20, created 2026-01-06T07:16:58, 3.5 min earlier). Its text repeats 'Order on Motion to Appear Pro Hac Vice' five times, matching the five motions granted. So 451325118 would be a third object for this order. Its text names the order type once, unlike the five-fold text of the order's same-day document object; a single mention fits an order on one motion. The type alone ties it to this long form. Against calling it a separate filing: the 01/05-01/07 window holds no other pro hac vice order. There is no second long form, and no second same-day object with a time_filed; every other 01/06-01/07 entry has one created 14-44 min after its time_filed. An object created this late with no time_filed could also be a third, backfilled sighting of the same order. The clocks settle neither reading, so this pair should not pass on this lens. No better match: 449342056 is the same order's short form and was created just as far from 451325118, and the other long forms (entry 23, an order granting a motion to intervene; entries 24-27, notices of appearance) are of other types."
+    }
+   ],
+   "tokens": 69428
+  },
+  {
+   "pair": "plan 5401/5477",
+   "lens": "identity",
+   "file": "6df52f8d0ddf.json",
+   "file_sha256": "6df52f8d0ddfbc026d064db55391a419d05511052cf66af527043362b1f34eee",
+   "expected_start_sha256": "cab640e78c513dbaf193cb06934c6207433fd36910acc9adf4e63901536c7b1e",
+   "transcripts": [
+    "agent-aa3970a40b262643a.jsonl"
+   ],
+   "start_sha256": "cab640e78c513dbaf193cb06934c6207433fd36910acc9adf4e63901536c7b1e",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "312 of 312",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form (455479348) is the standard CM/ECF short description for one order that rules on several motions: 'Order on Motion to Appear Pro Hac Vice' four times, joined by AND. That means a single order ruling on four pro hac vice motions. The long form (455540155) is a single ENDORSED ORDER by Judge Laplante granting four pro hac vice motions: #36 Freeman, #45 Berry, #46 Hamilton and #47 Lakin. They match on the kind of event (an order on motions), the motion type (pro hac vice), the count (four and four) and the entry date (2026-03-02). The short form names no motion, party or ruling that the long form does not also make. Timing is consistent: the short form was filed at 08:50:40 and created about 09:17 Eastern, and the long form was created later the same day. Nothing else in the window fits as well. The other order-type object, 456096138, is itself a short form and describes only one motion, so it is a worse fit for a four-motion order. The rest of the window is notices of appearance, which are a different kind of filing (they are the four admitted attorneys following up on this order). No better match."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The short form (456096138), 'Order on Motion to Appear Pro Hac Vice', is the same kind of event as the long form (455540155): an order on a pro hac vice motion, with the same entry date of 2026-03-02. It names no motion number, attorney or ruling that contradicts the long form. However, it is singular. Under the CM/ECF short-description convention, that wording describes an order on ONE pro hac vice motion. An order on four motions is described by four AND-joined repetitions, and exactly that description exists separately in this pair's own window as 455479348 (filed the same day at 08:50:40). The long form rules on four motions (#36, #45, #46, #47), so this short form is not the clerk's description of exactly that order. It was also created on 2026-03-06, four days after the entry, with no time_filed, which does not fit the usual pattern of two objects created minutes apart. Two readings remain possible: (a) a partial description of the same four-motion order coming from a different source, or (b) the description of a separate single-motion pro hac vice order entered on 3/2 whose long form CourtListener does not hold. The short form does not identify which motion or attorney it concerns, so the record cannot settle identity, and 'yes' is not supported. I cannot name a better match. The only long-form order in the window is 455540155. 455479348 is itself a short form, and the other objects are notices of appearance, a different kind of filing."
+    }
+   ],
+   "tokens": 53482
+  },
+  {
+   "pair": "plan 5401/5477",
+   "lens": "alternative",
+   "file": "6df52f8d0ddf.json",
+   "file_sha256": "6df52f8d0ddfbc026d064db55391a419d05511052cf66af527043362b1f34eee",
+   "expected_start_sha256": "912a44f5ee4ec897c54c9dda571074b6a9f6de0729e0960fc1ad6b37168ad90f",
+   "transcripts": [
+    "agent-ac8f5b873009f01d9.jsonl"
+   ],
+   "start_sha256": "912a44f5ee4ec897c54c9dda571074b6a9f6de0729e0960fc1ad6b37168ad90f",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "312 of 312",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked every object in the window. The numbered entries are #56 (455557616, 3/2), #57 (455630958, 3/3), #58 (455636798, 3/3) and #59 (455659133, 3/3). All four are NOTICEs of Attorney Appearance by Berry, Lakin, Hamilton and Freeman. They are notices, not orders, so the short form cannot describe any of them. They are the appearances that the PHV order tells admitted attorneys to file, and every one is dated after the order. The only other object of the order type is 456096138. It is neither numbered nor a long form: it is an unnumbered short form taken from a document, reading a single 'Order on Motion to Appear Pro Hac Vice', created 2026-03-06. A single order fits this four-order short form worse than the long form does. The long form 455540155 is one ENDORSED ORDER of 3/2 granting exactly four PHV motions (36, 45, 46, 47). That matches the short form's four 'Order on Motion to Appear Pro Hac Vice' events joined by AND. The short form's time_filed is 08:50:40 on 3/2, earlier than the long form's creation at 12:03 PT the same day. The pair's long form is the only entry in the window that the short form can describe."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "There is no numbered alternative: #56-#59 (455557616, 455630958, 455636798, 455659133) are notices of appearance, not orders. The window holds only one minute entry that is an order on a PHV motion: the 3/2 ENDORSED ORDER granting four PHV motions (36, 45, 46, 47). CourtListener holds it twice. One copy is the long form 455540155. The other is the unnumbered short form 455479348 (time_filed 08:50:40), whose four 'Order on Motion to Appear Pro Hac Vice' events joined by AND match those four motions. So 455479348 is the same entry's own short form, not a separate entry, and I do not name it as better_match. It does show how this entry's short form actually reads, and this twin does not read that way. The twin is a single 'Order on Motion to Appear Pro Hac Vice', which fits an order on one PHV motion better than an order on four. It was also created 2026-03-06, with no time_filed. Linking it would make it a third object for the endorsed order. The other possibility is a separate one-motion PHV order of 3/2 that CourtListener holds only as this object. One point weighs toward the same entry: the window has no time-stamped short form and no long form for a second PHV order. But nothing in the record rules the separate order out. No competing entry in the window can be named, but the pairing rests on type alone, with a mismatch between one order and four, so the record does not settle it."
+    }
+   ],
+   "tokens": 78930
+  },
+  {
+   "pair": "plan 5401/5477",
+   "lens": "clocks",
+   "file": "6df52f8d0ddf.json",
+   "file_sha256": "6df52f8d0ddfbc026d064db55391a419d05511052cf66af527043362b1f34eee",
+   "expected_start_sha256": "f5642d683dbdf1038da303bc1b8363799c388d890b8646a9628ede8e4c149a1c",
+   "transcripts": [
+    "agent-a0b18726e744a3add.jsonl"
+   ],
+   "start_sha256": "f5642d683dbdf1038da303bc1b8363799c388d890b8646a9628ede8e4c149a1c",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "312 of 312",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks: the twin 455479348 is unnumbered, with desc_source document, time_filed 08:50:40 (court-local EST, 13:50:40 UTC) and date_created 2026-03-02T06:17:38 PST (14:17:38 UTC). It was created 27 min after its filing time. That lag matches the lags of the timed objects on this docket: #56 59 min, #57 17 min, #58 28 min, #59 4 min. The entry 455540155 is unnumbered, with desc_source entry, time_filed null and date_created 2026-03-02T12:03:28 PST (15:03:28 EST). That is 5h46m after the twin was created and 6h13m after the twin's filing time. The gap is hours rather than minutes, but both are on the same day and the order is right: the docket text was created after the filing time. This is the usual shape of a docket-text fetch with no time arriving after a timed short-description item. On this docket, numbered entries #56-#59 each hold both sources in one object, joined by number (a time_filed plus '(Entered: ...)' docket text). An unnumbered order has no number to join on, so the same two sources leave two objects, which is what these are. Neither object has twin_of set. Window check for 03-02: the timed objects are 455479348 (08:50:40) and #56 (15:19:09). The docket-text objects are 455540155 and #56. Once #56 is matched by its number, the 08:50:40 item and the endorsed order are left only for each other. Docket text was also fetched again after 15:19:09 on 03-02 (#56 shows '(Entered: 03/02/2026)'), and no second PHV order docket text appeared. Shape: the twin's four AND-joined 'Order on Motion to Appear Pro Hac Vice' events fit one docket event that disposes of the four motions (36, 45, 46, 47) granted in the long form. A grant at 08:50:40 also comes before all four admitted attorneys' appearances (#56 at 15:19:09 on 03-02; #57-#59 at 10:22:03-13:15:52 on 03-03). The only other PHV object in the window, 456096138, is another short document-form object (one event, time_filed null, created 2026-03-06T05:20:59 PST), not a competing docket entry. The psephos relation is first-load (both rows first held 2026-07-03 09:33-10:02 UTC), which adds nothing either way. This is one minute entry seen twice."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Clocks: the twin 456096138 is unnumbered, with desc_source document, time_filed null and date_created 2026-03-06T05:20:59 PST. The entry 455540155 is unnumbered, with desc_source entry, time_filed null and date_created 2026-03-02T12:03:28 PST. They were created 3 d 17 h 17 m apart, nowhere near the minutes-apart pattern. The twin also came 3 d 23.5 h after 08:50:40 EST, the only filing time for a 03-02 PHV order in the window. With time_filed null on both, no filing time ties the twin to this entry; only the shared entry_at 2026-03-02 links them. Shape: compatible (unnumbered document-form against unnumbered docket text, neither has twin_of set). But the twin arrived late through a third source with no time. It is not the timed item for a 03-02 PHV order: in the window that is 455479348 (time_filed 08:50:40, created 2026-03-02T06:17:38 PST, with four AND-joined events that match the four motions 36/45/46/47 granted in the long form). It is not docket text either. The twin's single 'Order on Motion to Appear Pro Hac Vice' event fits an order on one motion at least as well as it fits this four-motion entry, whose own timed short form repeats the event four times. Against a separate filing: the window has no other PHV order docket text for 03-01 to 03-03, even though docket text was fetched after 15:19:09 on 03-02 (#56 shows '(Entered: 03/02/2026)') and after 13:15:52 on 03-03 (#57-#59 show '(Entered: 03/03/2026)'). There is also no timed 03-02 object besides 455479348 and #56. So there is no competing long form to name. The clocks neither show one entry described twice nor prove two filings. better_match is null because 455479348 is a short document-form object, not another minute entry's docket text, and nothing in the twin's clocks ties it more closely there."
+    }
+   ],
+   "tokens": 72693
+  },
+  {
+   "pair": "plan 5402/5424",
+   "lens": "identity",
+   "file": "a6a10f0a47f8.json",
+   "file_sha256": "a6a10f0a47f8489bd4c0132d73e0c1c27ad298e0762b678641f108692743d746",
+   "expected_start_sha256": "69523e2d502a21aabc848fd7f4afa42b9b8c428ca03646822bc7b08da73e4656",
+   "transcripts": [
+    "agent-a17bec362e087caf1.jsonl"
+   ],
+   "start_sha256": "69523e2d502a21aabc848fd7f4afa42b9b8c428ca03646822bc7b08da73e4656",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "384 of 384",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form is CM/ECF's chained short text for one order that disposed of four motions: one Motion for Leave to File and three Motions to File Amicus Brief. The long form is one ENDORSED ORDER (Judge Laplante) granting exactly that set: #34, #41 and #49 (Motion to File Amicus Brief) and #43 (Motion for Leave to File). The kind of entry (an order on motions), the motion types, the count (3 amicus + 1 leave) and the day all agree. Both are entry_at 2026-03-12, the short form's time_filed is 13:04:12, and both objects were created in CourtListener on 03-12. Only the order in which the components are listed differs, and that is not substantive. The short form names nothing the long form does not do, and neither text names a party, so there is no party conflict. No other object in the window fits better. 456994598 is the pro hac vice order (its short form is 456933932). 456994597 is the 03-11 extension-of-time order. #62-#64 are replies. 457052532 is another short form, not a long form, and it names only a single amicus motion, so it cannot carry this four-part text."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The short form 'Order on Motion to File Amicus Brief' is CM/ECF's short text for an order disposing of ONE Motion to File Amicus Brief. The long form is a single ENDORSED ORDER disposing of FOUR motions: #34, #41 and #49 (Motion to File Amicus Brief) and #43 (Motion for Leave to File). CM/ECF writes a multi-motion order's short text as one 'Order on Motion ...' clause per motion, joined by AND. This same window holds exactly that text for this event: 456933890, 'Order on Motion for Leave to File AND Order on Motion to File Amicus Brief' x3, time_filed 13:04:12 on 03-12. So this pairing rests on type alone, on one of the four components. The short form does not say which amicus motion it acts on, and it omits the Motion for Leave to File and two of the three amicus motions. It is also a separate object, created the next morning (2026-03-13 05:07 PDT) with no time_filed. Read as a clerk would, it is not a description of exactly this event: it reads as a single-motion order, and folding it in risks merging a distinct order. That rules out 'yes'. I do not answer 'no' because the 03-11 to 03-13 window holds no other order on a Motion to File Amicus Brief that it could belong to. It may therefore be a stray duplicate of this entry with a shortened description rather than a distinct entry, and the record does not settle which. There is no better match: the only other object of this type, 456933890, is the long form's own short text, not a different minute entry."
+    }
+   ],
+   "tokens": 81192
+  },
+  {
+   "pair": "plan 5402/5424",
+   "lens": "alternative",
+   "file": "a6a10f0a47f8.json",
+   "file_sha256": "a6a10f0a47f8489bd4c0132d73e0c1c27ad298e0762b678641f108692743d746",
+   "expected_start_sha256": "5851b2c53254bb286ad950e9bf7dd0effde75cf09e0c7ce4d34979186413d30b",
+   "transcripts": [
+    "agent-a0421a677c052e8ed.jsonl"
+   ],
+   "start_sha256": "5851b2c53254bb286ad950e9bf7dd0effde75cf09e0c7ce4d34979186413d30b",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "384 of 384",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form (456933890) is a composite naming four orders: one on a Motion for Leave to File and three on Motions to File Amicus Brief. The long form (456994599) grants exactly that set: 34, 41 and 49 (Motion to File Amicus Brief) plus 43 (Motion for Leave to File). Both the count and the mix of motion types match. I checked every object in the window. The other long-form entries are 456994597 (3/11, extend time re 55), 456994598 (3/12, pro hac vice re 48), and #62, #63 and #64 (replies). None of them rules on an amicus or leave-to-file motion. The other short forms in the window each map to their own long form: 456933932 (pro hac vice, filed 12:41) to 456994598, and 456777597 (extend time, 3/11) to 456994597. 457052532 is also a short form, not a long-form entry, so it is not another place this composite could belong. The timing fits: the short form was filed at 13:04 ET on 3/12, and the long form came in the 3/12 14:40 PDT batch (17:40 ET). The long form is the only entry in the window this short form can describe."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Among the long-form entries in the window, only 456994599 involves a Motion to File Amicus Brief. The others are 456994597 (extend time), 456994598 (pro hac vice) and #62, #63 and #64 (replies), so there is no competing entry ID to name. However, the same window already holds 456933890, an RSS-style short form (time_filed 13:04:12 on 3/12). Its four-order composite (one leave-to-file plus three amicus) matches the four motions 456994599 grants exactly, so it is the natural short-form counterpart of this long form. The twin 457052532 names only one amicus order, and the long form grants four motions. The twin also has no time_filed and was created at 3/13 05:07 PDT, about 14.5 h after the long form and about 19 h after 456933890, so it reached CourtListener by a different capture path. A one-motion short form is what a separate, one-motion amicus order would produce, and such a separate same-day entry need not appear in the window in long form. The link rests on type alone: the twin matches one motion type in a four-motion order whose exact composite is already accounted for. The window cannot rule out that the twin belongs to a different minute entry, so I cannot answer yes. With no better-matching entry to point to, I also cannot answer no."
+    }
+   ],
+   "tokens": 68850
+  },
+  {
+   "pair": "plan 5402/5424",
+   "lens": "clocks",
+   "file": "a6a10f0a47f8.json",
+   "file_sha256": "a6a10f0a47f8489bd4c0132d73e0c1c27ad298e0762b678641f108692743d746",
+   "expected_start_sha256": "1700404fbf154402ead03d6e31fe04ebd212d1ca81c2bb9592dcc58e91dae0a7",
+   "transcripts": [
+    "agent-a6417d043aab7208a.jsonl"
+   ],
+   "start_sha256": "1700404fbf154402ead03d6e31fe04ebd212d1ca81c2bb9592dcc58e91dae0a7",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "384 of 384",
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Twin 456933890: entry_number null, desc_source document, time_filed 13:04:12, date_created 2026-03-12T10:23:18.686-07:00 (13:23:18 ET), so it was created 19 min after its time_filed. Every object in the window that has a time_filed shows the same real-time capture pattern: 456933932 filed 12:41:28, created 13:23:19 ET; 456777597 filed 15:10:24, created 15:22:41 ET (03-11); #62 filed 18:10:29, created 18:23:42 ET. Entry 456994599: entry_number null, desc_source entry, time_filed null, date_created 2026-03-12T14:40:44.119-07:00. It was created in one batch with 456994597 (14:40:44.033, the 03-11 extend-time endorsed order) and 456994598 (14:40:44.075, the 03-12 pro hac vice endorsed order). The ~4h17m date_created gap is therefore ingest lag: a later batch of docket text re-described the day's unnumbered endorsed orders, so the gap does not point to a second filing. That batch maps 1:1 onto the three real-time short forms (456777597 to 456994597, 456933932 to 456994598, 456933890 to 456994599). Its internal order (...598 before ...599) also matches the short forms' time_filed order (pro hac vice 12:41:28 before amicus 13:04:12). The shape is the classic duplicate: both unnumbered, same entry_at 03-12, one document-sourced and one entry-sourced, and neither is any object's twin_of. The twin's four-part description (Leave to File plus three Amicus) also lines up with the long form's four motions (34, 41, 43, 49). No other long form on 03-12 fits: 456994598 is the pro hac vice order and #62 is a REPLY. The window holds one more amicus object, 457052532, but it is itself an unnumbered short form, not a better home for this twin."
+    },
+    {
+     "n": 2,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Twin 457052532: entry_number null, desc_source document, time_filed null, date_created 2026-03-13T05:07:48.594-07:00 (08:07 ET the next day). Entry 456994599: entry_number null, desc_source entry, time_filed null, date_created 2026-03-12T14:40:44.119-07:00. The twin was created about 14h27m after the long form and about 18h44m after the long form's real-time short form, on the following day. It was created alone, outside both batches that produced this docket's other 03-11/03-12 objects. The first is the real-time short-form batch: 456933890 at 10:23:18 and 456933932 at 10:23:19 PDT, each created 19-42 min after its time_filed. The second is the docket-text batch: 456994597/598/599 at 14:40:44.03-.12. Every other document-sourced object in the window carries a time_filed; this one has none, so its filing time on 03-12 cannot be placed against the long form's entry. Most important, the long form's minute entry is already fully accounted for as 'one entry seen twice' by a short form whose clocks fit it: 456933890 (time_filed 13:04:12, created 10:23:18 PDT, in the same 1:1 batch correspondence as the pro hac vice and extend-time pairs). Its four-part description covers the long form's motions 34/41/43/49. 457052532 would therefore be a third, late, single-event description from a different, date-only ingest path. That could be the same endorsed order or a separate amicus order of 03-12, and the clocks cannot tell which. Shape is consistent with either: both unnumbered, document vs entry, no twin_of set. The pairing rests on type alone ('Order on Motion to File Amicus Brief'). No other long form in the window is an amicus order, so I name no better match, but the clocks do not support this link. Uncertain, leaning no."
+    }
+   ],
+   "tokens": 63820
+  }
+ ],
+ "pairs": {
+  "5456>5478": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form is five 'Order on Motion to Appear Pro Hac Vice' clauses joined by AND. CM/ECF writes that kind of short description for one docket entry that rules on several motions at once. The long form is one ENDORSED ORDER by Magistrate Judge Johnstone granting exactly five pro hac vice motions: 7 Frost, 8 Fox, 9 Dodge, 10 McKusick and 11 Mocine-McQueen. Both are orders, both rule on motions to appear pro hac vice, both cover five motions, and both are dated 2026-01-06. CourtListener created the two objects 3.5 minutes apart (07:16:58 and 07:20:29 PST). The short form names nothing the long form does not do. No other object in the window fits five pro hac vice orders: 23 is a 01/05 order granting a motion to intervene, 24-27 are notices of appearance, and 451325118 is a single-clause short form that cannot account for five motions."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked every object in the window (1/5 to 1/7). #23 449274218 is an order granting the Motion to Intervene, dated 1/5: a different motion type on a different day. #24 449400615, #25 449416717 and #26 449416680 are 1/6 notices of attorney appearance by Fox, Frost and McKusick. #27 449476695 is a 1/7 notice by Dodge. These are notices, not orders. 451325118 is another unnumbered object holding only the short text 'Order on Motion to Appear Pro Hac Vice', created 1/23. It has no long text and is not a separate order, and with one event it cannot fit a five-event short form better than the long form does. No numbered entry in the window is an order on a pro hac vice motion. The long form 449342288 is the unnumbered ENDORSED ORDER granting pro hac vice motions 7, 8, 9, 10 and 11. The short form names five 'Order on Motion to Appear Pro Hac Vice' events, one for each of those five motions. Both are dated 1/6, the short form has time_filed 09:36:20, and the two were created at 07:16:58 and 07:20:29 (-08:00), 3.5 minutes apart. The long form is the only entry in the window the short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The clocks fit one entry seen twice. Short form 449342056: entry_number null, time_filed 09:36:20, date_created 2026-01-06T07:16:58.111861-08:00, desc_source document, twin_of null. Long form 449342288: entry_number null, time_filed null, date_created 2026-01-06T07:20:29.645725-08:00, desc_source entry, twin_of null. They were created 3 min 31.5 s apart on the same day. They are also the only two objects in the window created that morning; the next ones are entry 24 at 12:19:47 PT and entries 25 and 26 at 13:20:08-09 PT. Reading time_filed as court-local Eastern time, 09:36:20 is about 40-44 min before the two creation stamps (10:16:58 and 10:20:29 ET). That is the same lag the numbered entries show between time_filed and date_created (entries 24-27: 14-38 min). Both objects are unnumbered, which fits an unnumbered endorsed order. The numbered run has no gap (23 on 01/05, 24-26 on 01/06, 27 on 01/07), so no numbered filing is missing its number. The shape is the expected split: one object from a RECAP document, one from the docket text. The short form repeats 'Order on Motion to Appear Pro Hac Vice' five times, joined by AND, which matches the five motions (7-11) the long form grants. No other long form competes. The only other pro hac vice object, 451325118, is itself a document short form created 2026-01-23. The remaining long forms are of other types with other clocks: entry 23 grants a motion to intervene on 01/05, and entries 24-27 are notices of appearance. Relation first-load, with identical seen_at and seen_by, adds nothing either way."
+    }
+   }
+  },
+  "5392>5478": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The short form is a single 'Order on Motion to Appear Pro Hac Vice', which reads as one order on one motion. The long form is one endorsed order granting five pro hac vice motions (7-11). CM/ECF would give that entry five AND-joined clauses, and this pair's own window holds exactly such an object: 449342056, five clauses, created 07:16:58 PST on 01/06, 3.5 minutes before the long form. The twin (451325118) was created on 2026-01-23, 17 days after the entry date, not minutes apart. The type matches and the short form names nothing the long form does not do, so it may be a later, cut-down copy of the same unnumbered entry from another source. But it covers one motion, not five, so it does not describe exactly the event the long form records. The record also cannot rule out a separate same-day order on a single pro hac vice motion that CourtListener holds only in short form. The evidence does not settle it, so the verdict is uncertain, leaning no. No better match is named: no window object is a single-motion pro hac vice order (23 is a 01/05 order on a motion to intervene, 24-27 are notices of appearance), and 449342056 is another short form of the same five-motion order, not a different minute entry."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "This pair has the same window. Its numbered entries are #23 (a 1/5 order on the Motion to Intervene) and #24 to #27 (notices of attorney appearance). None of them is an order on a pro hac vice motion. The only order of any kind dated 1/6 is the long form 449342288, the endorsed order granting pro hac vice motions 7 to 11. The window holds one other unnumbered object that fits the type, 449342056. It names five 'Order on Motion to Appear Pro Hac Vice' events, matching the five motions granted, has time_filed 09:36:20, and was created 3.5 minutes before the long form. That makes it the endorsed order's own short twin, the same minute entry, not a different entry, so I do not name it as better_match. Every other 1/6 entry was captured the same day with a time stamp, about 15 to 40 minutes after its time_filed (reading time_filed as Eastern), and no second pro hac vice order appears. The window therefore offers no other minute entry this short form could belong to. Two points fall outside this lens and are left to the other readers. First, this short form names one pro hac vice event, while the long form granted five and 449342056 already carries all five. Second, it was created 1/23, 17 days later, with no time_filed. Both weaken how well it fits, but neither points to any other entry in the window."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The clocks do not support this link. Short form 451325118: entry_number null, time_filed null, date_created 2026-01-23T09:19:26.359736-08:00, desc_source document, twin_of null. Long form 449342288: entry_number null, time_filed null, date_created 2026-01-06T07:20:29.645725-08:00, desc_source entry, twin_of null. They were created about 17 days 2 h apart, not minutes. Neither has a time_filed to tie it to the order's moment; the order's only filed time in this window (09:36:20) is on a different object. In this pair's own window, another object already matches the long form within minutes: 449342056 (document, unnumbered, time_filed 09:36:20, created 2026-01-06T07:16:58, 3.5 min earlier). Its text repeats 'Order on Motion to Appear Pro Hac Vice' five times, matching the five motions granted. So 451325118 would be a third object for this order. Its text names the order type once, unlike the five-fold text of the order's same-day document object; a single mention fits an order on one motion. The type alone ties it to this long form. Against calling it a separate filing: the 01/05-01/07 window holds no other pro hac vice order. There is no second long form, and no second same-day object with a time_filed; every other 01/06-01/07 entry has one created 14-44 min after its time_filed. An object created this late with no time_filed could also be a third, backfilled sighting of the same order. The clocks settle neither reading, so this pair should not pass on this lens. No better match: 449342056 is the same order's short form and was created just as far from 451325118, and the other long forms (entry 23, an order granting a motion to intervene; entries 24-27, notices of appearance) are of other types."
+    }
+   }
+  },
+  "5477>5441": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form (455479348) is the standard CM/ECF short description for one order that rules on several motions: 'Order on Motion to Appear Pro Hac Vice' four times, joined by AND. That means a single order ruling on four pro hac vice motions. The long form (455540155) is a single ENDORSED ORDER by Judge Laplante granting four pro hac vice motions: #36 Freeman, #45 Berry, #46 Hamilton and #47 Lakin. They match on the kind of event (an order on motions), the motion type (pro hac vice), the count (four and four) and the entry date (2026-03-02). The short form names no motion, party or ruling that the long form does not also make. Timing is consistent: the short form was filed at 08:50:40 and created about 09:17 Eastern, and the long form was created later the same day. Nothing else in the window fits as well. The other order-type object, 456096138, is itself a short form and describes only one motion, so it is a worse fit for a four-motion order. The rest of the window is notices of appearance, which are a different kind of filing (they are the four admitted attorneys following up on this order). No better match."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked every object in the window. The numbered entries are #56 (455557616, 3/2), #57 (455630958, 3/3), #58 (455636798, 3/3) and #59 (455659133, 3/3). All four are NOTICEs of Attorney Appearance by Berry, Lakin, Hamilton and Freeman. They are notices, not orders, so the short form cannot describe any of them. They are the appearances that the PHV order tells admitted attorneys to file, and every one is dated after the order. The only other object of the order type is 456096138. It is neither numbered nor a long form: it is an unnumbered short form taken from a document, reading a single 'Order on Motion to Appear Pro Hac Vice', created 2026-03-06. A single order fits this four-order short form worse than the long form does. The long form 455540155 is one ENDORSED ORDER of 3/2 granting exactly four PHV motions (36, 45, 46, 47). That matches the short form's four 'Order on Motion to Appear Pro Hac Vice' events joined by AND. The short form's time_filed is 08:50:40 on 3/2, earlier than the long form's creation at 12:03 PT the same day. The pair's long form is the only entry in the window that the short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks: the twin 455479348 is unnumbered, with desc_source document, time_filed 08:50:40 (court-local EST, 13:50:40 UTC) and date_created 2026-03-02T06:17:38 PST (14:17:38 UTC). It was created 27 min after its filing time. That lag matches the lags of the timed objects on this docket: #56 59 min, #57 17 min, #58 28 min, #59 4 min. The entry 455540155 is unnumbered, with desc_source entry, time_filed null and date_created 2026-03-02T12:03:28 PST (15:03:28 EST). That is 5h46m after the twin was created and 6h13m after the twin's filing time. The gap is hours rather than minutes, but both are on the same day and the order is right: the docket text was created after the filing time. This is the usual shape of a docket-text fetch with no time arriving after a timed short-description item. On this docket, numbered entries #56-#59 each hold both sources in one object, joined by number (a time_filed plus '(Entered: ...)' docket text). An unnumbered order has no number to join on, so the same two sources leave two objects, which is what these are. Neither object has twin_of set. Window check for 03-02: the timed objects are 455479348 (08:50:40) and #56 (15:19:09). The docket-text objects are 455540155 and #56. Once #56 is matched by its number, the 08:50:40 item and the endorsed order are left only for each other. Docket text was also fetched again after 15:19:09 on 03-02 (#56 shows '(Entered: 03/02/2026)'), and no second PHV order docket text appeared. Shape: the twin's four AND-joined 'Order on Motion to Appear Pro Hac Vice' events fit one docket event that disposes of the four motions (36, 45, 46, 47) granted in the long form. A grant at 08:50:40 also comes before all four admitted attorneys' appearances (#56 at 15:19:09 on 03-02; #57-#59 at 10:22:03-13:15:52 on 03-03). The only other PHV object in the window, 456096138, is another short document-form object (one event, time_filed null, created 2026-03-06T05:20:59 PST), not a competing docket entry. The psephos relation is first-load (both rows first held 2026-07-03 09:33-10:02 UTC), which adds nothing either way. This is one minute entry seen twice."
+    }
+   }
+  },
+  "5401>5441": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The short form (456096138), 'Order on Motion to Appear Pro Hac Vice', is the same kind of event as the long form (455540155): an order on a pro hac vice motion, with the same entry date of 2026-03-02. It names no motion number, attorney or ruling that contradicts the long form. However, it is singular. Under the CM/ECF short-description convention, that wording describes an order on ONE pro hac vice motion. An order on four motions is described by four AND-joined repetitions, and exactly that description exists separately in this pair's own window as 455479348 (filed the same day at 08:50:40). The long form rules on four motions (#36, #45, #46, #47), so this short form is not the clerk's description of exactly that order. It was also created on 2026-03-06, four days after the entry, with no time_filed, which does not fit the usual pattern of two objects created minutes apart. Two readings remain possible: (a) a partial description of the same four-motion order coming from a different source, or (b) the description of a separate single-motion pro hac vice order entered on 3/2 whose long form CourtListener does not hold. The short form does not identify which motion or attorney it concerns, so the record cannot settle identity, and 'yes' is not supported. I cannot name a better match. The only long-form order in the window is 455540155. 455479348 is itself a short form, and the other objects are notices of appearance, a different kind of filing."
+    },
+    "alternative": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "There is no numbered alternative: #56-#59 (455557616, 455630958, 455636798, 455659133) are notices of appearance, not orders. The window holds only one minute entry that is an order on a PHV motion: the 3/2 ENDORSED ORDER granting four PHV motions (36, 45, 46, 47). CourtListener holds it twice. One copy is the long form 455540155. The other is the unnumbered short form 455479348 (time_filed 08:50:40), whose four 'Order on Motion to Appear Pro Hac Vice' events joined by AND match those four motions. So 455479348 is the same entry's own short form, not a separate entry, and I do not name it as better_match. It does show how this entry's short form actually reads, and this twin does not read that way. The twin is a single 'Order on Motion to Appear Pro Hac Vice', which fits an order on one PHV motion better than an order on four. It was also created 2026-03-06, with no time_filed. Linking it would make it a third object for the endorsed order. The other possibility is a separate one-motion PHV order of 3/2 that CourtListener holds only as this object. One point weighs toward the same entry: the window has no time-stamped short form and no long form for a second PHV order. But nothing in the record rules the separate order out. No competing entry in the window can be named, but the pairing rests on type alone, with a mismatch between one order and four, so the record does not settle it."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Clocks: the twin 456096138 is unnumbered, with desc_source document, time_filed null and date_created 2026-03-06T05:20:59 PST. The entry 455540155 is unnumbered, with desc_source entry, time_filed null and date_created 2026-03-02T12:03:28 PST. They were created 3 d 17 h 17 m apart, nowhere near the minutes-apart pattern. The twin also came 3 d 23.5 h after 08:50:40 EST, the only filing time for a 03-02 PHV order in the window. With time_filed null on both, no filing time ties the twin to this entry; only the shared entry_at 2026-03-02 links them. Shape: compatible (unnumbered document-form against unnumbered docket text, neither has twin_of set). But the twin arrived late through a third source with no time. It is not the timed item for a 03-02 PHV order: in the window that is 455479348 (time_filed 08:50:40, created 2026-03-02T06:17:38 PST, with four AND-joined events that match the four motions 36/45/46/47 granted in the long form). It is not docket text either. The twin's single 'Order on Motion to Appear Pro Hac Vice' event fits an order on one motion at least as well as it fits this four-motion entry, whose own timed short form repeats the event four times. Against a separate filing: the window has no other PHV order docket text for 03-01 to 03-03, even though docket text was fetched after 15:19:09 on 03-02 (#56 shows '(Entered: 03/02/2026)') and after 13:15:52 on 03-03 (#57-#59 show '(Entered: 03/03/2026)'). There is also no timed 03-02 object besides 455479348 and #56. So there is no competing long form to name. The clocks neither show one entry described twice nor prove two filings. better_match is null because 455479348 is a short document-form object, not another minute entry's docket text, and nothing in the twin's clocks ties it more closely there."
+    }
+   }
+  },
+  "5424>5451": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form is CM/ECF's chained short text for one order that disposed of four motions: one Motion for Leave to File and three Motions to File Amicus Brief. The long form is one ENDORSED ORDER (Judge Laplante) granting exactly that set: #34, #41 and #49 (Motion to File Amicus Brief) and #43 (Motion for Leave to File). The kind of entry (an order on motions), the motion types, the count (3 amicus + 1 leave) and the day all agree. Both are entry_at 2026-03-12, the short form's time_filed is 13:04:12, and both objects were created in CourtListener on 03-12. Only the order in which the components are listed differs, and that is not substantive. The short form names nothing the long form does not do, and neither text names a party, so there is no party conflict. No other object in the window fits better. 456994598 is the pro hac vice order (its short form is 456933932). 456994597 is the 03-11 extension-of-time order. #62-#64 are replies. 457052532 is another short form, not a long form, and it names only a single amicus motion, so it cannot carry this four-part text."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form (456933890) is a composite naming four orders: one on a Motion for Leave to File and three on Motions to File Amicus Brief. The long form (456994599) grants exactly that set: 34, 41 and 49 (Motion to File Amicus Brief) plus 43 (Motion for Leave to File). Both the count and the mix of motion types match. I checked every object in the window. The other long-form entries are 456994597 (3/11, extend time re 55), 456994598 (3/12, pro hac vice re 48), and #62, #63 and #64 (replies). None of them rules on an amicus or leave-to-file motion. The other short forms in the window each map to their own long form: 456933932 (pro hac vice, filed 12:41) to 456994598, and 456777597 (extend time, 3/11) to 456994597. 457052532 is also a short form, not a long-form entry, so it is not another place this composite could belong. The timing fits: the short form was filed at 13:04 ET on 3/12, and the long form came in the 3/12 14:40 PDT batch (17:40 ET). The long form is the only entry in the window this short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Twin 456933890: entry_number null, desc_source document, time_filed 13:04:12, date_created 2026-03-12T10:23:18.686-07:00 (13:23:18 ET), so it was created 19 min after its time_filed. Every object in the window that has a time_filed shows the same real-time capture pattern: 456933932 filed 12:41:28, created 13:23:19 ET; 456777597 filed 15:10:24, created 15:22:41 ET (03-11); #62 filed 18:10:29, created 18:23:42 ET. Entry 456994599: entry_number null, desc_source entry, time_filed null, date_created 2026-03-12T14:40:44.119-07:00. It was created in one batch with 456994597 (14:40:44.033, the 03-11 extend-time endorsed order) and 456994598 (14:40:44.075, the 03-12 pro hac vice endorsed order). The ~4h17m date_created gap is therefore ingest lag: a later batch of docket text re-described the day's unnumbered endorsed orders, so the gap does not point to a second filing. That batch maps 1:1 onto the three real-time short forms (456777597 to 456994597, 456933932 to 456994598, 456933890 to 456994599). Its internal order (...598 before ...599) also matches the short forms' time_filed order (pro hac vice 12:41:28 before amicus 13:04:12). The shape is the classic duplicate: both unnumbered, same entry_at 03-12, one document-sourced and one entry-sourced, and neither is any object's twin_of. The twin's four-part description (Leave to File plus three Amicus) also lines up with the long form's four motions (34, 41, 43, 49). No other long form on 03-12 fits: 456994598 is the pro hac vice order and #62 is a REPLY. The window holds one more amicus object, 457052532, but it is itself an unnumbered short form, not a better home for this twin."
+    }
+   }
+  },
+  "5402>5451": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The short form 'Order on Motion to File Amicus Brief' is CM/ECF's short text for an order disposing of ONE Motion to File Amicus Brief. The long form is a single ENDORSED ORDER disposing of FOUR motions: #34, #41 and #49 (Motion to File Amicus Brief) and #43 (Motion for Leave to File). CM/ECF writes a multi-motion order's short text as one 'Order on Motion ...' clause per motion, joined by AND. This same window holds exactly that text for this event: 456933890, 'Order on Motion for Leave to File AND Order on Motion to File Amicus Brief' x3, time_filed 13:04:12 on 03-12. So this pairing rests on type alone, on one of the four components. The short form does not say which amicus motion it acts on, and it omits the Motion for Leave to File and two of the three amicus motions. It is also a separate object, created the next morning (2026-03-13 05:07 PDT) with no time_filed. Read as a clerk would, it is not a description of exactly this event: it reads as a single-motion order, and folding it in risks merging a distinct order. That rules out 'yes'. I do not answer 'no' because the 03-11 to 03-13 window holds no other order on a Motion to File Amicus Brief that it could belong to. It may therefore be a stray duplicate of this entry with a shortened description rather than a distinct entry, and the record does not settle which. There is no better match: the only other object of this type, 456933890, is the long form's own short text, not a different minute entry."
+    },
+    "alternative": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Among the long-form entries in the window, only 456994599 involves a Motion to File Amicus Brief. The others are 456994597 (extend time), 456994598 (pro hac vice) and #62, #63 and #64 (replies), so there is no competing entry ID to name. However, the same window already holds 456933890, an RSS-style short form (time_filed 13:04:12 on 3/12). Its four-order composite (one leave-to-file plus three amicus) matches the four motions 456994599 grants exactly, so it is the natural short-form counterpart of this long form. The twin 457052532 names only one amicus order, and the long form grants four motions. The twin also has no time_filed and was created at 3/13 05:07 PDT, about 14.5 h after the long form and about 19 h after 456933890, so it reached CourtListener by a different capture path. A one-motion short form is what a separate, one-motion amicus order would produce, and such a separate same-day entry need not appear in the window in long form. The link rests on type alone: the twin matches one motion type in a four-motion order whose exact composite is already accounted for. The window cannot rule out that the twin belongs to a different minute entry, so I cannot answer yes. With no better-matching entry to point to, I also cannot answer no."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Twin 457052532: entry_number null, desc_source document, time_filed null, date_created 2026-03-13T05:07:48.594-07:00 (08:07 ET the next day). Entry 456994599: entry_number null, desc_source entry, time_filed null, date_created 2026-03-12T14:40:44.119-07:00. The twin was created about 14h27m after the long form and about 18h44m after the long form's real-time short form, on the following day. It was created alone, outside both batches that produced this docket's other 03-11/03-12 objects. The first is the real-time short-form batch: 456933890 at 10:23:18 and 456933932 at 10:23:19 PDT, each created 19-42 min after its time_filed. The second is the docket-text batch: 456994597/598/599 at 14:40:44.03-.12. Every other document-sourced object in the window carries a time_filed; this one has none, so its filing time on 03-12 cannot be placed against the long form's entry. Most important, the long form's minute entry is already fully accounted for as 'one entry seen twice' by a short form whose clocks fit it: 456933890 (time_filed 13:04:12, created 10:23:18 PDT, in the same 1:1 batch correspondence as the pro hac vice and extend-time pairs). Its four-part description covers the long form's motions 34/41/43/49. 457052532 would therefore be a third, late, single-event description from a different, date-only ingest path. That could be the same endorsed order or a separate amicus order of 03-12, and the clocks cannot tell which. Shape is consistent with either: both unnumbered, document vs entry, no twin_of set. The pairing rests on type alone ('Order on Motion to File Amicus Brief'). No other long form in the window is an amicus order, so I name no better match, but the clocks do not support this link. Uncertain, leaning no."
+    }
+   }
+  }
+ },
+ "tokens": 623658
+}

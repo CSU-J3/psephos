@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED and READ BLIND, the link script CHANGED, all HELD for Corey's line
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -572,10 +572,27 @@ It stays open for Corey to close.
     - a RECAP description over 60 characters is taken for a long form, so two RECAP descriptions get paired, and all five such pairs failed the readers;
     - in each, the rule's own tests had turned the docket text away: the order-head test does not take the District of New Hampshire's "ENDORSED ORDER" for an order, and a docket text that paraphrases the motion misses words of the short form.
   - **Ruling 5:** no link written; `config/entry_links.yaml` is unchanged.
+  - ~~**For Corey:** his ten; the 14, as a class or one by one, and the 2 one by one; the three plans, each one's unanimous half and its split half.~~ **The plans and the class ruled the same day (below). His ten, the class and the two individual splits remain his.**
+- **R1 plans and splits (Corey's rulings, 2026-10-03): the parts that need no reading from Corey DONE the same day. Nothing applied: `config/entry_links.yaml` now carries a `hold` that `--apply` refuses.**
+  - **Ruling 1:** the three plans failed as plans under the bar set first, each passing one link of two. Their unanimous halves are linked as pairs, each having passed exactly as a batch pair would: 279>320, 15575>15566 and 7146>7137. They are recorded under `read_links`, held. The dry run reads link 3.
+  - **Ruling 2:** 282>320 and 15567>15566 join the class; 7143>7137 stays unlinked.
+  - **Ruling 3, the three pairs of two RECAP descriptions RE-PLANNED and READ BLIND** (`docs/findings/r1-dnh-replans-2026-10-03.md`; records `docs/reads/2026-10-03-dnh-replans.json` and its canary):
+    - 5392/5456, 5401/5477 and 5402/5424 leave the class, which becomes 13 (`docs/findings/r1-splits-2026-10-03.md`);
+    - each is rooted at its "ENDORSED ORDER" docket text, with one link from each description to it, all six kind `plan`, against the same bar;
+    - **in each, the timed multi-motion description joins the docket text unanimously** (5456>5478, 5477>5441, 5424>5451), **and the late single-motion short form splits** (5392>5478 u/y/u, 5401>5441 and 5402>5451 u/u/u);
+    - 9 readers, all passing the check: 623,658 tokens against 683,787 priced, and 33,265 for the canary.
+    - No ruling covers these six links yet.
+  - **Ruling 4, the link script CHANGED** (`scripts/link_entry_twins.py`):
+    - `read_links` carry links the rule did not propose, each with its kind and the blind read that passed it. One links only when its run passed the check under the stored launcher and read it unanimous, its label names its rows, and its kind is the rule's own or `plan`. Its `twin_rule` names its kind and its read.
+    - Several links may share a root that is docket text when every one carries a passing read. If any link to that root lacks one, the whole group waits and `--apply` refuses.
+    - `hold` refuses `--apply` and the dry run prints it: ruling 5, made mechanical.
+    - 16 new tests in `tests/test_cl_twins.py`, including the refusal of a shared group missing one read. Each of the 15 new conditions, disabled in turn, fails a test.
+  - **Ruling 5:** nothing applied. The hold names Corey's line on his ten, the class of 13 and the two individual splits. Then what he rules goes with ruling 1's three links, in one move with its own dated note.
+  - **One question for that move:** if the class of 13 is ruled linked, 282>320 and 15567>15566 share their roots with ruling 1's passing links. The script takes only a passing read as a link's authority within a shared group, so Corey's class ruling needs a recorded form the script accepts in place of the read. Otherwise each group is refused whole.
   - **For Corey:**
     - his ten;
-    - the 14, as a class or one by one, and the 2 one by one;
-    - the three plans, each one's unanimous half and its split half.
+    - the class of 13, as a class or one by one, and the 2 one by one;
+    - the three D.N.H. re-plans, each one's unanimous half and its split half.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

@@ -4,11 +4,15 @@
 - In each plan, the timed description joins the docket text unanimously, and the late short form with no filing time splits.
 - Every link stays held until Corey returns his ten.
 
+**Ruled 2026-10-03 (Corey's rulings, R1 plans and splits):**
+- **Ruling 1:** the three failed as plans under the bar set first, each passing one link of two. Their unanimous halves, 279>320, 15575>15566 and 7146>7137, are linked as pairs, since each passed exactly as a batch pair would. They are recorded under `read_links` in `config/entry_links.yaml`, held until Corey's line (ruling 5).
+- **Ruling 2:** 282>320 and 15567>15566, where only the clocks reader is uncertain, join the class of the splits and follow Corey's ruling on it (`r1-splits-2026-10-03.md`). 7143>7137, uncertain on all three lenses, stays unlinked.
+
 **Why these three:** the blind batch did not link 279/282, 15567/15575 or 7137/7143. Their readers named, as the better match, an object they took for a third view of the same entry (`r1-blind-batch-2026-10-03.md`).
 
 ## The plans
 
-- **Each plan is one entry of three objects.** The docket text is the root, by ruling 2's hybrid: the long form survives. The other two objects are its twins.
+- **Each plan is one entry of three objects.** The docket text is the root, by the hybrid of Corey's rulings of 2026-09-30 (ruling 2): the long form survives. The other two objects are its twins.
 - **Each plan is two links, one per twin.** Each link was staged as one pair record in the batch's format, with the plan's two links in one file (its docket and date). Each file was read under the stored launcher by three readers, one per lens.
 - **A link the rule itself makes keeps the rule's kind:** 7143>7137, `short_long`. The other five carry kind `plan`, because the rule makes none of them. In each trio the rule makes only the batch's pair.
 - **The bar, fixed before the read:** a link passes the stored bar: all three readers read one minute entry and none names a better match. A plan passes when both its links pass.
@@ -89,12 +93,12 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 - **alternative: uncertain.** Same window. No numbered entry is a noting-date reset: #80-#82 are responses and replies filed 06-22, and #83 is a notice of supplemental authority on 06-24. The pair's long form 468502379 is the only object with noting-date-reset content, so I cannot name a different numbered entry as a better match. The pairing still rests on type alone. This twin is a bare type label ('Set/Reset Motion Noting Date') with no time_filed, created 2026-06-25 05:52:34, about 36 h after the long form. The window also holds a second short form of the same type for 06-23, 468502354 ('Set/Reset Motion Noting Date (Public)', time_filed 16:21:26, created 06-23 17:22:47, 78 s before the long form). That object lines up with the long form far more closely than this twin does. Two same-type short forms against one long form fit two readings: one minute entry captured three times, or a second noting-date-reset minute entry on 06-23 whose long form is not in the window. Nothing in this record tells the two apart. I do not name 468502354 as better_match because it is another short form that apparently belongs to the same long form, not a separate described entry. The record does not settle the question, so the verdict is uncertain rather than yes.
 - **clocks: uncertain.** The clocks do not show one entry seen twice, and they cannot rule it out. Twin 468689550 has entry_number null, desc_source 'document', time_filed null and date_created 2026-06-25T05:52:34.345-07:00. Entry 468502379 has entry_number null, desc_source 'entry', time_filed null and date_created 2026-06-23T17:24:05.929-07:00. CL created them about 36 h 28 min apart, far outside the minutes-apart pattern. time_filed is null on both, so no filing clock ties this twin to this entry. They share only entry_at (06-23) and the type. Pair n's own window also holds another unnumbered short form of the same type on 06-23: 468502354, 'Set/Reset Motion Noting Date (Public)', with time_filed 16:21:26 and date_created 2026-06-23T17:22:47-07:00. That object was created 1 min 19 s before this long form, so on clocks it, not 468689550, is the short partner of 468502379. That leaves two readings for 468689550: (a) a third, late description of the same minute entry from a different source, which its missing time_filed and slightly different text (no '(Public)') would fit; or (b) a second noting-date minute entry on 06-23 whose long form CL does not hold. A false link under (b) would fold a distinct entry. The clocks cannot tell (a) from (b). twin_of is null for every object in the window, so neither object is formally already another object's twin. No long form of a different minute entry in the window fits this twin as well or better: #80 to #83 are a RESPONSE, two REPLYs and a NOTICE. Hence better_match is null; the caveat is that 468502354 holds the clock-consistent claim on 468502379. Relation is first-load (psephos first saw both rows on 2026-07-04), so psephos's own timing adds no evidence.
 
-## What the link script would need
+## What the link script needed
 
-`scripts/link_entry_twins.py` cannot apply a plan as written:
+`scripts/link_entry_twins.py` could not apply a plan as written. **Changed 2026-10-03 (R1 plans and splits, ruling 4):** `read_links` carry links the rule did not propose, and several links may share a docket-text root when every one carries a passing read. Before the change:
 - **It links only pairs the rule makes.** An `asserted` pair must match one. Five of the six links here are not rule pairs.
 - **It sends any two links that share an object in one run to a person** (`would_chain`). Each plan's two links share its root.
-- Applying a plan needs both changed. Nothing is changed: every link is held until Corey returns his ten.
+- Nothing is applied: every link is held until Corey's line.
 
 ## The price
 
