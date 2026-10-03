@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02: the first-load test BUILT, the rule's 7 READ and LINKED, the person pairs READ but for a second batch of 239, whose batched readers FAILED their calibration 49 of 51 (HELD for Corey); pair 23 LINKED as asserted; tier 1's switch SHIPPED 2026-10-03
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -450,7 +450,7 @@ It stays open for Corey to close.
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
   - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
-  - the second batch of 239: batched readers calibrated, and the calibration FAILED its bar (below), so the 239 are not read; the batching control READ 2026-10-03, 1 of 6 changed, HELD for Corey (below); **read again blind the same day: 2 of 6 changed, rule a, batching (below);**
+  - ~~the second batch of 239~~ **READ blind 2026-10-03 in one batch of 276 with the 37 earlier candidates (below), after a failed calibration and two batching controls. Its links wait on Corey's ten;**
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
 - ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word~~ **SHIPPED 2026-10-03T00:49:15Z, all five steps run and the live pages read (above).**
@@ -520,7 +520,7 @@ It stays open for Corey to close.
     - the DSCC refusal, on Corey's ruling;
     - pair 23's link, on the order's text (ruling 3b).
   - **Re-read blind under ruling 3:** the 6 splits, pair 23, and the rule's 7, whose links rest on listed reads.
-  - **Under the narrower reading,** only launches that named an outcome: the tallies stand at 37 and 6, and 3c re-reads the rule's n=3 alone.
+  - **Under the narrower reading,** only launches that named an outcome: the tallies stand at 37 and 6, and 3c re-reads the rule's n=3 alone. **Not adopted: Corey ruled on 2026-10-03 that the reading stands as applied, so any pair number in a launch counts as primed.**
 - **The blind re-reads (ruling 3): READ 2026-10-03, every reader passing the check.** In full: `docs/findings/r1-blind-reads-2026-10-03.md`; records in `docs/reads/`.
   - **3a, the control: 2 of the 6 splits changed, so the rule written on 2026-10-03 gives a.**
     - The 2026-10-01 sample's n=8 and person pair 4 read unanimous blind. n=3 and pairs 5, 15 and 22 read split again.
@@ -537,9 +537,28 @@ It stays open for Corey to close.
     - linked on blind reads: pair 23 and the rule's 7;
     - still to read blind: the 37 earlier candidates. With the 239, that is 276 pairs.
   - **All 42 blind reads: 2,069,063 tokens.** Every reader's start was the launcher byte for byte, and only its own file was read. One reader read its file twice.
+  - ~~**For Corey:** whether the batch covers the 37 earlier candidates as well as the 239; his random check of ten, drawn after the batch.~~ **Ruled 2026-10-03: the batch reads all 276, and the ten are drawn from its unanimous passes (below).**
+- **The blind batch (Corey's rulings, 2026-10-03): READ 2026-10-03, all 93 readers passing the check. Every link from it is HELD until Corey has read his ten.** In full: `docs/findings/r1-blind-batch-2026-10-03.md`; the ten: `docs/findings/r1-corey-ten-2026-10-03.md`; record: `docs/reads/2026-10-03-blind-batch.json`.
+  - **Ruling 1:** "named its pair" stays as applied: any pair number in a launch counts as primed.
+  - **The read (ruling 2):** the 276 person-list pairs not yet read blind, the 239 first-load pairs and the 37 earlier candidates.
+    - 31 runs by docket and date, one reader per lens per run: 93 readers, launched by the Agent tool from the stored launcher in six waves, after a passing canary.
+    - The same lenses and bar as the blind re-reads.
+  - **The check gained two conditions, both measured on the first wave** (`tools/reader_launch.py`):
+    - a reader must see every line of its file as the file holds it. One Read returns about 41,000 characters, so a run's file takes several;
+    - the Read tool's truncation notice is admitted, and only when it names the reader's own file.
+    - 25 tests. Disabling any of the check's 15 conditions in turn fails one.
+  - **The price:** 9,868,392 tokens estimated before the batch went past its first wave, re-priced after every wave, and never over the 10,000,000 ceiling. **Actual: 9,789,893**, and 32,733 for the canary.
+  - **The outcomes: 251 unanimous, 16 split, 9 not linked.** Of the 37 earlier candidates, 36 read unanimous and 1 split.
+    - **Six of the 9 not linked are the failure mode the bar exists for:** a short form paired on its type with a different minute entry of the same day. In the other three, the better match is another view of the same entry.
+    - **No pair joining two RECAP document descriptions passed:** all five failed. The rule reads a description over 60 characters as a long form.
+    - **15 of the 16 splits turn on a short form with no filing time,** created 1 to 48 days after its entry's date. Identity and alternative match read yes in 14 of them.
+  - **Corey's ten (ruling 3):** drawn with seed 20261003 from the 251 and laid out side by side, the readers' verdicts left out: 265/301, 54722/54724, 91982/91992, 52/59, 8870/8872, 91974/92015, 6790/6833, 91715/91768, 13798/13801 and 7714/17501.
+  - **Held:** no link written. `config/entry_links.yaml` is unchanged.
+  - **Outside the batch:** the 8 links already made stand on their blind re-reads. n=8 and person pair 4 read unanimous in the blind control, but they are not among the 276, so under ruling 2 they have no link and stay on the person list.
   - **For Corey:**
-    - whether the batch covers the 37 earlier candidates as well as the 239;
-    - his random check of ten, drawn after the batch.
+    - his ten;
+    - the 16 splits, for his split list;
+    - whether n=8 and pair 4 join the batch's unanimous passes.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

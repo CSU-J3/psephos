@@ -58,6 +58,8 @@ Ruling 2: *"For every read since 2026-10-01, record whether its launching messag
 
 ## Under the narrower reading
 
+**Not adopted.** Corey ruled on 2026-10-03 that the reading stands as applied: any pair number in a launch counts as primed. Kept as the record of what was offered.
+
 If "named its pair" means only a launch that also named an outcome or a finding, the list is:
 - pair 23's three reads of 2026-10-02;
 - the rule's n=3's three, by the collision;
