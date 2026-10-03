@@ -1,0 +1,49 @@
+{
+ "run": "2026-10-03 three-object plans: canary",
+ "channel": "Agent tool",
+ "checked_at": "2026-10-03T20:56:18Z",
+ "launcher": {
+  "path": "tools/reader_launcher.txt",
+  "sha256": "b6f45a4c297513486268ddf37994f4145b6eff87454b1ce97544c869d4ae8fbf"
+ },
+ "ok": true,
+ "readers": [
+  {
+   "pair": "canary",
+   "lens": "identity",
+   "file": "4f53cda18c2b.json",
+   "file_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "expected_start_sha256": "5f86d87ad5bced7be8a06ecb544a40518cf2cd8e12907ed4db829380d8c5744c",
+   "transcripts": [
+    "agent-aee3b212aa6119a0f.jsonl"
+   ],
+   "start_sha256": "5f86d87ad5bced7be8a06ecb544a40518cf2cd8e12907ed4db829380d8c5744c",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "lines_seen": "1 of 1",
+   "verdicts": [],
+   "tokens": 32971
+  }
+ ],
+ "pairs": {},
+ "tokens": 32971
+}

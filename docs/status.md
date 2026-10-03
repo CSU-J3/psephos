@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -555,10 +555,27 @@ It stays open for Corey to close.
   - **Corey's ten (ruling 3):** drawn with seed 20261003 from the 251 and laid out side by side, the readers' verdicts left out: 265/301, 54722/54724, 91982/91992, 52/59, 8870/8872, 91974/92015, 6790/6833, 91715/91768, 13798/13801 and 7714/17501.
   - **Held:** no link written. `config/entry_links.yaml` is unchanged.
   - **Outside the batch:** the 8 links already made stand on their blind re-reads. n=8 and person pair 4 read unanimous in the blind control, but they are not among the 276, so under ruling 2 they have no link and stay on the person list.
+  - ~~**For Corey:** his ten; the 16 splits, for his split list; whether n=8 and pair 4 join the batch's unanimous passes.~~ **Ruled 2026-10-03 (below), all but the ten.**
+- **R1 after the blind batch (Corey's rulings, 2026-10-03): everything but Corey's ten DONE the same day. Every link stays HELD until he returns the ten.**
+  - **Ruling 1:** n=8 of the 2026-10-01 sample (rows 5419/5457) and person pair 4 (rows 8868/8873) join the batch's unanimous passes, which become 253. Both were read blind in the control, one pair per reader. The ten stand as drawn from the 251.
+  - **Ruling 2, the 16 splits LAID OUT** (`docs/findings/r1-splits-2026-10-03.md`):
+    - the 14 whose only dissent is the clocks reader, on a short form with no filing time created after its entry's date, as one compact list: both first lines, the creation gap, and every same-type object in the window;
+    - 6966/6967 and 93146/93298 in full, with their reads.
+    - Three of the 14 pair two RECAP descriptions, the recorded defect. In each, the readers took the docket text for a third view of the same entry, so linking the pair as read would join the two descriptions and leave the docket text apart.
+  - **Ruling 3, the three entries held three times PLANNED and READ BLIND** (`docs/findings/r1-three-object-plans-2026-10-03.md`; records `docs/reads/2026-10-03-three-object-plans.json` and its canary):
+    - each plan roots its entry at the docket text, with two twins: six links, five of them links the rule does not make;
+    - the bar, fixed before the read: both of a plan's links must pass;
+    - **0 of 3 plans pass.** In each, the timed description joins the docket text unanimously (279>320, 15575>15566, 7146>7137), and the late short form with no filing time splits (282>320 and 15567>15566 y/y/u, 7143>7137 u/u/u);
+    - 661,395 tokens against 675,454 priced, and 32,971 for the canary;
+    - `scripts/link_entry_twins.py` cannot apply a plan as written. It links only the rule's own pairs, and it sends two links that share an object in one run to a person.
+  - **Ruling 4, the rule's defect RECORDED** beside it, in `collectors/cl_twins.py`'s docstring, not as a change to it:
+    - a RECAP description over 60 characters is taken for a long form, so two RECAP descriptions get paired, and all five such pairs failed the readers;
+    - in each, the rule's own tests had turned the docket text away: the order-head test does not take the District of New Hampshire's "ENDORSED ORDER" for an order, and a docket text that paraphrases the motion misses words of the short form.
+  - **Ruling 5:** no link written; `config/entry_links.yaml` is unchanged.
   - **For Corey:**
     - his ten;
-    - the 16 splits, for his split list;
-    - whether n=8 and pair 4 join the batch's unanimous passes.
+    - the 14, as a class or one by one, and the 2 one by one;
+    - the three plans, each one's unanimous half and its split half.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

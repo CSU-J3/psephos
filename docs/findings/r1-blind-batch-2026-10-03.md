@@ -60,6 +60,8 @@ A reader's tokens are its final context, the measure the blind re-reads used (`r
 | two RECAP document descriptions, one over 60 characters (`short_long`) | 0 | 3 | 2 |
 
 **No pair joining two RECAP document descriptions passed.** The rule reads a description over 60 characters, such as an order's description joined with "AND", as a long form. All five such pairs failed the bar.
+- The defect is recorded beside the rule in `collectors/cl_twins.py`, not as a change to it (Corey's rulings of 2026-10-03, R1 after the blind batch, ruling 4).
+- In each of the five, the rule's own tests had already turned the docket text away. Three D.N.H. docket texts open "ENDORSED ORDER", which the order-head test does not take for an order. In the other two, the docket text paraphrases the motion and leaves words of the short form out.
 
 ### Not linked (9)
 
@@ -81,7 +83,8 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 
 **In the other three, the better match is an object the readers took for another view of the same entry**, which CourtListener then holds three times:
 - **15567/15575 and 279/282:** the pair's long form is itself a RECAP document's description, over 60 characters. The better match is the order's docket text.
-- **7137/7143:** the better match is a second short form, created 78 seconds before the docket text. The pair's short form has no filing time and was created about 36 hours after the docket text.
+- **7137/7143:** the better match is a second short form, created 79 seconds before the docket text. The pair's short form has no filing time and was created about 36 hours after the docket text.
+- **All three were then planned as entries of three objects and read blind** (R1 after the blind batch, ruling 3): in each, the timed description joins the docket text unanimously, and the late short form splits (`r1-three-object-plans-2026-10-03.md`).
 
 ### Split: to Corey's split list (16)
 
@@ -109,6 +112,7 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 **Fifteen of the sixteen turn on a short form with no filing time.** Each was created 1 to 48 days after its entry's date, so the clocks reader found nothing tying it to its entry below the day.
 - In fourteen of them, identity and alternative match read yes.
 - The sixteenth, 93146/93298, has a timed short form. Its long form has no filing time and was created two days later.
+- **Laid out for Corey's ruling** (R1 after the blind batch, ruling 2): the 14 whose only dissent is the clocks reader as one class, the other 2 one by one (`r1-splits-2026-10-03.md`).
 
 ### Unanimous (251): candidates, held
 
@@ -116,11 +120,14 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 
 **Corey's ten are drawn from these with seed 20261003** (`r1-corey-ten-2026-10-03.md`).
 
+**Two more join them (Corey's rulings of 2026-10-03, R1 after the blind batch, ruling 1):** n=8 of the 2026-10-01 sample (rows 5419/5457) and person pair 4 (rows 8868/8873).
+- Both read unanimous blind in the control, one pair per reader.
+- The unanimous passes are 253. The ten were drawn from the 251 before the two joined, and stand as drawn.
+
 ## Outside the batch
 
 Ruling 2 reads *"Every tier-2 link comes from this batch."* It is applied to the links still to be made.
 
 - **The 8 links already made stand:** the rule's 7 and pair 23. They were re-read blind on 2026-10-03 under the same launcher, all unanimous (`r1-blind-reads-2026-10-03.md`), and they are not among the 276.
 - **The blind control's 5 unrefused pairs are not among the 276 either.** It read n=8 of the 2026-10-01 sample and person pair 4 unanimous, and n=3, pair 5 and pair 15 split (`r1-blind-reads-2026-10-03.md`).
-  - n=8 and pair 4 have no link from this batch, so they stay on the person list.
-  - **For Corey:** whether they join the batch's unanimous passes.
+  - ~~n=8 and pair 4 have no link from this batch, so they stay on the person list. **For Corey:** whether they join the batch's unanimous passes.~~ **Ruled 2026-10-03: they join (above).**
