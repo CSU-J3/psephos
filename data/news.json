@@ -9688,5 +9688,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/tarrant-county-voters-sue-to-block-gop-polling-site-cuts-targeting-minority-voters",
     "title": "Tarrant County voters sue to block GOP polling site cuts targeting minority communities"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 121353,
+    "kind": "item",
+    "occurred_at": "2026-10-03T14:55:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-to-rule-on-trumps-bid-to-create-voter-eligibility-lists-before-midterms",
+    "title": "Judge to rule on Trump’s bid to create voter eligibility lists before midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 121352,
+    "kind": "item",
+    "occurred_at": "2026-10-03T15:22:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/montana-court-blocks-onerous-mail-voting-law-that-caused-thousands-of-rejected-absentee-ballots-last-year",
+    "title": "Montana court blocks onerous mail voting law that caused thousands of rejected absentee ballots last year"
   }
 ]
