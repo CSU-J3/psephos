@@ -73,4 +73,11 @@ refused:
     ruled: "Corey, 2026-09-30"
 
 # Pairs a person read and linked. Each: rows: [short, long], ruled: "<who>, <date>".
-asserted: []
+asserted:
+  # Pair 23 of the person list: LWV v. DHS (D.D.C., 71499795), the Sep 29 order held as
+  # its short form (93145, object 479853687) and its full minute order (93225, object
+  # 479868690). Corey's 2026-09-29 verdict already reads 93225 as the duplicate of 93145
+  # (docs/gates.yaml), and all three readers passed it on 2026-10-02
+  # (docs/findings/r1-first-load-2026-10-02.md). Linked beside the rule's 7.
+  - rows: [93145, 93225]
+    ruled: "Corey, 2026-10-02 (the 2026-09-29 duplicate verdict, and three passing reads)"
