@@ -43,9 +43,17 @@ LINKS THE RULE DID NOT PROPOSE (Corey's rulings, 2026-10-03, R1 plans and splits
     that passed it: a run record in docs/reads/ and the link's label there. It links only
     when that run passed tools.reader_launch's check, under the stored launcher, and reads
     the link unanimous. Its twin_rule names its kind and its read.
+  * A `ruled` entry is evidence in place of that read (Corey's rulings of 2026-10-03, a
+    ruling as evidence, ruling 1): who ruled, the date, the criterion in one sentence, the
+    exact links it covers by their rows, twin first, and the blind reads it stands over. A
+    read link that its run read but did not pass links when a ruled entry names it and
+    stands over its read; its twin_rule names the ruling and the read. A ruled entry is
+    refused, and --apply with it, when it does not say who ruled, when and by what
+    criterion, names no reads, a read with no run record or no links, or names a link it
+    does not cover (none of its reads read it) or one no read link carries.
   * Several links may share one root in a run when the root is docket text and every link
-    to it carries a passing read. If any link to that root lacks one, the whole group waits,
-    and --apply refuses while any read link lacks a passing read.
+    to it carries a passing read or a ruled entry naming it. If any link to that root lacks
+    both, the whole group waits, and --apply refuses while any read link lacks both.
   * `hold` in the config, when set, refuses --apply and says why (ruling 5: nothing is
     applied until Corey's line on his ten, then everything ruled in one move).
 
@@ -94,13 +102,18 @@ def _root(pair: dict) -> tuple[int, int]:
     return (a, b) if (la, -a) < (lb, -b) else (b, a)
 
 
+def _read_path(path: str) -> str:
+    """A run record's path as one string, however the config spells it."""
+    p = Path(path)
+    return str((p if p.is_absolute() else REPO / p).resolve())
+
+
 def _load_read(path: str | None) -> dict | None:
     """A blind run's record (tools.reader_launch check --out), or None."""
     if not path:
         return None
-    p = Path(path) if Path(path).is_absolute() else REPO / path
     try:
-        return json.loads(p.read_text(encoding="utf-8"))
+        return json.loads(Path(_read_path(path)).read_text(encoding="utf-8"))
     except (OSError, ValueError):
         return None
 
@@ -115,8 +128,35 @@ def _label_rows(label: str | None, rows: list[int]) -> bool:
         return False
 
 
-def read_link(spec: dict, byid: dict, launcher_sha: str) -> dict:
-    """One `read_links` entry as a link. `why` is set when it does not carry a passing read."""
+def ruling(spec: dict, carried: set) -> dict:
+    """One `ruled` entry. `why` is set when it is refused. `carried` holds every read link's
+    rows, twin first."""
+    r = {"by": spec.get("by"), "date": spec.get("date"), "criterion": spec.get("criterion"),
+         "links": [tuple(x) if isinstance(x, (list, tuple)) else (x,) for x in spec.get("links") or []],
+         "reads": sorted(_read_path(p) for p in spec.get("reads") or []), "why": None}
+    recs = [_load_read(p) for p in spec.get("reads") or []]
+    if not all(str(r[k] or "").strip() for k in ("by", "date", "criterion")):
+        r["why"] = "it does not say who ruled, when and by what criterion"
+    elif not recs:
+        r["why"] = "it names no reads"
+    elif None in recs:
+        r["why"] = "it names a read with no run record"
+    elif not r["links"]:
+        r["why"] = "it names no links"
+    for rows in r["links"]:
+        if r["why"]:
+            break
+        name = ">".join(map(str, rows))
+        if not any(_label_rows(label, list(rows)) for rec in recs for label in rec.get("pairs") or {}):
+            r["why"] = f"it names a link it does not cover: {name}"
+        elif rows not in carried:
+            r["why"] = f"it names a link no read link carries: {name}"
+    return r
+
+
+def read_link(spec: dict, byid: dict, launcher_sha: str, rulings: list | tuple = ()) -> dict:
+    """One `read_links` entry as a link. `why` is set when it carries neither a passing read
+    nor a ruled entry that names it and stands over its read."""
     rows = list(spec.get("rows") or [])
     x = {"rows": rows, "kind": spec.get("kind"), "read": spec.get("read"),
          "label": spec.get("label"), "ruled": spec.get("ruled"), "why": None}
@@ -144,8 +184,19 @@ def read_link(spec: dict, byid: dict, launcher_sha: str) -> dict:
         x["why"] = "not read under the stored launcher"
     elif not _label_rows(x["label"], rows):
         x["why"] = "its label names other rows"
-    elif ((rec.get("pairs") or {}).get(x["label"]) or {}).get("outcome") != "unanimous":
-        x["why"] = "its read did not pass"
+    elif x["label"] not in (rec.get("pairs") or {}):
+        x["why"] = "its run did not read it"
+    elif rec["pairs"][x["label"]].get("outcome") != "unanimous":
+        named = [r for r in rulings if r["why"] is None and tuple(rows) in r["links"]]
+        over = [r for r in named if _read_path(x["read"]) in r["reads"]]
+        if over:
+            x["ruling"] = f"{over[0]['by']}, {over[0]['date']}"
+            x["by"] = (f"{x['kind']}: ruled by {x['ruling']}, over blind read "
+                       f"{Path(x['read']).name} {x['label']}")
+        elif named:
+            x["why"] = "its read did not pass, and the ruling naming it stands over other reads"
+        else:
+            x["why"] = "its read did not pass"
     return x
 
 
@@ -223,14 +274,17 @@ def plan(conn, links: dict) -> dict:
         else:
             out["person"].append(pair)
 
-    # Links the rule did not propose, each carrying a passing blind read. A refusal wins, then
-    # an existing link; a read that does not pass waits; a read link settles a rule pair that
-    # waited for a person.
+    # Links the rule did not propose, each carrying a passing blind read or a ruled entry in
+    # its place. A refusal wins, then an existing link; a link with neither waits; a read link
+    # settles a rule pair that waited for a person.
     out["unread"] = []
     launcher_sha = RL.launcher()["sha256"]
+    carried = {tuple(s.get("rows") or []) for s in links.get("read_links") or []}
+    rulings = [ruling(s, carried) for s in links.get("ruled") or []]
+    out["ruled_refused"] = [r for r in rulings if r["why"]]
     rule_links = {frozenset(x["objects"]) for x in out["link"]}
     for spec in links.get("read_links") or []:
-        x = read_link(spec, byid, launcher_sha)
+        x = read_link(spec, byid, launcher_sha, rulings)
         key = frozenset(x.get("objects") or [])
         if x.get("twin") is None:
             out["unread"].append(x)
@@ -245,16 +299,17 @@ def plan(conn, links: dict) -> dict:
             x["relation"] = relation(*x["rows"])
             out["person"] = [p for p in out["person"] if frozenset(p["objects"]) != key]
             out["link"].append(x)
-    # A group of links sharing one root waits whole when any link to that root lacks a pass.
+    # A group of links sharing one root waits whole when any link to that root lacks both.
     held_roots = {x["entry"] for x in out["unread"] if x.get("entry") is not None}
     for x in [y for y in out["link"] if y.get("read") and y["entry"] in held_roots]:
         out["link"].remove(x)
-        x["why"] = "another link to its root lacks a passing read"
+        x["why"] = "another link to its root lacks a passing read or a ruling"
         out["unread"].append(x)
 
     # No chains: a twin must not already be an entry, an entry must not be a twin, and no
     # object may be in two links this run. Those go to a person instead. The one exception:
-    # several links may share a root that is docket text when every one carries a passing read.
+    # several links may share a root that is docket text when every one carries a passing read
+    # or a ruled entry naming it.
     roots = {o["twin_of"] for o in objects.values() if o["twin_of"] is not None}
     twins = {cid for cid, o in objects.items() if o["twin_of"] is not None}
     as_twin = Counter(x["twin"] for x in out["link"])
@@ -342,8 +397,10 @@ def main(argv=None) -> int:
         p = plan(conn, links)
         print(f"strict-B edges {p['edges']} (ambiguous short rows {p['ambiguous_short']})")
         for k in ("one_object", "unattached", "refused", "linked_already", "link", "would_chain",
-                  "person", "ruled_missing", "unread"):
+                  "person", "ruled_missing", "ruled_refused", "unread"):
             print(f"  {k:15} {len(p[k])}")
+        for r in p["ruled_refused"]:
+            print(f"    ruled entry ({r['by']}, {r['date']}): {r['why']}")
         for x in p["unread"]:
             print(f"    read link {x.get('label')}: {x['why']}")
         if links.get("hold"):
@@ -408,8 +465,10 @@ def main(argv=None) -> int:
             why = "a docket was walked after the check; draw and read it again"
         elif p["ruled_missing"]:
             why = f"{len(p['ruled_missing'])} asserted pair(s) match nothing the rule sees now"
+        elif p["ruled_refused"]:
+            why = f"ruled entries refused: {len(p['ruled_refused'])}"
         elif p["unread"]:
-            why = f"{len(p['unread'])} read link(s) lack a passing blind read"
+            why = f"{len(p['unread'])} read link(s) lack a passing blind read or a ruling"
         if why:
             print(f"\n  REFUSED: {why} (ruling 3; config/entry_links.yaml).")
             return 2

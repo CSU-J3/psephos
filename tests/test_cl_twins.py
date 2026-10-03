@@ -449,10 +449,12 @@ def test_a_read_link_the_rule_did_not_propose_links_by_its_kind(tmp_path, monkey
     ({"label": "2>3"}, "its label names other rows"),
     ({"kind": "short_long"}, "kind short_long, where the rule's is plan"),
     ({"read": "missing.json"}, "no run record"),
+    ({"outcome": None}, "its run did not read it"),
 ])
 def test_a_read_link_without_a_passing_read_waits_and_refuses_apply(tmp_path, monkeypatch, change, why):
     conn = _trio(tmp_path)
-    read = _read(tmp_path, {"1>3": change.get("outcome", "unanimous"), "2>3": "unanimous"},
+    outcomes = {"1>3": change.get("outcome", "unanimous"), "2>3": "unanimous"}
+    read = _read(tmp_path, {k: v for k, v in outcomes.items() if v},
                  ok=change.get("ok", True), sha=change.get("sha"))
     spec = _read_link([1, 3], str(tmp_path / change["read"]) if "read" in change else read,
                       kind=change.get("kind", "plan"), label=change.get("label"))
@@ -504,7 +506,8 @@ def test_a_shared_group_waits_whole_when_one_link_lacks_a_passing_read(tmp_path,
     p = L.plan(conn, links)
     assert p["link"] == []
     assert sorted((x["rows"], x["why"]) for x in p["unread"]) == [
-        ([1, 3], "another link to its root lacks a passing read"), ([2, 3], "its read did not pass")]
+        ([1, 3], "another link to its root lacks a passing read or a ruling"),
+        ([2, 3], "its read did not pass")]
     conn.close()
     get = _env(tmp_path, monkeypatch, links)
     assert L.main(["--apply"]) == 2
@@ -560,13 +563,130 @@ def test_a_read_link_settles_a_rule_pair_that_waited_for_a_person(tmp_path):
     assert [(x["rows"], x["by"]) for x in p["link"]] == [([11, 12], "short_long: blind read run.json 11/12")]
 
 
+# --------------------------------------------------------------------------- #
+# A ruling as evidence (Corey's rulings, 2026-10-03, a ruling as evidence, ruling 1)
+# --------------------------------------------------------------------------- #
+def _ruled(links, reads):
+    return {"by": "Corey", "date": "2026-10-03",
+            "criterion": "The clocks reader's only dissent is on a short form with no filing time.",
+            "links": links, "reads": reads}
+
+
+def _split_group(tmp_path):
+    """The trio sharing the docket-text root 3: 1>3 read unanimous, 2>3 split. The run also
+    read 2>1, which no read link carries."""
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous", "2>3": "split", "2>1": "split"})
+    return conn, read, [_read_link([1, 3], read), _read_link([2, 3], read)]
+
+
+GROUP_WAITS = [([1, 3], "another link to its root lacks a passing read or a ruling"),
+               ([2, 3], "its read did not pass")]
+
+
+def _apply_refused(tmp_path, monkeypatch, links):
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 2
+    assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 0
+
+
+def test_a_ruled_entry_stands_in_for_a_read_in_a_shared_group(tmp_path, monkeypatch):
+    conn, read, read_links = _split_group(tmp_path)
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": read_links,
+             "ruled": [_ruled([[2, 3]], [read])]}
+    p = L.plan(conn, links)
+    assert p["unread"] == [] and p["ruled_refused"] == [] and p["would_chain"] == []
+    ruled_by = "plan: ruled by Corey, 2026-10-03, over blind read run.json 2>3"
+    assert sorted((x["rows"], x["by"]) for x in p["link"]) == [
+        ([1, 3], "plan: blind read run.json 1>3"), ([2, 3], ruled_by)]
+    conn.close()
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 0
+    assert [tuple(r) for r in get().execute(
+        "SELECT cl_entry_id, twin_of, twin_rule FROM cl_entries "
+        "WHERE cl_entry_id IN (101, 102, 103) ORDER BY 1")] == [
+        (101, 103, "plan: blind read run.json 1>3"), (102, 103, ruled_by), (103, None, None)]
+
+
+def test_removing_the_ruled_entry_refuses_its_group(tmp_path, monkeypatch):
+    conn, read, read_links = _split_group(tmp_path)
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": read_links,
+             "ruled": [_ruled([[2, 3]], [read])]}
+    assert sorted(x["rows"] for x in L.plan(conn, links)["link"]) == [[1, 3], [2, 3]]
+    del links["ruled"]
+    p = L.plan(conn, links)
+    assert p["link"] == [] and sorted((x["rows"], x["why"]) for x in p["unread"]) == GROUP_WAITS
+    conn.close()
+    _apply_refused(tmp_path, monkeypatch, links)
+
+
+@pytest.mark.parametrize("change, why", [
+    ({"reads": ["other.json"]}, "it names a link it does not cover: 2>3"),
+    ({"reads": []}, "it names no reads"),
+    ({"reads": ["run.json", "missing.json"]}, "it names a read with no run record"),
+    ({"links": []}, "it names no links"),
+    ({"links": [[2, 3], [2, 1]]}, "it names a link no read link carries: 2>1"),
+    ({"by": None}, "it does not say who ruled, when and by what criterion"),
+    ({"date": ""}, "it does not say who ruled, when and by what criterion"),
+    ({"criterion": " "}, "it does not say who ruled, when and by what criterion"),
+])
+def test_a_refused_ruled_entry_leaves_its_group_waiting(tmp_path, monkeypatch, change, why):
+    conn, read, read_links = _split_group(tmp_path)
+    _read(tmp_path, {"1>3": "unanimous"}, name="other.json")      # a run that never read 2>3
+    if "reads" in change:
+        change = {"reads": [str(tmp_path / f) for f in change["reads"]]}
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": read_links,
+             "ruled": [{**_ruled([[2, 3]], [read]), **change}]}
+    p = L.plan(conn, links)
+    assert [r["why"] for r in p["ruled_refused"]] == [why]
+    assert p["link"] == [] and sorted((x["rows"], x["why"]) for x in p["unread"]) == GROUP_WAITS
+    conn.close()
+    _apply_refused(tmp_path, monkeypatch, links)
+
+
+def test_a_refused_ruled_entry_refuses_apply_though_every_link_passes(tmp_path, monkeypatch, capsys):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous"})
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": [_read_link([1, 3], read)],
+             "ruled": [{**_ruled([[1, 3]], [read]), "reads": []}]}
+    p = L.plan(conn, links)
+    assert [x["rows"] for x in p["link"]] == [[1, 3]] and p["unread"] == []
+    conn.close()
+    _apply_refused(tmp_path, monkeypatch, links)
+    out = capsys.readouterr().out
+    assert "ruled entry (Corey, 2026-10-03): it names no reads" in out
+    assert "REFUSED: ruled entries refused: 1" in out
+
+
+def test_a_ruling_over_other_reads_is_no_evidence_for_a_link(tmp_path):
+    conn, read, read_links = _split_group(tmp_path)
+    other = _read(tmp_path, {"2>3": "split"}, name="other.json")   # 2>3 read in another run
+    p = L.plan(conn, {**LINKS, "read_links": read_links, "ruled": [_ruled([[2, 3]], [other])]})
+    assert p["ruled_refused"] == [] and p["link"] == []
+    assert sorted((x["rows"], x["why"]) for x in p["unread"]) == [
+        GROUP_WAITS[0], ([2, 3], "its read did not pass, and the ruling naming it stands over other reads")]
+
+
+def test_a_ruling_is_evidence_only_for_the_links_it_names(tmp_path):
+    conn, read, read_links = _split_group(tmp_path)
+    p = L.plan(conn, {**LINKS, "read_links": read_links, "ruled": [_ruled([[1, 3]], [read])]})
+    assert p["ruled_refused"] == [] and p["link"] == []
+    assert sorted((x["rows"], x["why"]) for x in p["unread"]) == GROUP_WAITS
+
+
 def test_the_committed_read_links_carry_passing_blind_reads():
     """No DB: every committed read link names a run that passed the check under the stored
-    launcher and read the link unanimous."""
+    launcher and read the link, unanimous or under a committed ruled entry that names it and
+    stands over that run; no committed ruled entry is refused."""
     links = L.load_links()
     sha = RL.launcher()["sha256"]
+    carried = {tuple(s["rows"]) for s in links.get("read_links") or []}
+    rulings = [L.ruling(s, carried) for s in links.get("ruled") or []]
+    assert [r["why"] for r in rulings if r["why"]] == []
     for spec in links.get("read_links") or []:
         rec = L._load_read(spec["read"])
         assert rec and rec["ok"] is True and rec["launcher"]["sha256"] == sha, spec
         assert L._label_rows(spec["label"], spec["rows"]), spec
-        assert rec["pairs"][spec["label"]]["outcome"] == "unanimous", spec
+        assert rec["pairs"][spec["label"]]["outcome"] == "unanimous" or any(
+            tuple(spec["rows"]) in r["links"] and L._read_path(spec["read"]) in r["reads"]
+            for r in rulings), spec
