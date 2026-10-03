@@ -1,0 +1,52 @@
+{
+ "run": "2026-10-03 canary, Workflow tool (positive control)",
+ "channel": "Workflow tool, Explore, opus, effort max",
+ "checked_at": "2026-10-03T02:29:40Z",
+ "launcher": {
+  "path": "tools/reader_launcher.txt",
+  "sha256": "b6f45a4c297513486268ddf37994f4145b6eff87454b1ce97544c869d4ae8fbf"
+ },
+ "ok": false,
+ "readers": [
+  {
+   "pair": "canary (empty file)",
+   "lens": "alternative",
+   "file": "4f53cda18c2b.json",
+   "file_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+   "expected_start_sha256": "9bdc060ab08c4e808dc649bd66842d38bac4c34377e968ee2efdd79476028c57",
+   "transcripts": [
+    "agent-af88dfefbd2c69f12.jsonl"
+   ],
+   "start_head": "[Workflow harness — user request] The harness relays, verbatim and indented below, the user request that triggered this workflow run. This relayed request is th",
+   "start_sha256": "b051cf6f0eb75308fea2162cc3bd17e506ae47f06dbe330215a15e34b6f67578",
+   "ok": false,
+   "problems": [
+    "the start message is not the launcher rendered for this lens and file",
+    "a message other than the hand-back note: '[Workflow harness — computed task] The task text below was computed at runtime by a workflow script. It was not typed by'",
+    "no hand-back report"
+   ],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read"
+   ],
+   "reads_of_file": 1,
+   "verdicts": null,
+   "tokens": 36546
+  }
+ ],
+ "pairs": {},
+ "tokens": 36546
+}

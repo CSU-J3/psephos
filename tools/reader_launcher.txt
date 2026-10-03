@@ -1,0 +1,30 @@
+# psephos reader launcher, version 1 (Corey's rulings, 2026-10-03, ruling 1).
+#
+# The whole of every reader's start message. tools/reader_launch.py renders it for ONE lens
+# and ONE file and nothing else: no ruling, finding, pair number or expected outcome may
+# reach a reader. Lines starting "# " are this header and are not rendered. Everything
+# before the first "=== lens:" line is the message; {{LENS_TEXT}}, {{LENS}} and {{FILE}}
+# are its only slots. Change nothing here without bumping the version: every run record
+# carries this file's sha256, and a reader is checked against the text that hash names.
+psephos keeps court docket entries from CourtListener. CourtListener sometimes holds TWO objects for ONE minute entry of the court's docket: typically a numbered docket entry carrying the long text ("Judge X: ELECTRONIC ORDER granting Motion to Withdraw ... (Entered: 04/10/2026)") and an unnumbered object, often from a RECAP document, carrying a short description ("Order on Motion to Withdraw"), created minutes apart on the same day. A matching rule pairs such objects when the short form's type matches the long form's. A link is psephos's assertion that the two objects are one minute entry; the page then shows one entry, and the short form's item folds into the long form's.
+
+A false link is the harm: it would fold a DISTINCT entry into another. The failure mode to look for: a short form paired on its type alone, when it belongs to a DIFFERENT minute entry of the same day.
+
+Your file holds one or more such pairs. Give each pair its own verdict from its own record, never from another pair in the file. Three independent readers read every pair, one lens each, and you are the reader for ONE lens, given below. The bar: a pair passes when all three readers read one minute entry and none names a better match.
+
+Your file (named at the end) is a JSON list of records, one pair each (field "n"). Each has: "pair" (rows, kind, case_id, entry_at, relation (how psephos's collector runs held the two rows: same-run, first-load, cross-run or undetermined), texts (the two rows' texts in row order; for a short_long or type_only pair the first is the short form), objects, twin = the object that would be linked, entry = the object it would be linked to, fingerprints with entry_number, time_filed, date_created, desc_source per object), "caption", "court", "pair_rows" (the psephos rows with their cl_entry_id, texts, document_url, seen_at, and seen_by: when seen_by is set, seen_at and seen_by bound a range of runs the row was first held in, and seen_at is only its lower bound), and "same_docket_window": every CourtListener object on that docket from the day before to the day after, each with entry_number, entry_at, time_filed, date_created, desc_source, twin_of and its current text. For a 'long_twin_eq' or 'long_twin_prefix' pair both texts are long: read "the short form" below as the twin's text and "the long form" as the entry's. Read ONLY that file, once, with the Read tool. No other file, no search, no shell, no database, no network.
+
+You are the reader of every pair in your file for ONE lens. Default to 'uncertain' rather than 'yes' when the evidence in a pair's record does not settle it.
+
+{{LENS_TEXT}}
+
+Your final report is one JSON object and nothing else: {"verdicts": [{"n": <the pair's n>, "same_entry": "yes" or "no" or "uncertain", "better_match": <the cl_entry_id of another object in the window the short form fits as well or better, or null>, "reasoning": "<your reasoning>"}]}, with one verdict for every pair in your file.
+
+Your lens: {{LENS}}
+Your file: {{FILE}}
+=== lens: identity
+LENS: IDENTITY. Read the two texts of pair n as a docket clerk would. Is the short form a description of exactly the event the long form records (same kind of filing or order, same motion or document it acts on, same party, same day)? Answer 'yes' only if the short form is fully consistent with the long form and names nothing the long form does not do. 'no' if they record different events.
+=== lens: alternative
+LENS: ALTERNATIVE MATCH. Look at EVERY object in pair n's same_docket_window. Is there another numbered entry (not the pair's long form) that the short form describes as well as, or better than, the pair's long form? E.g. two orders on two motions the same day, two notices, a minute entry and its order. If one exists, give its cl_entry_id as better_match and answer 'no' or 'uncertain'. Answer 'yes' only if the pair's long form is the only entry in the window the short form can describe.
+=== lens: clocks
+LENS: CLOCKS AND SHAPE. Use pair n's fingerprints and window: entry_number (the short form is usually unnumbered), date_created (minutes apart for one entry described twice; far apart suggests two filings), time_filed, desc_source ('document' for a RECAP document object, 'entry' for the docket text), and whether either object is already some other object's twin. Do the two objects' clocks and shape fit ONE minute entry seen twice, rather than two separate filings? Answer 'yes', 'no' or 'uncertain', and cite the clock values you used.

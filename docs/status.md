@@ -490,6 +490,36 @@ It stays open for Corey to close.
     - whether pair 22's branch-deciding read is taken again, unprimed;
     - whether pair 23's link wants its reads re-weighed;
     - how a read is launched so that no reader is handed a brief naming a pair's verdict. Whether readers launched other than by a workflow get the same relay is unmeasured.
+- **Blind launching (Corey's rulings, 2026-10-03, ruling 1): BUILT and PROVEN on a canary before any further read.**
+  - **The launcher,** `tools/reader_launcher.txt`, version 1, sha256 `b6f45a4c2975`, is a reader's whole start message. It names only the lens and the file.
+    - It is the control's brief and lens prompts with four things taken out: the ruling reference, the rule's name, the refused DSCC pair's description, and the alternative lens's "(the refused pair's failure mode)".
+    - A reader's file is staged under its own content hash, so the one path it is given names nothing.
+  - **The check,** `python -m tools.reader_launch check`, fails the run unless each reader:
+    - began from the launcher rendered for its lens and file, with nothing before it;
+    - got no other message but the harness's hand-back note, and no context attachment of an unmeasured type;
+    - saw none of its pairs' ids outside its own file;
+    - used only Read, on its own file, and the hand-back;
+    - reported a well-formed verdict for every pair.
+  - **The record** goes in `docs/reads/`: the launcher's hash, each reader's start hash, every check, the verdicts, each pair's outcome and the tokens.
+    - 22 tests. Each of the check's ten conditions, disabled in turn, fails a test.
+  - **The channel, measured.** The Workflow tool hands every agent the turn's user message verbatim, ahead of its task. The Agent tool begins from its prompt alone: a probe's whole context held its prompt, the harness's hand-back note and environment records, and no brief, git status, memory or project instructions.
+  - **Proven both ways on a canary, an empty file.** Launched by the Agent tool, it passes. Launched by the Workflow tool, the positive control, it fails: its first message was the relayed request.
+  - **1c is a standing rule in CLAUDE.md:** briefs go to the main session only, and readers launch by the Agent tool.
+  - **Unmeasured: the readers' reasoning effort.** The Agent tool takes it from the agent type and cannot set it. The earlier trimmed readers were pinned to max through the Workflow tool.
+- **Every read since 2026-10-01, SORTED (ruling 2).** In full: `docs/findings/r1-reads-sorted-2026-10-03.md`.
+  - **Applied as written:** a launch that told its reader which pair to judge named that pair, outcome or not.
+  - **Every read in a tally is listed, so the tallies are empty until re-read blind:** candidates 37 to 0, splits 6 to 0.
+    - The 2026-10-01 sample's 60 reads and the person batch's 72 each named their pair. The person batch's relayed brief also named pair 23's outcome.
+    - The rule's 7's 21 reads each named their pair. The relayed "n=3 and n=8 go to Corey's split list" meant the sample's n=3, and it collided with one of the 7's own label.
+    - The calibration named pair 23 by its row and its outcome, and the DSCC pair as refused: the negative control.
+    - The control named all 6 splits' outcome.
+  - **A second channel:** the calibration's files carried the 8 links' own `twin_of`, so its 24 verdicts on those pairs saw the outcome in the data.
+  - **What stands without the reads:**
+    - pair 22's refusal, whose finding is a fact of the record's clocks;
+    - the DSCC refusal, on Corey's ruling;
+    - pair 23's link, on the order's text (ruling 3b).
+  - **Re-read blind under ruling 3:** the 6 splits, pair 23, and the rule's 7, whose links rest on listed reads.
+  - **Under the narrower reading,** only launches that named an outcome: the tallies stand at 37 and 6, and 3c re-reads the rule's n=3 alone.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
