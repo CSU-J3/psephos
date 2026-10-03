@@ -577,7 +577,19 @@
     "date_terminated": "2026-01-15T00:00:00",
     "defendant": "Shirley Weber",
     "docket_number": "2:25-cv-09149",
-    "entry_count": 150,
+    "entry_count": 153,
+    "entry_moves": [
+      {
+        "apart": 3,
+        "entries": [
+          150,
+          153
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-09-25T00:00:00",
     "latest_entry_at": "2026-03-12T00:00:00",
     "plaintiff": "United States",
@@ -1257,7 +1269,23 @@
     "date_terminated": "2026-06-27T00:00:00",
     "defendant": "COMMONWEALTH OF PENNSYLVANIA",
     "docket_number": "2:25-cv-01481",
-    "entry_count": 198,
+    "entry_count": 201,
+    "entry_moves": [
+      {
+        "apart": 3,
+        "entries": [
+          198,
+          201
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          112,
+          111
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-09-25T00:00:00",
     "latest_entry_at": "2026-07-07T00:00:00",
     "plaintiff": "United States",
@@ -1267,16 +1295,6 @@
     "status_checked_at": null,
     "superseded_by": "73582123",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 13830,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -2397,7 +2415,26 @@
     "date_terminated": "2026-08-17T00:00:00",
     "defendant": "Simon",
     "docket_number": "0:25-cv-03761",
-    "entry_count": 240,
+    "entry_count": 236,
+    "entry_moves": [
+      {
+        "entries": [
+          240,
+          236
+        ],
+        "kind": "merge",
+        "ledger": [
+          154,
+          153
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          158,
+          154
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-09-25T00:00:00",
     "latest_entry_at": "2026-08-21T00:00:00",
     "plaintiff": "United States",
@@ -2407,36 +2444,6 @@
     "status_checked_at": "2026-08-18T00:33:53.270419+00:00",
     "superseded_by": "74687843",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 81221,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82258,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 83062,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71453336/united-states-v-simon/",
-        "title": "United States v. Minnesota — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -3915,16 +3922,6 @@
         "occurred_at": "2026-08-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453336/210/united-states-v-simon/",
-        "title": "United States v. Minnesota: ORDER granting 63 Motion to Dismiss/General; granting 78 Motion to Dismiss/General; granting 83 Motion to Dismiss/General; and denying 70 Motion to Compel. (Written Opinion) Signed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 84353,
-        "kind": "item",
-        "occurred_at": "2026-08-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453336/210/united-states-v-simon/",
         "title": "United States v. Minnesota: ORDER granting  63   Motion to Dismiss/General; granting  78   Motion to Dismiss/General; granting  83   Motion to Dismiss/General; and denying  70   Motion to Compel.  (Written Op"
       },
       {
@@ -3997,7 +3994,32 @@
     "date_terminated": "2026-06-30T00:00:00",
     "defendant": "NH Secretary of State",
     "docket_number": "1:25-cv-00371",
-    "entry_count": 185,
+    "entry_count": 184,
+    "entry_moves": [
+      {
+        "apart": 2,
+        "kind": "merge",
+        "ledger": [
+          112,
+          110
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          114,
+          111
+        ],
+        "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          185,
+          184
+        ],
+        "kind": "link",
+        "on": "2026-10-02",
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2025-09-25T00:00:00",
     "latest_entry_at": "2026-07-07T00:00:00",
     "plaintiff": "United States",
@@ -4007,16 +4029,6 @@
     "status_checked_at": null,
     "superseded_by": "73607684",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 14765,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -5045,7 +5057,7 @@
         "occurred_at": "2026-06-29T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/86/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: ///MEMORANDUM ORDER denying as moot re  31  Motion to Compel; granting re  32   Motion to Dismiss for Failure to State a Claim; granting re  37   Motion to Dismiss for Failure to S"
+        "title": "United States v. New Hampshire: ///MEMORANDUM ORDER denying as moot re 31 Motion to Compel; granting re 32 Motion to Dismiss for Failure to State a Claim; granting re 37 Motion to Dismiss for Failure to State a C"
       },
       {
         "channel": "litigation",
@@ -5056,16 +5068,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
         "title": "United States v. New Hampshire: ENDORSED ORDER granting re 79 Motion to Withdraw re 77 Notice of Supplemental Authority. Text of Order: Granted. So Ordered by Judge Joseph N. Laplante.(ko)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16697,
-        "kind": "item",
-        "occurred_at": "2026-06-29T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/86/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: ///MEMORANDUM ORDER denying as moot re 31 Motion to Compel; granting re 32 Motion to Dismiss for Failure to State a Claim; granting re 37 Motion to Dismiss for Failure to State a C"
       },
       {
         "channel": "litigation",
@@ -5101,16 +5103,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 13483,
-        "kind": "item",
-        "occurred_at": "2026-07-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/88/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Notice of Appeal"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16699,
         "kind": "item",
         "occurred_at": "2026-07-06T00:00:00",
         "source_id": "courtlistener",
@@ -5157,7 +5149,26 @@
     "date_terminated": "2026-07-10T00:00:00",
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "1:25-cv-01338",
-    "entry_count": 230,
+    "entry_count": 125,
+    "entry_moves": [
+      {
+        "entries": [
+          230,
+          125
+        ],
+        "kind": "merge",
+        "ledger": [
+          86,
+          48
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          90,
+          49
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-09-25T00:00:00",
     "latest_entry_at": "2026-07-27T00:00:00",
     "plaintiff": "United States",
@@ -5167,36 +5178,6 @@
     "status_checked_at": "2026-08-10T19:24:46.237577+00:00",
     "superseded_by": "73682036",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 30181,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 59840,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82264,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -5230,26 +5211,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16909,
-        "kind": "item",
-        "occurred_at": "2025-09-25T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/1/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: COMPLAINT FOR DECLARATORY AND INJUNCTIVE RELIEF against Essma Bagnuola, Henry Berger, Board Of Elections of the State of New York, Anthony Casale, Peter Kosinski, Raymond Riley, II"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16910,
-        "kind": "item",
-        "occurred_at": "2025-09-25T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/2/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: G.O. 25 FILING ORDER ISSUED: Initial Conference set for 12/29/2025 at 9:30 AM in Albany before Magistrate Judge Paul J. Evangelista. Civil Case Management Plan must be filed and Ma"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9810,
         "kind": "item",
         "occurred_at": "2025-09-26T00:00:00",
@@ -5261,16 +5222,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 9779,
-        "kind": "item",
-        "occurred_at": "2025-10-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/7/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION to Intervene filed by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference. Respo"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16911,
         "kind": "item",
         "occurred_at": "2025-10-01T00:00:00",
         "source_id": "courtlistener",
@@ -5300,27 +5251,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16912,
-        "kind": "item",
-        "occurred_at": "2025-10-07T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/11/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER STAYING CASE Pursuant to General Order #48: It is hereby ORDERED that this case is STAYED pursuant to General Order #48. It is further ORDERED that ALL Court deadlines i"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9781,
-        "kind": "item",
-        "occurred_at": "2025-10-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/20/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION to Intervene as Defendant filed by League of Women Voters of New York State. Response to Motion due by 11/14/2025 (Attachments: # (1) Memorandum of Law in support of Motion "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16913,
         "kind": "item",
         "occurred_at": "2025-10-24T00:00:00",
         "source_id": "courtlistener",
@@ -5335,32 +5266,12 @@
         "occurred_at": "2025-11-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/46/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: First MOTION to File Amicus Brief by John L. O'Kelly. Response to Motion due by 11/25/2025. Reply to Response to Motion due by 12/2/2025 (Attachments: # (1) Proposed Order/Judgment"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16914,
-        "kind": "item",
-        "occurred_at": "2025-11-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/46/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: First MOTION to File Amicus Brief by John L. O'Kelly. Response to Motion due by 11/25/2025. Reply to Response to Motion due by 12/2/2025 (Attachments: # 1 Proposed Order/Judgment) "
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 9783,
-        "kind": "item",
-        "occurred_at": "2025-11-05T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/51/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: First MOTION to File Amicus Brief by John L. O'Kelly. Response to Motion due by 11/26/2025. Reply to Response to Motion due by 12/3/2025 (Attachments: # (1) Exhibit(s) Journal of I"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16915,
         "kind": "item",
         "occurred_at": "2025-11-05T00:00:00",
         "source_id": "courtlistener",
@@ -5375,7 +5286,7 @@
         "occurred_at": "2025-11-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/55/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting [46] Motion to File Amicus Brief: It is hereby ORDERED that the [46] Motion to File Amicus Brief by RealAmerica.vote is GRANTED; The Court accepts for filing [5"
+        "title": "United States v. New York: TEXT ORDER granting 46 Motion to File Amicus Brief: It is hereby ORDERED that the 46 Motion to File Amicus Brief by RealAmerica.vote is GRANTED; The Court accepts for filing 51 Ami"
       },
       {
         "channel": "litigation",
@@ -5386,16 +5297,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: Order on Motion to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16916,
-        "kind": "item",
-        "occurred_at": "2025-11-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/55/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting 46 Motion to File Amicus Brief: It is hereby ORDERED that the 46 Motion to File Amicus Brief by RealAmerica.vote is GRANTED; The Court accepts for filing 51 Ami"
       },
       {
         "channel": "litigation",
@@ -5420,27 +5321,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16917,
-        "kind": "item",
-        "occurred_at": "2025-11-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/58/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER LIFTING STAY: It is hereby ORDERED that the Stay entered pursuant to General Order No. 48 [Dkt. no. 11] on October 7, 2025 is hereby Lifted. Signed by U.S. District Judg"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9786,
-        "kind": "item",
-        "occurred_at": "2025-12-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/64/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [7] MOTION to Interven"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16918,
         "kind": "item",
         "occurred_at": "2025-12-10T00:00:00",
         "source_id": "courtlistener",
@@ -5455,7 +5336,7 @@
         "occurred_at": "2025-12-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/68/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting [66] Joint LETTER Request filed by United States of America: It is hereby ORDERED that the [66] Letter Request/Briefing Schedule is GRANTED, without the need fo"
+        "title": "United States v. New York: TEXT ORDER granting 66 Joint LETTER Request filed by United States of America: It is hereby ORDERED that the 66 Letter Request/Briefing Schedule is GRANTED, without the need for a "
       },
       {
         "channel": "litigation",
@@ -5470,27 +5351,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16919,
-        "kind": "item",
-        "occurred_at": "2025-12-16T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/68/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting 66 Joint LETTER Request filed by United States of America: It is hereby ORDERED that the 66 Letter Request/Briefing Schedule is GRANTED, without the need for a "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9788,
-        "kind": "item",
-        "occurred_at": "2025-12-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/71/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT NOTICE: The Rule 16 Initial Conference scheduled for 12/29/2025 at 9:30am before Magistrate Judge Paul J. Evangelista and the deadline to submit a proposed Civil Case Manageme"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16920,
         "kind": "item",
         "occurred_at": "2025-12-23T00:00:00",
         "source_id": "courtlistener",
@@ -5505,7 +5366,7 @@
         "occurred_at": "2025-12-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/73/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION for Leave to File Motion to Dismiss filed by League of Women Voters of New York State. Response to Motion due by 1/20/2026 (Attachments: # (1) Proposed Notice of Motion to D"
+        "title": "United States v. New York: MOTION for Leave to File Motion to Dismiss filed by League of Women Voters of New York State. Response to Motion due by 1/20/2026 (Attachments: # 1 Proposed Notice of Motion to Dis"
       },
       {
         "channel": "litigation",
@@ -5525,7 +5386,7 @@
         "occurred_at": "2025-12-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/75/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: ANSWER to [1] Complaint, by Anthony Casale, Peter Kosinski, Raymond Riley, III.(Faso, Nicholas)"
+        "title": "United States v. New York: ANSWER to 1 Complaint, by Anthony Casale, Peter Kosinski, Raymond Riley, III.(Faso, Nicholas) (Entered: 12/30/2025)"
       },
       {
         "channel": "litigation",
@@ -5550,67 +5411,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16921,
-        "kind": "item",
-        "occurred_at": "2025-12-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/73/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION for Leave to File Motion to Dismiss filed by League of Women Voters of New York State. Response to Motion due by 1/20/2026 (Attachments: # 1 Proposed Notice of Motion to Dis"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16922,
-        "kind": "item",
-        "occurred_at": "2025-12-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/74/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION to Dismiss for Failure to State a Claim filed by State of New York. Motion returnable before Judge D'Agostino Response to Motion due by 1/20/2026. Reply to Response to Motio"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16923,
-        "kind": "item",
-        "occurred_at": "2025-12-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/75/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: ANSWER to 1 Complaint, by Anthony Casale, Peter Kosinski, Raymond Riley, III.(Faso, Nicholas) (Entered: 12/30/2025)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16924,
-        "kind": "item",
-        "occurred_at": "2025-12-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/76/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION to Dismiss for Failure to State a Claim filed by Essma Bagnuola, Henry Berger, Kristen Zebrowski Stavisky. Motion returnable before Judge Mae A. D'Agostino Response to Motio"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16925,
-        "kind": "item",
-        "occurred_at": "2025-12-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/77/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MOTION TO DISMISS by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference of Proposed Mo"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9794,
-        "kind": "item",
-        "occurred_at": "2025-12-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/78/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Amicus Brief by Daniel J. Freeman. Response to Motion due by 1/21/2026. Reply to Response to Motion due by 1/28/2026 (Attachments: # (1) Memorandum of Law, # (2) Proposed Amicus Br"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16926,
         "kind": "item",
         "occurred_at": "2025-12-31T00:00:00",
         "source_id": "courtlistener",
@@ -5625,7 +5426,7 @@
         "occurred_at": "2026-01-06T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/79/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Amicus Brief by Seventeen States by DANIEL KOBRIN. Response to Motion due by 1/27/2026. Reply to Response to Motion due by 2/3/2026 (Attachments: # (1) Exhibit(s) Amicus Brief, # ("
+        "title": "United States v. New York: Amicus Brief by Seventeen States by DANIEL KOBRIN. Response to Motion due by 1/27/2026. Reply to Response to Motion due by 2/3/2026 (Attachments: # 1 Exhibit(s) Amicus Brief, # 2 P"
       },
       {
         "channel": "litigation",
@@ -5635,7 +5436,7 @@
         "occurred_at": "2026-01-06T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/80/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Letter Request Motion by United States of America Motion to Exceed Page Limit (Attachments: # (1) Memorandum of Law Memo in Support)(Neff, Eric) Modified on 1/9/2026 (ban, )."
+        "title": "United States v. New York: Letter Request Motion by United States of America Motion to Exceed Page Limit (Attachments: # 1 Memorandum of Law Memo in Support)(Neff, Eric) Modified on 1/9/2026 (ban, ). (Entere"
       },
       {
         "channel": "litigation",
@@ -5645,7 +5446,7 @@
         "occurred_at": "2026-01-06T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/81/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: CROSS-MOTION to Compel and Response in Opposition to [73],[74],[76],[77] Motions to Dismiss filed by United States of America. Reply to Response/Response to Cross-Motion due by 1/2"
+        "title": "United States v. New York: CROSS-MOTION to Compel and Response in Opposition to 73, 74, 76, 77 Motions to Dismiss filed by United States of America. Reply to Response/Response to Cross-Motion due by 1/20/202"
       },
       {
         "channel": "litigation",
@@ -5656,36 +5457,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: Set/Reset Deadlines as to 73 MOTION for Leave to File Motion to Dismiss filed by League of Women Voters of New York State, 74 MOTION to Dismiss filed by State of New York. 76 MOTIO"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16927,
-        "kind": "item",
-        "occurred_at": "2026-01-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/79/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Amicus Brief by Seventeen States by DANIEL KOBRIN. Response to Motion due by 1/27/2026. Reply to Response to Motion due by 2/3/2026 (Attachments: # 1 Exhibit(s) Amicus Brief, # 2 P"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16928,
-        "kind": "item",
-        "occurred_at": "2026-01-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/80/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Letter Request Motion by United States of America Motion to Exceed Page Limit (Attachments: # 1 Memorandum of Law Memo in Support)(Neff, Eric) Modified on 1/9/2026 (ban, ). (Entere"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16929,
-        "kind": "item",
-        "occurred_at": "2026-01-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/81/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: CROSS-MOTION to Compel and Response in Opposition to 73, 74, 76, 77 Motions to Dismiss filed by United States of America. Reply to Response/Response to Cross-Motion due by 1/20/202"
       },
       {
         "channel": "litigation",
@@ -5705,7 +5476,7 @@
         "occurred_at": "2026-01-09T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/82/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting [78] and [79] Motions to file Amicus Briefs: It is hereby ORDERED that the [78] Motion to File Amicus Brief by the Democratic National Committee In Support of D"
+        "title": "United States v. New York: TEXT ORDER granting 78 and 79 Motions to file Amicus Briefs: It is hereby ORDERED that the 78 Motion to File Amicus Brief by the Democratic National Committee In Support of Defenda"
       },
       {
         "channel": "litigation",
@@ -5715,7 +5486,7 @@
         "occurred_at": "2026-01-09T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/83/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting [80] Letter Request for leave to file an oversized brief: It is hereby ORDERED that the plaintiffs request for leave to file an oversized brief, not to exceed 3"
+        "title": "United States v. New York: TEXT ORDER granting 80 Letter Request for leave to file an oversized brief: It is hereby ORDERED that the plaintiffs request for leave to file an oversized brief, not to exceed 31 "
       },
       {
         "channel": "litigation",
@@ -5740,67 +5511,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16930,
-        "kind": "item",
-        "occurred_at": "2026-01-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/82/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting 78 and 79 Motions to file Amicus Briefs: It is hereby ORDERED that the 78 Motion to File Amicus Brief by the Democratic National Committee In Support of Defenda"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16931,
-        "kind": "item",
-        "occurred_at": "2026-01-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/83/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting 80 Letter Request for leave to file an oversized brief: It is hereby ORDERED that the plaintiffs request for leave to file an oversized brief, not to exceed 31 "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9800,
-        "kind": "item",
-        "occurred_at": "2026-01-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/86/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: REPLY to Response to Motion re [74] Motion to Dismiss for Failure to State a Claim, and in Opposition to Plaintiff's Cross-Motion to Compel filed by State of New York. (Rubinstein,"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9801,
-        "kind": "item",
-        "occurred_at": "2026-01-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/87/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: RESPONSE in Opposition re [81] Motion to Compel, filed by Essma Bagnuola, Henry Berger, Kristen Zebrowski Stavisky. (Attachments: # (1) Declaration, # (2) Exhibit(s) 1, # (3) Exhib"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9802,
-        "kind": "item",
-        "occurred_at": "2026-01-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/88/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Reply in Support of [73] Motion to Dismiss and Response to [81] Plaintiff's Motion to Compel filed by League of Women Voters of New York State. Response to Motion due by 2/10/2026 "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9803,
-        "kind": "item",
-        "occurred_at": "2026-01-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/89/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: RESPONSE in Opposition re [81] Motion to Compel, and Reply to Response to [77] Proposed Motion to Dismiss filed by National Association for the Advancement of Colored People, Natio"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16932,
         "kind": "item",
         "occurred_at": "2026-01-20T00:00:00",
         "source_id": "courtlistener",
@@ -5810,7 +5521,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16933,
+        "id": 9801,
         "kind": "item",
         "occurred_at": "2026-01-20T00:00:00",
         "source_id": "courtlistener",
@@ -5820,7 +5531,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16934,
+        "id": 9802,
         "kind": "item",
         "occurred_at": "2026-01-20T00:00:00",
         "source_id": "courtlistener",
@@ -5830,7 +5541,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16935,
+        "id": 9803,
         "kind": "item",
         "occurred_at": "2026-01-20T00:00:00",
         "source_id": "courtlistener",
@@ -5845,7 +5556,7 @@
         "occurred_at": "2026-01-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/90/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting [88] Motion for Leave to File the reply at 88-1 and 88-2:It is hereby ORDERED that the Court grants the Intervenor's request for leave to file a reply. It is fu"
+        "title": "United States v. New York: TEXT ORDER granting 88 Motion for Leave to File the reply at 88-1 and 88-2:It is hereby ORDERED that the Court grants the Intervenor's request for leave to file a reply. It is furt"
       },
       {
         "channel": "litigation",
@@ -5860,27 +5571,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16936,
-        "kind": "item",
-        "occurred_at": "2026-01-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/90/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER granting 88 Motion for Leave to File the reply at 88-1 and 88-2:It is hereby ORDERED that the Court grants the Intervenor's request for leave to file a reply. It is furt"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9805,
-        "kind": "item",
-        "occurred_at": "2026-02-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/91/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [77] MOTION to Dismiss"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16937,
         "kind": "item",
         "occurred_at": "2026-02-06T00:00:00",
         "source_id": "courtlistener",
@@ -5895,32 +5586,12 @@
         "occurred_at": "2026-04-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/95/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [77] MOTION to Dismiss"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16938,
-        "kind": "item",
-        "occurred_at": "2026-04-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/95/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re 77 MOTION to Dismiss. "
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 9807,
-        "kind": "item",
-        "occurred_at": "2026-04-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/96/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: NOTICE by National Association for the Advancement of Colored People, National Association for the Advancement of Colored People New York State Conference re [77] MOTION to Dismiss"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16939,
         "kind": "item",
         "occurred_at": "2026-04-30T00:00:00",
         "source_id": "courtlistener",
@@ -5935,16 +5606,6 @@
         "occurred_at": "2026-05-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/97/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: NOTICE by United States of America re [81] MOTION to Compel and Opposition to Motion to Dismiss filed by United States of America. Notice of Supplemental Authority (OLC Opinion) (A"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16940,
-        "kind": "item",
-        "occurred_at": "2026-05-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/97/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: NOTICE by United States of America re 81 MOTION to Compel and Opposition to Motion to Dismiss filed by United States of America. Notice of Supplemental Authority (OLC Opinion) (Att"
       },
       {
@@ -5955,7 +5616,7 @@
         "occurred_at": "2026-05-20T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/99/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER regarding [97] Notice of Supplemental Authority by United States of America re [81] Motion to Compel and Opposition to Motion to Dismiss and [98] Response to Letter Brie"
+        "title": "United States v. New York: TEXT ORDER regarding 97 Notice of Supplemental Authority by United States of America re 81 Motion to Compel and Opposition to Motion to Dismiss and 98 Response to Letter Brief file"
       },
       {
         "channel": "litigation",
@@ -5970,22 +5631,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 16941,
-        "kind": "item",
-        "occurred_at": "2026-05-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/99/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: TEXT ORDER regarding 97 Notice of Supplemental Authority by United States of America re 81 Motion to Compel and Opposition to Motion to Dismiss and 98 Response to Letter Brief file"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 33526,
         "kind": "item",
         "occurred_at": "2026-07-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/101/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MEMORANDUM-DECISION AND ORDER: The Court hereby ORDERS that Intervenor Defendants' motions to intervene (Dkt. Nos. [7], [20]) are GRANTED; and the Court further ORDERS that Defenda"
+        "title": "United States v. New York: MEMORANDUM-DECISION AND ORDER: The Court hereby ORDERS that Intervenor Defendants' motions to intervene (Dkt. Nos. 7, 20 ) are GRANTED; and the Court further ORDERS that Defendants"
       },
       {
         "channel": "litigation",
@@ -6000,36 +5651,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 36932,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/101/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MEMORANDUM-DECISION AND ORDER: The Court hereby ORDERS that Intervenor Defendants' motions to intervene (Dkt. Nos. 7, 20 ) are GRANTED; and the Court further ORDERS that Defendants"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 36933,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/102/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: JUDGMENT in favor of Board Of Elections of the State of New York, League of Women Voters of New York State, National Association for the Advancement of Colored People, National Ass"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 49584,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/101/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: MEMORANDUM-DECISION AND ORDER: The Court hereby ORDERS that Intervenor  Defendants' motions to intervene (Dkt. Nos.  7 ,  20 ) are GRANTED; and the Court  further ORDERS that Defen"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 58634,
         "kind": "item",
         "occurred_at": "2026-07-23T00:00:00",
@@ -6040,32 +5661,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 68316,
-        "kind": "item",
-        "occurred_at": "2026-07-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/103/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: NOTICE OF APPEAL as to [102] Judgment, [101] Order on Motion for Leave to File,,,, Order on Motion to Dismiss for Failure to State a Claim,,,,,,,,,,,, Order on Motion to File Amicu"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 63991,
         "kind": "item",
         "occurred_at": "2026-07-27T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/104/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: ELECTRONIC NOTICE AND CERTIFICATION sent to US Court of Appeals re 103 Notice of Appeal. (dpk) (Entered: 07/27/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 68317,
-        "kind": "item",
-        "occurred_at": "2026-07-27T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/104/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: ELECTRONIC NOTICE AND CERTIFICATION sent to US Court of Appeals re [103] Notice of Appeal. (dpk)"
       }
     ]
   },
@@ -6077,7 +5678,43 @@
     "date_terminated": "2026-06-22T00:00:00",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 258,
+    "entry_count": 234,
+    "entry_moves": [
+      {
+        "entries": [
+          258,
+          239
+        ],
+        "kind": "merge",
+        "ledger": [
+          145,
+          139
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          146,
+          140
+        ],
+        "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          239,
+          234
+        ],
+        "kind": "link",
+        "ledger": [
+          139,
+          134
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          140,
+          135
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2025-09-30T00:00:00",
     "latest_entry_at": "2026-09-29T00:00:00",
     "plaintiff": "League of Women Voters",
@@ -7160,16 +6797,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8090,
-        "kind": "item",
-        "occurred_at": "2026-06-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/111/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: MEMORANDUM OPINION re the  66  Motion for Summary Judgment, the  77  Motion to Dismiss (or, in the Alternative, for Summary Judgment), and the  97  Motion to Dismiss. See the attac"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 180,
         "kind": "item",
         "occurred_at": "2026-06-25T00:00:00",
@@ -7220,16 +6847,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8109,
-        "kind": "item",
-        "occurred_at": "2026-07-02T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 12497,
         "kind": "item",
         "occurred_at": "2026-07-06T00:00:00",
@@ -7251,16 +6868,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 14198,
-        "kind": "item",
-        "occurred_at": "2026-07-07T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 14203,
         "kind": "item",
         "occurred_at": "2026-07-07T00:00:00",
         "source_id": "courtlistener",
@@ -7296,16 +6903,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/124/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: ORDER denying 116 Motion to Stay. See the 123 Memorandum Opinion for details. Signed by Judge Sparkle L. Sooknanan on 7/8/2026. (lcak) (Entered: 07/08/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 18770,
-        "kind": "item",
-        "occurred_at": "2026-07-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/123/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: MEMORANDUM OPINION re the  116  Motion to Stay. See the attached document for details. Signed by Judge Sparkle L. Sooknanan on 7/8/2026. (lcak)"
       },
       {
         "channel": "litigation",
@@ -7365,16 +6962,6 @@
         "occurred_at": "2026-07-14T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/128/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Enforce Judgment"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 35583,
-        "kind": "item",
-        "occurred_at": "2026-07-14T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/128/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MOTION to Enforce Judgment by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE OF WOMEN VOTERS OF LOUISIANA EDUCATION FUND"
       },
       {
@@ -7395,16 +6982,6 @@
         "occurred_at": "2026-07-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/130/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Reply to opposition to motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 42465,
-        "kind": "item",
-        "occurred_at": "2026-07-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/130/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: REPLY to opposition to motion re 128 Motion to Enforce Judgment, filed by ELECTRONIC PRIVACY INFORMATION CENTER, LEAGUE OF WOMEN VOTERS, LEAGUE OF WOMEN VOTERS OF LOUISIANA, LEAGUE"
       },
       {
@@ -7415,32 +6992,12 @@
         "occurred_at": "2026-07-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 42509,
-        "kind": "item",
-        "occurred_at": "2026-07-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In the 126 Joint Status Report, the Plaintiffs represented to the Court that they are seeking intervention in the Northern District of Florida to appeal that court's "
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 47937,
-        "kind": "item",
-        "occurred_at": "2026-07-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/131/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Supplemental Memorandum"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 49112,
         "kind": "item",
         "occurred_at": "2026-07-20T00:00:00",
         "source_id": "courtlistener",
@@ -7470,16 +7027,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 49178,
-        "kind": "item",
-        "occurred_at": "2026-07-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Enforce Judgment AND Set/Reset Deadlines"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 57183,
         "kind": "item",
         "occurred_at": "2026-07-22T00:00:00",
@@ -7491,16 +7038,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 84329,
-        "kind": "item",
-        "occurred_at": "2026-08-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/141/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Notice of Appeal to DC Circuit"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 86558,
         "kind": "item",
         "occurred_at": "2026-08-21T00:00:00",
         "source_id": "courtlistener",
@@ -7535,16 +7072,6 @@
         "occurred_at": "2026-09-29T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion to Enforce Judgment"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 117908,
-        "kind": "item",
-        "occurred_at": "2026-09-29T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: On September 25, 2026, the Supreme Court stayed this Court's 112 June 22, 2026, Order. See Dep't of Homeland Sec. v. League of Women Voters, No. 26A308, slip op. at 6"
       }
     ]
@@ -7557,7 +7084,26 @@
     "date_terminated": "2026-09-23T00:00:00",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 114,
+    "entry_count": 104,
+    "entry_moves": [
+      {
+        "entries": [
+          114,
+          104
+        ],
+        "kind": "merge",
+        "ledger": [
+          61,
+          59
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          64,
+          60
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-01T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -7567,26 +7113,6 @@
     "status_checked_at": "2026-09-24T05:01:53.648748+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 110370,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
-        "title": "United States v. Vermont — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 119356,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
-        "title": "United States v. Vermont — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -7725,7 +7251,7 @@
         "occurred_at": "2026-01-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/39/united-states-v-hanzas/",
-        "title": "United States v. Vermont: PROPOSED MOTION to Dismiss for Failure to State a Claim filed by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews (Attachments: # 1 Proposed Memorandum in S"
+        "title": "United States v. Vermont: MOTION to Dismiss for Failure to State a Claim filed by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews (Attachments: # 1 Memorandum in Support, # 2 Exhibi"
       },
       {
         "channel": "litigation",
@@ -7736,16 +7262,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/40/united-states-v-hanzas/",
         "title": "United States v. Vermont: PROPOSED RESPONSE in Opposition re 2 MOTION to Compel Production of Records Demanded Pursuant to The Civil Rights Act of 1960 filed by Vermont Alliance for Retired Americans, Richa"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 106007,
-        "kind": "item",
-        "occurred_at": "2026-01-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980614/39/united-states-v-hanzas/",
-        "title": "United States v. Vermont: MOTION to Dismiss for Failure to State a Claim filed by Vermont Alliance for Retired Americans, Richard Monterosso, Mary Andrews (Attachments: # 1 Memorandum in Support, # 2 Exhibi"
       },
       {
         "channel": "litigation",
@@ -8190,16 +7706,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 107700,
-        "kind": "item",
-        "occurred_at": "2026-09-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980614/93/united-states-v-hanzas/",
-        "title": "United States v. Vermont: ORDER granting  37  Motion to Dismiss for Failure to State a Claim; granting  39  Motion to Dismiss for Failure to State a Claim; granting  44   Motion to Dismiss; denying  2   MOT"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 111637,
         "kind": "item",
         "occurred_at": "2026-09-23T00:00:00",
@@ -8217,7 +7723,26 @@
     "date_terminated": "2026-06-18T00:00:00",
     "defendant": "DeMarinis",
     "docket_number": "1:25-cv-03934",
-    "entry_count": 102,
+    "entry_count": 100,
+    "entry_moves": [
+      {
+        "entries": [
+          102,
+          100
+        ],
+        "kind": "merge",
+        "ledger": [
+          51,
+          49
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          53,
+          50
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-01T00:00:00",
     "latest_entry_at": "2026-07-08T00:00:00",
     "plaintiff": "United States",
@@ -8227,16 +7752,6 @@
     "status_checked_at": null,
     "superseded_by": "73608654",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 13819,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71980724/united-states-v-demarinis/",
-        "title": "United States v. Maryland — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -8705,7 +8220,7 @@
         "occurred_at": "2026-06-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980724/91/united-states-v-demarinis/",
-        "title": "United States v. Maryland: MEMORANDUM OPINION.  Signed by Judge Stephanie A. Gallagher on 6/18/2026. (bw5s, Deputy Clerk)"
+        "title": "United States v. Maryland: MEMORANDUM OPINION. Signed by Judge Stephanie A. Gallagher on 6/18/2026. (bw5s, Deputy Clerk) (Entered: 06/22/2026)"
       },
       {
         "channel": "litigation",
@@ -8720,27 +8235,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 14749,
-        "kind": "item",
-        "occurred_at": "2026-06-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980724/91/united-states-v-demarinis/",
-        "title": "United States v. Maryland: MEMORANDUM OPINION. Signed by Judge Stephanie A. Gallagher on 6/18/2026. (bw5s, Deputy Clerk) (Entered: 06/22/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 14751,
-        "kind": "item",
-        "occurred_at": "2026-07-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980724/94/united-states-v-demarinis/",
-        "title": "United States v. Maryland: NOTICE OF APPEAL as to 91 Memorandum Opinion, 92 Order on Motion to Dismiss for Failure to State a Claim,,,,,, Order on Motion for Leave to File,, Order on Motion to Compel, by The"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 18474,
         "kind": "item",
         "occurred_at": "2026-07-06T00:00:00",
         "source_id": "courtlistener",
@@ -8767,7 +8262,26 @@
     "date_terminated": "2026-07-14T00:00:00",
     "defendant": "Oliver",
     "docket_number": "1:25-cv-01193",
-    "entry_count": 163,
+    "entry_count": 154,
+    "entry_moves": [
+      {
+        "entries": [
+          163,
+          154
+        ],
+        "kind": "merge",
+        "ledger": [
+          71,
+          66
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          75,
+          67
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-07-27T00:00:00",
     "plaintiff": "United States",
@@ -8777,36 +8291,6 @@
     "status_checked_at": "2026-08-10T19:24:53.813530+00:00",
     "superseded_by": "73678095",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 33431,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40730,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 59831,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -9375,22 +8859,12 @@
         "occurred_at": "2026-06-29T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/112/united-states-v-oliver/",
-        "title": "United States v. New Mexico: MOTION to Withdraw as Attorney Omeed Alerasool by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) (Entered: 06/29/2026)"
+        "title": "United States v. New Mexico: NOTICE of Withdrawal as Attorney Omeed Alerasool by New Mexico Alliance for Retired Americans. (Nkwonta, Uzoma) Modified title on 7/6/2026 (bap). (Entered: 06/29/2026)"
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 9768,
-        "kind": "item",
-        "occurred_at": "2026-06-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/116/united-states-v-oliver/",
-        "title": "United States v. New Mexico: REPLY Notice of Supplemental Authority re 111 Notice (Other) filed by United States Of America. (Casali, John) (Entered: 06/30/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16899,
         "kind": "item",
         "occurred_at": "2026-06-30T00:00:00",
         "source_id": "courtlistener",
@@ -9445,42 +8919,12 @@
         "occurred_at": "2026-07-23T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/121/united-states-v-oliver/",
-        "title": "United States v. New Mexico: Notice of Appeal"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 59838,
-        "kind": "item",
-        "occurred_at": "2026-07-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/121/united-states-v-oliver/",
-        "title": "United States v. New Mexico: NOTICE OF APPEAL as to 120 Judgment, 119 Memorandum Opinion and Order,,, Terminate Motions,, by United States Of America. (Filing Fee - Waived) (Tucker, James) (Entered: 07/23/2026"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 59839,
-        "kind": "item",
-        "occurred_at": "2026-07-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/122/united-states-v-oliver/",
-        "title": "United States v. New Mexico: ERRATA re 121 Notice of Appeal by United States Of America (Tucker, James) (Entered: 07/23/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 63227,
-        "kind": "item",
-        "occurred_at": "2026-07-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/121/united-states-v-oliver/",
         "title": "United States v. New Mexico: ***FILED IN ERROR*** NOTICE OF APPEAL as to 120 Judgment, 119 Memorandum Opinion and Order,,, Terminate Motions,, by United States Of America. (Filing Fee - Waived) (Tucker, James)"
       },
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 63228,
+        "id": 59839,
         "kind": "item",
         "occurred_at": "2026-07-23T00:00:00",
         "source_id": "courtlistener",
@@ -9491,16 +8935,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 60130,
-        "kind": "item",
-        "occurred_at": "2026-07-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/123/united-states-v-oliver/",
-        "title": "United States v. New Mexico: Notice of Appeal"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 63229,
         "kind": "item",
         "occurred_at": "2026-07-24T00:00:00",
         "source_id": "courtlistener",
@@ -9537,7 +8971,26 @@
     "date_terminated": "2026-09-22T00:00:00",
     "defendant": "Hobbs",
     "docket_number": "3:25-cv-06078",
-    "entry_count": 132,
+    "entry_count": 119,
+    "entry_moves": [
+      {
+        "entries": [
+          132,
+          119
+        ],
+        "kind": "merge",
+        "ledger": [
+          68,
+          60
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          71,
+          61
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-09-22T00:00:00",
     "plaintiff": "United States",
@@ -9547,26 +9000,6 @@
     "status_checked_at": "2026-09-23T04:54:31.437828+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98740,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
-        "title": "United States v. Washington — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 111639,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
-        "title": "United States v. Washington — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -9800,16 +9233,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 11973,
-        "kind": "item",
-        "occurred_at": "2026-04-13T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/45/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER granting the Parties'  41 Stipulated MOTION and [Proposed] Order to Set Briefing Schedule and Word Limits.  Any combined Motion to Dismiss and opposition to Plaintiff's Motio"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9144,
         "kind": "item",
         "occurred_at": "2026-04-17T00:00:00",
@@ -9900,16 +9323,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 11984,
-        "kind": "item",
-        "occurred_at": "2026-05-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/58/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO INTERVENE. The Court GRANTS the motions to intervene filed by Common Power, WARA, Common Cause, and WCAEF. Dkt. Nos.  23 ,  28 . Their motions for leave t"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9153,
         "kind": "item",
         "occurred_at": "2026-05-19T00:00:00",
@@ -9946,16 +9359,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/63/united-states-v-hobbs/",
         "title": "United States v. Washington: MOTION to Dismiss and Response in Opposition to Plaintiff's Motion to Compel, filed by Intervenor Parties Common Power, Washington Alliance for Retired Americans. (Attachments: # 1"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11986,
-        "kind": "item",
-        "occurred_at": "2026-05-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/61/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER granting the Parties'  60  Stipulated MOTION to Continue Deadlines. The early case deadlines previously set (Dkt. No.  48 ) are VACATED and will be re-set as necessary after "
       },
       {
         "channel": "litigation",
@@ -10020,26 +9423,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 11991,
-        "kind": "item",
-        "occurred_at": "2026-05-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/68/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER granting  55   Unopposed MOTION for Leave to File Brief as Amicus Curiae,  filed by Amicus Democratic National Committee.   Signed by District Judge Kymberly K. Evanson. (APH"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11992,
-        "kind": "item",
-        "occurred_at": "2026-05-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/69/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER granting  66   MOTION for Leave to File Brief of Amici Curiae Former Employees of the U.S. Department of Justice.  Signed by District Judge Kymberly K. Evanson. (APH)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9162,
         "kind": "item",
         "occurred_at": "2026-06-08T00:00:00",
@@ -10076,16 +9459,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/78/united-states-v-hobbs/",
         "title": "United States v. Washington: AMICUS BRIEF re 77 Order on Motion for Leave to File by Amicus State of Maryland (Kobrin, Daniel) (Entered: 06/09/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11996,
-        "kind": "item",
-        "occurred_at": "2026-06-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/77/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER granting  75   Unopposed MOTION for Leave to File Amicus Brief. The Amici States shall file their brief on the docket.   Signed by District Judge Kymberly K. Evanson.  (APH)"
       },
       {
         "channel": "litigation",
@@ -10185,16 +9558,6 @@
         "occurred_at": "2026-08-07T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/91/united-states-v-hobbs/",
-        "title": "United States v. Washington: Transcript Order Form"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 73996,
-        "kind": "item",
-        "occurred_at": "2026-08-07T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/91/united-states-v-hobbs/",
         "title": "United States v. Washington: TRANSCRIPT REQUEST by Intervenor Parties Common Power, Washington Alliance for Retired Americans for proceedings held on 08/04/2026 re 89 Motion Hearing,,,,. Requesting Attorney: A"
       },
       {
@@ -10246,16 +9609,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/96/united-states-v-hobbs/",
         "title": "United States v. Washington: ORDER GRANTING MOTIONS TO DISMISS. The Court GRANTS the motions to dismiss (Dkt. Nos. 53, 62, 63 ) and DENIES AS MOOT the motion to compel (Dkt. No. 29 ). Signed by District Judge "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 112286,
-        "kind": "item",
-        "occurred_at": "2026-09-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/96/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO DISMISS. The Court GRANTS the motions to dismiss (Dkt. Nos.  53 ,  62 ,  63 ) and DENIES AS MOOT the motion to compel (Dkt. No.  29 ).   Signed by Distric"
       }
     ]
   },
@@ -10267,7 +9620,43 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 187,
+    "entry_count": 166,
+    "entry_moves": [
+      {
+        "entries": [
+          187,
+          167
+        ],
+        "kind": "merge",
+        "ledger": [
+          80,
+          73
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          81,
+          74
+        ],
+        "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          167,
+          166
+        ],
+        "kind": "link",
+        "ledger": [
+          73,
+          72
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          74,
+          73
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2025-12-02T00:00:00",
     "latest_entry_at": "2026-10-01T00:00:00",
     "plaintiff": "United States",
@@ -10875,7 +10264,7 @@
         "occurred_at": "2026-07-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/87/united-states-v-albence/",
-        "title": "United States v. Delaware: Order on Motion for Leave to File Amicus Brief"
+        "title": "United States v. Delaware: ORDER GRANTING DEMOCRATIC NATIONAL COMMITTEE'S MOTION FOR LEAVE TO FILE AN AMICUS BRIEF: The Motion for Leave to file an Amicus Brief (D.I. 43 ) is GRANTED. The Clerk of the Court "
       },
       {
         "channel": "litigation",
@@ -10885,17 +10274,7 @@
         "occurred_at": "2026-07-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/88/united-states-v-albence/",
-        "title": "United States v. Delaware: Brief - Reply"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 37416,
-        "kind": "item",
-        "occurred_at": "2026-07-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/88/united-states-v-albence/",
-        "title": "United States v. Delaware: Reply Brief"
+        "title": "United States v. Delaware: AMICUS BRIEF OF THE DEMOCRATIC NATIONAL COMMITTEE re 33 MOTION to Dismiss; 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 - filed by Democrati"
       },
       {
         "channel": "litigation",
@@ -10910,37 +10289,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 57248,
-        "kind": "item",
-        "occurred_at": "2026-07-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/88/united-states-v-albence/",
-        "title": "United States v. Delaware: AMICUS BRIEF OF THE DEMOCRATIC NATIONAL COMMITTEE re 33 MOTION to Dismiss; 3 MOTION for Production of Records Demanded Pursuant to the Civil Rights Act of 1960 - filed by Democrati"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 57249,
-        "kind": "item",
-        "occurred_at": "2026-07-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/87/united-states-v-albence/",
-        "title": "United States v. Delaware: ORDER GRANTING DEMOCRATIC NATIONAL COMMITTEE'S MOTION FOR LEAVE TO FILE AN AMICUS BRIEF: The Motion for Leave to file an Amicus Brief (D.I. 43 ) is GRANTED. The Clerk of the Court "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 37418,
-        "kind": "item",
-        "occurred_at": "2026-07-16T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/90/united-states-v-albence/",
-        "title": "United States v. Delaware: Brief - Reply"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 57246,
         "kind": "item",
         "occurred_at": "2026-07-16T00:00:00",
         "source_id": "courtlistener",
@@ -10955,16 +10304,6 @@
         "occurred_at": "2026-07-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/91/united-states-v-albence/",
-        "title": "United States v. Delaware: NOTICE of OF SUPPLEMENTAL AUTHORITY by Bethany Jennings, Gemma Lowery re 38 Response to Motion, 61 Reply Brief, 36 MOTION to Dismiss (Billion, Mark) (Entered: 07/24/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 63083,
-        "kind": "item",
-        "occurred_at": "2026-07-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/91/united-states-v-albence/",
         "title": "United States v. Delaware: NOTICE of Supplemental Authority re Motion to Dismiss (D.I. 36 ), by Bethany Jennings, Gemma Lowery. (Billion, Mark) Modified on 7/26/2026 (nms). (Entered: 07/24/2026)"
       },
       {
@@ -10975,16 +10314,6 @@
         "occurred_at": "2026-08-25T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
-        "title": "United States v. Delaware: Oral Order AND ~Util - Set Hearings"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 87571,
-        "kind": "item",
-        "occurred_at": "2026-08-25T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/97/united-states-v-albence/",
         "title": "United States v. Delaware: ORAL ORDER: An oral argument hearing to address the pending motions (D.I. 3, 33, 36, and 39 ) is now set for 9/17/2026, at 11:00 AM in Courtroom 6A. Ordered by Judge Richard G. And"
       },
       {
@@ -11035,32 +10364,12 @@
         "occurred_at": "2026-09-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/104/united-states-v-albence/",
-        "title": "United States v. Delaware: MOTION for Hearing re 100 Oral Order, Set Hearings, Terminate Deadlines MOTION FOR EXEMPTION OF INDIVIDUALS FROM THE DISTRICT OF DELAWARES MAY 17, 2024 STANDING ORDER ON PERSONAL D"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 116768,
-        "kind": "item",
-        "occurred_at": "2026-09-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/105/united-states-v-albence/",
-        "title": "United States v. Delaware: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 117436,
-        "kind": "item",
-        "occurred_at": "2026-09-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/104/united-states-v-albence/",
         "title": "United States v. Delaware: MOTION for Exemption of Individuals from Standing Order on Personal Devices - filed by Bethany Jennings, Gemma Lowery. (Attachments: # 1 Proposed Order)(Billion, Mark) Modified on "
       },
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 117437,
+        "id": 116768,
         "kind": "item",
         "occurred_at": "2026-09-28T00:00:00",
         "source_id": "courtlistener",
@@ -11097,7 +10406,26 @@
     "date_terminated": "2026-08-04T00:00:00",
     "defendant": "Griswold",
     "docket_number": "1:25-cv-03967",
-    "entry_count": 135,
+    "entry_count": 125,
+    "entry_moves": [
+      {
+        "entries": [
+          135,
+          125
+        ],
+        "kind": "merge",
+        "ledger": [
+          100,
+          92
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          104,
+          93
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-11T00:00:00",
     "latest_entry_at": "2026-08-18T00:00:00",
     "plaintiff": "United States",
@@ -11107,36 +10435,6 @@
     "status_checked_at": "2026-08-10T19:25:05.661624+00:00",
     "superseded_by": "74667007",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 20244,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 62330,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 74922,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -11525,7 +10823,7 @@
         "occurred_at": "2026-02-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/49/united-states-v-griswold/",
-        "title": "United States v. Colorado: BRIEF in Opposition to 38 Unopposed MOTION for Leave to File (Proposed Motion to Dismiss and Proposed Opposition to Motion to Compel), 40 MOTION to Dismiss filed by Plaintiff USA. "
+        "title": "United States v. Colorado: BRIEF in Opposition to 86 MOTION to Dismiss filed by Plaintiff USA. (Attachments: # 1 Declaration in Support of Opposition to Motion to Dismiss, # 2 Exhibit 5 - Texas MOU, # 3 Exhi"
       },
       {
         "channel": "litigation",
@@ -11536,16 +10834,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
         "title": "United States v. Colorado: Order on Motion for Leave to File Excess Pages"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 32054,
-        "kind": "item",
-        "occurred_at": "2026-02-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/49/united-states-v-griswold/",
-        "title": "United States v. Colorado: BRIEF in Opposition to 86 MOTION to Dismiss filed by Plaintiff USA. (Attachments: # 1 Declaration in Support of Opposition to Motion to Dismiss, # 2 Exhibit 5 - Texas MOU, # 3 Exhi"
       },
       {
         "channel": "litigation",
@@ -11675,7 +10963,7 @@
         "occurred_at": "2026-03-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/62/united-states-v-griswold/",
-        "title": "United States v. Colorado: REPLY to Response to 38 Unopposed MOTION for Leave to File (Proposed Motion to Dismiss and Proposed Opposition to Motion to Compel) filed by Intervenor Parties Colorado Alliance fo"
+        "title": "United States v. Colorado: REPLY to Response to 86 MOTION to Dismiss, filed by Intervenor Parties Colorado Alliance for Retired Americans, Britton DeFord. (Frost, Elisabeth) Modified on 7/13/2026 to update l"
       },
       {
         "channel": "litigation",
@@ -11696,16 +10984,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
         "title": "United States v. Colorado: Order on Motion for Leave"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 32065,
-        "kind": "item",
-        "occurred_at": "2026-03-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/62/united-states-v-griswold/",
-        "title": "United States v. Colorado: REPLY to Response to 86 MOTION to Dismiss, filed by Intervenor Parties Colorado Alliance for Retired Americans, Britton DeFord. (Frost, Elisabeth) Modified on 7/13/2026 to update l"
       },
       {
         "channel": "litigation",
@@ -11875,26 +11153,6 @@
         "occurred_at": "2026-07-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/84/united-states-v-griswold/",
-        "title": "United States v. Colorado: Order on Motion for Leave AND Order on Motion for Leave AND Order on Motion for Leave AND Order on Motion for Leave AND Order on Motion for Leave AND Order on Motion for Leave AND "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 18908,
-        "kind": "item",
-        "occurred_at": "2026-07-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/84/united-states-v-griswold/",
-        "title": "United States v. Colorado: Order on Motion for Leave"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 23663,
-        "kind": "item",
-        "occurred_at": "2026-07-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/84/united-states-v-griswold/",
         "title": "United States v. Colorado: ORDER. Accordingly, it is hereby ordered that: 1. The Unopposed Motion of Colorado Alliance for Retired Americans and Britton Deford to Intervene as Intervenor-Defendants [ECF 10 ]"
       },
       {
@@ -11915,7 +11173,7 @@
         "occurred_at": "2026-07-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/86/united-states-v-griswold/",
-        "title": "United States v. Colorado: Motion to Dismiss"
+        "title": "United States v. Colorado: MOTION to Dismiss by Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord. (Attachments: # 1 Exhibit A)(Frost, Elisabeth) (Entered: 07/10/2026)"
       },
       {
         "channel": "litigation",
@@ -11925,7 +11183,7 @@
         "occurred_at": "2026-07-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/87/united-states-v-griswold/",
-        "title": "United States v. Colorado: Brief in Opposition to Motion"
+        "title": "United States v. Colorado: BRIEF in Opposition to 2 MOTION to Compel Production of Documents Demanded Pursuant to the Civil Rights Act of 1960 filed by Intervenor Defendants Colorado Alliance for Retired Ame"
       },
       {
         "channel": "litigation",
@@ -11941,36 +11199,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 28918,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/88/united-states-v-griswold/",
-        "title": "United States v. Colorado: Motion for Leave"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 29887,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/86/united-states-v-griswold/",
-        "title": "United States v. Colorado: MOTION to Dismiss by Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord. (Attachments: # 1 Exhibit A)(Frost, Elisabeth) (Entered: 07/10/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 29888,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/87/united-states-v-griswold/",
-        "title": "United States v. Colorado: BRIEF in Opposition to 2 MOTION to Compel Production of Documents Demanded Pursuant to the Civil Rights Act of 1960 filed by Intervenor Defendants Colorado Alliance for Retired Ame"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 29889,
         "kind": "item",
         "occurred_at": "2026-07-10T00:00:00",
         "source_id": "courtlistener",
@@ -12100,16 +11328,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 74729,
-        "kind": "item",
-        "occurred_at": "2026-08-03T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/102/united-states-v-griswold/",
-        "title": "United States v. Colorado: ORDER  by Judge Philip A. Brimmer on 8/3/26.  The United States' Motion for Order to Compel Records Demanded Pursuant to the Civil Rights Act of 1960  2  is DENIED.  Secretary of S"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 69217,
         "kind": "item",
         "occurred_at": "2026-08-04T00:00:00",
@@ -12157,7 +11375,19 @@
     "date_terminated": null,
     "defendant": "Nago",
     "docket_number": "1:25-cv-00522",
-    "entry_count": 89,
+    "entry_count": 90,
+    "entry_moves": [
+      {
+        "apart": 1,
+        "entries": [
+          89,
+          90
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-11T00:00:00",
     "latest_entry_at": "2026-09-09T00:00:00",
     "plaintiff": "United States",
@@ -12617,9 +11847,33 @@
     "date_terminated": "2026-08-14T00:00:00",
     "defendant": "Aguilar",
     "docket_number": "3:25-cv-00728",
-    "entry_count": 112,
+    "entry_count": 104,
+    "entry_moves": [
+      {
+        "apart": 1,
+        "entries": [
+          112,
+          104
+        ],
+        "kind": "merge",
+        "latest_entry_at": [
+          "2026-08-24T00:00:00",
+          "2026-08-20T00:00:00"
+        ],
+        "ledger": [
+          75,
+          67
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          79,
+          68
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-11T00:00:00",
-    "latest_entry_at": "2026-08-24T00:00:00",
+    "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
     "state": "Nevada",
@@ -12627,36 +11881,6 @@
     "status_checked_at": "2026-08-18T00:34:11.206526+00:00",
     "superseded_by": "74694778",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40581,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
-        "title": "United States v. Nevada — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 80310,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
-        "title": "United States v. Nevada — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82259,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
-        "title": "United States v. Nevada — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -12970,16 +12194,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 11309,
-        "kind": "item",
-        "occurred_at": "2026-03-02T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/58/united-states-v-aguilar/",
-        "title": "United States v. Nevada: ORDER Granting  52   Motion to Admit Government Attorney  Christopher J. Gardner for United States of America.         Signed by District Judge Anne R. Traum on 3/2/2026.   (Copies"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8345,
         "kind": "item",
         "occurred_at": "2026-03-16T00:00:00",
@@ -13006,16 +12220,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/62/united-states-v-aguilar/",
         "title": "United States v. Nevada: ORDER DENYING PROPOSED DISCOVERY PLANS AND SCHEDULING ORDERS : ORDERED that discovery in this case is hereby STAYED until the United States' motion to compel, (ECF No. 2 ), and Sec"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11312,
-        "kind": "item",
-        "occurred_at": "2026-03-19T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/62/united-states-v-aguilar/",
-        "title": "United States v. Nevada: ORDER DENYING PROPOSED DISCOVERY PLANS AND SCHEDULING ORDERS  :  ORDERED that discovery in this case is hereby STAYED until the United States' motion to compel, (ECF No.  2 ), and "
       },
       {
         "channel": "litigation",
@@ -13056,16 +12260,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/66/united-states-v-aguilar/",
         "title": "United States v. Nevada: MOTION to Dismiss. Responses are due by 4/6/2026. (ECF No. 38 re-filed here per 63 Order.)(DRM) (Entered: 03/23/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11313,
-        "kind": "item",
-        "occurred_at": "2026-03-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/63/united-states-v-aguilar/",
-        "title": "United States v. Nevada: ORDER -  The two unopposed motions to intervene are therefore GRANTED pursuant to Fed. R. Civ. P. 24(b). (ECF Nos.  5 ;  7 .)  The intervenors' motions for leave to file supplement"
       },
       {
         "channel": "litigation",
@@ -13315,32 +12509,12 @@
         "occurred_at": "2026-07-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/91/united-states-v-aguilar/",
-        "title": "United States v. Nevada: Motion for Leave to File Document/Excess Pages"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 57380,
-        "kind": "item",
-        "occurred_at": "2026-07-16T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/91/united-states-v-aguilar/",
         "title": "United States v. Nevada: MOTION for Leave to File Document re 66 Motion to Dismiss by Intervenor Defendants Jacqueline Sue Bird, Institute for a Progressive Nevada, NAACP Conference of Idaho, Nevada, and U"
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 70388,
-        "kind": "item",
-        "occurred_at": "2026-08-05T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/92/united-states-v-aguilar/",
-        "title": "United States v. Nevada: Motion Leave to File Document/Excess Pages"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 75865,
         "kind": "item",
         "occurred_at": "2026-08-05T00:00:00",
         "source_id": "courtlistener",
@@ -13355,32 +12529,12 @@
         "occurred_at": "2026-08-14T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/93/united-states-v-aguilar/",
-        "title": "United States v. Nevada: Order AND Order on Motion for Leave to File Excess Pages AND Order on Motion for Leave to File Excess Pages AND Order on Motion for Leave to File Excess Pages AND Order on Motion f"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 77875,
-        "kind": "item",
-        "occurred_at": "2026-08-14T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/94/united-states-v-aguilar/",
-        "title": "United States v. Nevada: Judgment"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 80311,
-        "kind": "item",
-        "occurred_at": "2026-08-14T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/93/united-states-v-aguilar/",
         "title": "United States v. Nevada: ORDER - IT IS ORDERED that Defendant and Defendant-Intervenors' Motions to Dismiss are GRANTED. (ECF Nos. 42, 66 and 68 )It is FURTHER ORDERED that good cause appearing under LR 7-"
       },
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 80312,
+        "id": 77875,
         "kind": "item",
         "occurred_at": "2026-08-14T00:00:00",
         "source_id": "courtlistener",
@@ -13400,22 +12554,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 87321,
+        "id": 86848,
         "kind": "item",
         "occurred_at": "2026-08-20T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72026664/98/united-states-v-aguilar/",
         "title": "United States v. Nevada: USCA Order for Time Schedule"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 86848,
-        "kind": "item",
-        "occurred_at": "2026-08-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/98/united-states-v-aguilar/",
-        "title": "United States v. Nevada: USCA Order Time Schedule"
       }
     ]
   },
@@ -13428,6 +12572,17 @@
     "defendant": "RAFFENSPERGER",
     "docket_number": "5:25-cv-00548",
     "entry_count": 59,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          20,
+          19
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-18T00:00:00",
     "latest_entry_at": "2026-02-04T00:00:00",
     "plaintiff": "United States",
@@ -13437,16 +12592,6 @@
     "status_checked_at": null,
     "superseded_by": "72193752",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82240,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72053306/united-states-v-raffensperger/",
-        "title": "United States v. Georgia — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -13647,7 +12792,26 @@
     "date_terminated": "2026-07-31T00:00:00",
     "defendant": "Matthews",
     "docket_number": "3:25-cv-03398",
-    "entry_count": 135,
+    "entry_count": 126,
+    "entry_moves": [
+      {
+        "entries": [
+          135,
+          126
+        ],
+        "kind": "merge",
+        "ledger": [
+          91,
+          89
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          94,
+          90
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-18T00:00:00",
     "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States",
@@ -13657,26 +12821,6 @@
     "status_checked_at": "2026-08-10T19:25:17.480551+00:00",
     "superseded_by": "74671260",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 74931,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
-        "title": "United States v. Illinois — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82250,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
-        "title": "United States v. Illinois — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -14475,7 +13619,7 @@
         "occurred_at": "2026-07-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/96/united-states-v-matthews/",
-        "title": "United States v. Illinois: Response (NOT to a motion/petition)"
+        "title": "United States v. Illinois: Response by United States of America re 92 Notice (Other), 95 Notice (Other), 94 Notice (Other) of Supplemental Authority. (Bachand, Jake) (Entered: 07/15/2026)"
       },
       {
         "channel": "litigation",
@@ -14505,7 +13649,7 @@
         "occurred_at": "2026-07-23T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/98/united-states-v-matthews/",
-        "title": "United States v. Illinois: Response (NOT to a motion/petition)"
+        "title": "United States v. Illinois: Response by United States of America re 97 Notice (Other) of Supplemental Authority. (Bachand, Jake) (Entered: 07/23/2026)"
       },
       {
         "channel": "litigation",
@@ -14540,27 +13684,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 73448,
-        "kind": "item",
-        "occurred_at": "2026-07-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72054244/101/united-states-v-matthews/",
-        "title": "United States v. Illinois: OPINION entered by Judge Colleen R. Lawless on 7/31/2026. United States' Motion to Compel (Doc.  5 ) is DENIED and Defendants' Motions to Dismiss (Docs.  41 ,  49 ,  56 ,  64 , and"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 69226,
-        "kind": "item",
-        "occurred_at": "2026-08-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72054244/102/united-states-v-matthews/",
-        "title": "United States v. Illinois: Judgment"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 71516,
         "kind": "item",
         "occurred_at": "2026-08-04T00:00:00",
         "source_id": "courtlistener",
@@ -14607,7 +13731,26 @@
     "date_terminated": "2026-08-06T00:00:00",
     "defendant": "EVANS",
     "docket_number": "1:25-cv-04403",
-    "entry_count": 142,
+    "entry_count": 131,
+    "entry_moves": [
+      {
+        "entries": [
+          142,
+          131
+        ],
+        "kind": "merge",
+        "ledger": [
+          70,
+          67
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          73,
+          68
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2025-12-18T00:00:00",
     "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States",
@@ -14617,26 +13760,6 @@
     "status_checked_at": "2026-08-10T19:25:21.340790+00:00",
     "superseded_by": "74671625",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 74925,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82232,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -15275,7 +14398,7 @@
         "occurred_at": "2026-07-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/77/united-states-v-evans/",
-        "title": "United States v. DC: Response to (non-motion) Document"
+        "title": "United States v. DC: RESPONSE re 76 NOTICE OF SUPPLEMENTAL AUTHORITY, 75 NOTICE OF SUPPLEMENTAL AUTHORITY filed by UNITED STATES OF AMERICA. (Bachand, Jake) (Entered: 07/15/2026)"
       },
       {
         "channel": "litigation",
@@ -15300,27 +14423,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 77249,
-        "kind": "item",
-        "occurred_at": "2026-08-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/80/united-states-v-evans/",
-        "title": "United States v. DC: MEMORANDUM OPINION: For the reasons contained herein, the Court will DENY Plaintiff's motion to compel records, Dkt.  2 , and DENY as moot Defendants' motion to dismiss, Dkt.  41 ,"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 80257,
-        "kind": "item",
-        "occurred_at": "2026-08-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/83/united-states-v-evans/",
-        "title": "United States v. DC: Notice of Appeal to DC Circuit"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 80499,
         "kind": "item",
         "occurred_at": "2026-08-17T00:00:00",
         "source_id": "courtlistener",
@@ -15331,16 +14434,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 81206,
-        "kind": "item",
-        "occurred_at": "2026-08-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/84/united-states-v-evans/",
-        "title": "United States v. DC: Transmission of Notice of Appeal and Docket Sheet to USCA"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 82238,
         "kind": "item",
         "occurred_at": "2026-08-18T00:00:00",
         "source_id": "courtlistener",
@@ -15357,7 +14450,26 @@
     "date_terminated": "2026-07-23T00:00:00",
     "defendant": "Thomas",
     "docket_number": "3:26-cv-00021",
-    "entry_count": 143,
+    "entry_count": 140,
+    "entry_moves": [
+      {
+        "entries": [
+          143,
+          140
+        ],
+        "kind": "merge",
+        "ledger": [
+          64,
+          63
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          69,
+          64
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-01-06T00:00:00",
     "latest_entry_at": "2026-07-23T00:00:00",
     "plaintiff": "United States",
@@ -15367,46 +14479,6 @@
     "status_checked_at": "2026-08-10T19:25:25.068883+00:00",
     "superseded_by": "73686333",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 41188,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 59745,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82230,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98685,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -16020,16 +15092,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 67797,
-        "kind": "item",
-        "occurred_at": "2026-07-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/109/united-states-v-thomas/",
-        "title": "United States v. Connecticut: ORDER denying  9  Motion to Compel; granting  60  Motion to Dismiss; finding as moot  56  and  58  Motions to Dismiss. For the reasons set forth in the attached Memorandum of Decis"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 58449,
         "kind": "item",
         "occurred_at": "2026-07-23T00:00:00",
@@ -16517,7 +15579,26 @@
     "date_terminated": "2026-07-14T00:00:00",
     "defendant": "Koski",
     "docket_number": "3:26-cv-00042",
-    "entry_count": 90,
+    "entry_count": 88,
+    "entry_moves": [
+      {
+        "entries": [
+          90,
+          88
+        ],
+        "kind": "merge",
+        "ledger": [
+          45,
+          44
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          49,
+          45
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-01-16T00:00:00",
     "latest_entry_at": "2026-07-27T00:00:00",
     "plaintiff": "United States",
@@ -16527,36 +15608,6 @@
     "status_checked_at": "2026-08-10T19:25:29.207711+00:00",
     "superseded_by": "73690636",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 33609,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
-        "title": "United States v. Virginia — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40738,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
-        "title": "United States v. Virginia — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 62363,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72156765/united-states-v-koski/",
-        "title": "United States v. Virginia — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -16995,16 +16046,6 @@
         "occurred_at": "2026-07-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72156765/80/united-states-v-koski/",
-        "title": "United States v. Virginia: Notice of Appeal"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 62365,
-        "kind": "item",
-        "occurred_at": "2026-07-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72156765/80/united-states-v-koski/",
         "title": "United States v. Virginia: NOTICE OF APPEAL re: 76 Memorandum Opinion, 77 Order by United States Of America (Tucker, James). Modified on 7/27/2026. (sbea) (Entered: 07/24/2026)"
       },
       {
@@ -17027,7 +16068,27 @@
     "date_terminated": "2026-09-30T00:00:00",
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 237,
+    "entry_count": 234,
+    "entry_moves": [
+      {
+        "apart": 2,
+        "entries": [
+          237,
+          234
+        ],
+        "kind": "merge",
+        "ledger": [
+          90,
+          88
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          92,
+          89
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-01-23T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -17037,16 +16098,6 @@
     "status_checked_at": "2026-10-02T05:53:23.592891+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 119318,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
-        "title": "United States v. Georgia — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -17805,32 +16856,12 @@
         "occurred_at": "2026-07-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/133/united-states-v-raffensperger/",
-        "title": "United States v. Georgia: NOTICE by Georgia Coalition for the Peoples Agenda, National Association For The Advancement of Colored People, National Association for the Advancement of Colored People Georgia S"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 14560,
-        "kind": "item",
-        "occurred_at": "2026-07-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72193752/134/united-states-v-raffensperger/",
-        "title": "United States v. Georgia: NOTICE by Black Voters Matter Fund, Communication Workers of America Local 3204, Communication Workers of America Local 3204 Retired Members Council re 23 MOTION TO DISMISS FOR FAI"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 20789,
-        "kind": "item",
-        "occurred_at": "2026-07-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72193752/133/united-states-v-raffensperger/",
         "title": "United States v. Georgia: NOTICE of Supplemental Authority by Intervenor-Defendants Georgia Coalition for the Peoples Agenda, National Association For The Advancement of Colored People, National Association"
       },
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 20790,
+        "id": 14560,
         "kind": "item",
         "occurred_at": "2026-07-01T00:00:00",
         "source_id": "courtlistener",
@@ -17925,7 +16956,7 @@
         "occurred_at": "2026-08-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/144/united-states-v-raffensperger/",
-        "title": "United States v. Georgia: Response (Non-Motion)"
+        "title": "United States v. Georgia: RESPONSE re 134 Notice (Other), 20 Notice of Filing, 138 Notice (Other), 139 Notice (Other), 143 Notice (Other), 104 Notice (Other), 137 Notice of Filing, 136 Notice (Other), 135 N"
       },
       {
         "channel": "litigation",
@@ -17967,7 +16998,35 @@
     "date_terminated": "2026-07-29T00:00:00",
     "defendant": "CALDWELL",
     "docket_number": "3:26-cv-02025",
-    "entry_count": 181,
+    "entry_count": 171,
+    "entry_moves": [
+      {
+        "entries": [
+          181,
+          172
+        ],
+        "kind": "merge",
+        "ledger": [
+          89,
+          87
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          92,
+          88
+        ],
+        "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          172,
+          171
+        ],
+        "kind": "link",
+        "on": "2026-10-02",
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-02-26T00:00:00",
     "latest_entry_at": "2026-08-20T00:00:00",
     "plaintiff": "United States",
@@ -17977,26 +17036,6 @@
     "status_checked_at": "2026-08-10T19:25:36.791595+00:00",
     "superseded_by": "74676722",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 65425,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
-        "title": "United States v. New Jersey — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82261,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
-        "title": "United States v. New Jersey — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -18795,16 +17834,6 @@
         "occurred_at": "2026-07-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/94/united-states-v-caldwell/",
-        "title": "United States v. New Jersey: Motion to Withdraw as Attorney"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16815,
-        "kind": "item",
-        "occurred_at": "2026-07-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72333329/94/united-states-v-caldwell/",
         "title": "United States v. New Jersey: MOTION to Withdraw as Attorney Omeed Alerasool by JAMIE Y DING, DANIELLE LITWAK, MAKE THE ROAD NEW JERSEY. (ALERASOOL, OMEED) (Entered: 07/01/2026)"
       },
       {
@@ -18870,16 +17899,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 78264,
-        "kind": "item",
-        "occurred_at": "2026-07-29T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72333329/107/united-states-v-caldwell/",
-        "title": "United States v. New Jersey: OPINION Filed.  Signed by Judge Zahid N. Quraishi on 7/29/2026. (jal, )"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 80322,
         "kind": "item",
         "occurred_at": "2026-08-17T00:00:00",
@@ -18908,6 +17927,17 @@
     "defendant": "Adams",
     "docket_number": "3:26-cv-00019",
     "entry_count": 107,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          57,
+          56
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-02-26T00:00:00",
     "latest_entry_at": "2026-07-24T00:00:00",
     "plaintiff": "United States",
@@ -18917,16 +17947,6 @@
     "status_checked_at": "2026-08-10T19:25:41.111875+00:00",
     "superseded_by": "73674243",
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 58459,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
-        "title": "United States v. Kentucky — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -19497,7 +18517,18 @@
     "date_terminated": null,
     "defendant": "Henderson",
     "docket_number": "2:26-cv-00166",
-    "entry_count": 73,
+    "entry_count": 69,
+    "entry_moves": [
+      {
+        "entries": [
+          73,
+          69
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-02-26T00:00:00",
     "latest_entry_at": "2026-09-18T00:00:00",
     "plaintiff": "United States",
@@ -19855,7 +18886,7 @@
         "occurred_at": "2026-07-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334921/61/united-states-v-henderson/",
-        "title": "United States v. Utah: Response (NOT to motion)"
+        "title": "United States v. Utah: Plaintiff's RESPONSE to Defendant's Notice of Supplemental Authority filed by The United States of America. (Powers, Anelise) (Entered: 07/15/2026)"
       },
       {
         "channel": "litigation",
@@ -19885,7 +18916,7 @@
         "occurred_at": "2026-09-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334921/65/united-states-v-henderson/",
-        "title": "United States v. Utah: Response (NOT to motion)"
+        "title": "United States v. Utah: RESPONSE re 64 Notice of Supplemental Authority,, filed by The United States of America. (Voiland, Joseph) (Entered: 09/18/2026)"
       }
     ]
   },
@@ -19897,7 +18928,26 @@
     "date_terminated": null,
     "defendant": "Warner",
     "docket_number": "2:26-cv-00156",
-    "entry_count": 71,
+    "entry_count": 67,
+    "entry_moves": [
+      {
+        "entries": [
+          71,
+          67
+        ],
+        "kind": "merge",
+        "ledger": [
+          43,
+          41
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          46,
+          42
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-02-26T00:00:00",
     "latest_entry_at": "2026-09-15T00:00:00",
     "plaintiff": "United States",
@@ -19907,26 +18957,6 @@
     "status_checked_at": "2026-10-02T05:53:31.054576+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 31083,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
-        "title": "United States v. West Virginia — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 100571,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
-        "title": "United States v. West Virginia — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -20300,16 +19330,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 67633,
-        "kind": "item",
-        "occurred_at": "2026-07-13T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72335259/56/united-states-v-warner/",
-        "title": "United States v. West Virginia: MEMORANDUM OPINION AND ORDER The  24  MOTION by Kris Warner to Dismiss  1  Complaint is GRANTED; the  14  MOTION by United States of America to Compel Federal Election Records Unde"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 39709,
         "kind": "item",
         "occurred_at": "2026-07-15T00:00:00",
@@ -20321,16 +19341,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 73791,
-        "kind": "item",
-        "occurred_at": "2026-08-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72335259/59/united-states-v-warner/",
-        "title": "United States v. West Virginia: Motion / Application / Petition for Declaratory Judgment"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 75987,
         "kind": "item",
         "occurred_at": "2026-08-06T00:00:00",
         "source_id": "courtlistener",
@@ -20377,7 +19387,19 @@
     "date_terminated": "2026-04-17T00:00:00",
     "defendant": "Ziriax",
     "docket_number": "5:26-cv-00361",
-    "entry_count": 22,
+    "entry_count": 24,
+    "entry_moves": [
+      {
+        "apart": 2,
+        "entries": [
+          22,
+          24
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-02-26T00:00:00",
     "latest_entry_at": "2026-03-24T00:00:00",
     "plaintiff": "United States",
@@ -20437,7 +19459,26 @@
     "date_terminated": "2026-06-24T00:00:00",
     "defendant": "Jocelyn Benson",
     "docket_number": "26-1225",
-    "entry_count": 132,
+    "entry_count": 131,
+    "entry_moves": [
+      {
+        "entries": [
+          132,
+          131
+        ],
+        "kind": "merge",
+        "ledger": [
+          39,
+          38
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          44,
+          39
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-02-27T00:00:00",
     "latest_entry_at": "2026-08-24T00:00:00",
     "plaintiff": "United States",
@@ -20447,46 +19488,6 @@
     "status_checked_at": null,
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 19114,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
-        "title": "United States v. Michigan — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 32589,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
-        "title": "United States v. Michigan — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 58523,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
-        "title": "United States v. Michigan — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 80308,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72347022/united-states-v-jocelyn-benson/",
-        "title": "United States v. Michigan — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -20865,16 +19866,6 @@
         "occurred_at": "2026-07-23T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72347022/128/united-states-v-jocelyn-benson/",
-        "title": "United States v. Michigan: judge order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 63135,
-        "kind": "item",
-        "occurred_at": "2026-07-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72347022/128/1/united-states-v-jocelyn-benson/",
         "title": "United States v. Michigan: ORDER: Upon consideration of the motions of Honest Elections Project, The American Constitutional Rights Union, and Liberty Legal Foundation, for leave to file a brief as amicus cu"
       },
       {
@@ -20898,6 +19889,17 @@
     "defendant": "Weber, et al.",
     "docket_number": "26-1232",
     "entry_count": 121,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          19,
+          18
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-03-03T00:00:00",
     "latest_entry_at": "2026-08-19T00:00:00",
     "plaintiff": "United States of America",
@@ -20907,16 +19909,6 @@
     "status_checked_at": "2026-10-02T05:53:35.522080+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 83005,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
-        "title": "United States v. California — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -26047,7 +25039,26 @@
     "date_terminated": null,
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 90,
+    "entry_count": 80,
+    "entry_moves": [
+      {
+        "entries": [
+          90,
+          80
+        ],
+        "kind": "merge",
+        "ledger": [
+          29,
+          28
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          30,
+          29
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-04-21T00:00:00",
     "latest_entry_at": "2026-08-17T00:00:00",
     "plaintiff": "Common Cause",
@@ -26315,16 +25326,6 @@
         "occurred_at": "2026-06-29T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/43/common-cause-v-us-department-of-justice/",
-        "title": "Common Cause v. U.S. Department of Justice: Reply to opposition to motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 2954,
-        "kind": "item",
-        "occurred_at": "2026-06-29T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73218916/43/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: REPLY to opposition to motion re 32 Motion to Dismiss, Motion for Summary Judgment filed by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Dibblee, Christian) (Entered: 06/29/2026)"
       },
       {
@@ -26355,7 +25356,7 @@
         "occurred_at": "2026-08-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/50/common-cause-v-us-department-of-justice/",
-        "title": "Common Cause v. U.S. Department of Justice: Response to (non-motion) Document"
+        "title": "Common Cause v. U.S. Department of Justice: RESPONSE to Plaintiffs' 48 Notice of Supplemental Authority filed by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Dibblee, Christian) (Entered: 08/17/2026)"
       }
     ]
   },
@@ -26437,7 +25438,26 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 108,
+    "entry_count": 105,
+    "entry_moves": [
+      {
+        "entries": [
+          108,
+          105
+        ],
+        "kind": "merge",
+        "ledger": [
+          15,
+          14
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          20,
+          15
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-06-05T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -26447,46 +25467,6 @@
     "status_checked_at": "2026-10-02T05:53:55.052530+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40741,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
-        "title": "United States v. Wisconsin — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 51471,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
-        "title": "United States v. Wisconsin — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 87905,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
-        "title": "United States v. Wisconsin — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98742,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
-        "title": "United States v. Wisconsin — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -26605,16 +25585,6 @@
         "occurred_at": "2026-07-20T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73453198/30/united-states-v-wisconsin-elections-commission/",
-        "title": "United States v. Wisconsin: Order issued GRANTING motion to extend time to file appellees' brief. [28] Appellees' brief due on or before 08/17/2026 for Melissa Adams. Appellant's reply brief, if any, is due o"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 81241,
-        "kind": "item",
-        "occurred_at": "2026-07-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73453198/30/united-states-v-wisconsin-elections-commission/",
         "title": "United States v. Wisconsin: Order issued GRANTING motion to extend time to file appellees' brief. [28] Appellees' brief due on or before 08/17/2026 for Melissa Adams, et al. Appellant's reply brief, if any, i"
       },
       {
@@ -26657,7 +25627,22 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 122,
+    "entry_count": 117,
+    "entry_moves": [
+      {
+        "entries": [
+          122,
+          117
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          30,
+          25
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-06-09T00:00:00",
     "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",
@@ -26667,56 +25652,6 @@
     "status_checked_at": "2026-10-02T05:53:59.557334+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 13831,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
-        "title": "United States v. Rhode Island — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40735,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
-        "title": "United States v. Rhode Island — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 48651,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
-        "title": "United States v. Rhode Island — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 87899,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
-        "title": "United States v. Rhode Island — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98736,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
-        "title": "United States v. Rhode Island — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -26977,7 +25912,22 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 120,
+    "entry_count": 119,
+    "entry_moves": [
+      {
+        "entries": [
+          120,
+          119
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          33,
+          28
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-06-09T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -26987,56 +25937,6 @@
     "status_checked_at": "2026-10-02T05:54:03.308929+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 13820,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
-        "title": "United States v. Massachusetts — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40401,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
-        "title": "United States v. Massachusetts — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 48594,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
-        "title": "United States v. Massachusetts — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 88553,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
-        "title": "United States v. Massachusetts — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 95542,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
-        "title": "United States v. Massachusetts — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -27328,6 +26228,17 @@
     "defendant": "Bellows",
     "docket_number": "26-1676",
     "entry_count": 113,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          37,
+          32
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-06-15T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -27337,56 +26248,6 @@
     "status_checked_at": "2026-10-02T05:54:07.064051+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 13818,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
-        "title": "United States v. Maine — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 40388,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
-        "title": "United States v. Maine — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 48581,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
-        "title": "United States v. Maine — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 89905,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
-        "title": "United States v. Maine — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98723,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
-        "title": "United States v. Maine — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -27717,7 +26578,26 @@
     "date_terminated": null,
     "defendant": "DHS",
     "docket_number": "26-5243",
-    "entry_count": 46,
+    "entry_count": 40,
+    "entry_moves": [
+      {
+        "entries": [
+          46,
+          40
+        ],
+        "kind": "merge",
+        "ledger": [
+          20,
+          16
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          21,
+          17
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-06-29T00:00:00",
     "latest_entry_at": "2026-10-02T00:00:00",
     "plaintiff": "League of Women Voters",
@@ -27835,16 +26715,6 @@
         "occurred_at": "2026-08-26T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73544809/01208882124/league-of-women-voters-v-dhs/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): CLERK'S ORDER [2189970] filed consolidating cases 26-5301 (Consolidation started 08/26/2026) with 26-5243 [26-5243, 26-5301]"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 89334,
-        "kind": "item",
-        "occurred_at": "2026-08-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73544809/01208882124/league-of-women-voters-v-dhs/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): CLERK'S ORDER [2189970] filed consolidating cases 26-5301 (Consolidation started 08/26/2026) with 26-5243 [26-5243, 26-5301] [Entered: 08/26/2026 10:57 AM]"
       },
       {
@@ -27861,16 +26731,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 95732,
-        "kind": "item",
-        "occurred_at": "2026-09-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73544809/01208885403/league-of-women-voters-v-dhs/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): PER CURIAM ORDER [2191697] filed ORDERED that the motions to participate as amicus curiae [2183624-3], [2182590-2], [2182576-2] be granted in 26-5243. The Clerk is directed to file"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 96568,
         "kind": "item",
         "occurred_at": "2026-09-04T00:00:00",
         "source_id": "courtlistener",
@@ -27900,27 +26760,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 104156,
-        "kind": "item",
-        "occurred_at": "2026-09-11T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73544809/01208887301/league-of-women-voters-v-dhs/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): JOINT UNOPPOSED MOTION [2192648] to extend time to file statement, to establish briefing schedule filed by Frank Bisignano, DHS, Markwayne Mullin, SSA and State of Texas, Electroni"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 103669,
-        "kind": "item",
-        "occurred_at": "2026-09-14T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73544809/01208887638/league-of-women-voters-v-dhs/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): CLERK'S ORDER [2192816] filed granting motion to defer briefing schedule and formats [2192648-2]; considering motion to establish briefing schedule [2192648-3]; extending Special P"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 104157,
         "kind": "item",
         "occurred_at": "2026-09-14T00:00:00",
         "source_id": "courtlistener",
@@ -28167,7 +27007,26 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 91,
+    "entry_count": 61,
+    "entry_moves": [
+      {
+        "entries": [
+          91,
+          61
+        ],
+        "kind": "merge",
+        "ledger": [
+          13,
+          8
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          16,
+          9
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",
@@ -28177,26 +27036,6 @@
     "status_checked_at": "2026-10-02T05:54:11.668700+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 65430,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 100553,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -28230,16 +27069,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 36967,
-        "kind": "item",
-        "occurred_at": "2026-07-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73582123/14/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: ECF FILER: LETTER from Attorney Benjamin D. Geffen, Esq. for Appellees Common Cause, Joel Dickson, Trisha Kent, League of Women Voters of Pennsylvania, Nicholas Maston, Gregory Per"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 51214,
         "kind": "item",
         "occurred_at": "2026-07-21T00:00:00",
@@ -28255,42 +27084,12 @@
         "occurred_at": "2026-07-21T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/26/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: ECF FILER: Transcript Purchase Order Form (Part 1) filed by Appellant USA advising this court that no transcripts are available. [26-2684] (AB)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 57444,
-        "kind": "item",
-        "occurred_at": "2026-07-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73582123/26/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ECF FILER: Transcript Purchase Order Form (Part 1) filed by Appellant USA advising this court that no transcripts are available. [26-2684] (AB) [Entered: 07/21/2026 03:43 PM]"
       },
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 57445,
-        "kind": "item",
-        "occurred_at": "2026-07-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73582123/23/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: ECF FILER: Motion filed by America First Policy Institute - PA to proceed as intervenor in support of Appellant/Petitioner. Certificate of Service dated 07/21/2026. [26-2684] (WSZ)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 66128,
-        "kind": "item",
-        "occurred_at": "2026-07-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73582123/31/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: ECF FILER: Response filed by Appellee Secretary Commonwealth of Pennsylvania to motion. Certificate of Service dated 07/31/2026. [26-2684] (MJF)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 70435,
         "kind": "item",
         "occurred_at": "2026-07-31T00:00:00",
         "source_id": "courtlistener",
@@ -28301,16 +27100,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 83447,
-        "kind": "item",
-        "occurred_at": "2026-08-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73582123/32/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: ORDER (FREEMAN, Circuit Judge) denying Motion filed by America First Policy Institute - Pennsylvania to proceed as intervenor in support of Appellant. Panel No.: ACO-116. Freeman, "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 88827,
         "kind": "item",
         "occurred_at": "2026-08-20T00:00:00",
         "source_id": "courtlistener",
@@ -28348,6 +27137,17 @@
     "defendant": "Scanlan",
     "docket_number": "26-1783",
     "entry_count": 43,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          14,
+          12
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-07T00:00:00",
     "latest_entry_at": "2026-09-21T00:00:00",
     "plaintiff": "United States",
@@ -28357,26 +27157,6 @@
     "status_checked_at": "2026-10-02T05:54:15.389636+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 83070,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
-        "title": "United States v. New Hampshire — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98729,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
-        "title": "United States v. New Hampshire — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -28507,7 +27287,26 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 59,
+    "entry_count": 51,
+    "entry_moves": [
+      {
+        "entries": [
+          59,
+          51
+        ],
+        "kind": "merge",
+        "ledger": [
+          22,
+          15
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          27,
+          16
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-13T00:00:00",
     "latest_entry_at": "2026-10-02T00:00:00",
     "plaintiff": "United States",
@@ -28517,46 +27316,6 @@
     "status_checked_at": "2026-10-02T05:54:19.171581+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 58521,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 65417,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 74935,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 87883,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -28581,16 +27340,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 53358,
-        "kind": "item",
-        "occurred_at": "2026-07-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/13/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Briefing order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 57340,
         "kind": "item",
         "occurred_at": "2026-07-22T00:00:00",
         "source_id": "courtlistener",
@@ -28655,16 +27404,6 @@
         "occurred_at": "2026-08-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/26/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Court order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 71523,
-        "kind": "item",
-        "occurred_at": "2026-08-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/26/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: COURT ORDER filed denying motion to accelerate case processing [6]; denying motion to expedite decision [6]. Copies to all parties. [1002028170] [26-1878] TW [Entered: 08/04/2026 1"
       },
       {
@@ -28675,7 +27414,7 @@
         "occurred_at": "2026-08-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/36/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Order filed"
+        "title": "United States v. Maryland: ORDER filed granting Motion to file amicus curiae brief (Liberty Legal Foundation) [32]. Disclosure Statement filed (if corporate amicus)? Y. Appearance Form filed? Y. Copies to al"
       },
       {
         "channel": "litigation",
@@ -28686,16 +27425,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/32/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: MOTION by Liberty Legal Foundation to file amicus curiae brief without consent of all parties on appeal within time allowed by FRAP 29(e).. Date and method of service: 08/17/2026 e"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 81218,
-        "kind": "item",
-        "occurred_at": "2026-08-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/36/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: ORDER filed granting Motion to file amicus curiae brief (Liberty Legal Foundation) [32]. Disclosure Statement filed (if corporate amicus)? Y. Appearance Form filed? Y. Copies to al"
       },
       {
         "channel": "litigation",
@@ -28715,17 +27444,7 @@
         "occurred_at": "2026-09-22T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/39/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 111336,
-        "kind": "item",
-        "occurred_at": "2026-09-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/39/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: ORDER filed granting Motion to file separate brief [38]. Copies to all parties. [1002059513] [26-1878] MP [Entered: 09/22/2026 01:02 PM]"
+        "title": "United States v. Maryland: (ENTRY RESTRICTED) ORDER filed granting Motion to file separate brief [38]. Copies to all parties. [1002059513] [26-1878]--[Edited 09/24/2026 by MP - see ECF 44 for corrected order"
       },
       {
         "channel": "litigation",
@@ -28740,27 +27459,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 119327,
-        "kind": "item",
-        "occurred_at": "2026-09-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/39/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: (ENTRY RESTRICTED) ORDER filed granting Motion to file separate brief [38]. Copies to all parties. [1002059513] [26-1878]--[Edited 09/24/2026 by MP - see ECF 44 for corrected order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 111338,
-        "kind": "item",
-        "occurred_at": "2026-09-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/41/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 119329,
         "kind": "item",
         "occurred_at": "2026-09-23T00:00:00",
         "source_id": "courtlistener",
@@ -28771,16 +27470,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 112269,
-        "kind": "item",
-        "occurred_at": "2026-09-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73608654/44/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 119330,
         "kind": "item",
         "occurred_at": "2026-09-24T00:00:00",
         "source_id": "courtlistener",
@@ -28797,7 +27486,26 @@
     "date_terminated": null,
     "defendant": "Michael Adams",
     "docket_number": "26-5657",
-    "entry_count": 22,
+    "entry_count": 21,
+    "entry_moves": [
+      {
+        "entries": [
+          22,
+          21
+        ],
+        "kind": "merge",
+        "ledger": [
+          4,
+          3
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          7,
+          4
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-24T00:00:00",
     "latest_entry_at": "2026-09-21T00:00:00",
     "plaintiff": "United States",
@@ -28807,26 +27515,6 @@
     "status_checked_at": "2026-10-02T05:54:23.567230+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 74932,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
-        "title": "United States v. Kentucky — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 110353,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
-        "title": "United States v. Kentucky — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -28865,16 +27553,6 @@
         "occurred_at": "2026-09-21T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73674243/32/united-states-v-michael-adams/",
-        "title": "United States v. Kentucky: court order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 111332,
-        "kind": "item",
-        "occurred_at": "2026-09-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73674243/32/united-states-v-michael-adams/",
         "title": "United States v. Kentucky: ORDER filed granting motion to hold case in abeyance [30], cancelling the briefing schedule. Entered by order of the court. (ASM) [Entered: 09/21/2026 11:54 AM]"
       }
     ]
@@ -28887,7 +27565,22 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 63,
+    "entry_count": 59,
+    "entry_moves": [
+      {
+        "entries": [
+          63,
+          59
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          13,
+          10
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-27T00:00:00",
     "latest_entry_at": "2026-09-25T00:00:00",
     "plaintiff": "United States",
@@ -28897,36 +27590,6 @@
     "status_checked_at": "2026-10-02T05:54:27.428760+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 82262,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
-        "title": "United States v. New Mexico — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 87894,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
-        "title": "United States v. New Mexico — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 110363,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
-        "title": "United States v. New Mexico — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -29038,6 +27701,17 @@
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
     "entry_count": 87,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          12,
+          11
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-28T00:00:00",
     "latest_entry_at": "2026-10-01T00:00:00",
     "plaintiff": "United States of America",
@@ -29047,16 +27721,6 @@
     "status_checked_at": "2026-10-02T05:53:07.084137+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98732,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "A1",
@@ -29085,7 +27749,7 @@
         "occurred_at": "2026-07-28T00:00:00",
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States of America v. Board Of Elections of the State of New York — voter-data"
+        "title": "United States v. New York — voter-data"
       },
       {
         "channel": "litigation",
@@ -29177,7 +27841,27 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 70,
+    "entry_count": 69,
+    "entry_moves": [
+      {
+        "apart": 1,
+        "entries": [
+          70,
+          69
+        ],
+        "kind": "merge",
+        "ledger": [
+          12,
+          10
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          13,
+          11
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-28T00:00:00",
     "latest_entry_at": "2026-10-02T00:00:00",
     "plaintiff": "United States of America",
@@ -29255,32 +27939,12 @@
         "occurred_at": "2026-09-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/56/united-states-of-america-v-thomas/",
-        "title": "United States of America v. Thomas: MOTION, for___relief, on behalf of Appellee Stephanie Thomas, FILED. Service date 09/08/2026 by ACMS. [Entered: 09/08/2026 03:13 PM]"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 100212,
-        "kind": "item",
-        "occurred_at": "2026-09-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73686333/56/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION, for removal from XAC, or alternatively, for extension of time, on behalf of Appellee Stephanie Thomas, FILED. Service date 09/08/2026 by ACMS. [Entered: 09/08/2026 03:13 PM"
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 109461,
-        "kind": "item",
-        "occurred_at": "2026-09-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73686333/58/united-states-of-america-v-thomas/",
-        "title": "United States of America v. Thomas: OPPOSITION, to Motion for___relief, at docket entry 56, on behalf of Appellant United States of America, FILED. Service date 09/18/2026 by ACMS. [Entered: 09/18/2026 05:31 PM]"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 111249,
         "kind": "item",
         "occurred_at": "2026-09-18T00:00:00",
         "source_id": "courtlistener",
@@ -29327,7 +27991,26 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 32,
+    "entry_count": 30,
+    "entry_moves": [
+      {
+        "entries": [
+          32,
+          30
+        ],
+        "kind": "merge",
+        "ledger": [
+          9,
+          7
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          11,
+          8
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-07-29T00:00:00",
     "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "United States",
@@ -29337,16 +28020,6 @@
     "status_checked_at": "2026-10-02T05:54:31.259241+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 99590,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
-        "title": "United States v. Virginia — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -29405,7 +28078,7 @@
         "occurred_at": "2026-09-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/27/united-states-v-steven-koski/",
-        "title": "United States v. Virginia: Court order filed"
+        "title": "United States v. Virginia: COURT ORDER filed granting Motion for leave to file separate brief [25]; [25], granting Motion to file separate brief [23] Copies to all parties. [1002063507] [26-2002] AW [Entered"
       },
       {
         "channel": "litigation",
@@ -29415,17 +28088,7 @@
         "occurred_at": "2026-09-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/29/united-states-v-steven-koski/",
-        "title": "United States v. Virginia: Order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 119388,
-        "kind": "item",
-        "occurred_at": "2026-09-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73690636/27/united-states-v-steven-koski/",
-        "title": "United States v. Virginia: COURT ORDER filed granting Motion for leave to file separate brief [25]; [25], granting Motion to file separate brief [23] Copies to all parties. [1002063507] [26-2002] AW [Entered"
+        "title": "United States v. Virginia: ORDER filed granting Motion to withdraw/relieve/substitute counsel (Greta Gieseke) [28]. Copies to all parties. [1002063723] [26-2002] AW [Entered: 09/28/2026 04:35 PM]"
       },
       {
         "channel": "litigation",
@@ -29436,16 +28099,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/28/united-states-v-steven-koski/",
         "title": "United States v. Virginia: MOTION by US to withdraw/relieve/substitute counsel.Attorney or client motion? client.. If under L.R. 46(d), was client advised of right to file response within 7 days? N/A. Date a"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 119390,
-        "kind": "item",
-        "occurred_at": "2026-09-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73690636/29/united-states-v-steven-koski/",
-        "title": "United States v. Virginia: ORDER filed granting Motion to withdraw/relieve/substitute counsel (Greta Gieseke) [28]. Copies to all parties. [1002063723] [26-2002] AW [Entered: 09/28/2026 04:35 PM]"
       }
     ]
   },
@@ -29508,6 +28161,17 @@
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
     "entry_count": 24,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          2,
+          1
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-08-17T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -29517,16 +28181,6 @@
     "status_checked_at": "2026-10-02T12:34:30.434836+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98721,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
-        "title": "United States v. Illinois — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -29548,6 +28202,17 @@
     "defendant": "Monica Evans",
     "docket_number": "26-5296",
     "entry_count": 18,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          4,
+          3
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-08-19T00:00:00",
     "latest_entry_at": "2026-09-18T00:00:00",
     "plaintiff": "United States",
@@ -29561,16 +28226,6 @@
         "channel": "litigation",
         "grade": "B2",
         "id": 83008,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com",
-        "title": "United States v. DC — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 97387,
         "kind": "item",
         "occurred_at": null,
         "source_id": "seed-cases",
@@ -29608,6 +28263,17 @@
     "defendant": "Lieutenant Governor and Secretary of State of New",
     "docket_number": "26-3085",
     "entry_count": 35,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          6,
+          3
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-08-20T00:00:00",
     "latest_entry_at": "2026-09-30T00:00:00",
     "plaintiff": "United States",
@@ -29617,36 +28283,6 @@
     "status_checked_at": "2026-10-02T12:34:26.823007+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 98730,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
-        "title": "United States v. New Jersey — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 104182,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
-        "title": "United States v. New Jersey — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 111590,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
-        "title": "United States v. New Jersey — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -29687,7 +28323,22 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 103,
+    "entry_count": 102,
+    "entry_moves": [
+      {
+        "entries": [
+          103,
+          102
+        ],
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          15,
+          10
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-08-21T00:00:00",
     "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "United States",
@@ -29705,56 +28356,6 @@
         "occurred_at": null,
         "source_id": "seed-cases",
         "source_url": "https://www.courtlistener.com",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 88555,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 92823,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 97401,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 103724,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
-        "title": "United States v. Minnesota — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 110358,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
         "title": "United States v. Minnesota — voter-data"
       },
       {
@@ -29858,6 +28459,17 @@
     "defendant": "Aguilar, et al.",
     "docket_number": "26-5375",
     "entry_count": 14,
+    "entry_moves": [
+      {
+        "kind": "merge",
+        "on": "2026-10-02",
+        "timeline": [
+          8,
+          6
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": "2026-08-20T00:00:00",
     "latest_entry_at": "2026-09-03T00:00:00",
     "plaintiff": "United States of America",
@@ -29867,26 +28479,6 @@
     "status_checked_at": "2026-10-02T05:52:59.467337+00:00",
     "superseded_by": null,
     "timeline": [
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 88556,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
-        "title": "United States v. Nevada — voter-data"
-      },
-      {
-        "channel": "litigation",
-        "grade": "B2",
-        "id": 89910,
-        "kind": "item",
-        "occurred_at": null,
-        "source_id": "seed-cases",
-        "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
-        "title": "United States v. Nevada — voter-data"
-      },
       {
         "channel": "litigation",
         "grade": "B2",
@@ -30937,7 +29529,26 @@
     "date_terminated": null,
     "defendant": "Kris Warner",
     "docket_number": "26-2262",
-    "entry_count": 15,
+    "entry_count": 14,
+    "entry_moves": [
+      {
+        "entries": [
+          15,
+          14
+        ],
+        "kind": "merge",
+        "ledger": [
+          2,
+          1
+        ],
+        "on": "2026-10-02",
+        "timeline": [
+          3,
+          2
+        ],
+        "why": "duplicate court-entry rows were merged"
+      }
+    ],
     "filed_at": null,
     "latest_entry_at": "2026-09-29T00:00:00",
     "plaintiff": "United States",
@@ -30961,16 +29572,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 105362,
-        "kind": "item",
-        "occurred_at": "2026-09-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74793201/3/united-states-v-kris-warner/",
-        "title": "United States v. West Virginia: Briefing order filed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 106222,
         "kind": "item",
         "occurred_at": "2026-09-15T00:00:00",
         "source_id": "courtlistener",
