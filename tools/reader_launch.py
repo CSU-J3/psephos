@@ -15,6 +15,7 @@ and fails the run (exit 1) unless each reader:
   - was given no context attachment of a type the measured channel does not send;
   - saw none of its pairs' row, object or docket ids anywhere but in its own file;
   - used no tool but Read, on its own file only, and the hand-back;
+  - saw every line of its file, as the file holds it (a run's file takes several Reads);
   - reported one well-formed verdict for every pair in its file.
 It writes the run record: the launcher's sha256, each reader's start-message hash, what each
 check found, the verdicts, each pair's outcome, and the tokens each reader cost.
@@ -30,6 +31,8 @@ each run: run it on a canary before any reader starts, and on the run after.
 THE MANIFEST, in the scratchpad and never in a reader's reach:
     {"run": NAME, "since": ISO_Z, "channel": TEXT,
      "readers": [{"pair": LABEL, "lens": LENS, "file": PATH}, ...]}
+A batched reader's file holds several pairs; its entry adds "pairs": {"1": LABEL, ...}, one
+label per n, and its "pair" names the run.
 `since` drops transcripts begun before the run. A reader matched by two transcripts fails:
 a relaunch is a new run.
 """
@@ -57,6 +60,10 @@ ATTACHMENTS = frozenset({
     "deferred_tools_delta", "environment", "model", "skill_listing", "session_context", "date",
     "credential_org", "remote_session_change", "prompt_snapshot", "deferred_tools_record",
     "mcp_instructions_delta", "total_tokens_reminder",
+    # Measured on the blind batch's first wave, 2026-10-03: the harness's banner when a Read
+    # stops at its 25,000-token cap. It names the file read, its line count and the next
+    # offset, so it is admitted only when the file it names is the reader's own.
+    "read_truncation_notice",
 })
 TOOLS = frozenset({"Read", "SubagentHandback"})
 
@@ -179,6 +186,8 @@ def check_transcript(lines: list, lens: str, file: str, path: str = LAUNCHER) ->
             found["attachments"].append(kind)
             if kind not in ATTACHMENTS:
                 found["problems"].append(f"an attachment of an unmeasured type: {kind}")
+            elif kind == "read_truncation_notice" and os.path.basename(file) not in str(d["attachment"].get("banner")):
+                found["problems"].append("a truncation notice for a file not its own")
     # The pair's ids may appear only in the result of reading its own file.
     read_ids = set()
     for d in lines:
@@ -203,6 +212,30 @@ def check_transcript(lines: list, lens: str, file: str, path: str = LAUNCHER) ->
                             found["problems"].append(why)
     if not found["reads_of_file"]:
         found["problems"].append("never read its file")
+    else:
+        # It must have SEEN all of it. One Read returns about 41,000 characters, so a run's
+        # file takes several, paged by offset; a reader that judged pairs it never read
+        # would pass every other condition. Each returned line is matched to the file's own.
+        want = open(file, encoding="utf-8").read().split("\n")
+        seen, altered = set(), []
+        for d in lines:
+            content = (d.get("message") or {}).get("content")
+            if d.get("type") != "user" or not isinstance(content, list):
+                continue
+            for b in content:
+                if isinstance(b, dict) and b.get("type") == "tool_result" and b.get("tool_use_id") in read_ids:
+                    body = b["content"] if isinstance(b["content"], str) else "\n".join(
+                        x.get("text", "") for x in b["content"] if isinstance(x, dict))
+                    for ln in body.split("\n"):
+                        m = re.match(r"^\s*(\d+)\t(.*)$", ln)
+                        if m and 1 <= int(m.group(1)) <= len(want):
+                            n = int(m.group(1))
+                            (seen.add(n) if m.group(2) == want[n - 1] else altered.append(n))
+        found["lines_seen"] = f"{len(seen)} of {len(want)}"
+        if len(seen) < len(want):
+            found["problems"].append(f"saw {len(seen)} of its file's {len(want)} lines")
+        if altered:
+            found["problems"].append(f"lines returned altered: {altered[:5]}")
     if found["verdicts"] is None and not any("verdict" in p or "report" in p for p in found["problems"]):
         found["problems"].append("no hand-back report")
     # Messages only: an attachment is admitted by its measured type above, and its tool and
@@ -279,11 +312,13 @@ def check(manifest: dict, transcripts_dir: str, path: str = LAUNCHER) -> dict:
                 rec["start_head"] = c["start_head"]
             rec.update(start_sha256=c["start"], ok=c["ok"], problems=c["problems"],
                        attachments=sorted(set(c["attachments"])), tools=c["tools"],
-                       reads_of_file=c["reads_of_file"], verdicts=c["verdicts"],
+                       reads_of_file=c["reads_of_file"], lines_seen=c.get("lines_seen"), verdicts=c["verdicts"],
                        tokens=tokens(mine[0][1]))
             if c["ok"] and c["verdicts"]:
                 for v in c["verdicts"]:
-                    pairs.setdefault(r["pair"], {})[r["lens"]] = {k: v[k] for k in ("same_entry", "better_match", "reasoning")}
+                    # A batched reader's file holds several pairs: `pairs` maps each n to its label.
+                    label = r["pairs"][str(v["n"])] if r.get("pairs") else r["pair"]
+                    pairs.setdefault(label, {})[r["lens"]] = {k: v[k] for k in ("same_entry", "better_match", "reasoning")}
         readers.append(rec)
     return {
         "run": manifest["run"], "channel": manifest.get("channel"),

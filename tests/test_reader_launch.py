@@ -17,8 +17,15 @@ def _staged(tmp_path, records=(PAIR,)):
     return RL.stage(list(records), str(tmp_path / "blind"))
 
 
+def _numbered(file, offset=1, limit=None, cut=None):
+    """What the Read tool returns: each line as `N<tab>text`, from `offset` for `limit` lines."""
+    rows = open(file, encoding="utf-8").read().split("\n")
+    end = len(rows) if limit is None else min(len(rows), offset - 1 + limit)
+    return "\n".join(f"{n}\t{rows[n - 1][:cut] if cut else rows[n - 1]}" for n in range(offset, end + 1))
+
+
 def _lines(file, start, *, before=(), after=(), attachments=("environment", "date"),
-           tools=None, report=GOOD, began="2026-10-03T03:00:00.000Z"):
+           tools=None, report=GOOD, began="2026-10-03T03:00:00.000Z", read=None):
     """A transcript in the shape the Agent-tool channel writes: the start message, its
     context attachments, the hand-back note, a Read of the file and the report."""
     lines = [{"type": "user", "timestamp": began, "message": {"role": "user", "content": m}} for m in before]
@@ -31,9 +38,10 @@ def _lines(file, start, *, before=(), after=(), attachments=("environment", "dat
             "content": [{"type": "tool_use", "id": f"t{i}", "name": name, "input": inp}],
             "usage": {"input_tokens": 10, "cache_creation_input_tokens": 100,
                       "cache_read_input_tokens": 1000, "output_tokens": 5}}})
+        body = (read or {}).get(i) or (_numbered(file, inp.get("offset", 1), inp.get("limit"))
+                                        if name == "Read" and inp.get("file_path") == file else "ok")
         lines.append({"type": "user", "message": {"role": "user", "content": [
-            {"type": "tool_result", "tool_use_id": f"t{i}", "content": open(file, encoding="utf-8").read()
-             if name == "Read" else "ok"}]}})
+            {"type": "tool_result", "tool_use_id": f"t{i}", "content": body}]}})
     lines.append({"type": "assistant", "requestId": "qh", "message": {
         "content": [{"type": "tool_use", "id": "th", "name": "SubagentHandback", "input": {"message": report}}],
         "usage": {"input_tokens": 1, "cache_creation_input_tokens": 0,
@@ -104,6 +112,19 @@ def test_any_message_but_the_hand_back_note_fails_the_reader(tmp_path):
     assert not c["ok"] and any("other than the hand-back note" in p for p in c["problems"])
 
 
+def test_a_truncation_notice_passes_only_for_the_readers_own_file(tmp_path):
+    """The harness's banner when a Read stops at its cap: admitted when it names this file."""
+    f = _staged(tmp_path)
+    lines = _lines(f, RL.render("identity", f))
+    notice = {"type": "attachment", "attachment": {"type": "read_truncation_notice",
+              "banner": f"[Truncated: PARTIAL view - {f}: showing lines 1-9 of 12 total]"}}
+    c = RL.check_transcript(lines[:3] + [notice] + lines[3:], "identity", f)
+    assert c["ok"], c["problems"]
+    notice["attachment"]["banner"] = "[Truncated: PARTIAL view - C:/elsewhere/docs/status.md]"
+    c = RL.check_transcript(lines[:3] + [notice] + lines[3:], "identity", f)
+    assert not c["ok"] and "a truncation notice for a file not its own" in c["problems"]
+
+
 def test_an_attachment_of_an_unmeasured_type_fails_the_reader(tmp_path):
     f = _staged(tmp_path)
     c = RL.check_transcript(_lines(f, RL.render("identity", f), attachments=("environment", "nested_memory")),
@@ -118,6 +139,23 @@ def test_a_reader_that_looks_beyond_its_file_fails(tmp_path, tool):
     c = RL.check_transcript(_lines(f, RL.render("alternative", f), tools=[("Read", {"file_path": f}), tool]),
                             "alternative", f)
     assert not c["ok"]
+
+
+def test_a_reader_must_see_every_line_of_its_file(tmp_path):
+    """A run's file takes several Reads. Paged to the end it passes; stopping after the
+    first page, or a line come back shortened, fails the reader."""
+    f = _staged(tmp_path)
+    n = open(f, encoding="utf-8").read().count("\n") + 1
+    half = n // 2
+    paged = [("Read", {"file_path": f, "limit": half}), ("Read", {"file_path": f, "offset": half + 1})]
+    c = RL.check_transcript(_lines(f, RL.render("clocks", f), tools=paged), "clocks", f)
+    assert c["ok"], c["problems"]
+    assert c["lines_seen"] == f"{n} of {n}"
+    c = RL.check_transcript(_lines(f, RL.render("clocks", f), tools=paged[:1]), "clocks", f)
+    assert not c["ok"] and any(f"saw {half} of its file's {n} lines" in p for p in c["problems"])
+    cut = {0: _numbered(f, cut=8)}
+    c = RL.check_transcript(_lines(f, RL.render("clocks", f), read=cut), "clocks", f)
+    assert not c["ok"] and any("altered" in p for p in c["problems"])
 
 
 @pytest.mark.parametrize("report", ["not json", json.dumps({"verdicts": []}),
@@ -145,6 +183,23 @@ def test_the_run_record_carries_the_launcher_hash_and_each_start(tmp_path):
     assert all(r["start_sha256"] == r["expected_start_sha256"] for r in rec["readers"])
     assert rec["pairs"]["p"]["outcome"] == "unanimous"
     assert rec["tokens"] == 3 * 2051                             # each reader's final context
+
+
+def test_a_batched_readers_verdicts_are_tallied_pair_by_pair(tmp_path):
+    """A batched run's file holds several pairs, and each n is its own pair's vote."""
+    second = {"n": 2, "pair": {"rows": [5677, 5689], "objects": [469540002, 469622312], "case_id": "71499795"}}
+    f = _staged(tmp_path, (PAIR, second))
+    subs = tmp_path / "subagents"
+    for i, lens in enumerate(RL.LENSES):
+        report = json.dumps({"verdicts": [
+            {"n": 1, "same_entry": "yes", "better_match": None, "reasoning": "r"},
+            {"n": 2, "same_entry": "uncertain" if lens == "clocks" else "yes", "better_match": None, "reasoning": "r"}]})
+        _write(subs, f"agent-{i}.jsonl", _lines(f, RL.render(lens, f), report=report))
+    man = {"run": "t", "since": "2026-10-03T02:00:00Z",
+           "readers": [{"pair": "run 1", "lens": lens, "file": f, "pairs": {"1": "a", "2": "b"}} for lens in RL.LENSES]}
+    rec = RL.check(man, str(subs))
+    assert rec["ok"]
+    assert rec["pairs"]["a"]["outcome"] == "unanimous" and rec["pairs"]["b"]["outcome"] == "split"
 
 
 def test_two_transcripts_for_one_reader_and_an_old_one_are_told_apart(tmp_path):

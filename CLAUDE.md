@@ -12,7 +12,7 @@ Spec-driven and review-gated. Use /plan to propose a plan and wait for approval 
 - A reader's whole start message is `tools/reader_launcher.txt`, rendered for its lens and its file by `python -m tools.reader_launch render`. The file is staged under its own content hash (`stage`), so its path names nothing.
 - Launch readers with the Agent tool, never the Workflow tool. The Workflow tool hands every agent the turn's user message verbatim, so a review brief reaches the readers.
 - Briefs from the review side go to the main session only.
-- Every run starts with a canary on an empty file and ends with `python -m tools.reader_launch check`. The check fails the run when a reader's start message is not the launcher or anything else reached it. Its record goes in `docs/reads/`.
+- Every run starts with a canary on an empty file and ends with `python -m tools.reader_launch check`. The check fails the run when a reader's start message is not the launcher, anything else reached it, or it did not see every line of its file. Its record goes in `docs/reads/`.
 
 **A branch with work on it gets a docs/status.md line in the session that creates it** (Corey, standing rule, 2026-10-02). `r1-switch` sat built, reviewed and unrecorded for two days, and the next session began rebuilding it. Name the branch and its commits by subject: `tools.sha_sweep` treats a sha only a local branch can reach as an orphan.
 
