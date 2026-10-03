@@ -426,6 +426,7 @@ It stays open for Corey to close.
   - **Ruled (Corey, 2026-10-03): the seed's own condition governs.** The config seed is retired, the tracker presents, and the seed's text is kept as a second source. `config/sources.yaml` moves it from `seed_cases` to `retired_seeds`, a list nothing reads, with its condition, the date the condition was met, and this ruling.
     - **The condition was met on 2026-09-08 and missed until 2026-10-02.** The tracker's New York row has named 26-2060 since the data commit `ed4bfd2` (21:21Z). Nothing reads a seed's written removal condition, so no one saw it until the two seeds were laid out for Corey's pick.
     - **What it changes:** the next collect run reads 15 config seeds, not 16, and polls 73682036 once. The 2026-10-02 22:10Z run polled it twice, by the config seed at 22:12:46Z and by the tracker's row at 22:15:10Z.
+      - **CONFIRMED by the next run,** the scheduled 37099664550 (created 2026-10-03T05:23:27Z, green). Its log reads "15 config seed(s) + 32 tracker case(s)", and it polled 73682036 once, by the tracker's New York row, at 05:29:20Z.
     - **What it does not change: the page.** The subject already shows the tracker's title and notes, from its latest copy (item 98732, held 2026-09-08). That copy is folded onto the config seed's first copy (77850, held 2026-08-15), which keeps the subject's first-seen time and its date, Jul 28, the day the Second Circuit docketed the appeal. The retired seed writes nothing, so no edit to its text can put it back in front.
 
 **What the switch leaves owed:**
