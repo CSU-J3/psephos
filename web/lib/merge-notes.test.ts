@@ -63,23 +63,33 @@ describe("the switch's dated notes", () => {
   });
 
   it("give a tier-2 link its own dated note, a line after the merge's, where it moved the figure", () => {
+    // Counted (Corey, 2026-10-02): the Wire, which counts every docket, says every link;
+    // the map panel, the campaign's; a docket, its own entry count's drop.
     expect(wireNote("litigation", BOTH)).toBe(
       "Oct 2, 2026: duplicate court-entry rows and repeated tracker notes were merged (89 tracker notes " +
         "of the drop); the total 2,955 before, 2,619 after; +7d 594 before, 551 after.\n" +
-        "Oct 3, 2026: pairs of court records that describe one entry were linked; the total 2,619 before, 2,614 after.",
+        "Oct 3, 2026: 7 pairs of court records that describe one entry were linked; the total 2,619 before, 2,614 after.",
     );
     expect(entriesNote("71457474", BOTH)).toBe(
       "Oct 2, 2026: duplicate court-entry rows were merged; 230 before, 125 after.\n" +
-        "Oct 3, 2026: pairs of court records that describe one entry were linked; 125 before, 124 after.",
+        "Oct 3, 2026: 1 pair of court records that describe one entry was linked; 125 before, 124 after.",
     );
     expect(mapNote(BOTH)).toBe(
       "Oct 2, 2026: duplicate court-entry rows were merged. The campaign's dockets held 4,952 " +
-        "entries before, 4,474 after; 36 dockets changed.\nOct 3, 2026: pairs of court records that " +
+        "entries before, 4,474 after; 36 dockets changed.\nOct 3, 2026: 3 pairs of court records that " +
         "describe one entry were linked. The campaign's dockets held 4,474 entries before, 4,471 after; 3 dockets changed.",
     );
     // Where only the merge moved the figure, the link adds nothing.
     expect(ledgerNote("71457474", BOTH)).toBe(ledgerNote("71457474", F));
     expect(latestNote("72026664", BOTH)).toBe(latestNote("72026664", F));
+    // A docket's ledger counts the docket's own links, from its entry count's drop.
+    const LWV: MergeFigures = {
+      ...BOTH,
+      moves: [MERGE_MOVE, { ...LINK_MOVE, cases: { "71499795": { entries: [239, 234], ledger: [139, 134] } } }],
+    };
+    expect(ledgerNote("71499795", LWV)).toBe(
+      "Oct 3, 2026: 5 pairs of court records that describe one entry were linked; this docket read 139 entries before, 134 after.",
+    );
   });
 
   it("never call a rise a merge, and name the court-entry reason alone when no note folded", () => {

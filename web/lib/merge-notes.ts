@@ -66,16 +66,32 @@ function notes(m: MergeFigures, one: (mv: Move, on: string) => string | null): s
   return out.length ? out.join("\n") : null;
 }
 
+/** A link move's reason, counted. Corey (2026-10-02): "the links' dated line counts 8".
+ *  Each linked pair takes exactly one entry off its docket's count, so an entry count's own
+ *  drop is how many links moved it: a docket says its own, the map panel the campaign's,
+ *  and the Wire, which counts every docket, all of them. */
+function linkWhy(pairs: number): string {
+  return `${plural(pairs, "pair")} of court records that describe one entry ${pairs === 1 ? "was" : "were"} linked`;
+}
+
 /** Why an entry count moved, naming only what happened to it. A count can RISE at the
  *  merge: a CourtListener entry whose text and day were another entry's row was absorbed
  *  by the old key and is counted apart now. Each such entry adds one, so the rows the
  *  merge folded are `apart + before - after`; a docket where none folded is said to have
  *  counted entries apart, never to have merged anything. */
 function entriesWhy(mv: Move, before: number, after: number, apart = 0): string {
+  if (mv.kind === "link") return linkWhy(before - after);
   if (mv.kind !== "merge") return mv.why;
   const rose = apart ? `${plural(apart, "entry", "entries")} that shared another entry's text and day now counted apart` : "";
   if (apart + before - after > 0) return rose ? `${mv.why}, and ${rose}` : mv.why;
   return rose || mv.why;
+}
+
+/** The reason on a docket's own figure that is not its entry count (its ledger): a link
+ *  move counts the docket's links by its entry count's drop. */
+function docketWhy(mv: Move, caseId: string): string {
+  const e = mv.cases[caseId]?.entries;
+  return mv.kind === "link" && e ? linkWhy(e[0] - e[1]) : mv.why;
 }
 
 /** The Wire's litigation cell: its counts are entries now. The merge also folds the
@@ -92,7 +108,9 @@ export function wireNote(channel: string, m: MergeFigures = MERGE): string | nul
     const parts = keys.map((k) => `${label[k]} ${n(w[k]![0])} before, ${n(w[k]![1])} after`);
     const why = w.tracker_notes
       ? `duplicate court-entry rows and repeated tracker notes were merged (${plural(w.tracker_notes, "tracker note")} of the drop)`
-      : mv.why;
+      : mv.kind === "link" && mv.links
+        ? linkWhy(mv.links)
+        : mv.why;
     return `${d}: ${why}; ${parts.join("; ")}.`;
   });
 }
@@ -122,7 +140,7 @@ export function ledgerNote(caseId: string, m: MergeFigures = MERGE): string | nu
   return notes(m, (mv, d) => {
     const l = mv.cases[caseId]?.ledger;
     if (!l) return null;
-    return `${d}: ${mv.why}; this docket read ${n(l[0])} entries before, ${n(l[1])} after.`;
+    return `${d}: ${docketWhy(mv, caseId)}; this docket read ${n(l[0])} entries before, ${n(l[1])} after.`;
   });
 }
 
@@ -145,7 +163,8 @@ export function rejectedNote(m: MergeFigures = MERGE): string | null {
     const moved = Object.keys(r.states);
     if (r.count[0] === r.count[1] && !moved.length) return null;
     const which = moved.length ? ` (${moved.join(", ")})` : "";
-    return `${d}: ${mv.why}, and the outcome now reads each entry's current text; ` +
+    const why = mv.kind === "link" && mv.links ? linkWhy(mv.links) : mv.why;
+    return `${d}: ${why}, and the outcome now reads each entry's current text; ` +
       `${n(r.count[0])} before, ${n(r.count[1])} after${which}.`;
   });
 }
