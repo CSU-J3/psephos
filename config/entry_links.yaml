@@ -18,7 +18,8 @@ rule: same-run strict-B v1
 # Nothing is applied until Corey sends his line on his ten, the class and the two
 # individual splits. Then what he rules is applied together with the read links below, in
 # one move with its own dated note (Corey's rulings of 2026-10-03, R1 plans and splits,
-# ruling 5). link_entry_twins --apply refuses while `hold` is set.
+# ruling 5). link_entry_twins --apply refuses while `hold` is set. Kept on when the D.N.H.
+# halves were ruled the same day (a ruling as evidence, ruling 3).
 hold: "until Corey's line on his ten, the class of 13 and the two individual splits (R1 plans and splits, ruling 5)"
 
 # The reader's check of the rule's pairs, recorded before the rule is relied on.
@@ -126,7 +127,8 @@ asserted:
 # 2026-10-03, R1 plans and splits, ruling 4). Each: rows: [twin, root]; kind: the rule's
 # own kind when the rule makes the pair, else plan; read: the run record in docs/reads/
 # that passed it, and the link's label there. --apply links one only when that run passed
-# tools/reader_launch.py's check under the stored launcher and read the link unanimous.
+# tools/reader_launch.py's check under the stored launcher and read the link unanimous, or
+# read it and a ruled entry (`ruled`, below) names it and stands over that run.
 read_links:
   # Ruling 1: the three plans of 2026-10-03 failed as plans under the bar set first, each
   # passing one link of two. Their unanimous halves are linked as pairs, since each passed
@@ -146,3 +148,39 @@ read_links:
     read: docs/reads/2026-10-03-three-object-plans.json
     label: "7146>7137"
     ruled: "Corey, 2026-10-03 (R1 plans and splits, ruling 1)"
+  # The three D.N.H. re-plans of 2026-10-03 failed as plans the same way, each rooted at its
+  # ENDORSED ORDER docket text: the timed multi-motion description passed and the late
+  # single-motion short form split. The unanimous halves are linked as pairs, as ruled for
+  # the plans above (Corey's rulings of 2026-10-03, a ruling as evidence, ruling 2). The
+  # late halves, 5392>5478, 5401>5441 and 5402>5451, stay unlinked: the identity reader
+  # doubts them too, so they do not have the class's shape
+  # (docs/findings/r1-dnh-replans-2026-10-03.md).
+  - rows: [5456, 5478]
+    kind: plan
+    read: docs/reads/2026-10-03-dnh-replans.json
+    label: "5456>5478"
+    ruled: "Corey, 2026-10-03 (a ruling as evidence, ruling 2)"
+  - rows: [5477, 5441]
+    kind: plan
+    read: docs/reads/2026-10-03-dnh-replans.json
+    label: "5477>5441"
+    ruled: "Corey, 2026-10-03 (a ruling as evidence, ruling 2)"
+  - rows: [5424, 5451]
+    kind: plan
+    read: docs/reads/2026-10-03-dnh-replans.json
+    label: "5424>5451"
+    ruled: "Corey, 2026-10-03 (a ruling as evidence, ruling 2)"
+
+# Rulings: evidence the script accepts in place of a read (Corey's rulings of 2026-10-03, a
+# ruling as evidence, ruling 1). Each ruled entry says who ruled (`by`), the `date`, the
+# `criterion` in one sentence, the exact `links` it covers by row ids, each [twin, root] and
+# each a read link above, and the `reads` it stands over: run records in docs/reads/, every
+# link it names read in one of them. A read link that its run read but did not pass links
+# when a ruled entry names it and stands over that run, and its twin_rule names the ruling.
+# In a shared group every link needs a passing read or a ruled entry naming it; anything
+# else refuses the group whole. A ruled entry is refused, and --apply with it, when it does
+# not say who ruled, when and by what criterion, names no reads, a read with no run record
+# or no links, or names a link it does not cover or one no read link carries.
+#
+# None yet: the class of 13 and the two individual splits wait for Corey's line.
+ruled: []

@@ -7,6 +7,7 @@
 **Ruled 2026-10-03 (Corey's rulings, R1 plans and splits):**
 - **Ruling 1:** the three failed as plans under the bar set first, each passing one link of two. Their unanimous halves, 279>320, 15575>15566 and 7146>7137, are linked as pairs, since each passed exactly as a batch pair would. They are recorded under `read_links` in `config/entry_links.yaml`, held until Corey's line (ruling 5).
 - **Ruling 2:** 282>320 and 15567>15566, where only the clocks reader is uncertain, join the class of the splits and follow Corey's ruling on it (`r1-splits-2026-10-03.md`). 7143>7137, uncertain on all three lenses, stays unlinked.
+- **Since the same day (Corey's rulings, a ruling as evidence, ruling 1):** if the class is ruled linked, each of the two shares its root with a passing half above. A `ruled` entry in `config/entry_links.yaml` naming it then stands in for its split read. Without one, the group at that root is refused whole.
 
 **Why these three:** the blind batch did not link 279/282, 15567/15575 or 7137/7143. Their readers named, as the better match, an object they took for a third view of the same entry (`r1-blind-batch-2026-10-03.md`).
 
@@ -95,7 +96,7 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 
 ## What the link script needed
 
-`scripts/link_entry_twins.py` could not apply a plan as written. **Changed 2026-10-03 (R1 plans and splits, ruling 4):** `read_links` carry links the rule did not propose, and several links may share a docket-text root when every one carries a passing read. Before the change:
+`scripts/link_entry_twins.py` could not apply a plan as written. **Changed 2026-10-03 (R1 plans and splits, ruling 4):** `read_links` carry links the rule did not propose, and several links may share a docket-text root when every one carries a passing read. **Changed again the same day (a ruling as evidence, ruling 1):** a `ruled` entry naming a link stands in for its read, in a shared group as anywhere else. Before the first change:
 - **It links only pairs the rule makes.** An `asserted` pair must match one. Five of the six links here are not rule pairs.
 - **It sends any two links that share an object in one run to a person** (`would_chain`). Each plan's two links share its root.
 - Nothing is applied: every link is held until Corey's line.

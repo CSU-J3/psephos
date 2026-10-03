@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED and READ BLIND, the link script CHANGED, all HELD for Corey's line
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links and then rulings in place of reads, all HELD for Corey's line
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -588,11 +588,26 @@ It stays open for Corey to close.
     - `hold` refuses `--apply` and the dry run prints it: ruling 5, made mechanical.
     - 16 new tests in `tests/test_cl_twins.py`, including the refusal of a shared group missing one read. Each of the 15 new conditions, disabled in turn, fails a test.
   - **Ruling 5:** nothing applied. The hold names Corey's line on his ten, the class of 13 and the two individual splits. Then what he rules goes with ruling 1's three links, in one move with its own dated note.
-  - **One question for that move:** if the class of 13 is ruled linked, 282>320 and 15567>15566 share their roots with ruling 1's passing links. The script takes only a passing read as a link's authority within a shared group, so Corey's class ruling needs a recorded form the script accepts in place of the read. Otherwise each group is refused whole.
+  - ~~**One question for that move:** if the class of 13 is ruled linked, 282>320 and 15567>15566 share their roots with ruling 1's passing links. The script takes only a passing read as a link's authority within a shared group, so Corey's class ruling needs a recorded form the script accepts in place of the read. Otherwise each group is refused whole.~~ **Answered the same day (a ruling as evidence, below): a `ruled` entry.**
   - **For Corey:**
     - his ten;
     - the class of 13, as a class or one by one, and the 2 one by one;
-    - the three D.N.H. re-plans, each one's unanimous half and its split half.
+    - ~~the three D.N.H. re-plans, each one's unanimous half and its split half.~~ **Ruled the same day (below).**
+- **A ruling as evidence (Corey's rulings, 2026-10-03): DONE the same day. Nothing applied; the hold stays on.**
+  - **Ruling 1, a `ruled` entry type ADDED** (`scripts/link_entry_twins.py`; `ruled` in `config/entry_links.yaml`):
+    - a ruled entry records who ruled, the date, the criterion in one sentence, the exact links it covers by row ids, and the reads it stands over;
+    - a read link that its run read but did not pass links when a ruled entry names it and stands over that run, and its `twin_rule` names the ruling;
+    - in a shared group, every link needs a passing read or a ruled entry naming it; anything else refuses the group whole;
+    - a ruled entry is refused, and `--apply` with it, when it does not say who ruled, when and by what criterion, names no reads, a read with no run record or no links, or names a link it does not cover (none of its reads read it) or one no read link carries;
+    - 14 new tests (53 in `tests/test_cl_twins.py`), among them a ruled entry that names a link it does not cover, one that names no reads, and the removal of a ruled entry refusing its group. Each of the 13 new conditions, disabled in turn, fails a test, as does each of the 15 from R1 plans and splits;
+    - `ruled` is empty: no ruling yet covers the class of 13 or the two individual splits.
+  - **Ruling 2:** the D.N.H. re-plans' unanimous halves, 5456>5478, 5477>5441 and 5424>5451, are linked as pairs, recorded under `read_links`, held. The dry run reads link 6, unread 0, ruled_refused 0, held. The late halves, 5392>5478, 5401>5441 and 5402>5451, stay unlinked: the identity reader doubts them too.
+  - **Ruling 3:** the hold stays on until Corey's line on his ten, the class of 13 and the two individual splits.
+  - **Found, not changed:** a read link of the rule's own kind takes its direction from the order of its rows, and the batch's labels are unordered (`A/B`). Written long form first, it would make the long form the twin, against ruling 2's hybrid of 2026-09-30, and nothing refuses it. No committed link is exposed: all six are plans, whose ordered labels fix the direction. The class's 11 batch pairs would be read links of this kind.
+  - **For Corey:**
+    - his ten;
+    - the class of 13, as a class or one by one, and the 2 one by one;
+    - whether a read link of the rule's own kind must keep the rule's direction before the class's 11 batch pairs are written.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

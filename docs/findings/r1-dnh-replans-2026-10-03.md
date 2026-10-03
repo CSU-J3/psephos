@@ -4,6 +4,10 @@
 - In each plan, the timed description joins the docket text unanimously, and the late short form with no filing time splits.
 - Every link stays held until Corey returns his ten.
 
+**Ruled 2026-10-03 (Corey's rulings, a ruling as evidence):**
+- **Ruling 2:** the unanimous halves, 5456>5478, 5477>5441 and 5424>5451, are linked as pairs, as ruled for the first three plans (`r1-three-object-plans-2026-10-03.md`). They are recorded under `read_links` in `config/entry_links.yaml`, held until Corey's line (ruling 3).
+- The late halves, 5392>5478, 5401>5441 and 5402>5451, stay unlinked. The identity reader doubts them too, so they do not have the class's shape.
+
 **Why these three:** 5392/5456, 5401/5477 and 5402/5424 split in the blind batch, and each pairs two RECAP document descriptions, the rule's recorded defect. Ruling 3 takes them out of the class of the splits and re-plans each at its docket text, with one link from each description to that text (`r1-splits-2026-10-03.md`).
 
 ## The plans
@@ -91,8 +95,8 @@ Each read gives identity / alternative match / clocks (y yes, u uncertain, n no)
 
 ## For Corey
 
-- The three unanimous links, 5456>5478, 5477>5441 and 5424>5451, are links the rule does not make. As `read_links` they would carry passing reads, but no ruling covers them yet.
-- The three split links read the late single-motion short form against a docket text that grants several motions.
+- ~~The three unanimous links, 5456>5478, 5477>5441 and 5424>5451, are links the rule does not make. As `read_links` they would carry passing reads, but no ruling covers them yet.~~ **Ruled 2026-10-03: linked as pairs (above), held.**
+- The three split links read the late single-motion short form against a docket text that grants several motions. **Ruled 2026-10-03: they stay unlinked.**
 - Nothing is applied: every link is held until Corey's line (ruling 5).
 
 ## The price
