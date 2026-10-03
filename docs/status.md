@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02: the first-load test BUILT, the rule's 7 READ and LINKED, the person pairs READ but for a second batch of 239, PRICED and RULED to batched readers; pair 23 LINKED as asserted; tier 1's switch SHIPPED 2026-10-03
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02: the first-load test BUILT, the rule's 7 READ and LINKED, the person pairs READ but for a second batch of 239, whose batched readers FAILED their calibration 49 of 51 (HELD for Corey); pair 23 LINKED as asserted; tier 1's switch SHIPPED 2026-10-03
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -442,11 +442,26 @@ It stays open for Corey to close.
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
   - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
-  - the second batch of 239: priced, held for Corey;
+  - the second batch of 239: batched readers calibrated, and the calibration FAILED its bar (below), so the 239 are not read;
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
 - ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word~~ **SHIPPED 2026-10-03T00:49:15Z, all five steps run and the live pages read (above).**
-- The second batch of 239, batched readers calibrated first: ruled 2026-10-02, next.
+- **The second batch of 239: the batched readers CALIBRATED 2026-10-03 and FAILED the bar, 49 of 51; HELD for Corey.** In full: `docs/findings/r1-batched-calibration-2026-10-03.md`.
+  - **The method (ruled 2026-10-02).** Each reader took a run of up to 9 pairs under one lens, three readers per pair, with the same lens prompts and bar.
+    - Each reader ran as an agent type that loads no project instructions, pinned to the earlier reads' model and effort.
+    - The calibration re-read the 51 pairs already read, with the refused DSCC pair as a known negative.
+  - **The result.**
+    - All 45 unanimous passes reproduced, and 4 of the 6 splits.
+    - Person pair 4 (8868/8873) went from a split to unanimous: its clocks reader read the same 43 minutes as one entry.
+    - Person pair 22 (91090/91356) went from a split to not linked. Its readers found that the unnumbered object was created 80 minutes before #54, whose text it carries, about a minute after #51, so its text has moved at least once. The clocks reader named #51 as a better match "on clocks only".
+    - The DSCC control was read no by all three readers.
+  - **Corey's bar was every pass and every split, so the batch stops** (ruling 2b).
+    - No one-pair re-read was taken, so batching's share of the two moves is not measured.
+  - **The price, measured.**
+    - Each reader loads 34,547 tokens before its pairs, against about 64,700 before the trim.
+    - The calibration cost 1,340,664 tokens and 14m22s for 18 readers.
+    - The 239 batched would be about 6.16 million tokens and 65 minutes, under the 10 million ceiling.
+  - D1 stays a recorded measurement. Corey's five wait for the batch.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
