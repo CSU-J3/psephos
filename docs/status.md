@@ -449,7 +449,7 @@ It stays open for Corey to close.
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
   - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
-  - the second batch of 239: batched readers calibrated, and the calibration FAILED its bar (below), so the 239 are not read; the batching control READ 2026-10-03, 1 of 6 changed, HELD for Corey (below);
+  - the second batch of 239: batched readers calibrated, and the calibration FAILED its bar (below), so the 239 are not read; the batching control READ 2026-10-03, 1 of 6 changed, HELD for Corey (below); **read again blind the same day: 2 of 6 changed, rule a, batching (below);**
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
 - ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word~~ **SHIPPED 2026-10-03T00:49:15Z, all five steps run and the live pages read (above).**
@@ -469,7 +469,7 @@ It stays open for Corey to close.
     - The calibration cost 1,340,664 tokens and 14m22s for 18 readers.
     - The 239 batched would be about 6.16 million tokens and 65 minutes, under the 10 million ceiling.
   - D1 stays a recorded measurement. Corey's five wait for the batch.
-- **The batching control: READ 2026-10-03. Exactly 1 of the 6 splits changed, so by the rule the reads are laid out (c); HELD for Corey.** In full: `docs/findings/r1-batching-control-2026-10-03.md`.
+- **The batching control: READ 2026-10-03. Exactly 1 of the 6 splits changed, so by the rule the reads are laid out (c); HELD for Corey.** In full: `docs/findings/r1-batching-control-2026-10-03.md`. **Superseded the same day by the blind control (below): these readers were handed the brief. Read blind, 2 of 6 changed, and the rule gave a.**
   - **The rule, stated before the read (Corey, 2026-10-03):**
     - a. If 2 or more change, adopt batching for the 239, with every split to Corey and his random check grown to ten.
     - b. If all 6 reproduce, do not batch; stop with the price of single-pair reads.
@@ -520,6 +520,25 @@ It stays open for Corey to close.
     - pair 23's link, on the order's text (ruling 3b).
   - **Re-read blind under ruling 3:** the 6 splits, pair 23, and the rule's 7, whose links rest on listed reads.
   - **Under the narrower reading,** only launches that named an outcome: the tallies stand at 37 and 6, and 3c re-reads the rule's n=3 alone.
+- **The blind re-reads (ruling 3): READ 2026-10-03, every reader passing the check.** In full: `docs/findings/r1-blind-reads-2026-10-03.md`; records in `docs/reads/`.
+  - **3a, the control: 2 of the 6 splits changed, so the rule written on 2026-10-03 gives a.**
+    - The 2026-10-01 sample's n=8 and person pair 4 read unanimous blind. n=3 and pairs 5, 15 and 22 read split again.
+    - **Under a:** batching is adopted for the 239, every split still goes to Corey, and his random check grows from five to ten, drawn from the batched unanimous passes. Stopped there, as ruled; the 239 are not read.
+    - The control's files were the primed control's records, unchanged, so blind and primed differ only in how they were launched. They agree on 5 of 6; n=8 moved. Pair 22, the read the primed branch turned on, read split again blind.
+    - 1,011,542 tokens for 18 reads.
+  - **3b, pair 23: unanimous blind.** All three readers read yes, and none named a better match. Its link stands on the order's text either way. 144,417 tokens.
+  - **3c, the rule's 7: all 7 unanimous blind.** 21 of 21 yes, none naming a better match. Their links now rest on a blind full read, and `config/entry_links.yaml` records it as `checked`, the 2026-10-02 read moved to `checks_before`. 913,104 tokens.
+  - **4, the method for the 239: batching, by rule a.** It must launch blind like these reads: from the launcher, by the Agent tool, in waves of at most 20.
+  - **Its price under the blind launch is not measured.** The calibration's 6.16 million was read through the Workflow channel. The figures are not like for like: a blind reader takes a closing turn after its hand-back, and the final-context measure counts it (56,197 a read against 39,687 on the control's identical files). The first wave will measure it.
+  - **The tallies now:**
+    - candidates: n=8 and person pair 4;
+    - Corey's split list: n=3 and person pairs 5, 15 and 22 (22 refused);
+    - linked on blind reads: pair 23 and the rule's 7;
+    - still to read blind: the 37 earlier candidates. With the 239, that is 276 pairs.
+  - **All 42 blind reads: 2,069,063 tokens.** Every reader's start was the launcher byte for byte, and only its own file was read. One reader read its file twice.
+  - **For Corey:**
+    - whether the batch covers the 37 earlier candidates as well as the 239;
+    - his random check of ten, drawn after the batch.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

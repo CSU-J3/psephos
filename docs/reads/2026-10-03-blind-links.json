@@ -1,0 +1,1159 @@
+{
+ "run": "2026-10-03 blind re-reads of the links (rulings 3b, 3c)",
+ "channel": "Agent tool, Explore, opus",
+ "checked_at": "2026-10-03T02:48:18Z",
+ "launcher": {
+  "path": "tools/reader_launcher.txt",
+  "sha256": "b6f45a4c297513486268ddf37994f4145b6eff87454b1ce97544c869d4ae8fbf"
+ },
+ "ok": true,
+ "readers": [
+  {
+   "pair": "pair 23",
+   "lens": "identity",
+   "file": "f0048159470a.json",
+   "file_sha256": "f0048159470a277ef3b6d28b4918c228267e412c78f3487febdc923fc5255638",
+   "expected_start_sha256": "fd8ad2c3194737c6db219f244dbfa7917a990a42f3f940acd13d441738a826cb",
+   "transcripts": [
+    "agent-a9a1872b860ae09dd.jsonl"
+   ],
+   "start_sha256": "fd8ad2c3194737c6db219f244dbfa7917a990a42f3f940acd13d441738a826cb",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form, 'Order on Motion to Enforce Judgment', is the standard CM/ECF short description for an order that rules on a motion to enforce judgment. The long form is a minute order signed by Judge Sooknanan on 9/29/2026. It DENIES the Plaintiffs' 128 Motion to Enforce Summary Judgment Order. The summary judgment order is the judgment, so 'Motion to Enforce Judgment' is the event-type name for the same motion 128 that the judge names in prose. The two forms record the same kind of event (an order), act on the same motion, and fall on the same day (both entry_at 2026-09-29). The short form names no party, so there is no party conflict, and it names nothing the long form does not do. The long form also vacates the July 20 minute order. That is extra content in the same order, not a sign of a different event; short descriptions usually name only the motion being resolved. Both objects are unnumbered (entry_number null), as a D.D.C. minute order would be. One copy came from a timed source (time_filed 17:25:32, created 14:36 PDT) and the other from the docket text (time_filed null, created 16:31 PDT). A separate written order would normally have its own entry number. The window (9/28 to 9/30) has no other order and no other ruling on a motion to enforce. Its only other object is entry 149, a Notice of Supplemental Authority filed by the defendants on 9/28, which is not an order. No better match."
+    }
+   ],
+   "tokens": 41455
+  },
+  {
+   "pair": "pair 23",
+   "lens": "alternative",
+   "file": "f0048159470a.json",
+   "file_sha256": "f0048159470a277ef3b6d28b4918c228267e412c78f3487febdc923fc5255638",
+   "expected_start_sha256": "549fb53e21e976af27a865a5a867158cc8f6006da33c1fadbc56a3e248d9afac",
+   "transcripts": [
+    "agent-a1c7f520e2105458d.jsonl"
+   ],
+   "start_sha256": "549fb53e21e976af27a865a5a867158cc8f6006da33c1fadbc56a3e248d9afac",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window runs from 9/28 through 9/30 and holds three objects: the short form 479853687, the long form 479868690, and numbered entry 149 (479691487). Entry 149 is a Notice of Supplemental Authority that the defendants filed on 9/28, attaching the Supreme Court stay opinion. It is a party filing, not an order, so 'Order on Motion to Enforce Judgment' cannot describe it. That leaves the long form as the only order in the window, and it is exactly the order the short form names: the 9/29 minute order DENIES Plaintiffs' 128 Motion to Enforce Summary Judgment Order. It also vacates the July 20 status-report minute order, but that ruling is in the same docket text, not a separate entry that could compete. The window has no second order, minute entry or notice on 9/29 or 9/30. Both objects are unnumbered, which fits a D.D.C. minute order (no document number). The short form's time_filed is 17:25:32 on 9/29, and the long form was created in CourtListener later that day (16:31 PDT), on the signing date. The creation times are about two hours apart, not minutes, but that does not create another candidate. The long form is the only entry in the window that the short form can describe."
+    }
+   ],
+   "tokens": 39523
+  },
+  {
+   "pair": "pair 23",
+   "lens": "clocks",
+   "file": "f0048159470a.json",
+   "file_sha256": "f0048159470a277ef3b6d28b4918c228267e412c78f3487febdc923fc5255638",
+   "expected_start_sha256": "88c0e9b9b7704c54afee317898fd503bc4bcc7198d3ede5321fc8814c2824e99",
+   "transcripts": [
+    "agent-a160c69a5c00a4442.jsonl"
+   ],
+   "start_sha256": "88c0e9b9b7704c54afee317898fd503bc4bcc7198d3ede5321fc8814c2824e99",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Shape: neither object has an entry_number. That is how D.D.C. dockets a text-only MINUTE ORDER, so the short form cannot be the RSS copy of some numbered filing. The twin 479853687 looks like an RSS item: desc_source 'document' (short description only), time_filed 17:25:32, date_created 2026-09-29T14:36:36-07:00 (17:36:36 ET), so it was created about 11 min after its filing time. I read time_filed as court-local Eastern. No. 149 in the window supports this: time_filed 17:20:43, created 15:23:57 PT = 18:23:57 ET. A Pacific reading would put both creations before their filing times. The entry 479868690 looks like text from a docket pull: desc_source 'entry', time_filed null, date_created 2026-09-29T16:31:22-07:00 (19:31:22 ET). That is 1h54m46s after the twin was created and about 2h after the twin's time_filed, so it came after the twin's filing, which fits the same minute entry being picked up later from a docket pull. psephos's rows agree: the twin was first held at 2026-09-29T22:15:05Z, before the long-form object existed (created 23:31:22Z), and the long form was first held at 2026-09-30T05:40:09Z (cross-run). Caveat: the gap is longer than the usual few minutes, and the long form has no time_filed to fix its own entry time, so the clocks alone cannot prove the two were entered at the same time. Still, the window (every object 9/28-9/30) holds exactly one RSS-type object and one docket-text object on 9/29, and none of the three objects is twin_of anything. A two-filings reading would need two objects the window does not have: an RSS copy of the minute order, and docket text for the 17:25:32 item. The only other object, 479691487 (No. 149, entry_at 9/28, time_filed 17:20:43, already carrying its own long text), is numbered and a day earlier, so it is not a better match."
+    }
+   ],
+   "tokens": 63439
+  },
+  {
+   "pair": "rule pair 1 of 7",
+   "lens": "identity",
+   "file": "5d2dbe09fe7e.json",
+   "file_sha256": "5d2dbe09fe7e89cf88ebe39f68cdb89cc4c2a0db9696eeedb9d7e87d4068e557",
+   "expected_start_sha256": "1b125a3ae3de2bbb2df2646d1c4b251b1d3118523707b5836e827a710b56b545",
+   "transcripts": [
+    "agent-a34f1549aab82dad7.jsonl"
+   ],
+   "start_sha256": "1b125a3ae3de2bbb2df2646d1c4b251b1d3118523707b5836e827a710b56b545",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Read as a clerk would, the short form '.Order AND ~Util - Set/Reset Deadlines' is a plain Order event docketed together with the Set/Reset Deadlines utility event. It is not an 'Order on Motion', so it describes an order that rules on nothing and sets deadlines. The long form is that kind of order. It is an unnumbered MINUTE ORDER that grants or denies nothing. It sets Plaintiffs' response to the 116 Motion to Stay for 7/6/2026 at 5:00 PM and the Federal Defendants' reply for 7/7/2026 at 5:00 PM, and that is the Set/Reset Deadlines part. Both parts of the short form are things the long form does. The short form names nothing the long form does not do: no motion ruling, no hearing, no filing by a party. Both objects are unnumbered, which fits a minute entry. They are from the same day: the short form's time_filed is 08:53:52 on 7/2, and the long form was signed on 7/2/2026. That is the morning after the 116 motion was filed at 23:34 on 7/1, which is when a briefing-schedule order like this would plausibly issue. The long-form object has no time_filed and was created in CourtListener at about 16:22 ET. That is hours later, but it fits a later capture of the same minute entry from a source without times, and nothing in either text puts the order at a different time. The window holds no other order on 7/1-7/3. #116 (469510736) is the motion itself and #117 (469607476) is a notice of appearance, so neither fits the short form. The short form's type is generic, but its Set/Reset Deadlines part matches what the long form actually does, and the window has no other order that day for it to belong to. So it reads as the same minute entry."
+    }
+   ],
+   "tokens": 49201
+  },
+  {
+   "pair": "rule pair 1 of 7",
+   "lens": "alternative",
+   "file": "5d2dbe09fe7e.json",
+   "file_sha256": "5d2dbe09fe7e89cf88ebe39f68cdb89cc4c2a0db9696eeedb9d7e87d4068e557",
+   "expected_start_sha256": "856a0b0f792e90ddf1f12f73d207689d334e6ddb14204bb340050f177538f90f",
+   "transcripts": [
+    "agent-a5800fe311bcfd296.jsonl"
+   ],
+   "start_sha256": "856a0b0f792e90ddf1f12f73d207689d334e6ddb14204bb340050f177538f90f",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window covers Jul 1 to Jul 3, 2026 and holds 4 objects. (1) 469510736, #116: the Federal Defendants' MOTION to Stay Pending Appeal, filed 7/1 at 23:34. It is a party's motion, not an order. (2) 469607476, #117: a NOTICE of Appearance by Ronald A. Fein, filed 7/2 at 14:16. It is a notice and sets no deadlines. (3) 469540002: the short form itself. (4) 469622312: the long form. The short form '.Order AND ~Util - Set/Reset Deadlines' names an order docketed together with a set-deadlines utility event. The long form is a minute order that does exactly that: it sets the plaintiffs' response deadline (7/6) and the defendants' reply deadline (7/7) on the #116 motion. No other order, minute entry or deadline-setting entry is in the window, numbered or unnumbered, so neither #116 nor #117 fits the short form as well as or better than the long form. The timing is consistent with the pairing. The short form was filed 7/2 at 08:53:52 ET (in CourtListener at 09:04 ET), after #116 was filed late on 7/1. The minute order itself says #116 was filed 7/1, and nothing in its text requires it to come after #117's 14:16 filing. Side note outside this lens, and not an alternative candidate: the two objects' date_created are about 7h17m apart (09:04 vs 16:22 ET), not minutes. Also, the long form has no time_filed, and both objects are unnumbered, which is usual for D.D.C. minute orders."
+    }
+   ],
+   "tokens": 41303
+  },
+  {
+   "pair": "rule pair 1 of 7",
+   "lens": "clocks",
+   "file": "5d2dbe09fe7e.json",
+   "file_sha256": "5d2dbe09fe7e89cf88ebe39f68cdb89cc4c2a0db9696eeedb9d7e87d4068e557",
+   "expected_start_sha256": "1ac0a4ba4fdd0d05b2d2847ec753376ed143970cf58f772d299fc3e7554da12b",
+   "transcripts": [
+    "agent-a3d5f0005eca7b748.jsonl"
+   ],
+   "start_sha256": "1ac0a4ba4fdd0d05b2d2847ec753376ed143970cf58f772d299fc3e7554da12b",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The shape fits one unnumbered minute entry seen twice. Both objects have entry_number null. The twin 469540002 has desc_source 'document' and time_filed 08:53:52, so it is the short form captured from a feed. The entry 469622312 has desc_source 'entry' and time_filed null, so it is the long docket text. Neither object has twin_of set, so neither is already linked to something else. The twin's clocks agree with each other. Its date_created is 2026-07-02T06:04:53-07:00, which is 09:04:53 Eastern, 11 minutes after its time_filed of 08:53:52 if that is read as court-local time. The entry's date_created is 2026-07-02T13:22:17-07:00, or 16:22:17 Eastern, 7h17m later. That is longer than the usual few minutes. But the long form has no time_filed, so its date_created only records when CourtListener read the docket text, not when the order was entered. The gap is therefore ingestion lag, not evidence of a second filing. The order of events also holds. Motion 116, which the long text cites, has time_filed 23:34:22 on 7/1. The short form was filed at 08:53:52 on 7/2, and the long form was created at 16:22 on 7/2. The neighbouring entries show how this docket is captured. Entry 116 has time_filed 23:34:22 and date_created 2026-07-01T20:59:45-07:00 (23:59:45 Eastern, 25 minutes later). Entry 117 has time_filed 14:16:13 and date_created 2026-07-02T12:08:44-07:00 (15:08:44 Eastern, 52 minutes later). Both were caught by the feed within an hour of filing and later had their docket text written into the same object. An unnumbered order has no number to match on, so its docket text became a separate object instead. The twin itself shows that the feed catches unnumbered orders on this docket. The July 1-3 window holds exactly two unnumbered objects, this short one and this long one, and no other order. If these were two separate filings, the feed would have had to miss the long-form order and the docket text would have had to miss the 08:53 order: two unexplained misses, against none for one entry. No better match exists. Entry 116 is a motion filed 7/1 at 23:34:22, and entry 117 is a notice of appearance filed at 14:16:13; neither fits the type or the time. Caveat: because the long form has no time_filed, the clocks alone cannot prove it was entered at 08:53. This 'yes' rests on the shape and on the absence of any competing object in the window, not on matching filing times."
+    }
+   ],
+   "tokens": 54356
+  },
+  {
+   "pair": "rule pair 2 of 7",
+   "lens": "identity",
+   "file": "785ef94651ab.json",
+   "file_sha256": "785ef94651abd977ffa0bcec118fdd61383630fcb49b4984d9c193b1afbd39f3",
+   "expected_start_sha256": "be2df98c8e0815a318b598fa618afc9c7e3aadd8b0b08be9406d2b5d857a3cf8",
+   "transcripts": [
+    "agent-ac8024237f2f0bc7f.jsonl"
+   ],
+   "start_sha256": "be2df98c8e0815a318b598fa618afc9c7e3aadd8b0b08be9406d2b5d857a3cf8",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form, 'Order on Motion for Leave to File Amicus Brief' (469987179, desc_source document, time_filed 14:57:03), is the standard CM/ECF short description of an order that acts on a motion for leave to file an amicus brief. The long form (469989945) is an unnumbered MINUTE ORDER, signed by Judge Sooknanan on 7/7/2026, granting ECF 118, the Motion for Leave to File Amicus Brief filed by Petersen and Montenegro. Both are orders, both act on the same kind of motion, and both are dated 7/7/2026. The short form names no party, motion number or ruling that the long form lacks, so it is fully consistent with the long form. The window (7/6 to 7/8) has only one motion for leave to file an amicus brief (118) and only one order acting on such a motion, which is the long form. The other 7/7 objects are not orders: a reply (120), a notice (121) and the amicus brief itself (122, docketed 7/8). The two 7/8 orders (123 memorandum opinion, 124 order denying) both act on the 116 Motion to Stay, a different motion. The timing fits one entry: the short form was filed at 14:57 and its object was created at 12:20 PDT (15:20 ET), and the long form's object was created at 12:30 PDT, about 10 minutes later on the same afternoon. One caveat: the short form is generic and does not give the motion number. The match rests on this being the only order of its kind in the window, and no other object in the window fits it."
+    }
+   ],
+   "tokens": 40421
+  },
+  {
+   "pair": "rule pair 2 of 7",
+   "lens": "alternative",
+   "file": "785ef94651ab.json",
+   "file_sha256": "785ef94651abd977ffa0bcec118fdd61383630fcb49b4984d9c193b1afbd39f3",
+   "expected_start_sha256": "69b9ce3c26776039b401fdda14b148f61c47ec0a6799a8c4e005af452b9f950f",
+   "transcripts": [
+    "agent-a3eb2275a1008e855.jsonl"
+   ],
+   "start_sha256": "69b9ce3c26776039b401fdda14b148f61c47ec0a6799a8c4e005af452b9f950f",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form is 'Order on Motion for Leave to File Amicus Brief' (469987179, unnumbered, from a RECAP document, filed 14:57:03 on 7/7, created 12:20:08 PDT). I checked every object in the 7/6 to 7/8 window. Only one of them is an order on a motion for leave to file an amicus brief: the pair's long form, 469989945, a MINUTE ORDER granting the 118 Motion for Leave to File Amicus Brief, signed 7/7/2026 and created about 10.7 minutes after the short form. None of the other objects fits. #118 (469814549) is the motion itself, filed 7/6, not an order on it. #119 is a response and #120 a reply, both about the 116 Motion to Stay. #121 is a notice about timing. #122 (470117491) is the AMICUS BRIEF that was docketed as a result of the order, not an order. #123 is a memorandum opinion and #124 an order, both about the 116 Motion to Stay, so their short form would be 'Order on Motion to Stay'. Entry numbers 118 through 124 run without a gap, so no separate numbered written order on the amicus motion is missing from the window. #118 is the only motion for leave to file an amicus brief in the window, so no second same-day amicus order could compete. A minute order in D.D.C. carries no entry number, which explains why both objects are unnumbered. The pair's long form is the only entry in the window the short form can describe."
+    }
+   ],
+   "tokens": 39637
+  },
+  {
+   "pair": "rule pair 2 of 7",
+   "lens": "clocks",
+   "file": "785ef94651ab.json",
+   "file_sha256": "785ef94651abd977ffa0bcec118fdd61383630fcb49b4984d9c193b1afbd39f3",
+   "expected_start_sha256": "6638199fb64f56bf8957580738d8af030ff89a7fe2a9c5c3369d47963c9efea1",
+   "transcripts": [
+    "agent-aa9673b7347045ca8.jsonl"
+   ],
+   "start_sha256": "6638199fb64f56bf8957580738d8af030ff89a7fe2a9c5c3369d47963c9efea1",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The clocks and shape fit one minute entry seen twice. Twin 469987179 has no entry number, desc_source 'document', time_filed 14:57:03 and date_created 2026-07-07T12:20:08.99-07:00. Entry 469989945 has no entry number, desc_source 'entry', time_filed null and date_created 2026-07-07T12:30:52.04-07:00. The two were created 10m43s apart on the same day. The window's numbered entries show that time_filed is the court's Eastern time: #118 was filed 12:39:00 and created 09:45:46 PDT (12:45:46 ET), and #123 was filed 14:50:02 and created 12:04:47 PDT (15:04:47 ET). On that reading the twin was filed 14:57:03 ET and created 15:20:08 ET, a 23m lag. The entry was created 15:30:52 ET, about 34m after 14:57:03. In the window, the time from filing to creation runs about 7 to 32m (#118 7m, #124 12m, #121 13m, #123 15m, #119 23m, #120 32m), so a single 14:57 ET filing explains both objects. Shape: a D.D.C. MINUTE ORDER is a paperless docket entry with no number, so it is normal that neither object is numbered and that both rows have document_url null. The pattern is one entry captured once as a timed short description (the document object) and once as untimed docket text. The long text lacks the '(Entered: ...)' ending that the numbered entries carry, which suggests a different source but does not change the fit. Neither object is twin_of anything. They are the only unnumbered objects in the 07/06 to 07/08 window. No other object on 07/07 is an order: #120 is a reply (16:51:44) and #121 is a notice (19:07:04). #122, the AMICUS BRIEF itself, is a separate numbered clerk filing. It was created 2026-07-08T11:29:11-07:00, about 23h after the twin, with time_filed null, and entered 07/08. #123 and #124 are 07/08 rulings on the stay motion, created 2026-07-08T12:04:47-07:00. None of these fits the twin's clocks or type as well as the entry does. psephos first held both rows in the same run, at 19:48:00 and 19:48:02 UTC."
+    }
+   ],
+   "tokens": 43985
+  },
+  {
+   "pair": "rule pair 3 of 7",
+   "lens": "identity",
+   "file": "1de2c459b91c.json",
+   "file_sha256": "1de2c459b91c22c6a0511a4fc01b638897f1fdd011b06d4e2ef357079918043f",
+   "expected_start_sha256": "be4fd997c25cfaefcf1c8eb35b51b9f5f14c1300af59f6a4f23478a25178c734",
+   "transcripts": [
+    "agent-a3905e90c601094b6.jsonl"
+   ],
+   "start_sha256": "be4fd997c25cfaefcf1c8eb35b51b9f5f14c1300af59f6a4f23478a25178c734",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. The short form 'Appellate Case Number' (469975112, unnumbered, desc_source document) is the name of the CM/ECF event that the long form records. The long form (469977151, unnumbered, desc_source entry) begins with those exact words: 'Appellate Case Number: Court of Appeals No. 26-1783 re 88 Notice of Appeal filed by USA.(ko)'. The kind of entry matches: a clerk's notation of the circuit case number. Both objects are dated 07/07/2026 and were created about 6.5 minutes apart (11:21:34 and 11:28:09 PT). The short form mentions no motion, party or document that the long form does not, so nothing in it conflicts. Window check: the other 07/07 objects are #89 'Appeal Cover Sheet' (filed 13:20:32) and #90 'Clerk's Certificate transmitting Record on Appeal' (filed 13:22:05). Both are different event types and neither fits 'Appellate Case Number'. #88 'Notice of Appeal' was filed on 07/06 and is a different event. The window holds only one appeal (notice #88, which the long form cites), and a case number is entered once per appeal, so nothing points to a second same-day Appellate Case Number entry the short form could belong to. The timing fits one event: the short form was created in the same second as #89 and #90, and its time_filed of 13:30:00 falls just after #90 sent the record to the court of appeals at 13:22, which is the usual order. The long form also carries the same clerk initials (ko) as #89 and #90. Caveat: the short form gives only the event type, and the long form has no time_filed to check against 13:30:00. The match therefore rests on the type plus there being only one candidate of that type on that day. On this record that is enough for 'yes'."
+    }
+   ],
+   "tokens": 42053
+  },
+  {
+   "pair": "rule pair 3 of 7",
+   "lens": "alternative",
+   "file": "1de2c459b91c.json",
+   "file_sha256": "1de2c459b91c22c6a0511a4fc01b638897f1fdd011b06d4e2ef357079918043f",
+   "expected_start_sha256": "11d5e8bf4ce69a39367d3e6a2d8401869ead6c52b515898166c6a40decd7aa72",
+   "transcripts": [
+    "agent-abd28086b8b540486.jsonl"
+   ],
+   "start_sha256": "11d5e8bf4ce69a39367d3e6a2d8401869ead6c52b515898166c6a40decd7aa72",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window holds five objects: #88 NOTICE OF APPEAL by USA (469890708, filed the day before, 07-06); #89 Appeal Cover Sheet as to 88 (469975138, 07-07, filed 13:20:32); #90 Clerk's Certificate transmitting Record on Appeal (469975133, 07-07, filed 13:22:05); the twin, an unnumbered object with text 'Appellate Case Number' (469975112, desc_source document, filed 13:30:00); and the long form, an unnumbered 'Appellate Case Number: Court of Appeals No. 26-1783 re 88 Notice of Appeal filed by USA.(ko)' (469977151). The short form names the 'Appellate Case Number' event type. Only the long form has that type. #89 and #90 belong to the same appeal, and CL created them in the same batch as the twin (11:21:34). But they are other event types (a cover sheet and a clerk's certificate), so the twin's text cannot describe either one. #88 is the notice of appeal itself, filed on a different day. The window holds only one notice of appeal (#88), so only one appellate-case-number entry would be expected, and no second 'Appellate Case Number' object exists. The twin's filing time (13:30) also falls after #89 and #90, which fits a separate case-number entry that follows them. The long form is the only entry in the window that the short form can describe, so there is no better match."
+    }
+   ],
+   "tokens": 40005
+  },
+  {
+   "pair": "rule pair 3 of 7",
+   "lens": "clocks",
+   "file": "1de2c459b91c.json",
+   "file_sha256": "1de2c459b91c22c6a0511a4fc01b638897f1fdd011b06d4e2ef357079918043f",
+   "expected_start_sha256": "cfbbb55007edb68260449496a0b5c611f1b092ade7a882f472db29d8429a2e05",
+   "transcripts": [
+    "agent-a914760b506a0ca85.jsonl"
+   ],
+   "start_sha256": "cfbbb55007edb68260449496a0b5c611f1b092ade7a882f472db29d8429a2e05",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Shape: both objects are unnumbered (entry_number null) and share entry_at 2026-07-07. The twin 469975112 has desc_source 'document' (a short RECAP description) and the entry 469977151 has desc_source 'entry' (docket text). That is the expected shape for one entry described twice. Neither object is twin_of anything. Clocks: date_created is 2026-07-07T11:21:34.068743-07:00 for the twin and 2026-07-07T11:28:09.462391-07:00 for the entry, so they were created 6 min 35 s apart on the same day. time_filed is 13:30:00 for the twin and null for the entry, so there is no conflict. The twin's 13:30:00 comes after #89 Appeal Cover Sheet (13:20:32) and #90 Clerk's Certificate transmitting the record (13:22:05). That is where an Appellate Case Number entry would naturally fall. The twin was created in the same 11:21:34 batch as #89 (11:21:34.922909) and #90 (11:21:34.779538), but it has its own later time and a different type, so it is a separate entry from them, not a copy of either. If time_filed is read as court (Eastern) time, the window objects were created about 51 to 61 min after filing: #88 18:21:06 to 16:18:49-07:00, #89 13:20:32 to 11:21:34.9, #90 13:22:05 to 11:21:34.8, twin 13:30:00 to 11:21:34.1. The entry's 11:28:09-07:00 creation is about 58 min after 13:30 ET, which fits the same filing. The window (07-06 to 07-08) holds only one notice of appeal (#88), so only one Appellate Case Number entry is expected. It holds no other unnumbered object and no other Appellate Case Number object, so nothing matches the short form better. Rows 17161 (first held in a run between 19:46:48 and 20:05:58 on 07-08) and 17167 (seen 19:53:07) agree with the same-run relation."
+    }
+   ],
+   "tokens": 45297
+  },
+  {
+   "pair": "rule pair 4 of 7",
+   "lens": "identity",
+   "file": "8b683af9a8c1.json",
+   "file_sha256": "8b683af9a8c19f8fc5204fd565f41ea59e9575584dda4aa132dafe119dcfbf6e",
+   "expected_start_sha256": "ef61e2165a783663a1b325225e0b77821a359840e69480c49a92a5c4ea4aeaa9",
+   "transcripts": [
+    "agent-aa9b99be29a378b92.jsonl"
+   ],
+   "start_sha256": "ef61e2165a783663a1b325225e0b77821a359840e69480c49a92a5c4ea4aeaa9",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Under the identity lens, the short form '.Order AND ~Util - Set/Reset Deadlines' is the CM/ECF label for a court order docketed together with a utility event that sets a deadline. The long form (471347800) is a MINUTE ORDER signed by Judge Sooknanan on 7/18/2026, and it does both things the label says. First, it is an order. It does not rule on a motion: it does not grant or deny the 128 Motion to Enforce, which fits the generic '.Order' rather than an 'Order on Motion to ...' label. Second, it sets a deadline, ordering the parties to file supplemental memoranda by 3:00 PM on July 20, 2026, which matches 'Set/Reset Deadlines'. The long-form text lacks an auto-generated 'due by' line, but its content sets the deadline, so this is not a conflict. The short form names no party, motion, document or action that the long form does not perform. Both objects have entry_at 2026-07-18. The short form's time_filed of 11:19:37 comes before either object was created; the two were created 9 minutes apart and held in the same run. The window holds no other order, and no other object at all, on 7/18 or 7/19. The only other object is entry 130 (471327706), the plaintiffs' reply in support of the 128 Motion to Enforce, filed 7/17. That is a party's brief, a different kind of filing that '.Order' cannot describe. No other object in the window fits the short form as well."
+    }
+   ],
+   "tokens": 47034
+  },
+  {
+   "pair": "rule pair 4 of 7",
+   "lens": "alternative",
+   "file": "8b683af9a8c1.json",
+   "file_sha256": "8b683af9a8c19f8fc5204fd565f41ea59e9575584dda4aa132dafe119dcfbf6e",
+   "expected_start_sha256": "494b48077a10d6c3d65489a79655535c1d8c52be4c55146e1ba9142b659026ae",
+   "transcripts": [
+    "agent-ad5c211c7580aa96e.jsonl"
+   ],
+   "start_sha256": "494b48077a10d6c3d65489a79655535c1d8c52be4c55146e1ba9142b659026ae",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window (7/17 to 7/19/2026) holds only three objects: the short form 471347729 ('.Order AND ~Util - Set/Reset Deadlines'), the long form 471347800 (an unnumbered MINUTE ORDER signed 7/18/2026), and entry #130 (471327706). Entry #130 is the plaintiffs' REPLY on the 128 Motion to Enforce, filed 7/17. It is a party filing from the day before, not an order, and it sets no deadline, so the short form cannot describe it. No other order, minute entry, notice or deadline entry appears anywhere in the window. The short form reads as one docket entry made of two events: an order ('.Order') plus a deadline-setting utility event ('~Util - Set/Reset Deadlines'). The long form matches both parts. It is a minute order, and it ORDERS the parties to file supplemental memoranda by 3:00 PM on July 20, 2026, which sets a deadline. A separate deadline-only entry would carry '~Util - Set/Reset Deadlines' alone, not joined to '.Order', so the short form does not point to a missing sibling entry. The timing also fits. 7/18/2026 is a Saturday, and these are the only two objects that day. The short form's time_filed is 11:19:37. Its date_created (12:16:50 ET) is about 9 minutes before the long form's (12:25:43 ET). The long form being unnumbered is normal for a D.D.C. minute order. The long form is the only entry in the window the short form can describe."
+    }
+   ],
+   "tokens": 42801
+  },
+  {
+   "pair": "rule pair 4 of 7",
+   "lens": "clocks",
+   "file": "8b683af9a8c1.json",
+   "file_sha256": "8b683af9a8c19f8fc5204fd565f41ea59e9575584dda4aa132dafe119dcfbf6e",
+   "expected_start_sha256": "741a5b7302d96af6f298cacd25f6bd2d70bac33ef3defcc5587e7f99fce140f8",
+   "transcripts": [
+    "agent-a0732561da43dfcf7.jsonl"
+   ],
+   "start_sha256": "741a5b7302d96af6f298cacd25f6bd2d70bac33ef3defcc5587e7f99fce140f8",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "On clocks and shape, this looks like one minute entry seen twice. (1) Both objects are dated 2026-07-18 and neither has an entry_number. That fits a D.D.C. minute order, which gets no docket number. (2) The date_created values are 8 min 53 s apart: twin 471347729 at 2026-07-18T09:16:50.748543-07:00 (16:16:50Z), entry 471347800 at 2026-07-18T09:25:43.484454-07:00 (16:25:43Z). Two separate filings would usually be further apart. (3) The two objects have complementary shapes. The twin is desc_source 'document' with time_filed 11:19:37, so it looks like an RSS/RECAP-document capture with the short event-type text. The entry is desc_source 'entry' with time_filed null, so it looks like a later docket-report capture of the full MINUTE ORDER text. (4) The twin's time_filed only makes sense as court-local ET: 11:19:37 EDT is 15:19:37Z, which is 57 min before its own creation and 66 min before the entry's. Read as Pacific, it would fall after the object was created, which is impossible. The other object in the window, #130, shows the same lag: time_filed 23:20:15 on 7/17 and date_created 2026-07-17T21:15:37-07:00, about 55 min apart. That supports the ET reading. So the full-text object was created after the 11:19 ET filing, and a docket capture taken then would have included that entry. The only full-text object CL has for that date is 471347800, and the twin was never updated to full text. (5) Neither object is twin_of anything. (6) Nothing else in the 7/17-7/19 window competes. The only other object is 471327706, a numbered (#130) REPLY on 2026-07-17 with time_filed 23:20:15. It has a different type and date and is numbered, so it is not a better match for '.Order AND ~Util - Set/Reset Deadlines'. 2026-07-18 was a Saturday and the window holds just this one order that day. psephos first held both rows in the same run, at 18:53:00Z and 18:53:03Z, after both CL creations."
+    }
+   ],
+   "tokens": 44478
+  },
+  {
+   "pair": "rule pair 5 of 7",
+   "lens": "identity",
+   "file": "156bd34488e5.json",
+   "file_sha256": "156bd34488e5bd0c780ae1701485a578d966028261fa258f8d36d154ccc8ec11",
+   "expected_start_sha256": "0f8ec8d6835ca1fefa5f9d7c8500787d69c12e39ef7a89606c14edac661bf6b5",
+   "transcripts": [
+    "agent-adbb5c9fa54a64881.jsonl"
+   ],
+   "start_sha256": "0f8ec8d6835ca1fefa5f9d7c8500787d69c12e39ef7a89606c14edac661bf6b5",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. The short form 'Order on Motion to Enforce Judgment AND Set/Reset Deadlines' names two actions, and the long form does both. (1) It is a court order acting on the Motion to Enforce Judgment: the 7/20/2026 minute order by Judge Sooknanan defers ruling on the 128 Motion to Enforce Judgment. CM/ECF uses 'Order on Motion' for any order linked to a motion, including one that defers, so this fits. (2) Set/Reset Deadlines: the same order directs a joint status report on July 22, 2026 and every seven days after. Both objects are dated 2026-07-20 and both are unnumbered, which is consistent with a D.D.C. minute order. The short form names no party, motion or action that the long form lacks. The two-part 'AND' description matches this order's specific pair of actions, so the link does not rest on the order type alone. The only other objects in the 7/19-7/21 window are docket entries 131 (471479890) and 132 (471479682). Both are party-filed supplemental memoranda, not orders, so the short form fits neither, and no other order that day could fit it as well."
+    }
+   ],
+   "tokens": 40049
+  },
+  {
+   "pair": "rule pair 5 of 7",
+   "lens": "alternative",
+   "file": "156bd34488e5.json",
+   "file_sha256": "156bd34488e5bd0c780ae1701485a578d966028261fa258f8d36d154ccc8ec11",
+   "expected_start_sha256": "a48895911284a69ed581326d8bece142c80356899d6c666d62d3b1676b1acde5",
+   "transcripts": [
+    "agent-a004c706672cf26eb.jsonl"
+   ],
+   "start_sha256": "a48895911284a69ed581326d8bece142c80356899d6c666d62d3b1676b1acde5",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window from 7/19 to 7/21 has four objects. Entries #131 (471479890) and #132 (471479682) are supplemental memoranda filed by the parties, not orders. The short form is #471517786 itself. The long form is #471527695, the unnumbered 7/20 MINUTE ORDER. That makes the long form the only order or court-issued minute entry in the window. The short form is a two-event docket text, 'Order on Motion to Enforce Judgment AND Set/Reset Deadlines', and the long form covers both parts. It rules on the 128 Motion to Enforce Judgment by deferring the ruling. It also sets deadlines by ordering a joint status report on July 22, 2026 and every seven days after that. Entries #131 and #132 are the briefs the minute order cites, not something the short form could describe. Neither row has an entry number, which fits a D.D.C. minute order. The short form has no document_url, so nothing points to a separate written order. The short form's time_filed is 17:47 on 7/20. CourtListener created it before the long form, and both objects are from the same day. No other order, notice or minute entry in the window fits the short form as well."
+    }
+   ],
+   "tokens": 38821
+  },
+  {
+   "pair": "rule pair 5 of 7",
+   "lens": "clocks",
+   "file": "156bd34488e5.json",
+   "file_sha256": "156bd34488e5bd0c780ae1701485a578d966028261fa258f8d36d154ccc8ec11",
+   "expected_start_sha256": "db1973d5dbbc3efd869386494abbd02910534e81883ee5420d889f6e5c50112c",
+   "transcripts": [
+    "agent-a506e0a40b8bae66a.jsonl"
+   ],
+   "start_sha256": "db1973d5dbbc3efd869386494abbd02910534e81883ee5420d889f6e5c50112c",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks and shape fit one D.D.C. minute order that CourtListener captured twice. Twin 471517786 (the short form): entry_number null, time_filed 17:47:07, date_created 2026-07-20T15:21:52-07:00 (18:21:52 ET), desc_source 'document', twin_of null. Entry 471527695 (the long form): entry_number null, time_filed null, date_created 2026-07-20T17:03:04-07:00 (20:03:04 ET), desc_source 'entry', twin_of null. The window shows time_filed is in court-local ET: entry 131 has time_filed 14:19:16 and was created 12:22:34-07:00 (15:22 ET), and entry 132 has time_filed 14:31:51 and was created 12:22:27-07:00. Read that way, the twin was created 35 minutes after its 17:47:07 filing, which is in line with the 50-63 minute lags on 131 and 132. The long form was created 2h16m after that filing and 1h41m after the twin. That is a wider gap than the usual few minutes, but it is the same evening, it comes after the filing it would describe, and the two objects came in by different routes (one carries time_filed and document-sourced text; the other has no time_filed and entry-sourced text). Both are unnumbered, which fits a text-only minute order. CourtListener can't merge an unnumbered entry across sources, so it ends up as two objects. The numbered entries 131 and 132 got their long text merged in and were not duplicated. The window (7/19 to 7/21) has only four objects: the numbered party memoranda 131 and 132, plus this pair. There is no other unnumbered object, no other order, and no third object with a later time_filed that would point to a second evening filing. Reading these as two filings would need a second order on 7/20 that never got a short-form object of its own, plus long text for the 17:47 order that never reached CourtListener. Nothing in the window supports that. Neither object is another object's twin. Relation is same-run: seen_at 2026-07-21T08:12:26Z and 08:12:36Z, seen_by null on both. One soft point: the gap is 1h41m rather than a few minutes, and the long form has no time_filed of its own to compare."
+    }
+   ],
+   "tokens": 50833
+  },
+  {
+   "pair": "rule pair 6 of 7",
+   "lens": "identity",
+   "file": "b47dc484d106.json",
+   "file_sha256": "b47dc484d10686c75575d5bbabbba1744a438e7bd0fee21596d10993b4eb6579",
+   "expected_start_sha256": "76e2aa4d03eb0b439274c3d9ff3f2e1afe17071082498838ef039dfb354f5a34",
+   "transcripts": [
+    "agent-a1c4c2927bebaa4d8.jsonl"
+   ],
+   "start_sha256": "76e2aa4d03eb0b439274c3d9ff3f2e1afe17071082498838ef039dfb354f5a34",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. The short form 'Notice of Pro Hac Vice counsel added' (471928569: unnumbered, filed 15:08:17, description taken from the document) describes the event the long form records. The long form (471943107: unnumbered, no time_filed, created 13:46:58-07:00, which is after the short form's filing time) is the clerk's unnumbered notice (mlh) that 'Pro Hac Vice counsel, SEJAL JHAVERI and JUSTIN LAM ... has been added to receive Notices of Electronic Filing.' Both are the same kind of entry (a notice), record the same action (PHV counsel added) and fall on the same day (07/23/2026). The short form names no party and no attorney, so it claims nothing the long form does not do. The only other same-day objects are entries 102 and 103 (471889219 and 471889205). Those are local counsel's numbered filings (WOLF, THOMAS), each a 'Notice of Request by Pro Hac Vice ... to receive Notices of Electronic Filings'. That is a different event: a request, not the clerk adding the counsel. They were also filed at 12:13:23 and 12:15:18, while the short form was filed at 15:08:17, after both requests, which fits the clerk acting on them. The two letters, entries 101 (07/22) and 104 (07/24), are unrelated. No object in the window fits the short form as well as the long form does."
+    }
+   ],
+   "tokens": 41792
+  },
+  {
+   "pair": "rule pair 6 of 7",
+   "lens": "alternative",
+   "file": "b47dc484d106.json",
+   "file_sha256": "b47dc484d10686c75575d5bbabbba1744a438e7bd0fee21596d10993b4eb6579",
+   "expected_start_sha256": "abc0d51612e95aa139f8b55991ad93075a806239bc144dd17e48f18f4b4a601b",
+   "transcripts": [
+    "agent-aab94d45bd5c9c031.jsonl"
+   ],
+   "start_sha256": "abc0d51612e95aa139f8b55991ad93075a806239bc144dd17e48f18f4b4a601b",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked all six objects in the window. #101 (471806091, 07-22) and #104 (472095513, 07-24) are Wiygul letters about a Notice of Supplemental Authority. They are a different type of filing on a different day, so neither is a candidate. #102 (471889219) and #103 (471889205) are the only real rivals. Both are from the same day and both are 'Notice of Request by Pro Hac Vice [Justin Lam / SEJAL JHAVERI] to receive Notices of Electronic Filings', filed by local counsel Wolf. They are counsel's requests, not the clerk's action, and they do not fit the short form as well as the long form does. The short form's key words 'counsel added' match only the long form's 'has been added to receive Notices of Electronic Filing'. #102 and #103 share only the generic words 'Notice' and 'Pro Hac Vice'. The fingerprints also rule them out. The short form has no entry number and was filed at 15:08:17, about three hours after #102 (12:13:23) and #103 (12:15:18). A document twin of either one would carry that entry's number and filing time. This order also matches the procedure: counsel files the requests at midday, then the clerk adds counsel later. The long form (471943107) is the only other unnumbered object and the only 'pro hac vice counsel added' entry in the window. It covers both attorneys in one entry, and there is exactly one short form, so the pairing is one-to-one. It came from a docket report with no filing time (time_filed null). It was created at 16:46 ET, after the short form's 15:38 ET creation, which fits the usual pattern of a short object first and a long one later. Its filing time cannot be checked directly. Even so, no numbered entry in the window fits the short form as well as or better than the long form."
+    }
+   ],
+   "tokens": 43854
+  },
+  {
+   "pair": "rule pair 6 of 7",
+   "lens": "clocks",
+   "file": "b47dc484d106.json",
+   "file_sha256": "b47dc484d10686c75575d5bbabbba1744a438e7bd0fee21596d10993b4eb6579",
+   "expected_start_sha256": "2b66f138bd0313fd25789f62cdbcd14f36a776b209dcd1c8f4133d4f2919d0fd",
+   "transcripts": [
+    "agent-a24af71564287539e.jsonl"
+   ],
+   "start_sha256": "2b66f138bd0313fd25789f62cdbcd14f36a776b209dcd1c8f4133d4f2919d0fd",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "CLOCKS: The twin, 471928569, has no entry number, desc_source document and time_filed 15:08:17. It was created at 2026-07-23T12:38:22-07:00, which is 15:38:22 ET and 30 min after its time_filed. That matches the delay from filing to creation for every other entry on this docket that has a time_filed: #102 12:13:23 -> 12:37:16 ET, #103 12:15:18 -> 12:37:14 ET, #104 17:12:40 -> 17:38:08 ET, #101 18:00:48 -> 18:39:49 ET. So 15:08:17 ET is a real filing time for a CM/ECF entry with no number. The long form, 471943107, has no entry number, desc_source entry and time_filed null. It was created at 2026-07-23T13:46:58-07:00, which is 16:46:58 ET. That is 68.6 min after the twin was created and 1h39m after the twin's time_filed. Both objects are dated 2026-07-23, and the long form was created after the twin's filing time, so it can be the docket-text copy of the 15:08:17 entry. SHAPE: This is the usual split of an unnumbered entry: one object from a document, with a filing time and a short description, and one from the docket text, with no filing time. With no entry number on either, CourtListener could not merge them. Neither object is already another object's twin (twin_of is null on both). BETTER MATCH: The only other objects dated 07-23 are #102 (time_filed 12:13:23) and #103 (time_filed 12:15:18). Both are numbered and were filed about 3 hours earlier, at a time that does not match. A copy of either one would carry its number and its filing time, so the unnumbered 15:08:17 short form is a different filing from both. On 07-23 the window holds exactly one unnumbered object with a filing time and exactly one unnumbered docket-text object. Every numbered entry in the window (#101 to #104) also has a time_filed. So this looks like one unnumbered entry captured twice. CAVEATS: Because the long form's time_filed is null, I can only say it was filed at or before 16:46:58 ET; I cannot compare its filing time directly with 15:08:17. The 68-min gap between creation times is longer than a few minutes. It fits the long form being captured separately later the same afternoon, and nothing in the window points to a second filing. Both rows were first held in the same run (relation same-run; seen between 2026-07-24T01:25:55Z and 01:30:39Z)."
+    }
+   ],
+   "tokens": 51820
+  },
+  {
+   "pair": "rule pair 7 of 7",
+   "lens": "identity",
+   "file": "2fc0421bfd2d.json",
+   "file_sha256": "2fc0421bfd2d5827e2653a55b6034b9f447535ac36870d447942c377c89dc416",
+   "expected_start_sha256": "740f39b6d146851bd77c150220de74e460828c847352974514b414fc24b5c51f",
+   "transcripts": [
+    "agent-a8e907c0db83977a0.jsonl"
+   ],
+   "start_sha256": "740f39b6d146851bd77c150220de74e460828c847352974514b414fc24b5c51f",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form (475706406, unnumbered, from a document) reads 'Oral Order AND ~Util - Set Hearings'. That is a CM/ECF event-type label for an oral order that also runs the set-hearing utility event. The long form (475707057, entry #97) is exactly that kind of entry: 'ORAL ORDER: An oral argument hearing to address the pending motions (D.I. 3, 33, 36, and 39) is now set for 9/17/2026 ... Ordered by Judge Richard G. Andrews on 8/25/2026.' Both parts of the short form match what the long form does. It is an oral order, and it sets a hearing. 'Hearings' is plural because that is the fixed name of the utility event, so it does not mean more than one hearing. The short form names no motion, party or document that the long form does not cover. It only leaves out the details. Both are dated 8/25/2026. The short form's time_filed of 12:19:31 fits its creation at 10:08 PDT (13:08 ET), and the long form was created five minutes later at 10:13 PDT. Both rows were held in the same run. Only one other object is in the 8/24-8/26 window: #96 (475590642), a NOTICE of Supplemental Authority filed by the United States on 8/24. That is a party filing on a different day and does not fit 'Oral Order ... Set Hearings'. No other oral order or hearing-setting entry appears on 8/25, so there is no better match."
+    }
+   ],
+   "tokens": 38022
+  },
+  {
+   "pair": "rule pair 7 of 7",
+   "lens": "alternative",
+   "file": "2fc0421bfd2d.json",
+   "file_sha256": "2fc0421bfd2d5827e2653a55b6034b9f447535ac36870d447942c377c89dc416",
+   "expected_start_sha256": "f9953e86d26576c6e48f0b59596c80bdcbe84655d2ca5349f66b8ecf16202d72",
+   "transcripts": [
+    "agent-ac45d125fa0c0940f.jsonl"
+   ],
+   "start_sha256": "f9953e86d26576c6e48f0b59596c80bdcbe84655d2ca5349f66b8ecf16202d72",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window from 2026-08-24 up to (not including) 2026-08-27 holds three objects: the short form (475706406, unnumbered, from a document, 'Oral Order AND ~Util - Set Hearings'), the pair's long form (475707057, entry 97, an ORAL ORDER by Judge Andrews setting an oral argument hearing on D.I. 3, 33, 36 and 39 for 9/17/2026, entered 08/25/2026), and entry 96 (475590642). Entry 96 is a NOTICE of Supplemental Authority filed by the United States on 08/24/2026. It is a party's notice from the day before, not an oral order and not a hearing setting, so the short form cannot describe it. There is no other numbered entry on 8/25 or 8/26: no second oral order, no other scheduling order, and no minute entry. The short form names a compound event (Oral Order plus the Set Hearings utility event), and entry 97 matches both parts: it is an oral order and it sets a hearing. The timing fits too. Both objects carry entry_at 2026-08-25, were created about 5 minutes apart (10:08:01 and 10:13:08 PDT), and were held in the same run. Entry 97 is the only object in the window the short form can describe."
+    }
+   ],
+   "tokens": 36406
+  },
+  {
+   "pair": "rule pair 7 of 7",
+   "lens": "clocks",
+   "file": "2fc0421bfd2d.json",
+   "file_sha256": "2fc0421bfd2d5827e2653a55b6034b9f447535ac36870d447942c377c89dc416",
+   "expected_start_sha256": "11c995f213fe312c26d43ba93fa63cc8b49272959b546e58569de6f0875b81ea",
+   "transcripts": [
+    "agent-a30a9426627bc6609.jsonl"
+   ],
+   "start_sha256": "11c995f213fe312c26d43ba93fa63cc8b49272959b546e58569de6f0875b81ea",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks and shape fit one minute entry recorded twice. Twin 475706406 has no entry_number, desc_source 'document', time_filed 12:19:31 and date_created 2026-08-25T10:08:01.28-07:00 (13:08:01 ET). Entry 475707057 is #97, desc_source 'entry', time_filed null and date_created 2026-08-25T10:13:08.04-07:00 (13:13:08 ET). Both have entry_at 2026-08-25 and were created 5m07s apart, short form first. That is the usual shape of one entry seen twice: an unnumbered object with a filing time but no number, then a numbered docket-text object minutes later with a number but no time. The time_filed 12:19:31 only works as court-local Eastern time (16:19:31 UTC), because read as Pacific it would fall after the object's own creation. Read that way, the filing came about 49 min before the short form was created and about 54 min before #97 was created. That lag matches #96 on the same docket: time_filed 15:26:01 ET, created 2026-08-24T13:07:02-07:00 (16:07:02 ET), a lag of about 41 min. So the clocks point to one 08-25 filing event, not two. Neither object is twin_of anything. psephos first held both rows in the same run: seen_at 18:23:54.544 and 18:23:54.766 UTC, seen_by null. No other object competes. The only other object in the window is #96, which is dated 08-24, is numbered, has its own time_filed 15:26:01, was created the day before, and is a Notice. There are no other objects on 08-25 or 08-26, and the numbering runs 96 to 97 with no gap. The short type 'Oral Order AND ~Util - Set Hearings' also matches #97's 'ORAL ORDER: An oral argument hearing ... is now set'. One gap remains: #97 has no time_filed, so the two filing times can't be compared directly. For this lens, the 5-minute creation gap and the complementary shapes still settle it."
+    }
+   ],
+   "tokens": 40936
+  }
+ ],
+ "pairs": {
+  "pair 23": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form, 'Order on Motion to Enforce Judgment', is the standard CM/ECF short description for an order that rules on a motion to enforce judgment. The long form is a minute order signed by Judge Sooknanan on 9/29/2026. It DENIES the Plaintiffs' 128 Motion to Enforce Summary Judgment Order. The summary judgment order is the judgment, so 'Motion to Enforce Judgment' is the event-type name for the same motion 128 that the judge names in prose. The two forms record the same kind of event (an order), act on the same motion, and fall on the same day (both entry_at 2026-09-29). The short form names no party, so there is no party conflict, and it names nothing the long form does not do. The long form also vacates the July 20 minute order. That is extra content in the same order, not a sign of a different event; short descriptions usually name only the motion being resolved. Both objects are unnumbered (entry_number null), as a D.D.C. minute order would be. One copy came from a timed source (time_filed 17:25:32, created 14:36 PDT) and the other from the docket text (time_filed null, created 16:31 PDT). A separate written order would normally have its own entry number. The window (9/28 to 9/30) has no other order and no other ruling on a motion to enforce. Its only other object is entry 149, a Notice of Supplemental Authority filed by the defendants on 9/28, which is not an order. No better match."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window runs from 9/28 through 9/30 and holds three objects: the short form 479853687, the long form 479868690, and numbered entry 149 (479691487). Entry 149 is a Notice of Supplemental Authority that the defendants filed on 9/28, attaching the Supreme Court stay opinion. It is a party filing, not an order, so 'Order on Motion to Enforce Judgment' cannot describe it. That leaves the long form as the only order in the window, and it is exactly the order the short form names: the 9/29 minute order DENIES Plaintiffs' 128 Motion to Enforce Summary Judgment Order. It also vacates the July 20 status-report minute order, but that ruling is in the same docket text, not a separate entry that could compete. The window has no second order, minute entry or notice on 9/29 or 9/30. Both objects are unnumbered, which fits a D.D.C. minute order (no document number). The short form's time_filed is 17:25:32 on 9/29, and the long form was created in CourtListener later that day (16:31 PDT), on the signing date. The creation times are about two hours apart, not minutes, but that does not create another candidate. The long form is the only entry in the window that the short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Shape: neither object has an entry_number. That is how D.D.C. dockets a text-only MINUTE ORDER, so the short form cannot be the RSS copy of some numbered filing. The twin 479853687 looks like an RSS item: desc_source 'document' (short description only), time_filed 17:25:32, date_created 2026-09-29T14:36:36-07:00 (17:36:36 ET), so it was created about 11 min after its filing time. I read time_filed as court-local Eastern. No. 149 in the window supports this: time_filed 17:20:43, created 15:23:57 PT = 18:23:57 ET. A Pacific reading would put both creations before their filing times. The entry 479868690 looks like text from a docket pull: desc_source 'entry', time_filed null, date_created 2026-09-29T16:31:22-07:00 (19:31:22 ET). That is 1h54m46s after the twin was created and about 2h after the twin's time_filed, so it came after the twin's filing, which fits the same minute entry being picked up later from a docket pull. psephos's rows agree: the twin was first held at 2026-09-29T22:15:05Z, before the long-form object existed (created 23:31:22Z), and the long form was first held at 2026-09-30T05:40:09Z (cross-run). Caveat: the gap is longer than the usual few minutes, and the long form has no time_filed to fix its own entry time, so the clocks alone cannot prove the two were entered at the same time. Still, the window (every object 9/28-9/30) holds exactly one RSS-type object and one docket-text object on 9/29, and none of the three objects is twin_of anything. A two-filings reading would need two objects the window does not have: an RSS copy of the minute order, and docket text for the 17:25:32 item. The only other object, 479691487 (No. 149, entry_at 9/28, time_filed 17:20:43, already carrying its own long text), is numbered and a day earlier, so it is not a better match."
+    }
+   }
+  },
+  "rule pair 1 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Read as a clerk would, the short form '.Order AND ~Util - Set/Reset Deadlines' is a plain Order event docketed together with the Set/Reset Deadlines utility event. It is not an 'Order on Motion', so it describes an order that rules on nothing and sets deadlines. The long form is that kind of order. It is an unnumbered MINUTE ORDER that grants or denies nothing. It sets Plaintiffs' response to the 116 Motion to Stay for 7/6/2026 at 5:00 PM and the Federal Defendants' reply for 7/7/2026 at 5:00 PM, and that is the Set/Reset Deadlines part. Both parts of the short form are things the long form does. The short form names nothing the long form does not do: no motion ruling, no hearing, no filing by a party. Both objects are unnumbered, which fits a minute entry. They are from the same day: the short form's time_filed is 08:53:52 on 7/2, and the long form was signed on 7/2/2026. That is the morning after the 116 motion was filed at 23:34 on 7/1, which is when a briefing-schedule order like this would plausibly issue. The long-form object has no time_filed and was created in CourtListener at about 16:22 ET. That is hours later, but it fits a later capture of the same minute entry from a source without times, and nothing in either text puts the order at a different time. The window holds no other order on 7/1-7/3. #116 (469510736) is the motion itself and #117 (469607476) is a notice of appearance, so neither fits the short form. The short form's type is generic, but its Set/Reset Deadlines part matches what the long form actually does, and the window has no other order that day for it to belong to. So it reads as the same minute entry."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window covers Jul 1 to Jul 3, 2026 and holds 4 objects. (1) 469510736, #116: the Federal Defendants' MOTION to Stay Pending Appeal, filed 7/1 at 23:34. It is a party's motion, not an order. (2) 469607476, #117: a NOTICE of Appearance by Ronald A. Fein, filed 7/2 at 14:16. It is a notice and sets no deadlines. (3) 469540002: the short form itself. (4) 469622312: the long form. The short form '.Order AND ~Util - Set/Reset Deadlines' names an order docketed together with a set-deadlines utility event. The long form is a minute order that does exactly that: it sets the plaintiffs' response deadline (7/6) and the defendants' reply deadline (7/7) on the #116 motion. No other order, minute entry or deadline-setting entry is in the window, numbered or unnumbered, so neither #116 nor #117 fits the short form as well as or better than the long form. The timing is consistent with the pairing. The short form was filed 7/2 at 08:53:52 ET (in CourtListener at 09:04 ET), after #116 was filed late on 7/1. The minute order itself says #116 was filed 7/1, and nothing in its text requires it to come after #117's 14:16 filing. Side note outside this lens, and not an alternative candidate: the two objects' date_created are about 7h17m apart (09:04 vs 16:22 ET), not minutes. Also, the long form has no time_filed, and both objects are unnumbered, which is usual for D.D.C. minute orders."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The shape fits one unnumbered minute entry seen twice. Both objects have entry_number null. The twin 469540002 has desc_source 'document' and time_filed 08:53:52, so it is the short form captured from a feed. The entry 469622312 has desc_source 'entry' and time_filed null, so it is the long docket text. Neither object has twin_of set, so neither is already linked to something else. The twin's clocks agree with each other. Its date_created is 2026-07-02T06:04:53-07:00, which is 09:04:53 Eastern, 11 minutes after its time_filed of 08:53:52 if that is read as court-local time. The entry's date_created is 2026-07-02T13:22:17-07:00, or 16:22:17 Eastern, 7h17m later. That is longer than the usual few minutes. But the long form has no time_filed, so its date_created only records when CourtListener read the docket text, not when the order was entered. The gap is therefore ingestion lag, not evidence of a second filing. The order of events also holds. Motion 116, which the long text cites, has time_filed 23:34:22 on 7/1. The short form was filed at 08:53:52 on 7/2, and the long form was created at 16:22 on 7/2. The neighbouring entries show how this docket is captured. Entry 116 has time_filed 23:34:22 and date_created 2026-07-01T20:59:45-07:00 (23:59:45 Eastern, 25 minutes later). Entry 117 has time_filed 14:16:13 and date_created 2026-07-02T12:08:44-07:00 (15:08:44 Eastern, 52 minutes later). Both were caught by the feed within an hour of filing and later had their docket text written into the same object. An unnumbered order has no number to match on, so its docket text became a separate object instead. The twin itself shows that the feed catches unnumbered orders on this docket. The July 1-3 window holds exactly two unnumbered objects, this short one and this long one, and no other order. If these were two separate filings, the feed would have had to miss the long-form order and the docket text would have had to miss the 08:53 order: two unexplained misses, against none for one entry. No better match exists. Entry 116 is a motion filed 7/1 at 23:34:22, and entry 117 is a notice of appearance filed at 14:16:13; neither fits the type or the time. Caveat: because the long form has no time_filed, the clocks alone cannot prove it was entered at 08:53. This 'yes' rests on the shape and on the absence of any competing object in the window, not on matching filing times."
+    }
+   }
+  },
+  "rule pair 2 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form, 'Order on Motion for Leave to File Amicus Brief' (469987179, desc_source document, time_filed 14:57:03), is the standard CM/ECF short description of an order that acts on a motion for leave to file an amicus brief. The long form (469989945) is an unnumbered MINUTE ORDER, signed by Judge Sooknanan on 7/7/2026, granting ECF 118, the Motion for Leave to File Amicus Brief filed by Petersen and Montenegro. Both are orders, both act on the same kind of motion, and both are dated 7/7/2026. The short form names no party, motion number or ruling that the long form lacks, so it is fully consistent with the long form. The window (7/6 to 7/8) has only one motion for leave to file an amicus brief (118) and only one order acting on such a motion, which is the long form. The other 7/7 objects are not orders: a reply (120), a notice (121) and the amicus brief itself (122, docketed 7/8). The two 7/8 orders (123 memorandum opinion, 124 order denying) both act on the 116 Motion to Stay, a different motion. The timing fits one entry: the short form was filed at 14:57 and its object was created at 12:20 PDT (15:20 ET), and the long form's object was created at 12:30 PDT, about 10 minutes later on the same afternoon. One caveat: the short form is generic and does not give the motion number. The match rests on this being the only order of its kind in the window, and no other object in the window fits it."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form is 'Order on Motion for Leave to File Amicus Brief' (469987179, unnumbered, from a RECAP document, filed 14:57:03 on 7/7, created 12:20:08 PDT). I checked every object in the 7/6 to 7/8 window. Only one of them is an order on a motion for leave to file an amicus brief: the pair's long form, 469989945, a MINUTE ORDER granting the 118 Motion for Leave to File Amicus Brief, signed 7/7/2026 and created about 10.7 minutes after the short form. None of the other objects fits. #118 (469814549) is the motion itself, filed 7/6, not an order on it. #119 is a response and #120 a reply, both about the 116 Motion to Stay. #121 is a notice about timing. #122 (470117491) is the AMICUS BRIEF that was docketed as a result of the order, not an order. #123 is a memorandum opinion and #124 an order, both about the 116 Motion to Stay, so their short form would be 'Order on Motion to Stay'. Entry numbers 118 through 124 run without a gap, so no separate numbered written order on the amicus motion is missing from the window. #118 is the only motion for leave to file an amicus brief in the window, so no second same-day amicus order could compete. A minute order in D.D.C. carries no entry number, which explains why both objects are unnumbered. The pair's long form is the only entry in the window the short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The clocks and shape fit one minute entry seen twice. Twin 469987179 has no entry number, desc_source 'document', time_filed 14:57:03 and date_created 2026-07-07T12:20:08.99-07:00. Entry 469989945 has no entry number, desc_source 'entry', time_filed null and date_created 2026-07-07T12:30:52.04-07:00. The two were created 10m43s apart on the same day. The window's numbered entries show that time_filed is the court's Eastern time: #118 was filed 12:39:00 and created 09:45:46 PDT (12:45:46 ET), and #123 was filed 14:50:02 and created 12:04:47 PDT (15:04:47 ET). On that reading the twin was filed 14:57:03 ET and created 15:20:08 ET, a 23m lag. The entry was created 15:30:52 ET, about 34m after 14:57:03. In the window, the time from filing to creation runs about 7 to 32m (#118 7m, #124 12m, #121 13m, #123 15m, #119 23m, #120 32m), so a single 14:57 ET filing explains both objects. Shape: a D.D.C. MINUTE ORDER is a paperless docket entry with no number, so it is normal that neither object is numbered and that both rows have document_url null. The pattern is one entry captured once as a timed short description (the document object) and once as untimed docket text. The long text lacks the '(Entered: ...)' ending that the numbered entries carry, which suggests a different source but does not change the fit. Neither object is twin_of anything. They are the only unnumbered objects in the 07/06 to 07/08 window. No other object on 07/07 is an order: #120 is a reply (16:51:44) and #121 is a notice (19:07:04). #122, the AMICUS BRIEF itself, is a separate numbered clerk filing. It was created 2026-07-08T11:29:11-07:00, about 23h after the twin, with time_filed null, and entered 07/08. #123 and #124 are 07/08 rulings on the stay motion, created 2026-07-08T12:04:47-07:00. None of these fits the twin's clocks or type as well as the entry does. psephos first held both rows in the same run, at 19:48:00 and 19:48:02 UTC."
+    }
+   }
+  },
+  "rule pair 3 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. The short form 'Appellate Case Number' (469975112, unnumbered, desc_source document) is the name of the CM/ECF event that the long form records. The long form (469977151, unnumbered, desc_source entry) begins with those exact words: 'Appellate Case Number: Court of Appeals No. 26-1783 re 88 Notice of Appeal filed by USA.(ko)'. The kind of entry matches: a clerk's notation of the circuit case number. Both objects are dated 07/07/2026 and were created about 6.5 minutes apart (11:21:34 and 11:28:09 PT). The short form mentions no motion, party or document that the long form does not, so nothing in it conflicts. Window check: the other 07/07 objects are #89 'Appeal Cover Sheet' (filed 13:20:32) and #90 'Clerk's Certificate transmitting Record on Appeal' (filed 13:22:05). Both are different event types and neither fits 'Appellate Case Number'. #88 'Notice of Appeal' was filed on 07/06 and is a different event. The window holds only one appeal (notice #88, which the long form cites), and a case number is entered once per appeal, so nothing points to a second same-day Appellate Case Number entry the short form could belong to. The timing fits one event: the short form was created in the same second as #89 and #90, and its time_filed of 13:30:00 falls just after #90 sent the record to the court of appeals at 13:22, which is the usual order. The long form also carries the same clerk initials (ko) as #89 and #90. Caveat: the short form gives only the event type, and the long form has no time_filed to check against 13:30:00. The match therefore rests on the type plus there being only one candidate of that type on that day. On this record that is enough for 'yes'."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window holds five objects: #88 NOTICE OF APPEAL by USA (469890708, filed the day before, 07-06); #89 Appeal Cover Sheet as to 88 (469975138, 07-07, filed 13:20:32); #90 Clerk's Certificate transmitting Record on Appeal (469975133, 07-07, filed 13:22:05); the twin, an unnumbered object with text 'Appellate Case Number' (469975112, desc_source document, filed 13:30:00); and the long form, an unnumbered 'Appellate Case Number: Court of Appeals No. 26-1783 re 88 Notice of Appeal filed by USA.(ko)' (469977151). The short form names the 'Appellate Case Number' event type. Only the long form has that type. #89 and #90 belong to the same appeal, and CL created them in the same batch as the twin (11:21:34). But they are other event types (a cover sheet and a clerk's certificate), so the twin's text cannot describe either one. #88 is the notice of appeal itself, filed on a different day. The window holds only one notice of appeal (#88), so only one appellate-case-number entry would be expected, and no second 'Appellate Case Number' object exists. The twin's filing time (13:30) also falls after #89 and #90, which fits a separate case-number entry that follows them. The long form is the only entry in the window that the short form can describe, so there is no better match."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Shape: both objects are unnumbered (entry_number null) and share entry_at 2026-07-07. The twin 469975112 has desc_source 'document' (a short RECAP description) and the entry 469977151 has desc_source 'entry' (docket text). That is the expected shape for one entry described twice. Neither object is twin_of anything. Clocks: date_created is 2026-07-07T11:21:34.068743-07:00 for the twin and 2026-07-07T11:28:09.462391-07:00 for the entry, so they were created 6 min 35 s apart on the same day. time_filed is 13:30:00 for the twin and null for the entry, so there is no conflict. The twin's 13:30:00 comes after #89 Appeal Cover Sheet (13:20:32) and #90 Clerk's Certificate transmitting the record (13:22:05). That is where an Appellate Case Number entry would naturally fall. The twin was created in the same 11:21:34 batch as #89 (11:21:34.922909) and #90 (11:21:34.779538), but it has its own later time and a different type, so it is a separate entry from them, not a copy of either. If time_filed is read as court (Eastern) time, the window objects were created about 51 to 61 min after filing: #88 18:21:06 to 16:18:49-07:00, #89 13:20:32 to 11:21:34.9, #90 13:22:05 to 11:21:34.8, twin 13:30:00 to 11:21:34.1. The entry's 11:28:09-07:00 creation is about 58 min after 13:30 ET, which fits the same filing. The window (07-06 to 07-08) holds only one notice of appeal (#88), so only one Appellate Case Number entry is expected. It holds no other unnumbered object and no other Appellate Case Number object, so nothing matches the short form better. Rows 17161 (first held in a run between 19:46:48 and 20:05:58 on 07-08) and 17167 (seen 19:53:07) agree with the same-run relation."
+    }
+   }
+  },
+  "rule pair 4 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Under the identity lens, the short form '.Order AND ~Util - Set/Reset Deadlines' is the CM/ECF label for a court order docketed together with a utility event that sets a deadline. The long form (471347800) is a MINUTE ORDER signed by Judge Sooknanan on 7/18/2026, and it does both things the label says. First, it is an order. It does not rule on a motion: it does not grant or deny the 128 Motion to Enforce, which fits the generic '.Order' rather than an 'Order on Motion to ...' label. Second, it sets a deadline, ordering the parties to file supplemental memoranda by 3:00 PM on July 20, 2026, which matches 'Set/Reset Deadlines'. The long-form text lacks an auto-generated 'due by' line, but its content sets the deadline, so this is not a conflict. The short form names no party, motion, document or action that the long form does not perform. Both objects have entry_at 2026-07-18. The short form's time_filed of 11:19:37 comes before either object was created; the two were created 9 minutes apart and held in the same run. The window holds no other order, and no other object at all, on 7/18 or 7/19. The only other object is entry 130 (471327706), the plaintiffs' reply in support of the 128 Motion to Enforce, filed 7/17. That is a party's brief, a different kind of filing that '.Order' cannot describe. No other object in the window fits the short form as well."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window (7/17 to 7/19/2026) holds only three objects: the short form 471347729 ('.Order AND ~Util - Set/Reset Deadlines'), the long form 471347800 (an unnumbered MINUTE ORDER signed 7/18/2026), and entry #130 (471327706). Entry #130 is the plaintiffs' REPLY on the 128 Motion to Enforce, filed 7/17. It is a party filing from the day before, not an order, and it sets no deadline, so the short form cannot describe it. No other order, minute entry, notice or deadline entry appears anywhere in the window. The short form reads as one docket entry made of two events: an order ('.Order') plus a deadline-setting utility event ('~Util - Set/Reset Deadlines'). The long form matches both parts. It is a minute order, and it ORDERS the parties to file supplemental memoranda by 3:00 PM on July 20, 2026, which sets a deadline. A separate deadline-only entry would carry '~Util - Set/Reset Deadlines' alone, not joined to '.Order', so the short form does not point to a missing sibling entry. The timing also fits. 7/18/2026 is a Saturday, and these are the only two objects that day. The short form's time_filed is 11:19:37. Its date_created (12:16:50 ET) is about 9 minutes before the long form's (12:25:43 ET). The long form being unnumbered is normal for a D.D.C. minute order. The long form is the only entry in the window the short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "On clocks and shape, this looks like one minute entry seen twice. (1) Both objects are dated 2026-07-18 and neither has an entry_number. That fits a D.D.C. minute order, which gets no docket number. (2) The date_created values are 8 min 53 s apart: twin 471347729 at 2026-07-18T09:16:50.748543-07:00 (16:16:50Z), entry 471347800 at 2026-07-18T09:25:43.484454-07:00 (16:25:43Z). Two separate filings would usually be further apart. (3) The two objects have complementary shapes. The twin is desc_source 'document' with time_filed 11:19:37, so it looks like an RSS/RECAP-document capture with the short event-type text. The entry is desc_source 'entry' with time_filed null, so it looks like a later docket-report capture of the full MINUTE ORDER text. (4) The twin's time_filed only makes sense as court-local ET: 11:19:37 EDT is 15:19:37Z, which is 57 min before its own creation and 66 min before the entry's. Read as Pacific, it would fall after the object was created, which is impossible. The other object in the window, #130, shows the same lag: time_filed 23:20:15 on 7/17 and date_created 2026-07-17T21:15:37-07:00, about 55 min apart. That supports the ET reading. So the full-text object was created after the 11:19 ET filing, and a docket capture taken then would have included that entry. The only full-text object CL has for that date is 471347800, and the twin was never updated to full text. (5) Neither object is twin_of anything. (6) Nothing else in the 7/17-7/19 window competes. The only other object is 471327706, a numbered (#130) REPLY on 2026-07-17 with time_filed 23:20:15. It has a different type and date and is numbered, so it is not a better match for '.Order AND ~Util - Set/Reset Deadlines'. 2026-07-18 was a Saturday and the window holds just this one order that day. psephos first held both rows in the same run, at 18:53:00Z and 18:53:03Z, after both CL creations."
+    }
+   }
+  },
+  "rule pair 5 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. The short form 'Order on Motion to Enforce Judgment AND Set/Reset Deadlines' names two actions, and the long form does both. (1) It is a court order acting on the Motion to Enforce Judgment: the 7/20/2026 minute order by Judge Sooknanan defers ruling on the 128 Motion to Enforce Judgment. CM/ECF uses 'Order on Motion' for any order linked to a motion, including one that defers, so this fits. (2) Set/Reset Deadlines: the same order directs a joint status report on July 22, 2026 and every seven days after. Both objects are dated 2026-07-20 and both are unnumbered, which is consistent with a D.D.C. minute order. The short form names no party, motion or action that the long form lacks. The two-part 'AND' description matches this order's specific pair of actions, so the link does not rest on the order type alone. The only other objects in the 7/19-7/21 window are docket entries 131 (471479890) and 132 (471479682). Both are party-filed supplemental memoranda, not orders, so the short form fits neither, and no other order that day could fit it as well."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window from 7/19 to 7/21 has four objects. Entries #131 (471479890) and #132 (471479682) are supplemental memoranda filed by the parties, not orders. The short form is #471517786 itself. The long form is #471527695, the unnumbered 7/20 MINUTE ORDER. That makes the long form the only order or court-issued minute entry in the window. The short form is a two-event docket text, 'Order on Motion to Enforce Judgment AND Set/Reset Deadlines', and the long form covers both parts. It rules on the 128 Motion to Enforce Judgment by deferring the ruling. It also sets deadlines by ordering a joint status report on July 22, 2026 and every seven days after that. Entries #131 and #132 are the briefs the minute order cites, not something the short form could describe. Neither row has an entry number, which fits a D.D.C. minute order. The short form has no document_url, so nothing points to a separate written order. The short form's time_filed is 17:47 on 7/20. CourtListener created it before the long form, and both objects are from the same day. No other order, notice or minute entry in the window fits the short form as well."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks and shape fit one D.D.C. minute order that CourtListener captured twice. Twin 471517786 (the short form): entry_number null, time_filed 17:47:07, date_created 2026-07-20T15:21:52-07:00 (18:21:52 ET), desc_source 'document', twin_of null. Entry 471527695 (the long form): entry_number null, time_filed null, date_created 2026-07-20T17:03:04-07:00 (20:03:04 ET), desc_source 'entry', twin_of null. The window shows time_filed is in court-local ET: entry 131 has time_filed 14:19:16 and was created 12:22:34-07:00 (15:22 ET), and entry 132 has time_filed 14:31:51 and was created 12:22:27-07:00. Read that way, the twin was created 35 minutes after its 17:47:07 filing, which is in line with the 50-63 minute lags on 131 and 132. The long form was created 2h16m after that filing and 1h41m after the twin. That is a wider gap than the usual few minutes, but it is the same evening, it comes after the filing it would describe, and the two objects came in by different routes (one carries time_filed and document-sourced text; the other has no time_filed and entry-sourced text). Both are unnumbered, which fits a text-only minute order. CourtListener can't merge an unnumbered entry across sources, so it ends up as two objects. The numbered entries 131 and 132 got their long text merged in and were not duplicated. The window (7/19 to 7/21) has only four objects: the numbered party memoranda 131 and 132, plus this pair. There is no other unnumbered object, no other order, and no third object with a later time_filed that would point to a second evening filing. Reading these as two filings would need a second order on 7/20 that never got a short-form object of its own, plus long text for the 17:47 order that never reached CourtListener. Nothing in the window supports that. Neither object is another object's twin. Relation is same-run: seen_at 2026-07-21T08:12:26Z and 08:12:36Z, seen_by null on both. One soft point: the gap is 1h41m rather than a few minutes, and the long form has no time_filed of its own to compare."
+    }
+   }
+  },
+  "rule pair 6 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. The short form 'Notice of Pro Hac Vice counsel added' (471928569: unnumbered, filed 15:08:17, description taken from the document) describes the event the long form records. The long form (471943107: unnumbered, no time_filed, created 13:46:58-07:00, which is after the short form's filing time) is the clerk's unnumbered notice (mlh) that 'Pro Hac Vice counsel, SEJAL JHAVERI and JUSTIN LAM ... has been added to receive Notices of Electronic Filing.' Both are the same kind of entry (a notice), record the same action (PHV counsel added) and fall on the same day (07/23/2026). The short form names no party and no attorney, so it claims nothing the long form does not do. The only other same-day objects are entries 102 and 103 (471889219 and 471889205). Those are local counsel's numbered filings (WOLF, THOMAS), each a 'Notice of Request by Pro Hac Vice ... to receive Notices of Electronic Filings'. That is a different event: a request, not the clerk adding the counsel. They were also filed at 12:13:23 and 12:15:18, while the short form was filed at 15:08:17, after both requests, which fits the clerk acting on them. The two letters, entries 101 (07/22) and 104 (07/24), are unrelated. No object in the window fits the short form as well as the long form does."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked all six objects in the window. #101 (471806091, 07-22) and #104 (472095513, 07-24) are Wiygul letters about a Notice of Supplemental Authority. They are a different type of filing on a different day, so neither is a candidate. #102 (471889219) and #103 (471889205) are the only real rivals. Both are from the same day and both are 'Notice of Request by Pro Hac Vice [Justin Lam / SEJAL JHAVERI] to receive Notices of Electronic Filings', filed by local counsel Wolf. They are counsel's requests, not the clerk's action, and they do not fit the short form as well as the long form does. The short form's key words 'counsel added' match only the long form's 'has been added to receive Notices of Electronic Filing'. #102 and #103 share only the generic words 'Notice' and 'Pro Hac Vice'. The fingerprints also rule them out. The short form has no entry number and was filed at 15:08:17, about three hours after #102 (12:13:23) and #103 (12:15:18). A document twin of either one would carry that entry's number and filing time. This order also matches the procedure: counsel files the requests at midday, then the clerk adds counsel later. The long form (471943107) is the only other unnumbered object and the only 'pro hac vice counsel added' entry in the window. It covers both attorneys in one entry, and there is exactly one short form, so the pairing is one-to-one. It came from a docket report with no filing time (time_filed null). It was created at 16:46 ET, after the short form's 15:38 ET creation, which fits the usual pattern of a short object first and a long one later. Its filing time cannot be checked directly. Even so, no numbered entry in the window fits the short form as well as or better than the long form."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "CLOCKS: The twin, 471928569, has no entry number, desc_source document and time_filed 15:08:17. It was created at 2026-07-23T12:38:22-07:00, which is 15:38:22 ET and 30 min after its time_filed. That matches the delay from filing to creation for every other entry on this docket that has a time_filed: #102 12:13:23 -> 12:37:16 ET, #103 12:15:18 -> 12:37:14 ET, #104 17:12:40 -> 17:38:08 ET, #101 18:00:48 -> 18:39:49 ET. So 15:08:17 ET is a real filing time for a CM/ECF entry with no number. The long form, 471943107, has no entry number, desc_source entry and time_filed null. It was created at 2026-07-23T13:46:58-07:00, which is 16:46:58 ET. That is 68.6 min after the twin was created and 1h39m after the twin's time_filed. Both objects are dated 2026-07-23, and the long form was created after the twin's filing time, so it can be the docket-text copy of the 15:08:17 entry. SHAPE: This is the usual split of an unnumbered entry: one object from a document, with a filing time and a short description, and one from the docket text, with no filing time. With no entry number on either, CourtListener could not merge them. Neither object is already another object's twin (twin_of is null on both). BETTER MATCH: The only other objects dated 07-23 are #102 (time_filed 12:13:23) and #103 (time_filed 12:15:18). Both are numbered and were filed about 3 hours earlier, at a time that does not match. A copy of either one would carry its number and its filing time, so the unnumbered 15:08:17 short form is a different filing from both. On 07-23 the window holds exactly one unnumbered object with a filing time and exactly one unnumbered docket-text object. Every numbered entry in the window (#101 to #104) also has a time_filed. So this looks like one unnumbered entry captured twice. CAVEATS: Because the long form's time_filed is null, I can only say it was filed at or before 16:46:58 ET; I cannot compare its filing time directly with 15:08:17. The 68-min gap between creation times is longer than a few minutes. It fits the long form being captured separately later the same afternoon, and nothing in the window points to a second filing. Both rows were first held in the same run (relation same-run; seen between 2026-07-24T01:25:55Z and 01:30:39Z)."
+    }
+   }
+  },
+  "rule pair 7 of 7": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form (475706406, unnumbered, from a document) reads 'Oral Order AND ~Util - Set Hearings'. That is a CM/ECF event-type label for an oral order that also runs the set-hearing utility event. The long form (475707057, entry #97) is exactly that kind of entry: 'ORAL ORDER: An oral argument hearing to address the pending motions (D.I. 3, 33, 36, and 39) is now set for 9/17/2026 ... Ordered by Judge Richard G. Andrews on 8/25/2026.' Both parts of the short form match what the long form does. It is an oral order, and it sets a hearing. 'Hearings' is plural because that is the fixed name of the utility event, so it does not mean more than one hearing. The short form names no motion, party or document that the long form does not cover. It only leaves out the details. Both are dated 8/25/2026. The short form's time_filed of 12:19:31 fits its creation at 10:08 PDT (13:08 ET), and the long form was created five minutes later at 10:13 PDT. Both rows were held in the same run. Only one other object is in the 8/24-8/26 window: #96 (475590642), a NOTICE of Supplemental Authority filed by the United States on 8/24. That is a party filing on a different day and does not fit 'Oral Order ... Set Hearings'. No other oral order or hearing-setting entry appears on 8/25, so there is no better match."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window from 2026-08-24 up to (not including) 2026-08-27 holds three objects: the short form (475706406, unnumbered, from a document, 'Oral Order AND ~Util - Set Hearings'), the pair's long form (475707057, entry 97, an ORAL ORDER by Judge Andrews setting an oral argument hearing on D.I. 3, 33, 36 and 39 for 9/17/2026, entered 08/25/2026), and entry 96 (475590642). Entry 96 is a NOTICE of Supplemental Authority filed by the United States on 08/24/2026. It is a party's notice from the day before, not an oral order and not a hearing setting, so the short form cannot describe it. There is no other numbered entry on 8/25 or 8/26: no second oral order, no other scheduling order, and no minute entry. The short form names a compound event (Oral Order plus the Set Hearings utility event), and entry 97 matches both parts: it is an oral order and it sets a hearing. The timing fits too. Both objects carry entry_at 2026-08-25, were created about 5 minutes apart (10:08:01 and 10:13:08 PDT), and were held in the same run. Entry 97 is the only object in the window the short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks and shape fit one minute entry recorded twice. Twin 475706406 has no entry_number, desc_source 'document', time_filed 12:19:31 and date_created 2026-08-25T10:08:01.28-07:00 (13:08:01 ET). Entry 475707057 is #97, desc_source 'entry', time_filed null and date_created 2026-08-25T10:13:08.04-07:00 (13:13:08 ET). Both have entry_at 2026-08-25 and were created 5m07s apart, short form first. That is the usual shape of one entry seen twice: an unnumbered object with a filing time but no number, then a numbered docket-text object minutes later with a number but no time. The time_filed 12:19:31 only works as court-local Eastern time (16:19:31 UTC), because read as Pacific it would fall after the object's own creation. Read that way, the filing came about 49 min before the short form was created and about 54 min before #97 was created. That lag matches #96 on the same docket: time_filed 15:26:01 ET, created 2026-08-24T13:07:02-07:00 (16:07:02 ET), a lag of about 41 min. So the clocks point to one 08-25 filing event, not two. Neither object is twin_of anything. psephos first held both rows in the same run: seen_at 18:23:54.544 and 18:23:54.766 UTC, seen_by null. No other object competes. The only other object in the window is #96, which is dated 08-24, is numbered, has its own time_filed 15:26:01, was created the day before, and is a Notice. There are no other objects on 08-25 or 08-26, and the numbering runs 96 to 97 with no gap. The short type 'Oral Order AND ~Util - Set Hearings' also matches #97's 'ORAL ORDER: An oral argument hearing ... is now set'. One gap remains: #97 has no time_filed, so the two filing times can't be compared directly. For this lens, the 5-minute creation gap and the complementary shapes still settle it."
+    }
+   }
+  }
+ },
+ "tokens": 1057521
+}

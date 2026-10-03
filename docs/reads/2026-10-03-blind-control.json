@@ -1,0 +1,874 @@
+{
+ "run": "2026-10-03 blind control (ruling 3a)",
+ "channel": "Agent tool, Explore, opus",
+ "checked_at": "2026-10-03T02:48:18Z",
+ "launcher": {
+  "path": "tools/reader_launcher.txt",
+  "sha256": "b6f45a4c297513486268ddf37994f4145b6eff87454b1ce97544c869d4ae8fbf"
+ },
+ "ok": true,
+ "readers": [
+  {
+   "pair": "control: 2026-10-01 sample n=3",
+   "lens": "identity",
+   "file": "a5a1a88152be.json",
+   "file_sha256": "a5a1a88152bec090d105f105b50dfc019c298302538ec1e233182114d7f17a9f",
+   "expected_start_sha256": "d1a2ba17f8ccb233c1ecf92ddb19d3fec5def99e3c3ab67ac5594828c77fa26c",
+   "transcripts": [
+    "agent-a516c0c065de275cf.jsonl"
+   ],
+   "start_sha256": "d1a2ba17f8ccb233c1ecf92ddb19d3fec5def99e3c3ab67ac5594828c77fa26c",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 2,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Both texts record the same court notice. Each reads 'NOTICE FROM THE COURT: INSTRUCTIONS FOR CIVIL CASES ASSIGNED TO THE HONORABLE ELEANOR L. ROSS.' and was docketed by the same clerk (mlb) with the same filing date, 01/28/2026. It is the same kind of entry (a court notice) about the same document (Judge Ross's civil-case instructions) from the same filer on the same day. The twin's text (451857584, unnumbered) appears word for word at the start of entry #12's text (452037636). #12 adds only a second '(mlb)' and the stamp '(Entered: 01/28/2026)', so the short form names nothing that #12 does not. A clerk would read the repeated initials to mean the same clerk carried #12's text over from the unnumbered entry, either by editing it or by docketing it again with the document attached. The record supports that: CourtListener captured the unnumbered notice at 09:56 PT on 01/28, between #5 and #6 in creation order, but #12's number comes after #11, so the numbered version came from a later action that same day. That fits the unnumbered object being an earlier capture of this same notice. The record cannot show whether the court's docket still keeps the unnumbered line as a separate duplicate, but nothing in either text points to a different event. No other object in the 01/27 to 01/29 window fits the twin as well. The other unnumbered objects dated 01/28 are clerk's notations about entries 4 and 7 and an 'Order' whose text comes from a document, and none of them is a notice of instructions."
+    }
+   ],
+   "tokens": 67637
+  },
+  {
+   "pair": "control: 2026-10-01 sample n=3",
+   "lens": "alternative",
+   "file": "a5a1a88152be.json",
+   "file_sha256": "a5a1a88152bec090d105f105b50dfc019c298302538ec1e233182114d7f17a9f",
+   "expected_start_sha256": "0e19b166603abc86d943d2120cf6016858f00de561b22333ffd08c8a01a74023",
+   "transcripts": [
+    "agent-a08b0f1021eb2e698.jsonl"
+   ],
+   "start_sha256": "0e19b166603abc86d943d2120cf6016858f00de561b22333ffd08c8a01a74023",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked all 20 objects in the 01/27 to 01/29 window. The twin (451857584) reads 'NOTICE FROM THE COURT: INSTRUCTIONS FOR CIVIL CASES ASSIGNED TO THE HONORABLE ELEANOR L. ROSS. (mlb)'. That is a word-for-word prefix of the long form, #12 (452037636), which only adds '(mlb). (Entered: 01/28/2026)'. The only other notice in the window is #5 (451857582), a Notice of Appearance filed by attorney Bryan Tyson for Raffensperger. That is a party filing, not a notice from the court, so it does not fit. The other numbered entries (#2-#4, #6-#11) are a summons, motions to intervene, disclosure certificates and pro hac vice applications. The unnumbered objects are clerk's notations re 4 and re 7, clerk's-office pro hac vice approvals, a bare 'Order' document (451865808) and a pro hac vice approval document (452134020). None of them could be the judge's case-assignment instructions. #12 is the only numbered entry in the window the twin can describe. One timing oddity: the twin was created 01/28 09:56 in the same batch as #3-#7, between #5 and #6, while #12 was created 01/29 and is numbered after the pro hac vice applications #8-#11. Together with the doubled '(mlb) (mlb)' in #12, this fits the same entry being edited or renumbered later. It does not point to any other entry in the window."
+    }
+   ],
+   "tokens": 50349
+  },
+  {
+   "pair": "control: 2026-10-01 sample n=3",
+   "lens": "clocks",
+   "file": "a5a1a88152be.json",
+   "file_sha256": "a5a1a88152bec090d105f105b50dfc019c298302538ec1e233182114d7f17a9f",
+   "expected_start_sha256": "37800beae3de4ab61e13c1184c7116297c458028d4497c0bf4a449737a258776",
+   "transcripts": [
+    "agent-ad923cf416241a946.jsonl"
+   ],
+   "start_sha256": "37800beae3de4ab61e13c1184c7116297c458028d4497c0bf4a449737a258776",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The clocks point to two separate docketing acts rather than one entry seen twice, but the record does not show whether the first act still stands on the docket. (1) The twin 451857584 has no entry number, desc_source 'entry', time_filed null and date_created 2026-01-28T09:56:04.454-08:00. The entry 452037636 is #12, desc_source 'entry', time_filed null, date_created 2026-01-29T11:36:36.910-08:00. That is about 25h40m apart, not minutes. Both have entry_at 2026-01-28 and neither is twin_of any other object. (2) The twin was created in the 09:56:03.979 to 09:56:04.607 batch that also created #3 to #7. Its id falls between #5 (451857582, 09:56:04.248) and #6 (451857585, 09:56:04.504), right after the unnumbered Clerk's Notation re 4 (451857583). So the notice was on the docket without a number, between #5 and #6, at that time. (3) #8 to #11 were first created later, at 2026-01-28T11:29:34 to 11:35:06, about 1h33m after the twin. Docket numbers are assigned in order, so number 12 was given after #11. That is a later docketing act than the one the twin captured, so the twin cannot be a capture of #12. (4) The shape is also unusual: both objects are docket-entry objects, not a RECAP document object paired with its docket text. (5) The same notice text appears twice: first without a number and with document_url null, then as #12, whose text doubles the clerk's initials ('(mlb) (mlb). (Entered: 01/28/2026)'). The doubled initials suggest the same clerk re-docketed or edited the notice. The record cannot tell whether the earlier unnumbered entry was turned into #12 or removed (one entry seen in two states), or still stands beside #12 (two entries). The clocks do not support a link. (6) No other object in the window has this text. The unnumbered 'Order' document 451865808 (created 2026-01-28T10:34:05) does not fit it, so there is no better match."
+    }
+   ],
+   "tokens": 67312
+  },
+  {
+   "pair": "control: 2026-10-01 sample n=8",
+   "lens": "identity",
+   "file": "1ebfb979438e.json",
+   "file_sha256": "1ebfb979438efb9b2aa570c9d8cb98766add5e42ad8b9e09db3fe72471e96484",
+   "expected_start_sha256": "214b216a43c5dd68382592f2417da6f93fa41642e6e1f2a717a9537453c911e5",
+   "transcripts": [
+    "agent-ab5750f08898f6a56.jsonl"
+   ],
+   "start_sha256": "214b216a43c5dd68382592f2417da6f93fa41642e6e1f2a717a9537453c911e5",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Read as a clerk, 'Case Assigned' is the stock CM/ECF short description of the clerk's case-assignment event, and the long form records exactly that event: 'Case assigned to US Magistrate Judge Andrea K Johnstone. The case designation is: 1:25-cv-371-AJ ... (ed)'. The short form is fully consistent with it and names nothing the long form does not do (no other judge, party, motion or document). Both objects are dated 2025-09-25 and both are unnumbered, so their fingerprints agree. 439194969 is the only case-assignment long text in the 09/24-09/26 window. The other candidates fit worse. Entry 4 (439090829, 'NOTICE of Assignment to U.S. Magistrate Judge and Consent Form sent to plaintiff...') is a separate, numbered notice and consent-form entry, a different event, and a short form of it would carry no. 4. Entry 3 (438945550, text null) is numbered and was filed at 11:59:33 among counsel's opening filings, while the twin is unnumbered. The other 'Case Assigned' object, 439090834 (dated 09/26, 13:03:14, created that day next to 'Notice - ECF' 439090820 at 13:06:10), is itself a short form. No case-assignment long text dated 09/26 exists for it. It most plausibly records this same assignment under its entry time: entry 4 likewise carries a 09/25 date but reads 'Entered: 09/26/2025'. That makes it a second short form of the same minute entry, not a distinct event the twin belongs to. Its 09/26 date also fits the twin's 09/25 date worse than the long form does. Even if 439090834 were a distinct 09/26 event, the twin's 09/25 date would still point to 439194969. No better match."
+    }
+   ],
+   "tokens": 52482
+  },
+  {
+   "pair": "control: 2026-10-01 sample n=8",
+   "lens": "alternative",
+   "file": "1ebfb979438e.json",
+   "file_sha256": "1ebfb979438efb9b2aa570c9d8cb98766add5e42ad8b9e09db3fe72471e96484",
+   "expected_start_sha256": "adc79a9ac26431416d1ac0a63f2cffa7a0250f2315fbf1f782648e0aa2b1dca7",
+   "transcripts": [
+    "agent-a80a5d68d5d3e5cf2.jsonl"
+   ],
+   "start_sha256": "adc79a9ac26431416d1ac0a63f2cffa7a0250f2315fbf1f782648e0aa2b1dca7",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Short form 442705043 'Case Assigned' (unnumbered, dated 2025-09-25) pairs with long form 439194969 'Case assigned to US Magistrate Judge Andrea K Johnstone. The case designation is: 1:25-cv-371-AJ...' (unnumbered, dated 2025-09-25). The short text is the first two words of the long text, and both are dated the same day. I checked every object in the window. #1 (complaint), #2 (request for summons) and #3 (text null) are not case assignments. #3 is numbered and was filed at 11:59 on 9/25, in the filer's run with #1 and #2, before the clerk's assignment work entered on 9/26. #5 is 'Summonses issued' and only mentions the magistrate-judge notice as an attachment. 439194970 is the ECF-designation notice, and its own short form is 439090820 'Notice - ECF'. The one numbered entry on a related subject is #4, 'NOTICE of Assignment to U.S. Magistrate Judge and Consent Form sent...' (dated 9/25, Entered 09/26). But #4 is a notice/consent-form document, not the case-assignment event. The 9/26 RSS batch also created #4 (439090829) and a separate unnumbered 'Case Assigned' item (439090834) within 0.3 s of each other, so 'Case Assigned' is not #4's short description. CourtListener also matches numbered items by entry number, so an item belonging to #4 would have merged into #4 instead of staying unnumbered. 439090834 has the same 'Case Assigned' text. It came from RSS and is stamped with its entry time, 9/26 13:03:14, in the same clerk session as #4 and the ECF notice; the clerk dated the assignment entries 9/25, as #4 shows. That makes it a second object for the same single case-assignment minute entry, not a separate entry and not a long form. The window holds exactly one case-assignment long form, so the pair's long form is the only entry this short form can describe."
+    }
+   ],
+   "tokens": 51355
+  },
+  {
+   "pair": "control: 2026-10-01 sample n=8",
+   "lens": "clocks",
+   "file": "1ebfb979438e.json",
+   "file_sha256": "1ebfb979438efb9b2aa570c9d8cb98766add5e42ad8b9e09db3fe72471e96484",
+   "expected_start_sha256": "be6fc6440b3b47538c29d4f9f1cb242cf120602735fed9f1607ac44233044129",
+   "transcripts": [
+    "agent-a4c1bfef1d2057d79.jsonl"
+   ],
+   "start_sha256": "be6fc6440b3b47538c29d4f9f1cb242cf120602735fed9f1607ac44233044129",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Twin 442705043 ('Case Assigned'): entry_number null, entry_at 2025-09-25, time_filed null, date_created 2025-10-31T07:13:30.89-07:00, desc_source document, twin_of null. Entry 439194969 ('Case assigned to US Magistrate Judge Andrea K Johnstone...'): entry_number null, entry_at 2025-09-25, time_filed null, date_created 2025-09-28T03:37:17.53-07:00, desc_source entry, twin_of null. What fits one entry: both are on the same filed day, neither has a time, and neither has a number. This court's case-assignment entry is unnumbered, so no number ties them together or apart. A document-sourced short form against an entry-sourced long form is the normal shape. Neither object is already another object's twin. The clock that does not fit is date_created. The two were created about 33 days 3.5 h apart, not minutes, so the usual sign of one entry described twice is missing. Read against the window, though, the gap looks like a late copy of the same entry, not a second filing. An object dated 9/25 that first appears on 10/31 could only be a separate filing if a second case-assignment entry had been backdated by more than a month, and the window shows only one case-assignment event. (1) The 2025-09-28T03:37:17 docket batch (439194969 at .534 and 439194970 at .634, consecutive ids) created exactly one case-assignment long form for 9/24 to 9/26. (2) The timed 9/26 batch at 10:19:16 PT (439090820 'Notice - ECF' time_filed 13:06:10, 439090834 'Case Assigned' time_filed 13:03:14, #4 at .35) holds exactly one 'Case Assigned'. (3) 442705043 is the only object in the window created on 10/31. (4) On 9/25 the only unnumbered objects are these two. 439090834 (entry_at 2025-09-26, time_filed 13:03:14, created 2025-09-26T10:19:16.66) reads as a third copy of the same event, dated by the day it was entered. It is a short form, not a different minute entry, and its clocks fit the twin worse: a different day and about 35 days apart. So it is not a better match. #4 (numbered, 'NOTICE of Assignment to U.S. Magistrate Judge...', created 2025-09-26T10:19:16.35) and #3 (numbered, time_filed 11:59:33, in the 11:48:52 to 11:59:33 run with filer entries #1 and #2) are both numbered while the twin is unnumbered, so neither is a better home. Residual risk: with time_filed null on both objects, the clocks alone cannot rule out a later-entered, backdated second 'Case Assigned' entry. Nothing in the record shows one."
+    }
+   ],
+   "tokens": 72331
+  },
+  {
+   "pair": "control: person pair 4",
+   "lens": "identity",
+   "file": "e57b1f72bf77.json",
+   "file_sha256": "e57b1f72bf771163e0bd64de0f41b4dd1fd2f3b87dac0b093aff6e641652632e",
+   "expected_start_sha256": "b7fa6c7d4d835767923a060558576b8dd42775c0837285b758df0342c0ade64a",
+   "transcripts": [
+    "agent-ae67d47cc3a4e2ddb.jsonl"
+   ],
+   "start_sha256": "b7fa6c7d4d835767923a060558576b8dd42775c0837285b758df0342c0ade64a",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form 'Notice of Correction' (452851121, unnumbered, desc_source document, created 2026-02-05 10:55 PT) is just the CM/ECF event name of the long form 'Notice of Correction re 18, 19, 20 : Documents filed as PDF fillable forms. Filing attorney reminded to only upload standard PDFs. Clerk has corrected. No further action needed. (jenjones, )' (452844429, unnumbered, desc_source entry, created 10:12 PT the same day). They match on the kind of entry (a clerk's notice of correction) and on the day (entry_at 2026-02-05 for both). The short form names no party, document number or action that the long form lacks, so it is fully consistent with it. The short form has nothing to go on except its type, so I checked the window for another notice on the same day that it could belong to. There is none. The other objects in the window (452672252, 452676748, 452681283, 452681284, which are entries 18-21) are pro hac vice motions entered 02/04, not notices. The window also points to a single round of corrections on 2/5. Entries 18, 19 and 20 each read 'Main Document ... replaced on 2/5/2026 (jenjones)', which are exactly the documents the long-form notice covers. Entry 21, filed with them, shows no replacement. So nothing suggests a second notice of correction that day. One caveat: the twin was created 43 minutes after the long form, and its generic label alone cannot rule out a later notice that CourtListener holds only in short form. Nothing in this record suggests such a notice, so I read this as one minute entry."
+    }
+   ],
+   "tokens": 51175
+  },
+  {
+   "pair": "control: person pair 4",
+   "lens": "alternative",
+   "file": "e57b1f72bf77.json",
+   "file_sha256": "e57b1f72bf771163e0bd64de0f41b4dd1fd2f3b87dac0b093aff6e641652632e",
+   "expected_start_sha256": "901a2de124a52c4d07a5f2b0fc9d2f0c2322f70faf9d9753fe05d4f3aaf3c038",
+   "transcripts": [
+    "agent-a9c8e8f978cf882ed.jsonl"
+   ],
+   "start_sha256": "901a2de124a52c4d07a5f2b0fc9d2f0c2322f70faf9d9753fe05d4f3aaf3c038",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window (2026-02-04 to 2026-02-06) holds six objects. Four are numbered entries #18, #19, #20 and #21 (cl 452672252, 452676748, 452681283, 452681284). All four are a 'Motion to appear Pro Hac Vice' entered 02/04. The other two are the pair's own objects, both dated 2/5 and both unnumbered: the long form 452844429 ('Notice of Correction re 18, 19, 20 : Documents filed as PDF fillable forms... (jenjones, )', desc_source entry, created 10:12:11 PT) and the short form 452851121 ('Notice of Correction', desc_source document, created 10:55:51 PT). The short form names a clerk's notice of correction. That type cannot describe any of the four PHV motions, and no other notice, correction, order or minute entry appears anywhere in the window. The pair's long form is therefore the only object the short form can describe. The record also shows no sign of a second same-day correction, such as one re #21. #18, #19 and #20 each carry a 'Main Document N replaced on 2/5/2026 (jenjones)' note that matches the long form's 're 18, 19, 20'. #21 carries no such note. Some points fall outside this lens and are for the other readers: the short form was created about 44 minutes after the long form rather than before it, and the long form is itself unnumbered, which is normal for a clerk's notice of correction. The window cannot rule out a later same-day notice that CourtListener never held in long form, but nothing in the record points to one. No alternative match."
+    }
+   ],
+   "tokens": 51424
+  },
+  {
+   "pair": "control: person pair 4",
+   "lens": "clocks",
+   "file": "e57b1f72bf77.json",
+   "file_sha256": "e57b1f72bf771163e0bd64de0f41b4dd1fd2f3b87dac0b093aff6e641652632e",
+   "expected_start_sha256": "ca5d0b1daf0bfe3069af32996558eccde21323090320d14b369691bc31917f5c",
+   "transcripts": [
+    "agent-a9db77671f0dfcc90.jsonl"
+   ],
+   "start_sha256": "ca5d0b1daf0bfe3069af32996558eccde21323090320d14b369691bc31917f5c",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks: twin 452851121 has entry_number null, time_filed null, date_created 2026-02-05T10:55:51.91-08:00, desc_source 'document' and twin_of null. Entry 452844429 has entry_number null, time_filed null, date_created 2026-02-05T10:12:11.69-08:00, desc_source 'entry' and twin_of null. Both have entry_at 2026-02-05. They were created the same morning, 43m40s apart, with the long form first. The object IDs rise in the same order and at a rate that fits these timestamps, so the clocks agree with each other. Shape: the pair has the usual look of one entry recorded twice. One object holds the docket text ('entry') and the other is an unnumbered RECAP-document object ('document') with a short description of the same type, and neither is already twinned to another object. It is normal for a clerk's Notice of Correction to be unnumbered, so the long form having no number is not a warning sign. The long form's text also lacks the '(Entered: ...)' suffix that report-sourced text carries on entries 18-21 here, which points to a same-day capture as the entry was made. Window: no other object is dated 2026-02-05 or 2026-02-06. The only other objects are entries 18-21, numbered pro hac vice motions created 2026-02-04 between 09:58 and 10:12 PST. So no competing notice exists that the short form could belong to. For these to be two separate notices, the first would have to be caught only in long form and a second only in short form, with no other trace. Nothing in the clocks points to that. Caveats: 43m40s is longer than the few-minute gap typical of one entry recorded twice. time_filed is null on both. With both objects unnumbered, no entry number ties them together. Both rows were first held in the same run range (seen_at 2026-07-05T02:40:23Z to seen_by 09:35:02Z, relation undetermined), which tells us nothing either way. Overall, a gap of under an hour on the same morning fits two capture paths with different delays better than two separate filings."
+    }
+   ],
+   "tokens": 57364
+  },
+  {
+   "pair": "control: person pair 5",
+   "lens": "identity",
+   "file": "c3c587dc6706.json",
+   "file_sha256": "c3c587dc67069f744917ace94d5d2c8e82d4ec0fb70e0ef73cc73f13750abf1a",
+   "expected_start_sha256": "1936acdd19f7f9d2fcff8f1e53671a255fdee661daf928e8ec520c41374fe31f",
+   "transcripts": [
+    "agent-a7f4e20acdb84dc4b.jsonl"
+   ],
+   "start_sha256": "1936acdd19f7f9d2fcff8f1e53671a255fdee661daf928e8ec520c41374fe31f",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "A docket clerk would read the short form 'Initial Case Assignment' (twin 451291760) as the name of the CM/ECF event that the long form records: 'Initial Case Assignment to District Judge Roderick C. Young. (adun, )' (entry 450807435). The long form starts with the short form word for word and adds only the judge's name and the clerk's initials. Both rows have entry_at 2026-01-16. The short form names no party, judge, motion or document that the long form lacks, so the two texts don't conflict. A case gets an initial assignment only once; later changes are reassignments. Besides the pair itself, the window holds only entry 1 (Complaint, 450666528) and entry 2 (Proposed Summons, 450666529), and neither is a case assignment. So no other object in the window fits the short form as well. One caveat: the short form is generic and doesn't name a judge. It could only be confused with a second assignment entry on the same day, such as one to a magistrate judge, and the window holds no such entry. The objects were created 3 days apart (01-20 for the long form, 01-23 for the short form). That is a question about where the rows came from, which is outside this lens, and the texts don't contradict each other."
+    }
+   ],
+   "tokens": 41673
+  },
+  {
+   "pair": "control: person pair 5",
+   "lens": "alternative",
+   "file": "c3c587dc6706.json",
+   "file_sha256": "c3c587dc67069f744917ace94d5d2c8e82d4ec0fb70e0ef73cc73f13750abf1a",
+   "expected_start_sha256": "7a7afd4fffad21dc06a7cab0112f1f9cc654eac48b2d34192b76a2e91a890fa8",
+   "transcripts": [
+    "agent-a158caba0d002215a.jsonl"
+   ],
+   "start_sha256": "7a7afd4fffad21dc06a7cab0112f1f9cc654eac48b2d34192b76a2e91a890fa8",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked every object in the same_docket_window (2026-01-15 to before 2026-01-18). There are four, all with entry_at 2026-01-16. (1) 450666528, #1: 'Complaint under Civil Rights Act of 1960, filed by UNITED STATES...' with a civil cover sheet attachment. (2) 450666529, #2: 'Proposed Summons re 1 Complaint'. (3) 450807435, unnumbered: 'Initial Case Assignment to District Judge Roderick C. Young. (adun, )'. This is the pair's long form. (4) 451291760, unnumbered: 'Initial Case Assignment'. This is the short form itself. The short text names a specific CM/ECF event, the initial case assignment. The complaint and the proposed summons are different events, so the short form cannot describe either one. There is no second assignment or reassignment entry in the window, and no other order, notice or minute entry it could fit. The short text is also an exact word-for-word prefix of the long form's text. So the long form is the only object in the window the short form can describe, and better_match is null. One note outside this lens, which does not change the alternative-match answer: the two objects' date_created values are about 3 days apart (2026-01-20 07:53 and 2026-01-23 05:49 PST), not minutes, and relation is 'undetermined'. The timing reader should weigh that."
+    }
+   ],
+   "tokens": 37209
+  },
+  {
+   "pair": "control: person pair 5",
+   "lens": "clocks",
+   "file": "c3c587dc6706.json",
+   "file_sha256": "c3c587dc67069f744917ace94d5d2c8e82d4ec0fb70e0ef73cc73f13750abf1a",
+   "expected_start_sha256": "dc5560ac00054da028b234edbc86b564b15c85645b76236f4da9487e0da0bcbf",
+   "transcripts": [
+    "agent-a5100cd192b64e300.jsonl"
+   ],
+   "start_sha256": "dc5560ac00054da028b234edbc86b564b15c85645b76236f4da9487e0da0bcbf",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Shape fits one unnumbered minute entry seen twice. Twin 451291760 has entry_number null, time_filed null, desc_source 'document' and the short text. Entry 450807435 has entry_number null, time_filed null, desc_source 'entry' and the long text. Both have entry_at 2026-01-16. twin_of is null on every object in the window, so neither object is already another object's twin. The clocks do not confirm the pair, though. date_created is 2026-01-20T07:53:08.063-08:00 for the long form and 2026-01-23T05:49:47.440-08:00 for the short form. That is about 69.9 hours apart, not minutes. Both come about 3.6 and 6.5 days after the same-day capture of #1 (2026-01-16T17:32:03.840) and #2 (2026-01-16T17:32:03.909). So they are two separate later captures, and their date_created values record when CourtListener took them in, not when anything was filed. That explains the gap but does not settle the pair. Neither object has an entry_number or a time_filed, so nothing in the clocks ties the Jan 23 short form to this assignment entry rather than to another 01/16 entry of the same type whose long form CourtListener does not hold. Nothing in the clocks points to a second filing either. Both psephos rows were first held in the same run range (seen_at 2026-07-05T02:40:23, seen_by 2026-07-05T09:35:02), with relation 'undetermined', which tells the two cases apart no better. The only other objects in the window are numbered #1 (Complaint) and #2 (Proposed Summons). Neither fits 'Initial Case Assignment', so there is no better match. The clocks and shape are consistent with one entry but lack the minutes-apart creation that would confirm it, so the verdict is uncertain rather than yes."
+    }
+   ],
+   "tokens": 52293
+  },
+  {
+   "pair": "control: person pair 15",
+   "lens": "identity",
+   "file": "455ae52da9fb.json",
+   "file_sha256": "455ae52da9fba5c42e76180e116d2831bf6bfbe71726041f4c6a8ca457c1a26b",
+   "expected_start_sha256": "380492e402cf0b49733a46f17607ca01d435135964915fb914848d6eab24c160",
+   "transcripts": [
+    "agent-aa50263a56d9de85e.jsonl"
+   ],
+   "start_sha256": "380492e402cf0b49733a46f17607ca01d435135964915fb914848d6eab24c160",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. Apart from #40's '[Entered: 09/09/2026 03:31 PM]' stamp, the twin's text (477827680, entry #40) and the entry's text (477374891, unnumbered) match word for word. Both record the same kind of event (HARD COPY RECEIVED) for the same document (Joint Appendix, Volume 2 ONLY), the same party (Appellant USA), the same copy count (4), the same clerk initials (EAF) and the same day (09/09/2026). Neither text names anything the other does not do. No other object in the window fits as well. #38 is the 9/8 electronic filing of the Joint Appendix (Vol I and II). #39 is hard copies of the Brief (7 copies, KEL). #41 and its unnumbered twin 477406289 are the clerk's text order asking for Volume I copies. The numbered entries for 9/9 run #39, #40, #41 with no gap, and the window holds no other Joint Appendix hard-copy entry, numbered or not. So there is no distinct live entry the unnumbered object could belong to instead. A caveat for the timing reader (not an identity conflict): 477374891 was created at 2026-09-09T10:15:41-07:00, which is 1:15 PM Eastern. That is about 2h16m BEFORE #40's Entered stamp of 3:31 PM. Read as Eastern, every other object in the window was created after its Entered time (for example, unnumbered text order 477406289 at 3:34:39 PM Eastern vs #41 entered at 3:33 PM). The gap may mean the same receipt was docketed earlier and later replaced, or that the object's text was updated later. It does not point to a second live entry, because the 9/14 docket fetch that created #40 and #41 shows only one such entry."
+    }
+   ],
+   "tokens": 61442
+  },
+  {
+   "pair": "control: person pair 15",
+   "lens": "alternative",
+   "file": "455ae52da9fb.json",
+   "file_sha256": "455ae52da9fba5c42e76180e116d2831bf6bfbe71726041f4c6a8ca457c1a26b",
+   "expected_start_sha256": "6a0e8fa83fdffab86ecdd49e0c244f1dcf4f5c2d166b397ab81bb2e79a9760b6",
+   "transcripts": [
+    "agent-a7c86912ac780d3d8.jsonl"
+   ],
+   "start_sha256": "6a0e8fa83fdffab86ecdd49e0c244f1dcf4f5c2d166b397ab81bb2e79a9760b6",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "This is a long_twin_eq pair. The short form is the twin's text, numbered entry #40 (477827680). The long form is the entry's text, unnumbered object 477374891. The two texts are identical except for the '[Entered: 09/09/2026 03:31 PM]' stamp on #40. I checked every object in the window from 09/08 to 09/10. #36 (477217657) is an entry of appearance. #37 (477228512) is the electronic brief. #38 (477228815) is the electronic Joint Appendix Vol I and II, filed 09/08: that is the e-filing, not a hard-copy receipt. #39 (477382955) is a different hard-copy receipt: Brief, 7 copies, clerk KEL, against Joint Appendix, 4 copies, Volume 2 only, EAF. #41 (477827681) and its matching unnumbered object 477406289 are the clerk's text order directing 4 hard copies of JA Volume I, not a receipt of Volume 2. Numbers #36 to #41 run without a gap, and #40 is the only Joint Appendix hard-copy receipt among them. No numbered entry other than the pair fits this text as well, so this lens finds no better match. One timing oddity is outside this lens and does not point to a better match by text. 477374891 was created 2026-09-09 10:15:41 PDT, which is about 1:15 PM ET. That is about 2h16m before #40's stamped entry time of 3:31 PM ET, and about 3.5 minutes after #39 was entered at 1:12 PM ET. For comparison, 477406289 was created about 1.5 minutes after #41's entry. Because #39's text describes a different document, I do not name it as better_match. The timing lens may want to weigh this gap, for example a possible delete-and-re-enter of the same receipt."
+    }
+   ],
+   "tokens": 59998
+  },
+  {
+   "pair": "control: person pair 15",
+   "lens": "clocks",
+   "file": "455ae52da9fb.json",
+   "file_sha256": "455ae52da9fba5c42e76180e116d2831bf6bfbe71726041f4c6a8ca457c1a26b",
+   "expected_start_sha256": "eccbb5b5436cc3ccf08eaedaf919de3956903b9971eee65bd4b1d06a9983ef30",
+   "transcripts": [
+    "agent-a4c7b7a9e51ddfa1a.jsonl"
+   ],
+   "start_sha256": "eccbb5b5436cc3ccf08eaedaf919de3956903b9971eee65bd4b1d06a9983ef30",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Entry 477374891 is unnumbered, time_filed null, desc_source entry, date_created 2026-09-09T10:15:41-07:00 (17:15:41Z, 1:15 PM EDT), twin_of null. Twin 477827680 is entry_number 40, time_filed null, desc_source entry, date_created 2026-09-14T05:20:09.948-07:00, stamped [Entered: 09/09/2026 03:31 PM] (19:31Z), twin_of null. Supports one entry: the 4d19h date_created gap looks like a refresh artifact, not a second filing. #40 and #41 (477827681, 05:20:10.000-07:00) were created 52 ms apart in one 09/14 re-ingest. The sibling unnumbered 477406289 (12:34:39-07:00 = 19:34:39Z, 1m39s after #41's 03:33 PM stamp, same text as #41) shows the same unnumbered-early/numbered-late split. Numbers 36-41 are contiguous, with exactly one Joint Appendix hard-copy receipt (#40); no other window object carries this text. Against: the stamps are Eastern, since #36-#38 were created 57s-1m50s after their stamps, yet 477374891 was created about 2h15m BEFORE #40's 03:31 PM stamp. So when it was created it was not a later sighting of #40 as entered. Its clock instead fits an event around 1:12-1:15 PM: it is 3.5 min after #39's 01:12 PM stamp, but #39 is the Brief hard copy (7 copies, KEL) with its own object 477382955, so its text does not fit. The record cannot tell whether this was an earlier docketing of the same receipt that was re-entered at 3:31 PM (one entry) or an object whose text CL later rewrote to #40's. Shape fits one entry but this clock conflict is unexplained, so uncertain. better_match null: no other window object fits the twin's text."
+    }
+   ],
+   "tokens": 65050
+  },
+  {
+   "pair": "control: person pair 22",
+   "lens": "identity",
+   "file": "dab4d9355943.json",
+   "file_sha256": "dab4d935594390d6c6d0ec098da2a730955cb4d448dd421324d0a6d5cd41c119",
+   "expected_start_sha256": "95b46099286cca3d72140951d045dd643b085a8d8d77dea432d36305952abea9",
+   "transcripts": [
+    "agent-a2ec2dc94a5a89dc3.jsonl"
+   ],
+   "start_sha256": "95b46099286cca3d72140951d045dd643b085a8d8d77dea432d36305952abea9",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "long_twin_eq. The twin's text (479305491, numbered entry 54) and the entry's text (479082481, unnumbered) match word for word. The only difference is the twin's trailing CM/ECF stamp '[Entered: 09/23/2026 01:43 PM]', which is docketing metadata, not a substantive claim the other text lacks. Read as a clerk, both record the same event: the same act (a clerk's verbal grant of an extension of time to file brief under 3d Cir. L.A.R. 31.4), the same document (the appellees' brief), the same new due date (10/22/2026), the same nine-party appellee group (Common Cause, Dickson, Kent, League of Women Voters of PA, Maston, Perry, Sternfeld, Thatcher, Thompson), the same clerk initials (EAF) and the same day (both entry_at 2026-09-23). This pair is not matched on type alone. The same-day window holds three other verbal extensions of the same type to the same date, but each names a different party: 51 is the Secretary of the Commonwealth (MCW, 12:22 PM), 52 is NAACP PA State Conference/NAACP/Stacey Taylor (EAF, 1:24 PM) and 53 is Crossey/PA Alliance for Retired Americans (EAF, 1:36 PM). None fits this text. Only entry 54 does, so there is no better match. One flag outside this lens for the timing reader: 479082481's date_created is 09:23:19 PDT, which is 12:23 PM EDT. Assuming the stamps are Eastern court time, that is about 80 minutes before entry 54's 1:43 PM stamp and one minute after entry 51's 12:22 PM stamp, so the object's text was probably rewritten after it was created. That does not make the two texts record different events. psephos first held row 91090 at 21:28 UTC (5:28 PM EDT), after 1:43 PM, already with the Common Cause text, and the window's current text is the same. Numbered entries 51-54 run without a gap and no other object carries this text. Entry 51 keeps its own numbered object, so folding takes no distinct entry off the page."
+    }
+   ],
+   "tokens": 53357
+  },
+  {
+   "pair": "control: person pair 22",
+   "lens": "alternative",
+   "file": "dab4d9355943.json",
+   "file_sha256": "dab4d935594390d6c6d0ec098da2a730955cb4d448dd421324d0a6d5cd41c119",
+   "expected_start_sha256": "5b818eb58a0b273c4279f763af8b2c815a7527c34e2392bd9994300d0e3dda42",
+   "transcripts": [
+    "agent-a0e69c18daf526e44.jsonl"
+   ],
+   "start_sha256": "5b818eb58a0b273c4279f763af8b2c815a7527c34e2392bd9994300d0e3dda42",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "This is a long_twin_eq pair. The short form is the twin's text (479305491, #54) and the long form is the entry's text (479082481, unnumbered). The two texts are character-identical except for #54's trailing '[Entered: 09/23/2026 01:43 PM]'. Both carry the same full appellee list (Common Cause, Joel Dickson, Trisha Kent, League of Women Voters of Pennsylvania, Nicholas Maston, Gregory Perry, Lior Sternfeld, Todd Thatcher, John Thompson) and the same clerk initials (EAF). The window does contain the kind of same-type collision this lens checks for: three other numbered entries on 9/23, each a verbal extension to file brief until 10/22/2026 under L.A.R. 31.4. They are #51 (479305486, Appellee Secretary Commonwealth of Pennsylvania, MCW, 12:22 PM), #52 (479305488, NAACP Pennsylvania State Conference, NAACP and Stacey Taylor, EAF, 1:24 PM) and #53 (479305489, Mike Crossey and Pennsylvania Alliance for Retired Americans, EAF, 1:36 PM). Each names a different set of parties with no overlap with the twin's list, so none fits the twin's text as well as the entry does. There is no other unnumbered object in the window. The entry is therefore the only object in the window the twin's text can describe. Caveat for the timing/fingerprint reader, which does not produce a better text match: the entry's date_created is 2026-09-23 09:23:19 PDT, which is 12:23 PM Eastern. That is about 1 minute after #51's stamp (12:22 PM) and about 80 minutes before #54's stamp (1:43 PM), assuming the Third Circuit's stamps are in Eastern time. It is also the only unnumbered object for four same-day docketings. Together this suggests the CL object was created by an earlier same-day event (probably #51's notice) and its description was later replaced by #54's text. Psephos first held row 91090 between 21:28 and 21:33 UTC on 9/23. That is after #54 was docketed (17:43 UTC), and the row's held text is #54's. #51, #52 and #53 are held separately (rows 91353, 91354, 91355). So folding this pair would not hide a distinct entry's content."
+    }
+   ],
+   "tokens": 58953
+  },
+  {
+   "pair": "control: person pair 22",
+   "lens": "clocks",
+   "file": "dab4d9355943.json",
+   "file_sha256": "dab4d935594390d6c6d0ec098da2a730955cb4d448dd421324d0a6d5cd41c119",
+   "expected_start_sha256": "49b48faccf9db177f13c78d790d09a28fee3d59eb244eb31dd6396b9c507a457",
+   "transcripts": [
+    "agent-aef4777f254149485.jsonl"
+   ],
+   "start_sha256": "49b48faccf9db177f13c78d790d09a28fee3d59eb244eb31dd6396b9c507a457",
+   "ok": true,
+   "problems": [],
+   "attachments": [
+    "credential_org",
+    "date",
+    "deferred_tools_delta",
+    "deferred_tools_record",
+    "environment",
+    "mcp_instructions_delta",
+    "model",
+    "prompt_snapshot",
+    "remote_session_change",
+    "session_context",
+    "skill_listing",
+    "total_tokens_reminder"
+   ],
+   "tools": [
+    "Read",
+    "SubagentHandback"
+   ],
+   "reads_of_file": 1,
+   "verdicts": [
+    {
+     "n": 1,
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Shape fits one entry seen through two paths. Entry 479082481 is unnumbered, desc_source entry, time_filed null, with no [Entered] stamp. Twin 479305491 is #54, desc_source entry, time_filed null, stamped [Entered: 09/23/2026 01:43 PM]. Both have entry_at 2026-09-23 and twin_of null. 479082481 is the only unnumbered object in the 09/22-09/24 window, so nothing else competes for #54. The date_created gap is 26h42m (2026-09-23T09:23:19.626-07:00 vs 2026-09-24T12:05:52.427-07:00), which is not the minutes-apart pattern. On its own it does not mean two filings, though: #51-#54 were all created in one batch on 09/24 (12:05:52.274/.326/.378/.427), a next-day docket refresh. One clock conflict matters. 479082481 was created at 16:23:19Z (12:23 PM EDT), about 80 minutes BEFORE #54 was entered (01:43 PM EDT = 17:43Z), so it cannot have been created as a record of #54. Its creation time is about 1 minute after #51's stamp [Entered: 09/23/2026 12:22 PM] (16:22Z). It is also the only unnumbered object for four text-only entries made that day (#51 12:22, #52 01:24, #53 01:36, #54 01:43 PM). That fits an object created for #51 whose description was later overwritten with the last entry's (#54) text. psephos first held row 91090 in a run between 21:28:48Z and 21:33:12Z, after all four entries existed, so the record cannot show what the object's text was when it was created. Its current text points to #54, but its creation time points to a different minute entry. The clocks do not settle it. better_match is null because the twin (#54) cannot fit #51-#53, which are distinct numbered entries with their own stamps. #51 (479305486) matches only 479082481's creation time, not the twin's text."
+    }
+   ],
+   "tokens": 60138
+  }
+ ],
+ "pairs": {
+  "control: 2026-10-01 sample n=3": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Both texts record the same court notice. Each reads 'NOTICE FROM THE COURT: INSTRUCTIONS FOR CIVIL CASES ASSIGNED TO THE HONORABLE ELEANOR L. ROSS.' and was docketed by the same clerk (mlb) with the same filing date, 01/28/2026. It is the same kind of entry (a court notice) about the same document (Judge Ross's civil-case instructions) from the same filer on the same day. The twin's text (451857584, unnumbered) appears word for word at the start of entry #12's text (452037636). #12 adds only a second '(mlb)' and the stamp '(Entered: 01/28/2026)', so the short form names nothing that #12 does not. A clerk would read the repeated initials to mean the same clerk carried #12's text over from the unnumbered entry, either by editing it or by docketing it again with the document attached. The record supports that: CourtListener captured the unnumbered notice at 09:56 PT on 01/28, between #5 and #6 in creation order, but #12's number comes after #11, so the numbered version came from a later action that same day. That fits the unnumbered object being an earlier capture of this same notice. The record cannot show whether the court's docket still keeps the unnumbered line as a separate duplicate, but nothing in either text points to a different event. No other object in the 01/27 to 01/29 window fits the twin as well. The other unnumbered objects dated 01/28 are clerk's notations about entries 4 and 7 and an 'Order' whose text comes from a document, and none of them is a notice of instructions."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked all 20 objects in the 01/27 to 01/29 window. The twin (451857584) reads 'NOTICE FROM THE COURT: INSTRUCTIONS FOR CIVIL CASES ASSIGNED TO THE HONORABLE ELEANOR L. ROSS. (mlb)'. That is a word-for-word prefix of the long form, #12 (452037636), which only adds '(mlb). (Entered: 01/28/2026)'. The only other notice in the window is #5 (451857582), a Notice of Appearance filed by attorney Bryan Tyson for Raffensperger. That is a party filing, not a notice from the court, so it does not fit. The other numbered entries (#2-#4, #6-#11) are a summons, motions to intervene, disclosure certificates and pro hac vice applications. The unnumbered objects are clerk's notations re 4 and re 7, clerk's-office pro hac vice approvals, a bare 'Order' document (451865808) and a pro hac vice approval document (452134020). None of them could be the judge's case-assignment instructions. #12 is the only numbered entry in the window the twin can describe. One timing oddity: the twin was created 01/28 09:56 in the same batch as #3-#7, between #5 and #6, while #12 was created 01/29 and is numbered after the pro hac vice applications #8-#11. Together with the doubled '(mlb) (mlb)' in #12, this fits the same entry being edited or renumbered later. It does not point to any other entry in the window."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "The clocks point to two separate docketing acts rather than one entry seen twice, but the record does not show whether the first act still stands on the docket. (1) The twin 451857584 has no entry number, desc_source 'entry', time_filed null and date_created 2026-01-28T09:56:04.454-08:00. The entry 452037636 is #12, desc_source 'entry', time_filed null, date_created 2026-01-29T11:36:36.910-08:00. That is about 25h40m apart, not minutes. Both have entry_at 2026-01-28 and neither is twin_of any other object. (2) The twin was created in the 09:56:03.979 to 09:56:04.607 batch that also created #3 to #7. Its id falls between #5 (451857582, 09:56:04.248) and #6 (451857585, 09:56:04.504), right after the unnumbered Clerk's Notation re 4 (451857583). So the notice was on the docket without a number, between #5 and #6, at that time. (3) #8 to #11 were first created later, at 2026-01-28T11:29:34 to 11:35:06, about 1h33m after the twin. Docket numbers are assigned in order, so number 12 was given after #11. That is a later docketing act than the one the twin captured, so the twin cannot be a capture of #12. (4) The shape is also unusual: both objects are docket-entry objects, not a RECAP document object paired with its docket text. (5) The same notice text appears twice: first without a number and with document_url null, then as #12, whose text doubles the clerk's initials ('(mlb) (mlb). (Entered: 01/28/2026)'). The doubled initials suggest the same clerk re-docketed or edited the notice. The record cannot tell whether the earlier unnumbered entry was turned into #12 or removed (one entry seen in two states), or still stands beside #12 (two entries). The clocks do not support a link. (6) No other object in the window has this text. The unnumbered 'Order' document 451865808 (created 2026-01-28T10:34:05) does not fit it, so there is no better match."
+    }
+   }
+  },
+  "control: 2026-10-01 sample n=8": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Read as a clerk, 'Case Assigned' is the stock CM/ECF short description of the clerk's case-assignment event, and the long form records exactly that event: 'Case assigned to US Magistrate Judge Andrea K Johnstone. The case designation is: 1:25-cv-371-AJ ... (ed)'. The short form is fully consistent with it and names nothing the long form does not do (no other judge, party, motion or document). Both objects are dated 2025-09-25 and both are unnumbered, so their fingerprints agree. 439194969 is the only case-assignment long text in the 09/24-09/26 window. The other candidates fit worse. Entry 4 (439090829, 'NOTICE of Assignment to U.S. Magistrate Judge and Consent Form sent to plaintiff...') is a separate, numbered notice and consent-form entry, a different event, and a short form of it would carry no. 4. Entry 3 (438945550, text null) is numbered and was filed at 11:59:33 among counsel's opening filings, while the twin is unnumbered. The other 'Case Assigned' object, 439090834 (dated 09/26, 13:03:14, created that day next to 'Notice - ECF' 439090820 at 13:06:10), is itself a short form. No case-assignment long text dated 09/26 exists for it. It most plausibly records this same assignment under its entry time: entry 4 likewise carries a 09/25 date but reads 'Entered: 09/26/2025'. That makes it a second short form of the same minute entry, not a distinct event the twin belongs to. Its 09/26 date also fits the twin's 09/25 date worse than the long form does. Even if 439090834 were a distinct 09/26 event, the twin's 09/25 date would still point to 439194969. No better match."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Short form 442705043 'Case Assigned' (unnumbered, dated 2025-09-25) pairs with long form 439194969 'Case assigned to US Magistrate Judge Andrea K Johnstone. The case designation is: 1:25-cv-371-AJ...' (unnumbered, dated 2025-09-25). The short text is the first two words of the long text, and both are dated the same day. I checked every object in the window. #1 (complaint), #2 (request for summons) and #3 (text null) are not case assignments. #3 is numbered and was filed at 11:59 on 9/25, in the filer's run with #1 and #2, before the clerk's assignment work entered on 9/26. #5 is 'Summonses issued' and only mentions the magistrate-judge notice as an attachment. 439194970 is the ECF-designation notice, and its own short form is 439090820 'Notice - ECF'. The one numbered entry on a related subject is #4, 'NOTICE of Assignment to U.S. Magistrate Judge and Consent Form sent...' (dated 9/25, Entered 09/26). But #4 is a notice/consent-form document, not the case-assignment event. The 9/26 RSS batch also created #4 (439090829) and a separate unnumbered 'Case Assigned' item (439090834) within 0.3 s of each other, so 'Case Assigned' is not #4's short description. CourtListener also matches numbered items by entry number, so an item belonging to #4 would have merged into #4 instead of staying unnumbered. 439090834 has the same 'Case Assigned' text. It came from RSS and is stamped with its entry time, 9/26 13:03:14, in the same clerk session as #4 and the ECF notice; the clerk dated the assignment entries 9/25, as #4 shows. That makes it a second object for the same single case-assignment minute entry, not a separate entry and not a long form. The window holds exactly one case-assignment long form, so the pair's long form is the only entry this short form can describe."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Twin 442705043 ('Case Assigned'): entry_number null, entry_at 2025-09-25, time_filed null, date_created 2025-10-31T07:13:30.89-07:00, desc_source document, twin_of null. Entry 439194969 ('Case assigned to US Magistrate Judge Andrea K Johnstone...'): entry_number null, entry_at 2025-09-25, time_filed null, date_created 2025-09-28T03:37:17.53-07:00, desc_source entry, twin_of null. What fits one entry: both are on the same filed day, neither has a time, and neither has a number. This court's case-assignment entry is unnumbered, so no number ties them together or apart. A document-sourced short form against an entry-sourced long form is the normal shape. Neither object is already another object's twin. The clock that does not fit is date_created. The two were created about 33 days 3.5 h apart, not minutes, so the usual sign of one entry described twice is missing. Read against the window, though, the gap looks like a late copy of the same entry, not a second filing. An object dated 9/25 that first appears on 10/31 could only be a separate filing if a second case-assignment entry had been backdated by more than a month, and the window shows only one case-assignment event. (1) The 2025-09-28T03:37:17 docket batch (439194969 at .534 and 439194970 at .634, consecutive ids) created exactly one case-assignment long form for 9/24 to 9/26. (2) The timed 9/26 batch at 10:19:16 PT (439090820 'Notice - ECF' time_filed 13:06:10, 439090834 'Case Assigned' time_filed 13:03:14, #4 at .35) holds exactly one 'Case Assigned'. (3) 442705043 is the only object in the window created on 10/31. (4) On 9/25 the only unnumbered objects are these two. 439090834 (entry_at 2025-09-26, time_filed 13:03:14, created 2025-09-26T10:19:16.66) reads as a third copy of the same event, dated by the day it was entered. It is a short form, not a different minute entry, and its clocks fit the twin worse: a different day and about 35 days apart. So it is not a better match. #4 (numbered, 'NOTICE of Assignment to U.S. Magistrate Judge...', created 2025-09-26T10:19:16.35) and #3 (numbered, time_filed 11:59:33, in the 11:48:52 to 11:59:33 run with filer entries #1 and #2) are both numbered while the twin is unnumbered, so neither is a better home. Residual risk: with time_filed null on both objects, the clocks alone cannot rule out a later-entered, backdated second 'Case Assigned' entry. Nothing in the record shows one."
+    }
+   }
+  },
+  "control: person pair 4": {
+   "outcome": "unanimous",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The short form 'Notice of Correction' (452851121, unnumbered, desc_source document, created 2026-02-05 10:55 PT) is just the CM/ECF event name of the long form 'Notice of Correction re 18, 19, 20 : Documents filed as PDF fillable forms. Filing attorney reminded to only upload standard PDFs. Clerk has corrected. No further action needed. (jenjones, )' (452844429, unnumbered, desc_source entry, created 10:12 PT the same day). They match on the kind of entry (a clerk's notice of correction) and on the day (entry_at 2026-02-05 for both). The short form names no party, document number or action that the long form lacks, so it is fully consistent with it. The short form has nothing to go on except its type, so I checked the window for another notice on the same day that it could belong to. There is none. The other objects in the window (452672252, 452676748, 452681283, 452681284, which are entries 18-21) are pro hac vice motions entered 02/04, not notices. The window also points to a single round of corrections on 2/5. Entries 18, 19 and 20 each read 'Main Document ... replaced on 2/5/2026 (jenjones)', which are exactly the documents the long-form notice covers. Entry 21, filed with them, shows no replacement. So nothing suggests a second notice of correction that day. One caveat: the twin was created 43 minutes after the long form, and its generic label alone cannot rule out a later notice that CourtListener holds only in short form. Nothing in this record suggests such a notice, so I read this as one minute entry."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "The window (2026-02-04 to 2026-02-06) holds six objects. Four are numbered entries #18, #19, #20 and #21 (cl 452672252, 452676748, 452681283, 452681284). All four are a 'Motion to appear Pro Hac Vice' entered 02/04. The other two are the pair's own objects, both dated 2/5 and both unnumbered: the long form 452844429 ('Notice of Correction re 18, 19, 20 : Documents filed as PDF fillable forms... (jenjones, )', desc_source entry, created 10:12:11 PT) and the short form 452851121 ('Notice of Correction', desc_source document, created 10:55:51 PT). The short form names a clerk's notice of correction. That type cannot describe any of the four PHV motions, and no other notice, correction, order or minute entry appears anywhere in the window. The pair's long form is therefore the only object the short form can describe. The record also shows no sign of a second same-day correction, such as one re #21. #18, #19 and #20 each carry a 'Main Document N replaced on 2/5/2026 (jenjones)' note that matches the long form's 're 18, 19, 20'. #21 carries no such note. Some points fall outside this lens and are for the other readers: the short form was created about 44 minutes after the long form rather than before it, and the long form is itself unnumbered, which is normal for a clerk's notice of correction. The window cannot rule out a later same-day notice that CourtListener never held in long form, but nothing in the record points to one. No alternative match."
+    },
+    "clocks": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Clocks: twin 452851121 has entry_number null, time_filed null, date_created 2026-02-05T10:55:51.91-08:00, desc_source 'document' and twin_of null. Entry 452844429 has entry_number null, time_filed null, date_created 2026-02-05T10:12:11.69-08:00, desc_source 'entry' and twin_of null. Both have entry_at 2026-02-05. They were created the same morning, 43m40s apart, with the long form first. The object IDs rise in the same order and at a rate that fits these timestamps, so the clocks agree with each other. Shape: the pair has the usual look of one entry recorded twice. One object holds the docket text ('entry') and the other is an unnumbered RECAP-document object ('document') with a short description of the same type, and neither is already twinned to another object. It is normal for a clerk's Notice of Correction to be unnumbered, so the long form having no number is not a warning sign. The long form's text also lacks the '(Entered: ...)' suffix that report-sourced text carries on entries 18-21 here, which points to a same-day capture as the entry was made. Window: no other object is dated 2026-02-05 or 2026-02-06. The only other objects are entries 18-21, numbered pro hac vice motions created 2026-02-04 between 09:58 and 10:12 PST. So no competing notice exists that the short form could belong to. For these to be two separate notices, the first would have to be caught only in long form and a second only in short form, with no other trace. Nothing in the clocks points to that. Caveats: 43m40s is longer than the few-minute gap typical of one entry recorded twice. time_filed is null on both. With both objects unnumbered, no entry number ties them together. Both rows were first held in the same run range (seen_at 2026-07-05T02:40:23Z to seen_by 09:35:02Z, relation undetermined), which tells us nothing either way. Overall, a gap of under an hour on the same morning fits two capture paths with different delays better than two separate filings."
+    }
+   }
+  },
+  "control: person pair 5": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "A docket clerk would read the short form 'Initial Case Assignment' (twin 451291760) as the name of the CM/ECF event that the long form records: 'Initial Case Assignment to District Judge Roderick C. Young. (adun, )' (entry 450807435). The long form starts with the short form word for word and adds only the judge's name and the clerk's initials. Both rows have entry_at 2026-01-16. The short form names no party, judge, motion or document that the long form lacks, so the two texts don't conflict. A case gets an initial assignment only once; later changes are reassignments. Besides the pair itself, the window holds only entry 1 (Complaint, 450666528) and entry 2 (Proposed Summons, 450666529), and neither is a case assignment. So no other object in the window fits the short form as well. One caveat: the short form is generic and doesn't name a judge. It could only be confused with a second assignment entry on the same day, such as one to a magistrate judge, and the window holds no such entry. The objects were created 3 days apart (01-20 for the long form, 01-23 for the short form). That is a question about where the rows came from, which is outside this lens, and the texts don't contradict each other."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "I checked every object in the same_docket_window (2026-01-15 to before 2026-01-18). There are four, all with entry_at 2026-01-16. (1) 450666528, #1: 'Complaint under Civil Rights Act of 1960, filed by UNITED STATES...' with a civil cover sheet attachment. (2) 450666529, #2: 'Proposed Summons re 1 Complaint'. (3) 450807435, unnumbered: 'Initial Case Assignment to District Judge Roderick C. Young. (adun, )'. This is the pair's long form. (4) 451291760, unnumbered: 'Initial Case Assignment'. This is the short form itself. The short text names a specific CM/ECF event, the initial case assignment. The complaint and the proposed summons are different events, so the short form cannot describe either one. There is no second assignment or reassignment entry in the window, and no other order, notice or minute entry it could fit. The short text is also an exact word-for-word prefix of the long form's text. So the long form is the only object in the window the short form can describe, and better_match is null. One note outside this lens, which does not change the alternative-match answer: the two objects' date_created values are about 3 days apart (2026-01-20 07:53 and 2026-01-23 05:49 PST), not minutes, and relation is 'undetermined'. The timing reader should weigh that."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Shape fits one unnumbered minute entry seen twice. Twin 451291760 has entry_number null, time_filed null, desc_source 'document' and the short text. Entry 450807435 has entry_number null, time_filed null, desc_source 'entry' and the long text. Both have entry_at 2026-01-16. twin_of is null on every object in the window, so neither object is already another object's twin. The clocks do not confirm the pair, though. date_created is 2026-01-20T07:53:08.063-08:00 for the long form and 2026-01-23T05:49:47.440-08:00 for the short form. That is about 69.9 hours apart, not minutes. Both come about 3.6 and 6.5 days after the same-day capture of #1 (2026-01-16T17:32:03.840) and #2 (2026-01-16T17:32:03.909). So they are two separate later captures, and their date_created values record when CourtListener took them in, not when anything was filed. That explains the gap but does not settle the pair. Neither object has an entry_number or a time_filed, so nothing in the clocks ties the Jan 23 short form to this assignment entry rather than to another 01/16 entry of the same type whose long form CourtListener does not hold. Nothing in the clocks points to a second filing either. Both psephos rows were first held in the same run range (seen_at 2026-07-05T02:40:23, seen_by 2026-07-05T09:35:02), with relation 'undetermined', which tells the two cases apart no better. The only other objects in the window are numbered #1 (Complaint) and #2 (Proposed Summons). Neither fits 'Initial Case Assignment', so there is no better match. The clocks and shape are consistent with one entry but lack the minutes-apart creation that would confirm it, so the verdict is uncertain rather than yes."
+    }
+   }
+  },
+  "control: person pair 15": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "Identity lens. Apart from #40's '[Entered: 09/09/2026 03:31 PM]' stamp, the twin's text (477827680, entry #40) and the entry's text (477374891, unnumbered) match word for word. Both record the same kind of event (HARD COPY RECEIVED) for the same document (Joint Appendix, Volume 2 ONLY), the same party (Appellant USA), the same copy count (4), the same clerk initials (EAF) and the same day (09/09/2026). Neither text names anything the other does not do. No other object in the window fits as well. #38 is the 9/8 electronic filing of the Joint Appendix (Vol I and II). #39 is hard copies of the Brief (7 copies, KEL). #41 and its unnumbered twin 477406289 are the clerk's text order asking for Volume I copies. The numbered entries for 9/9 run #39, #40, #41 with no gap, and the window holds no other Joint Appendix hard-copy entry, numbered or not. So there is no distinct live entry the unnumbered object could belong to instead. A caveat for the timing reader (not an identity conflict): 477374891 was created at 2026-09-09T10:15:41-07:00, which is 1:15 PM Eastern. That is about 2h16m BEFORE #40's Entered stamp of 3:31 PM. Read as Eastern, every other object in the window was created after its Entered time (for example, unnumbered text order 477406289 at 3:34:39 PM Eastern vs #41 entered at 3:33 PM). The gap may mean the same receipt was docketed earlier and later replaced, or that the object's text was updated later. It does not point to a second live entry, because the 9/14 docket fetch that created #40 and #41 shows only one such entry."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "This is a long_twin_eq pair. The short form is the twin's text, numbered entry #40 (477827680). The long form is the entry's text, unnumbered object 477374891. The two texts are identical except for the '[Entered: 09/09/2026 03:31 PM]' stamp on #40. I checked every object in the window from 09/08 to 09/10. #36 (477217657) is an entry of appearance. #37 (477228512) is the electronic brief. #38 (477228815) is the electronic Joint Appendix Vol I and II, filed 09/08: that is the e-filing, not a hard-copy receipt. #39 (477382955) is a different hard-copy receipt: Brief, 7 copies, clerk KEL, against Joint Appendix, 4 copies, Volume 2 only, EAF. #41 (477827681) and its matching unnumbered object 477406289 are the clerk's text order directing 4 hard copies of JA Volume I, not a receipt of Volume 2. Numbers #36 to #41 run without a gap, and #40 is the only Joint Appendix hard-copy receipt among them. No numbered entry other than the pair fits this text as well, so this lens finds no better match. One timing oddity is outside this lens and does not point to a better match by text. 477374891 was created 2026-09-09 10:15:41 PDT, which is about 1:15 PM ET. That is about 2h16m before #40's stamped entry time of 3:31 PM ET, and about 3.5 minutes after #39 was entered at 1:12 PM ET. For comparison, 477406289 was created about 1.5 minutes after #41's entry. Because #39's text describes a different document, I do not name it as better_match. The timing lens may want to weigh this gap, for example a possible delete-and-re-enter of the same receipt."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Entry 477374891 is unnumbered, time_filed null, desc_source entry, date_created 2026-09-09T10:15:41-07:00 (17:15:41Z, 1:15 PM EDT), twin_of null. Twin 477827680 is entry_number 40, time_filed null, desc_source entry, date_created 2026-09-14T05:20:09.948-07:00, stamped [Entered: 09/09/2026 03:31 PM] (19:31Z), twin_of null. Supports one entry: the 4d19h date_created gap looks like a refresh artifact, not a second filing. #40 and #41 (477827681, 05:20:10.000-07:00) were created 52 ms apart in one 09/14 re-ingest. The sibling unnumbered 477406289 (12:34:39-07:00 = 19:34:39Z, 1m39s after #41's 03:33 PM stamp, same text as #41) shows the same unnumbered-early/numbered-late split. Numbers 36-41 are contiguous, with exactly one Joint Appendix hard-copy receipt (#40); no other window object carries this text. Against: the stamps are Eastern, since #36-#38 were created 57s-1m50s after their stamps, yet 477374891 was created about 2h15m BEFORE #40's 03:31 PM stamp. So when it was created it was not a later sighting of #40 as entered. Its clock instead fits an event around 1:12-1:15 PM: it is 3.5 min after #39's 01:12 PM stamp, but #39 is the Brief hard copy (7 copies, KEL) with its own object 477382955, so its text does not fit. The record cannot tell whether this was an earlier docketing of the same receipt that was re-entered at 3:31 PM (one entry) or an object whose text CL later rewrote to #40's. Shape fits one entry but this clock conflict is unexplained, so uncertain. better_match null: no other window object fits the twin's text."
+    }
+   }
+  },
+  "control: person pair 22": {
+   "outcome": "split",
+   "votes": {
+    "identity": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "long_twin_eq. The twin's text (479305491, numbered entry 54) and the entry's text (479082481, unnumbered) match word for word. The only difference is the twin's trailing CM/ECF stamp '[Entered: 09/23/2026 01:43 PM]', which is docketing metadata, not a substantive claim the other text lacks. Read as a clerk, both record the same event: the same act (a clerk's verbal grant of an extension of time to file brief under 3d Cir. L.A.R. 31.4), the same document (the appellees' brief), the same new due date (10/22/2026), the same nine-party appellee group (Common Cause, Dickson, Kent, League of Women Voters of PA, Maston, Perry, Sternfeld, Thatcher, Thompson), the same clerk initials (EAF) and the same day (both entry_at 2026-09-23). This pair is not matched on type alone. The same-day window holds three other verbal extensions of the same type to the same date, but each names a different party: 51 is the Secretary of the Commonwealth (MCW, 12:22 PM), 52 is NAACP PA State Conference/NAACP/Stacey Taylor (EAF, 1:24 PM) and 53 is Crossey/PA Alliance for Retired Americans (EAF, 1:36 PM). None fits this text. Only entry 54 does, so there is no better match. One flag outside this lens for the timing reader: 479082481's date_created is 09:23:19 PDT, which is 12:23 PM EDT. Assuming the stamps are Eastern court time, that is about 80 minutes before entry 54's 1:43 PM stamp and one minute after entry 51's 12:22 PM stamp, so the object's text was probably rewritten after it was created. That does not make the two texts record different events. psephos first held row 91090 at 21:28 UTC (5:28 PM EDT), after 1:43 PM, already with the Common Cause text, and the window's current text is the same. Numbered entries 51-54 run without a gap and no other object carries this text. Entry 51 keeps its own numbered object, so folding takes no distinct entry off the page."
+    },
+    "alternative": {
+     "same_entry": "yes",
+     "better_match": null,
+     "reasoning": "This is a long_twin_eq pair. The short form is the twin's text (479305491, #54) and the long form is the entry's text (479082481, unnumbered). The two texts are character-identical except for #54's trailing '[Entered: 09/23/2026 01:43 PM]'. Both carry the same full appellee list (Common Cause, Joel Dickson, Trisha Kent, League of Women Voters of Pennsylvania, Nicholas Maston, Gregory Perry, Lior Sternfeld, Todd Thatcher, John Thompson) and the same clerk initials (EAF). The window does contain the kind of same-type collision this lens checks for: three other numbered entries on 9/23, each a verbal extension to file brief until 10/22/2026 under L.A.R. 31.4. They are #51 (479305486, Appellee Secretary Commonwealth of Pennsylvania, MCW, 12:22 PM), #52 (479305488, NAACP Pennsylvania State Conference, NAACP and Stacey Taylor, EAF, 1:24 PM) and #53 (479305489, Mike Crossey and Pennsylvania Alliance for Retired Americans, EAF, 1:36 PM). Each names a different set of parties with no overlap with the twin's list, so none fits the twin's text as well as the entry does. There is no other unnumbered object in the window. The entry is therefore the only object in the window the twin's text can describe. Caveat for the timing/fingerprint reader, which does not produce a better text match: the entry's date_created is 2026-09-23 09:23:19 PDT, which is 12:23 PM Eastern. That is about 1 minute after #51's stamp (12:22 PM) and about 80 minutes before #54's stamp (1:43 PM), assuming the Third Circuit's stamps are in Eastern time. It is also the only unnumbered object for four same-day docketings. Together this suggests the CL object was created by an earlier same-day event (probably #51's notice) and its description was later replaced by #54's text. Psephos first held row 91090 between 21:28 and 21:33 UTC on 9/23. That is after #54 was docketed (17:43 UTC), and the row's held text is #54's. #51, #52 and #53 are held separately (rows 91353, 91354, 91355). So folding this pair would not hide a distinct entry's content."
+    },
+    "clocks": {
+     "same_entry": "uncertain",
+     "better_match": null,
+     "reasoning": "Shape fits one entry seen through two paths. Entry 479082481 is unnumbered, desc_source entry, time_filed null, with no [Entered] stamp. Twin 479305491 is #54, desc_source entry, time_filed null, stamped [Entered: 09/23/2026 01:43 PM]. Both have entry_at 2026-09-23 and twin_of null. 479082481 is the only unnumbered object in the 09/22-09/24 window, so nothing else competes for #54. The date_created gap is 26h42m (2026-09-23T09:23:19.626-07:00 vs 2026-09-24T12:05:52.427-07:00), which is not the minutes-apart pattern. On its own it does not mean two filings, though: #51-#54 were all created in one batch on 09/24 (12:05:52.274/.326/.378/.427), a next-day docket refresh. One clock conflict matters. 479082481 was created at 16:23:19Z (12:23 PM EDT), about 80 minutes BEFORE #54 was entered (01:43 PM EDT = 17:43Z), so it cannot have been created as a record of #54. Its creation time is about 1 minute after #51's stamp [Entered: 09/23/2026 12:22 PM] (16:22Z). It is also the only unnumbered object for four text-only entries made that day (#51 12:22, #52 01:24, #53 01:36, #54 01:43 PM). That fits an object created for #51 whose description was later overwritten with the last entry's (#54) text. psephos first held row 91090 in a run between 21:28:48Z and 21:33:12Z, after all four entries existed, so the record cannot show what the object's text was when it was created. Its current text points to #54, but its creation time points to a different minute entry. The clocks do not settle it. better_match is null because the twin (#54) cannot fit #51-#53, which are distinct numbered entries with their own stamps. #51 (479305486) matches only 479082481's creation time, not the twin's text."
+    }
+   }
+  }
+ },
+ "tokens": 1011542
+}

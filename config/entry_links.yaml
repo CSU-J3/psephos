@@ -19,11 +19,12 @@ rule: same-run strict-B v1
 # link_entry_twins --apply refuses unless `result` is pass and the check still describes
 # the rule's pool: a full read names every pair in it, a sample is what its seed redraws.
 #
-# 2026-10-02: a FULL READ of the rule's 7 pairs, PASS (Corey's rulings of 2026-10-02, 1a
-# and 1b). The first-load test leaves the rule the 7 pairs a later poll held, too few to
-# draw 20 from, so all 7 were read by three independent readers each, one lens per reader,
-# the 2026-10-01 lens prompts word for word. All 21 reads were yes and none named a better
-# match. docs/findings/r1-first-load-2026-10-02.md has the reads.
+# 2026-10-03: a BLIND FULL READ of the rule's 7 pairs, PASS (Corey's rulings of 2026-10-03,
+# ruling 3c). Each reader started from tools/reader_launcher.txt rendered for its lens and
+# its file, launched by the Agent tool, and every reader passed tools/reader_launch.py's
+# check. Each file held one pair, named by its content hash, with the pair's own link
+# hidden. All 21 reads were yes and none named a better match. The record is
+# docs/reads/2026-10-03-blind-links.json; docs/findings/r1-blind-reads-2026-10-03.md.
 checked:
   full: true
   seed: null
@@ -33,10 +34,16 @@ checked:
   walks_through: "2026-10-01T06:13:55.897859+00:00"
   result: pass
   bar: "pass = all three readers read one minute entry and none names a better match (set before the 2026-10-01 read)"
-  read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_6461b558-288)"
-  on: "2026-10-02"
+  read_by: "three readers per pair, lenses identity / alternative match / clocks, launched blind (launcher sha256 b6f45a4c2975, docs/reads/2026-10-03-blind-links.json)"
+  on: "2026-10-03"
 
 # Earlier checks, kept as the record. The script reads only `checked`.
+#
+# 2026-10-02: a FULL READ of the rule's 7 pairs, PASS: all 21 reads yes, none naming a
+# better match (Corey's rulings of 2026-10-02, 1a and 1b; r1-first-load-2026-10-02.md).
+# Each launch named its pair ("pair n=X"), and the relayed brief's "n=3 ... split list"
+# collided with one of the 7's own label, so its reads left the tallies (ruling 2 of
+# 2026-10-03, docs/findings/r1-reads-sorted-2026-10-03.md) and were read again blind above.
 #
 # 2026-10-01: FAIL on the bar set before the read. 18 of the 20 were read as one minute
 # entry by all three readers. n=3 (rows 13595/13771) and n=8 (rows 5419/5457) were read
@@ -60,6 +67,16 @@ checks_before:
     bar: "pass = all three readers read one minute entry and none names a better match (set before the read)"
     read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_51856ac1-7b7)"
     on: "2026-10-01"
+  - full: true
+    seed: null
+    pool: 7
+    pairs: [[5677, 5689], [12886, 12894], [17161, 17167], [57249, 57258], [67589, 67651],
+            [77471, 77602], [87130, 87131]]
+    walks_through: "2026-10-01T06:13:55.897859+00:00"
+    result: pass
+    bar: "pass = all three readers read one minute entry and none names a better match (set before the 2026-10-01 read)"
+    read_by: "three independent readers per pair, lenses identity / alternative match / clocks (Claude session, workflow wf_6461b558-288); each launch named its pair"
+    on: "2026-10-02"
 
 # Pairs never linked, whatever the rule says.
 refused:
@@ -93,5 +110,8 @@ asserted:
   # Found 2026-10-03: those reads are not independent of the verdict. The workflow
   # harness handed each reader Corey's brief, which said 93225 stays the duplicate, and
   # two of the three cited it (docs/findings/r1-batching-control-2026-10-03.md).
+  # Read again BLIND 2026-10-03 (ruling 3b): all three readers yes, none naming a better
+  # match (docs/reads/2026-10-03-blind-links.json). The link stands on the order's text
+  # either way.
   - rows: [93145, 93225]
     ruled: "Corey, 2026-10-02 (the 2026-09-29 duplicate verdict, and three passing reads)"

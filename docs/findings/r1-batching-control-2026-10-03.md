@@ -4,6 +4,8 @@
 
 **The read was not blind.** The workflow harness handed every reader Corey's brief, which stated the rule and named pair 22's finding. The branch rests on pair 22's read (below).
 
+**Superseded the same day (Corey's rulings, 2026-10-03, ruling 3a).** The control was read again blind, from the launcher, by the Agent tool, on these same files. 2 of the 6 changed, and the rule gave a. Pair 22 read split again. See `r1-blind-reads-2026-10-03.md`.
+
 ## The rule, stated before the read (Corey, 2026-10-03)
 
 - **a.** At least 2 of the 6 change outcome under single-pair re-reads: splits are unstable under any re-read. Adopt batching for the 239. Every split still goes to Corey, and his random check grows from five to ten, drawn from the batched unanimous passes.
