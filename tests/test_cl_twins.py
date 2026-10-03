@@ -386,3 +386,187 @@ def test_a_full_read_links_its_pool_and_refuses_once_the_pool_grows(tmp_path, mo
     assert L.main(["--apply"]) == 0
     assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 2
     assert L.main(["--apply"]) == 0               # and the full read still covers its pool after
+
+
+# --------------------------------------------------------------------------- #
+# Links the rule did not propose (Corey's rulings, 2026-10-03, R1 plans and splits, ruling 4)
+# --------------------------------------------------------------------------- #
+from tools import reader_launch as RL  # noqa: E402
+
+PHV = "Order on Motion to Appear Pro Hac Vice"
+AMICUS = "Order on Motion to File Amicus Brief"
+# Docket text the rule never pairs with either: "ENDORSED" is no order head it knows.
+ENDORSED = ("ENDORSED ORDER granting 7 Motion for A to Appear Pro Hac Vice; granting 8 Motion for B "
+            "to Appear Pro Hac Vice; granting 9 Motion to File Amicus Brief")
+EMPTY_POOL = {"full": True, "seed": None, "pool": 0, "pairs": [], "walks_through": None,
+              "result": "pass", "read_by": "reader", "on": "2026-10-03"}
+
+
+def _read(tmp_path, outcomes, ok=True, sha=None, name="run.json"):
+    """A blind run's record as tools.reader_launch writes it, reduced to what the script reads."""
+    path = tmp_path / name
+    path.write_text(json.dumps({"ok": ok, "launcher": {"sha256": sha or RL.launcher()["sha256"]},
+                                "pairs": {k: {"outcome": v} for k, v in outcomes.items()}}), encoding="utf-8")
+    return str(path)
+
+
+def _read_link(rows, read, kind="plan", label=None):
+    return {"rows": rows, "kind": kind, "read": read, "label": label or f"{rows[0]}>{rows[1]}",
+            "ruled": "Corey, 2026-10-03"}
+
+
+def _trio(tmp_path, root_source="entry"):
+    """Two descriptions and the docket text, on one day the docket's first load did not hold."""
+    conn = _db(tmp_path)
+    _hold(conn, 1, PHV, 101)
+    _hold(conn, 2, AMICUS, 102)
+    _hold(conn, 3, ENDORSED, 103)
+    conn.execute("UPDATE cl_entries SET desc_source = ? WHERE cl_entry_id = 103", (root_source,))
+    conn.commit()
+    assert tw.strict_b([dict(_row(1, PHV)), dict(_row(2, AMICUS)), dict(_row(3, ENDORSED))])[0] == []
+    return conn
+
+
+def test_a_read_link_the_rule_did_not_propose_links_by_its_kind(tmp_path, monkeypatch):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous"})
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": [_read_link([1, 3], read)]}
+    p = L.plan(conn, links)
+    assert [(x["rows"], x["by"]) for x in p["link"]] == [([1, 3], "plan: blind read run.json 1>3")]
+    assert p["unread"] == [] and p["person"] == []
+    conn.close()
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 0
+    o = get().execute("SELECT twin_of, twin_rule FROM cl_entries WHERE cl_entry_id = 101").fetchone()
+    assert tuple(o) == (103, "plan: blind read run.json 1>3")
+    assert L.main(["--apply"]) == 0                                # idempotent: linked already
+
+
+@pytest.mark.parametrize("change, why", [
+    ({"outcome": "split"}, "its read did not pass"),
+    ({"ok": False}, "its run failed the check"),
+    ({"sha": "0" * 64}, "not read under the stored launcher"),
+    ({"label": "2>3"}, "its label names other rows"),
+    ({"kind": "short_long"}, "kind short_long, where the rule's is plan"),
+    ({"read": "missing.json"}, "no run record"),
+])
+def test_a_read_link_without_a_passing_read_waits_and_refuses_apply(tmp_path, monkeypatch, change, why):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": change.get("outcome", "unanimous"), "2>3": "unanimous"},
+                 ok=change.get("ok", True), sha=change.get("sha"))
+    spec = _read_link([1, 3], str(tmp_path / change["read"]) if "read" in change else read,
+                      kind=change.get("kind", "plan"), label=change.get("label"))
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": [spec]}
+    p = L.plan(conn, links)
+    assert p["link"] == [] and [(x["rows"], x["why"]) for x in p["unread"]] == [([1, 3], why)]
+    conn.close()
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 2
+    assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 0
+
+
+def test_several_read_links_share_one_docket_text_root(tmp_path, monkeypatch):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous", "2>3": "unanimous"})
+    links = {**LINKS, "checked": EMPTY_POOL,
+             "read_links": [_read_link([1, 3], read), _read_link([2, 3], read)]}
+    p = L.plan(conn, links)
+    assert sorted(x["rows"] for x in p["link"]) == [[1, 3], [2, 3]] and p["would_chain"] == []
+    conn.close()
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 0
+    c = get()
+    assert [tuple(r) for r in c.execute("SELECT cl_entry_id, twin_of FROM cl_entries "
+                                        "WHERE cl_entry_id IN (101, 102, 103) ORDER BY 1")] == \
+        [(101, 103), (102, 103), (103, None)]
+    # The three objects present as one entry, the docket text's.
+    assert c.execute("SELECT COUNT(*) FROM items WHERE merged_into IS NULL AND occurred_at = ?",
+                     (DAY,)).fetchone()[0] == 1
+
+
+def test_apply_refuses_while_the_config_holds(tmp_path, monkeypatch):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous"})
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": [_read_link([1, 3], read)],
+             "hold": "until Corey's line on his ten"}
+    assert [x["rows"] for x in L.plan(conn, links)["link"]] == [[1, 3]]     # planned, not applied
+    conn.close()
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 2
+    assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 0
+
+
+def test_a_shared_group_waits_whole_when_one_link_lacks_a_passing_read(tmp_path, monkeypatch):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous", "2>3": "split"})
+    links = {**LINKS, "checked": EMPTY_POOL,
+             "read_links": [_read_link([1, 3], read), _read_link([2, 3], read)]}
+    p = L.plan(conn, links)
+    assert p["link"] == []
+    assert sorted((x["rows"], x["why"]) for x in p["unread"]) == [
+        ([1, 3], "another link to its root lacks a passing read"), ([2, 3], "its read did not pass")]
+    conn.close()
+    get = _env(tmp_path, monkeypatch, links)
+    assert L.main(["--apply"]) == 2
+    assert get().execute("SELECT COUNT(*) FROM cl_entries WHERE twin_of IS NOT NULL").fetchone()[0] == 0
+
+
+def test_a_read_link_joins_two_objects_of_one_docket_and_day(tmp_path):
+    conn = _trio(tmp_path)
+    _hold(conn, 4, PHV + " (re-described)", 101, fetched="2026-07-20T19:31:40Z")   # 101's second row
+    _hold(conn, 5, ENDORSED, 105, day="2026-07-21T00:00:00")
+    read = _read(tmp_path, {"1>4": "unanimous", "1>5": "unanimous"})
+    p = L.plan(conn, {**LINKS, "read_links": [_read_link([1, 4], read), _read_link([1, 5], read)]})
+    assert p["link"] == [] and sorted((x["rows"], x["why"]) for x in p["unread"]) == [
+        ([1, 4], "one object"), ([1, 5], "not one docket and day")]
+
+
+def test_a_refusal_wins_over_a_passing_read(tmp_path):
+    conn = _trio(tmp_path)
+    read = _read(tmp_path, {"1>3": "unanimous"})
+    p = L.plan(conn, {**LINKS, "refused": [{"rows": [3, 1]}], "read_links": [_read_link([1, 3], read)]})
+    assert p["link"] == [] and [x["rows"] for x in p["refused"]] == [[1, 3]]
+
+
+def test_a_shared_root_must_be_docket_text(tmp_path):
+    conn = _trio(tmp_path, root_source="document")
+    read = _read(tmp_path, {"1>3": "unanimous", "2>3": "unanimous"})
+    p = L.plan(conn, {**LINKS, "read_links": [_read_link([1, 3], read), _read_link([2, 3], read)]})
+    assert p["link"] == [] and sorted(x["rows"] for x in p["would_chain"]) == [[1, 3], [2, 3]]
+
+
+def test_a_rule_link_never_shares_a_root_with_a_read_link_in_one_run(tmp_path):
+    conn = _db(tmp_path)
+    _hold(conn, 1, SHORT, 101)                                    # the rule's same-run pair
+    _hold(conn, 2, LONG, 102)
+    _hold(conn, 3, PHV, 103)
+    conn.execute("UPDATE cl_entries SET desc_source = 'entry' WHERE cl_entry_id = 102")
+    conn.commit()
+    read = _read(tmp_path, {"3>2": "unanimous"})
+    p = L.plan(conn, {**LINKS, "read_links": [_read_link([3, 2], read)]})
+    assert p["link"] == [] and sorted(x["rows"] for x in p["would_chain"]) == [[1, 2], [3, 2]]
+
+
+def test_a_read_link_settles_a_rule_pair_that_waited_for_a_person(tmp_path):
+    """A first-load pair the rule makes waits for a person; a passing blind read links it,
+    labelled by the rule's own kind."""
+    conn = _db(tmp_path)
+    _docket(conn)
+    _hold(conn, 11, SHORT, 111, case="72000000")
+    _hold(conn, 12, LONG, 112, case="72000000")
+    read = _read(tmp_path, {"11/12": "unanimous"})
+    p = L.plan(conn, {**LINKS, "read_links": [_read_link([11, 12], read, kind="short_long", label="11/12")]})
+    assert p["person"] == []
+    assert [(x["rows"], x["by"]) for x in p["link"]] == [([11, 12], "short_long: blind read run.json 11/12")]
+
+
+def test_the_committed_read_links_carry_passing_blind_reads():
+    """No DB: every committed read link names a run that passed the check under the stored
+    launcher and read the link unanimous."""
+    links = L.load_links()
+    sha = RL.launcher()["sha256"]
+    for spec in links.get("read_links") or []:
+        rec = L._load_read(spec["read"])
+        assert rec and rec["ok"] is True and rec["launcher"]["sha256"] == sha, spec
+        assert L._label_rows(spec["label"], spec["rows"]), spec
+        assert rec["pairs"][spec["label"]]["outcome"] == "unanimous", spec

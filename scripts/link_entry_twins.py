@@ -37,6 +37,18 @@ no pair the rule sees now refuse --apply (something moved under a person's rulin
 `refused` so the rule does not remake it. Everything that writes, or writes the reader's
 or the person's list, runs against Turso only.
 
+LINKS THE RULE DID NOT PROPOSE (Corey's rulings, 2026-10-03, R1 plans and splits, ruling 4):
+  * `read_links` in config/entry_links.yaml names a link by its rows, twin first, with its
+    kind (the rule's own kind when the rule makes the pair, else 'plan') and the blind read
+    that passed it: a run record in docs/reads/ and the link's label there. It links only
+    when that run passed tools.reader_launch's check, under the stored launcher, and reads
+    the link unanimous. Its twin_rule names its kind and its read.
+  * Several links may share one root in a run when the root is docket text and every link
+    to it carries a passing read. If any link to that root lacks one, the whole group waits,
+    and --apply refuses while any read link lacks a passing read.
+  * `hold` in the config, when set, refuses --apply and says why (ruling 5: nothing is
+    applied until Corey's line on his ten, then everything ruled in one move).
+
 Usage (repo root):
     python -m scripts.link_entry_twins                    # dry run: counts and the plan
     python -m scripts.link_entry_twins --sample 20 OUT.json [--seed N]
@@ -51,6 +63,7 @@ from __future__ import annotations
 import json
 import random
 import sys
+from collections import Counter
 from pathlib import Path
 
 import yaml
@@ -60,8 +73,10 @@ import config
 import db
 from collectors import cl_fold
 from collectors import cl_twins as tw
+from tools import reader_launch as RL
 
 LINKS = Path("config/entry_links.yaml")
+REPO = Path(__file__).resolve().parents[1]
 DEFAULT_SEED = 20260930
 
 
@@ -77,6 +92,61 @@ def _root(pair: dict) -> tuple[int, int]:
         return a, b                      # edges are (short, long)
     la, lb = len(tw.ntext(ta)), len(tw.ntext(tb))
     return (a, b) if (la, -a) < (lb, -b) else (b, a)
+
+
+def _load_read(path: str | None) -> dict | None:
+    """A blind run's record (tools.reader_launch check --out), or None."""
+    if not path:
+        return None
+    p = Path(path) if Path(path).is_absolute() else REPO / path
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+
+
+def _label_rows(label: str | None, rows: list[int]) -> bool:
+    """A read's label names the link's rows: 'TWIN>ROOT' in that order, or 'A/B' either way."""
+    try:
+        if ">" in label:
+            return [int(x) for x in label.split(">")] == list(rows)
+        return sorted(int(x) for x in label.split("/")) == sorted(rows)
+    except (TypeError, ValueError):
+        return False
+
+
+def read_link(spec: dict, byid: dict, launcher_sha: str) -> dict:
+    """One `read_links` entry as a link. `why` is set when it does not carry a passing read."""
+    rows = list(spec.get("rows") or [])
+    x = {"rows": rows, "kind": spec.get("kind"), "read": spec.get("read"),
+         "label": spec.get("label"), "ruled": spec.get("ruled"), "why": None}
+    a, b = (byid.get(r) for r in rows) if len(rows) == 2 else (None, None)
+    if a is None or b is None or a["cl_entry_id"] is None or b["cl_entry_id"] is None:
+        x["why"] = "a row not held, or not attached to an object"
+        return x
+    x.update(case_id=a["case_id"], entry_at=a["entry_at"], relation=None,
+             objects=[a["cl_entry_id"], b["cl_entry_id"]], texts=[a["description"], b["description"]],
+             twin=a["cl_entry_id"], entry=b["cl_entry_id"])
+    x["by"] = f"{x['kind']}: blind read {Path(x['read'] or '').name} {x['label']}"
+    rule_kind = next((k for s, l, k in tw.edges_for_day([a, b]) if {s, l} == set(rows)), None) or "plan"
+    rec = _load_read(x["read"])
+    if x["twin"] == x["entry"]:
+        x["why"] = "one object"
+    elif (a["case_id"], a["entry_at"]) != (b["case_id"], b["entry_at"]):
+        x["why"] = "not one docket and day"
+    elif x["kind"] != rule_kind:
+        x["why"] = f"kind {x['kind']}, where the rule's is {rule_kind}"
+    elif rec is None:
+        x["why"] = "no run record"
+    elif rec.get("ok") is not True:
+        x["why"] = "its run failed the check"
+    elif (rec.get("launcher") or {}).get("sha256") != launcher_sha:
+        x["why"] = "not read under the stored launcher"
+    elif not _label_rows(x["label"], rows):
+        x["why"] = "its label names other rows"
+    elif ((rec.get("pairs") or {}).get(x["label"]) or {}).get("outcome") != "unanimous":
+        x["why"] = "its read did not pass"
+    return x
 
 
 def plan(conn, links: dict) -> dict:
@@ -153,21 +223,52 @@ def plan(conn, links: dict) -> dict:
         else:
             out["person"].append(pair)
 
+    # Links the rule did not propose, each carrying a passing blind read. A refusal wins, then
+    # an existing link; a read that does not pass waits; a read link settles a rule pair that
+    # waited for a person.
+    out["unread"] = []
+    launcher_sha = RL.launcher()["sha256"]
+    rule_links = {frozenset(x["objects"]) for x in out["link"]}
+    for spec in links.get("read_links") or []:
+        x = read_link(spec, byid, launcher_sha)
+        key = frozenset(x.get("objects") or [])
+        if x.get("twin") is None:
+            out["unread"].append(x)
+        elif tuple(sorted(x["rows"])) in refused_rows or key in refused_objs:
+            out["refused"].append(x)
+        elif objects.get(x["twin"], {}).get("twin_of") == x["entry"]:
+            x["by"] = objects[x["twin"]]["twin_rule"]
+            out["linked_already"].append(x)
+        elif x["why"]:
+            out["unread"].append(x)
+        elif key not in rule_links:
+            x["relation"] = relation(*x["rows"])
+            out["person"] = [p for p in out["person"] if frozenset(p["objects"]) != key]
+            out["link"].append(x)
+    # A group of links sharing one root waits whole when any link to that root lacks a pass.
+    held_roots = {x["entry"] for x in out["unread"] if x.get("entry") is not None}
+    for x in [y for y in out["link"] if y.get("read") and y["entry"] in held_roots]:
+        out["link"].remove(x)
+        x["why"] = "another link to its root lacks a passing read"
+        out["unread"].append(x)
+
     # No chains: a twin must not already be an entry, an entry must not be a twin, and no
-    # object may be in two links this run. Those go to a person instead.
+    # object may be in two links this run. Those go to a person instead. The one exception:
+    # several links may share a root that is docket text when every one carries a passing read.
     roots = {o["twin_of"] for o in objects.values() if o["twin_of"] is not None}
     twins = {cid for cid, o in objects.items() if o["twin_of"] is not None}
-    uses: dict = {}
-    for x in out["link"]:
-        for o in (x["twin"], x["entry"]):
-            uses[o] = uses.get(o, 0) + 1
+    as_twin = Counter(x["twin"] for x in out["link"])
+    as_root = Counter(x["entry"] for x in out["link"])
     keep = []
     for x in out["link"]:
-        if (x["twin"] in roots or x["twin"] in twins or x["entry"] in twins
-                or uses[x["twin"]] > 1 or uses[x["entry"]] > 1):
-            out["would_chain"].append(x)
-        else:
-            keep.append(x)
+        t, r = x["twin"], x["entry"]
+        chain = (t in roots or t in twins or r in twins
+                 or as_twin[t] > 1 or as_root[t] > 0 or as_twin[r] > 0)
+        if not chain and as_root[r] > 1:
+            group = [y for y in out["link"] if y["entry"] == r]
+            chain = not (all(y.get("read") for y in group)
+                         and objects.get(r, {}).get("desc_source") == "entry")
+        (out["would_chain"] if chain else keep).append(x)
     out["link"] = keep
     out["ruled_missing"] = [p for p in asserted if obj_key(p["rows"]) not in seen_objs]
     out["objects"] = objects
@@ -241,8 +342,12 @@ def main(argv=None) -> int:
         p = plan(conn, links)
         print(f"strict-B edges {p['edges']} (ambiguous short rows {p['ambiguous_short']})")
         for k in ("one_object", "unattached", "refused", "linked_already", "link", "would_chain",
-                  "person", "ruled_missing"):
+                  "person", "ruled_missing", "unread"):
             print(f"  {k:15} {len(p[k])}")
+        for x in p["unread"]:
+            print(f"    read link {x.get('label')}: {x['why']}")
+        if links.get("hold"):
+            print(f"  HELD: {links['hold']}")
         waiting = unwalked(conn, p["same_run_cases"])
         if waiting:
             print(f"  {len(waiting)} docket(s) holding a same-run pair not yet walked")
@@ -292,7 +397,9 @@ def main(argv=None) -> int:
         chk = links.get("checked") or {}
         through = conn.execute("SELECT MAX(walked_at) FROM cl_backfill").fetchone()[0]
         why = None
-        if chk.get("result") != "pass":
+        if links.get("hold"):
+            why = f"held: {links['hold']}"
+        elif chk.get("result") != "pass":
             why = "no reader's check recorded as a pass"
         elif not covers(sample_pool(p, rule), chk):
             why = ("the recorded pairs are no longer the rule's whole pool" if chk.get("full")
@@ -301,6 +408,8 @@ def main(argv=None) -> int:
             why = "a docket was walked after the check; draw and read it again"
         elif p["ruled_missing"]:
             why = f"{len(p['ruled_missing'])} asserted pair(s) match nothing the rule sees now"
+        elif p["unread"]:
+            why = f"{len(p['unread'])} read link(s) lack a passing blind read"
         if why:
             print(f"\n  REFUSED: {why} (ruling 3; config/entry_links.yaml).")
             return 2
