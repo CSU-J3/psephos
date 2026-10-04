@@ -9728,5 +9728,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-trumps-citizenship-lists-could-be-in-effect-for-the-midterms",
     "title": "This week at Democracy Docket: Trump’s citizenship lists could be in effect for the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122264,
+    "kind": "item",
+    "occurred_at": "2026-10-04T17:35:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-expansion-is-a-concerted-effort-to-intimidate-the-court-justice-alito-says",
+    "title": "Supreme Court expansion is ‘a concerted effort to intimidate the court,’ Justice Alito says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122263,
+    "kind": "item",
+    "occurred_at": "2026-10-04T18:24:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-backtracks-and-begs-republicans-to-vote-by-mail-as-democrats-odds-of-taking-congress-improve",
+    "title": "Trump backtracks and begs Republicans to vote by mail as Democrats’ odds of taking Congress improve"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122262,
+    "kind": "item",
+    "occurred_at": "2026-10-04T18:58:33+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/04/georgia-election-board-mills-federal-letters-dhs-doj-board-approval",
+    "title": "Georgia election board director sent Trump administration demands 2 board members say they never approved"
   }
 ]
