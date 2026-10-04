@@ -2,7 +2,7 @@
 
 **Status: PLANNED and READ BLIND (Corey's rulings of 2026-10-03, R1 after the blind batch, ruling 3). 0 of 3 plans pass the bar fixed before the read.**
 - In each plan, the timed description joins the docket text unanimously, and the late short form with no filing time splits.
-- Every link stays held until Corey returns his ten.
+- Every link stays held until the class of 13 and the two individual splits are ruled. Corey returned his ten 2026-10-03, all same (`r1-corey-ten-2026-10-03.md`).
 
 **Ruled 2026-10-03 (Corey's rulings, R1 plans and splits):**
 - **Ruling 1:** the three failed as plans under the bar set first, each passing one link of two. Their unanimous halves, 279>320, 15575>15566 and 7146>7137, are linked as pairs, since each passed exactly as a batch pair would. They are recorded under `read_links` in `config/entry_links.yaml`, held until Corey's line (ruling 5).

@@ -15,12 +15,13 @@
 # same text for good, where a CourtListener id is known only after the id backfill.
 rule: same-run strict-B v1
 
-# Nothing is applied until Corey sends his line on his ten, the class and the two
-# individual splits. Then what he rules is applied together with the read links below, in
-# one move with its own dated note (Corey's rulings of 2026-10-03, R1 plans and splits,
-# ruling 5). link_entry_twins --apply refuses while `hold` is set. Kept on when the D.N.H.
-# halves were ruled the same day (a ruling as evidence, ruling 3).
-hold: "until Corey's line on his ten, the class of 13 and the two individual splits (R1 plans and splits, ruling 5)"
+# Nothing is applied until the class of 13 and the two individual splits are ruled. Then
+# everything ruled is applied together with the read links below, in one move with its own
+# dated note (Corey's rulings of 2026-10-03, R1 plans and splits, ruling 5).
+# link_entry_twins --apply refuses while `hold` is set. Kept on when the D.N.H. halves were
+# ruled the same day (a ruling as evidence, ruling 3), and when Corey read his ten the same
+# day, all same: the ten pass his check (docs/findings/r1-corey-ten-2026-10-03.md).
+hold: "until the class of 13 and the two individual splits are ruled (R1 plans and splits, ruling 5; Corey's ten read 2026-10-03, all same)"
 
 # The reader's check of the rule's pairs, recorded before the rule is relied on.
 # link_entry_twins --apply refuses unless `result` is pass and the check still describes

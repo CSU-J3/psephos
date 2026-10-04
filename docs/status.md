@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links, then rulings in place of reads, then to keep every read link in the rule's direction, all HELD for Corey's line
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey had read his ten, which he READ the same day, all ten same; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links, then rulings in place of reads, then to keep every read link in the rule's direction, all HELD until the class of 13 and the two individual splits are ruled
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -450,7 +450,7 @@ It stays open for Corey to close.
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
   - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
-  - ~~the second batch of 239~~ **READ blind 2026-10-03 in one batch of 276 with the 37 earlier candidates (below), after a failed calibration and two batching controls. Its links wait on Corey's ten;**
+  - ~~the second batch of 239~~ **READ blind 2026-10-03 in one batch of 276 with the 37 earlier candidates (below), after a failed calibration and two batching controls. Its links waited on Corey's ten, READ the same day (all same), and wait now on the class of 13 and the two individual splits;**
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
 - ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word~~ **SHIPPED 2026-10-03T00:49:15Z, all five steps run and the live pages read (above).**
@@ -538,7 +538,7 @@ It stays open for Corey to close.
     - still to read blind: the 37 earlier candidates. With the 239, that is 276 pairs.
   - **All 42 blind reads: 2,069,063 tokens.** Every reader's start was the launcher byte for byte, and only its own file was read. One reader read its file twice.
   - ~~**For Corey:** whether the batch covers the 37 earlier candidates as well as the 239; his random check of ten, drawn after the batch.~~ **Ruled 2026-10-03: the batch reads all 276, and the ten are drawn from its unanimous passes (below).**
-- **The blind batch (Corey's rulings, 2026-10-03): READ 2026-10-03, all 93 readers passing the check. Every link from it is HELD until Corey has read his ten.** In full: `docs/findings/r1-blind-batch-2026-10-03.md`; the ten: `docs/findings/r1-corey-ten-2026-10-03.md`; record: `docs/reads/2026-10-03-blind-batch.json`.
+- **The blind batch (Corey's rulings, 2026-10-03): READ 2026-10-03, all 93 readers passing the check. Every link from it is HELD until Corey has read his ten.** **He read them the same day, all ten same (below); the links stay held until the class of 13 and the two individual splits are ruled.** In full: `docs/findings/r1-blind-batch-2026-10-03.md`; the ten: `docs/findings/r1-corey-ten-2026-10-03.md`; record: `docs/reads/2026-10-03-blind-batch.json`.
   - **Ruling 1:** "named its pair" stays as applied: any pair number in a launch counts as primed.
   - **The read (ruling 2):** the 276 person-list pairs not yet read blind, the 239 first-load pairs and the 37 earlier candidates.
     - 31 runs by docket and date, one reader per lens per run: 93 readers, launched by the Agent tool from the stored launcher in six waves, after a passing canary.
@@ -556,7 +556,7 @@ It stays open for Corey to close.
   - **Held:** no link written. `config/entry_links.yaml` is unchanged.
   - **Outside the batch:** the 8 links already made stand on their blind re-reads. n=8 and person pair 4 read unanimous in the blind control, but they are not among the 276, so under ruling 2 they have no link and stay on the person list.
   - ~~**For Corey:** his ten; the 16 splits, for his split list; whether n=8 and pair 4 join the batch's unanimous passes.~~ **Ruled 2026-10-03 (below), all but the ten.**
-- **R1 after the blind batch (Corey's rulings, 2026-10-03): everything but Corey's ten DONE the same day. Every link stays HELD until he returns the ten.**
+- **R1 after the blind batch (Corey's rulings, 2026-10-03): everything but Corey's ten DONE the same day. Every link stays HELD until he returns the ten.** **He returned them the same day, all same (below).**
   - **Ruling 1:** n=8 of the 2026-10-01 sample (rows 5419/5457) and person pair 4 (rows 8868/8873) join the batch's unanimous passes, which become 253. Both were read blind in the control, one pair per reader. The ten stand as drawn from the 251.
   - **Ruling 2, the 16 splits LAID OUT** (`docs/findings/r1-splits-2026-10-03.md`):
     - the 14 whose only dissent is the clocks reader, on a short form with no filing time created after its entry's date, as one compact list: both first lines, the creation gap, and every same-type object in the window;
@@ -572,7 +572,7 @@ It stays open for Corey to close.
     - a RECAP description over 60 characters is taken for a long form, so two RECAP descriptions get paired, and all five such pairs failed the readers;
     - in each, the rule's own tests had turned the docket text away: the order-head test does not take the District of New Hampshire's "ENDORSED ORDER" for an order, and a docket text that paraphrases the motion misses words of the short form.
   - **Ruling 5:** no link written; `config/entry_links.yaml` is unchanged.
-  - ~~**For Corey:** his ten; the 14, as a class or one by one, and the 2 one by one; the three plans, each one's unanimous half and its split half.~~ **The plans and the class ruled the same day (below). His ten, the class and the two individual splits remain his.**
+  - ~~**For Corey:** his ten; the 14, as a class or one by one, and the 2 one by one; the three plans, each one's unanimous half and its split half.~~ **The plans and the class ruled the same day (below), and the ten read (below). The class and the two individual splits remain his.**
 - **R1 plans and splits (Corey's rulings, 2026-10-03): the parts that need no reading from Corey DONE the same day. Nothing applied: `config/entry_links.yaml` now carries a `hold` that `--apply` refuses.**
   - **Ruling 1:** the three plans failed as plans under the bar set first, each passing one link of two. Their unanimous halves are linked as pairs, each having passed exactly as a batch pair would: 279>320, 15575>15566 and 7146>7137. They are recorded under `read_links`, held. The dry run reads link 3.
   - **Ruling 2:** 282>320 and 15567>15566 join the class; 7143>7137 stays unlinked.
@@ -587,10 +587,10 @@ It stays open for Corey to close.
     - Several links may share a root that is docket text when every one carries a passing read. If any link to that root lacks one, the whole group waits and `--apply` refuses.
     - `hold` refuses `--apply` and the dry run prints it: ruling 5, made mechanical.
     - 16 new tests in `tests/test_cl_twins.py`, including the refusal of a shared group missing one read. Each of the 15 new conditions, disabled in turn, fails a test.
-  - **Ruling 5:** nothing applied. The hold names Corey's line on his ten, the class of 13 and the two individual splits. Then what he rules goes with ruling 1's three links, in one move with its own dated note.
+  - **Ruling 5:** nothing applied. The hold named Corey's line on his ten, the class of 13 and the two individual splits; since the ten were read the same day, it names the class and the two splits. Then what he rules goes with ruling 1's three links, in one move with its own dated note.
   - ~~**One question for that move:** if the class of 13 is ruled linked, 282>320 and 15567>15566 share their roots with ruling 1's passing links. The script takes only a passing read as a link's authority within a shared group, so Corey's class ruling needs a recorded form the script accepts in place of the read. Otherwise each group is refused whole.~~ **Answered the same day (a ruling as evidence, below): a `ruled` entry.**
   - **For Corey:**
-    - his ten;
+    - ~~his ten;~~ **read the same day (below): all ten same;**
     - the class of 13, as a class or one by one, and the 2 one by one;
     - ~~the three D.N.H. re-plans, each one's unanimous half and its split half.~~ **Ruled the same day (below).**
 - **A ruling as evidence (Corey's rulings, 2026-10-03): DONE the same day. Nothing applied; the hold stays on.**
@@ -605,7 +605,7 @@ It stays open for Corey to close.
   - **Ruling 3:** the hold stays on until Corey's line on his ten, the class of 13 and the two individual splits.
   - **Found, not changed:** a read link of the rule's own kind takes its direction from the order of its rows, and the batch's labels are unordered (`A/B`). Written long form first, it would make the long form the twin, against ruling 2's hybrid of 2026-09-30, and nothing refuses it. No committed link is exposed: all six are plans, whose ordered labels fix the direction. The class's 11 batch pairs would be read links of this kind. **Ruled and changed the same day (the direction check, below).**
   - **For Corey:**
-    - his ten;
+    - ~~his ten;~~ **read the same day (below): all ten same;**
     - the class of 13, as a class or one by one, and the 2 one by one;
     - ~~whether a read link of the rule's own kind must keep the rule's direction before the class's 11 batch pairs are written.~~ **Ruled the same day (below).**
 - **The direction check before the class is written (Corey's rulings, 2026-10-03): DONE the same day. Nothing applied; the hold stays on.**
@@ -620,7 +620,14 @@ It stays open for Corey to close.
     - the six committed plan links already run in the rule's order: the dry run reads link 6, unread 0, held;
     - the class's 11 batch pairs are all `short_long`. Each batch label lists the lower row id first, and in 8 of the 11 that row is the long form, so written in label order those 8 would have been reversed. The writer puts the short form first in each;
     - the class's 2 plan halves come out as 282>320 and 15567>15566, as read, though given root first.
-  - **For Corey:** his ten; the class of 13, as a class or one by one; the two individual splits.
+  - **For Corey:** ~~his ten;~~ **read the same day (below);** the class of 13, as a class or one by one; the two individual splits.
+- **Corey's ten READ (Corey's ruling, 2026-10-03): all ten same, and the ten pass his check. Nothing applied; the hold stays on until the class of 13 and the two individual splits are ruled.**
+  - **The ten:** drawn with seed 20261003 from the batch's 251 unanimous passes and laid out in `docs/findings/r1-corey-ten-2026-10-03.md`, the readers' verdicts left out. Re-run against the committed batch record, the draw gives the same ten in the same order.
+  - **How Corey read them:** one at a time in the review chat, each reformatted from the findings file as a subject line, the message and the other objects in the readers' window, with no reader verdicts shown.
+  - **His readings:** all ten same. Pairs 1 (rows 265/301) and 2 (rows 54722/54724) were first marked unsure while the task itself was unclear, then re-read in the same format and marked same. Both readings are recorded in the findings file.
+  - **Against the readers:** the ten were drawn from pairs all three readers read as one minute entry, none naming a better match, so his verdicts and theirs agree on all ten.
+  - **Next:** once the class of 13 and the two individual splits are ruled, everything ruled is applied in one move with its own dated note: the batch's 253 unanimous passes (the 251 with n=8 and person pair 4), the six plan halves already under `read_links`, and what he rules on the class and the two splits.
+  - **For Corey:** the class of 13, as a class or one by one; the two individual splits.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 

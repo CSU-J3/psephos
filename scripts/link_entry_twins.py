@@ -55,7 +55,7 @@ LINKS THE RULE DID NOT PROPOSE (Corey's rulings, 2026-10-03, R1 plans and splits
     to it carries a passing read or a ruled entry naming it. If any link to that root lacks
     both, the whole group waits, and --apply refuses while any read link lacks both.
   * `hold` in the config, when set, refuses --apply and says why (ruling 5: nothing is
-    applied until Corey's line on his ten, then everything ruled in one move).
+    applied until everything is ruled, then all of it in one move).
 
 THE DIRECTION CHECK (Corey's rulings of 2026-10-03, the direction check before the class is
 written). A read link's rows are [twin, root] in the rule's order: for a pair the rule
