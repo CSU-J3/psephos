@@ -124,11 +124,15 @@ asserted:
     ruled: "Corey, 2026-10-02 (the 2026-09-29 duplicate verdict, and three passing reads)"
 
 # Links the rule did not propose, each carrying a passing BLIND read (Corey's rulings of
-# 2026-10-03, R1 plans and splits, ruling 4). Each: rows: [twin, root]; kind: the rule's
-# own kind when the rule makes the pair, else plan; read: the run record in docs/reads/
-# that passed it, and the link's label there. --apply links one only when that run passed
-# tools/reader_launch.py's check under the stored launcher and read the link unanimous, or
-# read it and a ruled entry (`ruled`, below) names it and stands over that run.
+# 2026-10-03, R1 plans and splits, ruling 4). Each: rows: [twin, root] in the rule's
+# order, the root being the long form of a pair the rule makes and the docket text of a
+# plan (ruling 2 of 2026-09-30); kind: the rule's own kind when the rule makes the pair,
+# else plan; read: the run record in docs/reads/ that passed it, and the link's label
+# there. Write them with `python -m scripts.link_entry_twins --write`, which sets that
+# order; --apply refuses an entry recorded the other way (the direction check,
+# 2026-10-03). --apply links one only when that run passed tools/reader_launch.py's check
+# under the stored launcher and read the link unanimous, or read it and a ruled entry
+# (`ruled`, below) names it and stands over that run.
 read_links:
   # Ruling 1: the three plans of 2026-10-03 failed as plans under the bar set first, each
   # passing one link of two. Their unanimous halves are linked as pairs, since each passed

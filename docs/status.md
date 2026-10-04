@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links and then rulings in place of reads, all HELD for Corey's line
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey has read his ten; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links, then rulings in place of reads, then to keep every read link in the rule's direction, all HELD for Corey's line
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -603,11 +603,24 @@ It stays open for Corey to close.
     - `ruled` is empty: no ruling yet covers the class of 13 or the two individual splits.
   - **Ruling 2:** the D.N.H. re-plans' unanimous halves, 5456>5478, 5477>5441 and 5424>5451, are linked as pairs, recorded under `read_links`, held. The dry run reads link 6, unread 0, ruled_refused 0, held. The late halves, 5392>5478, 5401>5441 and 5402>5451, stay unlinked: the identity reader doubts them too.
   - **Ruling 3:** the hold stays on until Corey's line on his ten, the class of 13 and the two individual splits.
-  - **Found, not changed:** a read link of the rule's own kind takes its direction from the order of its rows, and the batch's labels are unordered (`A/B`). Written long form first, it would make the long form the twin, against ruling 2's hybrid of 2026-09-30, and nothing refuses it. No committed link is exposed: all six are plans, whose ordered labels fix the direction. The class's 11 batch pairs would be read links of this kind.
+  - **Found, not changed:** a read link of the rule's own kind takes its direction from the order of its rows, and the batch's labels are unordered (`A/B`). Written long form first, it would make the long form the twin, against ruling 2's hybrid of 2026-09-30, and nothing refuses it. No committed link is exposed: all six are plans, whose ordered labels fix the direction. The class's 11 batch pairs would be read links of this kind. **Ruled and changed the same day (the direction check, below).**
   - **For Corey:**
     - his ten;
     - the class of 13, as a class or one by one, and the 2 one by one;
-    - whether a read link of the rule's own kind must keep the rule's direction before the class's 11 batch pairs are written.
+    - ~~whether a read link of the rule's own kind must keep the rule's direction before the class's 11 batch pairs are written.~~ **Ruled the same day (below).**
+- **The direction check before the class is written (Corey's rulings, 2026-10-03): DONE the same day. Nothing applied; the hold stays on.**
+  - **The rule's order:** every read link is recorded [twin, root]. A pair the rule makes is rooted where the rule roots it, at the long form (ruling 2 of 2026-09-30); a plan at its docket text, or at the longer text when both sides or neither are docket text. One function, `rule_order`, decides it for the writer and for `--apply`.
+  - **The writer:** `python -m scripts.link_entry_twins --write READ.json A:B[,C:D...] --ruled "WHO, DATE (WHY)"` writes the `read_links` entries in that order, whatever order the pairs are given in, with the rule's kind and the run's own label.
+    - It prints them; with `--to-config` it adds them to the end of `read_links`, once the config reads back as written.
+    - It writes nothing when any pair is not held, is one object or not one docket and day, was not read by its run, was read in the other order, or is already a read link in either order.
+    - It writes only the config, never the database, so the hold does not stop it.
+  - **`--apply` refuses** a read link recorded in the other order, a hand edit: "recorded 12>11, where the rule's order is 11>12".
+  - 15 new tests (68 in `tests/test_cl_twins.py`): a link written long form first is recorded in the rule's order and applied with the short form as the twin, and a hand-edited reversed entry is refused, for a rule pair and for a plan. Each of the 18 new conditions, disabled in turn, fails a test, as does each of the 13 from a ruling as evidence and the 16 before them. The pass found one older gap, now closed: no test read the reason given for a read link naming a row not held.
+  - **Read on Turso, print-only, nothing written:**
+    - the six committed plan links already run in the rule's order: the dry run reads link 6, unread 0, held;
+    - the class's 11 batch pairs are all `short_long`. Each batch label lists the lower row id first, and in 8 of the 11 that row is the long form, so written in label order those 8 would have been reversed. The writer puts the short form first in each;
+    - the class's 2 plan halves come out as 282>320 and 15567>15566, as read, though given root first.
+  - **For Corey:** his ten; the class of 13, as a class or one by one; the two individual splits.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
