@@ -518,10 +518,12 @@ def test_a_read_link_joins_two_objects_of_one_docket_and_day(tmp_path):
     conn = _trio(tmp_path)
     _hold(conn, 4, PHV + " (re-described)", 101, fetched="2026-07-20T19:31:40Z")   # 101's second row
     _hold(conn, 5, ENDORSED, 105, day="2026-07-21T00:00:00")
-    read = _read(tmp_path, {"1>4": "unanimous", "1>5": "unanimous"})
-    p = L.plan(conn, {**LINKS, "read_links": [_read_link([1, 4], read), _read_link([1, 5], read)]})
+    read = _read(tmp_path, {"1>4": "unanimous", "1>5": "unanimous", "1>9": "unanimous"})
+    p = L.plan(conn, {**LINKS, "read_links": [_read_link([1, 4], read), _read_link([1, 5], read),
+                                             _read_link([1, 9], read)]})            # row 9 is not held
     assert p["link"] == [] and sorted((x["rows"], x["why"]) for x in p["unread"]) == [
-        ([1, 4], "one object"), ([1, 5], "not one docket and day")]
+        ([1, 4], "one object"), ([1, 5], "not one docket and day"),
+        ([1, 9], "a row not held, or not attached to an object")]
 
 
 def test_a_refusal_wins_over_a_passing_read(tmp_path):
@@ -690,3 +692,134 @@ def test_the_committed_read_links_carry_passing_blind_reads():
         assert rec["pairs"][spec["label"]]["outcome"] == "unanimous" or any(
             tuple(spec["rows"]) in r["links"] and L._read_path(spec["read"]) in r["reads"]
             for r in rulings), spec
+
+
+# --------------------------------------------------------------------------- #
+# The direction check (Corey's rulings, 2026-10-03, before the class is written)
+# --------------------------------------------------------------------------- #
+import yaml  # noqa: E402
+
+RECAP = "Order on Motion to Appear Pro Hac Vice AND Order on Motion to Appear Pro Hac Vice"
+DOCKET = "ENDORSED ORDER granting 7 Motion to Appear Pro Hac Vice."
+CONFIG = ('rule: same-run strict-B v1\n\nread_links:\n  # written by hand\n'
+          '  - rows: [5, 6]\n    kind: plan\n    read: x.json\n    label: "5>6"\n'
+          '    ruled: "Corey, 2026-10-03"\n\n# Rulings\nruled: []\n')
+RULED = "Corey, 2026-10-03 (the direction check)"
+
+
+def _pairs(tmp_path):
+    """On a later docket: a pair the rule makes (11 the short form, 12 the long) and a plan
+    it does not make (21 a long RECAP description, 22 a shorter docket text)."""
+    conn = _db(tmp_path)
+    _docket(conn)
+    _hold(conn, 11, SHORT, 111, case="72000000")
+    _hold(conn, 12, LONG, 112, case="72000000")
+    _hold(conn, 21, RECAP, 121, case="72000000", day="2026-07-21T00:00:00")
+    _hold(conn, 22, DOCKET, 122, case="72000000", day="2026-07-21T00:00:00")
+    conn.execute("UPDATE cl_entries SET desc_source = 'document' WHERE cl_entry_id = 121")
+    conn.execute("UPDATE cl_entries SET desc_source = 'entry' WHERE cl_entry_id = 122")
+    conn.commit()
+    assert [k for _, _, k in tw.edges_for_day([_row(11, SHORT), _row(12, LONG)])] == ["short_long"]
+    assert tw.edges_for_day([_row(21, RECAP), _row(22, DOCKET)]) == []
+    assert len(DOCKET) < len(RECAP)
+    return conn
+
+
+def _config(tmp_path, monkeypatch, text=CONFIG):
+    cfg = tmp_path / "entry_links.yaml"
+    cfg.write_bytes(text.encode("utf-8"))
+    monkeypatch.setattr(L, "LINKS", cfg)
+    return cfg
+
+
+def _write(tmp_path, monkeypatch, outcomes, pairs, name="run.json", text=CONFIG, extra=("--to-config",)):
+    """Runs --write over a fresh database and config; returns its exit, the run record's
+    path and the config's path."""
+    _pairs(tmp_path).close()
+    read = _read(tmp_path, outcomes, name=name)
+    cfg = _config(tmp_path, monkeypatch, text)
+    _env(tmp_path, monkeypatch, {})
+    return L.main(["--write", read, pairs, "--ruled", RULED, *extra]), read, cfg
+
+
+def test_the_writer_records_a_pair_given_long_form_first_in_the_rules_order(tmp_path, monkeypatch):
+    code, read, cfg = _write(tmp_path, monkeypatch, {"11/12": "unanimous"}, "12:11")
+    assert code == 0
+    entry = {"rows": [11, 12], "kind": "short_long", "read": read.replace("\\", "/"),
+             "label": "11/12", "ruled": RULED}
+    text = cfg.read_text(encoding="utf-8")
+    assert yaml.safe_load(text) == {**yaml.safe_load(CONFIG),
+                                    "read_links": yaml.safe_load(CONFIG)["read_links"] + [entry]}
+    assert text.endswith('    ruled: "Corey, 2026-10-03"\n' + L._yaml_block([entry]) + "\n# Rulings\nruled: []\n")
+    # Applied, the short form is the twin and the long form the root that survives.
+    get = _env(tmp_path, monkeypatch, {**LINKS, "checked": EMPTY_POOL, "read_links": [entry]})
+    assert L.main(["--apply"]) == 0
+    assert tuple(get().execute("SELECT twin_of FROM cl_entries WHERE cl_entry_id = 111").fetchone()) == (112,)
+
+
+def test_the_writer_roots_a_plan_at_its_docket_text_though_it_is_the_shorter(tmp_path, monkeypatch):
+    code, read, cfg = _write(tmp_path, monkeypatch, {"21>22": "unanimous"}, "22:21")
+    assert code == 0
+    assert yaml.safe_load(cfg.read_text(encoding="utf-8"))["read_links"][-1] == {
+        "rows": [21, 22], "kind": "plan", "read": read.replace("\\", "/"), "label": "21>22", "ruled": RULED}
+
+
+@pytest.mark.parametrize("rows, kind, label", [([12, 11], "short_long", "11/12"), ([22, 21], "plan", "21>22")])
+def test_apply_refuses_a_hand_edited_reversed_entry(tmp_path, monkeypatch, rows, kind, label):
+    conn = _pairs(tmp_path)
+    read = _read(tmp_path, {label: "unanimous"})
+    links = {**LINKS, "checked": EMPTY_POOL, "read_links": [_read_link(rows, read, kind=kind, label=label)]}
+    p = L.plan(conn, links)
+    why = f"recorded {rows[0]}>{rows[1]}, where the rule's order is {rows[1]}>{rows[0]}"
+    assert p["link"] == [] and [(x["rows"], x["why"]) for x in p["unread"]] == [(rows, why)]
+    conn.close()
+    _apply_refused(tmp_path, monkeypatch, links)
+
+
+@pytest.mark.parametrize("outcomes, pairs, said", [
+    ({"11/12": "unanimous"}, "12:11,11:13", "REFUSED 11:13: a row not held, or not attached to an object"),
+    ({"21>22": "unanimous"}, "12:11", "REFUSED 12:11: its run did not read it"),
+    ({"22>21": "unanimous"}, "21:22", "REFUSED 21:22: its run read it as 22>21, where the rule's order is 21>22"),
+    ({"11/12": "unanimous"}, "12:11,11:12", "REFUSED 11:12: already a read link"),
+])
+def test_the_writer_writes_nothing_when_any_pair_is_refused(tmp_path, monkeypatch, capsys, outcomes, pairs, said):
+    code, _, cfg = _write(tmp_path, monkeypatch, outcomes, pairs)
+    assert code == 2 and said in capsys.readouterr().out
+    assert cfg.read_text(encoding="utf-8") == CONFIG
+
+
+def test_the_writer_will_not_add_a_link_the_config_holds_reversed(tmp_path, monkeypatch, capsys):
+    text = CONFIG.replace("  - rows: [5, 6]", '  - rows: [12, 11]\n    kind: short_long\n    read: x.json\n'
+                                             '    label: "11/12"\n    ruled: "Corey"\n  - rows: [5, 6]')
+    code, _, cfg = _write(tmp_path, monkeypatch, {"11/12": "unanimous"}, "11:12", text=text)
+    assert code == 2 and "REFUSED 11:12: already a read link" in capsys.readouterr().out
+    assert cfg.read_text(encoding="utf-8") == text
+
+
+def test_the_writer_without_to_config_prints_and_writes_nothing(tmp_path, monkeypatch, capsys):
+    code, _, cfg = _write(tmp_path, monkeypatch, {"11/12": "unanimous"}, "12:11", extra=())
+    out = capsys.readouterr().out
+    assert code == 0 and "  - rows: [11, 12]\n    kind: short_long\n" in out and "DRY-RUN" in out
+    assert cfg.read_text(encoding="utf-8") == CONFIG
+
+
+def test_the_writer_refuses_a_config_that_would_not_read_back(tmp_path, monkeypatch, capsys):
+    """' #' opens a YAML comment, so this record's path would not read back as written."""
+    code, _, cfg = _write(tmp_path, monkeypatch, {"11/12": "unanimous"}, "12:11", name="run #1.json")
+    assert code == 2 and "would not read back" in capsys.readouterr().out
+    assert cfg.read_text(encoding="utf-8") == CONFIG
+
+
+@pytest.mark.parametrize("argv", [
+    ["--write", "{read}", "12:11"],                                    # no --ruled
+    ["--write", "{read}", "12-11", "--ruled", RULED],                  # not a pair of row ids
+    ["--write", "{read}", "12:11", "--ruled", " "],                    # --ruled says nothing
+    ["--write", "missing.json", "12:11", "--ruled", RULED],            # no run record
+])
+def test_the_writer_refuses_a_command_it_cannot_read(tmp_path, monkeypatch, argv):
+    _pairs(tmp_path).close()
+    read = _read(tmp_path, {"11/12": "unanimous"})
+    cfg = _config(tmp_path, monkeypatch)
+    _env(tmp_path, monkeypatch, {})
+    assert L.main([a.replace("{read}", read) for a in argv]) == 2
+    assert cfg.read_text(encoding="utf-8") == CONFIG
