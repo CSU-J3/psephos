@@ -121,6 +121,8 @@ State used to be the deliberate exception; **it is not one any more (handoff 81)
 
 **What the old shape actually cost, since it was previously written down as "don't over-rate it."** `state` runs last of six lines in one `bash -e` step, and Export and Commit data changes are separate steps with **no `if: always()`**, so a non-zero exit from state ended the job and skipped both. The cycle lost its snapshot and its data commit — not its data, since the other five collectors had already committed to Turso. The 2026-08-15 LegiScan incident is the near miss that makes the shape legible: all nine states failed **at `getMasterList`**, inside a handler, so the run survived and printed nine `ERROR:` lines. Four lines further down, at the write path, the same failure would have taken the run.
 
+**Since 2026-10-05 a crash costs only its own channel** (Corey's rulings, after the 2026-10-04 06:17Z slot lost executive, news and state to a Turso drop in litigation). The collectors step runs every part whatever the one before it did, keeps each one's exit and output in `$RUNNER_TEMP`, and fails at its end; a collector that raises writes a `failed` row through `run_signals.guarded`, and the Verdict names each failed part with its line. Export and Commit still skip after a red step, so the cycle's snapshot and data commit wait for the next green run; the channels' data is already in Turso.
+
 ---
 
 ## Two-stage news dedup

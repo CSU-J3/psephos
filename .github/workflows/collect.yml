@@ -251,27 +251,38 @@ jobs:
           # and exits 0. Same expression as the commit and heartbeat steps below. The
           # other five collectors ignore it.
           SLOT: ${{ github.event.schedule || 'dispatch' }}
-        # THE FAILED STEP NAMES ITSELF (Corey, 2026-10-05). The 2026-10-04 06:17Z slot's run
-        # died in litigation on a Turso drop and the Verdict could say only "an earlier step
-        # ended failure". So the collectors run as one group whose output is also kept at
-        # $RUNNER_TEMP/collectors.log, and an ERR trap keeps the command that failed at
-        # $RUNNER_TEMP/collectors.failed; the Verdict names this step, that command and the
-        # log's last line. `bash -e` still ends the group at the first failure, and pipefail
-        # carries its status out through tee. tests/test_collect_failed_step.py plants a
-        # collector exception in this exact script.
+        # ONE CHANNEL'S CRASH DOES NOT STOP THE OTHERS (Corey, 2026-10-05). The 2026-10-04
+        # 06:17Z slot's run died in litigation on a Turso drop, and `bash -e` ended this step
+        # there: executive, news and state never ran. Every part now runs whatever the one
+        # before it did. Each one's output goes to the log and to
+        # $RUNNER_TEMP/channel-<name>.log, its exit to a `<name> <code>` line of
+        # $RUNNER_TEMP/channels, and the step fails at its end if any part exited non-zero.
+        # The Verdict names each one: by the `failed` row run_signals.guarded writes for a
+        # channel that raised, or else by its exit and its log's last line. litigation still
+        # runs after a failed tracker_uw, on the artifact the last run committed. Export and
+        # commit still skip after a red step, as they always have; the channels' data is in
+        # Turso, and the next green run's export carries it. tests/test_collect_failed_step.py
+        # plants a litigation exception in this exact script.
         run: |
           set -o pipefail
-          {
-            # shellcheck disable=SC2317  # failed() runs from the ERR trap below, not inline
-            failed() { printf '%s\n' "$BASH_COMMAND" > "$RUNNER_TEMP/collectors.failed"; }
-            trap failed ERR
-            python -m collectors.legislation
-            python -m collectors.tracker_uw      # discover the full DOJ-suit list -> data/doj_cases.json
-            python -m collectors.litigation      # then resolve + poll (reads that artifact)
-            python -m collectors.executive
-            python -m collectors.news
-            python -m collectors.state
-          } 2>&1 | tee "$RUNNER_TEMP/collectors.log"
+          : > "$RUNNER_TEMP/channels"
+          part() {
+            local name=$1 code=0
+            shift
+            "$@" 2>&1 | tee "$RUNNER_TEMP/channel-$name.log" || code=$?
+            printf '%s %s\n' "$name" "$code" >> "$RUNNER_TEMP/channels"
+          }
+          part legislation python -m collectors.legislation
+          part tracker_uw python -m collectors.tracker_uw   # discover the full DOJ-suit list -> data/doj_cases.json
+          part litigation python -m collectors.litigation   # then resolve + poll (reads that artifact)
+          part executive python -m collectors.executive
+          part news python -m collectors.news
+          part state python -m collectors.state
+          if grep -qv ' 0$' "$RUNNER_TEMP/channels"; then
+            echo "collectors: every part ran; these exited non-zero:"
+            grep -v ' 0$' "$RUNNER_TEMP/channels"
+            exit 1
+          fi
 
       - name: Export JSON snapshots
         id: export
@@ -404,13 +415,15 @@ jobs:
           echo "data commit not pushed: the push was rejected $attempt time(s); last repair: ${last:-none tried}; git said: ${said:-nothing}" | tee "$marker"
           exit 0
 
-      # THE VERDICT (unit 99, Corey, 2026-09-28). The collectors keep their exit 0; they
-      # write one `channel_runs` row per class they met, and this step reads them with the
-      # three receipts and turns the run red when a channel failed loudly: a credential
-      # failure, a missing secret, no OK replies, a run cut short, an expected channel with
-      # no row at all, a stale receipt, a deferral past its rotation, or an earlier step
-      # that failed. `if: always()` so a red earlier step still gets its verdict and its
-      # comment; BEFORE the heartbeat, so the runs row's conclusion records a red verdict.
+      # THE VERDICT (unit 99, Corey, 2026-09-28). The collectors keep their exit 0; every
+      # channel writes one `channel_runs` row per class it met (executive and news too since
+      # 2026-10-05), and this step reads them with the three receipts and turns the run red
+      # when a channel failed loudly: a credential failure, a missing secret, no OK replies,
+      # a run cut short, a collector that raised (its `failed` row, or else the collectors
+      # step's record of its exit and last line), an expected channel with no row at all, a
+      # stale receipt, a deferral past its rotation, or an earlier step that failed.
+      # `if: always()` so a red earlier step still gets its verdict and its comment; BEFORE
+      # the heartbeat, so the runs row's conclusion records a red verdict.
       - name: Verdict
         id: verdict
         if: always()

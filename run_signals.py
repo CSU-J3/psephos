@@ -22,6 +22,16 @@ THE CLASSES, and which are loud:
                               no OK reply -- every request failed some other way (a 5xx
                               run, a transport outage). Its receipt governs it (R9); the
                               row says the collector ENDED, which no row cannot say
+    failed              LOUD  the collector raised: its own exception line, written by
+                              `guarded` on a fresh connection before the raise goes on
+                              (Corey, 2026-10-05: every channel writes its row)
+    skipped             quiet the channel did nothing this run by design -- state off its
+                              slot -- so the verdict still reads a row from all five
+
+EVERY CHANNEL WRITES ITS ROW (Corey, 2026-10-05): legislation, litigation and state as
+above, and executive and news too, `ok` when a query or feed answered and `unreached` when
+none did. Their staleness thresholds -- what would make a run of `unreached` loud, as the
+receipts do for the other three -- stay proposed.
 
 THE LINE NAMES THE CHANNEL AND NOTHING ABOUT THE KEY. It is a literal prefix and the
 channel; an evidence suffix may follow, but every evidence string passes `scrub()`, which
@@ -52,8 +62,11 @@ NO_OK = "no OK replies"
 CUT = "cut short"
 DEFERRED = "deferred"
 UNREACHED = "unreached"
-CLASSES = (OK, CREDENTIAL, MISSING, NO_OK, CUT, DEFERRED, UNREACHED)
-LOUD = frozenset({CREDENTIAL, MISSING, NO_OK, CUT})
+FAILED = "failed"
+SKIPPED = "skipped"
+CHANNELS = ("legislation", "litigation", "executive", "news", "state")
+CLASSES = (OK, CREDENTIAL, MISSING, NO_OK, CUT, DEFERRED, UNREACHED, FAILED, SKIPPED)
+LOUD = frozenset({CREDENTIAL, MISSING, NO_OK, CUT, FAILED})
 
 # The printed prefix per class. A missing secret prints the credential line (R5: "that
 # channel prints its line"), and its row carries the distinct class.
@@ -63,6 +76,7 @@ PREFIX = {
     NO_OK: "NO OK REPLIES",
     CUT: "RUN CUT SHORT",
     DEFERRED: "DEFERRED",
+    FAILED: "CHANNEL FAILED",
 }
 
 TABLE = "channel_runs"
@@ -164,6 +178,15 @@ class RunSignals:
     def reached(self, n: int = 1) -> None:
         self.ok_replies += n
 
+    def fail(self, exc: BaseException) -> None:
+        """The collector raised: a FAILED row carrying the exception's own line, scrubbed."""
+        self.note(FAILED, f"{type(exc).__name__}: {exc}")
+
+    def skip(self, evidence: str) -> None:
+        """The channel did nothing this run by design: a quiet SKIPPED row, unprinted,
+        since the collector prints its own line."""
+        self.notes[SKIPPED] = scrub(evidence, self.secrets)
+
     def has(self, cls: str) -> bool:
         return cls in self.notes
 
@@ -203,7 +226,7 @@ class RunSignals:
         except Exception as exc:
             # recover() itself can raise on the remote (its reopen runs the retry ladder),
             # and flush() runs at the end of EVERY run now: a raise here would turn a
-            # clean run's last write into a non-zero exit that ends the `bash -e` step.
+            # clean run's last write into a non-zero exit that turns the collectors step red.
             try:
                 db.recover(conn)
             except Exception:
@@ -211,3 +234,27 @@ class RunSignals:
             print(f"  {self.channel}: channel_runs write failed; the verdict step will read "
                   f"this run as unrecorded -- {scrub(str(exc), self.secrets)}", file=sys.stderr)
             return False
+
+
+def guarded(channel: str, main) -> int:
+    """A channel's main(), run so a raise still leaves the channel's row (Corey,
+    2026-10-05): the exception's own line, scrubbed, as a FAILED row written on a FRESH
+    connection -- the one main() held may be the thing that died -- and then the raise
+    goes on, so the collectors step sees the exit and the traceback stays in the log.
+    Each collector's `__main__` runs through this; tests call main() directly."""
+    try:
+        return main()
+    except Exception as exc:
+        sig = RunSignals(channel)
+        sig.fail(exc)
+        try:
+            conn = db.connect()
+        except Exception as cexc:
+            print(f"  {channel}: could not open the database to record the failure -- "
+                  f"{scrub(str(cexc), sig.secrets)}", file=sys.stderr)
+        else:
+            try:
+                sig.flush(conn)
+            finally:
+                conn.close()
+        raise

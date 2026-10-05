@@ -1281,6 +1281,14 @@ def main() -> int:
     slot = os.environ.get("SLOT", "").strip()
     if slot and slot != "dispatch" and slot != STATE_SLOT:
         print(f"state: not this slot ({slot}); the state collector runs on {STATE_SLOT} only")
+        # Every channel writes its row (Corey, 2026-10-05), so the verdict reads all five.
+        sig = run_signals.RunSignals("state")
+        sig.skip(f"not this slot ({slot}); state runs on {STATE_SLOT} only")
+        conn = db.connect()
+        try:
+            sig.flush(conn)
+        finally:
+            conn.close()
         return 0
     db.init_db()
     sources = config.load_sources()
@@ -1468,4 +1476,4 @@ def signal_outcome(sig: "run_signals.RunSignals", meter: UsageMeter, key: str) -
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(run_signals.guarded("state", main))

@@ -26,6 +26,7 @@ import sys
 import common
 import config
 import db
+import run_signals
 
 SOURCE_ID = "federal-register"
 CHANNEL = "executive"
@@ -226,6 +227,9 @@ def main() -> int:
     gsource, ginfo = config.grade(ex.get("default_grade"))
     # No config.require_env: the Federal Register API needs no key (api.key_env is null).
 
+    # Every channel writes its row (Corey, 2026-10-05): `ok` when a query answered,
+    # `unreached` when none did. No key, so nothing loud of its own.
+    sig = run_signals.RunSignals("executive")
     conn = db.connect()
     totals = {"agency": 0, "presidential": 0}
     try:
@@ -237,6 +241,7 @@ def main() -> int:
             try:
                 counts = collect_term(conn, base, agencies, term, since, throttle, gsource, ginfo)
                 conn.commit()
+                sig.reached()
                 totals["agency"] += counts["new_items"]
                 print(f"  agency        {term:<22} fetched {counts['fetched']:>4}  +{counts['new_items']} items")
             except Exception as exc:
@@ -247,16 +252,18 @@ def main() -> int:
                 params = build_presidential_params(term, since)
                 counts = collect(conn, base, params, throttle, gsource, ginfo)
                 conn.commit()
+                sig.reached()
                 totals["presidential"] += counts["new_items"]
                 print(f"  presidential  {term:<22} fetched {counts['fetched']:>4}  +{counts['new_items']} items")
             except Exception as exc:
                 db.recover(conn)      # not rollback(): a dead Hrana stream makes rollback raise
                 print(f"  presidential  {term:<22} ERROR: {exc}", file=sys.stderr)
         print(f"  total: agency +{totals['agency']}, presidential +{totals['presidential']}")
+        sig.flush(conn)
     finally:
         conn.close()
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(run_signals.guarded("executive", main))

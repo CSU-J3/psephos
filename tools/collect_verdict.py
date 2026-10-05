@@ -1,22 +1,27 @@
 """The collect run's verdict: turn the run red when a channel failed loudly (unit 99).
 
 Invoked as a final step of `collect.yml` with `if: always()`, before the heartbeat. It
-reads this run's `channel_runs` rows (written by the credentialed collectors through
-`run_signals.RunSignals.flush`) and the three receipts, and exits 1 -- turning the run red
--- when any of these holds (Corey's rulings, 2026-09-28):
+reads this run's `channel_runs` rows (written by every channel through
+`run_signals.RunSignals.flush`, executive and news included since 2026-10-05) and the three
+receipts, and exits 1 -- turning the run red -- when any of these holds (Corey's rulings,
+2026-09-28, and 2026-10-05 for the crashes):
 
   * a LOUD row this run: credential failure, missing secret, no OK replies, cut short
-    (R2, R3, R5, R6);
-  * an expected channel wrote NO row: its collector never reached its flush, because it
-    or an earlier line of the `bash -e` step died;
+    (R2, R3, R5, R6), or failed -- the collector raised, and `run_signals.guarded` wrote
+    its exception line;
+  * a part of the collectors step exited non-zero and left no `failed` row: named with its
+    exit and its log's last line, which the step keeps for every part, since one part's
+    crash no longer stops the others;
+  * an expected channel wrote NO row and did not crash: its collector never reached its
+    flush;
   * a RECEIPT is stale (R9): the channel has not reached its source for more expected
     slots than its threshold -- legislation `bills.updated_at`, litigation
     `cases.status_checked_at`, state its latest `ok` row;
   * a planned deferral outlived its channel's rotation (R6);
-  * an earlier step of the job failed (R10: every red collect run comments), named with the
-    command that failed and the step's last line where the step kept them (Corey,
-    2026-10-05, after a Turso drop in litigation was reported as "an earlier step ended
-    failure" and went unread for a day and a half);
+  * an earlier step of the job failed (R10: every red collect run comments), named, with
+    the parts of the collectors step that failed or another step's last line where the
+    step kept it (Corey, 2026-10-05, after a Turso drop in litigation was reported as "an
+    earlier step ended failure" and went unread for a day and a half);
   * the data commit did not reach origin: the commit step writes
     `$RUNNER_TEMP/data-commit-not-pushed` first, retries a raced push, and clears the
     marker only when a push lands or nothing is left to push, so a step that gives up or
@@ -47,7 +52,6 @@ import db  # noqa: E402
 import run_signals  # noqa: E402
 
 STATE_SLOT = "17 6 * * *"          # collectors/state.py STATE_SLOT; pinned by a test
-CREDENTIALED = ("legislation", "litigation", "state")
 
 # R9: fire when the channel has missed MORE THAN this many expected slots in a row, the
 # current run included. MEASURED 2026-09-28 over all 368 retained collect.yml logs and
@@ -107,8 +111,9 @@ REFRESH_ROTATION_HOURS = 24
 # The commit step's marker (collect.yml, "Commit data changes"); read from RUNNER_TEMP.
 DATA_COMMIT_MARKER = "data-commit-not-pushed"
 
-FINDING_ORDER = ("job", "commit", "unrecorded", run_signals.MISSING, run_signals.CREDENTIAL,
-                 run_signals.NO_OK, run_signals.CUT, "receipt stale", "rotation")
+FINDING_ORDER = ("job", "commit", run_signals.FAILED, "unrecorded", run_signals.MISSING,
+                 run_signals.CREDENTIAL, run_signals.NO_OK, run_signals.CUT, "receipt stale",
+                 "rotation")
 
 
 def normalize(raw: str) -> str:
@@ -119,10 +124,23 @@ def normalize(raw: str) -> str:
 
 
 def expected_channels(slot: str) -> tuple[str, ...]:
-    """State runs on its slot only (and on a dispatch or a local run)."""
-    if slot in (STATE_SLOT, "dispatch", ""):
-        return CREDENTIALED
-    return ("legislation", "litigation")
+    """All five, on every slot (Corey, 2026-10-05): executive and news write their rows
+    too, and state writes a quiet `skipped` row off its slot. `slot` is kept for callers."""
+    return run_signals.CHANNELS
+
+
+def channel_crashes(runner_temp: str | None) -> list[tuple[str, int, str]]:
+    """(channel, exit code, last line of its log) for each part of the collectors step
+    that exited non-zero, in run order: the step keeps each one's exit at
+    $RUNNER_TEMP/channels and its output at $RUNNER_TEMP/channel-<name>.log."""
+    tmp = runner_temp or "."
+    out = []
+    for ln in _read(os.path.join(tmp, "channels")).splitlines():
+        name, _, code = ln.strip().partition(" ")
+        if name and code.strip().lstrip("-").isdigit() and int(code) != 0:
+            log = _read(os.path.join(tmp, f"channel-{name}.log"))
+            out.append((name, int(code), last_line(log)))
+    return out
 
 
 def this_run_rows(conn, rid: str) -> list:
@@ -254,8 +272,9 @@ def data_commit_finding(runner_temp: str | None) -> list[tuple[str, str, str]]:
 # THE STEP THAT FAILED, NAMED (Corey, 2026-10-05). The steps before the Verdict, by the id
 # collect.yml gives each, in run order, with the name the run shows; STEP_OUTCOMES carries
 # each one's outcome as `id=outcome` pairs. A step that keeps its output leaves it at
-# $RUNNER_TEMP/<id>.log, and the collectors step the command that failed at
-# $RUNNER_TEMP/collectors.failed. Pinned to collect.yml by tests/test_collect_failed_step.py.
+# $RUNNER_TEMP/<id>.log; the collectors step keeps each PART's, with its exit at
+# $RUNNER_TEMP/channels (see channel_crashes). Pinned to collect.yml by
+# tests/test_collect_failed_step.py.
 STEPS = (("checkout", "actions/checkout@v4"), ("python", "actions/setup-python@v5"),
          ("deps", "Install dependencies"), ("collectors", "Run collectors"),
          ("export", "Export JSON snapshots"), ("commit", "Commit data changes"))
@@ -277,17 +296,19 @@ def last_line(text: str) -> str:
 
 
 def failed_step(step_outcomes: str | None, runner_temp: str | None) -> str | None:
-    """The first step before the Verdict that failed, named, with the command that failed
-    and its last line where the step kept them. None when STEP_OUTCOMES names no failure."""
+    """The first step before the Verdict that failed, named: the collectors step with the
+    parts that exited non-zero, whose lines are their own findings; another step with its
+    last line where it kept its output. None when STEP_OUTCOMES names no failure."""
     outcomes = dict(pair.split("=", 1) for pair in (step_outcomes or "").split() if "=" in pair)
     tmp = runner_temp or "."
     for sid, name in STEPS:
         if outcomes.get(sid) != "failure":
             continue
-        command = last_line(_read(os.path.join(tmp, f"{sid}.failed")))
+        crashed = [c for c, _, _ in channel_crashes(runner_temp)] if sid == "collectors" else []
+        if crashed:
+            return f"`{name}` failed: {', '.join(crashed)} exited non-zero"
         line = last_line(_read(os.path.join(tmp, f"{sid}.log")))
-        at = f" at `{command}`" if command else ""
-        return f"`{name}` failed{at}: {line}" if line else f"`{name}` failed{at}; its output is in the run's log"
+        return f"`{name}` failed: {line}" if line else f"`{name}` failed; its output is in the run's log"
     return None
 
 
@@ -311,8 +332,18 @@ def verdict(conn, rid: str, slot: str, started_at: str, job_status: str,
     findings += data_commit_finding(runner_temp)
     rows = this_run_rows(conn, rid)
     seen = {r[0] for r in rows}
+    # A channel that crashed is named by its own `failed` row when it could write one, and
+    # otherwise by the step's record of its exit and its log's last line -- never also as
+    # "unrecorded", which says less.
+    failed_rows = {r[0] for r in rows if r[1] == run_signals.FAILED}
+    crashed = set()
+    for ch, code, line in channel_crashes(runner_temp):
+        crashed.add(ch)
+        if ch not in failed_rows:
+            findings.append((ch, run_signals.FAILED,
+                             f"exited {code}: {line}" if line else f"exited {code}"))
     for ch in expected_channels(slot):
-        if ch not in seen:
+        if ch not in seen and ch not in crashed:
             findings.append((ch, "unrecorded", "no channel_runs row this run: the collector "
                                                "did not reach its end (see the steps above)"))
     for ch, cls, ev in rows:

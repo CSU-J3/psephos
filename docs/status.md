@@ -8,6 +8,32 @@ Last updated: 2026-10-05 (UTC).
 
 ## Owed right now
 
+### One channel's crash no longer stops the others: RULED 2026-10-05; the mid-statement retry SHIPPED, channel isolation and a row from every channel BUILT the same day
+
+**Corey's rulings, 2026-10-05,** on the 10-04 06:17Z red (the entry below).
+
+- **Ruling 1, the retry, SHIPPED** as "fix(db): a transport error mid-statement reopens and retries once when nothing is uncommitted" (`0ff84a9`), pushed 19:01:17Z; ci.yml green at 19:02:19Z (run 37360347856).
+  - `db._Conn.execute` takes the stale-stream reopen's single reopen and retry for a transport error too, under the same gate, nothing uncommitted, and prints a line saying so. A failure of the retry raises as it comes; with a write uncommitted it raises at once, as before.
+  - 4 tests with a planted mid-query drop: a retry that succeeds and says so, one that fails, one with a write uncommitted, and a stale stream that still retries quietly. Each of its 6 conditions, disabled in turn, fails one.
+- **Ruling 2, channel isolation, BUILT:**
+  - **The step:** `collect.yml`'s "Run collectors" runs each part through `part`, whatever the one before it did. Each part's output goes to the log and to `$RUNNER_TEMP/channel-<name>.log`, and its exit to a `<name> <code>` line of `$RUNNER_TEMP/channels`. The step fails at its end if any part exited non-zero. The ERR trap and `collectors.log` of the entry below are gone.
+  - **The raise:** each collector's `__main__` runs through `run_signals.guarded`. A raise writes a `failed` row, which is loud, carrying its exception line scrubbed. The row goes on a fresh connection, since the old one may be what died, and the raise then goes on.
+  - **The Verdict** names each failed part: by its `failed` row, or else by its exit and its log's last line. A crashed channel is not also "unrecorded". The job line reads "`Run collectors` failed: litigation exited non-zero".
+  - **Export and commit still skip after a red step,** as they always have. The channels' data is in Turso, and the next green run's export carries it. This is named here so the skip is not read as a loss; it is not ruled either way.
+  - **The planted case:** `tests/test_collect_failed_step.py` runs the step's real script under bash, with a stub `python` whose litigation raises the 10-04 run's own exception.
+    - legislation and tracker_uw before it, and executive, news and state after it, all run, and the step exits 1.
+    - The Verdict names the step and litigation's line, with the planted credential `[redacted]` in the issue body.
+- **Ruling 3, a row from every channel, BUILT:**
+  - executive and news write `ok` when a query or feed answered, and `unreached` when none did.
+  - state writes a quiet `skipped` row off its slot. The slot gate still returns before the key is read or a call made.
+  - Any channel that raises writes `failed` (ruling 2).
+  - The Verdict expects all five on every slot.
+  - **Executive's and news's staleness thresholds stay PROPOSED.** Until they are ruled, a run of `unreached` is quiet for those two, where the receipts make it loud for the other three.
+- **Tests:** `ci_local` green. Each of 26 conditions, disabled in turn, fails one: across the step, `run_signals`, the Verdict and the three collectors.
+- **Ruling 4:** issue 6 is Corey's to close (still open at 19:25Z). The Node 24 action bump stays OWED for a quiet slot (the entry below, ruling 4).
+- **Next, in order:** the link script's dry-run double count (`linked_already` lists the batch's 251 pairs twice), then the EO 14248 D0.
+- **OWED: the first scheduled collect run on the new step,** read green with a row from all five channels. Off the 06:17Z slot, state's is `skipped`.
+
 ### The 2026-10-04 06:17Z-slot collect red: READ 2026-10-05, a transient Turso drop and not a code defect, nothing lost; the Verdict now NAMES the failed step; session open READS THE LANES
 
 **Corey's rulings, 2026-10-05.** The run went red at 2026-10-04T12:23Z and was read only after Corey's screenshot, which reached this session in his brief at 2026-10-05T17:43:53Z.
@@ -22,18 +48,18 @@ Last updated: 2026-10-05 (UTC).
   - **State:** the 2026-10-05 06:17Z-slot run (37325277278, data commit `668e34b`) wrote state's `ok` row at 14:41:15Z, "1 OK reply". State's rows read 10-02 ok, 10-03 ok, none on 10-04, 10-05 ok.
     - Sunday's skipped run needs no catch-up. Sunday and Monday slots poll no active session, and an adjourned session is compared with its stored marker, not with the day before. Monday found none moved and planned no master list.
   - **Litigation** wrote its `ok` row at the next run (37218252141, 16:56:51Z), which polled the five seeds the red run never reached.
-  - **The Verdict could not see executive and news missing:** only legislation, litigation and state write `channel_runs` rows, so its "unrecorded" named those two alone.
-  - **Proposed for Corey's ruling, not built:** `db._Conn.execute` reopens and retries once on a transport error, on the establishment ladder, when nothing is pending. That is the condition its stale-stream reopen already requires, and it held at the failing read, a new case's first statement.
+  - **The Verdict could not see executive and news missing:** only legislation, litigation and state wrote `channel_runs` rows, so its "unrecorded" named those two alone. Every channel writes its row since the entry above, ruling 3.
+  - **Proposed for Corey's ruling, and RULED and SHIPPED the same day** (the entry above, ruling 1): `db._Conn.execute` reopens and retries once on a transport error, on the establishment ladder, when nothing is pending. That is the condition its stale-stream reopen already requires, and it held at the failing read, a new case's first statement.
 - **Ruling 2, session open reads the lanes:** `python -m tools.lanes_since`, new and read-only, lists every collect, audit and dom-checks run since the last session's push with its conclusion, and every new comment on "collect red" and "recheck flags", the reds first. It exits 1 when there is one. It is now a rule in CLAUDE.md's *Workflow* and in *Standing invariants* below.
   - **This red went unread from 2026-10-04T12:23Z to Corey's screenshot.** This session read collect runs only to gate its pushes, with `--limit 1` to `3`. The red was the third run back at its first listing after it (2026-10-05T01:52:54Z) and was never in view.
   - Run over that window, the command puts the red and both issue 6 comments first and exits 1. 7 tests; each of its 7 conditions, disabled in turn, fails one.
 - **Ruling 3, the failed step named:**
-  - **`collect.yml`:** the steps before the Verdict carry ids. The collectors run as one group whose output is kept at `$RUNNER_TEMP/collectors.log`, with an ERR trap keeping the command that failed at `$RUNNER_TEMP/collectors.failed`. The export keeps its output at `$RUNNER_TEMP/export.log`. The Verdict gets each step's outcome (`STEP_OUTCOMES`) and the three API keys for its scrub.
+  - **`collect.yml`:** the steps before the Verdict carry ids. The collectors run as one group whose output is kept at `$RUNNER_TEMP/collectors.log`, with an ERR trap keeping the command that failed at `$RUNNER_TEMP/collectors.failed`. **Replaced the same day** by a record of every part, which runs whatever the one before it did (the entry above, ruling 2). The export keeps its output at `$RUNNER_TEMP/export.log`. The Verdict gets each step's outcome (`STEP_OUTCOMES`) and the three API keys for its scrub.
   - **`tools/collect_verdict.py`:** the job line names the first failed step, the command that failed and the step's last line, scrubbed, in place of "an earlier step ended `failure`": "`Run collectors` failed at `python -m collectors.litigation`: ValueError: Hrana: ...". A step that kept no output is named and pointed at the run's log.
   - **`tests/test_collect_failed_step.py`** runs the step's real script under bash with a stub `python` whose litigation raises the run's own exception, a planted credential in its message. The step still stops there, keeps the command and the traceback, and the issue body names both with the credential `[redacted]`. 9 tests; each of 11 conditions (pipefail, the trap, the kept output, the outcomes, the scrub's keys, and six in the Verdict), disabled in turn, fails one.
   - `tests/test_data_commit.py`'s pin on the re-export command now reads it from the line that runs it.
   - **ci.yml went red once, on actionlint** (run 37353804115, `bfd4e69`). Its shellcheck read `failed()` as unreachable (SC2317, info), since only the ERR trap calls it, and `ci_local` runs no actionlint. A directive with its reason fixed it, and ci.yml run 37354247048 went green on `c09f81f` at 18:13:49Z.
-  - **OWED: the first scheduled collect run on the new step**, read green with its log intact. The new files only surface when a step fails.
+  - **OWED: the first scheduled collect run on the new step**, read green with its log intact. The new files only surface when a step fails. The step this was owed on was replaced before it ran on a schedule, so the read is owed on the entry above's step instead.
 - **Ruling 4, OWED for a quiet slot:** bump the actions GitHub now forces from Node.js 20 onto Node.js 24, as the runs' own warnings name them: `actions/checkout@v4` (all four lanes), `actions/setup-python@v5` (collect, audit, ci), and `actions/setup-node@v4` and `pnpm/action-setup@v4` (ci, dom-checks).
 
 ### The lost 00:17Z data commit: READ 2026-09-30; the commit step's retry BUILT, REVIEWED and SHIPPED the same day, and PROVEN in production 2026-10-01 by one staged race; issue 6 left for Corey

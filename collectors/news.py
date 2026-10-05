@@ -28,6 +28,7 @@ from rapidfuzz import fuzz
 import common
 import config
 import db
+import run_signals
 
 CHANNEL = "news"
 GNEWS_SOURCE_ID = "google-news"
@@ -231,14 +232,17 @@ def process_entry(conn, raw: dict, source_id: str, source_grade: tuple[str, str]
 # --------------------------------------------------------------------------- #
 # Feed fetching
 # --------------------------------------------------------------------------- #
-def fetch_feed(url: str) -> list[dict]:
-    """Fetch and parse a feed into raw dicts; return [] on any network/parse error."""
+def fetch_feed(url: str, sig: "run_signals.RunSignals | None" = None) -> list[dict]:
+    """Fetch and parse a feed into raw dicts; return [] on any network/parse error. A fetch
+    that answered counts toward the channel's `ok` row when `sig` is given."""
     try:
         resp = requests.get(url, timeout=FEED_TIMEOUT, headers={"User-Agent": USER_AGENT})
         resp.raise_for_status()
     except requests.RequestException as exc:
         print(f"  feed fetch failed: {url} ({exc})", file=sys.stderr)
         return []
+    if sig is not None:
+        sig.reached()
     parsed = feedparser.parse(resp.content)
     return [
         {
@@ -391,6 +395,9 @@ def main() -> int:
     news = sources["news"]
     ctx = build_ctx(sources)
 
+    # Every channel writes its row (Corey, 2026-10-05): `ok` when a feed answered,
+    # `unreached` when none did. No key, so nothing loud of its own.
+    sig = run_signals.RunSignals("news")
     conn = db.connect()
     try:
         register_sources(conn, news)
@@ -404,12 +411,12 @@ def main() -> int:
         # swallowed as a per-source skip. Only the fetch+process is isolated.
         for feed in news.get("feeds", []):
             process_source(conn, feed["id"], feed.get("grade"),
-                           fetch_feed(feed["url"]), ctx, seen_titles, tally)
+                           fetch_feed(feed["url"], sig), ctx, seen_titles, tally)
 
         gn = news.get("google_news", {})
         for query in gn.get("queries", []):
             process_source(conn, GNEWS_SOURCE_ID, gn.get("grade"),
-                           fetch_feed(gnews_url(gn["base"], query)), ctx, seen_titles, tally)
+                           fetch_feed(gnews_url(gn["base"], query), sig), ctx, seen_titles, tally)
 
         attached = conn.execute(
             "SELECT bill_id, COUNT(*) n FROM items WHERE channel='news' AND bill_id IS NOT NULL "
@@ -417,10 +424,11 @@ def main() -> int:
         ).fetchall()
         print("  news run:", {k: tally[k] for k in sorted(tally)})
         print("  attached:", {r["bill_id"]: r["n"] for r in attached} or "none")
+        sig.flush(conn)
     finally:
         conn.close()
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    raise SystemExit(run_signals.guarded("news", main))

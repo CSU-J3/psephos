@@ -83,13 +83,17 @@ def _case(conn, case_id, status, checked_at):
         (case_id, f"United States v. Fixture {case_id}", status, checked_at))
 
 
-def _fresh(conn, with_state=False):
-    """This run recorded legislation and litigation (and state if asked), and both
-    receipts moved during it: the clean baseline every red test mutates one thing of."""
-    _channel_row(conn, RID, "legislation", rs.OK, "6 OK replies")
-    _channel_row(conn, RID, "litigation", rs.OK, "40 OK replies")
-    if with_state:
-        _channel_row(conn, RID, "state", rs.OK, "18 OK replies")
+def _fresh(conn, with_state=False, but=()):
+    """This run recorded every channel but those in `but` -- state `ok` when asked, its
+    quiet `skipped` otherwise, as off its slot -- and both receipts moved during it: the
+    clean baseline every red test mutates one thing of. Every channel writes its row since
+    2026-10-05, executive and news included."""
+    rows = {"legislation": (rs.OK, "6 OK replies"), "litigation": (rs.OK, "40 OK replies"),
+            "executive": (rs.OK, "16 OK replies"), "news": (rs.OK, "12 OK replies"),
+            "state": (rs.OK, "18 OK replies") if with_state else (rs.SKIPPED, "not this slot")}
+    for ch, (cls, ev) in rows.items():
+        if ch not in but:
+            _channel_row(conn, RID, ch, cls, ev)
     _bill(conn, DURING)
     _case(conn, "72347022", "pending", DURING)
     conn.commit()
@@ -102,10 +106,11 @@ def _kinds(findings):
 # --- run_signals: the line and the row ---------------------------------------------
 
 
-def test_the_loud_classes_are_exactly_the_middle_four():
+def test_the_loud_classes_are_the_middle_four_and_a_crash():
     assert rs.CLASSES == (rs.OK, rs.CREDENTIAL, rs.MISSING, rs.NO_OK, rs.CUT, rs.DEFERRED,
-                          rs.UNREACHED)
-    assert rs.LOUD == {"credential failure", "missing secret", "no OK replies", "cut short"}
+                          rs.UNREACHED, rs.FAILED, rs.SKIPPED)
+    assert rs.LOUD == {"credential failure", "missing secret", "no OK replies", "cut short", "failed"}
+    assert rs.CHANNELS == ("legislation", "litigation", "executive", "news", "state")
 
 
 def test_each_class_prints_its_literal_line_once(capsys):
@@ -251,7 +256,8 @@ def test_a_channel_that_met_nothing_and_reached_nothing_writes_unreached_and_sta
     assert [tuple(r) for r in live.execute(
         "SELECT channel, class FROM channel_runs").fetchall()] == [("legislation", rs.UNREACHED)]
     assert rs.UNREACHED not in rs.LOUD
-    _channel_row(live, RID, "litigation", rs.OK, "40 OK replies")
+    for ch, cls in (("litigation", rs.OK), ("executive", rs.OK), ("news", rs.OK), ("state", rs.SKIPPED)):
+        _channel_row(live, RID, ch, cls, "")
     _bill(live, "2026-09-28T05:40:00+00:00")
     _case(live, "72347022", "pending", DURING)
     live.commit()
@@ -304,6 +310,153 @@ def test_a_failed_flush_returns_false_scrubbed_and_does_not_raise(capsys):
     assert "channel_runs write failed" in err and KEY not in err
 
 
+# --- every channel writes its row (Corey, 2026-10-05) ---------------------------------
+
+
+class _Kept:
+    """The fixture connection, handed to code that closes what it opens."""
+
+    def __init__(self, conn):
+        self._conn = conn
+
+    def close(self):
+        pass
+
+    def __getattr__(self, name):
+        return getattr(self._conn, name)
+
+
+def _wire(monkeypatch, conn):
+    """A collector's main() on the fixture database: no `.env`, no schema step, no Turso."""
+    monkeypatch.setattr(config, "load_env", lambda *a, **k: None)
+    monkeypatch.setattr(db, "init_db", lambda *a, **k: None)
+    monkeypatch.setattr(db, "connect", lambda *a, **k: _Kept(conn))
+    monkeypatch.setenv("GITHUB_RUN_ID", RID)
+    monkeypatch.delenv("GITHUB_RUN_ATTEMPT", raising=False)
+
+
+def _rows(conn):
+    return [tuple(r) for r in conn.execute(
+        "SELECT channel, class, evidence FROM channel_runs ORDER BY channel, class").fetchall()]
+
+
+def test_guarded_returns_mains_exit_and_opens_nothing_when_main_returns(monkeypatch):
+    monkeypatch.setattr(rs.db, "connect", lambda *a, **k: pytest.fail("no raise, no connection"))
+    assert rs.guarded("news", lambda: 0) == 0
+    assert rs.guarded("news", lambda: 3) == 3
+
+
+def test_a_raise_writes_its_scrubbed_line_as_a_failed_row_on_a_fresh_connection_and_goes_on(
+        live, monkeypatch, capsys):
+    """The raise still ends the process, so the step sees the exit and the traceback stays
+    in the log; the row is what names the channel to the Verdict."""
+    monkeypatch.setenv("GITHUB_RUN_ID", RID)
+    monkeypatch.setenv("COURTLISTENER_TOKEN", TOKEN)
+    opened = []
+
+    def connect(*a, **k):
+        opened.append(a)
+        return _Kept(live)
+
+    monkeypatch.setattr(rs.db, "connect", connect)
+
+    def main():
+        raise ValueError(f"Hrana: `http error: `connection closed before message completed`` token={TOKEN}")
+
+    with pytest.raises(ValueError, match="connection closed before message completed"):
+        rs.guarded("litigation", main)
+    assert opened == [()]
+    assert _rows(live) == [("litigation", rs.FAILED, "ValueError: Hrana: `http error: `connection closed "
+                                                     "before message completed`` token=[redacted]")]
+    out = capsys.readouterr().out
+    assert "CHANNEL FAILED litigation: ValueError: Hrana:" in out and TOKEN not in out
+
+
+def test_a_raise_whose_database_cannot_be_opened_still_goes_on_and_says_so(monkeypatch, capsys):
+    monkeypatch.setenv("COURTLISTENER_TOKEN", TOKEN)
+
+    def connect(*a, **k):
+        raise ConnectionError(f"Hrana: connect refused for token {TOKEN}")
+
+    monkeypatch.setattr(rs.db, "connect", connect)
+
+    def main():
+        raise KeyError("feeds")
+
+    with pytest.raises(KeyError):              # the collector's own exception, not the connect's
+        rs.guarded("news", main)
+    err = capsys.readouterr().err
+    assert "news: could not open the database to record the failure" in err and TOKEN not in err
+
+
+@pytest.mark.parametrize("channel", rs.CHANNELS)
+def test_each_channel_runs_its_main_through_guarded(channel):
+    src = (REPO / "collectors" / f"{channel}.py").read_text(encoding="utf-8")
+    assert f'raise SystemExit(run_signals.guarded("{channel}", main))' in src
+
+
+@pytest.mark.parametrize("answering", [True, False])
+def test_executive_writes_ok_when_a_query_answered_and_unreached_when_none_did(
+        live, monkeypatch, capsys, answering):
+    from collectors import executive
+    _wire(monkeypatch, live)
+
+    def query(*a, **k):
+        if not answering:
+            raise ConnectionError("federalregister.gov unreachable")
+        return {"fetched": 0, "new_items": 0}
+
+    monkeypatch.setattr(executive, "collect_term", query)
+    monkeypatch.setattr(executive, "collect", query)
+    assert executive.main() == 0
+    queries = 2 * len(config.load_sources()["executive"]["terms"])     # agency and presidential
+    assert _rows(live) == ([("executive", rs.OK, f"{queries} OK replies")] if answering else
+                           [("executive", rs.UNREACHED, "no request answered OK and no loud class met; "
+                                                        "the receipt governs (R9)")])
+    capsys.readouterr()
+
+
+class _Feed:
+    content = b"<?xml version='1.0'?><rss version='2.0'><channel><title>t</title></channel></rss>"
+
+    def raise_for_status(self):
+        pass
+
+
+@pytest.mark.parametrize("answering", [True, False])
+def test_news_writes_ok_when_a_feed_answered_and_unreached_when_none_did(
+        live, monkeypatch, capsys, answering):
+    from collectors import news
+    _wire(monkeypatch, live)
+
+    def get(url, **k):
+        if not answering:
+            raise news.requests.ConnectionError("feed unreachable")
+        return _Feed()
+
+    monkeypatch.setattr(news.requests, "get", get)
+    assert news.main() == 0
+    cfg = config.load_sources()["news"]
+    feeds = len(cfg.get("feeds", [])) + len(cfg.get("google_news", {}).get("queries", []))
+    assert _rows(live) == ([("news", rs.OK, f"{feeds} OK replies")] if answering else
+                           [("news", rs.UNREACHED, "no request answered OK and no loud class met; "
+                                                   "the receipt governs (R9)")])
+    capsys.readouterr()
+
+
+def test_state_off_its_slot_writes_a_quiet_skipped_row_and_calls_nothing(live, monkeypatch, capsys):
+    _wire(monkeypatch, live)
+    monkeypatch.setenv("SLOT", "17 0 * * *")
+    monkeypatch.setattr(common, "http_get", lambda *a, **k: pytest.fail("off its slot, state calls nothing"))
+    assert state.main() == 0
+    assert _rows(live) == [("state", rs.SKIPPED, f"not this slot (17 0 * * *); state runs on "
+                                                 f"{state.STATE_SLOT} only")]
+    assert rs.SKIPPED not in rs.LOUD
+    out = capsys.readouterr().out
+    assert f"state: not this slot (17 0 * * *); the state collector runs on {state.STATE_SLOT} only" in out
+    assert "skipped" not in out.lower()         # quiet: the collector's own line is the only one
+
+
 # --- the verdict: rows this run -------------------------------------------------------
 
 
@@ -312,22 +465,20 @@ def test_a_clean_run_has_no_findings(live):
     assert cv.verdict(live, RID, cv.STATE_SLOT, STARTED, "success", NOW) == []
 
 
-@pytest.mark.parametrize("slot, state_expected", [
-    ("17 6 * * *", True), ("dispatch", True), ("", True),
-    ("17 0 * * *", False), ("17 12 * * *", False), ("17 18 * * *", False),
-])
-def test_state_is_expected_only_on_its_slot_a_dispatch_or_a_local_run(live, slot, state_expected):
-    _fresh(live)
-    got = cv.verdict(live, RID, slot, STARTED, "success", NOW)
-    assert _kinds(got) == ([("state", "unrecorded")] if state_expected else [])
+@pytest.mark.parametrize("slot", ["17 6 * * *", "dispatch", "", "17 0 * * *", "17 12 * * *", "17 18 * * *"])
+def test_every_channel_is_expected_on_every_slot(live, slot):
+    """All five write a row every run (Corey, 2026-10-05): state's off its slot is the
+    quiet `skipped`, so a state that wrote nothing is unrecorded on any slot."""
+    assert cv.expected_channels(slot) == rs.CHANNELS
+    _fresh(live, but=("state",))
+    assert _kinds(cv.verdict(live, RID, slot, STARTED, "success", NOW)) == [("state", "unrecorded")]
 
 
-def test_an_expected_channel_with_no_row_is_unrecorded(live):
-    _channel_row(live, RID, "litigation", rs.OK, "40 OK replies")
-    _bill(live, DURING)
-    live.commit()
+@pytest.mark.parametrize("channel", ["legislation", "executive", "news"])
+def test_an_expected_channel_with_no_row_is_unrecorded(live, channel):
+    _fresh(live, but=(channel,))
     assert _kinds(cv.verdict(live, RID, "17 0 * * *", STARTED, "success", NOW)) == [
-        ("legislation", "unrecorded")]
+        (channel, "unrecorded")]
 
 
 @pytest.mark.parametrize("cls", rs.CLASSES)
@@ -618,6 +769,9 @@ def main_env(tmp_path, monkeypatch):
     now = common.now_iso()
     _channel_row(conn, RID, "legislation", rs.OK, "6 OK replies", now)
     _channel_row(conn, RID, "litigation", rs.OK, "40 OK replies", now)
+    _channel_row(conn, RID, "executive", rs.OK, "16 OK replies", now)
+    _channel_row(conn, RID, "news", rs.OK, "12 OK replies", now)
+    _channel_row(conn, RID, "state", rs.SKIPPED, "not this slot (17 0 * * *)", now)
     _bill(conn, now)
     _case(conn, "72347022", "pending", now)
     conn.commit()

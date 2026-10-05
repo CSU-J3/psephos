@@ -502,7 +502,9 @@ def test_a_missing_key_on_a_state_run_prints_the_line_and_writes_the_row(run, sl
 
 @pytest.mark.parametrize("slot", ["17 0 * * *", "17 12 * * *", "17 18 * * *"])
 @pytest.mark.parametrize("key", [None, FIXTURE_KEY])
-def test_a_non_state_slot_never_reads_the_key_and_writes_no_row(run, slot, key):
+def test_a_non_state_slot_never_reads_the_key_and_writes_only_its_quiet_skipped_row(run, slot, key):
+    """Every channel writes its row (Corey, 2026-10-05), so the Verdict reads all five: off
+    its slot, state's is `skipped`, quiet. The gate still returns before the key is read."""
     fake = Fake()
     rc, out, err = run(fake, slot=slot, key=key)
     assert rc == 0
@@ -510,7 +512,7 @@ def test_a_non_state_slot_never_reads_the_key_and_writes_no_row(run, slot, key):
     assert fake.calls == []
     assert f"state: not this slot ({slot})" in out
     assert _signals(out) == []
-    assert run.conn.execute("SELECT COUNT(*) FROM channel_runs").fetchone()[0] == 0
+    assert _rows(run.conn) == {"skipped": f"not this slot ({slot}); state runs on 17 6 * * * only"}
 
 
 # --- (9) the key never reaches the output ------------------------------------------------
