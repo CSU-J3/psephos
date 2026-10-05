@@ -7,7 +7,26 @@
     "date_terminated": "2026-02-05T00:00:00",
     "defendant": "State of Oregon",
     "docket_number": "6:25-cv-01666",
-    "entry_count": 120,
+    "entry_count": 111,
+    "entry_moves": [
+      {
+        "entries": [
+          120,
+          111
+        ],
+        "kind": "link",
+        "ledger": [
+          54,
+          48
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          55,
+          49
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2025-09-16T00:00:00",
     "latest_entry_at": "2026-03-12T00:00:00",
     "plaintiff": "United States",
@@ -130,16 +149,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 79005,
-        "kind": "item",
-        "occurred_at": "2025-10-02T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
-        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Stay"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 78964,
         "kind": "item",
         "occurred_at": "2025-10-24T00:00:00",
@@ -156,16 +165,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71363789/26/united-states-v-state-of-oregon/",
         "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai: Before the Court is Plaintiff's Unopposed Second Motion for Stay (ECF No. 25 ). The Court declines to exercise its discretion to extend the stay"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 79001,
-        "kind": "item",
-        "occurred_at": "2025-10-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
-        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Stay"
       },
       {
         "channel": "litigation",
@@ -310,16 +309,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 79006,
-        "kind": "item",
-        "occurred_at": "2025-12-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
-        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion for Leave"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 78979,
         "kind": "item",
         "occurred_at": "2025-12-03T00:00:00",
@@ -380,16 +369,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 79002,
-        "kind": "item",
-        "occurred_at": "2025-12-05T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
-        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion to Appear as Amicus Curiae"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 78985,
         "kind": "item",
         "occurred_at": "2025-12-08T00:00:00",
@@ -406,16 +385,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71363789/58/united-states-v-state-of-oregon/",
         "title": "United States of America v. State of Oregon, et al. (D. Or.): ORDER by Judge Mustafa T. Kasubhai GRANTING Unopposed Motion to Appear as Amicus Curiae 55 . (bd) (Entered: 12/08/2025)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 78999,
-        "kind": "item",
-        "occurred_at": "2025-12-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
-        "title": "United States of America v. State of Oregon, et al. (D. Or.): Order on Motion to Appear as Amicus Curiae"
       },
       {
         "channel": "litigation",
@@ -520,16 +489,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 79000,
-        "kind": "item",
-        "occurred_at": "2026-01-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71363789/united-states-v-state-of-oregon/",
-        "title": "United States of America v. State of Oregon, et al. (D. Or.): Motion Hearing Held"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 78995,
         "kind": "item",
         "occurred_at": "2026-02-05T00:00:00",
@@ -577,7 +536,7 @@
     "date_terminated": "2026-01-15T00:00:00",
     "defendant": "Shirley Weber",
     "docket_number": "2:25-cv-09149",
-    "entry_count": 153,
+    "entry_count": 146,
     "entry_moves": [
       {
         "apart": 3,
@@ -588,6 +547,15 @@
         "kind": "merge",
         "on": "2026-10-02",
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          153,
+          146
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-09-25T00:00:00",
@@ -1269,7 +1237,7 @@
     "date_terminated": "2026-06-27T00:00:00",
     "defendant": "COMMONWEALTH OF PENNSYLVANIA",
     "docket_number": "2:25-cv-01481",
-    "entry_count": 201,
+    "entry_count": 193,
     "entry_moves": [
       {
         "apart": 3,
@@ -1284,6 +1252,23 @@
           111
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          201,
+          193
+        ],
+        "kind": "link",
+        "ledger": [
+          110,
+          105
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          111,
+          106
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-09-25T00:00:00",
@@ -2048,16 +2033,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 17084,
-        "kind": "item",
-        "occurred_at": "2026-01-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 17030,
         "kind": "item",
         "occurred_at": "2026-01-29T00:00:00",
@@ -2148,16 +2123,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 17080,
-        "kind": "item",
-        "occurred_at": "2026-01-30T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: CLERK'S NOTICE OF CORRECTION re 120 MOTION to Transfer Case . ERROR: Document should have been filed as two separate documents. CORRECTION FOR FUTURE FILINGS: Attorney advised that"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 17081,
         "kind": "item",
         "occurred_at": "2026-01-30T00:00:00",
@@ -2194,26 +2159,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453026/129/united-states-v-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ORDER response/briefing schedule re 120 the government's Motion to Transfer the Case. Response(s) are due by 2/12/2026. Parties with aligned interests are encouraged to file one se"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 17077,
-        "kind": "item",
-        "occurred_at": "2026-02-02T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 17079,
-        "kind": "item",
-        "occurred_at": "2026-02-02T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: Order Response/Briefing Schedule"
       },
       {
         "channel": "litigation",
@@ -2294,16 +2239,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453026/136/united-states-v-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ORDER granting 134 Motion to Withdraw as Attorney. Attorney Megan Frederick is terminated as to this matter. Signed by Chief Judge Cathy Bissoon on 2/25/2026. Text-only entry; no P"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 17070,
-        "kind": "item",
-        "occurred_at": "2026-02-25T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453026/united-states-v-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: Order on Motion to Withdraw as Attorney"
       },
       {
         "channel": "litigation",
@@ -3994,7 +3929,7 @@
     "date_terminated": "2026-06-30T00:00:00",
     "defendant": "NH Secretary of State",
     "docket_number": "1:25-cv-00371",
-    "entry_count": 184,
+    "entry_count": 172,
     "entry_moves": [
       {
         "apart": 2,
@@ -4017,6 +3952,23 @@
         ],
         "kind": "link",
         "on": "2026-10-02",
+        "why": "pairs of court records that describe one entry were linked"
+      },
+      {
+        "entries": [
+          184,
+          172
+        ],
+        "kind": "link",
+        "ledger": [
+          110,
+          102
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          111,
+          103
+        ],
         "why": "pairs of court records that describe one entry were linked"
       }
     ],
@@ -4093,16 +4045,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 7648,
-        "kind": "item",
-        "occurred_at": "2025-11-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 7679,
         "kind": "item",
         "occurred_at": "2025-11-24T00:00:00",
         "source_id": "courtlistener",
@@ -4577,16 +4519,6 @@
         "occurred_at": "2026-03-12T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Order on Motion for Leave to File AND Order on Motion to File Amicus Brief AND Order on Motion to File Amicus Brief AND Order on Motion to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 7692,
-        "kind": "item",
-        "occurred_at": "2026-03-12T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
         "title": "United States v. New Hampshire: ENDORSED ORDER granting re 34 Motion to File Amicus Brief; granting re 41 Motion to File Amicus Brief; granting 43 Motion for Leave to File; granting 49 Motion to File Amicus Brief"
       },
       {
@@ -4707,32 +4639,12 @@
         "occurred_at": "2026-04-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 7663,
-        "kind": "item",
-        "occurred_at": "2026-04-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
         "title": "United States v. New Hampshire: ENDORSED ORDER re 67 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(ko)"
       },
       {
         "channel": "litigation",
         "grade": "A1",
         "id": 7649,
-        "kind": "item",
-        "occurred_at": "2026-04-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 7698,
         "kind": "item",
         "occurred_at": "2026-04-15T00:00:00",
         "source_id": "courtlistener",
@@ -4843,16 +4755,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 7655,
-        "kind": "item",
-        "occurred_at": "2026-05-05T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 7697,
         "kind": "item",
         "occurred_at": "2026-05-05T00:00:00",
         "source_id": "courtlistener",
@@ -4972,16 +4874,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 7674,
-        "kind": "item",
-        "occurred_at": "2026-05-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Motion Hearing"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 7645,
         "kind": "item",
         "occurred_at": "2026-06-02T00:00:00",
@@ -5012,22 +4904,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 7694,
-        "kind": "item",
-        "occurred_at": "2026-06-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 7675,
         "kind": "item",
         "occurred_at": "2026-06-26T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: Endorsed Order - not on motion"
+        "title": "United States v. New Hampshire: ENDORSED ORDER RE 85 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(jwb)"
       },
       {
         "channel": "litigation",
@@ -5038,16 +4920,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
         "title": "United States v. New Hampshire: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 7701,
-        "kind": "item",
-        "occurred_at": "2026-06-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71453646/united-states-v-nh-secretary-of-state/",
-        "title": "United States v. New Hampshire: ENDORSED ORDER RE 85 Notice of Supplemental Authority. Text of Order: Reviewed. So Ordered by Judge Joseph N. Laplante.(jwb)"
       },
       {
         "channel": "litigation",
@@ -5149,7 +5021,7 @@
     "date_terminated": "2026-07-10T00:00:00",
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "1:25-cv-01338",
-    "entry_count": 125,
+    "entry_count": 114,
     "entry_moves": [
       {
         "entries": [
@@ -5167,6 +5039,23 @@
           49
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          125,
+          114
+        ],
+        "kind": "link",
+        "ledger": [
+          48,
+          43
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          49,
+          44
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-09-25T00:00:00",
@@ -5241,16 +5130,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9812,
-        "kind": "item",
-        "occurred_at": "2025-10-07T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Order Staying Case"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9781,
         "kind": "item",
         "occurred_at": "2025-10-24T00:00:00",
@@ -5291,32 +5170,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9814,
-        "kind": "item",
-        "occurred_at": "2025-11-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Order on Motion to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9785,
         "kind": "item",
         "occurred_at": "2025-11-21T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/58/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: TEXT ORDER LIFTING STAY: It is hereby ORDERED that the Stay entered pursuant to General Order No. 48 [Dkt. no. 11] on October 7, 2025 is hereby Lifted. Signed by U.S. District Judg"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9815,
-        "kind": "item",
-        "occurred_at": "2025-11-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Order Lifting Stay"
       },
       {
         "channel": "litigation",
@@ -5561,16 +5420,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9820,
-        "kind": "item",
-        "occurred_at": "2026-01-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9805,
         "kind": "item",
         "occurred_at": "2026-02-06T00:00:00",
@@ -5617,16 +5466,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71457474/99/united-states-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: TEXT ORDER regarding 97 Notice of Supplemental Authority by United States of America re 81 Motion to Compel and Opposition to Motion to Dismiss and 98 Response to Letter Brief file"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9818,
-        "kind": "item",
-        "occurred_at": "2026-05-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71457474/united-states-v-board-of-elections-of-the-state-of-new-york/",
-        "title": "United States v. New York: Order"
       },
       {
         "channel": "litigation",
@@ -5678,7 +5517,7 @@
     "date_terminated": "2026-06-22T00:00:00",
     "defendant": "U.S. Department of Homeland Security",
     "docket_number": "1:25-cv-03501",
-    "entry_count": 234,
+    "entry_count": 219,
     "entry_moves": [
       {
         "entries": [
@@ -5711,6 +5550,23 @@
         "timeline": [
           140,
           135
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      },
+      {
+        "entries": [
+          234,
+          219
+        ],
+        "kind": "link",
+        "ledger": [
+          134,
+          124
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          135,
+          125
         ],
         "why": "pairs of court records that describe one entry were linked"
       }
@@ -5862,16 +5718,6 @@
         "occurred_at": "2025-10-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 220,
-        "kind": "item",
-        "occurred_at": "2025-10-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 24 Motion for Leave to File Amicus Brief. The Court will treat the motion's attachment, ECF No. 24-1, as the amicus brief. Signed by Judge Sparkle L. Sook"
       },
       {
@@ -5963,16 +5809,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 40 Motion for Leave to File Amicus Brief. The Court will treat the motion's attachment, ECF No. 40-1, as the amicus brief. Signed by Judge Sparkle L. Sook"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 217,
-        "kind": "item",
-        "occurred_at": "2025-10-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
       },
       {
         "channel": "litigation",
@@ -6272,16 +6108,6 @@
         "occurred_at": "2026-02-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Scheduling Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 228,
-        "kind": "item",
-        "occurred_at": "2026-02-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In light of the 62 Joint Status Report, the Parties are ORDERED to comply with the following schedule. The Defendants shall produce the administrative record and file"
       },
       {
@@ -6312,16 +6138,6 @@
         "occurred_at": "2026-03-20T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 229,
-        "kind": "item",
-        "occurred_at": "2026-03-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 67 Motion for Leave to File Amicus Brief. The Court will treat the motion's attachments, ECF Nos. 67-1 & 67-2, as the amicus brief. Signed by Judge Sparkl"
       },
       {
@@ -6338,16 +6154,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 212,
-        "kind": "item",
-        "occurred_at": "2026-03-27T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 221,
         "kind": "item",
         "occurred_at": "2026-03-27T00:00:00",
         "source_id": "courtlistener",
@@ -6377,16 +6183,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 185,
-        "kind": "item",
-        "occurred_at": "2026-03-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 159,
         "kind": "item",
         "occurred_at": "2026-04-01T00:00:00",
@@ -6403,16 +6199,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 74 Motion for Leave to File Amicus Brief. The Court treats the 74 Motion's attachment, ECF No. 74-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 211,
-        "kind": "item",
-        "occurred_at": "2026-04-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
       },
       {
         "channel": "litigation",
@@ -6468,16 +6254,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 189,
-        "kind": "item",
-        "occurred_at": "2026-04-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 200,
         "kind": "item",
         "occurred_at": "2026-04-06T00:00:00",
         "source_id": "courtlistener",
@@ -6682,7 +6458,7 @@
         "occurred_at": "2026-05-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Extension of Time to File Response/Reply AND Set/Reset Deadlines"
+        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 103 Motion for Extension of Time. The Federal Defendants' deadline to file a reply in support of their 77 Motion to Dismiss is extended to May 29, 2026. T"
       },
       {
         "channel": "litigation",
@@ -6693,16 +6469,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: Order on Motion for Extension of Time to File Response/Reply"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 233,
-        "kind": "item",
-        "occurred_at": "2026-05-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER granting the 103 Motion for Extension of Time. The Federal Defendants' deadline to file a reply in support of their 77 Motion to Dismiss is extended to May 29, 2026. T"
       },
       {
         "channel": "litigation",
@@ -6932,16 +6698,6 @@
         "occurred_at": "2026-07-11T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security: .Order AND ~Util - Set/Reset Deadlines"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 24493,
-        "kind": "item",
-        "occurred_at": "2026-07-11T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71499795/league-of-women-voters-v-us-department-of-homeland-security/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security: MINUTE ORDER: In light of the 126 Joint Status Report and the Federal Defendants' representations about the exigency of this matter, the Court directs the Social Security Administr"
       },
       {
@@ -7084,7 +6840,7 @@
     "date_terminated": "2026-09-23T00:00:00",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 104,
+    "entry_count": 100,
     "entry_moves": [
       {
         "entries": [
@@ -7102,6 +6858,23 @@
           60
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          104,
+          100
+        ],
+        "kind": "link",
+        "ledger": [
+          59,
+          55
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          60,
+          56
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-01T00:00:00",
@@ -7276,16 +7049,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8469,
-        "kind": "item",
-        "occurred_at": "2026-01-16T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
-        "title": "United States v. Vermont: Order on Motion to Intervene"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8437,
         "kind": "item",
         "occurred_at": "2026-01-20T00:00:00",
@@ -7322,26 +7085,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/45/united-states-v-hanzas/",
         "title": "United States v. Vermont: RESPONSE in Opposition re 2 MOTION to Compel Production of Records Demanded Pursuant to The Civil Rights Act of 1960 filed by Vermont Public Interest Research Group. (Jhaveri, Seja"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8467,
-        "kind": "item",
-        "occurred_at": "2026-01-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
-        "title": "United States v. Vermont: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8471,
-        "kind": "item",
-        "occurred_at": "2026-01-20T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
-        "title": "United States v. Vermont: Order on Motion to Intervene"
       },
       {
         "channel": "litigation",
@@ -7482,16 +7225,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/70/united-states-v-hanzas/",
         "title": "United States v. Vermont: MINUTE ENTRY for proceedings held before District Judge Mary Kay Lanthier: Motion Hearing held on 4/14/2026 re: 2 MOTION to Compel Production of Records Demanded Pursuant to The Ci"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8468,
-        "kind": "item",
-        "occurred_at": "2026-04-14T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
-        "title": "United States v. Vermont: Motion Hearing AND ~Util - Motions Taken Under Advisement"
       },
       {
         "channel": "litigation",
@@ -7723,7 +7456,7 @@
     "date_terminated": "2026-06-18T00:00:00",
     "defendant": "DeMarinis",
     "docket_number": "1:25-cv-03934",
-    "entry_count": 100,
+    "entry_count": 99,
     "entry_moves": [
       {
         "entries": [
@@ -7741,6 +7474,15 @@
           50
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          100,
+          99
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-01T00:00:00",
@@ -8262,7 +8004,7 @@
     "date_terminated": "2026-07-14T00:00:00",
     "defendant": "Oliver",
     "docket_number": "1:25-cv-01193",
-    "entry_count": 154,
+    "entry_count": 150,
     "entry_moves": [
       {
         "entries": [
@@ -8280,6 +8022,23 @@
           67
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          154,
+          150
+        ],
+        "kind": "link",
+        "ledger": [
+          66,
+          62
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          67,
+          63
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
@@ -8340,16 +8099,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/9/united-states-v-oliver/",
         "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting unopposed 7 Motion to Intervene of the New Mexico Alliance for Retired Americans. [THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOC"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9774,
-        "kind": "item",
-        "occurred_at": "2025-12-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico: Order on Motion to Intervene"
       },
       {
         "channel": "litigation",
@@ -8540,16 +8289,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/45/united-states-v-oliver/",
         "title": "United States v. New Mexico: NOTICE by Justin Allen, Common Cause, Claudia Medina re 34 Opposed MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM of Supplemental Authority (Attachments: # 1 Exhibit 1) (Martinez S"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9775,
-        "kind": "item",
-        "occurred_at": "2026-01-15T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico: Order on Motion to File Amicus Brief"
       },
       {
         "channel": "litigation",
@@ -8794,16 +8533,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9770,
-        "kind": "item",
-        "occurred_at": "2026-02-19T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9762,
         "kind": "item",
         "occurred_at": "2026-03-03T00:00:00",
@@ -8879,16 +8608,6 @@
         "occurred_at": "2026-07-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982149/united-states-v-oliver/",
-        "title": "United States v. New Mexico: Order on Motion to Withdraw as Attorney"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 16900,
-        "kind": "item",
-        "occurred_at": "2026-07-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982149/117/united-states-v-oliver/",
         "title": "United States v. New Mexico: ORDER by Magistrate Judge John F. Robbenhaar granting 112 Motion to Withdraw as Attorney. Attorney Omeed Alerasool terminated. THIS IS A TEXT-ONLY ENTRY. THERE ARE NO DOCUMENTS ATT"
       },
       {
@@ -8971,7 +8690,7 @@
     "date_terminated": "2026-09-22T00:00:00",
     "defendant": "Hobbs",
     "docket_number": "3:25-cv-06078",
-    "entry_count": 119,
+    "entry_count": 110,
     "entry_moves": [
       {
         "entries": [
@@ -8989,6 +8708,23 @@
           61
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          119,
+          110
+        ],
+        "kind": "link",
+        "ledger": [
+          60,
+          57
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          61,
+          58
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
@@ -9373,16 +9109,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9170,
-        "kind": "item",
-        "occurred_at": "2026-05-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
-        "title": "United States v. Washington: Notice of Hearing on Motion"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9158,
         "kind": "item",
         "occurred_at": "2026-05-22T00:00:00",
@@ -9523,31 +9249,11 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9174,
-        "kind": "item",
-        "occurred_at": "2026-06-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
-        "title": "United States v. Washington: Set/Reset Motion Noting Date (Public)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 69250,
         "kind": "item",
         "occurred_at": "2026-08-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
-        "title": "United States v. Washington: Motion Hearing"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 70028,
-        "kind": "item",
-        "occurred_at": "2026-08-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71982380/89/united-states-v-hobbs/",
         "title": "United States v. Washington: MINUTE ENTRY for proceedings held before District Judge Kymberly K. Evanson - Dep Clerk: D. Staples; Pla Counsel: Kristen Johnson, Raymond Yang; Def Counsel: Cristina Sepe, Tera He"
       },
       {
@@ -9620,7 +9326,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 166,
+    "entry_count": 161,
     "entry_moves": [
       {
         "entries": [
@@ -9653,6 +9359,23 @@
         "timeline": [
           74,
           73
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      },
+      {
+        "entries": [
+          166,
+          161
+        ],
+        "kind": "link",
+        "ledger": [
+          72,
+          71
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          73,
+          72
         ],
         "why": "pairs of court records that describe one entry were linked"
       }
@@ -9854,7 +9577,7 @@
         "occurred_at": "2026-02-05T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
-        "title": "United States v. Delaware: SO ORDERED"
+        "title": "United States v. Delaware: SO ORDERED, re 32 MOTION for Pro Hac Vice Appearance of Attorney Jonathan Topaz filed by Delaware Coalition Against Domestic Violence, La Esperanza, Latin American Community Center"
       },
       {
         "channel": "litigation",
@@ -9994,7 +9717,7 @@
         "occurred_at": "2026-02-11T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
-        "title": "United States v. Delaware: SO ORDERED"
+        "title": "United States v. Delaware: SO ORDERED, re 44 MOTION for Pro Hac Vice Appearance of Attorney Daniel J. Freeman, filed by Democratic National Committee. Signed by Judge Richard G. Andrews on 2/11/2026. (nms)"
       },
       {
         "channel": "litigation",
@@ -10134,7 +9857,7 @@
         "occurred_at": "2026-02-23T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
-        "title": "United States v. Delaware: SO ORDERED"
+        "title": "United States v. Delaware: SO ORDERED, re 54 MOTION for Pro Hac Vice Appearance of Attorney Olivia den Dulk filed by Attorney General of New Mexico. Signed by Judge Richard G. Andrews on 2/23/2026. (aas)"
       },
       {
         "channel": "litigation",
@@ -10205,16 +9928,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/66/united-states-v-albence/",
         "title": "United States v. Delaware: ORAL ORDER: The Motion for Limited Admission or Admission Pursuant to Local Rule 83.5 (D.I. 65 ) is DENIED. Ms. Gibson is not admitted to practice before the Supreme Court of the S"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11933,
-        "kind": "item",
-        "occurred_at": "2026-03-05T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
-        "title": "United States v. Delaware: Oral Order"
       },
       {
         "channel": "litigation",
@@ -10406,7 +10119,7 @@
     "date_terminated": "2026-08-04T00:00:00",
     "defendant": "Griswold",
     "docket_number": "1:25-cv-03967",
-    "entry_count": 125,
+    "entry_count": 114,
     "entry_moves": [
       {
         "entries": [
@@ -10424,6 +10137,23 @@
           93
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          125,
+          114
+        ],
+        "kind": "link",
+        "ledger": [
+          92,
+          81
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          93,
+          82
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-11T00:00:00",
@@ -10518,26 +10248,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8846,
-        "kind": "item",
-        "occurred_at": "2025-12-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Order Referring Case to Magistrate Judge"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8847,
-        "kind": "item",
-        "occurred_at": "2025-12-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8785,
         "kind": "item",
         "occurred_at": "2025-12-19T00:00:00",
@@ -10554,16 +10264,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/18/united-states-v-griswold/",
         "title": "United States v. Colorado: MEMORANDUM regarding 17 Unopposed MOTION to Intervene filed by Kyle Giddings, Anne Keke, Common Cause. Motion referred to Magistrate Judge Cyrus Y. Chung, by Chief Judge Philip A. "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8835,
-        "kind": "item",
-        "occurred_at": "2025-12-22T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
       },
       {
         "channel": "litigation",
@@ -10648,16 +10348,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8836,
-        "kind": "item",
-        "occurred_at": "2026-01-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8793,
         "kind": "item",
         "occurred_at": "2026-01-13T00:00:00",
@@ -10694,16 +10384,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/34/united-states-v-griswold/",
         "title": "United States v. Colorado: MEMORANDUM regarding 33 MOTION for Leave to filed by Danielle Purdy. Motion referred to Magistrate Judge Timothy P O'Hara, by Chief Judge Philip A. Brimmer on 2/09/2026. Text Only "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8833,
-        "kind": "item",
-        "occurred_at": "2026-02-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
       },
       {
         "channel": "litigation",
@@ -10774,16 +10454,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/43/united-states-v-griswold/",
         "title": "United States v. Colorado: RESPONSE to 33 MOTION for Leave to File Amicus Brief by Danielle Purdy filed by Defendant Jena Griswold. (Baumann, Peter) (Entered: 02/11/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8834,
-        "kind": "item",
-        "occurred_at": "2026-02-11T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
       },
       {
         "channel": "litigation",
@@ -10968,26 +10638,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8843,
-        "kind": "item",
-        "occurred_at": "2026-03-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8845,
-        "kind": "item",
-        "occurred_at": "2026-03-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Order on Motion for Leave"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8819,
         "kind": "item",
         "occurred_at": "2026-03-26T00:00:00",
@@ -11004,16 +10654,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/64/united-states-v-griswold/",
         "title": "United States v. Colorado: MEMORANDUM regarding 63 MOTION for Leave to File Notice of Supplemental Authority filed by Britton DeFord, Colorado Alliance for Retired Americans. Motion referred to Magistrate Ju"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8839,
-        "kind": "item",
-        "occurred_at": "2026-03-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
       },
       {
         "channel": "litigation",
@@ -11054,16 +10694,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/72/united-states-v-griswold/",
         "title": "United States v. Colorado: MEMORANDUM regarding 71 Unopposed MOTION for Leave to File Notice of Supplemental Authority 10 Unopposed MOTION to Intervene as Intervenor-Defendants filed by Britton DeFord, Color"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8841,
-        "kind": "item",
-        "occurred_at": "2026-05-19T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Memorandum"
       },
       {
         "channel": "litigation",
@@ -11193,7 +10823,7 @@
         "occurred_at": "2026-07-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/united-states-v-griswold/",
-        "title": "United States v. Colorado: Order on Motion for Leave"
+        "title": "United States v. Colorado: ORDER by Judge Philip A. Brimmer on 7/10/2026 re: 88 Colorado Alliance for Retired Americans and Britton DeFord's Motion for Leave to File Supplemental Brief Supporting Their Motio"
       },
       {
         "channel": "litigation",
@@ -11204,16 +10834,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72021508/88/united-states-v-griswold/",
         "title": "United States v. Colorado: MOTION for Leave to File Supplemental Brief Supporting 86 MOTION to Dismiss by Intervenor Defendants Colorado Alliance for Retired Americans, Britton DeFord. (Attachments: # 1 Prop"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 29890,
-        "kind": "item",
-        "occurred_at": "2026-07-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72021508/89/united-states-v-griswold/",
-        "title": "United States v. Colorado: ORDER by Judge Philip A. Brimmer on 7/10/2026 re: 88 Colorado Alliance for Retired Americans and Britton DeFord's Motion for Leave to File Supplemental Brief Supporting Their Motio"
       },
       {
         "channel": "litigation",
@@ -11847,7 +11467,7 @@
     "date_terminated": "2026-08-14T00:00:00",
     "defendant": "Aguilar",
     "docket_number": "3:25-cv-00728",
-    "entry_count": 104,
+    "entry_count": 101,
     "entry_moves": [
       {
         "apart": 1,
@@ -11870,6 +11490,23 @@
           68
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          104,
+          101
+        ],
+        "kind": "link",
+        "ledger": [
+          67,
+          66
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          68,
+          67
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-11T00:00:00",
@@ -12274,16 +11911,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8375,
-        "kind": "item",
-        "occurred_at": "2026-03-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72026664/united-states-v-aguilar/",
-        "title": "United States v. Nevada: Minute Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8353,
         "kind": "item",
         "occurred_at": "2026-03-27T00:00:00",
@@ -12571,7 +12198,7 @@
     "date_terminated": "2026-01-23T00:00:00",
     "defendant": "RAFFENSPERGER",
     "docket_number": "5:25-cv-00548",
-    "entry_count": 59,
+    "entry_count": 55,
     "entry_moves": [
       {
         "kind": "merge",
@@ -12581,6 +12208,15 @@
           19
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          59,
+          55
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-18T00:00:00",
@@ -12792,7 +12428,7 @@
     "date_terminated": "2026-07-31T00:00:00",
     "defendant": "Matthews",
     "docket_number": "3:25-cv-03398",
-    "entry_count": 126,
+    "entry_count": 122,
     "entry_moves": [
       {
         "entries": [
@@ -12810,6 +12446,23 @@
           90
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          126,
+          122
+        ],
+        "kind": "link",
+        "ledger": [
+          89,
+          85
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          90,
+          86
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-18T00:00:00",
@@ -12889,16 +12542,6 @@
         "occurred_at": "2025-12-19T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
-        "title": "United States v. Illinois: Order on Motion to Compel"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 15589,
-        "kind": "item",
-        "occurred_at": "2025-12-19T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
         "title": "United States v. Illinois: TEXT ORDER entered by Magistrate Judge Douglas J. Quivey on 12/19/2025: Before the Court are Plaintiff's Complaint (Doc. 1 ) and Motion to Compel (Doc. 2 ). Pursuant to Local Rule "
       },
       {
@@ -12970,16 +12613,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
         "title": "United States v. Illinois: Order on Motion for Miscellaneous Relief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 15600,
-        "kind": "item",
-        "occurred_at": "2026-01-08T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
-        "title": "United States v. Illinois: Order on Motion for Miscellaneous Relief AND ~Util - Set/Reset Deadlines/Hearings"
       },
       {
         "channel": "litigation",
@@ -13304,16 +12937,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 15603,
-        "kind": "item",
-        "occurred_at": "2026-03-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
-        "title": "United States v. Illinois: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 15604,
         "kind": "item",
         "occurred_at": "2026-03-17T00:00:00",
@@ -13544,16 +13167,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 15599,
-        "kind": "item",
-        "occurred_at": "2026-06-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72054244/united-states-v-matthews/",
-        "title": "United States v. Illinois: Order on Motion to Strike"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 15584,
         "kind": "item",
         "occurred_at": "2026-06-22T00:00:00",
@@ -13731,7 +13344,7 @@
     "date_terminated": "2026-08-06T00:00:00",
     "defendant": "EVANS",
     "docket_number": "1:25-cv-04403",
-    "entry_count": 131,
+    "entry_count": 120,
     "entry_moves": [
       {
         "entries": [
@@ -13749,6 +13362,23 @@
           68
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          131,
+          120
+        ],
+        "kind": "link",
+        "ledger": [
+          67,
+          61
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          68,
+          62
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2025-12-18T00:00:00",
@@ -13953,27 +13583,7 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 11858,
-        "kind": "item",
-        "occurred_at": "2026-01-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC: Order on Motion to Withdraw as Attorney"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 11869,
-        "kind": "item",
-        "occurred_at": "2026-02-05T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC: Motion Hearing"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11874,
         "kind": "item",
         "occurred_at": "2026-02-05T00:00:00",
         "source_id": "courtlistener",
@@ -14178,32 +13788,12 @@
         "occurred_at": "2026-03-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11862,
-        "kind": "item",
-        "occurred_at": "2026-03-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC: Order on Motion to Withdraw as Attorney"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11865,
-        "kind": "item",
-        "occurred_at": "2026-03-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
         "title": "United States v. DC: MINUTE ORDER: Upon consideration of the Democratic National Committee's Motion for Leave to File Amicus Brief, Dkt. 44, it is hereby ORDERED that the motion is GRANTED. Signed by J"
       },
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 11866,
+        "id": 11862,
         "kind": "item",
         "occurred_at": "2026-03-18T00:00:00",
         "source_id": "courtlistener",
@@ -14274,16 +13864,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 11850,
-        "kind": "item",
-        "occurred_at": "2026-04-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11851,
         "kind": "item",
         "occurred_at": "2026-04-01T00:00:00",
         "source_id": "courtlistener",
@@ -14368,16 +13948,6 @@
         "occurred_at": "2026-05-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
-        "title": "United States v. DC: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 11876,
-        "kind": "item",
-        "occurred_at": "2026-05-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72055344/united-states-v-evans/",
         "title": "United States v. DC: MINUTE ORDER: Upon consideration of the government's Motion for Leave to File Combined Response to Supplemental Authorities, Dkt. 63, it is hereby ORDERED that the motion is GRANTE"
       },
       {
@@ -14450,7 +14020,7 @@
     "date_terminated": "2026-07-23T00:00:00",
     "defendant": "Thomas",
     "docket_number": "3:26-cv-00021",
-    "entry_count": 140,
+    "entry_count": 126,
     "entry_moves": [
       {
         "entries": [
@@ -14468,6 +14038,23 @@
           64
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          140,
+          126
+        ],
+        "kind": "link",
+        "ledger": [
+          63,
+          54
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          64,
+          55
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-01-06T00:00:00",
@@ -14582,16 +14169,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8905,
-        "kind": "item",
-        "occurred_at": "2026-01-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8857,
         "kind": "item",
         "occurred_at": "2026-01-12T00:00:00",
@@ -14622,32 +14199,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8895,
-        "kind": "item",
-        "occurred_at": "2026-01-13T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion to Intervene"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8860,
         "kind": "item",
         "occurred_at": "2026-01-14T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/30/united-states-v-thomas/",
         "title": "United States v. Connecticut: ORDER granting 27 Motion for Extension of Time. Defendant seeks an extension of time to respond to the 1 Complaint and the Court's 10 Order to Show Cause. Defendant's request is GR"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8903,
-        "kind": "item",
-        "occurred_at": "2026-01-14T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion for Extension of Time"
       },
       {
         "channel": "litigation",
@@ -14682,16 +14239,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8897,
-        "kind": "item",
-        "occurred_at": "2026-01-29T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion to Intervene"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8864,
         "kind": "item",
         "occurred_at": "2026-02-06T00:00:00",
@@ -14712,16 +14259,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8901,
-        "kind": "item",
-        "occurred_at": "2026-02-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion to Withdraw as Attorney"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8866,
         "kind": "item",
         "occurred_at": "2026-02-13T00:00:00",
@@ -14738,16 +14275,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/48/united-states-v-thomas/",
         "title": "United States v. Connecticut: ORDER denying 47 Motion to Intervene. Movant Flynn seeks to intervene in this civil action, in which the Department of Justice has sought to compel Connecticut's Secretary of State"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8904,
-        "kind": "item",
-        "occurred_at": "2026-02-13T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion to Intervene"
       },
       {
         "channel": "litigation",
@@ -14832,16 +14359,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 8896,
-        "kind": "item",
-        "occurred_at": "2026-03-03T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion for Leave to File"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 8876,
         "kind": "item",
         "occurred_at": "2026-03-04T00:00:00",
@@ -14857,7 +14374,7 @@
         "occurred_at": "2026-03-05T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion for Leave to File"
+        "title": "United States v. Connecticut: ORDER finding as moot 63 Motion for Leave to File, in light of the Court's Order granting the 64 Motion to Appear Pro Hac Vice. Signed by Judge Kari A. Dooley on March 5, 2026. (Sp"
       },
       {
         "channel": "litigation",
@@ -14878,16 +14395,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/72/united-states-v-thomas/",
         "title": "United States v. Connecticut: ORDER granting 71 Motion for Leave to File. Absent objection, the Former Employees Of The U.S. Department Of Justice's Motion for Leave to File an Amicus Brief is GRANTED. Signed b"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8899,
-        "kind": "item",
-        "occurred_at": "2026-03-06T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion for Leave to File"
       },
       {
         "channel": "litigation",
@@ -14918,16 +14425,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72110170/77/united-states-v-thomas/",
         "title": "United States v. Connecticut: ORDER granting 73 Motion for Leave to File. Absent objection, the Brennan Center for Justice and Campaign Legal Center's Motion for Leave to File an Amicus Brief is GRANTED. Signed"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 8902,
-        "kind": "item",
-        "occurred_at": "2026-03-16T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72110170/united-states-v-thomas/",
-        "title": "United States v. Connecticut: Order on Motion for Leave to File"
       },
       {
         "channel": "litigation",
@@ -15129,7 +14626,18 @@
     "date_terminated": "2026-04-28T00:00:00",
     "defendant": "Fontes",
     "docket_number": "2:26-cv-00066",
-    "entry_count": 84,
+    "entry_count": 73,
+    "entry_moves": [
+      {
+        "entries": [
+          84,
+          73
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-01-06T00:00:00",
     "latest_entry_at": "2026-06-18T00:00:00",
     "plaintiff": "United States",
@@ -15579,7 +15087,7 @@
     "date_terminated": "2026-07-14T00:00:00",
     "defendant": "Koski",
     "docket_number": "3:26-cv-00042",
-    "entry_count": 88,
+    "entry_count": 86,
     "entry_moves": [
       {
         "entries": [
@@ -15597,6 +15105,15 @@
           45
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          88,
+          86
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-01-16T00:00:00",
@@ -16068,7 +15585,7 @@
     "date_terminated": "2026-09-30T00:00:00",
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 234,
+    "entry_count": 213,
     "entry_moves": [
       {
         "apart": 2,
@@ -16087,6 +15604,15 @@
           89
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          234,
+          213
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-01-23T00:00:00",
@@ -16998,7 +16524,7 @@
     "date_terminated": "2026-07-29T00:00:00",
     "defendant": "CALDWELL",
     "docket_number": "3:26-cv-02025",
-    "entry_count": 171,
+    "entry_count": 162,
     "entry_moves": [
       {
         "entries": [
@@ -17024,6 +16550,23 @@
         ],
         "kind": "link",
         "on": "2026-10-02",
+        "why": "pairs of court records that describe one entry were linked"
+      },
+      {
+        "entries": [
+          171,
+          162
+        ],
+        "kind": "link",
+        "ledger": [
+          87,
+          83
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          88,
+          84
+        ],
         "why": "pairs of court records that describe one entry were linked"
       }
     ],
@@ -17259,16 +16802,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 9688,
-        "kind": "item",
-        "occurred_at": "2026-04-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
-        "title": "United States v. New Jersey: Text Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 9707,
         "kind": "item",
         "occurred_at": "2026-04-13T00:00:00",
@@ -17325,16 +16858,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/39/united-states-v-caldwell/",
         "title": "United States v. New Jersey: TEXT ORDER that in response to Defendant's letters 33, 37 the deadlines for the parties' briefing with respect to the pending Motion to Compel 20 and the anticipated Motion to Dism"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9692,
-        "kind": "item",
-        "occurred_at": "2026-04-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
-        "title": "United States v. New Jersey: Text Order"
       },
       {
         "channel": "litigation",
@@ -17684,16 +17207,6 @@
         "occurred_at": "2026-05-29T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
-        "title": "United States v. New Jersey: Motions No Longer Referred"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9690,
-        "kind": "item",
-        "occurred_at": "2026-05-29T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
         "title": "United States v. New Jersey: 20 MOTION to Compel Federal Election Records no longer referred to the Magistrate Judge. Motion to be decided by the District Judge. (eh, )"
       },
       {
@@ -17775,16 +17288,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72333329/87/united-states-v-caldwell/",
         "title": "United States v. New Jersey: TEXT ORDER that the following requests to file a reply are hereby GRANTED: ECF Nos. 83, 84, and 85. The Intervenor Defendants shall file their replies, limited to 5 pages each, wit"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 9705,
-        "kind": "item",
-        "occurred_at": "2026-06-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72333329/united-states-v-caldwell/",
-        "title": "United States v. New Jersey: Text Order"
       },
       {
         "channel": "litigation",
@@ -17926,7 +17429,7 @@
     "date_terminated": "2026-07-23T00:00:00",
     "defendant": "Adams",
     "docket_number": "3:26-cv-00019",
-    "entry_count": 107,
+    "entry_count": 92,
     "entry_moves": [
       {
         "kind": "merge",
@@ -17936,6 +17439,23 @@
           56
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          107,
+          92
+        ],
+        "kind": "link",
+        "ledger": [
+          55,
+          53
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          56,
+          54
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-02-26T00:00:00",
@@ -18045,7 +17565,7 @@
         "occurred_at": "2026-03-11T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
-        "title": "United States v. Kentucky: Motion Submitted"
+        "title": "United States v. Kentucky: ***MOTION SUBMITTED TO CHAMBERS of Judge Gregory F. Van Tatenhove for review: re 12 MOTION for Sophia Lin Lakin to Appear Pro Hac Vice by League of Women Voters of Kentucky, Zitsi "
       },
       {
         "channel": "litigation",
@@ -18085,7 +17605,7 @@
         "occurred_at": "2026-03-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
-        "title": "United States v. Kentucky: Motion Submitted"
+        "title": "United States v. Kentucky: ***MOTION SUBMITTED TO CHAMBERS of Judge Gregory F. Van Tatenhove for review: re 16 MOTION for Daniel J. Freeman to Appear Pro Hac Vice by Democratic National Committee ( Filing fe"
       },
       {
         "channel": "litigation",
@@ -18121,16 +17641,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 14690,
-        "kind": "item",
-        "occurred_at": "2026-03-19T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
-        "title": "United States v. Kentucky: Motion Submitted"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 14691,
         "kind": "item",
         "occurred_at": "2026-03-19T00:00:00",
         "source_id": "courtlistener",
@@ -18221,16 +17731,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 14684,
-        "kind": "item",
-        "occurred_at": "2026-03-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/72334676/united-states-v-adams/",
-        "title": "United States v. Kentucky: Motion Submitted"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 14689,
         "kind": "item",
         "occurred_at": "2026-03-31T00:00:00",
         "source_id": "courtlistener",
@@ -18928,7 +18428,7 @@
     "date_terminated": null,
     "defendant": "Warner",
     "docket_number": "2:26-cv-00156",
-    "entry_count": 67,
+    "entry_count": 66,
     "entry_moves": [
       {
         "entries": [
@@ -18946,6 +18446,15 @@
           42
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          67,
+          66
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-02-26T00:00:00",
@@ -20429,7 +19938,26 @@
     "date_terminated": null,
     "defendant": "TRUMP",
     "docket_number": "1:26-cv-01114",
-    "entry_count": 250,
+    "entry_count": 249,
+    "entry_moves": [
+      {
+        "entries": [
+          250,
+          249
+        ],
+        "kind": "link",
+        "ledger": [
+          116,
+          115
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          117,
+          116
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-04-01T00:00:00",
     "latest_entry_at": "2026-09-23T00:00:00",
     "plaintiff": "DSCC",
@@ -20793,16 +20321,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 115665,
-        "kind": "item",
-        "occurred_at": "2026-04-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
-        "title": "DSCC v. Trump: Order on Motion for Leave to File AND Set/Reset Deadlines"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115667,
         "kind": "item",
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
@@ -21619,7 +21137,26 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "1:26-cv-11549",
-    "entry_count": 363,
+    "entry_count": 335,
+    "entry_moves": [
+      {
+        "entries": [
+          363,
+          335
+        ],
+        "kind": "link",
+        "ledger": [
+          201,
+          183
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          202,
+          184
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-04-02T00:00:00",
     "latest_entry_at": "2026-09-25T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
@@ -21872,16 +21409,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115117,
-        "kind": "item",
-        "occurred_at": "2026-04-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 114953,
         "kind": "item",
         "occurred_at": "2026-04-24T00:00:00",
@@ -21928,16 +21455,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/87/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting 70 unopposed Motion for Leave to File Brief as Amicus Curiae of the Society for the Rule of Law; Counsel using the Electronic Case F"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115115,
-        "kind": "item",
-        "occurred_at": "2026-04-27T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -21997,7 +21514,7 @@
         "occurred_at": "2026-04-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered granting 100 Motion for Leave to Appear Pro Hac Vice Added Christian B. Corrigan. Attorneys admitted Pro Hac Vice must have an indivi"
       },
       {
         "channel": "litigation",
@@ -22018,16 +21535,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/106/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered. Applicants State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Mo"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115127,
-        "kind": "item",
-        "occurred_at": "2026-05-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion to Intervene"
       },
       {
         "channel": "litigation",
@@ -22167,7 +21674,7 @@
         "occurred_at": "2026-05-12T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ORDER entered granting 131 Motion for Leave to Appear Pro Hac Vice Added Grant Michael Flynn. Attorneys admitted Pro Hac Vice must have an individual PACER ac"
       },
       {
         "channel": "litigation",
@@ -22218,16 +21725,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/142/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: AMICUS BRIEF filed by Federation for American Immigration Reform in support of Defendants' Motion to Dismiss. (O'Brien, Matthew) (Entered: 05/18/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115134,
-        "kind": "item",
-        "occurred_at": "2026-05-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -22292,16 +21789,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115106,
-        "kind": "item",
-        "occurred_at": "2026-06-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 114984,
         "kind": "item",
         "occurred_at": "2026-06-02T00:00:00",
@@ -22352,16 +21839,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115128,
-        "kind": "item",
-        "occurred_at": "2026-06-12T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 114989,
         "kind": "item",
         "occurred_at": "2026-06-16T00:00:00",
@@ -22388,16 +21865,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/163/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Response by Frank J Bisignano, Department of Homeland Security, Joseph B. Edlow, Amber F McReynolds, Markwayne Mullin, Social Security Administration, David Steiner, Ronald A Strom"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115133,
-        "kind": "item",
-        "occurred_at": "2026-06-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -22482,16 +21949,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115114,
-        "kind": "item",
-        "occurred_at": "2026-07-21T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order AND ~Util - Set Motion and R&R Deadlines/Hearings"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 114999,
         "kind": "item",
         "occurred_at": "2026-07-22T00:00:00",
@@ -22548,16 +22005,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/180/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion Hearing held on 8/7/2026 re 170 Second MOTION for Preliminary Injunction filed by Association of A"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115105,
-        "kind": "item",
-        "occurred_at": "2026-08-07T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Motion Hearing"
       },
       {
         "channel": "litigation",
@@ -22672,16 +22119,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115103,
-        "kind": "item",
-        "occurred_at": "2026-08-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115016,
         "kind": "item",
         "occurred_at": "2026-08-24T00:00:00",
@@ -22782,16 +22219,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115132,
-        "kind": "item",
-        "occurred_at": "2026-08-25T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115026,
         "kind": "item",
         "occurred_at": "2026-08-26T00:00:00",
@@ -22872,16 +22299,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115121,
-        "kind": "item",
-        "occurred_at": "2026-08-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Extension of Time"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115034,
         "kind": "item",
         "occurred_at": "2026-08-27T00:00:00",
@@ -22938,16 +22355,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/218/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ORDER entered granting in part [ 206 ]  Motion for TRO in case 1:26-cv-11549-IT; granting in part [ 3 ]  Motion for TRO in case 1:26-cv-13917-IT. See attached"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115112,
-        "kind": "item",
-        "occurred_at": "2026-08-27T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -23198,16 +22605,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Leave to Appear"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115109,
-        "kind": "item",
-        "occurred_at": "2026-08-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion to Stay AND Order on Motion to Stay"
       },
       {
         "channel": "litigation",
@@ -23522,16 +22919,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115131,
-        "kind": "item",
-        "occurred_at": "2026-09-11T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Reconsideration"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115089,
         "kind": "item",
         "occurred_at": "2026-09-14T00:00:00",
@@ -23572,32 +22959,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115126,
-        "kind": "item",
-        "occurred_at": "2026-09-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion to Intervene"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115093,
         "kind": "item",
         "occurred_at": "2026-09-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/305/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying non-party Brandon Michael Hayes' Motion for Clarification [ 304 ] where the matter is moot. (MAP) (Entered: 09/18/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115123,
-        "kind": "item",
-        "occurred_at": "2026-09-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Clarification"
       },
       {
         "channel": "litigation",
@@ -23632,16 +22999,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115107,
-        "kind": "item",
-        "occurred_at": "2026-09-24T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Order on Motion for Reconsideration"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115097,
         "kind": "item",
         "occurred_at": "2026-09-25T00:00:00",
@@ -23659,7 +23016,18 @@
     "date_terminated": null,
     "defendant": "EXECUTIVE OFFICE OF THE PRESIDENT",
     "docket_number": "1:26-cv-01132",
-    "entry_count": 44,
+    "entry_count": 43,
+    "entry_moves": [
+      {
+        "entries": [
+          44,
+          43
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-04-02T00:00:00",
     "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "LEAGUE OF UNITED LATIN AMERICAN CITIZENS",
@@ -23879,7 +23247,26 @@
     "date_terminated": "2026-07-07T00:00:00",
     "defendant": "Trump",
     "docket_number": "1:26-cv-11581",
-    "entry_count": 240,
+    "entry_count": 226,
+    "entry_moves": [
+      {
+        "entries": [
+          240,
+          226
+        ],
+        "kind": "link",
+        "ledger": [
+          100,
+          94
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          101,
+          95
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-04-03T00:00:00",
     "latest_entry_at": "2026-08-27T00:00:00",
     "plaintiff": "State of California",
@@ -23938,16 +23325,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/31/state-of-california-v-trump/",
         "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting Motion to Withdraw Motion for Leave to Appear [ 26 ]. The Motion for Leave to Appear Pro Hace Vice for Admission of Brian Bilford, L"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115227,
-        "kind": "item",
-        "occurred_at": "2026-04-10T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion to Withdraw"
       },
       {
         "channel": "litigation",
@@ -24232,16 +23609,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115231,
-        "kind": "item",
-        "occurred_at": "2026-04-23T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115164,
         "kind": "item",
         "occurred_at": "2026-04-24T00:00:00",
@@ -24278,16 +23645,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/116/state-of-california-v-trump/",
         "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER granting 102 unopposed Motion for Leave to File Brief as Amicus Curiae of the Society for the Rule of Law; Counsel using the Electronic Case "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115235,
-        "kind": "item",
-        "occurred_at": "2026-04-27T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -24357,7 +23714,7 @@
         "occurred_at": "2026-04-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered granting 129 Motion for Leave to Appear Pro Hac Vice Added Christian B. Corrigan. Attorneys admitted Pro Hac Vice must have an indivi"
       },
       {
         "channel": "litigation",
@@ -24422,22 +23779,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115223,
-        "kind": "item",
-        "occurred_at": "2026-05-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion for Leave to File Document"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115225,
         "kind": "item",
         "occurred_at": "2026-05-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered granting 139 Motion for Leave to Appear Pro Hac Vice Added Alex Goldstein. Attorneys admitted Pro Hac Vice must have an individual PA"
       },
       {
         "channel": "litigation",
@@ -24487,7 +23834,7 @@
         "occurred_at": "2026-05-11T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion for Leave to Appear"
+        "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER entered granting 158 Motion for Leave to Appear Pro Hac Vice Added Grant Michael Flynn. Attorneys admitted Pro Hac Vice must have an individu"
       },
       {
         "channel": "litigation",
@@ -24538,16 +23885,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/165/state-of-california-v-trump/",
         "title": "State of California v. Trump: AMICUS BRIEF filed by Federation for American Immigration Reform in support of Defendants' Motion to Dismiss. (O'Brien, Matthew)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115224,
-        "kind": "item",
-        "occurred_at": "2026-05-18T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -24638,16 +23975,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73141063/179/state-of-california-v-trump/",
         "title": "State of California v. Trump: Judge Indira Talwani: ELECTRONIC ORDER: the court previously denied Applicant States’ Motion to Intervene [ 73 ] in this action (but allowed them to participate as amici curiae). S"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115218,
-        "kind": "item",
-        "occurred_at": "2026-06-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73141063/state-of-california-v-trump/",
-        "title": "State of California v. Trump: Order"
       },
       {
         "channel": "litigation",
@@ -24909,7 +24236,18 @@
     "date_terminated": null,
     "defendant": "DONALD J. TRUMP",
     "docket_number": "1:26-cv-01151",
-    "entry_count": 31,
+    "entry_count": 30,
+    "entry_moves": [
+      {
+        "entries": [
+          31,
+          30
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-04-03T00:00:00",
     "latest_entry_at": "2026-09-01T00:00:00",
     "plaintiff": "NATIONAL ASSOCIATION FOR THE ADVANCEMENT OF COLORED PEOPLE",
@@ -25039,7 +24377,7 @@
     "date_terminated": null,
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 80,
+    "entry_count": 76,
     "entry_moves": [
       {
         "entries": [
@@ -25057,6 +24395,23 @@
           29
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          80,
+          76
+        ],
+        "kind": "link",
+        "ledger": [
+          28,
+          25
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          29,
+          26
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-04-21T00:00:00",
@@ -25162,16 +24517,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 18,
-        "kind": "item",
-        "occurred_at": "2026-05-27T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
-        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Leave to File Excess Pages"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 22,
         "kind": "item",
         "occurred_at": "2026-05-27T00:00:00",
         "source_id": "courtlistener",
@@ -25306,16 +24651,6 @@
         "occurred_at": "2026-06-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
-        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 20,
-        "kind": "item",
-        "occurred_at": "2026-06-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER granting the 38 Motion for Leave to File Amicus Brief. The Court treats the 38 Motion's attachment, ECF No. 38-1, as the amicus brief. Signed by Judge Sparkle L. Sookn"
       },
       {
@@ -25332,16 +24667,6 @@
         "channel": "litigation",
         "grade": "A1",
         "id": 4767,
-        "kind": "item",
-        "occurred_at": "2026-07-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
-        "title": "Common Cause v. U.S. Department of Justice: Order on Motion for Leave to File Amicus Brief"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 14088,
         "kind": "item",
         "occurred_at": "2026-07-01T00:00:00",
         "source_id": "courtlistener",
@@ -26578,7 +25903,7 @@
     "date_terminated": null,
     "defendant": "DHS",
     "docket_number": "26-5243",
-    "entry_count": 40,
+    "entry_count": 39,
     "entry_moves": [
       {
         "entries": [
@@ -26596,6 +25921,23 @@
           17
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          40,
+          39
+        ],
+        "kind": "link",
+        "ledger": [
+          16,
+          15
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          17,
+          16
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-06-29T00:00:00",
@@ -26736,16 +26078,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73544809/01208885403/league-of-women-voters-v-dhs/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): PER CURIAM ORDER [2191697] filed ORDERED that the motions to participate as amicus curiae [2183624-3], [2182590-2], [2182576-2] be granted in 26-5243. The Clerk is directed to file"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 96569,
-        "kind": "item",
-        "occurred_at": "2026-09-04T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
-        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): PER ABOVE ORDER lodged Amicus brief [2183627-2], Amicus brief [2182713-2], Amicus brief [2182577-2] is filed [26-5243, 26-5301] [Entered: 09/04/2026 10:27 PM]"
       },
       {
         "channel": "litigation",
@@ -27007,7 +26339,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 61,
+    "entry_count": 56,
     "entry_moves": [
       {
         "entries": [
@@ -27025,6 +26357,23 @@
           9
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          61,
+          56
+        ],
+        "kind": "link",
+        "ledger": [
+          8,
+          7
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          9,
+          8
+        ],
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
@@ -27114,16 +26463,6 @@
         "occurred_at": "2026-09-09T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
-        "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) directing Attorney Joshua R. Zuckerman, Esq. for Appellant USA to submit 4 hard copies in white covers for the Appellant's Joint Appendix Volume I filed on 9/8/2"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 103492,
-        "kind": "item",
-        "occurred_at": "2026-09-09T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/73582123/41/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) directing Attorney Joshua R. Zuckerman, Esq. for Appellant USA to submit 4 hard copies in white covers for the Appellant's Joint Appendix Volume I filed on 9/8/2"
       }
     ]
@@ -28323,7 +27662,7 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 102,
+    "entry_count": 101,
     "entry_moves": [
       {
         "entries": [
@@ -28337,6 +27676,15 @@
           10
         ],
         "why": "duplicate court-entry rows were merged"
+      },
+      {
+        "entries": [
+          102,
+          101
+        ],
+        "kind": "link",
+        "on": "2026-10-04",
+        "why": "pairs of court records that describe one entry were linked"
       }
     ],
     "filed_at": "2026-08-21T00:00:00",
@@ -28549,7 +27897,26 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 196,
+    "entry_count": 184,
+    "entry_moves": [
+      {
+        "entries": [
+          196,
+          184
+        ],
+        "kind": "link",
+        "ledger": [
+          72,
+          65
+        ],
+        "on": "2026-10-04",
+        "timeline": [
+          73,
+          66
+        ],
+        "why": "pairs of court records that describe one entry were linked"
+      }
+    ],
     "filed_at": "2026-08-26T00:00:00",
     "latest_entry_at": "2026-09-28T00:00:00",
     "plaintiff": "State of California",
@@ -28648,16 +28015,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/9/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER granting Plaintiffs' Unopposed Motion for Leave to File Excess Pages [ 6 ]. Plaintiff is granted leave, nunc pro tunc, to file an oversized b"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115521,
-        "kind": "item",
-        "occurred_at": "2026-08-26T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Excess Pages"
       },
       {
         "channel": "litigation",
@@ -28788,16 +28145,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/59/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: MEMORANDUM in Support re 58 MOTION to Stay re 31 Order on Motion for TRO,,, Pending Appeal filed by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, "
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115520,
-        "kind": "item",
-        "occurred_at": "2026-08-28T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion to Intervene"
       },
       {
         "channel": "litigation",
@@ -28992,16 +28339,6 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115516,
-        "kind": "item",
-        "occurred_at": "2026-08-31T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion to Stay AND Order on Motion to Stay"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115487,
         "kind": "item",
         "occurred_at": "2026-09-01T00:00:00",
@@ -29042,22 +28379,12 @@
       {
         "channel": "litigation",
         "grade": "A1",
-        "id": 115508,
-        "kind": "item",
-        "occurred_at": "2026-09-01T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Document"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
         "id": 115509,
         "kind": "item",
         "occurred_at": "2026-09-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion for Leave to Appear"
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER entered granting 102 Motion for Leave to Appear Pro Hac Vice Added Thomas H. Castelli. Attorneys admitted Pro Hac Vice must have an individua"
       },
       {
         "channel": "litigation",
@@ -29108,26 +28435,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/149/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Electronic Clerk's Notes for proceedings held before Judge Indira Talwani: Motion Hearing held on 9/3/2026 re: ( 3 in 1:26-cv-13917-IT) Emergency MOTION for Temporary Restraining O"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115510,
-        "kind": "item",
-        "occurred_at": "2026-09-03T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Excess Pages"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115511,
-        "kind": "item",
-        "occurred_at": "2026-09-03T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion for Leave to File Document"
       },
       {
         "channel": "litigation",
@@ -29278,16 +28585,6 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/173/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Copy re 172 Electronic Order mailed to Emanuel McCray on September 17, 2026. (MAP) (Entered: 09/17/2026)"
-      },
-      {
-        "channel": "litigation",
-        "grade": "A1",
-        "id": 115519,
-        "kind": "item",
-        "occurred_at": "2026-09-17T00:00:00",
-        "source_id": "courtlistener",
-        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order on Motion to Intervene"
       }
     ]
   },
