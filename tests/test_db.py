@@ -221,6 +221,105 @@ def test_execute_propagates_unrelated_valueerror():
     assert calls["reopen"] == 0
 
 
+# --- a transport error mid-statement (Corey, 2026-10-05) --------------------
+# The 2026-10-04 06:17Z slot's run died on this, verbatim, at litigation's first read of
+# a new case with nothing uncommitted, and the run lost executive, news and state.
+
+_DROP = "Hrana: `http error: `connection closed before message completed``"
+
+
+class _DropRaw:
+    """Delegates to a real in-memory libsql connection, raising `message` on the next
+    execute when `fail_next` is set (once, then clears)."""
+
+    def __init__(self, real, message=_DROP):
+        self._real = real
+        self.message = message
+        self.fail_next = False
+
+    def execute(self, sql, params=None):
+        if self.fail_next:
+            self.fail_next = False
+            raise ValueError(self.message)
+        return self._real.execute(sql, params) if params is not None else self._real.execute(sql)
+
+    def commit(self):
+        return self._real.commit()
+
+    def rollback(self):
+        return self._real.rollback()
+
+
+def _seeded():
+    seeded = libsql.connect(":memory:")
+    seeded.execute("CREATE TABLE t (x INTEGER)")
+    seeded.execute("INSERT INTO t VALUES (7)")
+    seeded.commit()
+    return seeded
+
+
+def test_a_mid_query_drop_with_nothing_uncommitted_reopens_retries_once_and_says_so(capsys):
+    assert db._is_transport_error(ValueError(_DROP))
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        return _seeded()
+
+    fake = _DropRaw(libsql.connect(":memory:"))
+    fake.fail_next = True
+    conn = db._Conn(fake, reopen=reopen)
+    assert conn.execute("SELECT x FROM t").fetchone()["x"] == 7
+    assert calls["reopen"] == 1
+    err = capsys.readouterr().err
+    assert "db: a statement hit a transport error with nothing uncommitted" in err
+    assert "connection closed before message completed" in err and "retrying it once" in err
+
+
+def test_a_mid_query_drop_whose_retry_fails_raises_the_second_failure():
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        again = _DropRaw(_seeded(), message="Hrana: `http error: `connection reset by peer``")
+        again.fail_next = True
+        return again
+
+    fake = _DropRaw(libsql.connect(":memory:"))
+    fake.fail_next = True
+    conn = db._Conn(fake, reopen=reopen)
+    with pytest.raises(ValueError, match="connection reset by peer"):
+        conn.execute("SELECT x FROM t")
+    assert calls["reopen"] == 1                 # once: the second failure is not retried
+
+
+def test_a_mid_query_drop_with_a_write_uncommitted_raises_without_a_reopen():
+    real = libsql.connect(":memory:")
+    real.execute("CREATE TABLE t (x INTEGER)")
+    real.commit()
+    fake = _DropRaw(real)
+    calls = {"reopen": 0}
+
+    def reopen():
+        calls["reopen"] += 1
+        return real
+
+    conn = db._Conn(fake, reopen=reopen)
+    conn.execute("INSERT INTO t VALUES (1)")    # _pending = True, not yet committed
+    fake.fail_next = True
+    with pytest.raises(ValueError, match="connection closed before message completed"):
+        conn.execute("INSERT INTO t VALUES (2)")
+    assert calls["reopen"] == 0                 # the uncommitted write is never silently dropped
+
+
+def test_a_stale_stream_retries_quietly(capsys):
+    fake = _DropRaw(libsql.connect(":memory:"), message=_STALE)
+    fake.fail_next = True
+    conn = db._Conn(fake, reopen=_seeded)
+    assert conn.execute("SELECT x FROM t").fetchone()["x"] == 7
+    assert capsys.readouterr().err == ""
+
+
 # --- transient transport failures at establishment --------------------------
 # The other half of the Turso failure space, and deliberately a separate
 # mechanism from the stale stream above: a 502 from the platform edge, raised

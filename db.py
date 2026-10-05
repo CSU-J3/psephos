@@ -61,7 +61,10 @@ SCHEMA_PATH = "schema.sql"
 # a single reopen-and-retry gated on _pending; a stale stream is not fixed by
 # sleeping and a 502 is not fixed by one immediate retry. The two must not
 # converge, so the predicate below must never match a stale-stream message and
-# tests/test_db.py asserts exactly that against the real string.
+# tests/test_db.py asserts exactly that against the real string. Since 2026-10-05
+# a transport error on an ESTABLISHED connection takes that same single reopen and
+# retry, under the same _pending gate (Corey, after the 2026-10-04 06:17Z slot), and
+# its reopen climbs this ladder; the stale stream is still told apart first.
 _TRANSPORT_ERRORS = (
     # Match `status=`, never the bare number: a Hrana stream id is hex and could
     # contain "502" on its own, which would misroute a stale stream to this path.
@@ -241,19 +244,33 @@ class _Conn:
     def execute(self, sql, params=None):
         try:
             cur = self._run(sql, params)
-        except ValueError as exc:
-            # Turso drops a server-side Hrana stream when a connection outlives it
-            # (a long run: litigation's throttled CourtListener retries hold one
-            # connection ~70min). The next statement then raises
-            #   ValueError: Hrana: ... "stream not found: ..."
-            # which stdlib sqlite3 never exposes. Reopen and retry ONCE, but only
-            # when nothing is uncommitted -- reopening loses the open transaction,
-            # so retrying a statement with uncommitted siblings would silently drop
-            # them. When _pending, re-raise; the next cron run redoes the batch
-            # idempotently (INSERT OR IGNORE / content_hash). commit() is never
-            # retried: it would commit an empty transaction on the fresh connection.
-            if self._reopen is None or self._pending or "stream not found" not in str(exc).lower():
+        except Exception as exc:
+            # Two failures on an ESTABLISHED connection are retried, each ONCE, and only
+            # when nothing is uncommitted -- reopening loses the open transaction, so
+            # retrying a statement with uncommitted siblings would silently drop them:
+            #   * a STALE STREAM. Turso drops a server-side Hrana stream when a connection
+            #     outlives it (a long run: litigation's throttled CourtListener retries
+            #     hold one connection ~70min), and the next statement raises
+            #       ValueError: Hrana: ... "stream not found: ..."
+            #     which stdlib sqlite3 never exposes;
+            #   * a TRANSPORT ERROR mid-statement (Corey, 2026-10-05). The 2026-10-04 06:17Z
+            #     slot's run died on
+            #       ValueError: Hrana: `http error: `connection closed before message completed``
+            #     at a new case's first read, with nothing uncommitted, and took executive,
+            #     news and state with it. It is said on stderr, so a survived drop shows.
+            # The reopen itself climbs the establishment ladder (connect() hands it over).
+            # When _pending, re-raise; the next cron run redoes the batch idempotently
+            # (INSERT OR IGNORE / content_hash). A failure of the retry raises as it comes.
+            # commit() is never retried: it would commit an empty transaction on the fresh
+            # connection.
+            if self._reopen is None or self._pending:
                 raise
+            stale = "stream not found" in str(exc).lower()
+            if not stale and not _is_transport_error(exc):
+                raise
+            if not stale:
+                print(f"db: a statement hit a transport error with nothing uncommitted ({exc}); "
+                      "reopening the connection and retrying it once", file=sys.stderr)
             self._raw = self._reopen()
             cur = self._run(sql, params)
         self._pending = True
