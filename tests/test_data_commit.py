@@ -340,7 +340,11 @@ def test_the_re_export_is_the_export_steps_command_with_its_credentials():
     """Every step case sets DATA_EXPORT, so the production default is only checkable here."""
     steps = _steps()
     export, commit = steps["Export JSON snapshots"], steps["Commit data changes"]
-    command = export["run"].split("#")[0].strip()
+    # The export step keeps its output for the Verdict (`... 2>&1 | tee`, 2026-10-05): the
+    # command is what precedes the redirect, on the line that runs it.
+    line = next(ln for ln in export["run"].splitlines() if "export.snapshots" in ln)
+    command = line.split("#")[0].split(" 2>&1")[0].strip()
+    assert command == "python -m export.snapshots"
     assert f"export_cmd=({command})" in commit["run"]
     for k in ("TURSO_DATABASE_URL", "TURSO_AUTH_TOKEN"):
         assert commit["env"].get(k) == export["env"][k]

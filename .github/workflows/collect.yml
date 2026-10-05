@@ -211,13 +211,18 @@ jobs:
       - name: Stamp the run's start
         run: echo "RUN_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
 
-      - uses: actions/checkout@v4
+      # The steps before the Verdict carry ids, so the Verdict can name the one that failed
+      # (tools/collect_verdict.STEPS, pinned to these by tests/test_collect_failed_step.py).
+      - id: checkout
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - id: python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install dependencies
+        id: deps
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
@@ -228,6 +233,7 @@ jobs:
       # A dedicated step only re-applied that seconds earlier, and its unguarded
       # connection cost three complete cycles to a Turso transport 502 on 08-06/07.
       - name: Run collectors
+        id: collectors
         env:
           # Python block-buffers stdout when it is a pipe, which the runner's log
           # capture is. Every per-request line therefore carried the process-exit
@@ -245,19 +251,36 @@ jobs:
           # and exits 0. Same expression as the commit and heartbeat steps below. The
           # other five collectors ignore it.
           SLOT: ${{ github.event.schedule || 'dispatch' }}
+        # THE FAILED STEP NAMES ITSELF (Corey, 2026-10-05). The 2026-10-04 06:17Z slot's run
+        # died in litigation on a Turso drop and the Verdict could say only "an earlier step
+        # ended failure". So the collectors run as one group whose output is also kept at
+        # $RUNNER_TEMP/collectors.log, and an ERR trap keeps the command that failed at
+        # $RUNNER_TEMP/collectors.failed; the Verdict names this step, that command and the
+        # log's last line. `bash -e` still ends the group at the first failure, and pipefail
+        # carries its status out through tee. tests/test_collect_failed_step.py plants a
+        # collector exception in this exact script.
         run: |
-          python -m collectors.legislation
-          python -m collectors.tracker_uw      # discover the full DOJ-suit list -> data/doj_cases.json
-          python -m collectors.litigation      # then resolve + poll (reads that artifact)
-          python -m collectors.executive
-          python -m collectors.news
-          python -m collectors.state
+          set -o pipefail
+          {
+            failed() { printf '%s\n' "$BASH_COMMAND" > "$RUNNER_TEMP/collectors.failed"; }
+            trap failed ERR
+            python -m collectors.legislation
+            python -m collectors.tracker_uw      # discover the full DOJ-suit list -> data/doj_cases.json
+            python -m collectors.litigation      # then resolve + poll (reads that artifact)
+            python -m collectors.executive
+            python -m collectors.news
+            python -m collectors.state
+          } 2>&1 | tee "$RUNNER_TEMP/collectors.log"
 
       - name: Export JSON snapshots
+        id: export
         env:
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
-        run: python -m export.snapshots       # reads Turso; writes data/*.json for the view and for diffs
+        # Its output is kept at $RUNNER_TEMP/export.log too, for the Verdict's line.
+        run: |
+          set -o pipefail
+          python -m export.snapshots 2>&1 | tee "$RUNNER_TEMP/export.log"   # reads Turso; writes data/*.json for the view and for diffs
 
       # THE DATA COMMIT, AND A RACED PUSH (Corey, 2026-09-30). The concurrency group
       # serializes collect runs, not a human push, and on 2026-09-30 one landed while the
@@ -281,6 +304,7 @@ jobs:
       # names it. tests/test_data_commit.py plants the concurrent push. DATA_EXPORT exists
       # for that test; the run uses the default.
       - name: Commit data changes
+        id: commit
         env:
           # The slot label, via env rather than inline in the script.
           SLOT: ${{ github.event.schedule || 'dispatch' }}
@@ -392,9 +416,23 @@ jobs:
         env:
           SLOT: ${{ github.event.schedule || 'dispatch' }}
           JOB_STATUS: ${{ job.status }}
+          # Each step's outcome by id, so a red job names the step that failed (Corey,
+          # 2026-10-05).
+          STEP_OUTCOMES: >-
+            checkout=${{ steps.checkout.outcome }}
+            python=${{ steps.python.outcome }}
+            deps=${{ steps.deps.outcome }}
+            collectors=${{ steps.collectors.outcome }}
+            export=${{ steps.export.outcome }}
+            commit=${{ steps.commit.outcome }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+          # Not for any call: the failed step's last line is raw collector output, so the
+          # Verdict scrubs it of every credential the collectors carry, as the issue step does.
+          CONGRESS_API_KEY: ${{ secrets.CONGRESS_API_KEY }}
+          COURTLISTENER_TOKEN: ${{ secrets.COURTLISTENER_TOKEN }}
+          LEGISCAN_API_KEY: ${{ secrets.LEGISCAN_API_KEY }}
         run: python -m tools.collect_verdict
 
       # THE STANDING ISSUE (unit 99, R8 and R10), BEFORE the heartbeat, which stays the

@@ -13,7 +13,10 @@ reads this run's `channel_runs` rows (written by the credentialed collectors thr
     slots than its threshold -- legislation `bills.updated_at`, litigation
     `cases.status_checked_at`, state its latest `ok` row;
   * a planned deferral outlived its channel's rotation (R6);
-  * an earlier step of the job failed (R10: every red collect run comments);
+  * an earlier step of the job failed (R10: every red collect run comments), named with the
+    command that failed and the step's last line where the step kept them (Corey,
+    2026-10-05, after a Turso drop in litigation was reported as "an earlier step ended
+    failure" and went unread for a day and a half);
   * the data commit did not reach origin: the commit step writes
     `$RUNNER_TEMP/data-commit-not-pushed` first, retries a raced push, and clears the
     marker only when a push lands or nothing is left to push, so a step that gives up or
@@ -248,14 +251,63 @@ def data_commit_finding(runner_temp: str | None) -> list[tuple[str, str, str]]:
     return [("data", "commit", text)]
 
 
+# THE STEP THAT FAILED, NAMED (Corey, 2026-10-05). The steps before the Verdict, by the id
+# collect.yml gives each, in run order, with the name the run shows; STEP_OUTCOMES carries
+# each one's outcome as `id=outcome` pairs. A step that keeps its output leaves it at
+# $RUNNER_TEMP/<id>.log, and the collectors step the command that failed at
+# $RUNNER_TEMP/collectors.failed. Pinned to collect.yml by tests/test_collect_failed_step.py.
+STEPS = (("checkout", "actions/checkout@v4"), ("python", "actions/setup-python@v5"),
+         ("deps", "Install dependencies"), ("collectors", "Run collectors"),
+         ("export", "Export JSON snapshots"), ("commit", "Commit data changes"))
+
+
+def _read(path: str) -> str:
+    try:
+        with open(path, encoding="utf-8", errors="replace") as fh:
+            return fh.read()
+    except OSError:
+        return ""
+
+
+def last_line(text: str) -> str:
+    """The output's last non-empty line: for a Python failure, its exception, which the
+    interpreter prints after every line a `finally` block wrote."""
+    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+    return lines[-1] if lines else ""
+
+
+def failed_step(step_outcomes: str | None, runner_temp: str | None) -> str | None:
+    """The first step before the Verdict that failed, named, with the command that failed
+    and its last line where the step kept them. None when STEP_OUTCOMES names no failure."""
+    outcomes = dict(pair.split("=", 1) for pair in (step_outcomes or "").split() if "=" in pair)
+    tmp = runner_temp or "."
+    for sid, name in STEPS:
+        if outcomes.get(sid) != "failure":
+            continue
+        command = last_line(_read(os.path.join(tmp, f"{sid}.failed")))
+        line = last_line(_read(os.path.join(tmp, f"{sid}.log")))
+        at = f" at `{command}`" if command else ""
+        return f"`{name}` failed{at}: {line}" if line else f"`{name}` failed{at}; its output is in the run's log"
+    return None
+
+
+def job_findings(job_status: str, step_outcomes: str | None = None,
+                 runner_temp: str | None = None) -> list[tuple[str, str, str]]:
+    """The job's own finding when it is not green: the step that failed, named, or the
+    status alone when no outcome names a failed step."""
+    if not job_status or job_status == "success":
+        return []
+    return [("job", "job", failed_step(step_outcomes, runner_temp)
+             or f"an earlier step ended `{job_status}`")]
+
+
 def verdict(conn, rid: str, slot: str, started_at: str, job_status: str,
             now: datetime | None = None,
-            runner_temp: str | None = None) -> list[tuple[str, str, str]]:
+            runner_temp: str | None = None,
+            step_outcomes: str | None = None) -> list[tuple[str, str, str]]:
     """Every finding, as (channel, class, evidence). The run is red when this is non-empty."""
     now = now or datetime.now(timezone.utc)
-    findings: list[tuple[str, str, str]] = []
-    if job_status and job_status != "success":
-        findings.append(("job", "job", f"an earlier step ended `{job_status}`"))
+    findings: list[tuple[str, str, str]] = job_findings(job_status, step_outcomes, runner_temp)
     findings += data_commit_finding(runner_temp)
     rows = this_run_rows(conn, rid)
     seen = {r[0] for r in rows}
@@ -303,24 +355,27 @@ def main(argv=None) -> int:
     started_at = normalize(os.environ.get("RUN_STARTED_AT")
                            or datetime.now(timezone.utc).isoformat())
     job_status = os.environ.get("JOB_STATUS") or "unknown"
+    step_outcomes = os.environ.get("STEP_OUTCOMES")
     run_url = os.environ.get("RUN_URL") or ""
     runner_temp = os.environ.get("RUNNER_TEMP")
     out = os.path.join(runner_temp or ".", "collect-verdict.md")
     try:
         conn = db.connect()
     except Exception as exc:
-        findings = [("job", "job", f"the verdict could not open the database: "
-                                   f"{type(exc).__name__}")] + data_commit_finding(runner_temp)
+        findings = (job_findings(job_status, step_outcomes, runner_temp)
+                    + [("job", "job", f"the verdict could not open the database: "
+                                      f"{type(exc).__name__}")] + data_commit_finding(runner_temp))
     else:
         try:
             findings = verdict(conn, rid, slot, started_at, job_status,
-                               runner_temp=runner_temp)
+                               runner_temp=runner_temp, step_outcomes=step_outcomes)
         except Exception as exc:
             # The type only, in the body: it goes to an issue, which GitHub does not mask,
             # and a libsql error can name the database URL, itself a secret here. The
             # message goes to the log, scrubbed of every credential in the environment.
-            findings = [("job", "job", f"the verdict could not read the database: "
-                                       f"{type(exc).__name__}")] + data_commit_finding(runner_temp)
+            findings = (job_findings(job_status, step_outcomes, runner_temp)
+                        + [("job", "job", f"the verdict could not read the database: "
+                                          f"{type(exc).__name__}")] + data_commit_finding(runner_temp))
             print(f"collect verdict: database read failed -- "
                   f"{run_signals.scrub(str(exc), run_signals.env_secrets())}",
                   file=sys.stderr)
