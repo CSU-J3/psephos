@@ -9751,6 +9751,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 122758,
+    "kind": "item",
+    "occurred_at": "2026-10-04T18:58:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOUGVONTBLRG1qOG56QVhGQjAtT05BX2pHNHVGOFVlMHlFdFY0c2dDMjJRazNYeXhJc19USG1qNl9abjhTQ2dkWHpobU5kc1N2dnVEUjMyWlB6aU44X2NEVHVNNkd2RnFOaFpNdnBwZHYweHVDMDVndDVFbEViUGZWUV9Pb2w0QjF4SW5rMmJxMmlFVVhNZE5sRFNrSUhiZVl4WUZ6NUFzM19jdks1NmlNUmhOVQ?oc=5",
+    "title": "Georgia election board director allegedly goes rogue, asks feds to crack down on state voting equipment - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 122262,
     "kind": "item",
@@ -9758,5 +9768,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/10/04/georgia-election-board-mills-federal-letters-dhs-doj-board-approval",
     "title": "Georgia election board director sent Trump administration demands 2 board members say they never approved"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122753,
+    "kind": "item",
+    "occurred_at": "2026-10-05T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/05/how-to-vote-november-election-2026-early-absentee-ballots",
+    "title": "Everything you need to know about voting in Wisconsin’s November election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122754,
+    "kind": "item",
+    "occurred_at": "2026-10-05T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/05/trump-2020-election-stolen-claims-candidates-2026",
+    "title": "Are Trump’s claims the 2020 election was stolen losing steam?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122755,
+    "kind": "item",
+    "occurred_at": "2026-10-05T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-trump-folds-on-mail-ballot-restrictions-maine-starts-voting-period-with-more-confidence",
+    "title": "Maine early voting starts today. Here’s what you need to know"
   }
 ]
