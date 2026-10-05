@@ -262,6 +262,7 @@ jobs:
         run: |
           set -o pipefail
           {
+            # shellcheck disable=SC2317  # failed() runs from the ERR trap below, not inline
             failed() { printf '%s\n' "$BASH_COMMAND" > "$RUNNER_TEMP/collectors.failed"; }
             trap failed ERR
             python -m collectors.legislation
