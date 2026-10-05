@@ -661,7 +661,7 @@ It stays open for Corey to close.
       - At the switch the same rule read 8 pairs against a drop of 6.
     - **Found and fixed on the branch:** with a third move the figures file stopped compiling. TypeScript reads the moves as one union and gave each move every other move's dockets as undefined. A move's cases may now map to nothing; every reader already guarded for it.
   - **The checkpoint**, from a local production build of the branch on 3001, reading Turso:
-    - **frames at 1440 and 390:** the Wire's litigation cell, the map panel, /case 73133197 (the most links, 28) and /case 71499795 (the move's line under the switch's two). /case 72193752 carries no new line: its 21 links move no item, so its ledger does not move;
+    - **frames at 1440 and 390:** the Wire's litigation cell, the map panel, Georgia's docket lines on the map (N.D. Ga. "21 pairs ... 234 before, 213 after", M.D. Ga. "4 pairs ... 59 before, 55 after"), /case 73133197 (the most links, 28) and /case 71499795 (the move's line under the switch's two), sent to Corey. /case 72193752 carries no new line: its 21 links move no item, so its ledger does not move;
     - **the headline figures read the record as it stands** (the Wire 2,754, "201 entries"), beside notes giving both;
     - **DOM lanes:** gates 26/0, encodings 35, layout 78, attribution 38, dated 74. No sideways scroll on any framed page.
   - **At Corey's word, in order:**
