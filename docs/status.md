@@ -8,6 +8,44 @@ Last updated: 2026-10-05 (UTC).
 
 ## Owed right now
 
+### Display captions: BUILT 2026-10-05 on the local branch `display-captions`, frames SHOT; HELD at the pixel checkpoint for Corey's word
+
+**The EO 14248 unit's ruling 4** (Corey, 2026-10-05; the entry below): the display-caption unit is built before seeding. The shape was ruled 2026-09-27, in the opening record under *Open units*.
+
+- **What it does:**
+  - **The column.** `cases.display_caption` is in `schema.sql`, and in `db._MIGRATIONS` for the live table.
+  - **The writer.** `upsert_case` writes it from a config seed's `display_caption` on every run, fresh resolve or reuse. It is NULL where the seed sets none, so a seed that drops it clears it.
+  - **The stored caption stays CourtListener's `case_name`, verbatim.**
+  - **The reader.** `web/lib/db.ts`'s seven caption queries read `COALESCE(display_caption, caption)`.
+  - **The parties line.** The case page's parties line splits the caption it shows (`web/lib/parties.ts`), not the stored `plaintiff`/`defendant` columns, which still serve classification (`stands.ts`, `isDojFiling`).
+- **The rule the seeds follow** (`config/sources.yaml`): a seed sets a display caption where CourtListener's caption is in capitals, or where two different suits would otherwise read alike. A suit's appeals carry its display caption. The words are written in the seed, never title-cased in code.
+- **Five seeds set one:**
+  - 73131864: "DSCC v. Trump"
+  - 73143746: "National Association for the Advancement of Colored People v. Donald J. Trump"
+  - 73134260: "League of United Latin American Citizens v. Executive Office of the President (2026)"
+  - 73141063 and its appeal 73568304: "State of California v. Trump (2026)"
+- **Tests:**
+  - `tests/test_display_captions.py`, 11 tests:
+    - the collector writes the field, keeps CourtListener's caption, and clears the field on a seed that drops it;
+    - no page query reads the bare caption;
+    - the class's counted suits have none in capitals and no two alike;
+    - no override sits on a docket the tracker also lists, since the tracker writes last.
+  - `web/lib/parties.test.ts`, 3 tests.
+  - Each of 7 conditions, disabled in turn, fails one. `ci_local` is green.
+- **Turso, for the frames:** the column was applied through `db.init_db`, and the five values were written from the seeds, at 21:01:48Z. The deployed page and main's collector read neither, so production is unchanged until the branch lands. On the branch's merge, the next collect run writes the same five values from the seeds.
+- **The frames:**
+  - A local production build of the branch on 3001, at 1440 and 390: the homepage's case list (opened) and the five case pages. 28 frames, sent to Corey as one PDF.
+  - No CourtListener capitals are left on any framed page, and nothing scrolls sideways.
+  - DOM lanes against it: gates 27/0, encodings 35/0, layout 78/0, attribution 38/0, dated 74/0.
+- **For Corey:**
+  1. the frames;
+  2. the five display strings;
+  3. at 390, the LULAC (2026) heading wraps to eight lines beside its two chips. This is the existing layout with a long caption;
+  4. the parties line repeats the heading's text on these pages, as it already did on every case whose stored caption splits on one " v. ".
+- **Known, outside the rule's reach:** Pennsylvania's terminated district row (71453026) reads "United States v. COMMONWEALTH OF PENNSYLVANIA". No seed polls it, so a seed's display caption cannot reach it.
+- **On the branch, by subject:** "feat(captions): the page shows a seed's display caption in CourtListener's place".
+- **On Corey's word:** merge to main and push. Next by point 11 is the widened order-like test.
+
 ### The EO 14248 unit RULED 2026-10-05 on all eleven points; A (export after a red step) BUILT; B READ and EPIC v. USCIS SEEDED into the EO 14399 class; next, the display captions
 
 **Corey's rulings, 2026-10-05, on the D0 below:**
@@ -53,7 +91,7 @@ Last updated: 2026-10-05 (UTC).
     - The appellants moved to dismiss them on Sep 25 (the government) and Sep 28 (the States). The last filings were Sep 25–28.
     - Not held; recorded here, as ruled.
 - **Point 10:** the `superseded` reason kind is dropped from what is owed.
-- **NEXT, by point 11:** the display-caption unit (point 4), to its pixel checkpoint, then stop.
+- **NEXT, by point 11:** the display-caption unit (point 4), to its pixel checkpoint, then stop. BUILT and HELD there the same day (the entry above).
 
 ### The EO 14248 dockets: D0 READ 2026-10-05 and plan PROPOSED; a finding on the EO 14399 class; RULED the same day (the entry above)
 
