@@ -395,7 +395,7 @@ It stays open for Corey to close.
   - **Nevada's dates read Aug 24 in the frames, beside a note saying Aug 20 after.** `latest_entry_at` is a stored column, rewritten by `scripts/repair_latest_entry.py --apply` at the switch.
 - **Ruled at the checkpoint (Corey, 2026-10-02): the frames pass.**
   1. **Pair 23 (93145/93225) is LINKED as asserted**, beside the 7. It carries a person's ruling, the 2026-09-29 duplicate verdict, and three passing reads. `config/entry_links.yaml` lists it under `asserted`, and `--apply` linked it at 2026-10-03T00:39:51Z. The links' note counts 8.
-     - The note counts by surface: the Wire, which counts every docket, says 8; the map panel says the campaign dockets' 3; a docket says its own.
+     - The note counts by surface: the Wire, which counts every docket, says 8; the map panel says the campaign dockets' 3; a docket says its own. **Amended 2026-10-04 (Corey's rulings, the tier-2 move, notes count their own drop, ruling 3): each note's headline number is the change on its own surface.** The Wire and the /case ledgers lead with the items and entries they merged, the pairs linked as context: "6 duplicate items merged (2,760 before, 2,754 after; +7d 589 before, 588 after), from 8 entry pairs linked". The map's lines and panel keep their count. Built on the branch `r1-tier2-move`, it reaches these lines when the move ships.
   2. **The feed and Latest movement losing an entry's second texts need no note.** Tracker-note edits no longer surfacing as fresh rows is accepted for the switch, with a display owed (below).
   3. **Docket 73682036: not whichever seed was edited last.** Both live seeds are laid out below, and Corey picks one by a stated rule; the other is recorded as a second source.
   4. **The switch's five steps, run as written** (below).
@@ -630,8 +630,8 @@ It stays open for Corey to close.
   - ~~**For Corey:** the class of 13, as a class or one by one; the two individual splits.~~ **Ruled 2026-10-04 (below).**
 - **R1 tier 2 closes conservatively (Corey's rulings, 2026-10-04): rulings 1 to 3 RECORDED; the move PREPARED on the local branch `r1-tier2-move`, its frames SHOT, and HELD for Corey's word before it reaches production.**
   - **Ruling 1, the date:** Corey read his ten on 2026-10-04, now so recorded wherever the reading is dated.
-    - **Found:** the brief reporting the reading reached this session at 2026-10-04T01:42:12Z, 7:42 PM MDT on 2026-10-03. So 2026-10-04 holds in Z, the zone this file and the commits use; in MDT the reading came no later than that evening of 10-03. The correction says MDT.
-  - **Ruling 2, the class of 13: NOT ruled as a class.** Corey read item 1, 5420/5470, as not the same ("not really"). It was drawn with items 3 and 5 by seed 20261004; re-run, `random.Random(20261004).sample(range(1, 14), 3)` over the class as numbered in `docs/findings/r1-splits-2026-10-03.md` gives 3, 1 and 5. **All 13 stay unlinked, by Corey's ruling that a split pair is left apart: a missed link leaves a duplicate row, while a wrong link hides an entry.**
+    - **Found:** the brief reporting the reading reached this session at 2026-10-04T01:42:12Z, 7:42 PM MDT on 2026-10-03. So 2026-10-04 holds in Z, the zone this file and the commits use; in MDT the reading came no later than that evening of 10-03. The correction says MDT. **Ruled 2026-10-04 (the tier-2 move, notes count their own drop, ruling 1): the date stays in Z, with the note that it was the evening of 2026-10-03 in MDT; the review side's "(MDT)" was wrong.**
+  - **Ruling 2, the class of 13: NOT ruled as a class.** Corey read item 1, 5420/5470, as not the same ("not really"). It was drawn with items 3 and 5 in the review chat, by seed 20261004 over items 1 to 11, the class members with no look-alike (as made, the tier-2 move, notes count their own drop, ruling 2). Re-run, `random.Random(20261004).sample(range(1, 12), 3)` gives 3, 1 and 5; a draw over items 1 to 13, as numbered in `docs/findings/r1-splits-2026-10-03.md`, happens to give the same three. **All 13 stay unlinked, by Corey's ruling that a split pair is left apart: a missed link leaves a duplicate row, while a wrong link hides an entry.**
   - **Ruling 3:** the two individual splits, 6966/6967 and 93146/93298, stay unlinked under the same ruling.
   - **Left apart:** 28 pairs stay on the person list, none linked:
     - the batch's 16 splits: the class's 11, the two individual splits, and the three D.N.H. pairs of two RECAP descriptions;
@@ -639,7 +639,7 @@ It stays open for Corey to close.
     - the control's three splits: n=3, person pairs 5 and 15.
     - The plan halves 282>320, 15567>15566 and 7143>7137, and the D.N.H. late halves, were never read links.
   - **Ruling 4, the move, PREPARED.** It stays off origin until Corey's word: pushing main deploys the web, and `--apply` moves production at once, since every page reads Turso per request.
-    - **On the local branch `r1-tier2-move`**, by subject: "feat(r1): the move's links: the batch's 251 written by the writer, n=8 and pair 4 asserted" and "feat(notes): the move's dated note, read at the checkpoint, re-read at the move". `ci_local` is green on it.
+    - **On the local branch `r1-tier2-move`**, by subject: "feat(r1): the move's links: the batch's 251 written by the writer, n=8 and pair 4 asserted" "feat(notes): the move's dated note, read at the checkpoint, re-read at the move" and "feat(notes): the Wire and /case notes count their own drop, the pairs linked as context". `ci_local` is green on it.
     - **The links, 259 on 33 dockets:** the batch's 251 unanimous passes, written by `--write`, 188 of them against their label's order; n=8 (5419/5457) and person pair 4 (8868/8873), asserted; and the six plan halves already under `read_links`. The dry run on the branch: link 259, would_chain 0, unread 0, person 28, held.
     - **Found: n=8 and pair 4 cannot be read links.** The control's record names them by label ("control: 2026-10-01 sample n=8", "control: person pair 4"), not by rows, so neither the writer nor a read link can tie the read to its rows. Each is asserted instead, as pair 23 was, and the rule roots it at its long form.
     - **The tooling, on main:** `tools/merge_notes.py --append-link-move` records a later batch as its own move, from one state, just before `--apply`; `--check-last-move` reads the record against it after.
@@ -659,6 +659,7 @@ It stays open for Corey to close.
     - **Found: items fall by 120, entries by 259.** Only 120 of the 259 pairs carry a litigation item on both sides; 127 twins and 93 roots carry none. So the Wire and the /case ledgers fall by 120, while each link takes one entry off its docket.
       - The notes count as ruled 2026-10-02: the Wire every link, a docket its own entries' drop. So the Wire reads "259 pairs ... the total 2,754 before, 2,634 after", and /case 73133197 "28 pairs ... this docket read 201 entries before, 183 after".
       - At the switch the same rule read 8 pairs against a drop of 6.
+      - **Ruled 2026-10-04 (the tier-2 move, notes count their own drop, ruling 3): the Wire and /case notes count their own drop,** the pairs linked as context: "120 duplicate items merged (2,754 before, 2,634 after), from 259 entry pairs linked" and "18 duplicate entries merged (201 before, 183 after), from 28 entry pairs linked". Built on the branch; the map's lines stay as built.
     - **Found and fixed on the branch:** with a third move the figures file stopped compiling. TypeScript reads the moves as one union and gave each move every other move's dockets as undefined. A move's cases may now map to nothing; every reader already guarded for it.
   - **The checkpoint**, from a local production build of the branch on 3001, reading Turso:
     - **frames at 1440 and 390:** the Wire's litigation cell, the map panel, Georgia's docket lines on the map (N.D. Ga. "21 pairs ... 234 before, 213 after", M.D. Ga. "4 pairs ... 59 before, 55 after"), /case 73133197 (the most links, 28) and /case 71499795 (the move's line under the switch's two), sent to Corey. /case 72193752 carries no new line: its 21 links move no item, so its ledger does not move;
@@ -671,7 +672,19 @@ It stays open for Corey to close.
     4. `--apply`, then `--check-last-move`;
     5. export by hand;
     6. read the live pages against the figures.
-  - **For Corey:** his word on the move, its frames and how its notes count; the date's zone (ruling 1).
+  - ~~**For Corey:** his word on the move, its frames and how its notes count; the date's zone (ruling 1).~~ **The notes and the date ruled 2026-10-04 (below); his word on the move remains.**
+- **The tier-2 move, notes count their own drop (Corey's rulings, 2026-10-04): DONE the same day, the frames RE-SHOT; the move HELD for Corey's word.**
+  - **Ruling 1:** the date stays in Z, 2026-10-04, with the note that it was the evening of 2026-10-03 in MDT; the review side's "(MDT)" was wrong. Recorded above and in `docs/findings/r1-corey-ten-2026-10-03.md`.
+  - **Ruling 2:** the draw is recorded as made, in the review chat: seed 20261004 over items 1 to 11, the class members with no look-alike. A draw over items 1 to 13 happens to give the same three; both, re-run, give 3, 1 and 5.
+  - **Ruling 3, BUILT on the branch** ("feat(notes): the Wire and /case notes count their own drop, the pairs linked as context"):
+    - a link move's Wire line leads with the items it merged, and a /case ledger with the entries it merged, the pairs linked as context. As rendered: the Wire "Oct 4, 2026: 120 duplicate items merged (2,754 before, 2,634 after), from 259 entry pairs linked."; /case 73133197 "Oct 4, 2026: 18 duplicate entries merged (201 before, 183 after), from 28 entry pairs linked.";
+    - the switch's own link lines follow the same rule: the Wire "6 duplicate items merged (2,760 before, 2,754 after; +7d 589 before, 588 after), from 8 entry pairs linked", and /case 71499795 "5 duplicate entries merged (139 before, 134 after), from 5 entry pairs linked";
+    - the map's lines and panel stay as built, and the rejected-states note, which no link has moved, keeps its words;
+    - the 2026-10-02 rule is amended in the record (above);
+    - a new vitest case holds Corey's two examples, the singular, a moved window, the map unchanged and the fallbacks. Each of the 8 new conditions, disabled in turn, fails it.
+  - **Ruling 4:** the Wire and /case frames RE-SHOT at 1440 and 390 from a local production build of the branch, and sent to Corey. DOM lanes: gates 26/0, encodings 35, layout 78, attribution 38, dated 74. No sideways scroll on any framed page. `ci_local` is green on the branch.
+  - **On Corey's word, the sequence as written:** rebase, lift the hold, re-read the figures, merge and push, apply, check, export, and read the live pages.
+  - **For Corey:** his word on the move.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
