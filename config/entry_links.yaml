@@ -15,13 +15,12 @@
 # same text for good, where a CourtListener id is known only after the id backfill.
 rule: same-run strict-B v1
 
-# Nothing is applied until Corey's word on the move (Corey's rulings of 2026-10-04, R1 tier
-# 2 closes conservatively, ruling 4): the blind batch's unanimous passes, with n=8 and
-# person pair 4, and the six plan halves below, in one move with its own dated note. The
+# The hold is lifted (Corey's word, 2026-10-05): the move links the blind batch's unanimous
+# passes, with n=8 and person pair 4, and the six plan halves below, in one move with its own
+# dated note (Corey's rulings of 2026-10-04, R1 tier 2 closes conservatively, ruling 4). The
 # class of 13 and the two individual splits stay unlinked (rulings 2 and 3). Corey read his
-# ten on 2026-10-04, all same: the ten pass his check (docs/findings/r1-corey-ten-2026-10-03.md).
-# link_entry_twins --apply refuses while `hold` is set.
-hold: "until Corey's word on the move (R1 tier 2 closes conservatively, ruling 4)"
+# ten on 2026-10-04, all same (docs/findings/r1-corey-ten-2026-10-03.md). While a `hold` is
+# set here, link_entry_twins --apply refuses and says why.
 
 # The reader's check of the rule's pairs, recorded before the rule is relied on.
 # link_entry_twins --apply refuses unless `result` is pass and the check still describes
