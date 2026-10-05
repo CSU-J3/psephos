@@ -47,7 +47,10 @@ export type Move = {
   };
   map: { entries: Pair; dockets_changed: number; apart?: number };
   rejected?: { count: Pair; states: Record<string, (string | null)[]> };
-  cases: Record<string, CaseMove>;
+  /** Only the dockets the move moved. A JSON import reads the moves as one union, giving
+   *  each move every other move's dockets as undefined, so a docket may map to nothing; the
+   *  type without it stopped the cast compiling the day a third move was written. */
+  cases: Record<string, CaseMove | undefined>;
 };
 export type MergeFigures = { on: string | null; clock: string | null; moves: Move[] };
 
