@@ -8,6 +8,146 @@ Last updated: 2026-10-05 (UTC).
 
 ## Owed right now
 
+### The EO 14248 dockets: D0 READ 2026-10-05 and plan PROPOSED; a finding on the EO 14399 class; HELD for Corey's rulings
+
+**Corey's call, 2026-10-05:** the EO 14248 D0, after channel isolation and the dry run's double count (the entry below). This entry is the D0 and the plan. Nothing is seeded or built.
+
+**How it was read, all inline, 2026-10-05:**
+- **CourtListener, 113 requests from 20:04Z to 20:25Z:**
+  - each candidate docket by number and court, and its entry count;
+  - two RECAP full-text searches, one by each order's title;
+  - the unheld dockets they found, by nature of suit;
+  - 17 complaints (entry 1), for what each seeks relief against.
+- **Primary texts:** the Federal Register's text of EO 14248 (90 FR 14005), and the Supreme Court's docket and slip opinion in *Watson v. RNC*, No. 24-1260.
+- **Turso, read-only:** the candidates' rows, the pending count, the order-like test on held rows, and tier-2 twins per row.
+- **One read-only agent** mapped the code and config the unit touches. Every claim below that rests on its map was re-read in the files.
+
+**THE D0.**
+
+- **Membership, by the ruled test:** *Does the operative complaint seek relief against an election executive order, or against agency action the complaint pleads was taken under one?*
+  - **In, five suits, each on its complaint:**
+    - *LULAC v. Executive Office of the President*, D.D.C. 1:25-cv-00946 (the gate's 2026-09-29 read).
+    - *DNC v. Trump*, D.D.C. 1:25-cv-00952: "Declare that the President's orders in E.O. §§ 2(a), 2(b)(iii), 2(d), 4(a), 4(b), 4(c), 7(a), and 7(b) are ultra vires and legally void".
+    - *LWV Education Fund v. Trump*, D.D.C. 1:25-cv-00955: "Declare that the Executive Order is unlawful to the extent it purports to direct the EAC to take action".
+      - 00952 and 00955 are consolidated with 00946, so each counts on its own (Corey, 2026-09-27).
+    - *Washington v. Trump*, W.D. Wash. 2:25-cv-00602, and *California v. Trump*, D. Mass. 1:25-cv-10810 (the gate's 2026-09-29 read).
+  - **LWV v. DHS moves in, as ruled 2026-09-26,** with its appeal 26-5243. That makes six suits counted.
+  - **The appeals, held and not counted:**
+    - D.C. Cir. 25-5476 leads 25-5478, 26-5099, 26-5102 and 26-5182, which it carries by the 26-5301 precedent.
+    - 9th Cir. 26-1429.
+    - 1st Cir. 26-2038 and 25-1726, not consolidated as read.
+  - **The enumeration.** A RECAP search for the order's title found 79 dockets. Besides the suits above, they are:
+    - the held DOJ voter-roll suits and EO 14399 class;
+    - suits that cite the order in passing;
+    - 18 unheld dockets, read as follows.
+  - **The 18 unheld dockets:**
+    - **Out, FOIA (5):** *Bower v. SSA*, *CLC v. SSA*, *CLC v. DHS*, *CREW v. DOJ*, *Democracy Forward v. EAC*.
+    - **Out, the complaint names the order as background only (2):**
+      - *Red Wine & Blue v. LaRose* (N.D. Ohio) challenges Ohio's law.
+      - *DSCC v. ICE* (D.D.C. 1:26-cv-03330) challenges a polling-place policy it calls "part and parcel with" both orders (¶57).
+    - **Out, the complaint names neither order (6):** *Illinois v. Noem*, *New York v. Noem*, *Colorado v. Trump*, *UnidosUS v. Byrd*, *Louisiana v. EAC*, *California Nurses Association v. Mullin*.
+    - **For Corey, borderline: *Illinois v. FEMA*, D.R.I. 1:26-cv-00485** (states, Jul 23, 2026).
+      - It asks the court to vacate and enjoin FEMA's "Election Conditions" on HSGP grants, together with immigration and termination conditions.
+      - Its background pleads section 4(d) of the order (¶122). Its n.5 says the 2025 suit did not challenge section 6(a) "as DHS and FEMA had not implemented the conditions at issue here".
+      - Its conditions section (¶¶131ff) does not name the order; ¶130 calls the conditions the President's attempt "to accomplish the same goals".
+    - **Unread, no complaint text on RECAP (3):** *Schnell v. Trump* (M.D.N.C. 1:25-cv-00807), *LWV of the United States v. USCIS* (D. Md. 8:25-cv-03777), and *LULAC v. Nelson* (W.D. Tex. 1:26-cv-00729), whose complaint has no extracted text.
+    - ***EPIC v. USCIS*** is an EO 14399 suit: the finding below.
+- **The dockets,** read on CourtListener at 20:04Z. Every search returned exactly one docket, so each would bind on its number. The class pins its ids anyway (`tests/test_eo_class_seeds.py`).
+
+  | Docket | CourtListener | Filed | Terminated | Entries | Walk pages |
+  |---|---|---|---|---|---|
+  | D.D.C. 1:25-cv-00946 | 69823792 | 2025-03-31 | 2026-03-31 | 406 | 21 |
+  | D.D.C. 1:25-cv-00952 | 69826986 | 2025-03-31 | | 38 | 2 |
+  | D.D.C. 1:25-cv-00955 | 69828370 | 2025-04-01 | | 48 | 3 |
+  | W.D. Wash. 2:25-cv-00602 | 69845185 | 2025-04-04 | | 174 | 9 |
+  | D. Mass. 1:25-cv-10810 | 69841778 | 2025-04-03 | 2026-07-13 | 241 | 13 |
+  | D.C. Cir. 25-5476 | 72099224 | 2025-12-31 | | 57 | 3 |
+  | 9th Cir. 26-1429 | 72411876 | 2026-03-10 | | 15 | 1 |
+  | 1st Cir. 26-2038 | 74768609 | 2026-09-09 | | 25 | 2 |
+  | 1st Cir. 25-1726 | 70994132 | 2025-08-01 | | 137 | 7 |
+
+  LWV v. DHS's two rows (71499795 and 73544809) are held and walked already.
+- **Cost:**
+  - **Binds:** 9 requests on the first run.
+  - **Walks:** 61 pages for 1,141 entries. The 30-request budget is checked before each walk, never during one. In the seed order 00946 (21), 10810 (13), then the rest, run 1 walks 34 pages and run 2 walks 27.
+  - **After that:** about 5 requests a day per docket, the 14399 unit's measure, so about 45 a day.
+  - **The refresh headroom:** 36 pending rows now (Turso, 19:59:51Z). The new rows add 7 pending; 00946 and 10810 are terminated and never refreshed. That makes 43 against a cap of 40.
+    - A run with all 43 due defers 3, quietly, to the next run.
+    - At four runs a day that stays well inside the rotation finding's 44h.
+    - Raising the cap to 50 is one config line.
+- **The first load's tier-2 pairs wait for a person** (R1's first-load rule, 2026-10-02).
+  - Held district rows carry 5.1 linked twins per 100 rows (261 of 5,104), and appellate rows 0.4 (6 of 1,573).
+  - That predicts about 46 pairs on the five trial dockets' 907 entries, and 1 on the appeals.
+  - The person list's 28 would become about 75.
+- **The page:**
+  - **The class sentences name one order.** `eo-challenges` and `eo-challenges-held` carry `names_order: EO 14399` and read "challenges to the mail-ballot executive order". `tests/test_eo_class_seeds.py` fails any `order: EO 14248` seed until both widen.
+  - **The page cannot tell the two orders' challenges apart.** `isEoChallenge` reads `category` only, and `order` is stored nowhere: `cases` has no such column, and `upsert_case` does not write it.
+  - **The related-suits clause goes to one,** *Common Cause v. DOJ* (ruled 2026-09-26). It renders "{n} related suits" with no singular, so it would read "1 related suits", and it hand-names LWV v. DHS and its appeal.
+  - **Two same-caption pairs.** CourtListener names both LULAC suits "LEAGUE OF UNITED LATIN AMERICAN CITIZENS v. EXECUTIVE OFFICE OF THE PRESIDENT", and both California suits "State of California v. Trump".
+    - Caption-only surfaces would show each pair alike: the homepage's day groups, entry links, and the case page's heading.
+    - The display-caption unit that would tell them apart is open and not built.
+  - **LWV's case header keeps "— voter-data" unless its notes change.** The B2 subject's title carries the category, but `write_b2_item` keys the row on the notes alone.
+  - Tab 2's literal "Michigan is the one terminated circuit row" still holds: all four 14248 appeals are pending.
+- **The gate.** `eo-14248-enjoined` has no `record_instruments`, because "the EO 14248 unit has not seeded them".
+  - Its falsifier names the instruments: 25-5476, 2:25-cv-00602, 26-1429, 26-2038 and 25-1726.
+  - Each reading would sit at the last entry the 2026-09-29 read covered. The RECAP listings dated that read: D.D.C. Sep 15; D.C. Cir. Sep 22; W.D. Wash. Jul 10; 9th Cir. Sep 10; D. Mass. Sep 25; 1st Cir. Sep 28.
+- **The owed `superseded` reason kind is not needed today.** 71499795 is already listed on `dhs-save-system-stayed` (`record_instruments: [73544809, 71499795]`), so check 5 passes it as listed. A reason on a listed docket fails ("remove the reason").
+- **The order-like test, on the 14248 dockets' own forms:**
+  - 26-1429's 15 entries were read. The Ninth Circuit's ACMS form is "ORDER FILED.".
+    - The test flags the one operative order: #11 of May 6, "Appellate proceedings are stayed until resolution of district court proceedings".
+    - It trims the procedural one, #10, a briefing extension.
+  - The forms its docstring says it misses ("FILED ORDER", "FILED OPINION") appear in neither the held Ninth Circuit rows (229, on four dockets) nor 26-1429.
+  - The W.D. Wash. and D.C. Circuit forms are fixture-tested only on 3:25-cv-06078 and 26-5243. The orders on 2:25-cv-00602 and 25-5476 are not read; that is about 12 requests.
+- ***Watson v. RNC*, No. 24-1260 (Jun 29, 2026), read against section 7.**
+  - **Held** (syllabus): "The federal election-day statutes do not prevent Mississippi from counting absentee ballots postmarked by election day but received up to five days thereafter; nothing in the federal election-day statutes requires ballots to be received by election day."
+  - **The opinion** (Barrett, J., for five; Alito, J., dissenting for four, Kavanaugh, J., as to parts):
+    - "The sole question before us is whether counting ballots postmarked by election day, but received up to five days later, violates the federal election-day statutes" (slip op. 5).
+    - "We do not consider the scope of Congress's authority to regulate federal elections" (slip op. 5).
+    - "The election-day statutes say nothing about ballot receipt, and we cannot add to the words Congress chose" (slip op. 22).
+    - Reversed and remanded.
+  - **Section 7** (90 FR 14005):
+    - 7(a) directs the Attorney General to "take all necessary action to enforce 2 U.S.C. 7 and 3 U.S.C. 1 against States that violate these provisions by including absentee or mail-in ballots received after Election Day in the final tabulation".
+    - 7(b) conditions EAC funding on "a uniform and nondiscriminatory ballot receipt deadline of Election Day", "as prescribed in 2 U.S.C. 7 and 3 U.S.C. 1".
+  - **The bearing.** As the Court read them, the statutes section 7 rests on set no ballot-receipt deadline. The holding covers ballots postmarked by Election Day and received within five days, and its stated reason is that the statutes "say nothing about ballot receipt".
+  - No opinion mentions an executive order, and the decision modifies no injunction.
+
+**A FINDING ON THE EO 14399 CLASS** (the same title search, run for that order, found 58 dockets):
+- ***EPIC v. USCIS*, D. Md. 8:26-cv-03457 (Aug 31, 2026), is a member and is not held.**
+  - Its ¶2: "This suit challenges illegal agency action to implement Section 2(a) of the President's Executive Order No. 14399".
+  - It asks the court to vacate "DHS's Implementation Memo", a memo titled "Executive Order 14399 Implementation" (Jun 8, 2026), and to enjoin the State Citizenship Lists.
+  - The page's count of challenges to that order, 6, is short by one.
+- **Four First Circuit appeals of Aug 28–29 are not held:**
+  - 26-1987 is from ECF 42 in 1:26-cv-13917, and 26-1988 from ECF 221 in 1:26-cv-11549. 26-1989 and 26-1991 were not opened.
+  - All four precede the Sep 4 injunction whose appeals 26-2029 leads. Whether they are consolidated with 26-2029 is unread.
+- ***NAACP v. USPS*, D.D.C. 1:20-cv-02295, a 2020 suit,** drew a 2026 motion to enforce (ECF 171), an order, and USPS's appeal (D.C. Cir. 26-5257, Jul 9, terminated Oct 1). The motion was not read against the test.
+- **Why the 14399 unit missed them.** It enumerated by following its complaints' related-case and consolidation notices, and a suit that none of them names is invisible to that method. A search by the order's title is the instrument it lacked.
+
+**THE PLAN, PROPOSED, for Corey's rulings:**
+1. **Membership:** the five suits seeded and LWV v. DHS moved, so six counted; the four appeals held and not counted.
+   - Rule on *Illinois v. FEMA*.
+   - The three unread complaints are read, through a later filing where RECAP has no text, before the seed commit.
+2. **The 14399 finding:** *EPIC v. USCIS* seeded into the 14399 class with this unit, which takes that count to 7. The four Aug 28–29 appeals and *NAACP v. USPS* are read and put to Corey.
+3. **The sentence, two options:**
+   - (A) one sentence over both orders ("challenges to the election executive orders"), with `names_order` a list;
+   - (B) one sentence per order, which needs an `order` column that `upsert_case` writes and the page reads.
+   - Proposed: (A). The class is ruled to count suits against either order, and (A) adds no column.
+4. **Captions:** build the display-caption unit first, or seed with a "(2025)" suffix in the seed caption, which reaches item titles only. Proposed: the display-caption unit first, since caption-only surfaces would show two different suits under one caption.
+5. **The order-like test** is widened and re-tested before any seed, as ruled 2026-09-29. Its fixture is the 14248 dockets' own orders: 26-1429's (read) plus 2:25-cv-00602's and 25-5476's (about 12 requests).
+6. **The gate:** the five instruments are listed on `eo-14248-enjoined` in the seed commit, with `record_instruments_due`. Each reading is written after the walk, at the last entry the 2026-09-29 read covered.
+7. **The refresh cap:** 40 → 50.
+8. **The first load's twin pairs:** about 47 go to the person list. Proposed: they are read by the blind-read process, as the R1 pairs were, unless Corey rules otherwise.
+9. **Watson:** whether the page says it, and where. Proposed: a gated sentence beside `eo-14248-enjoined`, sourced to the slip opinion and quoting "say nothing about ballot receipt".
+10. **The `superseded` reason kind** is dropped from what is owed, while 71499795 stays listed.
+11. **The order of work:**
+    1. the reads and the rulings;
+    2. the order-like widening;
+    3. display captions, if ruled first;
+    4. one seed commit (the seeds in the walk order, the gate's lists, the sentence, the related-suits singular, and LWV's notes), pushed after a 06:17Z run and before the 12:17Z one;
+    5. two runs walk it;
+    6. the readings follow.
+
+**OWED NOW: Corey's rulings on 1–11.** Nothing is seeded.
+
 ### One channel's crash no longer stops the others: RULED 2026-10-05; the mid-statement retry SHIPPED, channel isolation and a row from every channel BUILT the same day
 
 **Corey's rulings, 2026-10-05,** on the 10-04 06:17Z red (the entry below).
@@ -31,7 +171,7 @@ Last updated: 2026-10-05 (UTC).
   - **Executive's and news's staleness thresholds stay PROPOSED.** Until they are ruled, a run of `unreached` is quiet for those two, where the receipts make it loud for the other three.
 - **Tests:** `ci_local` green. Each of 26 conditions, disabled in turn, fails one: across the step, `run_signals`, the Verdict and the three collectors.
 - **Ruling 4:** issue 6 is Corey's to close (still open at 19:25Z). The Node 24 action bump stays OWED for a quiet slot (the entry below, ruling 4).
-- **Next, in order:** the link script's dry-run double count, then the EO 14248 D0.
+- **Next, in order:** the link script's dry-run double count, then the EO 14248 D0. The D0 was READ the same day (the entry above).
   - **The double count, FIXED the same day:** a read link that is also a pair the rule sees is one link, listed once, as linked or as refused. The dry run against Turso at 19:56:48Z read `linked_already 267`, the links held, where it read 518; `person 28`, the pairs left apart by ruling; `refused 2`. Two tests: a rule pair settled by a read link is listed once, linked and refused; both fail without the fix.
 - **OWED: the first scheduled collect run on the new step,** read green with a row from all five channels. Off the 06:17Z slot, state's is `skipped`.
 
@@ -4022,7 +4162,7 @@ Pre-existing, not introduced by Part B, and not a licence matter.
 
 **PROPOSED 2026-09-27, NOT QUEUED — visible corrections. Corey scopes it.** When a gated claim is corrected rather than rechecked, the page shows a dated "corrected" note carrying the prior wording, from a field on the register entry. The first case is `eo-14399-usps-rule-enjoined`, whose clause read "section 3 of EO 14399, the USPS mail-ballot rule, is enjoined for the 2026 elections" from `cb09416` until the rewording of 2026-09-27; the register records it only in a comment, and the page shows nothing.
 
-**OPENED 2026-09-26, NOT BUILT: the EO 14248 dockets.** Opened by the checkpoint ruling on the EO 14399 unit's membership test, which placed LWV v. DHS in the class under EO 14248 while ruling (d) of that unit kept 14248 out of it.
+**OPENED 2026-09-26, NOT BUILT: the EO 14248 dockets. D0 READ and plan PROPOSED 2026-10-05, in *Owed right now*.** Opened by the checkpoint ruling on the EO 14399 unit's membership test, which placed LWV v. DHS in the class under EO 14248 while ruling (d) of that unit kept 14248 out of it.
 - **The candidates, as the EO 14399 complaints cite them.** *(Read on CourtListener 2026-09-29 for `eo-14248-enjoined`, in *Owed right now*: D.D.C. 69823792, W.D. Wash. 69845185, D. Mass. 1:25-cv-10810 = 69841778; the appeals from the Jan 30 order are 26-5099, 26-5102 and 26-5182, not 26-5098.)*
   - *LULAC v. Executive Office of the President*, D.D.C. 1:25-cv-0946 (NAACP's complaint cites it with 25-0952 and 25-0955). Appeals D.C. Cir. 25-5476, from 808 F. Supp. 3d 29, and 26-5098, from 818 F. Supp. 3d 34.
   - *Washington v. Trump*, W.D. Wash. 2:25-cv-00602, appeal 9th Cir. 26-1429.
