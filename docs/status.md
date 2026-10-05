@@ -105,7 +105,7 @@ It stays open for Corey to close.
 - **On origin:** `34a012b` (the data commit, parent `a26760e`) over `a26760e` (the docs commit, parent `fd299cd`).
 - **What stays unproven in production:** a race whose raced commit touches `data/` (the re-export path), and a push that never lands (the marker and the red). The tests are their evidence: `tests/test_data_commit.py`, 16 cases.
 
-### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey had read his ten, which he READ on 2026-10-04, all ten same; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links, then rulings in place of reads, then to keep every read link in the rule's direction; the class of 13 and the two individual splits RULED unlinked 2026-10-04, and the move PREPARED on a local branch and HELD for Corey's word
+### Duplicate rows, R1: RULED 2026-09-30; steps a and b BUILT, the walk COMPLETE 2026-10-01; the reader's check FAILED its bar; the 63 first-load pairs found to be 259 and RE-RULED 2026-10-02, the first-load test BUILT; tier 1's switch SHIPPED 2026-10-03; the reads found primed and re-read blind 2026-10-03: the rule's 7 and pair 23 LINKED on blind reads, the person list's 276 READ in one blind batch, its links HELD until Corey had read his ten, which he READ on 2026-10-04, all ten same; its 16 splits LAID OUT and its three entries held three times PLANNED and READ BLIND the same day; the plans and the class RULED, the D.N.H. pairs RE-PLANNED, READ BLIND and RULED, the link script CHANGED to take read links, then rulings in place of reads, then to keep every read link in the rule's direction; the class of 13 and the two individual splits RULED unlinked 2026-10-04, and the move APPLIED 2026-10-05 on Corey's word, 259 links, the live pages read against the record
 
 **Corey's rulings on the seven calls, 2026-09-30.**
 1. **R1.** Every row and id kept, an object table on top, page counts read from objects.
@@ -395,7 +395,7 @@ It stays open for Corey to close.
   - **Nevada's dates read Aug 24 in the frames, beside a note saying Aug 20 after.** `latest_entry_at` is a stored column, rewritten by `scripts/repair_latest_entry.py --apply` at the switch.
 - **Ruled at the checkpoint (Corey, 2026-10-02): the frames pass.**
   1. **Pair 23 (93145/93225) is LINKED as asserted**, beside the 7. It carries a person's ruling, the 2026-09-29 duplicate verdict, and three passing reads. `config/entry_links.yaml` lists it under `asserted`, and `--apply` linked it at 2026-10-03T00:39:51Z. The links' note counts 8.
-     - The note counts by surface: the Wire, which counts every docket, says 8; the map panel says the campaign dockets' 3; a docket says its own. **Amended 2026-10-04 (Corey's rulings, the tier-2 move, notes count their own drop, ruling 3): each note's headline number is the change on its own surface.** The Wire and the /case ledgers lead with the items and entries they merged, the pairs linked as context: "6 duplicate items merged (2,760 before, 2,754 after; +7d 589 before, 588 after), from 8 entry pairs linked". The map's lines and panel keep their count. Built on the branch `r1-tier2-move`, it reaches these lines when the move ships.
+     - The note counts by surface: the Wire, which counts every docket, says 8; the map panel says the campaign dockets' 3; a docket says its own. **Amended 2026-10-04 (Corey's rulings, the tier-2 move, notes count their own drop, ruling 3): each note's headline number is the change on its own surface.** The Wire and the /case ledgers lead with the items and entries they merged, the pairs linked as context: "6 duplicate items merged (2,760 before, 2,754 after; +7d 589 before, 588 after), from 8 entry pairs linked". The map's lines and panel keep their count. Shipped with the move, 2026-10-05.
   2. **The feed and Latest movement losing an entry's second texts need no note.** Tracker-note edits no longer surfacing as fresh rows is accepted for the switch, with a display owed (below).
   3. **Docket 73682036: not whichever seed was edited last.** Both live seeds are laid out below, and Corey picks one by a stated rule; the other is recorded as a second source.
   4. **The switch's five steps, run as written** (below).
@@ -450,7 +450,7 @@ It stays open for Corey to close.
   - ~~the 256 pairs mapped to objects~~ **266, mapped (above);**
   - ~~the reader check of a random 20~~ **READ, FAIL (above); the rule's 7 READ in full and LINKED 2026-10-02;**
   - ~~the 23 laid out for Corey~~ **READ by three-lens readers 2026-10-02, with a 24th;**
-  - ~~the second batch of 239~~ **READ blind 2026-10-03 in one batch of 276 with the 37 earlier candidates (below), after a failed calibration and two batching controls. Its links waited on Corey's ten, READ 2026-10-04 (all same). Its 251 unanimous passes are PREPARED as the move, held for Corey's word, and its other 25 pairs stay unlinked (below);**
+  - ~~the second batch of 239~~ **READ blind 2026-10-03 in one batch of 276 with the 37 earlier candidates (below), after a failed calibration and two batching controls. Its links waited on Corey's ten, READ 2026-10-04 (all same). Its 251 unanimous passes were LINKED 2026-10-05 in the tier-2 move, and its other 25 pairs stay unlinked (below);**
   - ~~the DSCC exclusion recorded;~~ **in `refused`;**
   - ~~a reversible link script.~~ **`--unlink`.**
 - ~~Then (d) and (e) for tier 1, through the visual checkpoint at 1440 and 390, then Corey's word~~ **SHIPPED 2026-10-03T00:49:15Z, all five steps run and the live pages read (above).**
@@ -538,7 +538,7 @@ It stays open for Corey to close.
     - still to read blind: the 37 earlier candidates. With the 239, that is 276 pairs.
   - **All 42 blind reads: 2,069,063 tokens.** Every reader's start was the launcher byte for byte, and only its own file was read. One reader read its file twice.
   - ~~**For Corey:** whether the batch covers the 37 earlier candidates as well as the 239; his random check of ten, drawn after the batch.~~ **Ruled 2026-10-03: the batch reads all 276, and the ten are drawn from its unanimous passes (below).**
-- **The blind batch (Corey's rulings, 2026-10-03): READ 2026-10-03, all 93 readers passing the check. Every link from it is HELD until Corey has read his ten.** **He read them on 2026-10-04, all ten same (below). Its unanimous passes are prepared as the move, held for his word (below).** In full: `docs/findings/r1-blind-batch-2026-10-03.md`; the ten: `docs/findings/r1-corey-ten-2026-10-03.md`; record: `docs/reads/2026-10-03-blind-batch.json`.
+- **The blind batch (Corey's rulings, 2026-10-03): READ 2026-10-03, all 93 readers passing the check. Every link from it is HELD until Corey has read his ten.** **He read them on 2026-10-04, all ten same (below). Its unanimous passes were linked 2026-10-05 in the tier-2 move (below).** In full: `docs/findings/r1-blind-batch-2026-10-03.md`; the ten: `docs/findings/r1-corey-ten-2026-10-03.md`; record: `docs/reads/2026-10-03-blind-batch.json`.
   - **Ruling 1:** "named its pair" stays as applied: any pair number in a launch counts as primed.
   - **The read (ruling 2):** the 276 person-list pairs not yet read blind, the 239 first-load pairs and the 37 earlier candidates.
     - 31 runs by docket and date, one reader per lens per run: 93 readers, launched by the Agent tool from the stored launcher in six waves, after a passing canary.
@@ -587,7 +587,7 @@ It stays open for Corey to close.
     - Several links may share a root that is docket text when every one carries a passing read. If any link to that root lacks one, the whole group waits and `--apply` refuses.
     - `hold` refuses `--apply` and the dry run prints it: ruling 5, made mechanical.
     - 16 new tests in `tests/test_cl_twins.py`, including the refusal of a shared group missing one read. Each of the 15 new conditions, disabled in turn, fails a test.
-  - **Ruling 5:** nothing applied. The hold named Corey's line on his ten, the class of 13 and the two individual splits; since all three were ruled 2026-10-04, it names Corey's word on the move. Then what he rules goes with ruling 1's three links, in one move with its own dated note.
+  - **Ruling 5:** nothing applied. The hold named Corey's line on his ten, the class of 13 and the two individual splits; since all three were ruled 2026-10-04, it named Corey's word on the move, and was lifted on it 2026-10-05. Then what he rules goes with ruling 1's three links, in one move with its own dated note.
   - ~~**One question for that move:** if the class of 13 is ruled linked, 282>320 and 15567>15566 share their roots with ruling 1's passing links. The script takes only a passing read as a link's authority within a shared group, so Corey's class ruling needs a recorded form the script accepts in place of the read. Otherwise each group is refused whole.~~ **Answered the same day (a ruling as evidence, below): a `ruled` entry.**
   - **For Corey:**
     - ~~his ten;~~ **read 2026-10-04 (below): all ten same;**
@@ -628,7 +628,7 @@ It stays open for Corey to close.
   - **Against the readers:** the ten were drawn from pairs all three readers read as one minute entry, none naming a better match, so his verdicts and theirs agree on all ten.
   - **Next:** once the class of 13 and the two individual splits are ruled, everything ruled is applied in one move with its own dated note: the batch's 253 unanimous passes (the 251 with n=8 and person pair 4), the six plan halves already under `read_links`, and what he rules on the class and the two splits. **Ruled 2026-10-04 (below): the class and the splits stay unlinked, and the move carries the 253 and the six.**
   - ~~**For Corey:** the class of 13, as a class or one by one; the two individual splits.~~ **Ruled 2026-10-04 (below).**
-- **R1 tier 2 closes conservatively (Corey's rulings, 2026-10-04): rulings 1 to 3 RECORDED; the move PREPARED on the local branch `r1-tier2-move`, its frames SHOT, and HELD for Corey's word before it reaches production.**
+- **R1 tier 2 closes conservatively (Corey's rulings, 2026-10-04): rulings 1 to 3 RECORDED; the move PREPARED on the local branch `r1-tier2-move`, its frames SHOT, and HELD for Corey's word before it reaches production.** **APPLIED 2026-10-05 on his word (below).**
   - **Ruling 1, the date:** Corey read his ten on 2026-10-04, now so recorded wherever the reading is dated.
     - **Found:** the brief reporting the reading reached this session at 2026-10-04T01:42:12Z, 7:42 PM MDT on 2026-10-03. So 2026-10-04 holds in Z, the zone this file and the commits use; in MDT the reading came no later than that evening of 10-03. The correction says MDT. **Ruled 2026-10-04 (the tier-2 move, notes count their own drop, ruling 1): the date stays in Z, with the note that it was the evening of 2026-10-03 in MDT; the review side's "(MDT)" was wrong.**
   - **Ruling 2, the class of 13: NOT ruled as a class.** Corey read item 1, 5420/5470, as not the same ("not really"). It was drawn with items 3 and 5 in the review chat, by seed 20261004 over items 1 to 11, the class members with no look-alike (as made, the tier-2 move, notes count their own drop, ruling 2). Re-run, `random.Random(20261004).sample(range(1, 12), 3)` gives 3, 1 and 5; a draw over items 1 to 13, as numbered in `docs/findings/r1-splits-2026-10-03.md`, happens to give the same three. **All 13 stay unlinked, by Corey's ruling that a split pair is left apart: a missed link leaves a duplicate row, while a wrong link hides an entry.**
@@ -638,7 +638,7 @@ It stays open for Corey to close.
     - the batch's 9 not linked;
     - the control's three splits: n=3, person pairs 5 and 15.
     - The plan halves 282>320, 15567>15566 and 7143>7137, and the D.N.H. late halves, were never read links.
-  - **Ruling 4, the move, PREPARED.** It stays off origin until Corey's word: pushing main deploys the web, and `--apply` moves production at once, since every page reads Turso per request.
+  - **Ruling 4, the move, PREPARED, and APPLIED 2026-10-05 on Corey's word (below).** It stayed off origin until then: pushing main deploys the web, and `--apply` moves production at once, since every page reads Turso per request.
     - **On the local branch `r1-tier2-move`**, by subject: "feat(r1): the move's links: the batch's 251 written by the writer, n=8 and pair 4 asserted" "feat(notes): the move's dated note, read at the checkpoint, re-read at the move" and "feat(notes): the Wire and /case notes count their own drop, the pairs linked as context". `ci_local` is green on it.
     - **The links, 259 on 33 dockets:** the batch's 251 unanimous passes, written by `--write`, 188 of them against their label's order; n=8 (5419/5457) and person pair 4 (8868/8873), asserted; and the six plan halves already under `read_links`. The dry run on the branch: link 259, would_chain 0, unread 0, person 28, held.
     - **Found: n=8 and pair 4 cannot be read links.** The control's record names them by label ("control: 2026-10-01 sample n=8", "control: person pair 4"), not by rows, so neither the writer nor a read link can tie the read to its rows. Each is asserted instead, as pair 23 was, and the rule roots it at its long form.
@@ -673,7 +673,7 @@ It stays open for Corey to close.
     5. export by hand;
     6. read the live pages against the figures.
   - ~~**For Corey:** his word on the move, its frames and how its notes count; the date's zone (ruling 1).~~ **The notes and the date ruled 2026-10-04 (below); his word on the move remains.**
-- **The tier-2 move, notes count their own drop (Corey's rulings, 2026-10-04): DONE the same day, the frames RE-SHOT; the move HELD for Corey's word.**
+- **The tier-2 move, notes count their own drop (Corey's rulings, 2026-10-04): DONE the same day, the frames RE-SHOT; the move HELD for Corey's word.** **Given 2026-10-05 (below).**
   - **Ruling 1:** the date stays in Z, 2026-10-04, with the note that it was the evening of 2026-10-03 in MDT; the review side's "(MDT)" was wrong. Recorded above and in `docs/findings/r1-corey-ten-2026-10-03.md`.
   - **Ruling 2:** the draw is recorded as made, in the review chat: seed 20261004 over items 1 to 11, the class members with no look-alike. A draw over items 1 to 13 happens to give the same three; both, re-run, give 3, 1 and 5.
   - **Ruling 3, BUILT on the branch** ("feat(notes): the Wire and /case notes count their own drop, the pairs linked as context"):
@@ -684,7 +684,27 @@ It stays open for Corey to close.
     - a new vitest case holds Corey's two examples, the singular, a moved window, the map unchanged and the fallbacks. Each of the 8 new conditions, disabled in turn, fails it.
   - **Ruling 4:** the Wire and /case frames RE-SHOT at 1440 and 390 from a local production build of the branch, and sent to Corey. DOM lanes: gates 26/0, encodings 35, layout 78, attribution 38, dated 74. No sideways scroll on any framed page. `ci_local` is green on the branch.
   - **On Corey's word, the sequence as written:** rebase, lift the hold, re-read the figures, merge and push, apply, check, export, and read the live pages.
-  - **For Corey:** his word on the move.
+  - ~~**For Corey:** his word on the move.~~ **Given 2026-10-05 (below).**
+- **Corey's word on the tier-2 move (2026-10-05 Z): the Wire and /case frames pass, and the move is approved, the reworded Oct 2 link lines with it. RUN as written, and the live pages READ against the record, every figure matching. Tier 2's links are APPLIED.**
+  - **The sequence, all times Z:**
+    1. `r1-tier2-move` rebased onto main (`915dc9d`), clean;
+    2. the hold lifted;
+    3. **the figures re-read** by `--append-link-move` at 02:17:11Z, over main's two moves. The record's clock had not moved since the checkpoint (2026-10-04T21:27:36Z), and the reading is the checkpoint's, figure for figure. Committed with the lifted hold as "feat(r1): the move: the hold lifted, the figures re-read at the move" (`68c21e1`). A read-only pre-flight cleared every refusal first: the check covers the rule's pool, no docket has been walked since 2026-10-01T06:13:55Z, and 259 links are planned, none chaining or waiting;
+    4. **merged** by fast-forward and **pushed** `915dc9d..68c21e1` at 02:18:25Z. Vercel's production deploy succeeded at 02:19:03Z; ci.yml run 37254879169 green at 02:19:23Z;
+    5. **`link_entry_twins --apply`** from 02:18:25Z to 02:19:12Z: "linked 259 of 259, refolded, committed". Its own counts: 33 dockets, 4,503 entries before, 4,244 after, each docket as recorded;
+    6. **`merge_notes --check-last-move`** at 02:19:22Z: "the record reads the last move as recorded", the Wire compared at the move's own clock;
+    7. **the export by hand** at 02:19:41Z: only `data/cases.json` changed, 33 cases, their timelines 120 items shorter, each with the move's dated `entry_moves`, all as recorded. Committed as "data: the tier-2 move's export, cases.json reads the 259 links" (`e8da4a1`) and pushed at 02:20:53Z. The deploy succeeded at 02:21:25Z; ci.yml run 37255038600 green at 02:21:40Z;
+    8. **the live pages read** (below).
+  - **The push window:** the note went live at 02:19:03Z, inside the apply (02:18:25Z to 02:19:12Z), so a page could disagree with its note for at most those 47 seconds. No collect run was in flight at either push.
+  - **The live pages, on the public alias `psephos-theta.vercel.app`, each against the record:**
+    - 02:22:30Z, the homepage: the Wire's litigation total 2,634, +24h 0, +7d 43, at the record's clock 21:27Z, with "Oct 4, 2026: 120 duplicate items merged (2,754 before, 2,634 after), from 259 entry pairs linked." and the Oct 2 link line reworded. The map panel reads "Oct 4, 2026: 182 pairs of court records that describe one entry were linked. The campaign's dockets held 4,754 entries before, 4,572 after; 24 dockets changed." Rejected states 20;
+    - 02:22:31Z, Georgia on the map: N.D. Ga. 213 entries ("21 pairs ... 234 before, 213 after"), M.D. Ga. 55 ("4 pairs ... 59 before, 55 after");
+    - 02:22:33Z, /case 73133197: 183 entries, "Oct 4, 2026: 18 duplicate entries merged (201 before, 183 after), from 28 entry pairs linked.";
+    - 02:22:34Z, /case 71499795: 124 entries, its Oct 4 line "10 duplicate entries merged (134 before, 124 after), from 15 entry pairs linked." under the switch's two;
+    - 02:22:36Z, /case 72193752: 88 entries and no new line, its ledger unmoved as recorded.
+  - **Tier 2 now (one Turso read, 2026-10-05):** 267 links held, none chaining: the rule's 7, 3 asserted (pair 23, n=8, person pair 4), the 6 plan halves and the batch's 251. The 28 pairs left on the person list stay apart by ruling.
+    - **The dry run now reads "linked_already 518":** it lists each of the 251 batch pairs twice, once as the rule's pair and once as its read link. That is a double count in the report, not a double link.
+  - **The branch `r1-tier2-move` is merged:** main fast-forwarded to it, and its commits are on origin. The local branch is still present, fully merged.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
 
