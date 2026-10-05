@@ -42,8 +42,22 @@ not yet applied, or a case the fold has not reached would move a figure after th
 were written, with no note. A pair waiting for a person is recorded (pending_person)
 rather than refused: its link, when ruled, is a later move with its own note.
 
+A LATER LINK BATCH APPENDS ITS OWN MOVE, recorded when it links (Corey's rulings of
+2026-10-04, R1 tier 2 closes conservatively, ruling 4). Re-running the snapshot would re-read
+the switch's moves over a record that has moved since, so a batch is recorded on its own:
+  --append-link-move  reads the objects reading of ONE state twice, as the record stands and
+                      with the links --apply would make now read as made, and appends that
+                      move, dated by the record's clock, after the moves already recorded.
+                      Run it just before --apply. It refuses while a docket is unwalked, no
+                      link is planned, the plan holds a link --apply would refuse, or a
+                      case's fold does not match the views.
+  --check-last-move   after --apply: the record against the last move's 'after'. The Wire
+                      is compared only at the move's own clock.
+
 Usage (repo root):
     python -m tools.merge_notes [--on YYYY-MM-DD] [--out PATH] [--incomplete]
+    python -m tools.merge_notes --append-link-move [--on YYYY-MM-DD] [--out PATH]
+    python -m tools.merge_notes --check-last-move [--out PATH]
 """
 
 from __future__ import annotations
@@ -189,51 +203,81 @@ def _entries(objs: dict, rows: list[dict], reading: str) -> tuple[dict, dict]:
     return count, latest
 
 
-def readings(conn) -> dict:
-    """Every figure, read three ways from one state of the record."""
+def _state(conn) -> dict:
+    """One state of the record: its clock and the page's windows, the litigation items, the
+    objects, the rows and the cases."""
     anchor = conn.execute("SELECT MAX(fetched_at) FROM items").fetchone()[0]
     if anchor:
         at = _ms(anchor)
         day, week = _js_iso(at - timedelta(days=1)), _js_iso(at - timedelta(days=7))
     else:                                   # an empty record: no window holds anything
         day = week = "9999"
-    items = [dict(r) for r in conn.execute(
-        "SELECT id, case_id, source_id, admiralty_source, occurred_at, fetched_at, cl_entry_id "
-        "FROM items WHERE channel = 'litigation' ORDER BY id").fetchall()]
-    objs = {r["cl_entry_id"]: dict(r) for r in conn.execute(
-        "SELECT o.cl_entry_id, o.case_id, o.twin_of, o.held, o.entry_at, o.current_row, "
-        "e.entry_at AS row_at FROM cl_entries o LEFT JOIN case_entries e ON e.id = o.current_row").fetchall()}
-    rows = [dict(r) for r in conn.execute("SELECT case_id, entry_at, cl_entry_id FROM case_entries").fetchall()]
-    cases = [dict(r) for r in conn.execute(
-        "SELECT case_id, state, latest_entry_at FROM cases ORDER BY case_id").fetchall()]
-    out: dict = {"clock": anchor, "cases": cases, "views": {
-        "items": {r["case_id"]: r["n"] for r in conn.execute(
-            "SELECT case_id, COUNT(*) AS n FROM record_items WHERE channel = 'litigation' "
-            "GROUP BY case_id").fetchall()},
-        "entries": {r["case_id"]: r["n"] for r in conn.execute(
-            "SELECT case_id, COUNT(*) AS n FROM record_entries GROUP BY case_id").fetchall()}}}
+    return {
+        "clock": anchor, "day": day, "week": week,
+        "items": [dict(r) for r in conn.execute(
+            "SELECT id, case_id, source_id, admiralty_source, occurred_at, fetched_at, cl_entry_id "
+            "FROM items WHERE channel = 'litigation' ORDER BY id").fetchall()],
+        "objs": {r["cl_entry_id"]: dict(r) for r in conn.execute(
+            "SELECT o.cl_entry_id, o.case_id, o.twin_of, o.held, o.entry_at, o.current_row, "
+            "e.entry_at AS row_at FROM cl_entries o LEFT JOIN case_entries e ON e.id = o.current_row").fetchall()},
+        "rows": [dict(r) for r in conn.execute("SELECT case_id, entry_at, cl_entry_id FROM case_entries").fetchall()],
+        "cases": [dict(r) for r in conn.execute(
+            "SELECT case_id, state, latest_entry_at FROM cases ORDER BY case_id").fetchall()],
+    }
+
+
+def _views(conn) -> dict:
+    """What the views hold now: litigation items and entries, per case."""
+    return {"items": {r["case_id"]: r["n"] for r in conn.execute(
+                "SELECT case_id, COUNT(*) AS n FROM record_items WHERE channel = 'litigation' "
+                "GROUP BY case_id").fetchall()},
+            "entries": {r["case_id"]: r["n"] for r in conn.execute(
+                "SELECT case_id, COUNT(*) AS n FROM record_entries GROUP BY case_id").fetchall()}}
+
+
+def _reading(conn, s: dict, reading: str, objs: dict | None = None, table: str | None = None) -> dict:
+    """One reading of one state. `objs` and `table` stand in for the state's objects and its
+    entry table when a link batch not yet applied is read as made (link_move)."""
+    objs = s["objs"] if objs is None else objs
+    p = presenting(s["items"], objs, reading)
+    per: dict = {}
+    for x in p:
+        c = per.setdefault(x["case_id"], {"ledger": 0, "timeline": 0})
+        c["timeline"] += 1
+        c["ledger"] += x["admiralty_source"] != "B"
+    count, latest = _entries(objs, s["rows"], reading)
+    entry_table, order = ENTRY_TABLES[reading]
+    day, week = s["day"], s["week"]
+    return {
+        "wire": {"total": len(p),
+                 "day": sum(1 for x in p if x["fetched_at"] >= day),
+                 "week": sum(1 for x in p if x["fetched_at"] >= week),
+                 "history": sum(1 for x in p if x["fetched_at"] >= day and x["at"]
+                                and (_day(x["fetched_at"]) - _day(x["at"])).days > HISTORY_DAYS),
+                 "tracker_notes": sum(1 for x in p if x["source_id"] == "seed-cases")},
+        "per": per, "entries": count, "latest": latest,
+        "rejected": rejected(conn, table or entry_table, order),
+    }
+
+
+def _unfolded(objects: dict, views: dict) -> list[str]:
+    """Cases whose objects reading and views disagree: the fold has not reached them."""
+    per = objects["per"]
+    return sorted({c for c in set(per) | set(views["items"])
+                   if per.get(c, {}).get("timeline", 0) != views["items"].get(c, 0)}
+                  | {c for c in set(objects["entries"]) | set(views["entries"])
+                     if objects["entries"].get(c, 0) != views["entries"].get(c, 0)})
+
+
+def readings(conn) -> dict:
+    """Every figure, read three ways from one state of the record."""
+    s = _state(conn)
+    out: dict = {"clock": s["clock"], "cases": s["cases"], "views": _views(conn)}
     for reading in READINGS:
-        p = presenting(items, objs, reading)
-        per: dict = {}
-        for x in p:
-            c = per.setdefault(x["case_id"], {"ledger": 0, "timeline": 0})
-            c["timeline"] += 1
-            c["ledger"] += x["admiralty_source"] != "B"
-        count, latest = _entries(objs, rows, reading)
-        table, order = ENTRY_TABLES[reading]
-        out[reading] = {
-            "wire": {"total": len(p),
-                     "day": sum(1 for x in p if x["fetched_at"] >= day),
-                     "week": sum(1 for x in p if x["fetched_at"] >= week),
-                     "history": sum(1 for x in p if x["fetched_at"] >= day and x["at"]
-                                    and (_day(x["fetched_at"]) - _day(x["at"])).days > HISTORY_DAYS),
-                     "tracker_notes": sum(1 for x in p if x["source_id"] == "seed-cases")},
-            "per": per, "entries": count, "latest": latest,
-            "rejected": rejected(conn, table, order),
-        }
+        out[reading] = _reading(conn, s, reading)
     out["apart"] = {}
-    owned = {r["cl_entry_id"] for r in rows if r["cl_entry_id"] is not None}
-    for o in objs.values():
+    owned = {r["cl_entry_id"] for r in s["rows"] if r["cl_entry_id"] is not None}
+    for o in s["objs"].values():
         if o["held"] == 1 and o["current_row"] is None and o["cl_entry_id"] not in owned:
             out["apart"][o["case_id"]] = out["apart"].get(o["case_id"], 0) + 1
     return out
@@ -303,12 +347,57 @@ def figures(conn, on: str | None = None) -> dict:
         moves.append(link)
     # The objects reading against what the views hold: a case the fold has not reached
     # reads differently in record_items, and its note would be wrong.
-    per = r["objects"]["per"]
-    unfolded = sorted({c for c in set(per) | set(r["views"]["items"])
-                       if per.get(c, {}).get("timeline", 0) != r["views"]["items"].get(c, 0)}
-                      | {c for c in set(r["objects"]["entries"]) | set(r["views"]["entries"])
-                         if r["objects"]["entries"].get(c, 0) != r["views"]["entries"].get(c, 0)})
-    return {"on": on, "clock": r["clock"], "moves": moves, "unfolded": unfolded}
+    return {"on": on, "clock": r["clock"], "moves": moves, "unfolded": _unfolded(r["objects"], r["views"])}
+
+
+def link_move(conn, planned: list[dict], on: str | None = None) -> tuple[dict, list[str]]:
+    """A later tier-2 link batch as its own dated move: the objects reading of ONE state, as
+    the record stands and with `planned` (each {"twin", "entry"} by CourtListener object)
+    read as made, so the two differ only by the batch. Recorded just before --apply makes
+    them; check_move confirms the record reads the 'after' once it has. Dated by the
+    record's clock, so the note is never dated ahead of the record it sits on. Also returns
+    the cases whose fold does not match the views as the record stands: a move read then
+    would state a 'before' the page does not show."""
+    s = _state(conn)
+    twins = {x["twin"]: x["entry"] for x in planned}
+    made = {k: ({**o, "twin_of": twins[k]} if k in twins else o) for k, o in s["objs"].items()}
+    table = ("(SELECT * FROM record_entries WHERE cl_entry_id IS NULL OR cl_entry_id NOT IN ("
+             + ", ".join(str(int(t)) for t in sorted(twins)) + "))") if twins else None
+    before = _reading(conn, s, "objects")
+    r = {"clock": s["clock"], "cases": s["cases"], "apart": {}, "before": before,
+         "after": _reading(conn, s, "objects", made, table)}
+    move = _move(r, "before", "after", "link", on or (s["clock"][:10] if s["clock"] else None))
+    move["links"] = len(planned)
+    return move, _unfolded(before, _views(conn))
+
+
+def check_move(conn, move: dict) -> tuple[list[str], bool]:
+    """Where the record now differs from a link move's 'after' -- empty once its links are
+    applied and folded and nothing else has landed -- and whether the Wire was compared: only
+    at the move's own clock, since any later run moves its windows."""
+    s = _state(conn)
+    now = _reading(conn, s, "objects")
+    out = []
+    for cid, c in sorted(move["cases"].items()):
+        per = now["per"].get(cid, {})
+        got = {"entries": now["entries"].get(cid, 0), "ledger": per.get("ledger", 0),
+               "timeline": per.get("timeline", 0), "latest_entry_at": now["latest"].get(cid)}
+        for k, v in c.items():
+            if k in got and (got[k] or None) != (v[1] or None):
+                out.append(f"{cid} {k}: {got[k]}, where the move recorded {v[1]} after")
+    held = sum(now["entries"].get(c["case_id"], 0) for c in s["cases"] if c["state"] is not None)
+    if held != move["map"]["entries"][1]:
+        out.append(f"map entries: {held}, where the move recorded {move['map']['entries'][1]} after")
+    if len(now["rejected"]) != move["rejected"]["count"][1]:
+        out.append(f"rejected states: {len(now['rejected'])}, where the move recorded "
+                   f"{move['rejected']['count'][1]} after")
+    wire = s["clock"] == move["clock"]
+    if wire:
+        for k, v in move["wire"]["litigation"].items():
+            if isinstance(v, list) and now["wire"][k] != v[1]:
+                out.append(f"Wire litigation {k}: {now['wire'][k]}, where the move recorded {v[1]} after")
+    out += [f"{c}: its fold does not match the views" for c in _unfolded(now, _views(conn))]
+    return out, wire
 
 
 def incomplete(conn) -> list[str]:
@@ -325,6 +414,66 @@ def incomplete(conn) -> list[str]:
     return why
 
 
+def _print_move(m: dict) -> None:
+    w = m["wire"]["litigation"]
+    print(f"move {m['kind']} on {m['on']}" + (f" ({m['links']} links)" if m["kind"] == "link" else "") + ":")
+    print(f"  Wire litigation  total {w['total'][0]:,} -> {w['total'][1]:,}  +24h {w['day'][0]} -> "
+          f"{w['day'][1]}  +7d {w['week'][0]} -> {w['week'][1]}  older-than-7d {w['history'][0]} -> "
+          f"{w['history'][1]}" + (f"  (tracker notes in the drop: {w['tracker_notes']})"
+                                  if "tracker_notes" in w else ""))
+    print(f"  map entries      {m['map']['entries'][0]:,} -> {m['map']['entries'][1]:,} "
+          f"({m['map']['dockets_changed']} dockets change"
+          + (f"; {m['map']['apart']} held apart)" if "apart" in m["map"] else ")"))
+    print(f"  rejected states  {m['rejected']['count'][0]} -> {m['rejected']['count'][1]}  "
+          f"moved: {m['rejected']['states'] or 'none'}")
+    print(f"  cases that move  {len(m['cases'])}; latest_entry_at moves on "
+          f"{sum(1 for v in m['cases'].values() if 'latest_entry_at' in v)}")
+
+
+def append_link_move(conn, path: Path, on: str | None = None) -> int:
+    """--append-link-move: the link batch --apply would make now, recorded as its own move at
+    the end of the figures file. Every move already there is kept as written."""
+    from collectors import litigation
+    from scripts import link_entry_twins as links
+    p = links.plan(conn, links.load_links())
+    why = []
+    if litigation.backfill_due(conn, set()):
+        why.append("a docket not yet walked by the id backfill")
+    if not p["link"]:
+        why.append("no tier-2 link is planned")
+    for k in ("unread", "ruled_refused", "ruled_missing"):
+        if p[k]:
+            why.append(f"{len(p[k])} {k.replace('_', ' ')} in the link plan, so --apply would refuse")
+    move, unfolded = link_move(conn, p["link"], on)
+    if unfolded:
+        why.append(f"{len(unfolded)} case(s) whose fold does not match the views "
+                   f"({', '.join(unfolded[:5])})")
+    if why:
+        print("REFUSED: the move's figures would not be the move's -- " + "; ".join(why))
+        return 2
+    f = json.loads(path.read_text(encoding="utf-8"))
+    f["moves"].append(move)
+    path.write_text(json.dumps(f, indent=1, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+    print(f"clock {move['clock']}")
+    _print_move(move)
+    print(f"pairs left waiting for a person: {len(p['person'])}")
+    print(f"  appended to {path}")
+    return 0
+
+
+def check_last_move(conn, path: Path) -> int:
+    """--check-last-move: the record against the figures file's last move, after --apply."""
+    move = json.loads(path.read_text(encoding="utf-8"))["moves"][-1]
+    differs, wire = check_move(conn, move)
+    for d in differs:
+        print(f"  DIFFERS: {d}")
+    if not wire:
+        print(f"  the record's clock moved since the move ({move['clock']}): the Wire is not compared")
+    print(f"  {'the record reads the last move as recorded' if not differs else 'the record does not read the last move'}"
+          f" ({move['kind']} on {move['on']}, {len(move['cases'])} cases)")
+    return 2 if differs else 0
+
+
 def main(argv=None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     on = argv[argv.index("--on") + 1] if "--on" in argv else None
@@ -332,6 +481,10 @@ def main(argv=None) -> int:
     config.load_env()
     conn = db.connect()
     try:
+        if "--append-link-move" in argv:
+            return append_link_move(conn, path, on)
+        if "--check-last-move" in argv:
+            return check_last_move(conn, path)
         why = incomplete(conn)
         f = figures(conn, on)
         if f["unfolded"]:
@@ -350,19 +503,7 @@ def main(argv=None) -> int:
     path.write_text(json.dumps(f, indent=1, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     print(f"clock {f['clock']}  on {f['on']}")
     for m in f["moves"]:
-        w = m["wire"]["litigation"]
-        print(f"move {m['kind']}" + (f" ({m['links']} links)" if m["kind"] == "link" else "") + ":")
-        print(f"  Wire litigation  total {w['total'][0]:,} -> {w['total'][1]:,}  +24h {w['day'][0]} -> "
-              f"{w['day'][1]}  +7d {w['week'][0]} -> {w['week'][1]}  older-than-7d {w['history'][0]} -> "
-              f"{w['history'][1]}" + (f"  (tracker notes in the drop: {w['tracker_notes']})"
-                                      if "tracker_notes" in w else ""))
-        print(f"  map entries      {m['map']['entries'][0]:,} -> {m['map']['entries'][1]:,} "
-              f"({m['map']['dockets_changed']} dockets change"
-              + (f"; {m['map']['apart']} held apart)" if "apart" in m["map"] else ")"))
-        print(f"  rejected states  {m['rejected']['count'][0]} -> {m['rejected']['count'][1]}  "
-              f"moved: {m['rejected']['states'] or 'none'}")
-        print(f"  cases that move  {len(m['cases'])}; latest_entry_at moves on "
-              f"{sum(1 for v in m['cases'].values() if 'latest_entry_at' in v)}")
+        _print_move(m)
     print(f"pairs waiting for a person: {f['pending_person']}")
     print(f"  -> {path}")
     return 0

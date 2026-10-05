@@ -38,7 +38,9 @@ export type Move = {
   on: string | null;
   why: string;
   clock: string | null;
-  /** A link move: how many tier-2 links psephos holds, all of them in this move. */
+  /** A link move: how many tier-2 links it made. The switch's move made every link psephos
+   *  then held (8); a later batch is its own move, counting its own (tools/merge_notes.py
+   *  --append-link-move). */
   links?: number;
   wire: {
     litigation?: { total: Pair; day: Pair; week: Pair; history?: Pair; tracker_notes?: number };
