@@ -260,9 +260,8 @@ jobs:
         # The Verdict names each one: by the `failed` row run_signals.guarded writes for a
         # channel that raised, or else by its exit and its log's last line. litigation still
         # runs after a failed tracker_uw, on the artifact the last run committed. Export and
-        # commit still skip after a red step, as they always have; the channels' data is in
-        # Turso, and the next green run's export carries it. tests/test_collect_failed_step.py
-        # plants a litigation exception in this exact script.
+        # commit run after a red step too (ruling A, at the export step below).
+        # tests/test_collect_failed_step.py plants a litigation exception in this exact script.
         run: |
           set -o pipefail
           : > "$RUNNER_TEMP/channels"
@@ -284,8 +283,17 @@ jobs:
             exit 1
           fi
 
+      # A RED COLLECTORS STEP STILL EXPORTS AND COMMITS (Corey, 2026-10-05, ruling A).
+      # One failed channel must not freeze the snapshot or the record's clock
+      # (data/generated_at.json, the newest item fetched): every other channel's data is in
+      # Turso, so the export runs whenever the collectors step RAN, failed or not. Never
+      # after a cancellation, and never when an earlier failure skipped the collectors.
+      # The commit follows a successful export. The job still ends `failure`, so the
+      # Verdict turns the run red naming the failed part. tests/test_collect_red_export.py
+      # evaluates both conditions and runs the export after a planted collector failure.
       - name: Export JSON snapshots
         id: export
+        if: ${{ !cancelled() && (steps.collectors.outcome == 'success' || steps.collectors.outcome == 'failure') }}
         env:
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
@@ -317,6 +325,7 @@ jobs:
       # for that test; the run uses the default.
       - name: Commit data changes
         id: commit
+        if: ${{ !cancelled() && steps.export.outcome == 'success' }}
         env:
           # The slot label, via env rather than inline in the script.
           SLOT: ${{ github.event.schedule || 'dispatch' }}
@@ -517,9 +526,9 @@ jobs:
       # a run that never started -- which is the one distinction this table exists to
       # make. `conclusion` carries which of the two it was.
       #
-      # WHY NOT INSIDE THE EXPORT, which does already run once per run: the export sits
-      # behind the collectors with no `if: always()` of its own, so a heartbeat written
-      # there inherits exactly the failure mode above. And why not inside a collector:
+      # WHY NOT INSIDE THE EXPORT, which does already run once per run: the export runs
+      # only when the collectors step ran (since 2026-10-05, failed or not) and never after
+      # a cancellation, so a heartbeat written there inherits the failure mode above. And why not inside a collector:
       # six separate processes run in one step and no one of them knows the run's total,
       # its conclusion, or that it finished. NO PROCESS SPANS THE RUN -- which is why
       # this is the first table the WORKFLOW writes rather than a collector.

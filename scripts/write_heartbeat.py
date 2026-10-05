@@ -6,9 +6,10 @@ structural rather than stylistic. `collect.yml` invokes six separate
 `python -m collectors.X` processes in one `bash -e` step, so NO PROCESS SPANS THE RUN
 and no collector can know the run's total, its conclusion, or that it finished at all.
 `export/snapshots.py` does run once per run, and was the obvious home until the shape
-was read: it sits behind the collectors with no `if: always()`, so a heartbeat written
-there would be ABSENT on a failed run -- indistinguishable, from the page's side, from a
-run that never fired. The whole point of this table is to tell those two apart.
+was read: it runs only when the collectors step ran (since 2026-10-05, failed or not)
+and never after a cancellation, so a heartbeat written there would be ABSENT on a run
+cancelled or failed before it -- indistinguishable, from the page's side, from a run that
+never fired. The whole point of this table is to tell those two apart.
 
 AND IT IS THE ONE ENTRY IN `scripts/` THAT IS MEANT TO BE SCHEDULED. Every other file
 there is a one-time backfill, dry-run-by-default behind an `--apply` gate, and CLAUDE.md

@@ -1147,9 +1147,11 @@ def collect(conn, base: str, key: str, states: list[str], terms: list[str],
         # failure here propagated out of collect(), past main()'s except-less
         # try/finally, and exited non-zero. That is not merely this collector's
         # batch -- state runs last of six lines in one `bash -e` step, and Export
-        # and Commit are separate steps with no `if: always()`, so the run loses
+        # and Commit were separate steps with no `if: always()`, so the run lost
         # its snapshot and data commit too. (Not its data: the other five
-        # collectors have already committed to Turso.)
+        # collectors had already committed to Turso.) Since 2026-10-05 every part
+        # of the step runs and Export and Commit run after a red step, so a raise
+        # here costs this channel only.
         #
         # The 2026-08-15 incident is the near miss that shows the shape. All nine
         # states failed -- at getMasterList, inside a handler, so the run survived
