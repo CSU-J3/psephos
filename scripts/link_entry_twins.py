@@ -406,16 +406,24 @@ def plan(conn, links: dict) -> dict:
     rulings = [ruling(s, carried) for s in links.get("ruled") or []]
     out["ruled_refused"] = [r for r in rulings if r["why"]]
     rule_links = {frozenset(x["objects"]) for x in out["link"]}
+    # A read link that is also a pair the rule sees is ONE link: listed once, where the loop
+    # above listed it. Both loops appended it, and the dry run after the tier-2 move read
+    # `linked_already 518`, the batch's 251 counted twice (2026-10-05).
+    listed = {frozenset(x["objects"]) for x in out["refused"] + out["linked_already"]}
     for spec in links.get("read_links") or []:
         x = read_link(spec, byid, launcher_sha, rulings, objects)
         key = frozenset(x.get("objects") or [])
         if x.get("twin") is None:
             out["unread"].append(x)
         elif tuple(sorted(x["rows"])) in refused_rows or key in refused_objs:
-            out["refused"].append(x)
+            if key not in listed:
+                listed.add(key)
+                out["refused"].append(x)
         elif objects.get(x["twin"], {}).get("twin_of") == x["entry"]:
-            x["by"] = objects[x["twin"]]["twin_rule"]
-            out["linked_already"].append(x)
+            if key not in listed:
+                listed.add(key)
+                x["by"] = objects[x["twin"]]["twin_rule"]
+                out["linked_already"].append(x)
         elif x["why"]:
             out["unread"].append(x)
         elif key not in rule_links:

@@ -565,6 +565,29 @@ def test_a_read_link_settles_a_rule_pair_that_waited_for_a_person(tmp_path):
     assert [(x["rows"], x["by"]) for x in p["link"]] == [([11, 12], "short_long: blind read run.json 11/12")]
 
 
+@pytest.mark.parametrize("state", ["linked", "refused"])
+def test_a_pair_the_rule_and_a_read_link_both_name_is_listed_once(tmp_path, state):
+    """The dry run's double count (2026-10-05): after the tier-2 move `linked_already` read
+    518, each of the batch's 251 pairs listed as the rule's pair and again as its read link.
+    One link is one line, linked or refused."""
+    conn = _db(tmp_path)
+    _docket(conn)
+    _hold(conn, 11, SHORT, 111, case="72000000")
+    _hold(conn, 12, LONG, 112, case="72000000")
+    read = _read(tmp_path, {"11/12": "unanimous"})
+    links = {**LINKS, "read_links": [_read_link([11, 12], read, kind="short_long", label="11/12")]}
+    if state == "linked":
+        conn.execute("UPDATE cl_entries SET twin_of = 112, twin_rule = ? WHERE cl_entry_id = 111",
+                     ("short_long: blind read run.json 11/12",))
+        conn.commit()
+    else:
+        links["refused"] = [{"rows": [12, 11]}]
+    p = L.plan(conn, links)
+    assert [x["rows"] for x in p["linked_already" if state == "linked" else "refused"]] == [[11, 12]]
+    assert [x["rows"] for x in p["refused" if state == "linked" else "linked_already"]] == []
+    assert p["link"] == [] and p["person"] == [] and p["unread"] == []
+
+
 # --------------------------------------------------------------------------- #
 # A ruling as evidence (Corey's rulings, 2026-10-03, a ruling as evidence, ruling 1)
 # --------------------------------------------------------------------------- #

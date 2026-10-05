@@ -31,7 +31,8 @@ Last updated: 2026-10-05 (UTC).
   - **Executive's and news's staleness thresholds stay PROPOSED.** Until they are ruled, a run of `unreached` is quiet for those two, where the receipts make it loud for the other three.
 - **Tests:** `ci_local` green. Each of 26 conditions, disabled in turn, fails one: across the step, `run_signals`, the Verdict and the three collectors.
 - **Ruling 4:** issue 6 is Corey's to close (still open at 19:25Z). The Node 24 action bump stays OWED for a quiet slot (the entry below, ruling 4).
-- **Next, in order:** the link script's dry-run double count (`linked_already` lists the batch's 251 pairs twice), then the EO 14248 D0.
+- **Next, in order:** the link script's dry-run double count, then the EO 14248 D0.
+  - **The double count, FIXED the same day:** a read link that is also a pair the rule sees is one link, listed once, as linked or as refused. The dry run against Turso at 19:56:48Z read `linked_already 267`, the links held, where it read 518; `person 28`, the pairs left apart by ruling; `refused 2`. Two tests: a rule pair settled by a read link is listed once, linked and refused; both fail without the fix.
 - **OWED: the first scheduled collect run on the new step,** read green with a row from all five channels. Off the 06:17Z slot, state's is `skipped`.
 
 ### The 2026-10-04 06:17Z-slot collect red: READ 2026-10-05, a transient Turso drop and not a code defect, nothing lost; the Verdict now NAMES the failed step; session open READS THE LANES
@@ -757,7 +758,7 @@ It stays open for Corey to close.
     - 02:22:34Z, /case 71499795: 124 entries, its Oct 4 line "10 duplicate entries merged (134 before, 124 after), from 15 entry pairs linked." under the switch's two;
     - 02:22:36Z, /case 72193752: 88 entries and no new line, its ledger unmoved as recorded.
   - **Tier 2 now (one Turso read, 2026-10-05):** 267 links held, none chaining: the rule's 7, 3 asserted (pair 23, n=8, person pair 4), the 6 plan halves and the batch's 251. The 28 pairs left on the person list stay apart by ruling.
-    - **The dry run now reads "linked_already 518":** it lists each of the 251 batch pairs twice, once as the rule's pair and once as its read link. That is a double count in the report, not a double link.
+    - **The dry run now reads "linked_already 518":** it lists each of the 251 batch pairs twice, once as the rule's pair and once as its read link. That is a double count in the report, not a double link. **Fixed 2026-10-05:** it reads 267 (the first entry in *Owed right now*).
   - **The branch `r1-tier2-move` is merged:** main fast-forwarded to it, and its commits are on origin. The local branch is still present, fully merged.
 
 ### Duplicate rows at the source: D0 READ and plan PROPOSED 2026-09-30; RULED the same day (R1, the entry above)
