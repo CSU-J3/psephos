@@ -15,13 +15,13 @@
 # same text for good, where a CourtListener id is known only after the id backfill.
 rule: same-run strict-B v1
 
-# Nothing is applied until the class of 13 and the two individual splits are ruled. Then
-# everything ruled is applied together with the read links below, in one move with its own
-# dated note (Corey's rulings of 2026-10-03, R1 plans and splits, ruling 5).
-# link_entry_twins --apply refuses while `hold` is set. Kept on when the D.N.H. halves were
-# ruled the same day (a ruling as evidence, ruling 3), and when Corey read his ten the same
-# day, all same: the ten pass his check (docs/findings/r1-corey-ten-2026-10-03.md).
-hold: "until the class of 13 and the two individual splits are ruled (R1 plans and splits, ruling 5; Corey's ten read 2026-10-03, all same)"
+# Nothing is applied until Corey's word on the move (Corey's rulings of 2026-10-04, R1 tier
+# 2 closes conservatively, ruling 4): the blind batch's unanimous passes, with n=8 and
+# person pair 4, and the six plan halves below, in one move with its own dated note. The
+# class of 13 and the two individual splits stay unlinked (rulings 2 and 3). Corey read his
+# ten on 2026-10-04, all same: the ten pass his check (docs/findings/r1-corey-ten-2026-10-03.md).
+# link_entry_twins --apply refuses while `hold` is set.
+hold: "until Corey's word on the move (R1 tier 2 closes conservatively, ruling 4)"
 
 # The reader's check of the rule's pairs, recorded before the rule is relied on.
 # link_entry_twins --apply refuses unless `result` is pass and the check still describes
@@ -187,5 +187,6 @@ read_links:
 # not say who ruled, when and by what criterion, names no reads, a read with no run record
 # or no links, or names a link it does not cover or one no read link carries.
 #
-# None yet: the class of 13 and the two individual splits wait for Corey's line.
+# None: the class of 13 and the two individual splits were ruled unlinked, so no ruling
+# stands in for their reads (Corey's rulings of 2026-10-04, rulings 2 and 3).
 ruled: []

@@ -2,7 +2,7 @@
 
 **Status: READ BLIND (Corey's rulings, 2026-10-03, ruling 2).** 251 unanimous, 16 split, 9 not linked.
 - All 93 readers passed the check. The batch cost 9,789,893 tokens, and its canary 32,733.
-- ~~**Every link from this batch is held until Corey has read his ten**~~ **Corey read his ten 2026-10-03: all same, and the ten pass his check** (`r1-corey-ten-2026-10-03.md`). Every link stays held until the class of 13 and the two individual splits are ruled.
+- ~~**Every link from this batch is held until Corey has read his ten**~~ **Corey read his ten 2026-10-04: all same, and the ten pass his check** (`r1-corey-ten-2026-10-03.md`). The 251 unanimous passes are prepared as one move, held for Corey's word; the 16 splits and the 9 not linked stay unlinked (R1 tier 2 closes conservatively, 2026-10-04).
 
 ## How it was read
 

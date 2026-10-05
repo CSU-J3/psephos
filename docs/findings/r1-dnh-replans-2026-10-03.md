@@ -2,7 +2,7 @@
 
 **Status: PLANNED and READ BLIND (Corey's rulings of 2026-10-03, R1 plans and splits, ruling 3). 0 of 3 plans pass the bar, the same bar as the batch's.**
 - In each plan, the timed description joins the docket text unanimously, and the late short form with no filing time splits.
-- Every link stays held until the class of 13 and the two individual splits are ruled. Corey returned his ten 2026-10-03, all same (`r1-corey-ten-2026-10-03.md`).
+- Every link stays held until Corey's word on the move, which carries this file's unanimous halves (R1 tier 2 closes conservatively, 2026-10-04). Corey returned his ten 2026-10-04, all same (`r1-corey-ten-2026-10-03.md`).
 
 **Ruled 2026-10-03 (Corey's rulings, a ruling as evidence):**
 - **Ruling 2:** the unanimous halves, 5456>5478, 5477>5441 and 5424>5451, are linked as pairs, as ruled for the first three plans (`r1-three-object-plans-2026-10-03.md`). They are recorded under `read_links` in `config/entry_links.yaml`, held until Corey's line (ruling 3).
