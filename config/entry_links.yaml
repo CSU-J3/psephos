@@ -123,6 +123,18 @@ asserted:
   # either way.
   - rows: [93145, 93225]
     ruled: "Corey, 2026-10-02 (the 2026-09-29 duplicate verdict, and three passing reads)"
+  # n=8 of the 2026-10-01 sample (New Hampshire, 71453646) and person pair 4 (Eastern
+  # District of Virginia, 72156765): each read unanimous blind in the control, one pair a
+  # reader (docs/reads/2026-10-03-blind-control.json), and joined to the batch's unanimous
+  # passes (Corey's rulings of 2026-10-03, R1 after the blind batch, ruling 1); applied with
+  # them (Corey's rulings of 2026-10-04, R1 tier 2 closes conservatively, ruling 4). That
+  # record names the two by label, "control: 2026-10-01 sample n=8" and "control: person
+  # pair 4", not by rows, so no read link can carry them. Asserted, each is a pair the rule
+  # makes, rooted by the rule itself at its long form.
+  - rows: [5419, 5457]
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4; read unanimous blind in the control)"
+  - rows: [8868, 8873]
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4; read unanimous blind in the control)"
 
 # Links the rule did not propose, each carrying a passing BLIND read (Corey's rulings of
 # 2026-10-03, R1 plans and splits, ruling 4). Each: rows: [twin, root] in the rule's
@@ -175,6 +187,1267 @@ read_links:
     read: docs/reads/2026-10-03-dnh-replans.json
     label: "5424>5451"
     ruled: "Corey, 2026-10-03 (a ruling as evidence, ruling 2)"
+  # The blind batch's 251 unanimous passes, the reads every tier-2 link was ruled to come
+  # from (Corey's rulings of 2026-10-03, ruling 2), applied once Corey's ten passed his
+  # check (read 2026-10-04). Written by `link_entry_twins --write`, each in the rule's order
+  # whatever its label's (Corey's rulings of 2026-10-04, R1 tier 2 closes conservatively,
+  # ruling 4). The batch's 16 splits and 9 not linked are not here: a split pair is left
+  # apart (ruling 2 of the same).
+  - rows: [50, 48]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "48/50"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [52, 59]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "52/59"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [54, 57]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "54/57"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [251, 314]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "251/314"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [256, 253]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "253/256"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [255, 299]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "255/299"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [261, 276]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "261/276"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [265, 301]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "265/301"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [297, 267]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "267/297"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [269, 313]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "269/313"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [270, 317]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "270/317"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [294, 272]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "272/294"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [288, 280]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "280/288"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [289, 305]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "289/305"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [505, 577]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "505/577"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [4059, 12693]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "4059/12693"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5391, 5434]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5391/5434"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5393, 5463]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5393/5463"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5427, 5399]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5399/5427"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5400, 5461]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5400/5461"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5414, 5415]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5414/5415"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5453, 5417]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5417/5453"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5429, 5466]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5429/5466"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [5479, 5481]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "5479/5481"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6166, 6083]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6083/6166"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6168, 6122]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6122/6168"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6167, 6139]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6139/6167"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6353, 6307]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6307/6353"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6359, 6308]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6308/6359"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6351, 6309]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6309/6351"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6352, 6336]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6336/6352"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6845, 6761]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6761/6845"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6846, 6762]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6762/6846"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6834, 6767]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6767/6834"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6835, 6777]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6777/6835"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6832, 6783]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6783/6832"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6833, 6790]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6790/6833"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6842, 6809]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6809/6842"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6844, 6810]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6810/6844"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6838, 6813]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6813/6838"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6840, 6821]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6821/6840"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6972, 6848]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6848/6972"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6978, 6862]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6862/6978"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6955, 6869]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6869/6955"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6976, 6876]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6876/6976"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6975, 6877]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6877/6975"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6974, 6879]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6879/6974"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6962, 6886]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6886/6962"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6969, 6892]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6892/6969"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6977, 6894]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6894/6977"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6961, 6913]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6913/6961"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6963, 6916]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6916/6963"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6964, 6918]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6918/6964"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6970, 6923]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6923/6970"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [6960, 6968]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "6960/6968"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7145, 7085]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7085/7145"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7131, 7092]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7092/7131"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7138, 7100]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7100/7138"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7129, 7105]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7105/7129"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7133, 7112]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7112/7133"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7142, 7115]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7115/7142"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7144, 7127]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7127/7144"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7206, 7205]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7205/7206"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7534, 7466]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7466/7534"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7543, 7475]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7475/7543"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7565, 7523]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7523/7565"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7533, 7540]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7533/7540"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7548, 7550]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7548/7550"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7579, 7556]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7556/7579"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7581, 7576]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7576/7581"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7724, 7591]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7591/7724"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7725, 7626]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7626/7725"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7708, 7673]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7673/7708"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7714, 17501]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7714/17501"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7832, 7738]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7738/7832"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7831, 7742]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7742/7831"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7837, 7744]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7744/7837"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7835, 7781]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7781/7835"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7836, 7782]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7782/7836"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7838, 7785]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7785/7838"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7845, 7789]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7789/7845"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7842, 7796]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7796/7842"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7834, 7797]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7797/7834"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7847, 7817]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7817/7847"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [7843, 7826]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "7826/7843"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [8795, 8794]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "8794/8795"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [8872, 8870]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "8870/8872"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10326, 10327]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10326/10327"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10344, 10328]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10328/10344"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10337, 10329]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10329/10337"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10330, 10367]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10330/10367"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10331, 10366]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10331/10366"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10334, 10362]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10334/10362"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10336, 10347]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10336/10347"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10356, 10338]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10338/10356"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10342, 10348]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10342/10348"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10350, 10354]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10350/10354"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10355, 10364]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10355/10364"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10501, 10438]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10438/10501"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10460, 10494]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10460/10494"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10465, 10480]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10465/10480"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10506, 10499]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10499/10506"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [10510, 10511]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "10510/10511"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13580, 13576]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13576/13580"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13582, 13577]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13577/13582"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13579, 13578]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13578/13579"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13581, 13583]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13581/13583"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13763, 13718]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13718/13763"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13719, 13744]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13719/13744"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13762, 13720]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13720/13762"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13723, 13722]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13722/13723"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13725, 13796]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13725/13796"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13727, 13746]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13727/13746"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13737, 13728]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13728/13737"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13779, 13729]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13729/13779"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13760, 13730]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13730/13760"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13778, 13731]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13731/13778"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13732, 13783]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13732/13783"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13755, 13734]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13734/13755"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13758, 13742]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13742/13758"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13748, 13747]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13747/13748"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13756, 13766]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13756/13766"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13767, 13781]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13767/13781"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13768, 13770]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13768/13770"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13789, 13784]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13784/13789"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13792, 13785]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13785/13792"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13788, 13797]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13788/13797"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13798, 13801]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13798/13801"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13979, 14012]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13979/14012"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13980, 13995]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13980/13995"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13993, 13981]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13981/13993"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13982, 14001]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13982/14001"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13983, 14007]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13983/14007"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13984, 13999]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13984/13999"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14010, 13985]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13985/14010"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13996, 13986]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13986/13996"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14004, 13987]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13987/14004"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14005, 13989]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13989/14005"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [13994, 13997]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "13994/13997"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14011, 14002]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "14002/14011"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14006, 14008]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "14006/14008"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14015, 14013]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "14013/14015"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [14016, 14014]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "14014/14016"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [15578, 15530]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "15530/15578"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [15574, 15553]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "15553/15574"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [15563, 15564]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "15563/15564"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17921, 17758]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17758/17921"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17938, 17808]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17808/17938"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17952, 17865]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17865/17952"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17948, 17869]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17869/17948"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17942, 17878]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17878/17942"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17944, 17879]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17879/17944"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17928, 17886]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17886/17928"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [17911, 17945]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "17911/17945"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [27277, 29042]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "27277/29042"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [27574, 37917]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "27574/37917"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [54724, 54722]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "54722/54724"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [68128, 68098]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "68098/68128"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [81820, 82168]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "81820/82168"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85337, 85205]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85205/85337"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85329, 85211]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85211/85329"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85325, 85278]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85278/85325"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85327, 85286]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85286/85327"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85333, 85292]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85292/85333"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85330, 85295]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85295/85330"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85331, 85297]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85297/85331"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85396, 85394]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85394/85396"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85409, 85397]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85397/85409"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85414, 85398]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85398/85414"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85405, 85400]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85400/85405"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85402, 85403]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85402/85403"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85407, 85419]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85407/85419"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85410, 85421]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85410/85421"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85411, 85416]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85411/85416"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85412, 85418]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85412/85418"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85413, 85415]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85413/85415"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85422, 85417]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85417/85422"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85517, 85439]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85439/85517"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85523, 85446]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85446/85523"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85511, 85448]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85448/85511"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85525, 85470]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85470/85525"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85515, 85475]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85475/85515"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85506, 85480]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85480/85506"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85507, 85490]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85490/85507"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85536, 85497]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85497/85536"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [85510, 85503]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "85503/85510"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [87390, 87543]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "87390/87543"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [88680, 88676]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "88676/88680"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [89683, 89061]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "89061/89683"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [90160, 89874]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "89874/90160"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [90093, 89883]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "89883/90093"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [90178, 90158]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "90158/90178"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [90179, 90159]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "90159/90179"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91351, 90205]
+    kind: long_twin_eq
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "90205/91351"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91771, 91417]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91417/91771"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91750, 91481]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91481/91750"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91747, 91501]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91501/91747"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91759, 91516]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91516/91759"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91762, 91520]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91520/91762"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91757, 91546]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91546/91757"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91777, 91555]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91555/91777"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91769, 91558]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91558/91769"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91734, 91564]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91564/91734"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91763, 91573]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91573/91763"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91773, 91576]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91576/91773"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91746, 91587]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91587/91746"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91733, 91594]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91594/91733"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91742, 91601]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91601/91742"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91731, 91607]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91607/91731"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91772, 91616]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91616/91772"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91754, 91624]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91624/91754"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91744, 91630]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91630/91744"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91739, 91657]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91657/91739"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91776, 91697]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91697/91776"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91770, 91714]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91714/91770"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91768, 91715]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91715/91768"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91761, 91717]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91717/91761"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91764, 91718]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91718/91764"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91758, 91720]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91720/91758"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91756, 91721]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91721/91756"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91736, 91723]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91723/91736"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91735, 91724]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91724/91735"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92014, 91779]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91779/92014"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92003, 91808]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91808/92003"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92007, 91875]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91875/92007"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92017, 91893]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91893/92017"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91995, 91909]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91909/91995"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91999, 91914]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91914/91999"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92001, 91919]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91919/92001"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91996, 91921]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91921/91996"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92009, 91936]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91936/92009"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92000, 91941]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91941/92000"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92008, 91949]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91949/92008"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91993, 91956]
+    kind: type_only
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91956/91993"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92015, 91974]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91974/92015"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [91992, 91982]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "91982/91992"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92199, 92019]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92019/92199"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92211, 92026]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92026/92211"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92210, 92067]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92067/92210"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92209, 92073]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92073/92209"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92208, 92085]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92085/92208"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92201, 92089]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92089/92201"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92193, 92121]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92121/92193"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92192, 92135]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92135/92192"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92195, 92156]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92156/92195"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92194, 92157]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92157/92194"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92207, 92189]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92189/92207"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92206, 92190]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92190/92206"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92365, 92364]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92364/92365"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92577, 92579]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92577/92579"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
+  - rows: [92655, 92657]
+    kind: short_long
+    read: docs/reads/2026-10-03-blind-batch.json
+    label: "92655/92657"
+    ruled: "Corey, 2026-10-04 (R1 tier 2 closes conservatively, ruling 4)"
 
 # Rulings: evidence the script accepts in place of a read (Corey's rulings of 2026-10-03, a
 # ruling as evidence, ruling 1). Each ruled entry says who ruled (`by`), the `date`, the
