@@ -63,12 +63,13 @@ describe("the switch's dated notes", () => {
   });
 
   it("give a tier-2 link its own dated note, a line after the merge's, where it moved the figure", () => {
-    // Counted (Corey, 2026-10-02): the Wire, which counts every docket, says every link;
-    // the map panel, the campaign's; a docket, its own entry count's drop.
+    // Counted (Corey, 2026-10-04, amending 2026-10-02): each note's headline number is the
+    // change on its own surface. The Wire leads with the items it merged, the pairs linked
+    // its context; the map panel and a docket line count the entries' drop, one per pair.
     expect(wireNote("litigation", BOTH)).toBe(
       "Oct 2, 2026: duplicate court-entry rows and repeated tracker notes were merged (89 tracker notes " +
         "of the drop); the total 2,955 before, 2,619 after; +7d 594 before, 551 after.\n" +
-        "Oct 3, 2026: 7 pairs of court records that describe one entry were linked; the total 2,619 before, 2,614 after.",
+        "Oct 3, 2026: 5 duplicate items merged (2,619 before, 2,614 after), from 7 entry pairs linked.",
     );
     expect(entriesNote("71457474", BOTH)).toBe(
       "Oct 2, 2026: duplicate court-entry rows were merged; 230 before, 125 after.\n" +
@@ -82,13 +83,61 @@ describe("the switch's dated notes", () => {
     // Where only the merge moved the figure, the link adds nothing.
     expect(ledgerNote("71457474", BOTH)).toBe(ledgerNote("71457474", F));
     expect(latestNote("72026664", BOTH)).toBe(latestNote("72026664", F));
-    // A docket's ledger counts the docket's own links, from its entry count's drop.
+    // A docket's ledger leads with its own drop, the docket's pairs (its entry count's drop)
+    // its context.
     const LWV: MergeFigures = {
       ...BOTH,
       moves: [MERGE_MOVE, { ...LINK_MOVE, cases: { "71499795": { entries: [239, 234], ledger: [139, 134] } } }],
     };
     expect(ledgerNote("71499795", LWV)).toBe(
-      "Oct 3, 2026: 5 pairs of court records that describe one entry were linked; this docket read 139 entries before, 134 after.",
+      "Oct 3, 2026: 5 duplicate entries merged (139 before, 134 after), from 5 entry pairs linked.",
+    );
+  });
+
+  it("count a link's own drop where a twin carried no item, the pairs linked as context", () => {
+    // Corey's two examples (2026-10-04): 259 pairs merge 120 items on the Wire, and 28 pairs
+    // 18 entries on a docket's ledger, because a twin with no item takes nothing off them.
+    const BATCH: Move = {
+      ...LINK_MOVE,
+      on: "2026-10-04",
+      links: 259,
+      wire: { litigation: { total: [2754, 2634], day: [0, 0], week: [43, 43], history: [0, 0] } },
+      map: { entries: [4754, 4572], dockets_changed: 24 },
+      cases: {
+        "73133197": { entries: [210, 182], ledger: [201, 183], timeline: [201, 183] },
+        "72193752": { entries: [234, 213] },
+        "1": { entries: [5, 4], ledger: [10, 9] },
+        "2": { ledger: [7, 6] },
+      },
+    };
+    const G: MergeFigures = { ...F, moves: [BATCH] };
+    expect(wireNote("litigation", G)).toBe(
+      "Oct 4, 2026: 120 duplicate items merged (2,754 before, 2,634 after), from 259 entry pairs linked.",
+    );
+    expect(ledgerNote("73133197", G)).toBe(
+      "Oct 4, 2026: 18 duplicate entries merged (201 before, 183 after), from 28 entry pairs linked.",
+    );
+    expect(ledgerNote("1", G)).toBe("Oct 4, 2026: 1 duplicate entry merged (10 before, 9 after), from 1 entry pair linked.");
+    // A ledger that moved where the entries did not counts its own drop as the pairs.
+    expect(ledgerNote("2", G)).toBe("Oct 4, 2026: 1 duplicate entry merged (7 before, 6 after), from 1 entry pair linked.");
+    // The Wire's other windows that moved follow the total inside the brackets.
+    const W: MergeFigures = { ...F, moves: [{ ...BATCH, wire: { litigation: { ...BATCH.wire.litigation!, week: [589, 588] } } }] };
+    expect(wireNote("litigation", W)).toBe(
+      "Oct 4, 2026: 120 duplicate items merged (2,754 before, 2,634 after; +7d 589 before, 588 after), " +
+        "from 259 entry pairs linked.",
+    );
+    // The map stays as built: its lines and panel count entries, one per pair.
+    expect(entriesNote("72193752", G)).toBe(
+      "Oct 4, 2026: 21 pairs of court records that describe one entry were linked; 234 before, 213 after.",
+    );
+    expect(mapNote(G)).toBe(
+      "Oct 4, 2026: 182 pairs of court records that describe one entry were linked. The campaign's dockets " +
+        "held 4,754 entries before, 4,572 after; 24 dockets changed.",
+    );
+    // A link move that does not say how many pairs it linked keeps its reason on the Wire.
+    const { links: _links, ...unsaid } = BATCH;
+    expect(wireNote("litigation", { ...F, moves: [unsaid] })).toBe(
+      "Oct 4, 2026: pairs of court records that describe one entry were linked; the total 2,754 before, 2,634 after.",
     );
   });
 

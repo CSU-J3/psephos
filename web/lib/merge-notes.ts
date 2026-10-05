@@ -71,12 +71,19 @@ function notes(m: MergeFigures, one: (mv: Move, on: string) => string | null): s
   return out.length ? out.join("\n") : null;
 }
 
-/** A link move's reason, counted. Corey (2026-10-02): "the links' dated line counts 8".
- *  Each linked pair takes exactly one entry off its docket's count, so an entry count's own
- *  drop is how many links moved it: a docket says its own, the map panel the campaign's,
- *  and the Wire, which counts every docket, all of them. */
+/** A link move's reason on the map, counted. Each linked pair takes exactly one entry off
+ *  its docket's count, so an entry count's own drop is how many links moved it: a docket
+ *  line says its own, the panel the campaign's (Corey, 2026-10-02). */
 function linkWhy(pairs: number): string {
   return `${plural(pairs, "pair")} of court records that describe one entry ${pairs === 1 ? "was" : "were"} linked`;
+}
+
+/** A link move's note where the figure counts what the page lists rather than entries: the
+ *  Wire's items, a /case ledger's entries. Its headline number is the change on its own
+ *  surface, the pairs linked its context (Corey, 2026-10-04, amending 2026-10-02's count):
+ *  a twin with no item of its own takes nothing off the Wire, so 259 pairs can merge 120. */
+function mergedFrom(d: string, merged: string, figures: string, pairs: number): string {
+  return `${d}: ${merged} merged (${figures}), from ${plural(pairs, "entry pair")} linked.`;
 }
 
 /** Why an entry count moved, naming only what happened to it. A count can RISE at the
@@ -92,16 +99,11 @@ function entriesWhy(mv: Move, before: number, after: number, apart = 0): string 
   return rose || mv.why;
 }
 
-/** The reason on a docket's own figure that is not its entry count (its ledger): a link
- *  move counts the docket's links by its entry count's drop. */
-function docketWhy(mv: Move, caseId: string): string {
-  const e = mv.cases[caseId]?.entries;
-  return mv.kind === "link" && e ? linkWhy(e[0] - e[1]) : mv.why;
-}
+type WireKey = "total" | "day" | "week" | "history";
 
 /** The Wire's litigation cell: its counts are entries now. The merge also folds the
  *  tracker's repeated notes (ruling 7), so the reason names them when they are part of
- *  the drop. */
+ *  the drop. A link move leads with the items it merged (mergedFrom). */
 export function wireNote(channel: string, m: MergeFigures = MERGE): string | null {
   if (channel !== "litigation") return null;
   return notes(m, (mv, d) => {
@@ -110,13 +112,16 @@ export function wireNote(channel: string, m: MergeFigures = MERGE): string | nul
     const keys = (["total", "day", "week", "history"] as const).filter((k) => w[k] && w[k]![0] !== w[k]![1]);
     if (!keys.length) return null;
     const label = { total: "the total", day: "+24h", week: "+7d", history: "already older than 7 days when collected" };
-    const parts = keys.map((k) => `${label[k]} ${n(w[k]![0])} before, ${n(w[k]![1])} after`);
+    const part = (k: WireKey, named = true) => `${named ? `${label[k]} ` : ""}${n(w[k]![0])} before, ${n(w[k]![1])} after`;
+    if (mv.kind === "link" && mv.links !== undefined) {
+      const [b, a] = w.total;
+      const figures = [part("total", false), ...keys.filter((k) => k !== "total").map((k) => part(k))];
+      return mergedFrom(d, plural(b - a, "duplicate item"), figures.join("; "), mv.links);
+    }
     const why = w.tracker_notes
       ? `duplicate court-entry rows and repeated tracker notes were merged (${plural(w.tracker_notes, "tracker note")} of the drop)`
-      : mv.kind === "link" && mv.links
-        ? linkWhy(mv.links)
-        : mv.why;
-    return `${d}: ${why}; ${parts.join("; ")}.`;
+      : mv.why;
+    return `${d}: ${why}; ${keys.map((k) => part(k)).join("; ")}.`;
   });
 }
 
@@ -145,7 +150,12 @@ export function ledgerNote(caseId: string, m: MergeFigures = MERGE): string | nu
   return notes(m, (mv, d) => {
     const l = mv.cases[caseId]?.ledger;
     if (!l) return null;
-    return `${d}: ${docketWhy(mv, caseId)}; this docket read ${n(l[0])} entries before, ${n(l[1])} after.`;
+    if (mv.kind === "link") {
+      const e = mv.cases[caseId]?.entries;
+      return mergedFrom(d, plural(l[0] - l[1], "duplicate entry", "duplicate entries"),
+        `${n(l[0])} before, ${n(l[1])} after`, e ? e[0] - e[1] : l[0] - l[1]);
+    }
+    return `${d}: ${mv.why}; this docket read ${n(l[0])} entries before, ${n(l[1])} after.`;
   });
 }
 
