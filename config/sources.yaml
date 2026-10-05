@@ -609,6 +609,35 @@ litigation:
           entry_at: "2026-04-14"
           quote: "The following cases have been consolidated with this case: 26cv1132, 26cv1151"
         ruled: "Corey, 2026-09-29"
+    # SEEDED ON A FINDING, 2026-10-05 (Corey's ruling B; docs/status.md, the EO 14248 D0).
+    # A RECAP search by the order's title found it; the unit's enumeration had followed its
+    # complaints' notices, and none names this suit. Its operative complaint (ECF 1, Aug 31,
+    # the only one) pleads "This suit challenges illegal agency action to implement Section
+    # 2(a) of the President's Executive Order No. 14399" (para. 2). Its notices close at
+    # itself: the cover sheet's related-case box is blank and the docket carries no related-
+    # case or consolidation entry. ECF 48 (Sep 25) only directs the government to file here
+    # any notice it files in DSCC v. Trump (01114), and to give 30 days' notice before
+    # activating the State Citizenship Lists portal. Read through Oct 2 (ECF 51); every order
+    # through then is procedural or that notice direction, none bearing on a gate's claim, so
+    # it is watched from Oct 2 by the recheck flags. Partial summary judgment, argued Sep 25,
+    # is undecided as read. 53 entries, 3 pages: it binds and walks on its first run.
+    - caption: Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services
+      docket_number: 8:26-cv-03457
+      court: D. Md.
+      court_id: mdd
+      category: executive-order
+      order: EO 14399
+      case_id: "74728821"
+      notes: >-
+        Asks the court to set aside DHS's June 8, 2026 memorandum implementing section 2(a)
+        of EO 14399 and the decision to create and disclose State Citizenship Lists, and to
+        enjoin their disclosure. Partial summary judgment was argued Sep 25; that day the
+        court directed the government to give it 30 days' notice before activating the
+        lists' portal.
+      gate_coverage:
+        unlisted: no-claim-order
+        read_through: "2026-10-02"
+        ruled: "Corey, 2026-10-05 (ruling B: seeded on passing the membership test)"
 
   # RETIRED SEEDS: kept as a second source, never polled. Nothing reads this list. A seed
   # retires when its own written removal condition is met; its text stays here, and the

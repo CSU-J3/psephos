@@ -32,14 +32,7 @@ function run(
   const dir = mkdtempSync(join(tmpdir(), "assert-gates-"));
   const gates = realGates();
   const sources = realSources();
-  // The default clock moves with the real seeds: never before the latest real
-  // no-claim-order `read_through`, so a real reason read after the floor does not turn
-  // this suite red while ci.yml, on the real clock, passes. Taken before the planted
-  // seeds, so a planted date never moves it.
-  const reads = (sources.litigation.seed_cases as Seed[])
-    .map((s) => (s.gate_coverage as { read_through?: unknown } | undefined)?.read_through)
-    .filter((d): d is string => typeof d === "string");
-  const clock = mutate.clock ?? [CLOCK_FLOOR, ...reads].sort().at(-1)!;
+  const clock = mutate.clock ?? defaultClock();
   mutate.gates?.(gates);
   mutate.seeds?.(sources.litigation.seed_cases);
   writeFileSync(join(dir, "gates.yaml"), YAML.stringify(gates));
@@ -63,6 +56,20 @@ function run(
 }
 
 const CLOCK_FLOOR = "2026-09-29";
+/** The default clock moves with the real seeds: never before the latest real
+ *  no-claim-order `read_through`, so a real reason read after the floor does not turn
+ *  this suite red while ci.yml, on the real clock, passes. Read off the committed config,
+ *  so a planted date never moves it. A case that judges a planted reason against the clock
+ *  takes its dates from here, never from a literal (EPIC's real Oct 2 reason, 2026-10-05,
+ *  turned two literal-clock cases red). */
+function defaultClock(): string {
+  const reads = (realSources().litigation.seed_cases as Seed[])
+    .map((s) => (s.gate_coverage as { read_through?: unknown } | undefined)?.read_through)
+    .filter((d): d is string => typeof d === "string");
+  return [CLOCK_FLOOR, ...reads].sort().at(-1)!;
+}
+const plusDays = (day: string, n: number) =>
+  new Date(Date.parse(`${day}T00:00:00Z`) + n * 86_400_000).toISOString().slice(0, 10);
 const LEAD = "73131864"; // 1:26-cv-01114, listed on eo-14399-usps-rule-enjoined-ddc
 const NOTICE_ITEM = "115671"; // the clerk's consolidation notice of Apr 14 on the lead
 const MEMBERS = ["73134260", "73143746"]; // 01132 and 01151, consolidated into the lead
@@ -201,10 +208,11 @@ describe("check 5 fails every planted gap with exit 5", () => {
 
   it("no-claim-order past the record's clock plus a day fails; on it, passes", () => {
     const reason = (d: string) => ({ unlisted: "no-claim-order", read_through: d, ruled: "test, 2026-09-29" });
-    const late = run({ clock: "2026-09-29", seeds: (s) => { s.push(newSeed({ gate_coverage: reason("2026-10-01") })); } });
+    const clock = defaultClock();
+    const late = run({ clock, seeds: (s) => { s.push(newSeed({ gate_coverage: reason(plusDays(clock, 2)) })); } });
     expect(late.code, late.out).toBe(5);
-    expect(late.out).toMatch(/read_through is after the record's clock 2026-09-29 plus a day/);
-    const ok = run({ clock: "2026-09-29", seeds: (s) => { s.push(newSeed({ gate_coverage: reason("2026-09-30") })); } });
+    expect(late.out).toContain(`read_through is after the record's clock ${clock} plus a day`);
+    const ok = run({ clock, seeds: (s) => { s.push(newSeed({ gate_coverage: reason(plusDays(clock, 1)) })); } });
     expect(ok.code, ok.out).toBe(0);
   });
 
@@ -242,11 +250,11 @@ describe("a no-claim-order reason may carry its flags' verdicts", () => {
       ruled: "test", verdicts: v } }));
   };
   it("accepts the ruled classes", () => {
-    const { code, out } = run({ clock: "2026-09-29", seeds: withVerdicts({ 950: "operative", 951: "duplicate" }) });
+    const { code, out } = run({ seeds: withVerdicts({ 950: "operative", 951: "duplicate" }) });
     expect(code, out).toBe(0);
   });
   it("refuses a verdict outside them, exit 3", () => {
-    const { code, out } = run({ clock: "2026-09-29", seeds: withVerdicts({ 950: "maybe" }) });
+    const { code, out } = run({ seeds: withVerdicts({ 950: "maybe" }) });
     expect(code, out).toBe(3);
     expect(out).toMatch(/gate_coverage.verdicts` 950: "maybe"/);
   });

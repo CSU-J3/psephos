@@ -8,7 +8,54 @@ Last updated: 2026-10-05 (UTC).
 
 ## Owed right now
 
-### The EO 14248 dockets: D0 READ 2026-10-05 and plan PROPOSED; a finding on the EO 14399 class; HELD for Corey's rulings
+### The EO 14248 unit RULED 2026-10-05 on all eleven points; A (export after a red step) BUILT; B READ and EPIC v. USCIS SEEDED into the EO 14399 class; next, the display captions
+
+**Corey's rulings, 2026-10-05, on the D0 below:**
+- **A. Export and commit run after a red collectors step,** never after a cancellation. One failed channel must not freeze the snapshot or the record's clock, and the Verdict still turns the run red.
+- **B. EPIC v. USCIS** is read against the membership test and, if it passes, seeded into the EO 14399 class first, with its related-case and consolidation notices followed to closure. NAACP v. USPS's 2026 filings are read for a supplemental pleading against the rule. The four First Circuit appeals of Aug 28–29 are recorded as read, with their status.
+- **The plan's eleven:**
+  1. **Membership:** the five suits and LWV v. DHS stand. Illinois v. FEMA and the three complaints with no RECAP text are ruled once read. Corey buys those three through PACER with the RECAP extension.
+  2. **EPIC:** as in B.
+  3. **One class sentence per order,** each its own gate, in its order's fact. The order is stored per seed and reaches the page, and the sentence names it through a placeholder, "EO {order}", not by description.
+  4. **The display-caption unit is built before seeding.**
+  5. **The order-like test** is widened for the Ninth Circuit, W.D. Wash. and any other new court, and re-tested, before seeding.
+  6. **New dockets go on the EO 14248 gate's list** when seeded, with readings written after the walk.
+  7. **The refresh cap goes to 50.** Record the cost against the tightest daily cap the account has recorded.
+  8. **The new tier-2 pairs** go through blind batched reads under the stored launcher. Unanimous passes link after Corey reads five drawn at random; splits and fails stay apart, as ruled 2026-10-04.
+  9. **Watson goes on the page** as its own A1 gate in the EO 14248 fact, beside the section 7 line. It states what the Court held about the Election Day statutes (slip op. 22), and that section 7 directs their enforcement, citing the order's own text. Nothing about the order's lawfulness. A pixel checkpoint.
+  10. **The owed `superseded` reason kind is dropped.**
+  11. **The order of work:** A; B; the display captions; the widened test; the membership reads; seeding and walks; the blind reads; the per-order sentences and the related-suits clause (never "1 related suits"); then Watson. **Stop at each pixel checkpoint.**
+
+- **A, BUILT:**
+  - **`collect.yml`:** the export step runs `if: ${{ !cancelled() && (steps.collectors.outcome == 'success' || steps.collectors.outcome == 'failure') }}`, and the commit runs `if: ${{ !cancelled() && steps.export.outcome == 'success' }}`.
+  - **`tests/test_collect_red_export.py`** reads both conditions out of `collect.yml` and evaluates them with a small reader of GitHub's expression rules.
+    - The export runs after a red or green collectors step. It does not run when an earlier failure skipped the collectors, or after a cancellation, including one that lands after the collectors ended.
+    - The commit follows only a successful export.
+    - It runs the collectors step's real script with a planted litigation failure, then the export's own code on a temp database where executive wrote an item during the run. `generated_at` moves from the last run's newest item to the new one, `executive.json` gains the item, and the Verdict's job line still names `Run collectors` and litigation.
+    - 14 tests. Each of the 5 conditions, disabled in turn, fails one.
+  - **OWED:** the first scheduled run that takes it, which is also the first on the collectors step of the entry below.
+    - The 12:17Z slot's run (37370477202, on `025ae63`) was queued at 20:33Z, 8h16m late, and cancelled at 20:48Z without a runner, in GitHub's Actions incident ("delays in assigning GitHub-hosted runners", open since 19:11:58Z). No step ran: no Verdict, no comment, no heartbeat. It was not re-run into the incident.
+- **B, READ (CourtListener, 26 requests, 20:40Z to 20:47Z):**
+  - **EPIC v. USCIS, D. Md. 8:26-cv-03457 (74728821), PASSES and is SEEDED** into the EO 14399 class with `order: EO 14399`.
+    - **Its only complaint (ECF 1, Aug 31) is operative.** Its ¶2: "This suit challenges illegal agency action to implement Section 2(a) of the President's Executive Order No. 14399".
+    - **Its notices close at itself:** the cover sheet's related-case box is blank, and none of the docket's 53 entries is a related-case or consolidation entry.
+    - **ECF 48 (Sep 25)** directs the government to file there any notice it files in DSCC v. Trump (01114), and to give 30 days' notice before activating the State Citizenship Lists portal.
+    - **Read through Oct 2 (ECF 51).** Every order through then is procedural or that notice direction. Partial summary judgment, argued Sep 25, is undecided as read.
+    - **Its coverage reason is `no-claim-order`, read through 2026-10-02,** so the recheck flags watch it from Oct 2. Check 5 passes on it.
+    - **It binds and walks on its first run** (53 entries, 3 pages), and the class count reads 7.
+  - **NAACP v. USPS, D.D.C. 1:20-cv-02295: no supplemental pleading.**
+    - The 2026 round is a motion to enforce the 2020 settlement and order (ECF 171, Jun 3). It targets USPS's proposed rule (91 Fed. Reg. 32,915), which it pleads was "directed by an Executive Order", EO 14399.
+    - The motion was granted Jul 1 (ECF 181, the memorandum opinion ECF 182), and the D.C. Circuit stayed that injunction (noticed Jul 20, ECF 190).
+    - In 26-5257, a per curiam order of Oct 1 granted USPS's "motion to vacate and dismiss", mandate withheld.
+  - **The four First Circuit appeals of Aug 28–29, all pending as read:**
+    - 26-1987 (USPS, from ECF 42 in 1:26-cv-13917), 26-1988 (the federal defendants, from ECF 221 in 1:26-cv-11549), 26-1989 and 26-1991 (the intervenor States, from ECF 222 and ECF 60).
+    - All four are appeals from the Aug 27 TRO, consolidated among themselves Sep 14, apart from 26-2029's four from the Sep 4 injunction.
+    - The appellants moved to dismiss them on Sep 25 (the government) and Sep 28 (the States). The last filings were Sep 25–28.
+    - Not held; recorded here, as ruled.
+- **Point 10:** the `superseded` reason kind is dropped from what is owed.
+- **NEXT, by point 11:** the display-caption unit (point 4), to its pixel checkpoint, then stop.
+
+### The EO 14248 dockets: D0 READ 2026-10-05 and plan PROPOSED; a finding on the EO 14399 class; RULED the same day (the entry above)
 
 **Corey's call, 2026-10-05:** the EO 14248 D0, after channel isolation and the dry run's double count (the entry below). This entry is the D0 and the plan. Nothing is seeded or built.
 
@@ -159,7 +206,7 @@ Last updated: 2026-10-05 (UTC).
   - **The step:** `collect.yml`'s "Run collectors" runs each part through `part`, whatever the one before it did. Each part's output goes to the log and to `$RUNNER_TEMP/channel-<name>.log`, and its exit to a `<name> <code>` line of `$RUNNER_TEMP/channels`. The step fails at its end if any part exited non-zero. The ERR trap and `collectors.log` of the entry below are gone.
   - **The raise:** each collector's `__main__` runs through `run_signals.guarded`. A raise writes a `failed` row, which is loud, carrying its exception line scrubbed. The row goes on a fresh connection, since the old one may be what died, and the raise then goes on.
   - **The Verdict** names each failed part: by its `failed` row, or else by its exit and its log's last line. A crashed channel is not also "unrecorded". The job line reads "`Run collectors` failed: litigation exited non-zero".
-  - **Export and commit still skip after a red step,** as they always have. The channels' data is in Turso, and the next green run's export carries it. This is named here so the skip is not read as a loss; it is not ruled either way.
+  - **Export and commit skipped after a red step,** as they always had. **Ruled the same day (ruling A, the entry above): they run after a red collectors step, never after a cancellation.**
   - **The planted case:** `tests/test_collect_failed_step.py` runs the step's real script under bash, with a stub `python` whose litigation raises the 10-04 run's own exception.
     - legislation and tracker_uw before it, and executive, news and state after it, all run, and the step exits 1.
     - The Verdict names the step and litigation's line, with the planted credential `[redacted]` in the issue body.
@@ -1164,7 +1211,7 @@ A local check also caught a jq regex escape that Git Bash mangled; the bot filte
 3. Corey's verdicts on the six flags, 93145 first, and the reading that moves 71499795's watermark past them.
 4. Before the EO 14248 unit seeds:
    - the order-like test widened to Ninth Circuit, W.D. Wash. and D.C. Circuit forms, and re-tested;
-   - a `superseded` reason kind for LWV v. DHS's district row.
+   - ~~a `superseded` reason kind for LWV v. DHS's district row.~~ **Dropped (Corey, 2026-10-05):** 71499795 is listed on `dhs-save-system-stayed`.
 
 ### The SAVE gate RULED and applied, EO 14248's three orders READ and its gate rewritten, 2026-09-29; the page PASSED at the checkpoint and SHIPPED the same day; S. 5271 and H.R. 9368 JOIN the watch list
 
