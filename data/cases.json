@@ -26626,7 +26626,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 51,
+    "entry_count": 52,
     "entry_moves": [
       {
         "entries": [
@@ -26647,7 +26647,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-10-02T00:00:00",
+    "latest_entry_at": "2026-10-05T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
@@ -26814,6 +26814,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/44/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: Corrected ORDER filed granting Motion to file separate brief [38]. Copies to all parties. [1002061075] [26-1878] MP [Entered: 09/24/2026 09:26 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122809,
+        "kind": "item",
+        "occurred_at": "2026-10-05T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/55/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Order filed"
       }
     ]
   },
@@ -27039,7 +27049,7 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 87,
+    "entry_count": 91,
     "entry_moves": [
       {
         "kind": "merge",
@@ -27052,7 +27062,7 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-10-01T00:00:00",
+    "latest_entry_at": "2026-10-05T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
@@ -28585,6 +28595,226 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/173/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Copy re 172 Electronic Order mailed to Emanuel McCray on September 17, 2026. (MAP) (Entered: 09/17/2026)"
+      }
+    ]
+  },
+  {
+    "caption": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services",
+    "case_id": "74728821",
+    "category": "executive-order",
+    "court": "D. Md.",
+    "date_terminated": null,
+    "defendant": "U.S. Citizenship and Immigration Services",
+    "docket_number": "8:26-cv-03457",
+    "entry_count": 53,
+    "filed_at": "2026-08-31T00:00:00",
+    "latest_entry_at": "2026-10-02T00:00:00",
+    "plaintiff": "Electronic Privacy Information Center",
+    "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+    "state": null,
+    "status": "pending",
+    "status_checked_at": "2026-10-06T00:03:48.425734+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 122775,
+        "kind": "item",
+        "occurred_at": "2026-08-31T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services — executive-order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122776,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/7/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: MOTION for Summary Judgment by Electronic Privacy Information Center (Attachments: # 1 Memorandum in Support, # 2 Affidavit of John B. Hill, # 3 Exhibit A - June 8, 2026 Implementa"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122777,
+        "kind": "item",
+        "occurred_at": "2026-09-03T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/8/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: MOTION to Expedite CONSIDERATION OF ITS MOTION FOR PARTIAL SUMMARY JUDGMENT by Electronic Privacy Information Center (Attachments: # 1 Text of Proposed Order)(Sus, Nikhel) (Entered"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122778,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/9/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: ORDER granting 8 MOTION to Expedite CONSIDERATION OF ITS MOTION FOR PARTIAL SUMMARY JUDGMENT. Signed by Judge Paula Xinis on 9/4/2026. (kb3s, Deputy Clerk) (Entered: 09/04/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122779,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/11/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: CORRECTED ORDER granting 8 MOTION to Expedite CONSIDERATION OF ITS MOTION FOR PARTIAL SUMMARY JUDGMENT. Signed by Judge Paula Xinis on 9/4/2026. (kb3s, Deputy Clerk) (Entered: 09/0"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122780,
+        "kind": "item",
+        "occurred_at": "2026-09-04T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/16/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: MOTION for Reconsideration re 11 Order, 9 Order on Motion to Expedite Briefing Schedule ECF 9 and 11 by Markwayne Mullin, Marco Rubio, U.S. Citizenship and Immigration Services, U."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122781,
+        "kind": "item",
+        "occurred_at": "2026-09-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/17/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: RESPONSE in Opposition re 16 MOTION for Reconsideration re 11 Order, 9 Order on Motion to Expedite Briefing Schedule ECF 9 and 11 filed by Electronic Privacy Information Center.(Su"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122782,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/18/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: PAPERLESS ORDER: A recorded call has been scheduled for today, September 8, 2026, at 3:00 p.m. Instructions will be emailed to the parties. Signed by Judge Paula Xinis on 9/8/2026."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122783,
+        "kind": "item",
+        "occurred_at": "2026-09-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/23/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: PAPERLESS ORDER: For the reasons discussed during today's recorded conference, the Motion for Reconsideration at ECF No. 16 is DENIED without prejudice. In the absence of a further"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122784,
+        "kind": "item",
+        "occurred_at": "2026-09-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/36/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: RESPONSE in Opposition re 7 MOTION for Summary Judgment filed by Frank Bisignano, Joseph B. Edlow, Markwayne Mullin, Marco Rubio, U.S. Citizenship and Immigration Services, U.S. De"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122785,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/39/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: REPLY to Response to Motion re 7 MOTION for Summary Judgment filed by Electronic Privacy Information Center.(Sus, Nikhel) (Entered: 09/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122786,
+        "kind": "item",
+        "occurred_at": "2026-09-17T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/40/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: PAPERLESS ORDER: A Motion Hearing has been scheduled for September 25, 2026 at 1:00 p.m. in Courtroom 2C, 6500 Cherrywood Lane, Greenbelt, Maryland 20770, before Judge Paula Xinis."
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122787,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/42/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: MOTION to Continue by Frank Bisignano, Joseph B. Edlow, Markwayne Mullin, Marco Rubio, U.S. Citizenship and Immigration Services, U.S. Department of Homeland Security, U.S. Departm"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122788,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/43/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: The Court denies the motion at ECF No. 42. The stated reasons for requesting postponement do not constitute sufficient good cause, especially given the time sensitive nature of the"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122789,
+        "kind": "item",
+        "occurred_at": "2026-09-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/44/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: PAPERLESS ORDER: The Motion Hearing scheduled for September 25, 2026, has been converted to a virtual hearing. Instructions and zoom link will be emailed twenty-four (24) hours pri"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122790,
+        "kind": "item",
+        "occurred_at": "2026-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/47/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: Motion Hearing held on 9/25/2026 re 7 MOTION for Partial Summary Judgment before Judge Paula Xinis.(Court Reporter: Paula Leeper - Zoom) (bus, Deputy Clerk) (Entered: 09/25/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122791,
+        "kind": "item",
+        "occurred_at": "2026-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/48/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: ORDER: For the reasons discussed during today's motions hearing, the Defendants are hereby DIRECTED that any notice submitted in DSCC v. Trump, 26-cv-01114-CJN (D.D.C. 2026), be si"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122792,
+        "kind": "item",
+        "occurred_at": "2026-09-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/49/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: NOTICE OF FILING OF OFFICIAL TRANSCRIPT of Proceedings - Motions Hearing - held on 9/25/2026, before Judge Paula Xinis. Court Reporter/Transcriber Paula Leeper, Telephone number (3"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122793,
+        "kind": "item",
+        "occurred_at": "2026-10-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/50/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: RESPONSE in Opposition re 7 MOTION for Summary Judgment Supplemental Brief filed by Frank Bisignano, Joseph B. Edlow, Markwayne Mullin, Marco Rubio, U.S. Citizenship and Immigratio"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 122794,
+        "kind": "item",
+        "occurred_at": "2026-10-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74728821/51/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
+        "title": "Electronic Privacy Information Center v. U.S. Citizenship and Immigration Services: RESPONSE in Support re 7 MOTION for Summary Judgment Supplemental Brief filed by Electronic Privacy Information Center.(Sus, Nikhel) (Entered: 10/02/2026)"
       }
     ]
   },

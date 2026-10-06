@@ -9798,5 +9798,95 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/after-trump-folds-on-mail-ballot-restrictions-maine-starts-voting-period-with-more-confidence",
     "title": "Maine early voting starts today. Here’s what you need to know"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123003,
+    "kind": "item",
+    "occurred_at": "2026-10-05T15:18:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-early-voting-starts-today-heres-what-you-need-to-know",
+    "title": "California early voting starts today. Here’s what you need to know"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123002,
+    "kind": "item",
+    "occurred_at": "2026-10-05T16:19:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-vacates-lower-court-ruling-that-washington-map-discriminated-against-latino-voters",
+    "title": "With Voting Rights Act gutted, Supreme Court vacates discrimination finding against Washington map"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123001,
+    "kind": "item",
+    "occurred_at": "2026-10-05T17:20:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-declines-to-block-new-hampshire-student-id-ban-for-midterm-election",
+    "title": "Federal judge declines to block New Hampshire student ID ban for midterm election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123000,
+    "kind": "item",
+    "occurred_at": "2026-10-05T17:31:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-praised-the-speed-of-brazils-elections-theyre-actually-his-nightmare",
+    "title": "Trump praised the speed of Brazil’s elections. They’re actually his nightmare"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122996,
+    "kind": "item",
+    "occurred_at": "2026-10-05T17:45:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/05/voter-registration-system-team-secretary-of-state",
+    "title": "Election officials are scrambling to process voter registration backlog using a system they say does not work"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123004,
+    "kind": "item",
+    "occurred_at": "2026-10-05T18:17:55+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/200-election-deniers-43-states-midterm-ballots",
+    "title": "NOVEMBER LANDSCAPE: Nearly 200 Election Deniers Across 43 States are on Midterm Ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122999,
+    "kind": "item",
+    "occurred_at": "2026-10-05T18:55:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-sued-for-records-on-unprecedented-plan-to-deploy-1000-election-monitors-in-midterms",
+    "title": "DOJ sued for records on ‘unprecedented’ plan to deploy 1,000 election monitors in midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122998,
+    "kind": "item",
+    "occurred_at": "2026-10-05T20:12:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/moved-recently-under-trumps-voter-eligibility-lists-you-could-be-disenfranchised",
+    "title": "Moved recently? Under Trump’s voter eligibility lists, you could be disenfranchised"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 122997,
+    "kind": "item",
+    "occurred_at": "2026-10-05T21:33:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-win-for-voters-with-disabilities-court-strikes-down-california-mail-ballot-rule",
+    "title": "In win for voters with disabilities, court strikes down California mail ballot rule"
   }
 ]
