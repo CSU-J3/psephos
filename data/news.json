@@ -9928,5 +9928,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/utahs-gop-election-head-purged-noncitizens-from-voter-rolls-but-the-trump-team-didnt-want-to-hear-how-few-she-found",
     "title": "Utah’s GOP election head purged noncitizens from voter rolls, but the Trump team didn’t want to hear how few she found"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123920,
+    "kind": "item",
+    "occurred_at": "2026-10-06T18:39:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-lawyer-convicted-of-hacking-election-sites-monitored-voting-in-maricopa-county-arizona",
+    "title": "DOJ lawyer convicted of hacking election sites monitored voting in Maricopa County, Arizona"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123919,
+    "kind": "item",
+    "occurred_at": "2026-10-06T19:55:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-dispatched-criminal-prosecutors-fbi-agent-to-monitor-arizonas-primary-documents-reveal",
+    "title": "DOJ dispatched criminal prosecutors, FBI agent to monitor Arizona’s primary, documents reveal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123918,
+    "kind": "item",
+    "occurred_at": "2026-10-06T20:52:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-deniers-cleta-mitchell-and-tina-peters-want-trumps-commerce-secretary-to-seize-voting-machines",
+    "title": "Election deniers Cleta Mitchell and Tina Peters want Trump’s commerce secretary to seize voting machines"
   }
 ]
