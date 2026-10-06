@@ -9908,5 +9908,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/ohio-early-voting-starts-today-heres-what-were-watching",
     "title": "Ohio early voting starts today. Here’s what we’re watching"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123700,
+    "kind": "item",
+    "occurred_at": "2026-10-06T14:40:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/could-a-new-court-ruling-undermine-trumps-favorite-voter-suppression-bill",
+    "title": "Could a new court ruling undermine Trump’s favorite voter suppression bill?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123699,
+    "kind": "item",
+    "occurred_at": "2026-10-06T16:43:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/utahs-gop-election-head-purged-noncitizens-from-voter-rolls-but-the-trump-team-didnt-want-to-hear-how-few-she-found",
+    "title": "Utah’s GOP election head purged noncitizens from voter rolls, but the Trump team didn’t want to hear how few she found"
   }
 ]
