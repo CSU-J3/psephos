@@ -9888,5 +9888,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/in-win-for-voters-with-disabilities-court-strikes-down-california-mail-ballot-rule",
     "title": "In win for voters with disabilities, court strikes down California mail ballot rule"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123447,
+    "kind": "item",
+    "occurred_at": "2026-10-06T10:00:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/10/06/midterm-2026-ice-law-enforcement-polls-bill-kenyatta",
+    "title": "Pennsylvania proposal to ban law enforcement at polling places reflects activist concerns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 123448,
+    "kind": "item",
+    "occurred_at": "2026-10-06T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ohio-early-voting-starts-today-heres-what-were-watching",
+    "title": "Ohio early voting starts today. Here’s what we’re watching"
   }
 ]

@@ -45396,8 +45396,8 @@
   {
     "bill_number": "HB2542",
     "is_vehicle": false,
-    "last_action": "Removed from table",
-    "last_action_at": "2026-09-29T00:00:00",
+    "last_action": "Re-committed to Appropriations",
+    "last_action_at": "2026-10-05T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2151791",
@@ -45472,6 +45472,26 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
         "title": "PA HB2542: Removed from table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 123459,
+        "kind": "item",
+        "occurred_at": "2026-10-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
+        "title": "PA HB2542: Second consideration"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 123460,
+        "kind": "item",
+        "occurred_at": "2026-10-05T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
+        "title": "PA HB2542: Re-committed to Appropriations"
       }
     ],
     "title": "In returns of primaries and elections, further providing for appeals to court from decisions of th e county board and for Secretary of the Commonwealth to tabulate, compute and canvass returns; and, in recounts and contests, further providing for entry and effect of decision and providing for appeal.",
