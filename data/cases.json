@@ -26626,7 +26626,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 56,
+    "entry_count": 57,
     "entry_moves": [
       {
         "entries": [
@@ -26647,7 +26647,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-10-05T00:00:00",
+    "latest_entry_at": "2026-10-07T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
@@ -27519,7 +27519,7 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 24,
+    "entry_count": 25,
     "entry_moves": [
       {
         "kind": "merge",
@@ -27532,7 +27532,7 @@
       }
     ],
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-09-30T00:00:00",
+    "latest_entry_at": "2026-10-07T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
@@ -28633,7 +28633,7 @@
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-10-06T22:42:55.401932+00:00",
+    "status_checked_at": "2026-10-07T19:03:56.793963+00:00",
     "superseded_by": null,
     "timeline": [
       {

@@ -10008,5 +10008,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/ice-probed-hundreds-of-voter-registration-groups-across-the-u-s",
     "title": "ICE  probed hundreds of voter registration groups across the U.S."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124645,
+    "kind": "item",
+    "occurred_at": "2026-10-07T14:26:39+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/trump-control-census-your-questions-answered",
+    "title": "Trump’s Attempts to Control the Census: Your Questions Answered"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124644,
+    "kind": "item",
+    "occurred_at": "2026-10-07T15:32:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-investigates-mall-staple-favored-by-teen-skaters-in-its-hunt-for-noncitizen-voters",
+    "title": "ICE investigates mall staple favored by teen skaters in its hunt for noncitizen voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124643,
+    "kind": "item",
+    "occurred_at": "2026-10-07T15:54:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-shared-voter-data-with-peter-thiels-palantir-new-documents-show",
+    "title": "ICE shared voter data with Peter Thiel’s Palantir, new documents show"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124642,
+    "kind": "item",
+    "occurred_at": "2026-10-07T17:46:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-voters-skeptical-of-democrats-redistricting-amendment-polls-show",
+    "title": "Maryland voters skeptical of Democrats’ redistricting amendment, polls show"
   }
 ]
