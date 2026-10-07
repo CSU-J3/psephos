@@ -45396,12 +45396,12 @@
   {
     "bill_number": "HB2542",
     "is_vehicle": false,
-    "last_action": "Re-committed to Appropriations",
-    "last_action_at": "2026-10-05T00:00:00",
+    "last_action": "Third consideration and final passage (160-43)",
+    "last_action_at": "2026-10-06T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2151791",
-    "status": "1",
+    "status": "2",
     "timeline": [
       {
         "channel": "state",
@@ -45492,6 +45492,26 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
         "title": "PA HB2542: Re-committed to Appropriations"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 124417,
+        "kind": "item",
+        "occurred_at": "2026-10-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
+        "title": "PA HB2542: Re-reported as committed"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 124418,
+        "kind": "item",
+        "occurred_at": "2026-10-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB2542/2025",
+        "title": "PA HB2542: Third consideration and final passage (160-43)"
       }
     ],
     "title": "In returns of primaries and elections, further providing for appeals to court from decisions of th e county board and for Secretary of the Commonwealth to tabulate, compute and canvass returns; and, in recounts and contests, further providing for entry and effect of decision and providing for appeal.",
@@ -46052,8 +46072,8 @@
   {
     "bill_number": "HR632",
     "is_vehicle": false,
-    "last_action": "Referred to State Government",
-    "last_action_at": "2026-09-25T00:00:00",
+    "last_action": "Reported as committed",
+    "last_action_at": "2026-10-06T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2159038",
@@ -46068,6 +46088,16 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HR632/2025",
         "title": "PA HR632: Referred to State Government"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 124420,
+        "kind": "item",
+        "occurred_at": "2026-10-06T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HR632/2025",
+        "title": "PA HR632: Reported as committed"
       }
     ],
     "title": "Recognizing the week of October 5 through 9, 2026, as \"National Voter Education Week\" in Pennsylvania.",

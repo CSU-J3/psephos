@@ -9968,5 +9968,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/montana-supreme-court-strikes-down-gop-restrictions-on-citizen-ballot-initiatives",
     "title": "Montana Supreme Court strikes down GOP restrictions on citizen ballot initiatives"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124402,
+    "kind": "item",
+    "occurred_at": "2026-10-07T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/07/should-you-expect-ice-at-the-polls-november-midterm-election",
+    "title": "What to expect at the polling place amid uncertainty over federal agents"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124405,
+    "kind": "item",
+    "occurred_at": "2026-10-07T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arizona-early-voting-starts-today-amid-fights-over-election-rules",
+    "title": "Arizona early voting starts today amid fights over election rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124404,
+    "kind": "item",
+    "occurred_at": "2026-10-07T11:00:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-amassed-millions-of-voter-records-in-sweeping-fraud-hunt-documents-reveal",
+    "title": "ICE amassed millions of voter records in sweeping fraud hunt, documents reveal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124403,
+    "kind": "item",
+    "occurred_at": "2026-10-07T13:13:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-probed-hundreds-of-voter-registration-groups-across-the-u-s",
+    "title": "ICE  probed hundreds of voter registration groups across the U.S."
   }
 ]
