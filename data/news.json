@@ -10048,5 +10048,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/maryland-voters-skeptical-of-democrats-redistricting-amendment-polls-show",
     "title": "Maryland voters skeptical of Democrats’ redistricting amendment, polls show"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124869,
+    "kind": "item",
+    "occurred_at": "2026-10-07T21:10:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-at-the-polls-even-after-foia-lawsuit-agency-refuses-to-give-a-straight-answer",
+    "title": "ICE at the polls? Even after FOIA lawsuit, agency refuses to give a straight answer"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124868,
+    "kind": "item",
+    "occurred_at": "2026-10-07T21:12:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-sued-for-using-taxpayer-money-on-campaign-style-ads-ahead-of-midterms",
+    "title": "Trump sued for using taxpayer money on campaign-style ads ahead of midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124867,
+    "kind": "item",
+    "occurred_at": "2026-10-07T21:43:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-officials-strategized-how-to-deport-400-noncitizens-who-voted-in-new-jersey-as-a-result-of-state-error",
+    "title": "ICE officials strategized how to deport 400 noncitizens who voted in New Jersey as a result of state error"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 124866,
+    "kind": "item",
+    "occurred_at": "2026-10-07T22:00:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-court-rejects-rnc-bid-to-restrict-mail-ballot-return-access-in-states-second-largest-county",
+    "title": "Georgia court rejects RNC bid to restrict mail ballot return access in state’s second-largest county"
   }
 ]

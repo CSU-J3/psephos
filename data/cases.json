@@ -25903,7 +25903,7 @@
     "date_terminated": null,
     "defendant": "DHS",
     "docket_number": "26-5243",
-    "entry_count": 39,
+    "entry_count": 40,
     "entry_moves": [
       {
         "entries": [
@@ -25941,7 +25941,7 @@
       }
     ],
     "filed_at": "2026-06-29T00:00:00",
-    "latest_entry_at": "2026-10-02T00:00:00",
+    "latest_entry_at": "2026-10-07T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
@@ -26108,6 +26108,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73544809/1208894003/league-of-women-voters-v-dhs/",
         "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): JOINT MOTION [2196047] to establish briefing schedule, concerning briefing format filed by Frank Bisignano, DHS, Markwayne Mullin, SSA and State of Texas, Electronic Privacy Inform"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 124651,
+        "kind": "item",
+        "occurred_at": "2026-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73544809/01208895636/1/league-of-women-voters-v-dhs/",
+        "title": "League of Women Voters v. U.S. Department of Homeland Security (D.C. Cir.): Order Sent"
       }
     ]
   },
@@ -26626,7 +26636,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 57,
+    "entry_count": 64,
     "entry_moves": [
       {
         "entries": [
@@ -26834,6 +26844,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/55/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: ORDER filed granting Motion for leave to file [53]. Copies to all parties. [1002067977] [26-1878] MP [Entered: 10/05/2026 11:20 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 124679,
+        "kind": "item",
+        "occurred_at": "2026-10-07T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/64/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Order filed"
       }
     ]
   },
