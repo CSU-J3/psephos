@@ -10088,5 +10088,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/georgia-court-rejects-rnc-bid-to-restrict-mail-ballot-return-access-in-states-second-largest-county",
     "title": "Georgia court rejects RNC bid to restrict mail ballot return access in state’s second-largest county"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 125090,
+    "kind": "item",
+    "occurred_at": "2026-10-07T23:15:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-is-already-showing-up-near-voting-sites-bolstering-lawsuit-against-armed-agents-at-polls",
+    "title": "ICE is already showing up near voting sites, bolstering lawsuit against armed agents at polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 125089,
+    "kind": "item",
+    "occurred_at": "2026-10-08T00:31:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-hit-with-second-lawsuit-over-taxpayer-funded-political-propaganda-ads",
+    "title": "Trump hit with second lawsuit over taxpayer-funded political propaganda ads"
   }
 ]
