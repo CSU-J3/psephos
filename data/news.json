@@ -10138,5 +10138,25 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/10/08/sheriff-election-interference-pledge-workers-circle",
     "title": "Bucks County sheriff joins movement pledging not to interfere with elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 125538,
+    "kind": "item",
+    "occurred_at": "2026-10-08T16:49:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-hampshire-asks-appeals-court-to-make-sure-students-cant-use-ids-to-vote",
+    "title": "New Hampshire asks appeals court to make sure students can’t use IDs to vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 125537,
+    "kind": "item",
+    "occurred_at": "2026-10-08T17:43:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kentuckys-largest-county-offers-drive-through-voting-for-first-time",
+    "title": "Kentucky’s largest county offers drive-through voting for first time"
   }
 ]
