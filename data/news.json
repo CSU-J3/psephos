@@ -10158,5 +10158,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/kentuckys-largest-county-offers-drive-through-voting-for-first-time",
     "title": "Kentucky’s largest county offers drive-through voting for first time"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 125766,
+    "kind": "item",
+    "occurred_at": "2026-10-08T19:26:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-blow-to-mail-voters-wisconsin-judge-wont-allow-provisional-ballots-for-people-fearing-postal-service-delays",
+    "title": "In blow to mail voters, Wisconsin judge won’t allow provisional ballots for people fearing Postal Service delays"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 125765,
+    "kind": "item",
+    "occurred_at": "2026-10-08T20:55:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-renews-bid-to-restrict-mail-ballot-returns-in-major-georgia-county",
+    "title": "RNC renews bid to restrict mail ballot returns in major Georgia county"
   }
 ]

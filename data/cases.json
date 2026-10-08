@@ -26636,7 +26636,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 78,
+    "entry_count": 83,
     "entry_moves": [
       {
         "entries": [
@@ -26894,6 +26894,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/81/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: ORDER filed granting filing of amicus curiae brief [68]. Appearance form due on 10/13/2026 from Chris Thomas Casamassima. Disclosure Statement filed (if corporate amicus)? Y. Appea"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 125575,
+        "kind": "item",
+        "occurred_at": "2026-10-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/83/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: ORDER filed granting filing of amicus curiae brief [69]. Appearance form due on 10/13/2026 from Daniel Joshua Freeman. Disclosure Statement filed (if corporate amicus)? Y. Appearan"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 125577,
+        "kind": "item",
+        "occurred_at": "2026-10-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/86/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Corrected ORDER [75] filed granting filing of amicus curiae brief [66]. Appearance form due from Former Employees of the U.S. Department of Justice on 10/13/2026. Disclosure Statem"
       }
     ]
   },
@@ -28906,9 +28926,9 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "26-2029",
-    "entry_count": 63,
+    "entry_count": 68,
     "filed_at": "2026-09-04T00:00:00",
-    "latest_entry_at": "2026-09-21T00:00:00",
+    "latest_entry_at": "2026-09-25T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
@@ -29125,6 +29145,46 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74755121/00108511069/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): TRANSCRIPT report/order form filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, DHS, Joseph B. Edlow, Derek T. Kan, Amber McReynolds, M"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 125552,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108512381/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER entered: In light of this Court's September 14, 2026 order which, in part, consolidated these appeals, the parties are directed to use the above caption on all future filings"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 125553,
+        "kind": "item",
+        "occurred_at": "2026-09-22T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108512405/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): BRIEFING schedule set. Brief and Appendix due 11/02/2026 for appellants Donald J. Trump, United States Postal Service, David Steiner, Doug Tulino, Amber McReynolds, Derek Kan, Rona"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 125554,
+        "kind": "item",
+        "occurred_at": "2026-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108514322/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): NOTICE of default entered: Appellants State of Florida and State of Montana are presently in default for failure to file an appearance form. It is ordered that if an appearance for"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 125555,
+        "kind": "item",
+        "occurred_at": "2026-09-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108514457/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION for reconsideration and request for correction of order [6843597-3], [6843602-3] denying leave to file brief as amicus curiae filed by Movant Brandon Michael Hayes. Certific"
       }
     ]
   },
