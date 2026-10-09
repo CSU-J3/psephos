@@ -10208,5 +10208,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/why-new-hampshire-students-face-unique-barriers-to-the-ballot-box-this-election",
     "title": "Why New Hampshire students face unique barriers to the ballot box this election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126482,
+    "kind": "item",
+    "occurred_at": "2026-10-09T16:00:52+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/09/georgia-state-election-board-gmail-account-transparency-settlement",
+    "title": "Undisclosed Gmail account raises concerns about Georgia State Election Board transparency settlement"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126487,
+    "kind": "item",
+    "occurred_at": "2026-10-09T16:18:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-multiple-red-states-direct-democracy-is-on-the-ballot-this-midterm",
+    "title": "In multiple red states, direct democracy is on the ballot this midterm"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126489,
+    "kind": "item",
+    "occurred_at": "2026-10-09T16:52:55+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/here-comes-the-general",
+    "title": "Here Comes the General"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126486,
+    "kind": "item",
+    "occurred_at": "2026-10-09T17:00:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ice-sued-for-records-of-its-plans-for-election-day",
+    "title": "ICE sued for records of its plans for Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126485,
+    "kind": "item",
+    "occurred_at": "2026-10-09T17:11:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-offered-to-let-doj-inspect-its-unredacted-voter-rolls",
+    "title": "Missouri offered to let DOJ inspect its unredacted voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126484,
+    "kind": "item",
+    "occurred_at": "2026-10-09T17:31:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/despite-trumps-efforts-to-kneecap-it-a-key-federal-election-agency-is-still-at-work",
+    "title": "Despite Trump’s efforts to kneecap it, a key federal election agency is still at work"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126488,
+    "kind": "item",
+    "occurred_at": "2026-10-09T17:47:38+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/california-prison-visitation-new-laws",
+    "title": "This New Law Will Make It Easier for Californians to Visit Family in Prison"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126483,
+    "kind": "item",
+    "occurred_at": "2026-10-09T18:26:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-shuts-down-trump-dojs-nationwide-voter-roll-crusade",
+    "title": "Federal judge shuts down Trump DOJ’s nationwide voter roll crusade"
   }
 ]

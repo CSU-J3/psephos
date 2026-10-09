@@ -9326,7 +9326,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 162,
+    "entry_count": 163,
     "entry_moves": [
       {
         "entries": [
@@ -9381,7 +9381,7 @@
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-10-06T00:00:00",
+    "latest_entry_at": "2026-10-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -24377,7 +24377,7 @@
     "date_terminated": null,
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 76,
+    "entry_count": 78,
     "entry_moves": [
       {
         "entries": [
@@ -24415,7 +24415,7 @@
       }
     ],
     "filed_at": "2026-04-21T00:00:00",
-    "latest_entry_at": "2026-08-17T00:00:00",
+    "latest_entry_at": "2026-10-09T00:00:00",
     "plaintiff": "Common Cause",
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
@@ -24682,6 +24682,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/50/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: RESPONSE to Plaintiffs' 48 Notice of Supplemental Authority filed by TODD BLANCHE, U.S. DEPARTMENT OF JUSTICE. (Dibblee, Christian) (Entered: 08/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 126263,
+        "kind": "item",
+        "occurred_at": "2026-10-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/51/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MEMORANDUM OPINION re the 29 Motion for Partial Summary Judgment and the 32 Motion to Dismiss, or in the Alternative, for Summary Judgment. See the attached document for details. S"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 126264,
+        "kind": "item",
+        "occurred_at": "2026-10-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/52/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: ORDER granting the 29 Motion for Summary Judgment and denying the 32 Motion to Dismiss, or in the Alternative, for Summary Judgment. See the 51 Memorandum Opinion for details. Sign"
       }
     ]
   },
@@ -26349,7 +26369,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 56,
+    "entry_count": 57,
     "entry_moves": [
       {
         "entries": [
@@ -26387,7 +26407,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-09-23T00:00:00",
+    "latest_entry_at": "2026-10-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -26474,6 +26494,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) directing Attorney Joshua R. Zuckerman, Esq. for Appellant USA to submit 4 hard copies in white covers for the Appellant's Joint Appendix Volume I filed on 9/8/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 126305,
+        "kind": "item",
+        "occurred_at": "2026-10-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/55/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: UNOPPOSED Motion filed by Appellee Secretary Commonwealth of Pennsylvania for Extension of Time to file Appellee Brief until/for 11/20/2026. Certificate of Service dated"
       }
     ]
   },
@@ -26636,7 +26666,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 84,
+    "entry_count": 86,
     "entry_moves": [
       {
         "entries": [
@@ -26657,7 +26687,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-10-08T00:00:00",
+    "latest_entry_at": "2026-10-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
@@ -28823,7 +28853,7 @@
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-10-08T18:55:48.459447+00:00",
+    "status_checked_at": "2026-10-09T18:26:12.795421+00:00",
     "superseded_by": null,
     "timeline": [
       {
