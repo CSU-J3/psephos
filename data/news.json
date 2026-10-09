@@ -10288,5 +10288,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-shuts-down-trump-dojs-nationwide-voter-roll-crusade",
     "title": "Federal judge shuts down Trump DOJ’s nationwide voter roll crusade"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126718,
+    "kind": "item",
+    "occurred_at": "2026-10-09T18:42:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-rebukes-trump-administration-for-perverting-mission-of-dojs-crown-jewel",
+    "title": "Judge rebukes Trump administration for perverting pro-voting mission of DOJ’s ‘crown jewel’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126717,
+    "kind": "item",
+    "occurred_at": "2026-10-09T19:50:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-deniers-say-an-obscure-rule-on-wi-fi-routers-means-trump-can-decide-how-votes-are-counted-heres-why-theyre-wrong",
+    "title": "Election deniers say an obscure rule on Wi-Fi routers means Trump can decide how votes are counted. Here’s why they’re wrong"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 126720,
+    "kind": "item",
+    "occurred_at": "2026-10-09T20:02:46+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNT1oyRlpHQjg5NjBGS3FvN1NnYTc5YS0wR1QzZUZQMnBOY3pvV1pSZE5qMlVJZXlZdGdDdF8xUkw2cDF2TFhORmthemVrQ0NjR0RQWHlDWEdNQkFacEtWalVHLUFXSkNqQWZnNW43WWh3Y2FNbWwwNWNKMkhLZndvS0FTcGFXTFN6OHRraHEtNHVybDZudWJMa1hua01NTVpPcVFkSkxmVHBQTWUzYmRj?oc=5",
+    "title": "Federal judge shuts down Trump DOJ’s nationwide voter roll crusade, even in states that cooperated - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126715,
+    "kind": "item",
+    "occurred_at": "2026-10-09T20:42:44+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/10/09/2026-secretary-of-state-election-adrian-fontes-alex-kolodin",
+    "title": "Arizona’s secretary of state race pits an election defender against an election skeptic"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 126716,
+    "kind": "item",
+    "occurred_at": "2026-10-09T21:20:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-taxpayer-funded-propaganda-ads-draw-third-lawsuit",
+    "title": "Trump’s taxpayer-funded propaganda ads draw third lawsuit"
   }
 ]

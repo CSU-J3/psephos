@@ -27034,7 +27034,7 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 61,
+    "entry_count": 68,
     "entry_moves": [
       {
         "entries": [
@@ -27051,7 +27051,7 @@
       }
     ],
     "filed_at": "2026-07-27T00:00:00",
-    "latest_entry_at": "2026-10-08T00:00:00",
+    "latest_entry_at": "2026-10-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
@@ -27178,6 +27178,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73678095/67/united-states-v-oliver/",
         "title": "United States v. New Mexico: [11325774] Minute order filed - Appellant's reply brief is accepted for filing. The parties will be notified via separate docket entry if paper copies are required. (Text Only - No"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 126533,
+        "kind": "item",
+        "occurred_at": "2026-10-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/68/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11326077] Minute order filed - Pursuant to 10th Cir. R. 31.5, paper copies of all merits briefs that have not already been submitted are now due. This directive extends to briefs "
       }
     ]
   },
