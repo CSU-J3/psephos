@@ -10338,5 +10338,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trumps-taxpayer-funded-propaganda-ads-draw-third-lawsuit",
     "title": "Trump’s taxpayer-funded propaganda ads draw third lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 127393,
+    "kind": "item",
+    "occurred_at": "2026-10-10T15:59:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-sue-for-more-poll-watchers-in-key-michigan-city",
+    "title": "Republicans sue for more poll watchers in key Michigan city"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 127392,
+    "kind": "item",
+    "occurred_at": "2026-10-10T17:16:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-state-gop-rush-to-defend-north-carolina-last-minute-mail-ballot-restrictions",
+    "title": "RNC, state GOP rush to defend North Carolina’s last-minute mail ballot restrictions"
   }
 ]
