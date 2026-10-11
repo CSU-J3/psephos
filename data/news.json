@@ -10378,5 +10378,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/this-week-at-democracy-docket-trumps-voter-roll-scheme-hits-a-major-roadblock-and-ices-role-in-voting-crackdown-revealed",
     "title": "This week at Democracy Docket: Trump’s voter roll scheme hits a major roadblock, and ICE’s role in voting crackdown revealed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 128276,
+    "kind": "item",
+    "occurred_at": "2026-10-11T15:18:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-propoganda-ads-funded-by-taxpayers-to-stop-dhs-says",
+    "title": "Trump propaganda ads funded by taxpayers to stop, DHS says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 128275,
+    "kind": "item",
+    "occurred_at": "2026-10-11T16:21:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/bannon-election-denial-is-the-core-belief-of-the-maga-movement",
+    "title": "Bannon: Election denial is ‘the core belief of the MAGA movement’"
   }
 ]
