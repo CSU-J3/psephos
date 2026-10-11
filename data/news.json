@@ -10398,5 +10398,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/bannon-election-denial-is-the-core-belief-of-the-maga-movement",
     "title": "Bannon: Election denial is ‘the core belief of the MAGA movement’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 128497,
+    "kind": "item",
+    "occurred_at": "2026-10-11T19:19:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-promise-to-stop-trump-propaganda-ads-isnt-enough-challengers-argue",
+    "title": "DHS promise to stop Trump propaganda ads isn’t enough, challengers argue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 128496,
+    "kind": "item",
+    "occurred_at": "2026-10-11T21:34:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/bannon-gop-struggling-to-hold-senate-because-it-didnt-pass-save-america-act",
+    "title": "Bannon: GOP struggling to hold Senate because it didn’t pass SAVE America Act"
   }
 ]
