@@ -10418,5 +10418,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/bannon-gop-struggling-to-hold-senate-because-it-didnt-pass-save-america-act",
     "title": "Bannon: GOP struggling to hold Senate because it didn’t pass SAVE America Act"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 128935,
+    "kind": "item",
+    "occurred_at": "2026-10-12T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/12/usps-mail-ballot-vote-absentee-2026-election-november",
+    "title": "‘Mail early’: Election officials urge people to get ballots in pronto amid Postal Service slowdowns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 128936,
+    "kind": "item",
+    "occurred_at": "2026-10-12T12:42:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-taxpayer-funded-propaganda-ads-halted-by-federal-judge",
+    "title": "Trump’s taxpayer-funded propaganda ads halted by federal judge"
   }
 ]
