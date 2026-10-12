@@ -10438,5 +10438,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trumps-taxpayer-funded-propaganda-ads-halted-by-federal-judge",
     "title": "Trump’s taxpayer-funded propaganda ads halted by federal judge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 129157,
+    "kind": "item",
+    "occurred_at": "2026-10-12T16:36:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/how-quickly-trump-admin-moved-taxpayer-money-for-midterm-propaganda-ads-alarms-judge",
+    "title": "How quickly Trump admin moved taxpayer money for midterm propaganda ads alarms judge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 129156,
+    "kind": "item",
+    "occurred_at": "2026-10-12T17:59:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-agents-raid-democratic-congressmembers-home-weeks-before-election-day",
+    "title": "Federal agents raid Democratic Rep. Ilhan Omar’s home weeks before Election Day, despite DOJ rules against political interference"
   }
 ]
