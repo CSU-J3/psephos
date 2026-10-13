@@ -10468,5 +10468,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-kept-taxpayer-funded-ads-running-after-judge-ordered-them-stopped-blames-email-delay",
     "title": "Trump administration kept taxpayer-funded ads running after judge ordered them stopped, blames email delay"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 129822,
+    "kind": "item",
+    "occurred_at": "2026-10-13T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/utah-mail-ballots-head-to-voters-tuesday-but-with-no-grace-period-for-returns",
+    "title": "Utah mail ballots head to voters Tuesday, but with no grace period for returns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 129821,
+    "kind": "item",
+    "occurred_at": "2026-10-13T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-early-voting-begins-under-intense-scrutiny-from-white-house-gop",
+    "title": "Georgia early voting begins under intense scrutiny from White House, GOP"
   }
 ]
