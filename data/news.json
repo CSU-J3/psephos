@@ -10458,5 +10458,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/federal-agents-raid-democratic-congressmembers-home-weeks-before-election-day",
     "title": "Federal agents raid Democratic Rep. Ilhan Omar’s home weeks before Election Day, despite DOJ rules against political interference"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 129379,
+    "kind": "item",
+    "occurred_at": "2026-10-12T22:44:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-kept-taxpayer-funded-ads-running-after-judge-ordered-them-stopped-blames-email-delay",
+    "title": "Trump administration kept taxpayer-funded ads running after judge ordered them stopped, blames email delay"
   }
 ]
