@@ -10488,5 +10488,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/georgia-early-voting-begins-under-intense-scrutiny-from-white-house-gop",
     "title": "Georgia early voting begins under intense scrutiny from White House, GOP"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130080,
+    "kind": "item",
+    "occurred_at": "2026-10-13T15:08:08+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/13/trump-2026-election-martial-law-ban-voting-machines",
+    "title": "From martial law to banning voting machines, election skeptics urge Trump to take extreme action"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130082,
+    "kind": "item",
+    "occurred_at": "2026-10-13T16:33:37+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/guide-to-contests-for-chief-elections-official-secretary-of-state",
+    "title": "These 35 States Are Deciding Who’ll Run Their Elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130081,
+    "kind": "item",
+    "occurred_at": "2026-10-13T18:27:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-backlog-of-voter-registrations-needs-immediate-fix-voting-groups-say-in-lawsuit",
+    "title": "Texas’ backlog of voter registrations needs immediate fix, voting groups say in lawsuit"
   }
 ]
