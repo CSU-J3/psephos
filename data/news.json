@@ -10518,5 +10518,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/texas-backlog-of-voter-registrations-needs-immediate-fix-voting-groups-say-in-lawsuit",
     "title": "Texas’ backlog of voter registrations needs immediate fix, voting groups say in lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130303,
+    "kind": "item",
+    "occurred_at": "2026-10-13T19:26:30+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/13/late-arriving-ballots-can-count-if-officials-make-mistakes",
+    "title": "Wisconsin officials can count ballots that arrive late over official errors, judge rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130306,
+    "kind": "item",
+    "occurred_at": "2026-10-13T20:05:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/colorado-voting-election-denier-midterm",
+    "title": "As Colorado voting kicks off, an election denier is seeking to reshape how the state votes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130305,
+    "kind": "item",
+    "occurred_at": "2026-10-13T20:35:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-must-preserve-protections-against-last-minute-purges-advocates-warn",
+    "title": "Supreme Court must preserve protections against last-minute purges, advocates warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130304,
+    "kind": "item",
+    "occurred_at": "2026-10-13T21:08:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-sends-vague-letter-to-voters-flagged-by-citizenship-database",
+    "title": "North Carolina sends vague letter to voters flagged by citizenship database"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130302,
+    "kind": "item",
+    "occurred_at": "2026-10-13T21:24:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/10/13/department-of-justice-noncitizen-voting-2024-election-charges",
+    "title": "Department of Justice charges 4 more noncitizens in Pennsylvania with voting in the 2024 election"
   }
 ]

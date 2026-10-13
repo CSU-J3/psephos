@@ -26369,7 +26369,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 57,
+    "entry_count": 58,
     "entry_moves": [
       {
         "entries": [
@@ -26407,7 +26407,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-09T00:00:00",
+    "latest_entry_at": "2026-10-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -26504,6 +26504,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/55/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: ECF FILER: UNOPPOSED Motion filed by Appellee Secretary Commonwealth of Pennsylvania for Extension of Time to file Appellee Brief until/for 11/20/2026. Certificate of Service dated"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 130125,
+        "kind": "item",
+        "occurred_at": "2026-10-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) granting Unopposed Motion for Extension of Time to File Brief filed by Appellee Secretary Commonwealth of Pennsylvania. Appellee Secretary Commonwealth of Pennsy"
       }
     ]
   },
@@ -27199,7 +27209,7 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 121,
+    "entry_count": 122,
     "entry_moves": [
       {
         "kind": "merge",
