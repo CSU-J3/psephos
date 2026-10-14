@@ -10588,5 +10588,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/iowa-heads-to-the-polls-and-the-official-who-shared-voters-personal-data-with-trumps-doj-is-on-the-ballot",
     "title": "Iowa heads to the polls — and the official who shared voters’ personal data with Trump’s DOJ is on the ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131001,
+    "kind": "item",
+    "occurred_at": "2026-10-14T13:16:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-threatens-to-sue-california-over-alleged-noncitizens-on-rolls",
+    "title": "Trump administration threatens to sue California over alleged noncitizens on rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131002,
+    "kind": "item",
+    "occurred_at": "2026-10-14T15:36:45+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/frederick-maryland-inmigracion-sheriff-chuck-jenkins",
+    "title": "Cómo un sheriff de Maryland persiguió inmigrantes mucho antes de que se dispararan las redadas del ICE"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131000,
+    "kind": "item",
+    "occurred_at": "2026-10-14T15:38:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/more-trump-propaganda-videos-posted-to-youtube-despite-court-order",
+    "title": "More Trump propaganda videos posted to YouTube despite court order"
   }
 ]
