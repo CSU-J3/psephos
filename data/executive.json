@@ -1368,5 +1368,35 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/10/08/2026-20660/optional-practical-training-fees",
     "title": "Optional Practical Training Fees"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 130685,
+    "kind": "item",
+    "occurred_at": "2026-10-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/10/14/2026-21024/imposition-and-collection-of-civil-penalties-for-certain-immigration-related-violations",
+    "title": "Imposition and Collection of Civil Penalties for Certain Immigration-Related Violations"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 130686,
+    "kind": "item",
+    "occurred_at": "2026-10-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/10/14/2026-20955/removal-of-automatic-extensions-for-certain-employment-authorization-documents",
+    "title": "Removal of Automatic Extensions for Certain Employment Authorization Documents"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 130687,
+    "kind": "item",
+    "occurred_at": "2026-10-14T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/10/14/2026-20941/removing-deference-to-prior-uscis-determinations-of-eligibility",
+    "title": "Removing Deference to Prior USCIS Determinations of Eligibility"
   }
 ]

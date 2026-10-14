@@ -10568,5 +10568,25 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/10/13/department-of-justice-noncitizen-voting-2024-election-charges",
     "title": "Department of Justice charges 4 more noncitizens in Pennsylvania with voting in the 2024 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130750,
+    "kind": "item",
+    "occurred_at": "2026-10-14T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/14/voting-rights-groups-sue-over-dps-voter-registration-error",
+    "title": "Voting rights groups sue Texas over failure to process more than 500,000 voter registrations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 130751,
+    "kind": "item",
+    "occurred_at": "2026-10-14T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/iowa-heads-to-the-polls-and-the-official-who-shared-voters-personal-data-with-trumps-doj-is-on-the-ballot",
+    "title": "Iowa heads to the polls — and the official who shared voters’ personal data with Trump’s DOJ is on the ballot"
   }
 ]
