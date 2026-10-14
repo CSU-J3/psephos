@@ -10618,5 +10618,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/more-trump-propaganda-videos-posted-to-youtube-despite-court-order",
     "title": "More Trump propaganda videos posted to YouTube despite court order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131329,
+    "kind": "item",
+    "occurred_at": "2026-10-14T18:11:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-jersey-judge-allows-gop-led-probe-targeting-democratic-voters-to-proceed",
+    "title": "New Jersey judge allows GOP-led probe targeting Democratic voters to proceed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131328,
+    "kind": "item",
+    "occurred_at": "2026-10-14T18:25:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-supreme-court-skeptical-of-gop-bid-to-force-election-deniers-onto-fulton-county-board",
+    "title": "Georgia Supreme Court skeptical of GOP bid to force election deniers onto Fulton County board"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131327,
+    "kind": "item",
+    "occurred_at": "2026-10-14T19:45:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/as-election-day-nears-these-federal-cases-could-still-impact-access-to-the-ballot",
+    "title": "As Election Day nears, these federal cases could still impact access to the ballot"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131326,
+    "kind": "item",
+    "occurred_at": "2026-10-14T20:05:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-cites-no-clear-legal-authority-in-demand-that-california-sideline-ballots-from-suspected-noncitizens",
+    "title": "Trump DOJ cites no clear legal authority in demand that California sideline ballots from suspected noncitizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131324,
+    "kind": "item",
+    "occurred_at": "2026-10-14T20:24:03+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/14/clerks-say-mail-ballots-soon-provisional-absentee-lawsuit-shut-down",
+    "title": "Wisconsin officials call for prompt ballot return after court rules against proposed backup plan"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131325,
+    "kind": "item",
+    "occurred_at": "2026-10-14T20:47:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/senate-dems-will-send-over-100-election-observers-to-nine-states-for-midterms",
+    "title": "Senate Dems will send over 100 election observers to nine states for midterms"
   }
 ]

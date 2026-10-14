@@ -19938,7 +19938,7 @@
     "date_terminated": null,
     "defendant": "TRUMP",
     "docket_number": "1:26-cv-01114",
-    "entry_count": 249,
+    "entry_count": 252,
     "entry_moves": [
       {
         "entries": [
@@ -19959,7 +19959,7 @@
       }
     ],
     "filed_at": "2026-04-01T00:00:00",
-    "latest_entry_at": "2026-09-23T00:00:00",
+    "latest_entry_at": "2026-10-14T00:00:00",
     "plaintiff": "DSCC",
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
@@ -22994,7 +22994,7 @@
         "occurred_at": "2026-09-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/308/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying movant Brandon Michael Hayes' Motion for Reconsideration of Order Denying Clarification as Moot [[307]]. (MAP)"
+        "title": "League of Women Voters of Massachusetts v. Trump: Judge Indira Talwani: ELECTRONIC ORDER denying movant Brandon Michael Hayes’ Motion for Reconsideration of Order Denying Clarification as Moot [ 307 ]. (MAP) (Entered: 09/24/2026)"
       },
       {
         "channel": "litigation",
@@ -23004,7 +23004,7 @@
         "occurred_at": "2026-09-25T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/309/league-of-women-voters-of-massachusetts-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump: Copy re [308] Electronic Order mailed to Brandon Michael Hayes on September 25, 2026. (MAP)"
+        "title": "League of Women Voters of Massachusetts v. Trump: Copy re 308 Electronic Order mailed to Brandon Michael Hayes on September 25, 2026. (MAP) (Entered: 09/25/2026)"
       }
     ]
   },
@@ -26676,7 +26676,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 88,
+    "entry_count": 90,
     "entry_moves": [
       {
         "entries": [
@@ -26697,7 +26697,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-10-13T00:00:00",
+    "latest_entry_at": "2026-10-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
