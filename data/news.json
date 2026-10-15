@@ -10688,5 +10688,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/10/14/voter-registration-backlog-cleared-state-error-dps",
     "title": "Texas election officials clear backlog of thousands of voter registrations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131802,
+    "kind": "item",
+    "occurred_at": "2026-10-15T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/15/fall-2026-election-expert-survey-troops-polls-seize-ballots-voting-fraud",
+    "title": "Experts say the midterms could face challenges, but are less concerned than in the spring"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131803,
+    "kind": "item",
+    "occurred_at": "2026-10-15T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-early-voting-begins-with-students-targeted-by-suppression-schemes",
+    "title": "North Carolina early voting begins, with students targeted by suppression schemes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131804,
+    "kind": "item",
+    "occurred_at": "2026-10-15T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-redistricting-war-could-be-a-midterms-flop-for-the-gop",
+    "title": "Trump’s redistricting war could be a midterms flop for the GOP"
   }
 ]
