@@ -10678,5 +10678,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/senate-dems-will-send-over-100-election-observers-to-nine-states-for-midterms",
     "title": "Senate Dems will send over 100 election observers to nine states for midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 131574,
+    "kind": "item",
+    "occurred_at": "2026-10-14T22:24:46+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/14/voter-registration-backlog-cleared-state-error-dps",
+    "title": "Texas election officials clear backlog of thousands of voter registrations"
   }
 ]

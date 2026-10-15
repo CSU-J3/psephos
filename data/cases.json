@@ -9386,7 +9386,7 @@
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:31.176933+00:00",
+    "status_checked_at": "2026-10-15T04:53:26.799599+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -11014,7 +11014,7 @@
     "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
     "state": "Hawaii",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:34.847857+00:00",
+    "status_checked_at": "2026-10-15T04:53:31.500910+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -18017,7 +18017,7 @@
     "date_terminated": null,
     "defendant": "Henderson",
     "docket_number": "2:26-cv-00166",
-    "entry_count": 69,
+    "entry_count": 70,
     "entry_moves": [
       {
         "entries": [
@@ -18030,12 +18030,12 @@
       }
     ],
     "filed_at": "2026-02-26T00:00:00",
-    "latest_entry_at": "2026-09-18T00:00:00",
+    "latest_entry_at": "2026-10-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72334921/united-states-v-henderson/",
     "state": "Utah",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:38.475325+00:00",
+    "status_checked_at": "2026-10-15T04:53:35.089915+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -18056,7 +18056,7 @@
         "occurred_at": "2026-02-26T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334921/1/united-states-v-henderson/",
-        "title": "United States v. Utah: COMPLAINT against Diedre M. Henderson No Fee Required - US Government filed by The United States of America. (Attachments: # 1 Civil Cover Sheet Civil Cover Sheet, # 2 Exhibit Atta"
+        "title": "United States v. Utah: COMPLAINT against Diedre Deidre M. Henderson No Fee Required - US Government filed by The United States of America. (Attachments: # 1 Civil Cover Sheet Civil Cover Sheet, # 2 Exhib"
       },
       {
         "channel": "litigation",
@@ -18116,7 +18116,7 @@
         "occurred_at": "2026-03-13T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72334921/18/united-states-v-henderson/",
-        "title": "United States v. Utah: First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Memorandum in Support filed by Defendant Diedre M. Henderson. (Gillespie, Mark) (Entered: 03/13/2026)"
+        "title": "United States v. Utah: First MOTION TO DISMISS FOR FAILURE TO STATE A CLAIM and Memorandum in Support filed by Defendant Diedre Deidre M. Henderson. (Gillespie, Mark) Modified on 10/14/2026 to correct mi"
       },
       {
         "channel": "litigation",
@@ -18463,7 +18463,7 @@
     "source_url": "https://www.courtlistener.com/docket/72335259/united-states-v-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:42.154052+00:00",
+    "status_checked_at": "2026-10-15T04:53:38.591323+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19415,7 +19415,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
     "state": "California",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:46.902257+00:00",
+    "status_checked_at": "2026-10-15T04:53:42.141546+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19615,7 +19615,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
     "state": "Oregon",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:50.955503+00:00",
+    "status_checked_at": "2026-10-15T04:53:46.119104+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19795,7 +19795,7 @@
     "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
     "state": "Idaho",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:54.609926+00:00",
+    "status_checked_at": "2026-10-15T04:53:49.887996+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -23034,7 +23034,7 @@
     "source_url": "https://www.courtlistener.com/docket/73134260/league-of-united-latin-american-citizens-v-executive-office-of-the/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:04.399111+00:00",
+    "status_checked_at": "2026-10-15T04:53:01.435258+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24720,7 +24720,7 @@
     "source_url": "https://www.courtlistener.com/docket/73443024/united-states-of-america-v-fontes/",
     "state": "Arizona",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:59.128275+00:00",
+    "status_checked_at": "2026-10-15T04:53:53.994555+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24809,7 +24809,7 @@
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:02.891648+00:00",
+    "status_checked_at": "2026-10-15T04:53:57.582174+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24994,7 +24994,7 @@
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:06.628779+00:00",
+    "status_checked_at": "2026-10-15T04:54:02.096649+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25279,7 +25279,7 @@
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:11.242155+00:00",
+    "status_checked_at": "2026-10-15T04:54:05.822129+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25590,7 +25590,7 @@
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:15.066599+00:00",
+    "status_checked_at": "2026-10-15T04:54:09.368514+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25966,7 +25966,7 @@
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:43.074091+00:00",
+    "status_checked_at": "2026-10-15T04:54:36.355049+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26412,7 +26412,7 @@
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:18.799843+00:00",
+    "status_checked_at": "2026-10-15T04:54:13.035952+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26543,7 +26543,7 @@
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:23.575812+00:00",
+    "status_checked_at": "2026-10-15T04:54:16.581627+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26702,7 +26702,7 @@
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:27.212083+00:00",
+    "status_checked_at": "2026-10-15T04:54:20.612680+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26991,7 +26991,7 @@
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:30.871039+00:00",
+    "status_checked_at": "2026-10-15T04:54:24.141902+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27066,7 +27066,7 @@
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:35.637862+00:00",
+    "status_checked_at": "2026-10-15T04:54:27.727436+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27227,7 +27227,7 @@
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:23.788102+00:00",
+    "status_checked_at": "2026-10-15T04:53:19.496804+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27447,7 +27447,7 @@
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:27.451524+00:00",
+    "status_checked_at": "2026-10-15T04:53:23.139753+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27616,7 +27616,7 @@
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:07:39.363963+00:00",
+    "status_checked_at": "2026-10-15T04:54:32.819067+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27716,7 +27716,7 @@
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:20.096846+00:00",
+    "status_checked_at": "2026-10-15T04:53:15.760748+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27828,7 +27828,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671625/united-states-v-monica-evans/",
     "state": "DC",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:08.014914+00:00",
+    "status_checked_at": "2026-10-15T04:53:04.988591+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27973,7 +27973,7 @@
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:11.699323+00:00",
+    "status_checked_at": "2026-10-15T04:53:08.530135+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28114,7 +28114,7 @@
     "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
     "state": "Nevada",
     "status": "pending",
-    "status_checked_at": "2026-10-14T05:06:16.421844+00:00",
+    "status_checked_at": "2026-10-15T04:53:12.076063+00:00",
     "superseded_by": null,
     "timeline": [
       {
