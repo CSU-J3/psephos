@@ -10788,5 +10788,95 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-sues-california-in-bid-to-squash-ballots-it-claims-went-to-thousands-of-noncitizens",
     "title": "Trump administration sues California in bid to squash ballots it claims went to thousands of noncitizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132433,
+    "kind": "item",
+    "occurred_at": "2026-10-15T18:04:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/wisconsin-offers-new-guidance-to-local-officials-on-emerging-election-threats",
+    "title": "Wisconsin offers new guidance to local officials on emerging election threats"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132425,
+    "kind": "item",
+    "occurred_at": "2026-10-15T18:36:51+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/15/suspicious-letters-white-powder-election-officials-threats",
+    "title": "Suspicious letters sent to election officials nationwide weeks before the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132432,
+    "kind": "item",
+    "occurred_at": "2026-10-15T18:42:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-demanded-california-vet-20000-voters-within-48-hours-before-suing",
+    "title": "Trump DOJ demanded California vet 20,000 voters within 48 hours, before suing"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132431,
+    "kind": "item",
+    "occurred_at": "2026-10-15T19:24:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/montana-claim-that-temporary-residency-law-doesnt-apply-to-student-voters-hits-skeptical-judge",
+    "title": "Montana’s claim that temporary residency law doesn’t apply to student voters hits skeptical judge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132430,
+    "kind": "item",
+    "occurred_at": "2026-10-15T19:38:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-lawsuit-challenges-trumps-unlawful-acquisition-of-americans-voter-records-demands-datas-deletion",
+    "title": "New lawsuit challenges Trump’s ‘unlawful’ acquisition of Americans’ voter records, demands data’s deletion"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132429,
+    "kind": "item",
+    "occurred_at": "2026-10-15T20:04:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/iowa-election-worker-cleared-of-alarming-2024-election-misconduct-charges",
+    "title": "Iowa election worker cleared of alarming 2024 election misconduct charges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132428,
+    "kind": "item",
+    "occurred_at": "2026-10-15T21:09:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-rejected-dojs-outrageous-demand-to-vet-thousands-of-alleged-noncitizens-on-voter-rolls",
+    "title": "California rejected DOJ’s ‘outrageous’ demand to vet thousands of alleged noncitizens on voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132427,
+    "kind": "item",
+    "occurred_at": "2026-10-15T21:11:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-hampshire-asks-supreme-court-to-ban-all-consideration-of-student-ids-to-vote",
+    "title": "New Hampshire asks Supreme Court to ban all consideration of student IDs to vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132426,
+    "kind": "item",
+    "occurred_at": "2026-10-15T21:20:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-suing-california-marks-major-escalation-in-election-interference-attempts-experts-warn",
+    "title": "Trump DOJ suing California marks major ‘escalation’ in election interference attempts, experts warn"
   }
 ]

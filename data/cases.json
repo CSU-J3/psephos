@@ -24783,7 +24783,7 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 106,
+    "entry_count": 108,
     "entry_moves": [
       {
         "entries": [
@@ -24804,7 +24804,7 @@
       }
     ],
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-10-07T00:00:00",
+    "latest_entry_at": "2026-10-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -26676,7 +26676,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 90,
+    "entry_count": 93,
     "entry_moves": [
       {
         "entries": [
@@ -26903,7 +26903,7 @@
         "occurred_at": "2026-10-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/74/united-states-v-jared-demarinis/",
-        "title": "United States v. Maryland: Order filed"
+        "title": "United States v. Maryland: ORDER filed granting filing of amicus curiae brief [65]. Appearance form due on 10/13/2026 from Katherine Hamilton. Disclosure Statement filed (if corporate amicus)? Y. Appearance "
       },
       {
         "channel": "litigation",
@@ -26954,6 +26954,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/86/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: Corrected ORDER [75] filed granting filing of amicus curiae brief [66]. Appearance form due from Former Employees of the U.S. Department of Justice on 10/13/2026. Disclosure Statem"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132215,
+        "kind": "item",
+        "occurred_at": "2026-10-08T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/75/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: (ENTRY RESTRICTED) ORDER filed granting filing of amicus curiae brief [66]. Disclosure statement and appearance form due from Former Employees of the U.S. Department of Justice on "
       }
     ]
   },
@@ -27209,7 +27219,7 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 124,
+    "entry_count": 126,
     "entry_moves": [
       {
         "kind": "merge",
@@ -27590,7 +27600,7 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 33,
+    "entry_count": 34,
     "entry_moves": [
       {
         "entries": [
@@ -27611,7 +27621,7 @@
       }
     ],
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-10-08T00:00:00",
+    "latest_entry_at": "2026-10-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -27698,6 +27708,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/28/united-states-v-steven-koski/",
         "title": "United States v. Virginia: MOTION by US to withdraw/relieve/substitute counsel.Attorney or client motion? client.. If under L.R. 46(d), was client advised of right to file response within 7 days? N/A. Date a"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132247,
+        "kind": "item",
+        "occurred_at": "2026-10-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/38/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: Order filed"
       }
     ]
   },
@@ -27769,7 +27789,7 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 26,
+    "entry_count": 28,
     "entry_moves": [
       {
         "kind": "merge",
@@ -27782,7 +27802,7 @@
       }
     ],
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-10-07T00:00:00",
+    "latest_entry_at": "2026-10-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
