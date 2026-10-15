@@ -10718,5 +10718,75 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trumps-redistricting-war-could-be-a-midterms-flop-for-the-gop",
     "title": "Trump’s redistricting war could be a midterms flop for the GOP"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132033,
+    "kind": "item",
+    "occurred_at": "2026-10-15T13:59:22+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/constitutional-sheriff-klickitat-county-washington",
+    "title": "A Far-Right ‘Constitutional Sheriff’ Departs, but His Legacy May Endure"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132032,
+    "kind": "item",
+    "occurred_at": "2026-10-15T14:14:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dojs-california-demand-threatens-warrant-based-ballot-seizure-democrats-court-filing-warns",
+    "title": "DOJ’s California demand threatens ‘warrant-based ballot seizure,’ Democrats’ court filing warns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132031,
+    "kind": "item",
+    "occurred_at": "2026-10-15T14:57:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-appeals-court-wont-fully-block-student-ids-for-voting-in-new-hampshire",
+    "title": "Federal appeals court won’t fully block student IDs for voting in New Hampshire"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132030,
+    "kind": "item",
+    "occurred_at": "2026-10-15T16:23:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-defeat-for-trump-court-allows-nonprofits-to-register-voters-at-naturalization-ceremonies",
+    "title": "In defeat for Trump, court allows nonprofits to register voters at naturalization ceremonies"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132027,
+    "kind": "item",
+    "occurred_at": "2026-10-15T16:27:51+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/15/how-to-prepare-for-the-midterms-election-day-live-webinar-event",
+    "title": "You’re invited: How to prepare for the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132029,
+    "kind": "item",
+    "occurred_at": "2026-10-15T16:35:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-residents-who-received-vague-letter-questioning-eligibility-can-still-vote-officials-confirm",
+    "title": "North Carolina residents who received vague letter questioning eligibility can still vote, officials confirm"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 132028,
+    "kind": "item",
+    "occurred_at": "2026-10-15T17:05:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-sues-california-in-bid-to-squash-ballots-it-claims-went-to-thousands-of-noncitizens",
+    "title": "Trump administration sues California in bid to squash ballots it claims went to thousands of noncitizens"
   }
 ]
