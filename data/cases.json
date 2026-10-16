@@ -19938,7 +19938,7 @@
     "date_terminated": null,
     "defendant": "TRUMP",
     "docket_number": "1:26-cv-01114",
-    "entry_count": 252,
+    "entry_count": 259,
     "entry_moves": [
       {
         "entries": [
@@ -19959,7 +19959,7 @@
       }
     ],
     "filed_at": "2026-04-01T00:00:00",
-    "latest_entry_at": "2026-10-14T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "DSCC",
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
@@ -24397,7 +24397,7 @@
     "date_terminated": "2026-10-09T00:00:00",
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 83,
+    "entry_count": 84,
     "entry_moves": [
       {
         "entries": [
@@ -24752,6 +24752,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: .Order AND ~Util - Set/Reset Deadlines"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 133237,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/56/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals docketing fee was not paid because the appe"
       }
     ]
   },

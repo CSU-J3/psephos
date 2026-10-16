@@ -10908,5 +10908,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/the-doj-sued-los-angeles-to-stop-20000-people-from-voting-one-problem-some-arent-registered-there",
     "title": "The DOJ sued Los Angeles to stop 20,000 people from voting. One problem: Some aren’t registered there"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133460,
+    "kind": "item",
+    "occurred_at": "2026-10-16T17:53:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-is-building-a-national-voter-registry-threatening-state-control-of-elections",
+    "title": "Trump is building a national voter registry, threatening state control of elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133457,
+    "kind": "item",
+    "occurred_at": "2026-10-16T18:30:02+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/16/voter-registration-records-address-update-backlog-secretary-of-state",
+    "title": "Texas has a new backlog of voter address updates due to another state error"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133461,
+    "kind": "item",
+    "occurred_at": "2026-10-16T20:09:58+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/dollars-and-sense",
+    "title": "Dollars and Sense"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133459,
+    "kind": "item",
+    "occurred_at": "2026-10-16T20:10:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/prominent-maga-figures-pushing-supreme-court-to-hear-john-eastman-disbarment-appeal",
+    "title": "Prominent MAGA figures pushing Supreme Court to hear John Eastman disbarment appeal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133458,
+    "kind": "item",
+    "occurred_at": "2026-10-16T20:16:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nebraska-supreme-court-upholds-voting-for-citizens-abroad-in-yet-another-gop-loss",
+    "title": "Nebraska Supreme Court upholds voting for citizens abroad in yet another GOP loss"
   }
 ]
