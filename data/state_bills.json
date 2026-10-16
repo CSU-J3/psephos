@@ -46142,5 +46142,29 @@
     ],
     "title": "Recognizing the week of October 5 through 9, 2026, as \"National Voter Education Week\" in Pennsylvania.",
     "url": "https://legiscan.com/PA/bill/HR632/2025"
+  },
+  {
+    "bill_number": "SB1502",
+    "is_vehicle": false,
+    "last_action": "Referred to Local Government",
+    "last_action_at": "2026-10-15T00:00:00",
+    "session": "2025-2026 Regular Session",
+    "state": "PA",
+    "state_bill_id": "2160273",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 132932,
+        "kind": "item",
+        "occurred_at": "2026-10-15T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/SB1502/2025",
+        "title": "PA SB1502: Referred to Local Government"
+      }
+    ],
+    "title": "In township supervisors, further providing for monthly meetings, quorum and voting.",
+    "url": "https://legiscan.com/PA/bill/SB1502/2025"
   }
 ]

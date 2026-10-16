@@ -10851,6 +10851,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 132929,
+    "kind": "item",
+    "occurred_at": "2026-10-15T20:38:19+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBXR3JHZ3k1YWZ2Tm54UnV6RWNJVWNzX1h6UHU2NmgyRHZfMG91MkNCR1Y0QVVJTl9JQWg1YnZKRUJ0b2JSTDY2ZVVPaXlaOGw4NFNhWS1wUVlnMVNvNGdoaHFoQWk0c3ZXZlR3Z2tsV2pKNkg1dlVEb0JYUF9xZWM?oc=5",
+    "title": "🚨 League of Women Voters v. U.S. Department of Homeland Security - Democracy Docket"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 132428,
     "kind": "item",
