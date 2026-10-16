@@ -21158,7 +21158,7 @@
       }
     ],
     "filed_at": "2026-04-02T00:00:00",
-    "latest_entry_at": "2026-10-15T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
@@ -23011,7 +23011,7 @@
         "grade": "A1",
         "id": 132709,
         "kind": "item",
-        "occurred_at": "2026-10-15T00:00:00",
+        "occurred_at": "2026-10-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/310/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: USCA Judgment as to [221] Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, Derek T K"
@@ -23021,7 +23021,7 @@
         "grade": "A1",
         "id": 132710,
         "kind": "item",
-        "occurred_at": "2026-10-15T00:00:00",
+        "occurred_at": "2026-10-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/311/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: MANDATE of USCA as to [221] Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, Derek T"
@@ -24397,7 +24397,7 @@
     "date_terminated": "2026-10-09T00:00:00",
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 79,
+    "entry_count": 83,
     "entry_moves": [
       {
         "entries": [
@@ -24435,7 +24435,7 @@
       }
     ],
     "filed_at": "2026-04-21T00:00:00",
-    "latest_entry_at": "2026-10-15T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "Common Cause",
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
@@ -24722,6 +24722,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/52/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: ORDER granting the 29 Motion for Summary Judgment and denying the 32 Motion to Dismiss, or in the Alternative, for Summary Judgment. See the 51 Memorandum Opinion for details. Sign"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132935,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/55/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: NOTICE OF APPEAL TO DC CIRCUIT COURT as to 51 Memorandum & Opinion, 52 Order on Motion for Summary Judgment, Order on Motion to Dismiss, by U.S. DEPARTMENT OF JUSTICE, TODD W. BLAN"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132936,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER: The Court ORDERS the Defendants to respond to the Plaintiffs' 53 Notice and Request for Status Conference by October 19, 2026. Signed by Judge Sparkle L. Sooknanan on"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132937,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: .Order AND ~Util - Set/Reset Deadlines"
       }
     ]
   },
@@ -24992,7 +25022,7 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 120,
+    "entry_count": 125,
     "entry_moves": [
       {
         "entries": [
@@ -25009,7 +25039,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-05T00:00:00",
+    "latest_entry_at": "2026-10-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -25266,6 +25296,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
         "title": "United States v. Rhode Island: PLEADING tendered: NINE (9) paper copies of reply brief [6841262-2] filed by Appellant US. [26-1665] (LEC) [Entered: 09/15/2026 09:49 AM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 133000,
+        "kind": "item",
+        "occurred_at": "2026-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island: NINE (9) paper copies of reply brief [6841262-2] submitted by Appellant US. [26-1665] (LEC) [Entered: 10/01/2026 12:10 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 133001,
+        "kind": "item",
+        "occurred_at": "2026-09-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
+        "title": "United States v. Rhode Island: NINE (9) paper copies of reply brief [6841262-2] submitted by Appellant US. [26-1665] (LEC) [Entered: 10/14/2026 04:49 PM]"
       }
     ]
   },
@@ -25277,7 +25327,7 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 122,
+    "entry_count": 124,
     "entry_moves": [
       {
         "entries": [
@@ -25294,7 +25344,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-06T00:00:00",
+    "latest_entry_at": "2026-10-14T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -25592,7 +25642,7 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 117,
+    "entry_count": 118,
     "entry_moves": [
       {
         "kind": "merge",
@@ -25605,7 +25655,7 @@
       }
     ],
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-10-02T00:00:00",
+    "latest_entry_at": "2026-10-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -26389,7 +26439,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 58,
+    "entry_count": 59,
     "entry_moves": [
       {
         "entries": [
@@ -26533,6 +26583,16 @@
         "occurred_at": "2026-10-13T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) granting Unopposed Motion for Extension of Time to File Brief filed by Appellee Secretary Commonwealth of Pennsylvania. Appellee Secretary Commonwealth of Pennsy"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132995,
+        "kind": "item",
+        "occurred_at": "2026-10-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/56/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) granting Unopposed Motion for Extension of Time to File Brief filed by Appellee Secretary Commonwealth of Pennsylvania. Appellee Secretary Commonwealth of Pennsy"
       }
     ]
@@ -27074,7 +27134,7 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 75,
+    "entry_count": 78,
     "entry_moves": [
       {
         "entries": [
@@ -27228,6 +27288,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73678095/68/united-states-v-oliver/",
         "title": "United States v. New Mexico: [11326077] Minute order filed - Pursuant to 10th Cir. R. 31.5, paper copies of all merits briefs that have not already been submitted are now due. This directive extends to briefs "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132990,
+        "kind": "item",
+        "occurred_at": "2026-10-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73678095/77/united-states-v-oliver/",
+        "title": "United States v. New Mexico: [11327271] [26-2126] Paper copies of appellant's reply brief received from United States. [Entered: 10/14/2026 11:03 AM]"
       }
     ]
   },
@@ -27620,7 +27690,7 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 34,
+    "entry_count": 48,
     "entry_moves": [
       {
         "entries": [
@@ -27641,7 +27711,7 @@
       }
     ],
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-10-15T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -27737,7 +27807,17 @@
         "occurred_at": "2026-10-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/38/united-states-v-steven-koski/",
-        "title": "United States v. Virginia: Order filed"
+        "title": "United States v. Virginia: ORDER filed granting filing of amicus curiae brief (Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary). Disclosure Statement filed (if corporate amicus)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 133050,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/41/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: ORDER filed granting filing of amicus curiae brief (Democratic National Committee [39]; Lawyers' Committee for Civil Rights Under Law, National Urban League, League of United Latin"
       }
     ]
   },
@@ -27749,9 +27829,9 @@
     "date_terminated": null,
     "defendant": "Griswold",
     "docket_number": "26-1326",
-    "entry_count": 21,
+    "entry_count": 23,
     "filed_at": "2026-08-18T00:00:00",
-    "latest_entry_at": "2026-10-06T00:00:00",
+    "latest_entry_at": "2026-10-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
@@ -27798,6 +27878,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74667007/21/united-states-v-griswold/",
         "title": "United States v. Colorado: [11324673] Minute order filed - the brief and appendix submitted by appellant is accepted for filing. The parties will be notified via separate docket entry if paper copies are req"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132959,
+        "kind": "item",
+        "occurred_at": "2026-10-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74667007/22/united-states-v-griswold/",
+        "title": "United States v. Colorado: [11327994] Motion filed by Appellee Jena Griswold, Common Cause; Kyle Giddings, Anne Keke, Colorado Alliance for Retired Americans, Britton DeFord to extend time to file appellee/r"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132960,
+        "kind": "item",
+        "occurred_at": "2026-10-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74667007/23/united-states-v-griswold/",
+        "title": "United States v. Colorado: [11328013] Order filed by Clerk of the Court appellees' unopposed motion for extension of time to file the response brief to 12/04/2026 for Jena Griswold, Anne Keke, Kyle Giddings,"
       }
     ]
   },
@@ -27982,7 +28082,7 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 103,
+    "entry_count": 105,
     "entry_moves": [
       {
         "entries": [
@@ -28008,7 +28108,7 @@
       }
     ],
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-10-07T00:00:00",
+    "latest_entry_at": "2026-10-15T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -28227,7 +28327,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 184,
+    "entry_count": 186,
     "entry_moves": [
       {
         "entries": [
@@ -28248,7 +28348,7 @@
       }
     ],
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": "2026-09-28T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
@@ -28915,6 +29015,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/173/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Copy re 172 Electronic Order mailed to Emanuel McCray on September 17, 2026. (MAP) (Entered: 09/17/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 132949,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/175/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: USCA Judgment"
       }
     ]
   },

@@ -10888,5 +10888,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-suing-california-marks-major-escalation-in-election-interference-attempts-experts-warn",
     "title": "Trump DOJ suing California marks major ‘escalation’ in election interference attempts, experts warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133228,
+    "kind": "item",
+    "occurred_at": "2026-10-16T15:04:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dojs-california-lawsuit-may-violate-court-order-against-trumps-voter-roll-crusade-voting-groups-warn",
+    "title": "DOJ’s California lawsuit may violate court order against Trump’s voter roll crusade, voting groups warn"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133227,
+    "kind": "item",
+    "occurred_at": "2026-10-16T16:39:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-doj-sued-los-angeles-to-stop-20000-people-from-voting-one-problem-some-arent-registered-there",
+    "title": "The DOJ sued Los Angeles to stop 20,000 people from voting. One problem: Some aren’t registered there"
   }
 ]
