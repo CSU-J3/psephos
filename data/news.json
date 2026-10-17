@@ -10958,5 +10958,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/nebraska-supreme-court-upholds-voting-for-citizens-abroad-in-yet-another-gop-loss",
     "title": "Nebraska Supreme Court upholds voting for citizens abroad in yet another GOP loss"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133692,
+    "kind": "item",
+    "occurred_at": "2026-10-16T21:57:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/naacp-sues-justice-department-to-block-plan-for-1000-poll-monitors-nationwide",
+    "title": "NAACP sues Justice Department to block plan for 1,000 poll monitors nationwide"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133691,
+    "kind": "item",
+    "occurred_at": "2026-10-16T22:18:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/florida-naacp-youth-chapters-sue-state-to-stop-student-voter-id-ban",
+    "title": "Florida NAACP youth chapters sue state to stop student voter ID ban"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133689,
+    "kind": "item",
+    "occurred_at": "2026-10-16T22:36:21+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/10/16/hamtramck-mayor-election-2025-overturned-alharbi-mahmood",
+    "title": "Mayoral election result from 2025 overturned after 37 disputed ballots are finally counted"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 133690,
+    "kind": "item",
+    "occurred_at": "2026-10-17T00:00:55+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-threatens-california-election-officials-with-criminal-exposure",
+    "title": "Trump DOJ threatens California election officials with criminal exposure if they count ballots from flagged voters"
   }
 ]
