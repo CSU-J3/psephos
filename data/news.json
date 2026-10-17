@@ -11008,5 +11008,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/nevada-begins-early-voting-after-dojs-noncitizen-voter-crusade-fizzled-out",
     "title": "Nevada begins early voting after DOJ’s noncitizen voter crusade fizzled out"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 134151,
+    "kind": "item",
+    "occurred_at": "2026-10-17T14:31:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/they-will-all-go-to-jail-trump-threatens-california-officials-amid-push-to-reject-20000-ballots",
+    "title": "‘They will all go to jail’: Trump threatens California officials amid push to reject 20,000 ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 134150,
+    "kind": "item",
+    "occurred_at": "2026-10-17T15:12:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-asks-court-to-let-it-continue-its-voter-roll-purging-program-despite-block",
+    "title": "DOJ asks court to let it continue its voter roll purging program despite block"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 134149,
+    "kind": "item",
+    "occurred_at": "2026-10-17T15:35:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/why-is-an-official-overseeing-criminal-cases-leading-dojs-assault-on-california-ballots",
+    "title": "Why is an official overseeing criminal cases leading DOJ’s assault on California ballots?"
   }
 ]
