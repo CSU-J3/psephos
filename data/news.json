@@ -11038,5 +11038,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/why-is-an-official-overseeing-criminal-cases-leading-dojs-assault-on-california-ballots",
     "title": "Why is an official overseeing criminal cases leading DOJ’s assault on California ballots?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 134377,
+    "kind": "item",
+    "occurred_at": "2026-10-17T17:36:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/why-california-is-ground-zero-in-trumps-bid-to-rig-the-midterms",
+    "title": "Why California is ground zero in Trump’s bid to rig the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 134376,
+    "kind": "item",
+    "occurred_at": "2026-10-17T18:43:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-claims-it-confirmed-20000-california-voters-are-noncitizens-it-didnt",
+    "title": "Trump admin. claims it confirmed 20,000 California voters are noncitizens. It didn’t"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 134375,
+    "kind": "item",
+    "occurred_at": "2026-10-17T20:04:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/todd-blanche-must-confirm-doj-wont-seize-ballots-senators-demand",
+    "title": "Todd Blanche must confirm DOJ won’t seize ballots, senators demand"
   }
 ]
