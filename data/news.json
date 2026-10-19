@@ -1341,6 +1341,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 135974,
+    "kind": "item",
+    "occurred_at": "2026-05-27T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQOV9iYThwWTJPcEFacUVvSmN6NDExWDVLMEN1Tl9WdDZQTEN1UHp6NGcxREdVaFJVUGd0RlIzSVNRWTl3dF9xOGswMGZnM3hrakRtLTlUTF94SVZJd243NVA1bm5EWm4xNkd4STJPM3F5Q3g5dVJ6N1lrTEp4MHpIMUNHQlFyMGlKaWhzdWZqbWRYdzktVWRUMlFwNVpabm1BLXVxS2tKV1BMYWE0R01B?oc=5",
+    "title": "Here’s how Michigan elections could change if Democrats or Republicans win full control of state government - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 272,
     "kind": "item",
@@ -11128,5 +11138,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/texans-head-to-the-polls-putting-trumps-redistricting-map-to-the-test",
     "title": "Texans head to the polls, putting Trump’s redistricting map to the test"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135972,
+    "kind": "item",
+    "occurred_at": "2026-10-19T14:44:05+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/culver-city-measure-extending-voting-age-to-16",
+    "title": "High Schoolers Push to Extend the Voting Age to 16 for Local Elections in This LA Suburb"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135970,
+    "kind": "item",
+    "occurred_at": "2026-10-19T15:51:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/harmeet-dhillon-claims-no-interruption-to-vote-counting-ahead-its-already-happening-in-california",
+    "title": "Harmeet Dhillon claims ‘no interruption’ to vote counting ahead. It’s already happening in California"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135969,
+    "kind": "item",
+    "occurred_at": "2026-10-19T16:04:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voting-group-urges-supreme-court-to-deny-new-hampshire-bid-to-fully-ban-student-ids-for-voting",
+    "title": "Supreme Court must let students use IDs for voting, advocates say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135968,
+    "kind": "item",
+    "occurred_at": "2026-10-19T17:24:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-escalates-attack-on-california-demands-immediate-block-on-counting-votes-from-20000-alleged-noncitizens",
+    "title": "DOJ escalates attack on California, demands immediate block on counting votes from 20,000 alleged noncitizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135971,
+    "kind": "item",
+    "occurred_at": "2026-10-19T17:36:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-reportedly-uses-list-of-20000-suspected-noncitizens-to-drive-arrests-in-california",
+    "title": "Trump administration uses list of 20,000 suspected noncitizens to drive arrests in California"
   }
 ]

@@ -7434,7 +7434,7 @@
         "occurred_at": "2026-09-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/93/united-states-v-hanzas/",
-        "title": "United States v. Vermont: ORDER granting  37  Motion to Dismiss for Failure to State a Claim; granting  39  Motion to Dismiss for Failure to State a Claim; granting  44   Motion to Dismiss; denying  2   MOT"
+        "title": "United States v. Vermont: ORDER granting 37 Motion to Dismiss for Failure to State a Claim; granting 39 Motion to Dismiss for Failure to State a Claim; granting 44 Motion to Dismiss; denying 2 MOTION to Com"
       },
       {
         "channel": "litigation",
@@ -24397,7 +24397,7 @@
     "date_terminated": "2026-10-09T00:00:00",
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 85,
+    "entry_count": 88,
     "entry_moves": [
       {
         "entries": [
@@ -24435,7 +24435,7 @@
       }
     ],
     "filed_at": "2026-04-21T00:00:00",
-    "latest_entry_at": "2026-10-16T00:00:00",
+    "latest_entry_at": "2026-10-19T00:00:00",
     "plaintiff": "Common Cause",
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
@@ -24762,6 +24762,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/56/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals docketing fee was not paid because the appe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 135734,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/57/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MOTION to Stay re 51 Memorandum & Opinion, 52 Order on Motion for Summary Judgment, Order on Motion to Dismiss, 55 Notice of Appeal to DC Circuit Court by TODD W. BLANCHE, U.S. DEP"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 135735,
+        "kind": "item",
+        "occurred_at": "2026-10-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: MINUTE ORDER: On October 9, 2026, the Court granted the Plaintiffs' 29 Motion for Summary Judgment and denied the Defendants' 32 Motion to Dismiss, or in the Alternative, for Summa"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 135736,
+        "kind": "item",
+        "occurred_at": "2026-10-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: USCA Case Number 26-5362 for 55 Notice of Appeal to DC Circuit Court filed by TODD W. BLANCHE, U.S. DEPARTMENT OF JUSTICE. (zjm)"
       }
     ]
   },
@@ -26615,7 +26645,7 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 46,
+    "entry_count": 47,
     "entry_moves": [
       {
         "kind": "merge",
@@ -26628,7 +26658,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-09T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -27144,7 +27174,7 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 78,
+    "entry_count": 79,
     "entry_moves": [
       {
         "entries": [
@@ -27161,7 +27191,7 @@
       }
     ],
     "filed_at": "2026-07-27T00:00:00",
-    "latest_entry_at": "2026-10-14T00:00:00",
+    "latest_entry_at": "2026-10-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
@@ -27907,7 +27937,7 @@
         "occurred_at": "2026-10-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74667007/23/united-states-v-griswold/",
-        "title": "United States v. Colorado: [11328013] Order filed by Clerk of the Court appellees' unopposed motion for extension of time to file the response brief to 12/04/2026 for Jena Griswold, Anne Keke, Kyle Giddings,"
+        "title": "United States v. Colorado: [11328013] Order filed by Clerk of the Court granting appellees' unopposed motion for extension of time to file the response brief to 12/04/2026 for Jena Griswold, Anne Keke, Kyle "
       }
     ]
   },
@@ -29266,9 +29296,9 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "26-2029",
-    "entry_count": 68,
+    "entry_count": 69,
     "filed_at": "2026-09-04T00:00:00",
-    "latest_entry_at": "2026-09-25T00:00:00",
+    "latest_entry_at": "2026-10-19T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
@@ -29525,6 +29555,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74755121/00108514457/state-of-california-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION for reconsideration and request for correction of order [6843597-3], [6843602-3] denying leave to file brief as amicus curiae filed by Movant Brandon Michael Hayes. Certific"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 135753,
+        "kind": "item",
+        "occurred_at": "2026-10-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108524806/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION to extend time to file brief and appendix filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, DHS, Joseph B. Edlow, Derek T. Kan,"
       }
     ]
   },
