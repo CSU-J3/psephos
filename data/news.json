@@ -11188,5 +11188,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-reportedly-uses-list-of-20000-suspected-noncitizens-to-drive-arrests-in-california",
     "title": "Trump administration uses list of 20,000 suspected noncitizens to drive arrests in California"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136206,
+    "kind": "item",
+    "occurred_at": "2026-10-19T19:07:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/i-will-hunt-you-down-u-s-attorney-baselessly-threatens-voters-as-polls-open-in-texas",
+    "title": "‘I will hunt you down’: U.S. attorney baselessly threatens voters as polls open in Texas"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136205,
+    "kind": "item",
+    "occurred_at": "2026-10-19T19:16:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-dojs-california-crackdown-rests-on-25-potentially-illegal-votes-out-of-45-million-ballots-cast",
+    "title": "Trump DOJ’s California crackdown rests on 25 potentially illegal votes out of 45 million ballots cast"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136204,
+    "kind": "item",
+    "occurred_at": "2026-10-19T19:42:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/seizing-ballots-would-be-an-illegal-attack-on-democracy-trump-might-try-anyway",
+    "title": "Seizing ballots would be an illegal attack on democracy. Trump might try anyway"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136203,
+    "kind": "item",
+    "occurred_at": "2026-10-19T20:53:42+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/19/how-to-cast-a-provisional-ballot-in-texas",
+    "title": "What to expect if you have to cast a provisional ballot in Texas"
   }
 ]

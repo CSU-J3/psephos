@@ -9326,7 +9326,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 163,
+    "entry_count": 164,
     "entry_moves": [
       {
         "entries": [
@@ -9381,7 +9381,7 @@
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-10-09T00:00:00",
+    "latest_entry_at": "2026-10-19T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
