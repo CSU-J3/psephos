@@ -11108,5 +11108,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/hes-not-screwing-around-gavin-newsom-warns-trump-is-trying-to-rig-midterms",
     "title": "‘He’s not screwing around’: Gavin Newsom warns Trump is trying to rig midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135731,
+    "kind": "item",
+    "occurred_at": "2026-10-19T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/19/ballot-measures-2026-election-voter-id-redistricting",
+    "title": "Voters face flurry of ballot measures that could transform elections across the country"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 135732,
+    "kind": "item",
+    "occurred_at": "2026-10-19T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texans-head-to-the-polls-putting-trumps-redistricting-map-to-the-test",
+    "title": "Texans head to the polls, putting Trump’s redistricting map to the test"
   }
 ]
