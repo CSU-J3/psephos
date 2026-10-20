@@ -11268,5 +11268,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/10/20/mail-ballot-requests-data-2026-election-democrats-trump",
     "title": "Has Trump had a chilling effect on mail voting? In Pennsylvania, the early data is inconclusive."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136904,
+    "kind": "item",
+    "occurred_at": "2026-10-20T13:30:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-claims-california-lawsuit-not-barred-by-court-order",
+    "title": "DOJ claims California lawsuit not barred by court order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136901,
+    "kind": "item",
+    "occurred_at": "2026-10-20T13:48:06+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/20/trump-california-noncitizen-voters-2026-election-lawsuit",
+    "title": "Trump lawsuit against California over noncitizen voters heads for uncharted territory"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136903,
+    "kind": "item",
+    "occurred_at": "2026-10-20T14:12:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nearly-6-in-10-americans-believe-trump-is-a-potentially-dangerous-dictator-who-threatens-democracy-poll-finds",
+    "title": "Nearly 6 in 10 Americans believe Trump is a ‘potentially dangerous dictator’ who threatens democracy, poll finds"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136902,
+    "kind": "item",
+    "occurred_at": "2026-10-20T16:31:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dojs-california-lawsuit-borders-on-the-absurd-and-threatens-to-disenfranchise-thousands-state-says",
+    "title": "DOJ’s California lawsuit ‘borders on the absurd’ and ‘threatens to disenfranchise thousands,’ state says"
   }
 ]
