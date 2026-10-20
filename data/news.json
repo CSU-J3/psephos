@@ -52,6 +52,16 @@
   {
     "channel": "news",
     "grade": "C3",
+    "id": 137157,
+    "kind": "item",
+    "occurred_at": "2025-03-25T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPNzdPUmw3T1dwZ29rUmFrbGg0UlJkUENNaUw4dFJkZ25rQ3Y4cVl6d1p2OHpOem9kT2Z1Tm5wUlc0aUF4VjNHZWxEa1hSVWo3OWxLN1I4b29WY2tyQVpkRzlBelFJOE84QlpROXdfSHlWZHROWDQ4eUNnM2RiTUNLNHBTbGF3MHVEVFhoV25ybXJFTkdrR0hPVUVvekxDdXBPWGdzZA?oc=5",
+    "title": "Trump orders an overhaul of how elections are run, inviting a likely legal challenge - Votebeat"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
     "id": 84316,
     "kind": "item",
     "occurred_at": "2025-03-31T07:00:00+00:00",
@@ -208,6 +218,16 @@
     "source_id": "google-news",
     "source_url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNZGFzc3ItSkcwcGFSckVadzcyNDRsb2J4UGJ0VWVaX1BjNW1UcFpqOEpDNy1NYlo1Mld5SDZOQkt6QVA0bU9XZDRib2QyUFl3NVU2YV95ZHJhcDFMcXdTNzBhRjkwWnVkY0hwdXh3S0R3eldXRVpVRG0wNnFCZEhwWUJ3R09sUkNG?oc=5",
     "title": "🚨 United States of America v. Caldwell - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 137159,
+    "kind": "item",
+    "occurred_at": "2026-02-27T08:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxPSHpLMmRja05MV3BWSFBRY2gwVnRtYjV2LUFXS0JiQlZBNlY1MXdkdG1reGFzdFpUN0NOOWgwam1CWGY0U0lNdzhBamxQcDFLY044ZkdxMkdVcmowNWZKVUVEcTFvT2NlZ3ZFQVZINEZISzgyMkJDT19iM2JsbFhmWG1ubXJFeWRvdVhUSnA2dW00Z2RxN3BEREh5U0RJdks0WFF1a1ExbW92VlZIUnNPTU5hZ01JRGRKazRDNE81R29IRmVvemNYUmN4YUhIcEU?oc=5",
+    "title": "Read a draft of the emergency executive order for Trump to take control of elections - Democracy Docket"
   },
   {
     "channel": "news",
@@ -11308,5 +11328,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/dojs-california-lawsuit-borders-on-the-absurd-and-threatens-to-disenfranchise-thousands-state-says",
     "title": "DOJ’s California lawsuit ‘borders on the absurd’ and ‘threatens to disenfranchise thousands,’ state says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137149,
+    "kind": "item",
+    "occurred_at": "2026-10-20T17:09:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-who-approved-north-carolina-ballot-restrictions-also-upheld-gop-law-targeting-black-voters-with-almost-surgical-precision",
+    "title": "Judge who approved North Carolina ballot restrictions also upheld GOP law targeting Black voters ‘with almost surgical precision’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137148,
+    "kind": "item",
+    "occurred_at": "2026-10-20T17:58:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/la-county-checked-a-sample-of-voters-on-dojs-noncitizen-list-1-in-4-were-born-in-the-u-s",
+    "title": "LA County checked a sample of voters on DOJ’s ‘noncitizen’ list. 1 in 4 were born in the U.S."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137147,
+    "kind": "item",
+    "occurred_at": "2026-10-20T20:23:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/exclusive-thousands-of-mail-ballots-set-to-be-rejected-after-gop-imposed-strict-new-rules-data-shows",
+    "title": "Exclusive: Thousands of North Carolina ballots set to be rejected after GOP imposed strict new rules, data shows"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137146,
+    "kind": "item",
+    "occurred_at": "2026-10-20T21:02:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-warns-doj-turning-voting-law-on-its-head-to-strong-arm-election-workers-into-compliance",
+    "title": "California warns DOJ turning voting law on its head to strong-arm election workers into compliance"
   }
 ]
