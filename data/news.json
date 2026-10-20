@@ -11238,5 +11238,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-absentee-ballot-restrictions-will-remain-in-effect-for-midterms-judge-rules",
     "title": "North Carolina absentee ballot restrictions will remain in effect for midterms, judge rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136676,
+    "kind": "item",
+    "occurred_at": "2026-10-20T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/10/20/ice-polls-federal-interference-midterms-2026-pinal-pima-lucha-aclu",
+    "title": "Threats of ICE at the polls could just be a fear tactic. Arizona is preparing anyway."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136677,
+    "kind": "item",
+    "occurred_at": "2026-10-20T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/more-wisconsin-voters-shun-mail-ballots-as-early-voting-opens-in-swing-state",
+    "title": "More Wisconsin voters shun mail ballots as early voting opens in swing state"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136675,
+    "kind": "item",
+    "occurred_at": "2026-10-20T10:00:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/10/20/mail-ballot-requests-data-2026-election-democrats-trump",
+    "title": "Has Trump had a chilling effect on mail voting? In Pennsylvania, the early data is inconclusive."
   }
 ]
