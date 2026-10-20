@@ -11228,5 +11228,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/10/19/how-to-cast-a-provisional-ballot-in-texas",
     "title": "What to expect if you have to cast a provisional ballot in Texas"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 136441,
+    "kind": "item",
+    "occurred_at": "2026-10-19T23:13:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-absentee-ballot-restrictions-will-remain-in-effect-for-midterms-judge-rules",
+    "title": "North Carolina absentee ballot restrictions will remain in effect for midterms, judge rules"
   }
 ]
