@@ -11408,5 +11408,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/10/21/voters-cast-early-ballots-as-they-distrust-postal-service",
     "title": "In Wisconsin, voters cast early in-person ballots as distrust in the mail grows"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137852,
+    "kind": "item",
+    "occurred_at": "2026-10-21T12:43:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dont-let-them-take-away-your-vote-north-carolina-governor-slams-infuriating-ballot-rejections-caused-by-new-gop-restrictions",
+    "title": "‘Don’t let them take away your vote’: North Carolina governor slams ‘infuriating’ ballot rejections caused by new GOP restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137853,
+    "kind": "item",
+    "occurred_at": "2026-10-21T13:58:59+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/prosecutor-ouachita-parish-2026",
+    "title": "After Finding a Man on Death Row Innocent, a Judge Wants to Lead the Office That Tried Him"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137851,
+    "kind": "item",
+    "occurred_at": "2026-10-21T14:51:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/justice-elena-kagan-says-supreme-courts-conservative-majority-weakened-democracy",
+    "title": "Justice Elena Kagan says Supreme Court’s conservative majority weakened democracy"
   }
 ]

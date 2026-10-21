@@ -26489,7 +26489,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 60,
+    "entry_count": 62,
     "entry_moves": [
       {
         "entries": [
@@ -26527,7 +26527,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-20T00:00:00",
+    "latest_entry_at": "2026-10-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -26654,6 +26654,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) If the Intervenor Appellees wish to extend the deadline for filing their briefs past the October 22, 2026 deadline set in the September 23, 2026 text orders, the"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 137671,
+        "kind": "item",
+        "occurred_at": "2026-10-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/59/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: JOINT Motion filed by Appellees Pennsylvania Alliance for Retired Americans and Mike Crossey for Extension of Time to file Answering Brief until/for 29 days. Certificate"
       }
     ]
   },
