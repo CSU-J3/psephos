@@ -11438,5 +11438,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/justice-elena-kagan-says-supreme-courts-conservative-majority-weakened-democracy",
     "title": "Justice Elena Kagan says Supreme Court’s conservative majority weakened democracy"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138091,
+    "kind": "item",
+    "occurred_at": "2026-10-21T18:08:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/giving-voter-rolls-to-doj-may-have-violated-alaska-law-judge-says-allowing-lawsuit-to-continue",
+    "title": "Giving voter rolls to DOJ may have violated Alaska law, judge says, allowing lawsuit to continue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138090,
+    "kind": "item",
+    "occurred_at": "2026-10-21T19:57:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/south-carolina-county-deliberately-disenfranchising-black-voters-by-closing-poll-sites-local-official-alleges",
+    "title": "South Carolina county deliberately disenfranchising Black voters by closing poll sites, local official alleges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138089,
+    "kind": "item",
+    "occurred_at": "2026-10-21T20:04:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/could-house-republicans-refuse-to-seat-democrats-trump-might-try",
+    "title": "Could House Republicans refuse to seat Democrats? Trump might try"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138088,
+    "kind": "item",
+    "occurred_at": "2026-10-21T20:23:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-who-rejected-dojs-voter-roll-demand-takes-over-california-ballot-case-from-trump-appointee",
+    "title": "Judge who rejected DOJ’s voter roll demand takes over California ballot case from Trump appointee"
   }
 ]
