@@ -27160,9 +27160,9 @@
   {
     "bill_number": "SB599",
     "is_vehicle": false,
-    "last_action": "Removed from table",
-    "last_action_at": "2026-06-30T00:00:00",
-    "session": null,
+    "last_action": "Laid on the table (Pursuant to Senate Rule 9)",
+    "last_action_at": "2026-10-20T00:00:00",
+    "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2022115",
     "status": "1",
@@ -27216,6 +27216,16 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/SB599/2025",
         "title": "PA SB599: Removed from table"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 137629,
+        "kind": "item",
+        "occurred_at": "2026-10-20T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/SB599/2025",
+        "title": "PA SB599: Laid on the table (Pursuant to Senate Rule 9)"
       }
     ],
     "title": "In county boards of elections, further providing for expenses of county boards and of primaries and elections to be paid by county, expenses of special elections and boards to be provided with offices; in voting by qualified absentee electors, further providing for date of application for absentee ballot and for voting by absentee electors; and, in voting by qualified mail-in electors, further providing for voting by mail-in electors.",

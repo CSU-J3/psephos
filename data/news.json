@@ -11398,5 +11398,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/democrats-sue-to-block-trump-admin-from-threatening-the-midterms",
     "title": "Democrats sue to block Trump admin from threatening the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137619,
+    "kind": "item",
+    "occurred_at": "2026-10-21T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/21/voters-cast-early-ballots-as-they-distrust-postal-service",
+    "title": "In Wisconsin, voters cast early in-person ballots as distrust in the mail grows"
   }
 ]
