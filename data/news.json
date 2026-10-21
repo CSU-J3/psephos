@@ -11291,6 +11291,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 137398,
+    "kind": "item",
+    "occurred_at": "2026-10-20T10:03:05+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPMnN5dHVYRjBYbFQzNW9uMVgyTkotZzZtSnBrWVdjQzhlQXMyNWpyNnpuWXlndWNEUlBLcDFHMHBnMDhvTDdTVHVLOFlVb1k1Q3huX3JnZHZyMFpDdUx2dzkwbWY1WWVkUlk0UTBUMjZYa3cwQkZ5cVlHUlpqUkJkYTA1VFFkNlhlUDdEQ0hmQXdfWnFxbVh2eGd4d01IcC1iRmtiTG9uZ1A?oc=5",
+    "title": "Mail voting is down so far among Pennsylvania Democrats. Is Trump to blame? - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 136904,
     "kind": "item",
@@ -11368,5 +11378,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/california-warns-doj-turning-voting-law-on-its-head-to-strong-arm-election-workers-into-compliance",
     "title": "California warns DOJ turning voting law on its head to strong-arm election workers into compliance"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137385,
+    "kind": "item",
+    "occurred_at": "2026-10-20T22:32:39+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arlington-virginia-sues-to-keep-armed-federal-agents-away-from-the-polls-as-voting-gets-underway",
+    "title": "Arlington, Virginia sues to keep armed federal agents away from the polls as voting gets underway"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 137384,
+    "kind": "item",
+    "occurred_at": "2026-10-21T01:35:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-sue-to-block-trump-admin-from-threatening-the-midterms",
+    "title": "Democrats sue to block Trump admin from threatening the midterms"
   }
 ]
