@@ -11508,5 +11508,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/arizona/2026/10/22/attorney-general-mayes-maricopa-county-recorder-heap-lawsuit-25-citizen-voters-save",
     "title": "Lawsuit: Maricopa County hasn’t reinstated 25 voters mistakenly flagged in citizenship check"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138555,
+    "kind": "item",
+    "occurred_at": "2026-10-22T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/22/voting-machines-china-hacking-trump-midterm",
+    "title": "Trump administration stokes concerns about Chinese-made parts in voting equipment, but experts say risks remain low"
   }
 ]
