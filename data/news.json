@@ -11478,5 +11478,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-who-rejected-dojs-voter-roll-demand-takes-over-california-ballot-case-from-trump-appointee",
     "title": "Judge who rejected DOJ’s voter roll demand takes over California ballot case from Trump appointee"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138322,
+    "kind": "item",
+    "occurred_at": "2026-10-21T21:51:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-mail-ballot-rejection-rates-keep-rising",
+    "title": "North Carolina mail ballot rejection rates keep rising"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138321,
+    "kind": "item",
+    "occurred_at": "2026-10-22T00:19:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/report-trump-doj-considers-suing-more-states-to-control-ballot-counting-before-or-after-the-midterms",
+    "title": "Report: Trump DOJ considers suing more states to control ballot counting, before or after the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138320,
+    "kind": "item",
+    "occurred_at": "2026-10-22T04:10:33+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/10/22/attorney-general-mayes-maricopa-county-recorder-heap-lawsuit-25-citizen-voters-save",
+    "title": "Lawsuit: Maricopa County hasn’t reinstated 25 voters mistakenly flagged in citizenship check"
   }
 ]
