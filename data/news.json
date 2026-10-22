@@ -11518,5 +11518,55 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/10/22/voting-machines-china-hacking-trump-midterm",
     "title": "Trump administration stokes concerns about Chinese-made parts in voting equipment, but experts say risks remain low"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138787,
+    "kind": "item",
+    "occurred_at": "2026-10-22T13:06:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-lawsuit-failed-to-prove-any-voter-cast-an-unlawful-ballot-california-says-in-motion-to-dismiss",
+    "title": "DOJ lawsuit failed to prove any ‘voter cast an unlawful ballot,’ California says in motion to dismiss"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138786,
+    "kind": "item",
+    "occurred_at": "2026-10-22T14:42:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-limits-dhs-voter-intimidation-efforts-targeting-alleged-noncitizens-in-nine-states",
+    "title": "Judge limits DHS voter intimidation efforts targeting alleged noncitizens in nine states"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138785,
+    "kind": "item",
+    "occurred_at": "2026-10-22T15:32:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-will-send-election-monitors-to-utah-where-gop-lieutenant-governor-defied-trumps-demand-for-voter-rolls",
+    "title": "DOJ will send election monitors to Utah where GOP lieutenant governor defied Trump’s demand for voter rolls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138784,
+    "kind": "item",
+    "occurred_at": "2026-10-22T15:52:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-trump-administration-claims-thousands-of-noncitizens-are-on-californias-rolls-how-it-found-those-names-is-a-mystery",
+    "title": "The Trump administration claims thousands of noncitizens are on California’s rolls. How it found those names is a mystery"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 138783,
+    "kind": "item",
+    "occurred_at": "2026-10-22T16:15:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-renews-hysteria-over-new-jersey-voter-registration-snafu-still-seeking-voter-data",
+    "title": "GOP renews hysteria over New Jersey voter registration snafu, still seeking voter data"
   }
 ]
