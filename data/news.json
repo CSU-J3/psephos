@@ -11568,5 +11568,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/gop-renews-hysteria-over-new-jersey-voter-registration-snafu-still-seeking-voter-data",
     "title": "GOP renews hysteria over New Jersey voter registration snafu, still seeking voter data"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139029,
+    "kind": "item",
+    "occurred_at": "2026-10-22T17:35:33+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/22/dane-county-election-commission-ice-fbi-polls",
+    "title": "Dane County at odds with WEC on whether unarmed ICE, FBI agents can show up at the polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139032,
+    "kind": "item",
+    "occurred_at": "2026-10-22T17:53:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/todd-blanche-wont-rule-out-trying-to-block-states-from-election-certifying-results",
+    "title": "Todd Blanche won’t rule out trying to block states from certifying election results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139028,
+    "kind": "item",
+    "occurred_at": "2026-10-22T18:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/10/22/antrim-county-victoria-bishop-local-clerks-bureau-elections",
+    "title": "A clerk tried to remove voters from the rolls. How her county — and the state of Michigan — stopped her."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139031,
+    "kind": "item",
+    "occurred_at": "2026-10-22T18:48:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arizona-demands-maricopa-county-restore-citizens-voting-registrations",
+    "title": "Arizona demands Maricopa County restore citizens’ voting registrations"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139030,
+    "kind": "item",
+    "occurred_at": "2026-10-22T18:58:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-keeps-changing-how-it-describes-california-list",
+    "title": "‘Likely’ noncitizens? ‘Confirmed’? ‘Suspected’? ‘Verified’? DOJ keeps changing how it describes California list"
   }
 ]
