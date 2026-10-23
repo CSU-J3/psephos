@@ -11638,5 +11638,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-appeals-california-ballot-case-before-judge-even-rules",
     "title": "Trump DOJ appeals California ballot case before judge even rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139502,
+    "kind": "item",
+    "occurred_at": "2026-10-23T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/furious-judges-are-tired-of-assuming-trump-administrations-good-faith",
+    "title": "‘Furious’ judges are tired of assuming Trump administration’s good faith"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139501,
+    "kind": "item",
+    "occurred_at": "2026-10-23T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/florida-early-voting-begins-under-aggressive-gop-gerrymander-in-last-election-before-more-voting-restrictions-kick-in",
+    "title": "Florida early voting begins under aggressive GOP gerrymander in last election before more voting restrictions kick in"
   }
 ]
