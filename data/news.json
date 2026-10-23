@@ -11718,5 +11718,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/poll-trumps-attempts-to-challenge-midterm-election-integrity-are-failing",
     "title": "Poll: Trump’s attempts to challenge midterm election integrity are failing"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139962,
+    "kind": "item",
+    "occurred_at": "2026-10-23T17:08:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-ask-judge-to-fast-track-lawsuit-to-block-trump-admins-midterm-threats",
+    "title": "Democrats ask judge to fast track lawsuit to block Trump admin’s midterm threats"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139961,
+    "kind": "item",
+    "occurred_at": "2026-10-23T18:20:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-on-doj-challenge-to-alaska-election-im-the-one-that-said-do-it",
+    "title": "Trump on DOJ challenge to Alaska election: ‘I’m the one that said do it’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139960,
+    "kind": "item",
+    "occurred_at": "2026-10-23T19:04:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-hampshire-students-face-disenfranchisement-after-supreme-court-greenlights-ban-on-their-ids",
+    "title": "New Hampshire students face disenfranchisement after Supreme Court greenlights ban on their IDs"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139959,
+    "kind": "item",
+    "occurred_at": "2026-10-23T19:23:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/sen-padilla-questions-u-s-attorney-over-threat-to-hunt-down-texas-voters",
+    "title": "Sen. Padilla questions U.S. attorney over threat to ‘hunt down’ Texas voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139958,
+    "kind": "item",
+    "occurred_at": "2026-10-23T20:00:36+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/23/alaksa-senate-trump-midterm-lawsuit-justice",
+    "title": "Trump orders lawsuit to block U.S. Senate results in Alaska if Republican incumbent loses"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139957,
+    "kind": "item",
+    "occurred_at": "2026-10-23T20:58:48+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/23/nebraska-rural-mail-voting-republican-secretary-state",
+    "title": "In rural Nebraska, mail voting saves money and boosts access. Restrictions could change that."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139956,
+    "kind": "item",
+    "occurred_at": "2026-10-23T21:09:43+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/10/23/department-of-justice-noncitizen-voting-charges-2026",
+    "title": "Department of Justice brings additional noncitizen voting charges ahead of 2026 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139963,
+    "kind": "item",
+    "occurred_at": "2026-10-23T21:28:29+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/count-on-it",
+    "title": "Count on It"
   }
 ]
