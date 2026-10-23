@@ -11658,5 +11658,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/florida-early-voting-begins-under-aggressive-gop-gerrymander-in-last-election-before-more-voting-restrictions-kick-in",
     "title": "Florida early voting begins under aggressive GOP gerrymander in last election before more voting restrictions kick in"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139728,
+    "kind": "item",
+    "occurred_at": "2026-10-23T12:21:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blanche-threatens-a-number-of-states-with-california-style-voting-lawsuits",
+    "title": "Blanche threatens ‘a number of states’ with California-style voting lawsuits"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139729,
+    "kind": "item",
+    "occurred_at": "2026-10-23T13:49:57+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/new-york-immigration-detention-contracts-orange-county",
+    "title": "New York Banned ICE Contracts. Pro-ICE Sheriffs Could Stand in the Way."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139724,
+    "kind": "item",
+    "occurred_at": "2026-10-23T14:07:43+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/10/23/duplicate-mail-ballots-westmoreland-2026-human-error",
+    "title": "Westmoreland County sends roughly 150 duplicate mail ballots to Pa. voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139727,
+    "kind": "item",
+    "occurred_at": "2026-10-23T14:27:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-again-demands-immediate-block-on-california-counting-ballots-from-alleged-noncitizens",
+    "title": "DOJ again demands immediate block on California counting ballots from alleged noncitizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139726,
+    "kind": "item",
+    "occurred_at": "2026-10-23T15:21:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-preemptively-challenges-alaska-election-results-if-democrat-wins-senate-race",
+    "title": "DOJ preemptively challenges Alaska election results if Democrat wins Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139725,
+    "kind": "item",
+    "occurred_at": "2026-10-23T16:44:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/poll-trumps-attempts-to-challenge-midterm-election-integrity-are-failing",
+    "title": "Poll: Trump’s attempts to challenge midterm election integrity are failing"
   }
 ]
