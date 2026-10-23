@@ -11618,5 +11618,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-keeps-changing-how-it-describes-california-list",
     "title": "‘Likely’ noncitizens? ‘Confirmed’? ‘Suspected’? ‘Verified’? DOJ keeps changing how it describes California list"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139266,
+    "kind": "item",
+    "occurred_at": "2026-10-22T22:07:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-lets-new-hampshire-fully-ban-student-ids-for-voting-ahead-of-midterms",
+    "title": "Supreme Court lets New Hampshire fully ban student IDs for voting ahead of midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 139265,
+    "kind": "item",
+    "occurred_at": "2026-10-23T00:08:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-appeals-california-ballot-case-before-judge-even-rules",
+    "title": "Trump DOJ appeals California ballot case before judge even rules"
   }
 ]
