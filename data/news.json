@@ -11868,5 +11868,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/democrats-move-to-fight-dojs-attempt-to-preemptively-block-alaska-senate-results-if-republican-loses",
     "title": "Democrats move to fight DOJ’s attempt to block Alaska Senate results if Republican loses"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140897,
+    "kind": "item",
+    "occurred_at": "2026-10-24T18:14:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-lawsuit-ignores-the-realities-of-election-administration-says-los-angeles-county",
+    "title": "DOJ lawsuit ‘ignores the realities of election administration,’ says Los Angeles County"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140896,
+    "kind": "item",
+    "occurred_at": "2026-10-24T18:21:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/its-happening-from-alaska-to-california-the-trump-administration-is-working-to-subvert-the-midterms",
+    "title": "It’s happening: From Alaska to California, the Trump administration is working to subvert the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140895,
+    "kind": "item",
+    "occurred_at": "2026-10-24T19:40:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arkansas-asks-supreme-court-to-revive-restrictive-voter-registration-rule",
+    "title": "Arkansas asks Supreme Court to revive restrictive voter registration rule"
   }
 ]
