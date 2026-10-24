@@ -11838,5 +11838,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-demands-more-california-counties-segregate-ballots-threatening-to-prosecute-election-officials",
     "title": "DOJ demands more California counties segregate ballots, threatening to prosecute election officials"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140433,
+    "kind": "item",
+    "occurred_at": "2026-10-24T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-york-and-new-jersey-start-voting-as-ballot-access-fights-intensify",
+    "title": "New York and New Jersey start voting as ballot access fights intensify"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140434,
+    "kind": "item",
+    "occurred_at": "2026-10-24T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/as-michigan-starts-early-voting-election-deniers-attack-the-process",
+    "title": "As Michigan starts early voting, election deniers attack the process"
   }
 ]
