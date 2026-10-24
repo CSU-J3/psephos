@@ -11798,5 +11798,45 @@
     "source_id": "states-united",
     "source_url": "https://statesunited.org/count-on-it",
     "title": "Count on It"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140198,
+    "kind": "item",
+    "occurred_at": "2026-10-23T21:29:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-backed-ballot-rules-plague-north-carolina-voters-in-democratic-stronghold",
+    "title": "GOP-backed ballot rules plague North Carolina voters in Democratic stronghold"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140197,
+    "kind": "item",
+    "occurred_at": "2026-10-23T21:36:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/one-of-the-worst-ones-ive-ever-seen-legal-experts-eviscerate-dojs-alaska-lawsuit",
+    "title": "‘One of the worst ones I’ve ever seen’: Legal experts eviscerate DOJ’s Alaska lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140196,
+    "kind": "item",
+    "occurred_at": "2026-10-23T23:45:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-appointed-judge-delivers-doj-its-27th-straight-loss-in-voter-roll-crusade",
+    "title": "Trump-appointed judge delivers DOJ its 27th straight loss in voter roll crusade"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 140195,
+    "kind": "item",
+    "occurred_at": "2026-10-24T02:19:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-demands-more-california-counties-segregate-ballots-threatening-to-prosecute-election-officials",
+    "title": "DOJ demands more California counties segregate ballots, threatening to prosecute election officials"
   }
 ]
