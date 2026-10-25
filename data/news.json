@@ -11918,5 +11918,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-to-hear-dojs-dangerous-bid-to-block-california-from-counting-votes",
     "title": "Appeals court to hear DOJ’s dangerous bid to block California from counting votes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 141795,
+    "kind": "item",
+    "occurred_at": "2026-10-25T16:32:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-makes-final-pitch-to-block-20000-california-ballots-ahead-of-crucial-court-hearing",
+    "title": "DOJ makes final pitch to block 20,000 California ballots ahead of crucial court hearing"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 141794,
+    "kind": "item",
+    "occurred_at": "2026-10-25T17:36:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blanche-blames-alaskas-ranked-choice-voting-in-latest-justification-for-lawsuit-to-toss-out-democratic-win",
+    "title": "Blanche blames Alaska’s ranked choice voting in latest justification for lawsuit to toss out Democratic win"
   }
 ]
