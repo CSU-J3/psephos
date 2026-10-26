@@ -9314,7 +9314,7 @@
         "occurred_at": "2026-09-22T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/96/united-states-v-hobbs/",
-        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO DISMISS. The Court GRANTS the motions to dismiss (Dkt. Nos.  53 ,  62 ,  63 ) and DENIES AS MOOT the motion to compel (Dkt. No.  29 ).   Signed by Distric"
+        "title": "United States v. Washington: ORDER GRANTING MOTIONS TO DISMISS. The Court GRANTS the motions to dismiss (Dkt. Nos. 53, 62, 63 ) and DENIES AS MOOT the motion to compel (Dkt. No. 29 ). Signed by District Judge "
       }
     ]
   },
@@ -9326,7 +9326,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 164,
+    "entry_count": 165,
     "entry_moves": [
       {
         "entries": [
@@ -9381,7 +9381,7 @@
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-10-19T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -10108,6 +10108,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
         "title": "United States v. Delaware: Minute Entry for proceedings held before Judge Richard G. Andrews - Motion Hearing held on 9/29/2026. Local counsel present for Plaintiff: D. Steinberg. Local counsel present for D"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142284,
+        "kind": "item",
+        "occurred_at": "2026-10-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/109/united-states-v-albence/",
+        "title": "United States v. Delaware: Official Transcript of Oral Argument held on 9/29/26 before Judge Richard G. Andrews. Court Reporter Heather M. Triozzi,Email: heather_triozzi@ded.uscourts.gov. Transcript may be v"
       }
     ]
   },
@@ -25132,7 +25142,7 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 125,
+    "entry_count": 126,
     "entry_moves": [
       {
         "entries": [
@@ -25149,7 +25159,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-14T00:00:00",
+    "latest_entry_at": "2026-10-22T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -25437,7 +25447,7 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 124,
+    "entry_count": 127,
     "entry_moves": [
       {
         "entries": [
@@ -25454,7 +25464,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-14T00:00:00",
+    "latest_entry_at": "2026-10-21T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -25752,7 +25762,7 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 120,
+    "entry_count": 121,
     "entry_moves": [
       {
         "kind": "merge",
@@ -25765,7 +25775,7 @@
       }
     ],
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-10-19T00:00:00",
+    "latest_entry_at": "2026-10-22T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -26765,7 +26775,7 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 47,
+    "entry_count": 57,
     "entry_moves": [
       {
         "kind": "merge",
@@ -26778,7 +26788,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-16T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -26905,6 +26915,76 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108511248/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: MOTION requesting leave for Attorney Rodkangyil Orion Danjuma to enter an appearance on behalf of Movant(s) J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary. Serv"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142300,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527275/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) Democratic National Committee. Served on 10/23/2026. [26-1783] (DJF) [Entered: 10/23/2026 03:"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142301,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527407/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER entered: No objections having been filed, the motion of Movants Historians J. Morgan Kousser, Orville Vernon Burton, and James Peyton McCrary for leave to file an amicus curi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142302,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527416/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER entered: No objections having been filed, the motion of Movant Democratic National Committee for leave to file an amicus curiae brief in support of the Appellees and affirman"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142303,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527419/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION requesting leave for Attorney Jonathan Rosenberg to enter an appearance filed by Not Parties David Becker, Gregory B. Friel, Bradley Heard, Brian Heffernan, Robert Kengle, T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142304,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527432/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION requesting leave for Attorney Noah Bokat-Lindell to enter an appearance filed by Not Parties David Becker, Gregory B. Friel, Bradley Heard, Brian Heffernan, Robert Kengle, T"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142305,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527437/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) Former Employees of the U.S. Department of Justice. Served on 10/23/2026. [26-1783] (NB) [Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142306,
+        "kind": "item",
+        "occurred_at": "2026-10-25T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527489/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) Lawyers' Committee for Civil Rights Under Law, National Urban League, League of United Latin "
       }
     ]
   },
@@ -26916,7 +26996,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 94,
+    "entry_count": 96,
     "entry_moves": [
       {
         "entries": [
@@ -26937,7 +27017,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-10-21T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
@@ -27479,7 +27559,7 @@
     "date_terminated": null,
     "defendant": "Board Of Elections of the State of New York",
     "docket_number": "26-2060",
-    "entry_count": 126,
+    "entry_count": 130,
     "entry_moves": [
       {
         "kind": "merge",
@@ -27492,7 +27572,7 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-10-14T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
@@ -27679,6 +27759,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73682036/124/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
         "title": "United States v. New York: MOTION ORDER, granting motion for extension of time to 10/27/2026 to file reply brief at docket entry 120, on behalf of Appellant United States of America, FILED. [Entered: 10/14/2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142310,
+        "kind": "item",
+        "occurred_at": "2026-10-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73682036/127/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
+        "title": "United States v. New York: REPLY BRIEF, on behalf of Appellant United States of America, FILED. Service date 10/23/2026 by ACMS. [Entered: 10/23/2026 01:16 PM]"
       }
     ]
   },
@@ -27860,7 +27950,7 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 48,
+    "entry_count": 50,
     "entry_moves": [
       {
         "entries": [
@@ -27881,7 +27971,7 @@
       }
     ],
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-10-16T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -28272,7 +28362,7 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 105,
+    "entry_count": 106,
     "entry_moves": [
       {
         "entries": [
@@ -28298,7 +28388,7 @@
       }
     ],
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-10-15T00:00:00",
+    "latest_entry_at": "2026-10-22T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -29726,7 +29816,7 @@
     "date_terminated": null,
     "defendant": "Kris Warner",
     "docket_number": "26-2262",
-    "entry_count": 14,
+    "entry_count": 15,
     "entry_moves": [
       {
         "entries": [
@@ -29747,7 +29837,7 @@
       }
     ],
     "filed_at": null,
-    "latest_entry_at": "2026-09-29T00:00:00",
+    "latest_entry_at": "2026-10-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
