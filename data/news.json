@@ -11968,5 +11968,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/10/26/trump-california-noncitizens-ballots-lawsuit-midterm",
     "title": "Trump administration asks appeals court to set aside ballots and investigate the citizenship of as many as 20,000 voters in ongoing California election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142252,
+    "kind": "item",
+    "occurred_at": "2026-10-26T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/26/2026-secretary-of-state-election-overview",
+    "title": "The 2026 midterms will also decide who runs elections in 29 states"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142254,
+    "kind": "item",
+    "occurred_at": "2026-10-26T11:54:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-ask-judge-to-toss-dojs-wholly-baseless-bid-to-block-alaska-election-if-gop-loses",
+    "title": "Democrats ask judge to toss DOJ’s ‘wholly baseless’ bid to block Alaska election if GOP loses"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142253,
+    "kind": "item",
+    "occurred_at": "2026-10-26T12:55:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maricopa-county-will-restore-citizens-voting-registrations-arizona-ag-says",
+    "title": "Maricopa County will restore citizens’ voting registrations, Arizona AG says"
   }
 ]
