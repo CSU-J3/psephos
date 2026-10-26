@@ -11938,5 +11938,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/blanche-blames-alaskas-ranked-choice-voting-in-latest-justification-for-lawsuit-to-toss-out-democratic-win",
     "title": "Blanche blames Alaska’s ranked choice voting in latest justification for lawsuit to toss out Democratic win"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142023,
+    "kind": "item",
+    "occurred_at": "2026-10-25T22:06:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-natives-early-voting-hampered-by-unlawful-closures",
+    "title": "Alaska Natives’ early voting hampered by unlawful closures"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142022,
+    "kind": "item",
+    "occurred_at": "2026-10-25T22:41:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-appears-skeptical-of-dojs-emergency-bid-to-block-20000-ballots-in-california",
+    "title": "Appeals court appears skeptical of DOJ’s emergency bid to block 20,000 ballots in California"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142021,
+    "kind": "item",
+    "occurred_at": "2026-10-26T00:11:42+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/26/trump-california-noncitizens-ballots-lawsuit-midterm",
+    "title": "Trump administration asks appeals court to set aside ballots and investigate the citizenship of as many as 20,000 voters in ongoing California election"
   }
 ]
