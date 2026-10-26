@@ -11998,5 +11998,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/maricopa-county-will-restore-citizens-voting-registrations-arizona-ag-says",
     "title": "Maricopa County will restore citizens’ voting registrations, Arizona AG says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142770,
+    "kind": "item",
+    "occurred_at": "2026-10-26T20:03:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-ad-features-woman-wrongly-convicted-for-illegal-voting-slams-ken-paxtons-crackdown-on-voters-of-color",
+    "title": "New ad features woman wrongly convicted for illegal voting, slams Ken Paxton’s ‘crackdown on voters of color’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142769,
+    "kind": "item",
+    "occurred_at": "2026-10-26T20:33:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-offers-1-million-bounty-for-voter-fraud-ahead-of-election-day",
+    "title": "Trump offers $1 million bounty for ‘voter fraud’ ahead of Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142768,
+    "kind": "item",
+    "occurred_at": "2026-10-26T21:18:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/we-dont-think-its-that-complicated-doj-says-its-simple-for-california-to-block-20000-voters",
+    "title": "‘We don’t think it’s that complicated’: DOJ says it’s simple for California to block 20,000 voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142767,
+    "kind": "item",
+    "occurred_at": "2026-10-26T22:15:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-charges-james-comey-for-a-third-time-as-political-retaliation-claims-mount",
+    "title": "Trump DOJ charges James Comey for a third time as political retaliation claims mount"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142766,
+    "kind": "item",
+    "occurred_at": "2026-10-26T22:16:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-demands-washington-set-aside-ballots-from-alleged-noncitizens-on-state-roll",
+    "title": "DOJ demands Washington set aside ballots from alleged noncitizens on state roll"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 142765,
+    "kind": "item",
+    "occurred_at": "2026-10-26T22:25:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-cant-leapfrog-lower-court-in-bid-to-block-20000-california-voters-appeals-court-rules",
+    "title": "DOJ can’t leapfrog lower court in bid to block 20,000 California voters, appeals court rules"
   }
 ]

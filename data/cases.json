@@ -19988,7 +19988,7 @@
     "date_terminated": null,
     "defendant": "TRUMP",
     "docket_number": "1:26-cv-01114",
-    "entry_count": 259,
+    "entry_count": 260,
     "entry_moves": [
       {
         "entries": [
@@ -20009,7 +20009,7 @@
       }
     ],
     "filed_at": "2026-04-01T00:00:00",
-    "latest_entry_at": "2026-10-16T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "DSCC",
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
@@ -24447,7 +24447,7 @@
     "date_terminated": "2026-10-09T00:00:00",
     "defendant": "U.S. Department of Justice",
     "docket_number": "1:26-cv-01352",
-    "entry_count": 90,
+    "entry_count": 91,
     "entry_moves": [
       {
         "entries": [
@@ -24485,7 +24485,7 @@
       }
     ],
     "filed_at": "2026-04-21T00:00:00",
-    "latest_entry_at": "2026-10-23T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "Common Cause",
     "source_url": "https://www.courtlistener.com/docket/73218916/common-cause-v-us-department-of-justice/",
     "state": null,
@@ -24872,6 +24872,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73218916/59/common-cause-v-us-department-of-justice/",
         "title": "Common Cause v. U.S. Department of Justice: Response to motion"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 142507,
+        "kind": "item",
+        "occurred_at": "2026-10-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73218916/60/common-cause-v-us-department-of-justice/",
+        "title": "Common Cause v. U.S. Department of Justice: Reply to opposition to motion"
       }
     ]
   },
