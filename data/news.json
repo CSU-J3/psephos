@@ -12068,5 +12068,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-dojs-bid-to-stop-california-from-counting-ballots-heads-back-to-court",
     "title": "Trump DOJ’s bid to stop California ballot counting returns to federal judge after 9th Circuit dismissal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 143473,
+    "kind": "item",
+    "occurred_at": "2026-10-27T14:24:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrats-ask-for-immediate-block-on-trumps-election-interference-schemes",
+    "title": "Democrats ask for immediate block on Trump’s election interference schemes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 143472,
+    "kind": "item",
+    "occurred_at": "2026-10-27T15:15:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-fast-tracks-democrats-bid-to-dismiss-trumps-alaska-lawsuit",
+    "title": "Judge fast-tracks Democrats’ bid to dismiss Trump’s Alaska lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 143471,
+    "kind": "item",
+    "occurred_at": "2026-10-27T15:49:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-lays-out-a-roadmap-to-kill-doj-bid-to-block-california-ballots",
+    "title": "Appeals court lays out a roadmap to kill DOJ bid to block California ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 143470,
+    "kind": "item",
+    "occurred_at": "2026-10-27T17:27:24+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-official-involved-in-ballot-seizure-scheme-backs-trump-dojs-california-lawsuit",
+    "title": "Election official involved in ballot seizure scheme backs Trump DOJ’s California lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 143469,
+    "kind": "item",
+    "occurred_at": "2026-10-27T17:35:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-ballot-rejection-rate-up-to-6-with-time-to-fix-errors-running-out",
+    "title": "North Carolina ballot rejection rate up to 6% with time to fix errors running out"
   }
 ]
