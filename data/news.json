@@ -12058,5 +12058,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-cant-leapfrog-lower-court-in-bid-to-block-20000-california-voters-appeals-court-rules",
     "title": "DOJ can’t leapfrog lower court in bid to block 20,000 California voters, appeals court rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 143239,
+    "kind": "item",
+    "occurred_at": "2026-10-27T10:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-dojs-bid-to-stop-california-from-counting-ballots-heads-back-to-court",
+    "title": "Trump DOJ’s bid to stop California ballot counting returns to federal judge after 9th Circuit dismissal"
   }
 ]
