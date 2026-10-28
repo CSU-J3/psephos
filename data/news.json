@@ -12188,5 +12188,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-orders-michigan-election-chief-to-preserve-pollbook-data-after-voting",
     "title": "Judge orders Michigan election chief to preserve pollbook data after voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144650,
+    "kind": "item",
+    "occurred_at": "2026-10-28T18:46:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mike-johnson-absurd-to-suggest-house-will-block-seating-of-new-members",
+    "title": "Mike Johnson:  ‘Absurd’ to suggest House will block seating of new members"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144649,
+    "kind": "item",
+    "occurred_at": "2026-10-28T19:59:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/right-wing-provocateur-james-okeefe-charged-with-unlawful-voting-for-minnesota-elections-stunt",
+    "title": "Right-wing provocateur James O’Keefe charged with unlawful voting for Minnesota elections stunt"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144643,
+    "kind": "item",
+    "occurred_at": "2026-10-28T20:10:05+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/10/28/qualified-voter-file-primary-slowdown-clerks-prepare-midterm",
+    "title": "Michigan officials believe technical issues from primary will not recur in general election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144648,
+    "kind": "item",
+    "occurred_at": "2026-10-28T20:19:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/the-real-strategy-behind-dojs-alaska-lawsuit-it-isnt-winning-in-court",
+    "title": "The real strategy behind DOJ’s Alaska lawsuit. (It isn’t winning in court)"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144647,
+    "kind": "item",
+    "occurred_at": "2026-10-28T20:41:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-subpoenas-election-officials-in-at-least-13-states-for-voter-records",
+    "title": "Report: Trump administration subpoenas election officials in at least 13 states for voter records"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144646,
+    "kind": "item",
+    "occurred_at": "2026-10-28T21:45:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/california-wont-be-last-state-to-face-doj-noncitizen-voter-challenges-documents-suggest",
+    "title": "California won’t be last state to face DOJ ‘noncitizen voter’ challenges, documents suggest"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144645,
+    "kind": "item",
+    "occurred_at": "2026-10-28T22:04:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-downplays-voter-roll-threats-to-states-to-fend-off-democrats-election-interference-lawsuit",
+    "title": "DOJ downplays voter roll threats to states to fend off Democrats’ election interference lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144644,
+    "kind": "item",
+    "occurred_at": "2026-10-28T22:17:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/key-georgia-county-will-overnight-absentee-ballots-to-voters-who-never-got-them-after-lawsuit",
+    "title": "Key Georgia county will overnight absentee ballots to voters who never got them, after lawsuit"
   }
 ]

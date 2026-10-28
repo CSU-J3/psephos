@@ -25772,7 +25772,7 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 121,
+    "entry_count": 122,
     "entry_moves": [
       {
         "kind": "merge",
@@ -25785,7 +25785,7 @@
       }
     ],
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-10-22T00:00:00",
+    "latest_entry_at": "2026-10-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
