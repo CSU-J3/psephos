@@ -27006,7 +27006,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 96,
+    "entry_count": 100,
     "entry_moves": [
       {
         "entries": [
@@ -27304,6 +27304,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/94/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: BRIEF by US. Type of Brief: REPLY. . Do any cases pending in this court or the Supreme Court of the United States raise similar issues? YES. Response: United States v. Koski, No. 2"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 144220,
+        "kind": "item",
+        "occurred_at": "2026-10-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Receipt of paper copy of REPLY BRIEF filed at 94 by US. Number of pages: 43. Sufficient: Yes. Number of Copies: 4. Received by clerk date: 10/28/2026. 1002084310 [26-1878] MP"
       }
     ]
   },

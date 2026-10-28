@@ -12148,5 +12148,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-prosecutor-leading-california-voting-lawsuit-disqualified-from-post-but-order-stayed",
     "title": "Trump prosecutor leading California voting lawsuit disqualified from post, but order stayed"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144414,
+    "kind": "item",
+    "occurred_at": "2026-10-28T13:30:36+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/iowa-voting-rights-restoration-maze",
+    "title": "Many Iowans Must Navigate a Maze to Vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144411,
+    "kind": "item",
+    "occurred_at": "2026-10-28T14:37:23+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/28/live-event-how-did-the-midterms-go-ben-ginsberg-bob-bauer",
+    "title": "Live event: How did the midterms go? Check in with two leading election attorneys"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144413,
+    "kind": "item",
+    "occurred_at": "2026-10-28T15:24:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-worker-threats-must-cease-immediately-judge-tells-doj-ahead-of-crucial-california-voter-ruling",
+    "title": "Election worker threats must ‘cease immediately,’ judge tells DOJ ahead of crucial California voter ruling"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144412,
+    "kind": "item",
+    "occurred_at": "2026-10-28T16:41:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-orders-michigan-election-chief-to-preserve-pollbook-data-after-voting",
+    "title": "Judge orders Michigan election chief to preserve pollbook data after voting"
   }
 ]
