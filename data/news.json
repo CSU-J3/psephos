@@ -12318,5 +12318,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/as-doj-interferes-in-elections-official-swears-1000-monitor-plan-is-standard",
     "title": "As DOJ interferes in elections, official swears 1,000-monitor plan is standard"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145356,
+    "kind": "item",
+    "occurred_at": "2026-10-29T14:47:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-gop-escalate-campaign-to-subvert-alaskas-senate-election-if-democrat-wins",
+    "title": "Trump, GOP escalate campaign to subvert Alaska’s Senate election if Democrat wins"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145355,
+    "kind": "item",
+    "occurred_at": "2026-10-29T15:07:51+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/29/david-crowley-tom-tiffany-differ-on-election-platform",
+    "title": "How Wisconsin’s gubernatorial candidates differ on election administration"
   }
 ]
