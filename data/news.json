@@ -12268,5 +12268,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/key-georgia-county-will-overnight-absentee-ballots-to-voters-who-never-got-them-after-lawsuit",
     "title": "Key Georgia county will overnight absentee ballots to voters who never got them, after lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144883,
+    "kind": "item",
+    "occurred_at": "2026-10-28T22:50:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-county-republicans-sue-to-block-state-election-certification",
+    "title": "Texas county Republicans sue to block election certification unless every ballot is hand counted"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144882,
+    "kind": "item",
+    "occurred_at": "2026-10-28T23:29:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/washington-state-finds-u-s-citizens-on-dojs-noncitizen-voter-list-rejects-demand-to-set-aside-ballots",
+    "title": "Washington state finds U.S. citizens on DOJ’s noncitizen voter list, rejects demand to set aside ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 144881,
+    "kind": "item",
+    "occurred_at": "2026-10-29T00:38:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-rejects-doj-demand-that-california-set-aside-20000-ballots",
+    "title": "Judge rejects DOJ demand that California set aside 20,000 ballots"
   }
 ]
