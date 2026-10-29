@@ -12298,5 +12298,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-rejects-doj-demand-that-california-set-aside-20000-ballots",
     "title": "Judge rejects DOJ demand that California set aside 20,000 ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145122,
+    "kind": "item",
+    "occurred_at": "2026-10-29T09:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/29/voting-machines-midterm-problems-safeguards",
+    "title": "Voting machines malfunction every election. But manufacturers and election officials have safeguards in place."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145123,
+    "kind": "item",
+    "occurred_at": "2026-10-29T12:37:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/as-doj-interferes-in-elections-official-swears-1000-monitor-plan-is-standard",
+    "title": "As DOJ interferes in elections, official swears 1,000-monitor plan is standard"
   }
 ]
