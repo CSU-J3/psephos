@@ -12338,5 +12338,125 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/10/29/david-crowley-tom-tiffany-differ-on-election-platform",
     "title": "How Wisconsin’s gubernatorial candidates differ on election administration"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145590,
+    "kind": "item",
+    "occurred_at": "2026-10-29T18:59:08+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/10/29/nonjuror-noncitizen-voter-roll-comparison-chester-county",
+    "title": "Pennsylvania analysis shows flaws in using jury rejection lists to find noncitizen voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145599,
+    "kind": "item",
+    "occurred_at": "2026-10-29T19:02:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-presses-on-with-california-ballot-challenge-despite-the-legal-losses-piling-up",
+    "title": "DOJ presses on with California ballot challenge despite the legal losses piling up"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145598,
+    "kind": "item",
+    "occurred_at": "2026-10-29T19:20:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-orders-doj-to-identify-the-states-it-sent-election-demands",
+    "title": "Judge orders DOJ to identify the states it sent election demands"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145589,
+    "kind": "item",
+    "occurred_at": "2026-10-29T19:54:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/29/trump-lawsuits-midterm-california-alaska-washington-noncitizen-voters",
+    "title": "Last minute legal maneuvering by the Trump administration creates new uncertainty around midterm election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145597,
+    "kind": "item",
+    "occurred_at": "2026-10-29T20:13:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-republican-behind-bid-to-block-certification-has-long-pushed-election-denial-myths",
+    "title": "Texas Republican behind bid to block certification has long pushed election denial myths"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145596,
+    "kind": "item",
+    "occurred_at": "2026-10-29T20:13:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/postal-delays-worry-election-officials-with-deadlines-looming",
+    "title": "Postal delays worry election officials with deadlines looming"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145595,
+    "kind": "item",
+    "occurred_at": "2026-10-29T20:14:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arizona-aclu-says-maricopa-county-election-workers-unlawfully-demanded-id-for-ballot-drop-off",
+    "title": "Arizona ACLU says Maricopa County election workers unlawfully demanded ID for ballot drop-off"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145594,
+    "kind": "item",
+    "occurred_at": "2026-10-29T20:28:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-attorney-generals-office-sues-states-largest-county-for-ads-encouraging-minority-voters",
+    "title": "Texas sues state’s largest county for ads encouraging minority voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145588,
+    "kind": "item",
+    "occurred_at": "2026-10-29T20:46:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/29/mail-early-voting-midterm-trump-usps",
+    "title": "More early voters casting ballots in-person after Trump attack on voting by mail"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145593,
+    "kind": "item",
+    "occurred_at": "2026-10-29T20:47:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-looks-set-to-deny-dhs-bid-to-continue-harassing-voters-over-citizenship",
+    "title": "Appeals court looks set to deny DHS bid to continue harassing voters over citizenship"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145592,
+    "kind": "item",
+    "occurred_at": "2026-10-29T21:09:58+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/did-the-data-for-dojs-california-voter-lawsuit-come-via-election-denier-heather-honey",
+    "title": "Did the data for DOJ’s California voter lawsuit come via election denier Heather Honey?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145591,
+    "kind": "item",
+    "occurred_at": "2026-10-29T21:13:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-demands-ruling-by-friday-on-emergency-bid-to-stop-california-from-counting-ballots-from-alleged-noncitizens",
+    "title": "DOJ demands ruling by Friday on emergency bid to stop California from counting ballots from alleged noncitizens"
   }
 ]
