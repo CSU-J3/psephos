@@ -12458,5 +12458,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-demands-ruling-by-friday-on-emergency-bid-to-stop-california-from-counting-ballots-from-alleged-noncitizens",
     "title": "DOJ demands ruling by Friday on emergency bid to stop California from counting ballots from alleged noncitizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145829,
+    "kind": "item",
+    "occurred_at": "2026-10-29T23:46:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-seeks-to-wipe-out-bids-to-dismiss-alaska-election-case-after-amending-lawsuit",
+    "title": "DOJ seeks to wipe out bids to dismiss Alaska election case after amending lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 145828,
+    "kind": "item",
+    "occurred_at": "2026-10-30T00:36:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-sued-over-failure-to-open-voting-locations-advertised-to-voters",
+    "title": "Alaska sued over failure to open voting locations advertised to voters"
   }
 ]
