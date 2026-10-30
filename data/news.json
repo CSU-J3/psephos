@@ -12478,5 +12478,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/alaska-sued-over-failure-to-open-voting-locations-advertised-to-voters",
     "title": "Alaska sued over failure to open voting locations advertised to voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146063,
+    "kind": "item",
+    "occurred_at": "2026-10-30T10:55:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/30/sb1-ballot-harvesting-restrictions-on-helping-voters-lupe",
+    "title": "Voting rights groups, afraid of criminal penalties, cut back on helping some of Texas’ most vulnerable voters"
   }
 ]
