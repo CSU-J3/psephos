@@ -12488,5 +12488,115 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/texas/2026/10/30/sb1-ballot-harvesting-restrictions-on-helping-voters-lupe",
     "title": "Voting rights groups, afraid of criminal penalties, cut back on helping some of Texas’ most vulnerable voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146443,
+    "kind": "item",
+    "occurred_at": "2026-10-30T13:02:52+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-ramps-up-intimidation-in-washington-after-election-chief-laughs-off-error-riddled-demand-letter",
+    "title": "DOJ ramps up intimidation in Washington after election chief laughs off error-riddled demand letter"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 146447,
+    "kind": "item",
+    "occurred_at": "2026-10-30T13:41:17+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNTzA0R0kzWS1tUzRLNThuLWIwMnVodXNMRzBOdFNyWXh2UGkwUW1LQXFoV1k4YWNvcWd4VmxNTjBKR3ZiT0FlVVNqd1pkOVlwWXhjWTZFZklnSndYOC1zeDRSVWYyak1WM2NPamRjMTl2bEliT3VObllIZVRTM2tETlhKZHdzcDJnajdiOFVGaTJnemYtV1BzRHZ5b1o?oc=5",
+    "title": "At noon today, DOJ must reveal which states it pressured - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146444,
+    "kind": "item",
+    "occurred_at": "2026-10-30T15:21:54+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/tarrant-county-jail-deaths-2026",
+    "title": "In Texas, Jailers Rush to Release Dying People to Evade Scrutiny"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146436,
+    "kind": "item",
+    "occurred_at": "2026-10-30T15:59:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/10/30/apache-county-2024-election-navajo-nation-pollbooks-fontes-2026",
+    "title": "Apache County’s 2024 election was worse than reported, records show. Now, it faces another test at the polls."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146435,
+    "kind": "item",
+    "occurred_at": "2026-10-30T16:18:40+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/30/doj-election-officials-criminal-prosecution-letters-2026-midterms",
+    "title": "DOJ again warns election officials of potential criminal prosecution, days before midterm elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146442,
+    "kind": "item",
+    "occurred_at": "2026-10-30T16:27:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/chaos-and-confusion-democrats-move-to-oppose-gop-lawsuit-to-block-texas-election-certification",
+    "title": "‘Chaos and confusion’: Democrats move to oppose GOP lawsuit to block Texas election certification"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146441,
+    "kind": "item",
+    "occurred_at": "2026-10-30T16:52:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/rnc-sues-iowa-county-to-gain-access-to-voting-machine-records",
+    "title": "RNC sues Iowa county to gain access to voting machine records"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146440,
+    "kind": "item",
+    "occurred_at": "2026-10-30T17:37:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-admin-reveals-its-challenged-voters-in-5-states-and-threatened-election-officials-in-all-50",
+    "title": "Trump admin reveals it’s challenged voters in 5 states, and threatened election officials in all 50"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146439,
+    "kind": "item",
+    "occurred_at": "2026-10-30T17:43:06+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voters-seek-immediate-block-to-government-policy-that-created-voter-data-lists",
+    "title": "Pro-voters seek immediate block to government policy that created voter data lists"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146438,
+    "kind": "item",
+    "occurred_at": "2026-10-30T17:58:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-warns-election-officials-in-all-50-states-of-criminal-penalties-days-before-midterms",
+    "title": "DOJ warns election officials in all 50 states of criminal penalties days before midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146437,
+    "kind": "item",
+    "occurred_at": "2026-10-30T18:07:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/unions-sue-doj-over-unprecedented-and-unlawful-threats-against-california-election-officials",
+    "title": "Unions sue DOJ over ‘unprecedented and unlawful threats’ against California election officials"
   }
 ]
