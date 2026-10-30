@@ -12598,5 +12598,115 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/unions-sue-doj-over-unprecedented-and-unlawful-threats-against-california-election-officials",
     "title": "Unions sue DOJ over ‘unprecedented and unlawful threats’ against California election officials"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146683,
+    "kind": "item",
+    "occurred_at": "2026-10-30T18:42:57+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-again-rejects-dojs-bid-to-block-some-california-ballots-setting-up-supreme-court-showdown",
+    "title": "Appeals court again rejects DOJ’s bid to block some California ballots, setting up Supreme Court showdown"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146682,
+    "kind": "item",
+    "occurred_at": "2026-10-30T19:08:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/heres-where-the-doj-will-deploy-election-monitors-during-the-midterms",
+    "title": "Here’s where the DOJ will deploy election monitors during the midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146684,
+    "kind": "item",
+    "occurred_at": "2026-10-30T19:16:57+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/jack-o-lan-turn-in-your-ballots",
+    "title": "Jack-o-Lan-Turn-In-Your-Ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146676,
+    "kind": "item",
+    "occurred_at": "2026-10-30T20:07:30+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/30/when-to-expect-midterm-election-results-2026",
+    "title": "When to expect the results of the 2026 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146681,
+    "kind": "item",
+    "occurred_at": "2026-10-30T21:00:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-left-out-a-lot-of-its-disclosure-on-election-interference-that-could-shape-democrats-next-move",
+    "title": "DOJ left out a lot of its disclosure on election interference. That could shape Democrats’ next move"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146680,
+    "kind": "item",
+    "occurred_at": "2026-10-30T21:17:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/senate-democrats-will-set-up-war-room-to-fight-trumps-bid-to-subvert-midterms",
+    "title": "Senate Democrats will set up ‘war room’ to fight Trump’s bid to subvert midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146675,
+    "kind": "item",
+    "occurred_at": "2026-10-30T21:23:39+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/10/30/texas-potter-county-republican-lawsuit-hand-count-ballots",
+    "title": "Republican group wants all Texas ballots hand counted in the Nov. 3 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146679,
+    "kind": "item",
+    "occurred_at": "2026-10-30T21:45:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-new-escalation-doj-wants-to-force-alaska-to-segregate-ballots-in-senate-race",
+    "title": "In new escalation, DOJ wants to force Alaska to segregate ballots in Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146678,
+    "kind": "item",
+    "occurred_at": "2026-10-30T21:50:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/appeals-court-bars-dhs-voter-fraud-program-that-targeted-alleged-noncitizens-in-nine-states",
+    "title": "Appeals court bars DHS voter fraud program that targeted alleged noncitizens in nine states"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146677,
+    "kind": "item",
+    "occurred_at": "2026-10-30T21:56:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/texas-county-ends-ads-encouraging-minority-voters-to-settle-lawsuit",
+    "title": "Texas county ends ads encouraging minority voters, settling lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146674,
+    "kind": "item",
+    "occurred_at": "2026-10-30T22:05:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/10/30/rural-clerks-say-vote-early-in-person",
+    "title": "Mail delays are leading to more early voting. That shift is especially clear in rural Wisconsin."
   }
 ]

@@ -6840,7 +6840,7 @@
     "date_terminated": "2026-09-23T00:00:00",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 100,
+    "entry_count": 101,
     "entry_moves": [
       {
         "entries": [
@@ -6878,7 +6878,7 @@
       }
     ],
     "filed_at": "2025-12-01T00:00:00",
-    "latest_entry_at": "2026-09-30T00:00:00",
+    "latest_entry_at": "2026-10-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
@@ -7445,6 +7445,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/94/united-states-v-hanzas/",
         "title": "United States v. Vermont: JUDGMENT - case is is DISMISSED pursuant to 93 Order. Signed by Deputy Clerk on 9/23/2026. (Attachments: # 1 Notice to Litigants (appeal period expires 11/23/2026)) (kp) (Entered: "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 146496,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71980614/96/united-states-v-hanzas/",
+        "title": "United States v. Vermont: Notice of Appeal"
       }
     ]
   },
@@ -8690,7 +8700,7 @@
     "date_terminated": "2026-09-22T00:00:00",
     "defendant": "Hobbs",
     "docket_number": "3:25-cv-06078",
-    "entry_count": 110,
+    "entry_count": 111,
     "entry_moves": [
       {
         "entries": [
@@ -8728,7 +8738,7 @@
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-09-22T00:00:00",
+    "latest_entry_at": "2026-10-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71982380/united-states-v-hobbs/",
     "state": "Washington",
@@ -9315,6 +9325,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71982380/96/united-states-v-hobbs/",
         "title": "United States v. Washington: ORDER GRANTING MOTIONS TO DISMISS. The Court GRANTS the motions to dismiss (Dkt. Nos. 53, 62, 63 ) and DENIES AS MOOT the motion to compel (Dkt. No. 29 ). Signed by District Judge "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 146499,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71982380/98/united-states-v-hobbs/",
+        "title": "United States v. Washington: Notice of Appeal to Circuit"
       }
     ]
   },
@@ -27006,7 +27026,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 104,
+    "entry_count": 107,
     "entry_moves": [
       {
         "entries": [
