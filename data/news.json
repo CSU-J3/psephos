@@ -12778,5 +12778,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-sued-over-flagrantly-unlawful-demand-washington-set-aside-400-ballots",
     "title": "Trump, DOJ sued over ‘flagrantly unlawful’ demand Washington set aside 400 ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147646,
+    "kind": "item",
+    "occurred_at": "2026-10-31T18:14:07+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/31/justice-department-election-monitors-explainer-2026-midterms",
+    "title": "Everything you need to know about Department of Justice election monitors"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147650,
+    "kind": "item",
+    "occurred_at": "2026-10-31T18:27:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/immigrant-rights-group-finds-dozens-of-u-s-citizens-on-dojs-california-alleged-noncitizen-voter-list",
+    "title": "Immigrant rights group finds dozens of U.S. citizens on DOJ’s California alleged noncitizen voter list"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147649,
+    "kind": "item",
+    "occurred_at": "2026-10-31T19:22:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/another-georgia-county-is-sued-after-1800-voters-dont-receive-mail-ballots",
+    "title": "Another Georgia county is sued after 1,800 voters don’t receive mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147648,
+    "kind": "item",
+    "occurred_at": "2026-10-31T19:48:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voting-groups-blast-doj-overreach-in-alaska-senate-race-lawsuit",
+    "title": "Pro-voting groups blast DOJ overreach in Alaska Senate race lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147647,
+    "kind": "item",
+    "occurred_at": "2026-10-31T21:08:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-questions-doj-voter-purge-targeting-minorities-right-before-election",
+    "title": "Federal judge questions DOJ voter ‘purge’ targeting minorities right before election"
   }
 ]
