@@ -12738,5 +12738,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/judge-orders-doj-to-stop-threatening-election-officials",
     "title": "Judge orders DOJ to stop threatening election officials"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147420,
+    "kind": "item",
+    "occurred_at": "2026-10-31T14:00:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/u-s-attorney-accuses-3-arizona-nonprofits-of-knowingly-registering-noncitizens-to-vote",
+    "title": "U.S. attorney accuses 3 Arizona nonprofits of ‘knowingly’ registering noncitizens to vote"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147419,
+    "kind": "item",
+    "occurred_at": "2026-10-31T14:53:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-to-appeal-judges-order-to-hand-over-list-of-20000-alleged-noncitizen-voters-in-california",
+    "title": "DOJ to appeal judge’s order to hand over list of 20,000 alleged noncitizen voters in California"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147418,
+    "kind": "item",
+    "occurred_at": "2026-10-31T16:50:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/segregating-alaska-ballots-violates-constitutional-right-to-secret-votes-democrats-argue",
+    "title": "Segregating Alaska ballots violates constitutional right to secret votes, Democrats argue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147417,
+    "kind": "item",
+    "occurred_at": "2026-10-31T17:13:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-sued-over-flagrantly-unlawful-demand-washington-set-aside-400-ballots",
+    "title": "Trump, DOJ sued over ‘flagrantly unlawful’ demand Washington set aside 400 ballots"
   }
 ]
