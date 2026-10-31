@@ -12728,5 +12728,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/10/30/nebraska-secretary-state-scott-petersen-mail-early-voting-restrictions",
     "title": "Nebraska secretary of state race centers on Republican’s push to restrict mail and early voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 147152,
+    "kind": "item",
+    "occurred_at": "2026-10-31T12:13:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-orders-doj-to-stop-threatening-election-officials",
+    "title": "Judge orders DOJ to stop threatening election officials"
   }
 ]
