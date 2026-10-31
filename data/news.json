@@ -12531,6 +12531,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 146918,
+    "kind": "item",
+    "occurred_at": "2026-10-30T16:18:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNYzNCWEVWZW9TRmdDN3lJUU4xc0xvZ0tseDR5TUY3b3dFUVZycm5xZk56MVp1OUFhQjN6blV3cW16dmlPLWZ1WXZqODJWSVhaSVAyX0x1V0J0NElzWmtIZy1nX1VNRkRlZXJMbXJ6RTl4bXR6YlY0VENqRFV1RHppWkdaX3BNN3lJX183WGl4Qm1zd19hZkd0Nkk1MHJzM3BBcVotWjhQS2xrWDhwWUNaOQ?oc=5",
+    "title": "Days before midterms, DOJ sends another warning of criminal prosecution to election officials - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 146435,
     "kind": "item",
@@ -12708,5 +12718,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/10/30/rural-clerks-say-vote-early-in-person",
     "title": "Mail delays are leading to more early voting. That shift is especially clear in rural Wisconsin."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 146915,
+    "kind": "item",
+    "occurred_at": "2026-10-30T22:22:52+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/10/30/nebraska-secretary-state-scott-petersen-mail-early-voting-restrictions",
+    "title": "Nebraska secretary of state race centers on Republican’s push to restrict mail and early voting"
   }
 ]
