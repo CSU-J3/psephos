@@ -21207,7 +21207,7 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "1:26-cv-11549",
-    "entry_count": 337,
+    "entry_count": 338,
     "entry_moves": [
       {
         "entries": [
@@ -21228,7 +21228,7 @@
       }
     ],
     "filed_at": "2026-04-02T00:00:00",
-    "latest_entry_at": "2026-10-15T00:00:00",
+    "latest_entry_at": "2026-11-01T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
@@ -23095,6 +23095,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73133197/311/league-of-women-voters-of-massachusetts-v-trump/",
         "title": "League of Women Voters of Massachusetts v. Trump: MANDATE of USCA as to 221 Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, Derek T K"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148340,
+        "kind": "item",
+        "occurred_at": "2026-11-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73133197/312/league-of-women-voters-of-massachusetts-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump: MANDATE of USCA as to [221] Notice of Appeal, filed by Markwayne Mullin, Frank J Bisignano, Joseph B. Edlow, United States Postal Service Board of Governors, David Steiner, Derek T"
       }
     ]
   },
@@ -28657,7 +28667,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 189,
+    "entry_count": 190,
     "entry_moves": [
       {
         "entries": [
@@ -28678,7 +28688,7 @@
       }
     ],
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": "2026-10-30T00:00:00",
+    "latest_entry_at": "2026-11-01T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
@@ -29365,6 +29375,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Order on Motion for Extension of Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148343,
+        "kind": "item",
+        "occurred_at": "2026-11-01T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/180/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MANDATE of USCA as to 60 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of"
       }
     ]
   },
