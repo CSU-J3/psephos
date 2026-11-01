@@ -12848,5 +12848,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/11/01/election-day-trump-midterm-noncitizen-voters",
     "title": "Election Day is upon us. Now the real work begins…"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 148330,
+    "kind": "item",
+    "occurred_at": "2026-11-01T14:20:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dojs-alaska-election-theory-could-give-trump-sweeping-power-over-state-elections-voting-advocates-warn",
+    "title": "DOJ’s Alaska election theory could give Trump sweeping power over state elections, voting advocates warn"
   }
 ]
