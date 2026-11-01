@@ -12838,5 +12838,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/dhs-secretary-mullin-claims-300000-noncitizens-under-investigation-for-illegally-voting",
     "title": "DHS Secretary Mullin claims 300,000 noncitizens under investigation for illegally voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 148107,
+    "kind": "item",
+    "occurred_at": "2026-11-01T12:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/01/election-day-trump-midterm-noncitizen-voters",
+    "title": "Election Day is upon us. Now the real work begins…"
   }
 ]
