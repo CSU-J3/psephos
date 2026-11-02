@@ -12898,5 +12898,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-asks-appeals-court-to-greenlight-effort-to-overturn-alaskas-election-result",
     "title": "DOJ asks appeals court to greenlight effort to overturn Alaska’s election result"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149058,
+    "kind": "item",
+    "occurred_at": "2026-11-02T14:11:41+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/11/02/jocelyn-benson-john-james-election-integrity-governor-election",
+    "title": "Election administration and the 2020 election are hot topics in the Michigan gubernatorial race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149059,
+    "kind": "item",
+    "occurred_at": "2026-11-02T14:19:46+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-points-to-legal-losing-streak-in-bid-to-toss-out-democrats-election-interference-lawsuit",
+    "title": "DOJ points to legal losing streak in bid to toss out Democrats’ election interference lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 149063,
+    "kind": "item",
+    "occurred_at": "2026-11-02T15:27:11+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBqR0piSVNjZDdSeVQ5TWkxYzM5T0poYVFYaW9tSktYRVZ2c3Joem5YY0N3M1g2T3VxWkI1N1VOdjRCR3pkcmQtbTJqZ2llc3hYMk9IdGdHNU9UaHZWcFAybnRRU0tBR0o0TWREcXhsclRldXhhUHh2UnhiOA?oc=5",
+    "title": "Trump’s DOJ is 1-29. I’m not done - Democracy Docket"
   }
 ]

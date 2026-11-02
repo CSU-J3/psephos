@@ -7454,7 +7454,7 @@
         "occurred_at": "2026-10-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71980614/96/united-states-v-hanzas/",
-        "title": "United States v. Vermont: Notice of Appeal"
+        "title": "United States v. Vermont: NOTICE OF APPEAL as to 93 ORDER granting 37 Motion to Dismiss for Failure to State a Claim; granting 39 Motion to Dismiss for Failure to State a Claim; granting 44 Motion to Dismis"
       }
     ]
   },
@@ -15615,7 +15615,7 @@
     "date_terminated": "2026-09-30T00:00:00",
     "defendant": "Raffensperger",
     "docket_number": "1:26-cv-00485",
-    "entry_count": 214,
+    "entry_count": 216,
     "entry_moves": [
       {
         "apart": 2,
@@ -15646,7 +15646,7 @@
       }
     ],
     "filed_at": "2026-01-23T00:00:00",
-    "latest_entry_at": "2026-10-05T00:00:00",
+    "latest_entry_at": "2026-10-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/72193752/united-states-v-raffensperger/",
     "state": "Georgia",
@@ -16543,6 +16543,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/72193752/147/united-states-v-raffensperger/",
         "title": "United States v. Georgia: CLERK'S JUDGMENT. It is Ordered and Adjudged that the action be, and the same hereby is, dismissed. (ltt)--Please refer to http://www.ca11.uscourts.gov to obtain an appeals jurisdi"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148817,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/149/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: NOTICE OF APPEAL as to 147 Clerk's Judgment, 146 Order on Motion to Dismiss for Failure to State a Claim,,, Order on Motion to Compel,,,,,,,,,,, by United States of America. Case A"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148818,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/72193752/150/united-states-v-raffensperger/",
+        "title": "United States v. Georgia: Transmission of Certified Copy of Notice of Appeal, Judgment, Order, and Docket Sheet to USCA- 11th Circuit re: 149 Notice of Appeal. There is no transcript. Appeal fees have been "
       }
     ]
   },
@@ -20034,7 +20054,7 @@
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:48.171517+00:00",
+    "status_checked_at": "2026-11-02T15:51:29.717088+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21233,7 +21253,7 @@
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:29.666887+00:00",
+    "status_checked_at": "2026-11-02T15:51:10.897588+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24354,7 +24374,7 @@
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:43.544851+00:00",
+    "status_checked_at": "2026-11-02T15:51:25.972612+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24993,7 +25013,7 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 108,
+    "entry_count": 109,
     "entry_moves": [
       {
         "entries": [
@@ -25014,7 +25034,7 @@
       }
     ],
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-10-14T00:00:00",
+    "latest_entry_at": "2026-10-22T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -25182,7 +25202,7 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 126,
+    "entry_count": 127,
     "entry_moves": [
       {
         "entries": [
@@ -25199,7 +25219,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-22T00:00:00",
+    "latest_entry_at": "2026-10-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -25487,7 +25507,7 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 127,
+    "entry_count": 128,
     "entry_moves": [
       {
         "entries": [
@@ -25504,7 +25524,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-21T00:00:00",
+    "latest_entry_at": "2026-10-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -26386,7 +26406,7 @@
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:40.037489+00:00",
+    "status_checked_at": "2026-11-02T15:51:21.954553+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26815,7 +26835,7 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 57,
+    "entry_count": 67,
     "entry_moves": [
       {
         "kind": "merge",
@@ -26828,7 +26848,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-26T00:00:00",
+    "latest_entry_at": "2026-10-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -27025,6 +27045,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108527489/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) Lawyers' Committee for Civil Rights Under Law, National Urban League, League of United Latin "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148831,
+        "kind": "item",
+        "occurred_at": "2026-10-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527739/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: MOTION for leave to file amicus curiae brief in support of Appellee filed by Movant(s) Former Employees of the U.S. Department of Justice. Served on 10/26/2026. [26-1783] (NB) [Ent"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148832,
+        "kind": "item",
+        "occurred_at": "2026-10-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527811/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER entered: Upon consideration, Attorney Noah Bokat-Lindell and Attorney Jonathan Rosenberg's motions for leave to enter an appearance on behalf of Movants Former Employees of t"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148833,
+        "kind": "item",
+        "occurred_at": "2026-10-26T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108527839/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: ORDER entered: No objections having been filed, the motion of Movants Former Employees of the U.S. Department of Justice for leave to file an amicus curiae brief in support of the "
       }
     ]
   },
@@ -27036,7 +27086,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 107,
+    "entry_count": 108,
     "entry_moves": [
       {
         "entries": [
@@ -27344,6 +27394,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
         "title": "United States v. Maryland: Receipt of paper copy of REPLY BRIEF filed at 94 by US. Number of pages: 43. Sufficient: Yes. Number of Copies: 4. Received by clerk date: 10/28/2026. 1002084310 [26-1878] MP"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148825,
+        "kind": "item",
+        "occurred_at": "2026-10-21T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73608654/99/united-states-v-jared-demarinis/",
+        "title": "United States v. Maryland: Receipt of paper copy of REPLY BRIEF filed at [94] by US. Number of pages: [43]. Sufficient: Yes. Number of Copies: [4]. Received by clerk date: 10/28/2026. [1002084310] [26-1878] "
       }
     ]
   },
@@ -27434,7 +27494,7 @@
     "date_terminated": null,
     "defendant": "Oliver",
     "docket_number": "26-2126",
-    "entry_count": 79,
+    "entry_count": 81,
     "entry_moves": [
       {
         "entries": [
@@ -27451,7 +27511,7 @@
       }
     ],
     "filed_at": "2026-07-27T00:00:00",
-    "latest_entry_at": "2026-10-16T00:00:00",
+    "latest_entry_at": "2026-10-28T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
@@ -28000,7 +28060,7 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 50,
+    "entry_count": 57,
     "entry_moves": [
       {
         "entries": [
@@ -28021,7 +28081,7 @@
       }
     ],
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-10-26T00:00:00",
+    "latest_entry_at": "2026-10-30T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -28128,6 +28188,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/41/united-states-v-steven-koski/",
         "title": "United States v. Virginia: ORDER filed granting filing of amicus curiae brief (Democratic National Committee [39]; Lawyers' Committee for Civil Rights Under Law, National Urban League, League of United Latin"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 148846,
+        "kind": "item",
+        "occurred_at": "2026-10-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/54/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: BRIEF by US. Type of Brief: REPLY. . Do any cases pending in this court or the Supreme Court of the United States raise similar issues? YES. Response: United States v. DeMarinis (N"
       }
     ]
   },
@@ -28237,7 +28307,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:25.117844+00:00",
+    "status_checked_at": "2026-11-02T15:51:07.261877+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28369,7 +28439,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:21.530928+00:00",
+    "status_checked_at": "2026-11-02T15:51:03.227207+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28693,7 +28763,7 @@
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:33.135446+00:00",
+    "status_checked_at": "2026-11-02T15:51:14.622990+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29403,7 +29473,7 @@
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:55.159963+00:00",
+    "status_checked_at": "2026-11-02T15:51:38.408948+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29623,7 +29693,7 @@
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:36.614047+00:00",
+    "status_checked_at": "2026-11-02T15:51:18.324259+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29896,7 +29966,7 @@
     "date_terminated": null,
     "defendant": "Kris Warner",
     "docket_number": "26-2262",
-    "entry_count": 15,
+    "entry_count": 17,
     "entry_moves": [
       {
         "entries": [
@@ -29917,12 +29987,12 @@
       }
     ],
     "filed_at": null,
-    "latest_entry_at": "2026-10-20T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-11-01T13:20:51.629709+00:00",
+    "status_checked_at": "2026-11-02T15:51:34.232436+00:00",
     "superseded_by": null,
     "timeline": [
       {
