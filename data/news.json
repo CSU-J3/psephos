@@ -12928,5 +12928,125 @@
     "source_id": "google-news",
     "source_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBqR0piSVNjZDdSeVQ5TWkxYzM5T0poYVFYaW9tSktYRVZ2c3Joem5YY0N3M1g2T3VxWkI1N1VOdjRCR3pkcmQtbTJqZ2llc3hYMk9IdGdHNU9UaHZWcFAybnRRU0tBR0o0TWREcXhsclRldXhhUHh2UnhiOA?oc=5",
     "title": "Trump’s DOJ is 1-29. I’m not done - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149313,
+    "kind": "item",
+    "occurred_at": "2026-11-02T16:18:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/naacp-asks-court-to-block-doj-from-deploying-federal-agents-as-election-monitors",
+    "title": "NAACP asks court to block DOJ from deploying federal agents as election monitors"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149312,
+    "kind": "item",
+    "occurred_at": "2026-11-02T16:34:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-makes-last-ditch-request-to-supreme-court-to-block-20000-california-voters",
+    "title": "DOJ makes last-ditch request to Supreme Court to block 20,000 California voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149311,
+    "kind": "item",
+    "occurred_at": "2026-11-02T17:21:38+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-county-contacting-voters-who-never-received-absentee-ballots-after-lawsuit",
+    "title": "Georgia County contacting voters who never received absentee ballots, after lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149310,
+    "kind": "item",
+    "occurred_at": "2026-11-02T19:08:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voter-intimidation-ban-doesnt-apply-to-federal-government-doj-claims-in-shocking-new-argument",
+    "title": "Voter intimidation ban doesn’t apply to federal government, DOJ claims in shocking new argument"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149314,
+    "kind": "item",
+    "occurred_at": "2026-11-02T20:06:30+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/press-release-seiu-v-doj",
+    "title": "Bipartisan Former Election Officials Warn that Trump Administration’s Demands Ahead of 2026 Midterms Risk Intimidating Election Officials and Disenfranchising Eligible Voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149306,
+    "kind": "item",
+    "occurred_at": "2026-11-02T20:14:15+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/02/trump-midterm-election-officials-threats-lawsuit-anxiety",
+    "title": "Election officials express fears and anxiety amid wave of federal threats, court filings show"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149305,
+    "kind": "item",
+    "occurred_at": "2026-11-02T20:16:26+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/11/02/prop-144-election-2026-mail-voting-id-fast-counting-legislature-kolodin",
+    "title": "Arizona ballot measure would require voter ID for mail ballots, make other election changes"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149304,
+    "kind": "item",
+    "occurred_at": "2026-11-02T20:23:15+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/02/nebraska-sarpy-county-mail-voting-decline-election-fraud-claims",
+    "title": "Mail voting dropped sharply in a Nebraska county after a group spread voter fraud claims there"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149309,
+    "kind": "item",
+    "occurred_at": "2026-11-02T21:00:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-voting-rights-win-judge-blocks-trump-administration-from-disenfranchising-california-voters",
+    "title": "In voting rights win, judge blocks Trump administration from disenfranchising California voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149308,
+    "kind": "item",
+    "occurred_at": "2026-11-02T21:08:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/pro-voting-groups-seek-court-order-barring-trump-administration-from-demanding-washington-set-aside-ballots",
+    "title": "Pro-voting groups seek court order barring Trump administration from demanding Washington set aside ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149303,
+    "kind": "item",
+    "occurred_at": "2026-11-02T21:21:34+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/11/02/when-to-expect-election-results-2026-midterms-timing-congress-governor",
+    "title": "When to expect midterm election results in Arizona"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149307,
+    "kind": "item",
+    "occurred_at": "2026-11-02T21:29:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-about-face-doj-says-it-has-no-problem-with-block-on-federal-agents-as-poll-monitors",
+    "title": "In about-face, DOJ says it has ‘no problem’ with block on federal agents as poll monitors"
   }
 ]
