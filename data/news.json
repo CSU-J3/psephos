@@ -13088,5 +13088,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-swiftly-rejects-trump-administration-bid-to-block-california-voters",
     "title": "Supreme Court swiftly rejects Trump administration bid to block California voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149783,
+    "kind": "item",
+    "occurred_at": "2026-11-03T00:59:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-wont-bar-trump-admin-from-threatening-election-officials-in-effort-to-purge-voters",
+    "title": "Federal judge won’t bar Trump admin from threatening election officials in effort to purge voters"
   }
 ]
