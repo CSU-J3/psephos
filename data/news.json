@@ -13158,5 +13158,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/ninth-circuit-wipes-out-ruling-allowing-trump-administration-to-threaten-election-officials",
     "title": "Ninth Circuit wipes out ruling allowing Trump administration to threaten election officials"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150253,
+    "kind": "item",
+    "occurred_at": "2026-11-03T14:28:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/judge-wont-bar-doj-from-deploying-law-enforcement-to-voting-sites",
+    "title": "Judge won’t bar DOJ from deploying law enforcement to voting sites"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150252,
+    "kind": "item",
+    "occurred_at": "2026-11-03T17:05:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/dhs-sec-mullin-threatens-to-hunt-down-noncitizen-voters-in-election-day-message",
+    "title": "DHS Sec. Mullin threatens to ‘hunt down’ noncitizen voters in Election Day message"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150251,
+    "kind": "item",
+    "occurred_at": "2026-11-03T17:29:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-courts-blunt-dismissal-of-trump-admins-california-ballots-case-shows-how-far-the-doj-has-fallen",
+    "title": "Supreme Court’s blunt dismissal of Trump admin’s California ballots case shows how far the DOJ has fallen"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150250,
+    "kind": "item",
+    "occurred_at": "2026-11-03T17:50:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-election-monitors-target-democratic-strongholds-black-voters",
+    "title": "DOJ election monitors target Democratic strongholds, Black voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150249,
+    "kind": "item",
+    "occurred_at": "2026-11-03T18:03:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/false-cheating-claims-fly-as-machine-failure-risks-delayed-results-in-key-contest",
+    "title": "‘How the left steals elections’: False cheating claims fly as machine failure risks delayed results in key contest"
   }
 ]

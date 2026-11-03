@@ -27156,7 +27156,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 120,
+    "entry_count": 121,
     "entry_moves": [
       {
         "entries": [
@@ -27177,7 +27177,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-11-02T00:00:00",
+    "latest_entry_at": "2026-11-03T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
