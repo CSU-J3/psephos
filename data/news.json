@@ -13048,5 +13048,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/in-about-face-doj-says-it-has-no-problem-with-block-on-federal-agents-as-poll-monitors",
     "title": "In about-face, DOJ says it has ‘no problem’ with block on federal agents as poll monitors"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149549,
+    "kind": "item",
+    "occurred_at": "2026-11-02T22:02:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-and-his-allies-will-lie-about-voting-on-election-day-and-afterwards-heres-how-to-be-ready",
+    "title": "Trump and his allies will lie about voting on Election Day and afterwards. Here’s how to be ready"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149547,
+    "kind": "item",
+    "occurred_at": "2026-11-02T22:22:43+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/11/02/sb1-boleta-restricciones-de-recoleccion-para-ayudar-a-los-votantes-lupe",
+    "title": "Los grupos de derechos electorales, por temor a sanciones penales, redujeron la ayuda a algunos de los votantes más vulnerables de Texas."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149546,
+    "kind": "item",
+    "occurred_at": "2026-11-02T22:32:18+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/02/alaska-midterm-senate-sullivan-peltola-ranked-choice-voting",
+    "title": "Could voter confusion affect the outcome of a key Senate race in Alaska? Probably not."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 149548,
+    "kind": "item",
+    "occurred_at": "2026-11-02T23:01:17+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/supreme-court-swiftly-rejects-trump-administration-bid-to-block-california-voters",
+    "title": "Supreme Court swiftly rejects Trump administration bid to block California voters"
   }
 ]
