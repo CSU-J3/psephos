@@ -13208,5 +13208,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/false-cheating-claims-fly-as-machine-failure-risks-delayed-results-in-key-contest",
     "title": "‘How the left steals elections’: False cheating claims fly as machine failure risks delayed results in key contest"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150515,
+    "kind": "item",
+    "occurred_at": "2026-11-03T20:59:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/9th-circuit-pauses-order-barring-trump-administration-from-threatening-election-officials-with-criminal-prosecution",
+    "title": "Trump administration can threaten election officials again after latest appeals court reversal"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150514,
+    "kind": "item",
+    "occurred_at": "2026-11-03T21:32:14+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voters-in-battleground-texas-county-face-longer-waits-after-gop-slashed-polling-places",
+    "title": "Voters in battleground Texas county face longer waits after GOP slashed polling places"
   }
 ]
