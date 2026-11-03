@@ -11641,6 +11641,16 @@
   },
   {
     "channel": "news",
+    "grade": "C3",
+    "id": 150026,
+    "kind": "item",
+    "occurred_at": "2026-10-23T07:00:00+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOaG41bkZKYkcxd19sSmk1MlZfemMweWpLMXNJOTlvU0ZkcUJ2LWRCdnZJSVFjS2M5N1ZMVkZlRFJkR3JMaWpCOEpJandRZW5QUTBDNkduTWxQamJuLW1sN2RnbWJ0Wk45WWpVVU5kNjFyZDFnMVF2cnZwRG5mRVpJS2VkeGZhR3c5MU0zSnBuS0ZhVTMtNU5MU1ZUcFdXUmxXNnozYmNzY0tYVGpjcThNWFIxRXpDaGNfVktmeUlvaXUteG44bHhN?oc=5",
+    "title": "These Arizona voters were falsely flagged as noncitizens. 2 weeks before Election Day, they’ve been cleared to vote. - Votebeat"
+  },
+  {
+    "channel": "news",
     "grade": "B2",
     "id": 139502,
     "kind": "item",
@@ -13098,5 +13108,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-wont-bar-trump-admin-from-threatening-election-officials-in-effort-to-purge-voters",
     "title": "Federal judge won’t bar Trump admin from threatening election officials in effort to purge voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150017,
+    "kind": "item",
+    "occurred_at": "2026-11-03T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/03/post-election-audits-explainer-2026-midterms",
+    "title": "Everything you need to know about post-election audits, the process of checking election results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150020,
+    "kind": "item",
+    "occurred_at": "2026-11-03T10:44:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-victory-for-voters-judge-orders-trump-administration-to-stop-challenging-votes-with-noncitizen-lists",
+    "title": "In victory for voters, judge orders Trump administration to stop challenging votes with noncitizen lists"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150019,
+    "kind": "item",
+    "occurred_at": "2026-11-03T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-voter-suppression-crusade-has-failed-but-his-bid-to-subvert-the-midterms-may-just-be-getting-started",
+    "title": "Trump’s voter suppression crusade has failed. But his bid to subvert the midterms may just be getting started"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150016,
+    "kind": "item",
+    "occurred_at": "2026-11-03T11:00:01+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/03/election-day-2026-live-blog-midterms-trump",
+    "title": "Election Day live blog: How voting is going across the country"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150018,
+    "kind": "item",
+    "occurred_at": "2026-11-03T13:15:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ninth-circuit-wipes-out-ruling-allowing-trump-administration-to-threaten-election-officials",
+    "title": "Ninth Circuit wipes out ruling allowing Trump administration to threaten election officials"
   }
 ]
