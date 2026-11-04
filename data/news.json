@@ -13228,5 +13228,95 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/voters-in-battleground-texas-county-face-longer-waits-after-gop-slashed-polling-places",
     "title": "Voters in battleground Texas county face longer waits after GOP slashed polling places"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150749,
+    "kind": "item",
+    "occurred_at": "2026-11-03T23:27:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mullin-says-trump-admin-will-comb-voting-logs-to-hunt-for-noncitizens-after-election",
+    "title": "Mullin says Trump admin will comb ‘voting logs’ to hunt for noncitizens after election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150748,
+    "kind": "item",
+    "occurred_at": "2026-11-03T23:31:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ag-todd-blanche-vows-to-keep-fighting-tooth-and-nail-to-subvert-alaskas-election-results",
+    "title": "AG Todd Blanche vows to keep fighting ‘tooth and nail’ to subvert Alaska’s election results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150747,
+    "kind": "item",
+    "occurred_at": "2026-11-04T00:53:32+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/celebrate-the-accomplishment-trumps-election-threats-hit-a-wall-as-voters-flock-to-polls",
+    "title": "‘Celebrate the accomplishment’: Trump’s election threats hit a wall as voters flock to polls"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150746,
+    "kind": "item",
+    "occurred_at": "2026-11-04T01:30:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/one-third-of-voters-and-nearly-8-in-10-democrats-say-democracy-is-top-issue",
+    "title": "One-third of voters — and nearly 8 in 10 Democrats — say democracy is top issue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150751,
+    "kind": "item",
+    "occurred_at": "2026-11-04T03:00:02+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/virginia-passes-amendment-3-ending-harsh-felony-disenfranchisement",
+    "title": "Virginia Topples Its Jim Crow-Era Lifetime Ban on Voting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150745,
+    "kind": "item",
+    "occurred_at": "2026-11-04T03:01:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/maryland-voters-approve-democratic-redistricting-measure-to-counter-trump-gerrymanders",
+    "title": "Maryland voters approve Democratic redistricting measure to counter Trump gerrymanders"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150744,
+    "kind": "item",
+    "occurred_at": "2026-11-04T03:03:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-victory-for-democracy-virginia-voters-restore-voting-rights-for-ex-offenders",
+    "title": "In victory for democracy, Virginia voters restore voting rights for ex-offenders"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150743,
+    "kind": "item",
+    "occurred_at": "2026-11-04T04:36:45+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/04/midterm-election-administration-smooth-sporadic-problems-trump-administration",
+    "title": "Despite fears, voting ran smoothly across the country"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150750,
+    "kind": "item",
+    "occurred_at": "2026-11-04T04:44:46+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/tarrant-county-swings-democratic",
+    "title": "In Texas, the GOP’s Last Urban Stronghold Swings Blue"
   }
 ]
