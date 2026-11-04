@@ -13488,5 +13488,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/democrats-to-control-elections-in-key-states-heading-into-2028",
     "title": "Democrats to control elections in key states heading into 2028"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 151501,
+    "kind": "item",
+    "occurred_at": "2026-11-04T23:03:54+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/04/trump-midterm-election-interference-threats-results",
+    "title": "Trump threatened to interfere in the midterms. On Election Day, confrontation never came."
   }
 ]
