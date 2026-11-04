@@ -65,10 +65,10 @@
   {
     "caption": "United States v. Georgia",
     "category": "voter-data",
-    "court": "Northern District of Georgia",
-    "court_id": "gand",
-    "docket_number": "1:26-cv-00485",
-    "notes": "Claims: Civil Rights Act 1960 | Status: 9/30/26 : The district court dismissed DOJ's lawsuit on the merits. | Key decisions: District Court's 9/30/26 dismissal.",
+    "court": "Eleventh Circuit",
+    "court_id": "ca11",
+    "docket_number": "26-14057",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 10/30/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Eleventh Circuit. | Key decisions: District Court's 9/30/26 dismissal.",
     "state": "Georgia (2)"
   },
   {
@@ -266,7 +266,7 @@
     "court": "Western District of Washington",
     "court_id": "wawd",
     "docket_number": "3:25-cv-06078",
-    "notes": "Claims: Civil Rights Act 1960 | Status: 9/22/26 : The district court dismissed DOJ's lawsuit for failure to state a claim. | Key decisions: District Court's 9/22/26 dismissal.",
+    "notes": "Claims: Civil Rights Act 1960 | Status: On 10/30/2026, DOJ filed a notice that it will appeal the district court's dismissal of the suit to the Ninth Circuit. | Key decisions: District Court's 9/22/26 dismissal.",
     "state": "Washington"
   },
   {
