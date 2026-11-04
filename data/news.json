@@ -13318,5 +13318,25 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/tarrant-county-swings-democratic",
     "title": "In Texas, the GOP’s Last Urban Stronghold Swings Blue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150988,
+    "kind": "item",
+    "occurred_at": "2026-11-04T07:36:51+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/11/04/garlin-gilchrist-anthony-forlini-secretary-of-state-election-result-2026",
+    "title": "Garlin Gilchrist wins Michigan secretary of state election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 150989,
+    "kind": "item",
+    "occurred_at": "2026-11-04T12:23:15+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-voters-reject-trump-backed-gerrymander-in-referendum-vote",
+    "title": "Missouri voters reject Trump-backed gerrymander in referendum vote"
   }
 ]
