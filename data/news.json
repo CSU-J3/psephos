@@ -13588,5 +13588,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/live-updates-mississippi-senate-race-heads-toward-ballot-fight",
     "title": "🔴 Live updates: Mississippi Senate race heads toward ballot fight"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152406,
+    "kind": "item",
+    "occurred_at": "2026-11-05T20:29:26+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/ballot-measures-on-direct-democracy-2026-results",
+    "title": "Voters Are Siding with Direct Democracy in Seven States"
   }
 ]
