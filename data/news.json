@@ -13508,5 +13508,85 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/mississippi-made-thousands-of-valid-voters-inactive-ahead-of-critical-senate-race",
     "title": "Mississippi made thousands of valid voters inactive ahead of critical Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152174,
+    "kind": "item",
+    "occurred_at": "2026-11-05T15:27:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/11/05/milwaukee-election-errors-republican-critics",
+    "title": "Election Day errors add to Milwaukee’s history of messy elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152179,
+    "kind": "item",
+    "occurred_at": "2026-11-05T17:52:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/harmeet-dhillon-architect-of-trumps-failed-voter-roll-crusade-resigns-from-justice-department",
+    "title": "Harmeet Dhillon, architect of Trump’s failed voter roll crusade, resigns from Justice Department"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152178,
+    "kind": "item",
+    "occurred_at": "2026-11-05T18:19:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-midterm-rout-trump-doubles-down-on-alaska-senate-seat-scheme",
+    "title": "After midterm rout, Trump doubles down on Alaska Senate seat scheme"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152177,
+    "kind": "item",
+    "occurred_at": "2026-11-05T19:05:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/thousands-of-mississippi-voters-need-their-ballots-cured-heres-how-the-process-works",
+    "title": "Thousands of Mississippi voters need their ballots ‘cured.’ Here’s how the process works"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152180,
+    "kind": "item",
+    "occurred_at": "2026-11-05T19:13:25+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/sheriff-johnson-ousted-alamance-county-north-carolina",
+    "title": "A Pro-ICE Sheriff, Once Investigated for Racist Slurs, Is Ousted in North Carolina"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152181,
+    "kind": "item",
+    "occurred_at": "2026-11-05T19:22:18+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/midterm-update-election-deniers-lose-ground-across-the-country",
+    "title": "MIDTERM UPDATE: Election Deniers Lose Ground in Statewide and Congressional Races Across the Country"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152176,
+    "kind": "item",
+    "occurred_at": "2026-11-05T19:34:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-kicks-off-bid-to-throw-out-votes-in-mississippi-senate-race",
+    "title": "GOP kicks off bid to throw out votes in Mississippi Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152175,
+    "kind": "item",
+    "occurred_at": "2026-11-05T19:38:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/live-updates-mississippi-senate-race-heads-toward-ballot-fight",
+    "title": "🔴 Live updates: Mississippi Senate race heads toward ballot fight"
   }
 ]
