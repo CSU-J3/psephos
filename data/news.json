@@ -13498,5 +13498,15 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/11/04/trump-midterm-election-interference-threats-results",
     "title": "Trump threatened to interfere in the midterms. On Election Day, confrontation never came."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 151724,
+    "kind": "item",
+    "occurred_at": "2026-11-05T00:05:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippi-made-thousands-of-valid-voters-inactive-ahead-of-critical-senate-race",
+    "title": "Mississippi made thousands of valid voters inactive ahead of critical Senate race"
   }
 ]
