@@ -26253,7 +26253,7 @@
     "date_terminated": null,
     "defendant": "DHS",
     "docket_number": "26-5243",
-    "entry_count": 40,
+    "entry_count": 42,
     "entry_moves": [
       {
         "entries": [
@@ -26291,7 +26291,7 @@
       }
     ],
     "filed_at": "2026-06-29T00:00:00",
-    "latest_entry_at": "2026-10-07T00:00:00",
+    "latest_entry_at": "2026-11-06T00:00:00",
     "plaintiff": "League of Women Voters",
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,

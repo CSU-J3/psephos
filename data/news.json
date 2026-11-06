@@ -13708,5 +13708,75 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/%f0%9f%94%b4-live-mississippi-senate-ballot-fight-heats-up",
     "title": "LIVE: Mississippi Senate ballot fight heats up"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153321,
+    "kind": "item",
+    "occurred_at": "2026-11-06T20:43:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/karma-by-gutting-voting-rights-act-supreme-court-launched-a-new-civil-rights-movement-and-may-have-broken-mississippis-red-wall",
+    "title": "Karma: By gutting Voting Rights Act, Supreme Court launched a new Civil Rights movement and may have broken Mississippi’s red wall"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153320,
+    "kind": "item",
+    "occurred_at": "2026-11-06T20:47:28+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/scott-colom-lays-out-sweeping-pro-voting-agenda-as-he-leads-mississippi-senate-race",
+    "title": "‘Protect the will of the voters’: Mississippi’s Scott Colom lays out pro-voting agenda in exclusive interview"
+  },
+  {
+    "channel": "news",
+    "grade": "C3",
+    "id": 153325,
+    "kind": "item",
+    "occurred_at": "2026-11-06T21:35:40+00:00",
+    "source_id": "google-news",
+    "source_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5nb0pGQTI1ZDdPa25BZXJTSXp1a0hNRTNWUnpKOEU1dHA5YzJDQTlCZkpPYVNaU2FXVnRsQ2VqM1ZNMFhMeC1pcG0xMGRIV3RFbzNlVUZpREYtVVl5TnhiTWd4X20zeVhRRGtSQno5ZVdIWjBKa2dPOGtoRQ?oc=5",
+    "title": "🚨 OCA-Asian Pacific American Advocates v. U.S. Department of Homeland Security - Democracy Docket"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153319,
+    "kind": "item",
+    "occurred_at": "2026-11-06T21:40:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/confusion-over-mississippi-mail-ballot-curing-rule-puts-votes-at-risk-in-senate-race",
+    "title": "Mississippi Senate race votes at risk after state eliminates mail ballot curing rule"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153323,
+    "kind": "item",
+    "occurred_at": "2026-11-06T21:50:33+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/democracy-won",
+    "title": "Democracy Won"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153322,
+    "kind": "item",
+    "occurred_at": "2026-11-06T22:06:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/live-mississippi-senate-ballot-fight-heats-up",
+    "title": "LIVE: Mississippi Senate ballot fight heats up as Colom’s lead grows"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153318,
+    "kind": "item",
+    "occurred_at": "2026-11-06T22:38:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/peltola-campaign-sues-alaska-for-information-on-rejected-mail-ballots",
+    "title": "Peltola campaign sues Alaska for information on rejected mail ballots"
   }
 ]
