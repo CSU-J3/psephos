@@ -13628,5 +13628,25 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/arizona/2026/11/06/voters-reject-prop-144-mail-ballot-id-campaign-finance-kolodin-election-2026",
     "title": "Arizonans vote no on Prop. 144, rejecting significant changes to the state’s voting procedures"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152862,
+    "kind": "item",
+    "occurred_at": "2026-11-06T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/11/06/democrats-seek-to-transform-wisconsin-election-law",
+    "title": "How Wisconsin Democrats want to transform election law after flipping the legislature"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152863,
+    "kind": "item",
+    "occurred_at": "2026-11-06T13:46:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippi-makes-it-harder-to-cast-a-ballot-than-almost-anywhere-else-voters-defied-the-system",
+    "title": "Mississippi makes it harder to cast a ballot than almost anywhere else. Voters defied the system"
   }
 ]

@@ -1398,5 +1398,25 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/10/14/2026-20941/removing-deference-to-prior-uscis-determinations-of-eligibility",
     "title": "Removing Deference to Prior USCIS Determinations of Eligibility"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 152688,
+    "kind": "item",
+    "occurred_at": "2026-11-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/11/06/2026-22712/agency-information-collection-activities",
+    "title": "Agency Information Collection Activities"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 152796,
+    "kind": "item",
+    "occurred_at": "2026-11-06T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/11/06/2026-22735/heightened-requirements-for-foreign-importers-of-record",
+    "title": "Heightened Requirements for Foreign Importers of Record"
   }
 ]
