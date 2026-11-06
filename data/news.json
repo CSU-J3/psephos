@@ -13598,5 +13598,35 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/ballot-measures-on-direct-democracy-2026-results",
     "title": "Voters Are Siding with Direct Democracy in Seven States"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152635,
+    "kind": "item",
+    "occurred_at": "2026-11-06T00:26:56+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/colom-campaign-says-gop-seeks-to-violate-mississippi-voters-rights-as-legal-battle-ignites",
+    "title": "Colom campaign says GOP seeks to ‘violate Mississippi voters’ rights’ as legal battle ignites"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152634,
+    "kind": "item",
+    "occurred_at": "2026-11-06T01:25:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/federal-judge-blocks-trump-doj-from-interfering-with-washington-states-elections-ballot-counting",
+    "title": "Federal judge blocks Trump DOJ from interfering with Washington state’s elections, ballot counting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 152633,
+    "kind": "item",
+    "occurred_at": "2026-11-06T02:26:06+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/11/06/voters-reject-prop-144-mail-ballot-id-campaign-finance-kolodin-election-2026",
+    "title": "Arizonans vote no on Prop. 144, rejecting significant changes to the state’s voting procedures"
   }
 ]
