@@ -13552,6 +13552,16 @@
   {
     "channel": "news",
     "grade": "B2",
+    "id": 153093,
+    "kind": "item",
+    "occurred_at": "2026-11-05T19:05:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippi-voters-need-their-ballots-cured-heres-how-the-process-works",
+    "title": "Some Mississippi voters need their ballots ‘cured.’ Here’s how the process works"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
     "id": 152180,
     "kind": "item",
     "occurred_at": "2026-11-05T19:13:25+00:00",
@@ -13648,5 +13658,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/mississippi-makes-it-harder-to-cast-a-ballot-than-almost-anywhere-else-voters-defied-the-system",
     "title": "Mississippi makes it harder to cast a ballot than almost anywhere else. Voters defied the system"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153091,
+    "kind": "item",
+    "occurred_at": "2026-11-06T15:58:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/prosecutor-leading-trumps-grand-conspiracy-investigation-into-democrats-resigns",
+    "title": "Prosecutor leading Trump’s ‘grand conspiracy’ investigation into Democrats resigns"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153090,
+    "kind": "item",
+    "occurred_at": "2026-11-06T16:41:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/boebert-campaign-investigating-voting-as-she-trails-her-democratic-challenger",
+    "title": "Boebert campaign ‘investigating’ voting as she trails her Democratic challenger"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153094,
+    "kind": "item",
+    "occurred_at": "2026-11-06T16:59:52+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/election-administrator-elections-in-2026-midterms",
+    "title": "“The Jig Is Up”: Voters Resoundingly Reject Republicans Who Wanted to Run Elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153089,
+    "kind": "item",
+    "occurred_at": "2026-11-06T18:24:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-data-suggests-peltola-likely-to-win-alaska-voters-not-confused-by-2-dan-sullivans",
+    "title": "New data suggests Peltola likely to win Alaska, voters not confused by 2 Dan Sullivans"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153092,
+    "kind": "item",
+    "occurred_at": "2026-11-06T18:45:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/%f0%9f%94%b4-live-mississippi-senate-ballot-fight-heats-up",
+    "title": "LIVE: Mississippi Senate ballot fight heats up"
   }
 ]
