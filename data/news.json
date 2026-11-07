@@ -13778,5 +13778,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/peltola-campaign-sues-alaska-for-information-on-rejected-mail-ballots",
     "title": "Peltola campaign sues Alaska for information on rejected mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153550,
+    "kind": "item",
+    "occurred_at": "2026-11-06T23:32:17+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/11/06/team-voter-registration-system-working-groups-audit",
+    "title": "State officials acknowledge problems with voter registration system and say they’ll work with local election officials to fix it"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153552,
+    "kind": "item",
+    "occurred_at": "2026-11-07T01:25:25+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-drops-california-ballot-segregation-lawsuit-after-supreme-court-defeat",
+    "title": "Trump DOJ drops California ballot segregation lawsuit after Supreme Court defeat"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 153551,
+    "kind": "item",
+    "occurred_at": "2026-11-07T01:43:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/colorado-voters-reject-mid-decade-redistricting-restrictions",
+    "title": "Colorado voters reject mid-decade redistricting restrictions"
   }
 ]
