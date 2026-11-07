@@ -13808,5 +13808,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/colorado-voters-reject-mid-decade-redistricting-restrictions",
     "title": "Colorado voters reject mid-decade redistricting restrictions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 154003,
+    "kind": "item",
+    "occurred_at": "2026-11-07T14:52:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/georgia-election-chief-probes-unacceptable-tabulation-delay-that-could-flip-key-state-house-race",
+    "title": "Georgia election chief probes ‘unacceptable’ tabulation delay that could flip key state House race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 154002,
+    "kind": "item",
+    "occurred_at": "2026-11-07T17:35:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gerrymandering-backlash-helped-power-democrats-blue-wave",
+    "title": "Gerrymandering backlash helped power Democrats’ blue wave"
   }
 ]
