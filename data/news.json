@@ -13828,5 +13828,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/gerrymandering-backlash-helped-power-democrats-blue-wave",
     "title": "Gerrymandering backlash helped power Democrats’ blue wave"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 154228,
+    "kind": "item",
+    "occurred_at": "2026-11-07T19:35:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/extortionists-trump-orders-probe-of-democrats-for-promising-accountability",
+    "title": "‘EXTORTIONISTS’ — Trump orders probe of Democrats for promising accountability"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 154227,
+    "kind": "item",
+    "occurred_at": "2026-11-07T20:04:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/florida-democrat-sues-to-block-county-election-chief-from-recount-in-house-race-alleging-bias",
+    "title": "Florida Democrat sues to block county election chief from recount in House race, alleging bias"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 154226,
+    "kind": "item",
+    "occurred_at": "2026-11-07T21:42:33+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-promotes-posts-questioning-midterm-results",
+    "title": "Trump promotes posts questioning midterm results"
   }
 ]
