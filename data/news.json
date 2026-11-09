@@ -13928,5 +13928,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/colorado-defends-its-elections-after-boebert-campaign-alleges-voting-irregularities",
     "title": "Colorado defends its elections after Boebert campaign alleges voting irregularities"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155813,
+    "kind": "item",
+    "occurred_at": "2026-11-09T19:40:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-lawsuit-demanding-hand-count-of-texas-ballots-should-be-dismissed-county-argues",
+    "title": "GOP lawsuit demanding hand count of Texas ballots should be dismissed, county argues"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155812,
+    "kind": "item",
+    "occurred_at": "2026-11-09T19:52:02+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ag-todd-blanche-accused-of-obstructing-ballot-curing-with-mississippi-meeting",
+    "title": "AG Todd Blanche accused of obstructing ballot curing with Mississippi meeting"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155811,
+    "kind": "item",
+    "occurred_at": "2026-11-09T20:08:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/embarrassing-and-indefensible-trumps-alaska-appeal-should-be-dismissed-asap-voting-advocates-say",
+    "title": "‘Embarrassing and indefensible’: Trump’s Alaska appeal should be dismissed ASAP, voting advocates say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155810,
+    "kind": "item",
+    "occurred_at": "2026-11-09T20:56:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippi-election-chief-blames-local-officials-for-voter-purge-chaos-amid-razor-thin-senate-race-theyre-pushing-back",
+    "title": "Mississippi election chief blames local officials for voter purge chaos amid razor-thin Senate race. They’re pushing back"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155809,
+    "kind": "item",
+    "occurred_at": "2026-11-09T21:12:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/miami-election-official-who-already-said-gop-candidate-won-can-help-with-recount-court-rules",
+    "title": "Miami election official who already said GOP candidate won can help with recount, court rules"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155808,
+    "kind": "item",
+    "occurred_at": "2026-11-09T22:03:22+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/our-system-was-overwhelmed-huge-mississippi-turnout-spurs-calls-for-expanded-access",
+    "title": "‘Our system was overwhelmed’: Huge Mississippi turnout spurs calls for expanded access"
   }
 ]
