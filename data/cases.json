@@ -20064,7 +20064,7 @@
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:26.703209+00:00",
+    "status_checked_at": "2026-11-09T16:14:55.171085+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21263,7 +21263,7 @@
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:06.993353+00:00",
+    "status_checked_at": "2026-11-09T16:14:37.006910+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24384,7 +24384,7 @@
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:23.080060+00:00",
+    "status_checked_at": "2026-11-09T16:14:51.733087+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25587,7 +25587,7 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 128,
+    "entry_count": 129,
     "entry_moves": [
       {
         "entries": [
@@ -25604,7 +25604,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-28T00:00:00",
+    "latest_entry_at": "2026-11-02T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -26486,7 +26486,7 @@
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:19.441587+00:00",
+    "status_checked_at": "2026-11-09T16:14:47.573226+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26915,7 +26915,7 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 67,
+    "entry_count": 72,
     "entry_moves": [
       {
         "kind": "merge",
@@ -26928,7 +26928,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-30T00:00:00",
+    "latest_entry_at": "2026-11-06T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -27155,6 +27155,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73607684/00108527839/united-states-v-scanlan/",
         "title": "United States v. New Hampshire: ORDER entered: No objections having been filed, the motion of Movants Former Employees of the U.S. Department of Justice for leave to file an amicus curiae brief in support of the "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155384,
+        "kind": "item",
+        "occurred_at": "2026-11-06T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73607684/00108533687/united-states-v-scanlan/",
+        "title": "United States v. New Hampshire: REPLY BRIEF filed by Appellant US. Served on 11/06/2026. Nine paper copies identical to that of the electronically filed brief must be submitted so that they are received by the co"
       }
     ]
   },
@@ -28140,7 +28150,7 @@
     "date_terminated": null,
     "defendant": "Steven Koski",
     "docket_number": "26-2002",
-    "entry_count": 57,
+    "entry_count": 61,
     "entry_moves": [
       {
         "entries": [
@@ -28161,7 +28171,7 @@
       }
     ],
     "filed_at": "2026-07-29T00:00:00",
-    "latest_entry_at": "2026-10-30T00:00:00",
+    "latest_entry_at": "2026-11-04T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
@@ -28278,6 +28288,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73690636/54/united-states-v-steven-koski/",
         "title": "United States v. Virginia: BRIEF by US. Type of Brief: REPLY. . Do any cases pending in this court or the Supreme Court of the United States raise similar issues? YES. Response: United States v. DeMarinis (N"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155400,
+        "kind": "item",
+        "occurred_at": "2026-10-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73690636/66/united-states-v-steven-koski/",
+        "title": "United States v. Virginia: Receipt of paper copy of REPLY BRIEF filed at [54] by US. Number of pages: [41]. Sufficient: Yes. Number of Copies: [4]. Received by clerk date: 11/04/2026. [1002089861] [26-2002] "
       }
     ]
   },
@@ -28387,7 +28407,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:02.965331+00:00",
+    "status_checked_at": "2026-11-09T16:14:33.556136+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28489,7 +28509,7 @@
         "occurred_at": "2026-10-26T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74671625/01208902337/united-states-v-monica-evans/",
-        "title": "United States v. DC: Order Filed (CLERK)"
+        "title": "United States v. DC: CLERK'S ORDER [2200358] filed directing parties to file briefing format - Proposed formats due 11/30/2026 [26-5296] [Entered: 10/26/2026 06:18 PM]"
       }
     ]
   },
@@ -28519,7 +28539,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:23:58.770055+00:00",
+    "status_checked_at": "2026-11-09T16:14:29.501467+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28843,7 +28863,7 @@
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:11.056284+00:00",
+    "status_checked_at": "2026-11-09T16:14:40.458127+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29563,7 +29583,7 @@
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:33.919764+00:00",
+    "status_checked_at": "2026-11-09T16:15:02.169999+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29783,7 +29803,7 @@
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:14.952324+00:00",
+    "status_checked_at": "2026-11-09T16:14:44.152281+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30082,7 +30102,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-11-08T13:24:30.309201+00:00",
+    "status_checked_at": "2026-11-09T16:14:58.607770+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30104,6 +30124,46 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74793201/3/united-states-v-kris-warner/",
         "title": "United States v. West Virginia: BRIEFING ORDER filed.. No paper copies required unless case has been tentatively calendared or copies otherwise ordered. All filings must comply with Appendix Pagination & Brief Ci"
+      }
+    ]
+  },
+  {
+    "caption": "United States v. Secretary of State for the State of Georgia",
+    "case_id": "75088916",
+    "category": "voter-data",
+    "court": "Eleventh Circuit",
+    "date_terminated": null,
+    "defendant": "Secretary of State for the State of Georgia",
+    "docket_number": "26-14057",
+    "entry_count": 6,
+    "filed_at": "2026-10-30T00:00:00",
+    "latest_entry_at": "2026-11-06T00:00:00",
+    "plaintiff": "United States",
+    "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
+    "state": "Georgia",
+    "status": "pending",
+    "status_checked_at": "2026-11-09T16:12:23.450066+00:00",
+    "superseded_by": null,
+    "timeline": [
+      {
+        "channel": "litigation",
+        "grade": "B2",
+        "id": 155370,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "seed-cases",
+        "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
+        "title": "United States v. Georgia — voter-data"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155371,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/75088916/1/united-states-v-secretary-of-state-for-the-state-of-georgia/",
+        "title": "United States v. Georgia: CIVIL APPEAL DOCKETED. Notice of appeal filed by Appellant USA on 10/30/2026. Fee Status: Fee Not Required. See attached docketing notice for important information, including deadl"
       }
     ]
   }

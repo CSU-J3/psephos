@@ -13898,5 +13898,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/after-midterms-georgia-dems-have-chance-to-change-controversial-state-election-board",
     "title": "After midterms, Georgia Dems have chance to reform controversial state election board"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155578,
+    "kind": "item",
+    "occurred_at": "2026-11-09T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/09/secretary-of-state-election-official-results-2026",
+    "title": "Democrats won several key races for top state election official"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155580,
+    "kind": "item",
+    "occurred_at": "2026-11-09T15:51:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/all-about-the-machines-trump-claims-democrats-midterm-wins-not-honest",
+    "title": "‘All about the machines’: Trump claims Democrats’ midterm wins not ‘honest’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155579,
+    "kind": "item",
+    "occurred_at": "2026-11-09T16:11:04+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/colorado-defends-its-elections-after-boebert-campaign-alleges-voting-irregularities",
+    "title": "Colorado defends its elections after Boebert campaign alleges voting irregularities"
   }
 ]
