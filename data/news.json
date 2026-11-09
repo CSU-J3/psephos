@@ -13878,5 +13878,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/mississippi-voters-frustrated-by-surge-in-inactive-registrations-before-election-day",
     "title": "Mississippi voters frustrated by surge in ‘inactive’ registrations before Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155343,
+    "kind": "item",
+    "occurred_at": "2026-11-08T22:58:13+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blanche-threatens-congressional-democrats-with-investigations-its-unclear-for-what",
+    "title": "Blanche threatens to investigate congressional Democrats. It’s unclear for what"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 155342,
+    "kind": "item",
+    "occurred_at": "2026-11-08T23:26:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-midterms-georgia-dems-have-chance-to-change-controversial-state-election-board",
+    "title": "After midterms, Georgia Dems have chance to reform controversial state election board"
   }
 ]
