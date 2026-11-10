@@ -13998,5 +13998,65 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/arizona/2026/11/10/democrats-flip-legislature-2026-election-agenda-mail-voting-tribal-registration",
     "title": "Democrats have taken control of the Arizona Capitol. Here’s what we know about their election agenda."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156755,
+    "kind": "item",
+    "occurred_at": "2026-11-10T15:43:49+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-ends-winless-in-voter-roll-crusade-after-final-district-court-rejects-bid-to-obtain-delawares-list",
+    "title": "DOJ ends winless in voter roll crusade after final district court rejects bid to obtain Delaware’s list"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156754,
+    "kind": "item",
+    "occurred_at": "2026-11-10T15:47:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/key-ballot-deadlines-arrive-in-mississippis-nail-biting-senate-race-heres-what-comes-next",
+    "title": "Mississippi Senate race hits key ballot deadlines. Here’s what comes next"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156753,
+    "kind": "item",
+    "occurred_at": "2026-11-10T15:51:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/blanche-amps-up-claims-he-may-prosecute-democrats-for-speech",
+    "title": "Blanche amps up claims he may prosecute Democrats for speech"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156752,
+    "kind": "item",
+    "occurred_at": "2026-11-10T17:30:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-mississippi-senate-race-tempers-flare-over-aggressive-gop-vote-count-observers",
+    "title": "In Mississippi Senate race, tempers flare over aggressive GOP vote count observers"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156751,
+    "kind": "item",
+    "occurred_at": "2026-11-10T17:44:44+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-demands-every-alaska-vote-against-peltola-be-awarded-to-republican-incumbent-in-latest-assault-on-senate-race",
+    "title": "Trump demands every Alaska vote against Peltola be awarded to Republican incumbent in latest assault on Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156756,
+    "kind": "item",
+    "occurred_at": "2026-11-10T18:28:25+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/kentucky-clemency-restrictions-and-death-penalty",
+    "title": "Death Penalty Opponents in Kentucky Prepare for Clemency Push Earlier than Planned"
   }
 ]

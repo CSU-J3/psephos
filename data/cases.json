@@ -9356,7 +9356,7 @@
     "date_terminated": null,
     "defendant": "Albence",
     "docket_number": "1:25-cv-01453",
-    "entry_count": 165,
+    "entry_count": 168,
     "entry_moves": [
       {
         "entries": [
@@ -9411,7 +9411,7 @@
       }
     ],
     "filed_at": "2025-12-02T00:00:00",
-    "latest_entry_at": "2026-10-26T00:00:00",
+    "latest_entry_at": "2026-11-10T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
@@ -10148,6 +10148,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71984384/109/united-states-v-albence/",
         "title": "United States v. Delaware: Official Transcript of Oral Argument held on 9/29/26 before Judge Richard G. Andrews. Court Reporter Heather M. Triozzi,Email: heather_triozzi@ded.uscourts.gov. Transcript may be v"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156548,
+        "kind": "item",
+        "occurred_at": "2026-11-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/111/united-states-v-albence/",
+        "title": "United States v. Delaware: MEMORANDUM OPINION. Signed by Judge Richard G. Andrews on 11/10/2026. (aas) (Entered: 11/10/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156549,
+        "kind": "item",
+        "occurred_at": "2026-11-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71984384/112/united-states-v-albence/",
+        "title": "United States v. Delaware: ORDER: For the reasons stated in the accompanying Memorandum Opinion (D.I. 111 ), Defendant and Defendant Intervenors' Motions to Dismiss (D.I. 33, 36, 39 ) are GRANTED, and Plaint"
       }
     ]
   },
@@ -27206,7 +27226,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 123,
+    "entry_count": 130,
     "entry_moves": [
       {
         "entries": [
@@ -27227,7 +27247,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-11-04T00:00:00",
+    "latest_entry_at": "2026-11-10T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
