@@ -25282,7 +25282,7 @@
     "date_terminated": null,
     "defendant": "Amore",
     "docket_number": "26-1665",
-    "entry_count": 127,
+    "entry_count": 129,
     "entry_moves": [
       {
         "entries": [
@@ -25299,7 +25299,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-10-28T00:00:00",
+    "latest_entry_at": "2026-11-09T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
@@ -25576,6 +25576,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
         "title": "United States v. Rhode Island: NINE (9) paper copies of reply brief [6841262-2] submitted by Appellant US. [26-1665] (LEC) [Entered: 10/14/2026 04:49 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155866,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108534534/united-states-v-amore/",
+        "title": "United States v. Rhode Island: MOTION for Attorney James J. Arguin to withdraw as counsel filed by Appellee Gregg Amore. Served on 11/09/2026. [26-1665] (JJA) [Entered: 11/09/2026 02:07 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155867,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73470017/00108534756/united-states-v-amore/",
+        "title": "United States v. Rhode Island: ORDER entered: Upon consideration, the motion to withdraw Attorney James J. Arguin as counsel for Appellee Gregg Amore is granted. Attorney Arguin is hereby withdrawn as counsel of"
       }
     ]
   },
@@ -25587,7 +25607,7 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 129,
+    "entry_count": 133,
     "entry_moves": [
       {
         "entries": [
@@ -25891,6 +25911,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73479340/00108506358/united-states-v-galvin/",
         "title": "United States v. Massachusetts: REPLY BRIEF filed by Appellant US. Served on 09/03/2026. Nine paper copies identical to that of the electronically filed brief must be submitted so that they are received by the co"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155854,
+        "kind": "item",
+        "occurred_at": "2026-09-14T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
+        "title": "United States v. Massachusetts: NINE (9) paper copies of reply brief [6842517-2] submitted by Appellant US. [26-1657] (LEC) [Entered: 09/24/2026 12:02 PM]"
       }
     ]
   },
@@ -29796,9 +29826,9 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "26-2029",
-    "entry_count": 69,
+    "entry_count": 78,
     "filed_at": "2026-09-04T00:00:00",
-    "latest_entry_at": "2026-10-19T00:00:00",
+    "latest_entry_at": "2026-10-30T00:00:00",
     "plaintiff": "League of Women Voters of Massachusetts",
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
@@ -30059,12 +30089,62 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 155828,
+        "kind": "item",
+        "occurred_at": "2026-10-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108527532/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): Mail returned as undeliverable to Attorney Charlotte Gibson for Appellee Josh Shapiro in 26-2029. Copy of Order entered September 25, 2026. [26-2029, 26-2031, 26-2032, 26-2030] (NK"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 135753,
         "kind": "item",
         "occurred_at": "2026-10-19T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74755121/00108524806/state-of-california-v-trump/",
-        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION to extend time to file brief and appendix filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, DHS, Joseph B. Edlow, Derek T. Kan,"
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION to extend time to file brief and appendix filed by Appellants Frank J. Bisignano, Board of Governors of the United States Postal Service, Joseph B. Edlow, Derek T. Kan, Ambe"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155830,
+        "kind": "item",
+        "occurred_at": "2026-10-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108524931/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER granting motion to extend time to file brief and appendix filed by Appellants USPS, DHS, SSA, USCIS, Donald J. Trump, Frank J. Bisignano, Joseph B. Edlow, David Steiner, Mark"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155831,
+        "kind": "item",
+        "occurred_at": "2026-10-27T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108529943/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): MOTION to extend time to file brief filed by Appellants State of Missouri, State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Monta"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155832,
+        "kind": "item",
+        "occurred_at": "2026-10-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108530032/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER granting motion to extend time to file brief and appendix filed by Appellants State of South Dakota, State of Oklahoma, State of Florida, State of Louisiana, State of Alabama"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 155833,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74755121/00108530354/state-of-california-v-trump/",
+        "title": "League of Women Voters of Massachusetts v. Trump (1st Cir.): ORDER entered by Gustavo A. Gelpí, Jr., Appellate Judge; Julie Rikelman, Appellate Judge; and Seth Robert Aframe, Appellate Judge: In these consolidated appeals, we earlier denied "
       }
     ]
   },
