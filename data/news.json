@@ -14058,5 +14058,55 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/kentucky-clemency-restrictions-and-death-penalty",
     "title": "Death Penalty Opponents in Kentucky Prepare for Clemency Push Earlier than Planned"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 157048,
+    "kind": "item",
+    "occurred_at": "2026-11-10T20:21:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-nominates-as-ambassador-a-former-election-official-who-claimed-democrats-need-illegal-citizens-to-win-elections",
+    "title": "Trump nominates as ambassador a former election official who claimed Democrats need ‘illegal citizens’ to win elections"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 157047,
+    "kind": "item",
+    "occurred_at": "2026-11-10T21:38:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/jim-jordan-who-played-key-role-in-bid-to-overturn-2020-elected-house-gop-leader",
+    "title": "Jim Jordan, who played key role in bid to overturn 2020, elected House GOP leader"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 157046,
+    "kind": "item",
+    "occurred_at": "2026-11-10T21:48:43+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/tight-north-carolina-congressional-races-could-hinge-on-a-handful-of-provisional-ballots",
+    "title": "Tight North Carolina congressional races could hinge on a handful of provisional ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 157045,
+    "kind": "item",
+    "occurred_at": "2026-11-10T22:32:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/in-win-for-voters-oklahoma-supreme-court-overturns-restrictions-on-ballot-measures",
+    "title": "In win for voters, Oklahoma Supreme Court overturns restrictions on ballot measures"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 157044,
+    "kind": "item",
+    "occurred_at": "2026-11-10T22:43:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippis-top-election-official-posts-then-deletes-incorrect-information-on-ballot-curing-process-he-repealed",
+    "title": "Mississippi’s top election official posts, then deletes, incorrect information on ballot curing process he repealed"
   }
 ]

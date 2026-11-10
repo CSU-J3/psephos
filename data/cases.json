@@ -26749,7 +26749,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 65,
+    "entry_count": 66,
     "entry_moves": [
       {
         "entries": [
@@ -26787,7 +26787,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-10-22T00:00:00",
+    "latest_entry_at": "2026-11-10T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -26954,6 +26954,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73582123/60/united-states-v-secretary-commonwealth-of-pennsylvania/",
         "title": "United States v. Pennsylvania: TEXT ORDER (Clerk) granting Unopposed Joint Motion for Extension of Time to File Intervenor-Appellees' brief filed by Appellees Pennsylvania Alliance for Retired Americans and Mike"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156862,
+        "kind": "item",
+        "occurred_at": "2026-11-10T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73582123/61/united-states-v-secretary-commonwealth-of-pennsylvania/",
+        "title": "United States v. Pennsylvania: ECF FILER: Motion filed by Attorney Andrew Braniff, Esq. for Appellant USA to withdraw as counsel. Certificate of Service dated 11/10/2026. Service made by ECF. [26-2684] (AB)"
       }
     ]
   },
@@ -28887,7 +28897,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 191,
+    "entry_count": 193,
     "entry_moves": [
       {
         "entries": [
@@ -29584,7 +29594,27 @@
         "occurred_at": "2026-10-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/175/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: USCA Judgment"
+        "title": "State of California v. United States Postal Service: USCA Judgment as to 60 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of F"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156825,
+        "kind": "item",
+        "occurred_at": "2026-10-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/176/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MANDATE of USCA as to 60 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156826,
+        "kind": "item",
+        "occurred_at": "2026-10-29T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/177/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Extension of Time to November 16, 2026 to File Answer re 1 Complaint,,, (Unopposed) by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Do"
       },
       {
         "channel": "litigation",
@@ -29601,10 +29631,30 @@
         "grade": "A1",
         "id": 148343,
         "kind": "item",
-        "occurred_at": "2026-11-01T00:00:00",
+        "occurred_at": "2026-10-30T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/180/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: MANDATE of USCA as to 60 Notice of Appeal, filed by State of Oklahoma, State of Indiana, State of Kansas, State of South Dakota, State of South Carolina, State of Montana, State of"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156827,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/178/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 177 MOTION for Extension of Time to November 16, 2026 to File Answer re 1 Complaint (Unopposed). (MAP) (Entered: 10/30/2026)"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156828,
+        "kind": "item",
+        "occurred_at": "2026-10-30T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/179/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Extension of Time to November 16, 2026 to Answer or Otherwise Respond to Plaintiffs' Complaint (Unopposed) by State of Alabama, State of Florida, State of Indiana, State"
       },
       {
         "channel": "litigation",
@@ -29615,6 +29665,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Order on Motion for Extension of Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 156830,
+        "kind": "item",
+        "occurred_at": "2026-11-02T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/181/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 179 MOTION for Extension of Time to November 16, 2026 to Answer or Otherwise Respond to Plaintiffs' Complaint (Unopposed) by State o"
       }
     ]
   },
@@ -30235,9 +30295,9 @@
     "date_terminated": null,
     "defendant": "Secretary of State for the State of Georgia",
     "docket_number": "26-14057",
-    "entry_count": 6,
+    "entry_count": 14,
     "filed_at": "2026-10-30T00:00:00",
-    "latest_entry_at": "2026-11-06T00:00:00",
+    "latest_entry_at": "2026-11-10T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
     "state": "Georgia",
