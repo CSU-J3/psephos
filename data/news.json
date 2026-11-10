@@ -13988,5 +13988,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/our-system-was-overwhelmed-huge-mississippi-turnout-spurs-calls-for-expanded-access",
     "title": "‘Our system was overwhelmed’: Huge Mississippi turnout spurs calls for expanded access"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 156494,
+    "kind": "item",
+    "occurred_at": "2026-11-10T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/11/10/democrats-flip-legislature-2026-election-agenda-mail-voting-tribal-registration",
+    "title": "Democrats have taken control of the Arizona Capitol. Here’s what we know about their election agenda."
   }
 ]

@@ -20064,7 +20064,7 @@
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:55.171085+00:00",
+    "status_checked_at": "2026-11-10T14:55:27.602129+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21263,7 +21263,7 @@
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:37.006910+00:00",
+    "status_checked_at": "2026-11-10T14:55:08.852461+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24384,7 +24384,7 @@
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:51.733087+00:00",
+    "status_checked_at": "2026-11-10T14:55:24.134604+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26516,7 +26516,7 @@
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:47.573226+00:00",
+    "status_checked_at": "2026-11-10T14:55:20.728785+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28437,7 +28437,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:33.556136+00:00",
+    "status_checked_at": "2026-11-10T14:55:05.445555+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28569,7 +28569,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:29.501467+00:00",
+    "status_checked_at": "2026-11-10T14:55:01.963295+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28893,7 +28893,7 @@
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:40.458127+00:00",
+    "status_checked_at": "2026-11-10T14:55:12.373041+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29606,14 +29606,14 @@
     "date_terminated": null,
     "defendant": "U.S. Citizenship and Immigration Services",
     "docket_number": "8:26-cv-03457",
-    "entry_count": 53,
+    "entry_count": 54,
     "filed_at": "2026-08-31T00:00:00",
-    "latest_entry_at": "2026-10-02T00:00:00",
+    "latest_entry_at": "2026-10-26T00:00:00",
     "plaintiff": "Electronic Privacy Information Center",
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:15:02.169999+00:00",
+    "status_checked_at": "2026-11-10T14:55:34.559728+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29833,7 +29833,7 @@
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:44.152281+00:00",
+    "status_checked_at": "2026-11-10T14:55:15.921104+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30182,7 +30182,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:14:58.607770+00:00",
+    "status_checked_at": "2026-11-10T14:55:31.129266+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30222,7 +30222,7 @@
     "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
     "state": "Georgia",
     "status": "pending",
-    "status_checked_at": "2026-11-09T16:12:23.450066+00:00",
+    "status_checked_at": "2026-11-10T14:54:58.307152+00:00",
     "superseded_by": null,
     "timeline": [
       {
