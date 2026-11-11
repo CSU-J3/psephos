@@ -1862,6 +1862,16 @@
         "source_id": "google-news",
         "source_url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPaDF3NklyODA0NDYxZHNvelpmNkhmcEpZVHRNZFN2VVJLTUJzZzlOOEhiY2dzc0ZRTy1veXR5STlHdDU5YmMwN0VnOXVWcG9oZEd0Q2FwSC1HeUt2ZTFHbWxnQmktZTRsSktrRktZSkZNVk1Fb1QxUE1EUGNQTHJZeldNazhlTmdWSDRDVlFLWllkVE1vSnNLckhXbDV2d2gxNEFPUklMaFBUQQ?oc=5",
         "title": "Senate Republican continues fight for stalled SAVE Act - WSBT"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
+        "id": 157796,
+        "kind": "item",
+        "occurred_at": "2026-11-11T16:28:46+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPSWNMQnY0Rm1JRjVtM0lMOE93SC1lSjMxcEFkS2Rha0swYWs5TkNJQkxkMjY5Mm5wRklOTnpPZ0otMWtxMHR6bThMb0NqZGIwdGxXd0R5elRJZnFTb1ZFQldDbmlSV2F0Wi1icjBKVGJmZHduWXkzOS1BV0pnYXYycEc5Z0JxT08xZFRVcG9yMThXUkw1N0ZpRm1BcFh4Qmp2UW5qUU9Ed2VhaUVudnlJZ2NydjZpT1E?oc=5",
+        "title": "Florida Passes Its Own SAVE Act - PJ Media"
       }
     ]
   },

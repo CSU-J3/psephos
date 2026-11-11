@@ -28040,7 +28040,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 79,
+    "entry_count": 80,
     "entry_moves": [
       {
         "apart": 1,
@@ -28062,7 +28062,7 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-10-08T00:00:00",
+    "latest_entry_at": "2026-11-10T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
