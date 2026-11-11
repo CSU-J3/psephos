@@ -46176,5 +46176,1175 @@
     ],
     "title": "In township supervisors, further providing for monthly meetings, quorum and voting.",
     "url": "https://legiscan.com/PA/bill/SB1502/2025"
+  },
+  {
+    "bill_number": "HB481",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161733",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157525,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB481/2027",
+        "title": "TX HB481: Filed"
+      }
+    ],
+    "title": "Relating to the electronic transmission of a ballot to a voter voting early by mail on the ground of absence from the county of residence.",
+    "url": "https://legiscan.com/TX/bill/HB481/2027"
+  },
+  {
+    "bill_number": "HB402",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161801",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157520,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB402/2027",
+        "title": "TX HB402: Filed"
+      }
+    ],
+    "title": "Relating to acceptable forms of identification for voting.",
+    "url": "https://legiscan.com/TX/bill/HB402/2027"
+  },
+  {
+    "bill_number": "HB449",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161814",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157522,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB449/2027",
+        "title": "TX HB449: Filed"
+      }
+    ],
+    "title": "Relating to the procedures for voting after changing residence to another county.",
+    "url": "https://legiscan.com/TX/bill/HB449/2027"
+  },
+  {
+    "bill_number": "HB969",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161884",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157536,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB969/2027",
+        "title": "TX HB969: Filed"
+      }
+    ],
+    "title": "Relating to acceptable forms of photo identification for the purposes of voting.",
+    "url": "https://legiscan.com/TX/bill/HB969/2027"
+  },
+  {
+    "bill_number": "HJR33",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161909",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157543,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HJR33/2027",
+        "title": "TX HJR33: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment authorizing certain persons under the age of 18 to vote in a primary election.",
+    "url": "https://legiscan.com/TX/bill/HJR33/2027"
+  },
+  {
+    "bill_number": "HB337",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161918",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157519,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB337/2027",
+        "title": "TX HB337: Filed"
+      }
+    ],
+    "title": "Relating to the registration of voters at a polling place and related procedures.",
+    "url": "https://legiscan.com/TX/bill/HB337/2027"
+  },
+  {
+    "bill_number": "HB782",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161968",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157530,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB782/2027",
+        "title": "TX HB782: Filed"
+      }
+    ],
+    "title": "Relating to the ability of a voter registrar and volunteer deputy registrar to distribute and receive applications for a ballot to be voted by mail.",
+    "url": "https://legiscan.com/TX/bill/HB782/2027"
+  },
+  {
+    "bill_number": "SB103",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2161986",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157552,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB103/2027",
+        "title": "TX SB103: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157553,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB103/2027",
+        "title": "TX SB103: Filed"
+      }
+    ],
+    "title": "Relating to early voting by mail by any qualified voter and to the repeal of certain criminal offenses concerning the solicitation and distribution of an application to vote by mail.",
+    "url": "https://legiscan.com/TX/bill/SB103/2027"
+  },
+  {
+    "bill_number": "HB984",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162040",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157537,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB984/2027",
+        "title": "TX HB984: Filed"
+      }
+    ],
+    "title": "Relating to the Independent Citizen Redistricting Commission and the redistricting of the districts used to elect members of the United States House of Representatives, the Texas Legislature, and the State Board of Education.",
+    "url": "https://legiscan.com/TX/bill/HB984/2027"
+  },
+  {
+    "bill_number": "HB953",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162089",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157534,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB953/2027",
+        "title": "TX HB953: Filed"
+      }
+    ],
+    "title": "Relating to the Independent Citizen Redistricting Commission and the redistricting of the districts used to elect members of the United States House of Representatives, the Texas Legislature, and the State Board of Education.",
+    "url": "https://legiscan.com/TX/bill/HB953/2027"
+  },
+  {
+    "bill_number": "HB858",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162143",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157532,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB858/2027",
+        "title": "TX HB858: Filed"
+      }
+    ],
+    "title": "Relating to electronic voter registration.",
+    "url": "https://legiscan.com/TX/bill/HB858/2027"
+  },
+  {
+    "bill_number": "HB180",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162164",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157513,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB180/2027",
+        "title": "TX HB180: Filed"
+      }
+    ],
+    "title": "Relating to ensuring access to the right to vote by all eligible voters.",
+    "url": "https://legiscan.com/TX/bill/HB180/2027"
+  },
+  {
+    "bill_number": "HJR66",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162173",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157545,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HJR66/2027",
+        "title": "TX HJR66: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment establishing the Independent Citizen Redistricting Commission to redistrict the Texas Legislature, Texas congressional districts, and State Board of Education districts and revising procedures for redistricting.",
+    "url": "https://legiscan.com/TX/bill/HJR66/2027"
+  },
+  {
+    "bill_number": "HB312",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162186",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157517,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB312/2027",
+        "title": "TX HB312: Filed"
+      }
+    ],
+    "title": "Relating to allowing a person who will be 18 years of age on the date of the general election for state and county officers to vote in the preceding primary elections.",
+    "url": "https://legiscan.com/TX/bill/HB312/2027"
+  },
+  {
+    "bill_number": "HJR65",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162214",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157544,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HJR65/2027",
+        "title": "TX HJR65: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment authorizing certain persons under the age of 18 to vote in a primary election.",
+    "url": "https://legiscan.com/TX/bill/HJR65/2027"
+  },
+  {
+    "bill_number": "HJR27",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162231",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157541,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HJR27/2027",
+        "title": "TX HJR27: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment establishing the Texas Redistricting Commission to redistrict the United States House of Representatives and the Texas Legislature.",
+    "url": "https://legiscan.com/TX/bill/HJR27/2027"
+  },
+  {
+    "bill_number": "HB304",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162242",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157516,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB304/2027",
+        "title": "TX HB304: Filed"
+      }
+    ],
+    "title": "Relating to early voting by mail by any qualified voter and to the repeal of certain criminal offenses concerning the solicitation and distribution of an application to vote by mail.",
+    "url": "https://legiscan.com/TX/bill/HB304/2027"
+  },
+  {
+    "bill_number": "HB313",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162315",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157518,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB313/2027",
+        "title": "TX HB313: Filed"
+      }
+    ],
+    "title": "Relating to prohibiting state agencies from adopting, enforcing, or maintaining a rule requiring certain applicants to the agency to provide proof of citizenship or residency in the United States.",
+    "url": "https://legiscan.com/TX/bill/HB313/2027"
+  },
+  {
+    "bill_number": "HB260",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162324",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157514,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB260/2027",
+        "title": "TX HB260: Filed"
+      }
+    ],
+    "title": "Relating to the reapportionment of state legislative, congressional, and judicial districts and the functions and duties of the independent redistricting commission.",
+    "url": "https://legiscan.com/TX/bill/HB260/2027"
+  },
+  {
+    "bill_number": "SB84",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162341",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157548,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB84/2027",
+        "title": "TX SB84: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157549,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB84/2027",
+        "title": "TX SB84: Filed"
+      }
+    ],
+    "title": "Relating to grounds for recounting paperless electronic voting system ballots.",
+    "url": "https://legiscan.com/TX/bill/SB84/2027"
+  },
+  {
+    "bill_number": "SJR8",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162358",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157560,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SJR8/2027",
+        "title": "TX SJR8: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157561,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SJR8/2027",
+        "title": "TX SJR8: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment establishing the Texas Redistricting Commission to redistrict the United States House of Representatives and the Texas Legislature.",
+    "url": "https://legiscan.com/TX/bill/SJR8/2027"
+  },
+  {
+    "bill_number": "HJR22",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162412",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157540,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HJR22/2027",
+        "title": "TX HJR22: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment establishing the Independent Citizen Redistricting Commission to redistrict the Texas Legislature, Texas congressional districts, and State Board of Education districts and revising procedures for redistricting.",
+    "url": "https://legiscan.com/TX/bill/HJR22/2027"
+  },
+  {
+    "bill_number": "HJR31",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162437",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157542,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HJR31/2027",
+        "title": "TX HJR31: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment establishing an independent redistricting commission to establish districts for the election of the members of the United States House of Representatives elected from this state, the Texas Senate, and the Texas House of Representatives.",
+    "url": "https://legiscan.com/TX/bill/HJR31/2027"
+  },
+  {
+    "bill_number": "HB533",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162442",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157527,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB533/2027",
+        "title": "TX HB533: Filed"
+      }
+    ],
+    "title": "Relating to the carrying of concealed handguns by handgun license holders on the premises of certain polling places on the day of an election or while early voting is in progress.",
+    "url": "https://legiscan.com/TX/bill/HB533/2027"
+  },
+  {
+    "bill_number": "HB472",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162455",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157523,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB472/2027",
+        "title": "TX HB472: Filed"
+      }
+    ],
+    "title": "Relating to the establishment of countywide polling places for a primary or runoff primary election.",
+    "url": "https://legiscan.com/TX/bill/HB472/2027"
+  },
+  {
+    "bill_number": "HB274",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162470",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157515,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB274/2027",
+        "title": "TX HB274: Filed"
+      }
+    ],
+    "title": "Relating to the reading and marking of a ballot by a person occupying a voting station or by the person's child.",
+    "url": "https://legiscan.com/TX/bill/HB274/2027"
+  },
+  {
+    "bill_number": "HB912",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162492",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157533,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB912/2027",
+        "title": "TX HB912: Filed"
+      }
+    ],
+    "title": "Relating to the inclusion of instruction on voter registration and civic engagement in the required curriculum for certain public high school students and certification by high school principals regarding access to voter registration application forms.",
+    "url": "https://legiscan.com/TX/bill/HB912/2027"
+  },
+  {
+    "bill_number": "SB196",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162493",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157556,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB196/2027",
+        "title": "TX SB196: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157557,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB196/2027",
+        "title": "TX SB196: Filed"
+      }
+    ],
+    "title": "Relating to the availability of paper ballots for a person voting by personal appearance.",
+    "url": "https://legiscan.com/TX/bill/SB196/2027"
+  },
+  {
+    "bill_number": "SB79",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162527",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157546,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB79/2027",
+        "title": "TX SB79: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157547,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB79/2027",
+        "title": "TX SB79: Filed"
+      }
+    ],
+    "title": "Relating to the establishment of the Texas Redistricting Commission.",
+    "url": "https://legiscan.com/TX/bill/SB79/2027"
+  },
+  {
+    "bill_number": "HB127",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162567",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157510,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB127/2027",
+        "title": "TX HB127: Filed"
+      }
+    ],
+    "title": "Relating to the provision of the reason for rejecting a voter registration application.",
+    "url": "https://legiscan.com/TX/bill/HB127/2027"
+  },
+  {
+    "bill_number": "SB102",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162601",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157550,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB102/2027",
+        "title": "TX SB102: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157551,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB102/2027",
+        "title": "TX SB102: Filed"
+      }
+    ],
+    "title": "Relating to requiring a voter to present proof of identification.",
+    "url": "https://legiscan.com/TX/bill/SB102/2027"
+  },
+  {
+    "bill_number": "HB519",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162619",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157526,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB519/2027",
+        "title": "TX HB519: Filed"
+      }
+    ],
+    "title": "Relating to an application for an early voting ballot by mail.",
+    "url": "https://legiscan.com/TX/bill/HB519/2027"
+  },
+  {
+    "bill_number": "SB230",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162628",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157558,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB230/2027",
+        "title": "TX SB230: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157559,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB230/2027",
+        "title": "TX SB230: Filed"
+      }
+    ],
+    "title": "Relating to electronic voter registration.",
+    "url": "https://legiscan.com/TX/bill/SB230/2027"
+  },
+  {
+    "bill_number": "SB113",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162655",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157554,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB113/2027",
+        "title": "TX SB113: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157555,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB113/2027",
+        "title": "TX SB113: Filed"
+      }
+    ],
+    "title": "Relating to the Texas Redistricting Commission.",
+    "url": "https://legiscan.com/TX/bill/SB113/2027"
+  },
+  {
+    "bill_number": "HB535",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162656",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157528,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB535/2027",
+        "title": "TX HB535: Filed"
+      }
+    ],
+    "title": "Relating to postage requirements and restrictions for early voting ballots voted by mail.",
+    "url": "https://legiscan.com/TX/bill/HB535/2027"
+  },
+  {
+    "bill_number": "HB150",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162712",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157511,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB150/2027",
+        "title": "TX HB150: Filed"
+      }
+    ],
+    "title": "Relating to electronic voter registration.",
+    "url": "https://legiscan.com/TX/bill/HB150/2027"
+  },
+  {
+    "bill_number": "HB162",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162785",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157512,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB162/2027",
+        "title": "TX HB162: Filed"
+      }
+    ],
+    "title": "Relating to the establishment of the Texas Redistricting Commission.",
+    "url": "https://legiscan.com/TX/bill/HB162/2027"
+  },
+  {
+    "bill_number": "HB447",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162799",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157521,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB447/2027",
+        "title": "TX HB447: Filed"
+      }
+    ],
+    "title": "Relating to an application for a ballot to be voted by mail submitted by certain residents of an assisted living facility, a nursing facility, or an intermediate care facility.",
+    "url": "https://legiscan.com/TX/bill/HB447/2027"
+  },
+  {
+    "bill_number": "SJR9",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162830",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157562,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SJR9/2027",
+        "title": "TX SJR9: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157563,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SJR9/2027",
+        "title": "TX SJR9: Filed"
+      }
+    ],
+    "title": "Proposing a constitutional amendment establishing the Texas Redistricting Commission to redistrict the Texas Legislature and Texas congressional districts and revising procedures for redistricting.",
+    "url": "https://legiscan.com/TX/bill/SJR9/2027"
+  },
+  {
+    "bill_number": "HB835",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162844",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157531,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB835/2027",
+        "title": "TX HB835: Filed"
+      }
+    ],
+    "title": "Relating to eligibility requirements for voting.",
+    "url": "https://legiscan.com/TX/bill/HB835/2027"
+  },
+  {
+    "bill_number": "HB780",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162893",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157529,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB780/2027",
+        "title": "TX HB780: Filed"
+      }
+    ],
+    "title": "Relating to acceptable forms of identification for voting.",
+    "url": "https://legiscan.com/TX/bill/HB780/2027"
+  },
+  {
+    "bill_number": "HB476",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162973",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157524,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB476/2027",
+        "title": "TX HB476: Filed"
+      }
+    ],
+    "title": "Relating to the creation of the criminal offense of disseminating personally identifiable voter information.",
+    "url": "https://legiscan.com/TX/bill/HB476/2027"
+  },
+  {
+    "bill_number": "HB967",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-09T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2162975",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157535,
+        "kind": "item",
+        "occurred_at": "2026-11-09T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB967/2027",
+        "title": "TX HB967: Filed"
+      }
+    ],
+    "title": "Relating to a person submitting proof of citizenship to verify eligibility to vote in Texas.",
+    "url": "https://legiscan.com/TX/bill/HB967/2027"
+  },
+  {
+    "bill_number": "HB1076",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-10T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2163043",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157538,
+        "kind": "item",
+        "occurred_at": "2026-11-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1076/2027",
+        "title": "TX HB1076: Filed"
+      }
+    ],
+    "title": "Relating to the membership of the governing bodies of river authorities and to conforming changes to appointments, terms, and voting requirements for certain river authorities.",
+    "url": "https://legiscan.com/TX/bill/HB1076/2027"
+  },
+  {
+    "bill_number": "HB1080",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-10T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2163147",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 157539,
+        "kind": "item",
+        "occurred_at": "2026-11-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1080/2027",
+        "title": "TX HB1080: Filed"
+      }
+    ],
+    "title": "Relating to service as an election official in lieu of service on a petit jury.",
+    "url": "https://legiscan.com/TX/bill/HB1080/2027"
   }
 ]
