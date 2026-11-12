@@ -14238,5 +14238,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/u-s-attorney-threatens-democratic-senator-with-prosecution-for-conducting-oversight",
     "title": "U.S. attorney threatens Democratic senator with prosecution for conducting oversight"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 158476,
+    "kind": "item",
+    "occurred_at": "2026-11-12T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/12/desoto-county-mississippi-senate-experian-data-inactive-voters",
+    "title": "A Mississippi county moved more voters to inactive in the leadup to Election Day than any other. Here’s what happened."
   }
 ]
