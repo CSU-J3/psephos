@@ -28652,7 +28652,7 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 106,
+    "entry_count": 107,
     "entry_moves": [
       {
         "entries": [
@@ -28678,7 +28678,7 @@
       }
     ],
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-10-22T00:00:00",
+    "latest_entry_at": "2026-11-12T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",

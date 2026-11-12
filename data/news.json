@@ -14248,5 +14248,55 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/11/12/desoto-county-mississippi-senate-experian-data-inactive-voters",
     "title": "A Mississippi county moved more voters to inactive in the leadup to Election Day than any other. Here’s what happened."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 158706,
+    "kind": "item",
+    "occurred_at": "2026-11-12T16:49:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/scott-colom-the-callais-decision-helped-me",
+    "title": "Scott Colom: ‘The Callais decision helped me’"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 158705,
+    "kind": "item",
+    "occurred_at": "2026-11-12T16:50:51+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-not-passing-save-america-act-devastating-for-gop-in-midterms",
+    "title": "Trump: Not passing SAVE America Act ‘devastating’ for GOP in midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 158704,
+    "kind": "item",
+    "occurred_at": "2026-11-12T17:34:18+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/court-denies-peltola-campaign-access-to-information-on-rejected-mail-ballots",
+    "title": "Court denies Peltola campaign access to information on rejected mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 158707,
+    "kind": "item",
+    "occurred_at": "2026-11-12T18:41:00+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/north-carolina-forsyth-county-prosecutor-oneill-loses",
+    "title": "North Carolinians Oust a Longtime Prosecutor Known for Fighting Innocence Claims"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 158703,
+    "kind": "item",
+    "occurred_at": "2026-11-12T19:02:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/watchdog-sues-dhs-for-records-on-secretive-hunt-for-noncitizen-voters-after-midterms",
+    "title": "Watchdog sues DHS for records on secretive hunt for noncitizen voters after midterms"
   }
 ]
