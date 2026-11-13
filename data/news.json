@@ -14298,5 +14298,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/watchdog-sues-dhs-for-records-on-secretive-hunt-for-noncitizen-voters-after-midterms",
     "title": "Watchdog sues DHS for records on secretive hunt for noncitizen voters after midterms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 159813,
+    "kind": "item",
+    "occurred_at": "2026-11-13T16:03:27+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/11/13/election-law-legislature-priorities-democrats-trifecta",
+    "title": "How election laws could change now that Democrats are in power in Pennsylvania"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 159817,
+    "kind": "item",
+    "occurred_at": "2026-11-13T16:26:10+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrat-peltola-widens-lead-over-both-sullivans-combined-in-alaska-senate-race",
+    "title": "Democrat Peltola widens lead over both Sullivans combined in Alaska Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 159816,
+    "kind": "item",
+    "occurred_at": "2026-11-13T16:51:47+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/red-states-arent-giving-up-on-trumps-anti-mail-voting-order",
+    "title": "Red states aren’t giving up on Trump’s anti-mail voting order"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 159815,
+    "kind": "item",
+    "occurred_at": "2026-11-13T17:53:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippi-secretary-of-state-crashes-out-over-experian-voter-data-after-election-fiasco",
+    "title": "Mississippi Secretary of State crashes out over Experian voter data after election fiasco"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 159814,
+    "kind": "item",
+    "occurred_at": "2026-11-13T19:14:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/u-s-attorneys-legal-threats-against-democrats-are-meritless-attempts-to-chill-free-speech-experts-say",
+    "title": "U.S. attorney’s legal threats against Democrats are ‘meritless’ attempts to chill free speech, experts say"
   }
 ]
