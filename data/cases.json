@@ -536,7 +536,7 @@
     "date_terminated": "2026-01-15T00:00:00",
     "defendant": "Shirley Weber",
     "docket_number": "2:25-cv-09149",
-    "entry_count": 146,
+    "entry_count": 150,
     "entry_moves": [
       {
         "apart": 3,
@@ -559,7 +559,7 @@
       }
     ],
     "filed_at": "2025-09-25T00:00:00",
-    "latest_entry_at": "2026-03-12T00:00:00",
+    "latest_entry_at": "2026-11-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71452580/united-states-v-shirley-weber/",
     "state": "California",
@@ -1226,6 +1226,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/71452580/133/united-states-v-shirley-weber/",
         "title": "United States of America v. Weber, et al. (C.D. Cal.): NOTIFICATION from Ninth Circuit Court of Appeals of case number assigned and briefing schedule. Appeal Docket No. 26-1232 assigned to Notice of Appeal to 9th Circuit Court of Appea"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 159830,
+        "kind": "item",
+        "occurred_at": "2026-11-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/71452580/136/united-states-v-shirley-weber/",
+        "title": "United States of America v. Weber, et al. (C.D. Cal.): Order"
       }
     ]
   },
@@ -26343,7 +26353,7 @@
     "date_terminated": null,
     "defendant": "DHS",
     "docket_number": "26-5243",
-    "entry_count": 43,
+    "entry_count": 44,
     "entry_moves": [
       {
         "entries": [
@@ -27296,7 +27306,7 @@
     "date_terminated": null,
     "defendant": "Jared DeMarinis",
     "docket_number": "26-1878",
-    "entry_count": 131,
+    "entry_count": 133,
     "entry_moves": [
       {
         "entries": [
@@ -27317,7 +27327,7 @@
       }
     ],
     "filed_at": "2026-07-13T00:00:00",
-    "latest_entry_at": "2026-11-10T00:00:00",
+    "latest_entry_at": "2026-11-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
@@ -28509,7 +28519,7 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 30,
+    "entry_count": 32,
     "entry_moves": [
       {
         "kind": "merge",
@@ -28522,7 +28532,7 @@
       }
     ],
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-10-20T00:00:00",
+    "latest_entry_at": "2026-11-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
@@ -28559,6 +28569,26 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74671260/30/united-states-v-bernadette-matthews/",
         "title": "United States v. Illinois: Order issued GRANTING motion to extend time to file appellees' briefs. [29] Appellees' briefs due on or before 11/30/2026 for Brian Beals, Common Cause, Alejandra L. Ibanez, Illino"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 159853,
+        "kind": "item",
+        "occurred_at": "2026-11-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74671260/31/united-states-v-bernadette-matthews/",
+        "title": "United States v. Illinois: Motion filed by Appellee Bernadette Matthews to extend time to file appellee brief. [31] [7569923] [26-2695] (Sherman, Samantha) [Entered: 11/13/2026 01:58 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 159854,
+        "kind": "item",
+        "occurred_at": "2026-11-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74671260/32/united-states-v-bernadette-matthews/",
+        "title": "United States v. Illinois: Order issued GRANTING motion to extend time to file appellees' briefs. [31] Appellees' briefs due on or before 12/30/2026 for Brian Beals, Common Cause, Alejandra L. Ibanez, Illino"
       }
     ]
   },

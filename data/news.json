@@ -14348,5 +14348,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/u-s-attorneys-legal-threats-against-democrats-are-meritless-attempts-to-chill-free-speech-experts-say",
     "title": "U.S. attorney’s legal threats against Democrats are ‘meritless’ attempts to chill free speech, experts say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 160054,
+    "kind": "item",
+    "occurred_at": "2026-11-13T20:01:06+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/step-by-step",
+    "title": "Step by Step"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 160053,
+    "kind": "item",
+    "occurred_at": "2026-11-13T21:50:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/election-denier-lauren-boebert-loses-reelection-bid-after-her-campaign-questioned-colorado-vote-count",
+    "title": "Election denier Lauren Boebert loses reelection bid after her campaign questioned Colorado vote count"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 160052,
+    "kind": "item",
+    "occurred_at": "2026-11-13T22:25:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/democrat-wins-alaska-governor-race-in-setback-for-gop-scheme-to-steal-senate-seat",
+    "title": "Democrat wins Alaska governor race, in setback for GOP scheme to steal Senate seat"
   }
 ]
