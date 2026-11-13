@@ -9416,7 +9416,7 @@
     "source_url": "https://www.courtlistener.com/docket/71984384/united-states-v-albence/",
     "state": "Delaware",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:54.362302+00:00",
+    "status_checked_at": "2026-11-13T06:59:24.515324+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -11074,7 +11074,7 @@
     "source_url": "https://www.courtlistener.com/docket/72023578/united-states-v-nago/",
     "state": "Hawaii",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:58.124745+00:00",
+    "status_checked_at": "2026-11-13T06:59:28.031058+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19535,7 +19535,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356732/united-states-of-america-v-weber-et-al/",
     "state": "California",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:01.994594+00:00",
+    "status_checked_at": "2026-11-13T06:59:31.567411+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19735,7 +19735,7 @@
     "source_url": "https://www.courtlistener.com/docket/72356772/united-states-of-america-v-state-of-oregon-et-al/",
     "state": "Oregon",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:05.749148+00:00",
+    "status_checked_at": "2026-11-13T06:59:34.981350+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -19915,7 +19915,7 @@
     "source_url": "https://www.courtlistener.com/docket/73126970/united-states-v-mcgrane/",
     "state": "Idaho",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:22.673199+00:00",
+    "status_checked_at": "2026-11-13T06:59:38.447078+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -20125,7 +20125,7 @@
         "occurred_at": "2026-04-02T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/19/dscc-v-trump/",
-        "title": "DSCC v. Trump: SEALED DOCUMENT - Notice filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. re 1 Complaint,,,. (This docu"
+        "title": "DSCC v. Trump: SEALED DOCUMENT - Notice filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. re [1] Complaint,,,. (This do"
       },
       {
         "channel": "litigation",
@@ -20155,7 +20155,7 @@
         "occurred_at": "2026-04-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/25/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE TO ORDER OF THE COURT re 18 Order, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Madduri, "
+        "title": "DSCC v. Trump: RESPONSE TO ORDER OF THE COURT re [18] Order, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Madduri"
       },
       {
         "channel": "litigation",
@@ -20225,7 +20225,7 @@
         "occurred_at": "2026-04-10T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/36/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 17 Motion to Expedite filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. . (Baldwin, Ann"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [17] Motion to Expedite filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. . (Baldwin, A"
       },
       {
         "channel": "litigation",
@@ -20275,7 +20275,7 @@
         "occurred_at": "2026-04-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/50/dscc-v-trump/",
-        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Brief as Amicus Curiae of The Society For the Rule of Law by Society For The Rule of Law. (Attachments: # 1 Exhibit Proposed Amicus Brief,"
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Brief as Amicus Curiae of The Society For the Rule of Law by Society For The Rule of Law. (Attachments: # (1) Exhibit Proposed Amicus Brie"
       },
       {
         "channel": "litigation",
@@ -20285,7 +20285,7 @@
         "occurred_at": "2026-04-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/52/dscc-v-trump/",
-        "title": "DSCC v. Trump: NOTICE of Proposed Order by Society For The Rule of Law re 50 Unopposed MOTION for Leave to File Amicus Brief as Amicus Curiae of The Society For the Rule of Law (Bernstein, Richar"
+        "title": "DSCC v. Trump: NOTICE of Proposed Order by Society For The Rule of Law re [50] Unopposed MOTION for Leave to File Amicus Brief as Amicus Curiae of The Society For the Rule of Law (Bernstein, Rich"
       },
       {
         "channel": "litigation",
@@ -20295,7 +20295,7 @@
         "occurred_at": "2026-04-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/53/dscc-v-trump/",
-        "title": "DSCC v. Trump: MEMORANDUM re 29 MOTION for Preliminary Injunction by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. (Attachments: # 1 Index o"
+        "title": "DSCC v. Trump: MEMORANDUM re [29] MOTION for Preliminary Injunction by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. (Attachments: # (1) Ind"
       },
       {
         "channel": "litigation",
@@ -20305,7 +20305,7 @@
         "occurred_at": "2026-04-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/54/dscc-v-trump/",
-        "title": "DSCC v. Trump: MEMORANDUM re 37 MOTION for Preliminary Injunction by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASS"
+        "title": "DSCC v. Trump: MEMORANDUM re [37] MOTION for Preliminary Injunction by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL A"
       },
       {
         "channel": "litigation",
@@ -20315,7 +20315,7 @@
         "occurred_at": "2026-04-17T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/55/dscc-v-trump/",
-        "title": "DSCC v. Trump: MEMORANDUM re 34 MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachme"
+        "title": "DSCC v. Trump: MEMORANDUM re [34] MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attach"
       },
       {
         "channel": "litigation",
@@ -20355,7 +20355,7 @@
         "occurred_at": "2026-04-22T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/84/dscc-v-trump/",
-        "title": "DSCC v. Trump: NOTICE of Proposed Order by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE re 53 Memorandum,,,,,, (Lang, Danielle) (Entered: 04"
+        "title": "DSCC v. Trump: NOTICE of Proposed Order by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE re [53] Memorandum,,,,,, (Lang, Danielle)"
       },
       {
         "channel": "litigation",
@@ -20385,7 +20385,7 @@
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/87/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 86 MOTION for Leave to File One Combined Brief in Opposition to Plaintiffs' Motions for a Preliminary Injunction and in Support of Defendants' Motions to Dismiss filed "
+        "title": "DSCC v. Trump: RESPONSE re [86] MOTION for Leave to File One Combined Brief in Opposition to Plaintiffs' Motions for a Preliminary Injunction and in Support of Defendants' Motions to Dismiss file"
       },
       {
         "channel": "litigation",
@@ -20395,7 +20395,7 @@
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/88/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRESI"
+        "title": "DSCC v. Trump: RESPONSE re [77] MOTION to Intervene filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTIVE OFFICE OF THE PRE"
       },
       {
         "channel": "litigation",
@@ -20405,7 +20405,7 @@
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/89/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. (Baldwin, Anna) (Entered: 04/24/202"
+        "title": "DSCC v. Trump: RESPONSE re [77] MOTION to Intervene filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. (Baldwin, Anna)"
       },
       {
         "channel": "litigation",
@@ -20415,7 +20415,7 @@
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/90/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASSOCIATION F"
+        "title": "DSCC v. Trump: RESPONSE re [77] MOTION to Intervene filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDUCATION FUND, NATIONAL ASSOCIATION"
       },
       {
         "channel": "litigation",
@@ -20425,7 +20425,7 @@
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/92/dscc-v-trump/",
-        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by Wisconsin Democracy Campaign, Inc., EXPO of Wisconsin, Inc., Jaleyce Oraedu, Jasmine Oraedu, Aharon Shelef. (Attachments: # 1 Exhibit Brief"
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by Wisconsin Democracy Campaign, Inc., EXPO of Wisconsin, Inc., Jaleyce Oraedu, Jasmine Oraedu, Aharon Shelef. (Attachments: # (1) Exhibit Bri"
       },
       {
         "channel": "litigation",
@@ -20435,7 +20435,7 @@
         "occurred_at": "2026-04-24T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/95/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 77 MOTION to Intervene filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # 1 T"
+        "title": "DSCC v. Trump: RESPONSE re [77] MOTION to Intervene filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # ("
       },
       {
         "channel": "litigation",
@@ -20455,7 +20455,7 @@
         "occurred_at": "2026-04-26T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/96/dscc-v-trump/",
-        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by EXPO of Wisconsin, Inc., Jaleyce Oraedu, Jasmine Oraedu, Aharon Shelef, Wisconsin Democracy Campaign, Inc.. (Attachments: # 1 Exhibit Corre"
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by EXPO of Wisconsin, Inc., Jaleyce Oraedu, Jasmine Oraedu, Aharon Shelef, Wisconsin Democracy Campaign, Inc.. (Attachments: # (1) Exhibit Cor"
       },
       {
         "channel": "litigation",
@@ -20465,7 +20465,7 @@
         "occurred_at": "2026-04-27T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/97/dscc-v-trump/",
-        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Briefin Support of Plaintiffs by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of Propo"
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Briefin Support of Plaintiffs by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # (1) Proposed Amicus Brief, # (2) Text of P"
       },
       {
         "channel": "litigation",
@@ -20475,7 +20475,7 @@
         "occurred_at": "2026-04-27T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/98/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 77 Motion to Intervene,, filed by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, STA"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [77] Motion to Intervene,, filed by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, S"
       },
       {
         "channel": "litigation",
@@ -20485,7 +20485,7 @@
         "occurred_at": "2026-04-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/100/dscc-v-trump/",
-        "title": "DSCC v. Trump: MOTION for Hearing re 34 MOTION for Preliminary Injunction, 55 Memorandum,,, by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHA"
+        "title": "DSCC v. Trump: MOTION for Hearing re [34] MOTION for Preliminary Injunction, [55] Memorandum,,, by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES,"
       },
       {
         "channel": "litigation",
@@ -20535,7 +20535,7 @@
         "occurred_at": "2026-05-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/104/dscc-v-trump/",
-        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by AMERICA'S FUTURE, CITIZENS UNITED. (Attachments: # 1 Exhibit Proposed Amicus Brief)(Olson, William) (Entered: 05/01/2026)"
+        "title": "DSCC v. Trump: MOTION for Leave to File Amicus Brief by AMERICA'S FUTURE, CITIZENS UNITED. (Attachments: # (1) Exhibit Proposed Amicus Brief)(Olson, William)"
       },
       {
         "channel": "litigation",
@@ -20545,7 +20545,7 @@
         "occurred_at": "2026-05-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/105/dscc-v-trump/",
-        "title": "DSCC v. Trump: Memorandum in opposition to re 34 MOTION for Preliminary Injunction, 37 MOTION for Preliminary Injunction, 29 MOTION for Preliminary Injunction filed by STATE OF ALABAMA, STATE OF "
+        "title": "DSCC v. Trump: Memorandum in opposition to re [34] MOTION for Preliminary Injunction, [37] MOTION for Preliminary Injunction, [29] MOTION for Preliminary Injunction filed by STATE OF ALABAMA, STA"
       },
       {
         "channel": "litigation",
@@ -20565,7 +20565,7 @@
         "occurred_at": "2026-05-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/107/dscc-v-trump/",
-        "title": "DSCC v. Trump: Memorandum in opposition to re 34 MOTION for Preliminary Injunction, 37 MOTION for Preliminary Injunction, 29 MOTION for Preliminary Injunction filed by FRANK J. BISIGNANO, BOARD O"
+        "title": "DSCC v. Trump: Memorandum in opposition to re [34] MOTION for Preliminary Injunction, [37] MOTION for Preliminary Injunction, [29] MOTION for Preliminary Injunction filed by FRANK J. BISIGNANO, B"
       },
       {
         "channel": "litigation",
@@ -20575,7 +20575,7 @@
         "occurred_at": "2026-05-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/108/dscc-v-trump/",
-        "title": "DSCC v. Trump: MOTION to Intervene by EMANUEL MCCRAY. (Attachments: # 1 Exhibit A, # 2 Exhibit B, # 3 Pro Se Consent to E-Noticing Form)(znmw) (Entered: 05/04/2026)"
+        "title": "DSCC v. Trump: MOTION to Intervene by EMANUEL MCCRAY. (Attachments: # (1) Exhibit A, # (2) Exhibit B, # (3) Pro Se Consent to E-Noticing Form)(znmw)"
       },
       {
         "channel": "litigation",
@@ -20605,7 +20605,7 @@
         "occurred_at": "2026-05-07T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/120/dscc-v-trump/",
-        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Briefin support of Defendants' Motion to Dismiss by FEDERATION FOR AMERICAN IMMIGRATION REFORM. (Attachments: # 1 Amicus Brief, # 2 Propos"
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Briefin support of Defendants' Motion to Dismiss by FEDERATION FOR AMERICAN IMMIGRATION REFORM. (Attachments: # (1) Amicus Brief, # (2) Pr"
       },
       {
         "channel": "litigation",
@@ -20615,7 +20615,7 @@
         "occurred_at": "2026-05-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/121/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 29 Motion for Preliminary Injunction filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE. "
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [29] Motion for Preliminary Injunction filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE"
       },
       {
         "channel": "litigation",
@@ -20625,7 +20625,7 @@
         "occurred_at": "2026-05-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/122/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 34 Motion for Preliminary Injunction filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHAR"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [34] Motion for Preliminary Injunction filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CH"
       },
       {
         "channel": "litigation",
@@ -20635,7 +20635,7 @@
         "occurred_at": "2026-05-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/123/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 37 Motion for Preliminary Injunction filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE EDU"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [37] Motion for Preliminary Injunction filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE E"
       },
       {
         "channel": "litigation",
@@ -20675,7 +20675,7 @@
         "occurred_at": "2026-05-14T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/131/dscc-v-trump/",
-        "title": "DSCC v. Trump: NOTICE of Filing of Supplemental Exhibit by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER re 34 Motion for Pre"
+        "title": "DSCC v. Trump: NOTICE of Filing of Supplemental Exhibit by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER re [34] Motion for P"
       },
       {
         "channel": "litigation",
@@ -20695,7 +20695,7 @@
         "occurred_at": "2026-05-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/132/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 106 MOTION to Dismiss, 77 MOTION to Intervene in Opposition to Motions to Dismiss filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, "
+        "title": "DSCC v. Trump: RESPONSE re [106] MOTION to Dismiss, [77] MOTION to Intervene in Opposition to Motions to Dismiss filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DS"
       },
       {
         "channel": "litigation",
@@ -20705,7 +20705,7 @@
         "occurred_at": "2026-05-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/133/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 106 MOTION to Dismiss, 77 MOTION to Intervene Motion to Dismiss filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIA"
+        "title": "DSCC v. Trump: RESPONSE re [106] MOTION to Dismiss, [77] MOTION to Intervene Motion to Dismiss filed by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES IN"
       },
       {
         "channel": "litigation",
@@ -20715,7 +20715,7 @@
         "occurred_at": "2026-05-15T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/134/dscc-v-trump/",
-        "title": "DSCC v. Trump: RESPONSE re 106 MOTION to Dismiss, 77 MOTION to Intervene Motion to Dismiss filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAU"
+        "title": "DSCC v. Trump: RESPONSE re [106] MOTION to Dismiss, [77] MOTION to Intervene Motion to Dismiss filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON"
       },
       {
         "channel": "litigation",
@@ -20735,7 +20735,7 @@
         "occurred_at": "2026-05-22T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/139/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 106 Motion to Dismiss,, filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECUTI"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [106] Motion to Dismiss,, filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JOSEPH B. EDLOW, EXECU"
       },
       {
         "channel": "litigation",
@@ -20745,7 +20745,7 @@
         "occurred_at": "2026-05-22T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/140/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 141 Motion to Intervene,, filed by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, ST"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [141] Motion to Intervene,, filed by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE OF KANSAS, STATE OF LOUISIANA, STATE OF MISSOURI, "
       },
       {
         "channel": "litigation",
@@ -20775,7 +20775,7 @@
         "occurred_at": "2026-05-28T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/144/dscc-v-trump/",
-        "title": "DSCC v. Trump: ORDER denying 29 Motion for Preliminary Injunction; denying 34 Motion for Preliminary Injunction; denying 37 Motion for Preliminary Injunction. Signed by Judge Carl J. Nichols on 5"
+        "title": "DSCC v. Trump: ORDER denying [29] Motion for Preliminary Injunction; denying [34] Motion for Preliminary Injunction; denying [37] Motion for Preliminary Injunction. Signed by Judge Carl J. Nichol"
       },
       {
         "channel": "litigation",
@@ -20785,7 +20785,7 @@
         "occurred_at": "2026-06-01T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/146/dscc-v-trump/",
-        "title": "DSCC v. Trump: NOTICE OF INTERLOCUTORY APPEAL TO DC CIRCUIT COURT as to 144 Order on Motion for Preliminary Injunction,, 143 Memorandum & Opinion by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCR"
+        "title": "DSCC v. Trump: NOTICE OF INTERLOCUTORY APPEAL TO DC CIRCUIT COURT as to [144] Order on Motion for Preliminary Injunction,, [143] Memorandum & Opinion by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DE"
       },
       {
         "channel": "litigation",
@@ -20835,7 +20835,7 @@
         "occurred_at": "2026-06-02T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/147/dscc-v-trump/",
-        "title": "DSCC v. Trump: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals fee was paid re 146 Notice of Appeal to DC "
+        "title": "DSCC v. Trump: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals fee was paid re [146] Notice of Appeal to D"
       },
       {
         "channel": "litigation",
@@ -20865,7 +20865,7 @@
         "occurred_at": "2026-06-25T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/154/dscc-v-trump/",
-        "title": "DSCC v. Trump: NOTICE OF SUPPLEMENTAL AUTHORITY by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE (Attachments: # 1 Exhibit 1 - Memorandum Opi"
+        "title": "DSCC v. Trump: NOTICE OF SUPPLEMENTAL AUTHORITY by ARIZONA STUDENTS' ASSOCIATION, LEAGUE OF UNITED LATIN AMERICAN CITIZENS, SECURE FAMILIES INITIATIVE (Attachments: # (1) Exhibit 1 - Memorandum O"
       },
       {
         "channel": "litigation",
@@ -20895,7 +20895,7 @@
         "occurred_at": "2026-08-25T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/163/dscc-v-trump/",
-        "title": "DSCC v. Trump: Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # 1 M"
+        "title": "DSCC v. Trump: Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER. (Attachments: # (1)"
       },
       {
         "channel": "litigation",
@@ -20935,7 +20935,7 @@
         "occurred_at": "2026-08-27T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/168/dscc-v-trump/",
-        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Brief by SOCIETY FOR THE RULE OF LAW. (Attachments: # 1 Exhibit Proposed Amicus Brief, # 2 Text of Proposed Order)(Temple, Nancy) (Entered"
+        "title": "DSCC v. Trump: Unopposed MOTION for Leave to File Amicus Brief by SOCIETY FOR THE RULE OF LAW. (Attachments: # (1) Exhibit Proposed Amicus Brief, # (2) Text of Proposed Order)(Temple, Nancy)"
       },
       {
         "channel": "litigation",
@@ -21075,7 +21075,7 @@
         "occurred_at": "2026-09-03T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/181/dscc-v-trump/",
-        "title": "DSCC v. Trump: Consent MOTION for Leave to File Amicus Brief by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # 1 Proposed Amicus Brief, # 2 Text of Proposed Order)(Freen"
+        "title": "DSCC v. Trump: Consent MOTION for Leave to File Amicus Brief by STATE AND LOCAL ELECTION OFFICIALS AND ELECTION EXPERTS. (Attachments: # (1) Proposed Amicus Brief, # (2) Text of Proposed Order)(F"
       },
       {
         "channel": "litigation",
@@ -21085,7 +21085,7 @@
         "occurred_at": "2026-09-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/182/dscc-v-trump/",
-        "title": "DSCC v. Trump: Unopposed MOTION to Expedite re 163 Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHA"
+        "title": "DSCC v. Trump: Unopposed MOTION to Expedite re [163] Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, C"
       },
       {
         "channel": "litigation",
@@ -21095,7 +21095,7 @@
         "occurred_at": "2026-09-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/183/dscc-v-trump/",
-        "title": "DSCC v. Trump: Memorandum in opposition to re 172 Second MOTION for Preliminary Injunction, 171 Second MOTION for Preliminary Injunction, 163 Second MOTION for Preliminary Injunction filed by STA"
+        "title": "DSCC v. Trump: Memorandum in opposition to re [172] Second MOTION for Preliminary Injunction, [171] Second MOTION for Preliminary Injunction, [163] Second MOTION for Preliminary Injunction filed "
       },
       {
         "channel": "litigation",
@@ -21105,7 +21105,7 @@
         "occurred_at": "2026-09-04T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/184/dscc-v-trump/",
-        "title": "DSCC v. Trump: Memorandum in opposition to re 172 Second MOTION for Preliminary Injunction, 171 Second MOTION for Preliminary Injunction, 163 Second MOTION for Preliminary Injunction filed by FRA"
+        "title": "DSCC v. Trump: Memorandum in opposition to re [172] Second MOTION for Preliminary Injunction, [171] Second MOTION for Preliminary Injunction, [163] Second MOTION for Preliminary Injunction filed "
       },
       {
         "channel": "litigation",
@@ -21135,7 +21135,7 @@
         "occurred_at": "2026-09-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/186/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 171 Motion for Preliminary Injunction,, filed by ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONSIN, LEAGUE OF UNITED LATIN AMERICAN CITIZEN"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [171] Motion for Preliminary Injunction,, filed by ARIZONA STUDENTS' ASSOCIATION, CITY OF MADISON, WISCONSIN, LEAGUE OF UNITED LATIN AMERICAN CITIZ"
       },
       {
         "channel": "litigation",
@@ -21145,7 +21145,7 @@
         "occurred_at": "2026-09-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/187/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 172 Motion for Preliminary Injunction, filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE E"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [172] Motion for Preliminary Injunction, filed by BLACK VOTERS MATTER FUND, INC., BVM CAPACITY BUILDING INSTITUTE, INC., COMMON CAUSE, COMMON CAUSE"
       },
       {
         "channel": "litigation",
@@ -21155,7 +21155,7 @@
         "occurred_at": "2026-09-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/188/dscc-v-trump/",
-        "title": "DSCC v. Trump: Unopposed MOTION to Supplement the Record re 163 Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. "
+        "title": "DSCC v. Trump: Unopposed MOTION to Supplement the Record re [163] Second MOTION for Preliminary Injunction by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S"
       },
       {
         "channel": "litigation",
@@ -21165,7 +21165,7 @@
         "occurred_at": "2026-09-08T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/189/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 163 Motion for Preliminary Injunction,, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, C"
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [163] Motion for Preliminary Injunction,, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES,"
       },
       {
         "channel": "litigation",
@@ -21205,7 +21205,7 @@
         "occurred_at": "2026-09-13T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/193/dscc-v-trump/",
-        "title": "DSCC v. Trump: ORDER granting in part and denying in part 163 Motion for Preliminary Injunction; granting 171 Motion for Preliminary Injunction; granting 172 Motion for Preliminary Injunction. Si"
+        "title": "DSCC v. Trump: ORDER granting in part and denying in part [163] Motion for Preliminary Injunction; granting [171] Motion for Preliminary Injunction; granting [172] Motion for Preliminary Injuncti"
       },
       {
         "channel": "litigation",
@@ -21215,7 +21215,7 @@
         "occurred_at": "2026-09-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/195/dscc-v-trump/",
-        "title": "DSCC v. Trump: Memorandum in opposition to re 179 MOTION for Order Requiring Material Updates filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, JO"
+        "title": "DSCC v. Trump: Memorandum in opposition to re [179] MOTION for Order Requiring Material Updates filed by FRANK J. BISIGNANO, BOARD OF GOVERNORS OF THE UNITED STATES POSTAL SERVICE, PAMELA BONDI, "
       },
       {
         "channel": "litigation",
@@ -21235,7 +21235,7 @@
         "occurred_at": "2026-09-18T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/198/dscc-v-trump/",
-        "title": "DSCC v. Trump: MANDATE of USCA as to 146 Notice of Appeal to DC Circuit Court, filed by DEMOCRATIC NATIONAL COMMITTEE, HAKEEM S. JEFFRIES, DSCC, DEMOCRATIC GOVERNORS ASSOCIATION, DCCC, CHARLES E."
+        "title": "DSCC v. Trump: MANDATE of USCA as to [146] Notice of Appeal to DC Circuit Court, filed by DEMOCRATIC NATIONAL COMMITTEE, HAKEEM S. JEFFRIES, DSCC, DEMOCRATIC GOVERNORS ASSOCIATION, DCCC, CHARLES "
       },
       {
         "channel": "litigation",
@@ -21245,7 +21245,7 @@
         "occurred_at": "2026-09-20T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/197/dscc-v-trump/",
-        "title": "DSCC v. Trump: REPLY to opposition to motion re 179 Motion for Order, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUMER."
+        "title": "DSCC v. Trump: REPLY to opposition to motion re [179] Motion for Order, filed by DCCC, DEMOCRATIC GOVERNORS ASSOCIATION, DEMOCRATIC NATIONAL COMMITTEE, DSCC, HAKEEM S. JEFFRIES, CHARLES E. SCHUME"
       },
       {
         "channel": "litigation",
@@ -21255,7 +21255,7 @@
         "occurred_at": "2026-11-12T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/211/dscc-v-trump/",
-        "title": "DSCC v. Trump: NOTICE OF APPEAL TO DC CIRCUIT COURT as to 192 Memorandum & Opinion, 193 Order on Motion for Preliminary Injunction,, by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, STATE"
+        "title": "DSCC v. Trump: NOTICE OF APPEAL TO DC CIRCUIT COURT as to [192] Memorandum & Opinion, [193] Order on Motion for Preliminary Injunction,, by STATE OF ALABAMA, STATE OF FLORIDA, STATE OF INDIANA, S"
       }
     ]
   },
@@ -23194,7 +23194,7 @@
     "source_url": "https://www.courtlistener.com/docket/73134260/league-of-united-latin-american-citizens-v-executive-office-of-the/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:26.545259+00:00",
+    "status_checked_at": "2026-11-13T06:58:59.119560+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25060,7 +25060,7 @@
     "source_url": "https://www.courtlistener.com/docket/73443024/united-states-of-america-v-fontes/",
     "state": "Arizona",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:26.321587+00:00",
+    "status_checked_at": "2026-11-13T06:59:41.886565+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25149,7 +25149,7 @@
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:29.971350+00:00",
+    "status_checked_at": "2026-11-13T06:59:45.376686+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25334,7 +25334,7 @@
     "source_url": "https://www.courtlistener.com/docket/73470017/united-states-v-amore/",
     "state": "Rhode Island",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:33.711810+00:00",
+    "status_checked_at": "2026-11-13T06:59:49.764888+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25659,7 +25659,7 @@
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:37.345968+00:00",
+    "status_checked_at": "2026-11-13T06:59:53.211266+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -25980,7 +25980,7 @@
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:42.065732+00:00",
+    "status_checked_at": "2026-11-13T06:59:56.637325+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26356,7 +26356,7 @@
     "source_url": "https://www.courtlistener.com/docket/73544809/league-of-women-voters-v-dhs/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:28:08.260086+00:00",
+    "status_checked_at": "2026-11-13T07:00:22.133961+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26802,7 +26802,7 @@
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:45.694483+00:00",
+    "status_checked_at": "2026-11-13T07:00:00.068397+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27003,7 +27003,7 @@
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:49.389137+00:00",
+    "status_checked_at": "2026-11-13T07:00:03.614097+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27272,7 +27272,7 @@
     "source_url": "https://www.courtlistener.com/docket/73608654/united-states-v-jared-demarinis/",
     "state": "Maryland",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:53.123998+00:00",
+    "status_checked_at": "2026-11-13T07:00:07.215856+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27601,7 +27601,7 @@
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:27:56.757029+00:00",
+    "status_checked_at": "2026-11-13T07:00:10.614043+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27676,7 +27676,7 @@
     "source_url": "https://www.courtlistener.com/docket/73678095/united-states-v-oliver/",
     "state": "New Mexico",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:28:00.905212+00:00",
+    "status_checked_at": "2026-11-13T07:00:15.119965+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -27847,7 +27847,7 @@
     "source_url": "https://www.courtlistener.com/docket/73682036/united-states-of-america-v-board-of-elections-of-the-state-of-new-york/",
     "state": "New York",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:45.911692+00:00",
+    "status_checked_at": "2026-11-13T06:59:16.427117+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28050,7 +28050,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 80,
+    "entry_count": 83,
     "entry_moves": [
       {
         "apart": 1,
@@ -28072,12 +28072,12 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-11-10T00:00:00",
+    "latest_entry_at": "2026-11-12T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:50.774132+00:00",
+    "status_checked_at": "2026-11-13T06:59:19.829531+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28246,7 +28246,7 @@
     "source_url": "https://www.courtlistener.com/docket/73690636/united-states-v-steven-koski/",
     "state": "Virginia",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:28:04.554206+00:00",
+    "status_checked_at": "2026-11-13T07:00:18.631054+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28386,7 +28386,7 @@
     "source_url": "https://www.courtlistener.com/docket/74667007/united-states-v-griswold/",
     "state": "Colorado",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:41.299139+00:00",
+    "status_checked_at": "2026-11-13T06:59:13.009952+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28538,7 +28538,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671625/united-states-v-monica-evans/",
     "state": "DC",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:30.242392+00:00",
+    "status_checked_at": "2026-11-13T06:59:02.598092+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28693,7 +28693,7 @@
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:33.911763+00:00",
+    "status_checked_at": "2026-11-13T06:59:06.122051+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28834,7 +28834,7 @@
     "source_url": "https://www.courtlistener.com/docket/74694778/united-states-of-america-v-aguilar-et-al/",
     "state": "Nevada",
     "status": "pending",
-    "status_checked_at": "2026-11-12T07:26:37.664690+00:00",
+    "status_checked_at": "2026-11-13T06:59:09.544927+00:00",
     "superseded_by": null,
     "timeline": [
       {
