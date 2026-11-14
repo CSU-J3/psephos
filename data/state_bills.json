@@ -47346,5 +47346,29 @@
     ],
     "title": "Relating to service as an election official in lieu of service on a petit jury.",
     "url": "https://legiscan.com/TX/bill/HB1080/2027"
+  },
+  {
+    "bill_number": "HB1146",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-13T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2163323",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 160505,
+        "kind": "item",
+        "occurred_at": "2026-11-13T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1146/2027",
+        "title": "TX HB1146: Filed"
+      }
+    ],
+    "title": "Relating to grounds for recounting paperless electronic voting system ballots.",
+    "url": "https://legiscan.com/TX/bill/HB1146/2027"
   }
 ]
