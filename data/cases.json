@@ -20104,7 +20104,7 @@
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:43.987653+00:00",
+    "status_checked_at": "2026-11-16T15:45:05.950334+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21323,7 +21323,7 @@
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:23.057408+00:00",
+    "status_checked_at": "2026-11-16T15:44:46.904556+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24444,7 +24444,7 @@
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:40.056986+00:00",
+    "status_checked_at": "2026-11-16T15:45:02.005669+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26586,7 +26586,7 @@
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:35.938220+00:00",
+    "status_checked_at": "2026-11-16T15:44:58.091541+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28537,7 +28537,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:17.978483+00:00",
+    "status_checked_at": "2026-11-16T15:44:43.210472+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28689,7 +28689,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:14.140847+00:00",
+    "status_checked_at": "2026-11-16T15:44:39.465926+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28987,7 +28987,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 195,
+    "entry_count": 196,
     "entry_moves": [
       {
         "entries": [
@@ -29008,12 +29008,12 @@
       }
     ],
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": "2026-11-15T00:00:00",
+    "latest_entry_at": "2026-11-16T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:26.851099+00:00",
+    "status_checked_at": "2026-11-16T15:44:50.616916+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29765,6 +29765,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/181/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 179 MOTION for Extension of Time to November 16, 2026 to Answer or Otherwise Respond to Plaintiffs' Complaint (Unopposed) by State o"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 162085,
+        "kind": "item",
+        "occurred_at": "2026-11-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Extension of Time to Answer"
       }
     ]
   },
@@ -29783,7 +29793,7 @@
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:52.518746+00:00",
+    "status_checked_at": "2026-11-16T15:45:13.524592+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30003,7 +30013,7 @@
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:30.673094+00:00",
+    "status_checked_at": "2026-11-16T15:44:54.355604+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30352,7 +30362,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:48.597612+00:00",
+    "status_checked_at": "2026-11-16T15:45:09.784303+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30392,7 +30402,7 @@
     "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
     "state": "Georgia",
     "status": "pending",
-    "status_checked_at": "2026-11-15T14:00:10.402401+00:00",
+    "status_checked_at": "2026-11-16T15:44:35.588881+00:00",
     "superseded_by": null,
     "timeline": [
       {
