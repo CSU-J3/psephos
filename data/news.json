@@ -14418,5 +14418,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/11/16/national-popular-vote-interstate-compact-electoral-college-2028-election",
     "title": "Democrats are within reach of neutering the Electoral College’s role in presidential elections — but political and legal hurdles remain"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 162531,
+    "kind": "item",
+    "occurred_at": "2026-11-16T15:56:48+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-advances-threats-of-criminal-prosecutions-over-alaska-senate-race",
+    "title": "Trump advances threats of ‘criminal prosecutions’ over Alaska Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 162530,
+    "kind": "item",
+    "occurred_at": "2026-11-16T17:29:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-argues-new-hampshire-citizenship-laws-benefits-are-greater-than-burden-on-women-young-voters",
+    "title": "GOP argues New Hampshire citizenship law’s benefits are greater than burden on women, young voters"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 162529,
+    "kind": "item",
+    "occurred_at": "2026-11-16T19:30:05+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/watchdog-alleges-u-s-attorneys-threats-against-democratic-senators-violated-legal-ethics",
+    "title": "Watchdog alleges U.S. attorney’s threats against Democratic senators violated legal ethics"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 162528,
+    "kind": "item",
+    "occurred_at": "2026-11-16T19:47:16+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/live-updates-alaska-senate-race-heads-for-democratic-win-amid-trump-threats",
+    "title": "Live updates: Alaska Senate race heads for Democratic win amid Trump threats"
   }
 ]

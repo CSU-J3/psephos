@@ -28110,7 +28110,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 83,
+    "entry_count": 84,
     "entry_moves": [
       {
         "apart": 1,
@@ -28132,7 +28132,7 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-11-12T00:00:00",
+    "latest_entry_at": "2026-11-16T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -28742,7 +28742,7 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 108,
+    "entry_count": 109,
     "entry_moves": [
       {
         "entries": [
@@ -28768,7 +28768,7 @@
       }
     ],
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-11-13T00:00:00",
+    "latest_entry_at": "2026-11-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",
@@ -28987,7 +28987,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 196,
+    "entry_count": 198,
     "entry_moves": [
       {
         "entries": [
@@ -29769,12 +29769,52 @@
       {
         "channel": "litigation",
         "grade": "A1",
+        "id": 162314,
+        "kind": "item",
+        "occurred_at": "2026-11-13T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/182/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Extension of Time to November 23, 2026 to File Answer re 1 Complaint,,, (Unopposed) by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Do"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 162315,
+        "kind": "item",
+        "occurred_at": "2026-11-15T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/183/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: MOTION for Extension of Time to Answer or Otherwise Respond to Plaintiffs' Complaint to File Answer re 1 Complaint,,, (Unopposed) by State of Alabama, State of Florida, State of In"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
         "id": 162085,
         "kind": "item",
         "occurred_at": "2026-11-16T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Order on Motion for Extension of Time to Answer"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 162312,
+        "kind": "item",
+        "occurred_at": "2026-11-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/184/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER allowing 182 Unopposed Motion for Extension of Time to November 23, 2026, to Answer or Otherwise Respond [ 1 ] Complaint by Derek Kan, Amber "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 162313,
+        "kind": "item",
+        "occurred_at": "2026-11-16T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/185/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER entered allowing 183 Unopposed Motion for Extension of Time to November 23, 2026, to Answer or Otherwise Respond [ 1 ] Complaint by State of "
       }
     ]
   },
