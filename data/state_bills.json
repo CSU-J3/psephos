@@ -47370,5 +47370,29 @@
     ],
     "title": "Relating to grounds for recounting paperless electronic voting system ballots.",
     "url": "https://legiscan.com/TX/bill/HB1146/2027"
+  },
+  {
+    "bill_number": "HB1178",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-16T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2163522",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 163036,
+        "kind": "item",
+        "occurred_at": "2026-11-16T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1178/2027",
+        "title": "TX HB1178: Filed"
+      }
+    ],
+    "title": "Relating to preferential voting in runoff elections for federal postcard applicants.",
+    "url": "https://legiscan.com/TX/bill/HB1178/2027"
   }
 ]
