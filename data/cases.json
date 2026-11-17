@@ -25667,7 +25667,7 @@
     "date_terminated": null,
     "defendant": "Galvin",
     "docket_number": "26-1657",
-    "entry_count": 140,
+    "entry_count": 142,
     "entry_moves": [
       {
         "entries": [
@@ -25684,7 +25684,7 @@
       }
     ],
     "filed_at": "2026-06-09T00:00:00",
-    "latest_entry_at": "2026-11-12T00:00:00",
+    "latest_entry_at": "2026-11-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73479340/united-states-v-galvin/",
     "state": "Massachusetts",
@@ -26002,7 +26002,7 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 126,
+    "entry_count": 127,
     "entry_moves": [
       {
         "kind": "merge",
@@ -26015,7 +26015,7 @@
       }
     ],
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-11-11T00:00:00",
+    "latest_entry_at": "2026-11-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -30435,9 +30435,9 @@
     "date_terminated": null,
     "defendant": "Secretary of State for the State of Georgia",
     "docket_number": "26-14057",
-    "entry_count": 15,
+    "entry_count": 23,
     "filed_at": "2026-10-30T00:00:00",
-    "latest_entry_at": "2026-11-10T00:00:00",
+    "latest_entry_at": "2026-11-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
     "state": "Georgia",

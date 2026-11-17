@@ -14478,5 +14478,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-prosecutor-confirms-probe-into-democrats-plans-to-investigate-administration",
     "title": "Trump prosecutor confirms probe into Democrats’ plans to investigate administration"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163262,
+    "kind": "item",
+    "occurred_at": "2026-11-17T15:56:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/live-updates-alaska-senate-race-set-for-democratic-win-with-gop-set-to-fight-results",
+    "title": "Live updates: Alaska Senate race set for Democratic win with GOP poised to fight results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163266,
+    "kind": "item",
+    "occurred_at": "2026-11-17T16:30:20+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/architect-of-california-voting-lawsuit-to-be-disqualified-as-top-federal-prosecutor",
+    "title": "Architect of California voting lawsuit to be disqualified as top federal prosecutor"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163265,
+    "kind": "item",
+    "occurred_at": "2026-11-17T17:57:41+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/senate-panel-advances-top-doj-civil-rights-division-lawyers-judicial-nomination",
+    "title": "Senate panel advances top DOJ Civil Rights Division lawyer’s judicial nomination"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163264,
+    "kind": "item",
+    "occurred_at": "2026-11-17T18:03:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/outgoing-ohio-secretary-of-state-larose-seeks-to-retain-power-over-states-voter-roll",
+    "title": "Outgoing Ohio Secretary of State LaRose seeks to retain power over state’s voter roll"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163263,
+    "kind": "item",
+    "occurred_at": "2026-11-17T19:16:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaskans-not-confused-at-all-about-ranked-choice-voting-election-advocate-says",
+    "title": "Alaskans ‘not confused at all’ about ranked-choice voting, election advocate says"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163267,
+    "kind": "item",
+    "occurred_at": "2026-11-17T19:41:44+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/pennsylvania-life-without-parole-felony-murder",
+    "title": "Pennsylvania Lifers Fight to Break Legislative Stalemate, and Find a Pathway Out of Prison"
   }
 ]
