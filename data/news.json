@@ -14458,5 +14458,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/live-updates-alaska-senate-race-heads-for-democratic-win-amid-trump-threats",
     "title": "Live updates: Alaska Senate race heads for Democratic win amid Trump threats"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 162756,
+    "kind": "item",
+    "occurred_at": "2026-11-16T22:17:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/sen-dan-sullivan-campaign-says-it-wont-concede-alaska-senate-race-until-its-certified",
+    "title": "Sen. Dan Sullivan campaign says it won’t concede Alaska Senate race until it’s certified"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 162755,
+    "kind": "item",
+    "occurred_at": "2026-11-17T00:07:37+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-prosecutor-confirms-probe-into-democrats-plans-to-investigate-administration",
+    "title": "Trump prosecutor confirms probe into Democrats’ plans to investigate administration"
   }
 ]
