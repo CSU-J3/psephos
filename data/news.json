@@ -14568,5 +14568,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/mary-peltola-wins-alaska-senate-race-but-gop-looks-set-to-fight-results",
     "title": "Mary Peltola wins Alaska Senate race — but GOP looks set to fight results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163944,
+    "kind": "item",
+    "occurred_at": "2026-11-18T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/texas/2026/11/18/democrats-elections-voting-legislation-online-voter-registration",
+    "title": "Texas Democrats have a chance to expand voting access. They still need Republicans’ support."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163946,
+    "kind": "item",
+    "occurred_at": "2026-11-18T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/north-carolina-democrats-ready-to-fight-back-on-gerrymandering-after-riding-blue-wave-to-power",
+    "title": "North Carolina Democrats ready to fight back on gerrymandering after riding blue wave to power"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163945,
+    "kind": "item",
+    "occurred_at": "2026-11-18T14:38:30+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/live-updates-alaska-senate-race-called-for-democrat-peltola-but-fight-may-continue",
+    "title": "Live updates: Alaska Senate race called for Democrat Peltola but fight may continue"
   }
 ]
