@@ -14548,5 +14548,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/doj-abandons-lawsuit-demanding-california-withhold-ballots-from-alleged-noncitizens",
     "title": "DOJ abandons lawsuit demanding California withhold ballots from alleged noncitizens"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163719,
+    "kind": "item",
+    "occurred_at": "2026-11-18T02:05:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/surreal-architect-of-alaskas-election-system-on-trumps-baseless-attacks",
+    "title": "‘Surreal’: Architect of Alaska’s election system on Trump’s ‘baseless’ attacks"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163718,
+    "kind": "item",
+    "occurred_at": "2026-11-18T03:30:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mary-peltola-wins-alaska-senate-race-but-gop-looks-set-to-fight-results",
+    "title": "Mary Peltola wins Alaska Senate race — but GOP looks set to fight results"
   }
 ]
