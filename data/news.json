@@ -14538,5 +14538,15 @@
     "source_id": "bolts",
     "source_url": "https://boltsmag.org/pennsylvania-life-without-parole-felony-murder",
     "title": "Pennsylvania Lifers Fight to Break Legislative Stalemate, and Find a Pathway Out of Prison"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 163495,
+    "kind": "item",
+    "occurred_at": "2026-11-17T22:33:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/doj-abandons-lawsuit-demanding-california-withhold-ballots-from-alleged-noncitizens",
+    "title": "DOJ abandons lawsuit demanding California withhold ballots from alleged noncitizens"
   }
 ]
