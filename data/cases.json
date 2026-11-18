@@ -20078,7 +20078,7 @@
     "date_terminated": null,
     "defendant": "TRUMP",
     "docket_number": "1:26-cv-01114",
-    "entry_count": 262,
+    "entry_count": 263,
     "entry_moves": [
       {
         "entries": [
@@ -20099,7 +20099,7 @@
       }
     ],
     "filed_at": "2026-04-01T00:00:00",
-    "latest_entry_at": "2026-11-13T00:00:00",
+    "latest_entry_at": "2026-11-18T00:00:00",
     "plaintiff": "DSCC",
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
@@ -21286,6 +21286,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73131864/212/dscc-v-trump/",
         "title": "DSCC v. Trump: Transmission of the Notice of Appeal, Order Appealed (Memorandum Opinion), and Docket Sheet to US Court of Appeals. The Court of Appeals fee was paid re 211 Notice of Appeal to DC "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 163966,
+        "kind": "item",
+        "occurred_at": "2026-11-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
+        "title": "DSCC v. Trump: USCA Case Number 26-5388 for 211 Notice of Appeal to DC Circuit Court,, filed by STATE OF SOUTH CAROLINA, STATE OF FLORIDA, STATE OF KANSAS, STATE OF OKLAHOMA, STATE OF NEBRASKA, S"
       }
     ]
   },
@@ -28742,7 +28752,7 @@
     "date_terminated": null,
     "defendant": "Steve Simon",
     "docket_number": "26-2679",
-    "entry_count": 109,
+    "entry_count": 111,
     "entry_moves": [
       {
         "entries": [
@@ -28768,7 +28778,7 @@
       }
     ],
     "filed_at": "2026-08-21T00:00:00",
-    "latest_entry_at": "2026-11-16T00:00:00",
+    "latest_entry_at": "2026-11-18T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74687843/united-states-v-steve-simon/",
     "state": "Minnesota",

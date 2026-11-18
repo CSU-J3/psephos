@@ -14598,5 +14598,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/live-updates-alaska-senate-race-called-for-democrat-peltola-but-fight-may-continue",
     "title": "Live updates: Alaska Senate race called for Democrat Peltola but fight may continue"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164176,
+    "kind": "item",
+    "occurred_at": "2026-11-18T18:33:29+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/republicans-challenge-thousands-of-ohio-ballots-voting-groups-say",
+    "title": "Republicans challenge thousands of Ohio ballots, voting groups say"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164175,
+    "kind": "item",
+    "occurred_at": "2026-11-18T19:26:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/far-right-georgia-lawmakers-want-to-strip-incoming-democratic-governor-of-power",
+    "title": "Far-right Georgia lawmakers want to strip incoming Democratic governor of power"
   }
 ]
