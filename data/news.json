@@ -14618,5 +14618,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/far-right-georgia-lawmakers-want-to-strip-incoming-democratic-governor-of-power",
     "title": "Far-right Georgia lawmakers want to strip incoming Democratic governor of power"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164408,
+    "kind": "item",
+    "occurred_at": "2026-11-18T21:17:07+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/who-is-aaron-reitz-trump-doj-prosecutor-says-hes-working-with-main-justice-as-he-threatens-democrats-for-conducting-oversight",
+    "title": "Who is Aaron Reitz? Trump DOJ prosecutor says he’s working ‘with Main Justice’ as he threatens Democrats for conducting oversight"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164407,
+    "kind": "item",
+    "occurred_at": "2026-11-18T22:56:42+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-historic-blue-wave-mississippi-governor-calls-for-end-to-mail-ballot-grace-period",
+    "title": "After historic blue wave, Mississippi governor calls for end to mail ballot grace period"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164406,
+    "kind": "item",
+    "occurred_at": "2026-11-18T23:41:10+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/pennsylvania/2026/11/18/41st-house-district-recount-petition-chambers-miller",
+    "title": "In a rarity, petitioners in every precinct of Pennsylvania’s 41st House District have requested a recount"
   }
 ]
