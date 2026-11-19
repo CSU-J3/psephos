@@ -20104,7 +20104,7 @@
     "source_url": "https://www.courtlistener.com/docket/73131864/dscc-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:59.687773+00:00",
+    "status_checked_at": "2026-11-19T15:46:45.382130+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -21333,7 +21333,7 @@
     "source_url": "https://www.courtlistener.com/docket/73133197/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:40.668998+00:00",
+    "status_checked_at": "2026-11-19T15:46:27.400755+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -24454,7 +24454,7 @@
     "source_url": "https://www.courtlistener.com/docket/73143746/national-association-for-the-advancement-of-colored-people-v-donald-j/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:55.889889+00:00",
+    "status_checked_at": "2026-11-19T15:46:41.788488+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26589,14 +26589,14 @@
     "date_terminated": null,
     "defendant": "Trump",
     "docket_number": "26-1774",
-    "entry_count": 63,
+    "entry_count": 65,
     "filed_at": "2026-07-02T00:00:00",
-    "latest_entry_at": "2026-09-21T00:00:00",
+    "latest_entry_at": "2026-11-18T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/73568304/state-of-california-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:52.089493+00:00",
+    "status_checked_at": "2026-11-19T15:46:38.211694+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -26798,6 +26798,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73568304/00108511535/state-of-california-v-trump/",
         "title": "State of California v. Trump (1st Cir.): ORDER granting motion to extend time to file brief and appendix filed by Appellants USPS, DHS, United States Department of Justice, SSA, Donald J. Trump, Todd Blanche, Frank J. Bis"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 164654,
+        "kind": "item",
+        "occurred_at": "2026-11-18T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73568304/00108539490/state-of-california-v-trump/",
+        "title": "State of California v. Trump (1st Cir.): MOTION to dismiss case filed by Appellants State of Alabama, State of Florida, State of Indiana, State of Kansas, State of Louisiana, State of Missouri, State of Montana, State of "
       }
     ]
   },
@@ -28547,7 +28557,7 @@
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:36.911317+00:00",
+    "status_checked_at": "2026-11-19T15:46:23.788632+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -28699,7 +28709,7 @@
     "source_url": "https://www.courtlistener.com/docket/74676722/united-states-v-lieutenant-governor-and-secretary-of-state-of-new/",
     "state": "New Jersey",
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:33.006282+00:00",
+    "status_checked_at": "2026-11-19T15:46:20.168386+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29033,7 +29043,7 @@
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:44.512871+00:00",
+    "status_checked_at": "2026-11-19T15:46:30.991738+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -29853,7 +29863,7 @@
     "source_url": "https://www.courtlistener.com/docket/74728821/electronic-privacy-information-center-v-us-citizenship-and-immigration/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:42:07.208733+00:00",
+    "status_checked_at": "2026-11-19T15:46:52.642843+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30073,7 +30083,7 @@
     "source_url": "https://www.courtlistener.com/docket/74755121/league-of-women-voters-of-massachusetts-v-trump/",
     "state": null,
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:48.329160+00:00",
+    "status_checked_at": "2026-11-19T15:46:34.592459+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30422,7 +30432,7 @@
     "source_url": "https://www.courtlistener.com/docket/74793201/united-states-v-kris-warner/",
     "state": "West Virginia",
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:42:03.503736+00:00",
+    "status_checked_at": "2026-11-19T15:46:49.011793+00:00",
     "superseded_by": null,
     "timeline": [
       {
@@ -30455,14 +30465,14 @@
     "date_terminated": null,
     "defendant": "Secretary of State for the State of Georgia",
     "docket_number": "26-14057",
-    "entry_count": 23,
+    "entry_count": 24,
     "filed_at": "2026-10-30T00:00:00",
     "latest_entry_at": "2026-11-17T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/75088916/united-states-v-secretary-of-state-for-the-state-of-georgia/",
     "state": "Georgia",
     "status": "pending",
-    "status_checked_at": "2026-11-18T15:41:29.255380+00:00",
+    "status_checked_at": "2026-11-19T15:46:16.532784+00:00",
     "superseded_by": null,
     "timeline": [
       {

@@ -47418,5 +47418,29 @@
     ],
     "title": "Relating to electronic submission of an application for an early voting ballot by mail by a person 65 years of age or older.",
     "url": "https://legiscan.com/TX/bill/HB1211/2027"
+  },
+  {
+    "bill_number": "HB1218",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-18T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2163799",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 164873,
+        "kind": "item",
+        "occurred_at": "2026-11-18T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/HB1218/2027",
+        "title": "TX HB1218: Filed"
+      }
+    ],
+    "title": "Relating to residence for purposes of voting and other matters affecting a candidate's eligibility.",
+    "url": "https://legiscan.com/TX/bill/HB1218/2027"
   }
 ]

@@ -14648,5 +14648,65 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/pennsylvania/2026/11/18/41st-house-district-recount-petition-chambers-miller",
     "title": "In a rarity, petitioners in every precinct of Pennsylvania’s 41st House District have requested a recount"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164865,
+    "kind": "item",
+    "occurred_at": "2026-11-19T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/arizona/2026/11/19/adrian-fontes-democrat-legislative-election-voting-agenda",
+    "title": "Secretary of State Adrian Fontes pitches big changes to Arizona voting laws ahead of 2028"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164866,
+    "kind": "item",
+    "occurred_at": "2026-11-19T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/michigan/2026/11/19/state-voting-rights-act-jocelyn-benson-democrats-trifecta-legislature",
+    "title": "The Michigan Voting Rights Act could finally become law in 2027. Here’s everything you need to know."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164870,
+    "kind": "item",
+    "occurred_at": "2026-11-19T11:00:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/nevada-democrats-have-a-chance-to-ease-voter-id-requirement-after-taking-legislature",
+    "title": "Nevada Democrats have a chance to ease voter ID requirement after taking legislature"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164869,
+    "kind": "item",
+    "occurred_at": "2026-11-19T14:16:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-will-certify-results-of-u-s-senate-race-election-director-confirms",
+    "title": "Alaska will certify results of U.S. Senate race, election director confirms"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164867,
+    "kind": "item",
+    "occurred_at": "2026-11-19T14:45:08+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/live-updates-alaska-senate-race-moves-toward-certification-of-democratic-win",
+    "title": "Live updates: Alaska Senate race moves toward certification of Democratic win"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 164868,
+    "kind": "item",
+    "occurred_at": "2026-11-19T15:29:12+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaskas-real-spoiler-wasnt-dan-sullivan-and-he-helped-the-gop",
+    "title": "Alaska’s real spoiler wasn’t Dan Sullivan. And he helped the GOP"
   }
 ]
