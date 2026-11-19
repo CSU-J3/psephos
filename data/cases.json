@@ -25163,7 +25163,7 @@
     "date_terminated": null,
     "defendant": "Wisconsin Elections Commission",
     "docket_number": "26-2217",
-    "entry_count": 111,
+    "entry_count": 112,
     "entry_moves": [
       {
         "entries": [
@@ -25184,7 +25184,7 @@
       }
     ],
     "filed_at": "2026-06-05T00:00:00",
-    "latest_entry_at": "2026-11-11T00:00:00",
+    "latest_entry_at": "2026-11-18T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73453198/united-states-v-wisconsin-elections-commission/",
     "state": "Wisconsin",
@@ -26012,7 +26012,7 @@
     "date_terminated": null,
     "defendant": "Bellows",
     "docket_number": "26-1676",
-    "entry_count": 127,
+    "entry_count": 128,
     "entry_moves": [
       {
         "kind": "merge",
@@ -26025,7 +26025,7 @@
       }
     ],
     "filed_at": "2026-06-15T00:00:00",
-    "latest_entry_at": "2026-11-13T00:00:00",
+    "latest_entry_at": "2026-11-18T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73488435/united-states-v-bellows/",
     "state": "Maine",
@@ -27045,7 +27045,7 @@
     "date_terminated": null,
     "defendant": "Scanlan",
     "docket_number": "26-1783",
-    "entry_count": 75,
+    "entry_count": 78,
     "entry_moves": [
       {
         "kind": "merge",
@@ -27058,7 +27058,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-11-12T00:00:00",
+    "latest_entry_at": "2026-11-16T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73607684/united-states-v-scanlan/",
     "state": "New Hampshire",
@@ -27655,7 +27655,7 @@
     "date_terminated": null,
     "defendant": "Michael Adams",
     "docket_number": "26-5657",
-    "entry_count": 22,
+    "entry_count": 23,
     "entry_moves": [
       {
         "entries": [
@@ -27676,7 +27676,7 @@
       }
     ],
     "filed_at": "2026-07-24T00:00:00",
-    "latest_entry_at": "2026-11-06T00:00:00",
+    "latest_entry_at": "2026-11-13T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73674243/united-states-v-michael-adams/",
     "state": "Kentucky",
@@ -28130,7 +28130,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 87,
+    "entry_count": 91,
     "entry_moves": [
       {
         "apart": 1,
@@ -28152,7 +28152,7 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-11-17T00:00:00",
+    "latest_entry_at": "2026-11-19T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -28539,7 +28539,7 @@
     "date_terminated": null,
     "defendant": "Bernadette Matthews",
     "docket_number": "26-2695",
-    "entry_count": 32,
+    "entry_count": 33,
     "entry_moves": [
       {
         "kind": "merge",
@@ -28552,7 +28552,7 @@
       }
     ],
     "filed_at": "2026-08-17T00:00:00",
-    "latest_entry_at": "2026-11-13T00:00:00",
+    "latest_entry_at": "2026-11-19T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/74671260/united-states-v-bernadette-matthews/",
     "state": "Illinois",

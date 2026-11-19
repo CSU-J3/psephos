@@ -14708,5 +14708,55 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/alaskas-real-spoiler-wasnt-dan-sullivan-and-he-helped-the-gop",
     "title": "Alaska’s real spoiler wasn’t Dan Sullivan. And he helped the GOP"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165103,
+    "kind": "item",
+    "occurred_at": "2026-11-19T18:36:34+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/mississippi-gop-doubles-down-on-gerrymandering-after-blue-wave-blowout",
+    "title": "Mississippi GOP doubles down on gerrymandering after blue wave blowout"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165102,
+    "kind": "item",
+    "occurred_at": "2026-11-19T19:06:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gop-candidate-for-ohio-house-seeks-to-throw-out-ballots-weeks-after-election-day",
+    "title": "GOP candidate for Ohio House seeks to throw out ballots weeks after Election Day"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165104,
+    "kind": "item",
+    "occurred_at": "2026-11-19T19:11:52+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/california-stonegarden-license-plate-surveillance",
+    "title": "How Border Patrol Is Helping Local Cops Expand Surveillance in California"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165101,
+    "kind": "item",
+    "occurred_at": "2026-11-19T19:53:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-taps-prosecutor-behind-failed-california-ballot-lawsuit-for-mar-a-lago-revenge-probe",
+    "title": "Trump DOJ taps prosecutor behind failed California ballot lawsuit for Mar-a-Lago revenge probe"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165100,
+    "kind": "item",
+    "occurred_at": "2026-11-19T20:17:08+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/wisconsin/2026/11/19/university-polling-place-lines-long-strategies-work-nationwide",
+    "title": "Wisconsin students again face long lines to vote as officials grapple with campus wait times"
   }
 ]
