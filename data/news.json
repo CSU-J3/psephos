@@ -14758,5 +14758,35 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/wisconsin/2026/11/19/university-polling-place-lines-long-strategies-work-nationwide",
     "title": "Wisconsin students again face long lines to vote as officials grapple with campus wait times"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165336,
+    "kind": "item",
+    "occurred_at": "2026-11-19T22:51:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-signals-push-to-limit-mail-voting-is-on-shaky-ground",
+    "title": "Trump administration signals push to limit mail voting is on shaky ground"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165335,
+    "kind": "item",
+    "occurred_at": "2026-11-19T22:54:03+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trumps-pick-for-key-election-security-post-denies-jan-6-was-attack-on-u-s-capitol",
+    "title": "Trump’s pick for key election security post denies Jan. 6 was  ‘attack’ on U.S. Capitol"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165334,
+    "kind": "item",
+    "occurred_at": "2026-11-20T00:26:19+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-surrenders-on-alaska-u-s-senate-interference-suit",
+    "title": "Trump DOJ surrenders on Alaska U.S. Senate interference suit"
   }
 ]

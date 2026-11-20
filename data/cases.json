@@ -6850,7 +6850,7 @@
     "date_terminated": "2026-09-23T00:00:00",
     "defendant": "Hanzas",
     "docket_number": "2:25-cv-00903",
-    "entry_count": 101,
+    "entry_count": 102,
     "entry_moves": [
       {
         "entries": [
@@ -6888,7 +6888,7 @@
       }
     ],
     "filed_at": "2025-12-01T00:00:00",
-    "latest_entry_at": "2026-10-30T00:00:00",
+    "latest_entry_at": "2026-11-19T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/71980614/united-states-v-hanzas/",
     "state": "Vermont",
@@ -28130,7 +28130,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 91,
+    "entry_count": 100,
     "entry_moves": [
       {
         "apart": 1,
@@ -28289,6 +28289,36 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/76/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION ORDER, granting motion for extension of time until 11/12/2026 to file briefs at docket entry 70, on behalf of Appellee SEIU District 1199NE, Appellee Connecticut Alliance fo"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 165113,
+        "kind": "item",
+        "occurred_at": "2026-11-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/95/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant J. Morgan Kousser, Orville Vernon Burton, James Peyton McCrary, FILED. Service date 11/19/2026 by ACMS. [Entered: 11/19/2026"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 165114,
+        "kind": "item",
+        "occurred_at": "2026-11-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/97/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Former Employees of the U.S. Department of Justice, FILED. Service date 11/19/2026 by ACMS. [Entered: 11/19/2026 04:27 PM]"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 165115,
+        "kind": "item",
+        "occurred_at": "2026-11-19T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/100/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Democratic National Committee, FILED. Service date 11/19/2026 by ACMS. [Entered: 11/19/2026 04:59 PM]"
       }
     ]
   },
