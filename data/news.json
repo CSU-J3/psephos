@@ -14798,5 +14798,65 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/11/20/redistricting-gerrymandering-dummymander-2026-house-election",
     "title": "Despite Democrats’ big win, mid-decade redistricting still benefited Republicans in the 2026 election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166014,
+    "kind": "item",
+    "occurred_at": "2026-11-20T17:06:35+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/missouri-voters-enact-landmark-direct-democracy-protections-after-gop-crackdown",
+    "title": "Missouri voters enact landmark direct democracy protections after GOP crackdown"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166013,
+    "kind": "item",
+    "occurred_at": "2026-11-20T17:16:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-governor-wont-give-up-on-long-shot-bid-to-subvert-democratic-senate-win",
+    "title": "Alaska governor won’t give up on long-shot bid to subvert Democratic Senate win"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166012,
+    "kind": "item",
+    "occurred_at": "2026-11-20T17:33:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ohio-supreme-court-orders-some-ballots-to-remain-uncounted-following-gop-challenge",
+    "title": "Ohio Supreme Court orders some ballots to remain uncounted following GOP challenge"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166009,
+    "kind": "item",
+    "occurred_at": "2026-11-20T17:56:52+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/20/votebeat-expert-desk-2026-midterms-journalists-election-reporting",
+    "title": "Votebeat’s Expert Desk helped hundreds of journalists cover the midterms. It’s still open."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166011,
+    "kind": "item",
+    "occurred_at": "2026-11-20T18:36:11+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/a-plan-to-sidestep-the-electoral-college-may-fail-in-court-should-democrats-go-for-it-anyway",
+    "title": "A plan to sidestep the Electoral College may fail in court. Should Democrats go for it anyway?"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166010,
+    "kind": "item",
+    "occurred_at": "2026-11-20T19:34:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/arizona-democrats-could-enact-sweeping-pro-voting-agenda",
+    "title": "After winning historic trifecta, Arizona Democrats could enact sweeping pro-voting agenda"
   }
 ]
