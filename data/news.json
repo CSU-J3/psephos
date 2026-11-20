@@ -14788,5 +14788,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-surrenders-on-alaska-u-s-senate-interference-suit",
     "title": "Trump DOJ surrenders on Alaska U.S. Senate interference suit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 165784,
+    "kind": "item",
+    "occurred_at": "2026-11-20T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/20/redistricting-gerrymandering-dummymander-2026-house-election",
+    "title": "Despite Democrats’ big win, mid-decade redistricting still benefited Republicans in the 2026 election"
   }
 ]

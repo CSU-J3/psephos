@@ -47442,5 +47442,39 @@
     ],
     "title": "Relating to residence for purposes of voting and other matters affecting a candidate's eligibility.",
     "url": "https://legiscan.com/TX/bill/HB1218/2027"
+  },
+  {
+    "bill_number": "SB444",
+    "is_vehicle": false,
+    "last_action": "Filed",
+    "last_action_at": "2026-11-19T00:00:00",
+    "session": "90th Legislature Regular Session",
+    "state": "TX",
+    "state_bill_id": "2164202",
+    "status": "1",
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 165785,
+        "kind": "item",
+        "occurred_at": "2026-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB444/2027",
+        "title": "TX SB444: Received by the Secretary of the Senate"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 165786,
+        "kind": "item",
+        "occurred_at": "2026-11-19T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/TX/bill/SB444/2027",
+        "title": "TX SB444: Filed"
+      }
+    ],
+    "title": "Relating to permitted forms of identification for the purpose of accepting a voter.",
+    "url": "https://legiscan.com/TX/bill/SB444/2027"
   }
 ]
