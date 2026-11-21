@@ -30698,9 +30698,9 @@
   {
     "bill_number": "HB1937",
     "is_vehicle": false,
-    "last_action": "Referred to State Government",
+    "last_action": "Referred to USLTATE UGLOVERNMENT",
     "last_action_at": "2025-10-10T00:00:00",
-    "session": null,
+    "session": "2025-2026 Regular Session",
     "state": "PA",
     "state_bill_id": "2046128",
     "status": "1",
@@ -30714,6 +30714,16 @@
         "source_id": "legiscan",
         "source_url": "https://legiscan.com/PA/bill/HB1937/2025",
         "title": "PA HB1937: Referred to State Government"
+      },
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 166697,
+        "kind": "item",
+        "occurred_at": "2025-10-10T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/PA/bill/HB1937/2025",
+        "title": "PA HB1937: Referred to USLTATE UGLOVERNMENT"
       }
     ],
     "title": "In voter registration, further providing for government agencies.",
