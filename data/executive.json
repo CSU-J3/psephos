@@ -1418,5 +1418,15 @@
     "source_id": "federal-register",
     "source_url": "https://www.federalregister.gov/documents/2026/11/06/2026-22735/heightened-requirements-for-foreign-importers-of-record",
     "title": "Heightened Requirements for Foreign Importers of Record"
+  },
+  {
+    "channel": "executive",
+    "grade": "A1",
+    "id": 166296,
+    "kind": "item",
+    "occurred_at": "2026-11-23T00:00:00",
+    "source_id": "federal-register",
+    "source_url": "https://www.federalregister.gov/documents/2026/11/23/2026-23787/sunshine-act-meetings",
+    "title": "Sunshine Act Meetings"
   }
 ]
