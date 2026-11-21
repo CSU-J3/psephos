@@ -26819,7 +26819,7 @@
     "date_terminated": null,
     "defendant": "Secretary Commonwealth of Pennsylvania",
     "docket_number": "26-2684",
-    "entry_count": 67,
+    "entry_count": 74,
     "entry_moves": [
       {
         "entries": [
@@ -26857,7 +26857,7 @@
       }
     ],
     "filed_at": "2026-07-07T00:00:00",
-    "latest_entry_at": "2026-11-16T00:00:00",
+    "latest_entry_at": "2026-11-20T00:00:00",
     "plaintiff": "United States",
     "source_url": "https://www.courtlistener.com/docket/73582123/united-states-v-secretary-commonwealth-of-pennsylvania/",
     "state": "Pennsylvania",
@@ -29057,7 +29057,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 198,
+    "entry_count": 199,
     "entry_moves": [
       {
         "entries": [
@@ -29078,7 +29078,7 @@
       }
     ],
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": "2026-11-16T00:00:00",
+    "latest_entry_at": "2026-11-20T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
@@ -29885,6 +29885,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/185/state-of-california-v-united-states-postal-service/",
         "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER entered allowing 183 Unopposed Motion for Extension of Time to November 23, 2026, to Answer or Otherwise Respond [ 1 ] Complaint by State of "
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 166028,
+        "kind": "item",
+        "occurred_at": "2026-11-20T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/186/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order"
       }
     ]
   },

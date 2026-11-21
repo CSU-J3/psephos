@@ -14858,5 +14858,35 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/arizona-democrats-could-enact-sweeping-pro-voting-agenda",
     "title": "After winning historic trifecta, Arizona Democrats could enact sweeping pro-voting agenda"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166242,
+    "kind": "item",
+    "occurred_at": "2026-11-20T20:41:27+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/after-losing-midterms-gop-wants-to-kneecap-incoming-democratic-power-in-states",
+    "title": "After losing midterms, GOP wants to kneecap incoming Democratic power in states"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166241,
+    "kind": "item",
+    "occurred_at": "2026-11-20T21:35:50+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-administration-shifts-to-criminal-probe-in-alaska-after-lawsuit-to-block-senate-race-results-flopped",
+    "title": "Trump administration shifts to criminal probe in Alaska after lawsuit to block Senate race results flopped"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166243,
+    "kind": "item",
+    "occurred_at": "2026-11-20T21:51:36+00:00",
+    "source_id": "states-united",
+    "source_url": "https://statesunited.org/checks-please",
+    "title": "Checks, Please"
   }
 ]
