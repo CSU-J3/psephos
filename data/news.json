@@ -14888,5 +14888,15 @@
     "source_id": "states-united",
     "source_url": "https://statesunited.org/checks-please",
     "title": "Checks, Please"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 166921,
+    "kind": "item",
+    "occurred_at": "2026-11-21T17:47:54+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-sees-silver-lining-in-fbi-getting-hacked-maybe-well-learn-about-all-the-voter-fraud",
+    "title": "Trump sees silver lining in FBI getting hacked: ‘Maybe we’ll learn about all the voter fraud’"
   }
 ]
