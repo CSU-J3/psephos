@@ -14908,5 +14908,25 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trumps-fbi-is-still-probing-fulton-countys-2020-election-results",
     "title": "Trump’s FBI is still probing Fulton County’s 2020 election results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 168504,
+    "kind": "item",
+    "occurred_at": "2026-11-23T14:14:12+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/30/alaska-peltola-sullivan-trump-ranked-choice-voting-investigation",
+    "title": "Alaska’s hotly contested Senate race has been called. But it heightened a spotlight on the state’s elections."
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 168505,
+    "kind": "item",
+    "occurred_at": "2026-11-23T16:46:40+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-pedals-another-lie-suggests-democrats-kept-oil-prices-high-to-win-election",
+    "title": "Trump pedals another lie, suggests Democrats kept oil prices high to win election"
   }
 ]
