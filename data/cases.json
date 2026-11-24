@@ -28130,7 +28130,7 @@
     "date_terminated": null,
     "defendant": "Thomas",
     "docket_number": "26-2064",
-    "entry_count": 105,
+    "entry_count": 106,
     "entry_moves": [
       {
         "apart": 1,
@@ -28152,7 +28152,7 @@
       }
     ],
     "filed_at": "2026-07-28T00:00:00",
-    "latest_entry_at": "2026-11-19T00:00:00",
+    "latest_entry_at": "2026-11-23T00:00:00",
     "plaintiff": "United States of America",
     "source_url": "https://www.courtlistener.com/docket/73686333/united-states-of-america-v-thomas/",
     "state": "Connecticut",
@@ -28329,6 +28329,16 @@
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/73686333/102/united-states-of-america-v-thomas/",
         "title": "United States of America v. Thomas: MOTION TO FILE AMICUS CURIAE BRIEF, on behalf of Movant Lawyers' Committee for Civil Rights Under Law, National Urban League, et al., FILED. Service date 11/19/2026 by ACMS. [Enter"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 168514,
+        "kind": "item",
+        "occurred_at": "2026-11-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/73686333/106/united-states-of-america-v-thomas/",
+        "title": "United States of America v. Thomas: MOTION ORDER, referring motions for leave to file amici curiae briefs in support of appellees and affirmance to the panel that will determine the merits of this appeal at docket en"
       }
     ]
   },
@@ -29057,7 +29067,7 @@
     "date_terminated": null,
     "defendant": "United States Postal Service",
     "docket_number": "1:26-cv-13917",
-    "entry_count": 199,
+    "entry_count": 203,
     "entry_moves": [
       {
         "entries": [
@@ -29078,7 +29088,7 @@
       }
     ],
     "filed_at": "2026-08-26T00:00:00",
-    "latest_entry_at": "2026-11-20T00:00:00",
+    "latest_entry_at": "2026-11-23T00:00:00",
     "plaintiff": "State of California",
     "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
     "state": null,
@@ -29894,7 +29904,37 @@
         "occurred_at": "2026-11-20T00:00:00",
         "source_id": "courtlistener",
         "source_url": "https://www.courtlistener.com/docket/74701505/186/state-of-california-v-united-states-postal-service/",
-        "title": "State of California v. United States Postal Service: Order"
+        "title": "State of California v. United States Postal Service: Joint MOTION for Order to to Set Schedule for Further Proceedings and Vacate Answer Deadlines by Derek Kan, Amber McReynolds, David Steiner, Ronald Stroman, Daniel Tangherlini, Dou"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 168521,
+        "kind": "item",
+        "occurred_at": "2026-11-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Order on Motion for Order"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 168523,
+        "kind": "item",
+        "occurred_at": "2026-11-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/187/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: Judge Indira Talwani: ELECTRONIC ORDER: Electronic Order vacating Defendants’ deadline to answer the complaint. On or before January 19, 2027: Federal Defendants will produce an ad"
+      },
+      {
+        "channel": "litigation",
+        "grade": "A1",
+        "id": 168524,
+        "kind": "item",
+        "occurred_at": "2026-11-23T00:00:00",
+        "source_id": "courtlistener",
+        "source_url": "https://www.courtlistener.com/docket/74701505/188/state-of-california-v-united-states-postal-service/",
+        "title": "State of California v. United States Postal Service: ELECTRONIC NOTICE of Hearing. Status Conference set for 2/11/2027 03:15 PM in Remote Proceeding : Boston before Judge Indira Talwani. This hearing will be conducted by video confer"
       }
     ]
   },

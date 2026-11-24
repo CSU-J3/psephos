@@ -14928,5 +14928,45 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/trump-pedals-another-lie-suggests-democrats-kept-oil-prices-high-to-win-election",
     "title": "Trump pedals another lie, suggests Democrats kept oil prices high to win election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 168740,
+    "kind": "item",
+    "occurred_at": "2026-11-23T18:02:45+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/new-hampshire-argues-voters-have-no-right-to-cast-mail-ballots",
+    "title": "New Hampshire argues voters have no right to cast mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 168741,
+    "kind": "item",
+    "occurred_at": "2026-11-23T18:58:33+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/how-will-the-midterms-change-state-governments-send-us-your-questions",
+    "title": "How Will the Blue Wave Change State Governments? Send Us Your Questions"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 168739,
+    "kind": "item",
+    "occurred_at": "2026-11-23T21:47:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-certifies-democratic-senate-win-starting-clock-for-next-wave-of-challenges",
+    "title": "Alaska certifies Democratic Senate win, starting clock for next wave of challenges"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 168738,
+    "kind": "item",
+    "occurred_at": "2026-11-23T22:13:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-doj-will-keep-fighting-for-postal-service-mail-voting-restrictions",
+    "title": "Trump DOJ will keep fighting for Postal Service mail voting restrictions"
   }
 ]
