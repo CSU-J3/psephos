@@ -14978,5 +14978,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/ohio-democrats-sue-to-count-ballots-at-risk-of-being-tossed-in-razor-thin-election",
     "title": "Ohio Democrats sue to count ballots at risk of being tossed in razor-thin election"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169194,
+    "kind": "item",
+    "occurred_at": "2026-11-24T10:00:00+00:00",
+    "source_id": "votebeat",
+    "source_url": "https://www.votebeat.org/national/2026/11/24/mississippi-experian-data-inactive-voters-discrimination",
+    "title": "Mississippi’s outlier election laws face new scrutiny after tight U.S. Senate race"
   }
 ]
