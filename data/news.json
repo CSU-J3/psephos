@@ -15028,5 +15028,65 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/alaska-terminates-controversial-deal-to-share-voter-data-with-trump-doj",
     "title": "Alaska terminates controversial deal to share voter data with Trump DOJ"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169733,
+    "kind": "item",
+    "occurred_at": "2026-11-24T18:05:26+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/is-the-future-of-voting-electronic-for-some-voters-with-disabilities-its-the-only-way",
+    "title": "Is the future of voting electronic? For some voters with disabilities, it’s the only way"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169732,
+    "kind": "item",
+    "occurred_at": "2026-11-24T18:10:53+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/voting-rights-groups-urge-court-to-reject-doj-bid-to-erase-alaska-election-defeat",
+    "title": "Voting rights groups urge court to reject DOJ bid to erase Alaska election defeat"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169731,
+    "kind": "item",
+    "occurred_at": "2026-11-24T18:17:09+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/kansas-nonprofits-dispute-gops-latest-bid-to-exclude-late-arriving-mail-ballots",
+    "title": "Kansas nonprofits dispute GOP’s latest bid to exclude late-arriving mail ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169730,
+    "kind": "item",
+    "occurred_at": "2026-11-24T18:49:21+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ohio-supreme-court-dismisses-republican-bid-to-throw-out-provisional-ballots",
+    "title": "Ohio Supreme Court dismisses Republican bid to throw out provisional ballots"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169729,
+    "kind": "item",
+    "occurred_at": "2026-11-24T19:04:23+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/gops-sullivan-concedes-senate-race-after-alaska-certifies-peltolas-win",
+    "title": "GOP’s Sullivan concedes Senate race after Alaska certifies Peltola’s win"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169728,
+    "kind": "item",
+    "occurred_at": "2026-11-24T21:55:00+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/ohio-county-counts-over-700-contested-ballots-after-democratic-lawsuit",
+    "title": "Ohio county counts over 700 contested ballots after Democratic lawsuit"
   }
 ]
