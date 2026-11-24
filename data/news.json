@@ -14988,5 +14988,45 @@
     "source_id": "votebeat",
     "source_url": "https://www.votebeat.org/national/2026/11/24/mississippi-experian-data-inactive-voters-discrimination",
     "title": "Mississippi’s outlier election laws face new scrutiny after tight U.S. Senate race"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169484,
+    "kind": "item",
+    "occurred_at": "2026-11-24T16:08:11+00:00",
+    "source_id": "bolts",
+    "source_url": "https://boltsmag.org/timing-of-elections-turnout-whittier-and-north-miami-beach",
+    "title": "After Flipping Blue, a California City Syncs Up Local Elections with High-Turnout Contests"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169483,
+    "kind": "item",
+    "occurred_at": "2026-11-24T16:12:36+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/what-comes-next-in-alaska-after-state-certified-the-senate-results",
+    "title": "What comes next in Alaska after state certified the Senate results"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169482,
+    "kind": "item",
+    "occurred_at": "2026-11-24T16:34:01+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/despite-decisive-losses-gop-lawsuit-continues-to-seek-hand-count-of-every-ballot-cast-in-texas",
+    "title": "Despite decisive losses, GOP lawsuit continues to seek hand count of every ballot cast in Texas"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169481,
+    "kind": "item",
+    "occurred_at": "2026-11-24T16:40:59+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/alaska-terminates-controversial-deal-to-share-voter-data-with-trump-doj",
+    "title": "Alaska terminates controversial deal to share voter data with Trump DOJ"
   }
 ]

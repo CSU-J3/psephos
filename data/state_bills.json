@@ -16456,7 +16456,7 @@
     "is_vehicle": false,
     "last_action": "Referred To Committee On Elections And Ethics",
     "last_action_at": "2025-05-13T00:00:00",
-    "session": null,
+    "session": "103rd Legislature",
     "state": "MI",
     "state_bill_id": "1986197",
     "status": "2",
@@ -16602,7 +16602,7 @@
         "title": "MI HB4136: Referred To Committee On Elections And Ethics"
       }
     ],
-    "title": "Elections: registration; department of natural resources and those designated by the department of natural resources to issue a resident hunting, fishing, or fur harvester's license to provide voter registration applications to resident hunting, fishing, or fur harvester's licens Amends 1994 PA 451 (MCL 324.101 - 324.90106) by adding sec. 43540g.",
+    "title": "Elections: registration; department of natural resources and those designated by the department of natural resources to issue a resident hunting, fishing, or fur harvester's license to provide voter registration applications to resident hunting, fishing, or fur harvester's license applicants; require. Amends 1994 PA 451 (MCL 324.101 - 324.90106) by adding sec. 43540g.",
     "url": "https://legiscan.com/MI/bill/HB4136/2025"
   },
   {
@@ -30698,7 +30698,7 @@
   {
     "bill_number": "HB1937",
     "is_vehicle": false,
-    "last_action": "Referred to USLTATE UGLOVERNMENT",
+    "last_action": "Referred to State Government",
     "last_action_at": "2025-10-10T00:00:00",
     "session": "2025-2026 Regular Session",
     "state": "PA",
@@ -47486,5 +47486,29 @@
     ],
     "title": "Relating to permitted forms of identification for the purpose of accepting a voter.",
     "url": "https://legiscan.com/TX/bill/SB444/2027"
+  },
+  {
+    "bill_number": "SB1001",
+    "is_vehicle": false,
+    "last_action": "Prefile",
+    "last_action_at": "2026-11-23T00:00:00",
+    "session": "Fifty-eighth Legislature - First Regular Session (2027)",
+    "state": "AZ",
+    "state_bill_id": "2164478",
+    "status": null,
+    "timeline": [
+      {
+        "channel": "state",
+        "grade": "B2",
+        "id": 169489,
+        "kind": "item",
+        "occurred_at": "2026-11-23T00:00:00",
+        "source_id": "legiscan",
+        "source_url": "https://legiscan.com/AZ/bill/SB1001/2027",
+        "title": "AZ SB1001: Prefile"
+      }
+    ],
+    "title": "Permanent early voting list",
+    "url": "https://legiscan.com/AZ/bill/SB1001/2027"
   }
 ]
