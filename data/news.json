@@ -15088,5 +15088,15 @@
     "source_id": "democracy-docket",
     "source_url": "https://www.democracydocket.com/news-alerts/ohio-county-counts-over-700-contested-ballots-after-democratic-lawsuit",
     "title": "Ohio county counts over 700 contested ballots after Democratic lawsuit"
+  },
+  {
+    "channel": "news",
+    "grade": "B2",
+    "id": 169961,
+    "kind": "item",
+    "occurred_at": "2026-11-24T23:45:31+00:00",
+    "source_id": "democracy-docket",
+    "source_url": "https://www.democracydocket.com/news-alerts/trump-appointed-judge-tosses-texas-gop-lawsuit-seeking-to-block-election-certification",
+    "title": "Trump-appointed judge tosses Texas GOP lawsuit seeking to block election certification"
   }
 ]
