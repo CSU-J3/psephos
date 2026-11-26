@@ -554,6 +554,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 171552,
+        "kind": "item",
+        "occurred_at": "2026-01-27T08:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPSmxWYlktMUI0VFdxZmNxVG5Pa3o0NzZCV1l0aXlNOEljbFpVQzVPT3JXM0UtdWFocDRsdUJZb2dnSHRuRnFseE1GWjY1alhScUtMRXdrNUNyVHB4LXQ1TklEWlMwLXh5OHV1d0ZWbWFuWF9kVlRocWZXOGdMaWpGSmlqQk15MkVqY0NfU1otNUlZUEI0ejZGY3lPOU0zVTA?oc=5",
+        "title": "Utah bill requiring proof of citizenship to vote advances - Utah News Dispatch"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 91547,
         "kind": "item",
         "occurred_at": "2026-02-06T08:00:00+00:00",
