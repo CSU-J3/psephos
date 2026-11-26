@@ -1106,6 +1106,16 @@
       {
         "channel": "news",
         "grade": "C3",
+        "id": 170872,
+        "kind": "item",
+        "occurred_at": "2026-06-24T07:00:00+00:00",
+        "source_id": "google-news",
+        "source_url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPWnBicUZGT3FieGNqbzJtOXRjdzBuZmJqSFhUS2NCLU5PUG1lWUJlMG9Xd3N6dHhYRXRjUkEybTFvUFFxQmVaNmhRbE1ic3dvZFNWM01pMVNXdWtOWU5ONnhodjFFMkhVSGRfckNHYlhXSkZzMG5qZ1h3VFFiMGx4Tkc3LXhtRkZ3azNKQlQ2Wk8?oc=5",
+        "title": "McCormick discusses SAVE America Act, views on filibuster - PoliticsPA"
+      },
+      {
+        "channel": "news",
+        "grade": "C3",
         "id": 36814,
         "kind": "item",
         "occurred_at": "2026-06-26T07:00:00+00:00",
